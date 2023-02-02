@@ -4,7 +4,8 @@
       "document": "This API is used to query the result of CAPTCHA ticket verification (web and app).",
       "input": "DescribeCaptchaResultRequest",
       "name": "Queries the result of CAPTCHA ticket verification (web and app).",
-      "output": "DescribeCaptchaResultResponse"
+      "output": "DescribeCaptchaResultResponse",
+      "status": "online"
     }
   },
   "metadata": {

@@ -4,103 +4,120 @@
       "document": "1. This API is used to add an SMS signature. You need to read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/zh/document/product/382/40658) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS signatures. For more information, see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the console to apply for SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "AddSmsSignRequest",
       "name": "Adds SMS signature",
-      "output": "AddSmsSignResponse"
+      "output": "AddSmsSignResponse",
+      "status": "online"
     },
     "AddSmsTemplate": {
       "document": "1. This API is used to add an SMS template. You need to read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/zh/document/product/382/40659) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS body templates. For more information, see [Identity Verification Overview](https://intl.cloud.tencent.com/zh/document/product/378/3629). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to apply for SMS body templates.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "AddSmsTemplateRequest",
       "name": "Adds SMS template",
-      "output": "AddSmsTemplateResponse"
+      "output": "AddSmsTemplateResponse",
+      "status": "online"
     },
     "CallbackStatusStatistics": {
       "document": "This API is used to collect statistics on user receipts.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "CallbackStatusStatisticsRequest",
       "name": "Collects statistics on receipts",
-      "output": "CallbackStatusStatisticsResponse"
+      "output": "CallbackStatusStatisticsResponse",
+      "status": "online"
     },
     "DeleteSmsSign": {
       "document": "⚠️ Note: individual users cannot use this API to delete SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). Please log in to the [console](https://console.cloud.tencent.com/smsv2) to delete SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "DeleteSmsSignRequest",
       "name": "Deletes SMS signature",
-      "output": "DeleteSmsSignResponse"
+      "output": "DeleteSmsSignResponse",
+      "status": "online"
     },
     "DeleteSmsTemplate": {
       "document": "⚠️ Note: individual users cannot use this API to delete SMS body templates. Please log in to the [console](https://console.cloud.tencent.com/smsv2) to do so. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "DeleteSmsTemplateRequest",
       "name": "Deletes SMS template",
-      "output": "DeleteSmsTemplateResponse"
+      "output": "DeleteSmsTemplateResponse",
+      "status": "online"
     },
     "DescribePhoneNumberInfo": {
       "document": "This API is used to query the information of a phone number, including country/region code and standardized E.164 format number.\n>- For example, if you query the number +86018845720123, you can get the country/region code 86 and the standardized E.164 number +8618845720123.",
       "input": "DescribePhoneNumberInfoRequest",
       "name": "Queries mobile number information",
-      "output": "DescribePhoneNumberInfoResponse"
+      "output": "DescribePhoneNumberInfoResponse",
+      "status": "online"
     },
     "DescribeSmsSignList": {
       "document": "⚠️ Note: individual users cannot use this API to query SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to query SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "DescribeSmsSignListRequest",
       "name": "Queries SMS signature status",
-      "output": "DescribeSmsSignListResponse"
+      "output": "DescribeSmsSignListResponse",
+      "status": "online"
     },
     "DescribeSmsTemplateList": {
       "document": "⚠️ Note: individual users cannot use this API to query SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "DescribeSmsTemplateListRequest",
       "name": "Queries SMS template status",
-      "output": "DescribeSmsTemplateListResponse"
+      "output": "DescribeSmsTemplateListResponse",
+      "status": "online"
     },
     "ModifySmsSign": {
       "document": "1. This API is used to modify an SMS signature. Read the [Tencent Cloud SMS signature review standards](https://intl.cloud.tencent.com/document/product/382/40658) before making a modification.\n2. ⚠️ Note: Individual users cannot use this API to modify SMS signatures. For more information, see [Identity Verification Guide](https://intl.cloud.tencent.com/document/product/378/3629). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS signatures.\n3. Modifications can be made only if the signature status is **Pending Review** or **Rejected**. **Approved** signatures cannot be modified.\n>- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "ModifySmsSignRequest",
       "name": "Modifies SMS signature",
-      "output": "ModifySmsSignResponse"
+      "output": "ModifySmsSignResponse",
+      "status": "online"
     },
     "ModifySmsTemplate": {
       "document": "1. This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before making a modification.\n2. ⚠️ Note: individual users cannot use this API to modify SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS body templates.\n3. Modifications can be made only if the body template status is **Pending Review** or **Rejected**. **Approved** body templates cannot be modified.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "ModifySmsTemplateRequest",
       "name": "Modifies SMS template",
-      "output": "ModifySmsTemplateResponse"
+      "output": "ModifySmsTemplateResponse",
+      "status": "online"
     },
     "PullSmsReplyStatus": {
       "document": "This API is used to pull SMS reply status.\nCurrently, you can also [configure the reply callback](https://intl.cloud.tencent.com/document/product/382/42907?from_cn_redirect=1) to get replies.\n>- Note: You need to contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) to activate this API.\n>- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "PullSmsReplyStatusRequest",
       "name": "Pulls SMS reply status",
-      "output": "PullSmsReplyStatusResponse"
+      "output": "PullSmsReplyStatusResponse",
+      "status": "online"
     },
     "PullSmsReplyStatusByPhoneNumber": {
       "document": "This API is used to pull SMS reply status for one single number.\nCurrently, you can also [configure the reply callback](https://intl.cloud.tencent.com/document/product/382/42907?from_cn_redirect=1) to get replies.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "PullSmsReplyStatusByPhoneNumberRequest",
       "name": "Pulls SMS reply status for one single number",
-      "output": "PullSmsReplyStatusByPhoneNumberResponse"
+      "output": "PullSmsReplyStatusByPhoneNumberResponse",
+      "status": "online"
     },
     "PullSmsSendStatus": {
       "document": "This API is used to pull SMS delivery status.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: you need to contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) to activate this API.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "PullSmsSendStatusRequest",
       "name": "Pulls SMS delivery status",
-      "output": "PullSmsSendStatusResponse"
+      "output": "PullSmsSendStatusResponse",
+      "status": "online"
     },
     "PullSmsSendStatusByPhoneNumber": {
       "document": "This API is used to pull SMS delivery status for one single number.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) to eliminate the need to calculate signatures. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "PullSmsSendStatusByPhoneNumberRequest",
       "name": "Pulls SMS delivery status for one single number",
-      "output": "PullSmsSendStatusByPhoneNumberResponse"
+      "output": "PullSmsSendStatusByPhoneNumberResponse",
+      "status": "online"
     },
     "ReportConversion": {
       "document": "This API is used to report the SMS conversion rate (SMS conversion rate = the number of returned verification codes / the number of verification codes sent) and report the serial numbers of received SMS messages to Tencent Cloud SMS.\n>- Note: To call this API, you need to be added to the allowlist first. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
       "input": "ReportConversionRequest",
       "name": "Reports the SMS conversion rate",
-      "output": "ReportConversionResponse"
+      "output": "ReportConversionResponse",
+      "status": "online"
     },
     "SendSms": {
       "document": "This API is used to send SMS verification codes, notification, or marketing messages to users.\n>- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the [SDK](https://intl.cloud.tencent.com/document/product/382/43193?from_cn_redirect=1).\n>- Note: You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n>- Note: This API is currently on the 2021-01-11 version. If you are still using the [2019-07-11 version](https://intl.cloud.tencent.com/document/product/382/38778?from_cn_redirect=1), we recommend you use this latest version. For version differences, see [Version description](https://intl.cloud.tencent.com/document/product/382/63195?from_cn_redirect=1#.E7.89.88.E6.9C.AC.E6.8F.8F.E8.BF.B0).",
       "input": "SendSmsRequest",
       "name": "Sends SMS messages",
-      "output": "SendSmsResponse"
+      "output": "SendSmsResponse",
+      "status": "online"
     },
     "SendStatusStatistics": {
       "document": "This API is used to collect statistics on SMS messages sent by users.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "SendStatusStatisticsRequest",
       "name": "Collects statistics on SMS delivery",
-      "output": "SendStatusStatisticsResponse"
+      "output": "SendStatusStatisticsResponse",
+      "status": "online"
     }
   },
   "metadata": {

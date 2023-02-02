@@ -4,487 +4,568 @@
       "document": "This API is used to create a sub-user.",
       "input": "AddUserRequest",
       "name": "Creates a sub-user",
-      "output": "AddUserResponse"
+      "output": "AddUserResponse",
+      "status": "online"
     },
     "AddUserToGroup": {
       "document": "This API is used to add users to a user group.",
       "input": "AddUserToGroupRequest",
       "name": "Adds users to a user group",
-      "output": "AddUserToGroupResponse"
+      "output": "AddUserToGroupResponse",
+      "status": "online"
     },
     "AttachGroupPolicy": {
       "document": "This API (AttachGroupPolicy) is used to associate a policy with a user group.",
       "input": "AttachGroupPolicyRequest",
       "name": "Associates a policy with a user group",
-      "output": "AttachGroupPolicyResponse"
+      "output": "AttachGroupPolicyResponse",
+      "status": "online"
     },
     "AttachRolePolicy": {
       "document": "This API (AttachRolePolicy) is used to associate a policy with a role.",
       "input": "AttachRolePolicyRequest",
       "name": "Associates a permission policy with a role",
-      "output": "AttachRolePolicyResponse"
+      "output": "AttachRolePolicyResponse",
+      "status": "online"
     },
     "AttachUserPolicy": {
       "document": "This API (AttachUserPolicy) is used to associates a policy with a user.",
       "input": "AttachUserPolicyRequest",
       "name": "Associates a policy with a user",
-      "output": "AttachUserPolicyResponse"
+      "output": "AttachUserPolicyResponse",
+      "status": "online"
     },
     "ConsumeCustomMFAToken": {
       "document": "This API is used to verify a custom multi-factor Token.",
       "input": "ConsumeCustomMFATokenRequest",
       "name": "Verifies a custom multi-factor Token",
-      "output": "ConsumeCustomMFATokenResponse"
+      "output": "ConsumeCustomMFATokenResponse",
+      "status": "online"
     },
     "CreateAccessKey": {
       "document": "This API is used to create an access key for a CAM user.",
       "input": "CreateAccessKeyRequest",
       "name": "Creates an access key",
-      "output": "CreateAccessKeyResponse"
+      "output": "CreateAccessKeyResponse",
+      "status": "online"
     },
     "CreateGroup": {
       "document": "This API is used to create a user group.",
       "input": "CreateGroupRequest",
       "name": "Creates a user group",
-      "output": "CreateGroupResponse"
+      "output": "CreateGroupResponse",
+      "status": "online"
     },
     "CreateOIDCConfig": {
       "document": "This API is used to create role OIDC configurations.",
       "input": "CreateOIDCConfigRequest",
       "name": "Creates role OIDC configurations",
-      "output": "CreateOIDCConfigResponse"
+      "output": "CreateOIDCConfigResponse",
+      "status": "online"
     },
     "CreatePolicy": {
       "document": "This API (CreatePolicy) is used to create a policy.",
       "input": "CreatePolicyRequest",
       "name": "Creates a policy",
-      "output": "CreatePolicyResponse"
+      "output": "CreatePolicyResponse",
+      "status": "online"
     },
     "CreatePolicyVersion": {
       "document": "This API is used to add a policy version. After creating a policy version, you can easily change the policy by changing the policy version.",
       "input": "CreatePolicyVersionRequest",
       "name": "Creates a policy version",
-      "output": "CreatePolicyVersionResponse"
+      "output": "CreatePolicyVersionResponse",
+      "status": "online"
     },
     "CreateRole": {
       "document": "This API (CreateRole) is used to create a role.",
       "input": "CreateRoleRequest",
       "name": "Creates a role",
-      "output": "CreateRoleResponse"
+      "output": "CreateRoleResponse",
+      "status": "online"
     },
     "CreateSAMLProvider": {
       "document": "This API is used to create a SAML identity provider.",
       "input": "CreateSAMLProviderRequest",
       "name": "Creates a SAML identity provider",
-      "output": "CreateSAMLProviderResponse"
+      "output": "CreateSAMLProviderResponse",
+      "status": "online"
     },
     "CreateServiceLinkedRole": {
       "document": "This API is used to create a service-linked role.",
       "input": "CreateServiceLinkedRoleRequest",
       "name": "Creates a service-linked role",
-      "output": "CreateServiceLinkedRoleResponse"
+      "output": "CreateServiceLinkedRoleResponse",
+      "status": "online"
     },
     "CreateUserOIDCConfig": {
       "document": "This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.",
       "input": "CreateUserOIDCConfigRequest",
       "name": "Creates user OIDC configuration",
-      "output": "CreateUserOIDCConfigResponse"
+      "output": "CreateUserOIDCConfigResponse",
+      "status": "online"
     },
     "CreateUserSAMLConfig": {
       "document": "This API is used to create user SAML configurations.",
       "input": "CreateUserSAMLConfigRequest",
       "name": "Creates user SAML configurations",
-      "output": "CreateUserSAMLConfigResponse"
+      "output": "CreateUserSAMLConfigResponse",
+      "status": "online"
     },
     "DeleteAccessKey": {
       "document": "This API is used to delete an access key for a CAM user.\nCalling this API is a high-risk operation because the key cannot be recovered once deleted and Tencent Cloud will deny all requests that use this key. Proceed with caution.",
       "input": "DeleteAccessKeyRequest",
       "name": "Deletes an access key",
-      "output": "DeleteAccessKeyResponse"
+      "output": "DeleteAccessKeyResponse",
+      "status": "online"
     },
     "DeleteGroup": {
       "document": "This API is used to delete a user group.",
       "input": "DeleteGroupRequest",
       "name": "Deletes a user group",
-      "output": "DeleteGroupResponse"
+      "output": "DeleteGroupResponse",
+      "status": "online"
     },
     "DeleteOIDCConfig": {
       "document": "This API is used to delete OIDC IdPs.",
       "input": "DeleteOIDCConfigRequest",
       "name": "Deletes OIDC IdPs",
-      "output": "DeleteOIDCConfigResponse"
+      "output": "DeleteOIDCConfigResponse",
+      "status": "online"
     },
     "DeletePolicy": {
       "document": "This API (DeletePolicy) is used to delete a policy.",
       "input": "DeletePolicyRequest",
       "name": "Deletes a policy",
-      "output": "DeletePolicyResponse"
+      "output": "DeletePolicyResponse",
+      "status": "online"
     },
     "DeletePolicyVersion": {
       "document": "This API is used to delete a policy version of a policy.",
       "input": "DeletePolicyVersionRequest",
       "name": "Deletes a policy version",
-      "output": "DeletePolicyVersionResponse"
+      "output": "DeletePolicyVersionResponse",
+      "status": "online"
     },
     "DeleteRole": {
       "document": "This API (DeleteRole) is used to delete a specified role.",
       "input": "DeleteRoleRequest",
       "name": "Deletes a role",
-      "output": "DeleteRoleResponse"
+      "output": "DeleteRoleResponse",
+      "status": "online"
     },
     "DeleteRolePermissionsBoundary": {
       "document": "This API is used to delete a role permission boundary.",
       "input": "DeleteRolePermissionsBoundaryRequest",
       "name": "Deletes role permission boundary",
-      "output": "DeleteRolePermissionsBoundaryResponse"
+      "output": "DeleteRolePermissionsBoundaryResponse",
+      "status": "online"
     },
     "DeleteSAMLProvider": {
       "document": "This API is used to delete a SAML identity provider.",
       "input": "DeleteSAMLProviderRequest",
       "name": "Deletes a SAML identity provider",
-      "output": "DeleteSAMLProviderResponse"
+      "output": "DeleteSAMLProviderResponse",
+      "status": "online"
     },
     "DeleteServiceLinkedRole": {
       "document": "This API is used to delete a service-linked role.",
       "input": "DeleteServiceLinkedRoleRequest",
       "name": "Deletes a service-linked role",
-      "output": "DeleteServiceLinkedRoleResponse"
+      "output": "DeleteServiceLinkedRoleResponse",
+      "status": "online"
     },
     "DeleteUser": {
       "document": "This API is used to delete a sub-user.",
       "input": "DeleteUserRequest",
       "name": "Deletes a sub-user",
-      "output": "DeleteUserResponse"
+      "output": "DeleteUserResponse",
+      "status": "online"
     },
     "DeleteUserPermissionsBoundary": {
       "document": "This API is used to delete a user permission boundary.",
       "input": "DeleteUserPermissionsBoundaryRequest",
       "name": "Deletes user permission boundary",
-      "output": "DeleteUserPermissionsBoundaryResponse"
+      "output": "DeleteUserPermissionsBoundaryResponse",
+      "status": "online"
     },
     "DescribeOIDCConfig": {
       "document": "This API is used to query role OIDC configurations.",
       "input": "DescribeOIDCConfigRequest",
       "name": "Queries role OIDC configurations",
-      "output": "DescribeOIDCConfigResponse"
+      "output": "DescribeOIDCConfigResponse",
+      "status": "online"
     },
     "DescribeRoleList": {
       "document": "This API (DescribeRoleList) is used to get the role list under the account.",
       "input": "DescribeRoleListRequest",
       "name": "Gets a role list",
-      "output": "DescribeRoleListResponse"
+      "output": "DescribeRoleListResponse",
+      "status": "online"
     },
     "DescribeSafeAuthFlagColl": {
       "document": "This API is used to query security settings.",
       "input": "DescribeSafeAuthFlagCollRequest",
       "name": "Queries security settings",
-      "output": "DescribeSafeAuthFlagCollResponse"
+      "output": "DescribeSafeAuthFlagCollResponse",
+      "status": "online"
     },
     "DescribeSafeAuthFlagIntl": {
       "document": "This API is used to query security settings.",
       "input": "DescribeSafeAuthFlagIntlRequest",
       "name": "Queries security settings",
-      "output": "DescribeSafeAuthFlagIntlResponse"
+      "output": "DescribeSafeAuthFlagIntlResponse",
+      "status": "online"
     },
     "DescribeSubAccounts": {
       "document": "This API is used to query sub-users through the sub-user UIN list.",
       "input": "DescribeSubAccountsRequest",
       "name": "Queries sub-users through sub-user UIN list",
-      "output": "DescribeSubAccountsResponse"
+      "output": "DescribeSubAccountsResponse",
+      "status": "online"
     },
     "DescribeUserOIDCConfig": {
       "document": "This API is used to query the user OIDC configuration.",
       "input": "DescribeUserOIDCConfigRequest",
       "name": "Queries user OIDC configuration",
-      "output": "DescribeUserOIDCConfigResponse"
+      "output": "DescribeUserOIDCConfigResponse",
+      "status": "online"
     },
     "DescribeUserSAMLConfig": {
       "document": "This API is used to query user SAML configurations.",
       "input": "DescribeUserSAMLConfigRequest",
       "name": "Queries user SAML configurations",
-      "output": "DescribeUserSAMLConfigResponse"
+      "output": "DescribeUserSAMLConfigResponse",
+      "status": "online"
     },
     "DetachGroupPolicy": {
       "document": "This API (DetachGroupPolicy) is used to unassociate a policy and a user group.",
       "input": "DetachGroupPolicyRequest",
       "name": "Unassociate a policy and a user group",
-      "output": "DetachGroupPolicyResponse"
+      "output": "DetachGroupPolicyResponse",
+      "status": "online"
     },
     "DetachRolePolicy": {
       "document": "This API (DetachRolePolicy) is used to unassociate a policy and a role.",
       "input": "DetachRolePolicyRequest",
       "name": "Unassociates a policy and a role",
-      "output": "DetachRolePolicyResponse"
+      "output": "DetachRolePolicyResponse",
+      "status": "online"
     },
     "DetachUserPolicy": {
       "document": "This API (DetachUserPolicy) is used to unassociate a policy and a user.",
       "input": "DetachUserPolicyRequest",
       "name": "Unassociates a policy and a user",
-      "output": "DetachUserPolicyResponse"
+      "output": "DetachUserPolicyResponse",
+      "status": "online"
     },
     "DisableUserSSO": {
       "document": "This API is used to disable user SSO.",
       "input": "DisableUserSSORequest",
       "name": "Disables user SSO",
-      "output": "DisableUserSSOResponse"
+      "output": "DisableUserSSOResponse",
+      "status": "online"
     },
     "GetAccountSummary": {
       "document": "This API is used to query account summary. ",
       "input": "GetAccountSummaryRequest",
       "name": "Queries account summary",
-      "output": "GetAccountSummaryResponse"
+      "output": "GetAccountSummaryResponse",
+      "status": "online"
     },
     "GetCustomMFATokenInfo": {
       "document": "This API is used to get information associated with a custom multi-factor Token",
       "input": "GetCustomMFATokenInfoRequest",
       "name": "Gets information associated with a custom multi-factor Token",
-      "output": "GetCustomMFATokenInfoResponse"
+      "output": "GetCustomMFATokenInfoResponse",
+      "status": "online"
     },
     "GetGroup": {
       "document": "This API is used to query user group details.",
       "input": "GetGroupRequest",
       "name": "Queries user group details",
-      "output": "GetGroupResponse"
+      "output": "GetGroupResponse",
+      "status": "online"
     },
     "GetPolicy": {
       "document": "This API (GetPolicy) is used to query and view policy details.",
       "input": "GetPolicyRequest",
       "name": "Views policy details",
-      "output": "GetPolicyResponse"
+      "output": "GetPolicyResponse",
+      "status": "online"
     },
     "GetPolicyVersion": {
       "document": "This API is used to query policy version details.",
       "input": "GetPolicyVersionRequest",
       "name": "Queries policy version details",
-      "output": "GetPolicyVersionResponse"
+      "output": "GetPolicyVersionResponse",
+      "status": "online"
     },
     "GetRole": {
       "document": "This API (GetRole) is used to get the details of a specified role.",
       "input": "GetRoleRequest",
       "name": "Gets role details",
-      "output": "GetRoleResponse"
+      "output": "GetRoleResponse",
+      "status": "online"
     },
     "GetSAMLProvider": {
       "document": "This API is used to query SAML identity provider details.",
       "input": "GetSAMLProviderRequest",
       "name": "Queries SAML Identity provider details",
-      "output": "GetSAMLProviderResponse"
+      "output": "GetSAMLProviderResponse",
+      "status": "online"
     },
     "GetSecurityLastUsed": {
       "document": "This API is used to get a key’s recent usage details.",
       "input": "GetSecurityLastUsedRequest",
       "name": "Gets a key’s recent usage details",
-      "output": "GetSecurityLastUsedResponse"
+      "output": "GetSecurityLastUsedResponse",
+      "status": "online"
     },
     "GetServiceLinkedRoleDeletionStatus": {
       "document": "This API is used to get the status of the service-linked role deletion based on the `TaskId`",
       "input": "GetServiceLinkedRoleDeletionStatusRequest",
       "name": "Gets the status of the service-linked role deletion",
-      "output": "GetServiceLinkedRoleDeletionStatusResponse"
+      "output": "GetServiceLinkedRoleDeletionStatusResponse",
+      "status": "online"
     },
     "GetUser": {
       "document": "This API is used to query sub-users.",
       "input": "GetUserRequest",
       "name": "Queries sub-users",
-      "output": "GetUserResponse"
+      "output": "GetUserResponse",
+      "status": "online"
     },
     "GetUserAppId": {
       "document": "This API is used to get the user AppId.",
       "input": "GetUserAppIdRequest",
       "name": "Gets the user AppId",
-      "output": "GetUserAppIdResponse"
+      "output": "GetUserAppIdResponse",
+      "status": "online"
     },
     "ListAccessKeys": {
       "document": "This API is used to list the access keys associated with a specified CAM user.",
       "input": "ListAccessKeysRequest",
       "name": "Lists access keys",
-      "output": "ListAccessKeysResponse"
+      "output": "ListAccessKeysResponse",
+      "status": "online"
     },
     "ListAttachedGroupPolicies": {
       "document": "This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group.",
       "input": "ListAttachedGroupPoliciesRequest",
       "name": "Queries policy list associated with a user group",
-      "output": "ListAttachedGroupPoliciesResponse"
+      "output": "ListAttachedGroupPoliciesResponse",
+      "status": "online"
     },
     "ListAttachedRolePolicies": {
       "document": "This API (ListAttachedRolePolicies) is used to obtain the list of the policies associated with a role.",
       "input": "ListAttachedRolePoliciesRequest",
       "name": "Gets the list of policies associated with a role",
-      "output": "ListAttachedRolePoliciesResponse"
+      "output": "ListAttachedRolePoliciesResponse",
+      "status": "online"
     },
     "ListAttachedUserAllPolicies": {
       "document": "This API is used to list policies associated with the user (including those inherited from the user group).",
       "input": "ListAttachedUserAllPoliciesRequest",
       "name": "Lists policies associated with the user (including those inherited from the user group)",
-      "output": "ListAttachedUserAllPoliciesResponse"
+      "output": "ListAttachedUserAllPoliciesResponse",
+      "status": "online"
     },
     "ListAttachedUserPolicies": {
       "document": "This API (ListAttachedUserPolicies) is used to query the list of policies associated with a sub-account.",
       "input": "ListAttachedUserPoliciesRequest",
       "name": "Queries policy list associated with a sub-account",
-      "output": "ListAttachedUserPoliciesResponse"
+      "output": "ListAttachedUserPoliciesResponse",
+      "status": "online"
     },
     "ListCollaborators": {
       "document": "This API is used to get the collaborator list.",
       "input": "ListCollaboratorsRequest",
       "name": "Gets collaborator list",
-      "output": "ListCollaboratorsResponse"
+      "output": "ListCollaboratorsResponse",
+      "status": "online"
     },
     "ListEntitiesForPolicy": {
       "document": "This API (ListEntitiesForPolicy) is used to query the list of entities associated with a policy.",
       "input": "ListEntitiesForPolicyRequest",
       "name": "Queries entity list associated with a policy",
-      "output": "ListEntitiesForPolicyResponse"
+      "output": "ListEntitiesForPolicyResponse",
+      "status": "online"
     },
     "ListGroups": {
       "document": "This API is used to query the list of user groups.",
       "input": "ListGroupsRequest",
       "name": "This API is used to query the list of user groups.",
-      "output": "ListGroupsResponse"
+      "output": "ListGroupsResponse",
+      "status": "online"
     },
     "ListGroupsForUser": {
       "document": "This API is used to list user groups associated with a user.",
       "input": "ListGroupsForUserRequest",
       "name": "Lists user groups associated with a user",
-      "output": "ListGroupsForUserResponse"
+      "output": "ListGroupsForUserResponse",
+      "status": "online"
     },
     "ListPolicies": {
       "document": "This API is used to query the policy list.",
       "input": "ListPoliciesRequest",
       "name": "Queries the list of policies",
-      "output": "ListPoliciesResponse"
+      "output": "ListPoliciesResponse",
+      "status": "online"
     },
     "ListPolicyVersions": {
       "document": "This API is used to get the list of policy versions.",
       "input": "ListPolicyVersionsRequest",
       "name": "Gets a list of policy versions",
-      "output": "ListPolicyVersionsResponse"
+      "output": "ListPolicyVersionsResponse",
+      "status": "online"
     },
     "ListSAMLProviders": {
       "document": "This API is used to query the list of SAML identity providers.",
       "input": "ListSAMLProvidersRequest",
       "name": "Queries the list of SAML identity providers",
-      "output": "ListSAMLProvidersResponse"
+      "output": "ListSAMLProvidersResponse",
+      "status": "online"
     },
     "ListUsers": {
       "document": "This API is used to pull sub-users.",
       "input": "ListUsersRequest",
       "name": "Pulls sub-users",
-      "output": "ListUsersResponse"
+      "output": "ListUsersResponse",
+      "status": "online"
     },
     "ListUsersForGroup": {
       "document": "This API is used to query the list of users associated with a user group.",
       "input": "ListUsersForGroupRequest",
       "name": "Queries the list of users associated with a user group",
-      "output": "ListUsersForGroupResponse"
+      "output": "ListUsersForGroupResponse",
+      "status": "online"
     },
     "PutRolePermissionsBoundary": {
       "document": "This API is used to set a role permission boundary.",
       "input": "PutRolePermissionsBoundaryRequest",
       "name": "Sets role permission boundary",
-      "output": "PutRolePermissionsBoundaryResponse"
+      "output": "PutRolePermissionsBoundaryResponse",
+      "status": "online"
     },
     "PutUserPermissionsBoundary": {
       "document": "This API is used to set a user permission boundary.",
       "input": "PutUserPermissionsBoundaryRequest",
       "name": "Sets user permission boundary",
-      "output": "PutUserPermissionsBoundaryResponse"
+      "output": "PutUserPermissionsBoundaryResponse",
+      "status": "online"
     },
     "RemoveUserFromGroup": {
       "document": "This API is used to delete users from a user group.",
       "input": "RemoveUserFromGroupRequest",
       "name": "Deletes users from a user group",
-      "output": "RemoveUserFromGroupResponse"
+      "output": "RemoveUserFromGroupResponse",
+      "status": "online"
     },
     "SetDefaultPolicyVersion": {
       "document": "This API is used to set the operative policy version.",
       "input": "SetDefaultPolicyVersionRequest",
       "name": "Sets operative policy version",
-      "output": "SetDefaultPolicyVersionResponse"
+      "output": "SetDefaultPolicyVersionResponse",
+      "status": "online"
     },
     "SetMfaFlag": {
       "document": "This API is used to set account verification for login and sensitive operations for sub-users.",
       "input": "SetMfaFlagRequest",
       "name": "Sets account verification for login and sensitive operations for sub-users.",
-      "output": "SetMfaFlagResponse"
+      "output": "SetMfaFlagResponse",
+      "status": "online"
     },
     "TagRole": {
       "document": "This API is used to bind tags to a role.",
       "input": "TagRoleRequest",
       "name": "Binds tags to a role",
-      "output": "TagRoleResponse"
+      "output": "TagRoleResponse",
+      "status": "online"
     },
     "UntagRole": {
       "document": "This API is used to unbind tags from a role.",
       "input": "UntagRoleRequest",
       "name": "Unbinds tags from a role",
-      "output": "UntagRoleResponse"
+      "output": "UntagRoleResponse",
+      "status": "online"
     },
     "UpdateAccessKey": {
       "document": "This API is used to update an access key for a CAM user.",
       "input": "UpdateAccessKeyRequest",
       "name": "Updates an access key",
-      "output": "UpdateAccessKeyResponse"
+      "output": "UpdateAccessKeyResponse",
+      "status": "online"
     },
     "UpdateAssumeRolePolicy": {
       "document": "This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.",
       "input": "UpdateAssumeRolePolicyRequest",
       "name": "Modifies the trust policy of a role",
-      "output": "UpdateAssumeRolePolicyResponse"
+      "output": "UpdateAssumeRolePolicyResponse",
+      "status": "online"
     },
     "UpdateGroup": {
       "document": "This API is used to update a user group.",
       "input": "UpdateGroupRequest",
       "name": "Updates a user group",
-      "output": "UpdateGroupResponse"
+      "output": "UpdateGroupResponse",
+      "status": "online"
     },
     "UpdateOIDCConfig": {
       "document": "This API is used to modify role OIDC configurations.",
       "input": "UpdateOIDCConfigRequest",
       "name": "Modifies role OIDC configurations",
-      "output": "UpdateOIDCConfigResponse"
+      "output": "UpdateOIDCConfigResponse",
+      "status": "online"
     },
     "UpdatePolicy": {
       "document": "This API is used to update a policy.\nThis API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created.",
       "input": "UpdatePolicyRequest",
       "name": "Updates policy information",
-      "output": "UpdatePolicyResponse"
+      "output": "UpdatePolicyResponse",
+      "status": "online"
     },
     "UpdateRoleConsoleLogin": {
       "document": "This API is used to modify a role's login permissions.",
       "input": "UpdateRoleConsoleLoginRequest",
       "name": "Modifies a role's login permissions",
-      "output": "UpdateRoleConsoleLoginResponse"
+      "output": "UpdateRoleConsoleLoginResponse",
+      "status": "online"
     },
     "UpdateRoleDescription": {
       "document": "This API (UpdateRoleDescription) is used to modify the description of a role.",
       "input": "UpdateRoleDescriptionRequest",
       "name": "Modifies the description of a role",
-      "output": "UpdateRoleDescriptionResponse"
+      "output": "UpdateRoleDescriptionResponse",
+      "status": "online"
     },
     "UpdateSAMLProvider": {
       "document": "This API is used to update SAML identity provider information.",
       "input": "UpdateSAMLProviderRequest",
       "name": "Updates SAML identity provider information",
-      "output": "UpdateSAMLProviderResponse"
+      "output": "UpdateSAMLProviderResponse",
+      "status": "online"
     },
     "UpdateUser": {
       "document": "This API is used to update a sub-user.",
       "input": "UpdateUserRequest",
       "name": "Updates a sub-user",
-      "output": "UpdateUserResponse"
+      "output": "UpdateUserResponse",
+      "status": "online"
     },
     "UpdateUserOIDCConfig": {
       "document": "This API is used to modify the user OIDC configuration.",
       "input": "UpdateUserOIDCConfigRequest",
       "name": "Modifies user OIDC configuration",
-      "output": "UpdateUserOIDCConfigResponse"
+      "output": "UpdateUserOIDCConfigResponse",
+      "status": "online"
     },
     "UpdateUserSAMLConfig": {
       "document": "This API is used to modify user SAML configurations.",
       "input": "UpdateUserSAMLConfigRequest",
       "name": "Modifies user SAML configurations",
-      "output": "UpdateUserSAMLConfigResponse"
+      "output": "UpdateUserSAMLConfigResponse",
+      "status": "online"
     }
   },
   "metadata": {

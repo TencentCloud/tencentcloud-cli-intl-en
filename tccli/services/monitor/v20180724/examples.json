@@ -11,7 +11,7 @@
     "BindingPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=BindingPolicyObject\r\n&Module=monitor\r\n&GroupId=111111\r\n&Dimensions.0.Dimensions={\"unInstanceId\":\"ins-ot3cq4bi\"}\r\n&Dimensions.0.EventDimensions={\"uuid\":\"9d51a69e-0e4a-4120-ae58-9c073c851e24\"}\r\n&Dimensions.0.Region=gz\r\n&Dimensions.0.RegionId=1\r\n&<Common request parameter>",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindingPolicyObject\n<Common request parameters>\n\n{\n    \"GroupId\": \"111111\",\n    \"Module\": \"monitor\",\n    \"Dimensions\": [\n        {\n            \"EventDimensions\": \"{\\\"uuid\\\":\\\"9d51a69e-0e4a-4120-ae58-9c073c851e24\\\"}\",\n            \"Region\": \"gz\",\n            \"RegionId\": \"1\",\n            \"Dimensions\": \"{\\\"unInstanceId\\\":\\\"ins-ot3cq4bi\\\"}\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"78345016-ff97-4360-839a-82f3d96430e8\"\n    }\n}",
         "title": "Binding a policy object"
       }
@@ -19,9 +19,9 @@
     "CleanGrafanaInstance": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CleanGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"my-grafana\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
-        "title": "Forcibly terminating a Grafana instance"
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CleanGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Forcibly terminating a TencentCloud Managed Service for Grafana (TCMG) instance"
       }
     ],
     "CreateAlarmNotice": [
@@ -43,7 +43,7 @@
     "CreateAlertRule": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=CreateAlertRule\n&InstanceId=my-prom-gg\n&RuleState=2\n&Expr=\"up{service=\\\"rig-prometheus-agent\\\"}>0\"\n&Duration=5m\n&Receivers.0=34224\n&RuleName=test\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAlertRule\n<Common request parameters>\n\n{\n    \"Receivers\": [\n        \"34224\"\n    ],\n    \"InstanceId\": \"prom-abcd1234\",\n    \"Expr\": \"\\\"up{service=\\\\\\\"rig-prometheus-agent\\\\\\\"}>0\\\"\",\n    \"Duration\": \"5m\",\n    \"RuleName\": \"test\",\n    \"RuleState\": \"2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"hfd437lxxdj3455-qxdb3eyydvw4doxm\",\n        \"RuleId\": \"arule-f2vx2owo\"\n    }\n}",
         "title": "Creating an alerting rule"
       }
@@ -67,7 +67,7 @@
     "CreateGrafanaIntegration": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Content\": \"xx\",\n    \"Kind\": \"xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"Content\": \"xx\",\n    \"Kind\": \"tencent-cloud-prometheus\"\n}",
         "output": "{\n    \"Response\": {\n        \"IntegrationId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Creating a Grafana integration configuration"
       }
@@ -75,7 +75,7 @@
     "CreateGrafanaNotificationChannel": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelName\": \"xx\",\n    \"OrgId\": 0,\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"ChannelName\": \"test\",\n    \"OrgId\": 0,\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"ChannelId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Creating a Grafana alert channel"
       }
@@ -107,7 +107,7 @@
     "CreatePrometheusScrapeJob": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusScrapeJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\",\n    \"Config\": \"job_name:xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusScrapeJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-abcd1234\",\n    \"AgentId\": \"agent-abcd1234\",\n    \"Config\": \"job_name:xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"job-xxfs\",\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Creating a Prometheus scrape task"
       }
@@ -179,7 +179,7 @@
     "DeleteGrafanaIntegration": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"IntegrationId\": \"xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"IntegrationId\": \"integration-abcd1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Deleting a Grafana integration configuration"
       }
@@ -187,7 +187,7 @@
     "DeleteGrafanaNotificationChannel": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelIDs\": [\n        \"xx\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"ChannelIDs\": [\n        \"nchannel-abcd1234\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Deleting a Grafana notification channel"
       }
@@ -365,7 +365,7 @@
     "DescribeDNSConfig": [
       {
         "document": "This example shows you how to list the instance's DNS configurations.",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDNSConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDNSConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\",\n        \"NameServers\": [\n            \"114.114.114.114\"\n        ]\n    }\n}",
         "title": "Listing the instance's DNS configurations"
       }
@@ -381,23 +381,23 @@
     "DescribeGrafanaChannels": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaChannels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelState\": 0,\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"ChannelName\": \"xx\",\n    \"ChannelIds\": [\n        \"xx\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"Receivers\": [\n                    \"xx\"\n                ],\n                \"ChannelId\": \"xx\",\n                \"OrganizationIds\": [\n                    \"xx\"\n                ],\n                \"UpdatedAt\": \"2020-09-22T00:00:00+00:00\",\n                \"ChannelName\": \"xx\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaChannels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"ChannelState\": 0,\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"ChannelName\": \"test\",\n    \"ChannelIds\": [\n        \"nchannel-abcd1234\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"Receivers\": [\n                    \"xx\"\n                ],\n                \"ChannelId\": \"nchannel-abcd1234\",\n                \"OrganizationIds\": [\n                    \"xx\"\n                ],\n                \"UpdatedAt\": \"2020-09-22T00:00:00+00:00\",\n                \"ChannelName\": \"test\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Listing Grafana alert channels"
       }
     ],
     "DescribeGrafanaConfig": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-mf9ji5jy\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\"\n}",
         "output": "{\n    \"Response\": {\n        \"Config\": \"{\\\"server\\\":{\\\"root_url\\\":\\\"http://balababbb\\\"}}\",\n        \"RequestId\": \"zcv6drxckn53gb61anxndsckjdwgfw6j\"\n    }\n}",
         "title": "Listing Grafana settings"
       }
     ],
     "DescribeGrafanaEnvironments": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "document": "列出 Grafana 环境变量",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"Envs\": \"{}\"\n    }\n}",
         "title": "Listing Grafana environment variables"
       }
@@ -405,9 +405,9 @@
     "DescribeGrafanaInstances": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaInstances\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0,\n    \"TagFilters\": [\n        {\n            \"Key\": \"tagKeyTest\",\n            \"Value\": \"tagValueTest\"\n        }\n    ],\n    \"InstanceStatus\": [\n        2\n    ],\n    \"InstanceName\": \"xx\",\n    \"InstanceIds\": [\n        \"xx\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"InstanceStatus\": 0,\n                \"VpcId\": \"xx\",\n                \"RootUrl\": \"xx\",\n                \"Version\": \"xx\",\n                \"Zone\": \"xx\",\n                \"TagSpecification\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"InstanceId\": \"xx\",\n                \"SubnetIds\": [\n                    \"xx\"\n                ],\n                \"RegionId\": 0,\n                \"InstanceChargeType\": 0,\n                \"InternalUrl\": \"xx\",\n                \"VpcName\": \"xx\",\n                \"EnableSSOCamCheck\": true,\n                \"SubnetName\": \"xx\",\n                \"InternetUrl\": \"xx\",\n                \"EnableSSO\": true,\n                \"InstanceName\": \"xx\",\n                \"Region\": \"xx\",\n                \"CreatedAt\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Instances\": [\n            {\n                \"InstanceStatus\": 0,\n                \"VpcId\": \"xx\",\n                \"RootUrl\": \"xx\",\n                \"Version\": \"xx\",\n                \"Zone\": \"xx\",\n                \"TagSpecification\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"InstanceId\": \"xx\",\n                \"SubnetIds\": [\n                    \"xx\"\n                ],\n                \"RegionId\": 0,\n                \"InstanceChargeType\": 0,\n                \"InternalUrl\": \"xx\",\n                \"VpcName\": \"xx\",\n                \"EnableSSOCamCheck\": true,\n                \"SubnetName\": \"xx\",\n                \"InternetUrl\": \"xx\",\n                \"EnableSSO\": true,\n                \"InstanceName\": \"xx\",\n                \"Region\": \"xx\",\n                \"CreatedAt\": \"2020-09-22 00:00:00\"\n            }\n        ]\n    }\n}",
-        "title": "Listing Grafana instances"
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaInstances\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0,\n    \"TagFilters\": [\n        {\n            \"Key\": \"tagKeyTest\",\n            \"Value\": \"tagValueTest\"\n        }\n    ],\n    \"InstanceStatus\": [\n        2\n    ],\n    \"InstanceName\": \"test\",\n    \"InstanceIds\": [\n        \"grafana-abcdefgh\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"InstanceStatus\": 0,\n                \"VpcId\": \"xx\",\n                \"RootUrl\": \"xx\",\n                \"Version\": \"xx\",\n                \"Zone\": \"xx\",\n                \"TagSpecification\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"InstanceId\": \"xx\",\n                \"SubnetIds\": [\n                    \"xx\"\n                ],\n                \"RegionId\": 0,\n                \"InstanceChargeType\": 0,\n                \"InternalUrl\": \"xx\",\n                \"VpcName\": \"Test\",\n                \"EnableSSOCamCheck\": true,\n                \"SubnetName\": \"xx\",\n                \"InternetUrl\": \"xx\",\n                \"EnableSSO\": true,\n                \"InstanceName\": \"xx\",\n                \"Region\": \"xx\",\n                \"CreatedAt\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Instances\": [\n            {\n                \"InstanceStatus\": 0,\n                \"VpcId\": \"xx\",\n                \"RootUrl\": \"xx\",\n                \"Version\": \"xx\",\n                \"Zone\": \"xx\",\n                \"TagSpecification\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"InstanceId\": \"xx\",\n                \"SubnetIds\": [\n                    \"xx\"\n                ],\n                \"RegionId\": 0,\n                \"InstanceChargeType\": 0,\n                \"InternalUrl\": \"xx\",\n                \"VpcName\": \"Test\",\n                \"EnableSSOCamCheck\": true,\n                \"SubnetName\": \"xx\",\n                \"InternetUrl\": \"xx\",\n                \"EnableSSO\": true,\n                \"InstanceName\": \"xx\",\n                \"Region\": \"xx\",\n                \"CreatedAt\": \"2020-09-22 00:00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Listing TCMG instances"
       }
     ],
     "DescribeGrafanaIntegrations": [
@@ -421,15 +421,15 @@
     "DescribeGrafanaNotificationChannels": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaNotificationChannels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelState\": 0,\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"ChannelName\": \"xx\",\n    \"ChannelIDs\": [\n        \"xx\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"ExtraOrgIds\": [\n                    \"xx\"\n                ],\n                \"OrgIds\": \"xx\",\n                \"Receivers\": [\n                    \"xx\"\n                ],\n                \"ChannelId\": \"xx\",\n                \"OrganizationIds\": [\n                \"OrgId\": \"xx\",\n                \"UpdatedAt\": \"2020-09-22\",\n                \"ChannelName\": \"xx\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaNotificationChannels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"ChannelState\": 0,\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"ChannelName\": \"test\",\n    \"ChannelIDs\": [\n        \"nchannel-abcd1234\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"ExtraOrgIds\": [\n                    \"xx\"\n                ],\n                \"OrgIds\": \"xx\",\n                \"Receivers\": [\n                    \"xx\"\n                ],\n                \"ChannelId\": \"nchannel-abcd1234\",\n                \"OrganizationIds\": [\n                \"OrgId\": \"xx\",\n                \"UpdatedAt\": \"2020-09-22\",\n                \"ChannelName\": \"xx\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Listing Grafana alert channels"
       }
     ],
     "DescribeGrafanaWhiteList": [
       {
         "document": "This example shows you how to list the Grafana allowlist.",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaWhiteList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaWhiteList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\",\n        \"WhiteList\": []\n    }\n}",
         "title": "Listing the Grafana allowlist"
       }
@@ -488,6 +488,14 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusAgents\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"AgentSet\": [\n            {\n                \"AgentId\": \"xx\",\n                \"Name\": \"xx\",\n                \"InstanceId\": \"xx\",\n                \"HeartbeatTime\": \"xx\",\n                \"Ipv4\": \"xx\",\n                \"LastError\": \"xx\",\n                \"AgentVersion\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"TotalCount\": 12\n    }\n}",
         "title": "Listing Prometheus agents"
+      }
+    ],
+    "DescribePrometheusInstanceUsage": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusInstanceUsage\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"prom-xxxxx\"\n    ],\n    \"StartCalcDate\": \"20210101\",\n    \"EndCalcDate\": \"20210101\"\n}",
+        "output": "{\n    \"Response\": {\n        \"UsageSet\": [\n            {\n                \"InstanceId\": \"prom-xxxxx\",\n                \"CalcDate\": \"20210101\",\n                \"Total\": 1.1,\n                \"Basic\": 1.1,\n                \"Fee\": 1.1\n            }\n        ],\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Querying the usage of a pay-as-you-go TMP instance"
       }
     ],
     "DescribePrometheusInstances": [
@@ -673,9 +681,9 @@
     "ModifyGrafanaInstance": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"InstanceName\": \"123\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"InstanceName\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Modifying the attributes of a Grafana instance"
+        "title": "Modifying the attributes of a TCMG instance"
       }
     ],
     "ModifyPolicyGroup": [
@@ -705,9 +713,9 @@
     "ResumeGrafanaInstance": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
-        "title": "Restoring a Grafana instance"
+        "title": "Restoring a TCMG instance"
       }
     ],
     "SendCustomAlarmMsg": [
@@ -737,7 +745,7 @@
     "UnBindingAllPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingAllPolicyObject\r\n&Module=monitor\r\n&GroupId=11111\r\n&<Common request parameter>",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnBindingAllPolicyObject\n<Common request parameters>\n\n{\n    \"GroupId\": \"11111\",\n    \"Module\": \"monitor\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb66c2-b4d6-4c2c-90a9-617d80347ab5\"\n    }\n}",
         "title": "Deleting all bound objects"
       }
@@ -745,7 +753,7 @@
     "UnBindingPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingPolicyObject\r\n&Module=monitor\r\n&GroupId=11111\r\n&UniqueId.0=3dd5113208fd467b2e5d0c1111111111\r\n&<Common request parameter>",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnBindingPolicyObject\n<Common request parameters>\n\n{\n    \"UniqueId\": [\n        \"3dd5113208fd467b2e5d0c1111111111\"\n    ],\n    \"GroupId\": \"11111\",\n    \"Module\": \"monitor\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb66c2-1111-1111-1111-11111111111\"\n    }\n}",
         "title": "Deleting an object that is bound to a policy"
       }
@@ -793,7 +801,7 @@
     "UpdateDNSConfig": [
       {
         "document": "This example shows you how to update the Grafana DNS configuration.",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDNSConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"NameServers\": [\n        \"xx\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDNSConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"NameServers\": [\n        \"xx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
         "title": "Updating the Grafana DNS configuration"
       }
@@ -817,7 +825,7 @@
     "UpdateGrafanaEnvironments": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Envs\": \"{}\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"Envs\": \"{}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Updating Grafana environment variables"
       }
@@ -825,7 +833,7 @@
     "UpdateGrafanaIntegration": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaIntegration\n<Common request parameters>\n\n{\n    \"IntegrationId\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Kind\": \"xx\",\n    \"Content\": \"xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaIntegration\n<Common request parameters>\n\n{\n    \"IntegrationId\": \"integration-abcd1234\",\n    \"InstanceId\": \"grafana-12345678\",\n    \"Kind\": \"tencent-cloud-prometheus\",\n    \"Content\": \"xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Updating the Grafana integration configuration"
       }
@@ -833,7 +841,7 @@
     "UpdateGrafanaNotificationChannel": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelId\": \"xx\",\n    \"ChannelName\": \"xx\",\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"ChannelId\": \"nchannel-abcd1234\",\n    \"ChannelName\": \"test\",\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Updating the Grafana notification channel"
       }
@@ -841,7 +849,7 @@
     "UpdateGrafanaWhiteList": [
       {
         "document": "This example shows you how to update the Grafana allowlist.",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaWhiteList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Whitelist\": [\n        \"xx\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaWhiteList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"Whitelist\": [\n        \"127.0.0.1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
         "title": "Updating the Grafana allowlist"
       }
@@ -849,7 +857,7 @@
     "UpdatePrometheusAgentStatus": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePrometheusAgentStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentIds\": [\n        \"xx\"\n    ],\n    \"Status\": 1\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePrometheusAgentStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-abcd1234\",\n    \"AgentIds\": [\n        \"agent-abcd1234\"\n    ],\n    \"Status\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Updating the status of a Prometheus agent"
       }
@@ -857,7 +865,7 @@
     "UpdatePrometheusScrapeJob": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePrometheusScrapeJob\n<Common request parameters>\n\n{\n    \"JobId\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\",\n    \"Config\": \"job_name:xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePrometheusScrapeJob\n<Common request parameters>\n\n{\n    \"JobId\": \"job-abcd1234\",\n    \"InstanceId\": \"prom-abcd1234\",\n    \"AgentId\": \"agent-abcd1234\",\n    \"Config\": \"job_name:xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Updating a Prometheus scrape task"
       }
@@ -889,9 +897,9 @@
     "UpgradeGrafanaInstance": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Alias\": \"v7.4.2\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"Alias\": \"v7.4.2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Upgrading a Grafana instance"
+        "title": "Upgrading a TCMG instance"
       }
     ]
   },

@@ -4,1975 +4,2304 @@
       "document": "This API is used to create a task to add and publish a network policy in the container network.",
       "input": "AddAndPublishNetworkFirewallPolicyDetailRequest",
       "name": "Creates a task to add and publish a network policy in the container network",
-      "output": "AddAndPublishNetworkFirewallPolicyDetailResponse"
+      "output": "AddAndPublishNetworkFirewallPolicyDetailResponse",
+      "status": "online"
     },
     "AddAndPublishNetworkFirewallPolicyYamlDetail": {
       "document": "This API is used to create a task to configure and publish a YAML network policy in the container network.",
       "input": "AddAndPublishNetworkFirewallPolicyYamlDetailRequest",
       "name": "Creates a task to configure and publish a YAML network policy in the container network",
-      "output": "AddAndPublishNetworkFirewallPolicyYamlDetailResponse"
+      "output": "AddAndPublishNetworkFirewallPolicyYamlDetailResponse",
+      "status": "online"
     },
     "AddAssetImageRegistryRegistryDetail": {
       "document": "This API is used to add the details of an image repository.",
       "input": "AddAssetImageRegistryRegistryDetailRequest",
       "name": "Adds the details of an image repository",
-      "output": "AddAssetImageRegistryRegistryDetailResponse"
+      "output": "AddAssetImageRegistryRegistryDetailResponse",
+      "status": "online"
     },
     "AddComplianceAssetPolicySetToWhitelist": {
       "document": "This API is used to ignore the specified asset IDs and check item IDs so as to hide the assets contained in the specified check items.\n`AddCompliancePolicyItemToWhitelist` is the reference API. Except for the input field, others should be the same, and if not, it may be due to the definition.",
       "input": "AddComplianceAssetPolicySetToWhitelistRequest",
       "name": "Ignores assets and check items",
-      "output": "AddComplianceAssetPolicySetToWhitelistResponse"
+      "output": "AddComplianceAssetPolicySetToWhitelistResponse",
+      "status": "online"
     },
     "AddCompliancePolicyAssetSetToWhitelist": {
       "document": "This API is used to ignore the specified asset IDs and check item IDs so as to hide the assets contained in the specified check items.\n`AddCompliancePolicyItemToWhitelist` is the reference API. Except for the input field, others should be the same, and if not, it may be due to the definition.",
       "input": "AddCompliancePolicyAssetSetToWhitelistRequest",
       "name": "Ignores the specified check item IDs and asset IDs",
-      "output": "AddCompliancePolicyAssetSetToWhitelistResponse"
+      "output": "AddCompliancePolicyAssetSetToWhitelistResponse",
+      "status": "online"
     },
     "AddCompliancePolicyItemToWhitelist": {
       "document": "This API is used to add the specified check item IDs to the allowlist so as to hide the failure result.",
       "input": "AddCompliancePolicyItemToWhitelistRequest",
       "name": "Ignores the specified check item IDs",
-      "output": "AddCompliancePolicyItemToWhitelistResponse"
+      "output": "AddCompliancePolicyItemToWhitelistResponse",
+      "status": "online"
     },
     "AddEditAbnormalProcessRule": {
       "document": "This API is used to add or edit an abnormal process policy at runtime.",
       "input": "AddEditAbnormalProcessRuleRequest",
       "name": "Adds or edits an abnormal process policy",
-      "output": "AddEditAbnormalProcessRuleResponse"
+      "output": "AddEditAbnormalProcessRuleResponse",
+      "status": "online"
     },
     "AddEditAccessControlRule": {
       "document": "This API is used to add or edit an access control policy at runtime.",
       "input": "AddEditAccessControlRuleRequest",
       "name": "Adds or edits an access control policy at runtime",
-      "output": "AddEditAccessControlRuleResponse"
+      "output": "AddEditAccessControlRuleResponse",
+      "status": "online"
     },
     "AddEditImageAutoAuthorizedRule": {
       "document": "This API is used to add or edit an automatic licensing rule for local images.",
       "input": "AddEditImageAutoAuthorizedRuleRequest",
       "name": "Adds or edits an automatic licensing rule for local images",
-      "output": "AddEditImageAutoAuthorizedRuleResponse"
+      "output": "AddEditImageAutoAuthorizedRuleResponse",
+      "status": "online"
     },
     "AddEditReverseShellWhiteList": {
       "document": "This API is used to add or edit an allowed reverse shell at runtime.",
       "input": "AddEditReverseShellWhiteListRequest",
       "name": "Adds or edits an allowed reverse shell",
-      "output": "AddEditReverseShellWhiteListResponse"
+      "output": "AddEditReverseShellWhiteListResponse",
+      "status": "online"
     },
     "AddEditRiskSyscallWhiteList": {
       "document": "This API is used to add or edit an allowed high-risk syscall at runtime.",
       "input": "AddEditRiskSyscallWhiteListRequest",
       "name": "Adds or edits an allowed high-risk syscall at runtime",
-      "output": "AddEditRiskSyscallWhiteListResponse"
+      "output": "AddEditRiskSyscallWhiteListResponse",
+      "status": "online"
     },
     "AddEditWarningRules": {
       "document": "This API is used to add or edit an alert policy.",
       "input": "AddEditWarningRulesRequest",
       "name": "Adds or edits an alert policy",
-      "output": "AddEditWarningRulesResponse"
+      "output": "AddEditWarningRulesResponse",
+      "status": "online"
     },
     "AddEscapeWhiteList": {
       "document": "This API is used to add an allowed escape.",
       "input": "AddEscapeWhiteListRequest",
       "name": "Adds an allowed escape",
-      "output": "AddEscapeWhiteListResponse"
+      "output": "AddEscapeWhiteListResponse",
+      "status": "online"
     },
     "AddIgnoreVul": {
       "document": "This API is used to add ignored vulnerabilities in a vulnerability scan.",
       "input": "AddIgnoreVulRequest",
       "name": "Adds ignored vulnerabilities in a vulnerability scan",
-      "output": "AddIgnoreVulResponse"
+      "output": "AddIgnoreVulResponse",
+      "status": "online"
     },
     "AddNetworkFirewallPolicyDetail": {
       "document": "This API is used to create a task to add a network policy in the container network.",
       "input": "AddNetworkFirewallPolicyDetailRequest",
       "name": "Creates a task to add a network policy in the container network",
-      "output": "AddNetworkFirewallPolicyDetailResponse"
+      "output": "AddNetworkFirewallPolicyDetailResponse",
+      "status": "online"
     },
     "AddNetworkFirewallPolicyYamlDetail": {
       "document": "This API is used to create a task to add a YAML network policy in the container network.",
       "input": "AddNetworkFirewallPolicyYamlDetailRequest",
       "name": "Creates a task to add a YAML network policy in the container network",
-      "output": "AddNetworkFirewallPolicyYamlDetailResponse"
+      "output": "AddNetworkFirewallPolicyYamlDetailResponse",
+      "status": "online"
     },
     "CheckNetworkFirewallPolicyYaml": {
       "document": "This API is used to create a task to check a YAML network policy in the container network.",
       "input": "CheckNetworkFirewallPolicyYamlRequest",
       "name": "Creates a task to check a YAML network policy in the container network",
-      "output": "CheckNetworkFirewallPolicyYamlResponse"
+      "output": "CheckNetworkFirewallPolicyYamlResponse",
+      "status": "online"
     },
     "CheckRepeatAssetImageRegistry": {
       "document": "This API is used to check whether an image repository name is duplicated.",
       "input": "CheckRepeatAssetImageRegistryRequest",
       "name": "Checks whether an image repository name is duplicated",
-      "output": "CheckRepeatAssetImageRegistryResponse"
+      "output": "CheckRepeatAssetImageRegistryResponse",
+      "status": "online"
     },
     "ConfirmNetworkFirewallPolicy": {
       "document": "This API is used to create a task to confirm a network policy in the container network.",
       "input": "ConfirmNetworkFirewallPolicyRequest",
       "name": "Creates a task to confirm a network policy in the container network",
-      "output": "ConfirmNetworkFirewallPolicyResponse"
+      "output": "ConfirmNetworkFirewallPolicyResponse",
+      "status": "online"
     },
     "CreateAbnormalProcessRulesExportJob": {
       "document": "This API is used to export abnormal process rules.",
       "input": "CreateAbnormalProcessRulesExportJobRequest",
       "name": "Exports abnormal process rules",
-      "output": "CreateAbnormalProcessRulesExportJobResponse"
+      "output": "CreateAbnormalProcessRulesExportJobResponse",
+      "status": "online"
     },
     "CreateAccessControlsRuleExportJob": {
       "document": "This API is used to export file tampering detection rules.",
       "input": "CreateAccessControlsRuleExportJobRequest",
       "name": "Exports file tampering detection rules",
-      "output": "CreateAccessControlsRuleExportJobResponse"
+      "output": "CreateAccessControlsRuleExportJobResponse",
+      "status": "online"
     },
     "CreateAssetImageRegistryScanTask": {
       "document": "This API is used to create an image scan task for an image repository.",
       "input": "CreateAssetImageRegistryScanTaskRequest",
       "name": "Creates an image scan task for an image repository",
-      "output": "CreateAssetImageRegistryScanTaskResponse"
+      "output": "CreateAssetImageRegistryScanTaskResponse",
+      "status": "online"
     },
     "CreateAssetImageRegistryScanTaskOneKey": {
       "document": "This API is used to create a quick image scan task for an image repository.",
       "input": "CreateAssetImageRegistryScanTaskOneKeyRequest",
       "name": "Creates a quick image scan task for an image repository",
-      "output": "CreateAssetImageRegistryScanTaskOneKeyResponse"
+      "output": "CreateAssetImageRegistryScanTaskOneKeyResponse",
+      "status": "online"
     },
     "CreateAssetImageScanSetting": {
       "document": "This API is used to set an image scan.",
       "input": "CreateAssetImageScanSettingRequest",
       "name": "Sets an image scan",
-      "output": "CreateAssetImageScanSettingResponse"
+      "output": "CreateAssetImageScanSettingResponse",
+      "status": "online"
     },
     "CreateAssetImageScanTask": {
       "document": "This API is used to create an image scan task.",
       "input": "CreateAssetImageScanTaskRequest",
       "name": "Creates an image scan task",
-      "output": "CreateAssetImageScanTaskResponse"
+      "output": "CreateAssetImageScanTaskResponse",
+      "status": "online"
     },
     "CreateAssetImageVirusExportJob": {
       "document": "This API is used to create a task to export the list of trojans in a local image.",
       "input": "CreateAssetImageVirusExportJobRequest",
       "name": "Creates a task to export the list of trojans in a local image",
-      "output": "CreateAssetImageVirusExportJobResponse"
+      "output": "CreateAssetImageVirusExportJobResponse",
+      "status": "online"
     },
     "CreateCheckComponent": {
       "document": "This API is used to install the check component and create a defender.",
       "input": "CreateCheckComponentRequest",
       "name": "Installs the check component",
-      "output": "CreateCheckComponentResponse"
+      "output": "CreateCheckComponentResponse",
+      "status": "online"
     },
     "CreateClusterCheckTask": {
       "document": "This API is used to create a cluster check task to check it for risk items.",
       "input": "CreateClusterCheckTaskRequest",
       "name": "Creates a cluster check task",
-      "output": "CreateClusterCheckTaskResponse"
+      "output": "CreateClusterCheckTaskResponse",
+      "status": "online"
     },
     "CreateComplianceTask": {
       "document": "This API is used to create a compliance check task for another check triggered at the asset level.",
       "input": "CreateComplianceTaskRequest",
       "name": "Creates a compliance check task",
-      "output": "CreateComplianceTaskResponse"
+      "output": "CreateComplianceTaskResponse",
+      "status": "online"
     },
     "CreateComponentExportJob": {
       "document": "This API is used to export the list of components in a local image.",
       "input": "CreateComponentExportJobRequest",
       "name": "Exports the list of components in a local image",
-      "output": "CreateComponentExportJobResponse"
+      "output": "CreateComponentExportJobResponse",
+      "status": "online"
     },
     "CreateDefenceVulExportJob": {
       "document": "This API is used to create a task to export vulnerabilities that can be prevented.",
       "input": "CreateDefenceVulExportJobRequest",
       "name": "Creates a task to export vulnerabilities that can be prevented",
-      "output": "CreateDefenceVulExportJobResponse"
+      "output": "CreateDefenceVulExportJobResponse",
+      "status": "online"
     },
     "CreateEmergencyVulExportJob": {
       "document": "This API is used to create a task to export emergency vulnerabilities.",
       "input": "CreateEmergencyVulExportJobRequest",
       "name": "Creates a task to export emergency vulnerabilities",
-      "output": "CreateEmergencyVulExportJobResponse"
+      "output": "CreateEmergencyVulExportJobResponse",
+      "status": "online"
     },
     "CreateEscapeEventsExportJob": {
       "document": "This API is used to create a task to asynchronously export escape events.",
       "input": "CreateEscapeEventsExportJobRequest",
       "name": "Creates a task to asynchronously export escape events",
-      "output": "CreateEscapeEventsExportJobResponse"
+      "output": "CreateEscapeEventsExportJobResponse",
+      "status": "online"
     },
     "CreateEscapeWhiteListExportJob": {
       "document": "This API is used to create a task to export the allowlist of escapes.",
       "input": "CreateEscapeWhiteListExportJobRequest",
       "name": "Creates a task to export the allowlist of escapes",
-      "output": "CreateEscapeWhiteListExportJobResponse"
+      "output": "CreateEscapeWhiteListExportJobResponse",
+      "status": "online"
     },
     "CreateExportComplianceStatusListJob": {
       "document": "This API is used to create a task to export security compliance information.",
       "input": "CreateExportComplianceStatusListJobRequest",
       "name": "Creates a task to export security compliance information",
-      "output": "CreateExportComplianceStatusListJobResponse"
+      "output": "CreateExportComplianceStatusListJobResponse",
+      "status": "online"
     },
     "CreateHostExportJob": {
       "document": "This API is used to create a task to export the list of servers.",
       "input": "CreateHostExportJobRequest",
       "name": "Creates a task to export the list of servers",
-      "output": "CreateHostExportJobResponse"
+      "output": "CreateHostExportJobResponse",
+      "status": "online"
     },
     "CreateImageExportJob": {
       "document": "This API is used to create an image export task.",
       "input": "CreateImageExportJobRequest",
       "name": "Creates an image export task",
-      "output": "CreateImageExportJobResponse"
+      "output": "CreateImageExportJobResponse",
+      "status": "online"
     },
     "CreateK8sApiAbnormalEventExportJob": {
       "document": "This API is used to create K8sApi abnormal event export jobs.",
       "input": "CreateK8sApiAbnormalEventExportJobRequest",
       "name": "Creates K8sApi abnormal event export jobs",
-      "output": "CreateK8sApiAbnormalEventExportJobResponse"
+      "output": "CreateK8sApiAbnormalEventExportJobResponse",
+      "status": "online"
     },
     "CreateK8sApiAbnormalRuleExportJob": {
       "document": "This API is used to export rules of K8sApi exceptions. ",
       "input": "CreateK8sApiAbnormalRuleExportJobRequest",
       "name": "Creates K8sApi abnormal rule export jobs",
-      "output": "CreateK8sApiAbnormalRuleExportJobResponse"
+      "output": "CreateK8sApiAbnormalRuleExportJobResponse",
+      "status": "online"
     },
     "CreateK8sApiAbnormalRuleInfo": {
       "document": "This API is used to create K8sApi abnormal event rules.",
       "input": "CreateK8sApiAbnormalRuleInfoRequest",
       "name": "Creates K8sApi abnormal event rules",
-      "output": "CreateK8sApiAbnormalRuleInfoResponse"
+      "output": "CreateK8sApiAbnormalRuleInfoResponse",
+      "status": "online"
     },
     "CreateNetworkFirewallClusterRefresh": {
       "document": "This API is used to distribute a refresh task in the container network cluster.",
       "input": "CreateNetworkFirewallClusterRefreshRequest",
       "name": "Distributes a refresh task in the container network cluster",
-      "output": "CreateNetworkFirewallClusterRefreshResponse"
+      "output": "CreateNetworkFirewallClusterRefreshResponse",
+      "status": "online"
     },
     "CreateNetworkFirewallPolicyDiscover": {
       "document": "This API is used to create a task to sync a network policy from the container network cluster.",
       "input": "CreateNetworkFirewallPolicyDiscoverRequest",
       "name": "Creates a task to sync a network policy from the container network cluster",
-      "output": "CreateNetworkFirewallPolicyDiscoverResponse"
+      "output": "CreateNetworkFirewallPolicyDiscoverResponse",
+      "status": "online"
     },
     "CreateNetworkFirewallPublish": {
       "document": "This API is used to create a task to publish a network policy in the container network.",
       "input": "CreateNetworkFirewallPublishRequest",
       "name": "Creates a task to publish a network policy in the container network",
-      "output": "CreateNetworkFirewallPublishResponse"
+      "output": "CreateNetworkFirewallPublishResponse",
+      "status": "online"
     },
     "CreateNetworkFirewallUndoPublish": {
       "document": "This API is used to create a task to revoke a network policy in the container network.",
       "input": "CreateNetworkFirewallUndoPublishRequest",
       "name": "Creates a task to revoke a network policy in the container network",
-      "output": "CreateNetworkFirewallUndoPublishResponse"
+      "output": "CreateNetworkFirewallUndoPublishResponse",
+      "status": "online"
     },
     "CreateOrModifyPostPayCores": {
       "document": "This API is used to create or edit the upper limit for elastic billing.",
       "input": "CreateOrModifyPostPayCoresRequest",
       "name": "Creates or edits the upper limit for elastic billing",
-      "output": "CreateOrModifyPostPayCoresResponse"
+      "output": "CreateOrModifyPostPayCoresResponse",
+      "status": "online"
     },
     "CreateProcessEventsExportJob": {
       "document": "This API is used to create a task to asynchronously export abnormal process events.",
       "input": "CreateProcessEventsExportJobRequest",
       "name": "Creates a task to asynchronously export abnormal process events",
-      "output": "CreateProcessEventsExportJobResponse"
+      "output": "CreateProcessEventsExportJobResponse",
+      "status": "online"
     },
     "CreateRefreshTask": {
       "document": "This API is used to distribute a task to refresh the asset information.",
       "input": "CreateRefreshTaskRequest",
       "name": "Distributes a refresh task",
-      "output": "CreateRefreshTaskResponse"
+      "output": "CreateRefreshTaskResponse",
+      "status": "online"
     },
     "CreateRiskDnsEventExportJob": {
       "document": "This API is used to export malicious request events.",
       "input": "CreateRiskDnsEventExportJobRequest",
       "name": "Export malicious request events",
-      "output": "CreateRiskDnsEventExportJobResponse"
+      "output": "CreateRiskDnsEventExportJobResponse",
+      "status": "online"
     },
     "CreateSearchTemplate": {
       "document": "This API is used to add a search template.",
       "input": "CreateSearchTemplateRequest",
       "name": "Adds a search template",
-      "output": "CreateSearchTemplateResponse"
+      "output": "CreateSearchTemplateResponse",
+      "status": "online"
     },
     "CreateSystemVulExportJob": {
       "document": "This API is used to create a task to export system vulnerabilities.",
       "input": "CreateSystemVulExportJobRequest",
       "name": "Creates a task to export system vulnerabilities",
-      "output": "CreateSystemVulExportJobResponse"
+      "output": "CreateSystemVulExportJobResponse",
+      "status": "online"
     },
     "CreateVirusScanAgain": {
       "document": "This API is used to perform another virus scan at runtime.",
       "input": "CreateVirusScanAgainRequest",
       "name": "Performs another virus scan at runtime",
-      "output": "CreateVirusScanAgainResponse"
+      "output": "CreateVirusScanAgainResponse",
+      "status": "online"
     },
     "CreateVirusScanTask": {
       "document": "This API is used to perform a quick virus scan at runtime.",
       "input": "CreateVirusScanTaskRequest",
       "name": "Performs a quick virus scan at runtime",
-      "output": "CreateVirusScanTaskResponse"
+      "output": "CreateVirusScanTaskResponse",
+      "status": "online"
     },
     "CreateVulContainerExportJob": {
       "document": "This API is used to create a task to export containers affected by vulnerabilities.",
       "input": "CreateVulContainerExportJobRequest",
       "name": "Creates a task to export containers affected by vulnerabilities",
-      "output": "CreateVulContainerExportJobResponse"
+      "output": "CreateVulContainerExportJobResponse",
+      "status": "online"
     },
     "CreateVulDefenceEventExportJob": {
       "document": "This API is used to create an exploit prevention event export task.",
       "input": "CreateVulDefenceEventExportJobRequest",
       "name": "Creates an exploit prevention event export task",
-      "output": "CreateVulDefenceEventExportJobResponse"
+      "output": "CreateVulDefenceEventExportJobResponse",
+      "status": "online"
     },
     "CreateVulDefenceHostExportJob": {
       "document": "This API is used to create a task to export servers with exploit prevention enabled.",
       "input": "CreateVulDefenceHostExportJobRequest",
       "name": "Creates a task to export servers with exploit prevention enabled",
-      "output": "CreateVulDefenceHostExportJobResponse"
+      "output": "CreateVulDefenceHostExportJobResponse",
+      "status": "online"
     },
     "CreateVulExportJob": {
       "document": "This API is used to export the list of vulnerabilities in a local image.",
       "input": "CreateVulExportJobRequest",
       "name": "Exports the list of vulnerabilities in a local image",
-      "output": "CreateVulExportJobResponse"
+      "output": "CreateVulExportJobResponse",
+      "status": "online"
     },
     "CreateVulImageExportJob": {
       "document": "This API is used to create a task to export images affected by vulnerabilities.",
       "input": "CreateVulImageExportJobRequest",
       "name": "Creates a task to export images affected by vulnerabilities",
-      "output": "CreateVulImageExportJobResponse"
+      "output": "CreateVulImageExportJobResponse",
+      "status": "online"
     },
     "CreateVulScanTask": {
       "document": "This API is used to create a vulnerability scan task.",
       "input": "CreateVulScanTaskRequest",
       "name": "Creates a vulnerability scan task",
-      "output": "CreateVulScanTaskResponse"
+      "output": "CreateVulScanTaskResponse",
+      "status": "online"
     },
     "CreateWebVulExportJob": {
       "document": "This API is used to create a task to export web vulnerabilities.",
       "input": "CreateWebVulExportJobRequest",
       "name": "Creates a task to export web vulnerabilities",
-      "output": "CreateWebVulExportJobResponse"
+      "output": "CreateWebVulExportJobResponse",
+      "status": "online"
     },
     "DeleteAbnormalProcessRules": {
       "document": "This API is used to delete an abnormal process policy at runtime.",
       "input": "DeleteAbnormalProcessRulesRequest",
       "name": "Deletes an abnormal process policy at runtime",
-      "output": "DeleteAbnormalProcessRulesResponse"
+      "output": "DeleteAbnormalProcessRulesResponse",
+      "status": "online"
     },
     "DeleteAccessControlRules": {
       "document": "This API is used to delete an access control policy at runtime.",
       "input": "DeleteAccessControlRulesRequest",
       "name": "Deletes an access control policy at runtime",
-      "output": "DeleteAccessControlRulesResponse"
+      "output": "DeleteAccessControlRulesResponse",
+      "status": "online"
     },
     "DeleteComplianceAssetPolicySetFromWhitelist": {
       "document": "This API is used to unignore the specified asset IDs and check item IDs so as to show the assets contained in the specified check items.\n`AddCompliancePolicyAssetSetToWhitelist` is the reference API. Except for the input field, others should be the same, and if not, it may be due to the definition.",
       "input": "DeleteComplianceAssetPolicySetFromWhitelistRequest",
       "name": "Removes assets and check items from the ignored list",
-      "output": "DeleteComplianceAssetPolicySetFromWhitelistResponse"
+      "output": "DeleteComplianceAssetPolicySetFromWhitelistResponse",
+      "status": "online"
     },
     "DeleteCompliancePolicyAssetSetFromWhitelist": {
       "document": "This API is used to unignore the specified asset IDs and check item IDs so as to show the assets contained in the specified check items.",
       "input": "DeleteCompliancePolicyAssetSetFromWhitelistRequest",
       "name": "Removes check items and assets from the allowlist",
-      "output": "DeleteCompliancePolicyAssetSetFromWhitelistResponse"
+      "output": "DeleteCompliancePolicyAssetSetFromWhitelistResponse",
+      "status": "online"
     },
     "DeleteCompliancePolicyItemFromWhitelist": {
       "document": "This API is used to remove the specified check item from the allowlist.",
       "input": "DeleteCompliancePolicyItemFromWhitelistRequest",
       "name": "Unignores check items",
-      "output": "DeleteCompliancePolicyItemFromWhitelistResponse"
+      "output": "DeleteCompliancePolicyItemFromWhitelistResponse",
+      "status": "online"
     },
     "DeleteEscapeWhiteList": {
       "document": "This API is used to delete an allowed escape.",
       "input": "DeleteEscapeWhiteListRequest",
       "name": "Deletes an allowed escape",
-      "output": "DeleteEscapeWhiteListResponse"
+      "output": "DeleteEscapeWhiteListResponse",
+      "status": "online"
     },
     "DeleteIgnoreVul": {
       "document": "This API is used to unignore vulnerabilities in a vulnerability scan.",
       "input": "DeleteIgnoreVulRequest",
       "name": "Unignores vulnerabilities in a vulnerability scan",
-      "output": "DeleteIgnoreVulResponse"
+      "output": "DeleteIgnoreVulResponse",
+      "status": "online"
     },
     "DeleteK8sApiAbnormalRule": {
       "document": "This API is used to delete a K8sApi abnormal event rules.",
       "input": "DeleteK8sApiAbnormalRuleRequest",
       "name": "Deletes tK8sApi abnormal event rules",
-      "output": "DeleteK8sApiAbnormalRuleResponse"
+      "output": "DeleteK8sApiAbnormalRuleResponse",
+      "status": "online"
     },
     "DeleteMachine": {
       "document": "This API is used to uninstall the agent.",
       "input": "DeleteMachineRequest",
       "name": "Uninstalls the agent",
-      "output": "DeleteMachineResponse"
+      "output": "DeleteMachineResponse",
+      "status": "online"
     },
     "DeleteNetworkFirewallPolicyDetail": {
       "document": "This API is used to create a task to delete a network policy in the container network.",
       "input": "DeleteNetworkFirewallPolicyDetailRequest",
       "name": "Creates a task to delete a network policy in the container network",
-      "output": "DeleteNetworkFirewallPolicyDetailResponse"
+      "output": "DeleteNetworkFirewallPolicyDetailResponse",
+      "status": "online"
     },
     "DeleteReverseShellEvents": {
       "document": "This API is used to delete a reverse shell event at runtime.",
       "input": "DeleteReverseShellEventsRequest",
       "name": "Deletes a reverse shell event at runtime",
-      "output": "DeleteReverseShellEventsResponse"
+      "output": "DeleteReverseShellEventsResponse",
+      "status": "online"
     },
     "DeleteReverseShellWhiteLists": {
       "document": "This API is used to delete an allowed reverse shell at runtime.",
       "input": "DeleteReverseShellWhiteListsRequest",
       "name": "Deletes an allowed reverse shell at runtime",
-      "output": "DeleteReverseShellWhiteListsResponse"
+      "output": "DeleteReverseShellWhiteListsResponse",
+      "status": "online"
     },
     "DeleteRiskSyscallEvents": {
       "document": "This API is used to delete a high-risk syscall event at runtime.",
       "input": "DeleteRiskSyscallEventsRequest",
       "name": "Deletes a high-risk syscall event at runtime",
-      "output": "DeleteRiskSyscallEventsResponse"
+      "output": "DeleteRiskSyscallEventsResponse",
+      "status": "online"
     },
     "DeleteRiskSyscallWhiteLists": {
       "document": "This API is used to delete an allowed high-risk syscall at runtime.",
       "input": "DeleteRiskSyscallWhiteListsRequest",
       "name": "Deletes an allowed high-risk syscall at runtime",
-      "output": "DeleteRiskSyscallWhiteListsResponse"
+      "output": "DeleteRiskSyscallWhiteListsResponse",
+      "status": "online"
     },
     "DeleteSearchTemplate": {
       "document": "This API is used to delete a search template.",
       "input": "DeleteSearchTemplateRequest",
       "name": "Deletes a search template",
-      "output": "DeleteSearchTemplateResponse"
+      "output": "DeleteSearchTemplateResponse",
+      "status": "online"
     },
     "DescribeABTestConfig": {
       "document": "This API is used to get the current canary configuration of the user.",
       "input": "DescribeABTestConfigRequest",
       "name": "Gets the current canary configuration of the user",
-      "output": "DescribeABTestConfigResponse"
+      "output": "DescribeABTestConfigResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessDetail": {
       "document": "This API is used to query the details of an abnormal process event at runtime.",
       "input": "DescribeAbnormalProcessDetailRequest",
       "name": "Queries the details of an abnormal process event at runtime",
-      "output": "DescribeAbnormalProcessDetailResponse"
+      "output": "DescribeAbnormalProcessDetailResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessEventTendency": {
       "document": "This API is used to query the trend of pending abnormal process events.",
       "input": "DescribeAbnormalProcessEventTendencyRequest",
       "name": "Queries the trend of pending abnormal process events",
-      "output": "DescribeAbnormalProcessEventTendencyResponse"
+      "output": "DescribeAbnormalProcessEventTendencyResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessEvents": {
       "document": "This API is used to query the list of abnormal process events at runtime.",
       "input": "DescribeAbnormalProcessEventsRequest",
       "name": "Queries the list of abnormal process events",
-      "output": "DescribeAbnormalProcessEventsResponse"
+      "output": "DescribeAbnormalProcessEventsResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessEventsExport": {
       "document": "This API is used to query and export the list of abnormal process events at runtime.",
       "input": "DescribeAbnormalProcessEventsExportRequest",
       "name": "Exports the list of abnormal process events at runtime",
-      "output": "DescribeAbnormalProcessEventsExportResponse"
+      "output": "DescribeAbnormalProcessEventsExportResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessLevelSummary": {
       "document": "This API is used to count the number of pending abnormal process events at each severity level.",
       "input": "DescribeAbnormalProcessLevelSummaryRequest",
       "name": "Counts the number of pending abnormal process events at each severity level",
-      "output": "DescribeAbnormalProcessLevelSummaryResponse"
+      "output": "DescribeAbnormalProcessLevelSummaryResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessRuleDetail": {
       "document": "This API is used to query the details of an abnormal process policy at runtime.",
       "input": "DescribeAbnormalProcessRuleDetailRequest",
       "name": "Queries the details of an abnormal process policy at runtime",
-      "output": "DescribeAbnormalProcessRuleDetailResponse"
+      "output": "DescribeAbnormalProcessRuleDetailResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessRules": {
       "document": "This API is used to query the list of abnormal process policies at runtime.",
       "input": "DescribeAbnormalProcessRulesRequest",
       "name": "Queries the list of abnormal process policies at runtime",
-      "output": "DescribeAbnormalProcessRulesResponse"
+      "output": "DescribeAbnormalProcessRulesResponse",
+      "status": "online"
     },
     "DescribeAbnormalProcessRulesExport": {
       "document": "This API is used to query and export the list of abnormal process policies at runtime.",
       "input": "DescribeAbnormalProcessRulesExportRequest",
       "name": "Exports the list of abnormal process policies at runtime",
-      "output": "DescribeAbnormalProcessRulesExportResponse"
+      "output": "DescribeAbnormalProcessRulesExportResponse",
+      "status": "online"
     },
     "DescribeAccessControlDetail": {
       "document": "This API is used to query the details of an access control event at runtime.",
       "input": "DescribeAccessControlDetailRequest",
       "name": "Queries the details of an access control event at runtime",
-      "output": "DescribeAccessControlDetailResponse"
+      "output": "DescribeAccessControlDetailResponse",
+      "status": "online"
     },
     "DescribeAccessControlEvents": {
       "document": "This API is used to query the list of access control events at runtime.",
       "input": "DescribeAccessControlEventsRequest",
       "name": "Queries the list of access control events at runtime",
-      "output": "DescribeAccessControlEventsResponse"
+      "output": "DescribeAccessControlEventsResponse",
+      "status": "online"
     },
     "DescribeAccessControlEventsExport": {
       "document": "This API is used to export the list of access control events at runtime.",
       "input": "DescribeAccessControlEventsExportRequest",
       "name": "Exports the list of access control events at runtime",
-      "output": "DescribeAccessControlEventsExportResponse"
+      "output": "DescribeAccessControlEventsExportResponse",
+      "status": "online"
     },
     "DescribeAccessControlRuleDetail": {
       "document": "This API is used to query the details of an access control policy at runtime.",
       "input": "DescribeAccessControlRuleDetailRequest",
       "name": "Queries the details of an access control policy at runtime",
-      "output": "DescribeAccessControlRuleDetailResponse"
+      "output": "DescribeAccessControlRuleDetailResponse",
+      "status": "online"
     },
     "DescribeAccessControlRules": {
       "document": "This API is used to query the list of access control policies at runtime.",
       "input": "DescribeAccessControlRulesRequest",
       "name": "Queries the list of access control policies at runtime",
-      "output": "DescribeAccessControlRulesResponse"
+      "output": "DescribeAccessControlRulesResponse",
+      "status": "online"
     },
     "DescribeAccessControlRulesExport": {
       "document": "This API is used to export the list of access control policies at runtime.",
       "input": "DescribeAccessControlRulesExportRequest",
       "name": "Exports the list of access control policies at runtime",
-      "output": "DescribeAccessControlRulesExportResponse"
+      "output": "DescribeAccessControlRulesExportResponse",
+      "status": "online"
     },
     "DescribeAffectedClusterCount": {
       "document": "This API is used to get and return the number of affected clusters.",
       "input": "DescribeAffectedClusterCountRequest",
       "name": "Gets the number of affected clusters",
-      "output": "DescribeAffectedClusterCountResponse"
+      "output": "DescribeAffectedClusterCountResponse",
+      "status": "online"
     },
     "DescribeAffectedNodeList": {
       "document": "This API is used to query affected node types and return the node list.",
       "input": "DescribeAffectedNodeListRequest",
       "name": "Queries affected node types",
-      "output": "DescribeAffectedNodeListResponse"
+      "output": "DescribeAffectedNodeListResponse",
+      "status": "online"
     },
     "DescribeAffectedWorkloadList": {
       "document": "This API is used to query affected workload types and return the workload list.",
       "input": "DescribeAffectedWorkloadListRequest",
       "name": "Queries affected workload types",
-      "output": "DescribeAffectedWorkloadListResponse"
+      "output": "DescribeAffectedWorkloadListResponse",
+      "status": "online"
     },
     "DescribeAgentDaemonSetCmd": {
       "document": "This API is used to query parallel container installation commands.",
       "input": "DescribeAgentDaemonSetCmdRequest",
       "name": "Queries parallel container installation commands",
-      "output": "DescribeAgentDaemonSetCmdResponse"
+      "output": "DescribeAgentDaemonSetCmdResponse",
+      "status": "online"
     },
     "DescribeAgentInstallCommand": {
       "document": "This API is used to query agent installation commands.",
       "input": "DescribeAgentInstallCommandRequest",
       "name": "Queries agent installation commands",
-      "output": "DescribeAgentInstallCommandResponse"
+      "output": "DescribeAgentInstallCommandResponse",
+      "status": "online"
     },
     "DescribeAssetAppServiceList": {
       "document": "This API is used to query the list of application services.",
       "input": "DescribeAssetAppServiceListRequest",
       "name": "Queries the list of application services",
-      "output": "DescribeAssetAppServiceListResponse"
+      "output": "DescribeAssetAppServiceListResponse",
+      "status": "online"
     },
     "DescribeAssetClusterList": {
       "document": "This API is used to query the list of clusters.",
       "input": "DescribeAssetClusterListRequest",
       "name": "Queries the list of clusters",
-      "output": "DescribeAssetClusterListResponse"
+      "output": "DescribeAssetClusterListResponse",
+      "status": "online"
     },
     "DescribeAssetComponentList": {
       "document": "This API is used to query the list of container components.",
       "input": "DescribeAssetComponentListRequest",
       "name": "Queries the list of container components",
-      "output": "DescribeAssetComponentListResponse"
+      "output": "DescribeAssetComponentListResponse",
+      "status": "online"
     },
     "DescribeAssetContainerDetail": {
       "document": "This API is used to query the information of a container.",
       "input": "DescribeAssetContainerDetailRequest",
       "name": "Queries the information of a container",
-      "output": "DescribeAssetContainerDetailResponse"
+      "output": "DescribeAssetContainerDetailResponse",
+      "status": "online"
     },
     "DescribeAssetContainerList": {
       "document": "This API is used to query the list of containers.",
       "input": "DescribeAssetContainerListRequest",
       "name": "Queries the list of containers",
-      "output": "DescribeAssetContainerListResponse"
+      "output": "DescribeAssetContainerListResponse",
+      "status": "online"
     },
     "DescribeAssetDBServiceList": {
       "document": "This API is used to query the list of database services.",
       "input": "DescribeAssetDBServiceListRequest",
       "name": "Queries the list of database services",
-      "output": "DescribeAssetDBServiceListResponse"
+      "output": "DescribeAssetDBServiceListResponse",
+      "status": "online"
     },
     "DescribeAssetHostDetail": {
       "document": "This API is used to query the details of a server.",
       "input": "DescribeAssetHostDetailRequest",
       "name": "Queries the details of a server",
-      "output": "DescribeAssetHostDetailResponse"
+      "output": "DescribeAssetHostDetailResponse",
+      "status": "online"
     },
     "DescribeAssetHostList": {
       "document": "This API is used to query the list of servers.",
       "input": "DescribeAssetHostListRequest",
       "name": "Queries the list of servers",
-      "output": "DescribeAssetHostListResponse"
+      "output": "DescribeAssetHostListResponse",
+      "status": "online"
     },
     "DescribeAssetImageBindRuleInfo": {
       "document": "This API is used to query the list of rules bound to images, including runtime access control and abnormal process rules.",
       "input": "DescribeAssetImageBindRuleInfoRequest",
       "name": "Queries the list of rules bound to images",
-      "output": "DescribeAssetImageBindRuleInfoResponse"
+      "output": "DescribeAssetImageBindRuleInfoResponse",
+      "status": "online"
     },
     "DescribeAssetImageDetail": {
       "document": "This API is used to query the details of an image.",
       "input": "DescribeAssetImageDetailRequest",
       "name": "Queries the information of an image",
-      "output": "DescribeAssetImageDetailResponse"
+      "output": "DescribeAssetImageDetailResponse",
+      "status": "online"
     },
     "DescribeAssetImageHostList": {
       "document": "This API is used to query the servers associated with an image.",
       "input": "DescribeAssetImageHostListRequest",
       "name": "Queries the servers associated with an image",
-      "output": "DescribeAssetImageHostListResponse"
+      "output": "DescribeAssetImageHostListResponse",
+      "status": "online"
     },
     "DescribeAssetImageList": {
       "document": "This API is used to query the list of images.",
       "input": "DescribeAssetImageListRequest",
       "name": "Queries the list of images",
-      "output": "DescribeAssetImageListResponse"
+      "output": "DescribeAssetImageListResponse",
+      "status": "online"
     },
     "DescribeAssetImageListExport": {
       "document": "This API is used to export the list of images.",
       "input": "DescribeAssetImageListExportRequest",
       "name": "Exports the list of images",
-      "output": "DescribeAssetImageListExportResponse"
+      "output": "DescribeAssetImageListExportResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryAssetStatus": {
       "document": "This API is used to view the update progress of the assets in an image repository.",
       "input": "DescribeAssetImageRegistryAssetStatusRequest",
       "name": "Views the update progress of the assets in an image repository",
-      "output": "DescribeAssetImageRegistryAssetStatusResponse"
+      "output": "DescribeAssetImageRegistryAssetStatusResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryDetail": {
       "document": "This API is used to query the image repository details.",
       "input": "DescribeAssetImageRegistryDetailRequest",
       "name": "Queries the image repository details",
-      "output": "DescribeAssetImageRegistryDetailResponse"
+      "output": "DescribeAssetImageRegistryDetailResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryList": {
       "document": "This API is used to query the list of image repositories.",
       "input": "DescribeAssetImageRegistryListRequest",
       "name": "Queries the list of image repositories",
-      "output": "DescribeAssetImageRegistryListResponse"
+      "output": "DescribeAssetImageRegistryListResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryListExport": {
       "document": "This API is used to export the list of images for an image repository.",
       "input": "DescribeAssetImageRegistryListExportRequest",
       "name": "Exports the list of images for an image repository",
-      "output": "DescribeAssetImageRegistryListExportResponse"
+      "output": "DescribeAssetImageRegistryListExportResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryRegistryDetail": {
       "document": "This API is used to view the details of an image repository.",
       "input": "DescribeAssetImageRegistryRegistryDetailRequest",
       "name": "Views the details of an image repository",
-      "output": "DescribeAssetImageRegistryRegistryDetailResponse"
+      "output": "DescribeAssetImageRegistryRegistryDetailResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryRegistryList": {
       "document": "This API is used to query the list of image registries.",
       "input": "DescribeAssetImageRegistryRegistryListRequest",
       "name": "Queries the list of image registries",
-      "output": "DescribeAssetImageRegistryRegistryListResponse"
+      "output": "DescribeAssetImageRegistryRegistryListResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryRiskInfoList": {
       "document": "This API is used to query the list of image high-risk behaviors of an image repository.",
       "input": "DescribeAssetImageRegistryRiskInfoListRequest",
       "name": "Queries the list of image high-risk behaviors of an image repository",
-      "output": "DescribeAssetImageRegistryRiskInfoListResponse"
+      "output": "DescribeAssetImageRegistryRiskInfoListResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryRiskListExport": {
       "document": "This API is used to export the list of sensitive data for an image repository.",
       "input": "DescribeAssetImageRegistryRiskListExportRequest",
       "name": "Exports the list of sensitive data for an image repository",
-      "output": "DescribeAssetImageRegistryRiskListExportResponse"
+      "output": "DescribeAssetImageRegistryRiskListExportResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryScanStatusOneKey": {
       "document": "This API is used to query the quick image scanning status of an image repository.",
       "input": "DescribeAssetImageRegistryScanStatusOneKeyRequest",
       "name": "Queries the quick image scanning status of an image repository",
-      "output": "DescribeAssetImageRegistryScanStatusOneKeyResponse"
+      "output": "DescribeAssetImageRegistryScanStatusOneKeyResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistrySummary": {
       "document": "This API is used to query the image statistics of an image repository.",
       "input": "DescribeAssetImageRegistrySummaryRequest",
       "name": "Queries the image statistics of an image repository.",
-      "output": "DescribeAssetImageRegistrySummaryResponse"
+      "output": "DescribeAssetImageRegistrySummaryResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryVirusList": {
       "document": "This API is used to query the list of viruses and trojans in an image repository.",
       "input": "DescribeAssetImageRegistryVirusListRequest",
       "name": "Queries the list of viruses and trojans in an image repository",
-      "output": "DescribeAssetImageRegistryVirusListResponse"
+      "output": "DescribeAssetImageRegistryVirusListResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryVirusListExport": {
       "document": "This API is used to export the list of trojan information for an image repository.",
       "input": "DescribeAssetImageRegistryVirusListExportRequest",
       "name": "Exports the list of trojan information for an image repository",
-      "output": "DescribeAssetImageRegistryVirusListExportResponse"
+      "output": "DescribeAssetImageRegistryVirusListExportResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryVulList": {
       "document": "This API is used to query the list of image vulnerabilities of an image repository",
       "input": "DescribeAssetImageRegistryVulListRequest",
       "name": "Queries the list of image vulnerabilities of an image repository",
-      "output": "DescribeAssetImageRegistryVulListResponse"
+      "output": "DescribeAssetImageRegistryVulListResponse",
+      "status": "online"
     },
     "DescribeAssetImageRegistryVulListExport": {
       "document": "This API is used to export the list of vulnerabilities for an image repository.",
       "input": "DescribeAssetImageRegistryVulListExportRequest",
       "name": "Exports the list of vulnerabilities for an image repository",
-      "output": "DescribeAssetImageRegistryVulListExportResponse"
+      "output": "DescribeAssetImageRegistryVulListExportResponse",
+      "status": "online"
     },
     "DescribeAssetImageRiskList": {
       "document": "This API is used to query the list of risks in an image.",
       "input": "DescribeAssetImageRiskListRequest",
       "name": "Queries the list of risks in an image",
-      "output": "DescribeAssetImageRiskListResponse"
+      "output": "DescribeAssetImageRiskListResponse",
+      "status": "online"
     },
     "DescribeAssetImageRiskListExport": {
       "document": "This API is used to export the list of risks in an image.",
       "input": "DescribeAssetImageRiskListExportRequest",
       "name": "Exports the list of risks in an image",
-      "output": "DescribeAssetImageRiskListExportResponse"
+      "output": "DescribeAssetImageRiskListExportResponse",
+      "status": "online"
     },
     "DescribeAssetImageScanSetting": {
       "document": "This API is used to get the image scan settings.",
       "input": "DescribeAssetImageScanSettingRequest",
       "name": "Gets the image scan settings",
-      "output": "DescribeAssetImageScanSettingResponse"
+      "output": "DescribeAssetImageScanSettingResponse",
+      "status": "online"
     },
     "DescribeAssetImageScanStatus": {
       "document": "This API is used to query the image scanning status.",
       "input": "DescribeAssetImageScanStatusRequest",
       "name": "Queries the image scanning status",
-      "output": "DescribeAssetImageScanStatusResponse"
+      "output": "DescribeAssetImageScanStatusResponse",
+      "status": "online"
     },
     "DescribeAssetImageScanTask": {
       "document": "This API is used to query the ID of a running quick image scan task.",
       "input": "DescribeAssetImageScanTaskRequest",
       "name": "Queries the ID of a running quick image scan task",
-      "output": "DescribeAssetImageScanTaskResponse"
+      "output": "DescribeAssetImageScanTaskResponse",
+      "status": "online"
     },
     "DescribeAssetImageSimpleList": {
       "document": "This API is used to query the brief information list of an image.",
       "input": "DescribeAssetImageSimpleListRequest",
       "name": "Queries the brief information list of an image",
-      "output": "DescribeAssetImageSimpleListResponse"
+      "output": "DescribeAssetImageSimpleListResponse",
+      "status": "online"
     },
     "DescribeAssetImageVirusList": {
       "document": "This API is used to query the list of viruses in an image.",
       "input": "DescribeAssetImageVirusListRequest",
       "name": "Queries the list of viruses in an image",
-      "output": "DescribeAssetImageVirusListResponse"
+      "output": "DescribeAssetImageVirusListResponse",
+      "status": "online"
     },
     "DescribeAssetImageVirusListExport": {
       "document": "This API is used to export the list of trojans in an image.",
       "input": "DescribeAssetImageVirusListExportRequest",
       "name": "Exports the list of trojans in an image",
-      "output": "DescribeAssetImageVirusListExportResponse"
+      "output": "DescribeAssetImageVirusListExportResponse",
+      "status": "online"
     },
     "DescribeAssetImageVulList": {
       "document": "This API is used to query the list of vulnerabilities in an image.",
       "input": "DescribeAssetImageVulListRequest",
       "name": "Queries the list of vulnerabilities in an image",
-      "output": "DescribeAssetImageVulListResponse"
+      "output": "DescribeAssetImageVulListResponse",
+      "status": "online"
     },
     "DescribeAssetImageVulListExport": {
       "document": "This API is used to export the list of vulnerabilities in an image.",
       "input": "DescribeAssetImageVulListExportRequest",
       "name": "Exports the list of vulnerabilities in an image",
-      "output": "DescribeAssetImageVulListExportResponse"
+      "output": "DescribeAssetImageVulListExportResponse",
+      "status": "online"
     },
     "DescribeAssetPortList": {
       "document": "This API is used to query the list of occupied ports.",
       "input": "DescribeAssetPortListRequest",
       "name": "Queries the list of occupied ports",
-      "output": "DescribeAssetPortListResponse"
+      "output": "DescribeAssetPortListResponse",
+      "status": "online"
     },
     "DescribeAssetProcessList": {
       "document": "This API is used to query the list of processes.",
       "input": "DescribeAssetProcessListRequest",
       "name": "Queries the list of processes",
-      "output": "DescribeAssetProcessListResponse"
+      "output": "DescribeAssetProcessListResponse",
+      "status": "online"
     },
     "DescribeAssetSummary": {
       "document": "This API is used to query the statistics of containers and images under an account.",
       "input": "DescribeAssetSummaryRequest",
       "name": "Queries the statistics of containers and images under an account",
-      "output": "DescribeAssetSummaryResponse"
+      "output": "DescribeAssetSummaryResponse",
+      "status": "online"
     },
     "DescribeAssetSyncLastTime": {
       "document": "This API is used to query the last asset sync time.",
       "input": "DescribeAssetSyncLastTimeRequest",
       "name": "Queries the last asset sync time",
-      "output": "DescribeAssetSyncLastTimeResponse"
+      "output": "DescribeAssetSyncLastTimeResponse",
+      "status": "online"
     },
     "DescribeAssetWebServiceList": {
       "document": "This API is used to query the list of web services.",
       "input": "DescribeAssetWebServiceListRequest",
       "name": "Queries the list of web services",
-      "output": "DescribeAssetWebServiceListResponse"
+      "output": "DescribeAssetWebServiceListResponse",
+      "status": "online"
     },
     "DescribeAutoAuthorizedRuleHost": {
       "document": "This API is used to query the servers licensed according to an automatic licensing rule.",
       "input": "DescribeAutoAuthorizedRuleHostRequest",
       "name": "Queries the servers licensed according to an automatic licensing rule",
-      "output": "DescribeAutoAuthorizedRuleHostResponse"
+      "output": "DescribeAutoAuthorizedRuleHostResponse",
+      "status": "online"
     },
     "DescribeCheckItemList": {
       "document": "This API is used to query all check items and return the total number and list of check items.",
       "input": "DescribeCheckItemListRequest",
       "name": "Queries all check items",
-      "output": "DescribeCheckItemListResponse"
+      "output": "DescribeCheckItemListResponse",
+      "status": "online"
     },
     "DescribeClusterDetail": {
       "document": "This API is used to query the details of a cluster.",
       "input": "DescribeClusterDetailRequest",
       "name": "Queries the details of a cluster",
-      "output": "DescribeClusterDetailResponse"
+      "output": "DescribeClusterDetailResponse",
+      "status": "online"
     },
     "DescribeClusterSummary": {
       "document": "This API is used to query the overview of cluster assets.",
       "input": "DescribeClusterSummaryRequest",
       "name": "Queries the overview of cluster assets",
-      "output": "DescribeClusterSummaryResponse"
+      "output": "DescribeClusterSummaryResponse",
+      "status": "online"
     },
     "DescribeComplianceAssetDetailInfo": {
       "document": "This API is used to query the details of an asset.",
       "input": "DescribeComplianceAssetDetailInfoRequest",
       "name": "Queries the details of an asset",
-      "output": "DescribeComplianceAssetDetailInfoResponse"
+      "output": "DescribeComplianceAssetDetailInfoResponse",
+      "status": "online"
     },
     "DescribeComplianceAssetList": {
       "document": "This API is used to query the list of assets of a certain type.",
       "input": "DescribeComplianceAssetListRequest",
       "name": "Queries the list of assets of a certain type",
-      "output": "DescribeComplianceAssetListResponse"
+      "output": "DescribeComplianceAssetListResponse",
+      "status": "online"
     },
     "DescribeComplianceAssetPolicyItemList": {
       "document": "This API is used to query the list of check items of an asset.",
       "input": "DescribeComplianceAssetPolicyItemListRequest",
       "name": "Queries the list of check items of an asset",
-      "output": "DescribeComplianceAssetPolicyItemListResponse"
+      "output": "DescribeComplianceAssetPolicyItemListResponse",
+      "status": "online"
     },
     "DescribeCompliancePeriodTaskList": {
       "document": "This API is used to query the list of scheduled tasks.",
       "input": "DescribeCompliancePeriodTaskListRequest",
       "name": "Queries the list of scheduled tasks",
-      "output": "DescribeCompliancePeriodTaskListResponse"
+      "output": "DescribeCompliancePeriodTaskListResponse",
+      "status": "online"
     },
     "DescribeCompliancePolicyItemAffectedAssetList": {
       "document": "This API is used to apply the asset level in the \"check item + asset\" two-level structure.",
       "input": "DescribeCompliancePolicyItemAffectedAssetListRequest",
       "name": "Queries the list of assets affected by a check item",
-      "output": "DescribeCompliancePolicyItemAffectedAssetListResponse"
+      "output": "DescribeCompliancePolicyItemAffectedAssetListResponse",
+      "status": "online"
     },
     "DescribeCompliancePolicyItemAffectedSummary": {
       "document": "This API is used to apply the check item level in the \"check item + asset\" two-level structure.",
       "input": "DescribeCompliancePolicyItemAffectedSummaryRequest",
       "name": "Queries the information affected by a check item",
-      "output": "DescribeCompliancePolicyItemAffectedSummaryResponse"
+      "output": "DescribeCompliancePolicyItemAffectedSummaryResponse",
+      "status": "online"
     },
     "DescribeComplianceScanFailedAssetList": {
       "document": "This API is used to query the aggregate information of the pass rate at the asset level, the first level in the \"asset + check item\" two-level structure.",
       "input": "DescribeComplianceScanFailedAssetListRequest",
       "name": "Queries the list of assets that failed the last check",
-      "output": "DescribeComplianceScanFailedAssetListResponse"
+      "output": "DescribeComplianceScanFailedAssetListResponse",
+      "status": "online"
     },
     "DescribeComplianceTaskAssetSummary": {
       "document": "This API is used to query the aggregated information of the asset pass rate in the last task.",
       "input": "DescribeComplianceTaskAssetSummaryRequest",
       "name": "Queries the aggregated information of the asset pass rate in the last task",
-      "output": "DescribeComplianceTaskAssetSummaryResponse"
+      "output": "DescribeComplianceTaskAssetSummaryResponse",
+      "status": "online"
     },
     "DescribeComplianceTaskPolicyItemSummaryList": {
       "document": "This API is used to query the list of aggregated information of check items identified in the last task in line with the \"check item + asset\" two-level structure.",
       "input": "DescribeComplianceTaskPolicyItemSummaryListRequest",
       "name": "Queries the list of aggregated information of check items in the last task",
-      "output": "DescribeComplianceTaskPolicyItemSummaryListResponse"
+      "output": "DescribeComplianceTaskPolicyItemSummaryListResponse",
+      "status": "online"
     },
     "DescribeComplianceWhitelistItemList": {
       "document": "This API is used to query the allowlist.",
       "input": "DescribeComplianceWhitelistItemListRequest",
       "name": "Queries the allowlist",
-      "output": "DescribeComplianceWhitelistItemListResponse"
+      "output": "DescribeComplianceWhitelistItemListResponse",
+      "status": "online"
     },
     "DescribeContainerAssetSummary": {
       "document": "This API is used to query the asset overview.",
       "input": "DescribeContainerAssetSummaryRequest",
       "name": "Queries the asset overview",
-      "output": "DescribeContainerAssetSummaryResponse"
+      "output": "DescribeContainerAssetSummaryResponse",
+      "status": "online"
     },
     "DescribeContainerSecEventSummary": {
       "document": "This API is used to query the overview of pending events.",
       "input": "DescribeContainerSecEventSummaryRequest",
       "name": "Queries the overview of pending events",
-      "output": "DescribeContainerSecEventSummaryResponse"
+      "output": "DescribeContainerSecEventSummaryResponse",
+      "status": "online"
     },
     "DescribeESAggregations": {
       "document": "This API is used to get the aggregation result of the ES field.",
       "input": "DescribeESAggregationsRequest",
       "name": "Gets the aggregation result of the ES field",
-      "output": "DescribeESAggregationsResponse"
+      "output": "DescribeESAggregationsResponse",
+      "status": "online"
     },
     "DescribeESHits": {
       "document": "This API is used to get the list of ES query files.",
       "input": "DescribeESHitsRequest",
       "name": "Gets the list of ES query files",
-      "output": "DescribeESHitsResponse"
+      "output": "DescribeESHitsResponse",
+      "status": "online"
     },
     "DescribeEmergencyVulList": {
       "document": "This API is used to query the list of emergency vulnerabilities.",
       "input": "DescribeEmergencyVulListRequest",
       "name": "Queries the list of emergency vulnerabilities",
-      "output": "DescribeEmergencyVulListResponse"
+      "output": "DescribeEmergencyVulListResponse",
+      "status": "online"
     },
     "DescribeEscapeEventDetail": {
       "document": "This API is used to query the details of a container escape event.",
       "input": "DescribeEscapeEventDetailRequest",
       "name": "Queries the details of a container escape event",
-      "output": "DescribeEscapeEventDetailResponse"
+      "output": "DescribeEscapeEventDetailResponse",
+      "status": "online"
     },
     "DescribeEscapeEventInfo": {
       "document": "This API is used to query the list of container escape events.",
       "input": "DescribeEscapeEventInfoRequest",
       "name": "Queries the list of container escape events",
-      "output": "DescribeEscapeEventInfoResponse"
+      "output": "DescribeEscapeEventInfoResponse",
+      "status": "online"
     },
     "DescribeEscapeEventTendency": {
       "document": "This API is used to query the trend of pending escape events.",
       "input": "DescribeEscapeEventTendencyRequest",
       "name": "Queries the trend of pending escape events",
-      "output": "DescribeEscapeEventTendencyResponse"
+      "output": "DescribeEscapeEventTendencyResponse",
+      "status": "online"
     },
     "DescribeEscapeEventTypeSummary": {
       "document": "This API is used to query the types of container escape events and the number of pending events.",
       "input": "DescribeEscapeEventTypeSummaryRequest",
       "name": "Queries the types of container escape events and the number of pending events",
-      "output": "DescribeEscapeEventTypeSummaryResponse"
+      "output": "DescribeEscapeEventTypeSummaryResponse",
+      "status": "online"
     },
     "DescribeEscapeEventsExport": {
       "document": "This API is used to export the list of container escape events.",
       "input": "DescribeEscapeEventsExportRequest",
       "name": "Exports the list of container escape events",
-      "output": "DescribeEscapeEventsExportResponse"
+      "output": "DescribeEscapeEventsExportResponse",
+      "status": "online"
     },
     "DescribeEscapeRuleInfo": {
       "document": "This API is used to query the information of a container escape scan rule.",
       "input": "DescribeEscapeRuleInfoRequest",
       "name": "Queries the information of a container escape scan rule",
-      "output": "DescribeEscapeRuleInfoResponse"
+      "output": "DescribeEscapeRuleInfoResponse",
+      "status": "online"
     },
     "DescribeEscapeSafeState": {
       "document": "This API is used to query the container escape security status.",
       "input": "DescribeEscapeSafeStateRequest",
       "name": "Queries the container escape security status",
-      "output": "DescribeEscapeSafeStateResponse"
+      "output": "DescribeEscapeSafeStateResponse",
+      "status": "online"
     },
     "DescribeEscapeWhiteList": {
       "document": "This API is used to query the allowlist of escapes.",
       "input": "DescribeEscapeWhiteListRequest",
       "name": "Queries the allowlist of escapes",
-      "output": "DescribeEscapeWhiteListResponse"
+      "output": "DescribeEscapeWhiteListResponse",
+      "status": "online"
     },
     "DescribeExportJobDownloadURL": {
       "document": "This API is used to query the URL to download the result of an exportation task.",
       "input": "DescribeExportJobDownloadURLRequest",
       "name": "Queries the URL to download the result of an exportation task.",
-      "output": "DescribeExportJobDownloadURLResponse"
+      "output": "DescribeExportJobDownloadURLResponse",
+      "status": "online"
     },
     "DescribeExportJobManageList": {
       "document": "This API is used to query the export job management list.",
       "input": "DescribeExportJobManageListRequest",
       "name": "Queries the export job management list.",
-      "output": "DescribeExportJobManageListResponse"
+      "output": "DescribeExportJobManageListResponse",
+      "status": "online"
     },
     "DescribeExportJobResult": {
       "document": "This API is used to query the result of an export task.",
       "input": "DescribeExportJobResultRequest",
       "name": "Queries the result of an export task",
-      "output": "DescribeExportJobResultResponse"
+      "output": "DescribeExportJobResultResponse",
+      "status": "online"
     },
     "DescribeImageAuthorizedInfo": {
       "document": "This API is used to query the image licensing information.",
       "input": "DescribeImageAuthorizedInfoRequest",
       "name": "Queries the image licensing information",
-      "output": "DescribeImageAuthorizedInfoResponse"
+      "output": "DescribeImageAuthorizedInfoResponse",
+      "status": "online"
     },
     "DescribeImageAutoAuthorizedLogList": {
       "document": "This API is used to query the list of automatic image licensing results.",
       "input": "DescribeImageAutoAuthorizedLogListRequest",
       "name": "Queries the list of automatic image licensing results",
-      "output": "DescribeImageAutoAuthorizedLogListResponse"
+      "output": "DescribeImageAutoAuthorizedLogListResponse",
+      "status": "online"
     },
     "DescribeImageAutoAuthorizedRule": {
       "document": "This API is used to query an automatic licensing rule for local images.",
       "input": "DescribeImageAutoAuthorizedRuleRequest",
       "name": "Queries an automatic licensing rule for local images",
-      "output": "DescribeImageAutoAuthorizedRuleResponse"
+      "output": "DescribeImageAutoAuthorizedRuleResponse",
+      "status": "online"
     },
     "DescribeImageAutoAuthorizedTaskList": {
       "document": "This API is used to query the list of automatic image licensing tasks.",
       "input": "DescribeImageAutoAuthorizedTaskListRequest",
       "name": "Queries the list of automatic image licensing tasks",
-      "output": "DescribeImageAutoAuthorizedTaskListResponse"
+      "output": "DescribeImageAutoAuthorizedTaskListResponse",
+      "status": "online"
     },
     "DescribeImageComponentList": {
       "document": "This API is used to query the list of components in an local image.",
       "input": "DescribeImageComponentListRequest",
       "name": "Queries the list of components in an local image",
-      "output": "DescribeImageComponentListResponse"
+      "output": "DescribeImageComponentListResponse",
+      "status": "online"
     },
     "DescribeImageRegistryNamespaceList": {
       "document": "This API is used to query the list of namespaces for an image repository.",
       "input": "DescribeImageRegistryNamespaceListRequest",
       "name": "Queries the list of namespaces for an image repository",
-      "output": "DescribeImageRegistryNamespaceListResponse"
+      "output": "DescribeImageRegistryNamespaceListResponse",
+      "status": "online"
     },
     "DescribeImageRegistryTimingScanTask": {
       "document": "This API is used to view a scheduled task of an image repository.",
       "input": "DescribeImageRegistryTimingScanTaskRequest",
       "name": "Views a scheduled task of an image repository",
-      "output": "DescribeImageRegistryTimingScanTaskResponse"
+      "output": "DescribeImageRegistryTimingScanTaskResponse",
+      "status": "online"
     },
     "DescribeImageRiskSummary": {
       "document": "This API is used to query the overview of local image risks.",
       "input": "DescribeImageRiskSummaryRequest",
       "name": "Queries the overview of local image risks",
-      "output": "DescribeImageRiskSummaryResponse"
+      "output": "DescribeImageRiskSummaryResponse",
+      "status": "online"
     },
     "DescribeImageRiskTendency": {
       "document": "This API is used to query the trend of local image risks.",
       "input": "DescribeImageRiskTendencyRequest",
       "name": "Queries the trend of local image risks",
-      "output": "DescribeImageRiskTendencyResponse"
+      "output": "DescribeImageRiskTendencyResponse",
+      "status": "online"
     },
     "DescribeImageSimpleList": {
       "document": "This API is used to query the list of all images.",
       "input": "DescribeImageSimpleListRequest",
       "name": "Queries the list of all images",
-      "output": "DescribeImageSimpleListResponse"
+      "output": "DescribeImageSimpleListResponse",
+      "status": "online"
     },
     "DescribeIndexList": {
       "document": "This API is used to get the index list.",
       "input": "DescribeIndexListRequest",
       "name": "Gets the index list",
-      "output": "DescribeIndexListResponse"
+      "output": "DescribeIndexListResponse",
+      "status": "online"
     },
     "DescribeInspectionReport": {
       "document": "This API is used to query check reports.",
       "input": "DescribeInspectionReportRequest",
       "name": "Queries check reports",
-      "output": "DescribeInspectionReportResponse"
+      "output": "DescribeInspectionReportResponse",
+      "status": "online"
     },
     "DescribeK8sApiAbnormalEventInfo": {
       "document": "Querying details of a K8s API exception event",
       "input": "DescribeK8sApiAbnormalEventInfoRequest",
       "name": "Querying details of a K8s API exception event",
-      "output": "DescribeK8sApiAbnormalEventInfoResponse"
+      "output": "DescribeK8sApiAbnormalEventInfoResponse",
+      "status": "online"
     },
     "DescribeK8sApiAbnormalEventList": {
       "document": "This API is used to query the K8sApi abnormal event list.",
       "input": "DescribeK8sApiAbnormalEventListRequest",
       "name": "Queries the K8sApi abnormal event list",
-      "output": "DescribeK8sApiAbnormalEventListResponse"
+      "output": "DescribeK8sApiAbnormalEventListResponse",
+      "status": "online"
     },
     "DescribeK8sApiAbnormalRuleInfo": {
       "document": "This API is used to query K8sApi abnormal request rule details.",
       "input": "DescribeK8sApiAbnormalRuleInfoRequest",
       "name": "Queries K8sApi abnormal request rule details",
-      "output": "DescribeK8sApiAbnormalRuleInfoResponse"
+      "output": "DescribeK8sApiAbnormalRuleInfoResponse",
+      "status": "online"
     },
     "DescribeK8sApiAbnormalRuleList": {
       "document": "This API is used to the K8sApi abnormal request rule list.",
       "input": "DescribeK8sApiAbnormalRuleListRequest",
       "name": "Queries the K8sApi abnormal request rule list",
-      "output": "DescribeK8sApiAbnormalRuleListResponse"
+      "output": "DescribeK8sApiAbnormalRuleListResponse",
+      "status": "online"
     },
     "DescribeK8sApiAbnormalRuleScopeList": {
       "document": "This API is used to query the list of ranges in K8sApi abnormal rules.",
       "input": "DescribeK8sApiAbnormalRuleScopeListRequest",
       "name": "Queries the list of ranges in K8sApi abnormal rules",
-      "output": "DescribeK8sApiAbnormalRuleScopeListResponse"
+      "output": "DescribeK8sApiAbnormalRuleScopeListResponse",
+      "status": "online"
     },
     "DescribeK8sApiAbnormalSummary": {
       "document": "This API is used to query the statistics of K8sApi abnormal events.",
       "input": "DescribeK8sApiAbnormalSummaryRequest",
       "name": "Queries the statistics of K8sApi abnormal events",
-      "output": "DescribeK8sApiAbnormalSummaryResponse"
+      "output": "DescribeK8sApiAbnormalSummaryResponse",
+      "status": "online"
     },
     "DescribeK8sApiAbnormalTendency": {
       "document": "This API is used to query the trend of K8sApi abnormal events.",
       "input": "DescribeK8sApiAbnormalTendencyRequest",
       "name": "Queries the trend of K8sApi abnormal events",
-      "output": "DescribeK8sApiAbnormalTendencyResponse"
+      "output": "DescribeK8sApiAbnormalTendencyResponse",
+      "status": "online"
     },
     "DescribeLogStorageStatistic": {
       "document": "This API is used to get the statistics of the log search usage.",
       "input": "DescribeLogStorageStatisticRequest",
       "name": "Gets the statistics of the log search usage",
-      "output": "DescribeLogStorageStatisticResponse"
+      "output": "DescribeLogStorageStatisticResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallAuditRecord": {
       "document": "This API is used to query the list of cluster policy audits.",
       "input": "DescribeNetworkFirewallAuditRecordRequest",
       "name": "Queries the list of cluster policy audits",
-      "output": "DescribeNetworkFirewallAuditRecordResponse"
+      "output": "DescribeNetworkFirewallAuditRecordResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallClusterList": {
       "document": "This API is used to query the list of clusters.",
       "input": "DescribeNetworkFirewallClusterListRequest",
       "name": "Queries the list of clusters",
-      "output": "DescribeNetworkFirewallClusterListResponse"
+      "output": "DescribeNetworkFirewallClusterListResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallClusterRefreshStatus": {
       "document": "This API is used to query the progress of the asset query task in the container network.",
       "input": "DescribeNetworkFirewallClusterRefreshStatusRequest",
       "name": "Queries the progress of the asset query task in the container network",
-      "output": "DescribeNetworkFirewallClusterRefreshStatusResponse"
+      "output": "DescribeNetworkFirewallClusterRefreshStatusResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallNamespaceLabelList": {
       "document": "This API is used to query the list of cluster network namespace labels.",
       "input": "DescribeNetworkFirewallNamespaceLabelListRequest",
       "name": "Queries the list of cluster network namespace labels",
-      "output": "DescribeNetworkFirewallNamespaceLabelListResponse"
+      "output": "DescribeNetworkFirewallNamespaceLabelListResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallPodLabelsList": {
       "document": "This API is used to query cluster network Pod labels.",
       "input": "DescribeNetworkFirewallPodLabelsListRequest",
       "name": "Queries cluster network Pod labels",
-      "output": "DescribeNetworkFirewallPodLabelsListResponse"
+      "output": "DescribeNetworkFirewallPodLabelsListResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallPolicyDetail": {
       "document": "This API is used to view the details of a policy in the container network cluster.",
       "input": "DescribeNetworkFirewallPolicyDetailRequest",
       "name": "Views the details of a policy in the container network cluster",
-      "output": "DescribeNetworkFirewallPolicyDetailResponse"
+      "output": "DescribeNetworkFirewallPolicyDetailResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallPolicyDiscover": {
       "document": "This API is used to query the progress of a network policy sync task in the container network.",
       "input": "DescribeNetworkFirewallPolicyDiscoverRequest",
       "name": "Queries the progress of a network policy sync task in the container network",
-      "output": "DescribeNetworkFirewallPolicyDiscoverResponse"
+      "output": "DescribeNetworkFirewallPolicyDiscoverResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallPolicyList": {
       "document": "This API is used to query the list of cluster network policies.",
       "input": "DescribeNetworkFirewallPolicyListRequest",
       "name": "Queries the list of cluster network policies",
-      "output": "DescribeNetworkFirewallPolicyListResponse"
+      "output": "DescribeNetworkFirewallPolicyListResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallPolicyStatus": {
       "document": "This API is used to query the execution status of a network policy in the container network.",
       "input": "DescribeNetworkFirewallPolicyStatusRequest",
       "name": "Queries the execution status of a network policy in the container network",
-      "output": "DescribeNetworkFirewallPolicyStatusResponse"
+      "output": "DescribeNetworkFirewallPolicyStatusResponse",
+      "status": "online"
     },
     "DescribeNetworkFirewallPolicyYamlDetail": {
       "document": "This API is used to view the details of a YAML network policy in the container network cluster.",
       "input": "DescribeNetworkFirewallPolicyYamlDetailRequest",
       "name": "Views the details of a YAML network policy in the container network cluster",
-      "output": "DescribeNetworkFirewallPolicyYamlDetailResponse"
+      "output": "DescribeNetworkFirewallPolicyYamlDetailResponse",
+      "status": "online"
     },
     "DescribeNewestVul": {
       "document": "This API is used to query the latest list of vulnerabilities.",
       "input": "DescribeNewestVulRequest",
       "name": "Queries the latest list of vulnerabilities",
-      "output": "DescribeNewestVulResponse"
+      "output": "DescribeNewestVulResponse",
+      "status": "online"
     },
     "DescribePostPayDetail": {
       "document": "This API is used to query the pay-as-you-go billing details.",
       "input": "DescribePostPayDetailRequest",
       "name": "Queries the pay-as-you-go billing details",
-      "output": "DescribePostPayDetailResponse"
+      "output": "DescribePostPayDetailResponse",
+      "status": "online"
     },
     "DescribeProVersionInfo": {
       "document": "This API is used to check whether the Pro Edition needs to be purchased.",
       "input": "DescribeProVersionInfoRequest",
       "name": "Checks whether the Pro Edition needs to be purchased",
-      "output": "DescribeProVersionInfoResponse"
+      "output": "DescribeProVersionInfoResponse",
+      "status": "online"
     },
     "DescribePromotionActivity": {
       "document": "This API is used to query promotions.",
       "input": "DescribePromotionActivityRequest",
       "name": "Queries promotions",
-      "output": "DescribePromotionActivityResponse"
+      "output": "DescribePromotionActivityResponse",
+      "status": "online"
     },
     "DescribePublicKey": {
       "document": "This API is used to get the public key.",
       "input": "DescribePublicKeyRequest",
       "name": "Gets the public key",
-      "output": "DescribePublicKeyResponse"
+      "output": "DescribePublicKeyResponse",
+      "status": "online"
     },
     "DescribePurchaseStateInfo": {
       "document": "This API is used to check whether TCSS is purchased.",
       "input": "DescribePurchaseStateInfoRequest",
       "name": "Checks whether TCSS is purchased",
-      "output": "DescribePurchaseStateInfoResponse"
+      "output": "DescribePurchaseStateInfoResponse",
+      "status": "online"
     },
     "DescribeRefreshTask": {
       "document": "This API is used to query a refresh task.",
       "input": "DescribeRefreshTaskRequest",
       "name": "Queries a refresh task",
-      "output": "DescribeRefreshTaskResponse"
+      "output": "DescribeRefreshTaskResponse",
+      "status": "online"
     },
     "DescribeReverseShellDetail": {
       "document": "This API is used to query the details of a reverse shell event at runtime.",
       "input": "DescribeReverseShellDetailRequest",
       "name": "Queries the details of a reverse shell event at runtime",
-      "output": "DescribeReverseShellDetailResponse"
+      "output": "DescribeReverseShellDetailResponse",
+      "status": "online"
     },
     "DescribeReverseShellEvents": {
       "document": "This API is used to query the list of reverse shell events at runtime.",
       "input": "DescribeReverseShellEventsRequest",
       "name": "Queries the list of reverse shell events at runtime",
-      "output": "DescribeReverseShellEventsResponse"
+      "output": "DescribeReverseShellEventsResponse",
+      "status": "online"
     },
     "DescribeReverseShellEventsExport": {
       "document": "This API is used to query and export the list of reverse shell events at runtime.",
       "input": "DescribeReverseShellEventsExportRequest",
       "name": "Exports the list of reverse shells at runtime",
-      "output": "DescribeReverseShellEventsExportResponse"
+      "output": "DescribeReverseShellEventsExportResponse",
+      "status": "online"
     },
     "DescribeReverseShellWhiteListDetail": {
       "document": "This API is used to query the details of the allowlist of reverse shells at runtime.",
       "input": "DescribeReverseShellWhiteListDetailRequest",
       "name": "Queries the details of the allowlist of reverse shells at runtime",
-      "output": "DescribeReverseShellWhiteListDetailResponse"
+      "output": "DescribeReverseShellWhiteListDetailResponse",
+      "status": "online"
     },
     "DescribeReverseShellWhiteLists": {
       "document": "This API is used to query the allowlist of reverse shells at runtime.",
       "input": "DescribeReverseShellWhiteListsRequest",
       "name": "Queries the allowlist of reverse shells at runtime",
-      "output": "DescribeReverseShellWhiteListsResponse"
+      "output": "DescribeReverseShellWhiteListsResponse",
+      "status": "online"
     },
     "DescribeRiskList": {
       "document": "This API is used to query the list of risk items identified in the last task and filter them by special field.",
       "input": "DescribeRiskListRequest",
       "name": "Queries the list of risk items in a cluster",
-      "output": "DescribeRiskListResponse"
+      "output": "DescribeRiskListResponse",
+      "status": "online"
     },
     "DescribeRiskSyscallDetail": {
       "document": "This API is used to query the details of a high-risk syscall event.",
       "input": "DescribeRiskSyscallDetailRequest",
       "name": "Queries the details of a high-risk syscall event",
-      "output": "DescribeRiskSyscallDetailResponse"
+      "output": "DescribeRiskSyscallDetailResponse",
+      "status": "online"
     },
     "DescribeRiskSyscallEvents": {
       "document": "This API is used to query the list of high-risk syscalls at runtime.",
       "input": "DescribeRiskSyscallEventsRequest",
       "name": "Queries the list of high-risk syscalls at runtime",
-      "output": "DescribeRiskSyscallEventsResponse"
+      "output": "DescribeRiskSyscallEventsResponse",
+      "status": "online"
     },
     "DescribeRiskSyscallEventsExport": {
       "document": "This API is used to export the list of high-risk syscalls at runtime.",
       "input": "DescribeRiskSyscallEventsExportRequest",
       "name": "Exports the list of high-risk syscalls at runtime",
-      "output": "DescribeRiskSyscallEventsExportResponse"
+      "output": "DescribeRiskSyscallEventsExportResponse",
+      "status": "online"
     },
     "DescribeRiskSyscallNames": {
       "document": "This API is used to query the list of names of high-risk syscalls at runtime.",
       "input": "DescribeRiskSyscallNamesRequest",
       "name": "Queries the list of names of high-risk syscalls at runtime",
-      "output": "DescribeRiskSyscallNamesResponse"
+      "output": "DescribeRiskSyscallNamesResponse",
+      "status": "online"
     },
     "DescribeRiskSyscallWhiteListDetail": {
       "document": "This API is used to query the details of the allowlist of high-risk syscalls at runtime.",
       "input": "DescribeRiskSyscallWhiteListDetailRequest",
       "name": "Queries the details of the allowlist of high-risk syscalls at runtime",
-      "output": "DescribeRiskSyscallWhiteListDetailResponse"
+      "output": "DescribeRiskSyscallWhiteListDetailResponse",
+      "status": "online"
     },
     "DescribeRiskSyscallWhiteLists": {
       "document": "This API is used to query the allowlist of high-risk syscalls at runtime.",
       "input": "DescribeRiskSyscallWhiteListsRequest",
       "name": "Queries the allowlist of high-risk syscalls at runtime",
-      "output": "DescribeRiskSyscallWhiteListsResponse"
+      "output": "DescribeRiskSyscallWhiteListsResponse",
+      "status": "online"
     },
     "DescribeScanIgnoreVulList": {
       "document": "This API is used to query the list of vulnerabilities ignored in a scan.",
       "input": "DescribeScanIgnoreVulListRequest",
       "name": "Queries the list of vulnerabilities ignored in a scan",
-      "output": "DescribeScanIgnoreVulListResponse"
+      "output": "DescribeScanIgnoreVulListResponse",
+      "status": "online"
     },
     "DescribeSearchExportList": {
       "document": "This API is used to export the list of ES query files.",
       "input": "DescribeSearchExportListRequest",
       "name": "Exports the list of ES query files",
-      "output": "DescribeSearchExportListResponse"
+      "output": "DescribeSearchExportListResponse",
+      "status": "online"
     },
     "DescribeSearchLogs": {
       "document": "This API is used to get historical search records.",
       "input": "DescribeSearchLogsRequest",
       "name": "Gets historical search records",
-      "output": "DescribeSearchLogsResponse"
+      "output": "DescribeSearchLogsResponse",
+      "status": "online"
     },
     "DescribeSearchTemplates": {
       "document": "This API is used to get the list of search templates.",
       "input": "DescribeSearchTemplatesRequest",
       "name": "Gets the list of search templates",
-      "output": "DescribeSearchTemplatesResponse"
+      "output": "DescribeSearchTemplatesResponse",
+      "status": "online"
     },
     "DescribeSecEventsTendency": {
       "document": "This API is used to query the trend of security events at runtime.",
       "input": "DescribeSecEventsTendencyRequest",
       "name": "Queries the trend of security events at runtime",
-      "output": "DescribeSecEventsTendencyResponse"
+      "output": "DescribeSecEventsTendencyResponse",
+      "status": "online"
     },
     "DescribeSecLogAlertMsg": {
       "document": "This API is used to query a security log alert message.",
       "input": "DescribeSecLogAlertMsgRequest",
       "name": "Queries a security log alert message",
-      "output": "DescribeSecLogAlertMsgResponse"
+      "output": "DescribeSecLogAlertMsgResponse",
+      "status": "online"
     },
     "DescribeSecLogCleanSettingInfo": {
       "document": "This API is used to query the settings of security log cleanup.",
       "input": "DescribeSecLogCleanSettingInfoRequest",
       "name": "Queries the settings of security log cleanup",
-      "output": "DescribeSecLogCleanSettingInfoResponse"
+      "output": "DescribeSecLogCleanSettingInfoResponse",
+      "status": "online"
     },
     "DescribeSecLogDeliveryClsOptions": {
       "document": "This API is used to query the options of security log delivery to CLS.",
       "input": "DescribeSecLogDeliveryClsOptionsRequest",
       "name": "Queries the options of security log delivery to CLS",
-      "output": "DescribeSecLogDeliveryClsOptionsResponse"
+      "output": "DescribeSecLogDeliveryClsOptionsResponse",
+      "status": "online"
     },
     "DescribeSecLogDeliveryClsSetting": {
       "document": "This API is used to query the settings of security log delivery to CLS.",
       "input": "DescribeSecLogDeliveryClsSettingRequest",
       "name": "Queries the settings of security log delivery to CLS",
-      "output": "DescribeSecLogDeliveryClsSettingResponse"
+      "output": "DescribeSecLogDeliveryClsSettingResponse",
+      "status": "online"
     },
     "DescribeSecLogDeliveryKafkaOptions": {
       "document": "This API is used to query the options of security log delivery to Kafka.",
       "input": "DescribeSecLogDeliveryKafkaOptionsRequest",
       "name": "Queries the options of security log delivery to Kafka",
-      "output": "DescribeSecLogDeliveryKafkaOptionsResponse"
+      "output": "DescribeSecLogDeliveryKafkaOptionsResponse",
+      "status": "online"
     },
     "DescribeSecLogDeliveryKafkaSetting": {
       "document": "This API is used to query the settings of security log delivery to Kafka.",
       "input": "DescribeSecLogDeliveryKafkaSettingRequest",
       "name": "Queries the settings of security log delivery to Kafka",
-      "output": "DescribeSecLogDeliveryKafkaSettingResponse"
+      "output": "DescribeSecLogDeliveryKafkaSettingResponse",
+      "status": "online"
     },
     "DescribeSecLogJoinObjectList": {
       "document": "This API is used to query the list of accessed security log objects.",
       "input": "DescribeSecLogJoinObjectListRequest",
       "name": "Queries the list of accessed security log objects",
-      "output": "DescribeSecLogJoinObjectListResponse"
+      "output": "DescribeSecLogJoinObjectListResponse",
+      "status": "online"
     },
     "DescribeSecLogJoinTypeList": {
       "document": "This API is used to query the list of security log access types.",
       "input": "DescribeSecLogJoinTypeListRequest",
       "name": "Queries the list of security log access types",
-      "output": "DescribeSecLogJoinTypeListResponse"
+      "output": "DescribeSecLogJoinTypeListResponse",
+      "status": "online"
     },
     "DescribeSecLogKafkaUIN": {
       "document": "This API is used to query the UIN of a Kafka security log.",
       "input": "DescribeSecLogKafkaUINRequest",
       "name": "Queries the UIN of a Kafka security log",
-      "output": "DescribeSecLogKafkaUINResponse"
+      "output": "DescribeSecLogKafkaUINResponse",
+      "status": "online"
     },
     "DescribeSecLogVasInfo": {
       "document": "This API is used to query the information of the security log product.",
       "input": "DescribeSecLogVasInfoRequest",
       "name": "Queries the information of the security log product",
-      "output": "DescribeSecLogVasInfoResponse"
+      "output": "DescribeSecLogVasInfoResponse",
+      "status": "online"
     },
     "DescribeSupportDefenceVul": {
       "document": "This API is used to query the list of vulnerabilities that can be prevented",
       "input": "DescribeSupportDefenceVulRequest",
       "name": "Queries the list of vulnerabilities that can be prevented",
-      "output": "DescribeSupportDefenceVulResponse"
+      "output": "DescribeSupportDefenceVulResponse",
+      "status": "online"
     },
     "DescribeSystemVulList": {
       "document": "This API is used to query the list of system vulnerabilities.",
       "input": "DescribeSystemVulListRequest",
       "name": "Queries the list of system vulnerabilities",
-      "output": "DescribeSystemVulListResponse"
+      "output": "DescribeSystemVulListResponse",
+      "status": "online"
     },
     "DescribeTaskResultSummary": {
       "document": "This API is used to query the overview of a check result and return the number of affected nodes in the last seven days.",
       "input": "DescribeTaskResultSummaryRequest",
       "name": "Queries the overview of a check result",
-      "output": "DescribeTaskResultSummaryResponse"
+      "output": "DescribeTaskResultSummaryResponse",
+      "status": "online"
     },
     "DescribeTcssSummary": {
       "document": "This API is used to query the TCSS overview.",
       "input": "DescribeTcssSummaryRequest",
       "name": "Queries the TCSS overview",
-      "output": "DescribeTcssSummaryResponse"
+      "output": "DescribeTcssSummaryResponse",
+      "status": "online"
     },
     "DescribeUnauthorizedCoresTendency": {
       "document": "This API is used to query the trend of daily unlicensed cores.",
       "input": "DescribeUnauthorizedCoresTendencyRequest",
       "name": "Queries the trend of daily unlicensed cores",
-      "output": "DescribeUnauthorizedCoresTendencyResponse"
+      "output": "DescribeUnauthorizedCoresTendencyResponse",
+      "status": "online"
     },
     "DescribeUnfinishRefreshTask": {
       "document": "This API is used to query the information of an unfinished asset refreshing task.",
       "input": "DescribeUnfinishRefreshTaskRequest",
       "name": "Queries the information of an unfinished asset refreshing task",
-      "output": "DescribeUnfinishRefreshTaskResponse"
+      "output": "DescribeUnfinishRefreshTaskResponse",
+      "status": "online"
     },
     "DescribeUserCluster": {
       "document": "This API is used to query the information of a cluster on the Security Dashboard and Cluster Security pages.",
       "input": "DescribeUserClusterRequest",
       "name": "Queries a cluster asset",
-      "output": "DescribeUserClusterResponse"
+      "output": "DescribeUserClusterResponse",
+      "status": "online"
     },
     "DescribeValueAddedSrvInfo": {
       "document": "This API is used to query the information of the required value-added service.",
       "input": "DescribeValueAddedSrvInfoRequest",
       "name": "Queries the information of the required value-added service",
-      "output": "DescribeValueAddedSrvInfoResponse"
+      "output": "DescribeValueAddedSrvInfoResponse",
+      "status": "online"
     },
     "DescribeVirusAutoIsolateSampleDetail": {
       "document": "This API is used to query the details of an automatically isolated trojan sample.",
       "input": "DescribeVirusAutoIsolateSampleDetailRequest",
       "name": "Queries the details of an automatically isolated trojan sample",
-      "output": "DescribeVirusAutoIsolateSampleDetailResponse"
+      "output": "DescribeVirusAutoIsolateSampleDetailResponse",
+      "status": "online"
     },
     "DescribeVirusAutoIsolateSampleDownloadURL": {
       "document": "This API is used to query the download URL of an automatically isolated trojan sample.",
       "input": "DescribeVirusAutoIsolateSampleDownloadURLRequest",
       "name": "Queries the download URL of an automatically isolated trojan sample",
-      "output": "DescribeVirusAutoIsolateSampleDownloadURLResponse"
+      "output": "DescribeVirusAutoIsolateSampleDownloadURLResponse",
+      "status": "online"
     },
     "DescribeVirusAutoIsolateSampleList": {
       "document": "This API is used to query the list of automatically isolated trojan samples.",
       "input": "DescribeVirusAutoIsolateSampleListRequest",
       "name": "Queries the list of automatically isolated trojan samples",
-      "output": "DescribeVirusAutoIsolateSampleListResponse"
+      "output": "DescribeVirusAutoIsolateSampleListResponse",
+      "status": "online"
     },
     "DescribeVirusAutoIsolateSetting": {
       "document": "This API is used to query the settings of automatic trojan isolation.",
       "input": "DescribeVirusAutoIsolateSettingRequest",
       "name": "Queries the settings of automatic trojan isolation",
-      "output": "DescribeVirusAutoIsolateSettingResponse"
+      "output": "DescribeVirusAutoIsolateSettingResponse",
+      "status": "online"
     },
     "DescribeVirusDetail": {
       "document": "This API is used to query the information of a trojan file at runtime.",
       "input": "DescribeVirusDetailRequest",
       "name": "Queries the information of a trojan file at runtime",
-      "output": "DescribeVirusDetailResponse"
+      "output": "DescribeVirusDetailResponse",
+      "status": "online"
     },
     "DescribeVirusEventTendency": {
       "document": "This API is used to query the trend of trojan events.",
       "input": "DescribeVirusEventTendencyRequest",
       "name": "Queries the trend of trojan events",
-      "output": "DescribeVirusEventTendencyResponse"
+      "output": "DescribeVirusEventTendencyResponse",
+      "status": "online"
     },
     "DescribeVirusList": {
       "document": "This API is used to query the list of virus scanning events at runtime.",
       "input": "DescribeVirusListRequest",
       "name": "Queries the list of virus scanning events at runtime",
-      "output": "DescribeVirusListResponse"
+      "output": "DescribeVirusListResponse",
+      "status": "online"
     },
     "DescribeVirusManualScanEstimateTimeout": {
       "document": "This API is used to query the estimated timeout period of a quick trojan scan.",
       "input": "DescribeVirusManualScanEstimateTimeoutRequest",
       "name": "Queries the estimated timeout period of a quick trojan scan",
-      "output": "DescribeVirusManualScanEstimateTimeoutResponse"
+      "output": "DescribeVirusManualScanEstimateTimeoutResponse",
+      "status": "online"
     },
     "DescribeVirusMonitorSetting": {
       "document": "This API is used to query the real-time monitoring settings of virus scanning at runtime.",
       "input": "DescribeVirusMonitorSettingRequest",
       "name": "Queries the real-time monitoring settings of virus scanning at runtime",
-      "output": "DescribeVirusMonitorSettingResponse"
+      "output": "DescribeVirusMonitorSettingResponse",
+      "status": "online"
     },
     "DescribeVirusSampleDownloadUrl": {
       "document": "This API is used to query the download URL of a trojan sample.",
       "input": "DescribeVirusSampleDownloadUrlRequest",
       "name": "Queries the download URL of a trojan sample",
-      "output": "DescribeVirusSampleDownloadUrlResponse"
+      "output": "DescribeVirusSampleDownloadUrlResponse",
+      "status": "online"
     },
     "DescribeVirusScanSetting": {
       "document": "This API is used to query virus scanning settings at runtime.",
       "input": "DescribeVirusScanSettingRequest",
       "name": "Queries virus scanning settings at runtime",
-      "output": "DescribeVirusScanSettingResponse"
+      "output": "DescribeVirusScanSettingResponse",
+      "status": "online"
     },
     "DescribeVirusScanTaskStatus": {
       "document": "This API is used to query the status of a virus scanning task at runtime.",
       "input": "DescribeVirusScanTaskStatusRequest",
       "name": "Queries the status of a virus scanning task at runtime",
-      "output": "DescribeVirusScanTaskStatusResponse"
+      "output": "DescribeVirusScanTaskStatusResponse",
+      "status": "online"
     },
     "DescribeVirusScanTimeoutSetting": {
       "document": "This API is used to query the timeout settings of a file scan at runtime.",
       "input": "DescribeVirusScanTimeoutSettingRequest",
       "name": "Queries the timeout settings of a file scan at runtime",
-      "output": "DescribeVirusScanTimeoutSettingResponse"
+      "output": "DescribeVirusScanTimeoutSettingResponse",
+      "status": "online"
     },
     "DescribeVirusSummary": {
       "document": "This API is used to query the trojan overview at runtime.",
       "input": "DescribeVirusSummaryRequest",
       "name": "Queries the trojan overview at runtime",
-      "output": "DescribeVirusSummaryResponse"
+      "output": "DescribeVirusSummaryResponse",
+      "status": "online"
     },
     "DescribeVirusTaskList": {
       "document": "This API is used to query the list of virus scanning tasks at runtime.",
       "input": "DescribeVirusTaskListRequest",
       "name": "Queries the list of virus scanning tasks at runtime",
-      "output": "DescribeVirusTaskListResponse"
+      "output": "DescribeVirusTaskListResponse",
+      "status": "online"
     },
     "DescribeVulContainerList": {
       "document": "This API is used to query the list of containers affected by vulnerabilities.",
       "input": "DescribeVulContainerListRequest",
       "name": "Queries the list of containers affected by vulnerabilities",
-      "output": "DescribeVulContainerListResponse"
+      "output": "DescribeVulContainerListResponse",
+      "status": "online"
     },
     "DescribeVulDefenceEvent": {
       "document": "This API is used to query the list of exploit prevention events.",
       "input": "DescribeVulDefenceEventRequest",
       "name": "Queries the list of exploit prevention events",
-      "output": "DescribeVulDefenceEventResponse"
+      "output": "DescribeVulDefenceEventResponse",
+      "status": "online"
     },
     "DescribeVulDefenceEventDetail": {
       "document": "This API is used to query the details of an exploit prevention event.",
       "input": "DescribeVulDefenceEventDetailRequest",
       "name": "Queries the details of an exploit prevention event",
-      "output": "DescribeVulDefenceEventDetailResponse"
+      "output": "DescribeVulDefenceEventDetailResponse",
+      "status": "online"
     },
     "DescribeVulDefenceEventTendency": {
       "document": "This API is used to query the trend of exploit prevention events.",
       "input": "DescribeVulDefenceEventTendencyRequest",
       "name": "Queries the trend of exploit prevention events",
-      "output": "DescribeVulDefenceEventTendencyResponse"
+      "output": "DescribeVulDefenceEventTendencyResponse",
+      "status": "online"
     },
     "DescribeVulDefenceHost": {
       "document": "This API is used to query the list of servers with exploit prevention enabled.",
       "input": "DescribeVulDefenceHostRequest",
       "name": "Queries the list of servers with exploit prevention enabled",
-      "output": "DescribeVulDefenceHostResponse"
+      "output": "DescribeVulDefenceHostResponse",
+      "status": "online"
     },
     "DescribeVulDefencePlugin": {
       "document": "This API is used to query the list of exploit prevention plugins.",
       "input": "DescribeVulDefencePluginRequest",
       "name": "Queries the list of exploit prevention plugins",
-      "output": "DescribeVulDefencePluginResponse"
+      "output": "DescribeVulDefencePluginResponse",
+      "status": "online"
     },
     "DescribeVulDefenceSetting": {
       "document": "This API is used to query the exploit prevention settings.",
       "input": "DescribeVulDefenceSettingRequest",
       "name": "Queries the exploit prevention settings",
-      "output": "DescribeVulDefenceSettingResponse"
+      "output": "DescribeVulDefenceSettingResponse",
+      "status": "online"
     },
     "DescribeVulDetail": {
       "document": "This API is used to query vulnerability details.",
       "input": "DescribeVulDetailRequest",
       "name": "Queries vulnerability details",
-      "output": "DescribeVulDetailResponse"
+      "output": "DescribeVulDetailResponse",
+      "status": "online"
     },
     "DescribeVulIgnoreLocalImageList": {
       "document": "This API is used to query the list of local images ignored in a vulnerability scan.",
       "input": "DescribeVulIgnoreLocalImageListRequest",
       "name": "Queries the list of local images ignored in a vulnerability scan",
-      "output": "DescribeVulIgnoreLocalImageListResponse"
+      "output": "DescribeVulIgnoreLocalImageListResponse",
+      "status": "online"
     },
     "DescribeVulIgnoreRegistryImageList": {
       "document": "This API is used to query the list of repository images ignored in a vulnerability scan.",
       "input": "DescribeVulIgnoreRegistryImageListRequest",
       "name": "Queries the list of repository images ignored in a vulnerability scan",
-      "output": "DescribeVulIgnoreRegistryImageListResponse"
+      "output": "DescribeVulIgnoreRegistryImageListResponse",
+      "status": "online"
     },
     "DescribeVulImageList": {
       "document": "This API is used to query the list of images affected by vulnerabilities.",
       "input": "DescribeVulImageListRequest",
       "name": "Queries the list of images affected by vulnerabilities",
-      "output": "DescribeVulImageListResponse"
+      "output": "DescribeVulImageListResponse",
+      "status": "online"
     },
     "DescribeVulImageSummary": {
       "document": "This API is used to query the statistics of images affected by vulnerabilities.",
       "input": "DescribeVulImageSummaryRequest",
       "name": "Queries the statistics of images affected by vulnerabilities",
-      "output": "DescribeVulImageSummaryResponse"
+      "output": "DescribeVulImageSummaryResponse",
+      "status": "online"
     },
     "DescribeVulLevelImageSummary": {
       "document": "This API is used to query the numbers of images affected by emergency vulnerabilities at each severity level.",
       "input": "DescribeVulLevelImageSummaryRequest",
       "name": "Queries the numbers of images affected by emergency vulnerabilities at each severity level",
-      "output": "DescribeVulLevelImageSummaryResponse"
+      "output": "DescribeVulLevelImageSummaryResponse",
+      "status": "online"
     },
     "DescribeVulLevelSummary": {
       "document": "This API is used to query the numbers of vulnerabilities at each severity level.",
       "input": "DescribeVulLevelSummaryRequest",
       "name": "Queries the numbers of vulnerabilities at each severity level",
-      "output": "DescribeVulLevelSummaryResponse"
+      "output": "DescribeVulLevelSummaryResponse",
+      "status": "online"
     },
     "DescribeVulScanAuthorizedImageSummary": {
       "document": "This API is used to count the number of licensed but not scanned images on the vulnerability scanning page.",
       "input": "DescribeVulScanAuthorizedImageSummaryRequest",
       "name": "Counts the number of licensed but not scanned images on the vulnerability scanning page",
-      "output": "DescribeVulScanAuthorizedImageSummaryResponse"
+      "output": "DescribeVulScanAuthorizedImageSummaryResponse",
+      "status": "online"
     },
     "DescribeVulScanInfo": {
       "document": "This API is used to query the information of a vulnerability scan task.",
       "input": "DescribeVulScanInfoRequest",
       "name": "Queries the information of a vulnerability scan task",
-      "output": "DescribeVulScanInfoResponse"
+      "output": "DescribeVulScanInfoResponse",
+      "status": "online"
     },
     "DescribeVulScanLocalImageList": {
       "document": "This API is used to query the list of local images in a vulnerability scan task.",
       "input": "DescribeVulScanLocalImageListRequest",
       "name": "Queries the list of local images in a vulnerability scan task",
-      "output": "DescribeVulScanLocalImageListResponse"
+      "output": "DescribeVulScanLocalImageListResponse",
+      "status": "online"
     },
     "DescribeVulSummary": {
       "document": "This API is used to query the overview of vulnerability risks.",
       "input": "DescribeVulSummaryRequest",
       "name": "Queries the overview of vulnerability risks",
-      "output": "DescribeVulSummaryResponse"
+      "output": "DescribeVulSummaryResponse",
+      "status": "online"
     },
     "DescribeVulTendency": {
       "document": "This API is used to query the trend of critical and high-risk vulnerabilities in local and repository images.",
       "input": "DescribeVulTendencyRequest",
       "name": "Queries the trend of vulnerabilities",
-      "output": "DescribeVulTendencyResponse"
+      "output": "DescribeVulTendencyResponse",
+      "status": "online"
     },
     "DescribeVulTopRanking": {
       "document": "This API is used to query the list of top vulnerabilities.",
       "input": "DescribeVulTopRankingRequest",
       "name": "Queries the list of top vulnerabilities",
-      "output": "DescribeVulTopRankingResponse"
+      "output": "DescribeVulTopRankingResponse",
+      "status": "online"
     },
     "DescribeWarningRules": {
       "document": "This API is used to get the list of alert policies.",
       "input": "DescribeWarningRulesRequest",
       "name": "Gets the list of alert policies",
-      "output": "DescribeWarningRulesResponse"
+      "output": "DescribeWarningRulesResponse",
+      "status": "online"
     },
     "DescribeWebVulList": {
       "document": "This API is used to query the list of web application vulnerabilities.",
       "input": "DescribeWebVulListRequest",
       "name": "Queries the list of web application vulnerabilities",
-      "output": "DescribeWebVulListResponse"
+      "output": "DescribeWebVulListResponse",
+      "status": "online"
     },
     "ExportVirusList": {
       "document": "This API is used to export the list of virus scanning events at runtime.",
       "input": "ExportVirusListRequest",
       "name": "Exports the list of virus scanning events at runtime",
-      "output": "ExportVirusListResponse"
+      "output": "ExportVirusListResponse",
+      "status": "online"
     },
     "InitializeUserComplianceEnvironment": {
       "document": "This API is used to initialize the compliance baseline environment and create necessary data and options.",
       "input": "InitializeUserComplianceEnvironmentRequest",
       "name": "Initializes the compliance baseline check environment",
-      "output": "InitializeUserComplianceEnvironmentResponse"
+      "output": "InitializeUserComplianceEnvironmentResponse",
+      "status": "online"
     },
     "ModifyAbnormalProcessRuleStatus": {
       "document": "This API is used to change the status of an abnormal process policy at runtime.",
       "input": "ModifyAbnormalProcessRuleStatusRequest",
       "name": "Changes the status of an abnormal process policy at runtime",
-      "output": "ModifyAbnormalProcessRuleStatusResponse"
+      "output": "ModifyAbnormalProcessRuleStatusResponse",
+      "status": "online"
     },
     "ModifyAbnormalProcessStatus": {
       "document": "This API is used to change the status of an abnormal process event.",
       "input": "ModifyAbnormalProcessStatusRequest",
       "name": "Changes the status of an abnormal process event",
-      "output": "ModifyAbnormalProcessStatusResponse"
+      "output": "ModifyAbnormalProcessStatusResponse",
+      "status": "online"
     },
     "ModifyAccessControlRuleStatus": {
       "document": "This API is used to change the status of an access control policy at runtime, i.e., enable or disable it.",
       "input": "ModifyAccessControlRuleStatusRequest",
       "name": "Changes the status of an access control policy at runtime",
-      "output": "ModifyAccessControlRuleStatusResponse"
+      "output": "ModifyAccessControlRuleStatusResponse",
+      "status": "online"
     },
     "ModifyAccessControlStatus": {
       "document": "This API is used to change the status of an access control event at runtime.",
       "input": "ModifyAccessControlStatusRequest",
       "name": "Changes the status of an access control event at runtime",
-      "output": "ModifyAccessControlStatusResponse"
+      "output": "ModifyAccessControlStatusResponse",
+      "status": "online"
     },
     "ModifyAsset": {
       "document": "This API is used to refresh server assets.",
       "input": "ModifyAssetRequest",
       "name": "Refreshes server assets",
-      "output": "ModifyAssetResponse"
+      "output": "ModifyAssetResponse",
+      "status": "online"
     },
     "ModifyAssetImageRegistryScanStop": {
       "document": "This API is used to stop an image scan task for an image repository.",
       "input": "ModifyAssetImageRegistryScanStopRequest",
       "name": "Stops an image scan task for an image repository",
-      "output": "ModifyAssetImageRegistryScanStopResponse"
+      "output": "ModifyAssetImageRegistryScanStopResponse",
+      "status": "online"
     },
     "ModifyAssetImageRegistryScanStopOneKey": {
       "document": "This API is used to stop a quick image scan task for an image repository.",
       "input": "ModifyAssetImageRegistryScanStopOneKeyRequest",
       "name": "Stops a quick image scan task for an image repository",
-      "output": "ModifyAssetImageRegistryScanStopOneKeyResponse"
+      "output": "ModifyAssetImageRegistryScanStopOneKeyResponse",
+      "status": "online"
     },
     "ModifyAssetImageScanStop": {
       "document": "This API is used to stop an image scan.",
       "input": "ModifyAssetImageScanStopRequest",
       "name": "Stops an image scan",
-      "output": "ModifyAssetImageScanStopResponse"
+      "output": "ModifyAssetImageScanStopResponse",
+      "status": "online"
     },
     "ModifyCompliancePeriodTask": {
       "document": "This API is used to modify the settings of a scheduled task, including the check cycle and the status of the compliance benchmark.",
       "input": "ModifyCompliancePeriodTaskRequest",
       "name": "Edits a scheduled task",
-      "output": "ModifyCompliancePeriodTaskResponse"
+      "output": "ModifyCompliancePeriodTaskResponse",
+      "status": "online"
     },
     "ModifyContainerNetStatus": {
       "document": "This API is used to isolate a container.",
       "input": "ModifyContainerNetStatusRequest",
       "name": "Isolates a container",
-      "output": "ModifyContainerNetStatusResponse"
+      "output": "ModifyContainerNetStatusResponse",
+      "status": "online"
     },
     "ModifyEscapeEventStatus": {
       "document": "This API is used to change the status of a container escape scan event.",
       "input": "ModifyEscapeEventStatusRequest",
       "name": "Changes the status of a container escape scan event",
-      "output": "ModifyEscapeEventStatusResponse"
+      "output": "ModifyEscapeEventStatusResponse",
+      "status": "online"
     },
     "ModifyEscapeRule": {
       "document": "This API is used to modify the information of a container escape scan rule.",
       "input": "ModifyEscapeRuleRequest",
       "name": "Modifies the information of a container escape scan rule",
-      "output": "ModifyEscapeRuleResponse"
+      "output": "ModifyEscapeRuleResponse",
+      "status": "online"
     },
     "ModifyEscapeWhiteList": {
       "document": "This API is used to modify an allowed escape.",
       "input": "ModifyEscapeWhiteListRequest",
       "name": "Modifies an allowed escape",
-      "output": "ModifyEscapeWhiteListResponse"
+      "output": "ModifyEscapeWhiteListResponse",
+      "status": "online"
     },
     "ModifyImageAuthorized": {
       "document": "This API is used to batch license images to be scanned (v2.0).",
       "input": "ModifyImageAuthorizedRequest",
       "name": "Batch licenses images to be scanned (v2.0)",
-      "output": "ModifyImageAuthorizedResponse"
+      "output": "ModifyImageAuthorizedResponse",
+      "status": "online"
     },
     "ModifyK8sApiAbnormalEventStatus": {
       "document": "This API is used to modify the status of K8sApi exception events.",
       "input": "ModifyK8sApiAbnormalEventStatusRequest",
       "name": "Modifies the status of K8sApi exception events",
-      "output": "ModifyK8sApiAbnormalEventStatusResponse"
+      "output": "ModifyK8sApiAbnormalEventStatusResponse",
+      "status": "online"
     },
     "ModifyK8sApiAbnormalRuleInfo": {
       "document": "This API is used to modify the information of K8sApi abnormal rules.",
       "input": "ModifyK8sApiAbnormalRuleInfoRequest",
       "name": "Modifies the information of K8sApi abnormal rules",
-      "output": "ModifyK8sApiAbnormalRuleInfoResponse"
+      "output": "ModifyK8sApiAbnormalRuleInfoResponse",
+      "status": "online"
     },
     "ModifyK8sApiAbnormalRuleStatus": {
       "document": "This API is used to modify the status of K8sApi abnormal event rules.",
       "input": "ModifyK8sApiAbnormalRuleStatusRequest",
       "name": "Modifies the status of K8sApi abnormal event rules",
-      "output": "ModifyK8sApiAbnormalRuleStatusResponse"
+      "output": "ModifyK8sApiAbnormalRuleStatusResponse",
+      "status": "online"
     },
     "ModifyReverseShellStatus": {
       "document": "This API is used to change the status of a reverse shell event.",
       "input": "ModifyReverseShellStatusRequest",
       "name": "Changes the status of a reverse shell event",
-      "output": "ModifyReverseShellStatusResponse"
+      "output": "ModifyReverseShellStatusResponse",
+      "status": "online"
     },
     "ModifyRiskSyscallStatus": {
       "document": "This API is used to change the status of a high-risk syscall event.",
       "input": "ModifyRiskSyscallStatusRequest",
       "name": "Changes the status of a high-risk syscall event",
-      "output": "ModifyRiskSyscallStatusResponse"
+      "output": "ModifyRiskSyscallStatusResponse",
+      "status": "online"
     },
     "ModifySecLogCleanSettingInfo": {
       "document": "This API is used to modify the settings of security log cleanup.",
       "input": "ModifySecLogCleanSettingInfoRequest",
       "name": "Modifies the settings of security log cleanup",
-      "output": "ModifySecLogCleanSettingInfoResponse"
+      "output": "ModifySecLogCleanSettingInfoResponse",
+      "status": "online"
     },
     "ModifySecLogDeliveryClsSetting": {
       "document": "This API is used to update the configuration of security log delivery to CLS.",
       "input": "ModifySecLogDeliveryClsSettingRequest",
       "name": "Updates the configuration of security log delivery to CLS",
-      "output": "ModifySecLogDeliveryClsSettingResponse"
+      "output": "ModifySecLogDeliveryClsSettingResponse",
+      "status": "online"
     },
     "ModifySecLogDeliveryKafkaSetting": {
       "document": "This API is used to update the settings of security log delivery to Kafka.",
       "input": "ModifySecLogDeliveryKafkaSettingRequest",
       "name": "Updates the settings of security log delivery to Kafka",
-      "output": "ModifySecLogDeliveryKafkaSettingResponse"
+      "output": "ModifySecLogDeliveryKafkaSettingResponse",
+      "status": "online"
     },
     "ModifySecLogJoinObjects": {
       "document": "This API is used to modify an accessed security log object.",
       "input": "ModifySecLogJoinObjectsRequest",
       "name": "Modifies an accessed security log object",
-      "output": "ModifySecLogJoinObjectsResponse"
+      "output": "ModifySecLogJoinObjectsResponse",
+      "status": "online"
     },
     "ModifySecLogJoinState": {
       "document": "This API is used to change the security log access status.",
       "input": "ModifySecLogJoinStateRequest",
       "name": "Changes the security log access status",
-      "output": "ModifySecLogJoinStateResponse"
+      "output": "ModifySecLogJoinStateResponse",
+      "status": "online"
     },
     "ModifySecLogKafkaUIN": {
       "document": "This API is used to modify the UIN of a Kafka security log.",
       "input": "ModifySecLogKafkaUINRequest",
       "name": "Modifies the UIN of a Kafka security log",
-      "output": "ModifySecLogKafkaUINResponse"
+      "output": "ModifySecLogKafkaUINResponse",
+      "status": "online"
     },
     "ModifyVirusAutoIsolateExampleSwitch": {
       "document": "This API is used to enable/disable automatic trojan sample isolation.",
       "input": "ModifyVirusAutoIsolateExampleSwitchRequest",
       "name": "Enables/Disables automatic trojan sample isolation",
-      "output": "ModifyVirusAutoIsolateExampleSwitchResponse"
+      "output": "ModifyVirusAutoIsolateExampleSwitchResponse",
+      "status": "online"
     },
     "ModifyVirusAutoIsolateSetting": {
       "document": "This API is used to modify the settings of automatic trojan isolation.",
       "input": "ModifyVirusAutoIsolateSettingRequest",
       "name": "Modifies the settings of automatic trojan isolation",
-      "output": "ModifyVirusAutoIsolateSettingResponse"
+      "output": "ModifyVirusAutoIsolateSettingResponse",
+      "status": "online"
     },
     "ModifyVirusFileStatus": {
       "document": "This API is used to update the status of a trojan file at runtime.",
       "input": "ModifyVirusFileStatusRequest",
       "name": "Updates the status of a trojan file at runtime",
-      "output": "ModifyVirusFileStatusResponse"
+      "output": "ModifyVirusFileStatusResponse",
+      "status": "online"
     },
     "ModifyVirusMonitorSetting": {
       "document": "This API is used to update the real-time monitoring settings of virus scanning at runtime.",
       "input": "ModifyVirusMonitorSettingRequest",
       "name": "Updates the real-time monitoring settings of virus scanning at runtime",
-      "output": "ModifyVirusMonitorSettingResponse"
+      "output": "ModifyVirusMonitorSettingResponse",
+      "status": "online"
     },
     "ModifyVirusScanSetting": {
       "document": "This API is used to update virus scanning settings at runtime.",
       "input": "ModifyVirusScanSettingRequest",
       "name": "Updates virus scanning settings at runtime",
-      "output": "ModifyVirusScanSettingResponse"
+      "output": "ModifyVirusScanSettingResponse",
+      "status": "online"
     },
     "ModifyVirusScanTimeoutSetting": {
       "document": "This API is used to modify the timeout settings of a file scan at runtime.",
       "input": "ModifyVirusScanTimeoutSettingRequest",
       "name": "Modifies the timeout settings of a file scan at runtime",
-      "output": "ModifyVirusScanTimeoutSettingResponse"
+      "output": "ModifyVirusScanTimeoutSettingResponse",
+      "status": "online"
     },
     "ModifyVulDefenceEventStatus": {
       "document": "This API is used to change the status of an exploit prevention event.",
       "input": "ModifyVulDefenceEventStatusRequest",
       "name": "Changes the status of an exploit prevention event",
-      "output": "ModifyVulDefenceEventStatusResponse"
+      "output": "ModifyVulDefenceEventStatusResponse",
+      "status": "online"
     },
     "ModifyVulDefenceSetting": {
       "document": "This API is used to edit the exploit prevention settings.",
       "input": "ModifyVulDefenceSettingRequest",
       "name": "Edits the exploit prevention settings",
-      "output": "ModifyVulDefenceSettingResponse"
+      "output": "ModifyVulDefenceSettingResponse",
+      "status": "online"
     },
     "OpenTcssTrial": {
       "document": "This API is used to activate TCSS trial.",
       "input": "OpenTcssTrialRequest",
       "name": "Activates TCSS trial",
-      "output": "OpenTcssTrialResponse"
+      "output": "OpenTcssTrialResponse",
+      "status": "online"
     },
     "RemoveAssetImageRegistryRegistryDetail": {
       "document": "This API is used to delete the details of an image repository.",
       "input": "RemoveAssetImageRegistryRegistryDetailRequest",
       "name": "Deletes the details of an image repository",
-      "output": "RemoveAssetImageRegistryRegistryDetailResponse"
+      "output": "RemoveAssetImageRegistryRegistryDetailResponse",
+      "status": "online"
     },
     "RenewImageAuthorizeState": {
       "document": "This API is used to license an image to be scanned.",
       "input": "RenewImageAuthorizeStateRequest",
       "name": "Licenses an image to be scanned",
-      "output": "RenewImageAuthorizeStateResponse"
+      "output": "RenewImageAuthorizeStateResponse",
+      "status": "online"
     },
     "ResetSecLogTopicConfig": {
       "document": "This API is used to reset a security log topic.",
       "input": "ResetSecLogTopicConfigRequest",
       "name": "Resets a security log topic",
-      "output": "ResetSecLogTopicConfigResponse"
+      "output": "ResetSecLogTopicConfigResponse",
+      "status": "online"
     },
     "ScanComplianceAssets": {
       "document": "This API is used to check the specified asset again.",
       "input": "ScanComplianceAssetsRequest",
       "name": "Checks the specified asset again",
-      "output": "ScanComplianceAssetsResponse"
+      "output": "ScanComplianceAssetsResponse",
+      "status": "online"
     },
     "ScanComplianceAssetsByPolicyItem": {
       "document": "This API is used to check the specified asset again with the specified check item and return the ID of the created compliance check task.",
       "input": "ScanComplianceAssetsByPolicyItemRequest",
       "name": "Checks the specified asset again with the specified check item",
-      "output": "ScanComplianceAssetsByPolicyItemResponse"
+      "output": "ScanComplianceAssetsByPolicyItemResponse",
+      "status": "online"
     },
     "ScanCompliancePolicyItems": {
       "document": "This API is used to check all the assets of the specified check item again and return the ID of the created compliance check task.",
       "input": "ScanCompliancePolicyItemsRequest",
       "name": "Checks the specified check item again",
-      "output": "ScanCompliancePolicyItemsResponse"
+      "output": "ScanCompliancePolicyItemsResponse",
+      "status": "online"
     },
     "ScanComplianceScanFailedAssets": {
       "document": "This API is used to check all the failed check items of the specified asset again and return the ID of the created compliance check task.",
       "input": "ScanComplianceScanFailedAssetsRequest",
       "name": "Checks the assets that failed the last check again",
-      "output": "ScanComplianceScanFailedAssetsResponse"
+      "output": "ScanComplianceScanFailedAssetsResponse",
+      "status": "online"
     },
     "SetCheckMode": {
       "document": "This API is used to set the check mode and automatic check.",
       "input": "SetCheckModeRequest",
       "name": "Sets the check mode and automatic check",
-      "output": "SetCheckModeResponse"
+      "output": "SetCheckModeResponse",
+      "status": "online"
     },
     "StopVirusScanTask": {
       "document": "This API is used to stop a trojan scan task at runtime.",
       "input": "StopVirusScanTaskRequest",
       "name": "Stops a trojan scan task at runtime",
-      "output": "StopVirusScanTaskResponse"
+      "output": "StopVirusScanTaskResponse",
+      "status": "online"
     },
     "StopVulScanTask": {
       "document": "This API is used to stop a vulnerability scan task.",
       "input": "StopVulScanTaskRequest",
       "name": "Stops a vulnerability scan task",
-      "output": "StopVulScanTaskResponse"
+      "output": "StopVulScanTaskResponse",
+      "status": "online"
     },
     "SwitchImageAutoAuthorizedRule": {
       "document": "This API is used to enable/disable automatic licensing for local images.",
       "input": "SwitchImageAutoAuthorizedRuleRequest",
       "name": "Enables/Disables automatic licensing for local images",
-      "output": "SwitchImageAutoAuthorizedRuleResponse"
+      "output": "SwitchImageAutoAuthorizedRuleResponse",
+      "status": "online"
     },
     "SyncAssetImageRegistryAsset": {
       "document": "This API is used to refresh the assets in an image repository.",
       "input": "SyncAssetImageRegistryAssetRequest",
       "name": "Refreshes the assets in an image repository",
-      "output": "SyncAssetImageRegistryAssetResponse"
+      "output": "SyncAssetImageRegistryAssetResponse",
+      "status": "online"
     },
     "UpdateAndPublishNetworkFirewallPolicyDetail": {
       "document": "This API is used to create a task to update and publish a network policy in the container network.",
       "input": "UpdateAndPublishNetworkFirewallPolicyDetailRequest",
       "name": "Creates a task to update and publish a network policy in the container network",
-      "output": "UpdateAndPublishNetworkFirewallPolicyDetailResponse"
+      "output": "UpdateAndPublishNetworkFirewallPolicyDetailResponse",
+      "status": "online"
     },
     "UpdateAndPublishNetworkFirewallPolicyYamlDetail": {
       "document": "This API is used to create a task to update and publish a YAML network policy in the container network.",
       "input": "UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest",
       "name": "Creates a task to update and publish a YAML network policy in the container network",
-      "output": "UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse"
+      "output": "UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse",
+      "status": "online"
     },
     "UpdateAssetImageRegistryRegistryDetail": {
       "document": "This API is used to update the details of an image repository.",
       "input": "UpdateAssetImageRegistryRegistryDetailRequest",
       "name": "Updates the details of an image repository",
-      "output": "UpdateAssetImageRegistryRegistryDetailResponse"
+      "output": "UpdateAssetImageRegistryRegistryDetailResponse",
+      "status": "online"
     },
     "UpdateImageRegistryTimingScanTask": {
       "document": "This API is used to update a scheduled task for an image repository.",
       "input": "UpdateImageRegistryTimingScanTaskRequest",
       "name": "Updates a scheduled task for an image repository",
-      "output": "UpdateImageRegistryTimingScanTaskResponse"
+      "output": "UpdateImageRegistryTimingScanTaskResponse",
+      "status": "online"
     },
     "UpdateNetworkFirewallPolicyDetail": {
       "document": "This API is used to create a task to update a network policy in the container network.",
       "input": "UpdateNetworkFirewallPolicyDetailRequest",
       "name": "Creates a task to update a network policy in the container network",
-      "output": "UpdateNetworkFirewallPolicyDetailResponse"
+      "output": "UpdateNetworkFirewallPolicyDetailResponse",
+      "status": "online"
     },
     "UpdateNetworkFirewallPolicyYamlDetail": {
       "document": "This API is used to create a task to update a YAML network policy in the container network.",
       "input": "UpdateNetworkFirewallPolicyYamlDetailRequest",
       "name": "Creates a task to update a YAML network policy in the container network",
-      "output": "UpdateNetworkFirewallPolicyYamlDetailResponse"
+      "output": "UpdateNetworkFirewallPolicyYamlDetailResponse",
+      "status": "online"
     }
   },
   "metadata": {

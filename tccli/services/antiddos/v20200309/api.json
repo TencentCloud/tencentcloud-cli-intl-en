@@ -4,421 +4,491 @@
       "document": "This API is used to bind an EIP to an Anti-DDoS Advanced instance or a specified private IP of an ENI.",
       "input": "AssociateDDoSEipAddressRequest",
       "name": "Binds EIPs",
-      "output": "AssociateDDoSEipAddressResponse"
+      "output": "AssociateDDoSEipAddressResponse",
+      "status": "online"
     },
     "AssociateDDoSEipLoadBalancer": {
       "document": "This API is used to bind an Anti-DDoS EIP to the specified private IP of a CLB instance.",
       "input": "AssociateDDoSEipLoadBalancerRequest",
       "name": "Binds an Anti-DDoS EIP to a CLB instance",
-      "output": "AssociateDDoSEipLoadBalancerResponse"
+      "output": "AssociateDDoSEipLoadBalancerResponse",
+      "status": "online"
     },
     "CreateBlackWhiteIpList": {
       "document": "This API is used to add an Anti-DDoS IP blocklist/allowlist.",
       "input": "CreateBlackWhiteIpListRequest",
       "name": "Adds an Anti-DDoS IP blocklist/allowlist",
-      "output": "CreateBlackWhiteIpListResponse"
+      "output": "CreateBlackWhiteIpListResponse",
+      "status": "online"
     },
     "CreateBoundIP": {
       "document": "This API is used to bind an IP to an Anti-DDoS Pro instance Both single IP instances and multi-IP instances are available. Note that you should wait until the current binding or unbinding completes before using this async API for new operations.",
       "input": "CreateBoundIPRequest",
       "name": "Binds an IP to an Anti-DDoS Pro instance",
-      "output": "CreateBoundIPResponse"
+      "output": "CreateBoundIPResponse",
+      "status": "online"
     },
     "CreateCCPrecisionPolicy": {
       "document": "This API is used to create a CC precise protection policy.",
       "input": "CreateCCPrecisionPolicyRequest",
       "name": "Adds CC precise protection policies",
-      "output": "CreateCCPrecisionPolicyResponse"
+      "output": "CreateCCPrecisionPolicyResponse",
+      "status": "online"
     },
     "CreateCCReqLimitPolicy": {
       "document": "This API is used to create a CC frequency limit policy.",
       "input": "CreateCCReqLimitPolicyRequest",
       "name": "Adds CC frequency limit policies",
-      "output": "CreateCCReqLimitPolicyResponse"
+      "output": "CreateCCReqLimitPolicyResponse",
+      "status": "online"
     },
     "CreateCcBlackWhiteIpList": {
       "document": "This API is used to create a layer 4 access control list to prevent CC attacks.",
       "input": "CreateCcBlackWhiteIpListRequest",
       "name": "Creates a layer 4 access control list to prevent CC attacks",
-      "output": "CreateCcBlackWhiteIpListResponse"
+      "output": "CreateCcBlackWhiteIpListResponse",
+      "status": "online"
     },
     "CreateCcGeoIPBlockConfig": {
       "document": "This API is used to create a regional blocking configuration.",
       "input": "CreateCcGeoIPBlockConfigRequest",
       "name": "Creates regional blocking configurations",
-      "output": "CreateCcGeoIPBlockConfigResponse"
+      "output": "CreateCcGeoIPBlockConfigResponse",
+      "status": "online"
     },
     "CreateDDoSAI": {
       "document": "This API is used to set Anti-DDoS AI protection switches.",
       "input": "CreateDDoSAIRequest",
       "name": "Sets Anti-DDoS AI protection switches",
-      "output": "CreateDDoSAIResponse"
+      "output": "CreateDDoSAIResponse",
+      "status": "online"
     },
     "CreateDDoSGeoIPBlockConfig": {
       "document": "This API is used to add an Anti-DDoS region blocking configuration.",
       "input": "CreateDDoSGeoIPBlockConfigRequest",
       "name": "Adds Anti-DDoS region blocking configurations",
-      "output": "CreateDDoSGeoIPBlockConfigResponse"
+      "output": "CreateDDoSGeoIPBlockConfigResponse",
+      "status": "online"
     },
     "CreateDDoSSpeedLimitConfig": {
       "document": "This API is used to add Anti-DDoS access rate limit configurations.",
       "input": "CreateDDoSSpeedLimitConfigRequest",
       "name": "Adds Anti-DDoS access rate limit configurations",
-      "output": "CreateDDoSSpeedLimitConfigResponse"
+      "output": "CreateDDoSSpeedLimitConfigResponse",
+      "status": "online"
     },
     "CreateDefaultAlarmThreshold": {
       "document": "This API is used to set the default alarm threshold of an IP.",
       "input": "CreateDefaultAlarmThresholdRequest",
       "name": "Sets the default alarm threshold of an IP",
-      "output": "CreateDefaultAlarmThresholdResponse"
+      "output": "CreateDefaultAlarmThresholdResponse",
+      "status": "online"
     },
     "CreateIPAlarmThresholdConfig": {
       "document": "This API is used to set the default alarm threshold of an IP.",
       "input": "CreateIPAlarmThresholdConfigRequest",
       "name": "Sets the alarm threshold of an IP",
-      "output": "CreateIPAlarmThresholdConfigResponse"
+      "output": "CreateIPAlarmThresholdConfigResponse",
+      "status": "online"
     },
     "CreateL7RuleCerts": {
       "document": "This API is used to configure certificates with layer-7 forwarding rules in a batch for SSL testing.",
       "input": "CreateL7RuleCertsRequest",
       "name": "Configures certificates with layer-7 forwarding rules in a batch",
-      "output": "CreateL7RuleCertsResponse"
+      "output": "CreateL7RuleCertsResponse",
+      "status": "online"
     },
     "CreateNewL7Rules": {
       "document": "This API is used to add layer-7 forwarding rules.",
       "input": "CreateNewL7RulesRequest",
       "name": "Adds layer-7 forwarding rules",
-      "output": "CreateNewL7RulesResponse"
+      "output": "CreateNewL7RulesResponse",
+      "status": "online"
     },
     "CreatePacketFilterConfig": {
       "document": "This API is used to add Anti-DDoS feature filtering rules.",
       "input": "CreatePacketFilterConfigRequest",
       "name": "Adds Anti-DDoS feature filtering rules",
-      "output": "CreatePacketFilterConfigResponse"
+      "output": "CreatePacketFilterConfigResponse",
+      "status": "online"
     },
     "CreateProtocolBlockConfig": {
       "document": "This API is used to set Anti-DDoS protocol blocking configurations.",
       "input": "CreateProtocolBlockConfigRequest",
       "name": "Sets Anti-DDoS protocol blocking configurations",
-      "output": "CreateProtocolBlockConfigResponse"
+      "output": "CreateProtocolBlockConfigResponse",
+      "status": "online"
     },
     "CreateSchedulingDomain": {
       "document": "This API is used to create a domain name for IP scheduling and switching.",
       "input": "CreateSchedulingDomainRequest",
       "name": "Creates a domain name for IP scheduling and switching",
-      "output": "CreateSchedulingDomainResponse"
+      "output": "CreateSchedulingDomainResponse",
+      "status": "online"
     },
     "CreateWaterPrintConfig": {
       "document": "This API is used to add Anti-DDoS watermark configurations.",
       "input": "CreateWaterPrintConfigRequest",
       "name": "Adds Anti-DDoS watermark configurations",
-      "output": "CreateWaterPrintConfigResponse"
+      "output": "CreateWaterPrintConfigResponse",
+      "status": "online"
     },
     "CreateWaterPrintKey": {
       "document": "This API is used to add Anti-DDoS watermark keys.",
       "input": "CreateWaterPrintKeyRequest",
       "name": "Adds Anti-DDoS watermark keys",
-      "output": "CreateWaterPrintKeyResponse"
+      "output": "CreateWaterPrintKeyResponse",
+      "status": "online"
     },
     "DeleteCCLevelPolicy": {
       "document": "This API is used to delete a level-defining policy of CC attacks. ",
       "input": "DeleteCCLevelPolicyRequest",
       "name": "Deletes a level-defining policy of CC attacks",
-      "output": "DeleteCCLevelPolicyResponse"
+      "output": "DeleteCCLevelPolicyResponse",
+      "status": "online"
     },
     "DeleteCCPrecisionPolicy": {
       "document": "This API is used to delete a CC precise protection policy.",
       "input": "DeleteCCPrecisionPolicyRequest",
       "name": "Deletes CC precise protection policies",
-      "output": "DeleteCCPrecisionPolicyResponse"
+      "output": "DeleteCCPrecisionPolicyResponse",
+      "status": "online"
     },
     "DeleteCCThresholdPolicy": {
       "document": "This API is used to delete a CC cleansing threshold policy.",
       "input": "DeleteCCThresholdPolicyRequest",
       "name": "Deletes a CC cleansing threshold policy",
-      "output": "DeleteCCThresholdPolicyResponse"
+      "output": "DeleteCCThresholdPolicyResponse",
+      "status": "online"
     },
     "DeleteCcBlackWhiteIpList": {
       "document": "This API is used to delete a layer-4 access control list.",
       "input": "DeleteCcBlackWhiteIpListRequest",
       "name": "Deletes a layer-4 access control list",
-      "output": "DeleteCcBlackWhiteIpListResponse"
+      "output": "DeleteCcBlackWhiteIpListResponse",
+      "status": "online"
     },
     "DeleteCcGeoIPBlockConfig": {
       "document": "This API is used to delete a regional blocking configuration.",
       "input": "DeleteCcGeoIPBlockConfigRequest",
       "name": "Deletes a regional blocking configuration",
-      "output": "DeleteCcGeoIPBlockConfigResponse"
+      "output": "DeleteCcGeoIPBlockConfigResponse",
+      "status": "online"
     },
     "DeleteDDoSGeoIPBlockConfig": {
       "document": "This API is used to delete Anti-DDoS region blocking configurations.",
       "input": "DeleteDDoSGeoIPBlockConfigRequest",
       "name": "Deletes Anti-DDoS region blocking configurations",
-      "output": "DeleteDDoSGeoIPBlockConfigResponse"
+      "output": "DeleteDDoSGeoIPBlockConfigResponse",
+      "status": "online"
     },
     "DeleteDDoSSpeedLimitConfig": {
       "document": "This API is used to delete Anti-DDoS access rate limit configurations.",
       "input": "DeleteDDoSSpeedLimitConfigRequest",
       "name": "Deletes Anti-DDoS access rate limit configurations",
-      "output": "DeleteDDoSSpeedLimitConfigResponse"
+      "output": "DeleteDDoSSpeedLimitConfigResponse",
+      "status": "online"
     },
     "DeletePacketFilterConfig": {
       "document": "This API is used to delete Anti-DDoS feature filtering rules.",
       "input": "DeletePacketFilterConfigRequest",
       "name": "Deletes Anti-DDoS feature filtering rules",
-      "output": "DeletePacketFilterConfigResponse"
+      "output": "DeletePacketFilterConfigResponse",
+      "status": "online"
     },
     "DeleteWaterPrintConfig": {
       "document": "This API is used to delete Anti-DDoS watermark configurations.",
       "input": "DeleteWaterPrintConfigRequest",
       "name": "Deletes Anti-DDoS watermark configurations",
-      "output": "DeleteWaterPrintConfigResponse"
+      "output": "DeleteWaterPrintConfigResponse",
+      "status": "online"
     },
     "DeleteWaterPrintKey": {
       "document": "This API is used to delete Anti-DDoS watermark keys.",
       "input": "DeleteWaterPrintKeyRequest",
       "name": "Deletes Anti-DDoS watermark keys",
-      "output": "DeleteWaterPrintKeyResponse"
+      "output": "DeleteWaterPrintKeyResponse",
+      "status": "online"
     },
     "DescribeBasicDeviceStatus": {
       "document": "This API is used to querying the status of Anti-DDoS IP.",
       "input": "DescribeBasicDeviceStatusRequest",
       "name": "Gets the Anti-DDoS protection status",
-      "output": "DescribeBasicDeviceStatusResponse"
+      "output": "DescribeBasicDeviceStatusResponse",
+      "status": "online"
     },
     "DescribeBgpBizTrend": {
       "document": "This API is used to obtain Anti-DDoS Pro traffic data.",
       "input": "DescribeBgpBizTrendRequest",
       "name": "Obtains Anti-DDoS Pro traffic data",
-      "output": "DescribeBgpBizTrendResponse"
+      "output": "DescribeBgpBizTrendResponse",
+      "status": "online"
     },
     "DescribeBizTrend": {
       "document": "This API is used to get the traffic flow data collected in the specified period.",
       "input": "DescribeBizTrendRequest",
       "name": "Gets the traffic flow data collected in the specified period",
-      "output": "DescribeBizTrendResponse"
+      "output": "DescribeBizTrendResponse",
+      "status": "online"
     },
     "DescribeBlackWhiteIpList": {
       "document": "This API is used to get an Anti-DDoS IP blocklist/allowlist.",
       "input": "DescribeBlackWhiteIpListRequest",
       "name": "Gets an Anti-DDoS IP blocklist/allowlist",
-      "output": "DescribeBlackWhiteIpListResponse"
+      "output": "DescribeBlackWhiteIpListResponse",
+      "status": "online"
     },
     "DescribeCCLevelList": {
       "document": "Gets the list of CC protection levels",
       "input": "DescribeCCLevelListRequest",
       "name": "Queries the list of CC protection levels.",
-      "output": "DescribeCCLevelListResponse"
+      "output": "DescribeCCLevelListResponse",
+      "status": "online"
     },
     "DescribeCCLevelPolicy": {
       "document": "This API is used the query a level-defining policy of CC attacks",
       "input": "DescribeCCLevelPolicyRequest",
       "name": "Queries a level-defining policy of CC attacks",
-      "output": "DescribeCCLevelPolicyResponse"
+      "output": "DescribeCCLevelPolicyResponse",
+      "status": "online"
     },
     "DescribeCCPrecisionPlyList": {
       "document": "This API is used to obtain the list of CC precise protection policies.",
       "input": "DescribeCCPrecisionPlyListRequest",
       "name": "Obtains the list of CC precise protection policies",
-      "output": "DescribeCCPrecisionPlyListResponse"
+      "output": "DescribeCCPrecisionPlyListResponse",
+      "status": "online"
     },
     "DescribeCCThresholdList": {
       "document": "This API is used to query the list of CC cleansing thresholds.",
       "input": "DescribeCCThresholdListRequest",
       "name": "Queries the list of CC cleansing thresholds",
-      "output": "DescribeCCThresholdListResponse"
+      "output": "DescribeCCThresholdListResponse",
+      "status": "online"
     },
     "DescribeCCTrend": {
       "document": "This API is used to get CC attack data, including total QPS peaks, attack QPS, total number of requests and number of attack requests.",
       "input": "DescribeCCTrendRequest",
       "name": "Gets CC attack data",
-      "output": "DescribeCCTrendResponse"
+      "output": "DescribeCCTrendResponse",
+      "status": "online"
     },
     "DescribeCcBlackWhiteIpList": {
       "document": "This API is used to obtain the layer-4 access control list.",
       "input": "DescribeCcBlackWhiteIpListRequest",
       "name": "Obtains the layer-4 access control list",
-      "output": "DescribeCcBlackWhiteIpListResponse"
+      "output": "DescribeCcBlackWhiteIpListResponse",
+      "status": "online"
     },
     "DescribeCcGeoIPBlockConfigList": {
       "document": "This API is used to obtain a list of regional blocking configurations.",
       "input": "DescribeCcGeoIPBlockConfigListRequest",
       "name": "Obtains a list of regional blocking configurations",
-      "output": "DescribeCcGeoIPBlockConfigListResponse"
+      "output": "DescribeCcGeoIPBlockConfigListResponse",
+      "status": "online"
     },
     "DescribeDDoSTrend": {
       "document": "This API is used to get DDoS attack traffic bandwidth and attack packet rate.",
       "input": "DescribeDDoSTrendRequest",
       "name": "Gets DDoS attack data",
-      "output": "DescribeDDoSTrendResponse"
+      "output": "DescribeDDoSTrendResponse",
+      "status": "online"
     },
     "DescribeDefaultAlarmThreshold": {
       "document": "This API is used to get the default alarm threshold of an IP.",
       "input": "DescribeDefaultAlarmThresholdRequest",
       "name": "Gets the default alarm threshold of an IP",
-      "output": "DescribeDefaultAlarmThresholdResponse"
+      "output": "DescribeDefaultAlarmThresholdResponse",
+      "status": "online"
     },
     "DescribeL7RulesBySSLCertId": {
       "document": "This API is used to query layer-7 rules matched with certificate IDs.",
       "input": "DescribeL7RulesBySSLCertIdRequest",
       "name": "Queries layer-7 rules matched with certificate IDs",
-      "output": "DescribeL7RulesBySSLCertIdResponse"
+      "output": "DescribeL7RulesBySSLCertIdResponse",
+      "status": "online"
     },
     "DescribeListBGPIPInstances": {
       "document": "This API is used to get a list of Anti-DDoS Advanced instances.\n",
       "input": "DescribeListBGPIPInstancesRequest",
       "name": "Gets a list of Anti-DDoS Advanced instances",
-      "output": "DescribeListBGPIPInstancesResponse"
+      "output": "DescribeListBGPIPInstancesResponse",
+      "status": "online"
     },
     "DescribeListBGPInstances": {
       "document": "This API is used to get a list of Anti-DDoS Pro instances.\n",
       "input": "DescribeListBGPInstancesRequest",
       "name": "Gets a list of Anti-DDoS Pro instances",
-      "output": "DescribeListBGPInstancesResponse"
+      "output": "DescribeListBGPInstancesResponse",
+      "status": "online"
     },
     "DescribeListBlackWhiteIpList": {
       "document": "This API is used to get a list of Anti-DDoS IP blocklists/allowlists.",
       "input": "DescribeListBlackWhiteIpListRequest",
       "name": "Gets a list of Anti-DDoS IP blocklists/allowlists",
-      "output": "DescribeListBlackWhiteIpListResponse"
+      "output": "DescribeListBlackWhiteIpListResponse",
+      "status": "online"
     },
     "DescribeListDDoSAI": {
       "document": "This API is used to get a list of Anti-DDoS AI protection switches.",
       "input": "DescribeListDDoSAIRequest",
       "name": "Gets a list of Anti-DDoS AI protection switches",
-      "output": "DescribeListDDoSAIResponse"
+      "output": "DescribeListDDoSAIResponse",
+      "status": "online"
     },
     "DescribeListDDoSGeoIPBlockConfig": {
       "document": "This API is used to get a list of Anti-DDoS region blocking configurations.",
       "input": "DescribeListDDoSGeoIPBlockConfigRequest",
       "name": "Gets a list of Anti-DDoS region blocking configurations",
-      "output": "DescribeListDDoSGeoIPBlockConfigResponse"
+      "output": "DescribeListDDoSGeoIPBlockConfigResponse",
+      "status": "online"
     },
     "DescribeListDDoSSpeedLimitConfig": {
       "document": "This API is used to get a list of Anti-DDoS access rate limit configurations.",
       "input": "DescribeListDDoSSpeedLimitConfigRequest",
       "name": "Gets a list of Anti-DDoS access rate limit configurations",
-      "output": "DescribeListDDoSSpeedLimitConfigResponse"
+      "output": "DescribeListDDoSSpeedLimitConfigResponse",
+      "status": "online"
     },
     "DescribeListIPAlarmConfig": {
       "document": "This API is used to get a list of IP alarm threshold configurations.",
       "input": "DescribeListIPAlarmConfigRequest",
       "name": "Gets a list of IP alarm threshold configurations",
-      "output": "DescribeListIPAlarmConfigResponse"
+      "output": "DescribeListIPAlarmConfigResponse",
+      "status": "online"
     },
     "DescribeListListener": {
       "document": "This API is used to get a list of forwarding listeners.",
       "input": "DescribeListListenerRequest",
       "name": "Gets a list of forwarding listeners",
-      "output": "DescribeListListenerResponse"
+      "output": "DescribeListListenerResponse",
+      "status": "online"
     },
     "DescribeListPacketFilterConfig": {
       "document": "This API is used to get a list of Anti-DDoS feature filtering rules.",
       "input": "DescribeListPacketFilterConfigRequest",
       "name": "Gets a list of Anti-DDoS feature filtering rules",
-      "output": "DescribeListPacketFilterConfigResponse"
+      "output": "DescribeListPacketFilterConfigResponse",
+      "status": "online"
     },
     "DescribeListProtectThresholdConfig": {
       "document": "This API is used to get a list of protection threshold configurations for AI protection switch, protection level, and CC threshold switch.",
       "input": "DescribeListProtectThresholdConfigRequest",
       "name": "Gets a list of protection threshold configurations",
-      "output": "DescribeListProtectThresholdConfigResponse"
+      "output": "DescribeListProtectThresholdConfigResponse",
+      "status": "online"
     },
     "DescribeListProtocolBlockConfig": {
       "document": "This API is used to get a list of Anti-DDoS protocol blocking configurations.",
       "input": "DescribeListProtocolBlockConfigRequest",
       "name": "Gets a list of Anti-DDoS protocol blocking configurations",
-      "output": "DescribeListProtocolBlockConfigResponse"
+      "output": "DescribeListProtocolBlockConfigResponse",
+      "status": "online"
     },
     "DescribeListSchedulingDomain": {
       "document": "This API is used to get a list of intelligent scheduling domain names.",
       "input": "DescribeListSchedulingDomainRequest",
       "name": "Gets a list of intelligent scheduling domain names",
-      "output": "DescribeListSchedulingDomainResponse"
+      "output": "DescribeListSchedulingDomainResponse",
+      "status": "online"
     },
     "DescribeListWaterPrintConfig": {
       "document": "This API is used to get a list of Anti-DDoS watermark configurations.",
       "input": "DescribeListWaterPrintConfigRequest",
       "name": "Gets a list of Anti-DDoS watermark configurations",
-      "output": "DescribeListWaterPrintConfigResponse"
+      "output": "DescribeListWaterPrintConfigResponse",
+      "status": "online"
     },
     "DescribeNewL7Rules": {
       "document": "This API is used to obtain layer-7 forwarding rules.",
       "input": "DescribeNewL7RulesRequest",
       "name": "Obtains layer-7 forwarding rules",
-      "output": "DescribeNewL7RulesResponse"
+      "output": "DescribeNewL7RulesResponse",
+      "status": "online"
     },
     "DescribeNewL7RulesErrHealth": {
       "document": "This API is used to getting the exception results of the health check on layer-7 forwarding rules.",
       "input": "DescribeNewL7RulesErrHealthRequest",
       "name": "Gets the exception results of the health check on layer-7 forwarding rules",
-      "output": "DescribeNewL7RulesErrHealthResponse"
+      "output": "DescribeNewL7RulesErrHealthResponse",
+      "status": "online"
     },
     "DescribeOverviewDDoSEventList": {
       "document": "This API is used to obtain the list of DDoS attacks.",
       "input": "DescribeOverviewDDoSEventListRequest",
       "name": "Obtains the list of DDoS attacks",
-      "output": "DescribeOverviewDDoSEventListResponse"
+      "output": "DescribeOverviewDDoSEventListResponse",
+      "status": "online"
     },
     "DescribePendingRiskInfo": {
       "document": "This API is used to query the information of pending risks at the account level.",
       "input": "DescribePendingRiskInfoRequest",
       "name": "Queries the information of pending risks at the account-level",
-      "output": "DescribePendingRiskInfoResponse"
+      "output": "DescribePendingRiskInfoResponse",
+      "status": "online"
     },
     "DisassociateDDoSEipAddress": {
       "document": "This API is used to unbind an Anti-DDoS EIP.",
       "input": "DisassociateDDoSEipAddressRequest",
       "name": "Unbinds an Anti-DDoS EIP",
-      "output": "DisassociateDDoSEipAddressResponse"
+      "output": "DisassociateDDoSEipAddressResponse",
+      "status": "online"
     },
     "ModifyCCPrecisionPolicy": {
       "document": "This API is used to modify a CC precise protection policy.",
       "input": "ModifyCCPrecisionPolicyRequest",
       "name": "Modifies a CC precise protection policy",
-      "output": "ModifyCCPrecisionPolicyResponse"
+      "output": "ModifyCCPrecisionPolicyResponse",
+      "status": "online"
     },
     "ModifyCcBlackWhiteIpList": {
       "document": "This API is used to modify a layer-4 access control list.",
       "input": "ModifyCcBlackWhiteIpListRequest",
       "name": "Modifies a layer-4 access control list",
-      "output": "ModifyCcBlackWhiteIpListResponse"
+      "output": "ModifyCcBlackWhiteIpListResponse",
+      "status": "online"
     },
     "ModifyDDoSGeoIPBlockConfig": {
       "document": "This API is used to modify Anti-DDoS region blocking configurations.",
       "input": "ModifyDDoSGeoIPBlockConfigRequest",
       "name": "Modifies Anti-DDoS region blocking configurations",
-      "output": "ModifyDDoSGeoIPBlockConfigResponse"
+      "output": "ModifyDDoSGeoIPBlockConfigResponse",
+      "status": "online"
     },
     "ModifyDDoSSpeedLimitConfig": {
       "document": "This API is used to modify Anti-DDoS access rate limit configurations.",
       "input": "ModifyDDoSSpeedLimitConfigRequest",
       "name": "Modifies Anti-DDoS access rate limit configurations",
-      "output": "ModifyDDoSSpeedLimitConfigResponse"
+      "output": "ModifyDDoSSpeedLimitConfigResponse",
+      "status": "online"
     },
     "ModifyDomainUsrName": {
       "document": "This API is used to modify intelligent scheduling domain names.",
       "input": "ModifyDomainUsrNameRequest",
       "name": "Modifies intelligent scheduling domain names",
-      "output": "ModifyDomainUsrNameResponse"
+      "output": "ModifyDomainUsrNameResponse",
+      "status": "online"
     },
     "ModifyNewDomainRules": {
       "document": "This API is used to modify layer-7 forwarding rules.",
       "input": "ModifyNewDomainRulesRequest",
       "name": "Modifies layer-7 forwarding rules",
-      "output": "ModifyNewDomainRulesResponse"
+      "output": "ModifyNewDomainRulesResponse",
+      "status": "online"
     },
     "ModifyPacketFilterConfig": {
       "document": "This API is used to modify Anti-DDoS feature filtering rules.",
       "input": "ModifyPacketFilterConfigRequest",
       "name": "Modifies Anti-DDoS feature filtering rules",
-      "output": "ModifyPacketFilterConfigResponse"
+      "output": "ModifyPacketFilterConfigResponse",
+      "status": "online"
     },
     "SwitchWaterPrintConfig": {
       "document": "This API is used to enable or disable Anti-DDoS watermark configurations.",
       "input": "SwitchWaterPrintConfigRequest",
       "name": "Enables/Disables Anti-DDoS watermark configurations",
-      "output": "SwitchWaterPrintConfigResponse"
+      "output": "SwitchWaterPrintConfigResponse",
+      "status": "online"
     }
   },
   "metadata": {

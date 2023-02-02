@@ -4,421 +4,491 @@
       "document": "This API is used to clone and rename databases of an instance. The clones are still in the instance from which they are cloned.",
       "input": "CloneDBRequest",
       "name": "Clones databases",
-      "output": "CloneDBResponse"
+      "output": "CloneDBResponse",
+      "status": "online"
     },
     "CloseInterCommunication": {
       "document": "This API is used to disable instance interconnection.",
       "input": "CloseInterCommunicationRequest",
       "name": "Disables instance interconnection",
-      "output": "CloseInterCommunicationResponse"
+      "output": "CloseInterCommunicationResponse",
+      "status": "online"
     },
     "CreateAccount": {
       "document": "This API is used to create an instance account.",
       "input": "CreateAccountRequest",
       "name": "Creates instance account",
-      "output": "CreateAccountResponse"
+      "output": "CreateAccountResponse",
+      "status": "online"
     },
     "CreateBackup": {
       "document": "This API is used to create a backup.",
       "input": "CreateBackupRequest",
       "name": "Creates backup",
-      "output": "CreateBackupResponse"
+      "output": "CreateBackupResponse",
+      "status": "online"
     },
     "CreateBackupMigration": {
       "document": "This API is used to create a backup import task.",
       "input": "CreateBackupMigrationRequest",
       "name": "Creates backup import tasks",
-      "output": "CreateBackupMigrationResponse"
+      "output": "CreateBackupMigrationResponse",
+      "status": "online"
     },
     "CreateBusinessDBInstances": {
       "document": "This API is used to create a business intelligence service instance.",
       "input": "CreateBusinessDBInstancesRequest",
       "name": "Creates a business intelligence service instance",
-      "output": "CreateBusinessDBInstancesResponse"
+      "output": "CreateBusinessDBInstancesResponse",
+      "status": "online"
     },
     "CreateBusinessIntelligenceFile": {
       "document": "This API is used to add a business intelligence service file.",
       "input": "CreateBusinessIntelligenceFileRequest",
       "name": "Creates a business intelligence service file",
-      "output": "CreateBusinessIntelligenceFileResponse"
+      "output": "CreateBusinessIntelligenceFileResponse",
+      "status": "online"
     },
     "CreateDB": {
       "document": "This API is used to create a database.",
       "input": "CreateDBRequest",
       "name": "Creates database",
-      "output": "CreateDBResponse"
+      "output": "CreateDBResponse",
+      "status": "online"
     },
     "CreateDBInstances": {
       "document": "This API is used to create an instance.",
       "input": "CreateDBInstancesRequest",
       "name": "Creates instance",
-      "output": "CreateDBInstancesResponse"
+      "output": "CreateDBInstancesResponse",
+      "status": "online"
     },
     "CreateIncrementalMigration": {
       "document": "This API is used to create an incremental backup import task.",
       "input": "CreateIncrementalMigrationRequest",
       "name": "Creates incremental backup import tasks",
-      "output": "CreateIncrementalMigrationResponse"
+      "output": "CreateIncrementalMigrationResponse",
+      "status": "online"
     },
     "CreateMigration": {
       "document": "This API is used to create a migration task.",
       "input": "CreateMigrationRequest",
       "name": "Creates migration task",
-      "output": "CreateMigrationResponse"
+      "output": "CreateMigrationResponse",
+      "status": "online"
     },
     "DeleteAccount": {
       "document": "This API is used to delete an instance account.",
       "input": "DeleteAccountRequest",
       "name": "Deletes instance account",
-      "output": "DeleteAccountResponse"
+      "output": "DeleteAccountResponse",
+      "status": "online"
     },
     "DeleteBackupMigration": {
       "document": "This API is used to delete a backup import task.",
       "input": "DeleteBackupMigrationRequest",
       "name": "Deletes backup import tasks",
-      "output": "DeleteBackupMigrationResponse"
+      "output": "DeleteBackupMigrationResponse",
+      "status": "online"
     },
     "DeleteBusinessIntelligenceFile": {
       "document": "This API is used to delete a business intelligence service file.",
       "input": "DeleteBusinessIntelligenceFileRequest",
       "name": "Deletes a business intelligence service file",
-      "output": "DeleteBusinessIntelligenceFileResponse"
+      "output": "DeleteBusinessIntelligenceFileResponse",
+      "status": "online"
     },
     "DeleteDB": {
       "document": "This API is used to drop a database.",
       "input": "DeleteDBRequest",
       "name": "Drops database",
-      "output": "DeleteDBResponse"
+      "output": "DeleteDBResponse",
+      "status": "online"
     },
     "DeleteIncrementalMigration": {
       "document": "This API is used to delete an incremental backup import task.",
       "input": "DeleteIncrementalMigrationRequest",
       "name": "Deletes incremental backup import tasks",
-      "output": "DeleteIncrementalMigrationResponse"
+      "output": "DeleteIncrementalMigrationResponse",
+      "status": "online"
     },
     "DeleteMigration": {
       "document": "This API is used to delete a migration task.",
       "input": "DeleteMigrationRequest",
       "name": "Deletes migration task",
-      "output": "DeleteMigrationResponse"
+      "output": "DeleteMigrationResponse",
+      "status": "online"
     },
     "DescribeAccounts": {
       "document": "This API is used to pull the list of instance accounts.",
       "input": "DescribeAccountsRequest",
       "name": "Pulls list of instance accounts",
-      "output": "DescribeAccountsResponse"
+      "output": "DescribeAccountsResponse",
+      "status": "online"
     },
     "DescribeBackupCommand": {
       "document": "This API is used to query the commands of creating backups canonically.",
       "input": "DescribeBackupCommandRequest",
       "name": "Queries the commands of creating backups",
-      "output": "DescribeBackupCommandResponse"
+      "output": "DescribeBackupCommandResponse",
+      "status": "online"
     },
     "DescribeBackupFiles": {
       "document": "This API is used to query the list of unarchived database backup files.",
       "input": "DescribeBackupFilesRequest",
       "name": "Queries the list of backup files",
-      "output": "DescribeBackupFilesResponse"
+      "output": "DescribeBackupFilesResponse",
+      "status": "online"
     },
     "DescribeBackupMigration": {
       "document": "This API is used to create an incremental backup import task.",
       "input": "DescribeBackupMigrationRequest",
       "name": "Queries backup import tasks",
-      "output": "DescribeBackupMigrationResponse"
+      "output": "DescribeBackupMigrationResponse",
+      "status": "online"
     },
     "DescribeBackupUploadSize": {
       "document": "This API is used to query the size of uploaded backup files. It is valid if the backup file type is `COS_UPLOAD` (the file is stored in COS).",
       "input": "DescribeBackupUploadSizeRequest",
       "name": "Queries the size of uploaded backup files",
-      "output": "DescribeBackupUploadSizeResponse"
+      "output": "DescribeBackupUploadSizeResponse",
+      "status": "online"
     },
     "DescribeBackups": {
       "document": "This API is used to query the list of backups.",
       "input": "DescribeBackupsRequest",
       "name": "Queries list of backups",
-      "output": "DescribeBackupsResponse"
+      "output": "DescribeBackupsResponse",
+      "status": "online"
     },
     "DescribeBusinessIntelligenceFile": {
       "document": "This API is used to query the files required by business intelligence service.",
       "input": "DescribeBusinessIntelligenceFileRequest",
       "name": "Queries the files required by business intelligence service",
-      "output": "DescribeBusinessIntelligenceFileResponse"
+      "output": "DescribeBusinessIntelligenceFileResponse",
+      "status": "online"
     },
     "DescribeDBCharsets": {
       "document": "This API is used to query the database character sets supported by an instance.",
       "input": "DescribeDBCharsetsRequest",
       "name": "Queries the supported database character sets",
-      "output": "DescribeDBCharsetsResponse"
+      "output": "DescribeDBCharsetsResponse",
+      "status": "online"
     },
     "DescribeDBInstanceInter": {
       "document": "This API is used to query the information of the interconnected instances.",
       "input": "DescribeDBInstanceInterRequest",
       "name": "Queries the information of the interconnected instances",
-      "output": "DescribeDBInstanceInterResponse"
+      "output": "DescribeDBInstanceInterResponse",
+      "status": "online"
     },
     "DescribeDBInstances": {
       "document": "This API is used to query the list of instances.",
       "input": "DescribeDBInstancesRequest",
       "name": "Queries the list of instances",
-      "output": "DescribeDBInstancesResponse"
+      "output": "DescribeDBInstancesResponse",
+      "status": "online"
     },
     "DescribeDBs": {
       "document": "This API is used to query the list of databases",
       "input": "DescribeDBsRequest",
       "name": "Queries the list of databases",
-      "output": "DescribeDBsResponse"
+      "output": "DescribeDBsResponse",
+      "status": "online"
     },
     "DescribeDBsNormal": {
       "document": "This API is used to query database configurations. It does not return information of the accounts that have permissions to operate the database.",
       "input": "DescribeDBsNormalRequest",
       "name": "Queries database configurations",
-      "output": "DescribeDBsNormalResponse"
+      "output": "DescribeDBsNormalResponse",
+      "status": "online"
     },
     "DescribeFlowStatus": {
       "document": "This API is used to query flow status.",
       "input": "DescribeFlowStatusRequest",
       "name": "Queries flow status",
-      "output": "DescribeFlowStatusResponse"
+      "output": "DescribeFlowStatusResponse",
+      "status": "online"
     },
     "DescribeIncrementalMigration": {
       "document": "This API is used to query an incremental backup import task.",
       "input": "DescribeIncrementalMigrationRequest",
       "name": "Queries incremental backup import tasks",
-      "output": "DescribeIncrementalMigrationResponse"
+      "output": "DescribeIncrementalMigrationResponse",
+      "status": "online"
     },
     "DescribeInstanceParamRecords": {
       "document": "This API is used to query the parameter modification records of an instance.",
       "input": "DescribeInstanceParamRecordsRequest",
       "name": "Queries instance parameter modification records",
-      "output": "DescribeInstanceParamRecordsResponse"
+      "output": "DescribeInstanceParamRecordsResponse",
+      "status": "online"
     },
     "DescribeInstanceParams": {
       "document": "This API is used to query the parameter list of an instance.",
       "input": "DescribeInstanceParamsRequest",
       "name": "Queries the configurable parameter list of an instance",
-      "output": "DescribeInstanceParamsResponse"
+      "output": "DescribeInstanceParamsResponse",
+      "status": "online"
     },
     "DescribeMigrationDetail": {
       "document": "This API is used to query migration task details.",
       "input": "DescribeMigrationDetailRequest",
       "name": "Queries migration task details",
-      "output": "DescribeMigrationDetailResponse"
+      "output": "DescribeMigrationDetailResponse",
+      "status": "online"
     },
     "DescribeMigrations": {
       "document": "This API is used to query the list of eligible migration tasks based on the entered criteria.",
       "input": "DescribeMigrationsRequest",
       "name": "Queries the list of migration tasks",
-      "output": "DescribeMigrationsResponse"
+      "output": "DescribeMigrationsResponse",
+      "status": "online"
     },
     "DescribeOrders": {
       "document": "This API is used to query order information.",
       "input": "DescribeOrdersRequest",
       "name": "Queries order information",
-      "output": "DescribeOrdersResponse"
+      "output": "DescribeOrdersResponse",
+      "status": "online"
     },
     "DescribeProductConfig": {
       "document": "This API is used to query purchasable specification configuration.",
       "input": "DescribeProductConfigRequest",
       "name": "Queries purchasable specification configuration",
-      "output": "DescribeProductConfigResponse"
+      "output": "DescribeProductConfigResponse",
+      "status": "online"
     },
     "DescribeRegions": {
       "document": "This API is used to query purchasable regions.",
       "input": "DescribeRegionsRequest",
       "name": "Queries purchasable regions",
-      "output": "DescribeRegionsResponse"
+      "output": "DescribeRegionsResponse",
+      "status": "online"
     },
     "DescribeRollbackTime": {
       "document": "This API is used to query the time range available for instance rollback.",
       "input": "DescribeRollbackTimeRequest",
       "name": "Queries time range available for instance rollback",
-      "output": "DescribeRollbackTimeResponse"
+      "output": "DescribeRollbackTimeResponse",
+      "status": "online"
     },
     "DescribeSlowlogs": {
       "document": "This API is used to get file information of slow query logs.",
       "input": "DescribeSlowlogsRequest",
       "name": "Gets file information of slow query logs",
-      "output": "DescribeSlowlogsResponse"
+      "output": "DescribeSlowlogsResponse",
+      "status": "online"
     },
     "DescribeUploadBackupInfo": {
       "document": "This API is used to query a backup upload permission.",
       "input": "DescribeUploadBackupInfoRequest",
       "name": "Queries backup upload permissions.",
-      "output": "DescribeUploadBackupInfoResponse"
+      "output": "DescribeUploadBackupInfoResponse",
+      "status": "online"
     },
     "DescribeZones": {
       "document": "This API is used to query currently purchasable AZs.",
       "input": "DescribeZonesRequest",
       "name": "Queries purchasable AZs",
-      "output": "DescribeZonesResponse"
+      "output": "DescribeZonesResponse",
+      "status": "online"
     },
     "InquiryPriceCreateDBInstances": {
       "document": "This API is used to query the price of requested instances.",
       "input": "InquiryPriceCreateDBInstancesRequest",
       "name": "Queries the price of requested instances",
-      "output": "InquiryPriceCreateDBInstancesResponse"
+      "output": "InquiryPriceCreateDBInstancesResponse",
+      "status": "online"
     },
     "InquiryPriceUpgradeDBInstance": {
       "document": "This API is used to query the upgrade price of an instance.",
       "input": "InquiryPriceUpgradeDBInstanceRequest",
       "name": "Queries upgrade price of instance",
-      "output": "InquiryPriceUpgradeDBInstanceResponse"
+      "output": "InquiryPriceUpgradeDBInstanceResponse",
+      "status": "online"
     },
     "ModifyAccountPrivilege": {
       "document": "This API is used to modify instance account permissions.",
       "input": "ModifyAccountPrivilegeRequest",
       "name": "Modifies instance account permissions",
-      "output": "ModifyAccountPrivilegeResponse"
+      "output": "ModifyAccountPrivilegeResponse",
+      "status": "online"
     },
     "ModifyAccountRemark": {
       "document": "This API is used to modify account remarks.",
       "input": "ModifyAccountRemarkRequest",
       "name": "Modifies account remarks",
-      "output": "ModifyAccountRemarkResponse"
+      "output": "ModifyAccountRemarkResponse",
+      "status": "online"
     },
     "ModifyBackupMigration": {
       "document": "This API is used to modify a backup import task.",
       "input": "ModifyBackupMigrationRequest",
       "name": "Modifies backup import tasks",
-      "output": "ModifyBackupMigrationResponse"
+      "output": "ModifyBackupMigrationResponse",
+      "status": "online"
     },
     "ModifyBackupStrategy": {
       "document": "This API is used to modify the backup policy.",
       "input": "ModifyBackupStrategyRequest",
       "name": "Modifies backup policy",
-      "output": "ModifyBackupStrategyResponse"
+      "output": "ModifyBackupStrategyResponse",
+      "status": "online"
     },
     "ModifyDBInstanceName": {
       "document": "This API is used to rename an instance.",
       "input": "ModifyDBInstanceNameRequest",
       "name": "Renames instance",
-      "output": "ModifyDBInstanceNameResponse"
+      "output": "ModifyDBInstanceNameResponse",
+      "status": "online"
     },
     "ModifyDBInstanceNetwork": {
       "document": "This API is used to switch a running instance from a VPC to another.",
       "input": "ModifyDBInstanceNetworkRequest",
       "name": "Changes instance network",
-      "output": "ModifyDBInstanceNetworkResponse"
+      "output": "ModifyDBInstanceNetworkResponse",
+      "status": "online"
     },
     "ModifyDBInstanceProject": {
       "document": "This API is used to modify the project to which a database instance belongs.",
       "input": "ModifyDBInstanceProjectRequest",
       "name": "Modifies project to which database instance belongs",
-      "output": "ModifyDBInstanceProjectResponse"
+      "output": "ModifyDBInstanceProjectResponse",
+      "status": "online"
     },
     "ModifyDBName": {
       "document": "This API is used to rename a database.",
       "input": "ModifyDBNameRequest",
       "name": "Rename database",
-      "output": "ModifyDBNameResponse"
+      "output": "ModifyDBNameResponse",
+      "status": "online"
     },
     "ModifyDBRemark": {
       "document": "This API is used to modify database remarks.",
       "input": "ModifyDBRemarkRequest",
       "name": "Modifies database remarks",
-      "output": "ModifyDBRemarkResponse"
+      "output": "ModifyDBRemarkResponse",
+      "status": "online"
     },
     "ModifyDatabaseCDC": {
       "document": "This API is used to enable or disable the change data capture (CDC) feature.",
       "input": "ModifyDatabaseCDCRequest",
       "name": "Enables/Disables CDC",
-      "output": "ModifyDatabaseCDCResponse"
+      "output": "ModifyDatabaseCDCResponse",
+      "status": "online"
     },
     "ModifyDatabaseCT": {
       "document": "This API is used to enable or disable the change tracking (CT) feature.",
       "input": "ModifyDatabaseCTRequest",
       "name": "Enables/Disables CT",
-      "output": "ModifyDatabaseCTResponse"
+      "output": "ModifyDatabaseCTResponse",
+      "status": "online"
     },
     "ModifyDatabaseMdf": {
       "document": "This API is used to shrink database MDF files.",
       "input": "ModifyDatabaseMdfRequest",
       "name": "Shrinks database MDF files",
-      "output": "ModifyDatabaseMdfResponse"
+      "output": "ModifyDatabaseMdfResponse",
+      "status": "online"
     },
     "ModifyIncrementalMigration": {
       "document": "This API is used to modify an incremental backup import task.",
       "input": "ModifyIncrementalMigrationRequest",
       "name": "Modifies incremental backup import tasks.",
-      "output": "ModifyIncrementalMigrationResponse"
+      "output": "ModifyIncrementalMigrationResponse",
+      "status": "online"
     },
     "ModifyInstanceParam": {
       "document": "This API is used to modify instance parameters.\n<b>Note</b>: if <b>the instance needs to be restarted</b> for the modified parameter to take effect, <b>it will be restarted</b> immediately or during the maintenance time according to the `WaitSwitch` parameter.\nBefore you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.",
       "input": "ModifyInstanceParamRequest",
       "name": "Modifies instance parameters",
-      "output": "ModifyInstanceParamResponse"
+      "output": "ModifyInstanceParamResponse",
+      "status": "online"
     },
     "ModifyMigration": {
       "document": "This API is used to modify an existing migration task.",
       "input": "ModifyMigrationRequest",
       "name": "Modifies migration task",
-      "output": "ModifyMigrationResponse"
+      "output": "ModifyMigrationResponse",
+      "status": "online"
     },
     "OpenInterCommunication": {
       "document": "This API is used to enable instance interconnection, which can interconnect business intelligence services.",
       "input": "OpenInterCommunicationRequest",
       "name": "Enables instance interconnection",
-      "output": "OpenInterCommunicationResponse"
+      "output": "OpenInterCommunicationResponse",
+      "status": "online"
     },
     "RecycleDBInstance": {
       "document": "This API is used to return a deactivated SQL Server instance.",
       "input": "RecycleDBInstanceRequest",
       "name": "Returns a deactivated SQL Server instance",
-      "output": "RecycleDBInstanceResponse"
+      "output": "RecycleDBInstanceResponse",
+      "status": "online"
     },
     "ResetAccountPassword": {
       "document": "This API is used to reset the account password of an instance.",
       "input": "ResetAccountPasswordRequest",
       "name": "Resets account password",
-      "output": "ResetAccountPasswordResponse"
+      "output": "ResetAccountPasswordResponse",
+      "status": "online"
     },
     "RestartDBInstance": {
       "document": "This API is used to restart a database instance.",
       "input": "RestartDBInstanceRequest",
       "name": "Restarts instance",
-      "output": "RestartDBInstanceResponse"
+      "output": "RestartDBInstanceResponse",
+      "status": "online"
     },
     "RestoreInstance": {
       "document": "This API is used to restore an instance from a backup file.",
       "input": "RestoreInstanceRequest",
       "name": "Restores instance from backup file",
-      "output": "RestoreInstanceResponse"
+      "output": "RestoreInstanceResponse",
+      "status": "online"
     },
     "RollbackInstance": {
       "document": "This API is used to roll back an instance.",
       "input": "RollbackInstanceRequest",
       "name": "Rolls back instance",
-      "output": "RollbackInstanceResponse"
+      "output": "RollbackInstanceResponse",
+      "status": "online"
     },
     "RunMigration": {
       "document": "This API is used to start running a migration task.",
       "input": "RunMigrationRequest",
       "name": "Runs migration task",
-      "output": "RunMigrationResponse"
+      "output": "RunMigrationResponse",
+      "status": "online"
     },
     "StartBackupMigration": {
       "document": "This API is used to start a backup import task.",
       "input": "StartBackupMigrationRequest",
       "name": "Starts backup import tasks",
-      "output": "StartBackupMigrationResponse"
+      "output": "StartBackupMigrationResponse",
+      "status": "online"
     },
     "StartIncrementalMigration": {
       "document": "This API is used to start an incremental backup import task.",
       "input": "StartIncrementalMigrationRequest",
       "name": "Starts incremental backup import tasks",
-      "output": "StartIncrementalMigrationResponse"
+      "output": "StartIncrementalMigrationResponse",
+      "status": "online"
     },
     "TerminateDBInstance": {
       "document": "This API is used to isolate an instance to move it into a recycle bin.",
       "input": "TerminateDBInstanceRequest",
       "name": "Isolates an instance",
-      "output": "TerminateDBInstanceResponse"
+      "output": "TerminateDBInstanceResponse",
+      "status": "online"
     },
     "UpgradeDBInstance": {
       "document": "This API is used to upgrade an instance.",
       "input": "UpgradeDBInstanceRequest",
       "name": "Upgrades instance",
-      "output": "UpgradeDBInstanceResponse"
+      "output": "UpgradeDBInstanceResponse",
+      "status": "online"
     }
   },
   "metadata": {

@@ -4,67 +4,78 @@
       "document": "This API is used to bind an LVB domain name to a channel.",
       "input": "BindNewLVBDomainWithChannelRequest",
       "name": "Binds an LVB domain name to a channel",
-      "output": "BindNewLVBDomainWithChannelResponse"
+      "output": "BindNewLVBDomainWithChannelResponse",
+      "status": "online"
     },
     "CreateStreamPackageChannel": {
       "document": "This API is used to create a StreamPackage channel.",
       "input": "CreateStreamPackageChannelRequest",
       "name": "Creates a channel",
-      "output": "CreateStreamPackageChannelResponse"
+      "output": "CreateStreamPackageChannelResponse",
+      "status": "online"
     },
     "CreateStreamPackageChannelEndpoint": {
       "document": "This API is used to create an endpoint on a StreamPackage channel.",
       "input": "CreateStreamPackageChannelEndpointRequest",
       "name": "Creates a channel endpoint",
-      "output": "CreateStreamPackageChannelEndpointResponse"
+      "output": "CreateStreamPackageChannelEndpointResponse",
+      "status": "online"
     },
     "DeleteStreamPackageChannelEndpoints": {
       "document": "This API is used to delete endpoints from a StreamPackage channel in batches.",
       "input": "DeleteStreamPackageChannelEndpointsRequest",
       "name": "Deletes channel endpoints in batches",
-      "output": "DeleteStreamPackageChannelEndpointsResponse"
+      "output": "DeleteStreamPackageChannelEndpointsResponse",
+      "status": "online"
     },
     "DeleteStreamPackageChannels": {
       "document": "This API is used to delete StreamPackage channels in batches.",
       "input": "DeleteStreamPackageChannelsRequest",
       "name": "Deletes channels in batches",
-      "output": "DeleteStreamPackageChannelsResponse"
+      "output": "DeleteStreamPackageChannelsResponse",
+      "status": "online"
     },
     "DescribeStreamPackageChannel": {
       "document": "This API is used to query the information of a StreamPackage channel.",
       "input": "DescribeStreamPackageChannelRequest",
       "name": "Queries a channel",
-      "output": "DescribeStreamPackageChannelResponse"
+      "output": "DescribeStreamPackageChannelResponse",
+      "status": "online"
     },
     "DescribeStreamPackageChannels": {
       "document": "This API is used to query the information of multiple StreamPackage channels.",
       "input": "DescribeStreamPackageChannelsRequest",
       "name": "Queries multiple channels",
-      "output": "DescribeStreamPackageChannelsResponse"
+      "output": "DescribeStreamPackageChannelsResponse",
+      "status": "online"
     },
     "ModifyStreamPackageChannel": {
       "document": "This API is used to modify a StreamPackage channel.",
       "input": "ModifyStreamPackageChannelRequest",
       "name": "Modifies a channel",
-      "output": "ModifyStreamPackageChannelResponse"
+      "output": "ModifyStreamPackageChannelResponse",
+      "status": "online"
     },
     "ModifyStreamPackageChannelEndpoint": {
       "document": "This API is used to modify an endpoint of a StreamPackage channel.",
       "input": "ModifyStreamPackageChannelEndpointRequest",
       "name": "Modifies a channel endpoint",
-      "output": "ModifyStreamPackageChannelEndpointResponse"
+      "output": "ModifyStreamPackageChannelEndpointResponse",
+      "status": "online"
     },
     "ModifyStreamPackageChannelInputAuthInfo": {
       "document": "This API is used to modify the input authentication information of a StreamPackage channel.",
       "input": "ModifyStreamPackageChannelInputAuthInfoRequest",
       "name": "Modifies the input authentication information of a channel",
-      "output": "ModifyStreamPackageChannelInputAuthInfoResponse"
+      "output": "ModifyStreamPackageChannelInputAuthInfoResponse",
+      "status": "online"
     },
     "UnbindCdnDomainWithChannel": {
       "document": "This API is used to unbind a CDN playback domain name from a channel.",
       "input": "UnbindCdnDomainWithChannelRequest",
       "name": "Unbinds a CDN playback domain name from a channel",
-      "output": "UnbindCdnDomainWithChannelResponse"
+      "output": "UnbindCdnDomainWithChannelResponse",
+      "status": "online"
     }
   },
   "metadata": {

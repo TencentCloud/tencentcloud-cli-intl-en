@@ -4,229 +4,267 @@
       "document": "This API is used to complete a data migration task.\nFor tasks in incremental migration mode, you need to call this API before migration gets ready for completion to stop migrating incremental data.\nIf the task status queried through the `DescribeMigrationJobs` API is ready (`Status` = `readyComplete), you can call this API to complete the migration task.\n",
       "input": "CompleteMigrateJobRequest",
       "name": "Completes a data migration task",
-      "output": "CompleteMigrateJobResponse"
+      "output": "CompleteMigrateJobResponse",
+      "status": "online"
     },
     "ConfigureSyncJob": {
       "document": "This API is used to configure a sync task.",
       "input": "ConfigureSyncJobRequest",
       "name": "Configures a sync task",
-      "output": "ConfigureSyncJobResponse"
+      "output": "ConfigureSyncJobResponse",
+      "status": "online"
     },
     "CreateCheckSyncJob": {
       "document": "This API is used to verify a sync task by checking required parameters and peripheral configuration.",
       "input": "CreateCheckSyncJobRequest",
       "name": "Verifies a sync task",
-      "output": "CreateCheckSyncJobResponse"
+      "output": "CreateCheckSyncJobResponse",
+      "status": "online"
     },
     "CreateCompareTask": {
       "document": "This API is used to create a data consistency check task. After the task is successfully created, its ID will be returned in the format of `dts-8yv4w2i1-cmp-37skmii9`, and you can call `StartCompare` to start it.",
       "input": "CreateCompareTaskRequest",
       "name": "Creates a data consistency check task",
-      "output": "CreateCompareTaskResponse"
+      "output": "CreateCompareTaskResponse",
+      "status": "online"
     },
     "CreateMigrateCheckJob": {
       "document": "This API is used to verify a migration task.\nBefore migration, you should call this API to create a check task. Migration will start only if the check succeeds. You can view the check result through the `DescribeMigrationCheckJob` API.\nAfter successful check, if the migration task needs to be modified, a new check task should be created, and migration will start only after the new check succeeds.\n",
       "input": "CreateMigrateCheckJobRequest",
       "name": "Verifies a migration task",
-      "output": "CreateMigrateCheckJobResponse"
+      "output": "CreateMigrateCheckJobResponse",
+      "status": "online"
     },
     "CreateMigrationService": {
       "document": "This API is used to purchase migration tasks. After the tasks are purchased successfully, a randomly generated list of task IDs will be returned. You can also call the `DescribeMigrationJobs` API to query the IDs of the successfully purchased tasks. Note that once a task is purchased successfully, the types and regions of the source and target databases cannot be changed.",
       "input": "CreateMigrationServiceRequest",
       "name": "Purchases a migration task",
-      "output": "CreateMigrationServiceResponse"
+      "output": "CreateMigrationServiceResponse",
+      "status": "online"
     },
     "CreateSyncJob": {
       "document": "This API is used to create a sync task.",
       "input": "CreateSyncJobRequest",
       "name": "Creates a sync task",
-      "output": "CreateSyncJobResponse"
+      "output": "CreateSyncJobResponse",
+      "status": "online"
     },
     "DeleteCompareTask": {
       "document": "This API is used to delete a data consistency check task, which can be called when the task status is `success`, `failed`, or `canceled`.",
       "input": "DeleteCompareTaskRequest",
       "name": "Deletes a data consistency check task",
-      "output": "DeleteCompareTaskResponse"
+      "output": "DeleteCompareTaskResponse",
+      "status": "online"
     },
     "DescribeCheckSyncJobResult": {
       "document": "This API is used to query the result of a sync check task.",
       "input": "DescribeCheckSyncJobResultRequest",
       "name": "Queries the result of a sync check task",
-      "output": "DescribeCheckSyncJobResultResponse"
+      "output": "DescribeCheckSyncJobResultResponse",
+      "status": "online"
     },
     "DescribeCompareReport": {
       "document": "This API is used to query the details of a data consistency check task.",
       "input": "DescribeCompareReportRequest",
       "name": "Queries the details of a data consistency check task",
-      "output": "DescribeCompareReportResponse"
+      "output": "DescribeCompareReportResponse",
+      "status": "online"
     },
     "DescribeCompareTasks": {
       "document": "This API is used to query the list of data consistency check tasks under the current task.",
       "input": "DescribeCompareTasksRequest",
       "name": "Queries the list of data consistency check tasks",
-      "output": "DescribeCompareTasksResponse"
+      "output": "DescribeCompareTasksResponse",
+      "status": "online"
     },
     "DescribeMigrateDBInstances": {
       "document": "This API is used to query migratable database instances.",
       "input": "DescribeMigrateDBInstancesRequest",
       "name": "Queries the list of migratable database instances",
-      "output": "DescribeMigrateDBInstancesResponse"
+      "output": "DescribeMigrateDBInstancesResponse",
+      "status": "online"
     },
     "DescribeMigrationCheckJob": {
       "document": "This API is used to get the check result and query the check status and progress after a check is created. \nIf the check succeeds, you can call the `StartMigrateJob` API to start migration.\nIf the check fails, the cause can be queried. Modify the migration configuration or adjust relevant parameters of the source/target instances through the `ModifyMigrationJob` API based on the error message.",
       "input": "DescribeMigrationCheckJobRequest",
       "name": "Queries the result of a migration check task",
-      "output": "DescribeMigrationCheckJobResponse"
+      "output": "DescribeMigrationCheckJobResponse",
+      "status": "online"
     },
     "DescribeMigrationDetail": {
       "document": "This API is used to query the details of a migration task.",
       "input": "DescribeMigrationDetailRequest",
       "name": "Queries the details of a migration task",
-      "output": "DescribeMigrationDetailResponse"
+      "output": "DescribeMigrationDetailResponse",
+      "status": "online"
     },
     "DescribeMigrationJobs": {
       "document": "This API is used to query the list of data migration tasks.",
       "input": "DescribeMigrationJobsRequest",
       "name": "Queries the list of data migration tasks",
-      "output": "DescribeMigrationJobsResponse"
+      "output": "DescribeMigrationJobsResponse",
+      "status": "online"
     },
     "DescribeSyncJobs": {
       "document": "This API is used to query the information of a sync task.",
       "input": "DescribeSyncJobsRequest",
       "name": "Queries the information of a sync task",
-      "output": "DescribeSyncJobsResponse"
+      "output": "DescribeSyncJobsResponse",
+      "status": "online"
     },
     "DestroyMigrateJob": {
       "document": "This API is used to delete a data migration task. For a billed task, you must first call the `IsolateMigrateJob` API to isolate it and make sure that it is in **Isolated** status before calling this API to delete it. For a free task, you can directly call the `IsolateMigrateJob` API to delete it.",
       "input": "DestroyMigrateJobRequest",
       "name": "Deletes a data migration task",
-      "output": "DestroyMigrateJobResponse"
+      "output": "DestroyMigrateJobResponse",
+      "status": "online"
     },
     "DestroySyncJob": {
       "document": "This API is used to delete a sync task. Only tasks in **Isolated** status can be completely deleted. After deletion, you can call the `DescribeSyncJobs` API to get the task list. If the deleted task is not in the list, it is deleted successfully.",
       "input": "DestroySyncJobRequest",
       "name": "Deletes a sync task",
-      "output": "DestroySyncJobResponse"
+      "output": "DestroySyncJobResponse",
+      "status": "online"
     },
     "IsolateMigrateJob": {
       "document": " This API is used to isolate and return a data migration task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status. For a billed task, after isolating it, you can call `RecoverMigrationJob` to recover it or call `DestroyMigrateJob` to delete it. For a free task, calling this API will directly delete it permanently.",
       "input": "IsolateMigrateJobRequest",
       "name": "Isolates a data migration task",
-      "output": "IsolateMigrateJobResponse"
+      "output": "IsolateMigrateJobResponse",
+      "status": "online"
     },
     "IsolateSyncJob": {
       "document": "This API is used to isolate a sync task. After the task is isolated, you can call the `DescribeSyncJobs` API to query its status, call `RecoverSyncJob` to recover it, or directly delete it. For a free task, calling this API will directly delete it permanently.",
       "input": "IsolateSyncJobRequest",
       "name": "Isolates a sync task",
-      "output": "IsolateSyncJobResponse"
+      "output": "IsolateSyncJobResponse",
+      "status": "online"
     },
     "ModifyCompareTask": {
       "document": "This API is used to modify the parameters of a data consistency check task after it is created and before it starts.",
       "input": "ModifyCompareTaskRequest",
       "name": "Modifies a data consistency check task",
-      "output": "ModifyCompareTaskResponse"
+      "output": "ModifyCompareTaskResponse",
+      "status": "online"
     },
     "ModifyCompareTaskName": {
       "document": "This API is used to rename a data consistency check task.",
       "input": "ModifyCompareTaskNameRequest",
       "name": "Renames a data consistency check task",
-      "output": "ModifyCompareTaskNameResponse"
+      "output": "ModifyCompareTaskNameResponse",
+      "status": "online"
     },
     "ModifyMigrateJobSpec": {
       "document": "This API is used to adjust the specification of a pay-as-you-go task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.",
       "input": "ModifyMigrateJobSpecRequest",
       "name": "Adjusts the task specification",
-      "output": "ModifyMigrateJobSpecResponse"
+      "output": "ModifyMigrateJobSpecResponse",
+      "status": "online"
     },
     "ModifyMigrateName": {
       "document": "This API is used to rename a migration task.",
       "input": "ModifyMigrateNameRequest",
       "name": "Renames a migration task",
-      "output": "ModifyMigrateNameResponse"
+      "output": "ModifyMigrateNameResponse",
+      "status": "online"
     },
     "ModifyMigrationJob": {
       "document": "This API is used to configure a migration task. After it is configured successfully, you can call the `CreateMigrationCheckJob` API to create a check task, and only after it passes the check can it be started.",
       "input": "ModifyMigrationJobRequest",
       "name": "Configures a migration task",
-      "output": "ModifyMigrationJobResponse"
+      "output": "ModifyMigrationJobResponse",
+      "status": "online"
     },
     "RecoverMigrateJob": {
       "document": "This API is used to recover a data migration task in **Isolated** status. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.",
       "input": "RecoverMigrateJobRequest",
       "name": "Recovers a data migration task",
-      "output": "RecoverMigrateJobResponse"
+      "output": "RecoverMigrateJobResponse",
+      "status": "online"
     },
     "RecoverSyncJob": {
       "document": "This API is used to recover a sync task in **Isolated** status. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.",
       "input": "RecoverSyncJobRequest",
       "name": "Recovers a sync task",
-      "output": "RecoverSyncJobResponse"
+      "output": "RecoverSyncJobResponse",
+      "status": "online"
     },
     "ResizeSyncJob": {
       "document": "This API is used to adjust the specification of a pay-as-you-go sync task. After this API is called, the backend needs to take about 3-5 minutes to implement the adjustment. You can call the `DescribeSyncJobs` API to query the latest task status.",
       "input": "ResizeSyncJobRequest",
       "name": "Adjusts the specification of a sync task",
-      "output": "ResizeSyncJobResponse"
+      "output": "ResizeSyncJobResponse",
+      "status": "online"
     },
     "ResumeMigrateJob": {
       "document": "This API is used to retry an abnormal or failed Redis data migration task. Note that this operation will skip the check stage and directly start the task, just like by calling `StartMigrationJob`. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.",
       "input": "ResumeMigrateJobRequest",
       "name": "Retries a migration task",
-      "output": "ResumeMigrateJobResponse"
+      "output": "ResumeMigrateJobResponse",
+      "status": "online"
     },
     "ResumeSyncJob": {
       "document": "This API is used to retry a sync task after certain resolvable errors are reported. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.",
       "input": "ResumeSyncJobRequest",
       "name": "Retries a sync task",
-      "output": "ResumeSyncJobResponse"
+      "output": "ResumeSyncJobResponse",
+      "status": "online"
     },
     "SkipCheckItem": {
       "document": "This API is used for the backend to skip a failed check item. Theoretically, to execute a migration task normally, any check step cannot be skipped, and the check must be passed. For products or links that support check item skipping, see [Check Item Overview](https://www.tencentcloud.com/document/product/571/42551).",
       "input": "SkipCheckItemRequest",
       "name": "Skips migration check items",
-      "output": "SkipCheckItemResponse"
+      "output": "SkipCheckItemResponse",
+      "status": "online"
     },
     "SkipSyncCheckItem": {
       "document": "This API is used for the backend to skip a failed check item. Theoretically, to execute a sync task normally, any check step cannot be skipped, and the check must be passed. For products or links that support check item skipping, see [Check Item Overview](https://www.tencentcloud.com/document/product/571/42551).",
       "input": "SkipSyncCheckItemRequest",
       "name": "Skips sync check items",
-      "output": "SkipSyncCheckItemResponse"
+      "output": "SkipSyncCheckItemResponse",
+      "status": "online"
     },
     "StartCompare": {
       "document": "This API is used to start a data consistency check task after creating it by calling the `CreateCompareTask` API. After calling this API, you can call the `DescribeCompareTasks` API to query the latest task status.",
       "input": "StartCompareRequest",
       "name": "Starts a data consistency check task",
-      "output": "StartCompareResponse"
+      "output": "StartCompareResponse",
+      "status": "online"
     },
     "StartMigrateJob": {
       "document": "This API (`StartMigrationJob`) is used to start a migration task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.",
       "input": "StartMigrateJobRequest",
       "name": "Starts a data migration task",
-      "output": "StartMigrateJobResponse"
+      "output": "StartMigrateJobResponse",
+      "status": "online"
     },
     "StartSyncJob": {
       "document": "This API is used to start a sync task.",
       "input": "StartSyncJobRequest",
       "name": "Starts a sync task",
-      "output": "StartSyncJobResponse"
+      "output": "StartSyncJobResponse",
+      "status": "online"
     },
     "StopCompare": {
       "document": "This API is used to stop a data consistency check task.",
       "input": "StopCompareRequest",
       "name": "Stops a data consistency check task",
-      "output": "StopCompareResponse"
+      "output": "StopCompareResponse",
+      "status": "online"
     },
     "StopMigrateJob": {
       "document": "This API is used to stop a data migration task.\nAfter calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.",
       "input": "StopMigrateJobRequest",
       "name": "Stops a data migration task",
-      "output": "StopMigrateJobResponse"
+      "output": "StopMigrateJobResponse",
+      "status": "online"
     },
     "StopSyncJob": {
       "document": "This API is used to stop a sync task. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.",
       "input": "StopSyncJobRequest",
       "name": "Stops a sync task",
-      "output": "StopSyncJobResponse"
+      "output": "StopSyncJobResponse",
+      "status": "online"
     }
   },
   "metadata": {

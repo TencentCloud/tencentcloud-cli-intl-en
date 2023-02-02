@@ -4,85 +4,99 @@
       "document": "This API is used to apply for a free certificate.",
       "input": "ApplyCertificateRequest",
       "name": "Applies for a free certificate",
-      "output": "ApplyCertificateResponse"
+      "output": "ApplyCertificateResponse",
+      "status": "online"
     },
     "CancelCertificateOrder": {
       "document": "This API is used to cancel a certificate order.",
       "input": "CancelCertificateOrderRequest",
       "name": "Cancels a certificate order",
-      "output": "CancelCertificateOrderResponse"
+      "output": "CancelCertificateOrderResponse",
+      "status": "online"
     },
     "CommitCertificateInformation": {
       "document": "This API is used to submit a certificate order.",
       "input": "CommitCertificateInformationRequest",
       "name": "Submits a certificate order",
-      "output": "CommitCertificateInformationResponse"
+      "output": "CommitCertificateInformationResponse",
+      "status": "online"
     },
     "DeleteCertificate": {
       "document": "This API is used to delete a certificate.",
       "input": "DeleteCertificateRequest",
       "name": "Deletes a certificate",
-      "output": "DeleteCertificateResponse"
+      "output": "DeleteCertificateResponse",
+      "status": "online"
     },
     "DescribeCertificate": {
       "document": "This API is used to get certificate information.",
       "input": "DescribeCertificateRequest",
       "name": "Gets certificate information",
-      "output": "DescribeCertificateResponse"
+      "output": "DescribeCertificateResponse",
+      "status": "online"
     },
     "DescribeCertificateDetail": {
       "document": "This API is used to get certificate details.",
       "input": "DescribeCertificateDetailRequest",
       "name": "Gets certificate details",
-      "output": "DescribeCertificateDetailResponse"
+      "output": "DescribeCertificateDetailResponse",
+      "status": "online"
     },
     "DescribeCertificateOperateLogs": {
       "document": "This API is used to get certificate operation logs in the current account.",
       "input": "DescribeCertificateOperateLogsRequest",
       "name": "Gets certificate operation logs",
-      "output": "DescribeCertificateOperateLogsResponse"
+      "output": "DescribeCertificateOperateLogsResponse",
+      "status": "online"
     },
     "DescribeCertificates": {
       "document": "This API is used to get the certificate list.",
       "input": "DescribeCertificatesRequest",
       "name": "Gets the certificate list",
-      "output": "DescribeCertificatesResponse"
+      "output": "DescribeCertificatesResponse",
+      "status": "online"
     },
     "DownloadCertificate": {
       "document": "This API is used to download a certificate.",
       "input": "DownloadCertificateRequest",
       "name": "Downloads a certificate",
-      "output": "DownloadCertificateResponse"
+      "output": "DownloadCertificateResponse",
+      "status": "online"
     },
     "ModifyCertificateAlias": {
       "document": "This API is used to modify a certificate alias by passing in the certificate ID and new alias.",
       "input": "ModifyCertificateAliasRequest",
       "name": "Modifies a certificate alias",
-      "output": "ModifyCertificateAliasResponse"
+      "output": "ModifyCertificateAliasResponse",
+      "status": "online"
     },
     "ModifyCertificateProject": {
       "document": "This API is used to modify the projects of multiple certificates.",
       "input": "ModifyCertificateProjectRequest",
       "name": "Modifies the projects of multiple certificates",
-      "output": "ModifyCertificateProjectResponse"
+      "output": "ModifyCertificateProjectResponse",
+      "status": "online"
     },
     "ReplaceCertificate": {
       "document": "This API is used to reissue a certificate. Note that if you have applied for a free certificate, only an RSA-2048 certificate will be reissued, and the certificate can be reissued only once.",
       "input": "ReplaceCertificateRequest",
       "name": "Reissues a certificate",
-      "output": "ReplaceCertificateResponse"
+      "output": "ReplaceCertificateResponse",
+      "status": "online"
     },
     "SubmitCertificateInformation": {
       "document": "This API is used to submit certificate information.",
       "input": "SubmitCertificateInformationRequest",
       "name": "Submits certificate information",
-      "output": "SubmitCertificateInformationResponse"
+      "output": "SubmitCertificateInformationResponse",
+      "status": "online"
     },
     "UploadCertificate": {
       "document": "This API is used to upload a certificate.",
       "input": "UploadCertificateRequest",
       "name": "Uploads a certificate",
-      "output": "UploadCertificateResponse"
+      "output": "UploadCertificateResponse",
+      "status": "online"
     }
   },
   "metadata": {

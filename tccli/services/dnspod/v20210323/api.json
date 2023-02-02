@@ -4,61 +4,71 @@
       "document": "This API is used to add a domain.\n",
       "input": "CreateDomainRequest",
       "name": "Adds a domain",
-      "output": "CreateDomainResponse"
+      "output": "CreateDomainResponse",
+      "status": "online"
     },
     "CreateRecord": {
       "document": "This API is used to add a record.\n",
       "input": "CreateRecordRequest",
       "name": "Adds a record",
-      "output": "CreateRecordResponse"
+      "output": "CreateRecordResponse",
+      "status": "online"
     },
     "DeleteDomain": {
       "document": "This API is used to delete a domain.\n",
       "input": "DeleteDomainRequest",
       "name": "Deletes a domain",
-      "output": "DeleteDomainResponse"
+      "output": "DeleteDomainResponse",
+      "status": "online"
     },
     "DeleteRecord": {
       "document": "This API is used to delete a record.",
       "input": "DeleteRecordRequest",
       "name": "Deletes a record",
-      "output": "DeleteRecordResponse"
+      "output": "DeleteRecordResponse",
+      "status": "online"
     },
     "DescribeDomain": {
       "document": "This API is used to get the information of a domain.",
       "input": "DescribeDomainRequest",
       "name": "Gets the information of a domain",
-      "output": "DescribeDomainResponse"
+      "output": "DescribeDomainResponse",
+      "status": "online"
     },
     "DescribeRecord": {
       "document": "This API is used to get the information of a record.",
       "input": "DescribeRecordRequest",
       "name": "Gets the information of a record",
-      "output": "DescribeRecordResponse"
+      "output": "DescribeRecordResponse",
+      "status": "online"
     },
     "DescribeRecordList": {
       "document": "This API is used to get the DNS records of a domain.",
       "input": "DescribeRecordListRequest",
       "name": "Gets DNS records of a domain",
-      "output": "DescribeRecordListResponse"
+      "output": "DescribeRecordListResponse",
+      "status": "online"
     },
     "ModifyDomainRemark": {
       "document": "This API is used to set the remarks of a domain.",
       "input": "ModifyDomainRemarkRequest",
       "name": "Sets the remarks of a domain",
-      "output": "ModifyDomainRemarkResponse"
+      "output": "ModifyDomainRemarkResponse",
+      "status": "online"
     },
     "ModifyDomainStatus": {
       "document": "This API is used to modify the status of a domain.",
       "input": "ModifyDomainStatusRequest",
       "name": "Modifies the status of a domain",
-      "output": "ModifyDomainStatusResponse"
+      "output": "ModifyDomainStatusResponse",
+      "status": "online"
     },
     "ModifyRecord": {
       "document": "This API is used to modify a record.",
       "input": "ModifyRecordRequest",
       "name": "Modifies a record",
-      "output": "ModifyRecordResponse"
+      "output": "ModifyRecordResponse",
+      "status": "online"
     }
   },
   "metadata": {

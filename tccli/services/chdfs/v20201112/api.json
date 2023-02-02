@@ -4,175 +4,204 @@
       "document": "This API is used to bind multiple permission groups to a mount point.",
       "input": "AssociateAccessGroupsRequest",
       "name": "Binds permission group list",
-      "output": "AssociateAccessGroupsResponse"
+      "output": "AssociateAccessGroupsResponse",
+      "status": "online"
     },
     "CreateAccessGroup": {
       "document": "This API is used to create a permission group.",
       "input": "CreateAccessGroupRequest",
       "name": "Creates permission group",
-      "output": "CreateAccessGroupResponse"
+      "output": "CreateAccessGroupResponse",
+      "status": "online"
     },
     "CreateAccessRules": {
       "document": "This API is used to batch create permission rules. You don't need to enter the permission rule IDs and creation time.",
       "input": "CreateAccessRulesRequest",
       "name": "Batch creates permission rules",
-      "output": "CreateAccessRulesResponse"
+      "output": "CreateAccessRulesResponse",
+      "status": "online"
     },
     "CreateFileSystem": {
       "document": "This API is used to create a file system (asynchronously).",
       "input": "CreateFileSystemRequest",
       "name": "Creates file system",
-      "output": "CreateFileSystemResponse"
+      "output": "CreateFileSystemResponse",
+      "status": "online"
     },
     "CreateLifeCycleRules": {
       "document": "This API is used to batch create lifecycle rules. You don't need to enter the lifecycle rule IDs and creation time.",
       "input": "CreateLifeCycleRulesRequest",
       "name": "Batch creates lifecycle rules",
-      "output": "CreateLifeCycleRulesResponse"
+      "output": "CreateLifeCycleRulesResponse",
+      "status": "online"
     },
     "CreateMountPoint": {
       "document": "This API is used to create a mount point for a successfully created file system.",
       "input": "CreateMountPointRequest",
       "name": "Creates mount point",
-      "output": "CreateMountPointResponse"
+      "output": "CreateMountPointResponse",
+      "status": "online"
     },
     "CreateRestoreTasks": {
       "document": "This API is used to batch create restoration tasks. You don't need to enter the restoration task IDs, status, and creation time.",
       "input": "CreateRestoreTasksRequest",
       "name": "Batch creates restoration tasks",
-      "output": "CreateRestoreTasksResponse"
+      "output": "CreateRestoreTasksResponse",
+      "status": "online"
     },
     "DeleteAccessGroup": {
       "document": "This API is used to delete a permission group.",
       "input": "DeleteAccessGroupRequest",
       "name": "Deletes permission group",
-      "output": "DeleteAccessGroupResponse"
+      "output": "DeleteAccessGroupResponse",
+      "status": "online"
     },
     "DeleteAccessRules": {
       "document": "This API is used to batch delete permission rules.",
       "input": "DeleteAccessRulesRequest",
       "name": "Batch deletes permission rules",
-      "output": "DeleteAccessRulesResponse"
+      "output": "DeleteAccessRulesResponse",
+      "status": "online"
     },
     "DeleteFileSystem": {
       "document": "This API is used to delete a file system. Non-empty file systems cannot be deleted.",
       "input": "DeleteFileSystemRequest",
       "name": "Deletes file system",
-      "output": "DeleteFileSystemResponse"
+      "output": "DeleteFileSystemResponse",
+      "status": "online"
     },
     "DeleteLifeCycleRules": {
       "document": "This API is used to batch delete lifecycle rules.",
       "input": "DeleteLifeCycleRulesRequest",
       "name": "Batch deletes lifecycle rules",
-      "output": "DeleteLifeCycleRulesResponse"
+      "output": "DeleteLifeCycleRulesResponse",
+      "status": "online"
     },
     "DeleteMountPoint": {
       "document": "This API is used to delete a mount point.",
       "input": "DeleteMountPointRequest",
       "name": "Deletes mount point",
-      "output": "DeleteMountPointResponse"
+      "output": "DeleteMountPointResponse",
+      "status": "online"
     },
     "DescribeAccessGroup": {
       "document": "This API is used to view the details of a permission group.",
       "input": "DescribeAccessGroupRequest",
       "name": "Views permission group details",
-      "output": "DescribeAccessGroupResponse"
+      "output": "DescribeAccessGroupResponse",
+      "status": "online"
     },
     "DescribeAccessGroups": {
       "document": "This API is used to view the list of permission groups.",
       "input": "DescribeAccessGroupsRequest",
       "name": "Views permission group list",
-      "output": "DescribeAccessGroupsResponse"
+      "output": "DescribeAccessGroupsResponse",
+      "status": "online"
     },
     "DescribeAccessRules": {
       "document": "This API is used to view the list of permission rules by permission group ID.",
       "input": "DescribeAccessRulesRequest",
       "name": "Views permission rule list",
-      "output": "DescribeAccessRulesResponse"
+      "output": "DescribeAccessRulesResponse",
+      "status": "online"
     },
     "DescribeFileSystem": {
       "document": "This API is used to view the details of a file system.",
       "input": "DescribeFileSystemRequest",
       "name": "Views file system details",
-      "output": "DescribeFileSystemResponse"
+      "output": "DescribeFileSystemResponse",
+      "status": "online"
     },
     "DescribeFileSystems": {
       "document": "This API is used to view the list of file systems.",
       "input": "DescribeFileSystemsRequest",
       "name": "Views file system list",
-      "output": "DescribeFileSystemsResponse"
+      "output": "DescribeFileSystemsResponse",
+      "status": "online"
     },
     "DescribeLifeCycleRules": {
       "document": "This API is used to view the list of lifecycle rules by file system ID.",
       "input": "DescribeLifeCycleRulesRequest",
       "name": "Views lifecycle rule list",
-      "output": "DescribeLifeCycleRulesResponse"
+      "output": "DescribeLifeCycleRulesResponse",
+      "status": "online"
     },
     "DescribeMountPoint": {
       "document": "This API is used to view the details of a mount point.",
       "input": "DescribeMountPointRequest",
       "name": "Views mount point details",
-      "output": "DescribeMountPointResponse"
+      "output": "DescribeMountPointResponse",
+      "status": "online"
     },
     "DescribeMountPoints": {
       "document": "This API is used to view the list of mount points.",
       "input": "DescribeMountPointsRequest",
       "name": "Views mount point list",
-      "output": "DescribeMountPointsResponse"
+      "output": "DescribeMountPointsResponse",
+      "status": "online"
     },
     "DescribeResourceTags": {
       "document": "This API is used to view the list of resource tags by file system ID.",
       "input": "DescribeResourceTagsRequest",
       "name": "Views resource tag list",
-      "output": "DescribeResourceTagsResponse"
+      "output": "DescribeResourceTagsResponse",
+      "status": "online"
     },
     "DescribeRestoreTasks": {
       "document": "This API is used to view the list of restoration tasks by file system ID.",
       "input": "DescribeRestoreTasksRequest",
       "name": "Views restoration task list",
-      "output": "DescribeRestoreTasksResponse"
+      "output": "DescribeRestoreTasksResponse",
+      "status": "online"
     },
     "DisassociateAccessGroups": {
       "document": "This API is used to unbind multiple permission groups from a mount point.",
       "input": "DisassociateAccessGroupsRequest",
       "name": "Unbinds permission group list",
-      "output": "DisassociateAccessGroupsResponse"
+      "output": "DisassociateAccessGroupsResponse",
+      "status": "online"
     },
     "ModifyAccessGroup": {
       "document": "This API is used to modify the attributes of a permission group.",
       "input": "ModifyAccessGroupRequest",
       "name": "Modifies permission group attributes",
-      "output": "ModifyAccessGroupResponse"
+      "output": "ModifyAccessGroupResponse",
+      "status": "online"
     },
     "ModifyAccessRules": {
       "document": "This API is used to batch modify the attributes of permission rules, such as address, access mode, and priority. You must specify the permission rule IDs.",
       "input": "ModifyAccessRulesRequest",
       "name": "Batch modifies the attributes of permission rules",
-      "output": "ModifyAccessRulesResponse"
+      "output": "ModifyAccessRulesResponse",
+      "status": "online"
     },
     "ModifyFileSystem": {
       "document": "This API is used to modify the attributes of a successfully created file system.",
       "input": "ModifyFileSystemRequest",
       "name": "Modifies file system attributes",
-      "output": "ModifyFileSystemResponse"
+      "output": "ModifyFileSystemResponse",
+      "status": "online"
     },
     "ModifyLifeCycleRules": {
       "document": "This API is used to batch modify the attributes of lifecycle rules, such as name, path, transition list, and status. You must specify the lifecycle rule IDs.",
       "input": "ModifyLifeCycleRulesRequest",
       "name": "Batch modifies the attributes of lifecycle rules",
-      "output": "ModifyLifeCycleRulesResponse"
+      "output": "ModifyLifeCycleRulesResponse",
+      "status": "online"
     },
     "ModifyMountPoint": {
       "document": "This API is used to modify the attributes of a mount point.",
       "input": "ModifyMountPointRequest",
       "name": "Modifies mount point attributes",
-      "output": "ModifyMountPointResponse"
+      "output": "ModifyMountPointResponse",
+      "status": "online"
     },
     "ModifyResourceTags": {
       "document": "This API is used to modify the list of resource tags by overwriting them all.",
       "input": "ModifyResourceTagsRequest",
       "name": "Modifies resource tag list",
-      "output": "ModifyResourceTagsResponse"
+      "output": "ModifyResourceTagsResponse",
+      "status": "online"
     }
   },
   "metadata": {

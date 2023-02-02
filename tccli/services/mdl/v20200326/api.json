@@ -4,187 +4,218 @@
       "document": "This API is used to create a StreamLive channel.",
       "input": "CreateStreamLiveChannelRequest",
       "name": "Creates a StreamLive channel",
-      "output": "CreateStreamLiveChannelResponse"
+      "output": "CreateStreamLiveChannelResponse",
+      "status": "online"
     },
     "CreateStreamLiveInput": {
       "document": "This API is used to create a StreamLive input.",
       "input": "CreateStreamLiveInputRequest",
       "name": "Creates a StreamLive input",
-      "output": "CreateStreamLiveInputResponse"
+      "output": "CreateStreamLiveInputResponse",
+      "status": "online"
     },
     "CreateStreamLiveInputSecurityGroup": {
       "document": "This API is used to create an input security group. Up to 5 security groups are allowed.",
       "input": "CreateStreamLiveInputSecurityGroupRequest",
       "name": "Creates an input security group",
-      "output": "CreateStreamLiveInputSecurityGroupResponse"
+      "output": "CreateStreamLiveInputSecurityGroupResponse",
+      "status": "online"
     },
     "CreateStreamLivePlan": {
       "document": "This API is used to create an event in the plan.",
       "input": "CreateStreamLivePlanRequest",
       "name": "Creates an event in the plan",
-      "output": "CreateStreamLivePlanResponse"
+      "output": "CreateStreamLivePlanResponse",
+      "status": "online"
     },
     "CreateStreamLiveWatermark": {
       "document": "This API is used to add a watermark.",
       "input": "CreateStreamLiveWatermarkRequest",
       "name": "Adds a watermark",
-      "output": "CreateStreamLiveWatermarkResponse"
+      "output": "CreateStreamLiveWatermarkResponse",
+      "status": "online"
     },
     "DeleteStreamLiveChannel": {
       "document": "This API is used to delete a StreamLive channel.",
       "input": "DeleteStreamLiveChannelRequest",
       "name": "Deletes a StreamLive channel",
-      "output": "DeleteStreamLiveChannelResponse"
+      "output": "DeleteStreamLiveChannelResponse",
+      "status": "online"
     },
     "DeleteStreamLiveInput": {
       "document": "This API is used to delete a StreamLive input.",
       "input": "DeleteStreamLiveInputRequest",
       "name": "Deletes a StreamLive input",
-      "output": "DeleteStreamLiveInputResponse"
+      "output": "DeleteStreamLiveInputResponse",
+      "status": "online"
     },
     "DeleteStreamLiveInputSecurityGroup": {
       "document": "This API is used to delete an input security group.",
       "input": "DeleteStreamLiveInputSecurityGroupRequest",
       "name": "Deletes an input security group",
-      "output": "DeleteStreamLiveInputSecurityGroupResponse"
+      "output": "DeleteStreamLiveInputSecurityGroupResponse",
+      "status": "online"
     },
     "DeleteStreamLivePlan": {
       "document": "This API is used to delete a StreamLive event.",
       "input": "DeleteStreamLivePlanRequest",
       "name": "Deletes a StreamLive event",
-      "output": "DeleteStreamLivePlanResponse"
+      "output": "DeleteStreamLivePlanResponse",
+      "status": "online"
     },
     "DeleteStreamLiveWatermark": {
       "document": "This API is used to delete a watermark.",
       "input": "DeleteStreamLiveWatermarkRequest",
       "name": "Deletes a watermark",
-      "output": "DeleteStreamLiveWatermarkResponse"
+      "output": "DeleteStreamLiveWatermarkResponse",
+      "status": "online"
     },
     "DescribeStreamLiveChannel": {
       "document": "This API is used to query a StreamLive channel.",
       "input": "DescribeStreamLiveChannelRequest",
       "name": "Queries a StreamLive channel",
-      "output": "DescribeStreamLiveChannelResponse"
+      "output": "DescribeStreamLiveChannelResponse",
+      "status": "online"
     },
     "DescribeStreamLiveChannelAlerts": {
       "document": "This API is used to query the alarm information of a StreamLive channel.",
       "input": "DescribeStreamLiveChannelAlertsRequest",
       "name": "Queries the alarm information of a StreamLive channel",
-      "output": "DescribeStreamLiveChannelAlertsResponse"
+      "output": "DescribeStreamLiveChannelAlertsResponse",
+      "status": "online"
     },
     "DescribeStreamLiveChannelInputStatistics": {
       "document": "This API is used to query input statistics.",
       "input": "DescribeStreamLiveChannelInputStatisticsRequest",
       "name": "Queries input statistics",
-      "output": "DescribeStreamLiveChannelInputStatisticsResponse"
+      "output": "DescribeStreamLiveChannelInputStatisticsResponse",
+      "status": "online"
     },
     "DescribeStreamLiveChannelLogs": {
       "document": "This API is used to query StreamLive channel logs, such as push event logs.",
       "input": "DescribeStreamLiveChannelLogsRequest",
       "name": "Queries StreamLive channel logs",
-      "output": "DescribeStreamLiveChannelLogsResponse"
+      "output": "DescribeStreamLiveChannelLogsResponse",
+      "status": "online"
     },
     "DescribeStreamLiveChannelOutputStatistics": {
       "document": "This API is used to query the output statistics of a StreamLive channel.",
       "input": "DescribeStreamLiveChannelOutputStatisticsRequest",
       "name": "Queries the output statistics of a StreamLive channel",
-      "output": "DescribeStreamLiveChannelOutputStatisticsResponse"
+      "output": "DescribeStreamLiveChannelOutputStatisticsResponse",
+      "status": "online"
     },
     "DescribeStreamLiveChannels": {
       "document": "This API is used to query StreamLive channels in batches.",
       "input": "DescribeStreamLiveChannelsRequest",
       "name": "Queries StreamLive channels in batches",
-      "output": "DescribeStreamLiveChannelsResponse"
+      "output": "DescribeStreamLiveChannelsResponse",
+      "status": "online"
     },
     "DescribeStreamLiveInput": {
       "document": "This API is used to query a StreamLive input.",
       "input": "DescribeStreamLiveInputRequest",
       "name": "Queries a StreamLive input",
-      "output": "DescribeStreamLiveInputResponse"
+      "output": "DescribeStreamLiveInputResponse",
+      "status": "online"
     },
     "DescribeStreamLiveInputSecurityGroup": {
       "document": "This API is used to query an input security group.",
       "input": "DescribeStreamLiveInputSecurityGroupRequest",
       "name": "Queries an input security group",
-      "output": "DescribeStreamLiveInputSecurityGroupResponse"
+      "output": "DescribeStreamLiveInputSecurityGroupResponse",
+      "status": "online"
     },
     "DescribeStreamLiveInputSecurityGroups": {
       "document": "This API is used to query input security groups in batches.",
       "input": "DescribeStreamLiveInputSecurityGroupsRequest",
       "name": "Queries input security groups in batches",
-      "output": "DescribeStreamLiveInputSecurityGroupsResponse"
+      "output": "DescribeStreamLiveInputSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeStreamLiveInputs": {
       "document": "This API is used to query StreamLive inputs in batches.",
       "input": "DescribeStreamLiveInputsRequest",
       "name": "Queries StreamLive inputs in batches",
-      "output": "DescribeStreamLiveInputsResponse"
+      "output": "DescribeStreamLiveInputsResponse",
+      "status": "online"
     },
     "DescribeStreamLivePlans": {
       "document": "This API is used to query the events in the plan in batches.",
       "input": "DescribeStreamLivePlansRequest",
       "name": "Queries events in batches",
-      "output": "DescribeStreamLivePlansResponse"
+      "output": "DescribeStreamLivePlansResponse",
+      "status": "online"
     },
     "DescribeStreamLiveRegions": {
       "document": "This API is used to query all StreamLive regions.",
       "input": "DescribeStreamLiveRegionsRequest",
       "name": "Queries StreamLive regions",
-      "output": "DescribeStreamLiveRegionsResponse"
+      "output": "DescribeStreamLiveRegionsResponse",
+      "status": "online"
     },
     "DescribeStreamLiveTranscodeDetail": {
       "document": "This API is used to query the transcoding information of StreamLive streams.",
       "input": "DescribeStreamLiveTranscodeDetailRequest",
       "name": "Queries transcoding information",
-      "output": "DescribeStreamLiveTranscodeDetailResponse"
+      "output": "DescribeStreamLiveTranscodeDetailResponse",
+      "status": "online"
     },
     "DescribeStreamLiveWatermark": {
       "document": "This API is used to query a watermark.",
       "input": "DescribeStreamLiveWatermarkRequest",
       "name": "Queries a watermark",
-      "output": "DescribeStreamLiveWatermarkResponse"
+      "output": "DescribeStreamLiveWatermarkResponse",
+      "status": "online"
     },
     "DescribeStreamLiveWatermarks": {
       "document": "This API is used to query multiple watermarks at a time.",
       "input": "DescribeStreamLiveWatermarksRequest",
       "name": "Queries multiple watermarks at a time",
-      "output": "DescribeStreamLiveWatermarksResponse"
+      "output": "DescribeStreamLiveWatermarksResponse",
+      "status": "online"
     },
     "ModifyStreamLiveChannel": {
       "document": "This API is used to modify a StreamLive channel.",
       "input": "ModifyStreamLiveChannelRequest",
       "name": "Modifies a StreamLive channel",
-      "output": "ModifyStreamLiveChannelResponse"
+      "output": "ModifyStreamLiveChannelResponse",
+      "status": "online"
     },
     "ModifyStreamLiveInput": {
       "document": "This API is used to modify a StreamLive input.",
       "input": "ModifyStreamLiveInputRequest",
       "name": "Modifies a StreamLive input",
-      "output": "ModifyStreamLiveInputResponse"
+      "output": "ModifyStreamLiveInputResponse",
+      "status": "online"
     },
     "ModifyStreamLiveInputSecurityGroup": {
       "document": "This API is used to modify an input security group.",
       "input": "ModifyStreamLiveInputSecurityGroupRequest",
       "name": "Modifies an input security group",
-      "output": "ModifyStreamLiveInputSecurityGroupResponse"
+      "output": "ModifyStreamLiveInputSecurityGroupResponse",
+      "status": "online"
     },
     "ModifyStreamLiveWatermark": {
       "document": "This API is used to modify a watermark.",
       "input": "ModifyStreamLiveWatermarkRequest",
       "name": "Modifies a watermark",
-      "output": "ModifyStreamLiveWatermarkResponse"
+      "output": "ModifyStreamLiveWatermarkResponse",
+      "status": "online"
     },
     "StartStreamLiveChannel": {
       "document": "This API is used to start a StreamLive channel.",
       "input": "StartStreamLiveChannelRequest",
       "name": "Starts a StreamLive channel",
-      "output": "StartStreamLiveChannelResponse"
+      "output": "StartStreamLiveChannelResponse",
+      "status": "online"
     },
     "StopStreamLiveChannel": {
       "document": "This API is used to stop a StreamLive channel.",
       "input": "StopStreamLiveChannelRequest",
       "name": "Stops a StreamLive channel",
-      "output": "StopStreamLiveChannelResponse"
+      "output": "StopStreamLiveChannelResponse",
+      "status": "online"
     }
   },
   "metadata": {

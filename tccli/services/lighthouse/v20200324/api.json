@@ -4,409 +4,477 @@
       "document": "This API is used to roll back the system disk snapshot of the specified instance.\n<li>Only rollback to the original system disk is supported.</li>\n<li>Only snapshots in `NORMAL` status can be used for rollback. To query the status of a snapshot, you can call the `DescribeSnapshots` API and see the `SnapshotState` field in the response.</li>\n<li>When a snapshot is rolled back, the status of the instance must be `STOPPED` or `RUNNING`. You can call the `DescribeInstances` API to query the instance status. Instances in `RUNNING` status will be forcibly shut down before snapshot rollback.</li>",
       "input": "ApplyInstanceSnapshotRequest",
       "name": "Rolls back instance snapshot",
-      "output": "ApplyInstanceSnapshotResponse"
+      "output": "ApplyInstanceSnapshotResponse",
+      "status": "online"
     },
     "AssociateInstancesKeyPairs": {
       "document": "This API is used to bind a user-specified key pair to an instance.\n* Only instances on LINUX_UNIX in [RUNNING, STOPPED] status are supported. Instances in `RUNNING` status will be forcibly shut down before binding.\n* If the public key of a key pair is written to the SSH configuration of the instance, you will be able to log in to the instance with the private key of the key pair.\n* If the instance is already associated with a key, the old key will become invalid.\n* If you currently use a password to log in, you will no longer be able to do so after you associate the instance with a key.\n* Batch operations are supported. The maximum number of instances in each request is 100. If instances not available for the operation are selected, you will get an error code.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "AssociateInstancesKeyPairsRequest",
       "name": "Binds key pair",
-      "output": "AssociateInstancesKeyPairsResponse"
+      "output": "AssociateInstancesKeyPairsResponse",
+      "status": "online"
     },
     "AttachCcn": {
       "document": "This API is used to associate a CCN instance.",
       "input": "AttachCcnRequest",
       "name": "Associates CCN instance",
-      "output": "AttachCcnResponse"
+      "output": "AttachCcnResponse",
+      "status": "online"
     },
     "AttachDisks": {
       "document": "This API is used to attach one or more cloud disks.",
       "input": "AttachDisksRequest",
       "name": "Attaches cloud disks",
-      "output": "AttachDisksResponse"
+      "output": "AttachDisksResponse",
+      "status": "online"
     },
     "CreateBlueprint": {
       "document": "This API is used to create an image.",
       "input": "CreateBlueprintRequest",
       "name": "Creates image",
-      "output": "CreateBlueprintResponse"
+      "output": "CreateBlueprintResponse",
+      "status": "online"
     },
     "CreateFirewallRules": {
       "document": "This API is used to add a firewall rule on an instance.\n\n\n* `FirewallVersion` is the firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the updated rule from expiring. If it is left empty, conflicts will not be considered.\n\nIn the `FirewallRules` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
       "input": "CreateFirewallRulesRequest",
       "name": "Adds firewall rule",
-      "output": "CreateFirewallRulesResponse"
+      "output": "CreateFirewallRulesResponse",
+      "status": "online"
     },
     "CreateInstanceSnapshot": {
       "document": "This API is used to create a system disk snapshot of the specified instance.",
       "input": "CreateInstanceSnapshotRequest",
       "name": "Creates instance snapshot",
-      "output": "CreateInstanceSnapshotResponse"
+      "output": "CreateInstanceSnapshotResponse",
+      "status": "online"
     },
     "CreateInstances": {
       "document": "This API is used to create one or more Lighthouse instances.",
       "input": "CreateInstancesRequest",
       "name": "Creates one or more instances",
-      "output": "CreateInstancesResponse"
+      "output": "CreateInstancesResponse",
+      "status": "online"
     },
     "CreateKeyPair": {
       "document": "This API is used to create a key pair.",
       "input": "CreateKeyPairRequest",
       "name": "Creates key pair",
-      "output": "CreateKeyPairResponse"
+      "output": "CreateKeyPairResponse",
+      "status": "online"
     },
     "DeleteBlueprints": {
       "document": "This API is used to delete an image.",
       "input": "DeleteBlueprintsRequest",
       "name": "Deletes image",
-      "output": "DeleteBlueprintsResponse"
+      "output": "DeleteBlueprintsResponse",
+      "status": "online"
     },
     "DeleteFirewallRules": {
       "document": "This API is used to delete a firewall rule of an instance.\n\n* `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the specified rule will be deleted directly.\n\nIn the `FirewallRules` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
       "input": "DeleteFirewallRulesRequest",
       "name": "Deletes firewall rule",
-      "output": "DeleteFirewallRulesResponse"
+      "output": "DeleteFirewallRulesResponse",
+      "status": "online"
     },
     "DeleteKeyPairs": {
       "document": "This API is used to delete a key pair.",
       "input": "DeleteKeyPairsRequest",
       "name": "Deletes key pair",
-      "output": "DeleteKeyPairsResponse"
+      "output": "DeleteKeyPairsResponse",
+      "status": "online"
     },
     "DeleteSnapshots": {
       "document": "This API is used to delete a snapshot.\nThe snapshot must be in `NORMAL` status. To query the status of a snapshot, you can call the `DescribeSnapshots` API and see the `SnapshotState` field in the response.",
       "input": "DeleteSnapshotsRequest",
       "name": "Deletes snapshot",
-      "output": "DeleteSnapshotsResponse"
+      "output": "DeleteSnapshotsResponse",
+      "status": "online"
     },
     "DescribeAllScenes": {
       "document": "This API is used to query the list of scenes in all regions.",
       "input": "DescribeAllScenesRequest",
       "name": "Queries the list of scenes in all regions",
-      "output": "DescribeAllScenesResponse"
+      "output": "DescribeAllScenesResponse",
+      "status": "online"
     },
     "DescribeBlueprintInstances": {
       "document": "This API is used to query the information of an image instance.",
       "input": "DescribeBlueprintInstancesRequest",
       "name": "Queries image instance information",
-      "output": "DescribeBlueprintInstancesResponse"
+      "output": "DescribeBlueprintInstancesResponse",
+      "status": "online"
     },
     "DescribeBlueprints": {
       "document": "This API is used to query the information of an image.",
       "input": "DescribeBlueprintsRequest",
       "name": "Queries image information",
-      "output": "DescribeBlueprintsResponse"
+      "output": "DescribeBlueprintsResponse",
+      "status": "online"
     },
     "DescribeBundleDiscount": {
       "document": "This API is used to query the discount information of a package.",
       "input": "DescribeBundleDiscountRequest",
       "name": "Queries package discount",
-      "output": "DescribeBundleDiscountResponse"
+      "output": "DescribeBundleDiscountResponse",
+      "status": "online"
     },
     "DescribeBundles": {
       "document": "This API is used to query the information of a package.",
       "input": "DescribeBundlesRequest",
       "name": "Queries package",
-      "output": "DescribeBundlesResponse"
+      "output": "DescribeBundlesResponse",
+      "status": "online"
     },
     "DescribeCcnAttachedInstances": {
       "document": "This API is used to query the information of instances associated with CCN.",
       "input": "DescribeCcnAttachedInstancesRequest",
       "name": "Queries the information of instances associated with CCN",
-      "output": "DescribeCcnAttachedInstancesResponse"
+      "output": "DescribeCcnAttachedInstancesResponse",
+      "status": "online"
     },
     "DescribeDiskConfigs": {
       "document": "This API is used to query the cloud disk configuration.",
       "input": "DescribeDiskConfigsRequest",
       "name": "Queries cloud disk configuration",
-      "output": "DescribeDiskConfigsResponse"
+      "output": "DescribeDiskConfigsResponse",
+      "status": "online"
     },
     "DescribeDiskDiscount": {
       "document": "This API is used to query the discount information of a cloud disk.",
       "input": "DescribeDiskDiscountRequest",
       "name": "Queries the discount information of cloud disk",
-      "output": "DescribeDiskDiscountResponse"
+      "output": "DescribeDiskDiscountResponse",
+      "status": "online"
     },
     "DescribeDisks": {
       "document": "This API is used to query the information of one or more cloud disks.",
       "input": "DescribeDisksRequest",
       "name": "Queries cloud disks",
-      "output": "DescribeDisksResponse"
+      "output": "DescribeDisksResponse",
+      "status": "online"
     },
     "DescribeDisksDeniedActions": {
       "document": "This API is used to query the list of operation limits of one or more cloud disks.",
       "input": "DescribeDisksDeniedActionsRequest",
       "name": "Queries the list of operation limits of cloud disks",
-      "output": "DescribeDisksDeniedActionsResponse"
+      "output": "DescribeDisksDeniedActionsResponse",
+      "status": "online"
     },
     "DescribeDisksReturnable": {
       "document": "This API is used to query whether the specified cloud disk can be returned.",
       "input": "DescribeDisksReturnableRequest",
       "name": "Queries whether the specified cloud disk can be returned",
-      "output": "DescribeDisksReturnableResponse"
+      "output": "DescribeDisksReturnableResponse",
+      "status": "online"
     },
     "DescribeFirewallRules": {
       "document": "This API is used to query the firewall rules of an instance.",
       "input": "DescribeFirewallRulesRequest",
       "name": "Queries firewall rules",
-      "output": "DescribeFirewallRulesResponse"
+      "output": "DescribeFirewallRulesResponse",
+      "status": "online"
     },
     "DescribeFirewallRulesTemplate": {
       "document": "This API is used to query a firewall rule template.",
       "input": "DescribeFirewallRulesTemplateRequest",
       "name": "Queries a firewall rule template",
-      "output": "DescribeFirewallRulesTemplateResponse"
+      "output": "DescribeFirewallRulesTemplateResponse",
+      "status": "online"
     },
     "DescribeGeneralResourceQuotas": {
       "document": "This API is used to query the quota information of general resources.",
       "input": "DescribeGeneralResourceQuotasRequest",
       "name": "Queries the quota information of general resources",
-      "output": "DescribeGeneralResourceQuotasResponse"
+      "output": "DescribeGeneralResourceQuotasResponse",
+      "status": "online"
     },
     "DescribeInstanceLoginKeyPairAttribute": {
       "document": "This API is used to query the attributes of the default login key of an instance.",
       "input": "DescribeInstanceLoginKeyPairAttributeRequest",
       "name": "Queries the attributes of default login key of instance",
-      "output": "DescribeInstanceLoginKeyPairAttributeResponse"
+      "output": "DescribeInstanceLoginKeyPairAttributeResponse",
+      "status": "online"
     },
     "DescribeInstanceVncUrl": {
       "document": "This API is used to query the URL for VNC login.\n\n* It does not support `STOPPED` CVMs.\n* A VNC URL is only valid for 15 seconds. If you do not access the URL within 15 seconds, you will need to query another one.\n* The VNC URL can be used once only. You need to query a new one if you want to log in again.\n* Up to 30 re-connection attempts allowed in one minute.\n* `InstanceVncUrl`: Its value will be returned after the API is successfully called.\nAfter you get the value of `InstanceVncUrl`, you need to append `InstanceVncUrl=xxxx` to the end of the link `https://img.qcloud.com/qcloud/app/active_vnc/index.html?`.\n The final URL can be in the following formats:\n\n```\nhttps://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9\n```\n",
       "input": "DescribeInstanceVncUrlRequest",
       "name": "Queries the VNC URL of instance",
-      "output": "DescribeInstanceVncUrlResponse"
+      "output": "DescribeInstanceVncUrlResponse",
+      "status": "online"
     },
     "DescribeInstances": {
       "document": "This API is used to query the details of one or multiple instances.\n\n* You can query the details of an instance according to its ID, name, or private IP.\n* For more information on filters, please see [Filters](https://intl.cloud.tencent.com/document/product/1207/47576?from_cn_redirect=1#Filter).\n* If no parameter is defined, the status of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.\n* The latest operation (LatestOperation) and the latest operation status (LatestOperationState) of the instance can be queried.",
       "input": "DescribeInstancesRequest",
       "name": "Views instance list",
-      "output": "DescribeInstancesResponse"
+      "output": "DescribeInstancesResponse",
+      "status": "online"
     },
     "DescribeInstancesDeniedActions": {
       "document": "This API is used to query the list of operation limits of one or more instances.",
       "input": "DescribeInstancesDeniedActionsRequest",
       "name": "Views the list of operation limits of instances",
-      "output": "DescribeInstancesDeniedActionsResponse"
+      "output": "DescribeInstancesDeniedActionsResponse",
+      "status": "online"
     },
     "DescribeInstancesDiskNum": {
       "document": "This API is used to query the number of cloud disks attached to instances.",
       "input": "DescribeInstancesDiskNumRequest",
       "name": "Queries the number of cloud disks attached to instances",
-      "output": "DescribeInstancesDiskNumResponse"
+      "output": "DescribeInstancesDiskNumResponse",
+      "status": "online"
     },
     "DescribeInstancesReturnable": {
       "document": "This API is used to query whether the specified instance can be returned.",
       "input": "DescribeInstancesReturnableRequest",
       "name": "Queries whether the specified instance can be returned",
-      "output": "DescribeInstancesReturnableResponse"
+      "output": "DescribeInstancesReturnableResponse",
+      "status": "online"
     },
     "DescribeInstancesTrafficPackages": {
       "document": "This API is used to query the traffic package details of one or more instances.",
       "input": "DescribeInstancesTrafficPackagesRequest",
       "name": "Views the traffic package details of instances",
-      "output": "DescribeInstancesTrafficPackagesResponse"
+      "output": "DescribeInstancesTrafficPackagesResponse",
+      "status": "online"
     },
     "DescribeKeyPairs": {
       "document": "This API is used to query key pairs.",
       "input": "DescribeKeyPairsRequest",
       "name": "Queries key pair list",
-      "output": "DescribeKeyPairsResponse"
+      "output": "DescribeKeyPairsResponse",
+      "status": "online"
     },
     "DescribeModifyInstanceBundles": {
       "document": "This API is used to query the list of package options of an instance.",
       "input": "DescribeModifyInstanceBundlesRequest",
       "name": "Queries the list of package options of instance",
-      "output": "DescribeModifyInstanceBundlesResponse"
+      "output": "DescribeModifyInstanceBundlesResponse",
+      "status": "online"
     },
     "DescribeRegions": {
       "document": "This API is used to query the information of regions.",
       "input": "DescribeRegionsRequest",
       "name": "Queries region list",
-      "output": "DescribeRegionsResponse"
+      "output": "DescribeRegionsResponse",
+      "status": "online"
     },
     "DescribeResetInstanceBlueprints": {
       "document": "This API is used to query the image information of a reset instance.",
       "input": "DescribeResetInstanceBlueprintsRequest",
       "name": "Queries the image information of reset instance",
-      "output": "DescribeResetInstanceBlueprintsResponse"
+      "output": "DescribeResetInstanceBlueprintsResponse",
+      "status": "online"
     },
     "DescribeScenes": {
       "document": "This API is used to query the list of scenes.",
       "input": "DescribeScenesRequest",
       "name": "Queries the list of scenes",
-      "output": "DescribeScenesResponse"
+      "output": "DescribeScenesResponse",
+      "status": "online"
     },
     "DescribeSnapshots": {
       "document": "This API is used to query the list of snapshots.",
       "input": "DescribeSnapshotsRequest",
       "name": "Queries snapshot list",
-      "output": "DescribeSnapshotsResponse"
+      "output": "DescribeSnapshotsResponse",
+      "status": "online"
     },
     "DescribeSnapshotsDeniedActions": {
       "document": "This API is used to query the list of operation limits of one or more snapshots.",
       "input": "DescribeSnapshotsDeniedActionsRequest",
       "name": "Queries the list of operation limits of instances",
-      "output": "DescribeSnapshotsDeniedActionsResponse"
+      "output": "DescribeSnapshotsDeniedActionsResponse",
+      "status": "online"
     },
     "DescribeZones": {
       "document": "This API is used to query the list of AZs in a region.",
       "input": "DescribeZonesRequest",
       "name": "Queries AZ list",
-      "output": "DescribeZonesResponse"
+      "output": "DescribeZonesResponse",
+      "status": "online"
     },
     "DetachCcn": {
       "document": "This API is used to unassociate a CCN instance.",
       "input": "DetachCcnRequest",
       "name": "Unassociates CCN instance",
-      "output": "DetachCcnResponse"
+      "output": "DetachCcnResponse",
+      "status": "online"
     },
     "DetachDisks": {
       "document": "This API is used to detach one or more cloud disks.",
       "input": "DetachDisksRequest",
       "name": "Detaching cloud disks",
-      "output": "DetachDisksResponse"
+      "output": "DetachDisksResponse",
+      "status": "online"
     },
     "DisassociateInstancesKeyPairs": {
       "document": "This API is used to unbind an instance from the specified key pair.\n\n* Only instances on LINUX_UNIX in [RUNNING, STOPPED] status are supported. Instances in `RUNNING` status will be forcibly shut down before unbinding.\n* After a key pair is unassociated from an instance, you can log in to the instance with password.\n* If no password was set, you cannot log in to the instance with SSH after unbinding. You can call the ResetInstancesPassword API to set a login password.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "DisassociateInstancesKeyPairsRequest",
       "name": "Unbinds key pair",
-      "output": "DisassociateInstancesKeyPairsResponse"
+      "output": "DisassociateInstancesKeyPairsResponse",
+      "status": "online"
     },
     "ImportKeyPair": {
       "document": "This API is used to import the specified key pair.",
       "input": "ImportKeyPairRequest",
       "name": "Imports key pair",
-      "output": "ImportKeyPairResponse"
+      "output": "ImportKeyPairResponse",
+      "status": "online"
     },
     "InquirePriceCreateBlueprint": {
       "document": "This API is used to query the price of a created image.",
       "input": "InquirePriceCreateBlueprintRequest",
       "name": "Queries the price of created image",
-      "output": "InquirePriceCreateBlueprintResponse"
+      "output": "InquirePriceCreateBlueprintResponse",
+      "status": "online"
     },
     "InquirePriceCreateDisks": {
       "document": "This API is used to query the price of purchasing cloud disks.",
       "input": "InquirePriceCreateDisksRequest",
       "name": "Query the price of purchasing cloud disks.",
-      "output": "InquirePriceCreateDisksResponse"
+      "output": "InquirePriceCreateDisksResponse",
+      "status": "online"
     },
     "InquirePriceCreateInstances": {
       "document": "This API is used to query the price of a created instance.",
       "input": "InquirePriceCreateInstancesRequest",
       "name": "Queries the price of created instance",
-      "output": "InquirePriceCreateInstancesResponse"
+      "output": "InquirePriceCreateInstancesResponse",
+      "status": "online"
     },
     "InquirePriceRenewDisks": {
       "document": "This API is used to query the price of renewing cloud disks.",
       "input": "InquirePriceRenewDisksRequest",
       "name": "Queries the price of renewing cloud disks",
-      "output": "InquirePriceRenewDisksResponse"
+      "output": "InquirePriceRenewDisksResponse",
+      "status": "online"
     },
     "InquirePriceRenewInstances": {
       "document": "This API is used to query the price of renewing one or more instances.",
       "input": "InquirePriceRenewInstancesRequest",
       "name": "Queries the price of renewing instances",
-      "output": "InquirePriceRenewInstancesResponse"
+      "output": "InquirePriceRenewInstancesResponse",
+      "status": "online"
     },
     "ModifyBlueprintAttribute": {
       "document": "This API is used to modify an image attribute.",
       "input": "ModifyBlueprintAttributeRequest",
       "name": "Modifies image attribute",
-      "output": "ModifyBlueprintAttributeResponse"
+      "output": "ModifyBlueprintAttributeResponse",
+      "status": "online"
     },
     "ModifyDisksAttribute": {
       "document": "This API is used to modify cloud disk attributes.",
       "input": "ModifyDisksAttributeRequest",
       "name": "Modifies cloud disk attributes",
-      "output": "ModifyDisksAttributeResponse"
+      "output": "ModifyDisksAttributeResponse",
+      "status": "online"
     },
     "ModifyDisksRenewFlag": {
       "document": "This API is used to modify the configuration of auto-renewal of cloud disks.",
       "input": "ModifyDisksRenewFlagRequest",
       "name": "Modifies the configuration of auto-renewal of cloud disks",
-      "output": "ModifyDisksRenewFlagResponse"
+      "output": "ModifyDisksRenewFlagResponse",
+      "status": "online"
     },
     "ModifyFirewallRuleDescription": {
       "document": "This API is used to modify the description of a single firewall rule.\n\n* `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the description of the specified rule will be modified directly.\n\nIn the `FirewallRule` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
       "input": "ModifyFirewallRuleDescriptionRequest",
       "name": "Modifies firewall rule description",
-      "output": "ModifyFirewallRuleDescriptionResponse"
+      "output": "ModifyFirewallRuleDescriptionResponse",
+      "status": "online"
     },
     "ModifyFirewallRules": {
       "document": "This API is used to reset the firewall rules of an instance.\n\nThis API deletes all firewall rules of the current instance first and then adds new rules.\n\n* `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the specified rule will be reset directly.\n\nIn the `FirewallRules` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
       "input": "ModifyFirewallRulesRequest",
       "name": "Modifies firewall rules",
-      "output": "ModifyFirewallRulesResponse"
+      "output": "ModifyFirewallRulesResponse",
+      "status": "online"
     },
     "ModifyInstancesAttribute": {
       "document": "This API is used to modify the attributes of instances.\n* The instance name is used only for users’ convenience.\n* Batch operations are supported. Each request can contain up to 100 instances at a time.\n* This API is async. A successful request will return a `RequestId`, it does not mean the operation is completed. You can call the `DescribeInstances` API to query the operation result. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "ModifyInstancesAttributeRequest",
       "name": "Modifies instance attribute",
-      "output": "ModifyInstancesAttributeResponse"
+      "output": "ModifyInstancesAttributeResponse",
+      "status": "online"
     },
     "ModifyInstancesLoginKeyPairAttribute": {
       "document": "This API is used to set the attributes of the default login key pair of an instance.\n\n",
       "input": "ModifyInstancesLoginKeyPairAttributeRequest",
       "name": "Modifies the attributes of default login key pair of instance",
-      "output": "ModifyInstancesLoginKeyPairAttributeResponse"
+      "output": "ModifyInstancesLoginKeyPairAttributeResponse",
+      "status": "online"
     },
     "ModifyInstancesRenewFlag": {
       "document": "This API is used to modify the renewal flags of monthly subscribed instances.\n\n* Instances marked with \"auto-renewal\" will be automatically renewed for one month when they expire.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "ModifyInstancesRenewFlagRequest",
       "name": "Modifies the renewal flags of instances",
-      "output": "ModifyInstancesRenewFlagResponse"
+      "output": "ModifyInstancesRenewFlagResponse",
+      "status": "online"
     },
     "ModifySnapshotAttribute": {
       "document": "This API is used to modify the attributes of a snapshot.\n<li>The snapshot name is used only for users’ convenience.</li>",
       "input": "ModifySnapshotAttributeRequest",
       "name": "Modifies snapshot attribute",
-      "output": "ModifySnapshotAttributeResponse"
+      "output": "ModifySnapshotAttributeResponse",
+      "status": "online"
     },
     "RebootInstances": {
       "document": "This API is used to restart instances.\n\n* You can only perform this operation on instances whose status is `RUNNING`.\n* The instance status will become `REBOOTING` when the API is called successfully and will become `RUNNING` when the instance is successfully restarted.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "RebootInstancesRequest",
       "name": "Restarts instances",
-      "output": "RebootInstancesResponse"
+      "output": "RebootInstancesResponse",
+      "status": "online"
     },
     "ResetAttachCcn": {
       "document": "This API is used to apply for association again after a CCN instance association application expires.",
       "input": "ResetAttachCcnRequest",
       "name": "Applies for associating with CCN again",
-      "output": "ResetAttachCcnResponse"
+      "output": "ResetAttachCcnResponse",
+      "status": "online"
     },
     "ResetInstance": {
       "document": "This API is used to reinstall the image on the specified instance.\n\n* If you specify a `BlueprintId`, the specified image is used; otherwise, the image used by the current instance is used.\n* The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.\n* Currently, this API does not support switching the operating system between `LINUX_UNIX` and `WINDOWS` for instances.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "ResetInstanceRequest",
       "name": "Reinstalls system",
-      "output": "ResetInstanceResponse"
+      "output": "ResetInstanceResponse",
+      "status": "online"
     },
     "ResetInstancesPassword": {
       "document": "This API is used to reset the password of the instance OS to a user-specified password.\n* You can only use this API to modify the password of the admin account. The name of the admin account varies by OS (on Windows, it is `Administrator`; on Ubuntu, it is `ubuntu`; on other systems, it is `root`).\n* Batch operations are supported. You can reset the passwords of multiple instances to the same one. The maximum number of instances in each request is 100.\n* It’s recommended to shut down the instance first and then reset the password. If the instance is running, this API will try to shut it down normally. If the attempt fails, it will force to instance to shut down.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.\nNote: Just like powering off a physical PC, a forced shutdown may cause data loss or the corruption of file system.",
       "input": "ResetInstancesPasswordRequest",
       "name": "Resets instance password",
-      "output": "ResetInstancesPasswordResponse"
+      "output": "ResetInstancesPasswordResponse",
+      "status": "online"
     },
     "StartInstances": {
       "document": "This API is used to start one or more instances.\n\n* You can only perform this operation on instances whose status is `STOPPED`.\n* The instance status will become `STARTING` when the API is called successfully and will become `RUNNING` when the instance is successfully started.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "StartInstancesRequest",
       "name": "Starts instances",
-      "output": "StartInstancesResponse"
+      "output": "StartInstancesResponse",
+      "status": "online"
     },
     "StopInstances": {
       "document": "This API is used to shut down one or more instances.\n* You can only perform this operation on instances whose status is `RUNNING`.\n* The instance status will become `STOPPING` when the API is called successfully and will become `STOPPED` when the instance is successfully shut down.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "StopInstancesRequest",
       "name": "Shuts down instances",
-      "output": "StopInstancesResponse"
+      "output": "StopInstancesResponse",
+      "status": "online"
     },
     "TerminateDisks": {
       "document": "This API is used to terminate one or more cloud disk.",
       "input": "TerminateDisksRequest",
       "name": "Terminates cloud disks",
-      "output": "TerminateDisksResponse"
+      "output": "TerminateDisksResponse",
+      "status": "online"
     },
     "TerminateInstances": {
       "document": "This API is used to terminate one or more instances.\n\n* Instances in `SHUTDOWN` status can be terminated through this API and cannot be recovered.\n* Batch operations are supported. The allowed maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "TerminateInstancesRequest",
       "name": "Terminates one or more instances",
-      "output": "TerminateInstancesResponse"
+      "output": "TerminateInstancesResponse",
+      "status": "online"
     }
   },
   "metadata": {

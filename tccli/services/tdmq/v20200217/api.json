@@ -4,463 +4,540 @@
       "document": "This API is used to acknowledge the message in the specified topic by the provided `MessageID`.",
       "input": "AcknowledgeMessageRequest",
       "name": "Acknowledges message",
-      "output": "AcknowledgeMessageResponse"
+      "output": "AcknowledgeMessageResponse",
+      "status": "online"
     },
     "ClearCmqQueue": {
       "document": "This API is used to clear the messages in the CMQ message queue.",
       "input": "ClearCmqQueueRequest",
       "name": "Clears the messages in the CMQ message queue.",
-      "output": "ClearCmqQueueResponse"
+      "output": "ClearCmqQueueResponse",
+      "status": "online"
     },
     "ClearCmqSubscriptionFilterTags": {
       "document": "This API is used to clear the message tags of a subscriber.",
       "input": "ClearCmqSubscriptionFilterTagsRequest",
       "name": "Clears the message tags of CMQ subscriber",
-      "output": "ClearCmqSubscriptionFilterTagsResponse"
+      "output": "ClearCmqSubscriptionFilterTagsResponse",
+      "status": "online"
     },
     "CreateCluster": {
       "document": "This API is used to create a cluster.",
       "input": "CreateClusterRequest",
       "name": "Creates cluster",
-      "output": "CreateClusterResponse"
+      "output": "CreateClusterResponse",
+      "status": "online"
     },
     "CreateCmqQueue": {
       "document": "This API is used to create a CMQ queue.",
       "input": "CreateCmqQueueRequest",
       "name": "Creates CMQ queue",
-      "output": "CreateCmqQueueResponse"
+      "output": "CreateCmqQueueResponse",
+      "status": "online"
     },
     "CreateCmqSubscribe": {
       "document": "This API is used to create a CMQ subscription.",
       "input": "CreateCmqSubscribeRequest",
       "name": "Creates CMQ subscription",
-      "output": "CreateCmqSubscribeResponse"
+      "output": "CreateCmqSubscribeResponse",
+      "status": "online"
     },
     "CreateCmqTopic": {
       "document": "This API is used to create a CMQ topic.",
       "input": "CreateCmqTopicRequest",
       "name": "Creates CMQ topic",
-      "output": "CreateCmqTopicResponse"
+      "output": "CreateCmqTopicResponse",
+      "status": "online"
     },
     "CreateEnvironment": {
       "document": "This API is used to create a TDMQ namespace.",
       "input": "CreateEnvironmentRequest",
       "name": "Creates namespace",
-      "output": "CreateEnvironmentResponse"
+      "output": "CreateEnvironmentResponse",
+      "status": "online"
     },
     "CreateEnvironmentRole": {
       "document": "This API is used to create an environment role.",
       "input": "CreateEnvironmentRoleRequest",
       "name": "Creates environment role",
-      "output": "CreateEnvironmentRoleResponse"
+      "output": "CreateEnvironmentRoleResponse",
+      "status": "online"
     },
     "CreateRocketMQCluster": {
       "document": "This API is used to create a RocketMQ cluster.",
       "input": "CreateRocketMQClusterRequest",
       "name": "Creates RocketMQ cluster",
-      "output": "CreateRocketMQClusterResponse"
+      "output": "CreateRocketMQClusterResponse",
+      "status": "online"
     },
     "CreateRocketMQGroup": {
       "document": "This API is used to create a RocketMQ consumer group.",
       "input": "CreateRocketMQGroupRequest",
       "name": "Creates RocketMQ consumer group",
-      "output": "CreateRocketMQGroupResponse"
+      "output": "CreateRocketMQGroupResponse",
+      "status": "online"
     },
     "CreateRocketMQNamespace": {
       "document": "This API is used to create a RocketMQ namespace.",
       "input": "CreateRocketMQNamespaceRequest",
       "name": "Creates RocketMQ namespace",
-      "output": "CreateRocketMQNamespaceResponse"
+      "output": "CreateRocketMQNamespaceResponse",
+      "status": "online"
     },
     "CreateRocketMQTopic": {
       "document": "This API is used to create a RocketMQ topic.",
       "input": "CreateRocketMQTopicRequest",
       "name": "Creates RocketMQ topic",
-      "output": "CreateRocketMQTopicResponse"
+      "output": "CreateRocketMQTopicResponse",
+      "status": "online"
     },
     "CreateRole": {
       "document": "This API is used to create a role.",
       "input": "CreateRoleRequest",
       "name": "Creates role",
-      "output": "CreateRoleResponse"
+      "output": "CreateRoleResponse",
+      "status": "online"
     },
     "CreateSubscription": {
       "document": "This API is used to create a subscription to a topic.",
       "input": "CreateSubscriptionRequest",
       "name": "Creates subscription",
-      "output": "CreateSubscriptionResponse"
+      "output": "CreateSubscriptionResponse",
+      "status": "online"
     },
     "CreateTopic": {
       "document": "This API is used to add a message topic in the specified partition and type.",
       "input": "CreateTopicRequest",
       "name": "Adds topic",
-      "output": "CreateTopicResponse"
+      "output": "CreateTopicResponse",
+      "status": "online"
     },
     "DeleteCluster": {
       "document": "This API is used to delete a cluster.",
       "input": "DeleteClusterRequest",
       "name": "Deletes cluster",
-      "output": "DeleteClusterResponse"
+      "output": "DeleteClusterResponse",
+      "status": "online"
     },
     "DeleteCmqQueue": {
       "document": "This API is used to delete a CMQ queue.",
       "input": "DeleteCmqQueueRequest",
       "name": "Deletes CMQ queue",
-      "output": "DeleteCmqQueueResponse"
+      "output": "DeleteCmqQueueResponse",
+      "status": "online"
     },
     "DeleteCmqSubscribe": {
       "document": "This API is used to delete a CMQ subscription.",
       "input": "DeleteCmqSubscribeRequest",
       "name": "Deletes CMQ subscription",
-      "output": "DeleteCmqSubscribeResponse"
+      "output": "DeleteCmqSubscribeResponse",
+      "status": "online"
     },
     "DeleteCmqTopic": {
       "document": "This API is used to delete a CMQ topic.",
       "input": "DeleteCmqTopicRequest",
       "name": "Deletes CMQ topic",
-      "output": "DeleteCmqTopicResponse"
+      "output": "DeleteCmqTopicResponse",
+      "status": "online"
     },
     "DeleteEnvironmentRoles": {
       "document": "This API is used to delete an environment role.",
       "input": "DeleteEnvironmentRolesRequest",
       "name": "Deletes environment role",
-      "output": "DeleteEnvironmentRolesResponse"
+      "output": "DeleteEnvironmentRolesResponse",
+      "status": "online"
     },
     "DeleteEnvironments": {
       "document": "This API is used to batch delete namespaces under a tenant.",
       "input": "DeleteEnvironmentsRequest",
       "name": "Deletes namespaces",
-      "output": "DeleteEnvironmentsResponse"
+      "output": "DeleteEnvironmentsResponse",
+      "status": "online"
     },
     "DeleteRocketMQCluster": {
       "document": "This API is used to delete a RocketMQ cluster.",
       "input": "DeleteRocketMQClusterRequest",
       "name": "Deletes RocketMQ cluster",
-      "output": "DeleteRocketMQClusterResponse"
+      "output": "DeleteRocketMQClusterResponse",
+      "status": "online"
     },
     "DeleteRocketMQGroup": {
       "document": "This API is used to delete a RocketMQ consumer group.",
       "input": "DeleteRocketMQGroupRequest",
       "name": "Deletes RocketMQ consumer group",
-      "output": "DeleteRocketMQGroupResponse"
+      "output": "DeleteRocketMQGroupResponse",
+      "status": "online"
     },
     "DeleteRocketMQNamespace": {
       "document": "This API is used to delete a RocketMQ namespace.",
       "input": "DeleteRocketMQNamespaceRequest",
       "name": "Deletes RocketMQ namespace",
-      "output": "DeleteRocketMQNamespaceResponse"
+      "output": "DeleteRocketMQNamespaceResponse",
+      "status": "online"
     },
     "DeleteRocketMQTopic": {
       "document": "This API is used to delete a RocketMQ topic.",
       "input": "DeleteRocketMQTopicRequest",
       "name": "Deletes RocketMQ topic",
-      "output": "DeleteRocketMQTopicResponse"
+      "output": "DeleteRocketMQTopicResponse",
+      "status": "online"
     },
     "DeleteRoles": {
       "document": "This API is used to delete one or multiple roles.",
       "input": "DeleteRolesRequest",
       "name": "Delete role",
-      "output": "DeleteRolesResponse"
+      "output": "DeleteRolesResponse",
+      "status": "online"
     },
     "DeleteSubscriptions": {
       "document": "This API is used to delete a subscription.",
       "input": "DeleteSubscriptionsRequest",
       "name": "Deletes a subscription",
-      "output": "DeleteSubscriptionsResponse"
+      "output": "DeleteSubscriptionsResponse",
+      "status": "online"
     },
     "DeleteTopics": {
       "document": "This API is used to batch delete topics.",
       "input": "DeleteTopicsRequest",
       "name": "Deletes topics",
-      "output": "DeleteTopicsResponse"
+      "output": "DeleteTopicsResponse",
+      "status": "online"
     },
     "DescribeBindClusters": {
       "document": "This API is used to get the list of dedicated clusters bound to a user.",
       "input": "DescribeBindClustersRequest",
       "name": "Gets the list of dedicated clusters",
-      "output": "DescribeBindClustersResponse"
+      "output": "DescribeBindClustersResponse",
+      "status": "online"
     },
     "DescribeBindVpcs": {
       "document": "This API is used to get the tenant-VPC binding relationship.",
       "input": "DescribeBindVpcsRequest",
       "name": "Gets the tenant-VPC binding relationship",
-      "output": "DescribeBindVpcsResponse"
+      "output": "DescribeBindVpcsResponse",
+      "status": "online"
     },
     "DescribeClusterDetail": {
       "document": "This API is used to get the details of a cluster.",
       "input": "DescribeClusterDetailRequest",
       "name": "Gets cluster details",
-      "output": "DescribeClusterDetailResponse"
+      "output": "DescribeClusterDetailResponse",
+      "status": "online"
     },
     "DescribeClusters": {
       "document": "This API is used to get the list of clusters.",
       "input": "DescribeClustersRequest",
       "name": "Gets the list of clusters",
-      "output": "DescribeClustersResponse"
+      "output": "DescribeClustersResponse",
+      "status": "online"
     },
     "DescribeCmqDeadLetterSourceQueues": {
       "document": "This API is used to enumerate the source queues of a CMQ dead letter queue.",
       "input": "DescribeCmqDeadLetterSourceQueuesRequest",
       "name": "Enumerates the source queues of CMQ dead letter queue",
-      "output": "DescribeCmqDeadLetterSourceQueuesResponse"
+      "output": "DescribeCmqDeadLetterSourceQueuesResponse",
+      "status": "online"
     },
     "DescribeCmqQueueDetail": {
       "document": "This API is used to query the details of a CMQ queue.",
       "input": "DescribeCmqQueueDetailRequest",
       "name": "Queries the details of CMQ queue",
-      "output": "DescribeCmqQueueDetailResponse"
+      "output": "DescribeCmqQueueDetailResponse",
+      "status": "online"
     },
     "DescribeCmqQueues": {
       "document": "This API is used to query all CMQ queues.",
       "input": "DescribeCmqQueuesRequest",
       "name": "Queries all CMQ queues",
-      "output": "DescribeCmqQueuesResponse"
+      "output": "DescribeCmqQueuesResponse",
+      "status": "online"
     },
     "DescribeCmqSubscriptionDetail": {
       "document": "This API is used to query the CMQ subscription details.",
       "input": "DescribeCmqSubscriptionDetailRequest",
       "name": "Queries CMQ subscription details",
-      "output": "DescribeCmqSubscriptionDetailResponse"
+      "output": "DescribeCmqSubscriptionDetailResponse",
+      "status": "online"
     },
     "DescribeCmqTopicDetail": {
       "document": "This API is used to query the details of a CMQ topic.",
       "input": "DescribeCmqTopicDetailRequest",
       "name": "Queries the details of CMQ topic",
-      "output": "DescribeCmqTopicDetailResponse"
+      "output": "DescribeCmqTopicDetailResponse",
+      "status": "online"
     },
     "DescribeCmqTopics": {
       "document": "This API is used to enumerate all CMQ topics.",
       "input": "DescribeCmqTopicsRequest",
       "name": "Enumerates all CMQ topics",
-      "output": "DescribeCmqTopicsResponse"
+      "output": "DescribeCmqTopicsResponse",
+      "status": "online"
     },
     "DescribeEnvironmentAttributes": {
       "document": "This API is used to get the attributes of the specified namespace.",
       "input": "DescribeEnvironmentAttributesRequest",
       "name": "Gets namespace attributes",
-      "output": "DescribeEnvironmentAttributesResponse"
+      "output": "DescribeEnvironmentAttributesResponse",
+      "status": "online"
     },
     "DescribeEnvironmentRoles": {
       "document": "This API is used to get the list of namespace roles.",
       "input": "DescribeEnvironmentRolesRequest",
       "name": "Gets the list of namespace roles",
-      "output": "DescribeEnvironmentRolesResponse"
+      "output": "DescribeEnvironmentRolesResponse",
+      "status": "online"
     },
     "DescribeEnvironments": {
       "document": "This API is used to get the list of namespaces under a tenant.",
       "input": "DescribeEnvironmentsRequest",
       "name": "Gets the list of namespaces under a tenant",
-      "output": "DescribeEnvironmentsResponse"
+      "output": "DescribeEnvironmentsResponse",
+      "status": "online"
     },
     "DescribePublisherSummary": {
       "document": "This API is used to obtain message production overview information.",
       "input": "DescribePublisherSummaryRequest",
       "name": "Obtains message production overview",
-      "output": "DescribePublisherSummaryResponse"
+      "output": "DescribePublisherSummaryResponse",
+      "status": "online"
     },
     "DescribePublishers": {
       "document": "This API is used to obtain the list of producer information.",
       "input": "DescribePublishersRequest",
       "name": "Obtains the list of producer information",
-      "output": "DescribePublishersResponse"
+      "output": "DescribePublishersResponse",
+      "status": "online"
     },
     "DescribeRabbitMQNodeList": {
       "document": "This API is used to query the list of TDMQ for RabbitMQ exclusive cluster nodes.",
       "input": "DescribeRabbitMQNodeListRequest",
       "name": "Queries the list of TDMQ for RabbitMQ exclusive cluster nodes",
-      "output": "DescribeRabbitMQNodeListResponse"
+      "output": "DescribeRabbitMQNodeListResponse",
+      "status": "online"
     },
     "DescribeRabbitMQVipInstances": {
       "document": "This API is used to query the list of the purchased TDMQ for RabbitMQ exclusive instances.",
       "input": "DescribeRabbitMQVipInstancesRequest",
       "name": "Queries the list of the purchased TDMQ for RabbitMQ exclusive instances",
-      "output": "DescribeRabbitMQVipInstancesResponse"
+      "output": "DescribeRabbitMQVipInstancesResponse",
+      "status": "online"
     },
     "DescribeRocketMQCluster": {
       "document": "This API is used to get the information of a specific RocketMQ cluster.",
       "input": "DescribeRocketMQClusterRequest",
       "name": "Gets the information of specific RocketMQ cluster",
-      "output": "DescribeRocketMQClusterResponse"
+      "output": "DescribeRocketMQClusterResponse",
+      "status": "online"
     },
     "DescribeRocketMQClusters": {
       "document": "This API is used to get the list of RocketMQ clusters.",
       "input": "DescribeRocketMQClustersRequest",
       "name": "Gets the list of RocketMQ clusters",
-      "output": "DescribeRocketMQClustersResponse"
+      "output": "DescribeRocketMQClustersResponse",
+      "status": "online"
     },
     "DescribeRocketMQGroups": {
       "document": "This API is used to get the list of RocketMQ consumer groups.",
       "input": "DescribeRocketMQGroupsRequest",
       "name": "Gets the list of RocketMQ consumer groups",
-      "output": "DescribeRocketMQGroupsResponse"
+      "output": "DescribeRocketMQGroupsResponse",
+      "status": "online"
     },
     "DescribeRocketMQNamespaces": {
       "document": "This API is used to get the list of RocketMQ namespaces.",
       "input": "DescribeRocketMQNamespacesRequest",
       "name": "Gets the list of RocketMQ namespaces",
-      "output": "DescribeRocketMQNamespacesResponse"
+      "output": "DescribeRocketMQNamespacesResponse",
+      "status": "online"
     },
     "DescribeRocketMQTopics": {
       "document": "This API is used to get the list of RocketMQ topics.",
       "input": "DescribeRocketMQTopicsRequest",
       "name": "Gets the list of RocketMQ topics",
-      "output": "DescribeRocketMQTopicsResponse"
+      "output": "DescribeRocketMQTopicsResponse",
+      "status": "online"
     },
     "DescribeRocketMQVipInstances": {
       "document": "This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.",
       "input": "DescribeRocketMQVipInstancesRequest",
       "name": "Queries the list of TDMQ for RocketMQ exclusive instances",
-      "output": "DescribeRocketMQVipInstancesResponse"
+      "output": "DescribeRocketMQVipInstancesResponse",
+      "status": "online"
     },
     "DescribeRoles": {
       "document": "This API is used to get the list of roles.",
       "input": "DescribeRolesRequest",
       "name": "Gets the list of roles",
-      "output": "DescribeRolesResponse"
+      "output": "DescribeRolesResponse",
+      "status": "online"
     },
     "DescribeSubscriptions": {
       "document": "This API is used to query the list of subscribers under the specified environment and topic.",
       "input": "DescribeSubscriptionsRequest",
       "name": "Gets the consumer subscription list",
-      "output": "DescribeSubscriptionsResponse"
+      "output": "DescribeSubscriptionsResponse",
+      "status": "online"
     },
     "DescribeTopics": {
       "document": "This API is used to get the list of topics under an environment.",
       "input": "DescribeTopicsRequest",
       "name": "Gets the topic list",
-      "output": "DescribeTopicsResponse"
+      "output": "DescribeTopicsResponse",
+      "status": "online"
     },
     "ModifyCluster": {
       "document": "This API is used to update a cluster.",
       "input": "ModifyClusterRequest",
       "name": "Updates cluster",
-      "output": "ModifyClusterResponse"
+      "output": "ModifyClusterResponse",
+      "status": "online"
     },
     "ModifyCmqQueueAttribute": {
       "document": "This API is used to modify the attributes of a CMQ queue.",
       "input": "ModifyCmqQueueAttributeRequest",
       "name": "Modifies CMQ queue attributes",
-      "output": "ModifyCmqQueueAttributeResponse"
+      "output": "ModifyCmqQueueAttributeResponse",
+      "status": "online"
     },
     "ModifyCmqSubscriptionAttribute": {
       "document": "This API is used to modify the attributes of a CMQ subscription.",
       "input": "ModifyCmqSubscriptionAttributeRequest",
       "name": "Modifies CMQ subscription attributes",
-      "output": "ModifyCmqSubscriptionAttributeResponse"
+      "output": "ModifyCmqSubscriptionAttributeResponse",
+      "status": "online"
     },
     "ModifyCmqTopicAttribute": {
       "document": "This API is used to modify the attributes of a CMQ topic.",
       "input": "ModifyCmqTopicAttributeRequest",
       "name": "Modifies CMQ topic attributes",
-      "output": "ModifyCmqTopicAttributeResponse"
+      "output": "ModifyCmqTopicAttributeResponse",
+      "status": "online"
     },
     "ModifyEnvironmentAttributes": {
       "document": "This API is used to modify the attributes of the specified namespace.",
       "input": "ModifyEnvironmentAttributesRequest",
       "name": "Modifies namespace attributes",
-      "output": "ModifyEnvironmentAttributesResponse"
+      "output": "ModifyEnvironmentAttributesResponse",
+      "status": "online"
     },
     "ModifyEnvironmentRole": {
       "document": "This API is used to modify an environment role.",
       "input": "ModifyEnvironmentRoleRequest",
       "name": "Modifies environment role",
-      "output": "ModifyEnvironmentRoleResponse"
+      "output": "ModifyEnvironmentRoleResponse",
+      "status": "online"
     },
     "ModifyRocketMQCluster": {
       "document": "This API is used to update a RocketMQ cluster.",
       "input": "ModifyRocketMQClusterRequest",
       "name": "Updates RocketMQ cluster",
-      "output": "ModifyRocketMQClusterResponse"
+      "output": "ModifyRocketMQClusterResponse",
+      "status": "online"
     },
     "ModifyRocketMQGroup": {
       "document": "This API is used to update a RocketMQ consumer group.",
       "input": "ModifyRocketMQGroupRequest",
       "name": "Updates RocketMQ consumer group",
-      "output": "ModifyRocketMQGroupResponse"
+      "output": "ModifyRocketMQGroupResponse",
+      "status": "online"
     },
     "ModifyRocketMQNamespace": {
       "document": "This API is used to update a RocketMQ namespace.",
       "input": "ModifyRocketMQNamespaceRequest",
       "name": "Updates RocketMQ namespace",
-      "output": "ModifyRocketMQNamespaceResponse"
+      "output": "ModifyRocketMQNamespaceResponse",
+      "status": "online"
     },
     "ModifyRocketMQTopic": {
       "document": "This API is used to update a RocketMQ topic.",
       "input": "ModifyRocketMQTopicRequest",
       "name": "Updates RocketMQ topic",
-      "output": "ModifyRocketMQTopicResponse"
+      "output": "ModifyRocketMQTopicResponse",
+      "status": "online"
     },
     "ModifyRole": {
       "document": "This API is used to modify a role.",
       "input": "ModifyRoleRequest",
       "name": "Modifies role",
-      "output": "ModifyRoleResponse"
+      "output": "ModifyRoleResponse",
+      "status": "online"
     },
     "ModifyTopic": {
       "document": "This API is used to modify the topic remarks and number of partitions.",
       "input": "ModifyTopicRequest",
       "name": "Modifies topic",
-      "output": "ModifyTopicResponse"
+      "output": "ModifyTopicResponse",
+      "status": "online"
     },
     "PublishCmqMsg": {
       "document": "This API is used to send a CMQ topic message.",
       "input": "PublishCmqMsgRequest",
       "name": "Sends CMQ topic message",
-      "output": "PublishCmqMsgResponse"
+      "output": "PublishCmqMsgResponse",
+      "status": "online"
     },
     "ReceiveMessage": {
       "document": "Currently, the `ReceiveMessage` API only supports partitioned topics. It is used to receive messages sent to a specified partitioned topic. If it is called when there are no messages in the partitioned topic, the `ReceiveTimeout` exception will be reported.\n\nInstructions on how to use `BatchReceivePolicy`:\n\n`BatchReceive` has three parameters:\n\n● `MaxNumMessages`: The maximum number of messages returned by `Receive` when `BatchReceive` is used.\n● `MaxNumBytes`: The maximum size (in bytes) of the message returned by `Receive` when `BatchReceive` is used.\n● `Timeout`: The maximum timeout period (in milliseconds) of calling `Receive` when `BatchReceive` is used.\n\nBy default, if you don’t specify any of the three parameters, the `BatchReceive` feature is disabled; if one of the three parameter values is above zero, `BatchReceive` is enabled. `BatchReceive` will be disabled when any of the three parameter values reaches the threshold you specify.\n\nNote: The values of both `MaxNumMessages` and `MaxNumBytes` are subject to the value of `ReceiveQueueSize`. If the values of `ReceiveQueueSize` and `MaxNumMessages` are 5 and 10, respectively, you can receive up to five rather than 10 messages when `BatchReceive` is used.\n\n\n\nThe API configured with `BatchReceivePolicy` returns multiple messages at a time.\n\n1. These messages are separated by “###”. After receiving them, you can separate them with split tools in different languages.\n2. MessageIDs are separated by “###”. After receiving the messages, you can separate the MessageIDs with split tools in different languages, so that you can obtain the `MessageID` field information required for calling the `AcknowledgeMessage` API.\n",
       "input": "ReceiveMessageRequest",
       "name": "Receives messages",
-      "output": "ReceiveMessageResponse"
+      "output": "ReceiveMessageResponse",
+      "status": "online"
     },
     "ResetMsgSubOffsetByTimestamp": {
       "document": "This API is used to rewind a message by timestamp, accurate down to the millisecond.",
       "input": "ResetMsgSubOffsetByTimestampRequest",
       "name": "Rewinds message",
-      "output": "ResetMsgSubOffsetByTimestampResponse"
+      "output": "ResetMsgSubOffsetByTimestampResponse",
+      "status": "online"
     },
     "ResetRocketMQConsumerOffSet": {
       "document": "This API is used to reset the consumption offset of a specified consumer group to a specified timestamp.",
       "input": "ResetRocketMQConsumerOffSetRequest",
       "name": "Resets RocketMQ consumption offset",
-      "output": "ResetRocketMQConsumerOffSetResponse"
+      "output": "ResetRocketMQConsumerOffSetResponse",
+      "status": "online"
     },
     "RewindCmqQueue": {
       "document": "This API is used to rewind a CMQ queue.",
       "input": "RewindCmqQueueRequest",
       "name": "Rewinds CMQ queue",
-      "output": "RewindCmqQueueResponse"
+      "output": "RewindCmqQueueResponse",
+      "status": "online"
     },
     "SendBatchMessages": {
       "document": "This API is used to batch send messages.\n\nNote: the batch message sending API in TDMQ is to package messages into a batch on the service side of TDMQ-HTTP and then send the batch as a TCP request inside the service. Therefore, when using this API, you should still follow the logic of sending a single message: each message is an independent HTTP request, and multiple HTTP requests are aggregated into one batch inside the TDMQ-HTTP service and then sent to the server; that is, batch sending messages is the same as sending a single message in terms of usage, and batch aggregation is completed inside the TDMQ-HTTP service.",
       "input": "SendBatchMessagesRequest",
       "name": "Batch sends messages",
-      "output": "SendBatchMessagesResponse"
+      "output": "SendBatchMessagesResponse",
+      "status": "online"
     },
     "SendCmqMsg": {
       "document": "This API is used to send a CMQ message.",
       "input": "SendCmqMsgRequest",
       "name": "Sends CMQ message",
-      "output": "SendCmqMsgResponse"
+      "output": "SendCmqMsgResponse",
+      "status": "online"
     },
     "SendMessages": {
       "document": "This API is used to send one message.",
       "input": "SendMessagesRequest",
       "name": "Sends one message",
-      "output": "SendMessagesResponse"
+      "output": "SendMessagesResponse",
+      "status": "online"
     },
     "SendMsg": {
       "document": "This API is used to test message sending. It cannot be used in the production environment.",
       "input": "SendMsgRequest",
       "name": "Sends message",
-      "output": "SendMsgResponse"
+      "output": "SendMsgResponse",
+      "status": "online"
     },
     "UnbindCmqDeadLetter": {
       "document": "This API is used to unbind a CMQ dead letter queue.",
       "input": "UnbindCmqDeadLetterRequest",
       "name": "Unbinds CMQ dead letter queue",
-      "output": "UnbindCmqDeadLetterResponse"
+      "output": "UnbindCmqDeadLetterResponse",
+      "status": "online"
     }
   },
   "metadata": {

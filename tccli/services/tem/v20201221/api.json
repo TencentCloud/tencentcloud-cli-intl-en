@@ -4,97 +4,113 @@
       "document": "This API is used to generate a COS temporary key.",
       "input": "CreateCosTokenV2Request",
       "name": "Generates COS temporary key (v2)",
-      "output": "CreateCosTokenV2Response"
+      "output": "CreateCosTokenV2Response",
+      "status": "online"
     },
     "CreateNamespace": {
       "document": "This API is used to create an environment.",
       "input": "CreateNamespaceRequest",
       "name": "Creates environment",
-      "output": "CreateNamespaceResponse"
+      "output": "CreateNamespaceResponse",
+      "status": "online"
     },
     "CreateResource": {
       "document": "This API is used to bind a cloud resource.",
       "input": "CreateResourceRequest",
       "name": "Binds cloud resource",
-      "output": "CreateResourceResponse"
+      "output": "CreateResourceResponse",
+      "status": "online"
     },
     "CreateServiceV2": {
       "document": "This API is used to create a service.",
       "input": "CreateServiceV2Request",
       "name": "Creates service",
-      "output": "CreateServiceV2Response"
+      "output": "CreateServiceV2Response",
+      "status": "online"
     },
     "DeleteIngress": {
       "document": "This API is used to delete an ingress rule.",
       "input": "DeleteIngressRequest",
       "name": "Deletes ingress rule",
-      "output": "DeleteIngressResponse"
+      "output": "DeleteIngressResponse",
+      "status": "online"
     },
     "DeployServiceV2": {
       "document": "This API is used to deploy a service.",
       "input": "DeployServiceV2Request",
       "name": "Deploys service",
-      "output": "DeployServiceV2Response"
+      "output": "DeployServiceV2Response",
+      "status": "online"
     },
     "DescribeIngress": {
       "document": "This API is used to query an ingress rule.",
       "input": "DescribeIngressRequest",
       "name": "Queries ingress rule",
-      "output": "DescribeIngressResponse"
+      "output": "DescribeIngressResponse",
+      "status": "online"
     },
     "DescribeIngresses": {
       "document": "This API is used to query the list of ingress rules.",
       "input": "DescribeIngressesRequest",
       "name": "Queries the list of ingress rules",
-      "output": "DescribeIngressesResponse"
+      "output": "DescribeIngressesResponse",
+      "status": "online"
     },
     "DescribeNamespaces": {
       "document": "This API is used to get the list of tenant environments.",
       "input": "DescribeNamespacesRequest",
       "name": "Gets the list of tenant environments",
-      "output": "DescribeNamespacesResponse"
+      "output": "DescribeNamespacesResponse",
+      "status": "online"
     },
     "DescribeRelatedIngresses": {
       "document": "This API is used to query the list of ingress rules associated with the service.",
       "input": "DescribeRelatedIngressesRequest",
       "name": "Queries the list of ingress rules associated with the service",
-      "output": "DescribeRelatedIngressesResponse"
+      "output": "DescribeRelatedIngressesResponse",
+      "status": "online"
     },
     "DescribeServiceRunPodListV2": {
       "document": "This API is used to get the list of running pods under a service.",
       "input": "DescribeServiceRunPodListV2Request",
       "name": "Gets the list of running pods under service",
-      "output": "DescribeServiceRunPodListV2Response"
+      "output": "DescribeServiceRunPodListV2Response",
+      "status": "online"
     },
     "GenerateDownloadUrl": {
       "document": "Generate the pre-signed download URL for the specified package",
       "input": "GenerateDownloadUrlRequest",
       "name": "Generate the pre-signed download URL for the specified package",
-      "output": "GenerateDownloadUrlResponse"
+      "output": "GenerateDownloadUrlResponse",
+      "status": "online"
     },
     "ModifyIngress": {
       "document": "This API is used to create or update an ingress rule.",
       "input": "ModifyIngressRequest",
       "name": "Creates or updates ingress rule",
-      "output": "ModifyIngressResponse"
+      "output": "ModifyIngressResponse",
+      "status": "online"
     },
     "ModifyNamespace": {
       "document": "This API is used to edit an environment.",
       "input": "ModifyNamespaceRequest",
       "name": "Edits environment",
-      "output": "ModifyNamespaceResponse"
+      "output": "ModifyNamespaceResponse",
+      "status": "online"
     },
     "ModifyServiceInfo": {
       "document": "This API is used to modify a service’s basic information.",
       "input": "ModifyServiceInfoRequest",
       "name": "Modifies a service’s basic information",
-      "output": "ModifyServiceInfoResponse"
+      "output": "ModifyServiceInfoResponse",
+      "status": "online"
     },
     "RestartServiceRunPod": {
       "document": "This API is used to restart an instance.",
       "input": "RestartServiceRunPodRequest",
       "name": "Restarts an instance",
-      "output": "RestartServiceRunPodResponse"
+      "output": "RestartServiceRunPodResponse",
+      "status": "online"
     }
   },
   "metadata": {

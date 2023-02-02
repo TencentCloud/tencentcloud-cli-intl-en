@@ -108,6 +108,22 @@
         "title": "Creating a cluster route table"
       }
     ],
+    "CreateClusterVirtualNode": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterVirtualNode\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\",\n    \"NodePoolId\": \"np-abcd1234\",\n    \"SubnetId\": \"subnet-abcd1234\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1ac0d3ae-063e-4789-93fe-3c73e93191b9\",\n        \"NodeName\": \"eklet-subnet-1234-0\"\n    }\n}",
+        "title": "Creating a virtual node"
+      }
+    ],
+    "CreateClusterVirtualNodePool": [
+      {
+        "document": "This example shows you how to create a virtual node pool.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterVirtualNodePool\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\",\n    \"Name\": \"vk-nodepoll\",\n    \"SubnetIds\": [\n        \"subnet-abcd1234\"\n    ],\n    \"SecurityGroupIds\": [\n        \"sg-abcd1234\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"NodePoolId\": \"np-abcd1234\",\n        \"RequestId\": \"1ac0d3ae-063e-4789-93fe-3c73e93191b9\"\n    }\n}",
+        "title": "Creating a virtual node pool"
+      }
+    ],
     "CreateECMInstances": [
       {
         "document": "This example shows you how to create ECM instances.",
@@ -210,6 +226,22 @@
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterRouteTable\r\n&RouteTableName=MANAGED_CLUSTER\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Deleting a cluster route table"
+      }
+    ],
+    "DeleteClusterVirtualNode": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteClusterVirtualNode\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\",\n    \"NodeNames\": [\n        \"eklet-subnet-abcd1234-0\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1ac0d3ae-063e-4789-93fe-3c73e93191b9\"\n    }\n}",
+        "title": "Deleting a virtual node"
+      }
+    ],
+    "DeleteClusterVirtualNodePool": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteClusterVirtualNodePool\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\",\n    \"NodePoolIds\": [\n        \"np-abcd1234\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1ac0d3ae-063e-4789-93fe-3c73e93191b9\"\n    }\n}",
+        "title": "Deleting a virtual node pool"
       }
     ],
     "DeleteECMInstances": [
@@ -335,7 +367,7 @@
     "DescribeClusterKubeconfig": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterKubeconfig\n&ClusterId=cls-65r1c5nu\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterKubeconfig\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-65r1c5nu\"\n}",
         "output": "{\n    \"Response\": {\n        \"Kubeconfig\": \"xxx\",\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
         "title": "Obtaining the cluster kubeconfig file"
       }
@@ -358,7 +390,7 @@
     ],
     "DescribeClusterNodePoolDetail": [
       {
-        "document": "",
+        "document": "查询节点池详情",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterNodePoolDetail\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"NodePool\": {\n            \"AutoscalingGroupId\": \"asg-xxx\",\n            \"AutoscalingGroupStatus\": \"enabled\",\n            \"ClusterInstanceId\": \"cls-xxx\",\n            \"DesiredNodesNum\": 0,\n            \"Labels\": [],\n            \"LaunchConfigurationId\": \"asc-xxx\",\n            \"LifeState\": \"normal\",\n            \"MaxNodesNum\": 1,\n            \"MinNodesNum\": 0,\n            \"Name\": \"test\",\n            \"NodeCountSummary\": {\n                \"AutoscalingAdded\": {\n                    \"Initializing\": 0,\n                    \"Joining\": 0,\n                    \"Normal\": 0,\n                    \"Total\": 0\n                },\n                \"ManuallyAdded\": {\n                    \"Initializing\": 0,\n                    \"Joining\": 0,\n                    \"Normal\": 1,\n                    \"Total\": 1\n                }\n            },\n            \"NodePoolId\": \"np-xxxxx\",\n            \"Taints\": []\n        },\n        \"RequestId\": \"xxx\"\n    }\n}",
         "title": "Querying detailed information of a node pool"
@@ -402,6 +434,22 @@
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterStatus\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ClusterStatusSet\": [\n            {\n                \"ClusterClosingNodeNum\": 0,\n                \"ClusterAuditEnabled\": true,\n                \"ClusterDeletionProtection\": true,\n                \"ClusterId\": \"xx\",\n                \"ClusterBMonitor\": true,\n                \"ClusterInitNodeNum\": 0,\n                \"ClusterState\": \"xx\",\n                \"ClusterClosedNodeNum\": 0,\n                \"ClusterInstanceState\": \"xx\",\n                \"ClusterRunningNodeNum\": 0,\n                \"ClusterFailedNodeNum\": 0\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Obtaining the current cluster status"
+      }
+    ],
+    "DescribeClusterVirtualNode": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterVirtualNode\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\",\n    \"NodePoolId\": \"np-abcd1234\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1ac0d3ae-063e-4789-93fe-3c73e93191b9\",\n        \"TotalCount\": 1,\n        \"Nodes\": [\n            {\n                \"Name\": \"eklet-subnet-abcd1234-0\",\n                \"SubnetId\": \"subnet-abcd1234\",\n                \"Phase\": \"Running\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the list of virtual nodes"
+      }
+    ],
+    "DescribeClusterVirtualNodePools": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterVirtualNodePools\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1ac0d3ae-063e-4789-93fe-3c73e93191b9\",\n        \"NodePoolSet\": [\n            {\n                \"NodePoolId\": \"np-abcd1234\",\n                \"SubnetIds\": [\n                    \"subnet-abcd1234\"\n                ],\n                \"Name\": \"virtual-nodepool\",\n                \"LifeState\": \"normal\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the list of virtual node pools"
       }
     ],
     "DescribeClusters": [
@@ -588,6 +636,14 @@
         "title": "Disabling cluster deletion protection"
       }
     ],
+    "DrainClusterVirtualNode": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DrainClusterVirtualNode\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\",\n    \"NodeName\": \"eklet-subnet-abcd1234-0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Draining a virtual node"
+      }
+    ],
     "EnableClusterDeletionProtection": [
       {
         "document": "This example shows you how to avoid accidental cluster deletion. After enabling cluster deletion protection, you cannot delete a cluster via the console or API. If you want to delete a cluster, you need to disable cluster deletion protection first.",
@@ -684,6 +740,14 @@
         "title": "Editing a node pool"
       }
     ],
+    "ModifyClusterVirtualNodePool": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterVirtualNodePool\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcd1234\",\n    \"NodePoolId\": \"np-abcd1234\",\n    \"Name\": \"virtual-node-prod\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1ac0d3ae-063e-4789-93fe-3c73e93191b9\"\n    }\n}",
+        "title": "Modifying a virtual node pool"
+      }
+    ],
     "ModifyNodePoolInstanceTypes": [
       {
         "document": "",
@@ -742,7 +806,7 @@
     ],
     "UpgradeClusterInstances": [
       {
-        "document": "",
+        "document": "This example shows you how to upgrade work nodes in the cluster. ",
         "input": "https://tke.tencentcloudapi.com/?Action=UpgradeClusterInstances\n&ClusterId=cls-xxxxxx\n&UpgradeType=reset\n&Operation=create\n&InstanceIds.0=ins-xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Upgrading cluster nodes"

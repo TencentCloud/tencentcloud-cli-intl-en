@@ -4,25 +4,29 @@
       "document": "This API is used to cancel a moderation task. It will return the `TaskId` of the task after the task is canceled successfully.<br>\n\nDefault API request rate limit: **20 requests/sec**.",
       "input": "CancelTaskRequest",
       "name": "Cancels task",
-      "output": "CancelTaskResponse"
+      "output": "CancelTaskResponse",
+      "status": "online"
     },
     "CreateVideoModerationTask": {
       "document": "This API is used to submit a video file or stream for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account [to activate VM](https://console.cloud.tencent.com/cms/video/package) and adjust the business configuration.<br>\n### Feature use instructions\n\n- Go to the \"[CMS console - VM](https://console.cloud.tencent.com/cms/video/package)\" to activate AMS.\n\n- This API is a paid API. For its billing mode, see [VM Pricing](https://intl.cloud.tencent.com/product/vm/pricing?from_cn_redirect=1).\n\n- Default API request rate limit: **20 requests/sec**. When this limit is exceeded, requests for async moderation tasks (video on demand) will automatically join the queue of requests pending moderation, while an error will be reported for sync moderation tasks (video live streaming).\n- Default limit on the number of concurrent moderation channels: 10. When this limit is exceeded, requests for async moderation tasks (video on demand) will automatically join the queue of requests pending moderation, while an error will be reported for sync moderation tasks (video live streaming).\n\n\n### API feature description\n\n- It can automatically detect video files or streams and recognize non-compliant content in them based on the deep learning technology from the perspectives of OCR-based text recognition, object detection (such as object, advertising logo, and QR code), image recognition, and audio moderation;\n- It allows you to set the callback address (Callback) to get the detection result or call the API for viewing task details to get the details of the detection result through polling. For normal video moderation tasks, if non-compliant content is contained, the captured frames will be called back within **3s**, and the audio segments will be called back within the configured **segment duration + 2s**; for queued moderation tasks, the callback time will be equal to the sum of the callback time for normal moderation and waiting time;\n- The API for viewing the moderation task list can be called to query the task queue. You can filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status;\n- It can recognize various non-compliant scenarios, including vulgarity, abuse, pornography, and advertising;\n- It allows you to customize moderation policies based on different business scenarios;\n- You can customize blocklist/allowlist dictionaries and image libraries to filter non-compliant content of custom types (currently, only blocklist configuration is supported);\n- You can customize the moderation task priority, so that when multiple tasks are queuing, the task priority will be automatically adjusted according to the configuration;\n- You can submit detection tasks in batches and **create up to 10 tasks at a time**;\n\n### Call description for video file\n\n- Supported video file size: **< 3 GB**\n- Supported video file resolution: **the optimal resolution is 1920x1080 (1080p)**. For video files of less than 300 MB in size, their resolution can be greater than 1080p; for video files of a greater size, you can call [MPS](https://intl.cloud.tencent.com/product/mps/details?from_cn_redirect=1) to transcode them before submitting them for moderation;\n- Supported video file formats: FLV, MKV, MP4, RMVB, AVI, WMV, 3GP, TS, MOV, RM, MPEG, and WMF;\n- Supported video file access methods: URL (over HTTP/HTTPS) and Tencent Cloud COS;\n- If you pass in the access URL of a video file, you need to **limit its header file read time to 3 seconds**. To ensure the stability and reliability of the video to be detected, we recommend you use Tencent Cloud COS for storage or CDN for caching;\n- You can configure whether to enable audio moderation, and if it is not enabled, only the image content of video files will be moderated.\n\n### Call description for video stream\n\n- Supported video stream duration: **< 5 hours**\n- Supported video stream resolution: **1920x1080 (1080p)**. For videos with a higher resolution, you can call [live transcoding](https://intl.cloud.tencent.com/document/product/267/39889?from_cn_redirect=1) to transcode them before submitting them for moderation;\n- Supported video stream formats: mainstream video stream codecs such as RMTP and FLV;\n- Supported video transfer protocols: HTTP, HTTPS, and RTMP;\n- You can configure whether to enable audio moderation, and if it is not enabled, only the image content of video streams will be moderated.",
       "input": "CreateVideoModerationTaskRequest",
       "name": "Creates video moderation task",
-      "output": "CreateVideoModerationTaskResponse"
+      "output": "CreateVideoModerationTaskResponse",
+      "status": "online"
     },
     "DescribeTaskDetail": {
       "document": "This API is used to poll the details of the detection result.<br>\n\nDefault API request rate limit: **200 requests/sec**.",
       "input": "DescribeTaskDetailRequest",
       "name": "Views task details",
-      "output": "DescribeTaskDetailResponse"
+      "output": "DescribeTaskDetailResponse",
+      "status": "online"
     },
     "DescribeTasks": {
       "document": "This API is used to query the task queue. You can filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status.<br>\n\nDefault API request rate limit: **20 requests/sec**.",
       "input": "DescribeTasksRequest",
       "name": "Views moderation task list",
-      "output": "DescribeTasksResponse"
+      "output": "DescribeTasksResponse",
+      "status": "online"
     }
   },
   "metadata": {

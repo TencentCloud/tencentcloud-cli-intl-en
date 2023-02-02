@@ -4,91 +4,106 @@
       "document": "This API is used to create a Private DNS account.",
       "input": "CreatePrivateDNSAccountRequest",
       "name": "Creates Private DNS account",
-      "output": "CreatePrivateDNSAccountResponse"
+      "output": "CreatePrivateDNSAccountResponse",
+      "status": "online"
     },
     "CreatePrivateZone": {
       "document": "This API is used to create a private domain.",
       "input": "CreatePrivateZoneRequest",
       "name": "Creates private domain",
-      "output": "CreatePrivateZoneResponse"
+      "output": "CreatePrivateZoneResponse",
+      "status": "online"
     },
     "CreatePrivateZoneRecord": {
       "document": "This API is used to add a DNS record for a private domain.",
       "input": "CreatePrivateZoneRecordRequest",
       "name": "Adds DNS record for private domain",
-      "output": "CreatePrivateZoneRecordResponse"
+      "output": "CreatePrivateZoneRecordResponse",
+      "status": "online"
     },
     "DescribeAccountVpcList": {
       "document": "This API is used to get the VPC list of a Private DNS account.",
       "input": "DescribeAccountVpcListRequest",
       "name": "Gets the VPC list of a Private DNS account",
-      "output": "DescribeAccountVpcListResponse"
+      "output": "DescribeAccountVpcListResponse",
+      "status": "online"
     },
     "DescribeAuditLog": {
       "document": "This API is used to get the list of operation logs.",
       "input": "DescribeAuditLogRequest",
       "name": "Gets the list of operation logs",
-      "output": "DescribeAuditLogResponse"
+      "output": "DescribeAuditLogResponse",
+      "status": "online"
     },
     "DescribeDashboard": {
       "document": "This API is used to get the overview of private DNS records.",
       "input": "DescribeDashboardRequest",
       "name": "Gets the overview of private DNS records",
-      "output": "DescribeDashboardResponse"
+      "output": "DescribeDashboardResponse",
+      "status": "online"
     },
     "DescribePrivateDNSAccountList": {
       "document": "This API is used to get the list of Private DNS accounts.",
       "input": "DescribePrivateDNSAccountListRequest",
       "name": "Gets the list of Private DNS accounts",
-      "output": "DescribePrivateDNSAccountListResponse"
+      "output": "DescribePrivateDNSAccountListResponse",
+      "status": "online"
     },
     "DescribePrivateZoneService": {
       "document": "This API is used to query the Private DNS activation status.",
       "input": "DescribePrivateZoneServiceRequest",
       "name": "Queries Private DNS activation status",
-      "output": "DescribePrivateZoneServiceResponse"
+      "output": "DescribePrivateZoneServiceResponse",
+      "status": "online"
     },
     "DescribeQuotaUsage": {
       "document": "This API is used to query quota usage.",
       "input": "DescribeQuotaUsageRequest",
       "name": "Queries quota usage",
-      "output": "DescribeQuotaUsageResponse"
+      "output": "DescribeQuotaUsageResponse",
+      "status": "online"
     },
     "DescribeRequestData": {
       "document": "This API is used to get the DNS request volume of a private domain.",
       "input": "DescribeRequestDataRequest",
       "name": "Gets the DNS request volume of private domain",
-      "output": "DescribeRequestDataResponse"
+      "output": "DescribeRequestDataResponse",
+      "status": "online"
     },
     "ModifyPrivateZone": {
       "document": "This API is used to modify a private domain.",
       "input": "ModifyPrivateZoneRequest",
       "name": "Modifies private domain",
-      "output": "ModifyPrivateZoneResponse"
+      "output": "ModifyPrivateZoneResponse",
+      "status": "online"
     },
     "ModifyPrivateZoneRecord": {
       "document": "This API is used to modify a DNS record for a private domain.",
       "input": "ModifyPrivateZoneRecordRequest",
       "name": "Modifies DNS record for private domain",
-      "output": "ModifyPrivateZoneRecordResponse"
+      "output": "ModifyPrivateZoneRecordResponse",
+      "status": "online"
     },
     "ModifyPrivateZoneVpc": {
       "document": "This API is used to modify the VPC associated with a private domain.",
       "input": "ModifyPrivateZoneVpcRequest",
       "name": "Modifies VPC associated with private domain",
-      "output": "ModifyPrivateZoneVpcResponse"
+      "output": "ModifyPrivateZoneVpcResponse",
+      "status": "online"
     },
     "ModifyRecordsStatus": {
       "document": "This API is used to modify the DNS record status.",
       "input": "ModifyRecordsStatusRequest",
       "name": "Modifies the DNS record status",
-      "output": "ModifyRecordsStatusResponse"
+      "output": "ModifyRecordsStatusResponse",
+      "status": "online"
     },
     "SubscribePrivateZoneService": {
       "document": "This API is used to activate the Private DNS service.",
       "input": "SubscribePrivateZoneServiceRequest",
       "name": "Activates Private DNS service",
-      "output": "SubscribePrivateZoneServiceResponse"
+      "output": "SubscribePrivateZoneServiceResponse",
+      "status": "online"
     }
   },
   "metadata": {

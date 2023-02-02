@@ -4,343 +4,400 @@
       "document": "API domain name: `rum.tencentcloudapi.com`.\n\nThis API is used to create a log download task.\n\nDefault API request rate limit: 20 requests/sec.",
       "input": "CreateLogExportRequest",
       "name": "Creates log download task",
-      "output": "CreateLogExportResponse"
+      "output": "CreateLogExportResponse",
+      "status": "online"
     },
     "CreateOfflineLogConfig": {
       "document": "This API is used to create an offline log listener to report offline logs of particular users.",
       "input": "CreateOfflineLogConfigRequest",
       "name": "Creates offline log listener",
-      "output": "CreateOfflineLogConfigResponse"
+      "output": "CreateOfflineLogConfigResponse",
+      "status": "online"
     },
     "CreateProject": {
       "document": "This API is used to create a project (owned by the specified team).",
       "input": "CreateProjectRequest",
       "name": "Creates project",
-      "output": "CreateProjectResponse"
+      "output": "CreateProjectResponse",
+      "status": "online"
     },
     "CreateReleaseFile": {
       "document": "This API is used to create a file record for the specified project.",
       "input": "CreateReleaseFileRequest",
       "name": "Creates release file record",
-      "output": "CreateReleaseFileResponse"
+      "output": "CreateReleaseFileResponse",
+      "status": "online"
     },
     "CreateStarProject": {
       "document": "This API is used to add a starred project.",
       "input": "CreateStarProjectRequest",
       "name": "Adds starred project",
-      "output": "CreateStarProjectResponse"
+      "output": "CreateStarProjectResponse",
+      "status": "online"
     },
     "CreateTawInstance": {
       "document": "This API is used to create a RUM instance.",
       "input": "CreateTawInstanceRequest",
       "name": "Creates RUM instance",
-      "output": "CreateTawInstanceResponse"
+      "output": "CreateTawInstanceResponse",
+      "status": "online"
     },
     "CreateWhitelist": {
       "document": "This API is used to create an allowlist.",
       "input": "CreateWhitelistRequest",
       "name": "Creates allowlist",
-      "output": "CreateWhitelistResponse"
+      "output": "CreateWhitelistResponse",
+      "status": "online"
     },
     "DeleteInstance": {
       "document": "This API is used to delete an instance. The deleted instance cannot be recovered.",
       "input": "DeleteInstanceRequest",
       "name": "Deletes instance",
-      "output": "DeleteInstanceResponse"
+      "output": "DeleteInstanceResponse",
+      "status": "online"
     },
     "DeleteLogExport": {
       "document": "API domain name: `rum.tencentcloudapi.com`.\n\nThis API is used to delete a log download task.\n\nDefault API request rate limit: 20 requests/sec.",
       "input": "DeleteLogExportRequest",
       "name": "Deletes log download task",
-      "output": "DeleteLogExportResponse"
+      "output": "DeleteLogExportResponse",
+      "status": "online"
     },
     "DeleteOfflineLogConfig": {
       "document": "This API is used to delete an offline RUM log listener. Then, offline logs of particular users will not be reported.",
       "input": "DeleteOfflineLogConfigRequest",
       "name": "Deletes offline RUM log listener",
-      "output": "DeleteOfflineLogConfigResponse"
+      "output": "DeleteOfflineLogConfigResponse",
+      "status": "online"
     },
     "DeleteOfflineLogRecord": {
       "document": "This API is used to delete an offline log record.",
       "input": "DeleteOfflineLogRecordRequest",
       "name": "Deletes offline log record",
-      "output": "DeleteOfflineLogRecordResponse"
+      "output": "DeleteOfflineLogRecordResponse",
+      "status": "online"
     },
     "DeleteProject": {
       "document": "This API is used to delete the specified RUM project.",
       "input": "DeleteProjectRequest",
       "name": "Deletes RUM project",
-      "output": "DeleteProjectResponse"
+      "output": "DeleteProjectResponse",
+      "status": "online"
     },
     "DeleteReleaseFile": {
       "document": "This API is used to delete the specified sourcemap file.",
       "input": "DeleteReleaseFileRequest",
       "name": "Deletes release file",
-      "output": "DeleteReleaseFileResponse"
+      "output": "DeleteReleaseFileResponse",
+      "status": "online"
     },
     "DeleteStarProject": {
       "document": "This API is used to delete a starred project for the specified user.",
       "input": "DeleteStarProjectRequest",
       "name": "Deletes starred project",
-      "output": "DeleteStarProjectResponse"
+      "output": "DeleteStarProjectResponse",
+      "status": "online"
     },
     "DeleteWhitelist": {
       "document": "This API is used to delete an allowlist.",
       "input": "DeleteWhitelistRequest",
       "name": "Deletes allowlist",
-      "output": "DeleteWhitelistResponse"
+      "output": "DeleteWhitelistResponse",
+      "status": "online"
     },
     "DescribeData": {
       "document": "This API is used to query the forwarding monitor.",
       "input": "DescribeDataRequest",
       "name": "Gets QueryData",
-      "output": "DescribeDataResponse"
+      "output": "DescribeDataResponse",
+      "status": "online"
     },
     "DescribeDataCustomUrl": {
       "document": "This API is used to get the DescribeDataCustomUrl information.",
       "input": "DescribeDataCustomUrlRequest",
       "name": "Gets DescribeDataCustomUrl information",
-      "output": "DescribeDataCustomUrlResponse"
+      "output": "DescribeDataCustomUrlResponse",
+      "status": "online"
     },
     "DescribeDataEventUrl": {
       "document": "This API is used to get the DescribeDataEventUrl information.",
       "input": "DescribeDataEventUrlRequest",
       "name": "Gets DescribeDataEventUrl information",
-      "output": "DescribeDataEventUrlResponse"
+      "output": "DescribeDataEventUrlResponse",
+      "status": "online"
     },
     "DescribeDataFetchProject": {
       "document": "This API is used to get the `DescribeDataFetchProject` information and has been deprecated. Use `DescribeDataFetchUrl` instead.",
       "input": "DescribeDataFetchProjectRequest",
       "name": "Gets the `DescribeDataFetchProject` information. This API has been deprecated. Use `DescribeDataFetchUrl` instead.",
-      "output": "DescribeDataFetchProjectResponse"
+      "output": "DescribeDataFetchProjectResponse",
+      "status": "online"
     },
     "DescribeDataFetchUrl": {
       "document": "This API is used to get the DescribeDataFetchUrl information.",
       "input": "DescribeDataFetchUrlRequest",
       "name": "Gets DescribeDataFetchUrl information",
-      "output": "DescribeDataFetchUrlResponse"
+      "output": "DescribeDataFetchUrlResponse",
+      "status": "online"
     },
     "DescribeDataFetchUrlInfo": {
       "document": "This API is used to get the DescribeDataFetchUrlInfo information.",
       "input": "DescribeDataFetchUrlInfoRequest",
       "name": "Gets DescribeDataFetchUrlInfo information",
-      "output": "DescribeDataFetchUrlInfoResponse"
+      "output": "DescribeDataFetchUrlInfoResponse",
+      "status": "online"
     },
     "DescribeDataLogUrlInfo": {
       "document": "This API is used to get the loginfo information.",
       "input": "DescribeDataLogUrlInfoRequest",
       "name": "Gets dataloginfo information",
-      "output": "DescribeDataLogUrlInfoResponse"
+      "output": "DescribeDataLogUrlInfoResponse",
+      "status": "online"
     },
     "DescribeDataLogUrlStatistics": {
       "document": "This API is used to get the LogUrlStatistics information.",
       "input": "DescribeDataLogUrlStatisticsRequest",
       "name": "Gets LogUrlStatistics information",
-      "output": "DescribeDataLogUrlStatisticsResponse"
+      "output": "DescribeDataLogUrlStatisticsResponse",
+      "status": "online"
     },
     "DescribeDataPerformancePage": {
       "document": "This API is used to get the PerformancePage information.",
       "input": "DescribeDataPerformancePageRequest",
       "name": "Gets PerformancePage information",
-      "output": "DescribeDataPerformancePageResponse"
+      "output": "DescribeDataPerformancePageResponse",
+      "status": "online"
     },
     "DescribeDataPerformanceProject": {
       "document": "This API is used to get the PerformanceProject information.",
       "input": "DescribeDataPerformanceProjectRequest",
       "name": "Gets the `PerformanceProject` information. This API has been deprecated. Use `DescribeDataPerformancePage` instead.",
-      "output": "DescribeDataPerformanceProjectResponse"
+      "output": "DescribeDataPerformanceProjectResponse",
+      "status": "online"
     },
     "DescribeDataPvUrlInfo": {
       "document": "This API is used to get the PvUrlInfo information.",
       "input": "DescribeDataPvUrlInfoRequest",
       "name": "Gets PvUrlInfo information",
-      "output": "DescribeDataPvUrlInfoResponse"
+      "output": "DescribeDataPvUrlInfoResponse",
+      "status": "online"
     },
     "DescribeDataPvUrlStatistics": {
       "document": "This API is used to get the DescribeDataPvUrlStatistics information.",
       "input": "DescribeDataPvUrlStatisticsRequest",
       "name": "Gets DescribeDataPvUrlStatistics information",
-      "output": "DescribeDataPvUrlStatisticsResponse"
+      "output": "DescribeDataPvUrlStatisticsResponse",
+      "status": "online"
     },
     "DescribeDataReportCount": {
       "document": "This API is used to get the number of reported data entries for a project.",
       "input": "DescribeDataReportCountRequest",
       "name": "Gets the number of reported data entries",
-      "output": "DescribeDataReportCountResponse"
+      "output": "DescribeDataReportCountResponse",
+      "status": "online"
     },
     "DescribeDataSetUrlStatistics": {
       "document": "This API is used to get the DescribeDataSetUrlStatistics information.",
       "input": "DescribeDataSetUrlStatisticsRequest",
       "name": "Gets DescribeDataSetUrlStatistics information",
-      "output": "DescribeDataSetUrlStatisticsResponse"
+      "output": "DescribeDataSetUrlStatisticsResponse",
+      "status": "online"
     },
     "DescribeDataStaticProject": {
       "document": "This API is used to get the DescribeDataStaticProject information.",
       "input": "DescribeDataStaticProjectRequest",
       "name": "Gets DescribeDataStaticProject information",
-      "output": "DescribeDataStaticProjectResponse"
+      "output": "DescribeDataStaticProjectResponse",
+      "status": "online"
     },
     "DescribeDataStaticResource": {
       "document": "This API is used to get the DescribeDataStaticResource information.",
       "input": "DescribeDataStaticResourceRequest",
       "name": "Gets DescribeDataStaticResource information",
-      "output": "DescribeDataStaticResourceResponse"
+      "output": "DescribeDataStaticResourceResponse",
+      "status": "online"
     },
     "DescribeDataStaticUrl": {
       "document": "This API is used to get the DescribeDataStaticUrl information.",
       "input": "DescribeDataStaticUrlRequest",
       "name": "Gets DescribeDataStaticUrl information",
-      "output": "DescribeDataStaticUrlResponse"
+      "output": "DescribeDataStaticUrlResponse",
+      "status": "online"
     },
     "DescribeDataWebVitalsPage": {
       "document": "This API is used to get the DescribeDataWebVitalsPage information, which is about core user activities.\nIt includes the Web Vitals metric for the page loading performance.",
       "input": "DescribeDataWebVitalsPageRequest",
       "name": "Gets DescribeDataWebVitalsPage information",
-      "output": "DescribeDataWebVitalsPageResponse"
+      "output": "DescribeDataWebVitalsPageResponse",
+      "status": "online"
     },
     "DescribeError": {
       "document": "This API is used to get the homepage error information.",
       "input": "DescribeErrorRequest",
       "name": "Gets homepage error information",
-      "output": "DescribeErrorResponse"
+      "output": "DescribeErrorResponse",
+      "status": "online"
     },
     "DescribeLogExports": {
       "document": "API domain name: `rum.tencentcloudapi.com`.\n\nThis API is used to get the list of log download tasks.\n\nDefault API request rate limit: 20 requests/sec.",
       "input": "DescribeLogExportsRequest",
       "name": "Gets the list of log download tasks",
-      "output": "DescribeLogExportsResponse"
+      "output": "DescribeLogExportsResponse",
+      "status": "online"
     },
     "DescribeLogList": {
       "document": "This API is used to get the list of logs in a project (created by an instance).",
       "input": "DescribeLogListRequest",
       "name": "Gets log list",
-      "output": "DescribeLogListResponse"
+      "output": "DescribeLogListResponse",
+      "status": "online"
     },
     "DescribeOfflineLogConfigs": {
       "document": "This API is used to get the configuration of the set offline log listener and return the unique user ID.",
       "input": "DescribeOfflineLogConfigsRequest",
       "name": "Gets the configuration of set offline log listener",
-      "output": "DescribeOfflineLogConfigsResponse"
+      "output": "DescribeOfflineLogConfigsResponse",
+      "status": "online"
     },
     "DescribeOfflineLogRecords": {
       "document": "This API is used to get all (up to 100) offline log records.",
       "input": "DescribeOfflineLogRecordsRequest",
       "name": "Get all (up to 100) offline records",
-      "output": "DescribeOfflineLogRecordsResponse"
+      "output": "DescribeOfflineLogRecordsResponse",
+      "status": "online"
     },
     "DescribeOfflineLogs": {
       "document": "This API is used to get the specified offline log.",
       "input": "DescribeOfflineLogsRequest",
       "name": "Gets specified offline log",
-      "output": "DescribeOfflineLogsResponse"
+      "output": "DescribeOfflineLogsResponse",
+      "status": "online"
     },
     "DescribeProjectLimits": {
       "document": "This API is used to get the list of project reporting rates.",
       "input": "DescribeProjectLimitsRequest",
       "name": "Gets the list of project reporting rates",
-      "output": "DescribeProjectLimitsResponse"
+      "output": "DescribeProjectLimitsResponse",
+      "status": "online"
     },
     "DescribeProjects": {
       "document": "This API is used to get the list of projects (under teams created by an instance).",
       "input": "DescribeProjectsRequest",
       "name": "Gets project list",
-      "output": "DescribeProjectsResponse"
+      "output": "DescribeProjectsResponse",
+      "status": "online"
     },
     "DescribePvList": {
       "document": "This API is used to get the list of PVs under a project.",
       "input": "DescribePvListRequest",
       "name": "Gets PV list",
-      "output": "DescribePvListResponse"
+      "output": "DescribePvListResponse",
+      "status": "online"
     },
     "DescribeReleaseFileSign": {
       "document": "This API is used to get the temporary key for uploaded file storage.",
       "input": "DescribeReleaseFileSignRequest",
       "name": "Gets temporary storage key",
-      "output": "DescribeReleaseFileSignResponse"
+      "output": "DescribeReleaseFileSignResponse",
+      "status": "online"
     },
     "DescribeReleaseFiles": {
       "document": "This API is used to get the list of sourcemap files of a project.",
       "input": "DescribeReleaseFilesRequest",
       "name": "Gets the list of sourcemap files of project",
-      "output": "DescribeReleaseFilesResponse"
+      "output": "DescribeReleaseFilesResponse",
+      "status": "online"
     },
     "DescribeRumGroupLog": {
       "document": "This API is used to get the log aggregation information under a project.",
       "input": "DescribeRumGroupLogRequest",
       "name": "Gets RUM log aggregation information",
-      "output": "DescribeRumGroupLogResponse"
+      "output": "DescribeRumGroupLogResponse",
+      "status": "online"
     },
     "DescribeRumLogList": {
       "document": "This API is used to get the list of logs in a project (created by an instance).",
       "input": "DescribeRumLogListRequest",
       "name": "Gets the RUM log list",
-      "output": "DescribeRumLogListResponse"
+      "output": "DescribeRumLogListResponse",
+      "status": "online"
     },
     "DescribeRumStatsLogList": {
       "document": "This API is used to get the list of logs in a project every minute.",
       "input": "DescribeRumStatsLogListRequest",
       "name": "Gets the RUM log list every minute",
-      "output": "DescribeRumStatsLogListResponse"
+      "output": "DescribeRumStatsLogListResponse",
+      "status": "online"
     },
     "DescribeScores": {
       "document": "This API is used to get the list of homepage scores.",
       "input": "DescribeScoresRequest",
       "name": "Gets the list of homepage scores",
-      "output": "DescribeScoresResponse"
+      "output": "DescribeScoresResponse",
+      "status": "online"
     },
     "DescribeTawAreas": {
       "document": "This API is used to query region information.",
       "input": "DescribeTawAreasRequest",
       "name": "Queries region information",
-      "output": "DescribeTawAreasResponse"
+      "output": "DescribeTawAreasResponse",
+      "status": "online"
     },
     "DescribeUvList": {
       "document": "This API is used to get the list of UVs under a project.",
       "input": "DescribeUvListRequest",
       "name": "Gets UV list",
-      "output": "DescribeUvListResponse"
+      "output": "DescribeUvListResponse",
+      "status": "online"
     },
     "DescribeWhitelists": {
       "document": "This API is used to get the list of allowlists.",
       "input": "DescribeWhitelistsRequest",
       "name": "Gets allowlist list",
-      "output": "DescribeWhitelistsResponse"
+      "output": "DescribeWhitelistsResponse",
+      "status": "online"
     },
     "ModifyInstance": {
       "document": "This API is used to modify an instance.",
       "input": "ModifyInstanceRequest",
       "name": "Modifies instance",
-      "output": "ModifyInstanceResponse"
+      "output": "ModifyInstanceResponse",
+      "status": "online"
     },
     "ModifyProject": {
       "document": "This API is used to modify a RUM project.",
       "input": "ModifyProjectRequest",
       "name": "Modifies project",
-      "output": "ModifyProjectResponse"
+      "output": "ModifyProjectResponse",
+      "status": "online"
     },
     "ModifyProjectLimit": {
       "document": "This API is used to add or modify data reporting limit.",
       "input": "ModifyProjectLimitRequest",
       "name": "Adds or modifies data reporting limit",
-      "output": "ModifyProjectLimitResponse"
+      "output": "ModifyProjectLimitResponse",
+      "status": "online"
     },
     "ResumeInstance": {
       "document": "This API is used to resume an instance.",
       "input": "ResumeInstanceRequest",
       "name": "Resumes instance",
-      "output": "ResumeInstanceResponse"
+      "output": "ResumeInstanceResponse",
+      "status": "online"
     },
     "StopInstance": {
       "document": "This API is used to stop an instance.",
       "input": "StopInstanceRequest",
       "name": "Stops instance",
-      "output": "StopInstanceResponse"
+      "output": "StopInstanceResponse",
+      "status": "online"
     },
     "StopProject": {
       "document": "This API is used to stop a project from reporting data.",
       "input": "StopProjectRequest",
       "name": "Stops a project from reporting data",
-      "output": "StopProjectResponse"
+      "output": "StopProjectResponse",
+      "status": "online"
     }
   },
   "metadata": {

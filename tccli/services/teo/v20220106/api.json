@@ -4,529 +4,617 @@
       "document": "This API is used to verify a certificate.",
       "input": "CheckCertificateRequest",
       "name": "Verifies a certificate",
-      "output": "CheckCertificateResponse"
+      "output": "CheckCertificateResponse",
+      "status": "online"
     },
     "CreateApplicationProxy": {
       "document": "This API is used to create an application proxy.",
       "input": "CreateApplicationProxyRequest",
       "name": "Creates an application proxy",
-      "output": "CreateApplicationProxyResponse"
+      "output": "CreateApplicationProxyResponse",
+      "status": "online"
     },
     "CreateApplicationProxyRule": {
       "document": "This API is used to create an application proxy rule.",
       "input": "CreateApplicationProxyRuleRequest",
       "name": "Creates an application proxy rule",
-      "output": "CreateApplicationProxyRuleResponse"
+      "output": "CreateApplicationProxyRuleResponse",
+      "status": "online"
     },
     "CreateApplicationProxyRules": {
       "document": "This API is used to batch create application proxy rules.",
       "input": "CreateApplicationProxyRulesRequest",
       "name": "Batch creates application proxy rules",
-      "output": "CreateApplicationProxyRulesResponse"
+      "output": "CreateApplicationProxyRulesResponse",
+      "status": "online"
     },
     "CreateCustomErrorPage": {
       "document": "This API is used to create a custom error page.",
       "input": "CreateCustomErrorPageRequest",
       "name": "Creates a custom error page",
-      "output": "CreateCustomErrorPageResponse"
+      "output": "CreateCustomErrorPageResponse",
+      "status": "online"
     },
     "CreateDnsRecord": {
       "document": "This API is used to create a DNS record.",
       "input": "CreateDnsRecordRequest",
       "name": "Creates a DNS record",
-      "output": "CreateDnsRecordResponse"
+      "output": "CreateDnsRecordResponse",
+      "status": "online"
     },
     "CreateLoadBalancing": {
       "document": "This API is used to create a CLB instance.",
       "input": "CreateLoadBalancingRequest",
       "name": "Creates a CLB instance",
-      "output": "CreateLoadBalancingResponse"
+      "output": "CreateLoadBalancingResponse",
+      "status": "online"
     },
     "CreateOriginGroup": {
       "document": "This API is used to create an origin group.",
       "input": "CreateOriginGroupRequest",
       "name": "Creates an origin group",
-      "output": "CreateOriginGroupResponse"
+      "output": "CreateOriginGroupResponse",
+      "status": "online"
     },
     "CreatePrefetchTask": {
       "document": "This API is used to create a pre-warming task.",
       "input": "CreatePrefetchTaskRequest",
       "name": "Creates a pre-warming task",
-      "output": "CreatePrefetchTaskResponse"
+      "output": "CreatePrefetchTaskResponse",
+      "status": "online"
     },
     "CreatePurgeTask": {
       "document": "This API is used to create a cache purging task.",
       "input": "CreatePurgeTaskRequest",
       "name": "Creates a cache purging task",
-      "output": "CreatePurgeTaskResponse"
+      "output": "CreatePurgeTaskResponse",
+      "status": "online"
     },
     "CreateZone": {
       "document": "This API is used to access a new site.",
       "input": "CreateZoneRequest",
       "name": "Creates a site",
-      "output": "CreateZoneResponse"
+      "output": "CreateZoneResponse",
+      "status": "online"
     },
     "DeleteApplicationProxy": {
       "document": "This API is used to delete an application proxy.",
       "input": "DeleteApplicationProxyRequest",
       "name": "Deletes an application proxy",
-      "output": "DeleteApplicationProxyResponse"
+      "output": "DeleteApplicationProxyResponse",
+      "status": "online"
     },
     "DeleteApplicationProxyRule": {
       "document": "This API is used to delete an application proxy rule.",
       "input": "DeleteApplicationProxyRuleRequest",
       "name": "Deletes an application proxy rule",
-      "output": "DeleteApplicationProxyRuleResponse"
+      "output": "DeleteApplicationProxyRuleResponse",
+      "status": "online"
     },
     "DeleteDnsRecords": {
       "document": "This API is used to batch delete DNS records.",
       "input": "DeleteDnsRecordsRequest",
       "name": "Batch deletes DNS records",
-      "output": "DeleteDnsRecordsResponse"
+      "output": "DeleteDnsRecordsResponse",
+      "status": "online"
     },
     "DeleteLoadBalancing": {
       "document": "This API is used to delete a CLB instance.",
       "input": "DeleteLoadBalancingRequest",
       "name": "Deletes a CLB instance",
-      "output": "DeleteLoadBalancingResponse"
+      "output": "DeleteLoadBalancingResponse",
+      "status": "online"
     },
     "DeleteOriginGroup": {
       "document": "This API is used to delete an origin group.",
       "input": "DeleteOriginGroupRequest",
       "name": "Deletes an origin group",
-      "output": "DeleteOriginGroupResponse"
+      "output": "DeleteOriginGroupResponse",
+      "status": "online"
     },
     "DeleteZone": {
       "document": "This API is used to delete a site.",
       "input": "DeleteZoneRequest",
       "name": "Deletes a site",
-      "output": "DeleteZoneResponse"
+      "output": "DeleteZoneResponse",
+      "status": "online"
     },
     "DescribeApplicationProxy": {
       "document": "This API is used to obtain a list of application proxies.",
       "input": "DescribeApplicationProxyRequest",
       "name": "Obtains a list of application proxies",
-      "output": "DescribeApplicationProxyResponse"
+      "output": "DescribeApplicationProxyResponse",
+      "status": "online"
     },
     "DescribeApplicationProxyDetail": {
       "document": "This API is used to obtain the details of an application proxy.",
       "input": "DescribeApplicationProxyDetailRequest",
       "name": "Obtains the details of an application proxy",
-      "output": "DescribeApplicationProxyDetailResponse"
+      "output": "DescribeApplicationProxyDetailResponse",
+      "status": "online"
     },
     "DescribeBotLog": {
       "document": "This API is used to query bot attack logs.",
       "input": "DescribeBotLogRequest",
       "name": "Queries bot attack logs",
-      "output": "DescribeBotLogResponse"
+      "output": "DescribeBotLogResponse",
+      "status": "online"
     },
     "DescribeBotManagedRules": {
       "document": "This API is used to query bot managed rules.",
       "input": "DescribeBotManagedRulesRequest",
       "name": "Queries bot managed rules",
-      "output": "DescribeBotManagedRulesResponse"
+      "output": "DescribeBotManagedRulesResponse",
+      "status": "online"
     },
     "DescribeCnameStatus": {
       "document": "This API is used to query the CNAME status of a domain name.",
       "input": "DescribeCnameStatusRequest",
       "name": "Queries the CNAME status of a domain name",
-      "output": "DescribeCnameStatusResponse"
+      "output": "DescribeCnameStatusResponse",
+      "status": "online"
     },
     "DescribeDDoSPolicy": {
       "document": "This API is used to query the DDoS protection configuration.",
       "input": "DescribeDDoSPolicyRequest",
       "name": "Queries the DDoS protection configuration",
-      "output": "DescribeDDoSPolicyResponse"
+      "output": "DescribeDDoSPolicyResponse",
+      "status": "online"
     },
     "DescribeDDosAttackData": {
       "document": "This API is used to query the DDoS attack data.",
       "input": "DescribeDDosAttackDataRequest",
       "name": "Queries the DDoS attack data",
-      "output": "DescribeDDosAttackDataResponse"
+      "output": "DescribeDDosAttackDataResponse",
+      "status": "online"
     },
     "DescribeDDosAttackEvent": {
       "document": "This API is used to query DDoS attack events.",
       "input": "DescribeDDosAttackEventRequest",
       "name": "Queries DDoS attack events",
-      "output": "DescribeDDosAttackEventResponse"
+      "output": "DescribeDDosAttackEventResponse",
+      "status": "online"
     },
     "DescribeDDosAttackEventDetail": {
       "document": "This API is used to query DDoS attack event details.",
       "input": "DescribeDDosAttackEventDetailRequest",
       "name": "Queries DDoS attack event details",
-      "output": "DescribeDDosAttackEventDetailResponse"
+      "output": "DescribeDDosAttackEventDetailResponse",
+      "status": "online"
     },
     "DescribeDDosAttackSourceEvent": {
       "document": "This API is used to query DDoS attack sources.",
       "input": "DescribeDDosAttackSourceEventRequest",
       "name": "Queries DDoS attack sources",
-      "output": "DescribeDDosAttackSourceEventResponse"
+      "output": "DescribeDDosAttackSourceEventResponse",
+      "status": "online"
     },
     "DescribeDDosAttackTopData": {
       "document": "This API is used to query the top data of DDoS attacks.",
       "input": "DescribeDDosAttackTopDataRequest",
       "name": "Queries the top data of DDoS attacks",
-      "output": "DescribeDDosAttackTopDataResponse"
+      "output": "DescribeDDosAttackTopDataResponse",
+      "status": "online"
     },
     "DescribeDDosMajorAttackEvent": {
       "document": "This API is used to query the major DDoS attack event.",
       "input": "DescribeDDosMajorAttackEventRequest",
       "name": "Queries the major DDoS attack event",
-      "output": "DescribeDDosMajorAttackEventResponse"
+      "output": "DescribeDDosMajorAttackEventResponse",
+      "status": "online"
     },
     "DescribeDefaultCertificates": {
       "document": "This API is used to query a list of default certificates.",
       "input": "DescribeDefaultCertificatesRequest",
       "name": "Queries a list of default certificates",
-      "output": "DescribeDefaultCertificatesResponse"
+      "output": "DescribeDefaultCertificatesResponse",
+      "status": "online"
     },
     "DescribeDnsData": {
       "document": "This API is used to obtain collected DNS requests.",
       "input": "DescribeDnsDataRequest",
       "name": "Obtains collected DNS requests",
-      "output": "DescribeDnsDataResponse"
+      "output": "DescribeDnsDataResponse",
+      "status": "online"
     },
     "DescribeDnsRecords": {
       "document": "This API is used to query DNS records. Paging, sorting and filtering are supported.",
       "input": "DescribeDnsRecordsRequest",
       "name": "Queries DNS records",
-      "output": "DescribeDnsRecordsResponse"
+      "output": "DescribeDnsRecordsResponse",
+      "status": "online"
     },
     "DescribeDnssec": {
       "document": "This API is used to query DNSSEC information.",
       "input": "DescribeDnssecRequest",
       "name": "Queries DNSSEC information",
-      "output": "DescribeDnssecResponse"
+      "output": "DescribeDnssecResponse",
+      "status": "online"
     },
     "DescribeHostsCertificate": {
       "document": "This API is used to query certificates of domain names. Paging, sorting and filtering are supported.",
       "input": "DescribeHostsCertificateRequest",
       "name": "Queries certificates of domain names",
-      "output": "DescribeHostsCertificateResponse"
+      "output": "DescribeHostsCertificateResponse",
+      "status": "online"
     },
     "DescribeHostsSetting": {
       "document": "This API is used to query detailed domain name configuration.",
       "input": "DescribeHostsSettingRequest",
       "name": "Queries detailed domain name configuration",
-      "output": "DescribeHostsSettingResponse"
+      "output": "DescribeHostsSettingResponse",
+      "status": "online"
     },
     "DescribeIdentification": {
       "document": "This API is used to query verification results.",
       "input": "DescribeIdentificationRequest",
       "name": "Queries verification results",
-      "output": "DescribeIdentificationResponse"
+      "output": "DescribeIdentificationResponse",
+      "status": "online"
     },
     "DescribeLoadBalancing": {
       "document": "This API is used to obtain a list of CLB instances.",
       "input": "DescribeLoadBalancingRequest",
       "name": "Obtains a list of CLB instances",
-      "output": "DescribeLoadBalancingResponse"
+      "output": "DescribeLoadBalancingResponse",
+      "status": "online"
     },
     "DescribeLoadBalancingDetail": {
       "document": "This API is used to query the details of a CLB instance.",
       "input": "DescribeLoadBalancingDetailRequest",
       "name": "Queries the details of a CLB instance",
-      "output": "DescribeLoadBalancingDetailResponse"
+      "output": "DescribeLoadBalancingDetailResponse",
+      "status": "online"
     },
     "DescribeOriginGroup": {
       "document": "This API is used to get the list of origin groups.",
       "input": "DescribeOriginGroupRequest",
       "name": "Gets the list of origin groups",
-      "output": "DescribeOriginGroupResponse"
+      "output": "DescribeOriginGroupResponse",
+      "status": "online"
     },
     "DescribeOriginGroupDetail": {
       "document": "This API is used to get the details of the origin group.",
       "input": "DescribeOriginGroupDetailRequest",
       "name": "Gets the details of the origin group",
-      "output": "DescribeOriginGroupDetailResponse"
+      "output": "DescribeOriginGroupDetailResponse",
+      "status": "online"
     },
     "DescribeOverviewL7Data": {
       "document": "This API is used to query the layer-7 time series traffic data for monitoring.",
       "input": "DescribeOverviewL7DataRequest",
       "name": "Queries the layer-7 time series traffic data for monitoring",
-      "output": "DescribeOverviewL7DataResponse"
+      "output": "DescribeOverviewL7DataResponse",
+      "status": "online"
     },
     "DescribePrefetchTasks": {
       "document": "This API is used to query the pre-warming task status.",
       "input": "DescribePrefetchTasksRequest",
       "name": "Queries the pre-warming task status",
-      "output": "DescribePrefetchTasksResponse"
+      "output": "DescribePrefetchTasksResponse",
+      "status": "online"
     },
     "DescribePurgeTasks": {
       "document": "This API is used to query the cache purging history.",
       "input": "DescribePurgeTasksRequest",
       "name": "Queries the cache purging history",
-      "output": "DescribePurgeTasksResponse"
+      "output": "DescribePurgeTasksResponse",
+      "status": "online"
     },
     "DescribeSecurityPolicy": {
       "document": "This API is used to query the security protection configuration.",
       "input": "DescribeSecurityPolicyRequest",
       "name": "Queries the security protection configuration",
-      "output": "DescribeSecurityPolicyResponse"
+      "output": "DescribeSecurityPolicyResponse",
+      "status": "online"
     },
     "DescribeSecurityPolicyList": {
       "document": "This API is used to query all protected subdomain names.",
       "input": "DescribeSecurityPolicyListRequest",
       "name": "Queries all protected subdomain names",
-      "output": "DescribeSecurityPolicyListResponse"
+      "output": "DescribeSecurityPolicyListResponse",
+      "status": "online"
     },
     "DescribeSecurityPolicyManagedRules": {
       "document": "This API is used to query managed rules.",
       "input": "DescribeSecurityPolicyManagedRulesRequest",
       "name": "Query managed rules",
-      "output": "DescribeSecurityPolicyManagedRulesResponse"
+      "output": "DescribeSecurityPolicyManagedRulesResponse",
+      "status": "online"
     },
     "DescribeSecurityPolicyManagedRulesId": {
       "document": "This API is used to query the details of a managed rule by rule ID.",
       "input": "DescribeSecurityPolicyManagedRulesIdRequest",
       "name": "Queries the details of a managed rule by rule ID",
-      "output": "DescribeSecurityPolicyManagedRulesIdResponse"
+      "output": "DescribeSecurityPolicyManagedRulesIdResponse",
+      "status": "online"
     },
     "DescribeSecurityPolicyRegions": {
       "document": "This API is used to query information of all regions.",
       "input": "DescribeSecurityPolicyRegionsRequest",
       "name": "Queries information of all regions",
-      "output": "DescribeSecurityPolicyRegionsResponse"
+      "output": "DescribeSecurityPolicyRegionsResponse",
+      "status": "online"
     },
     "DescribeSecurityPortraitRules": {
       "document": "This API is used to query user profiling rules.",
       "input": "DescribeSecurityPortraitRulesRequest",
       "name": "Queries bot user profiling rules",
-      "output": "DescribeSecurityPortraitRulesResponse"
+      "output": "DescribeSecurityPortraitRulesResponse",
+      "status": "online"
     },
     "DescribeTimingL4Data": {
       "document": "This API is used to query the layer-4 time series traffic data.",
       "input": "DescribeTimingL4DataRequest",
       "name": "Queries the layer-4 time series traffic data",
-      "output": "DescribeTimingL4DataResponse"
+      "output": "DescribeTimingL4DataResponse",
+      "status": "online"
     },
     "DescribeTimingL7AnalysisData": {
       "document": "This API is used to query the layer-7 time series traffic data for data analysis.",
       "input": "DescribeTimingL7AnalysisDataRequest",
       "name": "Queries the layer-7 time series traffic data for data analysis",
-      "output": "DescribeTimingL7AnalysisDataResponse"
+      "output": "DescribeTimingL7AnalysisDataResponse",
+      "status": "online"
     },
     "DescribeTimingL7CacheData": {
       "document": "This API is used to query time-series L7 cached data.",
       "input": "DescribeTimingL7CacheDataRequest",
       "name": "Queries time-series L7 cached data.",
-      "output": "DescribeTimingL7CacheDataResponse"
+      "output": "DescribeTimingL7CacheDataResponse",
+      "status": "online"
     },
     "DescribeTopL7AnalysisData": {
       "document": "This API is used to query the top traffic data.",
       "input": "DescribeTopL7AnalysisDataRequest",
       "name": "Queries the layer-7 top traffic data for data analysis",
-      "output": "DescribeTopL7AnalysisDataResponse"
+      "output": "DescribeTopL7AnalysisDataResponse",
+      "status": "online"
     },
     "DescribeTopL7CacheData": {
       "document": "This API is used to query the top-ranked L7 cached data.",
       "input": "DescribeTopL7CacheDataRequest",
       "name": "Queries the top-ranked L7 cached data.",
-      "output": "DescribeTopL7CacheDataResponse"
+      "output": "DescribeTopL7CacheDataResponse",
+      "status": "online"
     },
     "DescribeWebManagedRulesAttackEvents": {
       "document": "This API is used to query web hosting attack events.",
       "input": "DescribeWebManagedRulesAttackEventsRequest",
       "name": "Queries web hosting attack events",
-      "output": "DescribeWebManagedRulesAttackEventsResponse"
+      "output": "DescribeWebManagedRulesAttackEventsResponse",
+      "status": "online"
     },
     "DescribeWebManagedRulesData": {
       "document": "This API is used to query the web hosting rule data.",
       "input": "DescribeWebManagedRulesDataRequest",
       "name": "Queries the web hosting rule data",
-      "output": "DescribeWebManagedRulesDataResponse"
+      "output": "DescribeWebManagedRulesDataResponse",
+      "status": "online"
     },
     "DescribeWebManagedRulesLog": {
       "document": "This API is used to query web hosting logs.",
       "input": "DescribeWebManagedRulesLogRequest",
       "name": "Queries web hosting logs",
-      "output": "DescribeWebManagedRulesLogResponse"
+      "output": "DescribeWebManagedRulesLogResponse",
+      "status": "online"
     },
     "DescribeWebManagedRulesTopData": {
       "document": "This API is used to query the top data of web hosting rules.",
       "input": "DescribeWebManagedRulesTopDataRequest",
       "name": "Queries the top data of web hosting rules",
-      "output": "DescribeWebManagedRulesTopDataResponse"
+      "output": "DescribeWebManagedRulesTopDataResponse",
+      "status": "online"
     },
     "DescribeWebProtectionAttackEvents": {
       "document": "This API is used to query web attack events.",
       "input": "DescribeWebProtectionAttackEventsRequest",
       "name": "Queries web attack events",
-      "output": "DescribeWebProtectionAttackEventsResponse"
+      "output": "DescribeWebProtectionAttackEventsResponse",
+      "status": "online"
     },
     "DescribeWebProtectionData": {
       "document": "This API is used to query the web protection data.",
       "input": "DescribeWebProtectionDataRequest",
       "name": "Queries the web protection data",
-      "output": "DescribeWebProtectionDataResponse"
+      "output": "DescribeWebProtectionDataResponse",
+      "status": "online"
     },
     "DescribeWebProtectionLog": {
       "document": "This API is used to query web protection logs.",
       "input": "DescribeWebProtectionLogRequest",
       "name": "Queries web protection logs",
-      "output": "DescribeWebProtectionLogResponse"
+      "output": "DescribeWebProtectionLogResponse",
+      "status": "online"
     },
     "DescribeZoneDDoSPolicy": {
       "document": "This API is used to query all DDoS mitigation configuration.",
       "input": "DescribeZoneDDoSPolicyRequest",
       "name": "Queries all DDoS mitigation configuration",
-      "output": "DescribeZoneDDoSPolicyResponse"
+      "output": "DescribeZoneDDoSPolicyResponse",
+      "status": "online"
     },
     "DescribeZoneDetails": {
       "document": "This API is used to query the details of a site by site ID.",
       "input": "DescribeZoneDetailsRequest",
       "name": "Queries the details of a site",
-      "output": "DescribeZoneDetailsResponse"
+      "output": "DescribeZoneDetailsResponse",
+      "status": "online"
     },
     "DescribeZoneSetting": {
       "document": "This API is used to query the site configuration.",
       "input": "DescribeZoneSettingRequest",
       "name": "Queries the site configuration",
-      "output": "DescribeZoneSettingResponse"
+      "output": "DescribeZoneSettingResponse",
+      "status": "online"
     },
     "DescribeZones": {
       "document": "This API is used to query the list of user sites.",
       "input": "DescribeZonesRequest",
       "name": "Queries the list of user sites",
-      "output": "DescribeZonesResponse"
+      "output": "DescribeZonesResponse",
+      "status": "online"
     },
     "DownloadL7Logs": {
       "document": "This API is used to query layer-7 logs.",
       "input": "DownloadL7LogsRequest",
       "name": "Downloads layer-7 logs",
-      "output": "DownloadL7LogsResponse"
+      "output": "DownloadL7LogsResponse",
+      "status": "online"
     },
     "IdentifyZone": {
       "document": "This API is used to verify ownership of the site.",
       "input": "IdentifyZoneRequest",
       "name": "Verifies site ownership",
-      "output": "IdentifyZoneResponse"
+      "output": "IdentifyZoneResponse",
+      "status": "online"
     },
     "ImportDnsRecords": {
       "document": "This API is used to import DNS records.",
       "input": "ImportDnsRecordsRequest",
       "name": "Imports DNS records",
-      "output": "ImportDnsRecordsResponse"
+      "output": "ImportDnsRecordsResponse",
+      "status": "online"
     },
     "ModifyApplicationProxy": {
       "document": "This API is used to modify an application proxy.",
       "input": "ModifyApplicationProxyRequest",
       "name": "Modifies an application proxy",
-      "output": "ModifyApplicationProxyResponse"
+      "output": "ModifyApplicationProxyResponse",
+      "status": "online"
     },
     "ModifyApplicationProxyRule": {
       "document": "This API is used to modify an application proxy rule.",
       "input": "ModifyApplicationProxyRuleRequest",
       "name": "Modifies an application proxy rule",
-      "output": "ModifyApplicationProxyRuleResponse"
+      "output": "ModifyApplicationProxyRuleResponse",
+      "status": "online"
     },
     "ModifyApplicationProxyRuleStatus": {
       "document": "This API is used to modify the status of an application proxy rule.",
       "input": "ModifyApplicationProxyRuleStatusRequest",
       "name": "Modifies the status of an application proxy rule",
-      "output": "ModifyApplicationProxyRuleStatusResponse"
+      "output": "ModifyApplicationProxyRuleStatusResponse",
+      "status": "online"
     },
     "ModifyApplicationProxyStatus": {
       "document": "This API is used to modify the status of an application proxy.",
       "input": "ModifyApplicationProxyStatusRequest",
       "name": "Modifies the status of an application proxy",
-      "output": "ModifyApplicationProxyStatusResponse"
+      "output": "ModifyApplicationProxyStatusResponse",
+      "status": "online"
     },
     "ModifyDDoSPolicy": {
       "document": "This API is used to modify DDoS mitigation configuration.",
       "input": "ModifyDDoSPolicyRequest",
       "name": "Modifies DDoS mitigation configuration",
-      "output": "ModifyDDoSPolicyResponse"
+      "output": "ModifyDDoSPolicyResponse",
+      "status": "online"
     },
     "ModifyDDoSPolicyHost": {
       "document": "This API is used to enable high availability for domain names.",
       "input": "ModifyDDoSPolicyHostRequest",
       "name": "Enables high availability for domain names",
-      "output": "ModifyDDoSPolicyHostResponse"
+      "output": "ModifyDDoSPolicyHostResponse",
+      "status": "online"
     },
     "ModifyDefaultCertificate": {
       "document": "This API is used to modify the status of a default certificate.",
       "input": "ModifyDefaultCertificateRequest",
       "name": "Modifies the status of a default certificate",
-      "output": "ModifyDefaultCertificateResponse"
+      "output": "ModifyDefaultCertificateResponse",
+      "status": "online"
     },
     "ModifyDnsRecord": {
       "document": "This API is used to modify DNS records.",
       "input": "ModifyDnsRecordRequest",
       "name": "Modifies DNS records",
-      "output": "ModifyDnsRecordResponse"
+      "output": "ModifyDnsRecordResponse",
+      "status": "online"
     },
     "ModifyDnssec": {
       "document": "This API is used to modify the DNSSEC status.",
       "input": "ModifyDnssecRequest",
       "name": "Modifies DNSSEC",
-      "output": "ModifyDnssecResponse"
+      "output": "ModifyDnssecResponse",
+      "status": "online"
     },
     "ModifyHostsCertificate": {
       "document": "This API is used to modify the certificate of a domain name.",
       "input": "ModifyHostsCertificateRequest",
       "name": "Modifies the certificate of a domain name",
-      "output": "ModifyHostsCertificateResponse"
+      "output": "ModifyHostsCertificateResponse",
+      "status": "online"
     },
     "ModifyLoadBalancing": {
       "document": "This API is used to modify a CLB instance.",
       "input": "ModifyLoadBalancingRequest",
       "name": "Modifies a CLB instance",
-      "output": "ModifyLoadBalancingResponse"
+      "output": "ModifyLoadBalancingResponse",
+      "status": "online"
     },
     "ModifyLoadBalancingStatus": {
       "document": "This API is used to modify the status of a CLB instance.",
       "input": "ModifyLoadBalancingStatusRequest",
       "name": "Modifies the status of a CLB instance",
-      "output": "ModifyLoadBalancingStatusResponse"
+      "output": "ModifyLoadBalancingStatusResponse",
+      "status": "online"
     },
     "ModifyOriginGroup": {
       "document": "This API is used to modify an origin group.",
       "input": "ModifyOriginGroupRequest",
       "name": "Modifies an origin group",
-      "output": "ModifyOriginGroupResponse"
+      "output": "ModifyOriginGroupResponse",
+      "status": "online"
     },
     "ModifySecurityPolicy": {
       "document": "This API is used to modify the web and bot security configurations.",
       "input": "ModifySecurityPolicyRequest",
       "name": "Modifies the web and bot security configurations",
-      "output": "ModifySecurityPolicyResponse"
+      "output": "ModifySecurityPolicyResponse",
+      "status": "online"
     },
     "ModifyZone": {
       "document": "This API is used to modify the site information.",
       "input": "ModifyZoneRequest",
       "name": "Modifies a site",
-      "output": "ModifyZoneResponse"
+      "output": "ModifyZoneResponse",
+      "status": "online"
     },
     "ModifyZoneCnameSpeedUp": {
       "document": "This API is used to modify the CNAME acceleration status.",
       "input": "ModifyZoneCnameSpeedUpRequest",
       "name": "Modifies the CNAME acceleration status",
-      "output": "ModifyZoneCnameSpeedUpResponse"
+      "output": "ModifyZoneCnameSpeedUpResponse",
+      "status": "online"
     },
     "ModifyZoneSetting": {
       "document": "This API is used to modify the site configuration.",
       "input": "ModifyZoneSettingRequest",
       "name": "Modifies the site configuration",
-      "output": "ModifyZoneSettingResponse"
+      "output": "ModifyZoneSettingResponse",
+      "status": "online"
     },
     "ModifyZoneStatus": {
       "document": "This API is used to change the site status.",
       "input": "ModifyZoneStatusRequest",
       "name": "Changes the site status",
-      "output": "ModifyZoneStatusResponse"
+      "output": "ModifyZoneStatusResponse",
+      "status": "online"
     },
     "ReclaimZone": {
       "document": "This API is used to reclaim a site from other users after its ownership is verified.",
       "input": "ReclaimZoneRequest",
       "name": "Reclaims a site",
-      "output": "ReclaimZoneResponse"
+      "output": "ReclaimZoneResponse",
+      "status": "online"
     },
     "ScanDnsRecords": {
       "document": "This API is used to scan resolution records.",
       "input": "ScanDnsRecordsRequest",
       "name": "Scans resolution records",
-      "output": "ScanDnsRecordsResponse"
+      "output": "ScanDnsRecordsResponse",
+      "status": "online"
     }
   },
   "metadata": {

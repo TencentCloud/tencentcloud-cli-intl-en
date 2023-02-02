@@ -4,73 +4,85 @@
       "document": "This API is used to cancel a task.",
       "input": "CancelTaskRequest",
       "name": "Cancels a task",
-      "output": "CancelTaskResponse"
+      "output": "CancelTaskResponse",
+      "status": "online"
     },
     "CreateSparkApp": {
       "document": "This API is used to create a Spark application.",
       "input": "CreateSparkAppRequest",
       "name": "Creates a Spark application",
-      "output": "CreateSparkAppResponse"
+      "output": "CreateSparkAppResponse",
+      "status": "online"
     },
     "CreateSparkAppTask": {
       "document": "This API is used to create a Spark task.",
       "input": "CreateSparkAppTaskRequest",
       "name": "Creates a Spark task",
-      "output": "CreateSparkAppTaskResponse"
+      "output": "CreateSparkAppTaskResponse",
+      "status": "online"
     },
     "CreateTask": {
       "document": "This API is used to create a SQL query task. (We recommend you use the `CreateTasks` API instead.)",
       "input": "CreateTaskRequest",
       "name": "Creates a task",
-      "output": "CreateTaskResponse"
+      "output": "CreateTaskResponse",
+      "status": "online"
     },
     "CreateTasks": {
       "document": "This API is used to create tasks in batches.",
       "input": "CreateTasksRequest",
       "name": "Creates tasks in batches",
-      "output": "CreateTasksResponse"
+      "output": "CreateTasksResponse",
+      "status": "online"
     },
     "DeleteSparkApp": {
       "document": "This API is used to delete a Spark application.",
       "input": "DeleteSparkAppRequest",
       "name": "Deletes a Spark application",
-      "output": "DeleteSparkAppResponse"
+      "output": "DeleteSparkAppResponse",
+      "status": "online"
     },
     "DescribeSparkAppJob": {
       "document": "This API is used to query a specific Spark application.",
       "input": "DescribeSparkAppJobRequest",
       "name": "Queries a specific Spark application",
-      "output": "DescribeSparkAppJobResponse"
+      "output": "DescribeSparkAppJobResponse",
+      "status": "online"
     },
     "DescribeSparkAppJobs": {
       "document": "This API is used to get the list of Spark applications.",
       "input": "DescribeSparkAppJobsRequest",
       "name": "Gets the list of Spark applications",
-      "output": "DescribeSparkAppJobsResponse"
+      "output": "DescribeSparkAppJobsResponse",
+      "status": "online"
     },
     "DescribeSparkAppTasks": {
       "document": "This API is used to query the list of running task instances of a Spark application.",
       "input": "DescribeSparkAppTasksRequest",
       "name": "Queries the list of running task instances of a Spark application",
-      "output": "DescribeSparkAppTasksResponse"
+      "output": "DescribeSparkAppTasksResponse",
+      "status": "online"
     },
     "DescribeTaskResult": {
       "document": "This API is used to query the result of a task.",
       "input": "DescribeTaskResultRequest",
       "name": "Queries the result of a task",
-      "output": "DescribeTaskResultResponse"
+      "output": "DescribeTaskResultResponse",
+      "status": "online"
     },
     "DescribeTasks": {
       "document": "This API is used to query the list of tasks.",
       "input": "DescribeTasksRequest",
       "name": "Queries the list of tasks",
-      "output": "DescribeTasksResponse"
+      "output": "DescribeTasksResponse",
+      "status": "online"
     },
     "ModifySparkApp": {
       "document": "This API is used to update a Spark application.",
       "input": "ModifySparkAppRequest",
       "name": "Updates a Spark application",
-      "output": "ModifySparkAppResponse"
+      "output": "ModifySparkAppResponse",
+      "status": "online"
     }
   },
   "metadata": {

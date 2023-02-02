@@ -4,115 +4,134 @@
       "document": "This API is available for clusters with OpenLDAP components configured.\nThis API is used to add user lists (user management).",
       "input": "AddUsersForUserManagerRequest",
       "name": "Adds the user list",
-      "output": "AddUsersForUserManagerResponse"
+      "output": "AddUsersForUserManagerResponse",
+      "status": "online"
     },
     "CreateCluster": {
       "document": "This API is used to create an EMR cluster instance.",
       "input": "CreateClusterRequest",
       "name": "Creates EMR cluster instances",
-      "output": "CreateClusterResponse"
+      "output": "CreateClusterResponse",
+      "status": "online"
     },
     "CreateInstance": {
       "document": "This API is used to create an EMR cluster instance.",
       "input": "CreateInstanceRequest",
       "name": "Creates EMR instance",
-      "output": "CreateInstanceResponse"
+      "output": "CreateInstanceResponse",
+      "status": "online"
     },
     "DescribeClusterNodes": {
       "document": "This API is used to query the information of nodes in a cluster.",
       "input": "DescribeClusterNodesRequest",
       "name": "Queries the information of nodes in a cluster",
-      "output": "DescribeClusterNodesResponse"
+      "output": "DescribeClusterNodesResponse",
+      "status": "online"
     },
     "DescribeEmrApplicationStatics": {
       "document": " This API is used to query the Yarn application statistics.",
       "input": "DescribeEmrApplicationStaticsRequest",
       "name": "Queries the statistics of YARN tasks",
-      "output": "DescribeEmrApplicationStaticsResponse"
+      "output": "DescribeEmrApplicationStaticsResponse",
+      "status": "online"
     },
     "DescribeInstances": {
       "document": "This API is used to query the information of instances in a cluster.",
       "input": "DescribeInstancesRequest",
       "name": "Queries the information of instances in a cluster",
-      "output": "DescribeInstancesResponse"
+      "output": "DescribeInstancesResponse",
+      "status": "online"
     },
     "DescribeInstancesList": {
       "document": "This API is used to query the cluster list.",
       "input": "DescribeInstancesListRequest",
       "name": "Queries the cluster list",
-      "output": "DescribeInstancesListResponse"
+      "output": "DescribeInstancesListResponse",
+      "status": "online"
     },
     "DescribeResourceSchedule": {
       "document": "This API is used to query the data of YARN Resource Scheduling.",
       "input": "DescribeResourceScheduleRequest",
       "name": "Queries the data of YARN Resource Scheduling",
-      "output": "DescribeResourceScheduleResponse"
+      "output": "DescribeResourceScheduleResponse",
+      "status": "online"
     },
     "DescribeUsersForUserManager": {
       "document": "This API is available for clusters with OpenLDAP components configured.\nThis API is used to export users in batches. For a Kerberos cluster, set `NeedKeytabInfo` to `true` to obtain the download link of the Keytab file. If `SupportDownLoadKeyTab` is `true`, but `DownLoadKeyTabUrl` is null, the Keytab file is not ready yet (being generated) in the backend.",
       "input": "DescribeUsersForUserManagerRequest",
       "name": "Queries the user list",
-      "output": "DescribeUsersForUserManagerResponse"
+      "output": "DescribeUsersForUserManagerResponse",
+      "status": "online"
     },
     "InquiryPriceCreateInstance": {
       "document": "This API is used to query price of instance creation.",
       "input": "InquiryPriceCreateInstanceRequest",
       "name": "Queries price of instance creation",
-      "output": "InquiryPriceCreateInstanceResponse"
+      "output": "InquiryPriceCreateInstanceResponse",
+      "status": "online"
     },
     "InquiryPriceRenewInstance": {
       "document": "This API is used to query the price for renewal.",
       "input": "InquiryPriceRenewInstanceRequest",
       "name": "Queries the price for renewal",
-      "output": "InquiryPriceRenewInstanceResponse"
+      "output": "InquiryPriceRenewInstanceResponse",
+      "status": "online"
     },
     "InquiryPriceScaleOutInstance": {
       "document": "This API is used to query price of scale-out.",
       "input": "InquiryPriceScaleOutInstanceRequest",
       "name": "Queries price of scale-out",
-      "output": "InquiryPriceScaleOutInstanceResponse"
+      "output": "InquiryPriceScaleOutInstanceResponse",
+      "status": "online"
     },
     "InquiryPriceUpdateInstance": {
       "document": "This API is used to query price of scaling.",
       "input": "InquiryPriceUpdateInstanceRequest",
       "name": "Queries price of scaling",
-      "output": "InquiryPriceUpdateInstanceResponse"
+      "output": "InquiryPriceUpdateInstanceResponse",
+      "status": "online"
     },
     "ModifyResourceScheduleConfig": {
       "document": "This API is used to modify the resource configuration of YARN Resource Scheduling.",
       "input": "ModifyResourceScheduleConfigRequest",
       "name": "Modifies the resource configuration of YARN Resource Scheduling",
-      "output": "ModifyResourceScheduleConfigResponse"
+      "output": "ModifyResourceScheduleConfigResponse",
+      "status": "online"
     },
     "ModifyResourceScheduler": {
       "document": "This API is used to modify the YARN resource scheduler (the change will take effect after you click Apply).",
       "input": "ModifyResourceSchedulerRequest",
       "name": "Changes the resource scheduler of YARN",
-      "output": "ModifyResourceSchedulerResponse"
+      "output": "ModifyResourceSchedulerResponse",
+      "status": "online"
     },
     "ScaleOutCluster": {
       "document": "This API is used to scale out a cluster.",
       "input": "ScaleOutClusterRequest",
       "name": "Scales out clusters",
-      "output": "ScaleOutClusterResponse"
+      "output": "ScaleOutClusterResponse",
+      "status": "online"
     },
     "ScaleOutInstance": {
       "document": "This API is used to scale out instances.",
       "input": "ScaleOutInstanceRequest",
       "name": "Scales out instances",
-      "output": "ScaleOutInstanceResponse"
+      "output": "ScaleOutInstanceResponse",
+      "status": "online"
     },
     "TerminateInstance": {
       "document": "This API is used to terminate EMR instances. It is only supported in the official paid edition of EMR.",
       "input": "TerminateInstanceRequest",
       "name": "Terminates EMR instances",
-      "output": "TerminateInstanceResponse"
+      "output": "TerminateInstanceResponse",
+      "status": "online"
     },
     "TerminateTasks": {
       "document": "This API is used to terminate a task node.",
       "input": "TerminateTasksRequest",
       "name": "Terminates a task node",
-      "output": "TerminateTasksResponse"
+      "output": "TerminateTasksResponse",
+      "status": "online"
     }
   },
   "metadata": {

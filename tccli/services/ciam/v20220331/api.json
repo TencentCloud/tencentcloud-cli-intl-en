@@ -4,91 +4,106 @@
       "document": "This API is used to create an API for user import task.",
       "input": "CreateApiImportUserJobRequest",
       "name": "Creates an API for user import task",
-      "output": "CreateApiImportUserJobResponse"
+      "output": "CreateApiImportUserJobResponse",
+      "status": "online"
     },
     "CreateFileExportUserJob": {
       "document": "This API is used to create a file for user export task.",
       "input": "CreateFileExportUserJobRequest",
       "name": "Creates a file for user export task",
-      "output": "CreateFileExportUserJobResponse"
+      "output": "CreateFileExportUserJobResponse",
+      "status": "online"
     },
     "CreateUser": {
       "document": "This API is used to create a user.",
       "input": "CreateUserRequest",
       "name": "Creates a user",
-      "output": "CreateUserResponse"
+      "output": "CreateUserResponse",
+      "status": "online"
     },
     "DeleteUsers": {
       "document": "This API is used to delete users in batches.",
       "input": "DeleteUsersRequest",
       "name": "Deletes users in batches",
-      "output": "DeleteUsersResponse"
+      "output": "DeleteUsersResponse",
+      "status": "online"
     },
     "DescribeUser": {
       "document": "This API is used to query the user information with multiple conditions.",
       "input": "DescribeUserRequest",
       "name": "Queries user information",
-      "output": "DescribeUserResponse"
+      "output": "DescribeUserResponse",
+      "status": "online"
     },
     "DescribeUserById": {
       "document": "This API is used to query a user by ID.",
       "input": "DescribeUserByIdRequest",
       "name": "Queries a user by ID",
-      "output": "DescribeUserByIdResponse"
+      "output": "DescribeUserByIdResponse",
+      "status": "online"
     },
     "LinkAccount": {
       "document": "This API is used to merge accounts.",
       "input": "LinkAccountRequest",
       "name": "Merges accounts",
-      "output": "LinkAccountResponse"
+      "output": "LinkAccountResponse",
+      "status": "online"
     },
     "ListJobs": {
       "document": "This API is used to query the details of a task.",
       "input": "ListJobsRequest",
       "name": "Queries the details of a task",
-      "output": "ListJobsResponse"
+      "output": "ListJobsResponse",
+      "status": "online"
     },
     "ListLogMessageByCondition": {
       "document": "This API is used to query a specified log.",
       "input": "ListLogMessageByConditionRequest",
       "name": "Queries a specified log",
-      "output": "ListLogMessageByConditionResponse"
+      "output": "ListLogMessageByConditionResponse",
+      "status": "online"
     },
     "ListUser": {
       "document": "This API is used to query the list of users.",
       "input": "ListUserRequest",
       "name": "Queries the list of users",
-      "output": "ListUserResponse"
+      "output": "ListUserResponse",
+      "status": "online"
     },
     "ListUserByProperty": {
       "document": "This API is used to query the list of users by attribute.",
       "input": "ListUserByPropertyRequest",
       "name": "Queries the list of users by attribute",
-      "output": "ListUserByPropertyResponse"
+      "output": "ListUserByPropertyResponse",
+      "status": "online"
     },
     "ResetPassword": {
       "document": "This API is used to reset the password for a user.",
       "input": "ResetPasswordRequest",
       "name": "Resets the password for a user",
-      "output": "ResetPasswordResponse"
+      "output": "ResetPasswordResponse",
+      "status": "online"
     },
     "SetPassword": {
       "document": "This API is used to set the password for a user.",
       "input": "SetPasswordRequest",
       "name": "Sets the password for a user",
-      "output": "SetPasswordResponse"
+      "output": "SetPasswordResponse",
+      "status": "online"
     },
     "UpdateUser": {
       "document": "This API is used to update a user.",
       "input": "UpdateUserRequest",
       "name": "Updates a user",
-      "output": "UpdateUserResponse"
+      "output": "UpdateUserResponse",
+      "status": "online"
     },
     "UpdateUserStatus": {
       "document": "This API is used to update the status of a user.",
       "input": "UpdateUserStatusRequest",
       "name": "Updates the status of a user",
-      "output": "UpdateUserStatusResponse"
+      "output": "UpdateUserStatusResponse",
+      "status": "online"
     }
   },
   "metadata": {

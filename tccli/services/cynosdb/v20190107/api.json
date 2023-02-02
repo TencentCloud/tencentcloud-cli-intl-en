@@ -4,373 +4,435 @@
       "document": "This API is used to remove the isolation of an instance to make it accessible again.",
       "input": "ActivateInstanceRequest",
       "name": "Removes the isolation of an instance to make it accessible again",
-      "output": "ActivateInstanceResponse"
+      "output": "ActivateInstanceResponse",
+      "status": "online"
     },
     "AddClusterSlaveZone": {
       "document": "This API is used to add the replica AZ.",
       "input": "AddClusterSlaveZoneRequest",
       "name": "Adds the replica AZ",
-      "output": "AddClusterSlaveZoneResponse"
+      "output": "AddClusterSlaveZoneResponse",
+      "status": "online"
     },
     "AddInstances": {
       "document": "This API is used to add an instance in a cluster.",
       "input": "AddInstancesRequest",
       "name": "Adds instance in cluster",
-      "output": "AddInstancesResponse"
+      "output": "AddInstancesResponse",
+      "status": "online"
     },
     "CloseAuditService": {
       "document": "This API is used to disable the audit service for a TDSQL-C for MySQL instance.",
       "input": "CloseAuditServiceRequest",
       "name": "Disables the audit service for an instance",
-      "output": "CloseAuditServiceResponse"
+      "output": "CloseAuditServiceResponse",
+      "status": "online"
     },
     "CreateAccounts": {
       "document": "This API is used to create an account.",
       "input": "CreateAccountsRequest",
       "name": "Creates an account",
-      "output": "CreateAccountsResponse"
+      "output": "CreateAccountsResponse",
+      "status": "online"
     },
     "CreateAuditRuleTemplate": {
       "document": "This API is used to create an audit rule template.",
       "input": "CreateAuditRuleTemplateRequest",
       "name": "Creates an audit rule template",
-      "output": "CreateAuditRuleTemplateResponse"
+      "output": "CreateAuditRuleTemplateResponse",
+      "status": "online"
     },
     "CreateBackup": {
       "document": "This API is used to create manual backup.",
       "input": "CreateBackupRequest",
       "name": "Creates manual backup",
-      "output": "CreateBackupResponse"
+      "output": "CreateBackupResponse",
+      "status": "online"
     },
     "CreateClusters": {
       "document": "This API is used to create a cluster.",
       "input": "CreateClustersRequest",
       "name": "Creates a cluster",
-      "output": "CreateClustersResponse"
+      "output": "CreateClustersResponse",
+      "status": "online"
     },
     "DeleteAuditRuleTemplates": {
       "document": "This API is used to delete an audit rule template.",
       "input": "DeleteAuditRuleTemplatesRequest",
       "name": "Deletes an audit rule template",
-      "output": "DeleteAuditRuleTemplatesResponse"
+      "output": "DeleteAuditRuleTemplatesResponse",
+      "status": "online"
     },
     "DeleteBackup": {
       "document": "This API is used to delete the manual backup for a cluster. It cannot be used to delete the automatic backup.",
       "input": "DeleteBackupRequest",
       "name": "Deletes the manual backup",
-      "output": "DeleteBackupResponse"
+      "output": "DeleteBackupResponse",
+      "status": "online"
     },
     "DescribeAccounts": {
       "document": "This API is used to query database management accounts.",
       "input": "DescribeAccountsRequest",
       "name": "Queries database management accounts",
-      "output": "DescribeAccountsResponse"
+      "output": "DescribeAccountsResponse",
+      "status": "online"
     },
     "DescribeAuditRuleTemplates": {
       "document": "This API is used to query audit rule templates.",
       "input": "DescribeAuditRuleTemplatesRequest",
       "name": "Queries audit rule templates",
-      "output": "DescribeAuditRuleTemplatesResponse"
+      "output": "DescribeAuditRuleTemplatesResponse",
+      "status": "online"
     },
     "DescribeAuditRuleWithInstanceIds": {
       "document": "This API is used to get the audit rule templates of an instance.",
       "input": "DescribeAuditRuleWithInstanceIdsRequest",
       "name": "Gets the audit rule templates of an instance",
-      "output": "DescribeAuditRuleWithInstanceIdsResponse"
+      "output": "DescribeAuditRuleWithInstanceIdsResponse",
+      "status": "online"
     },
     "DescribeBackupConfig": {
       "document": "This API is used to get the backup configuration information of the specified cluster, including the full backup time range and backup file retention period.",
       "input": "DescribeBackupConfigRequest",
       "name": "Queries backup configuration information",
-      "output": "DescribeBackupConfigResponse"
+      "output": "DescribeBackupConfigResponse",
+      "status": "online"
     },
     "DescribeBackupDownloadUrl": {
       "document": "This API is used to query the download address of a cluster backup file.",
       "input": "DescribeBackupDownloadUrlRequest",
       "name": "Queries the download address of a backup file",
-      "output": "DescribeBackupDownloadUrlResponse"
+      "output": "DescribeBackupDownloadUrlResponse",
+      "status": "online"
     },
     "DescribeBackupList": {
       "document": "This API is used to query the list of backup files.",
       "input": "DescribeBackupListRequest",
       "name": "Queries backup file list",
-      "output": "DescribeBackupListResponse"
+      "output": "DescribeBackupListResponse",
+      "status": "online"
     },
     "DescribeBinlogDownloadUrl": {
       "document": "This API is used to query the download address of a binlog.",
       "input": "DescribeBinlogDownloadUrlRequest",
       "name": "Queries the download address of a binlog",
-      "output": "DescribeBinlogDownloadUrlResponse"
+      "output": "DescribeBinlogDownloadUrlResponse",
+      "status": "online"
     },
     "DescribeBinlogSaveDays": {
       "document": "This API is used to query the binlog retention period of a cluster in days.",
       "input": "DescribeBinlogSaveDaysRequest",
       "name": "Queries the binlog retention period in days",
-      "output": "DescribeBinlogSaveDaysResponse"
+      "output": "DescribeBinlogSaveDaysResponse",
+      "status": "online"
     },
     "DescribeBinlogs": {
       "document": "This API is used to query the list of binlogs in a cluster.",
       "input": "DescribeBinlogsRequest",
       "name": "Queries the list of binlogs",
-      "output": "DescribeBinlogsResponse"
+      "output": "DescribeBinlogsResponse",
+      "status": "online"
     },
     "DescribeClusterDetail": {
       "document": "This API is used to show the details of an instance.",
       "input": "DescribeClusterDetailRequest",
       "name": "Displays cluster details",
-      "output": "DescribeClusterDetailResponse"
+      "output": "DescribeClusterDetailResponse",
+      "status": "online"
     },
     "DescribeClusterInstanceGrps": {
       "document": "This API is used to query instance groups.",
       "input": "DescribeClusterInstanceGrpsRequest",
       "name": "Queries instance groups",
-      "output": "DescribeClusterInstanceGrpsResponse"
+      "output": "DescribeClusterInstanceGrpsResponse",
+      "status": "online"
     },
     "DescribeClusterParams": {
       "document": "This API is used to query the parameters of a cluster.",
       "input": "DescribeClusterParamsRequest",
       "name": "Queries the parameters of a cluster",
-      "output": "DescribeClusterParamsResponse"
+      "output": "DescribeClusterParamsResponse",
+      "status": "online"
     },
     "DescribeClusters": {
       "document": "This API is used to the list of clusters.",
       "input": "DescribeClustersRequest",
       "name": "Queries cluster list",
-      "output": "DescribeClustersResponse"
+      "output": "DescribeClustersResponse",
+      "status": "online"
     },
     "DescribeDBSecurityGroups": {
       "document": "This API is used to query the security group information of an instance.",
       "input": "DescribeDBSecurityGroupsRequest",
       "name": "Queries the security group information of instance",
-      "output": "DescribeDBSecurityGroupsResponse"
+      "output": "DescribeDBSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeInstanceDetail": {
       "document": "This API is used to query instance details.",
       "input": "DescribeInstanceDetailRequest",
       "name": "Queries instance details",
-      "output": "DescribeInstanceDetailResponse"
+      "output": "DescribeInstanceDetailResponse",
+      "status": "online"
     },
     "DescribeInstanceSlowQueries": {
       "document": "This API is used to query the slow query logs of an instance.",
       "input": "DescribeInstanceSlowQueriesRequest",
       "name": "Queries the slow query logs of an instance",
-      "output": "DescribeInstanceSlowQueriesResponse"
+      "output": "DescribeInstanceSlowQueriesResponse",
+      "status": "online"
     },
     "DescribeInstanceSpecs": {
       "document": "This API is used to query instance specifications.",
       "input": "DescribeInstanceSpecsRequest",
       "name": "Queries instance specifications",
-      "output": "DescribeInstanceSpecsResponse"
+      "output": "DescribeInstanceSpecsResponse",
+      "status": "online"
     },
     "DescribeInstances": {
       "document": "This API is used to query the list of instances.",
       "input": "DescribeInstancesRequest",
       "name": "Queries the instance list",
-      "output": "DescribeInstancesResponse"
+      "output": "DescribeInstancesResponse",
+      "status": "online"
     },
     "DescribeMaintainPeriod": {
       "document": "This API is used to query the instance maintenance window.",
       "input": "DescribeMaintainPeriodRequest",
       "name": "Queries instance maintenance window",
-      "output": "DescribeMaintainPeriodResponse"
+      "output": "DescribeMaintainPeriodResponse",
+      "status": "online"
     },
     "DescribeParamTemplates": {
       "document": "This API is used to query all parameter templates information of a user-specified product.",
       "input": "DescribeParamTemplatesRequest",
       "name": "Queries the information of parameter templates",
-      "output": "DescribeParamTemplatesResponse"
+      "output": "DescribeParamTemplatesResponse",
+      "status": "online"
     },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group information of a project.",
       "input": "DescribeProjectSecurityGroupsRequest",
       "name": "Queries the security group information of project",
-      "output": "DescribeProjectSecurityGroupsResponse"
+      "output": "DescribeProjectSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeResourcesByDealName": {
       "document": "This API is used to query the list of resources by billing order ID.",
       "input": "DescribeResourcesByDealNameRequest",
       "name": "Queries resource information by order ID",
-      "output": "DescribeResourcesByDealNameResponse"
+      "output": "DescribeResourcesByDealNameResponse",
+      "status": "online"
     },
     "DescribeRollbackTimeRange": {
       "document": "This API is used to query the valid rollback time range for the specified cluster.",
       "input": "DescribeRollbackTimeRangeRequest",
       "name": "Queries valid rollback time range",
-      "output": "DescribeRollbackTimeRangeResponse"
+      "output": "DescribeRollbackTimeRangeResponse",
+      "status": "online"
     },
     "DescribeRollbackTimeValidity": {
       "document": "This API is used to query whether rollback is possible based on the specified time and cluster.",
       "input": "DescribeRollbackTimeValidityRequest",
       "name": "Queries whether rollback is possible based on specified time",
-      "output": "DescribeRollbackTimeValidityResponse"
+      "output": "DescribeRollbackTimeValidityResponse",
+      "status": "online"
     },
     "ExportInstanceSlowQueries": {
       "document": "This API is used to export the slow logs of an instance.",
       "input": "ExportInstanceSlowQueriesRequest",
       "name": "Exports the slow logs of an instance",
-      "output": "ExportInstanceSlowQueriesResponse"
+      "output": "ExportInstanceSlowQueriesResponse",
+      "status": "online"
     },
     "InquirePriceCreate": {
       "document": "This API is used to query the purchasable price of a cluster.",
       "input": "InquirePriceCreateRequest",
       "name": "Queries the purchasable price of a cluster",
-      "output": "InquirePriceCreateResponse"
+      "output": "InquirePriceCreateResponse",
+      "status": "online"
     },
     "InquirePriceRenew": {
       "document": "This API is used to query the renewal price of a cluster.",
       "input": "InquirePriceRenewRequest",
       "name": "Queries the renewal price of a cluster",
-      "output": "InquirePriceRenewResponse"
+      "output": "InquirePriceRenewResponse",
+      "status": "online"
     },
     "IsolateCluster": {
       "document": "This API is used to isolate a cluster.",
       "input": "IsolateClusterRequest",
       "name": "Isolates cluster",
-      "output": "IsolateClusterResponse"
+      "output": "IsolateClusterResponse",
+      "status": "online"
     },
     "IsolateInstance": {
       "document": "This API is used to isolate an instance.",
       "input": "IsolateInstanceRequest",
       "name": "Isolates instance",
-      "output": "IsolateInstanceResponse"
+      "output": "IsolateInstanceResponse",
+      "status": "online"
     },
     "ModifyAuditRuleTemplates": {
       "document": "This API is used to modify an audit rule template.",
       "input": "ModifyAuditRuleTemplatesRequest",
       "name": "Modifies an audit rule template",
-      "output": "ModifyAuditRuleTemplatesResponse"
+      "output": "ModifyAuditRuleTemplatesResponse",
+      "status": "online"
     },
     "ModifyAuditService": {
       "document": "This API is used to modify the audit configurations of an instance, such as audit log retention period and audit rule.",
       "input": "ModifyAuditServiceRequest",
       "name": "Modifies the audit service of an instance",
-      "output": "ModifyAuditServiceResponse"
+      "output": "ModifyAuditServiceResponse",
+      "status": "online"
     },
     "ModifyBackupConfig": {
       "document": "This API is used to modify the backup configuration of the specified cluster.",
       "input": "ModifyBackupConfigRequest",
       "name": "Modifies backup configuration",
-      "output": "ModifyBackupConfigResponse"
+      "output": "ModifyBackupConfigResponse",
+      "status": "online"
     },
     "ModifyBackupName": {
       "document": "This API is used to rename a backup file.",
       "input": "ModifyBackupNameRequest",
       "name": "Renames a backup file",
-      "output": "ModifyBackupNameResponse"
+      "output": "ModifyBackupNameResponse",
+      "status": "online"
     },
     "ModifyClusterName": {
       "document": "This API is used to modify cluster name.",
       "input": "ModifyClusterNameRequest",
       "name": "Modifies cluster name",
-      "output": "ModifyClusterNameResponse"
+      "output": "ModifyClusterNameResponse",
+      "status": "online"
     },
     "ModifyClusterParam": {
       "document": "This API is used to modify the parameters of a cluster.",
       "input": "ModifyClusterParamRequest",
       "name": "Modifies the parameters of a cluster",
-      "output": "ModifyClusterParamResponse"
+      "output": "ModifyClusterParamResponse",
+      "status": "online"
     },
     "ModifyClusterSlaveZone": {
       "document": "This API is used to modify the replica AZ.",
       "input": "ModifyClusterSlaveZoneRequest",
       "name": "Modifies the replica AZ",
-      "output": "ModifyClusterSlaveZoneResponse"
+      "output": "ModifyClusterSlaveZoneResponse",
+      "status": "online"
     },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security groups bound to an instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
       "name": "Modifies security groups bound to instance",
-      "output": "ModifyDBInstanceSecurityGroupsResponse"
+      "output": "ModifyDBInstanceSecurityGroupsResponse",
+      "status": "online"
     },
     "ModifyInstanceName": {
       "document": "This API is used to modify instance name.",
       "input": "ModifyInstanceNameRequest",
       "name": "Modifies instance name",
-      "output": "ModifyInstanceNameResponse"
+      "output": "ModifyInstanceNameResponse",
+      "status": "online"
     },
     "ModifyMaintainPeriodConfig": {
       "document": "This API is used to modify the maintenance time configuration.",
       "input": "ModifyMaintainPeriodConfigRequest",
       "name": "Modifies maintenance time configuration",
-      "output": "ModifyMaintainPeriodConfigResponse"
+      "output": "ModifyMaintainPeriodConfigResponse",
+      "status": "online"
     },
     "OfflineCluster": {
       "document": "This API is used to deactivate a cluster.",
       "input": "OfflineClusterRequest",
       "name": "Deactivates cluster",
-      "output": "OfflineClusterResponse"
+      "output": "OfflineClusterResponse",
+      "status": "online"
     },
     "OfflineInstance": {
       "document": "This API is used to deactivate an instance.",
       "input": "OfflineInstanceRequest",
       "name": "Deactivates instance",
-      "output": "OfflineInstanceResponse"
+      "output": "OfflineInstanceResponse",
+      "status": "online"
     },
     "OpenAuditService": {
       "document": "This API is used to enable the audit service for a TDSQL-C for MySQL instance.",
       "input": "OpenAuditServiceRequest",
       "name": "Enables the audit service for an instance",
-      "output": "OpenAuditServiceResponse"
+      "output": "OpenAuditServiceResponse",
+      "status": "online"
     },
     "PauseServerless": {
       "document": "This API is used to pause a serverless cluster.",
       "input": "PauseServerlessRequest",
       "name": "Pauses a serverless cluster",
-      "output": "PauseServerlessResponse"
+      "output": "PauseServerlessResponse",
+      "status": "online"
     },
     "RemoveClusterSlaveZone": {
       "document": "This API is used to delete the replica AZ.",
       "input": "RemoveClusterSlaveZoneRequest",
       "name": "Deletes the replica AZ",
-      "output": "RemoveClusterSlaveZoneResponse"
+      "output": "RemoveClusterSlaveZoneResponse",
+      "status": "online"
     },
     "ResetAccountPassword": {
       "document": "This API is used to reset the password of a TencentDB instance account.",
       "input": "ResetAccountPasswordRequest",
       "name": "Resets the password of a TencentDB instance account",
-      "output": "ResetAccountPasswordResponse"
+      "output": "ResetAccountPasswordResponse",
+      "status": "online"
     },
     "ResumeServerless": {
       "document": "This API is used to resume a serverless cluster.",
       "input": "ResumeServerlessRequest",
       "name": "Resumes a serverless cluster",
-      "output": "ResumeServerlessResponse"
+      "output": "ResumeServerlessResponse",
+      "status": "online"
     },
     "SearchClusterDatabases": {
       "document": "This API is used to search the list of cluster databases.",
       "input": "SearchClusterDatabasesRequest",
       "name": "Searches the list of cluster databases",
-      "output": "SearchClusterDatabasesResponse"
+      "output": "SearchClusterDatabasesResponse",
+      "status": "online"
     },
     "SearchClusterTables": {
       "document": "This API is used to search the list of cluster data tables.",
       "input": "SearchClusterTablesRequest",
       "name": "Searches the list of cluster data tables",
-      "output": "SearchClusterTablesResponse"
+      "output": "SearchClusterTablesResponse",
+      "status": "online"
     },
     "SetRenewFlag": {
       "document": "This API is used to set auto-renewal for an instance.",
       "input": "SetRenewFlagRequest",
       "name": "Sets auto-renewal",
-      "output": "SetRenewFlagResponse"
+      "output": "SetRenewFlagResponse",
+      "status": "online"
     },
     "SwitchClusterZone": {
       "document": "This API is used to switch to the replica AZ.",
       "input": "SwitchClusterZoneRequest",
       "name": "Switches to the replica AZ",
-      "output": "SwitchClusterZoneResponse"
+      "output": "SwitchClusterZoneResponse",
+      "status": "online"
     },
     "SwitchProxyVpc": {
       "document": "This API is used to modify the database proxy VPC.",
       "input": "SwitchProxyVpcRequest",
       "name": "Modifies the database proxy VPC",
-      "output": "SwitchProxyVpcResponse"
+      "output": "SwitchProxyVpcResponse",
+      "status": "online"
     },
     "UpgradeInstance": {
       "document": "This API is used to upgrade an instance.",
       "input": "UpgradeInstanceRequest",
       "name": "Upgrades instance",
-      "output": "UpgradeInstanceResponse"
+      "output": "UpgradeInstanceResponse",
+      "status": "online"
     }
   },
   "metadata": {

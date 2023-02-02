@@ -4,277 +4,323 @@
       "document": "This API is used to create an application.",
       "input": "CreateApplicationRequest",
       "name": "Creates an application",
-      "output": "CreateApplicationResponse"
+      "output": "CreateApplicationResponse",
+      "status": "online"
     },
     "CreateApplicationAutoscaler": {
       "document": "This API is used to create a scaling rule.",
       "input": "CreateApplicationAutoscalerRequest",
       "name": "Creates a scaling rule",
-      "output": "CreateApplicationAutoscalerResponse"
+      "output": "CreateApplicationAutoscalerResponse",
+      "status": "online"
     },
     "CreateApplicationService": {
       "document": "This API is used to create an access policy. ",
       "input": "CreateApplicationServiceRequest",
       "name": "Adds an access policy",
-      "output": "CreateApplicationServiceResponse"
+      "output": "CreateApplicationServiceResponse",
+      "status": "online"
     },
     "CreateConfigData": {
       "document": "This API is used to create a configuration.",
       "input": "CreateConfigDataRequest",
       "name": "Creates a configuration",
-      "output": "CreateConfigDataResponse"
+      "output": "CreateConfigDataResponse",
+      "status": "online"
     },
     "CreateCosToken": {
       "document": "This API is used to generate a COS temporary key.",
       "input": "CreateCosTokenRequest",
       "name": "Generates a COS temporary key",
-      "output": "CreateCosTokenResponse"
+      "output": "CreateCosTokenResponse",
+      "status": "online"
     },
     "CreateEnvironment": {
       "document": "This API is used to create an environment.",
       "input": "CreateEnvironmentRequest",
       "name": "Creates an environment",
-      "output": "CreateEnvironmentResponse"
+      "output": "CreateEnvironmentResponse",
+      "status": "online"
     },
     "CreateLogConfig": {
       "document": "This API is used to create a log collecting configuration.",
       "input": "CreateLogConfigRequest",
       "name": "Creates a log collecting configuration.",
-      "output": "CreateLogConfigResponse"
+      "output": "CreateLogConfigResponse",
+      "status": "online"
     },
     "CreateResource": {
       "document": "This API is used to bind a cloud resource.",
       "input": "CreateResourceRequest",
       "name": "Binds a cloud resource",
-      "output": "CreateResourceResponse"
+      "output": "CreateResourceResponse",
+      "status": "online"
     },
     "DeleteApplication": {
       "document": "This API is used to delete an application.\n  - Stop running the current application\n  - Delete resources related to the application\n  - Delete the application",
       "input": "DeleteApplicationRequest",
       "name": "Deletes an application",
-      "output": "DeleteApplicationResponse"
+      "output": "DeleteApplicationResponse",
+      "status": "online"
     },
     "DeleteApplicationAutoscaler": {
       "document": "This API is used to delete a scaling rule.",
       "input": "DeleteApplicationAutoscalerRequest",
       "name": "Deletes a scaling rule",
-      "output": "DeleteApplicationAutoscalerResponse"
+      "output": "DeleteApplicationAutoscalerResponse",
+      "status": "online"
     },
     "DeleteApplicationService": {
       "document": "This API is used to delete an access policy.",
       "input": "DeleteApplicationServiceRequest",
       "name": "Deletes an access policy",
-      "output": "DeleteApplicationServiceResponse"
+      "output": "DeleteApplicationServiceResponse",
+      "status": "online"
     },
     "DeleteIngress": {
       "document": "This API is used to delete an ingress rule.",
       "input": "DeleteIngressRequest",
       "name": "Deletes an ingress rule",
-      "output": "DeleteIngressResponse"
+      "output": "DeleteIngressResponse",
+      "status": "online"
     },
     "DeployApplication": {
       "document": "This API is used to deploy an application.",
       "input": "DeployApplicationRequest",
       "name": "Deploys an application",
-      "output": "DeployApplicationResponse"
+      "output": "DeployApplicationResponse",
+      "status": "online"
     },
     "DescribeApplicationAutoscalerList": {
       "document": "This API is used to query the scaling rules of an application.",
       "input": "DescribeApplicationAutoscalerListRequest",
       "name": "Queries the scaling rules of an application.",
-      "output": "DescribeApplicationAutoscalerListResponse"
+      "output": "DescribeApplicationAutoscalerListResponse",
+      "status": "online"
     },
     "DescribeApplicationInfo": {
       "document": "This API is used to check the basic information of an application.",
       "input": "DescribeApplicationInfoRequest",
       "name": "Checks the basic information of an application.",
-      "output": "DescribeApplicationInfoResponse"
+      "output": "DescribeApplicationInfoResponse",
+      "status": "online"
     },
     "DescribeApplicationPods": {
       "document": "This API is used to get the list of application pods.",
       "input": "DescribeApplicationPodsRequest",
       "name": "Gets the list of application pods",
-      "output": "DescribeApplicationPodsResponse"
+      "output": "DescribeApplicationPodsResponse",
+      "status": "online"
     },
     "DescribeApplicationServiceList": {
       "document": "This API is used to query the list of access policies.",
       "input": "DescribeApplicationServiceListRequest",
       "name": "Queries the list of access policies",
-      "output": "DescribeApplicationServiceListResponse"
+      "output": "DescribeApplicationServiceListResponse",
+      "status": "online"
     },
     "DescribeApplications": {
       "document": "This API is to query the list of running applications.",
       "input": "DescribeApplicationsRequest",
       "name": "Queries the list of running applications.",
-      "output": "DescribeApplicationsResponse"
+      "output": "DescribeApplicationsResponse",
+      "status": "online"
     },
     "DescribeApplicationsStatus": {
       "document": "This API is used to query the status of all applications in an envrionment.",
       "input": "DescribeApplicationsStatusRequest",
       "name": "Queries the status of all applications in an environment",
-      "output": "DescribeApplicationsStatusResponse"
+      "output": "DescribeApplicationsStatusResponse",
+      "status": "online"
     },
     "DescribeConfigData": {
       "document": "This API is used to query details of a configuration.",
       "input": "DescribeConfigDataRequest",
       "name": "Queries details of a configuration.",
-      "output": "DescribeConfigDataResponse"
+      "output": "DescribeConfigDataResponse",
+      "status": "online"
     },
     "DescribeConfigDataList": {
       "document": "This API is used to query the list of configurations.",
       "input": "DescribeConfigDataListRequest",
       "name": "Queries the list of configurations.",
-      "output": "DescribeConfigDataListResponse"
+      "output": "DescribeConfigDataListResponse",
+      "status": "online"
     },
     "DescribeEnvironment": {
       "document": "This API is used to obtain the basic information of an environment.",
       "input": "DescribeEnvironmentRequest",
       "name": "Obtains the basic information of an environment",
-      "output": "DescribeEnvironmentResponse"
+      "output": "DescribeEnvironmentResponse",
+      "status": "online"
     },
     "DescribeEnvironmentStatus": {
       "document": "This API is used to obtain the environment status.",
       "input": "DescribeEnvironmentStatusRequest",
       "name": "Obtains the environment status.",
-      "output": "DescribeEnvironmentStatusResponse"
+      "output": "DescribeEnvironmentStatusResponse",
+      "status": "online"
     },
     "DescribeEnvironments": {
       "document": "This API is used to obtain the list of environments. ",
       "input": "DescribeEnvironmentsRequest",
       "name": "Obtains the list of environments. ",
-      "output": "DescribeEnvironmentsResponse"
+      "output": "DescribeEnvironmentsResponse",
+      "status": "online"
     },
     "DescribeIngress": {
       "document": "This API is used to query an ingress rule.",
       "input": "DescribeIngressRequest",
       "name": "Queries an ingress rule",
-      "output": "DescribeIngressResponse"
+      "output": "DescribeIngressResponse",
+      "status": "online"
     },
     "DescribeIngresses": {
       "document": "This API is used to query the list of ingress rules.",
       "input": "DescribeIngressesRequest",
       "name": "Queries the list of ingress rules",
-      "output": "DescribeIngressesResponse"
+      "output": "DescribeIngressesResponse",
+      "status": "online"
     },
     "DescribeLogConfig": {
       "document": "This API is used to query details of a log collecting configuration.",
       "input": "DescribeLogConfigRequest",
       "name": "Queries details of a log collecting configuration.",
-      "output": "DescribeLogConfigResponse"
+      "output": "DescribeLogConfigResponse",
+      "status": "online"
     },
     "DescribePagedLogConfigList": {
       "document": "This API is used to querying the list of log collecting configurations.",
       "input": "DescribePagedLogConfigListRequest",
       "name": "Queries the list of log collecting configurations",
-      "output": "DescribePagedLogConfigListResponse"
+      "output": "DescribePagedLogConfigListResponse",
+      "status": "online"
     },
     "DescribeRelatedIngresses": {
       "document": "This API is used to query the list of ingress rules associated with the application.",
       "input": "DescribeRelatedIngressesRequest",
       "name": "Queries the list of ingress rules associated with the application",
-      "output": "DescribeRelatedIngressesResponse"
+      "output": "DescribeRelatedIngressesResponse",
+      "status": "online"
     },
     "DestroyConfigData": {
       "document": "This API is used to terminate a configuration.",
       "input": "DestroyConfigDataRequest",
       "name": "Terminates a configuration.",
-      "output": "DestroyConfigDataResponse"
+      "output": "DestroyConfigDataResponse",
+      "status": "online"
     },
     "DestroyEnvironment": {
       "document": "This API is used to terminate an environment.",
       "input": "DestroyEnvironmentRequest",
       "name": "Terminates an environment.",
-      "output": "DestroyEnvironmentResponse"
+      "output": "DestroyEnvironmentResponse",
+      "status": "online"
     },
     "DestroyLogConfig": {
       "document": "This API is used to terminate a log collecting configuration.",
       "input": "DestroyLogConfigRequest",
       "name": "Terminates a log collecting configuration.",
-      "output": "DestroyLogConfigResponse"
+      "output": "DestroyLogConfigResponse",
+      "status": "online"
     },
     "DisableApplicationAutoscaler": {
       "document": "This API is used to disable a scaling rule.",
       "input": "DisableApplicationAutoscalerRequest",
       "name": "Disables a scaling rule",
-      "output": "DisableApplicationAutoscalerResponse"
+      "output": "DisableApplicationAutoscalerResponse",
+      "status": "online"
     },
     "EnableApplicationAutoscaler": {
       "document": "This API is used to enable a scaling rule.",
       "input": "EnableApplicationAutoscalerRequest",
       "name": "Enables a scaling rule",
-      "output": "EnableApplicationAutoscalerResponse"
+      "output": "EnableApplicationAutoscalerResponse",
+      "status": "online"
     },
     "GenerateApplicationPackageDownloadUrl": {
       "document": "This API is used to generate the pre-signed download URL for the specified application package.",
       "input": "GenerateApplicationPackageDownloadUrlRequest",
       "name": "Generates the pre-signed download URL for the specified application package",
-      "output": "GenerateApplicationPackageDownloadUrlResponse"
+      "output": "GenerateApplicationPackageDownloadUrlResponse",
+      "status": "online"
     },
     "ModifyApplicationAutoscaler": {
       "document": "This API is used to modify a scaling rule.",
       "input": "ModifyApplicationAutoscalerRequest",
       "name": "Modifies a scaling rule.",
-      "output": "ModifyApplicationAutoscalerResponse"
+      "output": "ModifyApplicationAutoscalerResponse",
+      "status": "online"
     },
     "ModifyApplicationInfo": {
       "document": "This API is used to modify the basic information of an application.",
       "input": "ModifyApplicationInfoRequest",
       "name": "Modifies the basic information of an application",
-      "output": "ModifyApplicationInfoResponse"
+      "output": "ModifyApplicationInfoResponse",
+      "status": "online"
     },
     "ModifyApplicationService": {
       "document": "This API is used to modify an access policy.",
       "input": "ModifyApplicationServiceRequest",
       "name": "Modifies an access policy",
-      "output": "ModifyApplicationServiceResponse"
+      "output": "ModifyApplicationServiceResponse",
+      "status": "online"
     },
     "ModifyConfigData": {
       "document": "This API is used to modify a configuration.",
       "input": "ModifyConfigDataRequest",
       "name": "Modify a configuration.",
-      "output": "ModifyConfigDataResponse"
+      "output": "ModifyConfigDataResponse",
+      "status": "online"
     },
     "ModifyEnvironment": {
       "document": "This API is used to edit an environment.",
       "input": "ModifyEnvironmentRequest",
       "name": "Edits an environment",
-      "output": "ModifyEnvironmentResponse"
+      "output": "ModifyEnvironmentResponse",
+      "status": "online"
     },
     "ModifyIngress": {
       "document": "This API is used to create or update an ingress rule.",
       "input": "ModifyIngressRequest",
       "name": "Creates or updates an ingress rule",
-      "output": "ModifyIngressResponse"
+      "output": "ModifyIngressResponse",
+      "status": "online"
     },
     "ModifyLogConfig": {
       "document": "This API is used to modify a log collecting configuration.",
       "input": "ModifyLogConfigRequest",
       "name": "Modifies a log collecting configuration.",
-      "output": "ModifyLogConfigResponse"
+      "output": "ModifyLogConfigResponse",
+      "status": "online"
     },
     "RestartApplication": {
       "document": "This API is used to restart an application.",
       "input": "RestartApplicationRequest",
       "name": "Restarts an application",
-      "output": "RestartApplicationResponse"
+      "output": "RestartApplicationResponse",
+      "status": "online"
     },
     "RestartApplicationPod": {
       "document": "This API is used to restart an application pod.",
       "input": "RestartApplicationPodRequest",
       "name": "Restarts an application pod",
-      "output": "RestartApplicationPodResponse"
+      "output": "RestartApplicationPodResponse",
+      "status": "online"
     },
     "RollingUpdateApplicationByVersion": {
       "document": "This API is used to configure the rolling update policy for an application.",
       "input": "RollingUpdateApplicationByVersionRequest",
       "name": "Configures the rolling update policy for an application",
-      "output": "RollingUpdateApplicationByVersionResponse"
+      "output": "RollingUpdateApplicationByVersionResponse",
+      "status": "online"
     },
     "StopApplication": {
       "document": "This API is used to stop an application.",
       "input": "StopApplicationRequest",
       "name": "Stops an application",
-      "output": "StopApplicationResponse"
+      "output": "StopApplicationResponse",
+      "status": "online"
     }
   },
   "metadata": {

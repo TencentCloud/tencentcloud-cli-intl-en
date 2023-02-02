@@ -4,439 +4,512 @@
       "document": "This API is used to bind target groups to CLB listeners (layer-4 protocol) or forwarding rules (layer-7 protocol).\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
       "input": "AssociateTargetGroupsRequest",
       "name": "Binds target groups to rules",
-      "output": "AssociateTargetGroupsResponse"
+      "output": "AssociateTargetGroupsResponse",
+      "status": "online"
     },
     "AutoRewrite": {
       "document": "An HTTPS:443 listener needs to be created first, along with a forwarding rule. When this API is called, an HTTP:80 listener will be created automatically if it did not exist and a forwarding rule corresponding to `Domains` (specified in the input parameter) under the HTTPS:443 listener will also be created. After successful creation, access requests to an HTTP:80 address will be redirected to an HTTPS:443 address automatically.",
       "input": "AutoRewriteRequest",
       "name": "Automatically generates a redirection relationship between CLB forwarding rules",
-      "output": "AutoRewriteResponse"
+      "output": "AutoRewriteResponse",
+      "status": "online"
     },
     "BatchDeregisterTargets": {
       "document": "This API is used to batch unbind real servers of the layer-4 and layer-7 VPC-based CLBs. Up to 500 real servers can be unbound in a batch.",
       "input": "BatchDeregisterTargetsRequest",
       "name": "Unbinds layer-4/layer-7 real servers in batches",
-      "output": "BatchDeregisterTargetsResponse"
+      "output": "BatchDeregisterTargetsResponse",
+      "status": "online"
     },
     "BatchModifyTargetWeight": {
       "document": "This API is used to modify forwarding weights of real servers bound to CLB listeners in batches. Up to 500 servers can be unbound in a batch. As this API is async, you should check whether the task is successful by passing the RequestId returned to the API call `DescribeTaskStatus`.<br/> This API is supported by CLB layer-4 and layer-7 listeners, but not Classis CLB counterparts.\n",
       "input": "BatchModifyTargetWeightRequest",
       "name": "Batch modifies the forwarding weights of real servers bound to a listener",
-      "output": "BatchModifyTargetWeightResponse"
+      "output": "BatchModifyTargetWeightResponse",
+      "status": "online"
     },
     "BatchRegisterTargets": {
       "document": "This API is used to batch bind CVM instances or ENIs. Up to 500 servers can be bound in a batch. It supports cross-region binding, layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols, and VPC-based CLBs only.",
       "input": "BatchRegisterTargetsRequest",
       "name": "Binds CVM instances or ENIs in batches",
-      "output": "BatchRegisterTargetsResponse"
+      "output": "BatchRegisterTargetsResponse",
+      "status": "online"
     },
     "CloneLoadBalancer": {
       "document": "This API is used to create a clone of the source CLB instance with the same forwarding rules and binding relations. Note that this API is asynchronous, which means that changes to the source CLB after invocation of the API are not included in the clone.\n\nUse limits:\nUnsupported instance types: Classic network CLB, Classic CLB, IPv6 CLB, and NAT64 CLB.\nMonthly subscribed CLB instances are not supported.\nQUIC and port listeners are not supported.\nThe CLB backend service cannot be a target group or an SCF function.\nThe following settings will not be cloned automatically and require manual configuration: \"Custom Configuration\", \"Redirection Configuration\" and \"Allow Traffic by Default in Security Group\".\n\nNotes:\nIf you are using a BGP bandwidth package, you need to pass the package ID.\nTo create a dedicated cluster-based CLB by cloning the source CLB, you need to pass the cluster ID. Otherwise, a normal CLB is created.\nThis API is only available for beta users. If you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).",
       "input": "CloneLoadBalancerRequest",
       "name": "Clones a CLB instance",
-      "output": "CloneLoadBalancerResponse"
+      "output": "CloneLoadBalancerResponse",
+      "status": "online"
     },
     "CreateClsLogSet": {
       "document": "This API is used to create a CLB exclusive logset for storing CLB logs.",
       "input": "CreateClsLogSetRequest",
       "name": "Creates a CLB exclusive logset",
-      "output": "CreateClsLogSetResponse"
+      "output": "CreateClsLogSetResponse",
+      "status": "online"
     },
     "CreateListener": {
       "document": "This API is used to create a listener for a CLB instance.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "CreateListenerRequest",
       "name": "Creates a CLB listener",
-      "output": "CreateListenerResponse"
+      "output": "CreateListenerResponse",
+      "status": "online"
     },
     "CreateLoadBalancer": {
       "document": "This API (CreateLoadBalancer) is used to create a CLB instance. To use the CLB service, you first need to purchase one or more instances. After this API is called successfully, a unique instance ID will be returned. There are two types of instances: public network and private network. For more information, see the product types in the product documentation.\nNote: (1) To apply for a CLB instance in the specified AZ and cross-AZ disaster recovery, please [submit a ticket](https://console.cloud.tencent.com/workorder/category); (2) Currently, IPv6 is supported only in Beijing, Shanghai, and Guangzhou regions.\nThis is an async API. After it is returned successfully, you can call the DescribeLoadBalancers API to query the status of the instance (such as creating and normal) to check whether it is successfully created.",
       "input": "CreateLoadBalancerRequest",
       "name": "Purchases a CLB instance",
-      "output": "CreateLoadBalancerResponse"
+      "output": "CreateLoadBalancerResponse",
+      "status": "online"
     },
     "CreateLoadBalancerSnatIps": {
       "document": "This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.\nThis is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.",
       "input": "CreateLoadBalancerSnatIpsRequest",
       "name": "Adds SNAT IP",
-      "output": "CreateLoadBalancerSnatIpsResponse"
+      "output": "CreateLoadBalancerSnatIpsResponse",
+      "status": "online"
     },
     "CreateRule": {
       "document": "This API (CreateRule) is used to create a forwarding rule under an existing layer-7 CLB listener, where real servers must be bound to the rule instead of the listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "CreateRuleRequest",
       "name": "Creates a forwarding rule for a layer-7 CLB listener",
-      "output": "CreateRuleResponse"
+      "output": "CreateRuleResponse",
+      "status": "online"
     },
     "CreateTargetGroup": {
       "document": "This API is used to create a target group. This feature is in beta test, if you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1).",
       "input": "CreateTargetGroupRequest",
       "name": "Creates a target group",
-      "output": "CreateTargetGroupResponse"
+      "output": "CreateTargetGroupResponse",
+      "status": "online"
     },
     "CreateTopic": {
       "document": "This API is used to create a topic with the full-text index and key-value index enabled by default. The creation will fail if there is no CLB exclusive logset.",
       "input": "CreateTopicRequest",
       "name": "Creates a topic",
-      "output": "CreateTopicResponse"
+      "output": "CreateTopicResponse",
+      "status": "online"
     },
     "DeleteListener": {
       "document": "This API is used to delete a listener from a CLB instance (layer-4 or layer-7).\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeleteListenerRequest",
       "name": "Deletes a CLB listener",
-      "output": "DeleteListenerResponse"
+      "output": "DeleteListenerResponse",
+      "status": "online"
     },
     "DeleteLoadBalancer": {
       "document": "This API (DeleteLoadBalancer) is used to delete one or more specified CLB instances.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "DeleteLoadBalancerRequest",
       "name": "Deletes one or more CLB instances",
-      "output": "DeleteLoadBalancerResponse"
+      "output": "DeleteLoadBalancerResponse",
+      "status": "online"
     },
     "DeleteLoadBalancerListeners": {
       "document": "This API is used to delete multiple listeners of a CLB instance.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
       "input": "DeleteLoadBalancerListenersRequest",
       "name": "Deletes multiple CLB listeners",
-      "output": "DeleteLoadBalancerListenersResponse"
+      "output": "DeleteLoadBalancerListenersResponse",
+      "status": "online"
     },
     "DeleteLoadBalancerSnatIps": {
       "document": "This API is used to delete the SNAT IP for an SnatPro CLB instance.\nThis is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.",
       "input": "DeleteLoadBalancerSnatIpsRequest",
       "name": "Deletes SNAT IP",
-      "output": "DeleteLoadBalancerSnatIpsResponse"
+      "output": "DeleteLoadBalancerSnatIpsResponse",
+      "status": "online"
     },
     "DeleteRewrite": {
       "document": "This API (DeleteRewrite) is used to delete the redirection relationship between the specified forwarding rules.",
       "input": "DeleteRewriteRequest",
       "name": "Deletes the redirection relationship between CLB forwarding rules",
-      "output": "DeleteRewriteResponse"
+      "output": "DeleteRewriteResponse",
+      "status": "online"
     },
     "DeleteRule": {
       "document": "This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeleteRuleRequest",
       "name": "Deletes a rule from a layer-7 CLB listener",
-      "output": "DeleteRuleResponse"
+      "output": "DeleteRuleResponse",
+      "status": "online"
     },
     "DeleteTargetGroups": {
       "document": "This API is used to delete a target group.",
       "input": "DeleteTargetGroupsRequest",
       "name": "Deletes target groups",
-      "output": "DeleteTargetGroupsResponse"
+      "output": "DeleteTargetGroupsResponse",
+      "status": "online"
     },
     "DeregisterTargetGroupInstances": {
       "document": "This API is used to unbind a server from a target group.\nThis is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "DeregisterTargetGroupInstancesRequest",
       "name": "Unbinds a server from a target group",
-      "output": "DeregisterTargetGroupInstancesResponse"
+      "output": "DeregisterTargetGroupInstancesResponse",
+      "status": "online"
     },
     "DeregisterTargets": {
       "document": "This API (DeregisterTargets) is used to unbind one or more real servers from a CLB listener or forwarding rule. For layer-4 listeners, only the listener ID needs to be specified. For layer-7 listeners, the forwarding rule also needs to be specified through LocationId or Domain+Url.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeregisterTargetsRequest",
       "name": "Unbinds real servers from a CLB listener",
-      "output": "DeregisterTargetsResponse"
+      "output": "DeregisterTargetsResponse",
+      "status": "online"
     },
     "DeregisterTargetsFromClassicalLB": {
       "document": "This API is used to unbind a CLB real server. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "DeregisterTargetsFromClassicalLBRequest",
       "name": "Unbinds real servers from a classic CLB",
-      "output": "DeregisterTargetsFromClassicalLBResponse"
+      "output": "DeregisterTargetsFromClassicalLBResponse",
+      "status": "online"
     },
     "DescribeBlockIPList": {
       "document": "This API is used to query the list of blocked IPs (blocklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)",
       "input": "DescribeBlockIPListRequest",
       "name": "Queries the list of blocked IPs (blocklist) of a CLB instance",
-      "output": "DescribeBlockIPListResponse"
+      "output": "DescribeBlockIPListResponse",
+      "status": "online"
     },
     "DescribeBlockIPTask": {
       "document": "This API is used to query the execution status of an async IP blocking (blocklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)",
       "input": "DescribeBlockIPTaskRequest",
       "name": "Queries the execution status of an async IP blocking (blocklisting) task",
-      "output": "DescribeBlockIPTaskResponse"
+      "output": "DescribeBlockIPTaskResponse",
+      "status": "online"
     },
     "DescribeClassicalLBByInstanceId": {
       "document": "This API is used to get the list of classic CLB instance IDs through a real server ID.",
       "input": "DescribeClassicalLBByInstanceIdRequest",
       "name": "Queries the classic CLB bound to a real server",
-      "output": "DescribeClassicalLBByInstanceIdResponse"
+      "output": "DescribeClassicalLBByInstanceIdResponse",
+      "status": "online"
     },
     "DescribeClassicalLBHealthStatus": {
       "document": "This API (DescribeClassicalLBHealthStatus) is used to get the real server health status of a classic CLB",
       "input": "DescribeClassicalLBHealthStatusRequest",
       "name": "Gets the real server health status of a classic CLB",
-      "output": "DescribeClassicalLBHealthStatusResponse"
+      "output": "DescribeClassicalLBHealthStatusResponse",
+      "status": "online"
     },
     "DescribeClassicalLBListeners": {
       "document": "This API (DescribeClassicalLBListeners) is used to get the listener information of a classic CLB.",
       "input": "DescribeClassicalLBListenersRequest",
       "name": "Gets the list of classic CLB listeners",
-      "output": "DescribeClassicalLBListenersResponse"
+      "output": "DescribeClassicalLBListenersResponse",
+      "status": "online"
     },
     "DescribeClassicalLBTargets": {
       "document": "This API is used to get the real servers bound to a classic CLB instance.",
       "input": "DescribeClassicalLBTargetsRequest",
       "name": "Gets the list of real servers bound to a classic CLB",
-      "output": "DescribeClassicalLBTargetsResponse"
+      "output": "DescribeClassicalLBTargetsResponse",
+      "status": "online"
     },
     "DescribeClsLogSet": {
       "document": "This API is used to get the CLB exclusive logset.",
       "input": "DescribeClsLogSetRequest",
       "name": "Gets the CLB exclusive logset",
-      "output": "DescribeClsLogSetResponse"
+      "output": "DescribeClsLogSetResponse",
+      "status": "online"
     },
     "DescribeCrossTargets": {
       "document": "Queries information of CVMs and ENIs that use cross-region binding 2.0",
       "input": "DescribeCrossTargetsRequest",
       "name": "Queries information of CVMs and ENIs that use cross-region binding 2.0",
-      "output": "DescribeCrossTargetsResponse"
+      "output": "DescribeCrossTargetsResponse",
+      "status": "online"
     },
     "DescribeCustomizedConfigAssociateList": {
       "document": "This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.",
       "input": "DescribeCustomizedConfigAssociateListRequest",
       "name": "Queries the bound server or configured location",
-      "output": "DescribeCustomizedConfigAssociateListResponse"
+      "output": "DescribeCustomizedConfigAssociateListResponse",
+      "status": "online"
     },
     "DescribeCustomizedConfigList": {
       "document": "This API is used to pull custom configuration lists to return the user configuration of `AppId`.",
       "input": "DescribeCustomizedConfigListRequest",
       "name": "Querying configuration details",
-      "output": "DescribeCustomizedConfigListResponse"
+      "output": "DescribeCustomizedConfigListResponse",
+      "status": "online"
     },
     "DescribeIdleLoadBalancers": {
       "document": "Idle CLB instances are pay-as-you-go load balancers that, within seven days after the creation, do not have rules configured or the configured rules are not associated with any servers. ",
       "input": "DescribeIdleLoadBalancersRequest",
       "name": "Queries the list of CLB instances",
-      "output": "DescribeIdleLoadBalancersResponse"
+      "output": "DescribeIdleLoadBalancersResponse",
+      "status": "online"
     },
     "DescribeLBListeners": {
       "document": "This API is used to query CLB instances bound to the CVM or ENI.",
       "input": "DescribeLBListenersRequest",
       "name": "Queries CLB instances bound to the CVM or ENI",
-      "output": "DescribeLBListenersResponse"
+      "output": "DescribeLBListenersResponse",
+      "status": "online"
     },
     "DescribeListeners": {
       "document": "This API is used to get the list of listeners by CLB ID, listener protocol, or listener port. If no filter is specified, all listeners for the CLB instance will be returned.",
       "input": "DescribeListenersRequest",
       "name": "Queries the list of CLB listeners",
-      "output": "DescribeListenersResponse"
+      "output": "DescribeListenersResponse",
+      "status": "online"
     },
     "DescribeLoadBalancerListByCertId": {
       "document": "This API is used to query the list of CLB instances associated with a certificate in a region by certificate ID.",
       "input": "DescribeLoadBalancerListByCertIdRequest",
       "name": "Queries a CLB instance by the certificate ID",
-      "output": "DescribeLoadBalancerListByCertIdResponse"
+      "output": "DescribeLoadBalancerListByCertIdResponse",
+      "status": "online"
     },
     "DescribeLoadBalancerOverview": {
       "document": "Queries the total number of CLB instances and the number of CLB instances in different status (running, isolated and about to expire).",
       "input": "DescribeLoadBalancerOverviewRequest",
       "name": "Queries the CLB instance status statistics",
-      "output": "DescribeLoadBalancerOverviewResponse"
+      "output": "DescribeLoadBalancerOverviewResponse",
+      "status": "online"
     },
     "DescribeLoadBalancerTraffic": {
       "document": "This API is used to query CLB instances with high traffic under the current account, and return the top 10 results. For queries using a sub-account, only the CLB instances authorized to the sub-account will be returned.",
       "input": "DescribeLoadBalancerTrafficRequest",
       "name": "Queries CLB instances with high traffic under the current account",
-      "output": "DescribeLoadBalancerTrafficResponse"
+      "output": "DescribeLoadBalancerTrafficResponse",
+      "status": "online"
     },
     "DescribeLoadBalancers": {
       "document": "This API is used to query the list of CLB instances in a region.\n",
       "input": "DescribeLoadBalancersRequest",
       "name": "Queries the list of CLB instances",
-      "output": "DescribeLoadBalancersResponse"
+      "output": "DescribeLoadBalancersResponse",
+      "status": "online"
     },
     "DescribeLoadBalancersDetail": {
       "document": "This API is used to query CLB instance details, including listener, rules, and target real servers.",
       "input": "DescribeLoadBalancersDetailRequest",
       "name": "Queries CLB instance details",
-      "output": "DescribeLoadBalancersDetailResponse"
+      "output": "DescribeLoadBalancersDetailResponse",
+      "status": "online"
     },
     "DescribeQuota": {
       "document": "This API is used to query various quotas in the current region.",
       "input": "DescribeQuotaRequest",
       "name": "Queries quotas",
-      "output": "DescribeQuotaResponse"
+      "output": "DescribeQuotaResponse",
+      "status": "online"
     },
     "DescribeResources": {
       "document": "This API is used to query the list of AZs and resources supported for the user in the current region.",
       "input": "DescribeResourcesRequest",
       "name": "Queries the list of AZs and resources supported for the user in the current region",
-      "output": "DescribeResourcesResponse"
+      "output": "DescribeResourcesResponse",
+      "status": "online"
     },
     "DescribeRewrite": {
       "document": "This API (DescribeRewrite) is used to query the redirection relationship between the forwarding rules of a CLB instance by instance ID. If no listener ID or forwarding rule ID is specified, all redirection relationships in the instance will be returned.",
       "input": "DescribeRewriteRequest",
       "name": "Queries the redirection relationship between CLB forwarding rules",
-      "output": "DescribeRewriteResponse"
+      "output": "DescribeRewriteResponse",
+      "status": "online"
     },
     "DescribeTargetGroupInstances": {
       "document": "This API is used to get the information of servers bound to a target group.",
       "input": "DescribeTargetGroupInstancesRequest",
       "name": "Gets servers bound to a target group",
-      "output": "DescribeTargetGroupInstancesResponse"
+      "output": "DescribeTargetGroupInstancesResponse",
+      "status": "online"
     },
     "DescribeTargetGroupList": {
       "document": "This API is used to get the target group list.",
       "input": "DescribeTargetGroupListRequest",
       "name": "Gets a target group list",
-      "output": "DescribeTargetGroupListResponse"
+      "output": "DescribeTargetGroupListResponse",
+      "status": "online"
     },
     "DescribeTargetGroups": {
       "document": "This API is used to query the target group information.",
       "input": "DescribeTargetGroupsRequest",
       "name": "Queries target group information",
-      "output": "DescribeTargetGroupsResponse"
+      "output": "DescribeTargetGroupsResponse",
+      "status": "online"
     },
     "DescribeTargetHealth": {
       "document": "This API (DescribeTargetHealth) is used to query the health check result of a real server of a CLB instance.",
       "input": "DescribeTargetHealthRequest",
       "name": "Queries the health check status of a real server of a CLB instance",
-      "output": "DescribeTargetHealthResponse"
+      "output": "DescribeTargetHealthResponse",
+      "status": "online"
     },
     "DescribeTargets": {
       "document": "This API (DescribeTargets) is used to query the list of real servers bound to some listeners of a CLB instance.",
       "input": "DescribeTargetsRequest",
       "name": "Queries the list of CVM instances bound to a CLB instance",
-      "output": "DescribeTargetsResponse"
+      "output": "DescribeTargetsResponse",
+      "status": "online"
     },
     "DescribeTaskStatus": {
       "document": "This API is used to query the execution status of an async task. After non-query APIs (used to create/delete CLB instances, listeners, or rules or to bind/unbind real servers) are called successfully, this API needs to be used to query whether the task is successful.",
       "input": "DescribeTaskStatusRequest",
       "name": "Queries the status of an async task",
-      "output": "DescribeTaskStatusResponse"
+      "output": "DescribeTaskStatusResponse",
+      "status": "online"
     },
     "DisassociateTargetGroups": {
       "document": "This API is used to unbind target groups from a rule.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
       "input": "DisassociateTargetGroupsRequest",
       "name": "Unbinds target groups from a rule",
-      "output": "DisassociateTargetGroupsResponse"
+      "output": "DisassociateTargetGroupsResponse",
+      "status": "online"
     },
     "ManualRewrite": {
       "document": "After the original access address and the address to be redirected are configured manually, the system will automatically redirect requests made to the original access address to the target address of the corresponding path. Multiple paths can be configured as a redirection policy under one domain name to achieve automatic redirection between HTTP and HTTPS. A redirection policy should meet the following rules: if A has already been redirected to B, then it cannot be redirected to C (unless the original redirection relationship is deleted and a new one is created), and B cannot be redirected to any other addresses.",
       "input": "ManualRewriteRequest",
       "name": "Creates a redirection relationship between CLB forwarding rules manually",
-      "output": "ManualRewriteResponse"
+      "output": "ManualRewriteResponse",
+      "status": "online"
     },
     "MigrateClassicalLoadBalancers": {
       "document": "This API is used to upgrade classic CLB instances to application CLB instances.\nThis is an async API. After it is returned successfully, you can check the action result by calling `DescribeLoadBalancers`. ",
       "input": "MigrateClassicalLoadBalancersRequest",
       "name": "Upgrades Classic CLB instances to application CLB instances",
-      "output": "MigrateClassicalLoadBalancersResponse"
+      "output": "MigrateClassicalLoadBalancersResponse",
+      "status": "online"
     },
     "ModifyBlockIPList": {
       "document": "This API is used to modify the client IP blocklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blocklist can contain up to 2,000,000 entries.\n(This API is in beta test. To use it, please submit a ticket.)",
       "input": "ModifyBlockIPListRequest",
       "name": "Modifies the client IP blocklist of a CLB instance",
-      "output": "ModifyBlockIPListResponse"
+      "output": "ModifyBlockIPListResponse",
+      "status": "online"
     },
     "ModifyDomain": {
       "document": "This API (ModifyDomain) is used to modify a domain name under a layer-7 CLB listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyDomainRequest",
       "name": "Modifies a domain name of a layer-7 forwarding rule",
-      "output": "ModifyDomainResponse"
+      "output": "ModifyDomainResponse",
+      "status": "online"
     },
     "ModifyDomainAttributes": {
       "document": "This API is used to modify the domain name-level attributes of a layer-7 listener's forwarding rule, such as modifying the domain name, changing the DefaultServer, enabling/disabling HTTP/2, and modifying certificates.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "ModifyDomainAttributesRequest",
       "name": "Modifies the domain name-level attributes of a layer-7 listener's forwarding rule",
-      "output": "ModifyDomainAttributesResponse"
+      "output": "ModifyDomainAttributesResponse",
+      "status": "online"
     },
     "ModifyListener": {
       "document": "This API (ModifyListener) is used to modify the attributes of a CLB listener, such as listener name, health check parameter, certificate information, and forwarding policy.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyListenerRequest",
       "name": "Modifies the attributes of a CLB listener",
-      "output": "ModifyListenerResponse"
+      "output": "ModifyListenerResponse",
+      "status": "online"
     },
     "ModifyLoadBalancerAttributes": {
       "document": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes.\nThis is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.",
       "input": "ModifyLoadBalancerAttributesRequest",
       "name": "Modifies the attributes of a CLB instance",
-      "output": "ModifyLoadBalancerAttributesResponse"
+      "output": "ModifyLoadBalancerAttributesResponse",
+      "status": "online"
     },
     "ModifyLoadBalancerSla": {
       "document": "This API is used to upgrade shared CLB instances to LCU-supported CLB instances.",
       "input": "ModifyLoadBalancerSlaRequest",
       "name": "Upgrades to LCU-supported CLB instances",
-      "output": "ModifyLoadBalancerSlaResponse"
+      "output": "ModifyLoadBalancerSlaResponse",
+      "status": "online"
     },
     "ModifyRule": {
       "document": "This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyRuleRequest",
       "name": "Modifies a forwarding rule of a CLB listener",
-      "output": "ModifyRuleResponse"
+      "output": "ModifyRuleResponse",
+      "status": "online"
     },
     "ModifyTargetGroupAttribute": {
       "document": "This API is used to rename a target group or modify its default port attribute.",
       "input": "ModifyTargetGroupAttributeRequest",
       "name": "Modifies target group attribute",
-      "output": "ModifyTargetGroupAttributeResponse"
+      "output": "ModifyTargetGroupAttributeResponse",
+      "status": "online"
     },
     "ModifyTargetGroupInstancesPort": {
       "document": "This API is used to modify server ports of a target group in batches.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
       "input": "ModifyTargetGroupInstancesPortRequest",
       "name": "Modifies server ports of a target group in batches",
-      "output": "ModifyTargetGroupInstancesPortResponse"
+      "output": "ModifyTargetGroupInstancesPortResponse",
+      "status": "online"
     },
     "ModifyTargetGroupInstancesWeight": {
       "document": "This API is used to modify server weights of a target group in batches.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
       "input": "ModifyTargetGroupInstancesWeightRequest",
       "name": "Modifies server weights of a target group in batches",
-      "output": "ModifyTargetGroupInstancesWeightResponse"
+      "output": "ModifyTargetGroupInstancesWeightResponse",
+      "status": "online"
     },
     "ModifyTargetPort": {
       "document": "This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyTargetPortRequest",
       "name": "Modifies the port of a real server bound to a listener",
-      "output": "ModifyTargetPortResponse"
+      "output": "ModifyTargetPortResponse",
+      "status": "online"
     },
     "ModifyTargetWeight": {
       "document": "This API (ModifyTargetWeight) is used to modify the forwarding weight of a real server bound to a CLB instance.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyTargetWeightRequest",
       "name": "Modifies the forwarding weight of a real server bound to a listener",
-      "output": "ModifyTargetWeightResponse"
+      "output": "ModifyTargetWeightResponse",
+      "status": "online"
     },
     "RegisterTargetGroupInstances": {
       "document": "This API is used to register servers to a target group.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
       "input": "RegisterTargetGroupInstancesRequest",
       "name": "Registers servers to a target group",
-      "output": "RegisterTargetGroupInstancesResponse"
+      "output": "RegisterTargetGroupInstancesResponse",
+      "status": "online"
     },
     "RegisterTargets": {
       "document": "This API (RegisterTargets) is used to bind one or more real servers to a CLB listener or layer-7 forwarding rule. Before using this API, you need to create relevant layer-4 listeners or layer-7 forwarding rules. For the former (TCP/UDP), only the listener ID needs to be specified, while for the latter (HTTP/HTTPS), the forwarding rule also needs to be specified through LocationId or Domain+Url.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "RegisterTargetsRequest",
       "name": "Binds real servers to a listener",
-      "output": "RegisterTargetsResponse"
+      "output": "RegisterTargetsResponse",
+      "status": "online"
     },
     "RegisterTargetsWithClassicalLB": {
       "document": "This API is used to bind a real server with a classic CLB instance. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "RegisterTargetsWithClassicalLBRequest",
       "name": "Binds real servers to a classic CLB",
-      "output": "RegisterTargetsWithClassicalLBResponse"
+      "output": "RegisterTargetsWithClassicalLBResponse",
+      "status": "online"
     },
     "ReplaceCertForLoadBalancers": {
       "document": "This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.\nThis API supports replacing server certificates and client certificates.\nThe new certificate to be used can be specified by passing in the certificate ID. If no certificate ID is specified, relevant information such as certificate content must be passed in to create a new certificate and bind it to the CLB.\nNote: This API can only be called in the Guangzhou region; for other regions, an error will occur due to domain name resolution problems.",
       "input": "ReplaceCertForLoadBalancersRequest",
       "name": "Replaces a certificate associated with a CLB instance",
-      "output": "ReplaceCertForLoadBalancersResponse"
+      "output": "ReplaceCertForLoadBalancersResponse",
+      "status": "online"
     },
     "SetCustomizedConfigForLoadBalancer": {
       "document": "This API is used to create or manage a user-defined CLB configuration template.",
       "input": "SetCustomizedConfigForLoadBalancerRequest",
       "name": "Creates or manages user-defined CLB configuration template",
-      "output": "SetCustomizedConfigForLoadBalancerResponse"
+      "output": "SetCustomizedConfigForLoadBalancerResponse",
+      "status": "online"
     },
     "SetLoadBalancerClsLog": {
       "document": "This API is used to add, delete, and update the CLS topic of a CLB instance.",
       "input": "SetLoadBalancerClsLogRequest",
       "name": "Sets the CLS topic of a CLB instance",
-      "output": "SetLoadBalancerClsLogResponse"
+      "output": "SetLoadBalancerClsLogResponse",
+      "status": "online"
     },
     "SetLoadBalancerSecurityGroups": {
       "document": "This API (SetLoadBalancerSecurityGroups) is used to bind/unbind security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups bound to a CLB instance. This API uses `set` semantics.\nDuring a binding operation, the input parameters need to be all security groups to be bound to the CLB instance (including those already bound ones and new ones).\nDuring an unbinding operation, the input parameters need to be all the security groups still bound to the CLB instance after the unbinding operation. To unbind all security groups, you can leave this parameter empty or pass in an empty array. Note: Private network CLB do not support binding security groups.",
       "input": "SetLoadBalancerSecurityGroupsRequest",
       "name": "Configures security groups for a CLB instance",
-      "output": "SetLoadBalancerSecurityGroupsResponse"
+      "output": "SetLoadBalancerSecurityGroupsResponse",
+      "status": "online"
     },
     "SetSecurityGroupForLoadbalancers": {
       "document": "This API is used to bind or unbind a security group for multiple public network CLB instances. Note: Private network CLB do not support binding security groups.",
       "input": "SetSecurityGroupForLoadbalancersRequest",
       "name": "Binds or unbinds a security group for multiple CLB instances",
-      "output": "SetSecurityGroupForLoadbalancersResponse"
+      "output": "SetSecurityGroupForLoadbalancersResponse",
+      "status": "online"
     }
   },
   "metadata": {

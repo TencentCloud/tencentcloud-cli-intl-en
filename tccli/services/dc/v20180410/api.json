@@ -4,109 +4,127 @@
       "document": "This API is used to accept an application for a dedicated tunnel.",
       "input": "AcceptDirectConnectTunnelRequest",
       "name": "Accepts an application for a dedicated tunnel",
-      "output": "AcceptDirectConnectTunnelResponse"
+      "output": "AcceptDirectConnectTunnelResponse",
+      "status": "online"
     },
     "ApplyInternetAddress": {
       "document": "This API is used to apply for an internet tunnel’s CIDR block.",
       "input": "ApplyInternetAddressRequest",
       "name": "Applies for an internet tunnel’s IP address",
-      "output": "ApplyInternetAddressResponse"
+      "output": "ApplyInternetAddressResponse",
+      "status": "online"
     },
     "CreateDirectConnect": {
       "document": "This API is used to apply for a connection.\nWhen calling this API, please note that:\nYou need to complete identity verification for your account; otherwise, you cannot apply for a connection;\nIf there is any connection in arrears under your account, you cannot apply for more connections.",
       "input": "CreateDirectConnectRequest",
       "name": "Applies for a connection",
-      "output": "CreateDirectConnectResponse"
+      "output": "CreateDirectConnectResponse",
+      "status": "online"
     },
     "CreateDirectConnectTunnel": {
       "document": "This API is used to create a dedicated tunnel.",
       "input": "CreateDirectConnectTunnelRequest",
       "name": "Creates a dedicated tunnel",
-      "output": "CreateDirectConnectTunnelResponse"
+      "output": "CreateDirectConnectTunnelResponse",
+      "status": "online"
     },
     "DeleteDirectConnect": {
       "document": "This API is used to delete a connection.\nOnly connected connections can be deleted.",
       "input": "DeleteDirectConnectRequest",
       "name": "Deletes a connection",
-      "output": "DeleteDirectConnectResponse"
+      "output": "DeleteDirectConnectResponse",
+      "status": "online"
     },
     "DeleteDirectConnectTunnel": {
       "document": "This API is used to delete a dedicated tunnel.",
       "input": "DeleteDirectConnectTunnelRequest",
       "name": "Deletes a dedicated tunnel",
-      "output": "DeleteDirectConnectTunnelResponse"
+      "output": "DeleteDirectConnectTunnelResponse",
+      "status": "online"
     },
     "DescribeAccessPoints": {
       "document": "This API is used to query connection access points.\n",
       "input": "DescribeAccessPointsRequest",
       "name": "Queries connection access points",
-      "output": "DescribeAccessPointsResponse"
+      "output": "DescribeAccessPointsResponse",
+      "status": "online"
     },
     "DescribeDirectConnectTunnels": {
       "document": "This API is used to query the list of dedicated tunnels.",
       "input": "DescribeDirectConnectTunnelsRequest",
       "name": "Queries the list of dedicated tunnels",
-      "output": "DescribeDirectConnectTunnelsResponse"
+      "output": "DescribeDirectConnectTunnelsResponse",
+      "status": "online"
     },
     "DescribeDirectConnects": {
       "document": "This API is used to query the list of connections.",
       "input": "DescribeDirectConnectsRequest",
       "name": "Queries the list of connections",
-      "output": "DescribeDirectConnectsResponse"
+      "output": "DescribeDirectConnectsResponse",
+      "status": "online"
     },
     "DescribeInternetAddress": {
       "document": "This API is used to obtain the public IP address of an internet tunnel.",
       "input": "DescribeInternetAddressRequest",
       "name": "Obtains the public IP address of an internet tunnel",
-      "output": "DescribeInternetAddressResponse"
+      "output": "DescribeInternetAddressResponse",
+      "status": "online"
     },
     "DescribeInternetAddressQuota": {
       "document": "This API is used to obtain the public IP quota of internet tunnels.",
       "input": "DescribeInternetAddressQuotaRequest",
       "name": "Obtains the public IP quota of internet tunnels",
-      "output": "DescribeInternetAddressQuotaResponse"
+      "output": "DescribeInternetAddressQuotaResponse",
+      "status": "online"
     },
     "DescribeInternetAddressStatistics": {
       "document": "This API is used to obtain the public IP address assignment statistics of internet tunnels.",
       "input": "DescribeInternetAddressStatisticsRequest",
       "name": "Obtains the public IP address statistics of internet tunnels",
-      "output": "DescribeInternetAddressStatisticsResponse"
+      "output": "DescribeInternetAddressStatisticsResponse",
+      "status": "online"
     },
     "DisableInternetAddress": {
       "document": "This API is used to disable a public IP address of internet tunnels.",
       "input": "DisableInternetAddressRequest",
       "name": "Disables a public IP address of internet tunnels",
-      "output": "DisableInternetAddressResponse"
+      "output": "DisableInternetAddressResponse",
+      "status": "online"
     },
     "EnableInternetAddress": {
       "document": "This API is used to enable a public IP address for internet tunnels.",
       "input": "EnableInternetAddressRequest",
       "name": "Enables a public IP address for internet tunnels",
-      "output": "EnableInternetAddressResponse"
+      "output": "EnableInternetAddressResponse",
+      "status": "online"
     },
     "ModifyDirectConnectAttribute": {
       "document": "This API is used to modify connection attributes.",
       "input": "ModifyDirectConnectAttributeRequest",
       "name": "Modifies connection attributes",
-      "output": "ModifyDirectConnectAttributeResponse"
+      "output": "ModifyDirectConnectAttributeResponse",
+      "status": "online"
     },
     "ModifyDirectConnectTunnelAttribute": {
       "document": "This API is used to modify the dedicated tunnel attributes.",
       "input": "ModifyDirectConnectTunnelAttributeRequest",
       "name": "Modifies the dedicated tunnel attributes",
-      "output": "ModifyDirectConnectTunnelAttributeResponse"
+      "output": "ModifyDirectConnectTunnelAttributeResponse",
+      "status": "online"
     },
     "RejectDirectConnectTunnel": {
       "document": "This API is used to reject an application for a dedicated tunnel.",
       "input": "RejectDirectConnectTunnelRequest",
       "name": "Rejects an application for a dedicated tunnel",
-      "output": "RejectDirectConnectTunnelResponse"
+      "output": "RejectDirectConnectTunnelResponse",
+      "status": "online"
     },
     "ReleaseInternetAddress": {
       "document": "This API is used to release an IP address of internet tunnels.",
       "input": "ReleaseInternetAddressRequest",
       "name": "Releases an IP address of internet tunnels",
-      "output": "ReleaseInternetAddressResponse"
+      "output": "ReleaseInternetAddressResponse",
+      "status": "online"
     }
   },
   "metadata": {

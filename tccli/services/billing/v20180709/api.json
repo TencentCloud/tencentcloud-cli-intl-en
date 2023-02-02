@@ -4,67 +4,78 @@
       "document": "This API is used to check the Tencent Cloud account balance.",
       "input": "DescribeAccountBalanceRequest",
       "name": "Checks account balance",
-      "output": "DescribeAccountBalanceResponse"
+      "output": "DescribeAccountBalanceResponse",
+      "status": "online"
     },
     "DescribeBillDetail": {
       "document": "This API is used to query bill details.",
       "input": "DescribeBillDetailRequest",
       "name": "Queries bill details",
-      "output": "DescribeBillDetailResponse"
+      "output": "DescribeBillDetailResponse",
+      "status": "online"
     },
     "DescribeBillResourceSummary": {
       "document": "This API is used to query bill resources summary. ",
       "input": "DescribeBillResourceSummaryRequest",
       "name": "Queries bill resource summary",
-      "output": "DescribeBillResourceSummaryResponse"
+      "output": "DescribeBillResourceSummaryResponse",
+      "status": "online"
     },
     "DescribeBillSummaryByPayMode": {
       "document": "Gets the bill summarized according to billing mode",
       "input": "DescribeBillSummaryByPayModeRequest",
       "name": "Gets the bill summarized according to billing mode",
-      "output": "DescribeBillSummaryByPayModeResponse"
+      "output": "DescribeBillSummaryByPayModeResponse",
+      "status": "online"
     },
     "DescribeBillSummaryByProduct": {
       "document": "Gets the bill summarized according to product",
       "input": "DescribeBillSummaryByProductRequest",
       "name": "Gets the bill summarized according to product",
-      "output": "DescribeBillSummaryByProductResponse"
+      "output": "DescribeBillSummaryByProductResponse",
+      "status": "online"
     },
     "DescribeBillSummaryByProject": {
       "document": "Gets the bill summarized according to project",
       "input": "DescribeBillSummaryByProjectRequest",
       "name": "Gets the bill summarized according to project",
-      "output": "DescribeBillSummaryByProjectResponse"
+      "output": "DescribeBillSummaryByProjectResponse",
+      "status": "online"
     },
     "DescribeBillSummaryByRegion": {
       "document": "Gets the bill summarized according to region",
       "input": "DescribeBillSummaryByRegionRequest",
       "name": "Gets the bill summarized according to region",
-      "output": "DescribeBillSummaryByRegionResponse"
+      "output": "DescribeBillSummaryByRegionResponse",
+      "status": "online"
     },
     "DescribeBillSummaryByTag": {
       "document": "This API is used to get the cost distribution over different tags.",
       "input": "DescribeBillSummaryByTagRequest",
       "name": "Gets cost distribution over different tags",
-      "output": "DescribeBillSummaryByTagResponse"
+      "output": "DescribeBillSummaryByTagResponse",
+      "status": "online"
     },
     "DescribeDosageCosDetailByDate": {
       "document": "This API is used to query COS usage details.",
       "input": "DescribeDosageCosDetailByDateRequest",
       "name": "Queries COS usage details",
-      "output": "DescribeDosageCosDetailByDateResponse"
+      "output": "DescribeDosageCosDetailByDateResponse",
+      "status": "online"
     },
     "DescribeVoucherInfo": {
       "document": "This API is used to query vouchers.",
       "input": "DescribeVoucherInfoRequest",
       "name": "Queries vouchers",
-      "output": "DescribeVoucherInfoResponse"
+      "output": "DescribeVoucherInfoResponse",
+      "status": "online"
     },
     "DescribeVoucherUsageDetails": {
       "document": "This API is used to query voucher usage details.",
       "input": "DescribeVoucherUsageDetailsRequest",
       "name": "Queries voucher usage details",
-      "output": "DescribeVoucherUsageDetailsResponse"
+      "output": "DescribeVoucherUsageDetailsResponse",
+      "status": "online"
     }
   },
   "metadata": {

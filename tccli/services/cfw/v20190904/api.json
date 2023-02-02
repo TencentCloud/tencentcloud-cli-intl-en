@@ -4,337 +4,393 @@
       "document": "This API is used to add edge firewall rules.",
       "input": "AddAcRuleRequest",
       "name": "Adds edge firewall rules",
-      "output": "AddAcRuleResponse"
+      "output": "AddAcRuleResponse",
+      "status": "online"
     },
     "AddEnterpriseSecurityGroupRules": {
       "document": "This API is used to create enterprise security group rules (new).",
       "input": "AddEnterpriseSecurityGroupRulesRequest",
       "name": "Creates enterprise security group rules (new)",
-      "output": "AddEnterpriseSecurityGroupRulesResponse"
+      "output": "AddEnterpriseSecurityGroupRulesResponse",
+      "status": "online"
     },
     "CreateAcRules": {
       "document": "This API is used to create rules.",
       "input": "CreateAcRulesRequest",
       "name": "Creates rules",
-      "output": "CreateAcRulesResponse"
+      "output": "CreateAcRulesResponse",
+      "status": "online"
     },
     "CreateNatFwInstance": {
       "document": "This API is used to create a NAT firewall instance (The Region parameter is required).",
       "input": "CreateNatFwInstanceRequest",
       "name": "Creates a NAT firewall instance (The Region parameter is required)",
-      "output": "CreateNatFwInstanceResponse"
+      "output": "CreateNatFwInstanceResponse",
+      "status": "online"
     },
     "CreateNatFwInstanceWithDomain": {
       "document": "This API is used to create a firewall instance with domain name (The Region parameter is required).",
       "input": "CreateNatFwInstanceWithDomainRequest",
       "name": "Creates a firewall instance with domain name (The Region parameter is required)",
-      "output": "CreateNatFwInstanceWithDomainResponse"
+      "output": "CreateNatFwInstanceWithDomainResponse",
+      "status": "online"
     },
     "CreateSecurityGroupRules": {
       "document": "This API is used to create enterprise security group rules.",
       "input": "CreateSecurityGroupRulesRequest",
       "name": "Creates enterprise security group rules",
-      "output": "CreateSecurityGroupRulesResponse"
+      "output": "CreateSecurityGroupRulesResponse",
+      "status": "online"
     },
     "DeleteAcRule": {
       "document": "This API is used to delete a rule.",
       "input": "DeleteAcRuleRequest",
       "name": "Deletes a rule",
-      "output": "DeleteAcRuleResponse"
+      "output": "DeleteAcRuleResponse",
+      "status": "online"
     },
     "DeleteAllAccessControlRule": {
       "document": "This API is used to delete all rules.",
       "input": "DeleteAllAccessControlRuleRequest",
       "name": "Deletes all rules",
-      "output": "DeleteAllAccessControlRuleResponse"
+      "output": "DeleteAllAccessControlRuleResponse",
+      "status": "online"
     },
     "DeleteResourceGroup": {
       "document": "This API is used to delete asset groups in Asset Management.",
       "input": "DeleteResourceGroupRequest",
       "name": "Deletes asset groups in Asset Management",
-      "output": "DeleteResourceGroupResponse"
+      "output": "DeleteResourceGroupResponse",
+      "status": "online"
     },
     "DeleteSecurityGroupRule": {
       "document": "This API is used to delete security group rules.",
       "input": "DeleteSecurityGroupRuleRequest",
       "name": "Deletes security group rules",
-      "output": "DeleteSecurityGroupRuleResponse"
+      "output": "DeleteSecurityGroupRuleResponse",
+      "status": "online"
     },
     "DeleteVpcInstance": {
       "document": "This API is used to delete firewall instance.",
       "input": "DeleteVpcInstanceRequest",
       "name": "Deletes firewall instance",
-      "output": "DeleteVpcInstanceResponse"
+      "output": "DeleteVpcInstanceResponse",
+      "status": "online"
     },
     "DescribeAcLists": {
       "document": "This API is used to get the access control list.",
       "input": "DescribeAcListsRequest",
       "name": "Gets the access control list",
-      "output": "DescribeAcListsResponse"
+      "output": "DescribeAcListsResponse",
+      "status": "online"
     },
     "DescribeAssociatedInstanceList": {
       "document": "This API is used to get the list of instances associated with a security group.",
       "input": "DescribeAssociatedInstanceListRequest",
       "name": "Gets the list of instances associated with a security group",
-      "output": "DescribeAssociatedInstanceListResponse"
+      "output": "DescribeAssociatedInstanceListResponse",
+      "status": "online"
     },
     "DescribeBlockByIpTimesList": {
       "document": "This API is used to get blocked IP data.\n",
       "input": "DescribeBlockByIpTimesListRequest",
       "name": "Gets blocked IP data",
-      "output": "DescribeBlockByIpTimesListResponse"
+      "output": "DescribeBlockByIpTimesListResponse",
+      "status": "online"
     },
     "DescribeBlockStaticList": {
       "document": "This API is used to get the most frequent attacker.\n",
       "input": "DescribeBlockStaticListRequest",
       "name": "Gets the most frequent attacker",
-      "output": "DescribeBlockStaticListResponse"
+      "output": "DescribeBlockStaticListResponse",
+      "status": "online"
     },
     "DescribeDefenseSwitch": {
       "document": "This API is used to query the list of firewall toggles with Intrusion Defense enabled.",
       "input": "DescribeDefenseSwitchRequest",
       "name": "Queries the list of firewall toggles with Intrusion Defense enabled",
-      "output": "DescribeDefenseSwitchResponse"
+      "output": "DescribeDefenseSwitchResponse",
+      "status": "online"
     },
     "DescribeEnterpriseSecurityGroupRule": {
       "document": "This API is used to get enterprise security group rules (new).",
       "input": "DescribeEnterpriseSecurityGroupRuleRequest",
       "name": "Gets enterprise security group rules (new)",
-      "output": "DescribeEnterpriseSecurityGroupRuleResponse"
+      "output": "DescribeEnterpriseSecurityGroupRuleResponse",
+      "status": "online"
     },
     "DescribeGuideScanInfo": {
       "document": "This API is used to get the scan interface information in Get Started.",
       "input": "DescribeGuideScanInfoRequest",
       "name": "Gets the scan interface information in Get Started.",
-      "output": "DescribeGuideScanInfoResponse"
+      "output": "DescribeGuideScanInfoResponse",
+      "status": "online"
     },
     "DescribeIPStatusList": {
       "document": "This API is used to get the IP protection status.",
       "input": "DescribeIPStatusListRequest",
       "name": "Gets the IP protection status",
-      "output": "DescribeIPStatusListResponse"
+      "output": "DescribeIPStatusListResponse",
+      "status": "online"
     },
     "DescribeNatFwInfoCount": {
       "document": "This API is used to get the number of a user's subnets connected to NAT firewall and the number of NAT firewall instances.",
       "input": "DescribeNatFwInfoCountRequest",
       "name": "Gets the number of a user's subnets connected to NAT firewall and the number of NAT firewall instances",
-      "output": "DescribeNatFwInfoCountResponse"
+      "output": "DescribeNatFwInfoCountResponse",
+      "status": "online"
     },
     "DescribeNatFwInstance": {
       "document": "This API is used to get all NAT instances of a tenant.",
       "input": "DescribeNatFwInstanceRequest",
       "name": "Gets all NAT instances of a tenant",
-      "output": "DescribeNatFwInstanceResponse"
+      "output": "DescribeNatFwInstanceResponse",
+      "status": "online"
     },
     "DescribeNatFwInstanceWithRegion": {
       "document": "This API is used to get the NAT instance with the region that is newly maintained by the tenant.",
       "input": "DescribeNatFwInstanceWithRegionRequest",
       "name": "Gets  the NAT instance that can be maintained by the tenant",
-      "output": "DescribeNatFwInstanceWithRegionResponse"
+      "output": "DescribeNatFwInstanceWithRegionResponse",
+      "status": "online"
     },
     "DescribeNatFwInstancesInfo": {
       "document": "This API is used to get all NAT instances and instance card information of a tenant.",
       "input": "DescribeNatFwInstancesInfoRequest",
       "name": "Gets all NAT instance card information of a tenant.",
-      "output": "DescribeNatFwInstancesInfoResponse"
+      "output": "DescribeNatFwInstancesInfoResponse",
+      "status": "online"
     },
     "DescribeNatFwVpcDnsLst": {
       "document": "This API is used to get the VPC DNS status of NAT firewall instances.",
       "input": "DescribeNatFwVpcDnsLstRequest",
       "name": "Gets the VPC DNS status of NAT firewall instances",
-      "output": "DescribeNatFwVpcDnsLstResponse"
+      "output": "DescribeNatFwVpcDnsLstResponse",
+      "status": "online"
     },
     "DescribeResourceGroupNew": {
       "document": "This API is used to get the asset tree information in Asset Management.",
       "input": "DescribeResourceGroupNewRequest",
       "name": "Gets the asset tree information in Asset Management",
-      "output": "DescribeResourceGroupNewResponse"
+      "output": "DescribeResourceGroupNewResponse",
+      "status": "online"
     },
     "DescribeRuleOverview": {
       "document": "This API is used to get the rule list overview.",
       "input": "DescribeRuleOverviewRequest",
       "name": "Gets the rule list overview",
-      "output": "DescribeRuleOverviewResponse"
+      "output": "DescribeRuleOverviewResponse",
+      "status": "online"
     },
     "DescribeSecurityGroupList": {
       "document": "This API is used to get the security group rule list.",
       "input": "DescribeSecurityGroupListRequest",
       "name": "Gets the security group rule list",
-      "output": "DescribeSecurityGroupListResponse"
+      "output": "DescribeSecurityGroupListResponse",
+      "status": "online"
     },
     "DescribeSourceAsset": {
       "document": "This API is used to get all asset information of an asset group.\n",
       "input": "DescribeSourceAssetRequest",
       "name": "Gets all asset information of an asset group",
-      "output": "DescribeSourceAssetResponse"
+      "output": "DescribeSourceAssetResponse",
+      "status": "online"
     },
     "DescribeSwitchLists": {
       "document": "This API is used to get the firewall status list.",
       "input": "DescribeSwitchListsRequest",
       "name": "Gets the firewall status list",
-      "output": "DescribeSwitchListsResponse"
+      "output": "DescribeSwitchListsResponse",
+      "status": "online"
     },
     "DescribeTLogInfo": {
       "document": "This API is used to get the current alert monitoring data.\n",
       "input": "DescribeTLogInfoRequest",
       "name": "Gets the current alert monitoring data",
-      "output": "DescribeTLogInfoResponse"
+      "output": "DescribeTLogInfoResponse",
+      "status": "online"
     },
     "DescribeTLogIpList": {
       "document": "This API is used to get the most frequent attacker IP.\n",
       "input": "DescribeTLogIpListRequest",
       "name": "Gets the most frequent attacker IP",
-      "output": "DescribeTLogIpListResponse"
+      "output": "DescribeTLogIpListResponse",
+      "status": "online"
     },
     "DescribeTableStatus": {
       "document": "This API is used to get the rule list status.",
       "input": "DescribeTableStatusRequest",
       "name": "Gets the rule list status",
-      "output": "DescribeTableStatusResponse"
+      "output": "DescribeTableStatusResponse",
+      "status": "online"
     },
     "DescribeUnHandleEventTabList": {
       "document": "This API is used to get unhandled security events.\n",
       "input": "DescribeUnHandleEventTabListRequest",
       "name": "Gets unhandled security events",
-      "output": "DescribeUnHandleEventTabListResponse"
+      "output": "DescribeUnHandleEventTabListResponse",
+      "status": "online"
     },
     "ExpandCfwVertical": {
       "document": "This API is used to increase the firewall bandwidth.",
       "input": "ExpandCfwVerticalRequest",
       "name": "Increases the firewall bandwidth",
-      "output": "ExpandCfwVerticalResponse"
+      "output": "ExpandCfwVerticalResponse",
+      "status": "online"
     },
     "ModifyAcRule": {
       "document": "This API is used to modify rules.",
       "input": "ModifyAcRuleRequest",
       "name": "Modifies rules",
-      "output": "ModifyAcRuleResponse"
+      "output": "ModifyAcRuleResponse",
+      "status": "online"
     },
     "ModifyAllPublicIPSwitchStatus": {
       "document": "This API is used to enable or disable one or multiple edge firewalls.",
       "input": "ModifyAllPublicIPSwitchStatusRequest",
       "name": "Enables or disables one or multiple edge firewalls",
-      "output": "ModifyAllPublicIPSwitchStatusResponse"
+      "output": "ModifyAllPublicIPSwitchStatusResponse",
+      "status": "online"
     },
     "ModifyAllRuleStatus": {
       "document": "This API is used to enable or disable all rules.",
       "input": "ModifyAllRuleStatusRequest",
       "name": "Enables or disables all rules",
-      "output": "ModifyAllRuleStatusResponse"
+      "output": "ModifyAllRuleStatusResponse",
+      "status": "online"
     },
     "ModifyAllVPCSwitchStatus": {
       "document": "This API is used to enable or disable one or multiple VPC firewalls.",
       "input": "ModifyAllVPCSwitchStatusRequest",
       "name": "Enables or disables one or multiple VPC firewalls",
-      "output": "ModifyAllVPCSwitchStatusResponse"
+      "output": "ModifyAllVPCSwitchStatusResponse",
+      "status": "online"
     },
     "ModifyAssetScan": {
       "document": "This API is used to modify asset scan settings.",
       "input": "ModifyAssetScanRequest",
       "name": "Modifies asset scan settings",
-      "output": "ModifyAssetScanResponse"
+      "output": "ModifyAssetScanResponse",
+      "status": "online"
     },
     "ModifyBlockIgnoreList": {
       "document": "This API is used to:\nadd IPs/domains in the blocklist or ignored list\ndelete IPs/domains in the blocklist or ignored list\nmodify IPs/domains in the blocklist or ignored list",
       "input": "ModifyBlockIgnoreListRequest",
       "name": "Adds/Deletes/Modifies IPs/domains in the blocklist or ignored list",
-      "output": "ModifyBlockIgnoreListResponse"
+      "output": "ModifyBlockIgnoreListResponse",
+      "status": "online"
     },
     "ModifyBlockTop": {
       "document": "This API is used to pin or unpin a blocking log.",
       "input": "ModifyBlockTopRequest",
       "name": "Pins or unpins a blocking log",
-      "output": "ModifyBlockTopResponse"
+      "output": "ModifyBlockTopResponse",
+      "status": "online"
     },
     "ModifyNatFwReSelect": {
       "document": "This API is used to get the VPC or NAT list for changing associated firewall instances.",
       "input": "ModifyNatFwReSelectRequest",
       "name": "Gets the VPC or NAT list for changing associated firewall instances",
-      "output": "ModifyNatFwReSelectResponse"
+      "output": "ModifyNatFwReSelectResponse",
+      "status": "online"
     },
     "ModifyNatFwSwitch": {
       "document": "This API is used to enable or disable a NAT firewall.",
       "input": "ModifyNatFwSwitchRequest",
       "name": "Enables or disables a NAT firewall",
-      "output": "ModifyNatFwSwitchResponse"
+      "output": "ModifyNatFwSwitchResponse",
+      "status": "online"
     },
     "ModifyNatFwVpcDnsSwitch": {
       "document": "This API is used to modify the VPC DNS status of NAT firewall instances.",
       "input": "ModifyNatFwVpcDnsSwitchRequest",
       "name": "Modifies the VPC DNS status of NAT firewall instances",
-      "output": "ModifyNatFwVpcDnsSwitchResponse"
+      "output": "ModifyNatFwVpcDnsSwitchResponse",
+      "status": "online"
     },
     "ModifyPublicIPSwitchStatus": {
       "document": "This API is used to enable or disable an edge firewall.",
       "input": "ModifyPublicIPSwitchStatusRequest",
       "name": "Enables or disables an edge firewall",
-      "output": "ModifyPublicIPSwitchStatusResponse"
+      "output": "ModifyPublicIPSwitchStatusResponse",
+      "status": "online"
     },
     "ModifyResourceGroup": {
       "document": "This API is used to modify the asset group information in Asset Management.\n\n",
       "input": "ModifyResourceGroupRequest",
       "name": "Modifies the asset group information in Asset Management",
-      "output": "ModifyResourceGroupResponse"
+      "output": "ModifyResourceGroupResponse",
+      "status": "online"
     },
     "ModifyRunSyncAsset": {
       "document": "This API is used to sync assets - Internet & VPC (new).",
       "input": "ModifyRunSyncAssetRequest",
       "name": "Syncs assets - Internet & VPC (new)",
-      "output": "ModifyRunSyncAssetResponse"
+      "output": "ModifyRunSyncAssetResponse",
+      "status": "online"
     },
     "ModifySecurityGroupItemRuleStatus": {
       "document": "This API is used to enable or disable an enterprise security group rule.",
       "input": "ModifySecurityGroupItemRuleStatusRequest",
       "name": "Enables or disables an enterprise security group rule",
-      "output": "ModifySecurityGroupItemRuleStatusResponse"
+      "output": "ModifySecurityGroupItemRuleStatusResponse",
+      "status": "online"
     },
     "ModifySecurityGroupSequenceRules": {
       "document": "This API is used to sort enterprise security group rules.",
       "input": "ModifySecurityGroupSequenceRulesRequest",
       "name": "Sorts enterprise security group rules",
-      "output": "ModifySecurityGroupSequenceRulesResponse"
+      "output": "ModifySecurityGroupSequenceRulesResponse",
+      "status": "online"
     },
     "ModifySequenceRules": {
       "document": "This API is used to modify rule priority.",
       "input": "ModifySequenceRulesRequest",
       "name": "Modifies rule priority",
-      "output": "ModifySequenceRulesResponse"
+      "output": "ModifySequenceRulesResponse",
+      "status": "online"
     },
     "ModifyTableStatus": {
       "document": "This API is used to modify rule list status.",
       "input": "ModifyTableStatusRequest",
       "name": "Modifies rule list status",
-      "output": "ModifyTableStatusResponse"
+      "output": "ModifyTableStatusResponse",
+      "status": "online"
     },
     "RemoveAcRule": {
       "document": "This API is used to delete edge firewall rules.",
       "input": "RemoveAcRuleRequest",
       "name": "Deletes edge firewall rules",
-      "output": "RemoveAcRuleResponse"
+      "output": "RemoveAcRuleResponse",
+      "status": "online"
     },
     "RemoveEnterpriseSecurityGroupRule": {
       "document": "This API is used to delete enterprise security group rules (new).",
       "input": "RemoveEnterpriseSecurityGroupRuleRequest",
       "name": "Deletes enterprise security group rules (new)",
-      "output": "RemoveEnterpriseSecurityGroupRuleResponse"
+      "output": "RemoveEnterpriseSecurityGroupRuleResponse",
+      "status": "online"
     },
     "SetNatFwDnatRule": {
       "document": "This API is used to configure firewall DNAT rules.",
       "input": "SetNatFwDnatRuleRequest",
       "name": "Configures firewall DNAT rules",
-      "output": "SetNatFwDnatRuleResponse"
+      "output": "SetNatFwDnatRuleResponse",
+      "status": "online"
     },
     "SetNatFwEip": {
       "document": "This API is used to set the firewall instance EIP. (Available for firewall instances in the \"Create new\" mode. only)",
       "input": "SetNatFwEipRequest",
       "name": "Sets the firewall instance EIP",
-      "output": "SetNatFwEipResponse"
+      "output": "SetNatFwEipResponse",
+      "status": "online"
     },
     "StopSecurityGroupRuleDispatch": {
       "document": "This API is used to stop publishing security group rules.",
       "input": "StopSecurityGroupRuleDispatchRequest",
       "name": "Stops publishing security group rules",
-      "output": "StopSecurityGroupRuleDispatchResponse"
+      "output": "StopSecurityGroupRuleDispatchResponse",
+      "status": "online"
     }
   },
   "metadata": {

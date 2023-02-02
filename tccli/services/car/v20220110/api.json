@@ -4,19 +4,22 @@
       "document": "This API is used to request concurrency quota.",
       "input": "ApplyConcurrentRequest",
       "name": "Requests concurrency quota",
-      "output": "ApplyConcurrentResponse"
+      "output": "ApplyConcurrentResponse",
+      "status": "online"
     },
     "CreateSession": {
       "document": "This API is used to create a session.",
       "input": "CreateSessionRequest",
       "name": "Creates a session",
-      "output": "CreateSessionResponse"
+      "output": "CreateSessionResponse",
+      "status": "online"
     },
     "DestroySession": {
       "document": "This API is used to terminate a session.",
       "input": "DestroySessionRequest",
       "name": "Terminates a session",
-      "output": "DestroySessionResponse"
+      "output": "DestroySessionResponse",
+      "status": "online"
     }
   },
   "metadata": {

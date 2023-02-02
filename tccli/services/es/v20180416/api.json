@@ -4,127 +4,148 @@
       "document": "This API is used to create indices.",
       "input": "CreateIndexRequest",
       "name": "Creates indices",
-      "output": "CreateIndexResponse"
+      "output": "CreateIndexResponse",
+      "status": "online"
     },
     "CreateInstance": {
       "document": "This API is used to create an ES cluster instance with the specified specification.",
       "input": "CreateInstanceRequest",
       "name": "Creates an ES cluster instance",
-      "output": "CreateInstanceResponse"
+      "output": "CreateInstanceResponse",
+      "status": "online"
     },
     "DeleteIndex": {
       "document": "This API is used to delete indices.",
       "input": "DeleteIndexRequest",
       "name": "Deletes indices",
-      "output": "DeleteIndexResponse"
+      "output": "DeleteIndexResponse",
+      "status": "online"
     },
     "DeleteInstance": {
       "document": "This API is used to terminate a cluster instance. ",
       "input": "DeleteInstanceRequest",
       "name": "Terminates an ES cluster instance",
-      "output": "DeleteInstanceResponse"
+      "output": "DeleteInstanceResponse",
+      "status": "online"
     },
     "DescribeIndexList": {
       "document": "This API is used to obtain the index list.",
       "input": "DescribeIndexListRequest",
       "name": "Obtains the index list",
-      "output": "DescribeIndexListResponse"
+      "output": "DescribeIndexListResponse",
+      "status": "online"
     },
     "DescribeIndexMeta": {
       "document": "This API is used to obtain index metadata.",
       "input": "DescribeIndexMetaRequest",
       "name": "Obtains index metadata",
-      "output": "DescribeIndexMetaResponse"
+      "output": "DescribeIndexMetaResponse",
+      "status": "online"
     },
     "DescribeInstanceLogs": {
       "document": "This API is used to query the eligible ES cluster logs in the current region.",
       "input": "DescribeInstanceLogsRequest",
       "name": "Queries ES cluster logs",
-      "output": "DescribeInstanceLogsResponse"
+      "output": "DescribeInstanceLogsResponse",
+      "status": "online"
     },
     "DescribeInstanceOperations": {
       "document": "This API is used to query the operation history of an instance by specified criteria.",
       "input": "DescribeInstanceOperationsRequest",
       "name": "Queries instance operation history",
-      "output": "DescribeInstanceOperationsResponse"
+      "output": "DescribeInstanceOperationsResponse",
+      "status": "online"
     },
     "DescribeInstances": {
       "document": "This API is used to query all eligible instances in the current region under the current account.",
       "input": "DescribeInstancesRequest",
       "name": "Queries ES cluster instances",
-      "output": "DescribeInstancesResponse"
+      "output": "DescribeInstancesResponse",
+      "status": "online"
     },
     "DescribeViews": {
       "document": "This API is used to query view data from three dimensions: cluster, node, and Kibana.",
       "input": "DescribeViewsRequest",
       "name": "Queries cluster views",
-      "output": "DescribeViewsResponse"
+      "output": "DescribeViewsResponse",
+      "status": "online"
     },
     "GetRequestTargetNodeTypes": {
       "document": "This API is used to get the node types used to receive client requests.",
       "input": "GetRequestTargetNodeTypesRequest",
       "name": "Gets the node types used to receive client requests",
-      "output": "GetRequestTargetNodeTypesResponse"
+      "output": "GetRequestTargetNodeTypesResponse",
+      "status": "online"
     },
     "RestartInstance": {
       "document": "This API is used to restart an ES cluster instance (for operations such as system update). ",
       "input": "RestartInstanceRequest",
       "name": "Restarts an ES cluster instance",
-      "output": "RestartInstanceResponse"
+      "output": "RestartInstanceResponse",
+      "status": "online"
     },
     "RestartKibana": {
       "document": "This API is used to restart Kibana. ",
       "input": "RestartKibanaRequest",
       "name": "Restarts Kibana",
-      "output": "RestartKibanaResponse"
+      "output": "RestartKibanaResponse",
+      "status": "online"
     },
     "RestartNodes": {
       "document": "This API is used to restart cluster nodes.",
       "input": "RestartNodesRequest",
       "name": "Restarts cluster nodes",
-      "output": "RestartNodesResponse"
+      "output": "RestartNodesResponse",
+      "status": "online"
     },
     "UpdateDictionaries": {
       "document": "This API is used to update ES cluster dictionaries.",
       "input": "UpdateDictionariesRequest",
       "name": "Updates ES cluster dictionaries",
-      "output": "UpdateDictionariesResponse"
+      "output": "UpdateDictionariesResponse",
+      "status": "online"
     },
     "UpdateIndex": {
       "document": "This API is used to update indices.",
       "input": "UpdateIndexRequest",
       "name": "Updates indices",
-      "output": "UpdateIndexResponse"
+      "output": "UpdateIndexResponse",
+      "status": "online"
     },
     "UpdateInstance": {
       "document": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail.",
       "input": "UpdateInstanceRequest",
       "name": "Updates an ES cluster instance",
-      "output": "UpdateInstanceResponse"
+      "output": "UpdateInstanceResponse",
+      "status": "online"
     },
     "UpdatePlugins": {
       "document": "This API is used to change the list of plugins.",
       "input": "UpdatePluginsRequest",
       "name": "Changes plugin list",
-      "output": "UpdatePluginsResponse"
+      "output": "UpdatePluginsResponse",
+      "status": "online"
     },
     "UpdateRequestTargetNodeTypes": {
       "document": "This API is used to update the node types used to receive client requests.",
       "input": "UpdateRequestTargetNodeTypesRequest",
       "name": "Updates the node types used to receive client requests",
-      "output": "UpdateRequestTargetNodeTypesResponse"
+      "output": "UpdateRequestTargetNodeTypesResponse",
+      "status": "online"
     },
     "UpgradeInstance": {
       "document": "This API is used to upgrade ES cluster version",
       "input": "UpgradeInstanceRequest",
       "name": "Upgrades ES cluster version",
-      "output": "UpgradeInstanceResponse"
+      "output": "UpgradeInstanceResponse",
+      "status": "online"
     },
     "UpgradeLicense": {
       "document": "This API is used to upgrade ES X-Pack.",
       "input": "UpgradeLicenseRequest",
       "name": "Upgrades ES X-Pack",
-      "output": "UpgradeLicenseResponse"
+      "output": "UpgradeLicenseResponse",
+      "status": "online"
     }
   },
   "metadata": {

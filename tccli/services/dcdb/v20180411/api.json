@@ -4,301 +4,351 @@
       "document": "This API is used to remove the isolation of a pay-as-you-go TDSQL for MySQL instance.",
       "input": "ActiveHourDCDBInstanceRequest",
       "name": "Removes the isolation of pay-as-you-go TDSQL for MySQL instance",
-      "output": "ActiveHourDCDBInstanceResponse"
+      "output": "ActiveHourDCDBInstanceResponse",
+      "status": "online"
     },
     "AssociateSecurityGroups": {
       "document": "This API is used to associate security groups with Tencent Cloud resources in batches.",
       "input": "AssociateSecurityGroupsRequest",
       "name": "Associates security groups in batches",
-      "output": "AssociateSecurityGroupsResponse"
+      "output": "AssociateSecurityGroupsResponse",
+      "status": "online"
     },
     "CancelDcnJob": {
       "document": "This API is used to cancel DCN synchronization.",
       "input": "CancelDcnJobRequest",
       "name": "Cancels DCN synchronization",
-      "output": "CancelDcnJobResponse"
+      "output": "CancelDcnJobResponse",
+      "status": "online"
     },
     "CloneAccount": {
       "document": "This API is used to clone an instance account.",
       "input": "CloneAccountRequest",
       "name": "Clones instance account",
-      "output": "CloneAccountResponse"
+      "output": "CloneAccountResponse",
+      "status": "online"
     },
     "CloseDBExtranetAccess": {
       "document": "This API is used to disable public network access for a TencentDB instance, which will make the public IP address inaccessible. The `DescribeDCDBInstances` API will not return the public domain name and port information of the corresponding instance.",
       "input": "CloseDBExtranetAccessRequest",
       "name": "Disables public network access",
-      "output": "CloseDBExtranetAccessResponse"
+      "output": "CloseDBExtranetAccessResponse",
+      "status": "online"
     },
     "CopyAccountPrivileges": {
       "document": "This API is used to copy the permissions of a TencentDB account.\nNote: Accounts with the same username but different hosts are different accounts. Permissions can only be copied between accounts with the same `Readonly` attribute.",
       "input": "CopyAccountPrivilegesRequest",
       "name": "Copies account permissions",
-      "output": "CopyAccountPrivilegesResponse"
+      "output": "CopyAccountPrivilegesResponse",
+      "status": "online"
     },
     "CreateAccount": {
       "document": "This API is used to create a TencentDB account. Multiple accounts can be created for one instance. Accounts with the same username but different hosts are different accounts.",
       "input": "CreateAccountRequest",
       "name": "Creates an account",
-      "output": "CreateAccountResponse"
+      "output": "CreateAccountResponse",
+      "status": "online"
     },
     "CreateDCDBInstance": {
       "document": "This API is used to create a monthly subscribed TencentDB instance by passing in information such as instance specifications, database version number, and purchased duration.",
       "input": "CreateDCDBInstanceRequest",
       "name": "Creates a TDSQL instance",
-      "output": "CreateDCDBInstanceResponse"
+      "output": "CreateDCDBInstanceResponse",
+      "status": "online"
     },
     "CreateHourDCDBInstance": {
       "document": "This API is used to create pay-as-you-go TDSQL for MySQL instances.",
       "input": "CreateHourDCDBInstanceRequest",
       "name": "Creates pay-as-you-go TDSQL for MySQL instances",
-      "output": "CreateHourDCDBInstanceResponse"
+      "output": "CreateHourDCDBInstanceResponse",
+      "status": "online"
     },
     "DeleteAccount": {
       "document": "This API is used to delete a TencentDB account, which is uniquely identified by username and host.",
       "input": "DeleteAccountRequest",
       "name": "Deletes an account",
-      "output": "DeleteAccountResponse"
+      "output": "DeleteAccountResponse",
+      "status": "online"
     },
     "DescribeAccountPrivileges": {
       "document": "This API is used to query the permissions of a TencentDB account.\nNote: Accounts with the same username but different hosts are considered as different accounts.",
       "input": "DescribeAccountPrivilegesRequest",
       "name": "Queries account permissions",
-      "output": "DescribeAccountPrivilegesResponse"
+      "output": "DescribeAccountPrivilegesResponse",
+      "status": "online"
     },
     "DescribeAccounts": {
       "document": "This API is used to query the list of accounts of a specified TencentDB instance.",
       "input": "DescribeAccountsRequest",
       "name": "Queries account list",
-      "output": "DescribeAccountsResponse"
+      "output": "DescribeAccountsResponse",
+      "status": "online"
     },
     "DescribeDBLogFiles": {
       "document": "This API is used to get the list of various logs of a database, including cold backups, binlogs, errlogs, and slowlogs.",
       "input": "DescribeDBLogFilesRequest",
       "name": "Gets the list of logs",
-      "output": "DescribeDBLogFilesResponse"
+      "output": "DescribeDBLogFilesResponse",
+      "status": "online"
     },
     "DescribeDBParameters": {
       "document": "This API is used to get the current parameter settings of a database.",
       "input": "DescribeDBParametersRequest",
       "name": "Views database parameters",
-      "output": "DescribeDBParametersResponse"
+      "output": "DescribeDBParametersResponse",
+      "status": "online"
     },
     "DescribeDBSecurityGroups": {
       "document": "This API is used to query the security group information of an instance.",
       "input": "DescribeDBSecurityGroupsRequest",
       "name": "Queries the security group information of an instance",
-      "output": "DescribeDBSecurityGroupsResponse"
+      "output": "DescribeDBSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeDBSlowLogs": {
       "document": "This API is used to query the list of slow query logs.",
       "input": "DescribeDBSlowLogsRequest",
       "name": "Queries slow query log list",
-      "output": "DescribeDBSlowLogsResponse"
+      "output": "DescribeDBSlowLogsResponse",
+      "status": "online"
     },
     "DescribeDBSyncMode": {
       "document": "This API is used to query the sync mode of a TencentDB instance.",
       "input": "DescribeDBSyncModeRequest",
       "name": "Queries the sync mode",
-      "output": "DescribeDBSyncModeResponse"
+      "output": "DescribeDBSyncModeResponse",
+      "status": "online"
     },
     "DescribeDCDBInstanceNodeInfo": {
       "document": "This API is used to query the information of instance nodes.",
       "input": "DescribeDCDBInstanceNodeInfoRequest",
       "name": "Queries instance node information",
-      "output": "DescribeDCDBInstanceNodeInfoResponse"
+      "output": "DescribeDCDBInstanceNodeInfoResponse",
+      "status": "online"
     },
     "DescribeDCDBInstances": {
       "document": "This API is used to query the list of TencentDB instances. It supports filtering instances by project ID, instance ID, private network address, and instance name.\nIf no filter is specified, 10 instances will be returned by default. Up to 100 instances can be returned for a single request.",
       "input": "DescribeDCDBInstancesRequest",
       "name": "Queries the list of instances",
-      "output": "DescribeDCDBInstancesResponse"
+      "output": "DescribeDCDBInstancesResponse",
+      "status": "online"
     },
     "DescribeDCDBPrice": {
       "document": "This API is used to query the price of an instance before you purchase it.",
       "input": "DescribeDCDBPriceRequest",
       "name": "Queries the purchase price of an instance",
-      "output": "DescribeDCDBPriceResponse"
+      "output": "DescribeDCDBPriceResponse",
+      "status": "online"
     },
     "DescribeDCDBShards": {
       "document": "This API is used to query the information of shards of a TencentDB instance.",
       "input": "DescribeDCDBShardsRequest",
       "name": "Queries shard information",
-      "output": "DescribeDCDBShardsResponse"
+      "output": "DescribeDCDBShardsResponse",
+      "status": "online"
     },
     "DescribeDatabaseObjects": {
       "document": "This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.",
       "input": "DescribeDatabaseObjectsRequest",
       "name": "Queries database object list",
-      "output": "DescribeDatabaseObjectsResponse"
+      "output": "DescribeDatabaseObjectsResponse",
+      "status": "online"
     },
     "DescribeDatabaseTable": {
       "document": "This API is used to query the table information of a TencentDB instance.",
       "input": "DescribeDatabaseTableRequest",
       "name": "Queries table information",
-      "output": "DescribeDatabaseTableResponse"
+      "output": "DescribeDatabaseTableResponse",
+      "status": "online"
     },
     "DescribeDatabases": {
       "document": "This API is used to query the database list of a TencentDB instance.",
       "input": "DescribeDatabasesRequest",
       "name": "Queries database list",
-      "output": "DescribeDatabasesResponse"
+      "output": "DescribeDatabasesResponse",
+      "status": "online"
     },
     "DescribeDcnDetail": {
       "document": "This API is used to query the disaster recovery details of an instance.",
       "input": "DescribeDcnDetailRequest",
       "name": "Queries the disaster recovery details of an instance",
-      "output": "DescribeDcnDetailResponse"
+      "output": "DescribeDcnDetailResponse",
+      "status": "online"
     },
     "DescribeFileDownloadUrl": {
       "document": "This API is used to get the download URL of a specific backup or log file of a database.",
       "input": "DescribeFileDownloadUrlRequest",
       "name": "Gets the backup/log download URL",
-      "output": "DescribeFileDownloadUrlResponse"
+      "output": "DescribeFileDownloadUrlResponse",
+      "status": "online"
     },
     "DescribeFlow": {
       "document": "This API is used to query task status.",
       "input": "DescribeFlowRequest",
       "name": "Queries task status",
-      "output": "DescribeFlowResponse"
+      "output": "DescribeFlowResponse",
+      "status": "online"
     },
     "DescribeOrders": {
       "document": "This API is used to query TDSQL order information. You can pass in an order ID to query the TDSQL instance associated with the order and the corresponding task process ID.",
       "input": "DescribeOrdersRequest",
       "name": "Queries the order information",
-      "output": "DescribeOrdersResponse"
+      "output": "DescribeOrdersResponse",
+      "status": "online"
     },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group details of a project.",
       "input": "DescribeProjectSecurityGroupsRequest",
       "name": "Queries the security group details of a project",
-      "output": "DescribeProjectSecurityGroupsResponse"
+      "output": "DescribeProjectSecurityGroupsResponse",
+      "status": "online"
     },
     "DestroyDCDBInstance": {
       "document": "This API is used to terminate an isolated monthly-subscribed instance.",
       "input": "DestroyDCDBInstanceRequest",
       "name": "Terminates an isolated monthly-subscribed instance",
-      "output": "DestroyDCDBInstanceResponse"
+      "output": "DestroyDCDBInstanceResponse",
+      "status": "online"
     },
     "DestroyHourDCDBInstance": {
       "document": "This API is used to terminate a pay-as-you-go instance.",
       "input": "DestroyHourDCDBInstanceRequest",
       "name": "Terminates a pay-as-you-go instance",
-      "output": "DestroyHourDCDBInstanceResponse"
+      "output": "DestroyHourDCDBInstanceResponse",
+      "status": "online"
     },
     "DisassociateSecurityGroups": {
       "document": "This API is used to unassociate security groups from instances in batches.",
       "input": "DisassociateSecurityGroupsRequest",
       "name": "Unassociates security groups in batches",
-      "output": "DisassociateSecurityGroupsResponse"
+      "output": "DisassociateSecurityGroupsResponse",
+      "status": "online"
     },
     "GrantAccountPrivileges": {
       "document": "This API is used to grant permissions to a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
       "input": "GrantAccountPrivilegesRequest",
       "name": "Sets account permissions",
-      "output": "GrantAccountPrivilegesResponse"
+      "output": "GrantAccountPrivilegesResponse",
+      "status": "online"
     },
     "InitDCDBInstances": {
       "document": "This API is used to initialize instances, including setting the default character set and table name case sensitivity.",
       "input": "InitDCDBInstancesRequest",
       "name": "Initializes instance",
-      "output": "InitDCDBInstancesResponse"
+      "output": "InitDCDBInstancesResponse",
+      "status": "online"
     },
     "IsolateDedicatedDBInstance": {
       "document": "This API is used to isolate a dedicated TencentDB instance.",
       "input": "IsolateDedicatedDBInstanceRequest",
       "name": "Isolates a dedicated TencentDB instance",
-      "output": "IsolateDedicatedDBInstanceResponse"
+      "output": "IsolateDedicatedDBInstanceResponse",
+      "status": "online"
     },
     "IsolateHourDCDBInstance": {
       "document": "This API is used to isolate pay-as-you-go TDSQL for MySQL instances.",
       "input": "IsolateHourDCDBInstanceRequest",
       "name": "Isolates pay-as-you-go TDSQL for MySQL instances",
-      "output": "IsolateHourDCDBInstanceResponse"
+      "output": "IsolateHourDCDBInstanceResponse",
+      "status": "online"
     },
     "KillSession": {
       "document": "This API is used to kill the specified session.",
       "input": "KillSessionRequest",
       "name": "Kills the specified session",
-      "output": "KillSessionResponse"
+      "output": "KillSessionResponse",
+      "status": "online"
     },
     "ModifyAccountDescription": {
       "document": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
       "input": "ModifyAccountDescriptionRequest",
       "name": "Modifies account remarks",
-      "output": "ModifyAccountDescriptionResponse"
+      "output": "ModifyAccountDescriptionResponse",
+      "status": "online"
     },
     "ModifyAccountPrivileges": {
       "document": "This API is used to modify the permissions of a TencentDB instance account.\n\n**Notes**\n- Only the SELECT permission (that is, set the permission parameter to `[\"SELECT\"]`) of the system database `mysql` can be granted.\n- An error will be reported if read-write permissions are granted to a read-only account.\n- If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
       "input": "ModifyAccountPrivilegesRequest",
       "name": "Modifies the permissions of a TencentDB instance account",
-      "output": "ModifyAccountPrivilegesResponse"
+      "output": "ModifyAccountPrivilegesResponse",
+      "status": "online"
     },
     "ModifyDBInstanceName": {
       "document": "This API is used to modify instance name.",
       "input": "ModifyDBInstanceNameRequest",
       "name": "Modifies instance name",
-      "output": "ModifyDBInstanceNameResponse"
+      "output": "ModifyDBInstanceNameResponse",
+      "status": "online"
     },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security groups associated with TencentDB.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
       "name": "Modifies the security groups associated with TencentDB",
-      "output": "ModifyDBInstanceSecurityGroupsResponse"
+      "output": "ModifyDBInstanceSecurityGroupsResponse",
+      "status": "online"
     },
     "ModifyDBInstancesProject": {
       "document": "This API is used to modify the project to which TencentDB instances belong.",
       "input": "ModifyDBInstancesProjectRequest",
       "name": "Modifies the project to which instances belong",
-      "output": "ModifyDBInstancesProjectResponse"
+      "output": "ModifyDBInstancesProjectResponse",
+      "status": "online"
     },
     "ModifyDBParameters": {
       "document": "This API is used to modify database parameters.",
       "input": "ModifyDBParametersRequest",
       "name": "Modifies database parameters",
-      "output": "ModifyDBParametersResponse"
+      "output": "ModifyDBParametersResponse",
+      "status": "online"
     },
     "ModifyDBSyncMode": {
       "document": "This API is used to modify the sync mode of a TencentDB instance.",
       "input": "ModifyDBSyncModeRequest",
       "name": "Modifies sync mode",
-      "output": "ModifyDBSyncModeResponse"
+      "output": "ModifyDBSyncModeResponse",
+      "status": "online"
     },
     "ModifyInstanceNetwork": {
       "document": "This API is used to modify instance network.",
       "input": "ModifyInstanceNetworkRequest",
       "name": "Modifies instance network",
-      "output": "ModifyInstanceNetworkResponse"
+      "output": "ModifyInstanceNetworkResponse",
+      "status": "online"
     },
     "ModifyInstanceVip": {
       "document": "This API is used to modify instance VIP.",
       "input": "ModifyInstanceVipRequest",
       "name": "Modifies instance VIP",
-      "output": "ModifyInstanceVipResponse"
+      "output": "ModifyInstanceVipResponse",
+      "status": "online"
     },
     "ModifyInstanceVport": {
       "document": "This API is used to modify instance Vport.",
       "input": "ModifyInstanceVportRequest",
       "name": "Modifies instance Vport",
-      "output": "ModifyInstanceVportResponse"
+      "output": "ModifyInstanceVportResponse",
+      "status": "online"
     },
     "ResetAccountPassword": {
       "document": "This API is used to reset the password of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
       "input": "ResetAccountPasswordRequest",
       "name": "Resets account password",
-      "output": "ResetAccountPasswordResponse"
+      "output": "ResetAccountPasswordResponse",
+      "status": "online"
     },
     "SwitchDBInstanceHA": {
       "document": "This API is used to start a source-replica switch of instances.",
       "input": "SwitchDBInstanceHARequest",
       "name": "Starts a source-replica switch of instances",
-      "output": "SwitchDBInstanceHAResponse"
+      "output": "SwitchDBInstanceHAResponse",
+      "status": "online"
     },
     "TerminateDedicatedDBInstance": {
       "document": "This API is used to terminate the isolated dedicated TDSQL instance.",
       "input": "TerminateDedicatedDBInstanceRequest",
       "name": "Terminates the dedicated TDSQL instance",
-      "output": "TerminateDedicatedDBInstanceResponse"
+      "output": "TerminateDedicatedDBInstanceResponse",
+      "status": "online"
     }
   },
   "metadata": {

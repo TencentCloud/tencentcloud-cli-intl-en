@@ -4,211 +4,246 @@
       "document": "This API is used to add the recipient name and email. The returned value is the ID of the successfully added recipient.",
       "input": "AddUserContactRequest",
       "name": "Adds the recipient information",
-      "output": "AddUserContactResponse"
+      "output": "AddUserContactResponse",
+      "status": "online"
     },
     "CreateDBDiagReportTask": {
       "document": "This API is used to create a health report and send it via email as configured.",
       "input": "CreateDBDiagReportTaskRequest",
       "name": "Creates a health report generation task",
-      "output": "CreateDBDiagReportTaskResponse"
+      "output": "CreateDBDiagReportTaskResponse",
+      "status": "online"
     },
     "CreateDBDiagReportUrl": {
       "document": "This API is used to create a URL for a health report.",
       "input": "CreateDBDiagReportUrlRequest",
       "name": "Creates a URL for a health report",
-      "output": "CreateDBDiagReportUrlResponse"
+      "output": "CreateDBDiagReportUrlResponse",
+      "status": "online"
     },
     "CreateKillTask": {
       "document": "This API is used to create a session killing task.",
       "input": "CreateKillTaskRequest",
       "name": "Creates a session killing task",
-      "output": "CreateKillTaskResponse"
+      "output": "CreateKillTaskResponse",
+      "status": "online"
     },
     "CreateMailProfile": {
       "document": "This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of scheduled task health report). Always select Guangzhou for `Region`, regardless of the region where the instance resides.",
       "input": "CreateMailProfileRequest",
       "name": "Creates the email configuration",
-      "output": "CreateMailProfileResponse"
+      "output": "CreateMailProfileResponse",
+      "status": "online"
     },
     "CreateProxySessionKillTask": {
       "document": "This API is used to create an async task of killing all proxy node connection sessions and is currently supported only for Redis. The async task ID is the returned value, which can be passed to the API `DescribeProxySessionKillTasks` as a parameter to query the execution status of the session killing task.",
       "input": "CreateProxySessionKillTaskRequest",
       "name": "Creates a task of killing proxy node sessions",
-      "output": "CreateProxySessionKillTaskResponse"
+      "output": "CreateProxySessionKillTaskResponse",
+      "status": "online"
     },
     "CreateSchedulerMailProfile": {
       "document": "This API is used to create the regular generation time of health reports and the regular email sending configuration. Pass in the regular generation time of health reports as a parameter (Monday to Sunday) to set the regular generation time, and save the corresponding regular email sending configuration.",
       "input": "CreateSchedulerMailProfileRequest",
       "name": "Creates the scheduled task email sending configuration",
-      "output": "CreateSchedulerMailProfileResponse"
+      "output": "CreateSchedulerMailProfileResponse",
+      "status": "online"
     },
     "CreateSecurityAuditLogExportTask": {
       "document": "This API is used to create a security audit log export task.",
       "input": "CreateSecurityAuditLogExportTaskRequest",
       "name": "Creates a security audit log export task",
-      "output": "CreateSecurityAuditLogExportTaskResponse"
+      "output": "CreateSecurityAuditLogExportTaskResponse",
+      "status": "online"
     },
     "DeleteSecurityAuditLogExportTasks": {
       "document": "This API is used to delete a security audit log export task.",
       "input": "DeleteSecurityAuditLogExportTasksRequest",
       "name": "Deletes a security audit log export task",
-      "output": "DeleteSecurityAuditLogExportTasksResponse"
+      "output": "DeleteSecurityAuditLogExportTasksResponse",
+      "status": "online"
     },
     "DescribeAllUserContact": {
       "document": "This API is used to get the information of the recipient in the email.",
       "input": "DescribeAllUserContactRequest",
       "name": "Gets the information of the recipient in the email",
-      "output": "DescribeAllUserContactResponse"
+      "output": "DescribeAllUserContactResponse",
+      "status": "online"
     },
     "DescribeAllUserGroup": {
       "document": "This API is used to get the information of the recipient group in the email.",
       "input": "DescribeAllUserGroupRequest",
       "name": "Gets the information of the recipient group in the email",
-      "output": "DescribeAllUserGroupResponse"
+      "output": "DescribeAllUserGroupResponse",
+      "status": "online"
     },
     "DescribeDBDiagEvent": {
       "document": "This API is used to get the details of an instance exception diagnosis event.",
       "input": "DescribeDBDiagEventRequest",
       "name": "Gets diagnosis event details",
-      "output": "DescribeDBDiagEventResponse"
+      "output": "DescribeDBDiagEventResponse",
+      "status": "online"
     },
     "DescribeDBDiagEvents": {
       "document": "This API is used to obtain the diagnosis event list in a specified time period by risk level, instance ID, etc.",
       "input": "DescribeDBDiagEventsRequest",
       "name": "Obtains diagnosis event list",
-      "output": "DescribeDBDiagEventsResponse"
+      "output": "DescribeDBDiagEventsResponse",
+      "status": "online"
     },
     "DescribeDBDiagHistory": {
       "document": "This API is used to get the list of instance diagnosis events.",
       "input": "DescribeDBDiagHistoryRequest",
       "name": "Gets the instance diagnosis history",
-      "output": "DescribeDBDiagHistoryResponse"
+      "output": "DescribeDBDiagHistoryResponse",
+      "status": "online"
     },
     "DescribeDBDiagReportTasks": {
       "document": "This API is used to query the list of health report generation tasks.",
       "input": "DescribeDBDiagReportTasksRequest",
       "name": "Queries the list of health report generation tasks",
-      "output": "DescribeDBDiagReportTasksResponse"
+      "output": "DescribeDBDiagReportTasksResponse",
+      "status": "online"
     },
     "DescribeDBSpaceStatus": {
       "document": "This API is used to query the overview of instance space usage during a specified time period, including disk usage growth (MB), available disk space (MB), total disk space (MB), and estimated number of available days.",
       "input": "DescribeDBSpaceStatusRequest",
       "name": "Gets the overview of instance space usage during the specified time period",
-      "output": "DescribeDBSpaceStatusResponse"
+      "output": "DescribeDBSpaceStatusResponse",
+      "status": "online"
     },
     "DescribeDiagDBInstances": {
       "document": "This API is used to get the instance information list. Please always select Guangzhou for `Region`.",
       "input": "DescribeDiagDBInstancesRequest",
       "name": "Gets instance information list",
-      "output": "DescribeDiagDBInstancesResponse"
+      "output": "DescribeDiagDBInstancesResponse",
+      "status": "online"
     },
     "DescribeHealthScore": {
       "document": "This API is used to get the health score and deduction for exceptions in the specified time period (30 minutes) based on the instance ID.",
       "input": "DescribeHealthScoreRequest",
       "name": "Gets the health score",
-      "output": "DescribeHealthScoreResponse"
+      "output": "DescribeHealthScoreResponse",
+      "status": "online"
     },
     "DescribeMailProfile": {
       "document": "This API is used to get the email sending configuration, including the email configuration for database inspection and the email sending configuration for scheduled task health reports.",
       "input": "DescribeMailProfileRequest",
       "name": "Gets the email configuration",
-      "output": "DescribeMailProfileResponse"
+      "output": "DescribeMailProfileResponse",
+      "status": "online"
     },
     "DescribeMySqlProcessList": {
       "document": "This API is used to query the real-time thread list of a relational database.",
       "input": "DescribeMySqlProcessListRequest",
       "name": "Queries the list of real-time threads",
-      "output": "DescribeMySqlProcessListResponse"
+      "output": "DescribeMySqlProcessListResponse",
+      "status": "online"
     },
     "DescribeProxyProcessStatistics": {
       "document": "This API is used to get the session statistics of the current instance. Note that this API can be called only in certain environments.",
       "input": "DescribeProxyProcessStatisticsRequest",
       "name": "Get the real-time session statistics",
-      "output": "DescribeProxyProcessStatisticsResponse"
+      "output": "DescribeProxyProcessStatisticsResponse",
+      "status": "online"
     },
     "DescribeProxySessionKillTasks": {
       "document": "This API is used to query the result of the session killing task executed by the Redis proxy node. The async task ID (an input parameter) is obtained after the API `CreateProxySessionKillTask` is successfully called. Currently, the only valid value of `product` is `redis`.",
       "input": "DescribeProxySessionKillTasksRequest",
       "name": "Queries the status of the session killing task executed by the proxy node",
-      "output": "DescribeProxySessionKillTasksResponse"
+      "output": "DescribeProxySessionKillTasksResponse",
+      "status": "online"
     },
     "DescribeRedisTopKeyPrefixList": {
       "document": "This API is used to query the list of top key prefixes for Redis instances.",
       "input": "DescribeRedisTopKeyPrefixListRequest",
       "name": "Queries the list of top key prefixes for Redis instances",
-      "output": "DescribeRedisTopKeyPrefixListResponse"
+      "output": "DescribeRedisTopKeyPrefixListResponse",
+      "status": "online"
     },
     "DescribeSecurityAuditLogDownloadUrls": {
       "document": "This API is used to query the download link of a security audit log export file. Currently, log file download only provides a Tencent Cloud private network address. Download it by using a CVM instance in the Guangzhou region.",
       "input": "DescribeSecurityAuditLogDownloadUrlsRequest",
       "name": "Queries the download link of a security audit log export file",
-      "output": "DescribeSecurityAuditLogDownloadUrlsResponse"
+      "output": "DescribeSecurityAuditLogDownloadUrlsResponse",
+      "status": "online"
     },
     "DescribeSecurityAuditLogExportTasks": {
       "document": "This API is used to query the list of security audit log export tasks.",
       "input": "DescribeSecurityAuditLogExportTasksRequest",
       "name": "Queries the list of security audit log export tasks",
-      "output": "DescribeSecurityAuditLogExportTasksResponse"
+      "output": "DescribeSecurityAuditLogExportTasksResponse",
+      "status": "online"
     },
     "DescribeSlowLogTimeSeriesStats": {
       "document": "This API is used to get the slow log statistics histogram.",
       "input": "DescribeSlowLogTimeSeriesStatsRequest",
       "name": "Gets the slow log statistics histogram",
-      "output": "DescribeSlowLogTimeSeriesStatsResponse"
+      "output": "DescribeSlowLogTimeSeriesStatsResponse",
+      "status": "online"
     },
     "DescribeSlowLogTopSqls": {
       "document": "This API is used to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.",
       "input": "DescribeSlowLogTopSqlsRequest",
       "name": "Queries the slow log statistics in the specified time period by SQL template",
-      "output": "DescribeSlowLogTopSqlsResponse"
+      "output": "DescribeSlowLogTopSqlsResponse",
+      "status": "online"
     },
     "DescribeSlowLogUserHostStats": {
       "document": "This API is used to get the statistical distribution chart of slow log source addresses.",
       "input": "DescribeSlowLogUserHostStatsRequest",
       "name": "Gets the statistical distribution chart of slow log source addresses",
-      "output": "DescribeSlowLogUserHostStatsResponse"
+      "output": "DescribeSlowLogUserHostStatsResponse",
+      "status": "online"
     },
     "DescribeTopSpaceSchemaTimeSeries": {
       "document": "This API is used to get the daily space data of top databases consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The returned results are sorted by size by default.",
       "input": "DescribeTopSpaceSchemaTimeSeriesRequest",
       "name": "Gets the daily space statistics of top databases during the specified time period",
-      "output": "DescribeTopSpaceSchemaTimeSeriesResponse"
+      "output": "DescribeTopSpaceSchemaTimeSeriesResponse",
+      "status": "online"
     },
     "DescribeTopSpaceSchemas": {
       "document": "This API is used to get the real-time space statistics of top databases of an instance. The returned results are sorted by size by default.",
       "input": "DescribeTopSpaceSchemasRequest",
       "name": "Gets the space statistics of top databases",
-      "output": "DescribeTopSpaceSchemasResponse"
+      "output": "DescribeTopSpaceSchemasResponse",
+      "status": "online"
     },
     "DescribeTopSpaceTableTimeSeries": {
       "document": "This API is used to get the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The returned results are sorted by size by default.",
       "input": "DescribeTopSpaceTableTimeSeriesRequest",
       "name": "Gets the daily space statistics of top tables during the specified time period",
-      "output": "DescribeTopSpaceTableTimeSeriesResponse"
+      "output": "DescribeTopSpaceTableTimeSeriesResponse",
+      "status": "online"
     },
     "DescribeTopSpaceTables": {
       "document": "This API is used to get the real-time space statistics of top tables of an instance. The returned results are sorted by size by default.",
       "input": "DescribeTopSpaceTablesRequest",
       "name": "Gets the space statistics of top tables",
-      "output": "DescribeTopSpaceTablesResponse"
+      "output": "DescribeTopSpaceTablesResponse",
+      "status": "online"
     },
     "DescribeUserSqlAdvice": {
       "document": "This API is used to get SQL statement optimization suggestions. It is free of charge for a limited time and will be charged after DBbrain is commercialized.",
       "input": "DescribeUserSqlAdviceRequest",
       "name": "Gets SQL statement optimization suggestions",
-      "output": "DescribeUserSqlAdviceResponse"
+      "output": "DescribeUserSqlAdviceResponse",
+      "status": "online"
     },
     "KillMySqlThreads": {
       "document": "This API is used to interrupt the current session by session ID. It needs to be called twice to commit the session interruption task in two stages. In the pre-commit stage, the stage value is `Prepare`, and the returned value is `SqlExecId`. In the commit stage, the stage value is `Commit`, and `SqlExecId` will be passed in as a parameter. Then, the session process will be terminated.",
       "input": "KillMySqlThreadsRequest",
       "name": "Kills a MySQL session thread",
-      "output": "KillMySqlThreadsResponse"
+      "output": "KillMySqlThreadsResponse",
+      "status": "online"
     },
     "ModifyDiagDBInstanceConf": {
       "document": "This API is used to enable/disable instance inspection.",
       "input": "ModifyDiagDBInstanceConfRequest",
       "name": "Enables/Disables instance inspection",
-      "output": "ModifyDiagDBInstanceConfResponse"
+      "output": "ModifyDiagDBInstanceConfResponse",
+      "status": "online"
     }
   },
   "metadata": {

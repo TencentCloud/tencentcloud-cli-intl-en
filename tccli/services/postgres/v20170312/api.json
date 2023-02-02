@@ -4,427 +4,498 @@
       "document": "This API is used to add a read-only replica to an RO group.",
       "input": "AddDBInstanceToReadOnlyGroupRequest",
       "name": "Adds a read-only replica to an RO group",
-      "output": "AddDBInstanceToReadOnlyGroupResponse"
+      "output": "AddDBInstanceToReadOnlyGroupResponse",
+      "status": "online"
     },
     "CloneDBInstance": {
       "document": "This API is used to clone an instance by specifying a backup set or a point in time.",
       "input": "CloneDBInstanceRequest",
       "name": "Clones an instance",
-      "output": "CloneDBInstanceResponse"
+      "output": "CloneDBInstanceResponse",
+      "status": "online"
     },
     "CloseDBExtranetAccess": {
       "document": "This API is used to disable the public network link to an instance.",
       "input": "CloseDBExtranetAccessRequest",
       "name": "Disables public network link to instance",
-      "output": "CloseDBExtranetAccessResponse"
+      "output": "CloseDBExtranetAccessResponse",
+      "status": "online"
     },
     "CloseServerlessDBExtranetAccess": {
       "document": "This API is used to disable public network access for a PostgreSQL for Serverless instance.",
       "input": "CloseServerlessDBExtranetAccessRequest",
       "name": "Disables public network access for a PostgreSQL for Serverless instance",
-      "output": "CloseServerlessDBExtranetAccessResponse"
+      "output": "CloseServerlessDBExtranetAccessResponse",
+      "status": "online"
     },
     "CreateDBInstanceNetworkAccess": {
       "document": "This API is used to add a network for an instance.",
       "input": "CreateDBInstanceNetworkAccessRequest",
       "name": "Adds a network for an instance",
-      "output": "CreateDBInstanceNetworkAccessResponse"
+      "output": "CreateDBInstanceNetworkAccessResponse",
+      "status": "online"
     },
     "CreateDBInstances": {
       "document": "This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances.",
       "input": "CreateDBInstancesRequest",
       "name": "Creates instances (deprecated soon)",
-      "output": "CreateDBInstancesResponse"
+      "output": "CreateDBInstancesResponse",
+      "status": "online"
     },
     "CreateInstances": {
       "document": "This API is used to create and initialize one or more TencentDB for PostgreSQL instances.",
       "input": "CreateInstancesRequest",
       "name": "Creates instances (recommended)",
-      "output": "CreateInstancesResponse"
+      "output": "CreateInstancesResponse",
+      "status": "online"
     },
     "CreateParameterTemplate": {
       "document": "This API is used to create a parameter template.",
       "input": "CreateParameterTemplateRequest",
       "name": "Creates a parameter template",
-      "output": "CreateParameterTemplateResponse"
+      "output": "CreateParameterTemplateResponse",
+      "status": "online"
     },
     "CreateReadOnlyDBInstance": {
       "document": "This API is used to create read-only replicas.",
       "input": "CreateReadOnlyDBInstanceRequest",
       "name": "Creates read-only replicas",
-      "output": "CreateReadOnlyDBInstanceResponse"
+      "output": "CreateReadOnlyDBInstanceResponse",
+      "status": "online"
     },
     "CreateReadOnlyGroup": {
       "document": "This API is used to create an RO group.",
       "input": "CreateReadOnlyGroupRequest",
       "name": "Creates an RO group",
-      "output": "CreateReadOnlyGroupResponse"
+      "output": "CreateReadOnlyGroupResponse",
+      "status": "online"
     },
     "CreateReadOnlyGroupNetworkAccess": {
       "document": "This API is used to add a network for an RO group.",
       "input": "CreateReadOnlyGroupNetworkAccessRequest",
       "name": "Adds a network for an RO group",
-      "output": "CreateReadOnlyGroupNetworkAccessResponse"
+      "output": "CreateReadOnlyGroupNetworkAccessResponse",
+      "status": "online"
     },
     "CreateServerlessDBInstance": {
       "document": "This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.",
       "input": "CreateServerlessDBInstanceRequest",
       "name": "Creates a PostgreSQL for Serverless instance",
-      "output": "CreateServerlessDBInstanceResponse"
+      "output": "CreateServerlessDBInstanceResponse",
+      "status": "online"
     },
     "DeleteDBInstanceNetworkAccess": {
       "document": "This API is used to delete a network of an instance.",
       "input": "DeleteDBInstanceNetworkAccessRequest",
       "name": "Deletes a network of an instance",
-      "output": "DeleteDBInstanceNetworkAccessResponse"
+      "output": "DeleteDBInstanceNetworkAccessResponse",
+      "status": "online"
     },
     "DeleteParameterTemplate": {
       "document": "This API is used to delete a parameter template.",
       "input": "DeleteParameterTemplateRequest",
       "name": "Deletes a parameter template",
-      "output": "DeleteParameterTemplateResponse"
+      "output": "DeleteParameterTemplateResponse",
+      "status": "online"
     },
     "DeleteReadOnlyGroup": {
       "document": "This API is used to delete an RO group.",
       "input": "DeleteReadOnlyGroupRequest",
       "name": "Deletes an RO group",
-      "output": "DeleteReadOnlyGroupResponse"
+      "output": "DeleteReadOnlyGroupResponse",
+      "status": "online"
     },
     "DeleteReadOnlyGroupNetworkAccess": {
       "document": "This API is used to delete a network of an RO group.",
       "input": "DeleteReadOnlyGroupNetworkAccessRequest",
       "name": "Deletes a network of an RO group",
-      "output": "DeleteReadOnlyGroupNetworkAccessResponse"
+      "output": "DeleteReadOnlyGroupNetworkAccessResponse",
+      "status": "online"
     },
     "DeleteServerlessDBInstance": {
       "document": "This API is used to delete a PostgreSQL for Serverless instance.",
       "input": "DeleteServerlessDBInstanceRequest",
       "name": "Deletes a PostgreSQL for Serverless instance",
-      "output": "DeleteServerlessDBInstanceResponse"
+      "output": "DeleteServerlessDBInstanceResponse",
+      "status": "online"
     },
     "DescribeAccounts": {
       "document": "This API is used to get the instance user list.",
       "input": "DescribeAccountsRequest",
       "name": "Gets instance user list",
-      "output": "DescribeAccountsResponse"
+      "output": "DescribeAccountsResponse",
+      "status": "online"
     },
     "DescribeAvailableRecoveryTime": {
       "document": "This API is used to query the available restoration time of an instance.",
       "input": "DescribeAvailableRecoveryTimeRequest",
       "name": "Queries the available restoration time of an instance",
-      "output": "DescribeAvailableRecoveryTimeResponse"
+      "output": "DescribeAvailableRecoveryTimeResponse",
+      "status": "online"
     },
     "DescribeBackupPlans": {
       "document": "This API is used to query all backup plans of an instance.",
       "input": "DescribeBackupPlansRequest",
       "name": "Queries backup plans",
-      "output": "DescribeBackupPlansResponse"
+      "output": "DescribeBackupPlansResponse",
+      "status": "online"
     },
     "DescribeCloneDBInstanceSpec": {
       "document": "This API is used to query the minimum specification required by a cloned instance, including `SpecCode` and disk specification.",
       "input": "DescribeCloneDBInstanceSpecRequest",
       "name": "Queries the purchasable specification of a cloned instance",
-      "output": "DescribeCloneDBInstanceSpecResponse"
+      "output": "DescribeCloneDBInstanceSpecResponse",
+      "status": "online"
     },
     "DescribeDBBackups": {
       "document": "This API is used to query the instance backup list.",
       "input": "DescribeDBBackupsRequest",
       "name": "Queries instance backup list",
-      "output": "DescribeDBBackupsResponse"
+      "output": "DescribeDBBackupsResponse",
+      "status": "online"
     },
     "DescribeDBErrlogs": {
       "document": "This API is used to get error logs.",
       "input": "DescribeDBErrlogsRequest",
       "name": "Gets error logs",
-      "output": "DescribeDBErrlogsResponse"
+      "output": "DescribeDBErrlogsResponse",
+      "status": "online"
     },
     "DescribeDBInstanceAttribute": {
       "document": "This API is used to query the details of one instance.",
       "input": "DescribeDBInstanceAttributeRequest",
       "name": "Queries instance details",
-      "output": "DescribeDBInstanceAttributeResponse"
+      "output": "DescribeDBInstanceAttributeResponse",
+      "status": "online"
     },
     "DescribeDBInstanceParameters": {
       "document": "This API is used to get the list of modifiable parameters of an instance.",
       "input": "DescribeDBInstanceParametersRequest",
       "name": "Gets the list of modifiable parameters of an instance",
-      "output": "DescribeDBInstanceParametersResponse"
+      "output": "DescribeDBInstanceParametersResponse",
+      "status": "online"
     },
     "DescribeDBInstanceSecurityGroups": {
       "document": "This API is used to query the security group information of an instance.",
       "input": "DescribeDBInstanceSecurityGroupsRequest",
       "name": "Queries the security group information of an instance",
-      "output": "DescribeDBInstanceSecurityGroupsResponse"
+      "output": "DescribeDBInstanceSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeDBInstances": {
       "document": "This API is used to query the details of one or more instances.",
       "input": "DescribeDBInstancesRequest",
       "name": "Queries instance list",
-      "output": "DescribeDBInstancesResponse"
+      "output": "DescribeDBInstancesResponse",
+      "status": "online"
     },
     "DescribeDBSlowlogs": {
       "document": "This API was used to get slow query logs. Since it was deprecated on September 1, 2021, it has no longer returned data. Please use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.",
       "input": "DescribeDBSlowlogsRequest",
       "name": "Gets slow query logs (deprecated)",
-      "output": "DescribeDBSlowlogsResponse"
+      "output": "DescribeDBSlowlogsResponse",
+      "status": "online"
     },
     "DescribeDBXlogs": {
       "document": "This API is used to get the instance Xlog list.",
       "input": "DescribeDBXlogsRequest",
       "name": "Gets instance Xlog list",
-      "output": "DescribeDBXlogsResponse"
+      "output": "DescribeDBXlogsResponse",
+      "status": "online"
     },
     "DescribeDatabases": {
       "document": "This API is used to pull the list of databases.",
       "input": "DescribeDatabasesRequest",
       "name": "Pulls database list",
-      "output": "DescribeDatabasesResponse"
+      "output": "DescribeDatabasesResponse",
+      "status": "online"
     },
     "DescribeDefaultParameters": {
       "document": "This API is used to query all parameters supported by a database version and engine.",
       "input": "DescribeDefaultParametersRequest",
       "name": "Queries the list of default parameters",
-      "output": "DescribeDefaultParametersResponse"
+      "output": "DescribeDefaultParametersResponse",
+      "status": "online"
     },
     "DescribeEncryptionKeys": {
       "document": "This API is used to get instance key list.",
       "input": "DescribeEncryptionKeysRequest",
       "name": "Gets instance key list",
-      "output": "DescribeEncryptionKeysResponse"
+      "output": "DescribeEncryptionKeysResponse",
+      "status": "online"
     },
     "DescribeOrders": {
       "document": "This API is used to get order information.",
       "input": "DescribeOrdersRequest",
       "name": "Gets order information",
-      "output": "DescribeOrdersResponse"
+      "output": "DescribeOrdersResponse",
+      "status": "online"
     },
     "DescribeParameterTemplateAttributes": {
       "document": "This API is used to query the details of a parameter template, including basic information and parameter information.",
       "input": "DescribeParameterTemplateAttributesRequest",
       "name": "Queries the details of a parameter template",
-      "output": "DescribeParameterTemplateAttributesResponse"
+      "output": "DescribeParameterTemplateAttributesResponse",
+      "status": "online"
     },
     "DescribeParameterTemplates": {
       "document": "This API is used to query the list of parameter templates.",
       "input": "DescribeParameterTemplatesRequest",
       "name": "Queries the list of parameter templates",
-      "output": "DescribeParameterTemplatesResponse"
+      "output": "DescribeParameterTemplatesResponse",
+      "status": "online"
     },
     "DescribeParamsEvent": {
       "document": "This API is used to get the details of parameter modification events.",
       "input": "DescribeParamsEventRequest",
       "name": "Gets the details of parameter modification events",
-      "output": "DescribeParamsEventResponse"
+      "output": "DescribeParamsEventResponse",
+      "status": "online"
     },
     "DescribeProductConfig": {
       "document": "This API is used to query the purchasable specification configuration.",
       "input": "DescribeProductConfigRequest",
       "name": "Queries purchasable specification configuration",
-      "output": "DescribeProductConfigResponse"
+      "output": "DescribeProductConfigResponse",
+      "status": "online"
     },
     "DescribeReadOnlyGroups": {
       "document": "This API is used to query RO group information by specifying the primary instance IDs.",
       "input": "DescribeReadOnlyGroupsRequest",
       "name": "Queries RO group information",
-      "output": "DescribeReadOnlyGroupsResponse"
+      "output": "DescribeReadOnlyGroupsResponse",
+      "status": "online"
     },
     "DescribeRegions": {
       "document": "This API is used to query the purchasable regions.",
       "input": "DescribeRegionsRequest",
       "name": "Queries purchasable regions",
-      "output": "DescribeRegionsResponse"
+      "output": "DescribeRegionsResponse",
+      "status": "online"
     },
     "DescribeServerlessDBInstances": {
       "document": "This API is used to query the details of one or more PostgreSQL for Serverless instances.",
       "input": "DescribeServerlessDBInstancesRequest",
       "name": "Queries the list of PostgreSQL for Serverless instances",
-      "output": "DescribeServerlessDBInstancesResponse"
+      "output": "DescribeServerlessDBInstancesResponse",
+      "status": "online"
     },
     "DescribeSlowQueryAnalysis": {
       "document": "This API is used to count and analyze slow query statements during the specified period of time and return aggregated statistical analysis results which are classified by statement with abstract parameter values.",
       "input": "DescribeSlowQueryAnalysisRequest",
       "name": "Gets the statistical analysis list of slow queries",
-      "output": "DescribeSlowQueryAnalysisResponse"
+      "output": "DescribeSlowQueryAnalysisResponse",
+      "status": "online"
     },
     "DescribeSlowQueryList": {
       "document": "This API is used to get the slow queries during the specified period of time.",
       "input": "DescribeSlowQueryListRequest",
       "name": "Gets the slow query list",
-      "output": "DescribeSlowQueryListResponse"
+      "output": "DescribeSlowQueryListResponse",
+      "status": "online"
     },
     "DescribeZones": {
       "document": "This API is used to query the supported AZs.",
       "input": "DescribeZonesRequest",
       "name": "Queries purchasable AZs",
-      "output": "DescribeZonesResponse"
+      "output": "DescribeZonesResponse",
+      "status": "online"
     },
     "DestroyDBInstance": {
       "document": "This API is used to terminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an terminated instance will be deleted and cannot be recovered.",
       "input": "DestroyDBInstanceRequest",
       "name": "Terminates an instance",
-      "output": "DestroyDBInstanceResponse"
+      "output": "DestroyDBInstanceResponse",
+      "status": "online"
     },
     "DisIsolateDBInstances": {
       "document": "This API is used to remove one or more instances from isolation.",
       "input": "DisIsolateDBInstancesRequest",
       "name": "Removes instances from isolation",
-      "output": "DisIsolateDBInstancesResponse"
+      "output": "DisIsolateDBInstancesResponse",
+      "status": "online"
     },
     "InitDBInstances": {
       "document": "This API is used to initialize a TencentDB for PostgreSQL instance.",
       "input": "InitDBInstancesRequest",
       "name": "Initializes instance",
-      "output": "InitDBInstancesResponse"
+      "output": "InitDBInstancesResponse",
+      "status": "online"
     },
     "InquiryPriceCreateDBInstances": {
       "document": "This API is used to query the purchase price of one or multiple instances.",
       "input": "InquiryPriceCreateDBInstancesRequest",
       "name": "Queries purchase price",
-      "output": "InquiryPriceCreateDBInstancesResponse"
+      "output": "InquiryPriceCreateDBInstancesResponse",
+      "status": "online"
     },
     "InquiryPriceRenewDBInstance": {
       "document": "This API is used to query the renewal price of an instance.",
       "input": "InquiryPriceRenewDBInstanceRequest",
       "name": "Queries the renewal price of instance",
-      "output": "InquiryPriceRenewDBInstanceResponse"
+      "output": "InquiryPriceRenewDBInstanceResponse",
+      "status": "online"
     },
     "InquiryPriceUpgradeDBInstance": {
       "document": "This API is used to query the fees of upgrading a specified database instance. Only pay-as-you-go instance is supported.",
       "input": "InquiryPriceUpgradeDBInstanceRequest",
       "name": "Queries the upgrade price of instance",
-      "output": "InquiryPriceUpgradeDBInstanceResponse"
+      "output": "InquiryPriceUpgradeDBInstanceResponse",
+      "status": "online"
     },
     "IsolateDBInstances": {
       "document": "This API is used to isolate one or more instances.",
       "input": "IsolateDBInstancesRequest",
       "name": "Isolates instances",
-      "output": "IsolateDBInstancesResponse"
+      "output": "IsolateDBInstancesResponse",
+      "status": "online"
     },
     "ModifyAccountRemark": {
       "document": "This API is used to modify account remarks.",
       "input": "ModifyAccountRemarkRequest",
       "name": "Modifies account remarks",
-      "output": "ModifyAccountRemarkResponse"
+      "output": "ModifyAccountRemarkResponse",
+      "status": "online"
     },
     "ModifyBackupPlan": {
       "document": "This API is used to modify the backup plan of an instance, such as modifying the backup start time. By default, a full backup starts at midnight every day and the generated backup files will be retained for seven days.",
       "input": "ModifyBackupPlanRequest",
       "name": "Modifies a backup plan",
-      "output": "ModifyBackupPlanResponse"
+      "output": "ModifyBackupPlanResponse",
+      "status": "online"
     },
     "ModifyDBInstanceDeployment": {
       "document": "This API is used to modify the AZs where the nodes of a source instance reside.",
       "input": "ModifyDBInstanceDeploymentRequest",
       "name": "Modifies the instance deployment mode",
-      "output": "ModifyDBInstanceDeploymentResponse"
+      "output": "ModifyDBInstanceDeploymentResponse",
+      "status": "online"
     },
     "ModifyDBInstanceName": {
       "document": "This API is used to rename a TencentDB for PostgreSQL instance.",
       "input": "ModifyDBInstanceNameRequest",
       "name": "Renames instance",
-      "output": "ModifyDBInstanceNameResponse"
+      "output": "ModifyDBInstanceNameResponse",
+      "status": "online"
     },
     "ModifyDBInstanceParameters": {
       "document": "This API is used to modify parameters in batches.",
       "input": "ModifyDBInstanceParametersRequest",
       "name": "Modifies parameters in batches",
-      "output": "ModifyDBInstanceParametersResponse"
+      "output": "ModifyDBInstanceParametersResponse",
+      "status": "online"
     },
     "ModifyDBInstanceReadOnlyGroup": {
       "document": "This API is used to modify the RO group of an instance.",
       "input": "ModifyDBInstanceReadOnlyGroupRequest",
       "name": "Modifies the RO group of an instance",
-      "output": "ModifyDBInstanceReadOnlyGroupResponse"
+      "output": "ModifyDBInstanceReadOnlyGroupResponse",
+      "status": "online"
     },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security group of an instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
       "name": "Modifies the security group of an instance",
-      "output": "ModifyDBInstanceSecurityGroupsResponse"
+      "output": "ModifyDBInstanceSecurityGroupsResponse",
+      "status": "online"
     },
     "ModifyDBInstanceSpec": {
       "document": "This API is used to modify instance specifications including memory and disk size.",
       "input": "ModifyDBInstanceSpecRequest",
       "name": "Modifies instance specifications (new)",
-      "output": "ModifyDBInstanceSpecResponse"
+      "output": "ModifyDBInstanceSpecResponse",
+      "status": "online"
     },
     "ModifyDBInstancesProject": {
       "document": "This API is used to transfer an instance to another project.",
       "input": "ModifyDBInstancesProjectRequest",
       "name": "Transfers instance to another project",
-      "output": "ModifyDBInstancesProjectResponse"
+      "output": "ModifyDBInstancesProjectResponse",
+      "status": "online"
     },
     "ModifyParameterTemplate": {
       "document": "This API is used to modify the parameter template name and description, and add or delete parameter template parameters.",
       "input": "ModifyParameterTemplateRequest",
       "name": "Modifies the parameter template information",
-      "output": "ModifyParameterTemplateResponse"
+      "output": "ModifyParameterTemplateResponse",
+      "status": "online"
     },
     "ModifyReadOnlyGroupConfig": {
       "document": "This API is used to modify RO group configuration.",
       "input": "ModifyReadOnlyGroupConfigRequest",
       "name": "Modifies RO group configuration",
-      "output": "ModifyReadOnlyGroupConfigResponse"
+      "output": "ModifyReadOnlyGroupConfigResponse",
+      "status": "online"
     },
     "ModifySwitchTimePeriod": {
       "document": "This API is used to perform a primary-standby switch for an instance waiting for the switch after it is upgraded.",
       "input": "ModifySwitchTimePeriodRequest",
       "name": "Modifies the switch time after configuration upgrade",
-      "output": "ModifySwitchTimePeriodResponse"
+      "output": "ModifySwitchTimePeriodResponse",
+      "status": "online"
     },
     "OpenDBExtranetAccess": {
       "document": "This API is used to enable public network access.",
       "input": "OpenDBExtranetAccessRequest",
       "name": "Enables public network access",
-      "output": "OpenDBExtranetAccessResponse"
+      "output": "OpenDBExtranetAccessResponse",
+      "status": "online"
     },
     "OpenServerlessDBExtranetAccess": {
       "document": "This API is used to enable public network access for a PostgreSQL for Serverless instance.",
       "input": "OpenServerlessDBExtranetAccessRequest",
       "name": "Enables public network access for a PostgreSQL for Serverless instance",
-      "output": "OpenServerlessDBExtranetAccessResponse"
+      "output": "OpenServerlessDBExtranetAccessResponse",
+      "status": "online"
     },
     "RebalanceReadOnlyGroup": {
       "document": "This API is used to rebalance the loads of read-only replicas in an RO group. Please note that connections to those read-only replicas will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.",
       "input": "RebalanceReadOnlyGroupRequest",
       "name": "Rebalances the loads of read-only replicas in an RO group",
-      "output": "RebalanceReadOnlyGroupResponse"
+      "output": "RebalanceReadOnlyGroupResponse",
+      "status": "online"
     },
     "RemoveDBInstanceFromReadOnlyGroup": {
       "document": "This API is used to remove a read-only replica from an RO group.",
       "input": "RemoveDBInstanceFromReadOnlyGroupRequest",
       "name": "Removes a read-only replica from an RO group",
-      "output": "RemoveDBInstanceFromReadOnlyGroupResponse"
+      "output": "RemoveDBInstanceFromReadOnlyGroupResponse",
+      "status": "online"
     },
     "RenewInstance": {
       "document": "This API is used to renew an instance.",
       "input": "RenewInstanceRequest",
       "name": "Renews instance",
-      "output": "RenewInstanceResponse"
+      "output": "RenewInstanceResponse",
+      "status": "online"
     },
     "ResetAccountPassword": {
       "document": "This API is used to reset the account password of an instance.",
       "input": "ResetAccountPasswordRequest",
       "name": "Resets account password",
-      "output": "ResetAccountPasswordResponse"
+      "output": "ResetAccountPasswordResponse",
+      "status": "online"
     },
     "RestartDBInstance": {
       "document": "This API is used to restart an instance.",
       "input": "RestartDBInstanceRequest",
       "name": "Restarts instance",
-      "output": "RestartDBInstanceResponse"
+      "output": "RestartDBInstanceResponse",
+      "status": "online"
     },
     "SetAutoRenewFlag": {
       "document": "This API is used to set auto-renewal.",
       "input": "SetAutoRenewFlagRequest",
       "name": "Sets auto-renewal",
-      "output": "SetAutoRenewFlagResponse"
+      "output": "SetAutoRenewFlagResponse",
+      "status": "online"
     },
     "UpgradeDBInstance": {
       "document": "This API is used to upgrade instance configurations.",
       "input": "UpgradeDBInstanceRequest",
       "name": "Upgrades instance configuration (deprecated)",
-      "output": "UpgradeDBInstanceResponse"
+      "output": "UpgradeDBInstanceResponse",
+      "status": "online"
     }
   },
   "metadata": {

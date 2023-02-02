@@ -4,1429 +4,1667 @@
       "document": "This API (AcceptAttachCcnInstances) is used to associate instances across accounts. Cloud Connect Network (CCN) owners accept and agree to the operations.",
       "input": "AcceptAttachCcnInstancesRequest",
       "name": "Accepts instance association to a CCN",
-      "output": "AcceptAttachCcnInstancesResponse"
+      "output": "AcceptAttachCcnInstancesResponse",
+      "status": "online"
     },
     "AddBandwidthPackageResources": {
       "document": "This API is used to add resources to a bandwidth package, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on.",
       "input": "AddBandwidthPackageResourcesRequest",
       "name": "Adds one or more resources to a bandwidth package",
-      "output": "AddBandwidthPackageResourcesResponse"
+      "output": "AddBandwidthPackageResourcesResponse",
+      "status": "online"
     },
     "AdjustPublicAddress": {
       "document": "This API is used to change the IP address. It supports changing the common public IPs and EIPs billed by monthly subscribed bandwidth of a CVM instance.\n",
       "input": "AdjustPublicAddressRequest",
       "name": "Changes public IPs",
-      "output": "AdjustPublicAddressResponse"
+      "output": "AdjustPublicAddressResponse",
+      "status": "online"
     },
     "AllocateAddresses": {
       "document": "This API is used to apply for one or more [Elastic IP Addresses](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIPs for short).\n* An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.\n* Your EIP is associated with your Tencent Cloud account rather than an instance. It remains associated with your Tencent Cloud account until you choose to explicitly release it or your account is in arrears for more than 24 hours.\n* The maximum number of EIPs that can be applied for a Tencent Cloud account in each region is restricted. For more information, see [EIP Product Introduction](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). You can get the quota information through the DescribeAddressQuota API.",
       "input": "AllocateAddressesRequest",
       "name": "Creates an EIP",
-      "output": "AllocateAddressesResponse"
+      "output": "AllocateAddressesResponse",
+      "status": "online"
     },
     "AssignIpv6Addresses": {
       "document": "This API is used to apply for an IPv6 address for the ENI. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.\n* The number of IPs bound with an ENI is limited. For more information, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can apply for a specified IPv6 address. Currently, the IPv6 address can only be used as a secondary IP, instead of the primary IP.\n* The address must be an idle IP in the subnet to which the ENI belongs.\n* When applying for one or more secondary IPv6 addresses for an ENI, the API will return the specified number of secondary IPv6 addresses in the subnet range where the ENI is located.",
       "input": "AssignIpv6AddressesRequest",
       "name": "Assigns an IPv6 address",
-      "output": "AssignIpv6AddressesResponse"
+      "output": "AssignIpv6AddressesResponse",
+      "status": "online"
     },
     "AssignIpv6CidrBlock": {
       "document": "This API is used to assign IPv6 ranges.\n* To use this API, you must already have a VPC instance. If you do not have a VPC instance yet, use the <a href=\"https://intl.cloud.tencent.com/document/api/215/15774?from_cn_redirect=1\" title=\"CreateVpc\" target=\"_blank\">CreateVpc</a> API to create one.\n* Each VPC can apply for only one IPv6 range.",
       "input": "AssignIpv6CidrBlockRequest",
       "name": "Assigns an IPv6 IP range",
-      "output": "AssignIpv6CidrBlockResponse"
+      "output": "AssignIpv6CidrBlockResponse",
+      "status": "online"
     },
     "AssignIpv6SubnetCidrBlock": {
       "document": "This API (AssignIpv6SubnetCidrBlock) is used to assign IPv6 subnet IP ranges.\n* To assign an `IPv6` IP range to a subnet, the `VPC` that the subnet belongs to should have obtained the `IPv6` IP range. If this has not been assigned, use the `AssignIpv6CidrBlock` API to assign an `IPv6` IP range to the `VPC` to which the subnet belongs. Otherwise, the `IPv6` subnet IP range cannot be assigned.\n* Each subnet can only be assigned one IPv6 IP range.",
       "input": "AssignIpv6SubnetCidrBlockRequest",
       "name": "Assigns an IPv6 subnet IP range",
-      "output": "AssignIpv6SubnetCidrBlockResponse"
+      "output": "AssignIpv6SubnetCidrBlockResponse",
+      "status": "online"
     },
     "AssignPrivateIpAddresses": {
       "document": "This API is used to apply for private IPs for an ENI.\n* An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can apply for a specified private IP. It cannot be a primary IP because the primary IP already exists and cannot be modified. The private IP address must be an idle IP in the subnet to which the ENI belongs.\n* You can apply for more than one secondary private IP on the ENI. The API will return the specified number of secondary private IPs in the subnet IP range.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
       "input": "AssignPrivateIpAddressesRequest",
       "name": "Applies for private IPs for an ENI",
-      "output": "AssignPrivateIpAddressesResponse"
+      "output": "AssignPrivateIpAddressesResponse",
+      "status": "online"
     },
     "AssociateAddress": {
       "document": "This API is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.\n* Binding an EIP to a CVM instance is actually binding the EIP to the primary private IP of the primary ENI on the CVM instance.\n* When an EIP is bound, the public IP previously bound to the CVM instance will be unbound and released automatically.\n* To bind another EIP to the private IP of the specified ENI, you must first unbind the EIP.\n* To bind an EIP to a NAT Gateway, use the API [AssociateNatGatewayAddress](https://intl.cloud.tencent.com/document/product/215/36722?from_cn_redirect=1).\n* An EIP cannot be bound if it’s overdue or blocked\n* Only EIP in the `UNBIND` status can be bound.",
       "input": "AssociateAddressRequest",
       "name": "Binds an Elastic IP",
-      "output": "AssociateAddressResponse"
+      "output": "AssociateAddressResponse",
+      "status": "online"
     },
     "AssociateDirectConnectGatewayNatGateway": {
       "document": "This API is used to bind a direct connect gateway with a NAT gateway,  and direct its default route to the NAT Gateway.",
       "input": "AssociateDirectConnectGatewayNatGatewayRequest",
       "name": "Binds a direct connect gateway to a NAT Gateway",
-      "output": "AssociateDirectConnectGatewayNatGatewayResponse"
+      "output": "AssociateDirectConnectGatewayNatGatewayResponse",
+      "status": "online"
     },
     "AssociateNatGatewayAddress": {
       "document": "This API is used to bind an EIP to a NAT gateway.",
       "input": "AssociateNatGatewayAddressRequest",
       "name": "Binds an EIP to a NAT gateway",
-      "output": "AssociateNatGatewayAddressResponse"
+      "output": "AssociateNatGatewayAddressResponse",
+      "status": "online"
     },
     "AssociateNetworkAclSubnets": {
       "document": "This API is used to associate a network ACL with subnets in a VPC instance.",
       "input": "AssociateNetworkAclSubnetsRequest",
       "name": "Associates a network ACL with subnets",
-      "output": "AssociateNetworkAclSubnetsResponse"
+      "output": "AssociateNetworkAclSubnetsResponse",
+      "status": "online"
     },
     "AssociateNetworkInterfaceSecurityGroups": {
       "document": "This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI.",
       "input": "AssociateNetworkInterfaceSecurityGroupsRequest",
       "name": "Attaches a security group to an ENI.",
-      "output": "AssociateNetworkInterfaceSecurityGroupsResponse"
+      "output": "AssociateNetworkInterfaceSecurityGroupsResponse",
+      "status": "online"
     },
     "AttachCcnInstances": {
       "document": "This API (AttachCcnInstances) is used to load a network instance to a CCN instance. Network instances include VPCs and Direct Connect gateways.<br />\nThe number of network instances that each CCN can be associated with is limited. For more information, see the product documentation. If you need to associate more instances, please contact online customer service.",
       "input": "AttachCcnInstancesRequest",
       "name": "Associates an instance with a CCN",
-      "output": "AttachCcnInstancesResponse"
+      "output": "AttachCcnInstancesResponse",
+      "status": "online"
     },
     "AttachClassicLinkVpc": {
       "document": "This API is used to create a Classiclink between a VPC instance and a classic network device.\n* The VPC instance and the classic network device must be in the same region.\n* For differences between VPC and the classic network, see <a href=\"https://intl.cloud.tencent.com/document/product/215/30720?from_cn_redirect=1\">VPC and Classic Network</a>.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
       "input": "AttachClassicLinkVpcRequest",
       "name": "Creates a Classiclink",
-      "output": "AttachClassicLinkVpcResponse"
+      "output": "AttachClassicLinkVpcResponse",
+      "status": "online"
     },
     "AttachNetworkInterface": {
       "document": "This API is used to bind an ENI to a CVM.\n* An ENI must be bound with one security group at least. To bind it, see <a href=\"https://intl.cloud.tencent.com/document/product/215/43132?from_cn_redirect=1\">AssociateNetworkInterfaceSecurityGroups</a>.\n* One CVM can be bound with multiple ENIs, but only one can be the primary ENI. For more information about the limits, see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM.\n* Only the running or shutdown CVMs can be bound with ENIs. For more information about the CVM status, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">InstanceStatus</a> in the Data Types.\n* An ENI can only be bound to a VPC-based CVM under the same availability zone as the ENI subnet.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "AttachNetworkInterfaceRequest",
       "name": "Binds an ENI to a CVM",
-      "output": "AttachNetworkInterfaceResponse"
+      "output": "AttachNetworkInterfaceResponse",
+      "status": "online"
     },
     "AuditCrossBorderCompliance": {
       "document": "This API is used by the service provider to perform a compliance audit.\n* This API is only provided for service providers to audit compliance review requests received. Tencent Cloud will verify the identity of the service provider by the `APPID`. \n* The status of the review request can be changed between `APPROVED` and `DENY`.",
       "input": "AuditCrossBorderComplianceRequest",
       "name": "Performs a compliance audit",
-      "output": "AuditCrossBorderComplianceResponse"
+      "output": "AuditCrossBorderComplianceResponse",
+      "status": "online"
     },
     "CheckAssistantCidr": {
       "document": "This API is used to check whether the secondary CIDR block conflicts with existing routes, peering connections (peer VPC CIDR blocks), and other resources. \n* Check whether the secondary CIDR block overlaps with the primary/secondary CIDR block of the current VPC.\n* Check whether the secondary CIDR block overlaps with the routing destination of the current VPC.\n* If the current VPC is used in a peering connection, check whether the secondary CIDR block overlaps with the primary/secondary CIDR block of the peer VPC.",
       "input": "CheckAssistantCidrRequest",
       "name": "Checks secondary CIDR block overlaps",
-      "output": "CheckAssistantCidrResponse"
+      "output": "CheckAssistantCidrResponse",
+      "status": "online"
     },
     "CheckNetDetectState": {
       "document": "This API is used to verify the network detection status.",
       "input": "CheckNetDetectStateRequest",
       "name": "CheckNetDetectState",
-      "output": "CheckNetDetectStateResponse"
+      "output": "CheckNetDetectStateResponse",
+      "status": "online"
     },
     "CloneSecurityGroup": {
       "document": "This API is used to create a security group with the same rule configurations as an existing security group. The cloning only copies the security group and its rules, but not the security group tags.",
       "input": "CloneSecurityGroupRequest",
       "name": "Clones an security group",
-      "output": "CloneSecurityGroupResponse"
+      "output": "CloneSecurityGroupResponse",
+      "status": "online"
     },
     "CreateAddressTemplate": {
       "document": "This API is used to create an IP address template.",
       "input": "CreateAddressTemplateRequest",
       "name": "Creates an IP address template",
-      "output": "CreateAddressTemplateResponse"
+      "output": "CreateAddressTemplateResponse",
+      "status": "online"
     },
     "CreateAddressTemplateGroup": {
       "document": "This API is used to create an IP address template group.",
       "input": "CreateAddressTemplateGroupRequest",
       "name": "Creates an IP address template group",
-      "output": "CreateAddressTemplateGroupResponse"
+      "output": "CreateAddressTemplateGroupResponse",
+      "status": "online"
     },
     "CreateAndAttachNetworkInterface": {
       "document": "This API is used to create an ENI and bind it to a CVM.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be idle and in the same subnet as the ENI.\n* When creating an ENI, you can specify the number of private IPs that you want to apply for. The system will randomly generate private IP addresses.\n* The number of IPs bound with an ENI is limited. For more information, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
       "input": "CreateAndAttachNetworkInterfaceRequest",
       "name": "Creates an ENI and binds it to a CVM",
-      "output": "CreateAndAttachNetworkInterfaceResponse"
+      "output": "CreateAndAttachNetworkInterfaceResponse",
+      "status": "online"
     },
     "CreateAssistantCidr": {
       "document": "This API is used to batch create secondary CIDR blocks.",
       "input": "CreateAssistantCidrRequest",
       "name": "Creates a secondary CIDR block",
-      "output": "CreateAssistantCidrResponse"
+      "output": "CreateAssistantCidrResponse",
+      "status": "online"
     },
     "CreateBandwidthPackage": {
       "document": "This API is used to create a [device bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype) or an [IP bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype).",
       "input": "CreateBandwidthPackageRequest",
       "name": "Creates a bandwidth package",
-      "output": "CreateBandwidthPackageResponse"
+      "output": "CreateBandwidthPackageResponse",
+      "status": "online"
     },
     "CreateCcn": {
       "document": "This API is used to create a CCN instance.\n* You can add tags to a CCN instance upon the creation. The tags are added successfully if they are listed in the response.\n* There is a quota of CCN instances for each account. For more information, see product documentation. To increase the quota, please submit a ticket.",
       "input": "CreateCcnRequest",
       "name": "Creates a CCN",
-      "output": "CreateCcnResponse"
+      "output": "CreateCcnResponse",
+      "status": "online"
     },
     "CreateCustomerGateway": {
       "document": "This API (CreateCustomerGateway) is used to create customer gateways.",
       "input": "CreateCustomerGatewayRequest",
       "name": "Creates a customer gateway",
-      "output": "CreateCustomerGatewayResponse"
+      "output": "CreateCustomerGatewayResponse",
+      "status": "online"
     },
     "CreateDefaultVpc": {
       "document": "This API is used to create a default VPC.\n\nThe default VPC is suitable for getting started with and launching public instances, and it can be used like any other VPCs. To create a standard VPC, for which you need to specify a VPC name, VPC IP range, subnet IP range, and subnet availability zone, use the regular CreateVpc API.\n\nUnder normal circumstances, this API may not create a default VPC. It depends on the network attributes (DescribeAccountAttributes) of your account.\n* If both basic network and VPC are supported, the returned VpcId is 0.\n* If only VPC is supported, the default VPC information is returned.\n\nYou can also use the Force parameter to forcibly return a default VPC.",
       "input": "CreateDefaultVpcRequest",
       "name": "Creates a default VPC and subnets",
-      "output": "CreateDefaultVpcResponse"
+      "output": "CreateDefaultVpcResponse",
+      "status": "online"
     },
     "CreateDirectConnectGateway": {
       "document": "This API is used to create a direct connect gateway.",
       "input": "CreateDirectConnectGatewayRequest",
       "name": "Creates a direct connect gateway",
-      "output": "CreateDirectConnectGatewayResponse"
+      "output": "CreateDirectConnectGatewayResponse",
+      "status": "online"
     },
     "CreateDirectConnectGatewayCcnRoutes": {
       "document": "This API (CreateDirectConnectGatewayCcnRoutes) is used to create the CCN route (IDC IP range) of a Direct Connect gateway.",
       "input": "CreateDirectConnectGatewayCcnRoutesRequest",
       "name": "Creates the CCN route of a Direct Connect gateway",
-      "output": "CreateDirectConnectGatewayCcnRoutesResponse"
+      "output": "CreateDirectConnectGatewayCcnRoutesResponse",
+      "status": "online"
     },
     "CreateFlowLog": {
       "document": "This API is used to create a flow log.",
       "input": "CreateFlowLogRequest",
       "name": "Creates a flow log",
-      "output": "CreateFlowLogResponse"
+      "output": "CreateFlowLogResponse",
+      "status": "online"
     },
     "CreateHaVip": {
       "document": "This API (CreateHaVip) is used to create a highly available virtual IP (HAVIP)",
       "input": "CreateHaVipRequest",
       "name": "Creates the HAVIP",
-      "output": "CreateHaVipResponse"
+      "output": "CreateHaVipResponse",
+      "status": "online"
     },
     "CreateLocalGateway": {
       "document": "This API is used to create a local gateway for a CDC instance.",
       "input": "CreateLocalGatewayRequest",
       "name": "Creates a local gateway",
-      "output": "CreateLocalGatewayResponse"
+      "output": "CreateLocalGatewayResponse",
+      "status": "online"
     },
     "CreateNatGateway": {
       "document": "This API is used to create a NAT Gateway.\nBefore taking actions on a NAT gateway, ensure that it has been successfully created, namely, the `State` field in the response of the `DescribeNatGateway` API is `AVAILABLE`.",
       "input": "CreateNatGatewayRequest",
       "name": "Creates a NAT gateway",
-      "output": "CreateNatGatewayResponse"
+      "output": "CreateNatGatewayResponse",
+      "status": "online"
     },
     "CreateNatGatewayDestinationIpPortTranslationNatRule": {
       "document": "This API is used to create the port forwarding rules of a NAT gateway.",
       "input": "CreateNatGatewayDestinationIpPortTranslationNatRuleRequest",
       "name": "Creates the port forwarding rule of a NAT gateway",
-      "output": "CreateNatGatewayDestinationIpPortTranslationNatRuleResponse"
+      "output": "CreateNatGatewayDestinationIpPortTranslationNatRuleResponse",
+      "status": "online"
     },
     "CreateNatGatewaySourceIpTranslationNatRule": {
       "document": "This API is used to create SNAT rules for a NAT gateway.",
       "input": "CreateNatGatewaySourceIpTranslationNatRuleRequest",
       "name": "Creates SNAT rules for a NAT gateway",
-      "output": "CreateNatGatewaySourceIpTranslationNatRuleResponse"
+      "output": "CreateNatGatewaySourceIpTranslationNatRuleResponse",
+      "status": "online"
     },
     "CreateNetDetect": {
       "document": "This API is used to create a network detection instance.",
       "input": "CreateNetDetectRequest",
       "name": "CreateNetDetect",
-      "output": "CreateNetDetectResponse"
+      "output": "CreateNetDetectResponse",
+      "status": "online"
     },
     "CreateNetworkAcl": {
       "document": "This API is used to create a <a href=\"https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1\">network ACL</a>.\n* The inbound and outbound rules for a new network ACL are \"Deny All\" by default. You need to call `ModifyNetworkAclEntries` to set rules for the new network ACL as needed.",
       "input": "CreateNetworkAclRequest",
       "name": "Creates a network ACL",
-      "output": "CreateNetworkAclResponse"
+      "output": "CreateNetworkAclResponse",
+      "status": "online"
     },
     "CreateNetworkAclQuintupleEntries": {
       "document": "This API is used to add one or more in/outbound rules of the network ACL quintuple.",
       "input": "CreateNetworkAclQuintupleEntriesRequest",
       "name": "Adds rules of the network ACL quintuple",
-      "output": "CreateNetworkAclQuintupleEntriesResponse"
+      "output": "CreateNetworkAclQuintupleEntriesResponse",
+      "status": "online"
     },
     "CreateNetworkInterface": {
       "document": "This API is used to create an ENI.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be in the same subnet as the ENI and is not occupied.\n* When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.\n* An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
       "input": "CreateNetworkInterfaceRequest",
       "name": "Creates an ENI",
-      "output": "CreateNetworkInterfaceResponse"
+      "output": "CreateNetworkInterfaceResponse",
+      "status": "online"
     },
     "CreateRouteTable": {
       "document": "This API is used to create a route table.\n* After the VPC instance has been created, the system creates a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route tables to create more route tables to manage these routing policies.\n* You can bind a tag when creating a route table. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateRouteTableRequest",
       "name": "Creates a route table",
-      "output": "CreateRouteTableResponse"
+      "output": "CreateRouteTableResponse",
+      "status": "online"
     },
     "CreateRoutes": {
       "document": "This API (CreateRoutes) is used to create a routing policy.\n* You can create routing policies in batch for a specified route table.",
       "input": "CreateRoutesRequest",
       "name": "Creates a routing policy",
-      "output": "CreateRoutesResponse"
+      "output": "CreateRoutesResponse",
+      "status": "online"
     },
     "CreateSecurityGroup": {
       "document": "This API is used to create a security group (SecurityGroup).\n* Note the <a href=\"https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1\">maximum number of security groups</a> per project in each region under each account.\n* Both the inbound and outbound rules for a newly created security group are \"Deny All\" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.\n* You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateSecurityGroupRequest",
       "name": "Creates a security group",
-      "output": "CreateSecurityGroupResponse"
+      "output": "CreateSecurityGroupResponse",
+      "status": "online"
     },
     "CreateSecurityGroupPolicies": {
       "document": "This API is used to create security group policies (`SecurityGroupPolicy`).\n\nFor parameters of `SecurityGroupPolicySet`,\n<ul>\n<li>`Version`: The version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li>`Protocol`: Allows `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE` and `ALL`.</li>\n<li>`CidrBlock`: For the classic network, the `CidrBlock` can contain private IPs of Tencent Cloud resources that are not under your account. It does not mean that you can access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`Ipv6CidrBlock`: For the classic network, `Ipv6CidrBlock` can contain private IPv6 addresses of Tencent Cloud resources that are not under your account. It does not mean that you can access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group to create policies. </li>\n<li>`Port`: A single port (“80”) or a port range (\"8000-8010\"). This parameter is only available when `Protocol` is `TCP` or `UDP`.</li>\n<li>`Action`: `ACCEPT` or `DROP`.</li>\n<li><code>CidrBlock</code>, <code>Ipv6CidrBlock</code>, <code>SecurityGroupId</code>, and <code>AddressTemplate</code> are mutually exclusive. <code>Protocol</code> + <code>Port</code> and <code>ServiceTemplate</code> are mutually exclusive. <code>IPv6CidrBlock</code> and <code>ICMP</code> are mutually exclusive; to use them, enter <code>ICMPV6</code>.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies. If you want to insert a rule before the first rule, enter 0; if you want to add a rule after the last rule, leave it empty.</li>\n</ul></li></ul>",
       "input": "CreateSecurityGroupPoliciesRequest",
       "name": "Adds policies to a security group",
-      "output": "CreateSecurityGroupPoliciesResponse"
+      "output": "CreateSecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "CreateSecurityGroupWithPolicies": {
       "document": "This API (CreateSecurityGroupWithPolicies) is used to create security groups, and add security group policies.\n* Note the<a href=\"https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1\">maximum number of security groups</a>per project in each region under each account.\n* Both the inbound and outbound policies for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set security group policies according to your needs.\n\nDescription:\n* `Version`: Indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.\n* `Protocol`: Values can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.\n* `CidrBlock`:  A CIDR block in the correct format. In a basic network, if a CidrBlock contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.\n* `Port`: A single port number, or a port range in the format of “8000-8010”. The Port field is accepted only if the value of the `Protocol` field is `TCP` or `UDP`. Otherwise Protocol and Port are mutually exclusive. \n* `Action`: Values can be `ACCEPT` or `DROP`.\n* CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. “Protocol + Port” and ServiceTemplate are mutually exclusive and cannot be entered at the same time.\n* Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent.",
       "input": "CreateSecurityGroupWithPoliciesRequest",
       "name": "Creates security groups and policies",
-      "output": "CreateSecurityGroupWithPoliciesResponse"
+      "output": "CreateSecurityGroupWithPoliciesResponse",
+      "status": "online"
     },
     "CreateServiceTemplate": {
       "document": "This API (CreateServiceTemplate) is used to create a protocol port template.",
       "input": "CreateServiceTemplateRequest",
       "name": "Creates a protocol port template",
-      "output": "CreateServiceTemplateResponse"
+      "output": "CreateServiceTemplateResponse",
+      "status": "online"
     },
     "CreateServiceTemplateGroup": {
       "document": "This API (CreateServiceTemplateGroup) is used to create a protocol port template group.",
       "input": "CreateServiceTemplateGroupRequest",
       "name": "Creates a protocol port template group",
-      "output": "CreateServiceTemplateGroupResponse"
+      "output": "CreateServiceTemplateGroupResponse",
+      "status": "online"
     },
     "CreateSubnet": {
       "document": "This API is used to create a subnet.\n* You must create a VPC instance before creating a subnet.\n* After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC instance has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).\n* IP address ranges of different subnets cannot overlap with each other within the same VPC instance.\n* A subnet is automatically associated with the default route table once created.\n* You can bind a tag when creating a subnet. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateSubnetRequest",
       "name": "Creates a subnet",
-      "output": "CreateSubnetResponse"
+      "output": "CreateSubnetResponse",
+      "status": "online"
     },
     "CreateSubnets": {
       "document": "This API is used to create subnets in batches.\n* You must create a VPC instance before creating a subnet.\n* After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).\n* IP address ranges of different subnets cannot overlap with each other within the same VPC instance.\n* A subnet is automatically associated with the default route table once created.\n* You can bind a tag when creating a subnet. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateSubnetsRequest",
       "name": "Creates subnets in batches",
-      "output": "CreateSubnetsResponse"
+      "output": "CreateSubnetsResponse",
+      "status": "online"
     },
     "CreateVpc": {
       "document": "This API is used to create a VPC instance.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), that of the largest IP address ranges 10.0.0.0/12 and 172.16.0.0/12 is 12 (1,048,576 IP addresses), and that of the largest IP address range 192.168.0.0/16 is 16 (65,536 IP addresses). For more information on how to plan VPC IP ranges, see [Network Planning](https://intl.cloud.tencent.com/document/product/215/30313?from_cn_redirect=1).\n* The number of VPC instances that can be created in a region is limited. For more information, see <a href=\"https://intl.cloud.tencent.com/doc/product/215/537?from_cn_redirect=1\" title=\"VPC Use Limits\">VPC Use Limits</a>. To request more resources, [submit a ticket](https://console.cloud.tencent.com/workorder/category).\n* You can bind tags when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateVpcRequest",
       "name": "Creates a VPC",
-      "output": "CreateVpcResponse"
+      "output": "CreateVpcResponse",
+      "status": "online"
     },
     "CreateVpcEndPoint": {
       "document": "This API is used to create an endpoint.",
       "input": "CreateVpcEndPointRequest",
       "name": "Creates an endpoint",
-      "output": "CreateVpcEndPointResponse"
+      "output": "CreateVpcEndPointResponse",
+      "status": "online"
     },
     "CreateVpcEndPointService": {
       "document": "This API is used to create an endpoint service.",
       "input": "CreateVpcEndPointServiceRequest",
       "name": "Creates an endpoint service",
-      "output": "CreateVpcEndPointServiceResponse"
+      "output": "CreateVpcEndPointServiceResponse",
+      "status": "online"
     },
     "CreateVpcEndPointServiceWhiteList": {
       "document": "This API is used to create the endpoint service allowlist.",
       "input": "CreateVpcEndPointServiceWhiteListRequest",
       "name": "Creates the endpoint service allowlist",
-      "output": "CreateVpcEndPointServiceWhiteListResponse"
+      "output": "CreateVpcEndPointServiceWhiteListResponse",
+      "status": "online"
     },
     "CreateVpnConnection": {
       "document": "This API is used to create a VPN tunnel.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
       "input": "CreateVpnConnectionRequest",
       "name": "Creates a VPN tunnel",
-      "output": "CreateVpnConnectionResponse"
+      "output": "CreateVpnConnectionResponse",
+      "status": "online"
     },
     "CreateVpnGateway": {
       "document": "This API (CreateVpnGateway) is used to create a VPN gateway.",
       "input": "CreateVpnGatewayRequest",
       "name": "Creates a VPN gateway",
-      "output": "CreateVpnGatewayResponse"
+      "output": "CreateVpnGatewayResponse",
+      "status": "online"
     },
     "CreateVpnGatewayRoutes": {
       "document": "This API is used to create destination routes of a route-based VPN gateway.",
       "input": "CreateVpnGatewayRoutesRequest",
       "name": "Creates routes of a VPN gateway",
-      "output": "CreateVpnGatewayRoutesResponse"
+      "output": "CreateVpnGatewayRoutesResponse",
+      "status": "online"
     },
     "DeleteAddressTemplate": {
       "document": "This API (DeleteAddressTemplate) is used to delete an IP address template.",
       "input": "DeleteAddressTemplateRequest",
       "name": "Deletes an IP address template",
-      "output": "DeleteAddressTemplateResponse"
+      "output": "DeleteAddressTemplateResponse",
+      "status": "online"
     },
     "DeleteAddressTemplateGroup": {
       "document": "This API (DeleteAddressTemplateGroup) is used to delete an IP address template group.",
       "input": "DeleteAddressTemplateGroupRequest",
       "name": "Deletes an IP address template group",
-      "output": "DeleteAddressTemplateGroupResponse"
+      "output": "DeleteAddressTemplateGroupResponse",
+      "status": "online"
     },
     "DeleteAssistantCidr": {
       "document": "This API is used to delete a secondary CIDR block.",
       "input": "DeleteAssistantCidrRequest",
       "name": "Deletes a secondary CIDR block",
-      "output": "DeleteAssistantCidrResponse"
+      "output": "DeleteAssistantCidrResponse",
+      "status": "online"
     },
     "DeleteBandwidthPackage": {
       "document": "This API is used to delete bandwidth packages, including [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).",
       "input": "DeleteBandwidthPackageRequest",
       "name": "Deletes a bandwidth package",
-      "output": "DeleteBandwidthPackageResponse"
+      "output": "DeleteBandwidthPackageResponse",
+      "status": "online"
     },
     "DeleteCcn": {
       "document": "This API (DeleteCcn) is used to delete CCNs.\n* After deletion, the routes between all instances associated with the CCN will be deleted, and the network will be interrupted. Please confirm this operation in advance.\n* CCN deletion is an irreversible operation. Please proceed with caution.\n",
       "input": "DeleteCcnRequest",
       "name": "Deletes a CCN",
-      "output": "DeleteCcnResponse"
+      "output": "DeleteCcnResponse",
+      "status": "online"
     },
     "DeleteCustomerGateway": {
       "document": "This API (DeleteCustomerGateway) is used to delete customer gateways.",
       "input": "DeleteCustomerGatewayRequest",
       "name": "Deletes a customer gateway",
-      "output": "DeleteCustomerGatewayResponse"
+      "output": "DeleteCustomerGatewayResponse",
+      "status": "online"
     },
     "DeleteDirectConnectGateway": {
       "document": "This API is used to delete a direct connect gateway.\n<li>For a NAT gateway, NAT and ACL rules will be cleared upon the deletion of a direct connect gateway.\n<li>After the deletion of a direct connect gateway, the routing policy associated with the gateway in the route table will also be deleted.\nThis API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to poll the `QueryTask` API.",
       "input": "DeleteDirectConnectGatewayRequest",
       "name": "Deletes a direct connect gateway",
-      "output": "DeleteDirectConnectGatewayResponse"
+      "output": "DeleteDirectConnectGatewayResponse",
+      "status": "online"
     },
     "DeleteDirectConnectGatewayCcnRoutes": {
       "document": "This API (DeleteDirectConnectGatewayCcnRoutes) is used to delete the CCN routes (IDC IP range) of a Direct Connect gateway.",
       "input": "DeleteDirectConnectGatewayCcnRoutesRequest",
       "name": "Deletes CCN routes of a Direct Connect gateway",
-      "output": "DeleteDirectConnectGatewayCcnRoutesResponse"
+      "output": "DeleteDirectConnectGatewayCcnRoutesResponse",
+      "status": "online"
     },
     "DeleteFlowLog": {
       "document": "This API is used to delete a flow log.",
       "input": "DeleteFlowLogRequest",
       "name": "Deletes a flow log",
-      "output": "DeleteFlowLogResponse"
+      "output": "DeleteFlowLogResponse",
+      "status": "online"
     },
     "DeleteHaVip": {
       "document": "This API is used to delete an HAVIP. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "DeleteHaVipRequest",
       "name": "Deletes an HAVIP",
-      "output": "DeleteHaVipResponse"
+      "output": "DeleteHaVipResponse",
+      "status": "online"
     },
     "DeleteLocalGateway": {
       "document": "This API is used to delete the local gateway of a CDC instance.",
       "input": "DeleteLocalGatewayRequest",
       "name": "Deletes a local gateway",
-      "output": "DeleteLocalGatewayResponse"
+      "output": "DeleteLocalGatewayResponse",
+      "status": "online"
     },
     "DeleteNatGateway": {
       "document": "This API is used to delete a NAT gateway.\nWhen a NAT gateway is deleted, all routes containing this gateway are deleted automatically, and the elastic IP is unbound.",
       "input": "DeleteNatGatewayRequest",
       "name": "Deletes a NAT gateway",
-      "output": "DeleteNatGatewayResponse"
+      "output": "DeleteNatGatewayResponse",
+      "status": "online"
     },
     "DeleteNatGatewayDestinationIpPortTranslationNatRule": {
       "document": "This API is used to delete the port forwarding rule of a NAT gateway.",
       "input": "DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest",
       "name": "Deletes the port forwarding rule of a NAT gateway",
-      "output": "DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse"
+      "output": "DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse",
+      "status": "online"
     },
     "DeleteNatGatewaySourceIpTranslationNatRule": {
       "document": "This API is used to delete a SNAT forwarding rule of a NAT gateway.",
       "input": "DeleteNatGatewaySourceIpTranslationNatRuleRequest",
       "name": "Deletes a SNAT forwarding rule of a NAT Gateway",
-      "output": "DeleteNatGatewaySourceIpTranslationNatRuleResponse"
+      "output": "DeleteNatGatewaySourceIpTranslationNatRuleResponse",
+      "status": "online"
     },
     "DeleteNetDetect": {
       "document": "This API (DeleteNetDetect) is used to delete a network detection instance.",
       "input": "DeleteNetDetectRequest",
       "name": "DeleteNetDetect",
-      "output": "DeleteNetDetectResponse"
+      "output": "DeleteNetDetectResponse",
+      "status": "online"
     },
     "DeleteNetworkAcl": {
       "document": "This API is used to delete a network ACL.",
       "input": "DeleteNetworkAclRequest",
       "name": "Deletes a network ACL",
-      "output": "DeleteNetworkAclResponse"
+      "output": "DeleteNetworkAclResponse",
+      "status": "online"
     },
     "DeleteNetworkAclQuintupleEntries": {
       "document": "This API is used to delete specified in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.",
       "input": "DeleteNetworkAclQuintupleEntriesRequest",
       "name": "Deletes specified rules of the network ACL quintuple.",
-      "output": "DeleteNetworkAclQuintupleEntriesResponse"
+      "output": "DeleteNetworkAclQuintupleEntriesResponse",
+      "status": "online"
     },
     "DeleteNetworkInterface": {
       "document": "This API is used to delete an ENI.\n* An ENI cannot be deleted when it’s bound to a CVM.\n * After the deletion, all of its private IP addresses will be released.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "DeleteNetworkInterfaceRequest",
       "name": "Deletes an ENI",
-      "output": "DeleteNetworkInterfaceResponse"
+      "output": "DeleteNetworkInterfaceResponse",
+      "status": "online"
     },
     "DeleteRouteTable": {
       "document": "This API is used to delete a route table.",
       "input": "DeleteRouteTableRequest",
       "name": "Deletes a route table",
-      "output": "DeleteRouteTableResponse"
+      "output": "DeleteRouteTableResponse",
+      "status": "online"
     },
     "DeleteRoutes": {
       "document": "This API (DeleteRoutes) is used to delete routing policies in batches from a route table.",
       "input": "DeleteRoutesRequest",
       "name": "Deletes a routing policy",
-      "output": "DeleteRoutesResponse"
+      "output": "DeleteRoutesResponse",
+      "status": "online"
     },
     "DeleteSecurityGroup": {
       "document": "This API (DeleteSecurityGroup) is used to delete security groups (SecurityGroup).\n* Only security groups under the current account can be deleted.\n* A security group cannot be deleted directly if its instance ID is used in the policy of another security group. You need to modify the policy first and then delete the security group.\n* A security group cannot be recovered after deletion, please proceed with caution.",
       "input": "DeleteSecurityGroupRequest",
       "name": "Deletes a security group",
-      "output": "DeleteSecurityGroupResponse"
+      "output": "DeleteSecurityGroupResponse",
+      "status": "online"
     },
     "DeleteSecurityGroupPolicies": {
       "document": "This API (DeleteSecurityGroupPolicies) is used to delete security group policies (SecurityGroupPolicy).\n* SecurityGroupPolicySet.Version is used to specify the version of the security group you are operating. If the specified Version number differs from the latest version of the current security group, a failure will be returned. If Version is not specified, the policy of the specified PolicyIndex will be deleted directly.",
       "input": "DeleteSecurityGroupPoliciesRequest",
       "name": "Deletes security group policies",
-      "output": "DeleteSecurityGroupPoliciesResponse"
+      "output": "DeleteSecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "DeleteServiceTemplate": {
       "document": "This API (DeleteServiceTemplate) is used to delete a protocol port template.",
       "input": "DeleteServiceTemplateRequest",
       "name": "Deletes a protocol port template",
-      "output": "DeleteServiceTemplateResponse"
+      "output": "DeleteServiceTemplateResponse",
+      "status": "online"
     },
     "DeleteServiceTemplateGroup": {
       "document": "This API (DeleteServiceTemplateGroup) is used to delete a protocol port template group.",
       "input": "DeleteServiceTemplateGroupRequest",
       "name": "Deletes a protocol port template group",
-      "output": "DeleteServiceTemplateGroupResponse"
+      "output": "DeleteServiceTemplateGroupResponse",
+      "status": "online"
     },
     "DeleteSubnet": {
       "document": "This API (DeleteSubnet) is used to delete subnets.\nBefore deleting a subnet, you need to remove all resources in the subnet, including CVMs, load balancers, cloud data, NoSQL databases, and ENIs.",
       "input": "DeleteSubnetRequest",
       "name": "Deletes a subnet",
-      "output": "DeleteSubnetResponse"
+      "output": "DeleteSubnetResponse",
+      "status": "online"
     },
     "DeleteVpc": {
       "document": "This API (DeleteVpc) is used to delete VPCs.\n* Before deleting a VPC, ensure that the VPC contains no resources, including CVMs, cloud databases, NoSQL databases, VPN gateways, direct connect gateways, load balancers, peering connections, and basic network devices that are linked to the VPC.\n* The deletion of VPCs is irreversible. Proceed with caution.",
       "input": "DeleteVpcRequest",
       "name": "Deletes a VPC",
-      "output": "DeleteVpcResponse"
+      "output": "DeleteVpcResponse",
+      "status": "online"
     },
     "DeleteVpcEndPoint": {
       "document": "This API is used to delete an endpoint.",
       "input": "DeleteVpcEndPointRequest",
       "name": "Deletes an endpoint",
-      "output": "DeleteVpcEndPointResponse"
+      "output": "DeleteVpcEndPointResponse",
+      "status": "online"
     },
     "DeleteVpcEndPointService": {
       "document": "This API is used to delete an endpoint service.\n\n",
       "input": "DeleteVpcEndPointServiceRequest",
       "name": "Deletes an endpoint service",
-      "output": "DeleteVpcEndPointServiceResponse"
+      "output": "DeleteVpcEndPointServiceResponse",
+      "status": "online"
     },
     "DeleteVpcEndPointServiceWhiteList": {
       "document": "This API is used to delete the endpoint service allowlist.",
       "input": "DeleteVpcEndPointServiceWhiteListRequest",
       "name": "Deletes the endpoint service allowlist",
-      "output": "DeleteVpcEndPointServiceWhiteListResponse"
+      "output": "DeleteVpcEndPointServiceWhiteListResponse",
+      "status": "online"
     },
     "DeleteVpnConnection": {
       "document": "This API (DeleteVpnConnection) is used to delete VPN tunnels.",
       "input": "DeleteVpnConnectionRequest",
       "name": "Deletes VPN tunnels",
-      "output": "DeleteVpnConnectionResponse"
+      "output": "DeleteVpnConnectionResponse",
+      "status": "online"
     },
     "DeleteVpnGateway": {
       "document": "This API (DeleteVpnGateway) is used to delete a VPN gateway. Currently, only deletion of pay-as-you-go IPSEC gateway instances in running status is supported.",
       "input": "DeleteVpnGatewayRequest",
       "name": "Deletes a VPN gateway",
-      "output": "DeleteVpnGatewayResponse"
+      "output": "DeleteVpnGatewayResponse",
+      "status": "online"
     },
     "DeleteVpnGatewayRoutes": {
       "document": "This API is used to delete routes of a VPN gateway.",
       "input": "DeleteVpnGatewayRoutesRequest",
       "name": "Deletes routes of a VPN gateway",
-      "output": "DeleteVpnGatewayRoutesResponse"
+      "output": "DeleteVpnGatewayRoutesResponse",
+      "status": "online"
     },
     "DescribeAccountAttributes": {
       "document": "This API (DescribeAccountAttributes) is used to query your account attributes.",
       "input": "DescribeAccountAttributesRequest",
       "name": "Queries account attributes",
-      "output": "DescribeAccountAttributesResponse"
+      "output": "DescribeAccountAttributesResponse",
+      "status": "online"
     },
     "DescribeAddressQuota": {
       "document": "This API (DescribeAddressQuota) is used to query the quota information of your [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP) in the current region. For more information, see [EIP product introduction](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1).",
       "input": "DescribeAddressQuotaRequest",
       "name": "Queries EIP quotas",
-      "output": "DescribeAddressQuotaResponse"
+      "output": "DescribeAddressQuotaResponse",
+      "status": "online"
     },
     "DescribeAddressTemplateGroups": {
       "document": "This API (DescribeAddressTemplateGroups) is used to query an IP address template group.",
       "input": "DescribeAddressTemplateGroupsRequest",
       "name": "Queries an IP address template group",
-      "output": "DescribeAddressTemplateGroupsResponse"
+      "output": "DescribeAddressTemplateGroupsResponse",
+      "status": "online"
     },
     "DescribeAddressTemplates": {
       "document": "This API (DescribeAddressTemplates) is used to query an IP address template.",
       "input": "DescribeAddressTemplatesRequest",
       "name": "Queries an IP address template",
-      "output": "DescribeAddressTemplatesResponse"
+      "output": "DescribeAddressTemplatesResponse",
+      "status": "online"
     },
     "DescribeAddresses": {
       "document": "This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).\n* If the parameter is empty, a number (as specified by the `Limit`, the default value is 20) of EIPs will be returned.",
       "input": "DescribeAddressesRequest",
       "name": "Queries the EIP list",
-      "output": "DescribeAddressesResponse"
+      "output": "DescribeAddressesResponse",
+      "status": "online"
     },
     "DescribeAssistantCidr": {
       "document": "This API is used to query the list of secondary CIDR blocks.",
       "input": "DescribeAssistantCidrRequest",
       "name": "Queries a list of secondary CIDR blocks",
-      "output": "DescribeAssistantCidrResponse"
+      "output": "DescribeAssistantCidrResponse",
+      "status": "online"
     },
     "DescribeBandwidthPackageBillUsage": {
       "document": "This API is used to query the current billable usage of a pay-as-you-go bandwidth package.",
       "input": "DescribeBandwidthPackageBillUsageRequest",
       "name": "Queries the current usage of a pay-as-you-go bandwidth package.",
-      "output": "DescribeBandwidthPackageBillUsageResponse"
+      "output": "DescribeBandwidthPackageBillUsageResponse",
+      "status": "online"
     },
     "DescribeBandwidthPackageQuota": {
       "document": "This API is used to query the maximum and used number of bandwidth packages under the account in the current region.",
       "input": "DescribeBandwidthPackageQuotaRequest",
       "name": "Queries the bandwidth package quota",
-      "output": "DescribeBandwidthPackageQuotaResponse"
+      "output": "DescribeBandwidthPackageQuotaResponse",
+      "status": "online"
     },
     "DescribeBandwidthPackageResources": {
       "document": "This API is used to query resources in a bandwidth package based on the unique package ID. You can filter the result by specifying conditions and paginate the query results.\n",
       "input": "DescribeBandwidthPackageResourcesRequest",
       "name": "Queries resources in a bandwidth package",
-      "output": "DescribeBandwidthPackageResourcesResponse"
+      "output": "DescribeBandwidthPackageResourcesResponse",
+      "status": "online"
     },
     "DescribeBandwidthPackages": {
       "document": "This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information.",
       "input": "DescribeBandwidthPackagesRequest",
       "name": "Queries bandwidth package resources",
-      "output": "DescribeBandwidthPackagesResponse"
+      "output": "DescribeBandwidthPackagesResponse",
+      "status": "online"
     },
     "DescribeCcnAttachedInstances": {
       "document": "This API (DescribeCcnAttachedInstances) is used to query the network instances associated with the CCN instance.",
       "input": "DescribeCcnAttachedInstancesRequest",
       "name": "Queries the list of instances associated with a CCN",
-      "output": "DescribeCcnAttachedInstancesResponse"
+      "output": "DescribeCcnAttachedInstancesResponse",
+      "status": "online"
     },
     "DescribeCcnRegionBandwidthLimits": {
       "document": "This API is used to query the outbound bandwidth caps of all regions connected with a CCN instance. The API only returns regions included in the associated network instances.",
       "input": "DescribeCcnRegionBandwidthLimitsRequest",
       "name": "Queries the outbound bandwidth caps of all regions connected with the specified CCN instance",
-      "output": "DescribeCcnRegionBandwidthLimitsResponse"
+      "output": "DescribeCcnRegionBandwidthLimitsResponse",
+      "status": "online"
     },
     "DescribeCcnRoutes": {
       "document": "This API (DescribeCcnRoutes) is used to query routes that have been added to a CCN.",
       "input": "DescribeCcnRoutesRequest",
       "name": "Queries the CCN routing policy",
-      "output": "DescribeCcnRoutesResponse"
+      "output": "DescribeCcnRoutesResponse",
+      "status": "online"
     },
     "DescribeCcns": {
       "document": "This API (DescribeCcns) is used to query the CCN list.",
       "input": "DescribeCcnsRequest",
       "name": "Queries the CCN list",
-      "output": "DescribeCcnsResponse"
+      "output": "DescribeCcnsResponse",
+      "status": "online"
     },
     "DescribeClassicLinkInstances": {
       "document": "This API (DescribeClassicLinkInstances) is used to query the Classiclink instances list.",
       "input": "DescribeClassicLinkInstancesRequest",
       "name": "Queries the list of Classiclink",
-      "output": "DescribeClassicLinkInstancesResponse"
+      "output": "DescribeClassicLinkInstancesResponse",
+      "status": "online"
     },
     "DescribeCrossBorderCompliance": {
       "document": "This API is used to query the compliance review requests created by the user. \nA service provider can query all review requests created by any `APPID` under its account. Other users can only query their own review requests.",
       "input": "DescribeCrossBorderComplianceRequest",
       "name": "Queries a compliance review request",
-      "output": "DescribeCrossBorderComplianceResponse"
+      "output": "DescribeCrossBorderComplianceResponse",
+      "status": "online"
     },
     "DescribeCustomerGatewayVendors": {
       "document": "This API (DescribeCustomerGatewayVendors) is used to query the information of supported customer gateway vendors.",
       "input": "DescribeCustomerGatewayVendorsRequest",
       "name": "Queries the information of supported customer gateway vendors",
-      "output": "DescribeCustomerGatewayVendorsResponse"
+      "output": "DescribeCustomerGatewayVendorsResponse",
+      "status": "online"
     },
     "DescribeCustomerGateways": {
       "document": "This API (DescribeCustomerGateways) is used to query the customer gateway list.",
       "input": "DescribeCustomerGatewaysRequest",
       "name": "Queries customer gateways",
-      "output": "DescribeCustomerGatewaysResponse"
+      "output": "DescribeCustomerGatewaysResponse",
+      "status": "online"
     },
     "DescribeDirectConnectGatewayCcnRoutes": {
       "document": "This API (DescribeDirectConnectGatewayCcnRoutes) is used to query the CCN routes (IDC IP range) of the Direct Connect gateway.",
       "input": "DescribeDirectConnectGatewayCcnRoutesRequest",
       "name": "Queries the CCN routes of a Direct Connect gateway",
-      "output": "DescribeDirectConnectGatewayCcnRoutesResponse"
+      "output": "DescribeDirectConnectGatewayCcnRoutesResponse",
+      "status": "online"
     },
     "DescribeDirectConnectGateways": {
       "document": "This API is used to query direct connect gateways.",
       "input": "DescribeDirectConnectGatewaysRequest",
       "name": "Queries direct connect gateways",
-      "output": "DescribeDirectConnectGatewaysResponse"
+      "output": "DescribeDirectConnectGatewaysResponse",
+      "status": "online"
     },
     "DescribeFlowLog": {
       "document": "This API is used to query the information of a flow log.",
       "input": "DescribeFlowLogRequest",
       "name": "Queries information of a flow log",
-      "output": "DescribeFlowLogResponse"
+      "output": "DescribeFlowLogResponse",
+      "status": "online"
     },
     "DescribeFlowLogs": {
       "document": "This API is used to query all the flow logs of the current account.",
       "input": "DescribeFlowLogsRequest",
       "name": "Queries the list of flow logs",
-      "output": "DescribeFlowLogsResponse"
+      "output": "DescribeFlowLogsResponse",
+      "status": "online"
     },
     "DescribeGatewayFlowMonitorDetail": {
       "document": "This API is used to query the traffic monitoring details of the gateway.\n* You can only use this API to query a single gateway instance, which means you must pass in only one of `VpnId`, `DirectConnectGatewayId`, `PeeringConnectionId`, or `NatId`.\n* If the gateway has traffic, but no data is returned when this API is called, please check whether gateway traffic monitoring has been enabled in the corresponding gateway details page in the console.",
       "input": "DescribeGatewayFlowMonitorDetailRequest",
       "name": "Queries the monitoring details of a gateway",
-      "output": "DescribeGatewayFlowMonitorDetailResponse"
+      "output": "DescribeGatewayFlowMonitorDetailResponse",
+      "status": "online"
     },
     "DescribeGatewayFlowQos": {
       "document": "This API is used to query the inbound IP bandwidth limit of a gateway.",
       "input": "DescribeGatewayFlowQosRequest",
       "name": "Queries the inbound IP bandwidth limit of a gateway.",
-      "output": "DescribeGatewayFlowQosResponse"
+      "output": "DescribeGatewayFlowQosResponse",
+      "status": "online"
     },
     "DescribeHaVips": {
       "document": "This API (DescribeHaVips) is used to query the list of highly available virtual IPs (HAVIP).",
       "input": "DescribeHaVipsRequest",
       "name": "Queries the HAVIP list",
-      "output": "DescribeHaVipsResponse"
+      "output": "DescribeHaVipsResponse",
+      "status": "online"
     },
     "DescribeIpGeolocationDatabaseUrl": {
       "document": "This API is used to obtain the download link of an IP location database.",
       "input": "DescribeIpGeolocationDatabaseUrlRequest",
       "name": "Obtains the download link of an IP location database",
-      "output": "DescribeIpGeolocationDatabaseUrlResponse"
+      "output": "DescribeIpGeolocationDatabaseUrlResponse",
+      "status": "online"
     },
     "DescribeIpGeolocationInfos": {
       "document": "This API is used to query the location and network information of one or more IP addresses.\nThis API is only available for existing customers. For any questions, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2).",
       "input": "DescribeIpGeolocationInfosRequest",
       "name": "Queries IP location",
-      "output": "DescribeIpGeolocationInfosResponse"
+      "output": "DescribeIpGeolocationInfosResponse",
+      "status": "online"
     },
     "DescribeLocalGateway": {
       "document": "This API is used to query local gateways of a CDC instance.",
       "input": "DescribeLocalGatewayRequest",
       "name": "Queries local gateways",
-      "output": "DescribeLocalGatewayResponse"
+      "output": "DescribeLocalGatewayResponse",
+      "status": "online"
     },
     "DescribeNatGatewayDestinationIpPortTranslationNatRules": {
       "document": "This API is used to query the array of objects of a NAT gateway's port forwarding rules.",
       "input": "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest",
       "name": "Queries the port forwarding rule of a NAT gateway",
-      "output": "DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse"
+      "output": "DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse",
+      "status": "online"
     },
     "DescribeNatGatewayDirectConnectGatewayRoute": {
       "document": "This API is used to query the routes between a NAT gateway and Direct Connect.",
       "input": "DescribeNatGatewayDirectConnectGatewayRouteRequest",
       "name": "Queries the routes between a NAT gateway and Direct Connect",
-      "output": "DescribeNatGatewayDirectConnectGatewayRouteResponse"
+      "output": "DescribeNatGatewayDirectConnectGatewayRouteResponse",
+      "status": "online"
     },
     "DescribeNatGatewaySourceIpTranslationNatRules": {
       "document": "This API is used to query the NAT gateway's SNAT forwarding rules.",
       "input": "DescribeNatGatewaySourceIpTranslationNatRulesRequest",
       "name": "Queries a NAT gateway's SNAT forwarding rules",
-      "output": "DescribeNatGatewaySourceIpTranslationNatRulesResponse"
+      "output": "DescribeNatGatewaySourceIpTranslationNatRulesResponse",
+      "status": "online"
     },
     "DescribeNatGateways": {
       "document": "This API is used to query NAT gateways.",
       "input": "DescribeNatGatewaysRequest",
       "name": "Queries NAT gateways",
-      "output": "DescribeNatGatewaysResponse"
+      "output": "DescribeNatGatewaysResponse",
+      "status": "online"
     },
     "DescribeNetDetectStates": {
       "document": "This API (DescribeNetDetectStates) is used to query the list of network detection verification results.",
       "input": "DescribeNetDetectStatesRequest",
       "name": "DescribeNetDetectStates",
-      "output": "DescribeNetDetectStatesResponse"
+      "output": "DescribeNetDetectStatesResponse",
+      "status": "online"
     },
     "DescribeNetDetects": {
       "document": "This API (DescribeNetDetects) is used to query the list of network detection instances.",
       "input": "DescribeNetDetectsRequest",
       "name": "DescribeNetDetects",
-      "output": "DescribeNetDetectsResponse"
+      "output": "DescribeNetDetectsResponse",
+      "status": "online"
     },
     "DescribeNetworkAclQuintupleEntries": {
       "document": "This API is used to query the list of in/outbound network ACL quintuple entries.",
       "input": "DescribeNetworkAclQuintupleEntriesRequest",
       "name": "Queries the list of the network ACL quintuple entries",
-      "output": "DescribeNetworkAclQuintupleEntriesResponse"
+      "output": "DescribeNetworkAclQuintupleEntriesResponse",
+      "status": "online"
     },
     "DescribeNetworkAcls": {
       "document": "This API is used to query a list of network ACLs.",
       "input": "DescribeNetworkAclsRequest",
       "name": "Queries a list of network ACLs",
-      "output": "DescribeNetworkAclsResponse"
+      "output": "DescribeNetworkAclsResponse",
+      "status": "online"
     },
     "DescribeNetworkInterfaceLimit": {
       "document": "This API (DescribeNetworkInterfaceLimit) is used to query the ENI quota based on the ID of CVM instance or ENI. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to the ENI.",
       "input": "DescribeNetworkInterfaceLimitRequest",
       "name": "DescribeNetworkInterfaceLimit",
-      "output": "DescribeNetworkInterfaceLimitResponse"
+      "output": "DescribeNetworkInterfaceLimitResponse",
+      "status": "online"
     },
     "DescribeNetworkInterfaces": {
       "document": "This API (DescribeNetworkInterfaces) is used to query the ENI list.",
       "input": "DescribeNetworkInterfacesRequest",
       "name": "Queries the ENI list",
-      "output": "DescribeNetworkInterfacesResponse"
+      "output": "DescribeNetworkInterfacesResponse",
+      "status": "online"
     },
     "DescribeRouteTables": {
       "document": " This API (DescribeRouteTables) is used to query route tables.",
       "input": "DescribeRouteTablesRequest",
       "name": "Queries the route table list",
-      "output": "DescribeRouteTablesResponse"
+      "output": "DescribeRouteTablesResponse",
+      "status": "online"
     },
     "DescribeSecurityGroupAssociationStatistics": {
       "document": "This API (DescribeSecurityGroupAssociationStatistics) is used to query statistics on the instances associated with a security group.",
       "input": "DescribeSecurityGroupAssociationStatisticsRequest",
       "name": "Queries statistics on the instances associated with a security group",
-      "output": "DescribeSecurityGroupAssociationStatisticsResponse"
+      "output": "DescribeSecurityGroupAssociationStatisticsResponse",
+      "status": "online"
     },
     "DescribeSecurityGroupPolicies": {
       "document": "This API (DescribeSecurityGroupPolicies) is used to query security group policies.",
       "input": "DescribeSecurityGroupPoliciesRequest",
       "name": "Queries security group policies",
-      "output": "DescribeSecurityGroupPoliciesResponse"
+      "output": "DescribeSecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "DescribeSecurityGroupReferences": {
       "document": "This API (DescribeSecurityGroupReferences) is used to query referred security groups.",
       "input": "DescribeSecurityGroupReferencesRequest",
       "name": "Queries referred security groups",
-      "output": "DescribeSecurityGroupReferencesResponse"
+      "output": "DescribeSecurityGroupReferencesResponse",
+      "status": "online"
     },
     "DescribeSecurityGroups": {
       "document": "This API (DescribeSecurityGroups) is used to query security groups.",
       "input": "DescribeSecurityGroupsRequest",
       "name": "Queries security groups",
-      "output": "DescribeSecurityGroupsResponse"
+      "output": "DescribeSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeServiceTemplateGroups": {
       "document": "This API (DescribeServiceTemplateGroups) is used to query a protocol port template group.",
       "input": "DescribeServiceTemplateGroupsRequest",
       "name": "Queries a protocol port template group",
-      "output": "DescribeServiceTemplateGroupsResponse"
+      "output": "DescribeServiceTemplateGroupsResponse",
+      "status": "online"
     },
     "DescribeServiceTemplates": {
       "document": "This API (DescribeServiceTemplates) is used to query protocol port templates.",
       "input": "DescribeServiceTemplatesRequest",
       "name": "Queries a protocol port template",
-      "output": "DescribeServiceTemplatesResponse"
+      "output": "DescribeServiceTemplatesResponse",
+      "status": "online"
     },
     "DescribeSubnets": {
       "document": "This API (DescribeSubnets) is used to query the list of subnets.",
       "input": "DescribeSubnetsRequest",
       "name": "Queries the subnet list",
-      "output": "DescribeSubnetsResponse"
+      "output": "DescribeSubnetsResponse",
+      "status": "online"
     },
     "DescribeTaskResult": {
       "document": "This API is used to query the EIP async job execution results.",
       "input": "DescribeTaskResultRequest",
       "name": "Queries the async job execution results",
-      "output": "DescribeTaskResultResponse"
+      "output": "DescribeTaskResultResponse",
+      "status": "online"
     },
     "DescribeTrafficPackages": {
       "document": "This API is used to query the details of shared traffic packages.",
       "input": "DescribeTrafficPackagesRequest",
       "name": "Queries the list of shared traffic packages",
-      "output": "DescribeTrafficPackagesResponse"
+      "output": "DescribeTrafficPackagesResponse",
+      "status": "online"
     },
     "DescribeVpcEndPoint": {
       "document": "This API is used to query the endpoint list.",
       "input": "DescribeVpcEndPointRequest",
       "name": "Queries the endpoint list",
-      "output": "DescribeVpcEndPointResponse"
+      "output": "DescribeVpcEndPointResponse",
+      "status": "online"
     },
     "DescribeVpcEndPointService": {
       "document": "This API is used to query the endpoint service list.",
       "input": "DescribeVpcEndPointServiceRequest",
       "name": "Queries the endpoint service list",
-      "output": "DescribeVpcEndPointServiceResponse"
+      "output": "DescribeVpcEndPointServiceResponse",
+      "status": "online"
     },
     "DescribeVpcEndPointServiceWhiteList": {
       "document": "This API is used to query the endpoint service allowlist.",
       "input": "DescribeVpcEndPointServiceWhiteListRequest",
       "name": "Queries the endpoint service allowlist",
-      "output": "DescribeVpcEndPointServiceWhiteListResponse"
+      "output": "DescribeVpcEndPointServiceWhiteListResponse",
+      "status": "online"
     },
     "DescribeVpcInstances": {
       "document": " This API (DescribeVpcInstances) is used to query a list of VCM instances on VPC.",
       "input": "DescribeVpcInstancesRequest",
       "name": "Queries a list of VCM instances on VPC",
-      "output": "DescribeVpcInstancesResponse"
+      "output": "DescribeVpcInstancesResponse",
+      "status": "online"
     },
     "DescribeVpcIpv6Addresses": {
       "document": "This API (DescribeVpcIpv6Addresses) is used to query `VPC` `IPv6` information.\nThis API is used to query only the information of `IPv6` addresses that are already in use. When querying IPs that have not yet been used, this API will not report an error, but the IPs will not appear in the returned results.",
       "input": "DescribeVpcIpv6AddressesRequest",
       "name": "Queries the IPv6 list of a VPC",
-      "output": "DescribeVpcIpv6AddressesResponse"
+      "output": "DescribeVpcIpv6AddressesResponse",
+      "status": "online"
     },
     "DescribeVpcPrivateIpAddresses": {
       "document": "This API (DescribeVpcPrivateIpAddresses) is used to query the private IP information of a VPC.<br />\nThis API is used to query only the information of IP addresses that are already in use. When querying IPs that have not yet been used, this API will not report an error, but the IPs will not appear in the returned results.",
       "input": "DescribeVpcPrivateIpAddressesRequest",
       "name": "Queries the private IP information of a VPC",
-      "output": "DescribeVpcPrivateIpAddressesResponse"
+      "output": "DescribeVpcPrivateIpAddressesResponse",
+      "status": "online"
     },
     "DescribeVpcResourceDashboard": {
       "document": "View VPC resources.",
       "input": "DescribeVpcResourceDashboardRequest",
       "name": "Views VPC resources.",
-      "output": "DescribeVpcResourceDashboardResponse"
+      "output": "DescribeVpcResourceDashboardResponse",
+      "status": "online"
     },
     "DescribeVpcTaskResult": {
       "document": "This API is used to query the execution result of a VPC task.",
       "input": "DescribeVpcTaskResultRequest",
       "name": "Queries VPC async task execution results",
-      "output": "DescribeVpcTaskResultResponse"
+      "output": "DescribeVpcTaskResultResponse",
+      "status": "online"
     },
     "DescribeVpcs": {
       "document": "This API (DescribeVpcs) is used to query the VPC list.",
       "input": "DescribeVpcsRequest",
       "name": "Queries the VPC list",
-      "output": "DescribeVpcsResponse"
+      "output": "DescribeVpcsResponse",
+      "status": "online"
     },
     "DescribeVpnConnections": {
       "document": " This API (DescribeVpnConnections) is used to query the VPN tunnel list.",
       "input": "DescribeVpnConnectionsRequest",
       "name": "Queries the VPN tunnel list",
-      "output": "DescribeVpnConnectionsResponse"
+      "output": "DescribeVpnConnectionsResponse",
+      "status": "online"
     },
     "DescribeVpnGatewayCcnRoutes": {
       "document": "This API (DescribeVpnGatewayCcnRoutes) is used to query VPN gateway-based CCN routes.",
       "input": "DescribeVpnGatewayCcnRoutesRequest",
       "name": "Querying VPN gateway-based CCN routes",
-      "output": "DescribeVpnGatewayCcnRoutesResponse"
+      "output": "DescribeVpnGatewayCcnRoutesResponse",
+      "status": "online"
     },
     "DescribeVpnGatewayRoutes": {
       "document": "This API is used to query destination routes of a route-based VPN gateway.",
       "input": "DescribeVpnGatewayRoutesRequest",
       "name": "Queries routes of a VPN gateway",
-      "output": "DescribeVpnGatewayRoutesResponse"
+      "output": "DescribeVpnGatewayRoutesResponse",
+      "status": "online"
     },
     "DescribeVpnGateways": {
       "document": "This API (DescribeVpnGateways) is used to query the VPN gateway list.",
       "input": "DescribeVpnGatewaysRequest",
       "name": "Queries VPN gateways",
-      "output": "DescribeVpnGatewaysResponse"
+      "output": "DescribeVpnGatewaysResponse",
+      "status": "online"
     },
     "DetachCcnInstances": {
       "document": "This API (DetachCcnInstances) is used to unbind a specified network instance from a CCN instance.<br />\nAfter unbinding the network instance, the corresponding routing policy will also be deleted.",
       "input": "DetachCcnInstancesRequest",
       "name": "Unbinds instances from a CCN",
-      "output": "DetachCcnInstancesResponse"
+      "output": "DetachCcnInstancesResponse",
+      "status": "online"
     },
     "DetachClassicLinkVpc": {
       "document": "This API is used to delete a Classiclink.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
       "input": "DetachClassicLinkVpcRequest",
       "name": "Deletes a Classiclink",
-      "output": "DetachClassicLinkVpcResponse"
+      "output": "DetachClassicLinkVpcResponse",
+      "status": "online"
     },
     "DetachNetworkInterface": {
       "document": "This API is used to unbind an ENI from a CVM.\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "DetachNetworkInterfaceRequest",
       "name": "Unbinds an ENI from a CVM",
-      "output": "DetachNetworkInterfaceResponse"
+      "output": "DetachNetworkInterfaceResponse",
+      "status": "online"
     },
     "DisableCcnRoutes": {
       "document": "This API (DisableCcnRoutes) is used to disable CCN routes that are already enabled.",
       "input": "DisableCcnRoutesRequest",
       "name": "Disables CCN routes",
-      "output": "DisableCcnRoutesResponse"
+      "output": "DisableCcnRoutesResponse",
+      "status": "online"
     },
     "DisableFlowLogs": {
       "document": "This API is used to disable flow log.",
       "input": "DisableFlowLogsRequest",
       "name": "Disables flow log",
-      "output": "DisableFlowLogsResponse"
+      "output": "DisableFlowLogsResponse",
+      "status": "online"
     },
     "DisableGatewayFlowMonitor": {
       "document": "This API is used to disable gateway traffic monitor.",
       "input": "DisableGatewayFlowMonitorRequest",
       "name": "Disables gateway traffic monitor",
-      "output": "DisableGatewayFlowMonitorResponse"
+      "output": "DisableGatewayFlowMonitorResponse",
+      "status": "online"
     },
     "DisassociateAddress": {
       "document": "This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* This API supports unbinding an EIP from CVM instances and ENIs.\n* This API does not support unbinding an EIP from a NAT Gateway. To unbind an EIP from a NAT Gateway, use the [`DisassociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/api/215/36716?from_cn_redirect=1) API.\n* Only EIPs in BIND or BIND_ENI status can be unbound.\n* Blocked EIPs cannot be unbound.",
       "input": "DisassociateAddressRequest",
       "name": "Unbinds an EIP",
-      "output": "DisassociateAddressResponse"
+      "output": "DisassociateAddressResponse",
+      "status": "online"
     },
     "DisassociateDirectConnectGatewayNatGateway": {
       "document": "This API is used to unbind a direct connect gateway from a NAT Gateway. After unbinding, the direct connect gateway cannot access internet through the NAT Gateway.",
       "input": "DisassociateDirectConnectGatewayNatGatewayRequest",
       "name": "Unbinds a direct connect gateway from a NAT Gateway",
-      "output": "DisassociateDirectConnectGatewayNatGatewayResponse"
+      "output": "DisassociateDirectConnectGatewayNatGatewayResponse",
+      "status": "online"
     },
     "DisassociateNatGatewayAddress": {
       "document": "This API is used to unbind an EIP from a NAT gateway.",
       "input": "DisassociateNatGatewayAddressRequest",
       "name": "Unbinds an EIP from a NAT gateway",
-      "output": "DisassociateNatGatewayAddressResponse"
+      "output": "DisassociateNatGatewayAddressResponse",
+      "status": "online"
     },
     "DisassociateNetworkAclSubnets": {
       "document": "This API is used to disassociate a network ACL from subnets in a VPC instance.",
       "input": "DisassociateNetworkAclSubnetsRequest",
       "name": "Disassociates a network ACL from a subnet",
-      "output": "DisassociateNetworkAclSubnetsResponse"
+      "output": "DisassociateNetworkAclSubnetsResponse",
+      "status": "online"
     },
     "DisassociateNetworkInterfaceSecurityGroups": {
       "document": "This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI.",
       "input": "DisassociateNetworkInterfaceSecurityGroupsRequest",
       "name": "Detaches a security group from an ENI.",
-      "output": "DisassociateNetworkInterfaceSecurityGroupsResponse"
+      "output": "DisassociateNetworkInterfaceSecurityGroupsResponse",
+      "status": "online"
     },
     "DisassociateVpcEndPointSecurityGroups": {
       "document": "This API is used to unbind an endpoint from a security group.",
       "input": "DisassociateVpcEndPointSecurityGroupsRequest",
       "name": "Unbinds an endpoint from a security group",
-      "output": "DisassociateVpcEndPointSecurityGroupsResponse"
+      "output": "DisassociateVpcEndPointSecurityGroupsResponse",
+      "status": "online"
     },
     "DownloadCustomerGatewayConfiguration": {
       "document": "This API (DownloadCustomerGatewayConfiguration) is used to download a VPN tunnel configuration.",
       "input": "DownloadCustomerGatewayConfigurationRequest",
       "name": "Downloads a VPN tunnel configuration",
-      "output": "DownloadCustomerGatewayConfigurationResponse"
+      "output": "DownloadCustomerGatewayConfigurationResponse",
+      "status": "online"
     },
     "EnableCcnRoutes": {
       "document": "This API (EnableCcnRoutes) is used to enable CCN routes that are already added.<br />\nThis API is used to verify whether there will be conflict with an existing route after a CCN route is enabled. If there is a conflict, the route will not be enabled, and the process will fail. When a conflict occurs, you must disable the conflicting route before you can enable the desired route.",
       "input": "EnableCcnRoutesRequest",
       "name": "Enables CCN routes",
-      "output": "EnableCcnRoutesResponse"
+      "output": "EnableCcnRoutesResponse",
+      "status": "online"
     },
     "EnableFlowLogs": {
       "document": "This API is used to enable flow log.",
       "input": "EnableFlowLogsRequest",
       "name": "Enables flow log",
-      "output": "EnableFlowLogsResponse"
+      "output": "EnableFlowLogsResponse",
+      "status": "online"
     },
     "EnableGatewayFlowMonitor": {
       "document": "This API is used to enable gateway traffic monitor.",
       "input": "EnableGatewayFlowMonitorRequest",
       "name": "Enables gateway traffic monitor",
-      "output": "EnableGatewayFlowMonitorResponse"
+      "output": "EnableGatewayFlowMonitorResponse",
+      "status": "online"
     },
     "EnableVpcEndPointConnect": {
       "document": "This API is used to determine whether to accept the request of connecting with an endpoint.",
       "input": "EnableVpcEndPointConnectRequest",
       "name": "Determines whether to accept the request of connecting with an endpoint",
-      "output": "EnableVpcEndPointConnectResponse"
+      "output": "EnableVpcEndPointConnectResponse",
+      "status": "online"
     },
     "GetCcnRegionBandwidthLimits": {
       "document": "This API is used to query the bandwidth limits of a CCN instance. Monthly-subscribed CCNs only support Inter-region Bandwidth Limits, while the pay-as-you-go CCNs support both the Inter-region Bandwidth Limits and Region Outbound Bandwidth Limits. ",
       "input": "GetCcnRegionBandwidthLimitsRequest",
       "name": "Queries the inter-region bandwidth limits of a CCN ",
-      "output": "GetCcnRegionBandwidthLimitsResponse"
+      "output": "GetCcnRegionBandwidthLimitsResponse",
+      "status": "online"
     },
     "HaVipAssociateAddressIp": {
       "document": "This API is used to bind an EIP to an HAVIP. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "HaVipAssociateAddressIpRequest",
       "name": "Binds an EIP to an HAVIP",
-      "output": "HaVipAssociateAddressIpResponse"
+      "output": "HaVipAssociateAddressIpResponse",
+      "status": "online"
     },
     "HaVipDisassociateAddressIp": {
       "document": "This API is used to unbind an EIP from an HAVIP. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "HaVipDisassociateAddressIpRequest",
       "name": "Unbinds an EIP from HAVIP",
-      "output": "HaVipDisassociateAddressIpResponse"
+      "output": "HaVipDisassociateAddressIpResponse",
+      "status": "online"
     },
     "InquirePriceCreateDirectConnectGateway": {
       "document": "This API is used to query the price of creating a direct connect gateway.",
       "input": "InquirePriceCreateDirectConnectGatewayRequest",
       "name": "Queries the price of creating a direct connect gateway",
-      "output": "InquirePriceCreateDirectConnectGatewayResponse"
+      "output": "InquirePriceCreateDirectConnectGatewayResponse",
+      "status": "online"
     },
     "InquiryPriceRenewVpnGateway": {
       "document": "This API (InquiryPriceRenewVpnGateway) is used to query the price for VPN gateway renewal. Currently, only querying prices for IPSEC-type gateways is supported.",
       "input": "InquiryPriceRenewVpnGatewayRequest",
       "name": "Queries the price for VPN gateway renewal",
-      "output": "InquiryPriceRenewVpnGatewayResponse"
+      "output": "InquiryPriceRenewVpnGatewayResponse",
+      "status": "online"
     },
     "InquiryPriceResetVpnGatewayInternetMaxBandwidth": {
       "document": "This API (InquiryPriceResetVpnGatewayInternetMaxBandwidth) is used to query the price for adjusting the bandwidth cap of a VPN gateway.",
       "input": "InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest",
       "name": "Queries the price for adjusting the bandwidth cap of a VPN gateway",
-      "output": "InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse"
+      "output": "InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse",
+      "status": "online"
     },
     "MigrateNetworkInterface": {
       "document": "This API is used to migrate ENIs.\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "MigrateNetworkInterfaceRequest",
       "name": "Migrates an ENI",
-      "output": "MigrateNetworkInterfaceResponse"
+      "output": "MigrateNetworkInterfaceResponse",
+      "status": "online"
     },
     "MigratePrivateIpAddress": {
       "document": " This API is used to migrate the private IPs between ENIs.\n* This API is used to migrate a private IP from one ENI to another. Primary IPs cannot be migrated.\n* The source and destination ENIs must be in the same subnet.  \n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "MigratePrivateIpAddressRequest",
       "name": "Migrates private IPs of an ENI",
-      "output": "MigratePrivateIpAddressResponse"
+      "output": "MigratePrivateIpAddressResponse",
+      "status": "online"
     },
     "ModifyAddressAttribute": {
       "document": "This API (ModifyAddressAttribute) is used to modify the name of an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).",
       "input": "ModifyAddressAttributeRequest",
       "name": "Modifies EIP attributes",
-      "output": "ModifyAddressAttributeResponse"
+      "output": "ModifyAddressAttributeResponse",
+      "status": "online"
     },
     "ModifyAddressInternetChargeType": {
       "document": "This API is used to adjust the network billing mode of an EIP. Please note that it's available to users whose network fees are billed on IPs but not CVMs.\n* The network billing mode can be switched between `BANDWIDTH_PREPAID_BY_MONTH` and `TRAFFIC_POSTPAID_BY_HOUR`.\n* The network billing mode for each EIP be changed for up to twice.",
       "input": "ModifyAddressInternetChargeTypeRequest",
       "name": "Adjusts EIP billing modes",
-      "output": "ModifyAddressInternetChargeTypeResponse"
+      "output": "ModifyAddressInternetChargeTypeResponse",
+      "status": "online"
     },
     "ModifyAddressTemplateAttribute": {
       "document": "This API (ModifyAddressTemplateAttribute) is used to modify an IP address template.",
       "input": "ModifyAddressTemplateAttributeRequest",
       "name": "Modifies an IP address template",
-      "output": "ModifyAddressTemplateAttributeResponse"
+      "output": "ModifyAddressTemplateAttributeResponse",
+      "status": "online"
     },
     "ModifyAddressTemplateGroupAttribute": {
       "document": "This API (ModifyAddressTemplateGroupAttribute) is used to modify an IP address template group.",
       "input": "ModifyAddressTemplateGroupAttributeRequest",
       "name": "Modifies an IP address template group",
-      "output": "ModifyAddressTemplateGroupAttributeResponse"
+      "output": "ModifyAddressTemplateGroupAttributeResponse",
+      "status": "online"
     },
     "ModifyAddressesBandwidth": {
       "document": "This API is used to adjust the bandwidth of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), including EIP billed on a pay-as-you-go, monthly subscription, and bandwidth package basis.",
       "input": "ModifyAddressesBandwidthRequest",
       "name": "Modifies the EIP bandwidth",
-      "output": "ModifyAddressesBandwidthResponse"
+      "output": "ModifyAddressesBandwidthResponse",
+      "status": "online"
     },
     "ModifyAssistantCidr": {
       "document": "This API is used to batch modify (add or delete) secondary CIDR blocks.",
       "input": "ModifyAssistantCidrRequest",
       "name": "Modifies secondary CIDR blocks",
-      "output": "ModifyAssistantCidrResponse"
+      "output": "ModifyAssistantCidrResponse",
+      "status": "online"
     },
     "ModifyBandwidthPackageAttribute": {
       "document": "This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on.",
       "input": "ModifyBandwidthPackageAttributeRequest",
       "name": "Modifies the attributes of a bandwidth package",
-      "output": "ModifyBandwidthPackageAttributeResponse"
+      "output": "ModifyBandwidthPackageAttributeResponse",
+      "status": "online"
     },
     "ModifyCcnAttachedInstancesAttribute": {
       "document": "This API is used to modify CCN-associated instance attributes. Currently, only the `description` can be modified.",
       "input": "ModifyCcnAttachedInstancesAttributeRequest",
       "name": "Modifies CCN-associated instance attributes",
-      "output": "ModifyCcnAttachedInstancesAttributeResponse"
+      "output": "ModifyCcnAttachedInstancesAttributeResponse",
+      "status": "online"
     },
     "ModifyCcnAttribute": {
       "document": "This API (ModifyCcnAttribute) is used to modify CCN attributes.",
       "input": "ModifyCcnAttributeRequest",
       "name": "Modifies CCN attributes",
-      "output": "ModifyCcnAttributeResponse"
+      "output": "ModifyCcnAttributeResponse",
+      "status": "online"
     },
     "ModifyCcnRegionBandwidthLimitsType": {
       "document": "This API is used to modify the bandwidth limit policy of a postpaid CCN instance.",
       "input": "ModifyCcnRegionBandwidthLimitsTypeRequest",
       "name": "Modifies the bandwidth limit policy of a postpaid instance",
-      "output": "ModifyCcnRegionBandwidthLimitsTypeResponse"
+      "output": "ModifyCcnRegionBandwidthLimitsTypeResponse",
+      "status": "online"
     },
     "ModifyCustomerGatewayAttribute": {
       "document": "This API (ModifyCustomerGatewayAttribute) is used to modify the customer gateway information.",
       "input": "ModifyCustomerGatewayAttributeRequest",
       "name": "Modifies a customer gateway",
-      "output": "ModifyCustomerGatewayAttributeResponse"
+      "output": "ModifyCustomerGatewayAttributeResponse",
+      "status": "online"
     },
     "ModifyDirectConnectGatewayAttribute": {
       "document": "This API is used to modify the attributes of a direct connect gateway.\n",
       "input": "ModifyDirectConnectGatewayAttributeRequest",
       "name": "Modifies the attributes of a direct connect gateway",
-      "output": "ModifyDirectConnectGatewayAttributeResponse"
+      "output": "ModifyDirectConnectGatewayAttributeResponse",
+      "status": "online"
     },
     "ModifyFlowLogAttribute": {
       "document": "This API is used to modify the attributes of a flow log.",
       "input": "ModifyFlowLogAttributeRequest",
       "name": "Modifies the attributes of a flow log",
-      "output": "ModifyFlowLogAttributeResponse"
+      "output": "ModifyFlowLogAttributeResponse",
+      "status": "online"
     },
     "ModifyGatewayFlowQos": {
       "document": "This API is used to adjust the bandwidth limit of a gateway.",
       "input": "ModifyGatewayFlowQosRequest",
       "name": "Adjusts the bandwidth limit of a gateway",
-      "output": "ModifyGatewayFlowQosResponse"
+      "output": "ModifyGatewayFlowQosResponse",
+      "status": "online"
     },
     "ModifyHaVipAttribute": {
       "document": "This API (ModifyHaVipAttribute) is used to modify HAVIP attributes.",
       "input": "ModifyHaVipAttributeRequest",
       "name": "Modifies HAVIP attributes",
-      "output": "ModifyHaVipAttributeResponse"
+      "output": "ModifyHaVipAttributeResponse",
+      "status": "online"
     },
     "ModifyIpv6AddressesAttribute": {
       "document": "This API (ModifyIpv6AddressesAttribute) is used to modify the private IPv6 address attributes of an ENI.",
       "input": "ModifyIpv6AddressesAttributeRequest",
       "name": "Modifies the IPv6 address attributes of an ENI",
-      "output": "ModifyIpv6AddressesAttributeResponse"
+      "output": "ModifyIpv6AddressesAttributeResponse",
+      "status": "online"
     },
     "ModifyLocalGateway": {
       "document": "This API is used to modify the local gateway of a CDC instance.",
       "input": "ModifyLocalGatewayRequest",
       "name": "Modifies a local gateway",
-      "output": "ModifyLocalGatewayResponse"
+      "output": "ModifyLocalGatewayResponse",
+      "status": "online"
     },
     "ModifyNatGatewayAttribute": {
       "document": "This API is used to modify the attributes of a NAT gateway.",
       "input": "ModifyNatGatewayAttributeRequest",
       "name": "Modifies the attributes of a NAT gateway",
-      "output": "ModifyNatGatewayAttributeResponse"
+      "output": "ModifyNatGatewayAttributeResponse",
+      "status": "online"
     },
     "ModifyNatGatewayDestinationIpPortTranslationNatRule": {
       "document": "This API is used to modify the port forwarding rule of a NAT gateway.",
       "input": "ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest",
       "name": "Modifies the port forwarding rule of a NAT gateway",
-      "output": "ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse"
+      "output": "ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse",
+      "status": "online"
     },
     "ModifyNatGatewaySourceIpTranslationNatRule": {
       "document": "This API is used to modify a NAT gateway's SNAT forwarding rules.",
       "input": "ModifyNatGatewaySourceIpTranslationNatRuleRequest",
       "name": "Modifies a NAT gateway's SNAT forwarding rules",
-      "output": "ModifyNatGatewaySourceIpTranslationNatRuleResponse"
+      "output": "ModifyNatGatewaySourceIpTranslationNatRuleResponse",
+      "status": "online"
     },
     "ModifyNetDetect": {
       "document": "This API (ModifyNetDetect) is used to modify network detection parameters.",
       "input": "ModifyNetDetectRequest",
       "name": "ModifyNetDetect",
-      "output": "ModifyNetDetectResponse"
+      "output": "ModifyNetDetectResponse",
+      "status": "online"
     },
     "ModifyNetworkAclAttribute": {
       "document": "This API is used to modify the attributes of a network ACL.",
       "input": "ModifyNetworkAclAttributeRequest",
       "name": "Modifies network ACL attributes",
-      "output": "ModifyNetworkAclAttributeResponse"
+      "output": "ModifyNetworkAclAttributeResponse",
+      "status": "online"
     },
     "ModifyNetworkAclEntries": {
       "document": "This API is used to modify (add or delete) the inbound and outbound rules of a network ACL. In `NetworkAclEntrySet` parameters,\n* Passing in the new inbound/outbound rules will reset the original rules.\n* Passing in the inbound rules will only reset the original inbound rules and not affect the original outbound rules, and vice versa.",
       "input": "ModifyNetworkAclEntriesRequest",
       "name": "Modifies network ACL rules",
-      "output": "ModifyNetworkAclEntriesResponse"
+      "output": "ModifyNetworkAclEntriesResponse",
+      "status": "online"
     },
     "ModifyNetworkAclQuintupleEntries": {
       "document": "This API is used to modify the in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.",
       "input": "ModifyNetworkAclQuintupleEntriesRequest",
       "name": "Updates the network ACL quintuple rules incrementally",
-      "output": "ModifyNetworkAclQuintupleEntriesResponse"
+      "output": "ModifyNetworkAclQuintupleEntriesResponse",
+      "status": "online"
     },
     "ModifyNetworkInterfaceAttribute": {
       "document": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes.",
       "input": "ModifyNetworkInterfaceAttributeRequest",
       "name": "Modifies an ENI",
-      "output": "ModifyNetworkInterfaceAttributeResponse"
+      "output": "ModifyNetworkInterfaceAttributeResponse",
+      "status": "online"
     },
     "ModifyPrivateIpAddressesAttribute": {
       "document": "This API (ModifyPrivateIpAddressesAttribute) is used to modify the private IP attributes of an ENI.",
       "input": "ModifyPrivateIpAddressesAttributeRequest",
       "name": "Modifies the private IP information of an ENI",
-      "output": "ModifyPrivateIpAddressesAttributeResponse"
+      "output": "ModifyPrivateIpAddressesAttributeResponse",
+      "status": "online"
     },
     "ModifyRouteTableAttribute": {
       "document": "This API (ModifyRouteTableAttribute) is used to modify the attributes of a route table.",
       "input": "ModifyRouteTableAttributeRequest",
       "name": "Modifies route table attributes",
-      "output": "ModifyRouteTableAttributeResponse"
+      "output": "ModifyRouteTableAttributeResponse",
+      "status": "online"
     },
     "ModifySecurityGroupAttribute": {
       "document": "This API (ModifySecurityGroupAttribute) is used to modify the attributes of a security group (SecurityGroupPolicy).",
       "input": "ModifySecurityGroupAttributeRequest",
       "name": "Modifies security group attributes",
-      "output": "ModifySecurityGroupAttributeResponse"
+      "output": "ModifySecurityGroupAttributeResponse",
+      "status": "online"
     },
     "ModifySecurityGroupPolicies": {
       "document": "This API is used to reset the `Egress` and `Ingress` rules (SecurityGroupPolicy) of a security group.\n\n<ul>\n<li>This API does not support custom indexes <code>PolicyIndex</code>. </li>\n<li>For <code>SecurityGroupPolicySet</code> parameter,<ul> <ul>\n\t<li>If <code>SecurityGroupPolicySet.Version</code> is set to `0`, all policies will be cleared, and <code>Egress</code> and <code>Ingress</code> will be ignored. </li>\n\t<li>If <code>SecurityGroupPolicySet.Version</code> is not set to `0`, add <code>Egress</code> and <code>Ingress</code> policies: <ul>\n\t\t<li><code>Protocol</code>: <code>TCP</code>, <code>UDP</code>, <code>ICMP</code>, <code>ICMPV6</code>, <code>GRE</code>, or <code>ALL</code>. </li>\n\t\t<li><code>CidrBlock</code>: a CIDR block in the correct format. In the classic network, even if the CIDR block specified in <code>CidrBlock</code> contains the Tencent Cloud private IPs that are not using for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups. </li>\n\t\t<li><code>Ipv6CidrBlock</code>: an IPv6 CIDR block in the correct format. In the classic network, even if the CIDR block specified in <code>Ipv6CidrBlock</code> contains the Tencent Cloud private IPv6 addresses that are not using for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups. </li>\n\t\t<li><code>SecurityGroupId</code>: ID of the security group. It can be the ID of a security group to be modified, or the ID of another security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don't need to change it manually. </li>\n\t\t<li><code>Port</code>: a single port number such as 80, or a port range in the format of '8000-8010'.  You may use this field only if the <code>Protocol</code> field takes the value <code>TCP</code> or <code>UDP</code>. </li>\n\t\t<li><code>Action</code>: only allows <code>ACCEPT</code> or <code>DROP</code>. </li>\n\t\t<li><code>CidrBlock</code>, <code>Ipv6CidrBlock</code>, <code>SecurityGroupId</code>, and <code>AddressTemplate</code> are mutually exclusive. <code>Protocol</code> + <code>Port</code> and <code>ServiceTemplate</code> are mutually exclusive.</li> </li>\n</ul></li></ul></li>\n</ul>",
       "input": "ModifySecurityGroupPoliciesRequest",
       "name": "Modifies the outbound and inbound policies of a security group",
-      "output": "ModifySecurityGroupPoliciesResponse"
+      "output": "ModifySecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "ModifyServiceTemplateAttribute": {
       "document": "This API (ModifyServiceTemplateAttribute) is used to modify a protocol port template.",
       "input": "ModifyServiceTemplateAttributeRequest",
       "name": "Modifies a protocol port template",
-      "output": "ModifyServiceTemplateAttributeResponse"
+      "output": "ModifyServiceTemplateAttributeResponse",
+      "status": "online"
     },
     "ModifyServiceTemplateGroupAttribute": {
       "document": "This API (ModifyServiceTemplateGroupAttribute) is used to modify a protocol port template group.",
       "input": "ModifyServiceTemplateGroupAttributeRequest",
       "name": "Modifies a protocol port template group",
-      "output": "ModifyServiceTemplateGroupAttributeResponse"
+      "output": "ModifyServiceTemplateGroupAttributeResponse",
+      "status": "online"
     },
     "ModifySubnetAttribute": {
       "document": "This API (ModifySubnetAttribute) is used to modify subnet attributes.",
       "input": "ModifySubnetAttributeRequest",
       "name": "Modifies subnet attributes",
-      "output": "ModifySubnetAttributeResponse"
+      "output": "ModifySubnetAttributeResponse",
+      "status": "online"
     },
     "ModifyVpcAttribute": {
       "document": "This API (ModifyVpcAttribute) is used to modify VPC attributes.",
       "input": "ModifyVpcAttributeRequest",
       "name": "Modifies VPC attributes",
-      "output": "ModifyVpcAttributeResponse"
+      "output": "ModifyVpcAttributeResponse",
+      "status": "online"
     },
     "ModifyVpcEndPointAttribute": {
       "document": "This API is used to modify endpoint attributes.",
       "input": "ModifyVpcEndPointAttributeRequest",
       "name": "Modifies endpoint attributes",
-      "output": "ModifyVpcEndPointAttributeResponse"
+      "output": "ModifyVpcEndPointAttributeResponse",
+      "status": "online"
     },
     "ModifyVpcEndPointServiceAttribute": {
       "document": "This API is used to modify the VPC endpoint service attributes.\n\n",
       "input": "ModifyVpcEndPointServiceAttributeRequest",
       "name": "Modifies endpoint service attributes",
-      "output": "ModifyVpcEndPointServiceAttributeResponse"
+      "output": "ModifyVpcEndPointServiceAttributeResponse",
+      "status": "online"
     },
     "ModifyVpcEndPointServiceWhiteList": {
       "document": "This API is used to modify the attributes of the endpoint service allowlist.",
       "input": "ModifyVpcEndPointServiceWhiteListRequest",
       "name": "Modifies the attributes of the endpoint service allowlist",
-      "output": "ModifyVpcEndPointServiceWhiteListResponse"
+      "output": "ModifyVpcEndPointServiceWhiteListResponse",
+      "status": "online"
     },
     "ModifyVpnConnectionAttribute": {
       "document": "This API (ModifyVpnConnectionAttribute) is used to modify VPN tunnels.",
       "input": "ModifyVpnConnectionAttributeRequest",
       "name": "Modifies the VPN tunnel",
-      "output": "ModifyVpnConnectionAttributeResponse"
+      "output": "ModifyVpnConnectionAttributeResponse",
+      "status": "online"
     },
     "ModifyVpnGatewayAttribute": {
       "document": "This API (ModifyVpnGatewayAttribute) is used to modify the attributes of VPN gateways.",
       "input": "ModifyVpnGatewayAttributeRequest",
       "name": "Modifies VPN gateway attributes",
-      "output": "ModifyVpnGatewayAttributeResponse"
+      "output": "ModifyVpnGatewayAttributeResponse",
+      "status": "online"
     },
     "ModifyVpnGatewayCcnRoutes": {
       "document": "This API (ModifyVpnGatewayCcnRoutes) is used to modify VPN gateway-based CCN routes.",
       "input": "ModifyVpnGatewayCcnRoutesRequest",
       "name": "Modifying VPN gateway-based CCN routes",
-      "output": "ModifyVpnGatewayCcnRoutesResponse"
+      "output": "ModifyVpnGatewayCcnRoutesResponse",
+      "status": "online"
     },
     "ModifyVpnGatewayRoutes": {
       "document": "This API is used to modify the route status of a VPN gateway.",
       "input": "ModifyVpnGatewayRoutesRequest",
       "name": "Modifies the route status of a VPN gateway",
-      "output": "ModifyVpnGatewayRoutesResponse"
+      "output": "ModifyVpnGatewayRoutesResponse",
+      "status": "online"
     },
     "NotifyRoutes": {
       "document": "This API is used to publish a route to CCN. This can also be done by clicking \"Publish to CCN\" in the operation column on the page of route table list.",
       "input": "NotifyRoutesRequest",
       "name": "Publishes a route to CCN",
-      "output": "NotifyRoutesResponse"
+      "output": "NotifyRoutesResponse",
+      "status": "online"
     },
     "RefreshDirectConnectGatewayRouteToNatGateway": {
       "document": "This API is used to refresh the route between a NAT gateway and  Direct Connect and update the associated route table.",
       "input": "RefreshDirectConnectGatewayRouteToNatGatewayRequest",
       "name": "Refreshes the routes of a NAT gateway associated with Direct Connect",
-      "output": "RefreshDirectConnectGatewayRouteToNatGatewayResponse"
+      "output": "RefreshDirectConnectGatewayRouteToNatGatewayResponse",
+      "status": "online"
     },
     "RejectAttachCcnInstances": {
       "document": "This API (RejectAttachCcnInstances) is used to reject association operations when instances are associated across accounts for the CCN owner.\n",
       "input": "RejectAttachCcnInstancesRequest",
       "name": "Rejects instance association",
-      "output": "RejectAttachCcnInstancesResponse"
+      "output": "RejectAttachCcnInstancesResponse",
+      "status": "online"
     },
     "ReleaseAddresses": {
       "document": "This API (ReleaseAddresses) is used to release one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).\n* This operation is irreversible. Once you release an EIP, the IP address associated with the EIP no longer belongs to you.\n* Only EIPs in UNBIND status can be released.",
       "input": "ReleaseAddressesRequest",
       "name": "Releases the EIP",
-      "output": "ReleaseAddressesResponse"
+      "output": "ReleaseAddressesResponse",
+      "status": "online"
     },
     "RemoveBandwidthPackageResources": {
       "document": "This API is used to delete a bandwidth package resource, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on.",
       "input": "RemoveBandwidthPackageResourcesRequest",
       "name": "Deletes a bandwidth package resource",
-      "output": "RemoveBandwidthPackageResourcesResponse"
+      "output": "RemoveBandwidthPackageResourcesResponse",
+      "status": "online"
     },
     "RenewVpnGateway": {
       "document": "This API (RenewVpnGateway) is used to renew prepaid (monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported.",
       "input": "RenewVpnGatewayRequest",
       "name": "Renews a VPN gateway",
-      "output": "RenewVpnGatewayResponse"
+      "output": "RenewVpnGatewayResponse",
+      "status": "online"
     },
     "ReplaceDirectConnectGatewayCcnRoutes": {
       "document": "This API (ReplaceDirectConnectGatewayCcnRoutes) is used to modify the specified route according to the route ID. Batch modification is supported.",
       "input": "ReplaceDirectConnectGatewayCcnRoutesRequest",
       "name": "Replaces the CCN routes of a Direct Connect gateway",
-      "output": "ReplaceDirectConnectGatewayCcnRoutesResponse"
+      "output": "ReplaceDirectConnectGatewayCcnRoutesResponse",
+      "status": "online"
     },
     "ReplaceRouteTableAssociation": {
       "document": "This API (ReplaceRouteTableAssociation) is used to modify the route table associated with a subnet.\n* A subnet can only be associated with one route table.",
       "input": "ReplaceRouteTableAssociationRequest",
       "name": "Replaces the association relation of a route table",
-      "output": "ReplaceRouteTableAssociationResponse"
+      "output": "ReplaceRouteTableAssociationResponse",
+      "status": "online"
     },
     "ReplaceRoutes": {
       "document": "This API (ReplaceRoutes) is used to modify a specified routing policy by its ID (RouteId). Batch modification is supported.",
       "input": "ReplaceRoutesRequest",
       "name": "Replaces a routing policy",
-      "output": "ReplaceRoutesResponse"
+      "output": "ReplaceRoutesResponse",
+      "status": "online"
     },
     "ReplaceSecurityGroupPolicy": {
       "document": "This API (ReplaceSecurityGroupPolicy) is used to replace a single security group policy (SecurityGroupPolicy).\nOnly one policy in a single direction can be replaced in each request, and the PolicyIndex parameter must be specified.",
       "input": "ReplaceSecurityGroupPolicyRequest",
       "name": "Replaces a single security group rule",
-      "output": "ReplaceSecurityGroupPolicyResponse"
+      "output": "ReplaceSecurityGroupPolicyResponse",
+      "status": "online"
     },
     "ResetAttachCcnInstances": {
       "document": "This API (ResetAttachCcnInstances) is used to re-apply for the association operation when the application for cross-account instance association expires.",
       "input": "ResetAttachCcnInstancesRequest",
       "name": "Re-applies for the instance association",
-      "output": "ResetAttachCcnInstancesResponse"
+      "output": "ResetAttachCcnInstancesResponse",
+      "status": "online"
     },
     "ResetNatGatewayConnection": {
       "document": "This API is used to adjust concurrent connection cap for the NAT gateway.",
       "input": "ResetNatGatewayConnectionRequest",
       "name": "Adjusts the concurrent connection cap for the NAT gateway",
-      "output": "ResetNatGatewayConnectionResponse"
+      "output": "ResetNatGatewayConnectionResponse",
+      "status": "online"
     },
     "ResetRoutes": {
       "document": "This API (ResetRoutes) is used to reset the name of a route table and all its routing policies.<br />\nNote: When this API is called, all routing policies in the current route table are deleted before new routing policies are saved, which may incur network interruption.",
       "input": "ResetRoutesRequest",
       "name": "Resets the names and routing policies of route tables",
-      "output": "ResetRoutesResponse"
+      "output": "ResetRoutesResponse",
+      "status": "online"
     },
     "ResetVpnConnection": {
       "document": "The API (ResetVpnConnection) is used to reset VPN tunnels.",
       "input": "ResetVpnConnectionRequest",
       "name": "Resets a VPN tunnel",
-      "output": "ResetVpnConnectionResponse"
+      "output": "ResetVpnConnectionResponse",
+      "status": "online"
     },
     "ResetVpnGatewayInternetMaxBandwidth": {
       "document": "This API (ResetVpnGatewayInternetMaxBandwidth) is used to adjust the bandwidth cap of VPN gateways. Currently, only configuration upgrade is supported. VPN gateways with monthly subscription must be within the validity period.",
       "input": "ResetVpnGatewayInternetMaxBandwidthRequest",
       "name": "Adjusts the bandwidth cap of a VPN gateway",
-      "output": "ResetVpnGatewayInternetMaxBandwidthResponse"
+      "output": "ResetVpnGatewayInternetMaxBandwidthResponse",
+      "status": "online"
     },
     "ReturnNormalAddresses": {
       "document": "This API is used to unbind and release public IPs. \nNote: Starting from Dec 15, 2022, CAM authorization is required for a sub-account to call this API. For more details, see [Authorization Guide](https://intl.cloud.tencent.com/document/product/598/34545?from_cn_redirect=1).",
       "input": "ReturnNormalAddressesRequest",
       "name": "Unbinds and releases public IPs",
-      "output": "ReturnNormalAddressesResponse"
+      "output": "ReturnNormalAddressesResponse",
+      "status": "online"
     },
     "SetCcnRegionBandwidthLimits": {
       "document": "This API (SetCcnRegionBandwidthLimits) is used to set the outbound bandwidth cap for CCNs in each region. This API can only set the outbound bandwidth cap for regions in the network instances that have already been associated.",
       "input": "SetCcnRegionBandwidthLimitsRequest",
       "name": "Sets the outbound bandwidth cap of each CCN region",
-      "output": "SetCcnRegionBandwidthLimitsResponse"
+      "output": "SetCcnRegionBandwidthLimitsResponse",
+      "status": "online"
     },
     "SetVpnGatewaysRenewFlag": {
       "document": "This API is used to specify whether to enable auto-renewal for the VPN gateway.",
       "input": "SetVpnGatewaysRenewFlagRequest",
       "name": "Specifies whether to enable auto-renewal for the VPN gateway",
-      "output": "SetVpnGatewaysRenewFlagResponse"
+      "output": "SetVpnGatewaysRenewFlagResponse",
+      "status": "online"
     },
     "TransformAddress": {
       "document": "This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* Tencent Cloud limits the number of times that a user can unbind EIPs and reassign public IPs in each region per day. For more information, see product introduction of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). The preceding quota can be obtained through the API [DescribeAddressQuota](https://intl.cloud.tencent.com/document/product/215/16701).",
       "input": "TransformAddressRequest",
       "name": "Switches an ordinary IP to an EIP",
-      "output": "TransformAddressResponse"
+      "output": "TransformAddressResponse",
+      "status": "online"
     },
     "UnassignIpv6Addresses": {
       "document": "This API is used to release the IPv6 addresses of an ENI. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "UnassignIpv6AddressesRequest",
       "name": "Releases IPv6 addresses",
-      "output": "UnassignIpv6AddressesResponse"
+      "output": "UnassignIpv6AddressesResponse",
+      "status": "online"
     },
     "UnassignIpv6CidrBlock": {
       "document": "This API (UnassignIpv6CidrBlock) is used to release IPv6 IP ranges.\nIf the IP range still has occupied IPs that are not yet repossessed, the IP range cannot be released.",
       "input": "UnassignIpv6CidrBlockRequest",
       "name": "Releases IPv6 IP range",
-      "output": "UnassignIpv6CidrBlockResponse"
+      "output": "UnassignIpv6CidrBlockResponse",
+      "status": "online"
     },
     "UnassignIpv6SubnetCidrBlock": {
       "document": "This API (UnassignIpv6SubnetCidrBlock) is used to release IPv6 subnet IP ranges.\nIf the subnet IP range still has occupied IPs that are not yet repossessed, the subnet IP range cannot be released.",
       "input": "UnassignIpv6SubnetCidrBlockRequest",
       "name": "Releases the IPv6 subnet IP range",
-      "output": "UnassignIpv6SubnetCidrBlockResponse"
+      "output": "UnassignIpv6SubnetCidrBlockResponse",
+      "status": "online"
     },
     "UnassignPrivateIpAddresses": {
       "document": "This API is used to return the private IP addresses of an ENI.\n* If a secondary private IP of an ENI is returned, the EIP will be automatically unassociated as well. The primary private IP of the ENI cannot be returned.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "UnassignPrivateIpAddressesRequest",
       "name": "Returns the private IPs of an ENI",
-      "output": "UnassignPrivateIpAddressesResponse"
+      "output": "UnassignPrivateIpAddressesResponse",
+      "status": "online"
     },
     "WithdrawNotifyRoutes": {
       "document": "This API is used to withdraw a route from CCN. ",
       "input": "WithdrawNotifyRoutesRequest",
       "name": "Withdraws a route from CCN",
-      "output": "WithdrawNotifyRoutesResponse"
+      "output": "WithdrawNotifyRoutesResponse",
+      "status": "online"
     }
   },
   "metadata": {

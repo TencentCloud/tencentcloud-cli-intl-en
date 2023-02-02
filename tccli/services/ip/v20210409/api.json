@@ -4,37 +4,43 @@
       "document": "This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.\n1. The credit is valid permanently and will not be zeroed regularly.\n2. The customer's service will be suspended when its available credit sets to 0, so caution should be exercised with this operation.\n3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.\n4. The set credit is an increase to the current available credit and cannot exceed the remaining allocable credit. Setting the credit to a negative value indicates to repossess it. The available credit can be set to 0 at the minimum.",
       "input": "AllocateCustomerCreditRequest",
       "name": "Allocates credit to customers by a partner",
-      "output": "AllocateCustomerCreditResponse"
+      "output": "AllocateCustomerCreditResponse",
+      "status": "online"
     },
     "CreateAccount": {
       "document": "This API is used to create a Tencent Cloud account in the International Partner platform for a customer. After registration, the customer will be automatically bound to the partner account.\n\nNotes:<br>\n1. To create the Tencent Cloud account, the partner should enter and verify the customer’s email address and mobile number.<br>\n2. The customer needs to complete personal information after the first login.",
       "input": "CreateAccountRequest",
       "name": "Creates a Tencent Cloud account on behalf of a customer",
-      "output": "CreateAccountResponse"
+      "output": "CreateAccountResponse",
+      "status": "online"
     },
     "GetCountryCodes": {
       "document": "This API is used to obtain country and region codes.",
       "input": "GetCountryCodesRequest",
       "name": "Obtains country and region codes",
-      "output": "GetCountryCodesResponse"
+      "output": "GetCountryCodesResponse",
+      "status": "online"
     },
     "QueryCreditAllocationHistory": {
       "document": "This API is used to query all the credit allocation records of a single customer.",
       "input": "QueryCreditAllocationHistoryRequest",
       "name": "Queries credit allocation records",
-      "output": "QueryCreditAllocationHistoryResponse"
+      "output": "QueryCreditAllocationHistoryResponse",
+      "status": "online"
     },
     "QueryCustomersCredit": {
       "document": "This API is used for a partner to query a customer's credit and basic information.",
       "input": "QueryCustomersCreditRequest",
       "name": "Queries customer's credit",
-      "output": "QueryCustomersCreditResponse"
+      "output": "QueryCustomersCreditResponse",
+      "status": "online"
     },
     "QueryPartnerCredit": {
       "document": "This API is used for a partner to query its own total credit, available credit, and used credit in USD.",
       "input": "QueryPartnerCreditRequest",
       "name": "Queries partner's credit",
-      "output": "QueryPartnerCreditResponse"
+      "output": "QueryPartnerCreditResponse",
+      "status": "online"
     }
   },
   "metadata": {

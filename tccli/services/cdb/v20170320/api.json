@@ -4,697 +4,813 @@
       "document": "This API (AddTimeWindow) is used to add a maintenance time window for a TencentDB instance, so as to specify when the instance can automatically perform access switch operations.",
       "input": "AddTimeWindowRequest",
       "name": "Adds a maintenance time window",
-      "output": "AddTimeWindowResponse"
+      "output": "AddTimeWindowResponse",
+      "status": "online"
     },
     "AssociateSecurityGroups": {
       "document": "This API (AssociateSecurityGroups) is used to bind security groups to instances in batches.",
       "input": "AssociateSecurityGroupsRequest",
       "name": "Binds security groups in batches",
-      "output": "AssociateSecurityGroupsResponse"
+      "output": "AssociateSecurityGroupsResponse",
+      "status": "online"
     },
     "BalanceRoGroupLoad": {
       "document": "This API is used to rebalance the loads of instances in an RO group. Please note that the database connections to those instances will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.",
       "input": "BalanceRoGroupLoadRequest",
       "name": "Rebalances the loads of instances in RO group",
-      "output": "BalanceRoGroupLoadResponse"
+      "output": "BalanceRoGroupLoadResponse",
+      "status": "online"
     },
     "CloseCDBProxy": {
       "document": "This API is used to disable database proxy.",
       "input": "CloseCDBProxyRequest",
       "name": "Disables database proxy",
-      "output": "CloseCDBProxyResponse"
+      "output": "CloseCDBProxyResponse",
+      "status": "online"
     },
     "CloseWanService": {
       "document": "This API (CloseWanService) is used to disable public network access for TencentDB instance, which will make public IP addresses inaccessible.",
       "input": "CloseWanServiceRequest",
       "name": "Disables public network access for an instance",
-      "output": "CloseWanServiceResponse"
+      "output": "CloseWanServiceResponse",
+      "status": "online"
     },
     "CreateAccounts": {
       "document": "This API is used to create a TencentDB account. The account name, host address, and password are required. Account remarks and maximum connections can also be configured.",
       "input": "CreateAccountsRequest",
       "name": "Creates a TencentDB account",
-      "output": "CreateAccountsResponse"
+      "output": "CreateAccountsResponse",
+      "status": "online"
     },
     "CreateAuditPolicy": {
       "document": "This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.",
       "input": "CreateAuditPolicyRequest",
       "name": "Creates an audit policy",
-      "output": "CreateAuditPolicyResponse"
+      "output": "CreateAuditPolicyResponse",
+      "status": "online"
     },
     "CreateBackup": {
       "document": "This API (CreateBackup) is used to create a TencentDB instance backup.",
       "input": "CreateBackupRequest",
       "name": "Creates a TencentDB instance backup",
-      "output": "CreateBackupResponse"
+      "output": "CreateBackupResponse",
+      "status": "online"
     },
     "CreateCloneInstance": {
       "document": "This API is used to create a clone of a specific instance, and roll back the clone by using a physical backup file of the instance or roll back the clone to a point in time.",
       "input": "CreateCloneInstanceRequest",
       "name": "Clones an instance",
-      "output": "CreateCloneInstanceResponse"
+      "output": "CreateCloneInstanceResponse",
+      "status": "online"
     },
     "CreateDBImportJob": {
       "document": "This API (CreateDBImportJob) is used to create a data import task for a TencentDB instance.\n\nNote that the files for a data import task must be uploaded to Tencent Cloud in advance. You need to do so in the console.",
       "input": "CreateDBImportJobRequest",
       "name": "Creates a data import task",
-      "output": "CreateDBImportJobResponse"
+      "output": "CreateDBImportJobResponse",
+      "status": "online"
     },
     "CreateDBInstanceHour": {
       "document": "This API is used to create pay-as-you-go TencentDB instances (which can be source instances, disaster recovery instances, or read-only replicas) by passing in information such as instance specifications, MySQL version number, and instance quantity.\n\nThis is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instances have been successfully delivered.\n\n1. Use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported;\n4. Source instances, disaster recovery instances, and read-only replicas can be created;\n5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance (excluding basic instances) will be initialized.",
       "input": "CreateDBInstanceHourRequest",
       "name": "Creates pay-as-you-go TencentDB instance",
-      "output": "CreateDBInstanceHourResponse"
+      "output": "CreateDBInstanceHourResponse",
+      "status": "online"
     },
     "CreateParamTemplate": {
       "document": "This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "CreateParamTemplateRequest",
       "name": "Creates a parameter template",
-      "output": "CreateParamTemplateResponse"
+      "output": "CreateParamTemplateResponse",
+      "status": "online"
     },
     "CreateRoInstanceIp": {
       "document": "This API is used to create a VIP exclusive to a TencentDB read-only instance.",
       "input": "CreateRoInstanceIpRequest",
       "name": "Creates a VIP exclusive to a TencentDB read-only instance",
-      "output": "CreateRoInstanceIpResponse"
+      "output": "CreateRoInstanceIpResponse",
+      "status": "online"
     },
     "DeleteAccounts": {
       "document": "This API (DeleteAccounts) is used to delete TencentDB accounts.",
       "input": "DeleteAccountsRequest",
       "name": "Deletes TencentDB accounts",
-      "output": "DeleteAccountsResponse"
+      "output": "DeleteAccountsResponse",
+      "status": "online"
     },
     "DeleteBackup": {
       "document": "This API is used to delete a database backup. It can only delete manually initiated backups.",
       "input": "DeleteBackupRequest",
       "name": "Deletes a TencentDB instance backup",
-      "output": "DeleteBackupResponse"
+      "output": "DeleteBackupResponse",
+      "status": "online"
     },
     "DeleteParamTemplate": {
       "document": "This API is used to delete a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "DeleteParamTemplateRequest",
       "name": "Deletes a parameter template",
-      "output": "DeleteParamTemplateResponse"
+      "output": "DeleteParamTemplateResponse",
+      "status": "online"
     },
     "DeleteTimeWindow": {
       "document": "This API (DeleteTimeWindow) is used to delete a maintenance time window for a TencentDB instance. After it is deleted, the default maintenance time window will be 03:00-04:00, i.e., switch to a new instance will be performed during 03:00-04:00 by default.",
       "input": "DeleteTimeWindowRequest",
       "name": "Deletes a maintenance time window",
-      "output": "DeleteTimeWindowResponse"
+      "output": "DeleteTimeWindowResponse",
+      "status": "online"
     },
     "DescribeAccountPrivileges": {
       "document": "This API (DescribeAccountPrivileges) is used to query the information of TencentDB account permissions.",
       "input": "DescribeAccountPrivilegesRequest",
       "name": "Queries the information of TencentDB account permissions",
-      "output": "DescribeAccountPrivilegesResponse"
+      "output": "DescribeAccountPrivilegesResponse",
+      "status": "online"
     },
     "DescribeAccounts": {
       "document": "This API is used to query information of all TencentDB accounts.",
       "input": "DescribeAccountsRequest",
       "name": "Queries the information of all TencentDB accounts",
-      "output": "DescribeAccountsResponse"
+      "output": "DescribeAccountsResponse",
+      "status": "online"
     },
     "DescribeAsyncRequestInfo": {
       "document": "This API (DescribeAsyncRequestInfo) is used to query the async task execution result of a TencentDB instance.",
       "input": "DescribeAsyncRequestInfoRequest",
       "name": "Queries the execution result of an async task",
-      "output": "DescribeAsyncRequestInfoResponse"
+      "output": "DescribeAsyncRequestInfoResponse",
+      "status": "online"
     },
     "DescribeAuditPolicies": {
       "document": "This API is used to query the audit policies of a TencentDB instance.",
       "input": "DescribeAuditPoliciesRequest",
       "name": "Queries the audit policies",
-      "output": "DescribeAuditPoliciesResponse"
+      "output": "DescribeAuditPoliciesResponse",
+      "status": "online"
     },
     "DescribeAuditRules": {
       "document": "This API is used to query the audit rules in the current region.",
       "input": "DescribeAuditRulesRequest",
       "name": "Queries the audit rules",
-      "output": "DescribeAuditRulesResponse"
+      "output": "DescribeAuditRulesResponse",
+      "status": "online"
     },
     "DescribeBackupConfig": {
       "document": "This API (DescribeBackupConfig) is used to query the configuration information of a TencentDB instance backup.",
       "input": "DescribeBackupConfigRequest",
       "name": "Queries the configuration information of a TencentDB instance backup",
-      "output": "DescribeBackupConfigResponse"
+      "output": "DescribeBackupConfigResponse",
+      "status": "online"
     },
     "DescribeBackupDownloadRestriction": {
       "document": "This API is used to query the restrictions of downloading backups in a region.",
       "input": "DescribeBackupDownloadRestrictionRequest",
       "name": "Queries backup download restrictions",
-      "output": "DescribeBackupDownloadRestrictionResponse"
+      "output": "DescribeBackupDownloadRestrictionResponse",
+      "status": "online"
     },
     "DescribeBackupOverview": {
       "document": "This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).",
       "input": "DescribeBackupOverviewRequest",
       "name": "Queries backup overview",
-      "output": "DescribeBackupOverviewResponse"
+      "output": "DescribeBackupOverviewResponse",
+      "status": "online"
     },
     "DescribeBackupSummaries": {
       "document": "This API is used to query the statistics of backups. It will return the capacity used by backups at the instance level and the number and used capacity of data backups and log backups of each instance (all capacity values are in bytes).",
       "input": "DescribeBackupSummariesRequest",
       "name": "Queries real-time backup statistics",
-      "output": "DescribeBackupSummariesResponse"
+      "output": "DescribeBackupSummariesResponse",
+      "status": "online"
     },
     "DescribeBackups": {
       "document": "This API (DescribeBackups) is used to query the backups of a TencentDB instance.",
       "input": "DescribeBackupsRequest",
       "name": "Queries data backup file list",
-      "output": "DescribeBackupsResponse"
+      "output": "DescribeBackupsResponse",
+      "status": "online"
     },
     "DescribeBinlogBackupOverview": {
       "document": "This API is used to query the log backup overview of a user in the current region.",
       "input": "DescribeBinlogBackupOverviewRequest",
       "name": "Queries log backup overview",
-      "output": "DescribeBinlogBackupOverviewResponse"
+      "output": "DescribeBinlogBackupOverviewResponse",
+      "status": "online"
     },
     "DescribeBinlogs": {
       "document": "This API is used to query the list of binlog files of a TencentDB instance.",
       "input": "DescribeBinlogsRequest",
       "name": "Queries binlog backup file list",
-      "output": "DescribeBinlogsResponse"
+      "output": "DescribeBinlogsResponse",
+      "status": "online"
     },
     "DescribeCDBProxy": {
       "document": "This API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.",
       "input": "DescribeCDBProxyRequest",
       "name": "Queries the information of database proxy",
-      "output": "DescribeCDBProxyResponse"
+      "output": "DescribeCDBProxyResponse",
+      "status": "online"
     },
     "DescribeCdbZoneConfig": {
       "document": "This API is used to query the purchasable specifications of TencentDB instances in a region.",
       "input": "DescribeCdbZoneConfigRequest",
       "name": "Queries the AZ and the purchasable specifications of the database.",
-      "output": "DescribeCdbZoneConfigResponse"
+      "output": "DescribeCdbZoneConfigResponse",
+      "status": "online"
     },
     "DescribeCloneList": {
       "document": "This API is used to query the clone task list of an instance.",
       "input": "DescribeCloneListRequest",
       "name": "Queries the clone task list",
-      "output": "DescribeCloneListResponse"
+      "output": "DescribeCloneListResponse",
+      "status": "online"
     },
     "DescribeDBImportRecords": {
       "document": "This API (DescribeDBImportRecords) is used to query the records of import tasks in a TencentDB instance.",
       "input": "DescribeDBImportRecordsRequest",
       "name": "Queries import task records",
-      "output": "DescribeDBImportRecordsResponse"
+      "output": "DescribeDBImportRecordsResponse",
+      "status": "online"
     },
     "DescribeDBInstanceCharset": {
       "document": "This API (DescribeDBInstanceCharset) is used to query the character set and its name of a TencentDB instance.",
       "input": "DescribeDBInstanceCharsetRequest",
       "name": "Queries the character set of a TencentDB instance",
-      "output": "DescribeDBInstanceCharsetResponse"
+      "output": "DescribeDBInstanceCharsetResponse",
+      "status": "online"
     },
     "DescribeDBInstanceConfig": {
       "document": "This API (DescribeDBInstanceConfig) is used to query the configuration information of a TencentDB instance, such as its synchronization mode and deployment mode.",
       "input": "DescribeDBInstanceConfigRequest",
       "name": "Queries the configuration information of a TencentDB instance",
-      "output": "DescribeDBInstanceConfigResponse"
+      "output": "DescribeDBInstanceConfigResponse",
+      "status": "online"
     },
     "DescribeDBInstanceGTID": {
       "document": "This API (DescribeDBInstanceGTID) is used to query whether GTID is activated for a TencentDB instance. Instances on or below version 5.5 are not supported.",
       "input": "DescribeDBInstanceGTIDRequest",
       "name": "Queries whether GTID is activated for a TencentDB instance",
-      "output": "DescribeDBInstanceGTIDResponse"
+      "output": "DescribeDBInstanceGTIDResponse",
+      "status": "online"
     },
     "DescribeDBInstanceInfo": {
       "document": "This API is used to query the basic information of an instance (instance ID, instance name, and whether encryption is enabled).",
       "input": "DescribeDBInstanceInfoRequest",
       "name": "Queries the basic information of instance",
-      "output": "DescribeDBInstanceInfoResponse"
+      "output": "DescribeDBInstanceInfoResponse",
+      "status": "online"
     },
     "DescribeDBInstanceRebootTime": {
       "document": "This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.",
       "input": "DescribeDBInstanceRebootTimeRequest",
       "name": "Queries the estimated restart time of a TencentDB instance",
-      "output": "DescribeDBInstanceRebootTimeResponse"
+      "output": "DescribeDBInstanceRebootTimeResponse",
+      "status": "online"
     },
     "DescribeDBInstances": {
       "document": "This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status.",
       "input": "DescribeDBInstancesRequest",
       "name": "Queries the list of instances",
-      "output": "DescribeDBInstancesResponse"
+      "output": "DescribeDBInstancesResponse",
+      "status": "online"
     },
     "DescribeDBPrice": {
       "document": "This API is used to query the purchase or renewal price of a pay-as-you-go or monthly subscribed TencentDB instance by passing in information such as instance type, purchase duration, number of instances to purchase, memory size, disk size, and AZ. For the price of instance renewal, you can pass in instance name to query.\n\nNote: To query prices in a specific region, you need to use the access point of the region. For more information on access points, see <a href=\"https://www.tencentcloud.com/document/product/236/15832\">Service Address</a>. For example, to query prices in Guangzhou, send a request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, to query prices in Shanghai, send a request to: cdb.ap-shanghai.tencentcloudapi.com.",
       "input": "DescribeDBPriceRequest",
       "name": "Queries the prices of TencentDB instances",
-      "output": "DescribeDBPriceResponse"
+      "output": "DescribeDBPriceResponse",
+      "status": "online"
     },
     "DescribeDBSecurityGroups": {
       "document": "This API (DescribeDBSecurityGroups) is used to query the security group details of an instance.",
       "input": "DescribeDBSecurityGroupsRequest",
       "name": "Queries the security group information",
-      "output": "DescribeDBSecurityGroupsResponse"
+      "output": "DescribeDBSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeDBSwitchRecords": {
       "document": "This API (DescribeDBSwitchRecords) is used to query the instance switch records.",
       "input": "DescribeDBSwitchRecordsRequest",
       "name": "Queries the instance switch records",
-      "output": "DescribeDBSwitchRecordsResponse"
+      "output": "DescribeDBSwitchRecordsResponse",
+      "status": "online"
     },
     "DescribeDataBackupOverview": {
       "document": "This API is used to query the data backup overview of a user in the current region.",
       "input": "DescribeDataBackupOverviewRequest",
       "name": "Queries data backup overview",
-      "output": "DescribeDataBackupOverviewResponse"
+      "output": "DescribeDataBackupOverviewResponse",
+      "status": "online"
     },
     "DescribeDatabases": {
       "document": "This API is used to query the information of databases in a TencentDB instance which must be a source or disaster recovery instance.",
       "input": "DescribeDatabasesRequest",
       "name": "Queries databases",
-      "output": "DescribeDatabasesResponse"
+      "output": "DescribeDatabasesResponse",
+      "status": "online"
     },
     "DescribeDefaultParams": {
       "document": "This API (DescribeDefaultParams) is used to query the list of default configurable parameters.",
       "input": "DescribeDefaultParamsRequest",
       "name": "Queries the list of default configurable parameters",
-      "output": "DescribeDefaultParamsResponse"
+      "output": "DescribeDefaultParamsResponse",
+      "status": "online"
     },
     "DescribeDeviceMonitorInfo": {
       "document": "This API (DescribeDeviceMonitorInfo) is used to query the monitoring information of a TencentDB physical machine on the day. Currently, it only supports instances with 488 GB memory and 6 TB disk.",
       "input": "DescribeDeviceMonitorInfoRequest",
       "name": "Queries the monitoring information of a physical machine",
-      "output": "DescribeDeviceMonitorInfoResponse"
+      "output": "DescribeDeviceMonitorInfoResponse",
+      "status": "online"
     },
     "DescribeErrorLogData": {
       "document": "This API is used to query the error logs of an instance over the past month by search criteria.\nNote: the HTTP response packet will be very large if it contain a single large error log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.",
       "input": "DescribeErrorLogDataRequest",
       "name": "Queries instance error log details",
-      "output": "DescribeErrorLogDataResponse"
+      "output": "DescribeErrorLogDataResponse",
+      "status": "online"
     },
     "DescribeInstanceParamRecords": {
       "document": "This API (DescribeInstanceParamRecords) is used to query the parameter modification records of an instance.",
       "input": "DescribeInstanceParamRecordsRequest",
       "name": "Queries the parameter modification records",
-      "output": "DescribeInstanceParamRecordsResponse"
+      "output": "DescribeInstanceParamRecordsResponse",
+      "status": "online"
     },
     "DescribeInstanceParams": {
       "document": "This API (DescribeInstanceParams) is used to query the list of parameters for an instance.",
       "input": "DescribeInstanceParamsRequest",
       "name": "Queries the list of configurable parameters for an instance",
-      "output": "DescribeInstanceParamsResponse"
+      "output": "DescribeInstanceParamsResponse",
+      "status": "online"
     },
     "DescribeLocalBinlogConfig": {
       "document": "This API is used to query the retention policy of local binlog of an instance.",
       "input": "DescribeLocalBinlogConfigRequest",
       "name": "Queries the retention policy of local binlog",
-      "output": "DescribeLocalBinlogConfigResponse"
+      "output": "DescribeLocalBinlogConfigResponse",
+      "status": "online"
     },
     "DescribeParamTemplateInfo": {
       "document": "This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "DescribeParamTemplateInfoRequest",
       "name": "Queries the parameter template details",
-      "output": "DescribeParamTemplateInfoResponse"
+      "output": "DescribeParamTemplateInfoResponse",
+      "status": "online"
     },
     "DescribeParamTemplates": {
       "document": "This API is used to query the parameter template list. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "DescribeParamTemplatesRequest",
       "name": "Queries the list of parameter templates",
-      "output": "DescribeParamTemplatesResponse"
+      "output": "DescribeParamTemplatesResponse",
+      "status": "online"
     },
     "DescribeProjectSecurityGroups": {
       "document": "This API (DescribeProjectSecurityGroups) is used to query the security group details of a project.",
       "input": "DescribeProjectSecurityGroupsRequest",
       "name": "Queries the security group information of a project",
-      "output": "DescribeProjectSecurityGroupsResponse"
+      "output": "DescribeProjectSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeProxyConnectionPoolConf": {
       "document": "This API is used to query the connection pool configuration of database proxy.",
       "input": "DescribeProxyConnectionPoolConfRequest",
       "name": "Queries the connection pool configuration of database proxy",
-      "output": "DescribeProxyConnectionPoolConfResponse"
+      "output": "DescribeProxyConnectionPoolConfResponse",
+      "status": "online"
     },
     "DescribeProxyCustomConf": {
       "document": "This API is used to query the proxy configuration.",
       "input": "DescribeProxyCustomConfRequest",
       "name": "Queries the proxy configuration",
-      "output": "DescribeProxyCustomConfResponse"
+      "output": "DescribeProxyCustomConfResponse",
+      "status": "online"
     },
     "DescribeRemoteBackupConfig": {
       "document": "This API is used to query the configuration information of a remote TencentDB instance backup.",
       "input": "DescribeRemoteBackupConfigRequest",
       "name": "Queries the configuration information of a remote TencentDB instance backup",
-      "output": "DescribeRemoteBackupConfigResponse"
+      "output": "DescribeRemoteBackupConfigResponse",
+      "status": "online"
     },
     "DescribeRoGroups": {
       "document": "This API is used to query the information of all RO groups of a TencentDB instance.",
       "input": "DescribeRoGroupsRequest",
       "name": "Queries the information of all RO groups of TencentDB instance",
-      "output": "DescribeRoGroupsResponse"
+      "output": "DescribeRoGroupsResponse",
+      "status": "online"
     },
     "DescribeRoMinScale": {
       "document": "This API is used to query the minimum specification of a read-only instance that can be purchased or upgraded to.",
       "input": "DescribeRoMinScaleRequest",
       "name": "Queries the minimum specification of a read-only instance that can be purchased or upgraded to",
-      "output": "DescribeRoMinScaleResponse"
+      "output": "DescribeRoMinScaleResponse",
+      "status": "online"
     },
     "DescribeRollbackRangeTime": {
       "document": "This API (DescribeRollbackRangeTime) is used to query the time range available for instance rollback.",
       "input": "DescribeRollbackRangeTimeRequest",
       "name": "Queries the time range available for rollback",
-      "output": "DescribeRollbackRangeTimeResponse"
+      "output": "DescribeRollbackRangeTimeResponse",
+      "status": "online"
     },
     "DescribeRollbackTaskDetail": {
       "document": "This API is used to query the details of a TencentDB instance rollback task.",
       "input": "DescribeRollbackTaskDetailRequest",
       "name": "Queries rollback task details",
-      "output": "DescribeRollbackTaskDetailResponse"
+      "output": "DescribeRollbackTaskDetailResponse",
+      "status": "online"
     },
     "DescribeSlowLogData": {
       "document": "This API is used to query the slow logs of an instance over the past month by search criteria.\nNote: the HTTP response packet will be very large if it contain a single large slow log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.",
       "input": "DescribeSlowLogDataRequest",
       "name": "Queries instance slow logs",
-      "output": "DescribeSlowLogDataResponse"
+      "output": "DescribeSlowLogDataResponse",
+      "status": "online"
     },
     "DescribeSlowLogs": {
       "document": "This API (DescribeSlowLogs) is used to query the slow logs of a TencentDB instance.",
       "input": "DescribeSlowLogsRequest",
       "name": "Queries slow logs",
-      "output": "DescribeSlowLogsResponse"
+      "output": "DescribeSlowLogsResponse",
+      "status": "online"
     },
     "DescribeSupportedPrivileges": {
       "document": "This API (DescribeSupportedPrivileges) is used to query the information of TencentDB account permissions, including global permissions, database permissions, table permissions, and column permissions.",
       "input": "DescribeSupportedPrivilegesRequest",
       "name": "Queries the information of TencentDB instance permissions",
-      "output": "DescribeSupportedPrivilegesResponse"
+      "output": "DescribeSupportedPrivilegesResponse",
+      "status": "online"
     },
     "DescribeTables": {
       "document": "This API is used to query the information of database tables in a TencentDB instance. It only supports source or disaster recovery instances.",
       "input": "DescribeTablesRequest",
       "name": "Queries database tables",
-      "output": "DescribeTablesResponse"
+      "output": "DescribeTablesResponse",
+      "status": "online"
     },
     "DescribeTagsOfInstanceIds": {
       "document": "This API (DescribeTagsOfInstanceIds) is used to query the tag information of a TencentDB instance.",
       "input": "DescribeTagsOfInstanceIdsRequest",
       "name": "Queries instance tags",
-      "output": "DescribeTagsOfInstanceIdsResponse"
+      "output": "DescribeTagsOfInstanceIdsResponse",
+      "status": "online"
     },
     "DescribeTasks": {
       "document": "This API (DescribeTasks) is used to query the list of tasks for a TencentDB instance.",
       "input": "DescribeTasksRequest",
       "name": "Queries the list of tasks for a TencentDB instance",
-      "output": "DescribeTasksResponse"
+      "output": "DescribeTasksResponse",
+      "status": "online"
     },
     "DescribeTimeWindow": {
       "document": "This API (DescribeTimeWindow) is used to query the maintenance time window of a TencentDB instance.",
       "input": "DescribeTimeWindowRequest",
       "name": "Queries a maintenance time window",
-      "output": "DescribeTimeWindowResponse"
+      "output": "DescribeTimeWindowResponse",
+      "status": "online"
     },
     "DescribeUploadedFiles": {
       "document": "This API is used to query the list of SQL files imported by users. The common request parameter `Region` must be `ap-shanghai`.",
       "input": "DescribeUploadedFilesRequest",
       "name": "Queries the list of imported SQL files (deprecated)",
-      "output": "DescribeUploadedFilesResponse"
+      "output": "DescribeUploadedFilesResponse",
+      "status": "online"
     },
     "DisassociateSecurityGroups": {
       "document": "This API (DisassociateSecurityGroups) is used to unbind security groups from instances in batches.",
       "input": "DisassociateSecurityGroupsRequest",
       "name": "Unbinds security groups in batches",
-      "output": "DisassociateSecurityGroupsResponse"
+      "output": "DisassociateSecurityGroupsResponse",
+      "status": "online"
     },
     "InitDBInstances": {
       "document": "This API is used to initialize a TencentDB instance, including initial password, default character set, and instance port number. But it is disused and not recommended. You can now set the instance information by using the parameter `Password`, `ParamList`, and `Port` respectively in the `CreateDBInstance` and `CreateDBInstanceHour` APIs.",
       "input": "InitDBInstancesRequest",
       "name": "Initializes a new instance",
-      "output": "InitDBInstancesResponse"
+      "output": "InitDBInstancesResponse",
+      "status": "online"
     },
     "IsolateDBInstance": {
       "document": "This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible.",
       "input": "IsolateDBInstanceRequest",
       "name": "Isolates a TencentDB instance",
-      "output": "IsolateDBInstanceResponse"
+      "output": "IsolateDBInstanceResponse",
+      "status": "online"
     },
     "ModifyAccountDescription": {
       "document": "This API (ModifyAccountDescription) is used to modify the remarks of a TencentDB instance account.",
       "input": "ModifyAccountDescriptionRequest",
       "name": "Modifies the remarks of a TencentDB instance account",
-      "output": "ModifyAccountDescriptionResponse"
+      "output": "ModifyAccountDescriptionResponse",
+      "status": "online"
     },
     "ModifyAccountMaxUserConnections": {
       "document": "This API is used to modify the maximum connections of one or more TencentDB instance accounts.",
       "input": "ModifyAccountMaxUserConnectionsRequest",
       "name": "Modifies the maximum connections of one or more TencentDB instance accounts",
-      "output": "ModifyAccountMaxUserConnectionsResponse"
+      "output": "ModifyAccountMaxUserConnectionsResponse",
+      "status": "online"
     },
     "ModifyAccountPassword": {
       "document": "This API (ModifyAccountPassword) is used to modify the password of a TencentDB instance account.",
       "input": "ModifyAccountPasswordRequest",
       "name": "Modifies the password of a TencentDB instance account",
-      "output": "ModifyAccountPasswordResponse"
+      "output": "ModifyAccountPasswordResponse",
+      "status": "online"
     },
     "ModifyAccountPrivileges": {
       "document": "This API is used to modify the permissions of a TencentDB instance account.\n\nNote that when modifying account permissions, you need to pass in the full permission information of the account. You can [query the account permission information\n](https://intl.cloud.tencent.com/document/api/236/17500?from_cn_redirect=1) first before modifying permissions.",
       "input": "ModifyAccountPrivilegesRequest",
       "name": "Modifies the permissions of a TencentDB instance account",
-      "output": "ModifyAccountPrivilegesResponse"
+      "output": "ModifyAccountPrivilegesResponse",
+      "status": "online"
     },
     "ModifyAutoRenewFlag": {
       "document": "This API is used to modify the auto-renewal flag of a TencentDB instance.",
       "input": "ModifyAutoRenewFlagRequest",
       "name": "Modifies the auto-renewal flag of a TencentDB instance",
-      "output": "ModifyAutoRenewFlagResponse"
+      "output": "ModifyAutoRenewFlagResponse",
+      "status": "online"
     },
     "ModifyBackupConfig": {
       "document": "This API (ModifyBackupConfig) is used to modify the database backup configuration.",
       "input": "ModifyBackupConfigRequest",
       "name": "Modifies the database backup configuration",
-      "output": "ModifyBackupConfigResponse"
+      "output": "ModifyBackupConfigResponse",
+      "status": "online"
     },
     "ModifyBackupDownloadRestriction": {
       "document": "This API is used to modify the restrictions of downloading backups in a region. You can specify which types of networks (private, or both private and public), VPCs, and IPs to download backups.",
       "input": "ModifyBackupDownloadRestrictionRequest",
       "name": "Modifies backup download restrictions",
-      "output": "ModifyBackupDownloadRestrictionResponse"
+      "output": "ModifyBackupDownloadRestrictionResponse",
+      "status": "online"
     },
     "ModifyCDBProxyConnectionPool": {
       "document": "This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.",
       "input": "ModifyCDBProxyConnectionPoolRequest",
       "name": "Configures the connection pool of database proxy",
-      "output": "ModifyCDBProxyConnectionPoolResponse"
+      "output": "ModifyCDBProxyConnectionPoolResponse",
+      "status": "online"
     },
     "ModifyCDBProxyDesc": {
       "document": "This API is used to modify the description of database proxy.",
       "input": "ModifyCDBProxyDescRequest",
       "name": "Modifies the description of database proxy",
-      "output": "ModifyCDBProxyDescResponse"
+      "output": "ModifyCDBProxyDescResponse",
+      "status": "online"
     },
     "ModifyCDBProxyVipVPort": {
       "document": "This API is used to modify the VIP or port of database proxy.",
       "input": "ModifyCDBProxyVipVPortRequest",
       "name": "Modifies the VIP or port of database proxy",
-      "output": "ModifyCDBProxyVipVPortResponse"
+      "output": "ModifyCDBProxyVipVPortResponse",
+      "status": "online"
     },
     "ModifyDBInstanceName": {
       "document": "This API (ModifyDBInstanceName) is used to rename a TencentDB instance.",
       "input": "ModifyDBInstanceNameRequest",
       "name": "Renames a TencentDB instance",
-      "output": "ModifyDBInstanceNameResponse"
+      "output": "ModifyDBInstanceNameResponse",
+      "status": "online"
     },
     "ModifyDBInstanceProject": {
       "document": "This API (ModifyDBInstanceProject) is used to modify the project to which a TencentDB instance belongs.",
       "input": "ModifyDBInstanceProjectRequest",
       "name": "Modifies the project to which a TencentDB instance belongs",
-      "output": "ModifyDBInstanceProjectResponse"
+      "output": "ModifyDBInstanceProjectResponse",
+      "status": "online"
     },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API (ModifyDBInstanceSecurityGroups) is used to modify the security groups bound to a TencentDB instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
       "name": "Modifies the security groups bound to a TencentDB instance",
-      "output": "ModifyDBInstanceSecurityGroupsResponse"
+      "output": "ModifyDBInstanceSecurityGroupsResponse",
+      "status": "online"
     },
     "ModifyDBInstanceVipVport": {
       "document": "This API is used to modify the IP and port number of a TencentDB instance, switch from classic network to VPC, or change VPC subnets.",
       "input": "ModifyDBInstanceVipVportRequest",
       "name": "Modifies the IP and port number of a TencentDB instance",
-      "output": "ModifyDBInstanceVipVportResponse"
+      "output": "ModifyDBInstanceVipVportResponse",
+      "status": "online"
     },
     "ModifyInstanceParam": {
       "document": "This API (ModifyInstanceParam) is used to modify instance parameters.",
       "input": "ModifyInstanceParamRequest",
       "name": "Modifies instance parameters",
-      "output": "ModifyInstanceParamResponse"
+      "output": "ModifyInstanceParamResponse",
+      "status": "online"
     },
     "ModifyInstancePasswordComplexity": {
       "document": "This API is used to modify the password complexity of a TencentDB instance.",
       "input": "ModifyInstancePasswordComplexityRequest",
       "name": "Modifies the password complexity of a TencentDB instance",
-      "output": "ModifyInstancePasswordComplexityResponse"
+      "output": "ModifyInstancePasswordComplexityResponse",
+      "status": "online"
     },
     "ModifyInstanceTag": {
       "document": "This API (ModifyInstanceTag) is used to add, modify, or delete an instance tag.",
       "input": "ModifyInstanceTagRequest",
       "name": "Modifies an instance tag",
-      "output": "ModifyInstanceTagResponse"
+      "output": "ModifyInstanceTagResponse",
+      "status": "online"
     },
     "ModifyLocalBinlogConfig": {
       "document": "This API is used to modify the retention policy of local binlog of an instance.",
       "input": "ModifyLocalBinlogConfigRequest",
       "name": "Modifies the retention policy of local binlog",
-      "output": "ModifyLocalBinlogConfigResponse"
+      "output": "ModifyLocalBinlogConfigResponse",
+      "status": "online"
     },
     "ModifyNameOrDescByDpId": {
       "document": "This API is used to modify the name or description of a placement group.",
       "input": "ModifyNameOrDescByDpIdRequest",
       "name": "Modifies the name or description of a placement group",
-      "output": "ModifyNameOrDescByDpIdResponse"
+      "output": "ModifyNameOrDescByDpIdResponse",
+      "status": "online"
     },
     "ModifyParamTemplate": {
       "document": "This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "ModifyParamTemplateRequest",
       "name": "Modifies a parameter template",
-      "output": "ModifyParamTemplateResponse"
+      "output": "ModifyParamTemplateResponse",
+      "status": "online"
     },
     "ModifyRemoteBackupConfig": {
       "document": "This API is used to modify the configuration information of a remote TencentDB instance backup.",
       "input": "ModifyRemoteBackupConfigRequest",
       "name": "Modifies the configuration information of a remote TencentDB instance backup",
-      "output": "ModifyRemoteBackupConfigResponse"
+      "output": "ModifyRemoteBackupConfigResponse",
+      "status": "online"
     },
     "ModifyRoGroupInfo": {
       "document": "This API is used to update the information of a TencentDB RO group, such as configuring a read-only instance removal policy in case of excessive delay, setting read weights of read-only instances, and setting the replication delay.",
       "input": "ModifyRoGroupInfoRequest",
       "name": "Updates RO instance group",
-      "output": "ModifyRoGroupInfoResponse"
+      "output": "ModifyRoGroupInfoResponse",
+      "status": "online"
     },
     "ModifyTimeWindow": {
       "document": "This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.",
       "input": "ModifyTimeWindowRequest",
       "name": "Updates a maintenance time window",
-      "output": "ModifyTimeWindowResponse"
+      "output": "ModifyTimeWindowResponse",
+      "status": "online"
     },
     "OfflineIsolatedInstances": {
       "document": "This API (OfflineIsolatedInstances) is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status, i.e., their `Status` value is 5 in the return of the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1).\n\nThis is an asynchronous API. There may be a delay in repossessing some resources. You can query the details by using the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) and specifying the InstanceId and the `Status` value as [5, 6, 7]. If the returned instance is empty, then all its resources have been released.\n\nNote that once an instance is deactivated, its resources and data will not be recoverable. Please do so with caution.",
       "input": "OfflineIsolatedInstancesRequest",
       "name": "Deactivates isolated TencentDB instances",
-      "output": "OfflineIsolatedInstancesResponse"
+      "output": "OfflineIsolatedInstancesResponse",
+      "status": "online"
     },
     "OpenAuditService": {
       "document": "This API is used to enable the audit service.",
       "input": "OpenAuditServiceRequest",
       "name": "Enables the audit service",
-      "output": "OpenAuditServiceResponse"
+      "output": "OpenAuditServiceResponse",
+      "status": "online"
     },
     "OpenDBInstanceGTID": {
       "document": "This API (OpenDBInstanceGTID) is used to enable GTID for a TencentDB instance. Only instances on or above version 5.6 are supported.",
       "input": "OpenDBInstanceGTIDRequest",
       "name": "Enables GTID for an instance",
-      "output": "OpenDBInstanceGTIDResponse"
+      "output": "OpenDBInstanceGTIDResponse",
+      "status": "online"
     },
     "OpenWanService": {
       "document": "This API (OpenWanService) is used to enable public network access for an instance.\n\nNote that before enabling public network access, you need to first [initialize the instance](https://intl.cloud.tencent.com/document/api/236/15873?from_cn_redirect=1).",
       "input": "OpenWanServiceRequest",
       "name": "Enables public network access for an instance",
-      "output": "OpenWanServiceResponse"
+      "output": "OpenWanServiceResponse",
+      "status": "online"
     },
     "QueryCDBProxy": {
       "document": "This API is used to query the proxy details.",
       "input": "QueryCDBProxyRequest",
       "name": "Queries the proxy details",
-      "output": "QueryCDBProxyResponse"
+      "output": "QueryCDBProxyResponse",
+      "status": "online"
     },
     "ReleaseIsolatedDBInstances": {
       "document": "This API is used to deisolate an isolated TencentDB instance.",
       "input": "ReleaseIsolatedDBInstancesRequest",
       "name": "Deisolates TencentDB instance",
-      "output": "ReleaseIsolatedDBInstancesResponse"
+      "output": "ReleaseIsolatedDBInstancesResponse",
+      "status": "online"
     },
     "ReloadBalanceProxyNode": {
       "document": "This API is used to rebalance the load on database proxy.",
       "input": "ReloadBalanceProxyNodeRequest",
       "name": "Rebalances the load on database proxy",
-      "output": "ReloadBalanceProxyNodeResponse"
+      "output": "ReloadBalanceProxyNodeResponse",
+      "status": "online"
     },
     "ResetRootAccount": {
       "document": "This API is used to reset the root account and initialize the account permissions.",
       "input": "ResetRootAccountRequest",
       "name": "Resets the root account",
-      "output": "ResetRootAccountResponse"
+      "output": "ResetRootAccountResponse",
+      "status": "online"
     },
     "RestartDBInstances": {
       "document": "This API (RestartDBInstances) is used to restart TencentDB instances.\n\nNote:\n1. This API only supports restarting primary instances.\n2. The instance status must be normal, and no other async tasks are in progress.",
       "input": "RestartDBInstancesRequest",
       "name": "Restarts instances",
-      "output": "RestartDBInstancesResponse"
+      "output": "RestartDBInstancesResponse",
+      "status": "online"
     },
     "StartBatchRollback": {
       "document": "This API (StartBatchRollback) is used to roll back the tables of a TencentDB instance in batches.",
       "input": "StartBatchRollbackRequest",
       "name": "Rolls back database tables",
-      "output": "StartBatchRollbackResponse"
+      "output": "StartBatchRollbackResponse",
+      "status": "online"
     },
     "StartReplication": {
       "document": "This API is used to start the data replication from the source instance to the read-only instance.",
       "input": "StartReplicationRequest",
       "name": "Starts replication",
-      "output": "StartReplicationResponse"
+      "output": "StartReplicationResponse",
+      "status": "online"
     },
     "StopDBImportJob": {
       "document": "This API (StopDBImportJob) is used to stop a data import task.",
       "input": "StopDBImportJobRequest",
       "name": "Stops a data import task",
-      "output": "StopDBImportJobResponse"
+      "output": "StopDBImportJobResponse",
+      "status": "online"
     },
     "StopReplication": {
       "document": "This API is used to stop the data replication from the source instance to the read-only instance.",
       "input": "StopReplicationRequest",
       "name": "Stops replication",
-      "output": "StopReplicationResponse"
+      "output": "StopReplicationResponse",
+      "status": "online"
     },
     "StopRollback": {
       "document": "This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.",
       "input": "StopRollbackRequest",
       "name": "Cancels a rollback task",
-      "output": "StopRollbackResponse"
+      "output": "StopRollbackResponse",
+      "status": "online"
     },
     "SwitchCDBProxy": {
       "document": "This API is used to switch database proxy after the proxy configuration is modified or the proxy version is upgraded.",
       "input": "SwitchCDBProxyRequest",
       "name": "Switches database proxy",
-      "output": "SwitchCDBProxyResponse"
+      "output": "SwitchCDBProxyResponse",
+      "status": "online"
     },
     "SwitchDBInstanceMasterSlave": {
       "document": "This API is used for source-to-replica switch.",
       "input": "SwitchDBInstanceMasterSlaveRequest",
       "name": "Performs source-to-replica switch",
-      "output": "SwitchDBInstanceMasterSlaveResponse"
+      "output": "SwitchDBInstanceMasterSlaveResponse",
+      "status": "online"
     },
     "SwitchDrInstanceToMaster": {
       "document": "This API is used to promote a disaster recovery instance to source instance. The request parameter `Region` must be the region of the disaster recovery instance.",
       "input": "SwitchDrInstanceToMasterRequest",
       "name": "Promotes a disaster recovery instance to source instance",
-      "output": "SwitchDrInstanceToMasterResponse"
+      "output": "SwitchDrInstanceToMasterResponse",
+      "status": "online"
     },
     "SwitchForUpgrade": {
       "document": "This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the primary instance being upgraded is pending switch.",
       "input": "SwitchForUpgradeRequest",
       "name": "Switches to a new instance",
-      "output": "SwitchForUpgradeResponse"
+      "output": "SwitchForUpgradeResponse",
+      "status": "online"
     },
     "UpgradeCDBProxy": {
       "document": "This API is used to upgrade the configuration of database proxy.",
       "input": "UpgradeCDBProxyRequest",
       "name": "Upgrades the configuration of database proxy",
-      "output": "UpgradeCDBProxyResponse"
+      "output": "UpgradeCDBProxyResponse",
+      "status": "online"
     },
     "UpgradeCDBProxyVersion": {
       "document": "This API is used to upgrade the version of database proxy.",
       "input": "UpgradeCDBProxyVersionRequest",
       "name": "Upgrades the version of database proxy",
-      "output": "UpgradeCDBProxyVersionResponse"
+      "output": "UpgradeCDBProxyVersionResponse",
+      "status": "online"
     },
     "UpgradeDBInstance": {
       "document": "This API is used to upgrade or downgrade a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.",
       "input": "UpgradeDBInstanceRequest",
       "name": "Modifies the configurations of TencentDB instance",
-      "output": "UpgradeDBInstanceResponse"
+      "output": "UpgradeDBInstanceResponse",
+      "status": "online"
     },
     "UpgradeDBInstanceEngineVersion": {
       "document": "This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.",
       "input": "UpgradeDBInstanceEngineVersionRequest",
       "name": "Upgrades the version of an instance",
-      "output": "UpgradeDBInstanceEngineVersionResponse"
+      "output": "UpgradeDBInstanceEngineVersionResponse",
+      "status": "online"
     }
   },
   "metadata": {

@@ -4,19 +4,22 @@
       "document": "This API is used to view the information of available CVM model configurations.",
       "input": "DescribeAvailableCvmInstanceTypesRequest",
       "name": "Gets the information of CVM model configurations available to BatchCompute",
-      "output": "DescribeAvailableCvmInstanceTypesResponse"
+      "output": "DescribeAvailableCvmInstanceTypesResponse",
+      "status": "online"
     },
     "DescribeCvmZoneInstanceConfigInfos": {
       "document": "This API is used to get the model configuration information of the availability zone of BatchCompute.",
       "input": "DescribeCvmZoneInstanceConfigInfosRequest",
       "name": "Gets the model configuration information of the availability zone of BatchCompute",
-      "output": "DescribeCvmZoneInstanceConfigInfosResponse"
+      "output": "DescribeCvmZoneInstanceConfigInfosResponse",
+      "status": "online"
     },
     "DescribeInstanceCategories": {
       "document": "Currently, CVM instance families are classified into different category, and each category contains several instance families. This API is used to query the instance category information.",
       "input": "DescribeInstanceCategoriesRequest",
       "name": "Queries instance category information",
-      "output": "DescribeInstanceCategoriesResponse"
+      "output": "DescribeInstanceCategoriesResponse",
+      "status": "online"
     }
   },
   "metadata": {

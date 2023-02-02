@@ -4,25 +4,29 @@
       "document": "This API is used to cancel a video moderation task.",
       "input": "CancelTaskRequest",
       "name": "Cancels a video moderation task",
-      "output": "CancelTaskResponse"
+      "output": "CancelTaskResponse",
+      "status": "online"
     },
     "CreateVideoModerationTask": {
       "document": "This API is used to create a video moderation task via a URL or bucket.",
       "input": "CreateVideoModerationTaskRequest",
       "name": "Creates a video moderation task",
-      "output": "CreateVideoModerationTaskResponse"
+      "output": "CreateVideoModerationTaskResponse",
+      "status": "online"
     },
     "DescribeTaskDetail": {
       "document": "This API is used to get details of the video moderation task. ",
       "input": "DescribeTaskDetailRequest",
       "name": "Gets task details",
-      "output": "DescribeTaskDetailResponse"
+      "output": "DescribeTaskDetailResponse",
+      "status": "online"
     },
     "DescribeTasks": {
       "document": "This API is used to query the task queue. You can filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status.<br>\n\nDefault request rate limit: **20 requests/sec**.",
       "input": "DescribeTasksRequest",
       "name": "Views moderation task list",
-      "output": "DescribeTasksResponse"
+      "output": "DescribeTasksResponse",
+      "status": "online"
     }
   },
   "metadata": {

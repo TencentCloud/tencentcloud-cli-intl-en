@@ -4,553 +4,701 @@
       "document": "This API can be called to acquire the ClusterRole tke:admin. By setting a CAM policy, you can grant permission of this API to a sub-account that has higher permission in CAM. In this way, this sub-account can call this API directly to acquire the admin role of a Kubernetes cluster.",
       "input": "AcquireClusterAdminRoleRequest",
       "name": "Acquiring the RBAC Admin role of a cluster",
-      "output": "AcquireClusterAdminRoleResponse"
+      "output": "AcquireClusterAdminRoleResponse",
+      "status": "online"
     },
     "AddExistedInstances": {
       "document": "This API is used to add one or more existing instances to a cluster.",
       "input": "AddExistedInstancesRequest",
       "name": "Adds one or more existing instances to a cluster.",
-      "output": "AddExistedInstancesResponse"
+      "output": "AddExistedInstancesResponse",
+      "status": "online"
     },
     "AddNodeToNodePool": {
       "document": "This API is used to move nodes in a cluster to a node pool.",
       "input": "AddNodeToNodePoolRequest",
       "name": "Moves nodes in a cluster to a node pool",
-      "output": "AddNodeToNodePoolResponse"
+      "output": "AddNodeToNodePoolResponse",
+      "status": "online"
     },
     "AddVpcCniSubnets": {
       "document": "This API is used to add subnets in the container network for a VPC-CNI cluster.",
       "input": "AddVpcCniSubnetsRequest",
       "name": "Adds the cluster subnets",
-      "output": "AddVpcCniSubnetsResponse"
+      "output": "AddVpcCniSubnetsResponse",
+      "status": "online"
     },
     "CheckEdgeClusterCIDR": {
       "document": "This API is used to check if the CIDR block of a TKE Edge cluster conflicts with other CIDR blocks.",
       "input": "CheckEdgeClusterCIDRRequest",
       "name": "Checks if the CIDR block of a TKE Edge cluster conflicts with other CIDR blocks",
-      "output": "CheckEdgeClusterCIDRResponse"
+      "output": "CheckEdgeClusterCIDRResponse",
+      "status": "online"
     },
     "CheckInstancesUpgradeAble": {
       "document": "This API is used to check which nodes can be upgraded in the given node list. ",
       "input": "CheckInstancesUpgradeAbleRequest",
       "name": "Checks whether the nodes can be upgraded",
-      "output": "CheckInstancesUpgradeAbleResponse"
+      "output": "CheckInstancesUpgradeAbleResponse",
+      "status": "online"
     },
     "CreateCluster": {
       "document": "This API is used to create a cluster.",
       "input": "CreateClusterRequest",
       "name": "Creates a cluster",
-      "output": "CreateClusterResponse"
+      "output": "CreateClusterResponse",
+      "status": "online"
     },
     "CreateClusterEndpoint": {
       "document": "This API is used to create a cluster access endpoint.",
       "input": "CreateClusterEndpointRequest",
       "name": "Create a cluster access port",
-      "output": "CreateClusterEndpointResponse"
+      "output": "CreateClusterEndpointResponse",
+      "status": "online"
     },
     "CreateClusterEndpointVip": {
       "document": "Create an external network access port for the managed cluster (the old way, only the external network port for the managed cluster is supported)",
       "input": "CreateClusterEndpointVipRequest",
       "name": "Create an external network access port for the managed cluster",
-      "output": "CreateClusterEndpointVipResponse"
+      "output": "CreateClusterEndpointVipResponse",
+      "status": "online"
     },
     "CreateClusterInstances": {
       "document": "This API is used to create one or more nodes in a cluster.",
       "input": "CreateClusterInstancesRequest",
       "name": "Creates one or more cluster nodes.",
-      "output": "CreateClusterInstancesResponse"
+      "output": "CreateClusterInstancesResponse",
+      "status": "online"
     },
     "CreateClusterNodePool": {
       "document": "This API is used to create a node pool.",
       "input": "CreateClusterNodePoolRequest",
       "name": "Creates a node pool",
-      "output": "CreateClusterNodePoolResponse"
+      "output": "CreateClusterNodePoolResponse",
+      "status": "online"
     },
     "CreateClusterRouteTable": {
       "document": "This API is used to create a cluster route table.",
       "input": "CreateClusterRouteTableRequest",
       "name": "Creates a cluster route table.",
-      "output": "CreateClusterRouteTableResponse"
+      "output": "CreateClusterRouteTableResponse",
+      "status": "online"
+    },
+    "CreateClusterVirtualNode": {
+      "document": "This API is used to create a virtual node.",
+      "input": "CreateClusterVirtualNodeRequest",
+      "name": "Creates a virtual node",
+      "output": "CreateClusterVirtualNodeResponse",
+      "status": "online"
+    },
+    "CreateClusterVirtualNodePool": {
+      "document": "This API is used to create a virtual node pool.",
+      "input": "CreateClusterVirtualNodePoolRequest",
+      "name": "Creates a virtual node pool",
+      "output": "CreateClusterVirtualNodePoolResponse",
+      "status": "online"
     },
     "CreateECMInstances": {
       "document": "This API is used to create an ECM instance.",
       "input": "CreateECMInstancesRequest",
       "name": "Creates an ECM instance",
-      "output": "CreateECMInstancesResponse"
+      "output": "CreateECMInstancesResponse",
+      "status": "online"
     },
     "CreateEdgeCVMInstances": {
       "document": "This API is used to create CVM instances in the specified TKE edge cluster.",
       "input": "CreateEdgeCVMInstancesRequest",
       "name": "Creates CVM instances in a TKE edge cluster",
-      "output": "CreateEdgeCVMInstancesResponse"
+      "output": "CreateEdgeCVMInstancesResponse",
+      "status": "online"
     },
     "CreateEdgeLogConfig": {
       "document": "This API is used to create log collection configuration for a TKE Edge cluster.",
       "input": "CreateEdgeLogConfigRequest",
       "name": "Creates log collection configuration for a TKE Edge cluster",
-      "output": "CreateEdgeLogConfigResponse"
+      "output": "CreateEdgeLogConfigResponse",
+      "status": "online"
     },
     "CreatePrometheusAlertRule": {
       "document": "This API is used to create an alarm rule.",
       "input": "CreatePrometheusAlertRuleRequest",
       "name": "Creates an alarm rule",
-      "output": "CreatePrometheusAlertRuleResponse"
+      "output": "CreatePrometheusAlertRuleResponse",
+      "status": "online"
     },
     "CreateTKEEdgeCluster": {
       "document": "This API is used to create a TKE Edge cluster.",
       "input": "CreateTKEEdgeClusterRequest",
       "name": "Creates a TKE Edge cluster",
-      "output": "CreateTKEEdgeClusterResponse"
+      "output": "CreateTKEEdgeClusterResponse",
+      "status": "online"
     },
     "DeleteCluster": {
       "document": "This API is used to delete a cluster. (Cloud API v3).",
       "input": "DeleteClusterRequest",
       "name": "Deletes a cluster",
-      "output": "DeleteClusterResponse"
+      "output": "DeleteClusterResponse",
+      "status": "online"
     },
     "DeleteClusterAsGroups": {
       "document": "Delete a cluster scaling group",
       "input": "DeleteClusterAsGroupsRequest",
       "name": "Delete a cluster scaling group",
-      "output": "DeleteClusterAsGroupsResponse"
+      "output": "DeleteClusterAsGroupsResponse",
+      "status": "online"
     },
     "DeleteClusterEndpoint": {
       "document": "This API is used to delete a cluster access endpoint.",
       "input": "DeleteClusterEndpointRequest",
       "name": "Delete cluster access port",
-      "output": "DeleteClusterEndpointResponse"
+      "output": "DeleteClusterEndpointResponse",
+      "status": "online"
     },
     "DeleteClusterEndpointVip": {
       "document": "Delete the external network access port of the managed cluster (the old way, only the external network port of the managed cluster is supported)",
       "input": "DeleteClusterEndpointVipRequest",
       "name": "Delete the external network access port of the managed cluster",
-      "output": "DeleteClusterEndpointVipResponse"
+      "output": "DeleteClusterEndpointVipResponse",
+      "status": "online"
     },
     "DeleteClusterInstances": {
       "document": "This API is used to delete one or more nodes from a cluster.",
       "input": "DeleteClusterInstancesRequest",
       "name": "Deletes one or more nodes from a cluster.",
-      "output": "DeleteClusterInstancesResponse"
+      "output": "DeleteClusterInstancesResponse",
+      "status": "online"
     },
     "DeleteClusterNodePool": {
       "document": "This API is used to delete a node pool.",
       "input": "DeleteClusterNodePoolRequest",
       "name": "Deletes a node pool",
-      "output": "DeleteClusterNodePoolResponse"
+      "output": "DeleteClusterNodePoolResponse",
+      "status": "online"
     },
     "DeleteClusterRoute": {
       "document": "This API is used to delete a cluster route.",
       "input": "DeleteClusterRouteRequest",
       "name": "Deletes a cluster route.",
-      "output": "DeleteClusterRouteResponse"
+      "output": "DeleteClusterRouteResponse",
+      "status": "online"
     },
     "DeleteClusterRouteTable": {
       "document": "This API is used to delete cluster a route table.",
       "input": "DeleteClusterRouteTableRequest",
       "name": "Deletes a cluster route table.",
-      "output": "DeleteClusterRouteTableResponse"
+      "output": "DeleteClusterRouteTableResponse",
+      "status": "online"
+    },
+    "DeleteClusterVirtualNode": {
+      "document": "This API is used to delete a virtual node.",
+      "input": "DeleteClusterVirtualNodeRequest",
+      "name": "Deletes a virtual node",
+      "output": "DeleteClusterVirtualNodeResponse",
+      "status": "online"
+    },
+    "DeleteClusterVirtualNodePool": {
+      "document": "This API is used to delete a virtual node pool.",
+      "input": "DeleteClusterVirtualNodePoolRequest",
+      "name": "Deletes a virtual node pool",
+      "output": "DeleteClusterVirtualNodePoolResponse",
+      "status": "online"
     },
     "DeleteECMInstances": {
       "document": "This API is used to delete one or more ECM instances.",
       "input": "DeleteECMInstancesRequest",
       "name": "Deletes one or more ECM instances",
-      "output": "DeleteECMInstancesResponse"
+      "output": "DeleteECMInstancesResponse",
+      "status": "online"
     },
     "DeleteEdgeCVMInstances": {
       "document": "This API is used to delete one or more edge CVM instances.",
       "input": "DeleteEdgeCVMInstancesRequest",
       "name": "Deletes one or more edge CVM instances",
-      "output": "DeleteEdgeCVMInstancesResponse"
+      "output": "DeleteEdgeCVMInstancesResponse",
+      "status": "online"
     },
     "DeleteEdgeClusterInstances": {
       "document": "This API is used to delete one or more edge compute instances.",
       "input": "DeleteEdgeClusterInstancesRequest",
       "name": "Deletes one or more edge compute instances",
-      "output": "DeleteEdgeClusterInstancesResponse"
+      "output": "DeleteEdgeClusterInstancesResponse",
+      "status": "online"
     },
     "DeletePrometheusAlertRule": {
       "document": "This API is used to delete an alarm rule.",
       "input": "DeletePrometheusAlertRuleRequest",
       "name": "Deletes an alarm rule",
-      "output": "DeletePrometheusAlertRuleResponse"
+      "output": "DeletePrometheusAlertRuleResponse",
+      "status": "online"
     },
     "DeleteTKEEdgeCluster": {
       "document": "This API is used to delete a TKE Edge cluster.",
       "input": "DeleteTKEEdgeClusterRequest",
       "name": "Deletes a TKE Edge cluster",
-      "output": "DeleteTKEEdgeClusterResponse"
+      "output": "DeleteTKEEdgeClusterResponse",
+      "status": "online"
     },
     "DescribeAvailableClusterVersion": {
       "document": "This API is used to obtain all versions that the cluster can upgrade to.",
       "input": "DescribeAvailableClusterVersionRequest",
       "name": "Obtains all versions that the cluster can upgrade to",
-      "output": "DescribeAvailableClusterVersionResponse"
+      "output": "DescribeAvailableClusterVersionResponse",
+      "status": "online"
     },
     "DescribeAvailableTKEEdgeVersion": {
       "document": "This API is used to check the edge component versions and K8s versions supported by TKE Edge.",
       "input": "DescribeAvailableTKEEdgeVersionRequest",
       "name": "Queries the K8s versions supported by TKE Edge.",
-      "output": "DescribeAvailableTKEEdgeVersionResponse"
+      "output": "DescribeAvailableTKEEdgeVersionResponse",
+      "status": "online"
     },
     "DescribeClusterAsGroupOption": {
       "document": "Cluster auto scaling configuration",
       "input": "DescribeClusterAsGroupOptionRequest",
       "name": "Cluster auto scaling configuration",
-      "output": "DescribeClusterAsGroupOptionResponse"
+      "output": "DescribeClusterAsGroupOptionResponse",
+      "status": "online"
     },
     "DescribeClusterAsGroups": {
       "document": "Cluster-associated scaling group list",
       "input": "DescribeClusterAsGroupsRequest",
       "name": "Cluster-associated scaling group list",
-      "output": "DescribeClusterAsGroupsResponse"
+      "output": "DescribeClusterAsGroupsResponse",
+      "status": "online"
     },
     "DescribeClusterAuthenticationOptions": {
       "document": "This API is used to query cluster authentication configuration.",
       "input": "DescribeClusterAuthenticationOptionsRequest",
       "name": "Queries cluster authentication configuration",
-      "output": "DescribeClusterAuthenticationOptionsResponse"
+      "output": "DescribeClusterAuthenticationOptionsResponse",
+      "status": "online"
     },
     "DescribeClusterCommonNames": {
       "document": "This API is used to obtain the CommonName from the kube-apiserver client certificate that corresponding to the sub-account in RBAC authorization mode. ",
       "input": "DescribeClusterCommonNamesRequest",
       "name": "Obtains the CommomName for the sub-account to access the cluster",
-      "output": "DescribeClusterCommonNamesResponse"
+      "output": "DescribeClusterCommonNamesResponse",
+      "status": "online"
     },
     "DescribeClusterEndpointStatus": {
       "document": "Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
       "input": "DescribeClusterEndpointStatusRequest",
       "name": "Query cluster access port status",
-      "output": "DescribeClusterEndpointStatusResponse"
+      "output": "DescribeClusterEndpointStatusResponse",
+      "status": "online"
     },
     "DescribeClusterEndpointVipStatus": {
       "document": "Query cluster open port process status (only supports external ports of the managed cluster)",
       "input": "DescribeClusterEndpointVipStatusRequest",
       "name": "Query the progress of enabling the public network port for a managed cluster",
-      "output": "DescribeClusterEndpointVipStatusResponse"
+      "output": "DescribeClusterEndpointVipStatusResponse",
+      "status": "online"
     },
     "DescribeClusterEndpoints": {
       "document": "This API is used to query cluster access addresses, including private network address, public network address, public network domain name, and security policy for public network access.",
       "input": "DescribeClusterEndpointsRequest",
       "name": "Queries cluster access addresses",
-      "output": "DescribeClusterEndpointsResponse"
+      "output": "DescribeClusterEndpointsResponse",
+      "status": "online"
     },
     "DescribeClusterInstances": {
       "document": " This API is used to query information of one or more instances in a cluster. ",
       "input": "DescribeClusterInstancesRequest",
       "name": "Queries the information of one or more nodes in a cluster.",
-      "output": "DescribeClusterInstancesResponse"
+      "output": "DescribeClusterInstancesResponse",
+      "status": "online"
     },
     "DescribeClusterKubeconfig": {
       "document": "This API is used to obtain the cluster kubeconfig file. Different sub-accounts have their own kubeconfig files. The kubeconfig file contains the kube-apiserver client certificate of the corresponding sub-account. By default, the client certificate is created when this API is called for the first time, and the certificate is valid for 20 years with no permissions granted. For the cluster owner or primary account, the cluster-admin permission is granted by default.",
       "input": "DescribeClusterKubeconfigRequest",
       "name": "Obtains the cluster kubeconfig file",
-      "output": "DescribeClusterKubeconfigResponse"
+      "output": "DescribeClusterKubeconfigResponse",
+      "status": "online"
     },
     "DescribeClusterLevelAttribute": {
       "document": "This API is used to obtain the cluster model.",
       "input": "DescribeClusterLevelAttributeRequest",
       "name": "Obtains the cluster model",
-      "output": "DescribeClusterLevelAttributeResponse"
+      "output": "DescribeClusterLevelAttributeResponse",
+      "status": "online"
     },
     "DescribeClusterLevelChangeRecords": {
       "document": "This API is used to query the cluster model adjustment history.",
       "input": "DescribeClusterLevelChangeRecordsRequest",
       "name": "Queries the cluster model adjustment history",
-      "output": "DescribeClusterLevelChangeRecordsResponse"
+      "output": "DescribeClusterLevelChangeRecordsResponse",
+      "status": "online"
     },
     "DescribeClusterNodePoolDetail": {
       "document": "This API is used to query detailed information of a node pool.",
       "input": "DescribeClusterNodePoolDetailRequest",
       "name": "Queries detailed information of a node pool",
-      "output": "DescribeClusterNodePoolDetailResponse"
+      "output": "DescribeClusterNodePoolDetailResponse",
+      "status": "online"
     },
     "DescribeClusterNodePools": {
       "document": "This API is used to query the node pool list",
       "input": "DescribeClusterNodePoolsRequest",
       "name": "Queries the node pool list.",
-      "output": "DescribeClusterNodePoolsResponse"
+      "output": "DescribeClusterNodePoolsResponse",
+      "status": "online"
     },
     "DescribeClusterRouteTables": {
       "document": "This API is used to query one or more cluster route tables.",
       "input": "DescribeClusterRouteTablesRequest",
       "name": "Queries one or more cluster route tables.",
-      "output": "DescribeClusterRouteTablesResponse"
+      "output": "DescribeClusterRouteTablesResponse",
+      "status": "online"
     },
     "DescribeClusterRoutes": {
       "document": "This API is used to query cluster routes.",
       "input": "DescribeClusterRoutesRequest",
       "name": "Queries cluster routes.",
-      "output": "DescribeClusterRoutesResponse"
+      "output": "DescribeClusterRoutesResponse",
+      "status": "online"
     },
     "DescribeClusterSecurity": {
       "document": "This API is used to query the key information of a cluster.",
       "input": "DescribeClusterSecurityRequest",
       "name": "Queries the key information of a cluster.",
-      "output": "DescribeClusterSecurityResponse"
+      "output": "DescribeClusterSecurityResponse",
+      "status": "online"
     },
     "DescribeClusterStatus": {
       "document": "This API is used to query the information of clusters under the current account.",
       "input": "DescribeClusterStatusRequest",
       "name": "Queries the information of clusters under the current account",
-      "output": "DescribeClusterStatusResponse"
+      "output": "DescribeClusterStatusResponse",
+      "status": "online"
+    },
+    "DescribeClusterVirtualNode": {
+      "document": "This API is used to query the list of virtual nodes.",
+      "input": "DescribeClusterVirtualNodeRequest",
+      "name": "Queries the list of virtual nodes",
+      "output": "DescribeClusterVirtualNodeResponse",
+      "status": "online"
+    },
+    "DescribeClusterVirtualNodePools": {
+      "document": "This API is used to query the list of virtual node pools.",
+      "input": "DescribeClusterVirtualNodePoolsRequest",
+      "name": "Queries the list of virtual node pools",
+      "output": "DescribeClusterVirtualNodePoolsResponse",
+      "status": "online"
     },
     "DescribeClusters": {
       "document": "This API is used to query clusters list.",
       "input": "DescribeClustersRequest",
       "name": "Queries clusters list.",
-      "output": "DescribeClustersResponse"
+      "output": "DescribeClustersResponse",
+      "status": "online"
     },
     "DescribeECMInstances": {
       "document": "This API is used to obtain the ECM instance information.",
       "input": "DescribeECMInstancesRequest",
       "name": "Obtains the ECM instance information",
-      "output": "DescribeECMInstancesResponse"
+      "output": "DescribeECMInstancesResponse",
+      "status": "online"
     },
     "DescribeEdgeAvailableExtraArgs": {
       "document": "This API is used to query the custom parameters available for an edge cluster.",
       "input": "DescribeEdgeAvailableExtraArgsRequest",
       "name": "Queries the custom parameters available for an edge cluster",
-      "output": "DescribeEdgeAvailableExtraArgsResponse"
+      "output": "DescribeEdgeAvailableExtraArgsResponse",
+      "status": "online"
     },
     "DescribeEdgeCVMInstances": {
       "document": "This API is used to obtain the edge CVM instance information.",
       "input": "DescribeEdgeCVMInstancesRequest",
       "name": "Obtains the edge CVM instance information",
-      "output": "DescribeEdgeCVMInstancesResponse"
+      "output": "DescribeEdgeCVMInstancesResponse",
+      "status": "online"
     },
     "DescribeEdgeClusterExtraArgs": {
       "document": "This API is used to query custom parameters of an edge cluster.",
       "input": "DescribeEdgeClusterExtraArgsRequest",
       "name": "Queries custom parameters of an edge cluster",
-      "output": "DescribeEdgeClusterExtraArgsResponse"
+      "output": "DescribeEdgeClusterExtraArgsResponse",
+      "status": "online"
     },
     "DescribeEdgeClusterInstances": {
       "document": "This API is used to query the TKE Edge cluster node information.",
       "input": "DescribeEdgeClusterInstancesRequest",
       "name": "Queries the TKE Edge cluster node information",
-      "output": "DescribeEdgeClusterInstancesResponse"
+      "output": "DescribeEdgeClusterInstancesResponse",
+      "status": "online"
     },
     "DescribeEdgeClusterUpgradeInfo": {
       "document": "This API is used to query the upgrade information of an edge cluster, including the upgradeable components, the current upgrade status, and errors occur during the upgrade.",
       "input": "DescribeEdgeClusterUpgradeInfoRequest",
       "name": "Queries the upgrade information of an edge cluster",
-      "output": "DescribeEdgeClusterUpgradeInfoResponse"
+      "output": "DescribeEdgeClusterUpgradeInfoResponse",
+      "status": "online"
     },
     "DescribeEdgeLogSwitches": {
       "document": "This API is used to query the status of events, audits and logs.",
       "input": "DescribeEdgeLogSwitchesRequest",
       "name": "Queries TKE Edge cluster log switches",
-      "output": "DescribeEdgeLogSwitchesResponse"
+      "output": "DescribeEdgeLogSwitchesResponse",
+      "status": "online"
     },
     "DescribeEnableVpcCniProgress": {
       "document": "This API is used to query the task progress of enabling VPC-CNI mode.",
       "input": "DescribeEnableVpcCniProgressRequest",
       "name": "Queries the async task progress of enabling VPC-CNI mode",
-      "output": "DescribeEnableVpcCniProgressResponse"
+      "output": "DescribeEnableVpcCniProgressResponse",
+      "status": "online"
     },
     "DescribeExistedInstances": {
       "document": "This API is used to query one or more existing node and determine whether they can be added to a cluster.",
       "input": "DescribeExistedInstancesRequest",
       "name": "Queries one or more existing nodes.",
-      "output": "DescribeExistedInstancesResponse"
+      "output": "DescribeExistedInstancesResponse",
+      "status": "online"
     },
     "DescribeImages": {
       "document": "This API is used to get image information.",
       "input": "DescribeImagesRequest",
       "name": "Gets image information",
-      "output": "DescribeImagesResponse"
+      "output": "DescribeImagesResponse",
+      "status": "online"
     },
     "DescribePrometheusInstance": {
       "document": "This API is used to obtain the instance details.",
       "input": "DescribePrometheusInstanceRequest",
       "name": "Obtains the instance details",
-      "output": "DescribePrometheusInstanceResponse"
+      "output": "DescribePrometheusInstanceResponse",
+      "status": "online"
     },
     "DescribeRegions": {
       "document": "This API is used to obtain all regions supported by TKE.",
       "input": "DescribeRegionsRequest",
       "name": "Queries the list of regions",
-      "output": "DescribeRegionsResponse"
+      "output": "DescribeRegionsResponse",
+      "status": "online"
     },
     "DescribeResourceUsage": {
       "document": "This API is used to query the cluster resource usage.",
       "input": "DescribeResourceUsageRequest",
       "name": "Queries the cluster resource usage",
-      "output": "DescribeResourceUsageResponse"
+      "output": "DescribeResourceUsageResponse",
+      "status": "online"
     },
     "DescribeRouteTableConflicts": {
       "document": "This API is used to query the list of route table conflicts.",
       "input": "DescribeRouteTableConflictsRequest",
       "name": "Queries the list of route table conflicts.",
-      "output": "DescribeRouteTableConflictsResponse"
+      "output": "DescribeRouteTableConflictsResponse",
+      "status": "online"
     },
     "DescribeTKEEdgeClusterCredential": {
       "document": "This API is used to obtain the authentication information of a TKE Edge cluster.",
       "input": "DescribeTKEEdgeClusterCredentialRequest",
       "name": "Obtains the authentication information of a TKE Edge cluster",
-      "output": "DescribeTKEEdgeClusterCredentialResponse"
+      "output": "DescribeTKEEdgeClusterCredentialResponse",
+      "status": "online"
     },
     "DescribeTKEEdgeClusterStatus": {
       "document": "This API is used to query the current status and process information of a TKE Edge cluster.",
       "input": "DescribeTKEEdgeClusterStatusRequest",
       "name": "Queries the TKE Edge cluster status",
-      "output": "DescribeTKEEdgeClusterStatusResponse"
+      "output": "DescribeTKEEdgeClusterStatusResponse",
+      "status": "online"
     },
     "DescribeTKEEdgeClusters": {
       "document": "This API is used to query the list of TKE Edge clusters.",
       "input": "DescribeTKEEdgeClustersRequest",
       "name": "Queries the list of TKE Edge clusters",
-      "output": "DescribeTKEEdgeClustersResponse"
+      "output": "DescribeTKEEdgeClustersResponse",
+      "status": "online"
     },
     "DescribeTKEEdgeExternalKubeconfig": {
       "document": "This API is used to obtain the kubeconfig for access to a TKE Edge cluster through the public network.",
       "input": "DescribeTKEEdgeExternalKubeconfigRequest",
       "name": "Obtains the kubeconfig for access to a TKE Edge cluster through the public network",
-      "output": "DescribeTKEEdgeExternalKubeconfigResponse"
+      "output": "DescribeTKEEdgeExternalKubeconfigResponse",
+      "status": "online"
     },
     "DescribeTKEEdgeScript": {
       "document": "This API is used to query the URL of TKE edge script. You can add external nodes to a TKE Edge cluster by downloading the URL.",
       "input": "DescribeTKEEdgeScriptRequest",
       "name": "Queries the URL of TKE edge script.",
-      "output": "DescribeTKEEdgeScriptResponse"
+      "output": "DescribeTKEEdgeScriptResponse",
+      "status": "online"
     },
     "DescribeVersions": {
       "document": "This API is used to query cluster version information.",
       "input": "DescribeVersionsRequest",
       "name": "Cluster version information",
-      "output": "DescribeVersionsResponse"
+      "output": "DescribeVersionsResponse",
+      "status": "online"
     },
     "DescribeVpcCniPodLimits": {
       "document": "This API is used to query the maximum number of Pods in the VPC-CNI network mode supported by the models in the specified availability zone of the current user and region.",
       "input": "DescribeVpcCniPodLimitsRequest",
       "name": "Queries the maximum number of Pods in the VPC-CNI mode supported by the model",
-      "output": "DescribeVpcCniPodLimitsResponse"
+      "output": "DescribeVpcCniPodLimitsResponse",
+      "status": "online"
     },
     "DisableClusterDeletionProtection": {
       "document": "This API is used to disable cluster deletion protection.",
       "input": "DisableClusterDeletionProtectionRequest",
       "name": "Disables cluster deletion protection",
-      "output": "DisableClusterDeletionProtectionResponse"
+      "output": "DisableClusterDeletionProtectionResponse",
+      "status": "online"
+    },
+    "DrainClusterVirtualNode": {
+      "document": "This API is used to drain a virtual node.",
+      "input": "DrainClusterVirtualNodeRequest",
+      "name": "Drains a virtual node",
+      "output": "DrainClusterVirtualNodeResponse",
+      "status": "online"
     },
     "EnableClusterDeletionProtection": {
       "document": "This API is used to enable cluster deletion protection.",
       "input": "EnableClusterDeletionProtectionRequest",
       "name": "Enables cluster deletion protection",
-      "output": "EnableClusterDeletionProtectionResponse"
+      "output": "EnableClusterDeletionProtectionResponse",
+      "status": "online"
     },
     "EnableVpcCniNetworkType": {
       "document": "This API is used to enable the VPC-CNI network mode for GR clusters.",
       "input": "EnableVpcCniNetworkTypeRequest",
       "name": "Enables the VPC-CNI network mode",
-      "output": "EnableVpcCniNetworkTypeResponse"
+      "output": "EnableVpcCniNetworkTypeResponse",
+      "status": "online"
     },
     "ForwardTKEEdgeApplicationRequestV3": {
       "document": "This API is used to work with the add-ons of a TKE Edge cluster.",
       "input": "ForwardTKEEdgeApplicationRequestV3Request",
       "name": "Works with the add-ons of a TKE Edge cluster",
-      "output": "ForwardTKEEdgeApplicationRequestV3Response"
+      "output": "ForwardTKEEdgeApplicationRequestV3Response",
+      "status": "online"
     },
     "GetClusterLevelPrice": {
       "document": "Obtaining the price of specified cluster model",
       "input": "GetClusterLevelPriceRequest",
       "name": "Obtaining the price of specified cluster model",
-      "output": "GetClusterLevelPriceResponse"
+      "output": "GetClusterLevelPriceResponse",
+      "status": "online"
     },
     "GetUpgradeInstanceProgress": {
       "document": "This API is used to obtain the current progress of the node upgrade. ",
       "input": "GetUpgradeInstanceProgressRequest",
       "name": "Obtains the current progress of the node upgrade",
-      "output": "GetUpgradeInstanceProgressResponse"
+      "output": "GetUpgradeInstanceProgressResponse",
+      "status": "online"
     },
     "InstallEdgeLogAgent": {
       "document": "This API is used to install the log collection add-on on TKE Edge cluster nodes.",
       "input": "InstallEdgeLogAgentRequest",
       "name": "Installs the log collection add-on on TKE Edge cluster nodes",
-      "output": "InstallEdgeLogAgentResponse"
+      "output": "InstallEdgeLogAgentResponse",
+      "status": "online"
     },
     "ModifyClusterAsGroupAttribute": {
       "document": "Modify cluster scaling group attributes",
       "input": "ModifyClusterAsGroupAttributeRequest",
       "name": "Modify cluster scaling group attributes",
-      "output": "ModifyClusterAsGroupAttributeResponse"
+      "output": "ModifyClusterAsGroupAttributeResponse",
+      "status": "online"
     },
     "ModifyClusterAsGroupOptionAttribute": {
       "document": "This API is used to modify cluster auto scaling attributes.",
       "input": "ModifyClusterAsGroupOptionAttributeRequest",
       "name": "Modifies cluster auto scaling attributes",
-      "output": "ModifyClusterAsGroupOptionAttributeResponse"
+      "output": "ModifyClusterAsGroupOptionAttributeResponse",
+      "status": "online"
     },
     "ModifyClusterAttribute": {
       "document": "This API is used to modify cluster attributes.",
       "input": "ModifyClusterAttributeRequest",
       "name": "Modifies cluster attributes",
-      "output": "ModifyClusterAttributeResponse"
+      "output": "ModifyClusterAttributeResponse",
+      "status": "online"
     },
     "ModifyClusterAuthenticationOptions": {
       "document": "This API is used to modify cluster authentication configuration.",
       "input": "ModifyClusterAuthenticationOptionsRequest",
       "name": "Modifies cluster authentication configuration",
-      "output": "ModifyClusterAuthenticationOptionsResponse"
+      "output": "ModifyClusterAuthenticationOptionsResponse",
+      "status": "online"
     },
     "ModifyClusterEndpointSP": {
       "document": "Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)",
       "input": "ModifyClusterEndpointSPRequest",
       "name": "Modify the security policy of the external network port of the managed cluster",
-      "output": "ModifyClusterEndpointSPResponse"
+      "output": "ModifyClusterEndpointSPResponse",
+      "status": "online"
     },
     "ModifyClusterNodePool": {
       "document": "This API is used to edit a node pool.",
       "input": "ModifyClusterNodePoolRequest",
       "name": "Edits a node pool",
-      "output": "ModifyClusterNodePoolResponse"
+      "output": "ModifyClusterNodePoolResponse",
+      "status": "online"
+    },
+    "ModifyClusterVirtualNodePool": {
+      "document": "This API is used to modify a virtual node pool.",
+      "input": "ModifyClusterVirtualNodePoolRequest",
+      "name": "Modifies a virtual node pool",
+      "output": "ModifyClusterVirtualNodePoolResponse",
+      "status": "online"
     },
     "ModifyNodePoolInstanceTypes": {
       "document": "This API is used to modify the model of instances in a node pool.",
       "input": "ModifyNodePoolInstanceTypesRequest",
       "name": "Modify the model of instances in a node pool",
-      "output": "ModifyNodePoolInstanceTypesResponse"
+      "output": "ModifyNodePoolInstanceTypesResponse",
+      "status": "online"
     },
     "ModifyPrometheusAlertRule": {
       "document": "This API is used to modify an alarm rule. ",
       "input": "ModifyPrometheusAlertRuleRequest",
       "name": "Modifies an alarm rule",
-      "output": "ModifyPrometheusAlertRuleResponse"
+      "output": "ModifyPrometheusAlertRuleResponse",
+      "status": "online"
     },
     "RemoveNodeFromNodePool": {
       "document": "This API is used to remove a node from a node pool but retain it in the cluster.",
       "input": "RemoveNodeFromNodePoolRequest",
       "name": "Removes a node from a node pool but retains it in the cluster.",
-      "output": "RemoveNodeFromNodePoolResponse"
+      "output": "RemoveNodeFromNodePoolResponse",
+      "status": "online"
     },
     "SetNodePoolNodeProtection": {
       "document": "This API is used to enable removal protection for the nodes automatically created by the scaling group in a node pool.",
       "input": "SetNodePoolNodeProtectionRequest",
       "name": "Enabling removal protection for the nodes in a node pool",
-      "output": "SetNodePoolNodeProtectionResponse"
+      "output": "SetNodePoolNodeProtectionResponse",
+      "status": "online"
     },
     "UninstallEdgeLogAgent": {
       "document": "This API is used to uninstall the log collection add-on from TKE Edge cluster nodes.",
       "input": "UninstallEdgeLogAgentRequest",
       "name": "Uninstalls the log collection add-on from TKE Edge cluster nodes",
-      "output": "UninstallEdgeLogAgentResponse"
+      "output": "UninstallEdgeLogAgentResponse",
+      "status": "online"
     },
     "UpdateClusterVersion": {
       "document": "This API is used to upgrade the master component of the cluster to the specified version.",
       "input": "UpdateClusterVersionRequest",
       "name": "Upgrades cluster",
-      "output": "UpdateClusterVersionResponse"
+      "output": "UpdateClusterVersionResponse",
+      "status": "online"
     },
     "UpdateEdgeClusterVersion": {
       "document": "This API is used to upgrade an edge cluster component to a TKE Edge version.",
       "input": "UpdateEdgeClusterVersionRequest",
       "name": "Upgrades an edge cluster version",
-      "output": "UpdateEdgeClusterVersionResponse"
+      "output": "UpdateEdgeClusterVersionResponse",
+      "status": "online"
     },
     "UpgradeClusterInstances": {
-      "document": "This API is used to upgrade one or more work nodes in the cluster. ",
+      "document": "This API is used to upgrade work nodes in a cluster.",
       "input": "UpgradeClusterInstancesRequest",
       "name": "Upgrades cluster nodes",
-      "output": "UpgradeClusterInstancesResponse"
+      "output": "UpgradeClusterInstancesResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -3039,6 +3187,176 @@
       ],
       "type": "object"
     },
+    "CreateClusterVirtualNodePoolRequest": {
+      "document": "CreateClusterVirtualNodePool request structure.",
+      "members": [
+        {
+          "document": "Cluster ID",
+          "example": "cls-abcd1234",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Node pool name",
+          "example": "vk-nodepoll",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "List of subnet IDs",
+          "example": "[\"subnet-abcd1234\"]",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "List of security group IDs",
+          "example": "[\"sg-abcd1234\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Virtual node labels",
+          "example": "无",
+          "member": "Label",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Virtual node taint",
+          "example": "无",
+          "member": "Taint",
+          "name": "Taints",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "List of nodes",
+          "example": "无",
+          "member": "VirtualNodeSpec",
+          "name": "VirtualNodes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Setting of deletion protection",
+          "example": "false",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "Node pool OS:\n- `linux` (default value)\n- `windows`",
+          "example": "Linux",
+          "member": "string",
+          "name": "OS",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterVirtualNodePoolResponse": {
+      "document": "CreateClusterVirtualNodePool response structure.",
+      "members": [
+        {
+          "document": "Node pool ID",
+          "example": "np-abcd1234",
+          "member": "string",
+          "name": "NodePoolId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterVirtualNodeRequest": {
+      "document": "CreateClusterVirtualNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-abcd1234",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool",
+          "example": "np-abcd1234",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet",
+          "example": "subnet-abcd1234",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of subnet IDs (this parameter and `SubnetId` are mutually exclusive)",
+          "example": "[\"subnet-abcd1234\"]",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of virtual nodes",
+          "example": "无",
+          "member": "VirtualNodeSpec",
+          "name": "VirtualNodes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterVirtualNodeResponse": {
+      "document": "CreateClusterVirtualNode response structure.",
+      "members": [
+        {
+          "document": "Virtual node name",
+          "example": "eklet-subnet-1234-0",
+          "member": "string",
+          "name": "NodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateECMInstancesRequest": {
       "document": "CreateECMInstances request structure.",
       "members": [
@@ -3887,6 +4205,90 @@
     },
     "DeleteClusterRouteTableResponse": {
       "document": "DeleteClusterRouteTable response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterVirtualNodePoolRequest": {
+      "document": "DeleteClusterVirtualNodePool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of virtual node pool IDs",
+          "member": "string",
+          "name": "NodePoolIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to forcibly delete the nodes with pods. Values: `true`, `false`.",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterVirtualNodePoolResponse": {
+      "document": "DeleteClusterVirtualNodePool response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterVirtualNodeRequest": {
+      "document": "DeleteClusterVirtualNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of virtual nodes",
+          "member": "string",
+          "name": "NodeNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to forcibly delete running pods in the virtual node. Values: `true`, `false`.",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterVirtualNodeResponse": {
+      "document": "DeleteClusterVirtualNode response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5102,6 +5504,102 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterVirtualNodePoolsRequest": {
+      "document": "DescribeClusterVirtualNodePools request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterVirtualNodePoolsResponse": {
+      "document": "DescribeClusterVirtualNodePools response structure.",
+      "members": [
+        {
+          "document": "Total number of node pools\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of virtual node pools\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "VirtualNodePool",
+          "name": "NodePoolSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterVirtualNodeRequest": {
+      "document": "DescribeClusterVirtualNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node name",
+          "member": "string",
+          "name": "NodeNames",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterVirtualNodeResponse": {
+      "document": "DescribeClusterVirtualNode response structure.",
+      "members": [
+        {
+          "document": "List of nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "VirtualNode",
+          "name": "Nodes",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6412,6 +6910,40 @@
     },
     "DisableClusterDeletionProtectionResponse": {
       "document": "DisableClusterDeletionProtection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DrainClusterVirtualNodeRequest": {
+      "document": "DrainClusterVirtualNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node name",
+          "member": "string",
+          "name": "NodeName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DrainClusterVirtualNodeResponse": {
+      "document": "DrainClusterVirtualNode response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -8710,6 +9242,78 @@
       ],
       "type": "object"
     },
+    "ModifyClusterVirtualNodePoolRequest": {
+      "document": "ModifyClusterVirtualNodePool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-abcd1234",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "example": "np-abcd1234",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool name",
+          "example": "virtual-node-prod",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Virtual node labels",
+          "example": "无",
+          "member": "Label",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Virtual node taint",
+          "example": "无",
+          "member": "Taint",
+          "name": "Taints",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Setting of deletion protection",
+          "example": "false",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterVirtualNodePoolResponse": {
+      "document": "ModifyClusterVirtualNodePool response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyNodePoolInstanceTypesRequest": {
       "document": "ModifyNodePoolInstanceTypes request structure.",
       "members": [
@@ -10070,7 +10674,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "TaskStepInfo": {
       "document": "Task step information",
@@ -10303,60 +10907,68 @@
       "document": "UpgradeClusterInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "document": "create: starting an upgrade task\npause: pausing the task\nresume: continuing the task\nabort: stopping the task",
+          "example": "create",
           "member": "string",
           "name": "Operation",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "document": "Upgrade type. It’s only required when `Operation` is set as `create`.\nreset: the reinstallation and upgrade of major version\nhot: the hot upgrade of minor version\nmajor: in-place upgrade of major version",
+          "example": "reset",
           "member": "string",
           "name": "UpgradeType",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of nodes that need to upgrade",
+          "example": "[\"ins-xxx\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "document": "This parameter is used when the node joins the cluster again. Refer to the API of creating one or more cluster nodes.",
+          "example": "无",
           "member": "UpgradeNodeResetParam",
           "name": "ResetParam",
           "required": false,
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to skip the pre-upgrade check of the node",
+          "example": "false",
           "member": "bool",
           "name": "SkipPreCheck",
           "required": false,
           "type": "bool"
         },
         {
-          "default": "",
           "document": "The maximum tolerable proportion of unavailable pods",
+          "example": "0.90",
           "member": "float",
           "name": "MaxNotReadyPercent",
           "required": false,
           "type": "float"
+        },
+        {
+          "document": "Whether to upgrade node runtime. Values: `true`, `false` (default).",
+          "example": "无",
+          "member": "bool",
+          "name": "UpgradeRunTime",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -10447,6 +11059,140 @@
         }
       ],
       "usage": "out"
+    },
+    "VirtualNode": {
+      "document": "Virtual node",
+      "members": [
+        {
+          "default": "",
+          "document": "Virtual node name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet of the virtual node",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Virtual node status",
+          "member": "string",
+          "name": "Phase",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "VirtualNodePool": {
+      "document": "Virtual node pool",
+      "members": [
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "example": "无",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of subnets\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node pool name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node pool lifecycle status",
+          "example": "无",
+          "member": "string",
+          "name": "LifeState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Virtual node labels\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Label",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Virtual node taint\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Taint",
+          "name": "Taints",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "VirtualNodeSpec": {
+      "document": "Virtual node",
+      "members": [
+        {
+          "default": "",
+          "document": "Node display name",
+          "example": "测试节点",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "example": "subnet-xxxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     }
   },
   "version": "1.0"

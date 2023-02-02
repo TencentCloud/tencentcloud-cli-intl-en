@@ -4,295 +4,344 @@
       "document": "This API is used to clear table data based on the specified table information.",
       "input": "ClearTablesRequest",
       "name": "Clears table data",
-      "output": "ClearTablesResponse"
+      "output": "ClearTablesResponse",
+      "status": "online"
     },
     "CompareIdlFiles": {
       "document": "This API is used to select a target table, upload and verify the table modification file, and return the result of whether the table structure is allowed to be modified.",
       "input": "CompareIdlFilesRequest",
       "name": "Uploads and verifies table modification file",
-      "output": "CompareIdlFilesResponse"
+      "output": "CompareIdlFilesResponse",
+      "status": "online"
     },
     "CreateBackup": {
       "document": "This API is used to create a backup task.",
       "input": "CreateBackupRequest",
       "name": "Creates backup",
-      "output": "CreateBackupResponse"
+      "output": "CreateBackupResponse",
+      "status": "online"
     },
     "CreateCluster": {
       "document": "This API is used to create a TcaplusDB cluster.",
       "input": "CreateClusterRequest",
       "name": "Creates cluster",
-      "output": "CreateClusterResponse"
+      "output": "CreateClusterResponse",
+      "status": "online"
     },
     "CreateSnapshots": {
       "document": "This API is used to create one or more table snapshots at a specified past time point.",
       "input": "CreateSnapshotsRequest",
       "name": "Creates table snapshots",
-      "output": "CreateSnapshotsResponse"
+      "output": "CreateSnapshotsResponse",
+      "status": "online"
     },
     "CreateTableGroup": {
       "document": "This API is used to create a table group in a TcaplusDB cluster.",
       "input": "CreateTableGroupRequest",
       "name": "Creates table group",
-      "output": "CreateTableGroupResponse"
+      "output": "CreateTableGroupResponse",
+      "status": "online"
     },
     "CreateTables": {
       "document": "This API is used to create tables in batches based on the selected IDL file list.",
       "input": "CreateTablesRequest",
       "name": "Creates tables in batches",
-      "output": "CreateTablesResponse"
+      "output": "CreateTablesResponse",
+      "status": "online"
     },
     "DeleteCluster": {
       "document": "This API is used to delete a TcaplusDB cluster, which will succeed only after all resources (including table groups and tables) in the cluster are released.",
       "input": "DeleteClusterRequest",
       "name": "Deletes cluster",
-      "output": "DeleteClusterResponse"
+      "output": "DeleteClusterResponse",
+      "status": "online"
     },
     "DeleteIdlFiles": {
       "document": "This API is used to delete a target IDL file by specifying the cluster ID and information of the file to be deleted. If the file is associated with a table, deletion will fail.",
       "input": "DeleteIdlFilesRequest",
       "name": "Deletes IDL description file",
-      "output": "DeleteIdlFilesResponse"
+      "output": "DeleteIdlFilesResponse",
+      "status": "online"
     },
     "DeleteSnapshots": {
       "document": "This API is used to delete one or more table snapshots.",
       "input": "DeleteSnapshotsRequest",
       "name": "Deletes table snapshots",
-      "output": "DeleteSnapshotsResponse"
+      "output": "DeleteSnapshotsResponse",
+      "status": "online"
     },
     "DeleteTableDataFlow": {
       "document": "This API is used to disable data subscription for tables.",
       "input": "DeleteTableDataFlowRequest",
       "name": "Disables data subscription for tables",
-      "output": "DeleteTableDataFlowResponse"
+      "output": "DeleteTableDataFlowResponse",
+      "status": "online"
     },
     "DeleteTableGroup": {
       "document": "This API is used to delete a table group.",
       "input": "DeleteTableGroupRequest",
       "name": "Deletes table group",
-      "output": "DeleteTableGroupResponse"
+      "output": "DeleteTableGroupResponse",
+      "status": "online"
     },
     "DeleteTableIndex": {
       "document": "This API is used to delete the global index from a table.",
       "input": "DeleteTableIndexRequest",
       "name": "Deletes the global index from a table",
-      "output": "DeleteTableIndexResponse"
+      "output": "DeleteTableIndexResponse",
+      "status": "online"
     },
     "DeleteTables": {
       "document": "This API is used to drop a specified table. Calling this API for the first time means to move the table to the recycle bin, while calling it again means to drop the table completely from the recycle bin.",
       "input": "DeleteTablesRequest",
       "name": "Drops table",
-      "output": "DeleteTablesResponse"
+      "output": "DeleteTablesResponse",
+      "status": "online"
     },
     "DescribeClusterTags": {
       "document": "This API is used to get the associated tag list of a cluster.",
       "input": "DescribeClusterTagsRequest",
       "name": "Gets the associated tag list of a cluster",
-      "output": "DescribeClusterTagsResponse"
+      "output": "DescribeClusterTagsResponse",
+      "status": "online"
     },
     "DescribeClusters": {
       "document": "This API is used to query the TcaplusDB cluster list, including cluster details.",
       "input": "DescribeClustersRequest",
       "name": "Queries cluster information list",
-      "output": "DescribeClustersResponse"
+      "output": "DescribeClustersResponse",
+      "status": "online"
     },
     "DescribeIdlFileInfos": {
       "document": "This API is used to query table description file details.",
       "input": "DescribeIdlFileInfosRequest",
       "name": "Queries table description file details",
-      "output": "DescribeIdlFileInfosResponse"
+      "output": "DescribeIdlFileInfosResponse",
+      "status": "online"
     },
     "DescribeMachine": {
       "document": "This API is used to query the available machines in a dedicated cluster.",
       "input": "DescribeMachineRequest",
       "name": "Queries the available machines in a dedicated cluster",
-      "output": "DescribeMachineResponse"
+      "output": "DescribeMachineResponse",
+      "status": "online"
     },
     "DescribeRegions": {
       "document": "This API is used to query the list of regions supported by the TcaplusDB service.",
       "input": "DescribeRegionsRequest",
       "name": "Queries region list",
-      "output": "DescribeRegionsResponse"
+      "output": "DescribeRegionsResponse",
+      "status": "online"
     },
     "DescribeSnapshots": {
       "document": "This API is used to query the list of table snapshots.",
       "input": "DescribeSnapshotsRequest",
       "name": "Queries the list of snapshots",
-      "output": "DescribeSnapshotsResponse"
+      "output": "DescribeSnapshotsResponse",
+      "status": "online"
     },
     "DescribeTableGroupTags": {
       "document": "This API is used to get the associated tag list of a table group.",
       "input": "DescribeTableGroupTagsRequest",
       "name": "Gets the associated tag list of a table group",
-      "output": "DescribeTableGroupTagsResponse"
+      "output": "DescribeTableGroupTagsResponse",
+      "status": "online"
     },
     "DescribeTableGroups": {
       "document": "This API is used to query the table group list.",
       "input": "DescribeTableGroupsRequest",
       "name": "Queries table group list",
-      "output": "DescribeTableGroupsResponse"
+      "output": "DescribeTableGroupsResponse",
+      "status": "online"
     },
     "DescribeTableTags": {
       "document": "This API is used to get table tags.",
       "input": "DescribeTableTagsRequest",
       "name": "Gets table tags",
-      "output": "DescribeTableTagsResponse"
+      "output": "DescribeTableTagsResponse",
+      "status": "online"
     },
     "DescribeTables": {
       "document": "This API is used to query table details.",
       "input": "DescribeTablesRequest",
       "name": "Queries table details",
-      "output": "DescribeTablesResponse"
+      "output": "DescribeTablesResponse",
+      "status": "online"
     },
     "DescribeTablesInRecycle": {
       "document": "This API is used to query the details of a table in recycle bin.",
       "input": "DescribeTablesInRecycleRequest",
       "name": "Queries the details of table in recycle bin",
-      "output": "DescribeTablesInRecycleResponse"
+      "output": "DescribeTablesInRecycleResponse",
+      "status": "online"
     },
     "DescribeTasks": {
       "document": "This API is used to query the task list.",
       "input": "DescribeTasksRequest",
       "name": "Queries task list",
-      "output": "DescribeTasksResponse"
+      "output": "DescribeTasksResponse",
+      "status": "online"
     },
     "DescribeUinInWhitelist": {
       "document": "This API is used to query whether the current user is in the allowlist and control whether the user can create TDR-type apps or tables.",
       "input": "DescribeUinInWhitelistRequest",
       "name": "Queries whether the current user is in the allowlist",
-      "output": "DescribeUinInWhitelistResponse"
+      "output": "DescribeUinInWhitelistResponse",
+      "status": "online"
     },
     "DisableRestProxy": {
       "document": "This API is used to disable the RESTful API.",
       "input": "DisableRestProxyRequest",
       "name": "Disables the RESTful API",
-      "output": "DisableRestProxyResponse"
+      "output": "DisableRestProxyResponse",
+      "status": "online"
     },
     "EnableRestProxy": {
       "document": "This API is used to enable the RESTful API.",
       "input": "EnableRestProxyRequest",
       "name": "Enables the RESTful API",
-      "output": "EnableRestProxyResponse"
+      "output": "EnableRestProxyResponse",
+      "status": "online"
     },
     "ImportSnapshots": {
       "document": "This API is used to import a snapshot into a new table or the original table from which the snapshot was created.",
       "input": "ImportSnapshotsRequest",
       "name": "Imports a snapshot",
-      "output": "ImportSnapshotsResponse"
+      "output": "ImportSnapshotsResponse",
+      "status": "online"
     },
     "MergeTablesData": {
       "document": "This API is used to merge tables.",
       "input": "MergeTablesDataRequest",
       "name": "Merges tables",
-      "output": "MergeTablesDataResponse"
+      "output": "MergeTablesDataResponse",
+      "status": "online"
     },
     "ModifyCensorship": {
       "document": "This API is used to enable or disable the cluster operation approval feature.",
       "input": "ModifyCensorshipRequest",
       "name": "Enables or disables the cluster operation approval feature",
-      "output": "ModifyCensorshipResponse"
+      "output": "ModifyCensorshipResponse",
+      "status": "online"
     },
     "ModifyClusterMachine": {
       "document": "This API is used to modify the machines of a dedicated cluster.",
       "input": "ModifyClusterMachineRequest",
       "name": "Modifies the machines of a dedicated cluster",
-      "output": "ModifyClusterMachineResponse"
+      "output": "ModifyClusterMachineResponse",
+      "status": "online"
     },
     "ModifyClusterName": {
       "document": "This API is used to rename a specified cluster.",
       "input": "ModifyClusterNameRequest",
       "name": "Renames cluster",
-      "output": "ModifyClusterNameResponse"
+      "output": "ModifyClusterNameResponse",
+      "status": "online"
     },
     "ModifyClusterPassword": {
       "document": "This API is used to change the password of a specified cluster. The backend will allow the TcaplusDB SDK to access databases with both old and new passwords before the old password expires. You cannot submit a new password change request before the old password expires or submit a request to modify the expiration time of the old password after the old password expires.",
       "input": "ModifyClusterPasswordRequest",
       "name": "Changes cluster password",
-      "output": "ModifyClusterPasswordResponse"
+      "output": "ModifyClusterPasswordResponse",
+      "status": "online"
     },
     "ModifyClusterTags": {
       "document": "This API is used to modify cluster tags.",
       "input": "ModifyClusterTagsRequest",
       "name": "Modifies cluster tags",
-      "output": "ModifyClusterTagsResponse"
+      "output": "ModifyClusterTagsResponse",
+      "status": "online"
     },
     "ModifySnapshots": {
       "document": "This API is used to modify the expiration time of one or more table snapshots.",
       "input": "ModifySnapshotsRequest",
       "name": "Modifies table snapshots",
-      "output": "ModifySnapshotsResponse"
+      "output": "ModifySnapshotsResponse",
+      "status": "online"
     },
     "ModifyTableGroupName": {
       "document": "This API is used to rename a TcaplusDB table group.",
       "input": "ModifyTableGroupNameRequest",
       "name": "Renames TcaplusDB table group",
-      "output": "ModifyTableGroupNameResponse"
+      "output": "ModifyTableGroupNameResponse",
+      "status": "online"
     },
     "ModifyTableGroupTags": {
       "document": "This API is used to modify table group tags.",
       "input": "ModifyTableGroupTagsRequest",
       "name": "Modifies table group tags",
-      "output": "ModifyTableGroupTagsResponse"
+      "output": "ModifyTableGroupTagsResponse",
+      "status": "online"
     },
     "ModifyTableMemos": {
       "document": "This API is used to modify table remarks.",
       "input": "ModifyTableMemosRequest",
       "name": "Modifies table remarks",
-      "output": "ModifyTableMemosResponse"
+      "output": "ModifyTableMemosResponse",
+      "status": "online"
     },
     "ModifyTableQuotas": {
       "document": "This API is used to scale a table.",
       "input": "ModifyTableQuotasRequest",
       "name": "Scales table",
-      "output": "ModifyTableQuotasResponse"
+      "output": "ModifyTableQuotasResponse",
+      "status": "online"
     },
     "ModifyTableTags": {
       "document": "This API is used to modify table tags.",
       "input": "ModifyTableTagsRequest",
       "name": "Modifies table tags",
-      "output": "ModifyTableTagsResponse"
+      "output": "ModifyTableTagsResponse",
+      "status": "online"
     },
     "ModifyTables": {
       "document": "This API is used to modify specified tables in batches based on the selected table definition IDL file.",
       "input": "ModifyTablesRequest",
       "name": "Modifies table structure in batches",
-      "output": "ModifyTablesResponse"
+      "output": "ModifyTablesResponse",
+      "status": "online"
     },
     "RecoverRecycleTables": {
       "document": "This API is used to recover a dropped table from the recycle bin. It will not work for tables to be released due to arrears.",
       "input": "RecoverRecycleTablesRequest",
       "name": "Recovers table from recycle bin",
-      "output": "RecoverRecycleTablesResponse"
+      "output": "RecoverRecycleTablesResponse",
+      "status": "online"
     },
     "RollbackTables": {
       "document": "This API is used to roll back table data.",
       "input": "RollbackTablesRequest",
       "name": "Rolls back table data",
-      "output": "RollbackTablesResponse"
+      "output": "RollbackTablesResponse",
+      "status": "online"
     },
     "SetTableDataFlow": {
       "document": "This API is used to enable data subscription for tables or modify the feature's configurations.",
       "input": "SetTableDataFlowRequest",
       "name": "Enables data subscription for tables or modifies the feature's configurations",
-      "output": "SetTableDataFlowResponse"
+      "output": "SetTableDataFlowResponse",
+      "status": "online"
     },
     "SetTableIndex": {
       "document": "This API is used to create a global index for a table.",
       "input": "SetTableIndexRequest",
       "name": "Creates a global index for a table",
-      "output": "SetTableIndexResponse"
+      "output": "SetTableIndexResponse",
+      "status": "online"
     },
     "UpdateApply": {
       "document": "This API is used to update the application status.",
       "input": "UpdateApplyRequest",
       "name": "Updates the application status",
-      "output": "UpdateApplyResponse"
+      "output": "UpdateApplyResponse",
+      "status": "online"
     },
     "VerifyIdlFiles": {
       "document": "This API is used to upload and verify a table creation file and return the definition of tables that are verified to be valid.",
       "input": "VerifyIdlFilesRequest",
       "name": "Uploads and verifies table creation file",
-      "output": "VerifyIdlFilesResponse"
+      "output": "VerifyIdlFilesResponse",
+      "status": "online"
     }
   },
   "metadata": {

@@ -4,97 +4,113 @@
       "document": "This API is used to add an organization node.",
       "input": "AddOrganizationNodeRequest",
       "name": "Adds an organization node",
-      "output": "AddOrganizationNodeResponse"
+      "output": "AddOrganizationNodeResponse",
+      "status": "online"
     },
     "BindOrganizationMemberAuthAccount": {
       "document": "This API is used to bind an organization member to a sub-account of the organization admin.",
       "input": "BindOrganizationMemberAuthAccountRequest",
       "name": "Binds an organization member to a sub-account of the organization admin",
-      "output": "BindOrganizationMemberAuthAccountResponse"
+      "output": "BindOrganizationMemberAuthAccountResponse",
+      "status": "online"
     },
     "CancelOrganizationMemberAuthAccount": {
       "document": "This API is used to unbind an organization member from a sub-account of the organization admin.\n",
       "input": "CancelOrganizationMemberAuthAccountRequest",
       "name": "Unbinds an organization member from a sub-account of the organization admin",
-      "output": "CancelOrganizationMemberAuthAccountResponse"
+      "output": "CancelOrganizationMemberAuthAccountResponse",
+      "status": "online"
     },
     "CreateOrganizationMember": {
       "document": "This API is used to create an organization member.",
       "input": "CreateOrganizationMemberRequest",
       "name": "Creates an organization member",
-      "output": "CreateOrganizationMemberResponse"
+      "output": "CreateOrganizationMemberResponse",
+      "status": "online"
     },
     "CreateOrganizationMemberPolicy": {
       "document": "This API is used to create an organization member access policy.",
       "input": "CreateOrganizationMemberPolicyRequest",
       "name": "Creates an organization member access policy",
-      "output": "CreateOrganizationMemberPolicyResponse"
+      "output": "CreateOrganizationMemberPolicyResponse",
+      "status": "online"
     },
     "DeleteOrganizationMembers": {
       "document": "This API is used to batch delete organization members.",
       "input": "DeleteOrganizationMembersRequest",
       "name": "Batch deletes organization members",
-      "output": "DeleteOrganizationMembersResponse"
+      "output": "DeleteOrganizationMembersResponse",
+      "status": "online"
     },
     "DeleteOrganizationNodes": {
       "document": "This API is used to batch delete organization nodes.",
       "input": "DeleteOrganizationNodesRequest",
       "name": "Batch deletes organization nodes",
-      "output": "DeleteOrganizationNodesResponse"
+      "output": "DeleteOrganizationNodesResponse",
+      "status": "online"
     },
     "DescribeOrganization": {
       "document": "This API is used to get the organization information.",
       "input": "DescribeOrganizationRequest",
       "name": "Gets the organization information",
-      "output": "DescribeOrganizationResponse"
+      "output": "DescribeOrganizationResponse",
+      "status": "online"
     },
     "DescribeOrganizationMemberAuthAccounts": {
       "document": "This API is used to get the list of sub-accounts bound to an organization member.",
       "input": "DescribeOrganizationMemberAuthAccountsRequest",
       "name": "Gets the list of sub-accounts bound to an organization member",
-      "output": "DescribeOrganizationMemberAuthAccountsResponse"
+      "output": "DescribeOrganizationMemberAuthAccountsResponse",
+      "status": "online"
     },
     "DescribeOrganizationMemberAuthIdentities": {
       "document": "This API is used to get the list of manageable identities of an organization member.",
       "input": "DescribeOrganizationMemberAuthIdentitiesRequest",
       "name": "Gets the list of manageable identities of an organization member",
-      "output": "DescribeOrganizationMemberAuthIdentitiesResponse"
+      "output": "DescribeOrganizationMemberAuthIdentitiesResponse",
+      "status": "online"
     },
     "DescribeOrganizationMemberPolicies": {
       "document": "This API is used to get the list of authorization policies of an organization member.",
       "input": "DescribeOrganizationMemberPoliciesRequest",
       "name": "Gets the list of authorization policies of an organization member",
-      "output": "DescribeOrganizationMemberPoliciesResponse"
+      "output": "DescribeOrganizationMemberPoliciesResponse",
+      "status": "online"
     },
     "DescribeOrganizationMembers": {
       "document": "This API is used to get the list of organization members.",
       "input": "DescribeOrganizationMembersRequest",
       "name": "Gets the list of organization members",
-      "output": "DescribeOrganizationMembersResponse"
+      "output": "DescribeOrganizationMembersResponse",
+      "status": "online"
     },
     "DescribeOrganizationNodes": {
       "document": "This API is used to get the list of organization nodes.",
       "input": "DescribeOrganizationNodesRequest",
       "name": "Gets the list of organization nodes",
-      "output": "DescribeOrganizationNodesResponse"
+      "output": "DescribeOrganizationNodesResponse",
+      "status": "online"
     },
     "ListOrganizationIdentity": {
       "document": "This API is used to get the list of access identities of an organization member.",
       "input": "ListOrganizationIdentityRequest",
       "name": "Gets the list of access identities of an organization member",
-      "output": "ListOrganizationIdentityResponse"
+      "output": "ListOrganizationIdentityResponse",
+      "status": "online"
     },
     "MoveOrganizationNodeMembers": {
       "document": "This API is used to move a member to the specified organization node.",
       "input": "MoveOrganizationNodeMembersRequest",
       "name": "Moves a member to the specified organization node",
-      "output": "MoveOrganizationNodeMembersResponse"
+      "output": "MoveOrganizationNodeMembersResponse",
+      "status": "online"
     },
     "UpdateOrganizationNode": {
       "document": "This API is used to update an organization node.",
       "input": "UpdateOrganizationNodeRequest",
       "name": "Updates an organization node",
-      "output": "UpdateOrganizationNodeResponse"
+      "output": "UpdateOrganizationNodeResponse",
+      "status": "online"
     }
   },
   "metadata": {

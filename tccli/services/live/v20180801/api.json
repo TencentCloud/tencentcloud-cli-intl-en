@@ -4,619 +4,722 @@
       "document": "This API is used to set a delay in playing the images of large live streaming events, in case of emergencies.\n\nNote: if you are to set the delay before stream push, set it at least 5 minutes before the push. This API supports configuration only by stream.",
       "input": "AddDelayLiveStreamRequest",
       "name": "Sets a live streaming delay",
-      "output": "AddDelayLiveStreamResponse"
+      "output": "AddDelayLiveStreamResponse",
+      "status": "online"
     },
     "AddLiveDomain": {
       "document": "This API is used to add a domain name. Only one domain name can be submitted at a time, and it must have an ICP filing.",
       "input": "AddLiveDomainRequest",
       "name": "Adds domain name",
-      "output": "AddLiveDomainResponse"
+      "output": "AddLiveDomainResponse",
+      "status": "online"
     },
     "AddLiveWatermark": {
       "document": "After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API to bind the watermark ID to a stream.\nAfter the number of watermarks exceeds the upper limit of 100, to add a new watermark, you must delete an old one first.",
       "input": "AddLiveWatermarkRequest",
       "name": "Adds watermark",
-      "output": "AddLiveWatermarkResponse"
+      "output": "AddLiveWatermarkResponse",
+      "status": "online"
     },
     "AuthenticateDomainOwner": {
       "document": "This API is used to verify the ownership of a domain.",
       "input": "AuthenticateDomainOwnerRequest",
       "name": "Verifies the ownership of a domain",
-      "output": "AuthenticateDomainOwnerResponse"
+      "output": "AuthenticateDomainOwnerResponse",
+      "status": "online"
     },
     "CancelCommonMixStream": {
       "document": "This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.",
       "input": "CancelCommonMixStreamRequest",
       "name": "Cancels general stream mix",
-      "output": "CancelCommonMixStreamResponse"
+      "output": "CancelCommonMixStreamResponse",
+      "status": "online"
     },
     "CreateCommonMixStream": {
       "document": "This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.\nNote: currently, up to 16 streams can be mixed.\nBest practice: https://intl.cloud.tencent.com/document/product/267/45566?from_cn_redirect=1",
       "input": "CreateCommonMixStreamRequest",
       "name": "Creates general stream mix",
-      "output": "CreateCommonMixStreamResponse"
+      "output": "CreateCommonMixStreamResponse",
+      "status": "online"
     },
     "CreateLiveCallbackRule": {
       "document": "To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API to create a callback template and bind the returned template ID to the domain name/path.\n<br>Callback protocol-related document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
       "input": "CreateLiveCallbackRuleRequest",
       "name": "Creates callback rule",
-      "output": "CreateLiveCallbackRuleResponse"
+      "output": "CreateLiveCallbackRuleResponse",
+      "status": "online"
     },
     "CreateLiveCallbackTemplate": {
       "document": "This API is used to create a callback template. Up to 50 templates can be created. After the template ID is returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API to bind the template ID to a domain name/path.\n<br>For information about callback protocols, see [How to Receive Event Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\nNote: You need to specify at least one callback URL.",
       "input": "CreateLiveCallbackTemplateRequest",
       "name": "Creates callback template",
-      "output": "CreateLiveCallbackTemplateResponse"
+      "output": "CreateLiveCallbackTemplateResponse",
+      "status": "online"
     },
     "CreateLivePullStreamTask": {
       "document": "This API is used to create a task to pull streams from video files or an external live streaming source and publish them to a specified destination URL.\nNotes:\n1. By default, you can have at most 20 stream pulling tasks at a time. You can submit a ticket to raise the limit.\n2. Only H.264 and H.265 are supported for video. If the source video is in a different format, please transcode it first.\n3. Only AAC is supported for audio. If the source audio is in a different format, please transcode it first.\n4. You can enable auto deletion in the console to delete expired tasks automatically.\n5. The pull and relay feature is a paid feature. For its billing details, see [Relay](https://intl.cloud.tencent.com/document/product/267/53308?from_cn_redirect=1).\n6. CSS is only responsible for pulling and relaying content. Please make sure that your content is authorized and complies with relevant laws and regulations. In case of copyright infringement or violation of laws or regulations, CSS will suspend its service for you and reserves the right to seek legal remedies.",
       "input": "CreateLivePullStreamTaskRequest",
       "name": "Creates a stream pulling task",
-      "output": "CreateLivePullStreamTaskResponse"
+      "output": "CreateLivePullStreamTaskResponse",
+      "status": "online"
     },
     "CreateLiveRecord": {
       "document": "- Prerequisites\n  1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n  2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://intl.cloud.tencent.com/document/product/266/2838?from_cn_redirect=1).\n\n- Mode description\n  This API supports two recording modes:\n  1. Scheduled recording mode **(default mode)**.\n    The start time and end time need to be passed in, according to which the recording task will start and end automatically. Before the set end time expires (provided that `StopLiveRecord` is not called to terminate the task prematurely), the recording task is valid and will be started even after the push is interrupted and restarted multiple times.\n  2. Real-time video recording mode.\n    The start time passed in will be ignored, and recording will be started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and you are recommended to keep the duration within 5 minutes.\n\n- Precautions\n  1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and calls by different start/end time values may result in repeated recording tasks and thus incur additional recording fees.\n  2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of AAC are supported.\n  3. In order to avoid malicious or unintended frequent API requests, the maximum number of tasks that can be created in scheduled recording mode is limited: up to 4,000 tasks can be created per day (excluding deleted ones), and up to 400 ones can run concurrently. If you need a higher upper limit, please submit a ticket for application.\n  4. This calling method does not support recording streams outside Mainland China for the time being.",
       "input": "CreateLiveRecordRequest",
       "name": "Creates recording task (disused; please use the new API)",
-      "output": "CreateLiveRecordResponse"
+      "output": "CreateLiveRecordResponse",
+      "status": "online"
     },
     "CreateLiveRecordRule": {
       "document": "To create a recording rule, you need to first call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/32614?from_cn_redirect=1) API to create a recording template and bind the returned template ID to the stream.\n<br>Recording-related document: [LVB Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1).",
       "input": "CreateLiveRecordRuleRequest",
       "name": "Creates a recording rule",
-      "output": "CreateLiveRecordRuleResponse"
+      "output": "CreateLiveRecordRuleResponse",
+      "status": "online"
     },
     "CreateLiveRecordTemplate": {
       "document": "This API is used to create a recording template. You can create up to 50 templates. To use a template, you need to call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/32615?from_cn_redirect=1) API to bind the template ID returned by this API to a stream.\n<br>More on recording: [Live Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1)",
       "input": "CreateLiveRecordTemplateRequest",
       "name": "Creates a recording template",
-      "output": "CreateLiveRecordTemplateResponse"
+      "output": "CreateLiveRecordTemplateResponse",
+      "status": "online"
     },
     "CreateLiveSnapshotRule": {
       "document": "This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API to create a screencapturing template to bind the returned template ID to the stream.\n<br>Screencapturing document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).\nNote: only one screencapturing template can be associated with one domain name.",
       "input": "CreateLiveSnapshotRuleRequest",
       "name": "Creates screencapturing rule",
-      "output": "CreateLiveSnapshotRuleResponse"
+      "output": "CreateLiveSnapshotRuleResponse",
+      "status": "online"
     },
     "CreateLiveSnapshotTemplate": {
       "document": "This API is used to create a screencapture template. After a template ID is returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API to bind the template ID to a stream. You can create up to 50 screencapture templates.\n<br>To learn more about the live screencapture feature, see [Live Screencapture](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).",
       "input": "CreateLiveSnapshotTemplateRequest",
       "name": "Creates screencapturing template",
-      "output": "CreateLiveSnapshotTemplateResponse"
+      "output": "CreateLiveSnapshotTemplateResponse",
+      "status": "online"
     },
     "CreateLiveTranscodeRule": {
       "document": "To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API to create a transcoding template and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).",
       "input": "CreateLiveTranscodeRuleRequest",
       "name": "Creates a transcoding rule",
-      "output": "CreateLiveTranscodeRuleResponse"
+      "output": "CreateLiveTranscodeRuleResponse",
+      "status": "online"
     },
     "CreateLiveTranscodeTemplate": {
       "document": "This API is used to create a transcoding template. Up to 50 transcoding templates can be created in total. To use a template, you need to call [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) to bind the template ID returned by this API to a stream.\n<br>For more information about transcoding, see [Live Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).",
       "input": "CreateLiveTranscodeTemplateRequest",
       "name": "Creating a transcoding template",
-      "output": "CreateLiveTranscodeTemplateResponse"
+      "output": "CreateLiveTranscodeTemplateResponse",
+      "status": "online"
     },
     "CreateLiveWatermarkRule": {
       "document": "To create a watermarking rule, you need to first call the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API to add a watermark and bind the returned watermark ID to the stream.",
       "input": "CreateLiveWatermarkRuleRequest",
       "name": "Creates watermarking rule",
-      "output": "CreateLiveWatermarkRuleResponse"
+      "output": "CreateLiveWatermarkRuleResponse",
+      "status": "online"
     },
     "CreateRecordTask": {
       "document": "This API is used to create a recording task that starts and ends at specific times and records videos according to a specific recording template.\n- Prerequisites\n1. Because recording files are saved in VOD, you must first activate VOD.\n2. Storage and playback traffic fees are charged for storing and playing the videos recorded. For details, see [Purchase Guide](https://intl.cloud.tencent.com/document/product/266/2837).\n- Notes\n1. If streaming is interrupted, the current recording will stop and a recording file will be generated. When streaming resumes, as long as it’s before the end time of the task, recording will start again.\n2. Avoid creating recording tasks with overlapping time periods. If there are multiple tasks with overlapping time periods for the same stream, the system will start three recording tasks at most to avoid repeated recording.\n3. Task records are kept for three months by the platform.\n4. Do not use the new [CreateRecordTask](https://intl.cloud.tencent.com/document/product/267/45983?from_cn_redirect=1), [StopRecordTask](https://intl.cloud.tencent.com/document/product/267/45981?from_cn_redirect=1), and [DeleteRecordTask] APIs together with the old `CreateLiveRecord`, `StopLiveRecord`, and `DeleteLiveRecord` APIs.\n5. Do not create recording tasks and push streams at the same time. After creating a recording task, we recommend you wait at least three seconds before pushing streams.",
       "input": "CreateRecordTaskRequest",
       "name": "Creates recording task (new)",
-      "output": "CreateRecordTaskResponse"
+      "output": "CreateRecordTaskResponse",
+      "status": "online"
     },
     "DeleteLiveCallbackRule": {
       "document": "This API is used to delete a callback rule.",
       "input": "DeleteLiveCallbackRuleRequest",
       "name": "Deletes callback rule",
-      "output": "DeleteLiveCallbackRuleResponse"
+      "output": "DeleteLiveCallbackRuleResponse",
+      "status": "online"
     },
     "DeleteLiveCallbackTemplate": {
       "document": "This API deletes a callback template.",
       "input": "DeleteLiveCallbackTemplateRequest",
       "name": "Deletes callback template",
-      "output": "DeleteLiveCallbackTemplateResponse"
+      "output": "DeleteLiveCallbackTemplateResponse",
+      "status": "online"
     },
     "DeleteLiveDomain": {
       "document": "This API is used to delete an added LVB domain name.",
       "input": "DeleteLiveDomainRequest",
       "name": "Deletes domain name",
-      "output": "DeleteLiveDomainResponse"
+      "output": "DeleteLiveDomainResponse",
+      "status": "online"
     },
     "DeleteLivePullStreamTask": {
       "document": "This API is used to delete a task created by `CreateLivePullStreamTask`.\nNotes:\n1. For the `TaskId` request parameter, pass in the task ID returned by the `CreateLivePullStreamTask` API.\n2. You can query the ID of a task using the `DescribeLivePullStreamTasks` API.",
       "input": "DeleteLivePullStreamTaskRequest",
       "name": "Deletes a stream pulling task",
-      "output": "DeleteLivePullStreamTaskResponse"
+      "output": "DeleteLivePullStreamTaskResponse",
+      "status": "online"
     },
     "DeleteLiveRecord": {
       "document": "Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](https://intl.cloud.tencent.com/document/product/267/30146?from_cn_redirect=1) API.",
       "input": "DeleteLiveRecordRequest",
       "name": "Deletes recording task (disused; please use the new API)",
-      "output": "DeleteLiveRecordResponse"
+      "output": "DeleteLiveRecordResponse",
+      "status": "online"
     },
     "DeleteLiveRecordRule": {
       "document": "This API is used to delete a recording rule.",
       "input": "DeleteLiveRecordRuleRequest",
       "name": "Deletes a recording rule",
-      "output": "DeleteLiveRecordRuleResponse"
+      "output": "DeleteLiveRecordRuleResponse",
+      "status": "online"
     },
     "DeleteLiveRecordTemplate": {
       "document": "This API is used to delete a recording template.",
       "input": "DeleteLiveRecordTemplateRequest",
       "name": "Deletes a recording template.",
-      "output": "DeleteLiveRecordTemplateResponse"
+      "output": "DeleteLiveRecordTemplateResponse",
+      "status": "online"
     },
     "DeleteLiveSnapshotRule": {
       "document": "This API is used to delete a screencapturing rule.",
       "input": "DeleteLiveSnapshotRuleRequest",
       "name": "Deletes screencapturing rule",
-      "output": "DeleteLiveSnapshotRuleResponse"
+      "output": "DeleteLiveSnapshotRuleResponse",
+      "status": "online"
     },
     "DeleteLiveSnapshotTemplate": {
       "document": "This API is used to delete a screencapturing template.",
       "input": "DeleteLiveSnapshotTemplateRequest",
       "name": "Deletes screencapturing template",
-      "output": "DeleteLiveSnapshotTemplateResponse"
+      "output": "DeleteLiveSnapshotTemplateResponse",
+      "status": "online"
     },
     "DeleteLiveTranscodeRule": {
       "document": "This API is used to delete a transcoding rule.\n`DomainName+AppName+StreamName+TemplateId` uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. `TemplateId` is required. Even if other parameters are empty, you still need to pass in an empty string to make a strong match.",
       "input": "DeleteLiveTranscodeRuleRequest",
       "name": "Deletes a transcoding rule",
-      "output": "DeleteLiveTranscodeRuleResponse"
+      "output": "DeleteLiveTranscodeRuleResponse",
+      "status": "online"
     },
     "DeleteLiveTranscodeTemplate": {
       "document": "This API is used to delete a transcoding template.",
       "input": "DeleteLiveTranscodeTemplateRequest",
       "name": "Deletes a transcoding template",
-      "output": "DeleteLiveTranscodeTemplateResponse"
+      "output": "DeleteLiveTranscodeTemplateResponse",
+      "status": "online"
     },
     "DeleteLiveWatermark": {
       "document": "This API is used to delete a watermark.",
       "input": "DeleteLiveWatermarkRequest",
       "name": "Delete watermark",
-      "output": "DeleteLiveWatermarkResponse"
+      "output": "DeleteLiveWatermarkResponse",
+      "status": "online"
     },
     "DeleteLiveWatermarkRule": {
       "document": "This API is used to delete a watermarking rule.",
       "input": "DeleteLiveWatermarkRuleRequest",
       "name": "Deletes watermarking rule",
-      "output": "DeleteLiveWatermarkRuleResponse"
+      "output": "DeleteLiveWatermarkRuleResponse",
+      "status": "online"
     },
     "DeleteRecordTask": {
       "document": "This API is used to delete a recording task configuration. The deletion does not affect running tasks and takes effect only for new pushes.",
       "input": "DeleteRecordTaskRequest",
       "name": "Deletes recording task (new)",
-      "output": "DeleteRecordTaskResponse"
+      "output": "DeleteRecordTaskResponse",
+      "status": "online"
     },
     "DescribeAllStreamPlayInfoList": {
       "document": "This API is used to get the playback data of all streams at a specified time point (accurate to the minute).",
       "input": "DescribeAllStreamPlayInfoListRequest",
       "name": "Gets the playback data of all streams at a specified time point",
-      "output": "DescribeAllStreamPlayInfoListResponse"
+      "output": "DescribeAllStreamPlayInfoListResponse",
+      "status": "online"
     },
     "DescribeConcurrentRecordStreamNum": {
       "document": "This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.",
       "input": "DescribeConcurrentRecordStreamNumRequest",
       "name": "Queries the number of concurrent recording channels",
-      "output": "DescribeConcurrentRecordStreamNumResponse"
+      "output": "DescribeConcurrentRecordStreamNumResponse",
+      "status": "online"
     },
     "DescribeDeliverBandwidthList": {
       "document": "This API is used to query the billable bandwidth of live stream relaying in the last 3 months. The query period is up to 31 days.",
       "input": "DescribeDeliverBandwidthListRequest",
       "name": "Queries the billable bandwidth of live stream relaying",
-      "output": "DescribeDeliverBandwidthListResponse"
+      "output": "DescribeDeliverBandwidthListResponse",
+      "status": "online"
     },
     "DescribeGroupProIspPlayInfoList": {
       "document": "This API is used to query the downstream playback data by district and ISP.",
       "input": "DescribeGroupProIspPlayInfoListRequest",
       "name": "Queries downstream playback data by district and ISP",
-      "output": "DescribeGroupProIspPlayInfoListResponse"
+      "output": "DescribeGroupProIspPlayInfoListResponse",
+      "status": "online"
     },
     "DescribeHttpStatusInfoList": {
       "document": "This API is used to query the number of each playback HTTP status code at a 5-minute granularity in a certain period of time.\nNote: data can be queried one hour after it is generated. For example, data between 10:00 and 10:59 cannot be queried until 12:00.",
       "input": "DescribeHttpStatusInfoListRequest",
       "name": "Queries the details of each playback HTTP status code",
-      "output": "DescribeHttpStatusInfoListResponse"
+      "output": "DescribeHttpStatusInfoListResponse",
+      "status": "online"
     },
     "DescribeLiveCallbackRules": {
       "document": "This API is used to get the callback rule list.",
       "input": "DescribeLiveCallbackRulesRequest",
       "name": "Gets callback rule list",
-      "output": "DescribeLiveCallbackRulesResponse"
+      "output": "DescribeLiveCallbackRulesResponse",
+      "status": "online"
     },
     "DescribeLiveCallbackTemplate": {
       "document": "This API is used to get a single callback template.",
       "input": "DescribeLiveCallbackTemplateRequest",
       "name": "Gets single callback template",
-      "output": "DescribeLiveCallbackTemplateResponse"
+      "output": "DescribeLiveCallbackTemplateResponse",
+      "status": "online"
     },
     "DescribeLiveCallbackTemplates": {
       "document": "This API is used to get the callback template list.",
       "input": "DescribeLiveCallbackTemplatesRequest",
       "name": "Gets callback template list",
-      "output": "DescribeLiveCallbackTemplatesResponse"
+      "output": "DescribeLiveCallbackTemplatesResponse",
+      "status": "online"
     },
     "DescribeLiveCert": {
       "document": "This API is used to get certificate information.",
       "input": "DescribeLiveCertRequest",
       "name": "Gets certificate information",
-      "output": "DescribeLiveCertResponse"
+      "output": "DescribeLiveCertResponse",
+      "status": "online"
     },
     "DescribeLiveCerts": {
       "document": "This API is used to get the certificate information list.",
       "input": "DescribeLiveCertsRequest",
       "name": "Gets certificate information list",
-      "output": "DescribeLiveCertsResponse"
+      "output": "DescribeLiveCertsResponse",
+      "status": "online"
     },
     "DescribeLiveDelayInfoList": {
       "document": "This API is used to get the list of delayed playbacks.",
       "input": "DescribeLiveDelayInfoListRequest",
       "name": "Gets the list of delayed playbacks.",
-      "output": "DescribeLiveDelayInfoListResponse"
+      "output": "DescribeLiveDelayInfoListResponse",
+      "status": "online"
     },
     "DescribeLiveDomain": {
       "document": "This API is used to query the LVB domain name information.",
       "input": "DescribeLiveDomainRequest",
       "name": "Queries domain name information",
-      "output": "DescribeLiveDomainResponse"
+      "output": "DescribeLiveDomainResponse",
+      "status": "online"
     },
     "DescribeLiveDomainCert": {
       "document": "This API is used to get the domain name certificate information.",
       "input": "DescribeLiveDomainCertRequest",
       "name": "Gets domain name certificate information",
-      "output": "DescribeLiveDomainCertResponse"
+      "output": "DescribeLiveDomainCertResponse",
+      "status": "online"
     },
     "DescribeLiveDomainCertBindings": {
       "document": "This API is used to query domains bound with certificates.",
       "input": "DescribeLiveDomainCertBindingsRequest",
       "name": "Querying domains bound with certificates",
-      "output": "DescribeLiveDomainCertBindingsResponse"
+      "output": "DescribeLiveDomainCertBindingsResponse",
+      "status": "online"
     },
     "DescribeLiveDomainReferer": {
       "document": "This API is used to query referer allowlist/blocklist configuration of a live streaming domain name.\nReferer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.",
       "input": "DescribeLiveDomainRefererRequest",
       "name": "Queries referer allowlist/blocklist configuration of a live streaming domain name",
-      "output": "DescribeLiveDomainRefererResponse"
+      "output": "DescribeLiveDomainRefererResponse",
+      "status": "online"
     },
     "DescribeLiveDomains": {
       "document": "This API is used to query domain names by domain name status and type.",
       "input": "DescribeLiveDomainsRequest",
       "name": "Queries domain name list",
-      "output": "DescribeLiveDomainsResponse"
+      "output": "DescribeLiveDomainsResponse",
+      "status": "online"
     },
     "DescribeLiveForbidStreamList": {
       "document": "This API is used to get the list of disabled streams.\n\nNote: this API is used for query only and should not be relied too much upon in important business scenarios.",
       "input": "DescribeLiveForbidStreamListRequest",
       "name": "Gets the list of forbidden streams.",
-      "output": "DescribeLiveForbidStreamListResponse"
+      "output": "DescribeLiveForbidStreamListResponse",
+      "status": "online"
     },
     "DescribeLivePlayAuthKey": {
       "document": "This API is used to query the playback authentication key.",
       "input": "DescribeLivePlayAuthKeyRequest",
       "name": "Queries the playback authentication key",
-      "output": "DescribeLivePlayAuthKeyResponse"
+      "output": "DescribeLivePlayAuthKeyResponse",
+      "status": "online"
     },
     "DescribeLivePullStreamTasks": {
       "document": "This API is used to query the stream pulling tasks created by `CreateLivePullStreamTask`.\nThe tasks returned are sorted by last updated time in descending order.",
       "input": "DescribeLivePullStreamTasksRequest",
       "name": "Queries stream pulling tasks",
-      "output": "DescribeLivePullStreamTasksResponse"
+      "output": "DescribeLivePullStreamTasksResponse",
+      "status": "online"
     },
     "DescribeLivePushAuthKey": {
       "document": "This API is used to query the LVB push authentication key.",
       "input": "DescribeLivePushAuthKeyRequest",
       "name": "Queries the push authentication key",
-      "output": "DescribeLivePushAuthKeyResponse"
+      "output": "DescribeLivePushAuthKeyResponse",
+      "status": "online"
     },
     "DescribeLiveRecordRules": {
       "document": "This API is used to get the list of recording rules.",
       "input": "DescribeLiveRecordRulesRequest",
       "name": "Gets the list of recording rules",
-      "output": "DescribeLiveRecordRulesResponse"
+      "output": "DescribeLiveRecordRulesResponse",
+      "status": "online"
     },
     "DescribeLiveRecordTemplate": {
       "document": "This API is used to get a single recording template.",
       "input": "DescribeLiveRecordTemplateRequest",
       "name": "Gets a single recording template",
-      "output": "DescribeLiveRecordTemplateResponse"
+      "output": "DescribeLiveRecordTemplateResponse",
+      "status": "online"
     },
     "DescribeLiveRecordTemplates": {
       "document": "This API is used to get the recording template list.",
       "input": "DescribeLiveRecordTemplatesRequest",
       "name": "Gets the list of recording templates",
-      "output": "DescribeLiveRecordTemplatesResponse"
+      "output": "DescribeLiveRecordTemplatesResponse",
+      "status": "online"
     },
     "DescribeLiveSnapshotRules": {
       "document": "This API is used to get the screencapturing rule list.",
       "input": "DescribeLiveSnapshotRulesRequest",
       "name": "Gets screencapturing rule list",
-      "output": "DescribeLiveSnapshotRulesResponse"
+      "output": "DescribeLiveSnapshotRulesResponse",
+      "status": "online"
     },
     "DescribeLiveSnapshotTemplate": {
       "document": "This API is used to get a single screencapturing template.",
       "input": "DescribeLiveSnapshotTemplateRequest",
       "name": "Gets single screencapturing template",
-      "output": "DescribeLiveSnapshotTemplateResponse"
+      "output": "DescribeLiveSnapshotTemplateResponse",
+      "status": "online"
     },
     "DescribeLiveSnapshotTemplates": {
       "document": "This API is used to get the screencapturing template list.",
       "input": "DescribeLiveSnapshotTemplatesRequest",
       "name": "Gets screencapturing template list",
-      "output": "DescribeLiveSnapshotTemplatesResponse"
+      "output": "DescribeLiveSnapshotTemplatesResponse",
+      "status": "online"
     },
     "DescribeLiveStreamEventList": {
       "document": "This API is used to query stream push/interruption events.<br>\n\nNotes:\n1. This API is used to query stream push/interruption records, and should not be relied too much upon in important business scenarios.\n2. You can use the `IsFilter` parameter of this API to filter and get required push records.",
       "input": "DescribeLiveStreamEventListRequest",
       "name": "Queries streaming events.",
-      "output": "DescribeLiveStreamEventListResponse"
+      "output": "DescribeLiveStreamEventListResponse",
+      "status": "online"
     },
     "DescribeLiveStreamOnlineList": {
       "document": "This API is used to get the list of ongoing live streams. It queries the information of live streams after they are pushed successfully. \n\nNotes:\n1. This API is used to query the list of active live streams only, and should not be relied too much upon in important business scenarios.\n2. This API can query up to 20,000 streams. To query more streams, please contact our after-sales service team.\n",
       "input": "DescribeLiveStreamOnlineListRequest",
       "name": "Queries live streams.",
-      "output": "DescribeLiveStreamOnlineListResponse"
+      "output": "DescribeLiveStreamOnlineListResponse",
+      "status": "online"
     },
     "DescribeLiveStreamPublishedList": {
       "document": "This API is used to return the list of pushed streams. <br>\nNote: Up to 10,000 entries can be queried per page. More data can be obtained by adjusting the query time range.",
       "input": "DescribeLiveStreamPublishedListRequest",
       "name": "Queries the list of pushed streams.",
-      "output": "DescribeLiveStreamPublishedListResponse"
+      "output": "DescribeLiveStreamPublishedListResponse",
+      "status": "online"
     },
     "DescribeLiveStreamPushInfoList": {
       "document": "This API is used to query the push information of all real-time streams, including client IP, server IP, frame rate, bitrate, domain name, and push start time.",
       "input": "DescribeLiveStreamPushInfoListRequest",
       "name": "Gets the push data of live streams",
-      "output": "DescribeLiveStreamPushInfoListResponse"
+      "output": "DescribeLiveStreamPushInfoListResponse",
+      "status": "online"
     },
     "DescribeLiveStreamState": {
       "document": "This API is used to get the stream status, which may be active, inactive, or disabled.\n\nNotes:\nThis API allows you to query the status of a stream in real time. Given external factors such as network jitter, note the following when you determine whether a host is online:\n1. If possible, use your own logic of stream starting/stopping in a room, such as streaming signaling on the client and the online heartbeat of a host, to determine whether the host is online.\n2. If your application does not provide the room management feature, use the following methods to determine whether a host is online:\n2.1 Use the [live stream callback](https://intl.cloud.tencent.com/document/product/267/20388?from_cn_redirect=1).\n2.2 Call [DescribeLiveStreamOnlineList](https://intl.cloud.tencent.com/document/api/267/20472?from_cn_redirect=1) on a regular basis (interval > 1 min).\n2.3 Call this API.\n2.4 A host is considered to be online if the result returned by any of the above methods indicates so. If an API call times out or a parsing error occurs, to minimize the impact on your business, CSS will also consider the host online.",
       "input": "DescribeLiveStreamStateRequest",
       "name": "Queries stream status.",
-      "output": "DescribeLiveStreamStateResponse"
+      "output": "DescribeLiveStreamStateResponse",
+      "status": "online"
     },
     "DescribeLiveTimeShiftBillInfoList": {
       "document": "This API is used to query the time-shift video length, time-shift days, and total time-shift period of push domains. The data returned is on a five-minute basis. You can use it for reconciliation.",
       "input": "DescribeLiveTimeShiftBillInfoListRequest",
       "name": "Queries time shift billing data",
-      "output": "DescribeLiveTimeShiftBillInfoListResponse"
+      "output": "DescribeLiveTimeShiftBillInfoListResponse",
+      "status": "online"
     },
     "DescribeLiveTranscodeDetailInfo": {
       "document": "This API is used to query the details of transcoding on a specified day or in a specified period of time.",
       "input": "DescribeLiveTranscodeDetailInfoRequest",
       "name": "Queries LVB transcoding statistics",
-      "output": "DescribeLiveTranscodeDetailInfoResponse"
+      "output": "DescribeLiveTranscodeDetailInfoResponse",
+      "status": "online"
     },
     "DescribeLiveTranscodeRules": {
       "document": "This API is used to get the list of transcoding rules.",
       "input": "DescribeLiveTranscodeRulesRequest",
       "name": "Gets the list of transcoding rules",
-      "output": "DescribeLiveTranscodeRulesResponse"
+      "output": "DescribeLiveTranscodeRulesResponse",
+      "status": "online"
     },
     "DescribeLiveTranscodeTemplate": {
       "document": "This API is used to get a single transcoding template.",
       "input": "DescribeLiveTranscodeTemplateRequest",
       "name": "Gets a single transcoding template",
-      "output": "DescribeLiveTranscodeTemplateResponse"
+      "output": "DescribeLiveTranscodeTemplateResponse",
+      "status": "online"
     },
     "DescribeLiveTranscodeTemplates": {
       "document": "This API is used to get the transcoding template list.",
       "input": "DescribeLiveTranscodeTemplatesRequest",
       "name": "Gets the list of transcoding templates",
-      "output": "DescribeLiveTranscodeTemplatesResponse"
+      "output": "DescribeLiveTranscodeTemplatesResponse",
+      "status": "online"
     },
     "DescribeLiveTranscodeTotalInfo": {
       "document": "This API is used to query transcoding usage. You can use it to query data in the past three months.\nNotes:\nIf the start time and end time are on the same day, the data returned will be on a 5-minute basis.\nIf the start time and end time are not on the same day or if the data of specified domains is queried, the data returned will be on an hourly basis.",
       "input": "DescribeLiveTranscodeTotalInfoRequest",
       "name": "Queries total usage of the transcoding service",
-      "output": "DescribeLiveTranscodeTotalInfoResponse"
+      "output": "DescribeLiveTranscodeTotalInfoResponse",
+      "status": "online"
     },
     "DescribeLiveWatermark": {
       "document": "This API is used to get the information of a single watermark.",
       "input": "DescribeLiveWatermarkRequest",
       "name": "Gets the information of a single watermark",
-      "output": "DescribeLiveWatermarkResponse"
+      "output": "DescribeLiveWatermarkResponse",
+      "status": "online"
     },
     "DescribeLiveWatermarkRules": {
       "document": "This API is used to get the watermarking rule list.",
       "input": "DescribeLiveWatermarkRulesRequest",
       "name": "Gets the watermarking rule list",
-      "output": "DescribeLiveWatermarkRulesResponse"
+      "output": "DescribeLiveWatermarkRulesResponse",
+      "status": "online"
     },
     "DescribeLiveWatermarks": {
       "document": "This API is used to query the watermark list.",
       "input": "DescribeLiveWatermarksRequest",
       "name": "Queries watermark list",
-      "output": "DescribeLiveWatermarksResponse"
+      "output": "DescribeLiveWatermarksResponse",
+      "status": "online"
     },
     "DescribePlayErrorCodeDetailInfoList": {
       "document": "This API is used to query the information of downstream playback error codes, i.e., the occurrences of each HTTP error code (4xx and 5xx) at a 1-minute granularity in a certain period of time.\n\n",
       "input": "DescribePlayErrorCodeDetailInfoListRequest",
       "name": "Queries the real-time data of each playback HTTP error code",
-      "output": "DescribePlayErrorCodeDetailInfoListResponse"
+      "output": "DescribePlayErrorCodeDetailInfoListResponse",
+      "status": "online"
     },
     "DescribePlayErrorCodeSumInfoList": {
       "document": "This API is used to query the information of downstream playback error codes.",
       "input": "DescribePlayErrorCodeSumInfoListRequest",
       "name": "Queries the aggregated data of playback HTTP error codes",
-      "output": "DescribePlayErrorCodeSumInfoListResponse"
+      "output": "DescribePlayErrorCodeSumInfoListResponse",
+      "status": "online"
     },
     "DescribeProvinceIspPlayInfoList": {
       "document": "This API is used to query the downstream playback data of a specified ISP in a specified district, including bandwidth, traffic, number of requests, and number of concurrent connections.",
       "input": "DescribeProvinceIspPlayInfoListRequest",
       "name": "Queries the playback information by ISP and district",
-      "output": "DescribeProvinceIspPlayInfoListResponse"
+      "output": "DescribeProvinceIspPlayInfoListResponse",
+      "status": "online"
     },
     "DescribeScreenShotSheetNumList": {
       "document": "The API is used to query the number of screenshots as an LVB value-added service.",
       "input": "DescribeScreenShotSheetNumListRequest",
       "name": "Queries the number of screenshots",
-      "output": "DescribeScreenShotSheetNumListResponse"
+      "output": "DescribeScreenShotSheetNumListResponse",
+      "status": "online"
     },
     "DescribeStreamDayPlayInfoList": {
       "document": "This API is used to query the playback data of each stream at the day level, including the total traffic.",
       "input": "DescribeStreamDayPlayInfoListRequest",
       "name": "Queries the traffic data of all streams",
-      "output": "DescribeStreamDayPlayInfoListResponse"
+      "output": "DescribeStreamDayPlayInfoListResponse",
+      "status": "online"
     },
     "DescribeStreamPlayInfoList": {
       "document": "This API is used to query the playback data. It supports querying the playback details by stream name and aggregated data by playback domain name. Data in the last 4 minutes or so cannot be queried due to delay.\nNote: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.",
       "input": "DescribeStreamPlayInfoListRequest",
       "name": "Queries the playback information list of stream",
-      "output": "DescribeStreamPlayInfoListResponse"
+      "output": "DescribeStreamPlayInfoListResponse",
+      "status": "online"
     },
     "DescribeStreamPushInfoList": {
       "document": "This API is used to get the push data of a stream, including the audio/video frame rate, bitrate, elapsed time, and codec.",
       "input": "DescribeStreamPushInfoListRequest",
       "name": "Gets the push data of a stream",
-      "output": "DescribeStreamPushInfoListResponse"
+      "output": "DescribeStreamPushInfoListResponse",
+      "status": "online"
     },
     "DescribeTopClientIpSumInfoList": {
       "document": "This API is used to query the information of the top n client IPs in a certain period of time (top 1,000 is supported currently).",
       "input": "DescribeTopClientIpSumInfoListRequest",
       "name": "Queries the information of top n client IPs in certain period of time",
-      "output": "DescribeTopClientIpSumInfoListResponse"
+      "output": "DescribeTopClientIpSumInfoListResponse",
+      "status": "online"
     },
     "DescribeTranscodeTaskNum": {
       "document": "This API is used to query the number of transcoding tasks.",
       "input": "DescribeTranscodeTaskNumRequest",
       "name": "Queries the number of transcoding tasks",
-      "output": "DescribeTranscodeTaskNumResponse"
+      "output": "DescribeTranscodeTaskNumResponse",
+      "status": "online"
     },
     "DescribeUploadStreamNums": {
       "document": "This API is used to query the number of LVB upstream channels.",
       "input": "DescribeUploadStreamNumsRequest",
       "name": "Queries the number of LVB upstream channels.",
-      "output": "DescribeUploadStreamNumsResponse"
+      "output": "DescribeUploadStreamNumsResponse",
+      "status": "online"
     },
     "DescribeVisitTopSumInfoList": {
       "document": "This API is used to query the information of the top n domain names or stream IDs in a certain period of time (top 1,000 is supported currently).",
       "input": "DescribeVisitTopSumInfoListRequest",
       "name": "Queries the information of top n domain names or stream IDs in certain period of time",
-      "output": "DescribeVisitTopSumInfoListResponse"
+      "output": "DescribeVisitTopSumInfoListResponse",
+      "status": "online"
     },
     "DropLiveStream": {
       "document": "This API is used to pause a live stream. The stream can be resumed if it is paused.\nNote: If you call this API to pause an inactive stream, the request will be considered successful.",
       "input": "DropLiveStreamRequest",
       "name": "Pauses a live stream",
-      "output": "DropLiveStreamResponse"
+      "output": "DropLiveStreamResponse",
+      "status": "online"
     },
     "EnableLiveDomain": {
       "document": "This API is used to enable a disabled LVB domain name.",
       "input": "EnableLiveDomainRequest",
       "name": "Enables domain name",
-      "output": "EnableLiveDomainResponse"
+      "output": "EnableLiveDomainResponse",
+      "status": "online"
     },
     "ForbidLiveDomain": {
       "document": "This API is used to disable an LVB domain name.",
       "input": "ForbidLiveDomainRequest",
       "name": "Disables domain name",
-      "output": "ForbidLiveDomainResponse"
+      "output": "ForbidLiveDomainResponse",
+      "status": "online"
     },
     "ForbidLiveStream": {
       "document": "This API is used to forbid the push of a specific stream. You can preset a time point to resume the stream.",
       "input": "ForbidLiveStreamRequest",
       "name": "Forbids a live stream.",
-      "output": "ForbidLiveStreamResponse"
+      "output": "ForbidLiveStreamResponse",
+      "status": "online"
     },
     "ModifyLiveCallbackTemplate": {
       "document": "This API is used to modify a callback template.",
       "input": "ModifyLiveCallbackTemplateRequest",
       "name": "Modifies callback template",
-      "output": "ModifyLiveCallbackTemplateResponse"
+      "output": "ModifyLiveCallbackTemplateResponse",
+      "status": "online"
     },
     "ModifyLiveDomainCertBindings": {
       "document": "This API is used to bind a certificate to multiple playback domains and update the HTTPS configuration of the domains.\nIf a self-owned certificate is used, it will be automatically uploaded to Tencent Cloud’s SSL Certificate Service.",
       "input": "ModifyLiveDomainCertBindingsRequest",
       "name": "Binding a certificate to multiple playback domains",
-      "output": "ModifyLiveDomainCertBindingsResponse"
+      "output": "ModifyLiveDomainCertBindingsResponse",
+      "status": "online"
     },
     "ModifyLiveDomainReferer": {
       "document": "This API is used to configure referer allowlist/blocklist of a live streaming domain name.\nReferer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.",
       "input": "ModifyLiveDomainRefererRequest",
       "name": "Configures referer allowlist/blocklist of a live streaming domain name",
-      "output": "ModifyLiveDomainRefererResponse"
+      "output": "ModifyLiveDomainRefererResponse",
+      "status": "online"
     },
     "ModifyLivePlayAuthKey": {
       "document": "This API is used to modify the playback authentication key.",
       "input": "ModifyLivePlayAuthKeyRequest",
       "name": "Modifies the playback authentication key",
-      "output": "ModifyLivePlayAuthKeyResponse"
+      "output": "ModifyLivePlayAuthKeyResponse",
+      "status": "online"
     },
     "ModifyLivePlayDomain": {
       "document": "This API is used to modify a playback domain name.",
       "input": "ModifyLivePlayDomainRequest",
       "name": "Modifies playback domain name",
-      "output": "ModifyLivePlayDomainResponse"
+      "output": "ModifyLivePlayDomainResponse",
+      "status": "online"
     },
     "ModifyLivePullStreamTask": {
       "document": "This API is used to modify a stream pulling task. \n1. You cannot modify the destination URL. To publish to a new destination, please create a new task.\n2. You cannot modify the source type. To use a different source type, please create a new task.",
       "input": "ModifyLivePullStreamTaskRequest",
       "name": "Modifies a stream pulling task",
-      "output": "ModifyLivePullStreamTaskResponse"
+      "output": "ModifyLivePullStreamTaskResponse",
+      "status": "online"
     },
     "ModifyLivePushAuthKey": {
       "document": "This API is used to modify the LVB push authentication key.",
       "input": "ModifyLivePushAuthKeyRequest",
       "name": "Modifies the push authentication key",
-      "output": "ModifyLivePushAuthKeyResponse"
+      "output": "ModifyLivePushAuthKeyResponse",
+      "status": "online"
     },
     "ModifyLiveRecordTemplate": {
       "document": "This API is used to modify the recording template configuration.",
       "input": "ModifyLiveRecordTemplateRequest",
       "name": "Modifies a recording template",
-      "output": "ModifyLiveRecordTemplateResponse"
+      "output": "ModifyLiveRecordTemplateResponse",
+      "status": "online"
     },
     "ModifyLiveSnapshotTemplate": {
       "document": "This API is used to modify the screencapturing template configuration.",
       "input": "ModifyLiveSnapshotTemplateRequest",
       "name": "Modifies screencapturing template configuration",
-      "output": "ModifyLiveSnapshotTemplateResponse"
+      "output": "ModifyLiveSnapshotTemplateResponse",
+      "status": "online"
     },
     "ModifyLiveTranscodeTemplate": {
       "document": "This API is used to modify the transcoding template configuration.",
       "input": "ModifyLiveTranscodeTemplateRequest",
       "name": "Modifies the transcoding template configuration",
-      "output": "ModifyLiveTranscodeTemplateResponse"
+      "output": "ModifyLiveTranscodeTemplateResponse",
+      "status": "online"
     },
     "ResumeDelayLiveStream": {
       "document": "This API is used to cancel the delay setting and recover the real-time display of the live streaming image.",
       "input": "ResumeDelayLiveStreamRequest",
       "name": "Cancels the live streaming delay",
-      "output": "ResumeDelayLiveStreamResponse"
+      "output": "ResumeDelayLiveStreamResponse",
+      "status": "online"
     },
     "ResumeLiveStream": {
       "document": "This API is used to resume the push of a specific stream.",
       "input": "ResumeLiveStreamRequest",
       "name": "Resumes a live stream.",
-      "output": "ResumeLiveStreamResponse"
+      "output": "ResumeLiveStreamResponse",
+      "status": "online"
     },
     "StopLiveRecord": {
       "document": "Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, please see the corresponding document.",
       "input": "StopLiveRecordRequest",
       "name": "Terminates recording task (disused; please use the new API)",
-      "output": "StopLiveRecordResponse"
+      "output": "StopLiveRecordResponse",
+      "status": "online"
     },
     "StopRecordTask": {
       "document": "This API is used to terminate an ongoing recording task and generate a recording file.",
       "input": "StopRecordTaskRequest",
       "name": "Terminates recording task (API)",
-      "output": "StopRecordTaskResponse"
+      "output": "StopRecordTaskResponse",
+      "status": "online"
     },
     "UnBindLiveDomainCert": {
       "document": "This API is used to unbind a domain name certificate.",
       "input": "UnBindLiveDomainCertRequest",
       "name": "Unbinds domain name certificate",
-      "output": "UnBindLiveDomainCertResponse"
+      "output": "UnBindLiveDomainCertResponse",
+      "status": "online"
     },
     "UpdateLiveWatermark": {
       "document": "This API is used to update a watermark.",
       "input": "UpdateLiveWatermarkRequest",
       "name": "Updates watermark",
-      "output": "UpdateLiveWatermarkResponse"
+      "output": "UpdateLiveWatermarkResponse",
+      "status": "online"
     }
   },
   "metadata": {

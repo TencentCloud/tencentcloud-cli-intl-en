@@ -4,175 +4,204 @@
       "document": "This API is used to specify the project to which a TencentDB instance belongs.\n",
       "input": "AssignProjectRequest",
       "name": "Specifies the project to which a TencentDB instance belongs",
-      "output": "AssignProjectResponse"
+      "output": "AssignProjectResponse",
+      "status": "online"
     },
     "CreateBackupDBInstance": {
       "document": "This API is used to create instance backups.",
       "input": "CreateBackupDBInstanceRequest",
       "name": "Creates instance backups",
-      "output": "CreateBackupDBInstanceResponse"
+      "output": "CreateBackupDBInstanceResponse",
+      "status": "online"
     },
     "CreateBackupDownloadTask": {
       "document": "This API is used to create a backup download task.",
       "input": "CreateBackupDownloadTaskRequest",
       "name": "Creates a backup download task",
-      "output": "CreateBackupDownloadTaskResponse"
+      "output": "CreateBackupDownloadTaskResponse",
+      "status": "online"
     },
     "CreateDBInstance": {
       "document": "This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API.",
       "input": "CreateDBInstanceRequest",
       "name": "Creates a monthly subscription TencentDB instance",
-      "output": "CreateDBInstanceResponse"
+      "output": "CreateDBInstanceResponse",
+      "status": "online"
     },
     "CreateDBInstanceHour": {
       "document": "This API is used to create a pay-as-you-go TencentDB for MongoDB instance.",
       "input": "CreateDBInstanceHourRequest",
       "name": "Creates a pay-as-you-go TencentDB instance",
-      "output": "CreateDBInstanceHourResponse"
+      "output": "CreateDBInstanceHourResponse",
+      "status": "online"
     },
     "DescribeAsyncRequestInfo": {
       "document": "This API is used to query async task status.",
       "input": "DescribeAsyncRequestInfoRequest",
       "name": "Queries async task status",
-      "output": "DescribeAsyncRequestInfoResponse"
+      "output": "DescribeAsyncRequestInfoResponse",
+      "status": "online"
     },
     "DescribeBackupAccess": {
       "document": "备份下载功能已调整，此接口即将下线\n\nTencentDB will soon stop supporting this API as the backup download feature has been modified.\n\nThis API is used to get the permission to download a backup file. The detailed backup file information can be obtained through the `DescribeDBBackups` API.",
       "input": "DescribeBackupAccessRequest",
       "name": "Gets the permission to download an instance backup",
-      "output": "DescribeBackupAccessResponse"
+      "output": "DescribeBackupAccessResponse",
+      "status": "offline"
     },
     "DescribeBackupDownloadTask": {
       "document": "This API is used to query backup download task information.",
       "input": "DescribeBackupDownloadTaskRequest",
       "name": "Queries backup download task information",
-      "output": "DescribeBackupDownloadTaskResponse"
+      "output": "DescribeBackupDownloadTaskResponse",
+      "status": "online"
     },
     "DescribeClientConnections": {
       "document": "This API is used to query the client connection information of an instance, including the IP and number of connections. Currently, only instances of MongoDB 3.2 are supported.",
       "input": "DescribeClientConnectionsRequest",
       "name": "Queries client connection information of an instance",
-      "output": "DescribeClientConnectionsResponse"
+      "output": "DescribeClientConnectionsResponse",
+      "status": "online"
     },
     "DescribeDBBackups": {
       "document": "This API is used to query the list of instance backups. Currently, only backups created in the last seven days can be queried.",
       "input": "DescribeDBBackupsRequest",
       "name": "Queries the list of instance backups",
-      "output": "DescribeDBBackupsResponse"
+      "output": "DescribeDBBackupsResponse",
+      "status": "online"
     },
     "DescribeDBInstanceDeal": {
       "document": "This API is used to get details of purchase, renewal, and specification adjustment orders of a MongoDB instance.",
       "input": "DescribeDBInstanceDealRequest",
       "name": "Gets order details of an instance",
-      "output": "DescribeDBInstanceDealResponse"
+      "output": "DescribeDBInstanceDealResponse",
+      "status": "online"
     },
     "DescribeDBInstances": {
       "document": "This API is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, and instance status.",
       "input": "DescribeDBInstancesRequest",
       "name": "Queries the list of TencentDB instances",
-      "output": "DescribeDBInstancesResponse"
+      "output": "DescribeDBInstancesResponse",
+      "status": "online"
     },
     "DescribeInstanceParams": {
       "document": "This API is used to query the modifiable parameter list of an instance.",
       "input": "DescribeInstanceParamsRequest",
       "name": "Queries the modifiable parameter list",
-      "output": "DescribeInstanceParamsResponse"
+      "output": "DescribeInstanceParamsResponse",
+      "status": "online"
     },
     "DescribeSecurityGroup": {
       "document": "This API is used to query the security groups associated with an instance.",
       "input": "DescribeSecurityGroupRequest",
       "name": "Queries the security groups associated with an instance",
-      "output": "DescribeSecurityGroupResponse"
+      "output": "DescribeSecurityGroupResponse",
+      "status": "online"
     },
     "DescribeSlowLogPatterns": {
       "document": "This API is used to get the slow log statistics of a database instance.",
       "input": "DescribeSlowLogPatternsRequest",
       "name": "Gets slow log statistics",
-      "output": "DescribeSlowLogPatternsResponse"
+      "output": "DescribeSlowLogPatternsResponse",
+      "status": "online"
     },
     "DescribeSlowLogs": {
       "document": "This API is used to get the slow log information of a TencentDB instance. Only slow logs for the last 7 days can be queried.",
       "input": "DescribeSlowLogsRequest",
       "name": "Gets slow log information",
-      "output": "DescribeSlowLogsResponse"
+      "output": "DescribeSlowLogsResponse",
+      "status": "online"
     },
     "DescribeSpecInfo": {
       "document": "This API is used to query the purchasable instance specifications.",
       "input": "DescribeSpecInfoRequest",
       "name": "Queries the specifications of purchasable TencentDB instances",
-      "output": "DescribeSpecInfoResponse"
+      "output": "DescribeSpecInfoResponse",
+      "status": "online"
     },
     "FlushInstanceRouterConfig": {
       "document": "This API is used to run the `FlushRouterConfig` command on all mongos instances.",
       "input": "FlushInstanceRouterConfigRequest",
       "name": "Flushes router configuration",
-      "output": "FlushInstanceRouterConfigResponse"
+      "output": "FlushInstanceRouterConfigResponse",
+      "status": "online"
     },
     "InquirePriceCreateDBInstances": {
       "document": "This API is used to query price of instance creation. The `region` parameter must be passed in this API, otherwise verification will fail. This API allows queries only for purchasable instance specifications.",
       "input": "InquirePriceCreateDBInstancesRequest",
       "name": "Queries price of instance creation",
-      "output": "InquirePriceCreateDBInstancesResponse"
+      "output": "InquirePriceCreateDBInstancesResponse",
+      "status": "online"
     },
     "InquirePriceModifyDBInstanceSpec": {
       "document": "This API is used to query price of instance specification adjustment.",
       "input": "InquirePriceModifyDBInstanceSpecRequest",
       "name": "Queries price of specification adjustment",
-      "output": "InquirePriceModifyDBInstanceSpecResponse"
+      "output": "InquirePriceModifyDBInstanceSpecResponse",
+      "status": "online"
     },
     "InquirePriceRenewDBInstances": {
       "document": "This API is used to query the renewal price of a monthly subscription instance.",
       "input": "InquirePriceRenewDBInstancesRequest",
       "name": "Queries the renewal price of an instance",
-      "output": "InquirePriceRenewDBInstancesResponse"
+      "output": "InquirePriceRenewDBInstancesResponse",
+      "status": "online"
     },
     "IsolateDBInstance": {
       "document": "This API is used to isolate a pay-as-you-go TencentDB for MongoDB instance. An isolated instance is retained in the recycle bin and data can no longer be written to it. After it is isolated for a certain period of time, it will be completely deleted. For the retention period in the recycle bin, please see the terms of service for pay-as-you-go billing. Isolated pay-as-you-go instances cannot be recovered, so please proceed with caution.",
       "input": "IsolateDBInstanceRequest",
       "name": "Isolates a TencentDB Instance",
-      "output": "IsolateDBInstanceResponse"
+      "output": "IsolateDBInstanceResponse",
+      "status": "online"
     },
     "ModifyDBInstanceNetworkAddress": {
       "document": "This API is used to modify the network settings of a TencentDB instance, such as switching its network type from classic network to VPC or between VPCs.",
       "input": "ModifyDBInstanceNetworkAddressRequest",
       "name": "Modifies the network settings of TencentDB instances",
-      "output": "ModifyDBInstanceNetworkAddressResponse"
+      "output": "ModifyDBInstanceNetworkAddressResponse",
+      "status": "online"
     },
     "ModifyDBInstanceSecurityGroup": {
       "document": "This API is used to modify the security groups associated with an instance.",
       "input": "ModifyDBInstanceSecurityGroupRequest",
       "name": "Modifies the security groups associated with an instance",
-      "output": "ModifyDBInstanceSecurityGroupResponse"
+      "output": "ModifyDBInstanceSecurityGroupResponse",
+      "status": "online"
     },
     "ModifyDBInstanceSpec": {
       "document": "This API is used to adjust the specification configuration of a TencentDB for MongoDB. The purchasable specifications supported by the API can be obtained through the DescribeSpecInfo API.",
       "input": "ModifyDBInstanceSpecRequest",
       "name": "Adjusts the configurations of a TencentDB instance",
-      "output": "ModifyDBInstanceSpecResponse"
+      "output": "ModifyDBInstanceSpecResponse",
+      "status": "online"
     },
     "OfflineIsolatedDBInstance": {
       "document": "This API is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status.",
       "input": "OfflineIsolatedDBInstanceRequest",
       "name": "Deactivates isolated TencentDB instances",
-      "output": "OfflineIsolatedDBInstanceResponse"
+      "output": "OfflineIsolatedDBInstanceResponse",
+      "status": "online"
     },
     "RenameInstance": {
       "document": "This API is used to rename a TencentDB instance.",
       "input": "RenameInstanceRequest",
       "name": "Renames an instance",
-      "output": "RenameInstanceResponse"
+      "output": "RenameInstanceResponse",
+      "status": "online"
     },
     "RenewDBInstances": {
       "document": "This API is used to renew a monthly subscription TencentDB instance. Only monthly subscription instances are supported, while pay-as-you-go instances do not need to be renewed.",
       "input": "RenewDBInstancesRequest",
       "name": "Renews a TencentDB instance",
-      "output": "RenewDBInstancesResponse"
+      "output": "RenewDBInstancesResponse",
+      "status": "online"
     },
     "ResetDBInstancePassword": {
       "document": "This API is used to modify instance password.",
       "input": "ResetDBInstancePasswordRequest",
       "name": "Modifies instance password",
-      "output": "ResetDBInstancePasswordResponse"
+      "output": "ResetDBInstancePasswordResponse",
+      "status": "online"
     }
   },
   "metadata": {

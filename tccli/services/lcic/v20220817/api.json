@@ -4,85 +4,99 @@
       "document": "This API is used to bind a document to a room.",
       "input": "BindDocumentToRoomRequest",
       "name": "Binds a document to a room.",
-      "output": "BindDocumentToRoomResponse"
+      "output": "BindDocumentToRoomResponse",
+      "status": "online"
     },
     "CreateDocument": {
       "document": "This API is used to create a document to be used in a room.",
       "input": "CreateDocumentRequest",
       "name": "Creates a document.",
-      "output": "CreateDocumentResponse"
+      "output": "CreateDocumentResponse",
+      "status": "online"
     },
     "CreateRoom": {
       "document": "This API is used to create a room.",
       "input": "CreateRoomRequest",
       "name": "Creates a room.",
-      "output": "CreateRoomResponse"
+      "output": "CreateRoomResponse",
+      "status": "online"
     },
     "CreateSupervisor": {
       "document": "This API is used to create a spectator.",
       "input": "CreateSupervisorRequest",
       "name": "Creates a spectator.",
-      "output": "CreateSupervisorResponse"
+      "output": "CreateSupervisorResponse",
+      "status": "online"
     },
     "DeleteRoom": {
       "document": "This API is used to delete a room.",
       "input": "DeleteRoomRequest",
       "name": "Deletes a room.",
-      "output": "DeleteRoomResponse"
+      "output": "DeleteRoomResponse",
+      "status": "online"
     },
     "DescribeRoom": {
       "document": "This API is used to get room information.",
       "input": "DescribeRoomRequest",
       "name": "Gets room information.",
-      "output": "DescribeRoomResponse"
+      "output": "DescribeRoomResponse",
+      "status": "online"
     },
     "DescribeRoomStatistics": {
       "document": "This API is used to obtain the statistics of a room. It can be called only after the room is ended.",
       "input": "DescribeRoomStatisticsRequest",
       "name": "Obtains the statistics of a room.",
-      "output": "DescribeRoomStatisticsResponse"
+      "output": "DescribeRoomStatisticsResponse",
+      "status": "online"
     },
     "DescribeUser": {
       "document": "This API is used to obtain user profile.",
       "input": "DescribeUserRequest",
       "name": "Obtains user profile.",
-      "output": "DescribeUserResponse"
+      "output": "DescribeUserResponse",
+      "status": "online"
     },
     "LoginOriginId": {
       "document": "This API is used to log in with an origin account, which is the `originId` entered during registration.",
       "input": "LoginOriginIdRequest",
       "name": "Logs in with an origin account.",
-      "output": "LoginOriginIdResponse"
+      "output": "LoginOriginIdResponse",
+      "status": "online"
     },
     "LoginUser": {
       "document": "This API is used to log in.",
       "input": "LoginUserRequest",
       "name": "Logs in.",
-      "output": "LoginUserResponse"
+      "output": "LoginUserResponse",
+      "status": "online"
     },
     "ModifyApp": {
       "document": "This API is used to modify an application.",
       "input": "ModifyAppRequest",
       "name": "Modifies an application.",
-      "output": "ModifyAppResponse"
+      "output": "ModifyAppResponse",
+      "status": "online"
     },
     "RegisterUser": {
       "document": "This API is used to register a user.",
       "input": "RegisterUserRequest",
       "name": "Registers a user.",
-      "output": "RegisterUserResponse"
+      "output": "RegisterUserResponse",
+      "status": "online"
     },
     "SetAppCustomContent": {
       "document": "This API is used to set or update the custom content of an application, including the application icon and custom code. After you update JS and CSS content, you also need to call this API for the updates to take effect.",
       "input": "SetAppCustomContentRequest",
       "name": "Sets the custom content of an application.",
-      "output": "SetAppCustomContentResponse"
+      "output": "SetAppCustomContentResponse",
+      "status": "online"
     },
     "UnbindDocumentFromRoom": {
       "document": "This API is used to unbind a document from a room.",
       "input": "UnbindDocumentFromRoomRequest",
       "name": "Unbinds a document from a room.",
-      "output": "UnbindDocumentFromRoomResponse"
+      "output": "UnbindDocumentFromRoomResponse",
+      "status": "online"
     }
   },
   "metadata": {

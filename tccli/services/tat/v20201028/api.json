@@ -4,115 +4,134 @@
       "document": "This API is used to cancel the command executed on one or more CVM instances.\n\n* If the command has not been delivered to the TAT agent, the task status is `PENDING`, `DELIVERING`, or `DELIVER_DELAYED`, and will be `CANCELLED` after the command is canceled.\n* If the command has been delivered to the TAT agent, the task status is `RUNNING`, and will be `TERMINATED` after the command is canceled.",
       "input": "CancelInvocationRequest",
       "name": "Cancels the execution of a command",
-      "output": "CancelInvocationResponse"
+      "output": "CancelInvocationResponse",
+      "status": "online"
     },
     "CreateCommand": {
       "document": "This API is used to create a command.",
       "input": "CreateCommandRequest",
       "name": "Creates a command",
-      "output": "CreateCommandResponse"
+      "output": "CreateCommandResponse",
+      "status": "online"
     },
     "CreateInvoker": {
       "document": "This API is used to create an invoker.",
       "input": "CreateInvokerRequest",
       "name": "Creates an invoker",
-      "output": "CreateInvokerResponse"
+      "output": "CreateInvokerResponse",
+      "status": "online"
     },
     "DeleteCommand": {
       "document": "This API is used to delete a command.\nCommands bound to an invoker cannot be deleted.",
       "input": "DeleteCommandRequest",
       "name": "Deletes a command",
-      "output": "DeleteCommandResponse"
+      "output": "DeleteCommandResponse",
+      "status": "online"
     },
     "DeleteInvoker": {
       "document": "This API is used to delete an invoker.",
       "input": "DeleteInvokerRequest",
       "name": "Deletes an invoker",
-      "output": "DeleteInvokerResponse"
+      "output": "DeleteInvokerResponse",
+      "status": "online"
     },
     "DescribeAutomationAgentStatus": {
       "document": "This API is used to query the status of the TAT agent.",
       "input": "DescribeAutomationAgentStatusRequest",
       "name": "Queries the agent status",
-      "output": "DescribeAutomationAgentStatusResponse"
+      "output": "DescribeAutomationAgentStatusResponse",
+      "status": "online"
     },
     "DescribeCommands": {
       "document": "This API is used to query command details.",
       "input": "DescribeCommandsRequest",
       "name": "Queries command details",
-      "output": "DescribeCommandsResponse"
+      "output": "DescribeCommandsResponse",
+      "status": "online"
     },
     "DescribeInvocationTasks": {
       "document": "This API is used to query execution task details.",
       "input": "DescribeInvocationTasksRequest",
       "name": "Queries the execution tasks",
-      "output": "DescribeInvocationTasksResponse"
+      "output": "DescribeInvocationTasksResponse",
+      "status": "online"
     },
     "DescribeInvocations": {
       "document": "This API is used to query execution activity details.",
       "input": "DescribeInvocationsRequest",
       "name": "Queries the execution activities",
-      "output": "DescribeInvocationsResponse"
+      "output": "DescribeInvocationsResponse",
+      "status": "online"
     },
     "DescribeInvokerRecords": {
       "document": "This API is used to query the execution history of an invoker.",
       "input": "DescribeInvokerRecordsRequest",
       "name": "Queries the execution history of an invoker",
-      "output": "DescribeInvokerRecordsResponse"
+      "output": "DescribeInvokerRecordsResponse",
+      "status": "online"
     },
     "DescribeInvokers": {
       "document": "This API is used to query invoker details.",
       "input": "DescribeInvokersRequest",
       "name": "Queries invokers",
-      "output": "DescribeInvokersResponse"
+      "output": "DescribeInvokersResponse",
+      "status": "online"
     },
     "DescribeRegions": {
       "document": "This API is used to query the list of regions that supports TAT.\nIf the `RegionState` is `AVAILABLE`, it means that TAT is available in the region. If no value is returned, TAT is not available in the region.",
       "input": "DescribeRegionsRequest",
       "name": "Queries regions that support TAT",
-      "output": "DescribeRegionsResponse"
+      "output": "DescribeRegionsResponse",
+      "status": "online"
     },
     "DisableInvoker": {
       "document": "This API is used to disable an invoker.",
       "input": "DisableInvokerRequest",
       "name": "Disables an invoker",
-      "output": "DisableInvokerResponse"
+      "output": "DisableInvokerResponse",
+      "status": "online"
     },
     "EnableInvoker": {
       "document": "This API is used to enable an invoker.",
       "input": "EnableInvokerRequest",
       "name": "Enables an invoker",
-      "output": "EnableInvokerResponse"
+      "output": "EnableInvokerResponse",
+      "status": "online"
     },
     "InvokeCommand": {
       "document": "This API is used to trigger a command on the specified instance and returns the execution activity ID (inv-xxxxxxxx) on success. Each execution activity has one or more execution tasks (invt-xxxxxxxx) and each execution task indicates an execution record on a CVM or Lighthouse instance.\n\n* If the agent is not installed on the instance or is offline, an error is returned.\n* If the command type is not supported by the agent runtime environment, an error is returned.\n* The specified instance needs to be in a VPC network.\n* The specified instance needs to be in the RUNNING status.\n* Only one type of instances (CVM or Lighthouse) can be specified in a single request.",
       "input": "InvokeCommandRequest",
       "name": "Triggers a command",
-      "output": "InvokeCommandResponse"
+      "output": "InvokeCommandResponse",
+      "status": "online"
     },
     "ModifyCommand": {
       "document": "This API is used to modify a command.",
       "input": "ModifyCommandRequest",
       "name": "Modifies a command",
-      "output": "ModifyCommandResponse"
+      "output": "ModifyCommandResponse",
+      "status": "online"
     },
     "ModifyInvoker": {
       "document": "This API is used to modify an invoker.",
       "input": "ModifyInvokerRequest",
       "name": "Modifies an invoker",
-      "output": "ModifyInvokerResponse"
+      "output": "ModifyInvokerResponse",
+      "status": "online"
     },
     "PreviewReplacedCommandContent": {
       "document": "This API is used to preview the command with custom parameters. The command is not executed.",
       "input": "PreviewReplacedCommandContentRequest",
       "name": "Previews a command",
-      "output": "PreviewReplacedCommandContentResponse"
+      "output": "PreviewReplacedCommandContentResponse",
+      "status": "online"
     },
     "RunCommand": {
       "document": "This API is used to execute a command and returns the execution activity ID (inv-xxxxxxxx) on success. Each execution has one or more execution tasks (invt-xxxxxxxx) and each execution task indicates an execution record on a CVM or Lighthouse instance.\n\n* If the agent is not installed on the instance or is offline, an error is returned.\n* If the command type is not supported by the agent runtime environment, an error is returned.\n* The specified instance needs to be in a VPC network.\n* The specified instance needs to be in the `RUNNING` status.\n* Only one type of instances (CVM or Lighthouse) can be specified in a single request.",
       "input": "RunCommandRequest",
       "name": "Executes a command",
-      "output": "RunCommandResponse"
+      "output": "RunCommandResponse",
+      "status": "online"
     }
   },
   "metadata": {

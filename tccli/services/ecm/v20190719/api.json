@@ -4,745 +4,869 @@
       "document": "This API is used to apply for one or multiple EIPs.",
       "input": "AllocateAddressesRequest",
       "name": "Creates EIP",
-      "output": "AllocateAddressesResponse"
+      "output": "AllocateAddressesResponse",
+      "status": "online"
     },
     "AssignIpv6Addresses": {
       "document": "This API is used to apply for an IPv6 address for an ENI.",
       "input": "AssignIpv6AddressesRequest",
       "name": "Assigns IPv6 address",
-      "output": "AssignIpv6AddressesResponse"
+      "output": "AssignIpv6AddressesResponse",
+      "status": "online"
     },
     "AssignPrivateIpAddresses": {
       "document": "This API is used to apply for a private IP for an ENI.",
       "input": "AssignPrivateIpAddressesRequest",
       "name": "Applies for private IP for ENI",
-      "output": "AssignPrivateIpAddressesResponse"
+      "output": "AssignPrivateIpAddressesResponse",
+      "status": "online"
     },
     "AssociateAddress": {
       "document": "This API is used to bind an EIP to an instance or the specified private IP of an ENI.\nBinding an EIP to an instance (ECM) is essentially to bind it to the primary private IP of the primary ENI of the instance.\nWhen you bind an EIP to the private IP of the specified ENI, if the private IP is already bound to an EIP or public IP, a failure will be reported, and you must unbind it first before you can bind it to a new EIP.\nOnly EIPs in `UNBIND` status can be bound to a private IP.",
       "input": "AssociateAddressRequest",
       "name": "Binds EIP",
-      "output": "AssociateAddressResponse"
+      "output": "AssociateAddressResponse",
+      "status": "online"
     },
     "AssociateSecurityGroups": {
       "document": "This API is used to bind a security group.",
       "input": "AssociateSecurityGroupsRequest",
       "name": "Binds security group",
-      "output": "AssociateSecurityGroupsResponse"
+      "output": "AssociateSecurityGroupsResponse",
+      "status": "online"
     },
     "AttachNetworkInterface": {
       "document": "This API is used to bind an ENI to a CVM instance.",
       "input": "AttachNetworkInterfaceRequest",
       "name": "Binds ENI to CVM instance",
-      "output": "AttachNetworkInterfaceResponse"
+      "output": "AttachNetworkInterfaceResponse",
+      "status": "online"
     },
     "BatchDeregisterTargets": {
       "document": "This API is used to batch unbind real servers.",
       "input": "BatchDeregisterTargetsRequest",
       "name": "Batch unbinds real servers",
-      "output": "BatchDeregisterTargetsResponse"
+      "output": "BatchDeregisterTargetsResponse",
+      "status": "online"
     },
     "BatchModifyTargetWeight": {
       "document": "This API is used to batch modify the forwarding weights of the real servers bound to a listener.",
       "input": "BatchModifyTargetWeightRequest",
       "name": "Batch modifies the forwarding weights of real servers bound to listener",
-      "output": "BatchModifyTargetWeightResponse"
+      "output": "BatchModifyTargetWeightResponse",
+      "status": "online"
     },
     "BatchRegisterTargets": {
       "document": "This API is used to batch bind backend targets.",
       "input": "BatchRegisterTargetsRequest",
       "name": "Batch binds backend targets",
-      "output": "BatchRegisterTargetsResponse"
+      "output": "BatchRegisterTargetsResponse",
+      "status": "online"
     },
     "CreateHaVip": {
       "document": "This API is used to create an HAVIP.",
       "input": "CreateHaVipRequest",
       "name": "Creates HAVIP",
-      "output": "CreateHaVipResponse"
+      "output": "CreateHaVipResponse",
+      "status": "online"
     },
     "CreateImage": {
       "document": "This API is used to create an image with the system disk of an instance. The image can be used to create instances.",
       "input": "CreateImageRequest",
       "name": "Creates image",
-      "output": "CreateImageResponse"
+      "output": "CreateImageResponse",
+      "status": "online"
     },
     "CreateKeyPair": {
       "document": "This API is used to create an `OpenSSH RSA` key pair, which can be used to log in to a Linux instance.",
       "input": "CreateKeyPairRequest",
       "name": "Creates key pair",
-      "output": "CreateKeyPairResponse"
+      "output": "CreateKeyPairResponse",
+      "status": "online"
     },
     "CreateListener": {
       "document": "This API is used to create a CLB listener.",
       "input": "CreateListenerRequest",
       "name": "Creates CLB listener",
-      "output": "CreateListenerResponse"
+      "output": "CreateListenerResponse",
+      "status": "online"
     },
     "CreateLoadBalancer": {
       "document": "This API is used to purchase a CLB instance.",
       "input": "CreateLoadBalancerRequest",
       "name": "Purchases CLB instance",
-      "output": "CreateLoadBalancerResponse"
+      "output": "CreateLoadBalancerResponse",
+      "status": "online"
     },
     "CreateModule": {
       "document": "This API is used to create a module.",
       "input": "CreateModuleRequest",
       "name": "Creates module",
-      "output": "CreateModuleResponse"
+      "output": "CreateModuleResponse",
+      "status": "online"
     },
     "CreateNetworkInterface": {
       "document": "This API is used to create an ENI.",
       "input": "CreateNetworkInterfaceRequest",
       "name": "Creates ENI",
-      "output": "CreateNetworkInterfaceResponse"
+      "output": "CreateNetworkInterfaceResponse",
+      "status": "online"
     },
     "CreateRouteTable": {
       "document": "After a VPC is created, the system will create a default route table, with which all new subnets will be associated. By default, you can use the default route table to manage your routing policies. If you have multiple routing policies, you can call the API for route table creation to create more route tables to manage your routing policies.",
       "input": "CreateRouteTableRequest",
       "name": "Creates route table",
-      "output": "CreateRouteTableResponse"
+      "output": "CreateRouteTableResponse",
+      "status": "online"
     },
     "CreateRoutes": {
       "document": "This API is used to create a routing policy.",
       "input": "CreateRoutesRequest",
       "name": "Creates routing policy",
-      "output": "CreateRoutesResponse"
+      "output": "CreateRoutesResponse",
+      "status": "online"
     },
     "CreateSecurityGroup": {
       "document": "This API is used to create a security group.",
       "input": "CreateSecurityGroupRequest",
       "name": "Creates security group",
-      "output": "CreateSecurityGroupResponse"
+      "output": "CreateSecurityGroupResponse",
+      "status": "online"
     },
     "CreateSecurityGroupPolicies": {
       "document": "<p>This API is used to create a security group policy.</p>\n<p>In the `SecurityGroupPolicySet` parameter:</p>\n<ul>\n<li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li><code>Protocol</code>: <code>TCP</code>, <code>UDP</code>, <code>ICMP</code>, <code>GRE</code>, or <code>ALL</code>.</li>\n<li>`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of other security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don’t need to change it manually.</li>\n<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`. Otherwise `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: only allows `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies.</li>\n</ul></li></ul>\n<p>Default API request rate limit: 20 requests/sec.</p>",
       "input": "CreateSecurityGroupPoliciesRequest",
       "name": "Adds security group policy",
-      "output": "CreateSecurityGroupPoliciesResponse"
+      "output": "CreateSecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "CreateSubnet": {
       "document": "This API is used to create a subnet. After the subnet is created successfully, it will become the default subnet for the AZ.",
       "input": "CreateSubnetRequest",
       "name": "Creates subnet",
-      "output": "CreateSubnetResponse"
+      "output": "CreateSubnetResponse",
+      "status": "online"
     },
     "CreateVpc": {
       "document": "This API is used to create a VPC.",
       "input": "CreateVpcRequest",
       "name": "Creates VPC",
-      "output": "CreateVpcResponse"
+      "output": "CreateVpcResponse",
+      "status": "online"
     },
     "DeleteHaVip": {
       "document": "This API is used to delete an HAVIP.",
       "input": "DeleteHaVipRequest",
       "name": "Deletes HAVIP",
-      "output": "DeleteHaVipResponse"
+      "output": "DeleteHaVipResponse",
+      "status": "online"
     },
     "DeleteImage": {
       "document": "This API is used to delete an image.",
       "input": "DeleteImageRequest",
       "name": "Deletes image",
-      "output": "DeleteImageResponse"
+      "output": "DeleteImageResponse",
+      "status": "online"
     },
     "DeleteListener": {
       "document": "This API is used to delete a CLB listener.",
       "input": "DeleteListenerRequest",
       "name": "Deletes CLB listener",
-      "output": "DeleteListenerResponse"
+      "output": "DeleteListenerResponse",
+      "status": "online"
     },
     "DeleteLoadBalancer": {
       "document": "This API is used to delete a CLB instance.",
       "input": "DeleteLoadBalancerRequest",
       "name": "Deletes CLB instance",
-      "output": "DeleteLoadBalancerResponse"
+      "output": "DeleteLoadBalancerResponse",
+      "status": "online"
     },
     "DeleteLoadBalancerListeners": {
       "document": "This API is used to delete multiple CLB listeners.",
       "input": "DeleteLoadBalancerListenersRequest",
       "name": "Deletes multiple CLB listeners",
-      "output": "DeleteLoadBalancerListenersResponse"
+      "output": "DeleteLoadBalancerListenersResponse",
+      "status": "online"
     },
     "DeleteModule": {
       "document": "This API is used to delete a business module.",
       "input": "DeleteModuleRequest",
       "name": "Deletes business module",
-      "output": "DeleteModuleResponse"
+      "output": "DeleteModuleResponse",
+      "status": "online"
     },
     "DeleteNetworkInterface": {
       "document": "This API is used to delete an ENI.",
       "input": "DeleteNetworkInterfaceRequest",
       "name": "Deletes ENI",
-      "output": "DeleteNetworkInterfaceResponse"
+      "output": "DeleteNetworkInterfaceResponse",
+      "status": "online"
     },
     "DeleteRouteTable": {
       "document": "This API is used to delete a route table.",
       "input": "DeleteRouteTableRequest",
       "name": "Deletes route table",
-      "output": "DeleteRouteTableResponse"
+      "output": "DeleteRouteTableResponse",
+      "status": "online"
     },
     "DeleteRoutes": {
       "document": "This API is used to batch delete routing policies from a route table.",
       "input": "DeleteRoutesRequest",
       "name": "Deletes routing policies",
-      "output": "DeleteRoutesResponse"
+      "output": "DeleteRoutesResponse",
+      "status": "online"
     },
     "DeleteSecurityGroup": {
       "document": "Only security groups under the current account can be deleted.\nA security group cannot be deleted directly if its instance ID is used in the policy of another security group. In this case, you need to modify the policy first before deleting the security group.\nDeleted security groups cannot be recovered. Therefore, call this API with caution.",
       "input": "DeleteSecurityGroupRequest",
       "name": "Deletes security group",
-      "output": "DeleteSecurityGroupResponse"
+      "output": "DeleteSecurityGroupResponse",
+      "status": "online"
     },
     "DeleteSecurityGroupPolicies": {
       "document": "`SecurityGroupPolicySet.Version` is used to specify the version of the security group to be manipulated. If the `Version` value passed in differs from the current latest version of the security group, a failure will be returned. If `Version` is not passed in, the policy of the specified `PolicyIndex` will be deleted directly.",
       "input": "DeleteSecurityGroupPoliciesRequest",
       "name": "Deletes security group rule",
-      "output": "DeleteSecurityGroupPoliciesResponse"
+      "output": "DeleteSecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "DeleteSnapshots": {
       "document": "This API is used to delete a snapshot.\n\n* Only snapshots in the `NORMAL` state can be deleted. To query the state of a snapshot, you can call the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API and check the `SnapshotState` field in the response.\n* Batch operations are supported. If there is any snapshot that cannot be deleted, the operation will not be performed and a specific error code will be returned.",
       "input": "DeleteSnapshotsRequest",
       "name": "Deletes snapshot",
-      "output": "DeleteSnapshotsResponse"
+      "output": "DeleteSnapshotsResponse",
+      "status": "online"
     },
     "DeleteSubnet": {
       "document": "This API is used to delete a subnet. If the subnet is the current default subnet in the AZ, after it is deleted, the default subnet automatically created by the system rather than the last subnet created by you will be used as the new default subnet. If the new default subnet does not meet your needs, you can call the API for setting the default subnet to configure it.",
       "input": "DeleteSubnetRequest",
       "name": "Deletes subnet",
-      "output": "DeleteSubnetResponse"
+      "output": "DeleteSubnetResponse",
+      "status": "online"
     },
     "DeleteVpc": {
       "document": "This API is used to delete a VPC.",
       "input": "DeleteVpcRequest",
       "name": "Deletes VPC",
-      "output": "DeleteVpcResponse"
+      "output": "DeleteVpcResponse",
+      "status": "online"
     },
     "DescribeAddressQuota": {
       "document": "This API is used to query the quota information of the EIP under your account in the current region.",
       "input": "DescribeAddressQuotaRequest",
       "name": "Queries EIP quota",
-      "output": "DescribeAddressQuotaResponse"
+      "output": "DescribeAddressQuotaResponse",
+      "status": "online"
     },
     "DescribeAddresses": {
       "document": "This API is used to query the list of EIPs.",
       "input": "DescribeAddressesRequest",
       "name": "Queries EIP list",
-      "output": "DescribeAddressesResponse"
+      "output": "DescribeAddressesResponse",
+      "status": "online"
     },
     "DescribeBaseOverview": {
       "document": "This API is used to get the basic data displayed on the overview page.",
       "input": "DescribeBaseOverviewRequest",
       "name": "Gets basic data displayed on overview page",
-      "output": "DescribeBaseOverviewResponse"
+      "output": "DescribeBaseOverviewResponse",
+      "status": "online"
     },
     "DescribeConfig": {
       "document": "This API is used to get the limits of data such as bandwidth and disk.",
       "input": "DescribeConfigRequest",
       "name": "Gets configuration limit information",
-      "output": "DescribeConfigResponse"
+      "output": "DescribeConfigResponse",
+      "status": "online"
     },
     "DescribeCustomImageTask": {
       "document": "This API is used to query an image import task.",
       "input": "DescribeCustomImageTaskRequest",
       "name": "Queries image import task",
-      "output": "DescribeCustomImageTaskResponse"
+      "output": "DescribeCustomImageTaskResponse",
+      "status": "online"
     },
     "DescribeDefaultSubnet": {
       "document": "This API is used to query the default subnet in an AZ.",
       "input": "DescribeDefaultSubnetRequest",
       "name": "Queries default subnet in AZ",
-      "output": "DescribeDefaultSubnetResponse"
+      "output": "DescribeDefaultSubnetResponse",
+      "status": "online"
     },
     "DescribeHaVips": {
       "document": "This API is used to query the list of HAVIPs.",
       "input": "DescribeHaVipsRequest",
       "name": "Queries HAVIP list",
-      "output": "DescribeHaVipsResponse"
+      "output": "DescribeHaVipsResponse",
+      "status": "online"
     },
     "DescribeImage": {
       "document": "This API is used to display the list of images.",
       "input": "DescribeImageRequest",
       "name": "Displays image list",
-      "output": "DescribeImageResponse"
+      "output": "DescribeImageResponse",
+      "status": "online"
     },
     "DescribeImportImageOs": {
       "document": "This API is used to query the list of operating systems supported by an image imported from an external resource.",
       "input": "DescribeImportImageOsRequest",
       "name": "Queries the list of operating systems supported by image imported from external resource",
-      "output": "DescribeImportImageOsResponse"
+      "output": "DescribeImportImageOsResponse",
+      "status": "online"
     },
     "DescribeInstanceTypeConfig": {
       "document": "This API is used to get the list of model configurations.",
       "input": "DescribeInstanceTypeConfigRequest",
       "name": "Gets model configuration list",
-      "output": "DescribeInstanceTypeConfigResponse"
+      "output": "DescribeInstanceTypeConfigResponse",
+      "status": "online"
     },
     "DescribeInstanceVncUrl": {
       "document": "This API is used to query the VNC URL of an instance.",
       "input": "DescribeInstanceVncUrlRequest",
       "name": "Queries the VNC URL of instance",
-      "output": "DescribeInstanceVncUrlResponse"
+      "output": "DescribeInstanceVncUrlResponse",
+      "status": "online"
     },
     "DescribeInstances": {
       "document": "This API is used to get the information of an instance.",
       "input": "DescribeInstancesRequest",
       "name": "Gets instance information",
-      "output": "DescribeInstancesResponse"
+      "output": "DescribeInstancesResponse",
+      "status": "online"
     },
     "DescribeInstancesDeniedActions": {
       "document": "This API is used to get the information of prohibited operations by instance ID.",
       "input": "DescribeInstancesDeniedActionsRequest",
       "name": "Gets the list of prohibited operations",
-      "output": "DescribeInstancesDeniedActionsResponse"
+      "output": "DescribeInstancesDeniedActionsResponse",
+      "status": "online"
     },
     "DescribeListeners": {
       "document": "This API is used to query the list of CLB listeners.",
       "input": "DescribeListenersRequest",
       "name": "Queries CLB listener list",
-      "output": "DescribeListenersResponse"
+      "output": "DescribeListenersResponse",
+      "status": "online"
     },
     "DescribeLoadBalanceTaskStatus": {
       "document": "This API is used to query the task status of a CLB instance.",
       "input": "DescribeLoadBalanceTaskStatusRequest",
       "name": "Queries the task status of CLB instance",
-      "output": "DescribeLoadBalanceTaskStatusResponse"
+      "output": "DescribeLoadBalanceTaskStatusResponse",
+      "status": "online"
     },
     "DescribeLoadBalancers": {
       "document": "This API is used to query the list of CLB instances.",
       "input": "DescribeLoadBalancersRequest",
       "name": "Queries CLB instance list",
-      "output": "DescribeLoadBalancersResponse"
+      "output": "DescribeLoadBalancersResponse",
+      "status": "online"
     },
     "DescribeModule": {
       "document": "This API is used to get the list of modules.",
       "input": "DescribeModuleRequest",
       "name": "Gets module list",
-      "output": "DescribeModuleResponse"
+      "output": "DescribeModuleResponse",
+      "status": "online"
     },
     "DescribeModuleDetail": {
       "document": "This API is used to display the details of a module.",
       "input": "DescribeModuleDetailRequest",
       "name": "Displays module details",
-      "output": "DescribeModuleDetailResponse"
+      "output": "DescribeModuleDetailResponse",
+      "status": "online"
     },
     "DescribeMonthPeakNetwork": {
       "document": "This API is used to get the monthly peak and billable inbound/outbound bandwidth values of your node.",
       "input": "DescribeMonthPeakNetworkRequest",
       "name": "Gets the monthly peak and billable inbound/outbound bandwidth values of your node",
-      "output": "DescribeMonthPeakNetworkResponse"
+      "output": "DescribeMonthPeakNetworkResponse",
+      "status": "online"
     },
     "DescribeNetworkInterfaces": {
       "document": "This API is used to query the list of ENIs.",
       "input": "DescribeNetworkInterfacesRequest",
       "name": "Queries ENI list",
-      "output": "DescribeNetworkInterfacesResponse"
+      "output": "DescribeNetworkInterfacesResponse",
+      "status": "online"
     },
     "DescribeNode": {
       "document": "This API is used to get the list of nodes.",
       "input": "DescribeNodeRequest",
       "name": "Gets node list",
-      "output": "DescribeNodeResponse"
+      "output": "DescribeNodeResponse",
+      "status": "online"
     },
     "DescribePackingQuotaGroup": {
       "document": "This API is used to get the packing quota of a model in a region (when a virtual model is used, a set of correlated packing quotas will be returned).",
       "input": "DescribePackingQuotaGroupRequest",
       "name": "Gets the set of packing quotas",
-      "output": "DescribePackingQuotaGroupResponse"
+      "output": "DescribePackingQuotaGroupResponse",
+      "status": "online"
     },
     "DescribePeakBaseOverview": {
       "document": "This API is used to get the peak data of basic information such as CPU, memory, and disk.",
       "input": "DescribePeakBaseOverviewRequest",
       "name": "Gets the peak data of basic information",
-      "output": "DescribePeakBaseOverviewResponse"
+      "output": "DescribePeakBaseOverviewResponse",
+      "status": "online"
     },
     "DescribePeakNetworkOverview": {
       "document": "This API is used to get the peak network data.",
       "input": "DescribePeakNetworkOverviewRequest",
       "name": "Gets peak network data",
-      "output": "DescribePeakNetworkOverviewResponse"
+      "output": "DescribePeakNetworkOverviewResponse",
+      "status": "online"
     },
     "DescribePriceRunInstance": {
       "document": "This API is used to query the price of an instance.",
       "input": "DescribePriceRunInstanceRequest",
       "name": "Queries instance price",
-      "output": "DescribePriceRunInstanceResponse"
+      "output": "DescribePriceRunInstanceResponse",
+      "status": "online"
     },
     "DescribeRouteConflicts": {
       "document": "This API is used to query the list of conflicts between a custom routing policy and a CCN routing policy.",
       "input": "DescribeRouteConflictsRequest",
       "name": "Queries the list of routing policy conflicts",
-      "output": "DescribeRouteConflictsResponse"
+      "output": "DescribeRouteConflictsResponse",
+      "status": "online"
     },
     "DescribeRouteTables": {
       "document": "This API is used to query the list of the objects in a route table.",
       "input": "DescribeRouteTablesRequest",
       "name": "Queries the list of objects in route table",
-      "output": "DescribeRouteTablesResponse"
+      "output": "DescribeRouteTablesResponse",
+      "status": "online"
     },
     "DescribeSecurityGroupAssociationStatistics": {
       "document": "This API is used to query statistics on the instances associated with a security group.",
       "input": "DescribeSecurityGroupAssociationStatisticsRequest",
       "name": "Queries association statistics of security group",
-      "output": "DescribeSecurityGroupAssociationStatisticsResponse"
+      "output": "DescribeSecurityGroupAssociationStatisticsResponse",
+      "status": "online"
     },
     "DescribeSecurityGroupLimits": {
       "document": "This API is used to query the security group quota.",
       "input": "DescribeSecurityGroupLimitsRequest",
       "name": "Queries security group quota",
-      "output": "DescribeSecurityGroupLimitsResponse"
+      "output": "DescribeSecurityGroupLimitsResponse",
+      "status": "online"
     },
     "DescribeSecurityGroupPolicies": {
       "document": "This API is used to query a security group rule.",
       "input": "DescribeSecurityGroupPoliciesRequest",
       "name": "Queries security group rule",
-      "output": "DescribeSecurityGroupPoliciesResponse"
+      "output": "DescribeSecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "DescribeSecurityGroups": {
       "document": "This API is used to view a security group.",
       "input": "DescribeSecurityGroupsRequest",
       "name": "Views security group",
-      "output": "DescribeSecurityGroupsResponse"
+      "output": "DescribeSecurityGroupsResponse",
+      "status": "online"
     },
     "DescribeSnapshots": {
       "document": "This API is used to query the list of snapshots.\n\n* You can filter results by snapshot ID and the ID and type of the cloud disk for which the snapshot is created. The relationship between different filters is `AND`. For more information on filters, see `Filter`.\n* If no parameter is defined, the status of a certain number of snapshots under the current account will be returned. The number is specified by `Limit` and is 20 by default.",
       "input": "DescribeSnapshotsRequest",
       "name": "Queries snapshot list",
-      "output": "DescribeSnapshotsResponse"
+      "output": "DescribeSnapshotsResponse",
+      "status": "online"
     },
     "DescribeSubnets": {
       "document": "This API is used to query the list of subnets.",
       "input": "DescribeSubnetsRequest",
       "name": "Queries subnet list",
-      "output": "DescribeSubnetsResponse"
+      "output": "DescribeSubnetsResponse",
+      "status": "online"
     },
     "DescribeTargetHealth": {
       "document": "This API is used to get the health check status of a CLB real server.",
       "input": "DescribeTargetHealthRequest",
       "name": "Gets the health check status of CLB real server",
-      "output": "DescribeTargetHealthResponse"
+      "output": "DescribeTargetHealthResponse",
+      "status": "online"
     },
     "DescribeTargets": {
       "document": "This API is used to query the list of the real servers bound to a CLB instance.",
       "input": "DescribeTargetsRequest",
       "name": "Queries the list of real servers bound to CLB instance",
-      "output": "DescribeTargetsResponse"
+      "output": "DescribeTargetsResponse",
+      "status": "online"
     },
     "DescribeTaskResult": {
       "document": "This API is used to query the execution result of an EIP async task.",
       "input": "DescribeTaskResultRequest",
       "name": "Queries the execution result of async task",
-      "output": "DescribeTaskResultResponse"
+      "output": "DescribeTaskResultResponse",
+      "status": "online"
     },
     "DescribeTaskStatus": {
       "document": "This API is used to get the status of an async task.",
       "input": "DescribeTaskStatusRequest",
       "name": "Gets task status",
-      "output": "DescribeTaskStatusResponse"
+      "output": "DescribeTaskStatusResponse",
+      "status": "online"
     },
     "DescribeVpcs": {
       "document": "This API is used to query the list of VPCs.",
       "input": "DescribeVpcsRequest",
       "name": "Queries VPC list",
-      "output": "DescribeVpcsResponse"
+      "output": "DescribeVpcsResponse",
+      "status": "online"
     },
     "DetachNetworkInterface": {
       "document": "This API is used to unbind an ENI from a CVM instance.",
       "input": "DetachNetworkInterfaceRequest",
       "name": "Unbinds ENI from CVM instance",
-      "output": "DetachNetworkInterfaceResponse"
+      "output": "DetachNetworkInterfaceResponse",
+      "status": "online"
     },
     "DisableRoutes": {
       "document": "This API is used to disable a subnet route.",
       "input": "DisableRoutesRequest",
       "name": "Disables subnet route",
-      "output": "DisableRoutesResponse"
+      "output": "DisableRoutesResponse",
+      "status": "online"
     },
     "DisassociateAddress": {
       "document": "This API is used to unbind an EIP.\nOnly EIPs in `BIND` or `BIND_ENI` status can be unbound.\nBlocked EIPs cannot be unbound.",
       "input": "DisassociateAddressRequest",
       "name": "Unbinds EIP",
-      "output": "DisassociateAddressResponse"
+      "output": "DisassociateAddressResponse",
+      "status": "online"
     },
     "DisassociateInstancesKeyPairs": {
       "document": "This API is used to unbind a key pair from an instance.",
       "input": "DisassociateInstancesKeyPairsRequest",
       "name": "Unbinds key pair",
-      "output": "DisassociateInstancesKeyPairsResponse"
+      "output": "DisassociateInstancesKeyPairsResponse",
+      "status": "online"
     },
     "DisassociateSecurityGroups": {
       "document": "This API is used to unbind a security group.",
       "input": "DisassociateSecurityGroupsRequest",
       "name": "Unbinds security group",
-      "output": "DisassociateSecurityGroupsResponse"
+      "output": "DisassociateSecurityGroupsResponse",
+      "status": "online"
     },
     "EnableRoutes": {
       "document": "This API is used to enable a disabled subnet route.\nThis API verifies whether a CCN route will conflict with an existing route after it is enabled, and if so, you cannot enable it before you disable the conflicting route first.",
       "input": "EnableRoutesRequest",
       "name": "Enables subnet route",
-      "output": "EnableRoutesResponse"
+      "output": "EnableRoutesResponse",
+      "status": "online"
     },
     "ImportImage": {
       "document": "This API is used to import an image from a CVM instance to an ECM instance.",
       "input": "ImportImageRequest",
       "name": "Imports image",
-      "output": "ImportImageResponse"
+      "output": "ImportImageResponse",
+      "status": "online"
     },
     "MigrateNetworkInterface": {
       "document": "This API is used to migrate an ENI.",
       "input": "MigrateNetworkInterfaceRequest",
       "name": "Migrates ENI",
-      "output": "MigrateNetworkInterfaceResponse"
+      "output": "MigrateNetworkInterfaceResponse",
+      "status": "online"
     },
     "MigratePrivateIpAddress": {
       "document": "This API is used to migrate a private IP from an ENI.\nIt migrates a private IP from one ENI to another. Primary IPs cannot be migrated.\nThe source and destination ENIs must be in the same subnet.",
       "input": "MigratePrivateIpAddressRequest",
       "name": "Migrates private IP from ENI",
-      "output": "MigratePrivateIpAddressResponse"
+      "output": "MigratePrivateIpAddressResponse",
+      "status": "online"
     },
     "ModifyAddressAttribute": {
       "document": "This API is used to modify EIP attributes.",
       "input": "ModifyAddressAttributeRequest",
       "name": "Modifies EIP attributes",
-      "output": "ModifyAddressAttributeResponse"
+      "output": "ModifyAddressAttributeResponse",
+      "status": "online"
     },
     "ModifyAddressesBandwidth": {
       "document": "This API is used to modify the EIP bandwidth.\n",
       "input": "ModifyAddressesBandwidthRequest",
       "name": "Modifies EIP bandwidth",
-      "output": "ModifyAddressesBandwidthResponse"
+      "output": "ModifyAddressesBandwidthResponse",
+      "status": "online"
     },
     "ModifyDefaultSubnet": {
       "document": "This API is used to modify the default subnet used when you create an instance in an AZ (if you don't specify the VPC parameter when creating the instance, `sunbetId` will be used).",
       "input": "ModifyDefaultSubnetRequest",
       "name": "Modifies default subnet",
-      "output": "ModifyDefaultSubnetResponse"
+      "output": "ModifyDefaultSubnetResponse",
+      "status": "online"
     },
     "ModifyHaVipAttribute": {
       "document": "This API is used to modify the attributes of an HAVIP.",
       "input": "ModifyHaVipAttributeRequest",
       "name": "Modifies HAVIP attributes",
-      "output": "ModifyHaVipAttributeResponse"
+      "output": "ModifyHaVipAttributeResponse",
+      "status": "online"
     },
     "ModifyImageAttribute": {
       "document": "This API is used to modify the attributes of an image.",
       "input": "ModifyImageAttributeRequest",
       "name": "Modifies image attributes",
-      "output": "ModifyImageAttributeResponse"
+      "output": "ModifyImageAttributeResponse",
+      "status": "online"
     },
     "ModifyInstancesAttribute": {
       "document": "This API is used to modify the attributes of an instance.",
       "input": "ModifyInstancesAttributeRequest",
       "name": "Modifies instance attributes",
-      "output": "ModifyInstancesAttributeResponse"
+      "output": "ModifyInstancesAttributeResponse",
+      "status": "online"
     },
     "ModifyIpv6AddressesAttribute": {
       "document": "This API is used to modify the IPv6 address attributes of an ENI.",
       "input": "ModifyIpv6AddressesAttributeRequest",
       "name": "Modifies the IPv6 address attributes of ENI",
-      "output": "ModifyIpv6AddressesAttributeResponse"
+      "output": "ModifyIpv6AddressesAttributeResponse",
+      "status": "online"
     },
     "ModifyListener": {
       "document": "This API is used to modify the attributes of a CLB listener.",
       "input": "ModifyListenerRequest",
       "name": "Modifies CLB listener attributes",
-      "output": "ModifyListenerResponse"
+      "output": "ModifyListenerResponse",
+      "status": "online"
     },
     "ModifyLoadBalancerAttributes": {
       "document": "This API is used to modify the attributes of a CLB instance.",
       "input": "ModifyLoadBalancerAttributesRequest",
       "name": "Modifies CLB instance attributes",
-      "output": "ModifyLoadBalancerAttributesResponse"
+      "output": "ModifyLoadBalancerAttributesResponse",
+      "status": "online"
     },
     "ModifyModuleConfig": {
       "document": "This API is used to modify the configuration of a module. You cannot modify the configuration of the module if it is associated with an instance.",
       "input": "ModifyModuleConfigRequest",
       "name": "Modifies module configuration",
-      "output": "ModifyModuleConfigResponse"
+      "output": "ModifyModuleConfigResponse",
+      "status": "online"
     },
     "ModifyModuleDisableWanIp": {
       "document": "This API is used to specify whether to prohibit public IP assignment for a module.",
       "input": "ModifyModuleDisableWanIpRequest",
       "name": "Specifies whether to prohibit public IP assignment for a module",
-      "output": "ModifyModuleDisableWanIpResponse"
+      "output": "ModifyModuleDisableWanIpResponse",
+      "status": "online"
     },
     "ModifyModuleImage": {
       "document": "This API is used to modify the default image of a module.",
       "input": "ModifyModuleImageRequest",
       "name": "Modifies the default image of module",
-      "output": "ModifyModuleImageResponse"
+      "output": "ModifyModuleImageResponse",
+      "status": "online"
     },
     "ModifyModuleIpDirect": {
       "document": "This API is used to modify the IP direct access of a module.",
       "input": "ModifyModuleIpDirectRequest",
       "name": "Modifies the IP direct access of module",
-      "output": "ModifyModuleIpDirectResponse"
+      "output": "ModifyModuleIpDirectResponse",
+      "status": "online"
     },
     "ModifyModuleName": {
       "document": "This API is used to rename a module.",
       "input": "ModifyModuleNameRequest",
       "name": "Renames module",
-      "output": "ModifyModuleNameResponse"
+      "output": "ModifyModuleNameResponse",
+      "status": "online"
     },
     "ModifyModuleNetwork": {
       "document": "This API is used to modify the default bandwidth cap of a module.",
       "input": "ModifyModuleNetworkRequest",
       "name": "Modifies the default bandwidth cap of module",
-      "output": "ModifyModuleNetworkResponse"
+      "output": "ModifyModuleNetworkResponse",
+      "status": "online"
     },
     "ModifyModuleSecurityGroups": {
       "document": "This API is used to modify the default security group of a module.",
       "input": "ModifyModuleSecurityGroupsRequest",
       "name": "Modifies the default security group of module",
-      "output": "ModifyModuleSecurityGroupsResponse"
+      "output": "ModifyModuleSecurityGroupsResponse",
+      "status": "online"
     },
     "ModifyPrivateIpAddressesAttribute": {
       "document": "This API is used to modify the private IP attributes of an ENI.",
       "input": "ModifyPrivateIpAddressesAttributeRequest",
       "name": "Modifies the private IP information of ENI",
-      "output": "ModifyPrivateIpAddressesAttributeResponse"
+      "output": "ModifyPrivateIpAddressesAttributeResponse",
+      "status": "online"
     },
     "ModifyRouteTableAttribute": {
       "document": "This API is used to modify the attributes of a route table.",
       "input": "ModifyRouteTableAttributeRequest",
       "name": "Modifies route table attributes",
-      "output": "ModifyRouteTableAttributeResponse"
+      "output": "ModifyRouteTableAttributeResponse",
+      "status": "online"
     },
     "ModifySecurityGroupAttribute": {
       "document": "This API is used to modify the attributes of a security group.",
       "input": "ModifySecurityGroupAttributeRequest",
       "name": "Modifies security group attributes",
-      "output": "ModifySecurityGroupAttributeResponse"
+      "output": "ModifySecurityGroupAttributeResponse",
+      "status": "online"
     },
     "ModifySecurityGroupPolicies": {
       "document": "This API is used to modify the outbound and inbound rules of a security group.",
       "input": "ModifySecurityGroupPoliciesRequest",
       "name": "Modifies the outbound and inbound rules of security group",
-      "output": "ModifySecurityGroupPoliciesResponse"
+      "output": "ModifySecurityGroupPoliciesResponse",
+      "status": "online"
     },
     "ModifySubnetAttribute": {
       "document": "This API is used to modify the attributes of a subnet.",
       "input": "ModifySubnetAttributeRequest",
       "name": "Modifies subnet attributes",
-      "output": "ModifySubnetAttributeResponse"
+      "output": "ModifySubnetAttributeResponse",
+      "status": "online"
     },
     "ModifyTargetPort": {
       "document": "This API is used to modify the port of a real server bound to a listener.",
       "input": "ModifyTargetPortRequest",
       "name": "Modifies the port of real server bound to listener",
-      "output": "ModifyTargetPortResponse"
+      "output": "ModifyTargetPortResponse",
+      "status": "online"
     },
     "ModifyTargetWeight": {
       "document": "This API is used to modify the forwarding weight of a real server bound to a listener.",
       "input": "ModifyTargetWeightRequest",
       "name": "Modifies the forwarding weight of real server bound to listener",
-      "output": "ModifyTargetWeightResponse"
+      "output": "ModifyTargetWeightResponse",
+      "status": "online"
     },
     "ModifyVpcAttribute": {
       "document": "This API is used to modify the attributes of a VPC.",
       "input": "ModifyVpcAttributeRequest",
       "name": "Modifies VPC attributes",
-      "output": "ModifyVpcAttributeResponse"
+      "output": "ModifyVpcAttributeResponse",
+      "status": "online"
     },
     "RebootInstances": {
       "document": "This API is used to restart an instance. Only instances in `RUNNING` status can be restarted. The instance status will become `REBOOTING` when the API is called successfully and will become `RUNNING` when the instance is restarted successfully. Forced restart is supported. Just like powering off a physical PC and restarting it, a forced restart may cause data loss or file system corruption. Make sure that you use this API only when the server cannot be restarted normally.",
       "input": "RebootInstancesRequest",
       "name": "Restarts instance",
-      "output": "RebootInstancesResponse"
+      "output": "RebootInstancesResponse",
+      "status": "online"
     },
     "ReleaseAddresses": {
       "document": "This API is used to release one or multiple EIPs.\nThis operation is irreversible. Once you release an EIP, the IP address associated with it will no longer belong to you.\nOnly EIPs in `UNBIND` status can be released.",
       "input": "ReleaseAddressesRequest",
       "name": "Releases EIP",
-      "output": "ReleaseAddressesResponse"
+      "output": "ReleaseAddressesResponse",
+      "status": "online"
     },
     "ReleaseIpv6Addresses": {
       "document": "This API is used to release the IPv6 addresses of an ENI.",
       "input": "ReleaseIpv6AddressesRequest",
       "name": "Releases IPv6 address",
-      "output": "ReleaseIpv6AddressesResponse"
+      "output": "ReleaseIpv6AddressesResponse",
+      "status": "online"
     },
     "RemovePrivateIpAddresses": {
       "document": "This API is used to return the private IPs of an ENI.\nTo return the secondary private IPs of an ENI, the API will automatically unbind them from the ENI. The primary private IP of the ENI cannot be returned.",
       "input": "RemovePrivateIpAddressesRequest",
       "name": "Returns the private IPs of ENI",
-      "output": "RemovePrivateIpAddressesResponse"
+      "output": "RemovePrivateIpAddressesResponse",
+      "status": "online"
     },
     "ReplaceRouteTableAssociation": {
       "document": "This API is used to modify the route table associated with a subnet. A subnet can be associated with only one route table.",
       "input": "ReplaceRouteTableAssociationRequest",
       "name": "Replaces route table binding relationship",
-      "output": "ReplaceRouteTableAssociationResponse"
+      "output": "ReplaceRouteTableAssociationResponse",
+      "status": "online"
     },
     "ReplaceRoutes": {
       "document": "This API is used to replace a routing policy.",
       "input": "ReplaceRoutesRequest",
       "name": "Replaces routing policy",
-      "output": "ReplaceRoutesResponse"
+      "output": "ReplaceRoutesResponse",
+      "status": "online"
     },
     "ReplaceSecurityGroupPolicy": {
       "document": "This API is used to replace a single routing rule of a security group. You can replace only one rule in a single direction in one request and must specify the index (PolicyIndex).",
       "input": "ReplaceSecurityGroupPolicyRequest",
       "name": "Replaces one routing policy of security group",
-      "output": "ReplaceSecurityGroupPolicyResponse"
+      "output": "ReplaceSecurityGroupPolicyResponse",
+      "status": "online"
     },
     "ResetInstances": {
       "document": "This API is used to reinstall an instance. If you specify the `ImageId` parameter, the specified image will be used; otherwise, the image used by the current instance will be used. If you don't specify the password, a password will be sent later in Message Center.",
       "input": "ResetInstancesRequest",
       "name": "Reinstalls instance",
-      "output": "ResetInstancesResponse"
+      "output": "ResetInstancesResponse",
+      "status": "online"
     },
     "ResetInstancesMaxBandwidth": {
       "document": "This API is used to reset the bandwidth cap of an instance.",
       "input": "ResetInstancesMaxBandwidthRequest",
       "name": "Resets the bandwidth cap of instance",
-      "output": "ResetInstancesMaxBandwidthResponse"
+      "output": "ResetInstancesMaxBandwidthResponse",
+      "status": "online"
     },
     "ResetInstancesPassword": {
       "document": "This API is used to reset the password for a running status. You need to explicitly specify the `ForceStop` parameter; otherwise, you can reset the password only for instances that have been shut down.",
       "input": "ResetInstancesPasswordRequest",
       "name": "Resets instance password",
-      "output": "ResetInstancesPasswordResponse"
+      "output": "ResetInstancesPasswordResponse",
+      "status": "online"
     },
     "ResetRoutes": {
       "document": "This API is used to reset a route table name and all routing policies.",
       "input": "ResetRoutesRequest",
       "name": "Resets route table name and routing policies",
-      "output": "ResetRoutesResponse"
+      "output": "ResetRoutesResponse",
+      "status": "online"
     },
     "RunInstances": {
       "document": "This API is used to create an ECM instance.",
       "input": "RunInstancesRequest",
       "name": "Creates instance",
-      "output": "RunInstancesResponse"
+      "output": "RunInstancesResponse",
+      "status": "online"
     },
     "SetLoadBalancerSecurityGroups": {
       "document": "This API is used to configure security groups for a CLB instance.",
       "input": "SetLoadBalancerSecurityGroupsRequest",
       "name": "Configures security groups for CLB instance",
-      "output": "SetLoadBalancerSecurityGroupsResponse"
+      "output": "SetLoadBalancerSecurityGroupsResponse",
+      "status": "online"
     },
     "SetSecurityGroupForLoadbalancers": {
       "document": "This API is used to bind or unbind a security group to or from multiple CLB instances.",
       "input": "SetSecurityGroupForLoadbalancersRequest",
       "name": "Binds or unbinds security group to or from multiple CLB instances",
-      "output": "SetSecurityGroupForLoadbalancersResponse"
+      "output": "SetSecurityGroupForLoadbalancersResponse",
+      "status": "online"
     },
     "StartInstances": {
       "document": "This API is used to start an instance. Only instances in `STOPPED` status can be started. The instance status will become `STARTING` when this API is called successfully and will become `RUNNING` when the instance is started successfully.",
       "input": "StartInstancesRequest",
       "name": "Starts instance",
-      "output": "StartInstancesResponse"
+      "output": "StartInstancesResponse",
+      "status": "online"
     },
     "StopInstances": {
       "document": "Only instances in `RUNNING` status can be shut down.\nThe instance status will become `STOPPING` when the API is called successfully and will become `STOPPED` when the instance is shut down successfully.\nForced shutdown is supported. Just like powering off a physical PC, a forced shutdown may cause data loss or file system corruption. Make sure that you use this API only when the server cannot be shut down normally.",
       "input": "StopInstancesRequest",
       "name": "Shuts down instance",
-      "output": "StopInstancesResponse"
+      "output": "StopInstancesResponse",
+      "status": "online"
     },
     "TerminateInstances": {
       "document": "This API is used to terminate an instance.",
       "input": "TerminateInstancesRequest",
       "name": "Terminates instance",
-      "output": "TerminateInstancesResponse"
+      "output": "TerminateInstancesResponse",
+      "status": "online"
     }
   },
   "metadata": {

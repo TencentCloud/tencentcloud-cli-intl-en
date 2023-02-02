@@ -4,145 +4,169 @@
       "document": "This API is used to create a Tencent Cloud service credential.",
       "input": "CreateProductSecretRequest",
       "name": "Creates Tencent Cloud service credential",
-      "output": "CreateProductSecretResponse"
+      "output": "CreateProductSecretResponse",
+      "status": "online"
     },
     "CreateSSHKeyPairSecret": {
       "document": "This API is used to create a secret that hosts SSH keys.",
       "input": "CreateSSHKeyPairSecretRequest",
       "name": "Creates an SSH key secret",
-      "output": "CreateSSHKeyPairSecretResponse"
+      "output": "CreateSSHKeyPairSecretResponse",
+      "status": "online"
     },
     "CreateSecret": {
       "document": "This API is used to create a KMS-encrypted Secret. You can create and store up to 1,000 Secrets in each region.",
       "input": "CreateSecretRequest",
       "name": "Creates a Secret",
-      "output": "CreateSecretResponse"
+      "output": "CreateSecretResponse",
+      "status": "online"
     },
     "DeleteSecret": {
       "document": "This API is used to delete a Secret. You can set whether to delete the Secret immediately or on schedule using the `RecoveryWindowInDays` parameter. For a Secret to be deleted on schedule, its status will be `PendingDelete` before the scheduled deletion time. You can use `RestoreSecret` to restore a deleted Secret during this time. A deleted Secret will not be restorable after the scheduled deletion time. A Secret can only be deleted after being disabled using `DisableSecret`.",
       "input": "DeleteSecretRequest",
       "name": "Deletes a Secret",
-      "output": "DeleteSecretResponse"
+      "output": "DeleteSecretResponse",
+      "status": "online"
     },
     "DeleteSecretVersion": {
       "document": "This API is used to directly delete a single credential version under the specified credential. The deletion takes effect immediately, and the credential version in all status can be deleted.\nThis API is only applicable to user-defined credentials but not Tencent Cloud service credentials.",
       "input": "DeleteSecretVersionRequest",
       "name": "Deletes a Secret version",
-      "output": "DeleteSecretVersionResponse"
+      "output": "DeleteSecretVersionResponse",
+      "status": "online"
     },
     "DescribeAsyncRequestInfo": {
       "document": "This API is used to query the execution result of an async task.",
       "input": "DescribeAsyncRequestInfoRequest",
       "name": "Queries the execution result of async task",
-      "output": "DescribeAsyncRequestInfoResponse"
+      "output": "DescribeAsyncRequestInfoResponse",
+      "status": "online"
     },
     "DescribeRotationDetail": {
       "document": "This API is used to query the details of a credential rotation policy.\nThis API is only applicable to Tencent Cloud service credentials.",
       "input": "DescribeRotationDetailRequest",
       "name": "Queries credential rotation details",
-      "output": "DescribeRotationDetailResponse"
+      "output": "DescribeRotationDetailResponse",
+      "status": "online"
     },
     "DescribeRotationHistory": {
       "document": "This API is used to query the historical versions of a rotated credential.\nThis API is only applicable to Tencent Cloud service credentials.",
       "input": "DescribeRotationHistoryRequest",
       "name": "Queries the historical versions of rotated credential",
-      "output": "DescribeRotationHistoryResponse"
+      "output": "DescribeRotationHistoryResponse",
+      "status": "online"
     },
     "DescribeSecret": {
       "document": "This API is used to obtain the detailed attribute information of a Secret.",
       "input": "DescribeSecretRequest",
       "name": "Obtains the detailed information of a Secret",
-      "output": "DescribeSecretResponse"
+      "output": "DescribeSecretResponse",
+      "status": "online"
     },
     "DescribeSupportedProducts": {
       "document": "This API is used to query the list of supported Tencent Cloud services.",
       "input": "DescribeSupportedProductsRequest",
       "name": "Queries the list of supported Tencent Cloud services",
-      "output": "DescribeSupportedProductsResponse"
+      "output": "DescribeSupportedProductsResponse",
+      "status": "online"
     },
     "DisableSecret": {
       "document": "This API is used to disable a Secret and will change its status to `Disabled`. The plaintext of a disabled Secret cannot be obtained through APIs.",
       "input": "DisableSecretRequest",
       "name": "Disables a Secret",
-      "output": "DisableSecretResponse"
+      "output": "DisableSecretResponse",
+      "status": "online"
     },
     "EnableSecret": {
       "document": "This API is used to enable a Secret and will change its status to `Enabled`. You can call the `GetSecretValue` API to obtain the plaintext of this Secret. Secrets in `PendingDelete` status can only be enabled after being restored by using `RestoreSecret`.",
       "input": "EnableSecretRequest",
       "name": "Enables a Secret",
-      "output": "EnableSecretResponse"
+      "output": "EnableSecretResponse",
+      "status": "online"
     },
     "GetRegions": {
       "document": "This API is used to obtain the list of regions displayed on Console.",
       "input": "GetRegionsRequest",
       "name": "Obtains the list of regions displayed on Console",
-      "output": "GetRegionsResponse"
+      "output": "GetRegionsResponse",
+      "status": "online"
     },
     "GetSSHKeyPairValue": {
       "document": "This API is used to obtain the plaintext value of the SSH key secret.",
       "input": "GetSSHKeyPairValueRequest",
       "name": "Obtains the plaintext value of the SSH key secret",
-      "output": "GetSSHKeyPairValueResponse"
+      "output": "GetSSHKeyPairValueResponse",
+      "status": "online"
     },
     "GetSecretValue": {
       "document": "For user-defined credentials, this API is used to get the plaintext information of a credential by specifying the credential name and version.\nFor Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.",
       "input": "GetSecretValueRequest",
       "name": "Obtains the plaintext of a Secret",
-      "output": "GetSecretValueResponse"
+      "output": "GetSecretValueResponse",
+      "status": "online"
     },
     "GetServiceStatus": {
       "document": "This API is used to obtain the SecretsManager service status of a user.",
       "input": "GetServiceStatusRequest",
       "name": "Obtains the service status of a user",
-      "output": "GetServiceStatusResponse"
+      "output": "GetServiceStatusResponse",
+      "status": "online"
     },
     "ListSecretVersionIds": {
       "document": "This API is used to obtain list of versions of a Secret.",
       "input": "ListSecretVersionIdsRequest",
       "name": "Obtains the list of versions of a Secret",
-      "output": "ListSecretVersionIdsResponse"
+      "output": "ListSecretVersionIdsResponse",
+      "status": "online"
     },
     "ListSecrets": {
       "document": "This API is used to obtain the detailed information list of all Secrets. You can specify the filter fields and sorting order as needed.",
       "input": "ListSecretsRequest",
       "name": "Obtains the list of Secret information",
-      "output": "ListSecretsResponse"
+      "output": "ListSecretsResponse",
+      "status": "online"
     },
     "PutSecretValue": {
       "document": "This API adds the new version of the credential content under the specified credential. One credential can have up to 10 versions. New versions can be added to credentials only in `Enabled` or `Disabled` status.\nThis API is only applicable to user-defined credentials but not Tencent Cloud service credentials.",
       "input": "PutSecretValueRequest",
       "name": "Adds a new Secret version",
-      "output": "PutSecretValueResponse"
+      "output": "PutSecretValueResponse",
+      "status": "online"
     },
     "RestoreSecret": {
       "document": "This API is used to restore a `PendingDelete` Secret, canceling its scheduled deletion. The restored Secret will be in `Disabled` status. You can call the `EnableSecret` API to enable this Secret again.",
       "input": "RestoreSecretRequest",
       "name": "Restores a `PendingDelete` Secret",
-      "output": "RestoreSecretResponse"
+      "output": "RestoreSecretResponse",
+      "status": "online"
     },
     "RotateProductSecret": {
       "document": "This API is used to rotate secrets for Tencent Cloud services or Tencent Cloud API key pairs.\nNote that only the secrets with the \"Enabled\" status can be rotated.",
       "input": "RotateProductSecretRequest",
       "name": "Rotates Tencent Cloud service credential",
-      "output": "RotateProductSecretResponse"
+      "output": "RotateProductSecretResponse",
+      "status": "online"
     },
     "UpdateDescription": {
       "document": "This API is used to update the description of a Secret. This API can only update Secrets in `Enabled` or `Disabled` status.",
       "input": "UpdateDescriptionRequest",
       "name": "Updates the description of a Secret",
-      "output": "UpdateDescriptionResponse"
+      "output": "UpdateDescriptionResponse",
+      "status": "online"
     },
     "UpdateRotationStatus": {
       "document": "This API is used to set a Tencent Cloud service credential rotation policy, including the following parameters:\nSpecifies whether to enable rotation\nRotation frequency\nRotation start time",
       "input": "UpdateRotationStatusRequest",
       "name": "Sets Tencent Cloud service credential rotation policy",
-      "output": "UpdateRotationStatusResponse"
+      "output": "UpdateRotationStatusResponse",
+      "status": "online"
     },
     "UpdateSecret": {
       "document": "This API is used to update the credential content of the specified credential name and version number. Calling this API will encrypt the content of the new credential and overwrite the old content. Only credentials in `Enabled` or `Disabled` status can be updated.\nThis API is only applicable to user-defined credentials but not Tencent Cloud service credentials.",
       "input": "UpdateSecretRequest",
       "name": "Updates the content of a Secret",
-      "output": "UpdateSecretResponse"
+      "output": "UpdateSecretResponse",
+      "status": "online"
     }
   },
   "metadata": {

@@ -4,121 +4,141 @@
       "document": "This API is used to create an IoT Hub device. ",
       "input": "CreateDeviceRequest",
       "name": "Creates a device",
-      "output": "CreateDeviceResponse"
+      "output": "CreateDeviceResponse",
+      "status": "online"
     },
     "CreatePrivateCA": {
       "document": "This API is used to create a private CA certificate.",
       "input": "CreatePrivateCARequest",
       "name": "Creates a private CA certificate",
-      "output": "CreatePrivateCAResponse"
+      "output": "CreatePrivateCAResponse",
+      "status": "online"
     },
     "CreateProduct": {
       "document": "This API is used to create a new IoT communication product. ",
       "input": "CreateProductRequest",
       "name": "Creates a product",
-      "output": "CreateProductResponse"
+      "output": "CreateProductResponse",
+      "status": "online"
     },
     "DeleteDevice": {
       "document": "This API is used to delete an IoT Hub device. ",
       "input": "DeleteDeviceRequest",
       "name": "Deletes a device",
-      "output": "DeleteDeviceResponse"
+      "output": "DeleteDeviceResponse",
+      "status": "online"
     },
     "DeleteDeviceShadow": {
       "document": "This API is used to delete a device shadow. ",
       "input": "DeleteDeviceShadowRequest",
       "name": "Deletes a device shadow",
-      "output": "DeleteDeviceShadowResponse"
+      "output": "DeleteDeviceShadowResponse",
+      "status": "online"
     },
     "DeletePrivateCA": {
       "document": "This API is used to delete a private CA certificate.",
       "input": "DeletePrivateCARequest",
       "name": "Deletes a private CA certificate",
-      "output": "DeletePrivateCAResponse"
+      "output": "DeletePrivateCAResponse",
+      "status": "online"
     },
     "DeleteProduct": {
       "document": "This API is used to delete an IoT Hub product.",
       "input": "DeleteProductRequest",
       "name": "Deletes a product",
-      "output": "DeleteProductResponse"
+      "output": "DeleteProductResponse",
+      "status": "online"
     },
     "DescribeDevice": {
       "document": "This API is used to query device details.",
       "input": "DescribeDeviceRequest",
       "name": "Queries device details",
-      "output": "DescribeDeviceResponse"
+      "output": "DescribeDeviceResponse",
+      "status": "online"
     },
     "DescribeDevices": {
       "document": "This API is used to get the list of IoT Hub devices. ",
       "input": "DescribeDevicesRequest",
       "name": "Gets the device list",
-      "output": "DescribeDevicesResponse"
+      "output": "DescribeDevicesResponse",
+      "status": "online"
     },
     "DescribePrivateCA": {
       "document": "This API is used to query private CA certificate details.",
       "input": "DescribePrivateCARequest",
       "name": "Queries private CA certificate details",
-      "output": "DescribePrivateCAResponse"
+      "output": "DescribePrivateCAResponse",
+      "status": "online"
     },
     "DescribePrivateCABindedProducts": {
       "document": "This API is used to query the products bound to a private CA certificate.",
       "input": "DescribePrivateCABindedProductsRequest",
       "name": "Queries the products bound to a private CA certificate",
-      "output": "DescribePrivateCABindedProductsResponse"
+      "output": "DescribePrivateCABindedProductsResponse",
+      "status": "online"
     },
     "DescribePrivateCAs": {
       "document": "This API is used to get the list of private CA certificates.",
       "input": "DescribePrivateCAsRequest",
       "name": "Gets the list of private CA certificates",
-      "output": "DescribePrivateCAsResponse"
+      "output": "DescribePrivateCAsResponse",
+      "status": "online"
     },
     "DescribeProduct": {
       "document": "This API is used to query product details.",
       "input": "DescribeProductRequest",
       "name": "Queries product details",
-      "output": "DescribeProductResponse"
+      "output": "DescribeProductResponse",
+      "status": "online"
     },
     "DescribeProductCA": {
       "document": "This API is used to query the CA certificates bound to a product.",
       "input": "DescribeProductCARequest",
       "name": "Queries the CA certificates bound to a product",
-      "output": "DescribeProductCAResponse"
+      "output": "DescribeProductCAResponse",
+      "status": "online"
     },
     "DescribeProducts": {
       "document": "This API is used to obtain the product list. ",
       "input": "DescribeProductsRequest",
       "name": "Obtains the product list",
-      "output": "DescribeProductsResponse"
+      "output": "DescribeProductsResponse",
+      "status": "online"
     },
     "SetProductsForbiddenStatus": {
       "document": "This API is used to enable or disable multiple products at a time.",
       "input": "SetProductsForbiddenStatusRequest",
       "name": "Enables or disables multiple products at a time",
-      "output": "SetProductsForbiddenStatusResponse"
+      "output": "SetProductsForbiddenStatusResponse",
+      "status": "online"
     },
     "UpdateDeviceLogLevel": {
       "document": "This API is used to set the device log level.  ",
       "input": "UpdateDeviceLogLevelRequest",
       "name": "Sets the device log level",
-      "output": "UpdateDeviceLogLevelResponse"
+      "output": "UpdateDeviceLogLevelResponse",
+      "status": "online"
     },
     "UpdateDevicesEnableState": {
       "document": "This API is used to enable or disable multiple devices. ",
       "input": "UpdateDevicesEnableStateRequest",
       "name": "Enables or disables multiple devices",
-      "output": "UpdateDevicesEnableStateResponse"
+      "output": "UpdateDevicesEnableStateResponse",
+      "status": "online"
     },
     "UpdatePrivateCA": {
       "document": "This API is used to update a private CA certificate.",
       "input": "UpdatePrivateCARequest",
       "name": "Updates a private CA certificate",
-      "output": "UpdatePrivateCAResponse"
+      "output": "UpdatePrivateCAResponse",
+      "status": "online"
     },
     "UpdateProductDynamicRegister": {
       "document": "This API is used to update the configuration of product dynamic registration. ",
       "input": "UpdateProductDynamicRegisterRequest",
       "name": "Updates product dynamic registration",
-      "output": "UpdateProductDynamicRegisterResponse"
+      "output": "UpdateProductDynamicRegisterResponse",
+      "status": "online"
     }
   },
   "metadata": {

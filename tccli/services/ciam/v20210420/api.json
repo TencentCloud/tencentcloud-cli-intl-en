@@ -4,7 +4,8 @@
       "document": "This API is used to list user groups.",
       "input": "ListUserGroupsRequest",
       "name": "Lists user groups",
-      "output": "ListUserGroupsResponse"
+      "output": "ListUserGroupsResponse",
+      "status": "online"
     }
   },
   "metadata": {

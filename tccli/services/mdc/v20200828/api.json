@@ -4,103 +4,120 @@
       "document": "This API is used to create a StreamLink flow.",
       "input": "CreateStreamLinkFlowRequest",
       "name": "Creates a StreamLink flow",
-      "output": "CreateStreamLinkFlowResponse"
+      "output": "CreateStreamLinkFlowResponse",
+      "status": "online"
     },
     "CreateStreamLinkOutputInfo": {
       "document": "This API is used to create a StreamLink output.",
       "input": "CreateStreamLinkOutputInfoRequest",
       "name": "Creates a StreamLink output",
-      "output": "CreateStreamLinkOutputInfoResponse"
+      "output": "CreateStreamLinkOutputInfoResponse",
+      "status": "online"
     },
     "DeleteStreamLinkFlow": {
       "document": "This API is used to delete a StreamLink flow.",
       "input": "DeleteStreamLinkFlowRequest",
       "name": "Deletes a StreamLink flow",
-      "output": "DeleteStreamLinkFlowResponse"
+      "output": "DeleteStreamLinkFlowResponse",
+      "status": "online"
     },
     "DeleteStreamLinkOutput": {
       "document": "This API is used to delete an output of a StreamLink flow.",
       "input": "DeleteStreamLinkOutputRequest",
       "name": "Deletes a StreamLink output",
-      "output": "DeleteStreamLinkOutputResponse"
+      "output": "DeleteStreamLinkOutputResponse",
+      "status": "online"
     },
     "DescribeStreamLinkFlow": {
       "document": "This API is used to query the configuration information of a StreamLink flow.",
       "input": "DescribeStreamLinkFlowRequest",
       "name": "Queries a StreamLink flow",
-      "output": "DescribeStreamLinkFlowResponse"
+      "output": "DescribeStreamLinkFlowResponse",
+      "status": "online"
     },
     "DescribeStreamLinkFlowLogs": {
       "document": "This API is used to query the logs of a StreamLink flow.",
       "input": "DescribeStreamLinkFlowLogsRequest",
       "name": "Queries the logs of a flow",
-      "output": "DescribeStreamLinkFlowLogsResponse"
+      "output": "DescribeStreamLinkFlowLogsResponse",
+      "status": "online"
     },
     "DescribeStreamLinkFlowMediaStatistics": {
       "document": "This API is used to query the media quality of a StreamLink flow.\n",
       "input": "DescribeStreamLinkFlowMediaStatisticsRequest",
       "name": "Queries the media quality.",
-      "output": "DescribeStreamLinkFlowMediaStatisticsResponse"
+      "output": "DescribeStreamLinkFlowMediaStatisticsResponse",
+      "status": "online"
     },
     "DescribeStreamLinkFlowRealtimeStatus": {
       "document": "This API is used to query the current status of a flow.",
       "input": "DescribeStreamLinkFlowRealtimeStatusRequest",
       "name": "Queries the current status of a flow.",
-      "output": "DescribeStreamLinkFlowRealtimeStatusResponse"
+      "output": "DescribeStreamLinkFlowRealtimeStatusResponse",
+      "status": "online"
     },
     "DescribeStreamLinkFlowSRTStatistics": {
       "document": "This API is used to query the SRT streaming performance of a StreamLink flow.",
       "input": "DescribeStreamLinkFlowSRTStatisticsRequest",
       "name": "Queries SRT streaming performance",
-      "output": "DescribeStreamLinkFlowSRTStatisticsResponse"
+      "output": "DescribeStreamLinkFlowSRTStatisticsResponse",
+      "status": "online"
     },
     "DescribeStreamLinkFlowStatistics": {
       "document": "This API is used to query the media quality of a StreamLink flow.\n",
       "input": "DescribeStreamLinkFlowStatisticsRequest",
       "name": "Queries the media quality of a flow",
-      "output": "DescribeStreamLinkFlowStatisticsResponse"
+      "output": "DescribeStreamLinkFlowStatisticsResponse",
+      "status": "online"
     },
     "DescribeStreamLinkFlows": {
       "document": "This API is used to query the configuration information of multiple StreamLink flows in batches.",
       "input": "DescribeStreamLinkFlowsRequest",
       "name": "Queries StreamLink flows in batches",
-      "output": "DescribeStreamLinkFlowsResponse"
+      "output": "DescribeStreamLinkFlowsResponse",
+      "status": "online"
     },
     "DescribeStreamLinkRegions": {
       "document": "This API is used to query all StreamLink regions.",
       "input": "DescribeStreamLinkRegionsRequest",
       "name": "Queries StreamLink regions",
-      "output": "DescribeStreamLinkRegionsResponse"
+      "output": "DescribeStreamLinkRegionsResponse",
+      "status": "online"
     },
     "ModifyStreamLinkFlow": {
       "document": "This API is used to modify the configuration information of a StreamLink flow.",
       "input": "ModifyStreamLinkFlowRequest",
       "name": "Modifies a StreamLink flow",
-      "output": "ModifyStreamLinkFlowResponse"
+      "output": "ModifyStreamLinkFlowResponse",
+      "status": "online"
     },
     "ModifyStreamLinkInput": {
       "document": "This API is used to modify an input of a StreamLink flow.",
       "input": "ModifyStreamLinkInputRequest",
       "name": "Modifies an input",
-      "output": "ModifyStreamLinkInputResponse"
+      "output": "ModifyStreamLinkInputResponse",
+      "status": "online"
     },
     "ModifyStreamLinkOutputInfo": {
       "document": "This API is used to modify an output of a StreamLink flow.",
       "input": "ModifyStreamLinkOutputInfoRequest",
       "name": "Modifies an output",
-      "output": "ModifyStreamLinkOutputInfoResponse"
+      "output": "ModifyStreamLinkOutputInfoResponse",
+      "status": "online"
     },
     "StartStreamLinkFlow": {
       "document": "This API is used to start a StreamLink flow.",
       "input": "StartStreamLinkFlowRequest",
       "name": "Starts a StreamLink flow",
-      "output": "StartStreamLinkFlowResponse"
+      "output": "StartStreamLinkFlowResponse",
+      "status": "online"
     },
     "StopStreamLinkFlow": {
       "document": "This API is used to stop a StreamLink flow.",
       "input": "StopStreamLinkFlowRequest",
       "name": "Stops a StreamLink flow",
-      "output": "StopStreamLinkFlowResponse"
+      "output": "StopStreamLinkFlowResponse",
+      "status": "online"
     }
   },
   "metadata": {

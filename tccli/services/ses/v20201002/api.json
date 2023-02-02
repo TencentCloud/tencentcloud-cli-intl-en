@@ -4,151 +4,176 @@
       "document": "This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.",
       "input": "BatchSendEmailRequest",
       "name": "Sends an email to multiple recipients at a time",
-      "output": "BatchSendEmailResponse"
+      "output": "BatchSendEmailResponse",
+      "status": "online"
     },
     "CreateEmailAddress": {
       "document": "After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as \"Tencent Cloud\") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.",
       "input": "CreateEmailAddressRequest",
       "name": "Creates a sender address",
-      "output": "CreateEmailAddressResponse"
+      "output": "CreateEmailAddressResponse",
+      "status": "online"
     },
     "CreateEmailIdentity": {
       "document": "This API is used to create a sender domain. Before you can send an email using Tencent Cloud SES, you must create a sender domain as your identity. It can be the domain of your website or mobile app. You must verify the domain to prove that you own it and authorize Tencent Cloud SES to use it to send emails.",
       "input": "CreateEmailIdentityRequest",
       "name": "Creates a sender domain",
-      "output": "CreateEmailIdentityResponse"
+      "output": "CreateEmailIdentityResponse",
+      "status": "online"
     },
     "CreateEmailTemplate": {
       "document": "This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.\nNote: Only an approved template can be used to send emails.",
       "input": "CreateEmailTemplateRequest",
       "name": "Creates an email template",
-      "output": "CreateEmailTemplateResponse"
+      "output": "CreateEmailTemplateResponse",
+      "status": "online"
     },
     "CreateReceiver": {
       "document": "This API is used to create a recipient group, which is the list of target email addresses for batch sending emails. After creating a group, you need to upload recipient email addresses. Then, you can create a sending task and select the group to batch send emails.",
       "input": "CreateReceiverRequest",
       "name": "Creates a recipient group",
-      "output": "CreateReceiverResponse"
+      "output": "CreateReceiverResponse",
+      "status": "online"
     },
     "CreateReceiverDetail": {
       "document": "This API is used to add recipient email addresses (up to 20,000 at a time) to a recipient group. This will be processed asynchronously. If the data volume is large, it may take some time to upload. You can check the recipient group for the upload status and upload quantity. This API has basically the same feature as that of `CreateReceiverDetailWithData` except that it doesn't support uploading template parameters for email sending. You need to first call the `CreateReceiver` API to create a recipient group, then call this API to pass in recipient addresses, and finally call the `BatchSendEmail` API to batch send emails. This API supports adding more recipient addresses during upload but not address deduplication, so you need to make sure that the recipient addresses are not duplicate by yourself. This API can request up to 20,000 recipient addresses at a time, but the recipient group can contain up to 50,000 addresses currently.",
       "input": "CreateReceiverDetailRequest",
       "name": "Adds recipient email addresses",
-      "output": "CreateReceiverDetailResponse"
+      "output": "CreateReceiverDetailResponse",
+      "status": "online"
     },
     "DeleteBlackList": {
       "document": "This API is used to unblocklist email addresses. If you confirm that a blocklisted recipient address is valid and active, you can remove it from Tencent Cloud’s address blocklist database.",
       "input": "DeleteBlackListRequest",
       "name": "Unblocklists recipient addresses",
-      "output": "DeleteBlackListResponse"
+      "output": "DeleteBlackListResponse",
+      "status": "online"
     },
     "DeleteEmailAddress": {
       "document": "This API is used to delete a sender address.",
       "input": "DeleteEmailAddressRequest",
       "name": "Deletes a sender address",
-      "output": "DeleteEmailAddressResponse"
+      "output": "DeleteEmailAddressResponse",
+      "status": "online"
     },
     "DeleteEmailIdentity": {
       "document": "This API is used to delete a sender domain. After deleted, the sender domain can no longer be used to send emails.",
       "input": "DeleteEmailIdentityRequest",
       "name": "Deletes a sender domain",
-      "output": "DeleteEmailIdentityResponse"
+      "output": "DeleteEmailIdentityResponse",
+      "status": "online"
     },
     "DeleteEmailTemplate": {
       "document": "This API is used to delete an email template.",
       "input": "DeleteEmailTemplateRequest",
       "name": "Deletes an email template",
-      "output": "DeleteEmailTemplateResponse"
+      "output": "DeleteEmailTemplateResponse",
+      "status": "online"
     },
     "DeleteReceiver": {
       "document": "This API is used to delete a recipient group and all recipient email addresses in the group based on the recipient group ID.",
       "input": "DeleteReceiverRequest",
       "name": "Deletes a recipient group",
-      "output": "DeleteReceiverResponse"
+      "output": "DeleteReceiverResponse",
+      "status": "online"
     },
     "GetEmailIdentity": {
       "document": "This API is used to get the configuration details of a sender domain.",
       "input": "GetEmailIdentityRequest",
       "name": "Gets the configuration details of a sender domain",
-      "output": "GetEmailIdentityResponse"
+      "output": "GetEmailIdentityResponse",
+      "status": "online"
     },
     "GetEmailTemplate": {
       "document": "This API is used to get the details of a template.",
       "input": "GetEmailTemplateRequest",
       "name": "Gets the details of a template",
-      "output": "GetEmailTemplateResponse"
+      "output": "GetEmailTemplateResponse",
+      "status": "online"
     },
     "GetSendEmailStatus": {
       "document": "This API is used to get email sending status. Only data within 30 days can be queried.\nDefault API request rate limit: 1 request/sec.",
       "input": "GetSendEmailStatusRequest",
       "name": "Gets the email sending status (to be disused)",
-      "output": "GetSendEmailStatusResponse"
+      "output": "GetSendEmailStatusResponse",
+      "status": "online"
     },
     "GetStatisticsReport": {
       "document": "This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on.",
       "input": "GetStatisticsReportRequest",
       "name": "Gets email sending statistics",
-      "output": "GetStatisticsReportResponse"
+      "output": "GetStatisticsReportResponse",
+      "status": "online"
     },
     "ListBlackEmailAddress": {
       "document": "The API is used to get blocklisted addresses. In the case of a hard bounce, Tencent Cloud will blocklist the recipient address and do not allow any user to send emails to this address. If you confirm that this is a misjudgment, you can remove it from the blocklist.",
       "input": "ListBlackEmailAddressRequest",
       "name": "Gets blocklisted email addresses",
-      "output": "ListBlackEmailAddressResponse"
+      "output": "ListBlackEmailAddressResponse",
+      "status": "online"
     },
     "ListEmailAddress": {
       "document": "This API is used to get the list of sender addresses.",
       "input": "ListEmailAddressRequest",
       "name": "Gets the list of sender addresses",
-      "output": "ListEmailAddressResponse"
+      "output": "ListEmailAddressResponse",
+      "status": "online"
     },
     "ListEmailIdentities": {
       "document": "This API is used to get the list of sender domains, including verified and unverified domains.",
       "input": "ListEmailIdentitiesRequest",
       "name": "Gets the list of sender domains",
-      "output": "ListEmailIdentitiesResponse"
+      "output": "ListEmailIdentitiesResponse",
+      "status": "online"
     },
     "ListEmailTemplates": {
       "document": "This API is used to get the list of email templates.",
       "input": "ListEmailTemplatesRequest",
       "name": "Gets the list of email templates",
-      "output": "ListEmailTemplatesResponse"
+      "output": "ListEmailTemplatesResponse",
+      "status": "online"
     },
     "ListReceivers": {
       "document": "This API is used to query recipient groups. It supports pagination, fuzzy query, and query by status.",
       "input": "ListReceiversRequest",
       "name": "Queries recipient groups",
-      "output": "ListReceiversResponse"
+      "output": "ListReceiversResponse",
+      "status": "online"
     },
     "ListSendTasks": {
       "document": "This API is used to query batch email sending tasks (including immediate, scheduled, and recurring tasks) by page. You can query task data including the number of emails requested to be sent, the number of sent emails, the number of cached emails, and task status.",
       "input": "ListSendTasksRequest",
       "name": "Queries email sending tasks",
-      "output": "ListSendTasksResponse"
+      "output": "ListSendTasksResponse",
+      "status": "online"
     },
     "SendEmail": {
       "document": "This API is used to send an HTML or TEXT email triggered for authentication or transaction. By default, you can send emails using a template only.",
       "input": "SendEmailRequest",
       "name": "Sends an email",
-      "output": "SendEmailResponse"
+      "output": "SendEmailResponse",
+      "status": "online"
     },
     "UpdateEmailIdentity": {
       "document": "This API is used to verify whether your DNS configuration is correct.",
       "input": "UpdateEmailIdentityRequest",
       "name": "Verifies DNS configuration",
-      "output": "UpdateEmailIdentityResponse"
+      "output": "UpdateEmailIdentityResponse",
+      "status": "online"
     },
     "UpdateEmailSmtpPassWord": {
       "document": "This API is used to set the SMTP password. Initially, no SMTP password is set for your email address, so emails cannot be sent over SMTP. To send emails over SMTP, you must set the SMTP password. The set password can be changed subsequently.",
       "input": "UpdateEmailSmtpPassWordRequest",
       "name": "Sets the SMTP password",
-      "output": "UpdateEmailSmtpPassWordResponse"
+      "output": "UpdateEmailSmtpPassWordResponse",
+      "status": "online"
     },
     "UpdateEmailTemplate": {
       "document": "This API is used to update an email template. An updated template must be approved again before it can be used.",
       "input": "UpdateEmailTemplateRequest",
       "name": "Updates an email template",
-      "output": "UpdateEmailTemplateResponse"
+      "output": "UpdateEmailTemplateResponse",
+      "status": "online"
     }
   },
   "metadata": {

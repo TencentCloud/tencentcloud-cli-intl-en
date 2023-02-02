@@ -4,265 +4,309 @@
       "document": "This API is used to create ACL policies in batches.",
       "input": "BatchCreateAclRequest",
       "name": "Creates ACL policies in batches",
-      "output": "BatchCreateAclResponse"
+      "output": "BatchCreateAclResponse",
+      "status": "online"
     },
     "BatchModifyGroupOffsets": {
       "document": "This API is used to batch modify consumer group offsets.",
       "input": "BatchModifyGroupOffsetsRequest",
       "name": "Modifies consumer group offsets in batches",
-      "output": "BatchModifyGroupOffsetsResponse"
+      "output": "BatchModifyGroupOffsetsResponse",
+      "status": "online"
     },
     "BatchModifyTopicAttributes": {
       "document": "This API is used to batch set topic attributes.",
       "input": "BatchModifyTopicAttributesRequest",
       "name": "Sets topic attributes in batches",
-      "output": "BatchModifyTopicAttributesResponse"
+      "output": "BatchModifyTopicAttributesResponse",
+      "status": "online"
     },
     "CreateAcl": {
       "document": "This API is used to add an ACL policy.",
       "input": "CreateAclRequest",
       "name": "Adds ACL policy",
-      "output": "CreateAclResponse"
+      "output": "CreateAclResponse",
+      "status": "online"
     },
     "CreateConsumer": {
       "document": "This API is used to create a consumer group.",
       "input": "CreateConsumerRequest",
       "name": "Creates a consumer group",
-      "output": "CreateConsumerResponse"
+      "output": "CreateConsumerResponse",
+      "status": "online"
     },
     "CreateInstancePost": {
       "document": "This API is used to create a pay-as-you-go instance.",
       "input": "CreateInstancePostRequest",
       "name": "Creates a pay-as-you-go instance",
-      "output": "CreateInstancePostResponse"
+      "output": "CreateInstancePostResponse",
+      "status": "online"
     },
     "CreatePartition": {
       "document": "This API is used to add a partition in a topic.",
       "input": "CreatePartitionRequest",
       "name": "Adds partition in topic",
-      "output": "CreatePartitionResponse"
+      "output": "CreatePartitionResponse",
+      "status": "online"
     },
     "CreateTopic": {
       "document": "This API is used to create a CKafka topic.",
       "input": "CreateTopicRequest",
       "name": "Creates topic",
-      "output": "CreateTopicResponse"
+      "output": "CreateTopicResponse",
+      "status": "online"
     },
     "CreateTopicIpWhiteList": {
       "document": "This API is used to create a topic IP allowlist.",
       "input": "CreateTopicIpWhiteListRequest",
       "name": "Creates topic IP allowlist",
-      "output": "CreateTopicIpWhiteListResponse"
+      "output": "CreateTopicIpWhiteListResponse",
+      "status": "online"
     },
     "CreateUser": {
       "document": "This API is used to add a user.",
       "input": "CreateUserRequest",
       "name": "Adds user",
-      "output": "CreateUserResponse"
+      "output": "CreateUserResponse",
+      "status": "online"
     },
     "DeleteAcl": {
       "document": "This API is used to delete an ACL.",
       "input": "DeleteAclRequest",
       "name": "Deletes ACL",
-      "output": "DeleteAclResponse"
+      "output": "DeleteAclResponse",
+      "status": "online"
     },
     "DeleteInstancePre": {
       "document": "This API is used to delete a monthly subscribed (prepaid) instance.",
       "input": "DeleteInstancePreRequest",
       "name": "Deletes a monthly subscribed (prepaid) instance",
-      "output": "DeleteInstancePreResponse"
+      "output": "DeleteInstancePreResponse",
+      "status": "online"
     },
     "DeleteRoute": {
       "document": "This API is used to delete a route.",
       "input": "DeleteRouteRequest",
       "name": "Deletes a route",
-      "output": "DeleteRouteResponse"
+      "output": "DeleteRouteResponse",
+      "status": "online"
     },
     "DeleteRouteTriggerTime": {
       "document": "This API is used to modify the delayed trigger time of route deletion.",
       "input": "DeleteRouteTriggerTimeRequest",
       "name": "Modifies the route deletion trigger time",
-      "output": "DeleteRouteTriggerTimeResponse"
+      "output": "DeleteRouteTriggerTimeResponse",
+      "status": "online"
     },
     "DeleteTopic": {
       "document": "This API is used to delete a CKafka topic.",
       "input": "DeleteTopicRequest",
       "name": "Deletes topic",
-      "output": "DeleteTopicResponse"
+      "output": "DeleteTopicResponse",
+      "status": "online"
     },
     "DeleteTopicIpWhiteList": {
       "document": "This API is used to delete a topic IP allowlist.",
       "input": "DeleteTopicIpWhiteListRequest",
       "name": "Deletes topic IP allowlist",
-      "output": "DeleteTopicIpWhiteListResponse"
+      "output": "DeleteTopicIpWhiteListResponse",
+      "status": "online"
     },
     "DeleteUser": {
       "document": "This API is used to delete a user.",
       "input": "DeleteUserRequest",
       "name": "Deletes user",
-      "output": "DeleteUserResponse"
+      "output": "DeleteUserResponse",
+      "status": "online"
     },
     "DescribeACL": {
       "document": "This API is used to enumerate ACLs.",
       "input": "DescribeACLRequest",
       "name": "Enumerates ACLs",
-      "output": "DescribeACLResponse"
+      "output": "DescribeACLResponse",
+      "status": "online"
     },
     "DescribeAppInfo": {
       "document": "This API is used to query the user list.",
       "input": "DescribeAppInfoRequest",
       "name": "Queries user list",
-      "output": "DescribeAppInfoResponse"
+      "output": "DescribeAppInfoResponse",
+      "status": "online"
     },
     "DescribeCkafkaZone": {
       "document": "This API is used to view the AZ list of Ckafka.",
       "input": "DescribeCkafkaZoneRequest",
       "name": "Views the AZ list",
-      "output": "DescribeCkafkaZoneResponse"
+      "output": "DescribeCkafkaZoneResponse",
+      "status": "online"
     },
     "DescribeConsumerGroup": {
       "document": "This API is used to query consumer group information.",
       "input": "DescribeConsumerGroupRequest",
       "name": "Queries consumer group information",
-      "output": "DescribeConsumerGroupResponse"
+      "output": "DescribeConsumerGroupResponse",
+      "status": "online"
     },
     "DescribeGroup": {
       "document": "This API is used to enumerate consumer groups (simplified).",
       "input": "DescribeGroupRequest",
       "name": "Enumerates consumer groups (simplified)",
-      "output": "DescribeGroupResponse"
+      "output": "DescribeGroupResponse",
+      "status": "online"
     },
     "DescribeGroupInfo": {
       "document": "This API is used to get consumer group information.",
       "input": "DescribeGroupInfoRequest",
       "name": "Gets consumer group information",
-      "output": "DescribeGroupInfoResponse"
+      "output": "DescribeGroupInfoResponse",
+      "status": "online"
     },
     "DescribeGroupOffsets": {
       "document": "This API is used to get the consumer group offset.",
       "input": "DescribeGroupOffsetsRequest",
       "name": "Gets consumer group offset",
-      "output": "DescribeGroupOffsetsResponse"
+      "output": "DescribeGroupOffsetsResponse",
+      "status": "online"
     },
     "DescribeInstanceAttributes": {
       "document": "This API is used to get instance attributes. ",
       "input": "DescribeInstanceAttributesRequest",
       "name": "Gets instance attributes",
-      "output": "DescribeInstanceAttributesResponse"
+      "output": "DescribeInstanceAttributesResponse",
+      "status": "online"
     },
     "DescribeInstances": {
       "document": "This API is used to get the list of CKafka instances under a user account.",
       "input": "DescribeInstancesRequest",
       "name": "Obtains instance list information",
-      "output": "DescribeInstancesResponse"
+      "output": "DescribeInstancesResponse",
+      "status": "online"
     },
     "DescribeInstancesDetail": {
       "document": "This API is used to get instance list details under a user account.",
       "input": "DescribeInstancesDetailRequest",
       "name": "Gets instance list details",
-      "output": "DescribeInstancesDetailResponse"
+      "output": "DescribeInstancesDetailResponse",
+      "status": "online"
     },
     "DescribeRegion": {
       "document": "This API is used to enumerate regions, and can be called only in Guangzhou.",
       "input": "DescribeRegionRequest",
       "name": "Enumerates regions",
-      "output": "DescribeRegionResponse"
+      "output": "DescribeRegionResponse",
+      "status": "online"
     },
     "DescribeRoute": {
       "document": "This API is used to view route information.",
       "input": "DescribeRouteRequest",
       "name": "Views route information",
-      "output": "DescribeRouteResponse"
+      "output": "DescribeRouteResponse",
+      "status": "online"
     },
     "DescribeTopic": {
       "document": "API domain name: https://ckafka.tencentcloudapi.com\nThis API is used to get the list of topics in a CKafka instance of a user.",
       "input": "DescribeTopicRequest",
       "name": "Gets topic list",
-      "output": "DescribeTopicResponse"
+      "output": "DescribeTopicResponse",
+      "status": "online"
     },
     "DescribeTopicAttributes": {
       "document": "This API is used to get topic attributes.\n",
       "input": "DescribeTopicAttributesRequest",
       "name": "Gets topic attributes",
-      "output": "DescribeTopicAttributesResponse"
+      "output": "DescribeTopicAttributesResponse",
+      "status": "online"
     },
     "DescribeTopicDetail": {
       "document": "This API is used to get topic list details (only for call in the console).",
       "input": "DescribeTopicDetailRequest",
       "name": "Gets topic list details",
-      "output": "DescribeTopicDetailResponse"
+      "output": "DescribeTopicDetailResponse",
+      "status": "online"
     },
     "DescribeTopicSubscribeGroup": {
       "document": "This API is used to search and subscribe the message group information of a topic.",
       "input": "DescribeTopicSubscribeGroupRequest",
       "name": "Searches and subscribes the message group information of a topic",
-      "output": "DescribeTopicSubscribeGroupResponse"
+      "output": "DescribeTopicSubscribeGroupResponse",
+      "status": "online"
     },
     "DescribeTopicSyncReplica": {
       "document": "This API is used to get the details of a synced topic replica.",
       "input": "DescribeTopicSyncReplicaRequest",
       "name": "Gets the information of a synced topic replica",
-      "output": "DescribeTopicSyncReplicaResponse"
+      "output": "DescribeTopicSyncReplicaResponse",
+      "status": "online"
     },
     "DescribeUser": {
       "document": "This API is used to query user information.",
       "input": "DescribeUserRequest",
       "name": "Queries user information",
-      "output": "DescribeUserResponse"
+      "output": "DescribeUserResponse",
+      "status": "online"
     },
     "FetchMessageByOffset": {
       "document": "This API is used to query messages based on a specified offset position.",
       "input": "FetchMessageByOffsetRequest",
       "name": "Querying messages",
-      "output": "FetchMessageByOffsetResponse"
+      "output": "FetchMessageByOffsetResponse",
+      "status": "online"
     },
     "FetchMessageListByOffset": {
       "document": "This API is used to query the message list based on an offset.",
       "input": "FetchMessageListByOffsetRequest",
       "name": "Queries the message list based on an offset",
-      "output": "FetchMessageListByOffsetResponse"
+      "output": "FetchMessageListByOffsetResponse",
+      "status": "online"
     },
     "InquireCkafkaPrice": {
       "document": "This API is used to purchase a CKafka instance or query the instance renewal price.",
       "input": "InquireCkafkaPriceRequest",
       "name": "Queries the price of a CKafka instance",
-      "output": "InquireCkafkaPriceResponse"
+      "output": "InquireCkafkaPriceResponse",
+      "status": "online"
     },
     "ModifyGroupOffsets": {
       "document": "This API is used to set the consumer group (Groups) offset.",
       "input": "ModifyGroupOffsetsRequest",
       "name": "Sets consumer group (Groups) offset",
-      "output": "ModifyGroupOffsetsResponse"
+      "output": "ModifyGroupOffsetsResponse",
+      "status": "online"
     },
     "ModifyInstanceAttributes": {
       "document": "This API is used to set instance attributes.",
       "input": "ModifyInstanceAttributesRequest",
       "name": "Sets instance attributes",
-      "output": "ModifyInstanceAttributesResponse"
+      "output": "ModifyInstanceAttributesResponse",
+      "status": "online"
     },
     "ModifyInstancePre": {
       "document": "This API is used to change the configurations of a prepaid instance, such as disk capacity and bandwidth.",
       "input": "ModifyInstancePreRequest",
       "name": "Changes the configurations of a prepaid instance",
-      "output": "ModifyInstancePreResponse"
+      "output": "ModifyInstancePreResponse",
+      "status": "online"
     },
     "ModifyPassword": {
       "document": "This API is used to change the password.",
       "input": "ModifyPasswordRequest",
       "name": "Changes password",
-      "output": "ModifyPasswordResponse"
+      "output": "ModifyPasswordResponse",
+      "status": "online"
     },
     "ModifyTopicAttributes": {
       "document": "This API is used to modify topic attributes.",
       "input": "ModifyTopicAttributesRequest",
       "name": "Sets topic attributes",
-      "output": "ModifyTopicAttributesResponse"
+      "output": "ModifyTopicAttributesResponse",
+      "status": "online"
     },
     "SendMessage": {
       "document": "This API is used to send messages through the HTTP access layer.",
       "input": "SendMessageRequest",
       "name": "Sends messages through the HTTP access layer",
-      "output": "SendMessageResponse"
+      "output": "SendMessageResponse",
+      "status": "online"
     }
   },
   "metadata": {

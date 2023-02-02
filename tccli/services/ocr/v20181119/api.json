@@ -4,43 +4,50 @@
       "document": "This API is used to detect and recognize key fields such as the card number, bank information, and expiration date on mainstream bank cards in Mainland China.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "BankCardOCRRequest",
       "name": "Recognizes a bank card",
-      "output": "BankCardOCRResponse"
+      "output": "BankCardOCRResponse",
+      "status": "online"
     },
     "GeneralAccurateOCR": {
       "document": "This API is used to detect and recognize characters in an image. It can recognize Chinese, English, Chinese-English, digits, and special symbols and return the text box positions and characters.\n\nIt is suitable for scenarios with a lot of characters in complex layouts and requiring high recognition accuracy, such as examination papers, online images, signboards, and legal documents.\n\nStrengths: compared with general print recognition, it provides higher-precision character recognition services. Its accuracy and recall rate are higher in difficult scenarios such as a large number of characters, long strings of digits, small characters, blurry characters, and tilted text.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "GeneralAccurateOCRRequest",
       "name": "Recognizes general print (high-precision)",
-      "output": "GeneralAccurateOCRResponse"
+      "output": "GeneralAccurateOCRResponse",
+      "status": "online"
     },
     "GeneralBasicOCR": {
       "document": "This API is used to detect and recognize characters in an image in the following 20 languages: Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, and Arabic. Mixed characters in English and each supported language can be recognized together.\n\nIt can recognize printed text in paper documents, online images, ads, signboards, menus, video titles, profile photos, etc.\n\nStrengths: it can automatically recognize the text language, return the text box coordinate information, and automatically rotate tilted text to the upright direction.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "GeneralBasicOCRRequest",
       "name": "Recognizes general print.",
-      "output": "GeneralBasicOCRResponse"
+      "output": "GeneralBasicOCRResponse",
+      "status": "online"
     },
     "HKIDCardOCR": {
       "document": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. It can check for card authenticity and crop the identity photo.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).\n",
       "input": "HKIDCardOCRRequest",
       "name": "Recognizes Hong Kong (China) identity card",
-      "output": "HKIDCardOCRResponse"
+      "output": "HKIDCardOCRResponse",
+      "status": "online"
     },
     "MLIDCardOCR": {
       "document": "This API is used to recognize a Malaysian identity card, including identity card number, name, gender, and address. It is also used to crop identity photos and give alarms for photographed or photocopied certificates.\n\nThis API is not fully available for the time being. For more information, contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "MLIDCardOCRRequest",
       "name": "Recognizes a Malaysian identity card",
-      "output": "MLIDCardOCRResponse"
+      "output": "MLIDCardOCRResponse",
+      "status": "online"
     },
     "MLIDPassportOCR": {
       "document": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "MLIDPassportOCRRequest",
       "name": "Recognizes a non-Mainland China passport",
-      "output": "MLIDPassportOCRResponse"
+      "output": "MLIDPassportOCRResponse",
+      "status": "online"
     },
     "TableOCR": {
       "document": "This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "TableOCRRequest",
       "name": "Form OCR (v1)",
-      "output": "TableOCRResponse"
+      "output": "TableOCRResponse",
+      "status": "online"
     }
   },
   "metadata": {

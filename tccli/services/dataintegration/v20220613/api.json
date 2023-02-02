@@ -4,7 +4,8 @@
       "document": "This API is used to report data to DIP via SDK.",
       "input": "SendMessageRequest",
       "name": "Reports data",
-      "output": "SendMessageResponse"
+      "output": "SendMessageResponse",
+      "status": "online"
     }
   },
   "metadata": {

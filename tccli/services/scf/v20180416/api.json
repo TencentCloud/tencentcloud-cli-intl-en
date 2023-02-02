@@ -4,247 +4,288 @@
       "document": "This API is used to replicate a function. You can store the replicated function in a specified Region and Namespace.\nNote: This API **does not** replicate the following objects or attributes of the function:\n1. Function trigger\n2. Versions other than $LATEST\n3. CLS target of the logs configured in the function\n\nYou can manually configure the function after replication as required.",
       "input": "CopyFunctionRequest",
       "name": "Replicates a function",
-      "output": "CopyFunctionResponse"
+      "output": "CopyFunctionResponse",
+      "status": "online"
     },
     "CreateAlias": {
       "document": "This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.\nAn alias must point to a master version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the master version and additional version during request sending.",
       "input": "CreateAliasRequest",
       "name": "Creates alias for function version",
-      "output": "CreateAliasResponse"
+      "output": "CreateAliasResponse",
+      "status": "online"
     },
     "CreateNamespace": {
       "document": "This API is used to create a namespace based on the input parameters.",
       "input": "CreateNamespaceRequest",
       "name": "Creates a namespace",
-      "output": "CreateNamespaceResponse"
+      "output": "CreateNamespaceResponse",
+      "status": "online"
     },
     "CreateTrigger": {
       "document": "This API is used to create a trigger based on the input parameters.",
       "input": "CreateTriggerRequest",
       "name": "Creates a function trigger",
-      "output": "CreateTriggerResponse"
+      "output": "CreateTriggerResponse",
+      "status": "online"
     },
     "DeleteAlias": {
       "document": "This API is used to delete an alias of a function version.",
       "input": "DeleteAliasRequest",
       "name": "Deletes alias",
-      "output": "DeleteAliasResponse"
+      "output": "DeleteAliasResponse",
+      "status": "online"
     },
     "DeleteFunction": {
       "document": "This API is used to delete a function based on the input parameters.",
       "input": "DeleteFunctionRequest",
       "name": "Deletes a function",
-      "output": "DeleteFunctionResponse"
+      "output": "DeleteFunctionResponse",
+      "status": "online"
     },
     "DeleteLayerVersion": {
       "document": "This API is used to delete a specified version of a specified layer. The deleted version cannot be associated with a function, but the deletion does not affect functions that are referencing this layer.",
       "input": "DeleteLayerVersionRequest",
       "name": "Deletes layer version",
-      "output": "DeleteLayerVersionResponse"
+      "output": "DeleteLayerVersionResponse",
+      "status": "online"
     },
     "DeleteNamespace": {
       "document": "This API is used to delete the specific namespace according to the parameters passed in.",
       "input": "DeleteNamespaceRequest",
       "name": "Deletes a namespace",
-      "output": "DeleteNamespaceResponse"
+      "output": "DeleteNamespaceResponse",
+      "status": "online"
     },
     "DeleteProvisionedConcurrencyConfig": {
       "document": "This API is used to delete the provisioned concurrency configuration of a function version.",
       "input": "DeleteProvisionedConcurrencyConfigRequest",
       "name": "Deletes provisioned concurrency",
-      "output": "DeleteProvisionedConcurrencyConfigResponse"
+      "output": "DeleteProvisionedConcurrencyConfigResponse",
+      "status": "online"
     },
     "DeleteReservedConcurrencyConfig": {
       "document": "This API is used to delete the configuration of reserved quota.",
       "input": "DeleteReservedConcurrencyConfigRequest",
       "name": "Removes the reserved quota of a function",
-      "output": "DeleteReservedConcurrencyConfigResponse"
+      "output": "DeleteReservedConcurrencyConfigResponse",
+      "status": "online"
     },
     "DeleteTrigger": {
       "document": "This API is used to delete an existing trigger based on the input parameters.",
       "input": "DeleteTriggerRequest",
       "name": "Deletes a trigger",
-      "output": "DeleteTriggerResponse"
+      "output": "DeleteTriggerResponse",
+      "status": "online"
     },
     "GetAccount": {
       "document": "This API is used to get the account information.",
       "input": "GetAccountRequest",
       "name": "Gets account information",
-      "output": "GetAccountResponse"
+      "output": "GetAccountResponse",
+      "status": "online"
     },
     "GetAlias": {
       "document": "This API is used to get the alias details such as the name, description, version, and routing information.",
       "input": "GetAliasRequest",
       "name": "Gets alias details",
-      "output": "GetAliasResponse"
+      "output": "GetAliasResponse",
+      "status": "online"
     },
     "GetAsyncEventStatus": {
       "document": "This API is used to get the status of an async function execution event. The event status is retained for 3*24 hours, counting from the completion of the event.",
       "input": "GetAsyncEventStatusRequest",
       "name": "Gets the async event status of a function",
-      "output": "GetAsyncEventStatusResponse"
+      "output": "GetAsyncEventStatusResponse",
+      "status": "online"
     },
     "GetFunctionAddress": {
       "document": "This API is used to obtain the download address of the function code package.",
       "input": "GetFunctionAddressRequest",
       "name": "Obtains download address of the function code",
-      "output": "GetFunctionAddressResponse"
+      "output": "GetFunctionAddressResponse",
+      "status": "online"
     },
     "GetFunctionEventInvokeConfig": {
       "document": "This API is used to get the async retry configuration of a function, including the number of retry attempts and message retention period.",
       "input": "GetFunctionEventInvokeConfigRequest",
       "name": "Gets the async retry configuration of function",
-      "output": "GetFunctionEventInvokeConfigResponse"
+      "output": "GetFunctionEventInvokeConfigResponse",
+      "status": "online"
     },
     "GetFunctionLogs": {
       "document": "This API returns function running logs according to the specified conditions. Note that this API has been disused. You can use [GetRequestStatus](https://intl.cloud.tencent.com/document/product/583/65348?from_cn_redirect=1) instead. See also [Retrieving Logs](https://intl.cloud.tencent.com/document/product/583/52637?from_cn_redirect=1).",
       "input": "GetFunctionLogsRequest",
       "name": "Obtains a function running log",
-      "output": "GetFunctionLogsResponse"
+      "output": "GetFunctionLogsResponse",
+      "status": "online"
     },
     "GetLayerVersion": {
       "document": "This API is used to get the layer version details, including links used to download files in the layer.",
       "input": "GetLayerVersionRequest",
       "name": "Gets layer version details",
-      "output": "GetLayerVersionResponse"
+      "output": "GetLayerVersionResponse",
+      "status": "online"
     },
     "GetProvisionedConcurrencyConfig": {
       "document": "This API is used to get the provisioned concurrency details of a function or its specified version.",
       "input": "GetProvisionedConcurrencyConfigRequest",
       "name": "Gets the provisioned concurrency details of function",
-      "output": "GetProvisionedConcurrencyConfigResponse"
+      "output": "GetProvisionedConcurrencyConfigResponse",
+      "status": "online"
     },
     "GetRequestStatus": {
       "document": "This API is used to query the status of a single function request.",
       "input": "GetRequestStatusRequest",
       "name": "Queries the status of a single function request.",
-      "output": "GetRequestStatusResponse"
+      "output": "GetRequestStatusResponse",
+      "status": "online"
     },
     "GetReservedConcurrencyConfig": {
       "document": "This API is used to obtain the reserved quota details of a function. ",
       "input": "GetReservedConcurrencyConfigRequest",
       "name": "Obtains the reserved quota details of a function",
-      "output": "GetReservedConcurrencyConfigResponse"
+      "output": "GetReservedConcurrencyConfigResponse",
+      "status": "online"
     },
     "Invoke": {
       "document": "This API is used to run a function.",
       "input": "InvokeRequest",
       "name": "Runs a function",
-      "output": "InvokeResponse"
+      "output": "InvokeResponse",
+      "status": "online"
     },
     "InvokeFunction": {
       "document": " This API is used to invoke functions synchronously.",
       "input": "InvokeFunctionRequest",
       "name": "Invokes functions synchronously",
-      "output": "InvokeFunctionResponse"
+      "output": "InvokeFunctionResponse",
+      "status": "online"
     },
     "ListAliases": {
       "document": "This API is used to return the list of all aliases under a function. You can filter them by the specific function version.",
       "input": "ListAliasesRequest",
       "name": "Gets alias list",
-      "output": "ListAliasesResponse"
+      "output": "ListAliasesResponse",
+      "status": "online"
     },
     "ListAsyncEvents": {
       "document": "This API is used to pull the list of async function events.",
       "input": "ListAsyncEventsRequest",
       "name": "Pulls async function event list",
-      "output": "ListAsyncEventsResponse"
+      "output": "ListAsyncEventsResponse",
+      "status": "online"
     },
     "ListFunctions": {
       "document": "This API is used to return relevant function information based on the input query parameters.",
       "input": "ListFunctionsRequest",
       "name": "Obtains a function list",
-      "output": "ListFunctionsResponse"
+      "output": "ListFunctionsResponse",
+      "status": "online"
     },
     "ListLayerVersions": {
       "document": "This API is used to get the information of all versions of a specified layer.",
       "input": "ListLayerVersionsRequest",
       "name": "Gets layer version list",
-      "output": "ListLayerVersionsResponse"
+      "output": "ListLayerVersionsResponse",
+      "status": "online"
     },
     "ListLayers": {
       "document": "This API is used to return the list of all layers, including the information of the latest version of each layer. You can filter them by the compatible runtime.",
       "input": "ListLayersRequest",
       "name": "Returns layer list",
-      "output": "ListLayersResponse"
+      "output": "ListLayersResponse",
+      "status": "online"
     },
     "ListNamespaces": {
       "document": "This API is used to display a namespace list.",
       "input": "ListNamespacesRequest",
       "name": "Displays a namespace list",
-      "output": "ListNamespacesResponse"
+      "output": "ListNamespacesResponse",
+      "status": "online"
     },
     "ListTriggers": {
       "document": "This API is used to get the function trigger list.",
       "input": "ListTriggersRequest",
       "name": "Gets function trigger list",
-      "output": "ListTriggersResponse"
+      "output": "ListTriggersResponse",
+      "status": "online"
     },
     "ListVersionByFunction": {
       "document": "This API is used to query the function version based on the input parameters.",
       "input": "ListVersionByFunctionRequest",
       "name": "Queries a function version",
-      "output": "ListVersionByFunctionResponse"
+      "output": "ListVersionByFunctionResponse",
+      "status": "online"
     },
     "PublishLayerVersion": {
       "document": "This API is used to create a version for a layer by using the given .zip file or COS object. Each time this API is called with the same layer name, a new version will be generated.",
       "input": "PublishLayerVersionRequest",
       "name": "Publishes layer version",
-      "output": "PublishLayerVersionResponse"
+      "output": "PublishLayerVersionResponse",
+      "status": "online"
     },
     "PublishVersion": {
       "document": "This API is used for users to release a new version of the function.",
       "input": "PublishVersionRequest",
       "name": "Releases a new version",
-      "output": "PublishVersionResponse"
+      "output": "PublishVersionResponse",
+      "status": "online"
     },
     "PutProvisionedConcurrencyConfig": {
       "document": "This API is used to set the provisioned concurrency of a non-$LATEST version of a function.",
       "input": "PutProvisionedConcurrencyConfigRequest",
       "name": "Sets provisioned concurrency",
-      "output": "PutProvisionedConcurrencyConfigResponse"
+      "output": "PutProvisionedConcurrencyConfigResponse",
+      "status": "online"
     },
     "PutReservedConcurrencyConfig": {
       "document": "This API is used to configure the reserved quota of a function.",
       "input": "PutReservedConcurrencyConfigRequest",
       "name": "Configures the reserved quota",
-      "output": "PutReservedConcurrencyConfigResponse"
+      "output": "PutReservedConcurrencyConfigResponse",
+      "status": "online"
     },
     "PutTotalConcurrencyConfig": {
       "document": "This API is used to modify the account concurrency quota.",
       "input": "PutTotalConcurrencyConfigRequest",
       "name": "Modifies account concurrency quota",
-      "output": "PutTotalConcurrencyConfigResponse"
+      "output": "PutTotalConcurrencyConfigResponse",
+      "status": "online"
     },
     "TerminateAsyncEvent": {
       "document": "This API is used to terminate a running async function event.",
       "input": "TerminateAsyncEventRequest",
       "name": "Terminates async function event",
-      "output": "TerminateAsyncEventResponse"
+      "output": "TerminateAsyncEventResponse",
+      "status": "online"
     },
     "UpdateAlias": {
       "document": "This API is used to update the configuration of an alias.",
       "input": "UpdateAliasRequest",
       "name": "Updates alias configuration",
-      "output": "UpdateAliasResponse"
+      "output": "UpdateAliasResponse",
+      "status": "online"
     },
     "UpdateFunctionCode": {
       "document": "This API is used to update the function code based on the input parameters.",
       "input": "UpdateFunctionCodeRequest",
       "name": "Updates the function code",
-      "output": "UpdateFunctionCodeResponse"
+      "output": "UpdateFunctionCodeResponse",
+      "status": "online"
     },
     "UpdateFunctionEventInvokeConfig": {
       "document": "This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.",
       "input": "UpdateFunctionEventInvokeConfigRequest",
       "name": "Updates the async retry configuration of function",
-      "output": "UpdateFunctionEventInvokeConfigResponse"
+      "output": "UpdateFunctionEventInvokeConfigResponse",
+      "status": "online"
     },
     "UpdateNamespace": {
       "document": "This API is used to update a namespace.",
       "input": "UpdateNamespaceRequest",
       "name": "Updates a namespace",
-      "output": "UpdateNamespaceResponse"
+      "output": "UpdateNamespaceResponse",
+      "status": "online"
     }
   },
   "metadata": {

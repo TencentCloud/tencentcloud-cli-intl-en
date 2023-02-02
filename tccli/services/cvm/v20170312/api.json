@@ -4,427 +4,498 @@
       "document": "This API is used to create CDH instances with specified configuration.\n* When HostChargeType is PREPAID, the HostChargePrepaid parameter must be specified.",
       "input": "AllocateHostsRequest",
       "name": "Creates CDH instances",
-      "output": "AllocateHostsResponse"
+      "output": "AllocateHostsResponse",
+      "status": "online"
     },
     "AssociateInstancesKeyPairs": {
       "document": "This API is used to associate key pairs with instances.\n\n* If the public key of a key pair is written to the `SSH` configuration of the instance, users will be able to log in to the instance with the private key of the key pair.\n* If the instance is already associated with a key, the old key will become invalid.\nIf you currently use a password to log in, you will no longer be able to do so after you associate the instance with a key.\n* Batch operations are supported. The maximum number of instances in each request is 100. If any instance in the request cannot be associated with a key, you will get an error code.",
       "input": "AssociateInstancesKeyPairsRequest",
       "name": "Associates a key with an instance",
-      "output": "AssociateInstancesKeyPairsResponse"
+      "output": "AssociateInstancesKeyPairsResponse",
+      "status": "online"
     },
     "AssociateSecurityGroups": {
       "document": "This API is used to associate security groups with specified instances.",
       "input": "AssociateSecurityGroupsRequest",
       "name": "Associates security groups with instances",
-      "output": "AssociateSecurityGroupsResponse"
+      "output": "AssociateSecurityGroupsResponse",
+      "status": "online"
     },
     "ConfigureChcAssistVpc": {
       "document": "This API is used to configure the out-of-band network and deployment network of a CHC host.",
       "input": "ConfigureChcAssistVpcRequest",
       "name": "Configures the out-of-band network and deployment network of a CHC",
-      "output": "ConfigureChcAssistVpcResponse"
+      "output": "ConfigureChcAssistVpcResponse",
+      "status": "online"
     },
     "ConfigureChcDeployVpc": {
       "document": "This API is used to configure the deployment network of a CHC host.",
       "input": "ConfigureChcDeployVpcRequest",
       "name": "Configures the deployment network of a CHC host",
-      "output": "ConfigureChcDeployVpcResponse"
+      "output": "ConfigureChcDeployVpcResponse",
+      "status": "online"
     },
     "CreateDisasterRecoverGroup": {
       "document": "This API is used to create a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). After you create one, you can specify it for an instance when you [create the instance](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1), ",
       "input": "CreateDisasterRecoverGroupRequest",
       "name": "Creates a spread placement group",
-      "output": "CreateDisasterRecoverGroupResponse"
+      "output": "CreateDisasterRecoverGroupResponse",
+      "status": "online"
     },
     "CreateImage": {
       "document": "This API is used to create a new image with the system disk of an instance. The image can be used to create new instances.",
       "input": "CreateImageRequest",
       "name": "Creates an image",
-      "output": "CreateImageResponse"
+      "output": "CreateImageResponse",
+      "status": "online"
     },
     "CreateKeyPair": {
       "document": "This API is used to create an `OpenSSH RSA` key pair, which you can use to log in to a `Linux` instance.\n\n* You only need to specify a name, and the system will automatically create a key pair and return its `ID` and the public and private keys.\n* The name of the key pair must be unique.\n* You can save the private key to a file and use it as an authentication method for `SSH`.\n* Tencent Cloud does not save users' private keys. Be sure to save it yourself.",
       "input": "CreateKeyPairRequest",
       "name": "Creates a key pair",
-      "output": "CreateKeyPairResponse"
+      "output": "CreateKeyPairResponse",
+      "status": "online"
     },
     "CreateLaunchTemplateVersion": {
       "document": "This API is used to create an instance launch template based on the specified template ID and the corresponding template version number. The default version number will be used when no template version numbers are specified. Each instance launch template can have up to 30 version numbers.",
       "input": "CreateLaunchTemplateVersionRequest",
       "name": "Creating a instance launch template version",
-      "output": "CreateLaunchTemplateVersionResponse"
+      "output": "CreateLaunchTemplateVersionResponse",
+      "status": "online"
     },
     "DeleteDisasterRecoverGroups": {
       "document": "This API is used to delete a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). Only empty placement groups can be deleted. To delete a non-empty group, you need to terminate all the CVM instances in it first. Otherwise, the deletion will fail.",
       "input": "DeleteDisasterRecoverGroupsRequest",
       "name": "Deletes a spread placement group",
-      "output": "DeleteDisasterRecoverGroupsResponse"
+      "output": "DeleteDisasterRecoverGroupsResponse",
+      "status": "online"
     },
     "DeleteImages": {
       "document": "This API is used to delete one or more images.\n\n* If the [ImageState](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image) of an image is `CREATING` or `USING`, the image cannot be deleted. Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API to query the image status.\n* Up to 10 custom images are allowed in each region. If you have run out of the quota, delete unused images to create new ones.\n* A shared image cannot be deleted.",
       "input": "DeleteImagesRequest",
       "name": "Deletes images",
-      "output": "DeleteImagesResponse"
+      "output": "DeleteImagesResponse",
+      "status": "online"
     },
     "DeleteKeyPairs": {
       "document": "This API is used to delete the key pairs hosted in Tencent Cloud.\n\n* You can delete multiple key pairs at the same time.\n* A key pair used by an instance or image cannot be deleted. Therefore, you need to verify whether all the key pairs have been deleted successfully.",
       "input": "DeleteKeyPairsRequest",
       "name": "Deletes key pairs",
-      "output": "DeleteKeyPairsResponse"
+      "output": "DeleteKeyPairsResponse",
+      "status": "online"
     },
     "DeleteLaunchTemplate": {
       "document": "This API is used to delete an instance launch template.",
       "input": "DeleteLaunchTemplateRequest",
       "name": "Deleting an instance launch template",
-      "output": "DeleteLaunchTemplateResponse"
+      "output": "DeleteLaunchTemplateResponse",
+      "status": "online"
     },
     "DeleteLaunchTemplateVersions": {
       "document": "This API is used to delete one or more instance launch template versions.",
       "input": "DeleteLaunchTemplateVersionsRequest",
       "name": "Deletes one or more instance launch template versions",
-      "output": "DeleteLaunchTemplateVersionsResponse"
+      "output": "DeleteLaunchTemplateVersionsResponse",
+      "status": "online"
     },
     "DescribeChcDeniedActions": {
       "document": "This API is used to query the actions not allowed for the specified CHC instances.",
       "input": "DescribeChcDeniedActionsRequest",
       "name": "Queries the actions not allowed for the specified CHC instances",
-      "output": "DescribeChcDeniedActionsResponse"
+      "output": "DescribeChcDeniedActionsResponse",
+      "status": "online"
     },
     "DescribeChcHosts": {
       "document": "This API is used to query the details of one or more CHC host.\n\n* You can filter the query results with the instance ID, name or device type. See `Filter` for more information.\n* If no parameter is defined, a certain number of instances under the current account will be returned. The number is specified by `Limit` and is `20` by default.",
       "input": "DescribeChcHostsRequest",
       "name": "Queries the details of CHC hosts",
-      "output": "DescribeChcHostsResponse"
+      "output": "DescribeChcHostsResponse",
+      "status": "online"
     },
     "DescribeDisasterRecoverGroupQuota": {
       "document": "This API is used to query the quota of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).",
       "input": "DescribeDisasterRecoverGroupQuotaRequest",
       "name": "Queries the quota of placement groups",
-      "output": "DescribeDisasterRecoverGroupQuotaResponse"
+      "output": "DescribeDisasterRecoverGroupQuotaResponse",
+      "status": "online"
     },
     "DescribeDisasterRecoverGroups": {
       "document": "This API is used to query the information on [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).",
       "input": "DescribeDisasterRecoverGroupsRequest",
       "name": "Queries information on spread placement groups",
-      "output": "DescribeDisasterRecoverGroupsResponse"
+      "output": "DescribeDisasterRecoverGroupsResponse",
+      "status": "online"
     },
     "DescribeHosts": {
       "document": "This API is used to query the details of CDH instances.",
       "input": "DescribeHostsRequest",
       "name": "Views the list of CDH instances",
-      "output": "DescribeHostsResponse"
+      "output": "DescribeHostsResponse",
+      "status": "online"
     },
     "DescribeImageQuota": {
       "document": "This API is used to query the image quota of an user account.",
       "input": "DescribeImageQuotaRequest",
       "name": "Queries image quota",
-      "output": "DescribeImageQuotaResponse"
+      "output": "DescribeImageQuotaResponse",
+      "status": "online"
     },
     "DescribeImageSharePermission": {
       "document": "This API is used to query image sharing information.",
       "input": "DescribeImageSharePermissionRequest",
       "name": "Views image sharing information",
-      "output": "DescribeImageSharePermissionResponse"
+      "output": "DescribeImageSharePermissionResponse",
+      "status": "online"
     },
     "DescribeImages": {
       "document": "This API is used to view the list of images.\n\n* You specify the image ID or set filters to query the details of certain images.\n* You can specify `Offset` and `Limit` to select a certain part of the results. By default, the information on the first 20 matching results is returned.",
       "input": "DescribeImagesRequest",
       "name": "Views the list of images",
-      "output": "DescribeImagesResponse"
+      "output": "DescribeImagesResponse",
+      "status": "online"
     },
     "DescribeImportImageOs": {
       "document": "This API is used to query the list of supported operating systems of imported images.",
       "input": "DescribeImportImageOsRequest",
       "name": "Queries the list of supported operating systems of imported images",
-      "output": "DescribeImportImageOsResponse"
+      "output": "DescribeImportImageOsResponse",
+      "status": "online"
     },
     "DescribeInstanceFamilyConfigs": {
       "document": "This API is used to query a list of model families available to the current user in the current region.",
       "input": "DescribeInstanceFamilyConfigsRequest",
       "name": "Queries supported instance model families",
-      "output": "DescribeInstanceFamilyConfigsResponse"
+      "output": "DescribeInstanceFamilyConfigsResponse",
+      "status": "online"
     },
     "DescribeInstances": {
       "document": "This API is used to query the details of instances.\n\n* You can filter the query results with the instance `ID`, name, or billing method. See `Filter` for more information.\n* If no parameter is defined, a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.",
       "input": "DescribeInstancesRequest",
       "name": "Views the list of instances",
-      "output": "DescribeInstancesResponse"
+      "output": "DescribeInstancesResponse",
+      "status": "online"
     },
     "DescribeInstancesOperationLimit": {
       "document": "This API is used to query limitations on operations on an instance.\n\n* Currently you can use this API to query the maximum number of times you can modify the configuration of an instance.",
       "input": "DescribeInstancesOperationLimitRequest",
       "name": "Queries limitations on operations on an instance",
-      "output": "DescribeInstancesOperationLimitResponse"
+      "output": "DescribeInstancesOperationLimitResponse",
+      "status": "online"
     },
     "DescribeInstancesStatus": {
       "document": "This API is used to query the status of instances.\n\n* You can query the status of an instance with its `ID`.\n* If no parameter is defined, the status of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.",
       "input": "DescribeInstancesStatusRequest",
       "name": "Views the list of instance status",
-      "output": "DescribeInstancesStatusResponse"
+      "output": "DescribeInstancesStatusResponse",
+      "status": "online"
     },
     "DescribeInternetChargeTypeConfigs": {
       "document": "This API is used to query the network billing methods.",
       "input": "DescribeInternetChargeTypeConfigsRequest",
       "name": "Queries the network billing methods",
-      "output": "DescribeInternetChargeTypeConfigsResponse"
+      "output": "DescribeInternetChargeTypeConfigsResponse",
+      "status": "online"
     },
     "DescribeKeyPairs": {
       "document": "This API is used to query key pairs.\n\n* A key pair is a pair of keys generated by an algorithm in which the public key is available to the public and the private key is available only to the user. You can use this API to query the public key but not the private key.",
       "input": "DescribeKeyPairsRequest",
       "name": "Queries the list of key pairs",
-      "output": "DescribeKeyPairsResponse"
+      "output": "DescribeKeyPairsResponse",
+      "status": "online"
     },
     "DescribeLaunchTemplateVersions": {
       "document": "This API is used to query the information of instance launch template versions.",
       "input": "DescribeLaunchTemplateVersionsRequest",
       "name": "Queries instance launch template versions",
-      "output": "DescribeLaunchTemplateVersionsResponse"
+      "output": "DescribeLaunchTemplateVersionsResponse",
+      "status": "online"
     },
     "DescribeLaunchTemplates": {
       "document": "This API is used to query one or more instance launch templates.",
       "input": "DescribeLaunchTemplatesRequest",
       "name": "Queries instance launch templates",
-      "output": "DescribeLaunchTemplatesResponse"
+      "output": "DescribeLaunchTemplatesResponse",
+      "status": "online"
     },
     "DescribeRegions": {
       "document": "This API is suspended. To query the information of regions, use [DescribeZones](https://intl.cloud.tencent.com/document/product/1596/77929?from_cn_redirect=1).",
       "input": "DescribeRegionsRequest",
       "name": "Queries the list of regions",
-      "output": "DescribeRegionsResponse"
+      "output": "DescribeRegionsResponse",
+      "status": "online"
     },
     "DescribeReservedInstancesConfigInfos": {
       "document": "This API is used to describe reserved instance (RI) offerings. Currently, RIs are only offered to beta users.",
       "input": "DescribeReservedInstancesConfigInfosRequest",
       "name": "Queries reserved instance configurations",
-      "output": "DescribeReservedInstancesConfigInfosResponse"
+      "output": "DescribeReservedInstancesConfigInfosResponse",
+      "status": "online"
     },
     "DescribeReservedInstancesOfferings": {
       "document": "This API is used to describe Reserved Instance offerings that are available for purchase.",
       "input": "DescribeReservedInstancesOfferingsRequest",
       "name": "Describes Reserved Instance offerings",
-      "output": "DescribeReservedInstancesOfferingsResponse"
+      "output": "DescribeReservedInstancesOfferingsResponse",
+      "status": "online"
     },
     "DescribeZoneInstanceConfigInfos": {
       "document": "This API is used to query the configurations of models in an availability zone.",
       "input": "DescribeZoneInstanceConfigInfosRequest",
       "name": "Queries the configurations of models in an availability zone",
-      "output": "DescribeZoneInstanceConfigInfosResponse"
+      "output": "DescribeZoneInstanceConfigInfosResponse",
+      "status": "online"
     },
     "DescribeZones": {
       "document": "This API is used to query availability zones.",
       "input": "DescribeZonesRequest",
       "name": "Queries a list of availability zones",
-      "output": "DescribeZonesResponse"
+      "output": "DescribeZonesResponse",
+      "status": "online"
     },
     "DisassociateInstancesKeyPairs": {
       "document": "This API is used to unbind one or more key pairs from one or more instances.\n\n* It only supports [`STOPPED`](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#InstanceStatus) Linux instances.\n* After a key pair is disassociated from an instance, you can log in to the instance with password.\n* If you did not set a password for the instance, you will not be able to log in via SSH after the unbinding. In this case, you can call [ResetInstancesPassword](https://intl.cloud.tencent.com/document/api/213/15736?from_cn_redirect=1) to set a login password.\n* Batch operations are supported. The maximum number of instances in each request is 100. If instances not available for the operation are selected, you will get an error code.",
       "input": "DisassociateInstancesKeyPairsRequest",
       "name": "Disassociates key pairs from instances",
-      "output": "DisassociateInstancesKeyPairsResponse"
+      "output": "DisassociateInstancesKeyPairsResponse",
+      "status": "online"
     },
     "DisassociateSecurityGroups": {
       "document": "This API is used to disassociate security groups from instances.",
       "input": "DisassociateSecurityGroupsRequest",
       "name": "Disassociates security groups from instances",
-      "output": "DisassociateSecurityGroupsResponse"
+      "output": "DisassociateSecurityGroupsResponse",
+      "status": "online"
     },
     "ExportImages": {
       "document": "This API is used to export custom images to the specified COS bucket.",
       "input": "ExportImagesRequest",
       "name": "Exports custom images",
-      "output": "ExportImagesResponse"
+      "output": "ExportImagesResponse",
+      "status": "online"
     },
     "ImportImage": {
       "document": "The API is used to import an image. The image imported can be used to create instances. Currently, this API can import images in formats like RAW, VHD, QCOW2, and VMDK.",
       "input": "ImportImageRequest",
       "name": "Imports images",
-      "output": "ImportImageResponse"
+      "output": "ImportImageResponse",
+      "status": "online"
     },
     "ImportKeyPair": {
       "document": "This API is used to import key pairs.\n\n* You can use this API to import key pairs to a user account, but the key pairs will not be automatically associated with any instance. You may use [AssociasteInstancesKeyPair](https://intl.cloud.tencent.com/document/api/213/15698?from_cn_redirect=1) to associate key pairs with instances.\n* You need to specify the names of the key pairs and the content of the public keys.\n* If you only have private keys, you can convert them to public keys with the `SSL` tool before importing them.",
       "input": "ImportKeyPairRequest",
       "name": "Imports key pairs",
-      "output": "ImportKeyPairResponse"
+      "output": "ImportKeyPairResponse",
+      "status": "online"
     },
     "InquirePricePurchaseReservedInstancesOffering": {
       "document": "This API is used to query the price of reserved instances. It only supports querying purchasable reserved instance offerings. Currently, RIs are only offered to beta users.",
       "input": "InquirePricePurchaseReservedInstancesOfferingRequest",
       "name": "Queries the price of reserved instance offerings",
-      "output": "InquirePricePurchaseReservedInstancesOfferingResponse"
+      "output": "InquirePricePurchaseReservedInstancesOfferingResponse",
+      "status": "online"
     },
     "InquiryPriceResetInstance": {
       "document": "This API is used to query the price for reinstalling an instance.\n\n* If you have specified the `ImageId` parameter, the price query is performed with the specified image. Otherwise, the image used by the current instance is used.\n* You can only query the price for reinstallation caused by switching between Linux and Windows OS. And the [system disk type](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#SystemDisk) of the instance must be `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, this API only supports instances in Mainland China regions.",
       "input": "InquiryPriceResetInstanceRequest",
       "name": "Queries the price of instance reinstallation",
-      "output": "InquiryPriceResetInstanceResponse"
+      "output": "InquiryPriceResetInstanceResponse",
+      "status": "online"
     },
     "InquiryPriceResetInstancesInternetMaxBandwidth": {
       "document": "This API is used to query the price for upgrading the public bandwidth cap of an instance.\n\n* The allowed bandwidth cap varies for different models. For details, see [Purchasing Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).\n* For bandwidth billed by the `TRAFFIC_POSTPAID_BY_HOUR` method, changing the bandwidth cap through this API takes effect in real time. You can increase or reduce bandwidth within applicable limits.",
       "input": "InquiryPriceResetInstancesInternetMaxBandwidthRequest",
       "name": "Queries the price of public network bandwidth for an instance with a new maximum bandwidth",
-      "output": "InquiryPriceResetInstancesInternetMaxBandwidthResponse"
+      "output": "InquiryPriceResetInstancesInternetMaxBandwidthResponse",
+      "status": "online"
     },
     "InquiryPriceResetInstancesType": {
       "document": "This API is used to query the price for adjusting the instance model.\n\n* Currently, you can only use this API to query the prices of instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, you cannot use this API to query the prices of [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.",
       "input": "InquiryPriceResetInstancesTypeRequest",
       "name": "Queries the price of an instance with a new configuration",
-      "output": "InquiryPriceResetInstancesTypeResponse"
+      "output": "InquiryPriceResetInstancesTypeResponse",
+      "status": "online"
     },
     "InquiryPriceResizeInstanceDisks": {
       "document": "This API is used to query the price for expanding data disks of an instance.\n\n* Currently, you can only use this API to query the price of non-elastic data disks whose [disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.\n* Currently, you cannot use this API to query the price for [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances. *Also, you can only query the price of expanding one data disk at a time.",
       "input": "InquiryPriceResizeInstanceDisksRequest",
       "name": "Queries the capacity price of an instance after disk expansion",
-      "output": "InquiryPriceResizeInstanceDisksResponse"
+      "output": "InquiryPriceResizeInstanceDisksResponse",
+      "status": "online"
     },
     "InquiryPriceRunInstances": {
       "document": "This API is used to query the price of creating instances. You can only use this API for instances whose configuration is within the purchase limit. For more information, see [RunInstances](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1).",
       "input": "InquiryPriceRunInstancesRequest",
       "name": "Queries the price of creating instances",
-      "output": "InquiryPriceRunInstancesResponse"
+      "output": "InquiryPriceRunInstancesResponse",
+      "status": "online"
     },
     "ModifyChcAttribute": {
       "document": "This API is used to modify the CHC host attributes.",
       "input": "ModifyChcAttributeRequest",
       "name": "Modifies the CHC host attributes",
-      "output": "ModifyChcAttributeResponse"
+      "output": "ModifyChcAttributeResponse",
+      "status": "online"
     },
     "ModifyDisasterRecoverGroupAttribute": {
       "document": "This API is used to modify the attributes of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).",
       "input": "ModifyDisasterRecoverGroupAttributeRequest",
       "name": "Modifies spread placement group attributes",
-      "output": "ModifyDisasterRecoverGroupAttributeResponse"
+      "output": "ModifyDisasterRecoverGroupAttributeResponse",
+      "status": "online"
     },
     "ModifyHostsAttribute": {
       "document": "This API is used to modify the attributes of a CDH instance, such as instance name and renewal flag. One of the two parameters, HostName and RenewFlag, must be set, but you cannot set both of them at the same time.",
       "input": "ModifyHostsAttributeRequest",
       "name": "Modifies the attributes of a CDH instance",
-      "output": "ModifyHostsAttributeResponse"
+      "output": "ModifyHostsAttributeResponse",
+      "status": "online"
     },
     "ModifyImageAttribute": {
       "document": "This API is used to modify image attributes.\n\n* Attributes of shared images cannot be modified.",
       "input": "ModifyImageAttributeRequest",
       "name": "Modifies image attributes",
-      "output": "ModifyImageAttributeResponse"
+      "output": "ModifyImageAttributeResponse",
+      "status": "online"
     },
     "ModifyImageSharePermission": {
       "document": "This API is used to modify image sharing information.\n\n* The accounts with which an image is shared can use the shared image to create instances.\n* Each custom image can be shared with up to 50 accounts.\n* You can use a shared image to create instances, but you cannot change its name and description.\n* If an image is shared with another account, the shared image will be in the same region as the original image.\n",
       "input": "ModifyImageSharePermissionRequest",
       "name": "Modifies image sharing information",
-      "output": "ModifyImageSharePermissionResponse"
+      "output": "ModifyImageSharePermissionResponse",
+      "status": "online"
     },
     "ModifyInstancesAttribute": {
       "document": "The API is used to modify the attributes of an instance. Only the name and the associated security groups can be modified for now.\n\n* An attribute must be specified in the request.\n* \"Instance name\" is a custom name for easier management. Tencent Cloud does not use the name for online support or instance management.\n* Batch operations are supported. Each request can modify up to 100 instances.\n* When you modify the security groups associated with an instance is modified, the original security groups are disassociated.\n* You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.",
       "input": "ModifyInstancesAttributeRequest",
       "name": "Modifies instance attributes",
-      "output": "ModifyInstancesAttributeResponse"
+      "output": "ModifyInstancesAttributeResponse",
+      "status": "online"
     },
     "ModifyInstancesProject": {
       "document": "This API is used to change the project to which an instance is assigned.\n\n* Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances and use the project ID to filter the results.\n* You cannot modify the project of an instance that is bound to a load balancer. You need to unbind the load balancer from the instance by using the [DeregisterInstancesFromLoadBalancer](https://intl.cloud.tencent.com/document/api/214/1258?from_cn_redirect=1) API before using this API.\n* Batch operations are supported. Up to 100 instances per request is allowed.\n* You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the operation result. If the `LatestOperationState` in the response is `SUCCESS`, the operation is successful.",
       "input": "ModifyInstancesProjectRequest",
       "name": "Modifies the project of an instance",
-      "output": "ModifyInstancesProjectResponse"
+      "output": "ModifyInstancesProjectResponse",
+      "status": "online"
     },
     "ModifyInstancesVpcAttribute": {
       "document": "This API is used to modify the VPC attributes of an instance, such as the VPC IP address.\n* By default, the instances will shut down when you perform this operation and restart upon completion.\n* If the specified VPC ID and subnet ID (the subnet must be in the same availability zone as the instance) are different from the VPC where the specified instance resides, the instance will be migrated to a subnet of the specified VPC. Before performing this operation, make sure that the specified instance is not bound with an [ENI](https://intl.cloud.tencent.com/document/product/576?from_cn_redirect=1) or [CLB](https://intl.cloud.tencent.com/document/product/214?from_cn_redirect=1).",
       "input": "ModifyInstancesVpcAttributeRequest",
       "name": "Modifies instance VPC attributes",
-      "output": "ModifyInstancesVpcAttributeResponse"
+      "output": "ModifyInstancesVpcAttributeResponse",
+      "status": "online"
     },
     "ModifyKeyPairAttribute": {
       "document": "This API is used to modify the attributes of key pairs.\n\n* This API modifies the name and description of the key pair identified by the key pair ID.\n* The name of the key pair must be unique.\n* Key pair ID is the unique identifier of a key pair and cannot be modified.",
       "input": "ModifyKeyPairAttributeRequest",
       "name": "Modifies key pair attributes",
-      "output": "ModifyKeyPairAttributeResponse"
+      "output": "ModifyKeyPairAttributeResponse",
+      "status": "online"
     },
     "ModifyLaunchTemplateDefaultVersion": {
       "document": "This API is used to modify the default version of the instance launch template.",
       "input": "ModifyLaunchTemplateDefaultVersionRequest",
       "name": "Modifies the default version of the instance launch template",
-      "output": "ModifyLaunchTemplateDefaultVersionResponse"
+      "output": "ModifyLaunchTemplateDefaultVersionResponse",
+      "status": "online"
     },
     "PurchaseReservedInstancesOffering": {
       "document": "This API is used to purchase one or more specific Reserved Instances.",
       "input": "PurchaseReservedInstancesOfferingRequest",
       "name": "Purchases Reserved Instances",
-      "output": "PurchaseReservedInstancesOfferingResponse"
+      "output": "PurchaseReservedInstancesOfferingResponse",
+      "status": "online"
     },
     "RebootInstances": {
       "document": "This API is used to restart instances.\n\n* You can only perform this operation on instances whose status is `RUNNING`.\n* If the API is called successfully, the instance status will become `REBOOTING`. After the instance is restarted, its status will become `RUNNING` again.\n* Forced restart is supported. A forced restart is similar to switching off the power of a physical computer and starting it again. It may cause data loss or file system corruption. Be sure to only force start a CVM when it cannot be restarted normally.\n* Batch operations are supported. The maximum number of instances in each request is 100.",
       "input": "RebootInstancesRequest",
       "name": "Restarts instances",
-      "output": "RebootInstancesResponse"
+      "output": "RebootInstancesResponse",
+      "status": "online"
     },
     "RemoveChcAssistVpc": {
       "document": "This API is used to remove the out-of-band network and deployment network of a CHC host.",
       "input": "RemoveChcAssistVpcRequest",
       "name": "Removes the out-of-band network and deployment network of a CHC host",
-      "output": "RemoveChcAssistVpcResponse"
+      "output": "RemoveChcAssistVpcResponse",
+      "status": "online"
     },
     "RemoveChcDeployVpc": {
       "document": "This API is used to remove the deployment network of a CHC host.",
       "input": "RemoveChcDeployVpcRequest",
       "name": "Removes the deployment network of a CHC",
-      "output": "RemoveChcDeployVpcResponse"
+      "output": "RemoveChcDeployVpcResponse",
+      "status": "online"
     },
     "ResetInstance": {
       "document": "This API is used to reinstall the operating system of the specified instance.\n\n* If you specify an `ImageId`, the specified image is used. Otherwise, the image used by the current instance is used.\n* The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.\n* If the operating system switches between `Linux` and `Windows`, the system disk `ID` of the instance will change, and the snapshots that are associated with the system disk can no longer be used to roll back and restore data.\n* If no password is specified, you will get a random password via internal message.\n* You can only use this API to switch the operating system between `Linux` and `Windows` for instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#SystemDisk) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, this API only supports instances in Mainland China regions.",
       "input": "ResetInstanceRequest",
       "name": "Reinstalls the OS of an instance",
-      "output": "ResetInstanceResponse"
+      "output": "ResetInstanceResponse",
+      "status": "online"
     },
     "ResetInstancesInternetMaxBandwidth": {
       "document": "This API is used to change the public bandwidth cap of an instance.\n\n* The allowed bandwidth cap varies for different models. For details, see [Purchasing Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).\n* For bandwidth billed by the `TRAFFIC_POSTPAID_BY_HOUR` method, changing the bandwidth cap through this API takes effect in real time. Users can increase or reduce bandwidth within applicable limits.",
       "input": "ResetInstancesInternetMaxBandwidthRequest",
       "name": "Changes the maximum public network bandwidth of an instance",
-      "output": "ResetInstancesInternetMaxBandwidthResponse"
+      "output": "ResetInstancesInternetMaxBandwidthResponse",
+      "status": "online"
     },
     "ResetInstancesPassword": {
       "document": "This API is used to reset the password of the operating system instances to a user-specified password.\n\n* To modify the password of the administrator account: the name of the administrator account varies with the operating system. In Windows, it is `Administrator`; in Ubuntu, it is `ubuntu`; in Linux, it is `root`.\n* To reset the password of a running instance, you need to set the parameter `ForceStop` to `True` for a forced shutdown. If not, only passwords of stopped instances can be reset.\n* Batch operations are supported. You can reset the passwords of up to 100 instances to the same value once.\n* You can call the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.",
       "input": "ResetInstancesPasswordRequest",
       "name": "Resets instance passwords",
-      "output": "ResetInstancesPasswordResponse"
+      "output": "ResetInstancesPasswordResponse",
+      "status": "online"
     },
     "ResetInstancesType": {
       "document": "This API is used to change the model of an instance.\n* You can only use this API to change the models of instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, you cannot use this API to change the models of [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.",
       "input": "ResetInstancesTypeRequest",
       "name": "Changes the model of an instance",
-      "output": "ResetInstancesTypeResponse"
+      "output": "ResetInstancesTypeResponse",
+      "status": "online"
     },
     "ResizeInstanceDisks": {
       "document": "This API (ResizeInstanceDisks) is used to expand the data disks of an instance.\n\n* Currently, you can only use the API to expand non-elastic data disks whose [disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.\n* Currently, this API does not support [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.\n* Currently, only one data disk can be expanded at a time.",
       "input": "ResizeInstanceDisksRequest",
       "name": "Expands the disk capacity of an instance",
-      "output": "ResizeInstanceDisksResponse"
+      "output": "ResizeInstanceDisksResponse",
+      "status": "online"
     },
     "RunInstances": {
       "document": "This API is used to create one or more instances with a specified configuration.\n\n* After an instance is created successfully, it will start up automatically, and the [instance status](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#instance_state) will become \"Running\".\n* If you create a pay-as-you-go instance billed on an hourly basis, an amount equivalent to the hourly rate will be frozen. Make sure your account balance is sufficient before calling this API.\n* The number of instances you can purchase through this API is subject to the [Quota for CVM Instances](https://intl.cloud.tencent.com/document/product/213/2664?from_cn_redirect=1). Instances created through this API and in the CVM console are counted toward the quota.\n* This API is an async API. An instance ID list is returned after the creation request is sent. However, it does not mean the creation has been completed. The status of the instance will be `Creating` during the creation. You can use [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) to query the status of the instance. If the status changes from `Creating` to `Running`, it means that the instance has been created successfully.",
       "input": "RunInstancesRequest",
       "name": "Creates instances",
-      "output": "RunInstancesResponse"
+      "output": "RunInstancesResponse",
+      "status": "online"
     },
     "StartInstances": {
       "document": "This API is used to start instances.\n\n* You can only perform this operation on instances whose status is `STOPPED`.\n* The instance status will become `STARTING` when the API is called successfully and `RUNNING` when the instance is successfully started.\n* Batch operations are supported. The maximum number of instances in each request is 100.",
       "input": "StartInstancesRequest",
       "name": "Starts instances",
-      "output": "StartInstancesResponse"
+      "output": "StartInstancesResponse",
+      "status": "online"
     },
     "StopInstances": {
       "document": "This API is used to shut down instances.\n\n* You can only perform this operation on instances whose status is `RUNNING`.\n* The instance status will become `STOPPING` when the API is called successfully and `STOPPED` when the instance is successfully shut down.\n* Forced shutdown is supported. A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be sht down normally.\n* Batch operations are supported. The maximum number of instances in each request is 100.",
       "input": "StopInstancesRequest",
       "name": "Shuts down instances",
-      "output": "StopInstancesResponse"
+      "output": "StopInstancesResponse",
+      "status": "online"
     },
     "SyncImages": {
       "document": "This API is used to sync a custom image to other regions.\n\n* Each API call syncs a single image.\n* This API supports syncing an image to multiple regions.\n* Each account can have up to 10 custom images in each region. ",
       "input": "SyncImagesRequest",
       "name": "Syncs an image",
-      "output": "SyncImagesResponse"
+      "output": "SyncImagesResponse",
+      "status": "online"
     },
     "TerminateInstances": {
       "document": "This API is used to return instances.\n\n* Use this API to return instances that are no longer required.\n* Pay-as-you-go instances can be returned directly through this API.\n* When this API is called for the first time, the instance will be moved to the recycle bin. When this API is called for the second time, the instance will be terminated and cannot be recovered.\n* Batch operations are supported. The allowed maximum number of instances in each request is 100.",
       "input": "TerminateInstancesRequest",
       "name": "Returns instances",
-      "output": "TerminateInstancesResponse"
+      "output": "TerminateInstancesResponse",
+      "status": "online"
     }
   },
   "metadata": {
