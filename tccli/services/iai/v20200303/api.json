@@ -78,7 +78,7 @@
       "status": "online"
     },
     "DetectFaceAttributes": {
-      "document": "This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.\n\n \nThe face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, we recommended evaluating the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:\n\n1. [Creating](https://intl.cloud.tencent.com/document/product/867/32793?from_cn_redirect=1)/[Adding](https://intl.cloud.tencent.com/document/product/867/32795?from_cn_redirect=1) a person in a group: this is to ensure the quality of the face information to facilitate subsequent processing.\n\n2. [Face search](https://intl.cloud.tencent.com/document/product/867/32798?from_cn_redirect=1): this is to ensure the quality of the input image to quickly find the corresponding person.\n\n3. [Face verification](https://intl.cloud.tencent.com/document/product/867/32806?from_cn_redirect=1): this is to ensure the quality of the face information to avoid cases where the verification incorrectly fails.\n\n4. [Face fusion](https://intl.cloud.tencent.com/product/facefusion?from_cn_redirect=1): this is to ensure the quality of the uploaded face images to improve the fusion effect.\n\n>     \n- This API is an upgrade of [DetectFace](https://intl.cloud.tencent.com/document/product/867/44989?from_cn_redirect=1) in the following terms:\n1. This API can be used to specify the face attributes that need to be computed and returned, which avoids ineffective computation and reduces time consumption.\n2. This API supports more detailed attribute items and will continue providing new features in the future.\nPlease use this API for corresponding face detection and attribute analysis.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
+      "document": "This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.\n\n \nThe face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, we recommend evaluating the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:\n\n1. [Creating](https://intl.cloud.tencent.com/document/api/1059/36964)/[Adding](https://intl.cloud.tencent.com/document/api/1059/36966) a person in a group: This is to ensure the quality of the face information to facilitate subsequent processing.\n\n2. [Face search](https://intl.cloud.tencent.com/document/api/1059/36977): This is to ensure the quality of the input image to quickly find the corresponding person.\n\n3. [Face verification](https://intl.cloud.tencent.com/document/api/1059/36972): This is to ensure the quality of the face information to avoid cases where the verification fails unexpectedly.\n\n4. Face fusion: This is to ensure the quality of the uploaded face images to improve the fusion effect.\n\n>     \n- This API is an upgrade of [DetectFace](https://intl.cloud.tencent.com/document/api/1059/36979); specifically:\n1. This API can be used to specify the face attributes that need to be computed and returned, which avoids ineffective computation and reduces time consumption.\n2. This API supports more detailed attribute items and will continue providing new features in the future.\nUse this API for corresponding face detection and attribute analysis.\n\n>     \n- Use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the parameter `SignatureMethod` to `TC3-HMAC-SHA256`.",
       "input": "DetectFaceAttributesRequest",
       "name": "Detects face and analyzes attributes",
       "output": "DetectFaceAttributesResponse",
@@ -89,6 +89,13 @@
       "input": "DetectLiveFaceRequest",
       "name": "Detects liveness based on image",
       "output": "DetectLiveFaceResponse",
+      "status": "online"
+    },
+    "DetectLiveFaceAccurate": {
+      "document": "This API is used to detect the liveness of faces in images uploaded by users and determine whether these images are photographed.\n\nCompared with normal Image-based Liveness Detection services, this API enhances the defense capability against attacks from HD screens, printed photos, and 3D masks, as well as improves attack blocking four to five times the competing products, while maintaining high accuracy. It also supports face verification in different use cases, and satisfies the image-based liveness detection needs on mobile or PCs, making it ideal for liveness detection applications in various industries.\n\nPay-as-you-go billing officially started for this API at 00:00, August 1, 2022. For more information, see [Billing Overview](https://intl.cloud.tencent.com/document/product/867/17640?from_cn_redirect=1).",
+      "input": "DetectLiveFaceAccurateRequest",
+      "name": "Detects the liveness of faces in images (high precision)",
+      "output": "DetectLiveFaceAccurateResponse",
       "status": "online"
     },
     "GetGroupInfo": {
@@ -138,13 +145,6 @@
       "input": "ModifyGroupRequest",
       "name": "Modifies group",
       "output": "ModifyGroupResponse",
-      "status": "online"
-    },
-    "ModifyPersonBaseInfo": {
-      "document": "This API is used to modify the information of a person, including name, gender, etc. The changes of person name and gender will be synced to all the groups that contain the person.",
-      "input": "ModifyPersonBaseInfoRequest",
-      "name": "Modifies the basic information of person",
-      "output": "ModifyPersonBaseInfoResponse",
       "status": "online"
     },
     "ModifyPersonGroupInfo": {
@@ -324,6 +324,7 @@
         {
           "default": "",
           "document": "Person ID",
+          "example": "person1",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -332,7 +333,8 @@
         },
         {
           "default": "",
-          "document": "Face ID",
+          "document": "Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.",
+          "example": "3820314501007076807",
           "member": "string",
           "name": "FaceId",
           "required": true,
@@ -342,6 +344,7 @@
         {
           "default": "",
           "document": "Match score of candidate. \n\nIn a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;\nIn a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;\nIn a face base library containing 300,000 faces, the 1% and 0.1% FARs correspond to scores of 85 and 95, respectively.\n\nGenerally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.",
+          "example": "50",
           "member": "float",
           "name": "Score",
           "required": true,
@@ -351,6 +354,7 @@
         {
           "default": "",
           "document": "Person name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "hello",
           "member": "string",
           "name": "PersonName",
           "required": true,
@@ -360,6 +364,7 @@
         {
           "default": "",
           "document": "Person gender\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "Gender",
           "required": true,
@@ -369,6 +374,7 @@
         {
           "default": "",
           "document": "List of groups containing this person and their description fields\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "PersonGroupInfo",
           "name": "PersonGroupInfos",
           "required": true,
@@ -965,6 +971,7 @@
         {
           "default": "",
           "document": "Maximum number of processable faces. \nDefault value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. \nThis parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.",
+          "example": "1",
           "member": "uint64",
           "name": "MaxFaceNum",
           "required": false,
@@ -973,6 +980,7 @@
         {
           "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. \nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "example": "无",
           "member": "string",
           "name": "Image",
           "required": false,
@@ -981,6 +989,7 @@
         {
           "default": "",
           "document": "Image URL. \nThe image cannot exceed 5 MB in size after being Base64-encoded. \nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low. \nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -988,7 +997,8 @@
         },
         {
           "default": "",
-          "document": "Whether to return attributes such as age, gender, and emotion. \nValid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, \nGender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. \nDefault value: None, indicating that no attributes need to be returned. \nYou need to combine the attributes into a string and separate them with commas. The sequence of the attributes is not limited. \nFor more information on the attributes, please see the output parameters as described below. \nThe face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.",
+          "document": "Whether to return attributes such as age, gender, and emotion. \nValid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. \n  \n`None` indicates that no attributes need to be returned, which is the default value; that is, if the `FaceAttributesType` attribute is empty, the values of all attributes will be `0`.\nYou need to combine the attributes into a string and separate them by comma. The sequence of the attributes is not limited. \nFor more information on the attributes, see the output parameters as described below. \nThe face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.",
+          "example": "eye",
           "member": "string",
           "name": "FaceAttributesType",
           "required": false,
@@ -997,6 +1007,7 @@
         {
           "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
+          "example": "0",
           "member": "uint64",
           "name": "NeedRotateDetection",
           "required": false,
@@ -1005,6 +1016,7 @@
         {
           "default": "",
           "document": "Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
           "required": false,
@@ -1159,6 +1171,69 @@
           "document": "Algorithm model version used for face recognition.",
           "member": "string",
           "name": "FaceModelVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetectLiveFaceAccurateRequest": {
+      "document": "DetectLiveFaceAccurate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. \nThe recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).\nThe face must be greater than 100*100 px in size.\nSupported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.",
+          "example": "base64",
+          "member": "string",
+          "name": "Image",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \nThe recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).\nThe face must be greater than 100*100 px in size.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.\nSupported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.",
+          "example": "http://test.image.myqcloud.com/testA.jpg",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Algorithm model version used for face recognition. Valid value: `3.0`.",
+          "example": "3.0",
+          "member": "string",
+          "name": "FaceModelVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetectLiveFaceAccurateResponse": {
+      "document": "DetectLiveFaceAccurate response structure.",
+      "members": [
+        {
+          "document": "Liveness score. Value range: [0, 100]. You can set several thresholds such as 5, 10, 40, 70 and 90 to determine whether the image is photographed. We recommend you use the threshold of 40.",
+          "example": "99",
+          "member": "float",
+          "name": "Score",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Algorithm model version used for face recognition.",
+          "example": "3.0",
+          "member": "string",
+          "name": "FaceModelVersion",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2508,48 +2583,6 @@
       ],
       "type": "object"
     },
-    "ModifyPersonBaseInfoRequest": {
-      "document": "ModifyPersonBaseInfo request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
-          "member": "string",
-          "name": "PersonId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Name of the person to be modified",
-          "member": "string",
-          "name": "PersonName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Gender of the person to be modified. 1: male; 2: female.",
-          "member": "int64",
-          "name": "Gender",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyPersonBaseInfoResponse": {
-      "document": "ModifyPersonBaseInfo response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyPersonGroupInfoRequest": {
       "document": "ModifyPersonGroupInfo request structure.",
       "members": [
@@ -2984,7 +3017,7 @@
         },
         {
           "default": "",
-          "document": "Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  \nFor example, if `MaxFaceNum` is 3 and `MaxPersonNum` is 5, up to 15 (3 * 5) persons will be returned.",
+          "document": "Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  \nFor example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.",
           "example": "5",
           "member": "uint64",
           "name": "MaxPersonNumPerGroup",
@@ -3352,22 +3385,28 @@
       "members": [
         {
           "document": "Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, the score of the highest similarity will be returned.\n\nThe returned similarity score varies by algorithm version.\nIf you need to verify whether the faces in the two images are the same person, then the 0.1%, 0.01%, and 0.001% FARs on v3.0 correspond to scores of 40, 50, and 60, respectively. Generally, if the score is above 50, it can be judged that they are the same person.\nThe 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90, respectively. Generally, if the score is above 80, it can be judged that they are the same person.",
+          "example": "100",
           "member": "float",
           "name": "Score",
+          "required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
-          "document": "Whether the person in the image matches the `PersonId`.",
+          "document": "Whether the person is the one in the image. The fixed threshold score is 60. If you want to adjust the threshold more flexibly, you can take the returned `Score` parameter value for judgment.",
+          "example": "1",
           "member": "bool",
           "name": "IsMatch",
+          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
-          "document": "Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)",
+          "document": "Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3444,7 +3483,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)",
+          "document": "Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.",
           "member": "string",
           "name": "FaceModelVersion",
           "type": "string",
