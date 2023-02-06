@@ -224,6 +224,13 @@
       "output": "DescribeTopicDetailResponse",
       "status": "online"
     },
+    "DescribeTopicProduceConnection": {
+      "document": "This API is used to query the connection information of the topic producer.",
+      "input": "DescribeTopicProduceConnectionRequest",
+      "name": "Queries the connection information of the topic producer",
+      "output": "DescribeTopicProduceConnectionResponse",
+      "status": "online"
+    },
     "DescribeTopicSubscribeGroup": {
       "document": "This API is used to search and subscribe the message group information of a topic.",
       "input": "DescribeTopicSubscribeGroupRequest",
@@ -2502,6 +2509,42 @@
       ],
       "type": "object"
     },
+    "DescribeConnectInfoResultDTO": {
+      "document": "Topic connection information",
+      "members": [
+        {
+          "default": "",
+          "document": "IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "IpAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-08-21 11:15:54",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a supported version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsUnSupportVersion",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeConsumerGroupRequest": {
       "document": "DescribeConsumerGroup request structure.",
       "members": [
@@ -3187,6 +3230,51 @@
           "member": "TopicDetailResponse",
           "name": "Result",
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicProduceConnectionRequest": {
+      "document": "DescribeTopicProduceConnection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "example": "topic-xxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicProduceConnectionResponse": {
+      "document": "DescribeTopicProduceConnection response structure.",
+      "members": [
+        {
+          "document": "Result set of returned connection information",
+          "example": "无",
+          "member": "DescribeConnectInfoResultDTO",
+          "name": "Result",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -6355,7 +6443,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "Topic": {
       "document": "Returned topic object",

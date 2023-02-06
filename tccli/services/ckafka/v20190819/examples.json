@@ -210,7 +210,7 @@
     ],
     "DescribeInstancesDetail": [
       {
-        "document": "",
+        "document": "1",
         "input": "https://ckafka.tencentcloudapi.com/?Action=DescribeInstancesDetail\n&InstanceId=instance-will-s\n&SearchWord=tre\n&Offset=0\n&Limit=10\n&Status.0=0\n&Status.1=1\n&Status.2=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"InstanceList\": [\n                {\n                    \"MaxTopicNumber\": 0,\n                    \"RenewFlag\": 0,\n                    \"DiskType\": \"xx\",\n                    \"Version\": \"xx\",\n                    \"RebalanceTime\": \"xx\",\n                    \"Status\": 1,\n                    \"VpcId\": \"xx\",\n                    \"Tags\": [\n                        {\n                            \"TagKey\": \"xx\",\n                            \"TagValue\": \"xx\"\n                        }\n                    ],\n                    \"InstanceId\": \"xx\",\n                    \"IsInternal\": 0,\n                    \"Vip\": \"xx\",\n                    \"TopicNum\": 0,\n                    \"SubnetId\": \"xx\",\n                    \"InstanceType\": \"xx\",\n                    \"PublicNetwork\": 0,\n                    \"Healthy\": 0,\n                    \"ZoneId\": 0,\n                    \"PublicNetworkChargeType\": \"xx\",\n                    \"Cvm\": 0,\n                    \"DiskSize\": 0,\n                    \"HealthyMessage\": \"xx\",\n                    \"InstanceName\": \"xx\",\n                    \"MaxPartitionNumber\": 0,\n                    \"PartitionNumber\": 1,\n                    \"ZoneIds\": [\n                        0\n                    ],\n                    \"ExpireTime\": 0,\n                    \"Bandwidth\": 0,\n                    \"Vport\": \"xx\",\n                    \"CreateTime\": 0,\n                    \"VipList\": [\n                        {\n                            \"Vip\": \"xx\",\n                            \"Vport\": \"xx\"\n                        }\n                    ]\n                }\n            ]\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Obtaining instance list details"
@@ -254,6 +254,14 @@
         "input": "https://ckafka.tencentcloudapi.com/?Action=DescribeTopicDetail\n&InstanceId=ckafka-xxooa0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TopicList\": [\n                {\n                    \"TopicName\": \"test\",\n                    \"TopicId\": \"inter-topic-d7a2f7fq\",\n                    \"PartitionNum\": 3,\n                    \"ReplicaNum\": 2,\n                    \"Note\": \"\",\n                    \"CreateTime\": 1561637447,\n                    \"EnableWhiteList\": false,\n                    \"IpWhiteListCount\": 0,\n                    \"ForwardCosBucket\": \"\",\n                    \"ForwardStatus\": 1,\n                    \"ForwardInterval\": 0,\n                    \"Config\": {\n                        \"Retention\": 300000000\n                    },\n                    \"RetentionTimeConfig\": {\n                        \"Expect\": 1440,\n                        \"Current\": 480,\n                        \"ModTimeStamp\": 1561637447\n                    }\n                }\n            ],\n            \"TotalCount\": 12\n        },\n        \"RequestId\": \"98fdae03-9bc2-4c2e-b429-0a96cca7144b\"\n    }\n}",
         "title": "Getting topic list details"
+      }
+    ],
+    "DescribeTopicProduceConnection": [
+      {
+        "document": "This example shows you how to get the topic connection information.",
+        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopicProduceConnection\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ckafka-xxxx\",\n    \"TopicName\": \"xxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": [\n            {\n                \"IpAddr\": \"xxxxx\",\n                \"Time\": \"2021-10-10 21:10:48\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the topic connection information"
       }
     ],
     "DescribeTopicSubscribeGroup": [

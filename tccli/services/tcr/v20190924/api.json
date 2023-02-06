@@ -77,13 +77,6 @@
       "output": "CreateRepositoryResponse",
       "status": "online"
     },
-    "CreateSecurityPolicies": {
-      "document": "This API is used to create public network access allowlist policies for an instance.",
-      "input": "CreateSecurityPoliciesRequest",
-      "name": "Creates public network access allowlist policies for an instance",
-      "output": "CreateSecurityPoliciesResponse",
-      "status": "online"
-    },
     "CreateSecurityPolicy": {
       "document": "This API is used to create a public network access allowlist policy for an instance.",
       "input": "CreateSecurityPolicyRequest",
@@ -806,7 +799,6 @@
       "document": "CreateInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Enterprise Edition instance name",
           "example": "tcr-test",
           "member": "string",
@@ -815,7 +807,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Enterprise Edition instance type. Valid values: basic: Basic; standard: Standard; premium: Premium.",
           "example": "basic",
           "member": "string",
@@ -824,7 +815,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cloud tag description",
           "example": "test",
           "member": "TagSpecification",
@@ -833,7 +823,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Instance billing mode. Valid values: 0: Pay-as-you-go billing; 1: Prepaid. Default value: 0.",
           "example": "1",
           "member": "int64",
@@ -842,7 +831,14 @@
           "type": "int"
         },
         {
-          "default": "",
+          "document": "Auto-renewal setting and purchase period",
+          "example": "1 ",
+          "member": "RegistryChargePrepaid",
+          "name": "RegistryChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
           "document": "Whether to sync TCR cloud tags to the COS bucket",
           "example": "false",
           "member": "bool",
@@ -1171,55 +1167,6 @@
     "CreateRepositoryResponse": {
       "document": "CreateRepository response structure.",
       "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateSecurityPoliciesRequest": {
-      "document": "CreateSecurityPolicies request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID",
-          "member": "string",
-          "name": "RegistryId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "192.168.0.0/24",
-          "member": "string",
-          "name": "CidrBlock",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Description",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateSecurityPoliciesResponse": {
-      "document": "CreateSecurityPolicies response structure.",
-      "members": [
-        {
-          "document": "Instance ID",
-          "member": "string",
-          "name": "RegistryId",
-          "type": "string",
-          "value_allowed_null": false
-        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

@@ -6892,7 +6892,6 @@
       "document": "Project score entity",
       "members": [
         {
-          "default": "",
           "document": "duration",
           "example": "1",
           "member": "string",
@@ -6902,7 +6901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "pv",
           "example": "111",
           "member": "string",
@@ -6912,7 +6910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Failure",
           "example": "1",
           "member": "string",
@@ -6922,7 +6919,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Request",
           "example": "12",
           "member": "string",
@@ -6932,7 +6928,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "fail",
           "example": "12",
           "member": "string",
@@ -6942,7 +6937,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -6952,7 +6946,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "uv",
           "example": "12",
           "member": "string",
@@ -6962,7 +6955,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of requests",
           "example": "12",
           "member": "string",
@@ -6972,7 +6964,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Score",
           "example": "90",
           "member": "string",
@@ -6982,7 +6973,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "error",
           "example": "111",
           "member": "string",
@@ -6992,7 +6982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "num",
           "example": "12",
           "member": "string",
@@ -7002,7 +6991,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "num",
           "example": "1",
           "member": "int64",
@@ -7012,7 +7000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Duration",
           "example": "111",
           "member": "string",
@@ -7020,6 +7007,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230111",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

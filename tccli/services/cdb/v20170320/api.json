@@ -70,6 +70,13 @@
       "output": "CreateDBImportJobResponse",
       "status": "online"
     },
+    "CreateDBInstance": {
+      "document": "This API is used to create a monthly subscribed TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, purchased duration, and quantity.\n\nThis is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instance has been successfully delivered.\n\n1. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances.\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months.\n3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported.\n4. Source instances, read-only instances, and disaster recovery instances can be created.\n5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance (excluding basic instances) will be initialized.\n6. If `Port`, `ParamTemplateId`, or `AlarmPolicyList` is specified in the input parameters, you need to update your SDK to the latest version.",
+      "input": "CreateDBInstanceRequest",
+      "name": "Creates a monthly subscribed TencentDB instance",
+      "output": "CreateDBInstanceResponse",
+      "status": "online"
+    },
     "CreateDBInstanceHour": {
       "document": "This API is used to create pay-as-you-go TencentDB instances (which can be source instances, disaster recovery instances, or read-only replicas) by passing in information such as instance specifications, MySQL version number, and instance quantity.\n\nThis is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instances have been successfully delivered.\n\n1. Use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported;\n4. Source instances, disaster recovery instances, and read-only replicas can be created;\n5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance (excluding basic instances) will be initialized.",
       "input": "CreateDBInstanceHourRequest",
@@ -705,6 +712,13 @@
       "input": "ReloadBalanceProxyNodeRequest",
       "name": "Rebalances the load on database proxy",
       "output": "ReloadBalanceProxyNodeResponse",
+      "status": "online"
+    },
+    "RenewDBInstance": {
+      "document": "This API is used to renew a monthly subscribed TencentDB instance, and a pay-as-you-go instance can be renewed as a monthly subscribed one by this API.",
+      "input": "RenewDBInstanceRequest",
+      "name": "Renews a TencentDB instance",
+      "output": "RenewDBInstanceResponse",
       "status": "online"
     },
     "ResetRootAccount": {
@@ -2617,6 +2631,7 @@
         {
           "default": "",
           "document": "Time window on Monday in the format of 02:00-06:00",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "Monday",
           "required": false,
@@ -2626,6 +2641,7 @@
         {
           "default": "",
           "document": "Time window on Tuesday in the format of 02:00-06:00",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "Tuesday",
           "required": false,
@@ -2635,6 +2651,7 @@
         {
           "default": "",
           "document": "Time window on Wednesday in the format of 02:00-06:00",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "Wednesday",
           "required": false,
@@ -2644,6 +2661,7 @@
         {
           "default": "",
           "document": "Time window on Thursday in the format of 02:00-06:00",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "Thursday",
           "required": false,
@@ -2653,6 +2671,7 @@
         {
           "default": "",
           "document": "Time window on Friday in the format of 02:00-06:00",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "Friday",
           "required": false,
@@ -2662,6 +2681,7 @@
         {
           "default": "",
           "document": "Time window on Saturday in the format of 02:00-06:00",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "Saturday",
           "required": false,
@@ -2671,8 +2691,39 @@
         {
           "default": "",
           "document": "Time window on Sunday in the format of 02:00-06:00",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "Sunday",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Non-archive backup retention policy. Valid values: `weekly` (back up by week), monthly (back up by month), default value: `weekly`.",
+          "example": "weekly",
+          "member": "string",
+          "name": "BackupPeriodStrategy",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If `BackupPeriodStrategy` is `monthly`, you need to pass in the specific backup dates. The time interval between any two adjacent dates cannot exceed 2 days, for example, [1,4,7,9,11,14,17,19,22,25,28,30,31].",
+          "example": "[1,4,7,9,11,14,17,19,22,25,28,30,31]",
+          "member": "int64",
+          "name": "Days",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup time by month in the format of 02:00–06:00, which is required when `BackupPeriodStrategy` is `monthly`.",
+          "example": "02:00-06:00",
+          "member": "string",
+          "name": "BackupPeriodTime",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3558,6 +3609,384 @@
           "document": "Instance ID list",
           "member": "string",
           "name": "InstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceRequest": {
+      "document": "CreateDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance memory size in MB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.",
+          "example": "1000",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.",
+          "example": "50",
+          "member": "int64",
+          "name": "Volume",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance validity period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. Value range: 1-100. Default value: `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "AZ information. The system will automatically select an AZ by default. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.",
+          "example": "ap-beijing-3",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is not passed in, the basic network will be selected by default. You can use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.",
+          "example": "vpc-***",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. You can use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.",
+          "example": "subnet-***",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID. If this is left empty, the default project will be used. If read-only instances or disaster recovery instances are purchased, the project ID will be the same as the source instance ID by default.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom port. Value range: 1024-65535.",
+          "example": "3306",
+          "member": "int64",
+          "name": "Port",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance typeA. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance).",
+          "example": "master",
+          "member": "string",
+          "name": "InstanceRole",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID. It is required when purchasing a read-only instance, which is the same as the source instance ID. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance ID.",
+          "example": "cdb-***",
+          "member": "string",
+          "name": "MasterInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "MySQL version. Valid values: `5.5`, `5.6`, `5.7`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported versions.",
+          "example": "5.7",
+          "member": "string",
+          "name": "EngineVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The root account password. It can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing a replica instance and is invalid for read-only or disaster recovery instances.",
+          "example": "your_password",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data replication mode. Valid values: `0` (async replication), `1` (semi-sync replication), `2` (strong sync replication). Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProtectMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Multi-AZ or single-AZ. Valid values: `0` (single-AZ), `1` (multi-AZ). Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "DeployMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Information of replica AZ 1, which is the `Zone` value by default.",
+          "example": "ap-beijing-3",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.",
+          "example": "[]",
+          "member": "ParamInfo",
+          "name": "ParamList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Information of replica AZ 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.",
+          "example": "ap-beijing-3",
+          "member": "string",
+          "name": "BackupZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. Valid values: `0` (auto-renewal not enabled), `1` (auto-renewal enabled).",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "MasterRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.",
+          "example": "[]",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Read-only instance parameter. This parameter must be passed in when purchasing read-only instances.",
+          "example": "{}",
+          "member": "RoGroup",
+          "name": "RoGroup",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.",
+          "example": "***",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance tag information",
+          "example": "[]",
+          "member": "TagInfo",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Placement group ID",
+          "example": "ps-7t11vrwf",
+          "member": "string",
+          "name": "DeployGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A string unique in 48 hours, which is supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "example": "********",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.",
+          "example": "UNIVERSAL",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ParamTemplateId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of alarm policy IDs, which is `OriginId` obtained through the `DescribeAlarmPolicy` API.",
+          "example": "[]",
+          "member": "int64",
+          "name": "AlarmPolicyList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of nodes of the instance. To purchase a read-only instance or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceNodes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of the instance CPU cores. If this parameter is left empty, it will be subject to the `Memory` value.",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoSyncFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Financial cage ID.",
+          "example": "cage-test",
+          "member": "string",
+          "name": "CageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
+          "example": "HIGH_STABILITY",
+          "member": "string",
+          "name": "ParamTemplateType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The array of alarm policy names, such as [\"policy-uyoee9wg\"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.",
+          "example": "[]",
+          "member": "string",
+          "name": "AlarmPolicyIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.",
+          "example": "InnoDB",
+          "member": "string",
+          "name": "EngineType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.",
+          "example": "[]",
+          "member": "string",
+          "name": "Vips",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceResponse": {
+      "document": "CreateDBInstance response structure.",
+      "members": [
+        {
+          "document": "Short order ID",
+          "example": "['20171201110011']",
+          "member": "string",
+          "name": "DealIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instance IDs",
+          "example": "['cdb-pn6gd5jp']",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5779,6 +6208,24 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database proxy IP",
+          "example": "[\"127.0.0.1\"]",
+          "member": "string",
+          "name": "ProxyVips",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database proxy ID",
+          "example": "[\"proxynode-xxxx\"]",
+          "member": "string",
+          "name": "ProxyIds",
           "required": false,
           "type": "list"
         }
@@ -11647,6 +12094,55 @@
         }
       ],
       "usage": "out"
+    },
+    "RenewDBInstanceRequest": {
+      "document": "RenewDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be renewed in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed in the TencentDB console. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Renewal period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "To renew a pay-as-you-go instance to a monthly subscribed one, you need to set this parameter to `PREPAID`.",
+          "member": "string",
+          "name": "ModifyPayType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewDBInstanceResponse": {
+      "document": "RenewDBInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ResetRootAccountRequest": {
       "document": "ResetRootAccount request structure.",

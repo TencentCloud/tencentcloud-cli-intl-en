@@ -95,6 +95,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
         "title": "Creating a Spark application"
       }
+    ],
+    "SuspendResumeDataEngine": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SuspendResumeDataEngine\n<Common request parameters>\n\n{\n    \"Operate\": \"xx\",\n    \"DataEngineName\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataEngineName\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "test"
+      }
     ]
   },
   "version": "1.0"

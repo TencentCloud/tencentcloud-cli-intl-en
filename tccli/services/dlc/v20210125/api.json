@@ -83,11 +83,18 @@
       "name": "Updates a Spark application",
       "output": "ModifySparkAppResponse",
       "status": "online"
+    },
+    "SuspendResumeDataEngine": {
+      "document": "This API is used to suspend or resume a data engine.",
+      "input": "SuspendResumeDataEngineRequest",
+      "name": "Suspends or resumes a data engine",
+      "output": "SuspendResumeDataEngineResponse",
+      "status": "online"
     }
   },
   "metadata": {
     "apiVersion": "2021-01-25",
-    "serviceNameCN": "数据湖计算",
+    "serviceNameCN": "数据湖计算 DLC",
     "serviceShortName": "dlc"
   },
   "objects": {
@@ -1860,6 +1867,51 @@
         }
       ],
       "usage": "out"
+    },
+    "SuspendResumeDataEngineRequest": {
+      "document": "SuspendResumeDataEngine request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The name of a virtual cluster.",
+          "example": "testHouse",
+          "member": "string",
+          "name": "DataEngineName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The operation type: `suspend` or `resume`.",
+          "example": "suspend",
+          "member": "string",
+          "name": "Operate",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SuspendResumeDataEngineResponse": {
+      "document": "SuspendResumeDataEngine response structure.",
+      "members": [
+        {
+          "document": "The details of the virtual cluster.",
+          "example": "无",
+          "member": "string",
+          "name": "DataEngineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Task": {
       "document": "Task type, such as SQL query.",

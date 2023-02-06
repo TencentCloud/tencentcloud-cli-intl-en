@@ -64,10 +64,10 @@
     ],
     "DeleteInstance": [
       {
-        "document": "删除 RUM 业务系统",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInstance\n<common request parameters>\n\n{\n    \"InstanceId\": \"rum-abcd1234\"\n}",
+        "document": "Deleting instance",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rum-abcd1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
-        "title": "删除 RUM 业务系统"
+        "title": "Deleting instance"
       }
     ],
     "DeleteLogExport": [
@@ -388,10 +388,10 @@
     ],
     "DescribeReleaseFiles": [
       {
-        "document": "获取应用对应sourcemap文件列表",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeReleaseFiles\n&ProjectID=1\n&<common request parameters>",
+        "document": "Getting release file list",
+        "input": "https://rum.tencentcloudapi.com/?Action=DescribeReleaseFiles\n&ProjectID=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Files\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "获取应用对应sourcemap文件列表"
+        "title": "Getting release file list"
       }
     ],
     "DescribeRumGroupLog": [
