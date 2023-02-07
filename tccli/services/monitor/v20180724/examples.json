@@ -16,6 +16,14 @@
         "title": "Binding a policy object"
       }
     ],
+    "CheckIsPrometheusNewUser": [
+      {
+        "document": "This example shows you how to determine whether the user is a new user.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckIsPrometheusNewUser\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Determining whether the user is a new user"
+      }
+    ],
     "CleanGrafanaInstance": [
       {
         "document": "",
@@ -104,12 +112,28 @@
         "title": "Creating a pay-as-you-go Prometheus instance"
       }
     ],
+    "CreatePrometheusRecordRuleYaml": [
+      {
+        "document": "This example shows you how to create a recording rule.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=CreatePrometheusRecordRuleYaml\n&InstanceId=prom-xxx\n&Content=xxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Creating a recording rule"
+      }
+    ],
     "CreatePrometheusScrapeJob": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusScrapeJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-abcd1234\",\n    \"AgentId\": \"agent-abcd1234\",\n    \"Config\": \"job_name:xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"job-xxfs\",\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Creating a Prometheus scrape task"
+      }
+    ],
+    "CreatePrometheusTemp": [
+      {
+        "document": "This example shows you how to create a template.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=CreatePrometheusTemp\n&Template.Name=t1\n&Template.Describe=A template\n&Template.ServiceMonitors.0.Name=s\n&Template.ServiceMonitors.0.Config=xx\n&Template.Level=cluster\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"TemplateId\": \"temp-xxx\"\n    }\n}",
+        "title": "Creating a template"
       }
     ],
     "CreateRecordingRule": [
@@ -200,12 +224,36 @@
         "title": "Deleting alarm policy group"
       }
     ],
+    "DeletePrometheusRecordRuleYaml": [
+      {
+        "document": "This example shows you how to delete a recording rule.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DeletePrometheusRecordRuleYaml\n&InstanceId=prom-xxx\n&Names.0=xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Deleting a recording rule"
+      }
+    ],
     "DeletePrometheusScrapeJobs": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePrometheusScrapeJobs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\",\n    \"JobIds\": [\n        \"xx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Deleting a Prometheus scrape task"
+      }
+    ],
+    "DeletePrometheusTemp": [
+      {
+        "document": "This example shows you how to delete a template instance.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DeletePrometheusTemp\n&TemplateId=temp-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Deleting a template instance"
+      }
+    ],
+    "DeletePrometheusTempSync": [
+      {
+        "document": "This example shows you how to unsync a template.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DeletePrometheusTempSync\n&TemplateId=\"temp-xxx\"\n&Targets.0.Region=\"ap-shanghai\"\n&Targets.0.InstanceId=\"prom-xxx\"\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Unsyncing a template"
       }
     ],
     "DeleteRecordingRules": [
@@ -242,13 +290,13 @@
     ],
     "DescribeAlarmHistories": [
       {
-        "document": "Monitoring type is a first-level filter, and policy type is a second-level filter. Therefore, the policy type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alarm records of “CVM - Basic Monitor”, the filter conditions should be: Tencent Cloud service monitoring for `Monitoring type` and CVM - Basic Monitor for `policy type`.\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes` as the first-level filter condition.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces` as the second-level filter condition.",
+        "document": "Monitoring type is a first-level filter, and policy type is a second-level filter. Therefore, the policy type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alert records of \"CVM - Basic Monitoring\", the filter should be monitoring type (Tencent Cloud service monitoring), policy type (CVM - Basic Monitor).\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes` as the first-level filter.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces` as the second-level filter.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmHistories\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"PageNumber\": 1,\n    \"PageSize\": 10,\n    \"StartTime\": 1598976507,\n    \"EndTime\": 1599019707\n}",
-        "output": "{\n    \"Response\": {\n        \"Histories\": [\n            {\n                \"AlarmId\": \"c36494f8-ae38-45cb-8089-e14006bcfc67\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.8 (private) | CVM 01 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc01\",\n                \"PolicyName\": \"CVM alerting rule 1\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [\n                    1544\n                ],\n                \"NoticeWays\": [\n                    \"SMS\",\n                    \"EMAIL\",\n                    \"WECHAT\"\n                ],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1278441\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": [\n                    {\n                        \"QceNamespace\": \"qce/cvm\",\n                        \"MetricName\": \"CpuUsage\",\n                        \"Period\": 60,\n                        \"Value\": \"86.5\",\n                        \"Description\": \"CPU utilization\"\n                    }\n                ],\n                \"Dimensions\": null\n            },\n            {\n                \"AlarmId\": \"779d129a-40a1-4acf-b226-d9c2ae26e63b\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.9 (private) | CVM 02 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc02\",\n                \"PolicyName\": \"CVM alerting rule 2\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [],\n                \"NoticeWays\": [],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1276973\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": null,\n                \"Dimensions\": null\n            }\n        ],\n        \"RequestId\": \"4bzogxhgsgs95hgmxne5ei6y9jjxvi1f\",\n        \"TotalCount\": 486\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 486,\n        \"Histories\": [\n            {\n                \"Dimensions\": \"xx\",\n                \"LastOccurTime\": 1603162964,\n                \"Namespace\": \"xx\",\n                \"Content\": \"xx\",\n                \"PolicyId\": \"xx\",\n                \"AlarmStatus\": \"xx\",\n                \"ReceiverGroups\": [\n                    1544\n                ],\n                \"VPC\": \"xx\",\n                \"FirstOccurTime\": 1603117860,\n                \"EventId\": 0,\n                \"PolicyName\": \"xx\",\n                \"ProjectId\": 0,\n                \"Region\": \"xx\",\n                \"AlarmObject\": \"xx\",\n                \"AlarmId\": \"xx\",\n                \"ReceiverUids\": [\n                    0\n                ],\n                \"OriginId\": \"xx\",\n                \"NoticeWays\": [\n                    \"SMS\",\n                    \"EMAIL\",\n                    \"WECHAT\"\n                ],\n                \"ProjectName\": \"xx\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"xx\"\n                    }\n                ],\n                \"MetricsInfo\": [\n                    {\n                        \"Description\": \"xx\",\n                        \"QceNamespace\": \"xx\",\n                        \"Period\": 60,\n                        \"Value\": \"xx\",\n                        \"MetricName\": \"xx\"\n                    }\n                ],\n                \"MonitorType\": \"xx\",\n                \"PolicyExists\": 1,\n                \"AlarmType\": \"xx\"\n            },\n            {\n                \"Dimensions\": \"xx\",\n                \"LastOccurTime\": 1603162964,\n                \"Namespace\": \"xx\",\n                \"Content\": \"xx\",\n                \"PolicyId\": \"xx\",\n                \"AlarmStatus\": \"xx\",\n                \"ReceiverGroups\": [\n                    0\n                ],\n                \"VPC\": \"xx\",\n                \"FirstOccurTime\": 1603117860,\n                \"EventId\": 0,\n                \"PolicyName\": \"xx\",\n                \"ProjectId\": 0,\n                \"Region\": \"xx\",\n                \"AlarmObject\": \"xx\",\n                \"AlarmId\": \"xx\",\n                \"ReceiverUids\": [\n                    0\n                ],\n                \"OriginId\": \"xx\",\n                \"NoticeWays\": [\n                    \"xx\"\n                ],\n                \"ProjectName\": \"xx\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"xx\"\n                    }\n                ],\n                \"MetricsInfo\": [\n                    {\n                        \"Description\": \"xx\",\n                        \"QceNamespace\": \"xx\",\n                        \"Period\": 0,\n                        \"Value\": \"xx\",\n                        \"MetricName\": \"xx\"\n                    }\n                ],\n                \"MonitorType\": \"xx\",\n                \"PolicyExists\": 1,\n                \"AlarmType\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying alert records"
       },
       {
-        "document": "Monitoring type is a first-level filter, and policy type is a second-level filter. Therefore, the policy type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alert records of \"CVM - Basic Monitoring\", the filter should be monitoring type (Tencent Cloud service monitoring), policy type (CVM - Basic Monitor).\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes` as the first-level filter.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces` as the second-level filter.",
+        "document": "Monitoring type is a first-level filter, and rule type is a second-level filter. Therefore, the rule type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alert records of \"CVM - Basic Monitoring\", the filter should be monitoring type (Tencent Cloud service monitoring), rule type (CVM - Basic Monitor).\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes` as the first-level filter.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces` as the second-level filter.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmHistories\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"PageNumber\": 1,\n    \"PageSize\": 10,\n    \"StartTime\": 1598976507,\n    \"EndTime\": 1599019707,\n    \"MonitorTypes\": [\n        \"MT_QCE\"\n    ],\n    \"Namespaces\": [\n        {\n            \"MonitorType\": \"MT_QCE\",\n            \"Namespace\": \"cvm_device\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Histories\": [\n            {\n                \"AlarmId\": \"c36494f8-ae38-45cb-8089-e14006bcfc67\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.8 (private) | CVM 01 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc01\",\n                \"PolicyName\": \"CVM alerting rule 1\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [\n                    1544\n                ],\n                \"NoticeWays\": [\n                    \"SMS\",\n                    \"EMAIL\",\n                    \"WECHAT\"\n                ],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1278441\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": [\n                    {\n                        \"QceNamespace\": \"qce/cvm\",\n                        \"MetricName\": \"CpuUsage\",\n                        \"Period\": 60,\n                        \"Value\": \"86.5\",\n                        \"Description\": \"CPU utilization\"\n                    }\n                ]\n            },\n            {\n                \"AlarmId\": \"779d129a-40a1-4acf-b226-d9c2ae26e63b\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.9 (private) | CVM 02 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc02\",\n                \"PolicyName\": \"CVM alerting rule 2\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [],\n                \"NoticeWays\": [],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1276973\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": null\n            }\n        ],\n        \"RequestId\": \"4bzogxhgsgs95hgmxne5ei6y9jjxvi1f\",\n        \"TotalCount\": 486\n    }\n}",
         "title": "Querying the alert records of \"CVM - Basic Monitoring\""
@@ -482,12 +530,58 @@
         "title": "Getting product event list"
       }
     ],
+    "DescribePrometheusAgentInstances": [
+      {
+        "document": "This example shows you how to get the list of instances associated with a cluster.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusAgentInstances\n&ClusterId=cls-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Instances\": [\n            \"prome-xxx\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Getting the list of instances associated with a cluster"
+      }
+    ],
     "DescribePrometheusAgents": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusAgents\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"AgentSet\": [\n            {\n                \"AgentId\": \"xx\",\n                \"Name\": \"xx\",\n                \"InstanceId\": \"xx\",\n                \"HeartbeatTime\": \"xx\",\n                \"Ipv4\": \"xx\",\n                \"LastError\": \"xx\",\n                \"AgentVersion\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"TotalCount\": 12\n    }\n}",
         "title": "Listing Prometheus agents"
+      }
+    ],
+    "DescribePrometheusAlertPolicy": [
+      {
+        "document": "This example shows you how to get the list of alerts.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusAlertPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Type\": \"xx\",\n            \"Key\": \"xx\",\n            \"Value\": \"xx\"\n        }\n    ],\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"AlertRules\": [\n            {\n                \"Name\": \"xx\",\n                \"Rules\": [\n                    {\n                        \"Describe\": \"xx\",\n                        \"Name\": \"xx\",\n                        \"For\": \"xx\",\n                        \"Labels\": [\n                            {}\n                        ],\n                        \"Rule\": \"xx\",\n                        \"Template\": \"xx\",\n                        \"Annotations\": [\n                            {}\n                        ]\n                    }\n                ],\n                \"Notification\": {\n                    \"AlertManager\": {\n                        \"Url\": \"xx\",\n                        \"ClusterId\": \"xx\",\n                        \"ClusterType\": \"xx\"\n                    },\n                    \"RepeatInterval\": \"xx\",\n                    \"WebHook\": \"xx\",\n                    \"Enabled\": true,\n                    \"PhoneNotifyOrder\": [\n                        1\n                    ],\n                    \"PhoneInnerInterval\": 0,\n                    \"PhoneCircleInterval\": 0,\n                    \"NotifyWay\": [\n                        \"xx\"\n                    ],\n                    \"ReceiverGroups\": [\n                        1\n                    ],\n                    \"PhoneArriveNotice\": true,\n                    \"PhoneCircleTimes\": 0,\n                    \"TimeRangeStart\": \"xx\",\n                    \"Type\": \"xx\",\n                    \"TimeRangeEnd\": \"xx\"\n                },\n                \"TemplateId\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"UpdatedAt\": \"xx\",\n                \"Id\": \"xx\"\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of alerts"
+      }
+    ],
+    "DescribePrometheusConfig": [
+      {
+        "document": "This example shows you how to get the Prometheus configuration.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusConfig\r\n&InstanceId=prom-xxx\r\n&ClusterType=tke\r\n&ClusterId=cls-xxx\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Getting the Prometheus configuration"
+      }
+    ],
+    "DescribePrometheusInstanceDetail": [
+      {
+        "document": "This example shows you how to query the details of a TMP instance.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusInstanceDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceStatus\": 0,\n        \"VpcId\": \"xx\",\n        \"AutoRenewFlag\": 0,\n        \"InstanceId\": \"xx\",\n        \"ExpireTime\": \"xx\",\n        \"SpecName\": \"xx\",\n        \"InstanceChargeType\": 0,\n        \"RequestId\": \"xx\",\n        \"EnableGrafana\": 0,\n        \"DataRetentionTime\": 0,\n        \"GrafanaURL\": \"xx\",\n        \"SubnetId\": \"xx\",\n        \"InstanceName\": \"xx\",\n        \"ChargeStatus\": 0\n    }\n}",
+        "title": "Querying the details of a TMP instance"
+      }
+    ],
+    "DescribePrometheusInstanceInitStatus": [
+      {
+        "document": "This example shows you how to get the initialization task status of a v2.0 instance.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusInstanceInitStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-7vp71ppt\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"EksClusterId\": \"xx\",\n        \"Steps\": [\n            {\n                \"StartAt\": \"xx\",\n                \"Step\": \"xx\",\n                \"LifeState\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the initialization task status of a v2.0 instance"
+      },
+      {
+        "document": "This example shows you how to get the initialization task status.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusInstanceInitStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"EksClusterId\": \"xx\",\n        \"Steps\": [\n            {\n                \"StartAt\": \"xx\",\n                \"Step\": \"xx\",\n                \"LifeState\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            },\n            {\n                \"LifeState\": \"xx\",\n                \"Step\": \"xx\",\n                \"StartAt\": \"xx\",\n                \"EndAt\": \"xx\",\n                \"FailedMsg\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the initialization task status"
       }
     ],
     "DescribePrometheusInstanceUsage": [
@@ -506,12 +600,52 @@
         "title": "Querying the list of Prometheus instances"
       }
     ],
+    "DescribePrometheusInstancesOverview": [
+      {
+        "document": "This example shows you how to get the list of instances.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusInstancesOverview\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Type\": \"xx\",\n            \"Key\": \"xx\",\n            \"Value\": \"xx\"\n        }\n    ],\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Instances\": [\n            {\n                \"InstanceStatus\": 0,\n                \"BoundNormal\": 0,\n                \"VpcId\": \"xx\",\n                \"AutoRenewFlag\": 0,\n                \"InstanceId\": \"xx\",\n                \"BoundTotal\": 0,\n                \"ExpireTime\": \"xx\",\n                \"SpecName\": \"xx\",\n                \"InstanceChargeType\": 0,\n                \"EnableGrafana\": 0,\n                \"DataRetentionTime\": 0,\n                \"GrafanaURL\": \"xx\",\n                \"SubnetId\": \"xx\",\n                \"InstanceName\": \"xx\",\n                \"ChargeStatus\": 0\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of instances"
+      }
+    ],
+    "DescribePrometheusRecordRuleYaml": [
+      {
+        "document": "This example shows you how to get the list of recording rules.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusRecordRuleYaml\n&InstanceId=prom-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Getting the list of recording rules"
+      }
+    ],
+    "DescribePrometheusRecordRules": [
+      {
+        "document": "This example shows you how to get a recording rule.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusRecordRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Records\": [\n            {\n                \"Content\": \"xx\",\n                \"UpdateTime\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"Name\": \"xx\",\n                \"TemplateId\": \"xx\"\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting a recording rule"
+      }
+    ],
     "DescribePrometheusScrapeJobs": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusScrapeJobs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"xx\",\n        \"ScrapeJobSet\": [\n            {\n                \"AgentId\": \"xx\",\n                \"Config\": \"xx\",\n                \"Name\": \"xx\",\n                \"JobId\": \"xx\"\n            }\n        ]\n    }\n}",
         "title": "Listing Prometheus scrape tasks"
+      }
+    ],
+    "DescribePrometheusTemp": [
+      {
+        "document": "This example shows you how to get the list of templates.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusTemp\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Type\": \"xx\",\n            \"Key\": \"xx\",\n            \"Value\": \"xx\"\n        }\n    ],\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Templates\": [\n            {\n                \"UpdateTime\": \"xx\",\n                \"RecordRules\": [\n                    {\n                        \"Config\": \"xx\",\n                        \"Name\": \"xx\",\n                        \"TemplateId\": \"xx\"\n                    }\n                ],\n                \"Version\": \"xx\",\n                \"Name\": \"xx\",\n                \"Level\": \"xx\",\n                \"Describe\": \"xx\",\n                \"TargetsTotal\": 0,\n                \"RawJobs\": [\n                    {\n                        \"Config\": \"xx\",\n                        \"Name\": \"xx\",\n                        \"TemplateId\": \"xx\"\n                    }\n                ],\n                \"PodMonitors\": [\n                    {\n                        \"Config\": \"xx\",\n                        \"Name\": \"xx\",\n                        \"TemplateId\": \"xx\"\n                    }\n                ],\n                \"TemplateId\": \"xx\",\n                \"AlertDetailRules\": [\n                    {\n                        \"Name\": \"xx\",\n                        \"Rules\": [\n                            {\n                                \"Describe\": \"xx\",\n                                \"Name\": \"xx\",\n                                \"For\": \"xx\",\n                                \"Labels\": [\n                                    {}\n                                ],\n                                \"Rule\": \"xx\",\n                                \"Template\": \"xx\",\n                                \"Annotations\": [\n                                    {}\n                                ]\n                            }\n                        ],\n                        \"Notification\": {\n                            \"AlertManager\": {\n                                \"Url\": \"xx\",\n                                \"ClusterId\": \"xx\",\n                                \"ClusterType\": \"xx\"\n                            },\n                            \"RepeatInterval\": \"xx\",\n                            \"WebHook\": \"xx\",\n                            \"Enabled\": true,\n                            \"PhoneNotifyOrder\": [\n                                1\n                            ],\n                            \"PhoneInnerInterval\": 0,\n                            \"PhoneCircleInterval\": 0,\n                            \"NotifyWay\": [\n                                \"xx\"\n                            ],\n                            \"ReceiverGroups\": [\n                                \"xx\"\n                            ],\n                            \"PhoneArriveNotice\": true,\n                            \"PhoneCircleTimes\": 0,\n                            \"TimeRangeStart\": \"xx\",\n                            \"Type\": \"xx\",\n                            \"TimeRangeEnd\": \"xx\"\n                        },\n                        \"TemplateId\": \"xx\",\n                        \"ClusterId\": \"xx\",\n                        \"UpdatedAt\": \"xx\",\n                        \"Id\": \"xx\"\n                    }\n                ],\n                \"IsDefault\": true,\n                \"ServiceMonitors\": [\n                    {\n                        \"Config\": \"xx\",\n                        \"Name\": \"xx\",\n                        \"TemplateId\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of templates"
+      }
+    ],
+    "DescribePrometheusTempSync": [
+      {
+        "document": "This example shows you how to get the sync targets.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusTempSync\n&TemplateId=\"temp-xxx\"\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Targets\": [\n            {\n                \"Region\": \"ap-shanghai\",\n                \"InstanceId\": \"prom-xxx\",\n                \"ClusterId\": \"xxx\",\n                \"SyncTime\": \"2020-02-2\"\n            }\n        ]\n    }\n}",
+        "title": "Getting the sync targets"
       }
     ],
     "DescribePrometheusZones": [
@@ -702,6 +836,22 @@
         "title": "Modifying the attributes of a Prometheus instance"
       }
     ],
+    "ModifyPrometheusRecordRuleYaml": [
+      {
+        "document": "This example shows you how to modify a recording rule.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=ModifyPrometheusRecordRuleYaml\n&InstanceId=prom-xxx\n&Name=sss\n&Content=xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Modifying a recording rule"
+      }
+    ],
+    "ModifyPrometheusTemp": [
+      {
+        "document": "This example shows you how to modify the description of a template.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=ModifyPrometheusTemp\n&TemplateId=temp-xxx\n&Template.Describe=A template\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Modifying the description of a template"
+      }
+    ],
     "PutMonitorData": [
       {
         "document": "",
@@ -718,6 +868,14 @@
         "title": "Restoring a TCMG instance"
       }
     ],
+    "RunPrometheusInstance": [
+      {
+        "document": "This example shows you how to initialize an instance.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RunPrometheusInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Initializing an instance"
+      }
+    ],
     "SendCustomAlarmMsg": [
       {
         "document": "This example shows you how to send a custom alarm notification.",
@@ -732,6 +890,14 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetDefaultAlarmPolicy\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"PolicyId\": \"policy-jfg9hg2g2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"29ghj2hh-45-h53h234h-23\"\n    }\n}",
         "title": "Setting default alarm policy"
+      }
+    ],
+    "SyncPrometheusTemp": [
+      {
+        "document": "This example shows you how to sync a template to an instance.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=SyncPrometheusTemp\n&TemplateId=\"temp-xxx\"\n&Targets.0.Region=\"ap-shanghai\"\n&Targets.0.InstanceId=\"prom-xxx\"\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Syncing a template to an instance"
       }
     ],
     "TerminatePrometheusInstances": [

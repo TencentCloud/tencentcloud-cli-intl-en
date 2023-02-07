@@ -1078,8 +1078,8 @@
       "document": "IP address template",
       "members": [
         {
-          "default": "",
           "document": "IP address ID, such as `eipm-2uw6ujo6`.",
+          "example": "无",
           "member": "string",
           "name": "AddressId",
           "required": true,
@@ -1087,8 +1087,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP address group ID, such as `eipmg-2uw6ujo6`.",
+          "example": "无",
           "member": "string",
           "name": "AddressGroupId",
           "required": true,
@@ -2103,6 +2103,7 @@
         {
           "default": "",
           "document": "ECM region, such as `ap-xian-ecm`.",
+          "example": "ap-hangzhou-ecm",
           "member": "string",
           "name": "EcmRegion",
           "required": true,
@@ -2111,6 +2112,7 @@
         {
           "default": "",
           "document": "Network type of the CLB instance. Currently, you can pass in only `OPEN`, which indicates public network.",
+          "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
           "required": true,
@@ -2119,6 +2121,7 @@
         {
           "default": "",
           "document": "CMCC: China Mobile; CTCC: China Telecom; CUCC: China Unicom.",
+          "example": "CUCC",
           "member": "string",
           "name": "VipIsp",
           "required": true,
@@ -2127,6 +2130,7 @@
         {
           "default": "",
           "document": "CLB instance name, which will take effect only when one instance is created. It can contain 1–50 letters, digits, hyphens, and underscores.\nNote: if the name of the new CLB instance already exists, a default name will be generated automatically.",
+          "example": "testname",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -2135,6 +2139,7 @@
         {
           "default": "",
           "document": "Network ID of the target device on the CLB backend, such as `vpc-12345678`.",
+          "example": "vpc-12345678",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -2143,6 +2148,7 @@
         {
           "default": "",
           "document": "Number of CLB instances to be created. Default value: 1.",
+          "example": "无",
           "member": "int64",
           "name": "Number",
           "required": false,
@@ -2151,6 +2157,7 @@
         {
           "default": "",
           "document": "CLB information such as bandwidth limit.",
+          "example": "无",
           "member": "LoadBalancerInternetAccessible",
           "name": "InternetAccessible",
           "required": false,
@@ -2159,6 +2166,7 @@
         {
           "default": "",
           "document": "Tags.",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": false,
@@ -2167,10 +2175,29 @@
         {
           "default": "",
           "document": "Security groups.",
+          "example": "无",
           "member": "string",
           "name": "SecurityGroups",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPV4` (default), `IPv6FullChain` (IPv6 version). This parameter is only for public network CLB instances.",
+          "example": "IPV4",
+          "member": "string",
+          "name": "AddressIPVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID. This parameter is required for IPv6 CLB instances.",
+          "example": "subnet-dva8****",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4631,6 +4658,15 @@
           "name": "DataDisk",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance billing type. Valid values:\n`0`: Bill by daily resource usage peak (CPU, memory, and disk). It applies only to non-GNR models;\n`1`: Bill by usage hours of an instance. It applies only to GNR models. It’s available to beta users now. To enable it, submit a ticket;\n`2`: Bill by usage month of an instance. It applies only to GNR models.\nIf this field is left empty, `0` is selected by default for non-GNR models, and `2` is selected by default for GNR models.",
+          "example": "无",
+          "member": "int64",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7338,6 +7374,7 @@
         {
           "default": "",
           "document": "Region.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-hangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -7347,6 +7384,7 @@
         {
           "default": "",
           "document": "Location information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Position",
           "name": "Position",
           "required": true,
@@ -7356,6 +7394,7 @@
         {
           "default": "",
           "document": "CLB instance ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "lb-1gmnrlgj",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -7365,6 +7404,7 @@
         {
           "default": "",
           "document": "CLB instance name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "lb-xxxxx",
           "member": "string",
           "name": "LoadBalancerName",
           "required": true,
@@ -7374,6 +7414,7 @@
         {
           "default": "",
           "document": "Network type of the CLB instance. Valid values: OPEN: public network\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
           "required": true,
@@ -7383,6 +7424,7 @@
         {
           "default": "",
           "document": "List of VIPs of the CLB instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "x.x.x.x",
           "member": "string",
           "name": "LoadBalancerVips",
           "required": true,
@@ -7392,6 +7434,7 @@
         {
           "default": "",
           "document": "CLB instance status. Valid values:\n 0: creating; 1: running.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -7401,6 +7444,7 @@
         {
           "default": "",
           "document": "CLB instance creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-12-08 08:00:00",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -7410,6 +7454,7 @@
         {
           "default": "",
           "document": "Last status change time of the CLB instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-12-08 08:00:00",
           "member": "datetime",
           "name": "StatusTime",
           "required": true,
@@ -7419,6 +7464,7 @@
         {
           "default": "",
           "document": "VPC ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-mj65xxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -7428,6 +7474,7 @@
         {
           "default": "",
           "document": "CLB instance tag information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": true,
@@ -7437,6 +7484,7 @@
         {
           "default": "",
           "document": "ISP of the CLB IP address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "CTCC",
           "member": "string",
           "name": "VipIsp",
           "required": true,
@@ -7446,6 +7494,7 @@
         {
           "default": "",
           "document": "Network attribute of the CLB instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "LoadBalancerInternetAccessible",
           "name": "NetworkAttributes",
           "required": true,
@@ -7455,6 +7504,7 @@
         {
           "default": "",
           "document": "Security group.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "sg-hx6dxxxx",
           "member": "string",
           "name": "SecureGroups",
           "required": true,
@@ -7464,10 +7514,21 @@
         {
           "default": "",
           "document": "Whether the real server opens the traffic from ELB to the internet.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "LoadBalancerPassToTarget",
           "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IPv6 address of a CLB instance\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2402:4e00:1000:4e00:0:920b:5519:d96d",
+          "member": "string",
+          "name": "AddressIPv6",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -11583,8 +11644,8 @@
       "document": "Protocol port template",
       "members": [
         {
-          "default": "",
           "document": "Protocol port ID, such as `eppm-f5n1f8da`.",
+          "example": "无",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -11592,8 +11653,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Protocol port group ID, such as `eppmg-f5n1f8da`.",
+          "example": "无",
           "member": "string",
           "name": "ServiceGroupId",
           "required": true,

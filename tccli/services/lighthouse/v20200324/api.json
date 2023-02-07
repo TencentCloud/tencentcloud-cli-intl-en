@@ -4908,40 +4908,49 @@
       "document": "Price information of Lighthouse instances",
       "members": [
         {
-          "default": "",
           "document": "Original package unit price.",
+          "example": "无",
           "member": "float",
           "name": "OriginalBundlePrice",
-          "required": true,
+          "required": false,
           "type": "float",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Original price.",
+          "example": "无",
           "member": "float",
           "name": "OriginalPrice",
-          "required": true,
+          "required": false,
           "type": "float",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Discount.",
+          "example": "无",
           "member": "int64",
           "name": "Discount",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Discounted price.",
+          "example": "无",
           "member": "float",
           "name": "DiscountPrice",
-          "required": true,
+          "required": false,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "document": "Currency unit. Valid values: `CNY` and `USD`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4968,7 +4977,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Tiered-pricing details. The information of each tier includes the billable period, discount percentage, total price, discounted price, and discount details (`UserDiscount`, `CommonDiscount` and `FinalDiscount`).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DiscountDetail",
           "name": "DiscountDetail",
@@ -5583,31 +5592,49 @@
       "document": "Discount details.",
       "members": [
         {
-          "default": "",
           "document": "User discount.",
+          "example": "无",
           "member": "int64",
           "name": "UserDiscount",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public discount.",
+          "example": "无",
           "member": "int64",
           "name": "CommonDiscount",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Final discount.",
+          "example": "无",
           "member": "int64",
           "name": "FinalDiscount",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "Activity discount. The value `null` indicates no discount.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "ActivityDiscount",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discount type.\nValid values: `user` (user discount), `common` (discount displayed on the official website), `activity` (activity discount), `null` (no discount).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DiscountType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

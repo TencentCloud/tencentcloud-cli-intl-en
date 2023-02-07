@@ -1275,9 +1275,9 @@
       "status": "online"
     },
     "DescribeK8sApiAbnormalRuleScopeList": {
-      "document": "This API is used to query the list of ranges in K8sApi abnormal rules.",
+      "document": "This API is used to query rules for K8s API exceptions. ",
       "input": "DescribeK8sApiAbnormalRuleScopeListRequest",
-      "name": "Queries the list of ranges in K8sApi abnormal rules",
+      "name": "Queries rules for K8s API exceptions. ",
       "output": "DescribeK8sApiAbnormalRuleScopeListResponse",
       "status": "online"
     },
@@ -5799,7 +5799,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Instance ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ins-asoqewkn",
           "member": "string",
           "name": "InstanceId",
@@ -6061,7 +6061,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Node instance ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ins-asoqewkn ",
           "member": "string",
           "name": "InstanceId",
@@ -30418,7 +30418,7 @@
         },
         {
           "default": "",
-          "document": "Status (true: Enable; false: Disable)",
+          "document": "Status of the rule. Values: `true` (Enabled), `false` (Disabled)",
           "example": "true",
           "member": "bool",
           "name": "Status",
