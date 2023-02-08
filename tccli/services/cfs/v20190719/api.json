@@ -1232,8 +1232,17 @@
           "example": "snapcfs-xx",
           "member": "string",
           "name": "SnapshotId",
-          "required": true,
+          "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of the IDs of the file system snapshots to be deleted. At least one of `SnapshotId` and `SnapshotIds` must be specified.",
+          "example": "[\"snapcfs-xx\",\"snapcfs-xx1\"]",
+          "member": "string",
+          "name": "SnapshotIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

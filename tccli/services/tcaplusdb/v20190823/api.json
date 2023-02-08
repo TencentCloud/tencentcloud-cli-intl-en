@@ -1916,6 +1916,15 @@
           "name": "SnapshotName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of snapshots pulled in batches",
+          "example": "无",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
