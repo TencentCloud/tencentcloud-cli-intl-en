@@ -77,6 +77,13 @@
       "output": "DescribeAccountsResponse",
       "status": "online"
     },
+    "DescribeDBEncryptAttributes": {
+      "document": "This API is used to query the encryption status of the instance data.",
+      "input": "DescribeDBEncryptAttributesRequest",
+      "name": "Queries the encryption status of the instance data",
+      "output": "DescribeDBEncryptAttributesResponse",
+      "status": "online"
+    },
     "DescribeDBInstances": {
       "document": "This API is used to query the TencentDB instance list. It supports filtering instances by project ID, instance ID, private address, and instance name.\nIf no filter is specified, 20 instances will be returned by default. Up to 100 instances can be returned for a single request.",
       "input": "DescribeDBInstancesRequest",
@@ -2515,6 +2522,60 @@
           "name": "Users",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBEncryptAttributesRequest": {
+      "document": "DescribeDBEncryptAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBEncryptAttributesResponse": {
+      "document": "DescribeDBEncryptAttributes response structure.",
+      "members": [
+        {
+          "document": "Whether encryption is enabled. Valid values: `1` (enabled), `2` (disabled).",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DEK key",
+          "example": "无",
+          "member": "string",
+          "name": "CipherText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DEK key expiration date",
+          "example": "2019-01-01 10:00:00",
+          "member": "string",
+          "name": "ExpireDate",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {

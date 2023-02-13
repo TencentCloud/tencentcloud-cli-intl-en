@@ -192,6 +192,14 @@
         "title": "Querying the security group information of an instance"
       }
     ],
+    "DescribeFlow": [
+      {
+        "document": "",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeFlow\n&FlowId=123\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"RequestId\": \"186253\"\n    }\n}",
+        "title": "Querying task flow information"
+      }
+    ],
     "DescribeInstanceDetail": [
       {
         "document": "",
@@ -438,6 +446,14 @@
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ResetAccountPassword\n&ClusterId=cynosdbpg-on5xw0ni\n&AccountName=root\n&AccountPassword=abc@2018\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"148561\"\n    }\n}",
         "title": "Resetting the password of a TencentDB account."
+      }
+    ],
+    "RestartInstance": [
+      {
+        "document": "",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=RestartInstance\n&InstanceId=xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Restarting an instance"
       }
     ],
     "ResumeServerless": [

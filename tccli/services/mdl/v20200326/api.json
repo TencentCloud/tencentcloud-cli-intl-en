@@ -203,6 +203,13 @@
       "output": "ModifyStreamLiveWatermarkResponse",
       "status": "online"
     },
+    "QueryInputStreamState": {
+      "document": "This API is used to query the stream status of a StreamLive input.",
+      "input": "QueryInputStreamStateRequest",
+      "name": "Queries the stream status of an input",
+      "output": "QueryInputStreamStateResponse",
+      "status": "online"
+    },
     "StartStreamLiveChannel": {
       "document": "This API is used to start a StreamLive channel.",
       "input": "StartStreamLiveChannelRequest",
@@ -363,6 +370,26 @@
           "example": "AB342ED131CE",
           "member": "string",
           "name": "WatermarkId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to convert audio to text. `0` (default): No; `1`: Yes.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SmartSubtitles",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subtitle settings. Currently, the following subtitles are supported:\n`eng2eng`: English speech to English text.\n`eng2chs`: English speech to Chinese text. \n`eng2chseng`: English speech to English and Chinese text. \n`chs2chs`: Chinese speech to Chinese text.   \n`chs2eng`: Chinese speech to English text. \n`chs2chseng`: Chinese speech to Chinese and English text.",
+          "example": "eng2eng",
+          "member": "string",
+          "name": "SubtitleConfiguration",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -794,6 +821,15 @@
           "name": "PlanSettings",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The callback settings.",
+          "example": "无",
+          "member": "EventNotifySetting",
+          "name": "EventNotifySettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1098,6 +1134,7 @@
         {
           "default": "",
           "document": "Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.",
+          "example": "4000",
           "member": "uint64",
           "name": "SegmentDuration",
           "required": false,
@@ -1107,6 +1144,7 @@
         {
           "default": "",
           "document": "Number of segments. Value range: [1,30]. Default value: 5.",
+          "example": "5",
           "member": "uint64",
           "name": "SegmentNumber",
           "required": false,
@@ -1116,8 +1154,19 @@
         {
           "default": "",
           "document": "Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.",
+          "example": "CLOSE",
           "member": "string",
           "name": "PeriodTriggers",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).",
+          "example": "hvc1",
+          "member": "string",
+          "name": "H265PackageType",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2245,6 +2294,7 @@
         {
           "default": "",
           "document": "DRM key, which is a 32-bit hexadecimal string.\nNote: uppercase letters in the string will be automatically converted to lowercase ones.",
+          "example": "test",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -2254,6 +2304,7 @@
         {
           "default": "",
           "document": "Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.\nALL refers to all tracks. If this parameter is set to ALL, no other tracks can be added.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "Track",
           "required": false,
@@ -2263,6 +2314,7 @@
         {
           "default": "",
           "document": "Required for Widevine encryption. It is a 32-bit hexadecimal string.\nNote: uppercase letters in the string will be automatically converted to lowercase ones.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "KeyId",
           "required": false,
@@ -2272,8 +2324,19 @@
         {
           "default": "",
           "document": "Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.\nFor more information about this parameter, please see: \nhttps://tools.ietf.org/html/rfc3826\nNote: uppercase letters in the string will be automatically converted to lowercase ones.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "Iv",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The URI of the license server when AES-128 is used. This parameter may be empty.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "uri",
+          "member": "string",
+          "name": "KeyUri",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -2333,6 +2396,32 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`. For HLS, this can be `FAIRPLAY` or `AES128`. For DASH, this can only be `WIDEVINE`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "DrmType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EventNotifySetting": {
+      "document": "The callback settings.",
+      "members": [
+        {
+          "default": "",
+          "document": "The callback configuration for push events.",
+          "example": "无",
+          "member": "PushEventSetting",
+          "name": "PushEventSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2569,6 +2658,26 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The segment type. Valid values: `ts` (default), `fmp4`.\nCurrently, fMP4 segments do not support DRM or time shifting.",
+          "example": "ts",
+          "member": "string",
+          "name": "SegmentType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).",
+          "example": "fmp4",
+          "member": "string",
+          "name": "H265PackageType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2694,7 +2803,7 @@
       "usage": "out"
     },
     "InputSettingInfo": {
-      "document": "Input settings information.",
+      "document": "The input settings.\nThe format of an RTMP_PUSH address is ${InputAddress}/${AppName}/${StreamName}.\nThe format of an SRT_PUSH address is ${InputAddress}?streamid=${StreamName},h=${InputDomain}.",
       "members": [
         {
           "default": "",
@@ -2755,6 +2864,36 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The domain of an SRT_PUSH address. If this is a request parameter, you don’t need to specify it.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "www.domain.com",
+          "member": "string",
+          "name": "InputDomain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The username, which is used for authentication.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "name",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The password, which is used for authentication.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "passwd",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2778,6 +2917,52 @@
           "name": "Pipeline1",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InputStreamInfo": {
+      "document": "The input stream information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The input stream address.",
+          "example": "rtmp://test.ap-tokyo-1.streamlive.myqcloud.com",
+          "member": "string",
+          "name": "InputAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input stream path.",
+          "example": "path",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input stream name.",
+          "example": "streamname",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input stream status. `1` indicates the stream is active.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -2903,6 +3088,15 @@
           "example": "无",
           "member": "PlanSettings",
           "name": "PlanSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The callback settings.",
+          "example": "无",
+          "member": "EventNotifySetting",
+          "name": "EventNotifySettings",
           "required": false,
           "type": "object"
         }
@@ -3332,6 +3526,114 @@
       ],
       "usage": "both"
     },
+    "PushEventSetting": {
+      "document": "The callback configuration for push events.",
+      "members": [
+        {
+          "default": "",
+          "document": "The callback URL (required).",
+          "example": "http://callback.com",
+          "member": "string",
+          "name": "NotifyUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The callback key (optional).",
+          "example": "7852921",
+          "member": "string",
+          "name": "NotifyKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "QueryDispatchInputInfo": {
+      "document": "The stream status of the queried input.",
+      "members": [
+        {
+          "default": "",
+          "document": "The input ID.",
+          "example": "12",
+          "member": "string",
+          "name": "InputID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input name.",
+          "example": "test",
+          "member": "string",
+          "name": "InputName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input protocol.",
+          "example": "RTMP_PUSH",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The stream status of the input.",
+          "example": "无",
+          "member": "InputStreamInfo",
+          "name": "InputStreamInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryInputStreamStateRequest": {
+      "document": "QueryInputStreamState request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The StreamLive input ID.",
+          "example": "1111",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryInputStreamStateResponse": {
+      "document": "QueryInputStreamState response structure.",
+      "members": [
+        {
+          "document": "The information of the StreamLive input queried.",
+          "example": "无",
+          "member": "QueryDispatchInputInfo",
+          "name": "Info",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RegionInfo": {
       "document": "Region information",
       "members": [
@@ -3665,6 +3967,16 @@
           "example": "无",
           "member": "PlanSettings",
           "name": "PlanSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The callback settings.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "EventNotifySetting",
+          "name": "EventNotifySettings",
           "required": true,
           "type": "object",
           "value_allowed_null": true

@@ -168,6 +168,13 @@
       "output": "DescribeDBSecurityGroupsResponse",
       "status": "online"
     },
+    "DescribeFlow": {
+      "document": "This API is used to query task flow information.",
+      "input": "DescribeFlowRequest",
+      "name": "Queries task flow information",
+      "output": "DescribeFlowResponse",
+      "status": "online"
+    },
     "DescribeInstanceDetail": {
       "document": "This API is used to query instance details.",
       "input": "DescribeInstanceDetailRequest",
@@ -383,6 +390,13 @@
       "input": "ResetAccountPasswordRequest",
       "name": "Resets the password of a TencentDB instance account",
       "output": "ResetAccountPasswordResponse",
+      "status": "online"
+    },
+    "RestartInstance": {
+      "document": "This API is used to restart an instance.",
+      "input": "RestartInstanceRequest",
+      "name": "Restarts an instance",
+      "output": "RestartInstanceResponse",
       "status": "online"
     },
     "ResumeServerless": {
@@ -4719,6 +4733,42 @@
       ],
       "type": "object"
     },
+    "DescribeFlowRequest": {
+      "document": "DescribeFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task flow ID",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFlowResponse": {
+      "document": "DescribeFlow response structure.",
+      "members": [
+        {
+          "document": "Task flow status. Valid values: `0` (succeeded), `1` (failed), `2` (Processing).",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstanceDetailRequest": {
       "document": "DescribeInstanceDetail request structure.",
       "members": [
@@ -7539,6 +7589,42 @@
     "ResetAccountPasswordResponse": {
       "document": "ResetAccountPassword response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartInstanceRequest": {
+      "document": "RestartInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartInstanceResponse": {
+      "document": "RestartInstance response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
