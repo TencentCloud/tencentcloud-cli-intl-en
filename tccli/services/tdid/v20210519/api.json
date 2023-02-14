@@ -1,0 +1,4822 @@
+{
+  "actions": {
+    "AddLabel": {
+      "document": "This API is used to add a label to a DID.\n",
+      "input": "AddLabelRequest",
+      "name": "Adds a label to a DID",
+      "output": "AddLabelResponse",
+      "status": "online"
+    },
+    "CancelAuthorityIssuer": {
+      "document": "This API is used to revoke the certification of an issuing authority.",
+      "input": "CancelAuthorityIssuerRequest",
+      "name": "Revokes the certification of an issuing authority",
+      "output": "CancelAuthorityIssuerResponse",
+      "status": "online"
+    },
+    "CheckChain": {
+      "document": "This API is used to get blockchain information.",
+      "input": "CheckChainRequest",
+      "name": "Gets blockchain information",
+      "output": "CheckChainResponse",
+      "status": "online"
+    },
+    "CheckDidDeploy": {
+      "document": "This API is used to query a deployment task.",
+      "input": "CheckDidDeployRequest",
+      "name": "Queries a deployment task",
+      "output": "CheckDidDeployResponse",
+      "status": "online"
+    },
+    "CreateCredential": {
+      "document": "This API is used to create a credential.",
+      "input": "CreateCredentialRequest",
+      "name": "Creates a credential",
+      "output": "CreateCredentialResponse",
+      "status": "online"
+    },
+    "CreateDidService": {
+      "document": "This API is used to create a DID service.",
+      "input": "CreateDidServiceRequest",
+      "name": "Creates a DID service",
+      "output": "CreateDidServiceResponse",
+      "status": "online"
+    },
+    "CreateLabel": {
+      "document": "This API is used to create a label.",
+      "input": "CreateLabelRequest",
+      "name": "Creates a label",
+      "output": "CreateLabelResponse",
+      "status": "online"
+    },
+    "CreateSelectiveCredential": {
+      "document": "This API is used to create a selective disclosure credential.",
+      "input": "CreateSelectiveCredentialRequest",
+      "name": "Creates a selective disclosure credential",
+      "output": "CreateSelectiveCredentialResponse",
+      "status": "online"
+    },
+    "CreateTDid": {
+      "document": "This API is used to create an organization DID.",
+      "input": "CreateTDidRequest",
+      "name": "Creates an organization DID",
+      "output": "CreateTDidResponse",
+      "status": "online"
+    },
+    "CreateTDidByPrivateKey": {
+      "document": "This API is used to generate a TDID by private key.",
+      "input": "CreateTDidByPrivateKeyRequest",
+      "name": "Generates a TDID by private key",
+      "output": "CreateTDidByPrivateKeyResponse",
+      "status": "online"
+    },
+    "CreateTDidByPublicKey": {
+      "document": " This API is used to generate a TDID by public key.",
+      "input": "CreateTDidByPublicKeyRequest",
+      "name": "Generates a TDID by public key",
+      "output": "CreateTDidByPublicKeyResponse",
+      "status": "online"
+    },
+    "DeployByName": {
+      "document": "This API is used to deploy a TDID contract by name.",
+      "input": "DeployByNameRequest",
+      "name": "Deploys a TDID contract by name",
+      "output": "DeployByNameResponse",
+      "status": "online"
+    },
+    "DownCpt": {
+      "document": "This API is used to download a claim protocol type (CPT).",
+      "input": "DownCptRequest",
+      "name": "Downloads a claim protocol type (CPT)",
+      "output": "DownCptResponse",
+      "status": "online"
+    },
+    "EnableHash": {
+      "document": "This API is used to enable a contract.",
+      "input": "EnableHashRequest",
+      "name": "Enables a contract",
+      "output": "EnableHashResponse",
+      "status": "online"
+    },
+    "GetAgencyTDid": {
+      "document": "该接口已废弃\n\nThis API is used to get the DID details of the current organization.",
+      "input": "GetAgencyTDidRequest",
+      "name": "Gets the DID details of the current organization",
+      "output": "GetAgencyTDidResponse",
+      "status": "deprecated"
+    },
+    "GetAuthoritiesList": {
+      "document": "This API is used to query authorities.",
+      "input": "GetAuthoritiesListRequest",
+      "name": "Queries authorities",
+      "output": "GetAuthoritiesListResponse",
+      "status": "online"
+    },
+    "GetAuthorityIssuer": {
+      "document": "This API is used to get the information of an issuing authority.",
+      "input": "GetAuthorityIssuerRequest",
+      "name": "Gets the information of an issuing authority",
+      "output": "GetAuthorityIssuerResponse",
+      "status": "online"
+    },
+    "GetConsortiumClusterList": {
+      "document": "This API is used to query the BCOS networks of a consortium.",
+      "input": "GetConsortiumClusterListRequest",
+      "name": "Queries the BCOS networks of a consortium",
+      "output": "GetConsortiumClusterListResponse",
+      "status": "online"
+    },
+    "GetConsortiumList": {
+      "document": "This API is used to query consortiums.",
+      "input": "GetConsortiumListRequest",
+      "name": "Queries consortiums",
+      "output": "GetConsortiumListResponse",
+      "status": "online"
+    },
+    "GetCptInfo": {
+      "document": "This API is used to get the information of a claim protocol type (CPT).",
+      "input": "GetCptInfoRequest",
+      "name": "Gets the information of a claim protocol type (CPT)",
+      "output": "GetCptInfoResponse",
+      "status": "online"
+    },
+    "GetCptList": {
+      "document": "This API is used to query claim protocol types (CPT).",
+      "input": "GetCptListRequest",
+      "name": "Queries claim protocol types (CPT)",
+      "output": "GetCptListResponse",
+      "status": "online"
+    },
+    "GetCredentialCptRank": {
+      "document": "This API is used to get the rankings of claim protocol types (CPT).",
+      "input": "GetCredentialCptRankRequest",
+      "name": "Gets the rankings of claim protocol types (CPT)",
+      "output": "GetCredentialCptRankResponse",
+      "status": "online"
+    },
+    "GetCredentialIssueRank": {
+      "document": "This API is used to get the rankings of issuers.",
+      "input": "GetCredentialIssueRankRequest",
+      "name": "Gets the rankings of issuers",
+      "output": "GetCredentialIssueRankResponse",
+      "status": "online"
+    },
+    "GetCredentialIssueTrend": {
+      "document": "This API is used to query credential issuing trends.",
+      "input": "GetCredentialIssueTrendRequest",
+      "name": "Queries credential issuing trends",
+      "output": "GetCredentialIssueTrendResponse",
+      "status": "online"
+    },
+    "GetCredentialStatus": {
+      "document": "This API is used to query the on-chain status of a credential.",
+      "input": "GetCredentialStatusRequest",
+      "name": "Queries the on-chain status of a credential",
+      "output": "GetCredentialStatusResponse",
+      "status": "online"
+    },
+    "GetDataPanel": {
+      "document": "This API is used to query the overall statistics of a network.\n",
+      "input": "GetDataPanelRequest",
+      "name": "Queries the overall statistics of a network",
+      "output": "GetDataPanelResponse",
+      "status": "online"
+    },
+    "GetDeployInfo": {
+      "document": "This API is used to query the deployment information of a contract.\n",
+      "input": "GetDeployInfoRequest",
+      "name": "Queries the deployment information of a contract",
+      "output": "GetDeployInfoResponse",
+      "status": "online"
+    },
+    "GetDeployList": {
+      "document": "This API is used to query deployed contracts.",
+      "input": "GetDeployListRequest",
+      "name": "Queries deployed contracts",
+      "output": "GetDeployListResponse",
+      "status": "online"
+    },
+    "GetDidClusterDetail": {
+      "document": "This API is used to get the information of a DID blockchain network.",
+      "input": "GetDidClusterDetailRequest",
+      "name": "Gets the information of a DID blockchain network",
+      "output": "GetDidClusterDetailResponse",
+      "status": "online"
+    },
+    "GetDidClusterList": {
+      "document": "This API is used to query your DID networks.",
+      "input": "GetDidClusterListRequest",
+      "name": "Queries DID networks",
+      "output": "GetDidClusterListResponse",
+      "status": "online"
+    },
+    "GetDidDetail": {
+      "document": "This API is used to get the information of a DID.",
+      "input": "GetDidDetailRequest",
+      "name": "Gets the information of a DID",
+      "output": "GetDidDetailResponse",
+      "status": "online"
+    },
+    "GetDidDocument": {
+      "document": "This API is used to get the document of a DID.\n",
+      "input": "GetDidDocumentRequest",
+      "name": "Gets the document of a DID",
+      "output": "GetDidDocumentResponse",
+      "status": "online"
+    },
+    "GetDidList": {
+      "document": "This API is used to query DIDs.",
+      "input": "GetDidListRequest",
+      "name": "Queries DIDs",
+      "output": "GetDidListResponse",
+      "status": "online"
+    },
+    "GetDidRegisterTrend": {
+      "document": "This API is used to query DID registration trends.",
+      "input": "GetDidRegisterTrendRequest",
+      "name": "Queries DID registration trends",
+      "output": "GetDidRegisterTrendResponse",
+      "status": "online"
+    },
+    "GetDidServiceDetail": {
+      "document": "This API is used to get the information of a DID service.",
+      "input": "GetDidServiceDetailRequest",
+      "name": "Gets the information of a DID service.",
+      "output": "GetDidServiceDetailResponse",
+      "status": "online"
+    },
+    "GetDidServiceList": {
+      "document": "This API is used to query DID services.",
+      "input": "GetDidServiceListRequest",
+      "name": "Queries DID services",
+      "output": "GetDidServiceListResponse",
+      "status": "online"
+    },
+    "GetGroupList": {
+      "document": "This API is used to query main groups.",
+      "input": "GetGroupListRequest",
+      "name": "Query main groups",
+      "output": "GetGroupListResponse",
+      "status": "online"
+    },
+    "GetLabelList": {
+      "document": "This API is used to query labels.",
+      "input": "GetLabelListRequest",
+      "name": "Queries labels",
+      "output": "GetLabelListResponse",
+      "status": "online"
+    },
+    "GetPolicyList": {
+      "document": "This API is used to query disclosure policies.",
+      "input": "GetPolicyListRequest",
+      "name": "Queries disclosure policies",
+      "output": "GetPolicyListResponse",
+      "status": "online"
+    },
+    "GetPublicKey": {
+      "document": "This API is used to get the public key of a DID.",
+      "input": "GetPublicKeyRequest",
+      "name": "Gets the public key",
+      "output": "GetPublicKeyResponse",
+      "status": "online"
+    },
+    "QueryPolicy": {
+      "document": "This API is used to get the information of a disclosure policy.",
+      "input": "QueryPolicyRequest",
+      "name": "Gets the information of a disclosure policy",
+      "output": "QueryPolicyResponse",
+      "status": "online"
+    },
+    "RecognizeAuthorityIssuer": {
+      "document": "This API is used to certify an issuing authority.",
+      "input": "RecognizeAuthorityIssuerRequest",
+      "name": "Certifies an issuing authority",
+      "output": "RecognizeAuthorityIssuerResponse",
+      "status": "online"
+    },
+    "RegisterClaimPolicy": {
+      "document": "This API is used to register a disclosure policy.",
+      "input": "RegisterClaimPolicyRequest",
+      "name": "Registers a disclosure policy",
+      "output": "RegisterClaimPolicyResponse",
+      "status": "online"
+    },
+    "RegisterCpt": {
+      "document": "This API is used to create a claim protocol type (CPT).",
+      "input": "RegisterCptRequest",
+      "name": "Creates a claim protocol type (CPT)",
+      "output": "RegisterCptResponse",
+      "status": "online"
+    },
+    "RegisterIssuer": {
+      "document": "This API is used to register an issuing authority.",
+      "input": "RegisterIssuerRequest",
+      "name": "Registers an issuing authority",
+      "output": "RegisterIssuerResponse",
+      "status": "online"
+    },
+    "RemoveHash": {
+      "document": "This API is used to delete a contract.",
+      "input": "RemoveHashRequest",
+      "name": "Deletes a contract",
+      "output": "RemoveHashResponse",
+      "status": "online"
+    },
+    "SetCredentialStatus": {
+      "document": "This API is used to change the on-chain status of a credential.",
+      "input": "SetCredentialStatusRequest",
+      "name": "Changes the on-chain status of a credential",
+      "output": "SetCredentialStatusResponse",
+      "status": "online"
+    },
+    "VerifyCredential": {
+      "document": "This API is used to verify a credential.",
+      "input": "VerifyCredentialRequest",
+      "name": "Verifies a credential",
+      "output": "VerifyCredentialResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-05-19",
+    "serviceNameCN": "分布式身份",
+    "serviceShortName": "tdid"
+  },
+  "objects": {
+    "AddLabelRequest": {
+      "document": "AddLabel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The label ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LabelId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddLabelResponse": {
+      "document": "AddLabel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Authority": {
+      "document": "The information of an authority.",
+      "members": [
+        {
+          "default": "",
+          "document": "The authority ID.",
+          "example": "11",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "5587",
+          "member": "uint64",
+          "name": "DidId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The details of the DID.",
+          "example": "did:tdid:1:0x27f6403f908c7fa81006eaf71b4ae4be97c69c3d",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The authority name.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the authority is certified. `1`: Yes; `2`: No.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID service ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DidServiceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application ID.",
+          "example": "5",
+          "member": "uint64",
+          "name": "ContractAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "test",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The registration time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-07-13 17:02:33",
+          "member": "string",
+          "name": "RegisterTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The recognition time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "RecognizeTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The creation time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-07-13T17:02:33+08:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The last updated time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-07-13T17:02:33+08:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "test",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The on-chain label.",
+          "example": "test",
+          "member": "string",
+          "name": "LabelName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BcosClusterItem": {
+      "document": "The information of a BCOS network.",
+      "members": [
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ChainId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network name.",
+          "example": "test",
+          "member": "string",
+          "name": "ChainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of organizations.",
+          "example": "2",
+          "member": "uint64",
+          "name": "AgencyCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ConsortiumId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "2021-08-07 15:40:46",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time.",
+          "example": "2021-09-07 15:53:55",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network status.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ChainStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The resource ID.",
+          "example": "tbaas-6s0ih1k0rg",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The cluster ID.",
+          "example": "bcos-03z30qbg1c",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium name.",
+          "example": "test",
+          "member": "string",
+          "name": "ConsortiumName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The organization ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AgencyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The renewal status.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network mode.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalNetworkNode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of nodes created.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCreateNode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of groups.",
+          "example": "3",
+          "member": "uint64",
+          "name": "TotalGroups",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CancelAuthorityIssuerRequest": {
+      "document": "CancelAuthorityIssuer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The details of the DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelAuthorityIssuerResponse": {
+      "document": "CancelAuthorityIssuer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckChainRequest": {
+      "document": "CheckChain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The name of the DID organization.",
+          "example": "test",
+          "member": "string",
+          "name": "AgencyName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckChainResponse": {
+      "document": "CheckChain response structure.",
+      "members": [
+        {
+          "document": "Whether you are the owner of the consortium. `1`: Yes; `0`: No.",
+          "example": "1",
+          "member": "int64",
+          "name": "RoleType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The chain ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ChainId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The application name.",
+          "example": "test",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckDidDeployRequest": {
+      "document": "CheckDidDeploy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckDidDeployResponse": {
+      "document": "CheckDidDeploy response structure.",
+      "members": [
+        {
+          "document": "The service information.",
+          "example": "无",
+          "member": "Task",
+          "name": "Task",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ConsortiumItem": {
+      "document": "The information of a consortium.",
+      "members": [
+        {
+          "default": "",
+          "document": "The consortium ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium name.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Contract": {
+      "document": "The information of a deployed contract.",
+      "members": [
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "22",
+          "member": "string",
+          "name": "ApplyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The contract status. `true`: Enabled; `false`: Not enabled.",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The CNS address of the contract.",
+          "example": "0x0dd4aef95b3801c6b7bb1cee8c214a99b2aaf31896998f614032fb5ef750df",
+          "member": "string",
+          "name": "Hash",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The desensitized CNS address.",
+          "example": "0x0dd4...50dfe1",
+          "member": "string",
+          "name": "HashShow",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID of the organization that deployed the contract.",
+          "example": "0x79cd098cab63e0503f9ed87dd869cd970e88cb02",
+          "member": "string",
+          "name": "WeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the organization that deployed the contract.",
+          "example": "test",
+          "member": "string",
+          "name": "DeployName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group.",
+          "example": "group-1",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The deployment time.",
+          "example": "2021-04-12 16:46:11",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CptIssueRank": {
+      "document": "Claim protocol type (CPT) rankings by the number of credentials issued.",
+      "members": [
+        {
+          "default": "",
+          "document": "The (claim protocol type) CPT name.",
+          "example": "test",
+          "member": "string",
+          "name": "CptName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ranking.",
+          "example": "10",
+          "member": "int64",
+          "name": "Rank",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of credentials issued.",
+          "example": "10",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "test",
+          "member": "string",
+          "name": "ApplyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ApplyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CptListData": {
+      "document": "The information of claim protocol types (CPT).",
+      "members": [
+        {
+          "default": "",
+          "document": "The CPT ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the claim protocol type (CPT).",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The service ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ServiceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application ID of the contract.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ContractAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) ID.",
+          "example": "3000009",
+          "member": "uint64",
+          "name": "CptId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type. `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The description of the claim protocol type (CPT).",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The JSON file of the claim protocol type (CPT).",
+          "example": "test",
+          "member": "string",
+          "name": "CptJson",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "test",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last updated time.",
+          "example": "test",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID of the creator.",
+          "example": "test",
+          "member": "string",
+          "name": "CreatorDid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "test",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateCredentialRequest": {
+      "document": "CreateCredential request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "A parameter set. For details, see the example.",
+          "example": "无",
+          "member": "FunctionArg",
+          "name": "FunctionArg",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "A parameter set. For details, see the example.",
+          "example": "无",
+          "member": "TransactionArg",
+          "name": "TransactionArg",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The version.",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "VersionCredential",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the credential is unsigned.",
+          "example": "true",
+          "member": "bool",
+          "name": "UnSigned",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCredentialResponse": {
+      "document": "CreateCredential response structure.",
+      "members": [
+        {
+          "document": "The information of the credential.",
+          "example": "c",
+          "member": "string",
+          "name": "CredentialData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDidServiceRequest": {
+      "document": "CreateDidService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The consortium name.",
+          "example": "bigbang",
+          "member": "string",
+          "name": "ConsortiumName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The consortium ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ConsortiumId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The organization name.",
+          "example": "盟主",
+          "member": "string",
+          "name": "AgencyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "测试应用",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group name.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDidServiceResponse": {
+      "document": "CreateDidService response structure.",
+      "members": [
+        {
+          "document": "The service information.",
+          "example": "无",
+          "member": "Task",
+          "name": "Task",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLabelRequest": {
+      "document": "CreateLabel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The label name.",
+          "example": "test1a152",
+          "member": "string",
+          "name": "LabelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLabelResponse": {
+      "document": "CreateLabel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSelectiveCredentialRequest": {
+      "document": "CreateSelectiveCredential request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "A parameter set.",
+          "example": "1",
+          "member": "VerifyFunctionArg",
+          "name": "FunctionArg",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The disclosure policy ID.",
+          "example": "2000000",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSelectiveCredentialResponse": {
+      "document": "CreateSelectiveCredential response structure.",
+      "members": [
+        {
+          "document": "The credential string.",
+          "example": "{}",
+          "member": "string",
+          "name": "CredentialData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTDidByPrivateKeyRequest": {
+      "document": "CreateTDidByPrivateKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The private key.",
+          "example": "test",
+          "member": "string",
+          "name": "PrivateKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTDidByPrivateKeyResponse": {
+      "document": "CreateTDidByPrivateKey response structure.",
+      "members": [
+        {
+          "document": "The DID.",
+          "example": "did:tdid:1:0x6dcc17846844ff22046a3cc5ae51941defe0d02c",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTDidByPublicKeyRequest": {
+      "document": "CreateTDidByPublicKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The public key.",
+          "example": "test1",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The encrypted public key.",
+          "example": "test",
+          "member": "string",
+          "name": "EncryptPubKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTDidByPublicKeyResponse": {
+      "document": "CreateTDidByPublicKey response structure.",
+      "members": [
+        {
+          "document": "The DID.",
+          "example": "did:tdid:1:0x4b5edc27dd8a20ebaae6d427f3142b24fbf687ff",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTDidRequest": {
+      "document": "CreateTDid request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": " ",
+          "example": "0",
+          "member": "uint64",
+          "name": "Relegation",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTDidResponse": {
+      "document": "CreateTDid response structure.",
+      "members": [
+        {
+          "document": "The DID.",
+          "example": "did:tdid:1:0xdab41eb32082044366f1b5712504d0b623b095c1",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CredentialStatus": {
+      "document": "The on-chain status of the credential.",
+      "members": [
+        {
+          "default": "",
+          "document": "The credential ID.",
+          "example": "a",
+          "member": "string",
+          "name": "CredentialId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The credential status. `0`: Invalid; `1`: Valid.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID of the issuer.",
+          "example": "a",
+          "member": "string",
+          "name": "Issuer",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A summary of the credential.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "a",
+          "member": "string",
+          "name": "Digest",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The credential signature.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "a",
+          "member": "string",
+          "name": "Signature",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The last updated timestamp.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TimeStamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DeployByNameRequest": {
+      "document": "DeployByName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "test",
+          "member": "string",
+          "name": "ApplicationName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeployByNameResponse": {
+      "document": "DeployByName response structure.",
+      "members": [
+        {
+          "document": "The hash value.",
+          "example": "0xf9738549a9be10bf5fa15c9d32d113ba6b64f1f97c6dc8c962b07b84a08af1",
+          "member": "string",
+          "name": "Hash",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DidCluster": {
+      "document": "The information of DID blockchain networks.",
+      "members": [
+        {
+          "default": "",
+          "document": "The chain ID.",
+          "example": "590",
+          "member": "uint64",
+          "name": "ChainId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The chain name.",
+          "example": "DCDC",
+          "member": "string",
+          "name": "ChainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of organizations.",
+          "example": "2",
+          "member": "uint64",
+          "name": "AgencyCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium ID.",
+          "example": "661",
+          "member": "uint64",
+          "name": "ConsortiumId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "2021-08-06 20:43:05",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time.",
+          "example": "2021-09-06 20:57:20",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network status.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ChainStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The resource ID.",
+          "example": "tbaas-ijfnnzqhg6",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-8o0v0fpj12",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium name.",
+          "example": "test",
+          "member": "string",
+          "name": "ConsortiumName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The organization ID.",
+          "example": "301",
+          "member": "uint64",
+          "name": "AgencyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether auto-renewal is enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of network nodes.",
+          "example": "5",
+          "member": "uint64",
+          "name": "TotalNetworkNode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of nodes of the current organization.",
+          "example": "4",
+          "member": "uint64",
+          "name": "TotalCreateNode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of groups.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalGroups",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of DIDs.",
+          "example": "5",
+          "member": "uint64",
+          "name": "DidCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DidData": {
+      "document": "The information of DIDs.",
+      "members": [
+        {
+          "default": "",
+          "document": "The service ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ServiceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "a",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "test",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The status of the authority. `1`: Not registered; `2`: Not certified; `3`: Certified.",
+          "example": "1",
+          "member": "int64",
+          "name": "AuthorityState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The label of the DID.",
+          "example": "test",
+          "member": "string",
+          "name": "LabelName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID creation time.",
+          "example": "1622620908",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium name.",
+          "example": "test",
+          "member": "string",
+          "name": "AllianceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The label ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LabelId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DidServiceInfo": {
+      "document": "The DID service information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID service ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application ID.",
+          "example": "251005745",
+          "member": "uint64",
+          "name": "Appid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The account ID.",
+          "example": "1298334110",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ConsortiumId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The consortium name.",
+          "example": "test",
+          "member": "string",
+          "name": "ConsortiumName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The chain ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ChainId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether you are the owner of the consortium. `1`: Yes; `0`: No.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RoleType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The organization DID.",
+          "example": "test",
+          "member": "string",
+          "name": "AgencyDid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The organization name.",
+          "example": "test",
+          "member": "string",
+          "name": "CreateOrg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The endpoint.",
+          "example": "\"http://127.0.0.1:6001\"",
+          "member": "string",
+          "name": "Endpoint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "test",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last updated time.",
+          "example": "test",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group name.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DownCptRequest": {
+      "document": "DownCpt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) index.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptIndex",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DownCptResponse": {
+      "document": "DownCpt response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableHashRequest": {
+      "document": "EnableHash request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The CNS address of the contract.",
+          "example": "0x51c01ded73e0e319ae283d587a52af312e63892cd8cfaf645b7d8cf8a2b5ff",
+          "member": "string",
+          "name": "Hash",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableHashResponse": {
+      "document": "EnableHash response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FunctionArg": {
+      "document": "The input parameters for creating a credential.",
+      "members": [
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID of the issuer.",
+          "example": "1",
+          "member": "string",
+          "name": "Issuer",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time.",
+          "example": "1",
+          "member": "string",
+          "name": "ExpirationDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The claim.",
+          "example": "1",
+          "member": "string",
+          "name": "ClaimJson",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "GetAgencyTDidRequest": {
+      "document": "GetAgencyTDid request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAgencyTDidResponse": {
+      "document": "GetAgencyTDid response structure.",
+      "members": [
+        {
+          "document": "The prefix (fixed).",
+          "example": "did:tdid",
+          "member": "string",
+          "name": "Prefix",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The details of the DID.",
+          "example": "无",
+          "member": "Identity",
+          "name": "Identity",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAuthoritiesListRequest": {
+      "document": "GetAuthoritiesList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The page number, beginning from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to query certified or uncertified authorities. `1`: Certified; `2`: Uncertified.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAuthoritiesListResponse": {
+      "document": "GetAuthoritiesList response structure.",
+      "members": [
+        {
+          "document": "A data set.",
+          "example": "无",
+          "member": "Authority",
+          "name": "ResultList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records.",
+          "example": "3",
+          "member": "int64",
+          "name": "AllCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAuthorityIssuerRequest": {
+      "document": "GetAuthorityIssuer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAuthorityIssuerResponse": {
+      "document": "GetAuthorityIssuer response structure.",
+      "members": [
+        {
+          "document": "The authority name.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The blockchain network ID.",
+          "example": "s",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The blockchain group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The DID of the authority.",
+          "example": "a",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Remarks.",
+          "example": "a",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The registration time.",
+          "example": "2022-02-28 17:58:32",
+          "member": "string",
+          "name": "RegisterTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The recognition time.",
+          "example": "2022-02-28 17:58:32",
+          "member": "string",
+          "name": "RecognizeTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetConsortiumClusterListRequest": {
+      "document": "GetConsortiumClusterList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The consortium ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ConsortiumId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetConsortiumClusterListResponse": {
+      "document": "GetConsortiumClusterList response structure.",
+      "members": [
+        {
+          "document": "A list of networks.",
+          "example": "无",
+          "member": "BcosClusterItem",
+          "name": "ClusterList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetConsortiumListRequest": {
+      "document": "GetConsortiumList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetConsortiumListResponse": {
+      "document": "GetConsortiumList response structure.",
+      "members": [
+        {
+          "document": "A list of the consortiums.",
+          "example": "无",
+          "member": "ConsortiumItem",
+          "name": "ConsortiumList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCptInfoRequest": {
+      "document": "GetCptInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) index.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptIndex",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCptInfoResponse": {
+      "document": "GetCptInfo response structure.",
+      "members": [
+        {
+          "document": "The JSON data of the claim protocol type (CPT).",
+          "example": "test",
+          "member": "string",
+          "name": "CptJsonData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCptListRequest": {
+      "document": "GetCptList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DisplayStart",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of records to return.",
+          "example": "10",
+          "member": "uint64",
+          "name": "DisplayLength",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The type. `0`: All CPTs; `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs",
+          "example": "3",
+          "member": "uint64",
+          "name": "CptType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCptListResponse": {
+      "document": "GetCptList response structure.",
+      "members": [
+        {
+          "document": "The information of claim protocol types (CPT).",
+          "example": "无",
+          "member": "CptListData",
+          "name": "CptDataList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of claim protocol types (CPT).",
+          "example": "1",
+          "member": "uint64",
+          "name": "AllCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialCptRankRequest": {
+      "document": "GetCredentialCptRank request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialCptRankResponse": {
+      "document": "GetCredentialCptRank response structure.",
+      "members": [
+        {
+          "document": "The rankings.",
+          "example": "无",
+          "member": "CptIssueRank",
+          "name": "RankIssueResult",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialIssueRankRequest": {
+      "document": "GetCredentialIssueRank request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialIssueRankResponse": {
+      "document": "GetCredentialIssueRank response structure.",
+      "members": [
+        {
+          "document": "The rankings.",
+          "example": "无",
+          "member": "CptIssueRank",
+          "name": "RankIssueResult",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialIssueTrendRequest": {
+      "document": "GetCredentialIssueTrend request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialIssueTrendResponse": {
+      "document": "GetCredentialIssueTrend response structure.",
+      "members": [
+        {
+          "document": "The trend information.",
+          "example": "无",
+          "member": "Trend",
+          "name": "Trend",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialStatusRequest": {
+      "document": "GetCredentialStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The credential ID.",
+          "example": "a",
+          "member": "string",
+          "name": "CredentialId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCredentialStatusResponse": {
+      "document": "GetCredentialStatus response structure.",
+      "members": [
+        {
+          "document": "The credential status.",
+          "example": "无",
+          "member": "CredentialStatus",
+          "name": "CredentialStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDataPanelRequest": {
+      "document": "GetDataPanel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDataPanelResponse": {
+      "document": "GetDataPanel response structure.",
+      "members": [
+        {
+          "document": "The number of blockchain networks.",
+          "example": "1",
+          "member": "int64",
+          "name": "BlockNetworkCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The blockchain network name.",
+          "example": "test",
+          "member": "string",
+          "name": "BlockNetworkName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The current block height.",
+          "example": "1",
+          "member": "int64",
+          "name": "BlockHeight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The blockchain network type.",
+          "example": "1",
+          "member": "int64",
+          "name": "BlockNetworkType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of DIDs.",
+          "example": "2",
+          "member": "int64",
+          "name": "DidCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of claim protocol types (CPT).",
+          "example": "4",
+          "member": "int64",
+          "name": "CptCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of certified authorities.",
+          "example": "5",
+          "member": "int64",
+          "name": "CertificatedAuthCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of credentials issued.",
+          "example": "1",
+          "member": "int64",
+          "name": "IssueCptCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of new DIDs in the current week.",
+          "example": "4",
+          "member": "int64",
+          "name": "NewDidCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of BCOS networks.",
+          "example": "5",
+          "member": "int64",
+          "name": "BcosCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of Fabric networks.",
+          "example": "4",
+          "member": "int64",
+          "name": "FabricCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of ChainMaker networks.",
+          "example": "2",
+          "member": "int64",
+          "name": "ChainMakerCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDeployInfoRequest": {
+      "document": "GetDeployInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The CNS address of the contract.",
+          "example": "test",
+          "member": "string",
+          "name": "Hash",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDeployInfoResponse": {
+      "document": "GetDeployInfo response structure.",
+      "members": [
+        {
+          "document": "The CNS address of the contract.",
+          "example": "test",
+          "member": "string",
+          "name": "Hash",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The main group ID of the contract.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The DID of the organization that deployed the contract.",
+          "example": "test",
+          "member": "string",
+          "name": "DeployDid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The TDID SDK version.",
+          "example": "test",
+          "member": "string",
+          "name": "SdkVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The TDID contract version.",
+          "example": "test",
+          "member": "string",
+          "name": "ContractVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The blockchain node version.",
+          "example": "test",
+          "member": "string",
+          "name": "BlockVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The IP address of the blockchain node.",
+          "example": "test",
+          "member": "string",
+          "name": "BlockIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The address of the DID contract.",
+          "example": "test",
+          "member": "string",
+          "name": "DidAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The address of the claim protocol type (CPT) contract.",
+          "example": "test",
+          "member": "string",
+          "name": "CptAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The address of the authority.",
+          "example": "test",
+          "member": "string",
+          "name": "AuthorityAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The evidence contract address.",
+          "example": "test",
+          "member": "string",
+          "name": "EvidenceAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The contract address of the specific issuer.",
+          "example": "test",
+          "member": "string",
+          "name": "SpecificAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The chain ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ChainId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDeployListRequest": {
+      "document": "GetDeployList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The start.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DisplayStart",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of records to return.",
+          "example": "10",
+          "member": "uint64",
+          "name": "DisplayLength",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDeployListResponse": {
+      "document": "GetDeployList response structure.",
+      "members": [
+        {
+          "document": "The total number of contracts.",
+          "example": "3",
+          "member": "uint64",
+          "name": "AllCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "A list of deployed contracts.",
+          "example": "无",
+          "member": "Contract",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidClusterDetailRequest": {
+      "document": "GetDidClusterDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID network ID.",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidClusterDetailResponse": {
+      "document": "GetDidClusterDetail response structure.",
+      "members": [
+        {
+          "document": "The network ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The consortium name.",
+          "example": "无",
+          "member": "string",
+          "name": "ConsortiumName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The name of the blockchain organization.",
+          "example": "无",
+          "member": "string",
+          "name": "ChainAgency",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidClusterListRequest": {
+      "document": "GetDidClusterList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetDidClusterListResponse": {
+      "document": "GetDidClusterList response structure.",
+      "members": [
+        {
+          "document": "A list of the DID networks.",
+          "example": "aaa",
+          "member": "DidCluster",
+          "name": "DidClusterList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidDetailRequest": {
+      "document": "GetDidDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidDetailResponse": {
+      "document": "GetDidDetail response structure.",
+      "members": [
+        {
+          "document": "The DID.",
+          "example": "did:weid:1:0xc89a0423e25bea56c9f3c33098a41b100795946b",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Remarks",
+          "example": "无",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The public key.",
+          "example": "6584791555786563316509885238222269581668944990935472251441138953",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the DID is a certified authority.",
+          "example": "0",
+          "member": "int64",
+          "name": "AuthorityState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The consortium ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ConsortiumId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The consortium name.",
+          "example": "test",
+          "member": "string",
+          "name": "ConsortiumName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The BCOS resource ID.",
+          "example": "1tbaas-k0j8i7lqc4",
+          "member": "string",
+          "name": "ResChainId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The creation time.",
+          "example": "2021-06-29 16:27:26",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidDocumentRequest": {
+      "document": "GetDidDocument request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidDocumentResponse": {
+      "document": "GetDidDocument response structure.",
+      "members": [
+        {
+          "document": "The name.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The DID document.",
+          "example": "s",
+          "member": "string",
+          "name": "Document",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidListRequest": {
+      "document": "GetDidList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The number of records per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The page number, beginning from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidListResponse": {
+      "document": "GetDidList response structure.",
+      "members": [
+        {
+          "document": "A list of DIDs.",
+          "example": "无",
+          "member": "DidData",
+          "name": "DataList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records.",
+          "example": "10",
+          "member": "int64",
+          "name": "AllCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidRegisterTrendRequest": {
+      "document": "GetDidRegisterTrend request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date (as early as 2021-4-23).",
+          "example": "test",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidRegisterTrendResponse": {
+      "document": "GetDidRegisterTrend response structure.",
+      "members": [
+        {
+          "document": "The trend information.",
+          "example": "无",
+          "member": "Trend",
+          "name": "Trend",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidServiceDetailRequest": {
+      "document": "GetDidServiceDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID service ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ServiceId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidServiceDetailResponse": {
+      "document": "GetDidServiceDetail response structure.",
+      "members": [
+        {
+          "document": "The DID service information.",
+          "example": "无",
+          "member": "DidServiceInfo",
+          "name": "DidService",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidServiceListRequest": {
+      "document": "GetDidServiceList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`1`: Return results at the network level; `0`: Return results at the service level.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDidServiceListResponse": {
+      "document": "GetDidServiceList response structure.",
+      "members": [
+        {
+          "document": "A list of DID services.",
+          "example": "aaa",
+          "member": "DidServiceInfo",
+          "name": "DidServiceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupListRequest": {
+      "document": "GetGroupList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`0`: Groups with no DID services; `1`: Groups with DID services.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupListResponse": {
+      "document": "GetGroupList response structure.",
+      "members": [
+        {
+          "document": "A list of groups.",
+          "example": "无",
+          "member": "Group",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLabelListRequest": {
+      "document": "GetLabelList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The number of records per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The page number, beginning from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLabelListResponse": {
+      "document": "GetLabelList response structure.",
+      "members": [
+        {
+          "document": "A data set.",
+          "example": "无",
+          "member": "Label",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPolicyListRequest": {
+      "document": "GetPolicyList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start.",
+          "example": "0",
+          "member": "int64",
+          "name": "DisplayStart",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of records to return.",
+          "example": "10",
+          "member": "int64",
+          "name": "DisplayLength",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPolicyListResponse": {
+      "document": "GetPolicyList response structure.",
+      "members": [
+        {
+          "document": "A list of disclosure policies.",
+          "example": "无",
+          "member": "Policy",
+          "name": "PolicyDataList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records.",
+          "example": "3",
+          "member": "int64",
+          "name": "AllCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPublicKeyRequest": {
+      "document": "GetPublicKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPublicKeyResponse": {
+      "document": "GetPublicKey response structure.",
+      "members": [
+        {
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The public key.",
+          "example": "test",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Group": {
+      "document": "The group information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "2",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of nodes.",
+          "example": "4",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of nodes of the organization.",
+          "example": "4",
+          "member": "uint64",
+          "name": "NodeCountOfAgency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The description of the group.",
+          "example": "qtadescriptionjkbdcqzgwohei",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether you are the owner of the consortium or not.",
+          "example": "1为盟主，0为非盟主",
+          "member": "uint64",
+          "name": "RoleType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The chain ID.",
+          "example": "bc104-1",
+          "member": "string",
+          "name": "ChainId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Identity": {
+      "document": "The details of the DID.",
+      "members": [
+        {
+          "default": "",
+          "document": "The account identifier.",
+          "example": "test",
+          "member": "string",
+          "name": "AccountIdentifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The chain ID.",
+          "example": "1",
+          "member": "string",
+          "name": "ChainID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group name.",
+          "example": "1",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Label": {
+      "document": "The label information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The label ID.",
+          "example": "78",
+          "member": "uint64",
+          "name": "LabelId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The label name.",
+          "example": "test",
+          "member": "string",
+          "name": "LabelName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of DIDs.",
+          "example": "10",
+          "member": "int64",
+          "name": "DidCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID of the creator.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "2021-07-20 18:35:56",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Policy": {
+      "document": "The policy information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The policy index.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The policy name.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The service ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ServiceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application ID of the contract.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ContractAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The policy ID.",
+          "example": "100000",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) ID.",
+          "example": "3000005",
+          "member": "uint64",
+          "name": "CptId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The JSON data.",
+          "example": "test",
+          "member": "string",
+          "name": "PolicyJson",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "test",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last updated time.",
+          "example": "test",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID of the creator.",
+          "example": "test",
+          "member": "string",
+          "name": "CreatorDid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application name.",
+          "example": "test",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) index.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Proof": {
+      "document": "The credential signature.",
+      "members": [
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "1",
+          "member": "int64",
+          "name": "Created",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DID of the creator.",
+          "example": "1",
+          "member": "string",
+          "name": "Creator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The salt value.",
+          "example": "1",
+          "member": "string",
+          "name": "SaltJson",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The signature.",
+          "example": "1",
+          "member": "string",
+          "name": "SignatureValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type.",
+          "example": "1",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "QueryPolicyRequest": {
+      "document": "QueryPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The policy index.",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyIndex",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryPolicyResponse": {
+      "document": "QueryPolicy response structure.",
+      "members": [
+        {
+          "document": "The policy index.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The policy ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The claim protocol type (CPT) ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The content of the policy.",
+          "example": "test",
+          "member": "string",
+          "name": "PolicyData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeAuthorityIssuerRequest": {
+      "document": "RecognizeAuthorityIssuer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "test",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeAuthorityIssuerResponse": {
+      "document": "RecognizeAuthorityIssuer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterClaimPolicyRequest": {
+      "document": "RegisterClaimPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) index.",
+          "example": "11",
+          "member": "uint64",
+          "name": "CptIndex",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The disclosure policy.",
+          "example": "test",
+          "member": "string",
+          "name": "Policy",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterClaimPolicyResponse": {
+      "document": "RegisterClaimPolicy response structure.",
+      "members": [
+        {
+          "document": "The policy index.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The policy ID.",
+          "example": "300000",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterCptRequest": {
+      "document": "RegisterCpt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The JSON data of the credential claim type (CPT).",
+          "example": "test",
+          "member": "string",
+          "name": "CptJson",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If you do not specify this, the ID will auto increment.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterCptResponse": {
+      "document": "RegisterCpt response structure.",
+      "members": [
+        {
+          "document": "The claim protocol type (CPT) index.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The claim protocol type (CPT) ID.",
+          "example": "11",
+          "member": "uint64",
+          "name": "CptId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterIssuerRequest": {
+      "document": "RegisterIssuer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DID.",
+          "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
+          "member": "string",
+          "name": "Did",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The issuing authority name.",
+          "example": "aaa",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "mark 一下",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterIssuerResponse": {
+      "document": "RegisterIssuer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveHashRequest": {
+      "document": "RemoveHash request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The CNS address of the contract.",
+          "example": "0x51c01ded73e0e319ae283d587a52af312e63892cd8cfaf645b7d8cf8a2b5ff",
+          "member": "string",
+          "name": "Hash",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveHashResponse": {
+      "document": "RemoveHash response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetCredentialStatusRequest": {
+      "document": "SetCredentialStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The credential status.",
+          "example": "test1a152",
+          "member": "CredentialStatus",
+          "name": "CredentialStatus",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "SetCredentialStatusResponse": {
+      "document": "SetCredentialStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Task": {
+      "document": "The output parameter of `CreateDidService` and `CheckDidDeploy`.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network ID.",
+          "example": "bcos-fmtkyt8xne",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The service ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ServiceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`0`: Under deployment; `1`: Deployed successfully; other values: Deployment failed.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code.",
+          "example": "200",
+          "member": "string",
+          "name": "ErrorCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "test",
+          "member": "string",
+          "name": "ErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "test",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last updated time.",
+          "example": "test",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TransactionArg": {
+      "document": "The transaction parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The credential ID.",
+          "example": "1",
+          "member": "string",
+          "name": "InvokerTDid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Trend": {
+      "document": "The trends.",
+      "members": [
+        {
+          "default": "",
+          "document": "The time point.",
+          "example": "test",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The count.",
+          "example": "test",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VerifyCredentialRequest": {
+      "document": "VerifyCredential request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "A parameter set.",
+          "example": "1",
+          "member": "VerifyFunctionArg",
+          "name": "FunctionArg",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "VerifyCredentialResponse": {
+      "document": "VerifyCredential response structure.",
+      "members": [
+        {
+          "document": "Whether the verification is successful.",
+          "example": "True",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The verification code.",
+          "example": "0",
+          "member": "uint64",
+          "name": "VerifyCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The verification message.",
+          "example": "success",
+          "member": "string",
+          "name": "VerifyMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VerifyFunctionArg": {
+      "document": "The credential verification parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The claim protocol type (CPT) ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CptId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The issuer DID.",
+          "example": "1",
+          "member": "string",
+          "name": "Issuer",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time.",
+          "example": "1",
+          "member": "int64",
+          "name": "ExpirationDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The claim.",
+          "example": "1",
+          "member": "string",
+          "name": "ClaimJson",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time when the credential was issued.",
+          "example": "1",
+          "member": "int64",
+          "name": "IssuanceDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The context.",
+          "example": "1",
+          "member": "string",
+          "name": "Context",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID.",
+          "example": "1",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The signature.",
+          "example": "无",
+          "member": "Proof",
+          "name": "Proof",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type.",
+          "example": "[\"a\",\"b\"]",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    }
+  },
+  "version": "1.0"
+}

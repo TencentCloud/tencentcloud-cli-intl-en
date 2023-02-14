@@ -831,6 +831,15 @@
           "name": "DiskEnhance",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable smart inspection.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableDiagnose",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
