@@ -399,6 +399,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d6581df-7914-46e5-9693-0663617c756e\",\n        \"FlowId\": 1\n    }\n}",
         "title": "None"
       }
+    ],
+    "UpgradeHourDCDBInstance": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=UpgradeHourDCDBInstance\n&InstanceId=dcdbt-fdpjf5zh\n&UpgradeType=ADD\n&AddShardConfig.ShardCount=2\n&AddShardConfig.ShardMemory=2\n&AddShardConfig.ShardStorage=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b59ee51-0e13-1c2f-dedb-59fabe9d7f4a\"\n    }\n}",
+        "title": "Upgrading a pay-as-you-go TDSQL for MySQL instance"
+      }
     ]
   },
   "version": "1.0"
