@@ -1391,13 +1391,22 @@
       "document": "AI video intelligent analysis input parameter types",
       "members": [
         {
-          "default": "",
           "document": "Video content analysis template ID.",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "An extended parameter, whose value is a stringfied JSON.\nNote: This parameter is for customers with special requirements. It needs to be customized offline.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

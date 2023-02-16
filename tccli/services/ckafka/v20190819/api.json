@@ -2844,7 +2844,6 @@
       "document": "DescribeInstancesDetail request structure.",
       "members": [
         {
-          "default": "",
           "document": "(Filter) filter by instance ID",
           "example": "instance-will-s",
           "member": "string",
@@ -2853,8 +2852,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "(Filter) filter by instance name. Fuzzy search is supported",
+          "document": "Filter by instance name, instance ID, AZ, VPC ID, or subnet ID. Fuzzy query is supported.",
           "example": "tre",
           "member": "string",
           "name": "SearchWord",
@@ -2862,7 +2860,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "(Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default",
           "example": "[\"0\\r\\n\",\"1\\r\\n\",\"2\\r\\n\"]",
           "member": "int64",
@@ -2871,7 +2868,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Offset. If this parameter is left empty, `0` will be used by default.",
           "example": "0",
           "member": "int64",
@@ -2880,7 +2876,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. If this parameter is left empty, `10` will be used by default. The maximum value is `20`.",
           "example": "10",
           "member": "int64",
@@ -2889,7 +2884,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag key match.",
           "example": "1",
           "member": "string",
@@ -2898,7 +2892,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filter. Valid values of `filter.Name` include `Ip`, `VpcId`, `SubNetId`, `InstanceType`, and `InstanceId`. Up to 10 values can be passed for `filter.Values`.",
           "example": "无",
           "member": "Filter",
@@ -2907,7 +2900,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "This parameter has been deprecated and replaced with `InstanceIdList`.",
           "example": "[instance-will-s]",
           "member": "string",
@@ -2916,7 +2908,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filter by instance ID.",
           "example": "[instance-will-s]",
           "member": "string",
@@ -4041,8 +4032,8 @@
       "document": "`DescribeGroup` response",
       "members": [
         {
-          "default": "",
           "document": "Count\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "TotalCount",
           "required": true,
@@ -4050,12 +4041,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "GroupList\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DescribeGroup",
           "name": "GroupList",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Consumer group quota\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupCountQuota",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

@@ -78,7 +78,7 @@
       "status": "online"
     },
     "CreateDBInstanceHour": {
-      "document": "This API is used to create pay-as-you-go TencentDB instances (which can be source instances, disaster recovery instances, or read-only replicas) by passing in information such as instance specifications, MySQL version number, and instance quantity.\n\nThis is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instances have been successfully delivered.\n\n1. Use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported;\n4. Source instances, disaster recovery instances, and read-only replicas can be created;\n5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance (excluding basic instances) will be initialized.",
+      "document": "This API is used to create a pay-as-you-go TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an async API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the `Status` value of an instance is `1` and `TaskStatus` is `0`, the instance has been successfully delivered.\n\n1. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances.\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months.\n3. MySQL 5.5, 5.6, 5.7, and 8.0 are supported.\n4. Source instances, disaster recovery instances, and read-only instances can be created.\n5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance will be initialized.",
       "input": "CreateDBInstanceHourRequest",
       "name": "Creates pay-as-you-go TencentDB instance",
       "output": "CreateDBInstanceHourResponse",
@@ -229,6 +229,13 @@
       "input": "DescribeCloneListRequest",
       "name": "Queries the clone task list",
       "output": "DescribeCloneListResponse",
+      "status": "online"
+    },
+    "DescribeDBFeatures": {
+      "document": "This API is used to query database version attributes, including supported features such as database encryption and audit.",
+      "input": "DescribeDBFeaturesRequest",
+      "name": "Queries the version attributes of an instance",
+      "output": "DescribeDBFeaturesResponse",
       "status": "online"
     },
     "DescribeDBImportRecords": {
@@ -799,11 +806,11 @@
       "status": "online"
     },
     "UpgradeCDBProxy": {
-      "document": "This API is used to upgrade the configuration of database proxy.",
+      "document": "接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置\n\nThis API is used to upgrade the configuration of database proxy.",
       "input": "UpgradeCDBProxyRequest",
-      "name": "Upgrades the configuration of database proxy",
+      "name": "This API is used to upgrade the database proxy configuration. It has been disused. Use `AdjustCdbProxy` instead.",
       "output": "UpgradeCDBProxyResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "UpgradeCDBProxyVersion": {
       "document": "This API is used to upgrade the version of database proxy.",
@@ -3689,7 +3696,7 @@
         },
         {
           "default": "",
-          "document": "Project ID. If this is left empty, the default project will be used. If read-only instances or disaster recovery instances are purchased, the project ID will be the same as the source instance ID by default.",
+          "document": "Project ID. If this parameter is left empty, the default project will be used. When you purchase read-only instances and disaster recovery instances, the project ID is the same as that of the source instance by default.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -5594,6 +5601,114 @@
       ],
       "type": "object"
     },
+    "DescribeDBFeaturesRequest": {
+      "document": "DescribeDBFeatures request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-qwerasdf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBFeaturesResponse": {
+      "document": "DescribeDBFeatures response structure.",
+      "members": [
+        {
+          "document": "Whether database audit is supported",
+          "example": "1",
+          "member": "bool",
+          "name": "IsSupportAudit",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether enabling audit requires a kernel version upgrade",
+          "example": "无",
+          "member": "bool",
+          "name": "AuditNeedUpgrade",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether database encryption is supported",
+          "example": "1",
+          "member": "bool",
+          "name": "IsSupportEncryption",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether enabling encryption requires a kernel version upgrade",
+          "example": "无",
+          "member": "bool",
+          "name": "EncryptionNeedUpgrade",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the instance is a remote read-only instance",
+          "example": "无",
+          "member": "bool",
+          "name": "IsRemoteRo",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Region of the source instance",
+          "example": "无",
+          "member": "string",
+          "name": "MasterRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether minor version upgrade is supported",
+          "example": "1",
+          "member": "bool",
+          "name": "IsSupportUpdateSubVersion",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The current kernel version",
+          "example": "20190203",
+          "member": "string",
+          "name": "CurrentSubVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available kernel version for upgrade",
+          "example": "20190930",
+          "member": "string",
+          "name": "TargetSubVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBImportRecordsRequest": {
       "document": "DescribeDBImportRecords request structure.",
       "members": [
@@ -5952,7 +6067,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. Value range: <br>0 - creating <br>1 - running <br>4 - isolating <br>5 - isolated (the instance can be restored and started in the recycle bin)",
+          "document": "Instance status. Valid values: <br>`0` (creating) <br>`1` (running) <br>`4` (isolating) <br>`5` (isolated; the instance can be restored and started in the recycle bin)",
           "example": "1",
           "member": "uint64",
           "name": "Status",
@@ -8838,7 +8953,6 @@
       "document": "Instance details",
       "members": [
         {
-          "default": "",
           "document": "Public network access status. Value range: 0 (not enabled), 1 (enabled), 2 (disabled)",
           "example": "0",
           "member": "int64",
@@ -8848,7 +8962,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "AZ information",
           "example": "ap-beijing-3",
           "member": "string",
@@ -8858,7 +8971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Initialization flag. Value range: 0 (not initialized), 1 (initialized)",
           "example": "1",
           "member": "int64",
@@ -8868,7 +8980,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VIP information of a read-only instance. This field is exclusive to read-only instances where read-only access is enabled separately\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "RoVipInfo",
@@ -8878,7 +8989,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Memory capacity in MB",
           "example": "1000",
           "member": "int64",
@@ -8888,8 +8998,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance status. Value range: 0 (creating), 1 (running), 4 (isolating), 5 (isolated)",
+          "document": "Instance status. Valid values: `0` (creating), `1` (running), `4` (isolating), `5` (isolated).",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -8898,7 +9007,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID, such as 51102",
           "example": "51102",
           "member": "int64",
@@ -8908,7 +9016,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of a secondary server\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "SlaveInfo",
@@ -8918,7 +9025,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance ID",
           "example": "cdb-***",
           "member": "string",
@@ -8928,7 +9034,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk capacity in GB",
           "example": "50",
           "member": "int64",
@@ -8938,7 +9043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto-renewal flag. Value range: 0 (auto-renewal not enabled), 1 (auto-renewal enabled), 2 (auto-renewal disabled)",
           "example": "1",
           "member": "int64",
@@ -8948,7 +9052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync)",
           "example": "0",
           "member": "int64",
@@ -8958,7 +9061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Details of a read-only group\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "RoGroup",
@@ -8968,7 +9070,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet ID, such as 2333",
           "example": "2333",
           "member": "int64",
@@ -8978,7 +9079,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)",
           "example": "1",
           "member": "int64",
@@ -8988,7 +9088,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID",
           "example": "0",
           "member": "int64",
@@ -8998,7 +9097,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region information",
           "example": "ap-beijing",
           "member": "string",
@@ -9008,7 +9106,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance expiration time",
           "example": "2020-09-29 08:37:33",
           "member": "datetime",
@@ -9018,7 +9115,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "AZ deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ)",
           "example": "0",
           "member": "int64",
@@ -9028,7 +9124,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating secondary; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed",
           "example": "0",
           "member": "int64",
@@ -9038,7 +9133,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Details of a primary instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "MasterInfo",
@@ -9048,7 +9142,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance type",
           "example": "UNIVERSAL",
           "member": "string",
@@ -9058,7 +9151,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kernel version",
           "example": "5.7",
           "member": "string",
@@ -9068,7 +9160,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
           "example": "******",
           "member": "string",
@@ -9078,7 +9169,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Details of a disaster recovery instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "DrInfo",
@@ -9088,7 +9178,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Public domain name",
           "example": "''",
           "member": "string",
@@ -9098,7 +9187,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public network port number",
           "example": "0",
           "member": "int64",
@@ -9108,7 +9196,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing type",
           "example": "1",
           "member": "int64",
@@ -9118,7 +9205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance creation time",
           "example": "2020-08-29 08:37:33",
           "member": "string",
@@ -9128,7 +9214,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance IP",
           "example": "1.2.3.4",
           "member": "string",
@@ -9138,7 +9223,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Port number",
           "example": "3306",
           "member": "int64",
@@ -9148,7 +9232,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the disk write is locked (It depends on whether the instance data in disk exceeds its quota). Valid values: `0` (unlocked), `1` (locked).",
           "example": "0",
           "member": "int64",
@@ -9158,7 +9241,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC descriptor, such as \"vpc-5v8wn9mg\"",
           "example": "vpc-5v8wn9mg",
           "member": "string",
@@ -9168,7 +9250,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet descriptor, such as \"subnet-1typ0s7d\"",
           "example": "subnet-1typ0s7d",
           "member": "string",
@@ -9178,7 +9259,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Physical ID",
           "example": "''",
           "member": "string",
@@ -9188,7 +9268,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of cores",
           "example": "1",
           "member": "int64",
@@ -9198,7 +9277,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Queries per second",
           "example": "1000",
           "member": "int64",
@@ -9208,7 +9286,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "AZ name",
           "example": "北京三区",
           "member": "string",
@@ -9218,7 +9295,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Physical machine model\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "‘’",
           "member": "string",
@@ -9228,7 +9304,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Placement group ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "‘’",
           "member": "string",
@@ -9238,7 +9313,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "AZ ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "800003",
           "member": "int64",
@@ -9248,7 +9322,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of nodes",
           "example": "1",
           "member": "int64",
@@ -9258,7 +9331,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of tags\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "TagInfoItem",
@@ -9268,7 +9340,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Engine type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "InnoDB",
           "member": "string",
@@ -9278,7 +9349,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum delay threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -14284,7 +14354,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.",
+          "document": "Whether to enable QuickChange. Valid values: `0` (no), `1` (yes), `2` (QuickChange preferred). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.",
           "example": "1",
           "member": "int64",
           "name": "FastUpgrade",
