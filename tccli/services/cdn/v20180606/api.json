@@ -4486,7 +4486,6 @@
       "document": "Complete acceleration domain configuration information",
       "members": [
         {
-          "default": "",
           "document": "Domain name ID",
           "example": "cdn-00001x",
           "member": "string",
@@ -4496,7 +4495,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tencent Cloud account ID",
           "example": "123456789",
           "member": "int64",
@@ -4506,7 +4504,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Accelerated domain name.",
           "example": "www.test.com",
           "member": "string",
@@ -4516,7 +4513,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CNAME address of domain name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "www.test.com.cdn.dnsv1.com",
           "member": "string",
@@ -4526,7 +4522,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Acceleration service status\n`rejected`: The domain name is rejected due to expiration/deregistration of its ICP filing\n`processing`: Deploying\n`online`: Enabled\n`offline`: Disabled",
           "example": "online",
           "member": "string",
@@ -4536,7 +4531,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID, which can be viewed on the Tencent Cloud project management page",
           "example": "0",
           "member": "int64",
@@ -4546,7 +4540,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceleration domain name service type\n`web`: Webpage file downloads\n`download`: Large file downloads\n`media`: Audio and video on demand acceleration\n`hybrid`: Dynamic and static content acceleration\n`dynamic`: Dynamic content acceleration",
           "example": "web",
           "member": "string",
@@ -4556,7 +4549,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name creation time",
           "example": "2020-01-01 00:00:00",
           "member": "datetime",
@@ -4566,7 +4558,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name update time",
           "example": "2021-01-01 00:00:00",
           "member": "datetime",
@@ -4576,7 +4567,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Origin server configuration.",
           "example": "无",
           "member": "Origin",
@@ -4586,7 +4576,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "IpFilter",
@@ -4596,7 +4585,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP access limit configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "IpFreqLimit",
@@ -4606,7 +4594,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Status code cache configuration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "StatusCodeCache",
@@ -4616,7 +4603,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Smart compression configuration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Compression",
@@ -4626,7 +4612,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Bandwidth cap configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "BandwidthAlert",
@@ -4636,7 +4621,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Range GETs configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "RangeOriginPull",
@@ -4646,7 +4630,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "301/302 origin-pull follow-redirect configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "FollowRedirect",
@@ -4656,7 +4639,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom error page configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ErrorPage",
@@ -4666,7 +4648,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom request header configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "RequestHeader",
@@ -4676,7 +4657,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom response header configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ResponseHeader",
@@ -4686,7 +4666,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Single-link downstream speed limit configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "DownstreamCapping",
@@ -4696,7 +4675,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration of cache with/without parameter\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "CacheKey",
@@ -4706,7 +4684,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Origin server header cache configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ResponseHeaderCache",
@@ -4716,7 +4693,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Video dragging configuration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "VideoSeek",
@@ -4726,7 +4702,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node cache expiration rule configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Cache",
@@ -4736,7 +4711,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cross-border linkage optimization configuration (in beta)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "OriginPullOptimization",
@@ -4746,7 +4720,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HTTPS Acceleration Configuration Guide\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Https",
@@ -4756,7 +4729,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Timestamp hotlink protection configuration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Authentication",
@@ -4766,7 +4738,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "SEO configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Seo",
@@ -4776,7 +4747,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain name block status\n`normal`: Normal\n`overdue`: The domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.\n`malicious`: The acceleration service has been forcibly disabled due to detection of malicious behavior.\n`ddos`: The acceleration service has been disabled due to large-scale DDoS attacks to the domain name\n`idle`: No operations or data has been detected for more than 90 days. The domain name is determined to be inactive which automatically disables the acceleration service. You can restart the service.\n`unlicensed`: The acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.\n`capping`: The configured upper limit for bandwidth has been reached.\n`readonly`: The domain name has a special configuration and has been locked.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "normal",
           "member": "string",
@@ -4786,7 +4756,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access protocol forced redirect configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ForceRedirect",
@@ -4796,7 +4765,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Referer configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Referer",
@@ -4806,7 +4774,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Browser cache expiration rule configuration (in beta)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "MaxAge",
@@ -4816,7 +4783,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IPv6 origin-pull configuration (in beta)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Ipv6",
@@ -4826,7 +4792,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backwards compatibility configuration (compatibility field for internal use)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Compatibility",
@@ -4836,7 +4801,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region-specific configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SpecificConfig",
@@ -4846,7 +4810,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Acceleration region\n`mainland`: Acceleration inside the Chinese mainland\n`overseas`: Acceleration outside the Chinese mainland\n`global`: Acceleration over the globe\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "mainland",
           "member": "string",
@@ -4856,7 +4819,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain name lock status\n`normal`: Not locked\n`mainland`: Locked in the Chinese mainland\n`overseas`: Locked outside the Chinese mainland\nglobal: Locked globally\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "normal",
           "member": "string",
@@ -4866,7 +4828,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Origin-pull timeout configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "OriginPullTimeout",
@@ -4876,7 +4837,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "S3 bucket origin access authentication configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AwsPrivateAccess",
@@ -4886,7 +4846,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "SCDN configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SecurityConfig",
@@ -4896,7 +4855,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image optimization configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ImageOptimization",
@@ -4906,7 +4864,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "UA blocklist/allowlist configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "UserAgentFilter",
@@ -4916,7 +4873,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access control\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AccessControl",
@@ -4926,7 +4882,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to support advanced configuration items\n`on`: Supported\n`off`: Not supported\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "on",
           "member": "string",
@@ -4936,7 +4891,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "URL redirect configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "UrlRedirect",
@@ -4946,7 +4900,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access port configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[80,8080,443]",
           "member": "int64",
@@ -4956,7 +4909,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -4966,7 +4918,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Timestamp hotlink protection advanced configuration (allowlist feature)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AdvancedAuthentication",
@@ -4976,7 +4927,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Origin-pull authentication advanced configuration (allowlist feature)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "OriginAuthentication",
@@ -4986,7 +4936,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IPv6 access configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Ipv6Access",
@@ -4996,7 +4945,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Advanced configuration settings\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AdvanceConfig",
@@ -5006,7 +4954,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Offline cache (only available to beta users)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "OfflineCache",
@@ -5016,7 +4963,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Merging origin-pull requests (only available to beta users)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "OriginCombine",
@@ -5026,7 +4972,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "POST request configuration item\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "PostSize",
@@ -5036,7 +4981,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "QUIC configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Quic",
@@ -5046,7 +4990,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access authentication for OSS origin\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "OssPrivateAccess",
@@ -5056,7 +4999,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "WebSocket configuration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "WebSocket",
@@ -5066,7 +5008,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Remote authentication configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "RemoteAuthentication",
@@ -5076,7 +5017,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Shared CNAME configuration (only available to beta users)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ShareCname",
@@ -5086,7 +5026,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Rule engine\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "RuleEngine",
@@ -5096,7 +5035,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Primary domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
@@ -5106,7 +5044,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access authentication for Huawei Cloud OBS origin\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "HwPrivateAccess",
@@ -5116,11 +5053,19 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access authentication for QiNiu Cloud Kodo origin\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "QnPrivateAccess",
           "name": "QnPrivateAccess",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "HTTPS service\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "HttpsBilling",
+          "name": "HttpsBilling",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -6023,6 +5968,22 @@
       ],
       "usage": "both"
     },
+    "HttpsBilling": {
+      "document": "When it’s not enabled, HTTPS requests are blocked.",
+      "members": [
+        {
+          "default": "",
+          "document": "HTTPS Service",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "HwPrivateAccess": {
       "document": " Access authentication for Huawei Cloud OBS origin",
       "members": [
@@ -6160,7 +6121,7 @@
         },
         {
           "default": "",
-          "document": "HTTP code returned when the IP allowlist/blocklist verification fails\nValid values: 400-499\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "[Unavailable soon] The code returned when the IP blocklist/allowlist verification fails.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "403",
           "member": "int64",
           "name": "ReturnCode",
@@ -8402,8 +8363,8 @@
       "document": "A part of `CacheKey`",
       "members": [
         {
-          "default": "",
           "document": "Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -8411,8 +8372,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to sort again\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Reorder",
           "required": false,
@@ -8420,8 +8381,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Include/exclude query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeAll`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Includes/excludes query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeCustom`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Action",
           "required": false,
@@ -8429,8 +8390,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Array of included/excluded query strings (separated by ';')\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Value",
           "required": false,
@@ -10889,6 +10850,15 @@
           "example": "无",
           "member": "QnPrivateAccess",
           "name": "QnPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "HTTPS service",
+          "example": "无",
+          "member": "HttpsBilling",
+          "name": "HttpsBilling",
           "required": false,
           "type": "object"
         }

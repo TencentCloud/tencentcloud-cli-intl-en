@@ -224,6 +224,13 @@
       "output": "DescribeBgpBizTrendResponse",
       "status": "online"
     },
+    "DescribeBizHttpStatus": {
+      "document": "This API is used to get the statistics on the status codes of business traffic.",
+      "input": "DescribeBizHttpStatusRequest",
+      "name": "Gets the statistics on the status codes of business traffic",
+      "output": "DescribeBizHttpStatusResponse",
+      "status": "online"
+    },
     "DescribeBizTrend": {
       "document": "This API is used to get the traffic flow data collected in the specified period.",
       "input": "DescribeBizTrendRequest",
@@ -316,7 +323,7 @@
       "status": "online"
     },
     "DescribeListBGPInstances": {
-      "document": "This API is used to get a list of Anti-DDoS Pro instances.\n",
+      "document": "This API is used to get the list of Anti-DDoS Pro instances.",
       "input": "DescribeListBGPInstancesRequest",
       "name": "Gets a list of Anti-DDoS Pro instances",
       "output": "DescribeListBGPInstancesResponse",
@@ -892,6 +899,36 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Convoy instance ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ConvoyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Pay-as-you-go bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "ElasticBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it’s the IP broadcasted by EdgeOne. Values: `1` (yes), `0` (no)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "EOFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1009,7 +1046,6 @@
       "document": "Details of the Anti-DDoS Pro instance",
       "members": [
         {
-          "default": "",
           "document": "Details of the Anti-DDoS Pro instance",
           "example": "{\"EipList\":[\"175.27.164.158\"],\"InstanceId\":\"bgp-0000015a\"}",
           "member": "InstanceRelation",
@@ -1019,7 +1055,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifications of the Anti-DDoS Pro instance",
           "example": "{\"ProtectBandwidth\":30000,\"ProtectCountLimit\":10,\"ProtectIPNumbe",
           "member": "BGPInstanceSpecification",
@@ -1029,7 +1064,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Usage statistics of the Anti-DDoS Pro instance",
           "example": "{\"ProtectCountUsage\":0,\"ProtectIPNumberUsage\":1,\"Last7DayAttackC",
           "member": "BGPInstanceUsages",
@@ -1039,7 +1073,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region of the Anti-DDoS Pro instance",
           "example": "{\"Region\":\"ap-nanjing\"}",
           "member": "RegionInfo",
@@ -1049,7 +1082,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status of the Anti-DDoS Pro instance. Valid values:\n`idle`: The instance is running normally.\n`attacking`: The instance is under attack.\n`blocking`: The instance is blocked.\n`creating`: The instance is being created.\n`deblocking`: Unblocking the instance\n`isolate`: The instance is being isolated.",
           "example": "idle",
           "member": "string",
@@ -1059,7 +1091,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Purchase time",
           "example": "2021-04-25 23:04:10",
           "member": "datetime",
@@ -1069,7 +1100,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expiration time",
           "example": "2021-07-25 23:04:10",
           "member": "datetime",
@@ -1079,7 +1109,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name of the Anti-DDoS Pro instance",
           "example": "“”",
           "member": "string",
@@ -1089,7 +1118,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Details of the package to which the Anti-DDoS Pro instance belongs.\nWhen the package provided is not used by the instance, this field is `null`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "null",
           "member": "PackInfo",
@@ -1099,7 +1127,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Details of the cloud product used by the EIP bound to the Anti-DDoS Pro instance",
           "example": "[{\"Ip\":\"175.27.164.158\",\"BizType\":\"public\",\"DeviceType\":\"cvm\",\"I",
           "member": "EipProductInfo",
@@ -1109,7 +1136,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Binding status of the Anti-DDoS Pro instance\n`idle`: The instance is bound.\n `bounding`: Binding the instance.\n`failed`: Failed to bind\n]",
           "example": "idle",
           "member": "string",
@@ -1119,7 +1145,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Layer-4 protection level",
           "example": "defalut",
           "member": "string",
@@ -1129,7 +1154,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status of CC protection",
           "example": "1",
           "member": "int64",
@@ -1139,7 +1163,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tags associated with the resource",
           "example": "null",
           "member": "TagInfo",
@@ -1149,7 +1172,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "New edition of Anti-DDoS Pro",
           "example": "1",
           "member": "uint64",
@@ -1159,11 +1181,28 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The version of attack defense package",
           "example": "1",
           "member": "uint64",
           "name": "VitalityVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Network line\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Line",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to enable elastic bandwidth",
+          "example": "1",
+          "member": "uint64",
+          "name": "ElasticServiceBandwidth",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -2436,7 +2475,7 @@
         },
         {
           "default": "",
-          "document": "Region blocking configuration. The configuration ID should be cleared when you set this parameter.",
+          "document": "CC regional blocking configuration",
           "example": "无",
           "member": "CcGeoIPBlockConfig",
           "name": "CcGeoIPBlockConfig",
@@ -3641,6 +3680,105 @@
       ],
       "type": "object"
     },
+    "DescribeBizHttpStatusRequest": {
+      "document": "DescribeBizHttpStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Statistical mode. Value: `sum`.",
+          "example": "sum",
+          "member": "string",
+          "name": "Statistics",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
+          "example": "bgpip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Statistical period in seconds. Valid values: `60`, `300`, `1800`, `3600`, `21600`, and `86400`.",
+          "example": "300",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Statistics start time, such as `2020-02-01 12:04:12`",
+          "example": "2020-02-01 12:04:12",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Statistics end time, such as `2020-02-03 18:03:23`",
+          "example": "2020-02-03 18:03:23",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The resource ID.",
+          "example": "bgpip-000000xe",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specific domain name query",
+          "example": "www.xx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol and port list, which is valid when the metric is `connum`, `new_conn` or `inactive_conn`. Valid protocols: `TCP`, `UDP`, `HTTP`, `HTTPS`",
+          "example": "无",
+          "member": "ProtocolPort",
+          "name": "ProtoInfo",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBizHttpStatusResponse": {
+      "document": "DescribeBizHttpStatus response structure.",
+      "members": [
+        {
+          "document": "Statistics on the HTTP status codes of business traffic",
+          "example": "无",
+          "member": "HttpStatusMap",
+          "name": "HttpStatusMap",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBizTrendRequest": {
       "document": "DescribeBizTrend request structure.",
       "members": [
@@ -3664,7 +3802,7 @@
         },
         {
           "default": "",
-          "document": "Sampling interval. Valid values: `300`, `1800`, `3600`, `21600`, `86400`",
+          "document": "Sampling interval in seconds. Valid values: `60`, `300`, `1800`, `3600`, `21600`, `86400`",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -4843,7 +4981,7 @@
         },
         {
           "default": "",
-          "document": "Filters by status of bound resources. `idle`: normal; `attacking`: being attacked; `blocking`: blocked",
+          "document": "Filters by the status of bound resources. Values: `idle` (normal), `attacking` (being attacked), `blocking` (being blocked), `trial` (in trial)",
           "example": "attacking",
           "member": "string",
           "name": "FilterStatus",
@@ -4885,6 +5023,15 @@
           "name": "FilterPackType",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filters out Convoy instances",
+          "example": "无",
+          "member": "uint64",
+          "name": "FilterConvoy",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4923,7 +5070,6 @@
       "document": "DescribeListBGPInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
           "member": "uint64",
@@ -4932,7 +5078,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
           "example": "25",
           "member": "uint64",
@@ -4941,7 +5086,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filters by IP.",
           "example": "1.1.1.1",
           "member": "string",
@@ -4950,7 +5094,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Anti-DDoS instance ID filter. For example, `bgp-00000001`.",
           "example": "bgp-00000001",
           "member": "string",
@@ -4959,7 +5102,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filters by region. For example, `ap-guangzhou`.",
           "example": "ap-guangzhou",
           "member": "string",
@@ -4968,7 +5110,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filters by name.",
           "example": "test",
           "member": "string",
@@ -4977,7 +5118,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Line filter. Valid values: 1: BGP; 2: Non-BGP.",
           "example": "1",
           "member": "uint64",
@@ -4986,7 +5126,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filters by instance status. `idle`: Running; `attacking`: Being attacked; `blocking`: Being blocked.",
           "example": "attacking",
           "member": "string",
@@ -4995,7 +5134,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filters by binding status. `bounding`: The instance is bound; `failed`: The binding failed.",
           "example": "bounding",
           "member": "string",
@@ -5004,7 +5142,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Array of instance IDs",
           "example": "[bgp-00000001]",
           "member": "string",
@@ -5013,8 +5150,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Filters by Enterprise edition",
+          "document": "Enterprise edition. Values: `1` (the Convoy package included), `2` (the Convoy package not included)",
           "example": "1",
           "member": "uint64",
           "name": "FilterEnterpriseFlag",
@@ -5022,7 +5158,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether it’s a Lighthouse edition",
           "example": "1",
           "member": "uint64",
@@ -5031,7 +5166,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether it’s a Channel edition",
           "example": "1",
           "member": "uint64",
@@ -5040,13 +5174,36 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filters by tag",
           "example": "无",
           "member": "TagFilter",
           "name": "FilterTag",
           "required": false,
           "type": "object"
+        },
+        {
+          "document": "Filters out trial instances. Values: `1` (emergency protection instances), `2` (PLG instances)",
+          "example": "1",
+          "member": "uint64",
+          "name": "FilterTrialFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Filters out Convoy instances",
+          "example": "1",
+          "member": "uint64",
+          "name": "FilterConvoy",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to exclude the advanced information (such as `InstanceList[0].Usage`). Values: `true` (exclude), `false` (do not exclude). The default value is `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "ExcludeAdvancedInfo",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -6124,7 +6281,7 @@
       "document": "DescribePendingRiskInfo response structure.",
       "members": [
         {
-          "document": "Whether the user is a paid user",
+          "document": "Whether the user is a paid user. Values: `true`, `false`.",
           "example": "true",
           "member": "bool",
           "name": "IsPaidUsr",
@@ -6383,6 +6540,112 @@
       ],
       "usage": "both"
     },
+    "HttpStatusMap": {
+      "document": "Aggregated data on the HTTP status codes of business traffic",
+      "members": [
+        {
+          "default": "",
+          "document": "HTTP 2xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp2xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 5xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http5xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 5xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp5xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 404 Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp404",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 4xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http4xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 4xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp4xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 2xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http2xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 404 Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http404",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 3xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp3xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 3xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http3xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "IPAlarmThresholdRelation": {
       "document": "Single IP alarm threshold configuration",
       "members": [
@@ -6467,7 +6730,7 @@
       "members": [
         {
           "default": "",
-          "document": "Rule status. Valid values: `0` (the rule is working), `1` (the rule goes into effect), `2` (rule configuration failed), `3` (the rule is being deleted), `5` (rule deletion failed), `6` (waiting to add rules), `7` (waiting to delete rules), `8` (waiting to upload certificates), `9` (resources for the rule not found), `10` (waiting to modify rules), `11` (the rule is being modifying).",
+          "document": "Rules can only be modified when the status is `0`, `2`, or `8`.\nRule status. Values: `0` (Normal), `1` (Being configured), `2` (Configuration failed), `3` (Being deleted), `5` (Failed to be deleted), `6` (Pending add), `7` (Pending delete), `8` (Pending certificate upload), `9` (Associated resource not exist), `10` (Pending modify), `11` (Being modified).",
           "example": "8",
           "member": "uint64",
           "name": "Status",
@@ -7520,7 +7783,6 @@
       "document": "Layer-7 rule.",
       "members": [
         {
-          "default": "",
           "document": "Forwarding protocol. Valid values: `http` and `https`.",
           "example": "无",
           "member": "string",
@@ -7530,7 +7792,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Forwarding domain name.",
           "example": "无",
           "member": "string",
@@ -7540,7 +7801,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Load balancing method. Valid value: `1` (weighed polling).",
           "example": "无",
           "member": "uint64",
@@ -7550,7 +7810,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
           "member": "uint64",
@@ -7560,7 +7819,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Session persistence duration, in seconds.",
           "example": "无",
           "member": "uint64",
@@ -7570,7 +7828,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
           "example": "无",
           "member": "uint64",
@@ -7580,7 +7837,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of origins",
           "example": "无",
           "member": "L4RuleSource",
@@ -7590,7 +7846,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region code.",
           "example": "无",
           "member": "uint64",
@@ -7600,7 +7855,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource ID.",
           "example": "无",
           "member": "string",
@@ -7610,7 +7864,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Anti-DDoS instance IP address.",
           "example": "无",
           "member": "string",
@@ -7620,7 +7873,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
           "example": "无",
           "member": "string",
@@ -7630,7 +7882,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rule description.",
           "example": "无",
           "member": "string",
@@ -7640,7 +7891,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
           "example": "无",
           "member": "uint64",
@@ -7650,7 +7900,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
           "example": "无",
           "member": "string",
@@ -7660,7 +7909,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
           "example": "无",
           "member": "string",
@@ -7670,7 +7918,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
           "example": "无",
           "member": "string",
@@ -7680,7 +7927,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).",
           "example": "无",
           "member": "uint64",
@@ -7690,7 +7936,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
           "member": "uint64",
@@ -7700,7 +7945,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
           "member": "uint64",
@@ -7710,7 +7954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CC protection threshold based on HTTPS.",
           "example": "无",
           "member": "uint64",
@@ -7720,7 +7963,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CC protection level based on HTTPS.",
           "example": "无",
           "member": "string",
@@ -7730,7 +7972,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Modification time.",
           "example": "无",
           "member": "datetime",
@@ -7740,7 +7981,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.",
           "example": "无",
           "member": "uint64",
@@ -7750,7 +7990,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Access port number.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -7760,7 +7999,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Specifies whether to forcibly redirect HTTP to HTTPS. `1`: Enable. `0`: Disable.",
           "example": "无",
           "member": "uint64",
@@ -7770,7 +8008,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Returns an error code when the rule configuration fails (only valid when `Status=2`). `1001`: The certificate does not exist. `1002`: Failed to obtain the certificate. `1003`: Failed to upload the certificate. `1004`: The certificate has expired.",
           "example": "无",
           "member": "uint64",
@@ -7778,6 +8015,15 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Version",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8827,6 +9073,15 @@
           "name": "OpenStatus",
           "required": true,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable proxy. Values: `1` (Enable proxy and ignore IP+port verification), `0` (Do not enable proxy and IP+port verification is required)",
+          "example": "1",
+          "member": "int64",
+          "name": "CloudSdkProxy",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -8947,6 +9202,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable proxy. Values: `1` (Enable proxy and ignore IP+port verification), `0` (Do not enable proxy and IP+port verification is required)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "CloudSdkProxy",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
