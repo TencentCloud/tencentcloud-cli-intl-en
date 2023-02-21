@@ -1291,6 +1291,7 @@
         {
           "default": "",
           "document": "Topic name",
+          "example": "topic1",
           "member": "string",
           "name": "Topic",
           "required": true,
@@ -1300,6 +1301,7 @@
         {
           "default": "",
           "document": "Partition ID",
+          "example": "0",
           "member": "int64",
           "name": "Partition",
           "required": true,
@@ -1309,6 +1311,7 @@
         {
           "default": "",
           "document": "Offset",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -1318,6 +1321,7 @@
         {
           "default": "",
           "document": "Message key\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "key",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -1327,6 +1331,7 @@
         {
           "default": "",
           "document": "Message value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "value",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -1336,10 +1341,21 @@
         {
           "default": "",
           "document": "Message timestamp\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1657542315",
           "member": "int64",
           "name": "Timestamp",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message headers\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Headers",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
