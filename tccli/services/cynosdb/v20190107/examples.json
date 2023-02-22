@@ -280,6 +280,14 @@
         "title": "Querying whether rollback is possible based on specified time point"
       }
     ],
+    "DescribeZones": [
+      {
+        "document": "This example shows you how to only view AZs for which the user has permissions.",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZones\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RegionSet\": [\n            {\n                \"DbType\": \"xx\",\n                \"Region\": \"xx\",\n                \"RegionId\": 1,\n                \"Modules\": [\n                    {\n                        \"ModuleName\": \"xx\",\n                        \"IsDisable\": \"xx\"\n                    }\n                ],\n                \"RegionZh\": \"xx\",\n                \"ZoneSet\": [\n                    {\n                        \"PhysicalZone\": \"xx\",\n                        \"Zone\": \"xx\",\n                        \"IsSupportServerless\": 0,\n                        \"ZoneId\": 100003,\n                        \"IsSupportNormal\": 0,\n                        \"ZoneZh\": \"xx\"\n                    },\n                    {\n                        \"PhysicalZone\": \"xx\",\n                        \"Zone\": \"xx\",\n                        \"IsSupportServerless\": 0,\n                        \"ZoneId\": 100003,\n                        \"IsSupportNormal\": 0,\n                        \"ZoneZh\": \"xx\"\n                    },\n                    {\n                        \"PhysicalZone\": \"xx\",\n                        \"Zone\": \"xx\",\n                        \"IsSupportServerless\": 0,\n                        \"ZoneId\": 100004,\n                        \"IsSupportNormal\": 0,\n                        \"ZoneZh\": \"xx\"\n                    }\n                ]\n            },\n            {\n                \"DbType\": \"xx\",\n                \"Region\": \"xx\",\n                \"RegionId\": 8,\n                \"Modules\": [\n                    {\n                        \"ModuleName\": \"xx\",\n                        \"IsDisable\": \"xx\"\n                    }\n                ],\n                \"RegionZh\": \"xx\",\n                \"ZoneSet\": [\n                    {\n                        \"PhysicalZone\": \"xx\",\n                        \"Zone\": \"xx\",\n                        \"IsSupportServerless\": 0,\n                        \"ZoneId\": 800001,\n                        \"IsSupportNormal\": 0,\n                        \"ZoneZh\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the AZ information in a purchasable region"
+      }
+    ],
     "ExportInstanceSlowQueries": [
       {
         "document": "",
@@ -338,7 +346,7 @@
     ],
     "ModifyBackupConfig": [
       {
-        "document": "",
+        "document": "This example shows you how to modify backup configuration.",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupConfig\n<Common request parameters>\n\n{\n    \"BackupTimeBeg\": \"7200\",\n    \"ReserveDuration\": \"604800\",\n    \"ClusterId\": \"cynosdbmysql-45knmnra\",\n    \"BackupTimeEnd\": \"21600\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Modifying the backup configuration of a cluster"
@@ -486,6 +494,14 @@
         "input": "https://cynosdb.tencentcloudapi.com/?Action=SetRenewFlag\n&ResourceIds.0=cynosdbmysql-ins-xxxxxxx\n&AutoRenewFlag=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Count\": 1,\n        \"RequestId\": 123123123\n    }\n}",
         "title": "Setting the auto-renewal flag"
+      }
+    ],
+    "SwitchClusterVpc": [
+      {
+        "document": "",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=SwitchClusterVpc\n&ClusterId=xxx\n&UniqVpcId=xx\n&UniqSubnetId=xx\n&OldIpReserveHours=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Switching network"
       }
     ],
     "SwitchClusterZone": [

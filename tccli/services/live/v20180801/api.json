@@ -98,6 +98,20 @@
       "output": "CreateLiveSnapshotTemplateResponse",
       "status": "online"
     },
+    "CreateLiveTimeShiftRule": {
+      "document": "This API is used to create a time shifting rule. You need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/86169?from_cn_redirect=1) API to create a time shifting template, and then call this API to bind the template ID returned to a stream.\n<br>More about time shifting: [Time Shifting](https://intl.cloud.tencent.com/document/product/267/86134?from_cn_redirect=1).",
+      "input": "CreateLiveTimeShiftRuleRequest",
+      "name": "Creates a time shifting rule",
+      "output": "CreateLiveTimeShiftRuleResponse",
+      "status": "online"
+    },
+    "CreateLiveTimeShiftTemplate": {
+      "document": "This API is used to create a time shifting template.",
+      "input": "CreateLiveTimeShiftTemplateRequest",
+      "name": "Creates a time shifting template",
+      "output": "CreateLiveTimeShiftTemplateResponse",
+      "status": "online"
+    },
     "CreateLiveTranscodeRule": {
       "document": "To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API to create a transcoding template and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).",
       "input": "CreateLiveTranscodeRuleRequest",
@@ -187,6 +201,20 @@
       "input": "DeleteLiveSnapshotTemplateRequest",
       "name": "Deletes screencapturing template",
       "output": "DeleteLiveSnapshotTemplateResponse",
+      "status": "online"
+    },
+    "DeleteLiveTimeShiftRule": {
+      "document": "This API is used to delete a time shifting rule.",
+      "input": "DeleteLiveTimeShiftRuleRequest",
+      "name": "Deletes a time shifting rule",
+      "output": "DeleteLiveTimeShiftRuleResponse",
+      "status": "online"
+    },
+    "DeleteLiveTimeShiftTemplate": {
+      "document": "This API is used to delete a time shifting template.",
+      "input": "DeleteLiveTimeShiftTemplateRequest",
+      "name": "Deletes a time shifting template",
+      "output": "DeleteLiveTimeShiftTemplateResponse",
       "status": "online"
     },
     "DeleteLiveTranscodeRule": {
@@ -448,8 +476,22 @@
       "output": "DescribeLiveTimeShiftBillInfoListResponse",
       "status": "online"
     },
+    "DescribeLiveTimeShiftRules": {
+      "document": "This API is used to query time shifting rules.",
+      "input": "DescribeLiveTimeShiftRulesRequest",
+      "name": "Queries time shifting rules",
+      "output": "DescribeLiveTimeShiftRulesResponse",
+      "status": "online"
+    },
+    "DescribeLiveTimeShiftTemplates": {
+      "document": "This API is used to query time shifting templates.",
+      "input": "DescribeLiveTimeShiftTemplatesRequest",
+      "name": "Queries time shifting templates",
+      "output": "DescribeLiveTimeShiftTemplatesResponse",
+      "status": "online"
+    },
     "DescribeLiveTranscodeDetailInfo": {
-      "document": "This API is used to query the details of transcoding on a specified day or in a specified period of time.",
+      "document": "This API is used to query the transcoding details of a particular day or a specific time period. Querying may fail if the amount of data queried is too large. In such cases, try shortening the time period.",
       "input": "DescribeLiveTranscodeDetailInfoRequest",
       "name": "Queries LVB transcoding statistics",
       "output": "DescribeLiveTranscodeDetailInfoResponse",
@@ -551,6 +593,20 @@
       "input": "DescribeStreamPushInfoListRequest",
       "name": "Gets the push data of a stream",
       "output": "DescribeStreamPushInfoListResponse",
+      "status": "online"
+    },
+    "DescribeTimeShiftRecordDetail": {
+      "document": "This API is used to query the time shifting details of a specific time period (up to 24 hours). You need to call `DescribeTimeShiftStreamList` first to get the request parameters of this API.",
+      "input": "DescribeTimeShiftRecordDetailRequest",
+      "name": "Queries time shifting details",
+      "output": "DescribeTimeShiftRecordDetailResponse",
+      "status": "online"
+    },
+    "DescribeTimeShiftStreamList": {
+      "document": "This API is used to query the time shifted streams in a specific time period (up to 24 hours).",
+      "input": "DescribeTimeShiftStreamListRequest",
+      "name": "Queries time shifted streams",
+      "output": "DescribeTimeShiftStreamListResponse",
       "status": "online"
     },
     "DescribeTopClientIpSumInfoList": {
@@ -670,6 +726,13 @@
       "input": "ModifyLiveSnapshotTemplateRequest",
       "name": "Modifies screencapturing template configuration",
       "output": "ModifyLiveSnapshotTemplateResponse",
+      "status": "online"
+    },
+    "ModifyLiveTimeShiftTemplate": {
+      "document": "This API is used to modify a standby stream template.",
+      "input": "ModifyLiveTimeShiftTemplateRequest",
+      "name": "Modifies a standby stream template",
+      "output": "ModifyLiveTimeShiftTemplateResponse",
       "status": "online"
     },
     "ModifyLiveTranscodeTemplate": {
@@ -1637,8 +1700,8 @@
       "document": "General stream mix output parameter.",
       "members": [
         {
-          "default": "",
           "document": "Output stream name.",
+          "example": "无",
           "member": "string",
           "name": "OutputStreamName",
           "required": true,
@@ -1646,8 +1709,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output stream type. Valid values: [0,1].\nIf this parameter is left empty, 0 will be used by default.\nIf the output stream is a stream in the input stream list, enter 0.\nIf you want the stream mix result to be a new stream, enter 1.\nIf this value is 1, `output_stream_id` cannot appear in `input_stram_list`, and there cannot be a stream with the same ID on the LVB backend.",
+          "example": "无",
           "member": "int64",
           "name": "OutputStreamType",
           "required": false,
@@ -1655,8 +1718,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Output stream bitrate. Value range: [1,50000].\nIf this parameter is left empty, the system will automatically determine.",
+          "document": "The output bitrate. Value range: 1-10000.\nIf you do not specify this, the system will select a bitrate automatically.",
+          "example": "无",
           "member": "int64",
           "name": "OutputStreamBitRate",
           "required": false,
@@ -1664,8 +1727,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output stream GOP size. Value range: [1,10].\nIf this parameter is left empty, the system will automatically determine.",
+          "example": "无",
           "member": "int64",
           "name": "OutputStreamGop",
           "required": false,
@@ -1673,8 +1736,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output stream frame rate. Value range: [1,60].\nIf this parameter is left empty, the system will automatically determine.",
+          "example": "无",
           "member": "int64",
           "name": "OutputStreamFrameRate",
           "required": false,
@@ -1682,8 +1745,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output stream audio bitrate. Value range: [1,500]\nIf this parameter is left empty, the system will automatically determine.",
+          "example": "无",
           "member": "int64",
           "name": "OutputAudioBitRate",
           "required": false,
@@ -1691,8 +1754,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output stream audio sample rate. Valid values: [96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000].\nIf this parameter is left empty, the system will automatically determine.",
+          "example": "无",
           "member": "int64",
           "name": "OutputAudioSampleRate",
           "required": false,
@@ -1700,8 +1763,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output stream audio sound channel. Valid values: [1,2].\nIf this parameter is left empty, the system will automatically determine.",
+          "example": "无",
           "member": "int64",
           "name": "OutputAudioChannels",
           "required": false,
@@ -1709,8 +1772,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "SEI information in output stream. If there are no special needs, leave it empty.",
+          "example": "无",
           "member": "string",
           "name": "MixSei",
           "required": false,
@@ -2624,6 +2687,150 @@
       ],
       "type": "object"
     },
+    "CreateLiveTimeShiftRuleRequest": {
+      "document": "CreateLiveTimeShiftRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The push domain.",
+          "example": "xxx.xx.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The stream name.\nNote: If you pass in a non-empty string, the rule will only be applied to the specified stream.",
+          "example": "s",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template ID.",
+          "example": "123",
+          "member": "int64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLiveTimeShiftRuleResponse": {
+      "document": "CreateLiveTimeShiftRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLiveTimeShiftTemplateRequest": {
+      "document": "CreateLiveTimeShiftTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The template name.\nMaximum length: 255 bytes.\nOnly letters, numbers, underscores, and hyphens are supported.",
+          "example": "testName",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The time shifting duration.\nUnit: Second.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Duration",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The template description.\nOnly letters, numbers, underscores, and hyphens are supported.",
+          "example": "testDesc",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The region.\n`Mainland`: The Chinese mainland.\n`Overseas`: Outside the Chinese mainland.\nDefault value: `Mainland`.",
+          "example": "Mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The segment size.\nValue range: 3-10.\nUnit: Second.\nDefault value: 5",
+          "example": "5",
+          "member": "uint64",
+          "name": "ItemDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to remove watermarks.\nIf you pass in `true`, the original stream will be recorded.\nDefault value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "RemoveWatermark",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The transcoding template IDs.\nThis API works only if `RemoveWatermark` is `false`.",
+          "example": "[1]",
+          "member": "int64",
+          "name": "TranscodeTemplateIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLiveTimeShiftTemplateResponse": {
+      "document": "CreateLiveTimeShiftTemplate response structure.",
+      "members": [
+        {
+          "document": "The template ID.",
+          "example": "1000",
+          "member": "int64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateLiveTranscodeRuleRequest": {
       "document": "CreateLiveTranscodeRule request structure.",
       "members": [
@@ -3454,6 +3661,78 @@
     },
     "DeleteLiveSnapshotTemplateResponse": {
       "document": "DeleteLiveSnapshotTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLiveTimeShiftRuleRequest": {
+      "document": "DeleteLiveTimeShiftRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The push domain.\n`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.",
+          "example": "yourdomain.test.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.\n`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The stream name.\n`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.",
+          "example": "stream",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLiveTimeShiftRuleResponse": {
+      "document": "DeleteLiveTimeShiftRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLiveTimeShiftTemplateRequest": {
+      "document": "DeleteLiveTimeShiftTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The template ID.",
+          "example": "1000",
+          "member": "int64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLiveTimeShiftTemplateResponse": {
+      "document": "DeleteLiveTimeShiftTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5317,6 +5596,58 @@
       ],
       "type": "object"
     },
+    "DescribeLiveTimeShiftRulesRequest": {
+      "document": "DescribeLiveTimeShiftRules request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeLiveTimeShiftRulesResponse": {
+      "document": "DescribeLiveTimeShiftRules response structure.",
+      "members": [
+        {
+          "document": "The information of the rules.",
+          "example": "无",
+          "member": "RuleInfo",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLiveTimeShiftTemplatesRequest": {
+      "document": "DescribeLiveTimeShiftTemplates request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeLiveTimeShiftTemplatesResponse": {
+      "document": "DescribeLiveTimeShiftTemplates response structure.",
+      "members": [
+        {
+          "document": "The information of the templates.",
+          "example": "无",
+          "member": "TimeShiftTemplate",
+          "name": "Templates",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLiveTranscodeDetailInfoRequest": {
       "document": "DescribeLiveTranscodeDetailInfo request structure.",
       "members": [
@@ -6337,6 +6668,178 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimeShiftRecordDetailRequest": {
+      "document": "DescribeTimeShiftRecordDetail request structure.",
+      "members": [
+        {
+          "document": "The push domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The push path.",
+          "example": "无",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The stream name.",
+          "example": "无",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The start time, which must be a Unix timestamp.",
+          "example": "无",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The end time, which must be a Unix timestamp. ",
+          "example": "无",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The group the push domain belongs to. You don’t need to specify this parameter if the domain doesn’t belong to any group or the group name is an empty string.",
+          "example": "无",
+          "member": "string",
+          "name": "DomainGroup",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The transcoding template ID. You don’t need to specify this parameter if the transcoding template ID is `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TransCodeId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimeShiftRecordDetailResponse": {
+      "document": "DescribeTimeShiftRecordDetail response structure.",
+      "members": [
+        {
+          "document": "The number of sessions recorded.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimeShiftRecord",
+          "name": "RecordList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimeShiftStreamListRequest": {
+      "document": "DescribeTimeShiftStreamList request structure.",
+      "members": [
+        {
+          "document": "The start time, which must be a Unix timestamp.",
+          "example": "1669032313",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The end time, which must be a Unix timestamp.",
+          "example": "1669035913",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The stream name.",
+          "example": "无",
+          "member": "string",
+          "name": "StreamName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The push domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The group the push domain belongs to.",
+          "example": "无",
+          "member": "string",
+          "name": "DomainGroup",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The maximum number of records to return. Value range: 0-100. If you do not specify this parameter or pass in `0`, \nthe default value `100` will be used. If you pass in a negative number or a value greater than 100, an error will be returned.",
+          "example": "100",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The number of page to pull records from. If you do not specify this parameter, the default value `1` will be used.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimeShiftStreamListResponse": {
+      "document": "DescribeTimeShiftStreamList response structure.",
+      "members": [
+        {
+          "document": "The total number of records in the specified time period.",
+          "example": "500",
+          "member": "int64",
+          "name": "TotalSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the streams.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimeShiftStreamInfo",
+          "name": "StreamList",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -8212,6 +8715,96 @@
     },
     "ModifyLiveSnapshotTemplateResponse": {
       "document": "ModifyLiveSnapshotTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLiveTimeShiftTemplateRequest": {
+      "document": "ModifyLiveTimeShiftTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The time shifting template ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The template name.\nOnly letters, numbers, underscores, and hyphens are supported.",
+          "example": "testName",
+          "member": "string",
+          "name": "TemplateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template description.\nMaximum length: 1,024 bytes.\nOnly letters, numbers, underscores, and hyphens are supported.",
+          "example": "testDesc",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The time shifting duration.\nUnit: Second.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The segment size.\nValue range: 3-10.\nUnit: Second.\nDefault value: 5",
+          "example": "5",
+          "member": "uint64",
+          "name": "ItemDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to remove watermarks.\nIf you pass in `true`, the original stream will be recorded.\nDefault value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "RemoveWatermark",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The transcoding template IDs.\nThis API works only if `RemoveWatermark` is `false`.",
+          "example": "[1]",
+          "member": "int64",
+          "name": "TranscodeTemplateIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The region.\n`Mainland`: The Chinese mainland.\n`Overseas`: Outside the Chinese mainland.\nDefault value: `Mainland`.",
+          "example": "Mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLiveTimeShiftTemplateResponse": {
+      "document": "ModifyLiveTimeShiftTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -10682,6 +11275,212 @@
         }
       ],
       "usage": "out"
+    },
+    "TimeShiftRecord": {
+      "document": "A recorded time shifting session.",
+      "members": [
+        {
+          "document": "The session ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Sid",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The recording start time, which is a Unix timestamp.",
+          "example": "无",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The recording end time, which is a Unix timestamp.",
+          "example": "无",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TimeShiftStreamInfo": {
+      "document": "The information of a time shifted stream.",
+      "members": [
+        {
+          "document": "The group the push domain belongs to.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DomainGroup",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The push domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The push path.",
+          "example": "无",
+          "member": "string",
+          "name": "AppName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The stream name.",
+          "example": "无",
+          "member": "string",
+          "name": "StreamName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The stream start time, which is a Unix timestamp.",
+          "example": "无",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The stream end time (for streams that ended before the time of query), which is a Unix timestamp.",
+          "example": "无",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The transcoding template ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TransCodeId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The stream type. `0`: The original stream; `1`: The watermarked stream; `2`: The transcoded stream.",
+          "example": "无",
+          "member": "int64",
+          "name": "StreamType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The storage duration (seconds) of the recording.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Duration",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TimeShiftTemplate": {
+      "document": "The information of a time shifting template.",
+      "members": [
+        {
+          "default": "",
+          "document": "The template name.",
+          "example": "test",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time shifting duration.\nUnit: second",
+          "example": "6000",
+          "member": "uint64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The segment size.\nValue range: 3-10.\nUnit: Second.\nDefault value: 5",
+          "example": "5",
+          "member": "uint64",
+          "name": "ItemDuration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template description.",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The region. Valid values:\n`Mainland`: The Chinese mainland.\n`Overseas`: Outside the Chinese mainland.\nDefault value: `Mainland`.",
+          "example": "Mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to remove watermarks.\nIf you pass in `true`, the original stream will be recorded.\nDefault value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "RemoveWatermark",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The transcoding template IDs.\nThis API works only if `RemoveWatermark` is `false`.",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "TranscodeTemplateIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "TimeValue": {
       "document": "Metric value at a specified point in time.",

@@ -245,6 +245,13 @@
       "output": "DescribeRollbackTimeValidityResponse",
       "status": "online"
     },
+    "DescribeZones": {
+      "document": "This API is used to query the AZ information in a purchasable region.",
+      "input": "DescribeZonesRequest",
+      "name": "Queries the AZ information in a purchasable region",
+      "output": "DescribeZonesResponse",
+      "status": "online"
+    },
     "ExportInstanceSlowQueries": {
       "document": "This API is used to export the slow logs of an instance.",
       "input": "ExportInstanceSlowQueriesRequest",
@@ -425,6 +432,13 @@
       "input": "SetRenewFlagRequest",
       "name": "Sets auto-renewal",
       "output": "SetRenewFlagResponse",
+      "status": "online"
+    },
+    "SwitchClusterVpc": {
+      "document": "This API is used to modify the cluster VPC.",
+      "input": "SwitchClusterVpcRequest",
+      "name": "Modifies the cluster VPC",
+      "output": "SwitchClusterVpcResponse",
       "status": "online"
     },
     "SwitchClusterZone": {
@@ -5495,6 +5509,48 @@
       ],
       "type": "object"
     },
+    "DescribeZonesRequest": {
+      "document": "DescribeZones request structure.",
+      "members": [
+        {
+          "document": "Whether the virtual zone is included.–",
+          "example": "false",
+          "member": "bool",
+          "name": "IncludeVirtualZones",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "Whether to display all AZs in a region and the user’s permissions in each AZ.",
+          "example": "false",
+          "member": "bool",
+          "name": "ShowPermission",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZonesResponse": {
+      "document": "DescribeZones response structure.",
+      "members": [
+        {
+          "document": "Region information",
+          "example": "无",
+          "member": "SaleRegion",
+          "name": "RegionSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ExportInstanceSlowQueriesRequest": {
       "document": "ExportInstanceSlowQueries request structure.",
       "members": [
@@ -6679,6 +6735,32 @@
       ],
       "usage": "both"
     },
+    "Module": {
+      "document": "Modules supported by the system",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is supported. Valid values: `yes`, `no`.",
+          "example": "yes",
+          "member": "string",
+          "name": "IsDisable",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Module name",
+          "example": "Wan",
+          "member": "string",
+          "name": "ModuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "NetAddr": {
       "document": "Network information",
       "members": [
@@ -7732,6 +7814,158 @@
       ],
       "usage": "both"
     },
+    "SaleRegion": {
+      "document": "Information of a purchasable region",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Numeric ID of a region",
+          "example": "1",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "上海",
+          "member": "string",
+          "name": "RegionZh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of purchasable AZs",
+          "example": "无",
+          "member": "SaleZone",
+          "name": "ZoneSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Engine type",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "DbType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Supported modules in a region",
+          "example": "无",
+          "member": "Module",
+          "name": "Modules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SaleZone": {
+      "document": "Information of a purchasable AZ",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ name",
+          "example": "ap-shanghai-4",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Numeric ID of an AZ",
+          "example": "200004",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ name",
+          "example": "上海四区",
+          "member": "string",
+          "name": "ZoneZh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether serverless cluster is supported. Valid values: <br>\n`0`: No<br>\n`1`: Yes",
+          "example": "1",
+          "member": "int64",
+          "name": "IsSupportServerless",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether standard cluster is supported. Valid values: <br>\n`0`: No<br>\n`1`: Yes",
+          "example": "1",
+          "member": "int64",
+          "name": "IsSupportNormal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Physical zone",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "PhysicalZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the user has AZ permission\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "HasPermission",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a full-linkage RDMA AZ.",
+          "example": "无",
+          "member": "string",
+          "name": "IsWholeRdmaZone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SearchClusterDatabasesRequest": {
       "document": "SearchClusterDatabases request structure.",
       "members": [
@@ -8076,6 +8310,69 @@
         }
       ],
       "usage": "out"
+    },
+    "SwitchClusterVpcRequest": {
+      "document": "SwitchClusterVpc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID in string",
+          "example": "xx",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID in string",
+          "example": "xx",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid hours of old IP",
+          "example": "xx",
+          "member": "int64",
+          "name": "OldIpReserveHours",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchClusterVpcResponse": {
+      "document": "SwitchClusterVpc response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SwitchClusterZoneRequest": {
       "document": "SwitchClusterZone request structure.",
