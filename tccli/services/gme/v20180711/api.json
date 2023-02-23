@@ -28,11 +28,46 @@
       "output": "DescribeApplicationDataResponse",
       "status": "online"
     },
+    "DescribeRecordInfo": {
+      "document": "This API is used to query a recording task.",
+      "input": "DescribeRecordInfoRequest",
+      "name": "Queries a recording task",
+      "output": "DescribeRecordInfoResponse",
+      "status": "online"
+    },
+    "DescribeTaskInfo": {
+      "document": "This API is used to query the recording task in a room.",
+      "input": "DescribeTaskInfoRequest",
+      "name": "Queries the recording task in a room",
+      "output": "DescribeTaskInfoResponse",
+      "status": "online"
+    },
     "ModifyAppStatus": {
       "document": "This API is used to change the status of an application.",
       "input": "ModifyAppStatusRequest",
       "name": "Changes application status",
       "output": "ModifyAppStatusResponse",
+      "status": "online"
+    },
+    "ModifyRecordInfo": {
+      "document": "This API is used to modify recording configurations.",
+      "input": "ModifyRecordInfoRequest",
+      "name": "Modifies recording configurations",
+      "output": "ModifyRecordInfoResponse",
+      "status": "online"
+    },
+    "StartRecord": {
+      "document": "This API is used to start recording.",
+      "input": "StartRecordRequest",
+      "name": "Starts recording",
+      "output": "StartRecordResponse",
+      "status": "online"
+    },
+    "StopRecord": {
+      "document": "This API is used to stop recording.\n",
+      "input": "StopRecordRequest",
+      "name": "Stops recording",
+      "output": "StopRecordResponse",
       "status": "online"
     }
   },
@@ -672,6 +707,132 @@
       ],
       "type": "object"
     },
+    "DescribeRecordInfoRequest": {
+      "document": "DescribeRecordInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the ongoing task, which is returned from the `StartRecord` API.",
+          "example": "446192236330927912",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "3400352518",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordInfoResponse": {
+      "document": "DescribeRecordInfo response structure.",
+      "members": [
+        {
+          "document": "Information about the recording task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RecordInfo",
+          "name": "RecordInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RecordMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Room ID.",
+          "example": "7743",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskInfoRequest": {
+      "document": "DescribeTaskInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "3400352518",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Room ID.",
+          "example": "9832",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskInfoResponse": {
+      "document": "DescribeTaskInfo response structure.",
+      "members": [
+        {
+          "document": "ID of the ongoing task, which is returned from the `StartRecord` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "446192236330927912",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RecordMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Allowlist or blocklist for stream subscription.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SubscribeRecordUserIds",
+          "name": "SubscribeRecordUserIds",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyAppStatusRequest": {
       "document": "ModifyAppStatus request structure.",
       "members": [
@@ -734,6 +895,60 @@
           "type": "object",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordInfoRequest": {
+      "document": "ModifyRecordInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the ongoing task, which is returned from the `StartRecord` API.",
+          "example": "446192236330927912",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RecordMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "3400352518",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Allowlist or blocklist for stream subscription.",
+          "example": "无",
+          "member": "SubscribeRecordUserIds",
+          "name": "SubscribeRecordUserIds",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordInfoResponse": {
+      "document": "ModifyRecordInfo response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -861,6 +1076,115 @@
       ],
       "usage": "out"
     },
+    "RecordInfo": {
+      "document": "Information about the recording task in a room.\nNote: This field may return null, indicating that no valid values can be obtained.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID. The value is `0` in mixed streams recording mode.",
+          "example": "6787",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recording filename.",
+          "example": "/3400352518_2314_447947346201176660_9081",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recording start time, which is a Unix timestamp. Example: 1234567868.",
+          "example": "1234567868",
+          "member": "uint64",
+          "name": "RecordBeginTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recording status. Valid values: `2`: recording; `10`: to be transcoded; `11`: transcoding; `12`: uploading; `13`: uploaded; `14`: user notified.",
+          "example": "2",
+          "member": "uint64",
+          "name": "RecordStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StartRecordRequest": {
+      "document": "StartRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "3400352518",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Room ID.",
+          "example": "1987",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RecordMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Allowlist or blocklist for stream subscription. If you do not specify this parameter, the audio streams of all the users in the room are subscribed to by default.",
+          "example": "无",
+          "member": "SubscribeRecordUserIds",
+          "name": "SubscribeRecordUserIds",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "StartRecordResponse": {
+      "document": "StartRecord response structure.",
+      "members": [
+        {
+          "document": "Task ID.",
+          "example": "446192236330927912",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "StatisticsItem": {
       "document": "Usage data unit",
       "members": [
@@ -885,6 +1209,42 @@
       ],
       "usage": "out"
     },
+    "StopRecordRequest": {
+      "document": "StopRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID.",
+          "example": "446192236330927912",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "3400352518",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "StopRecordResponse": {
+      "document": "StopRecord response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "StreamTextStatisticsItem": {
       "document": "Stream-to-Text usage statistics",
       "members": [
@@ -900,6 +1260,32 @@
         }
       ],
       "usage": "out"
+    },
+    "SubscribeRecordUserIds": {
+      "document": "Allowlist or blocklist for stream subscription.",
+      "members": [
+        {
+          "default": "",
+          "document": "Blocklist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to not subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will not be subscribed to.\nNote: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.",
+          "example": "无",
+          "member": "string",
+          "name": "UnSubscribeUserIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Allowlist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will be subscribed to.\nNote: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.",
+          "example": "无",
+          "member": "string",
+          "name": "SubscribeUserIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "Tag": {
       "document": "Tag list",

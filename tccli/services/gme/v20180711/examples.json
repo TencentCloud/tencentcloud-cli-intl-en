@@ -10,7 +10,7 @@
     ],
     "DeleteRoomMember": [
       {
-        "document": "剔除房间内某两个用户",
+        "document": "This example shows you how to Remove two members from the room.",
         "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRoomMember\n<Common request parameters>\n\n{\n    \"DeleteType\": \"2\",\n    \"RoomId\": \"100\",\n    \"BizId\": \"140014556\",\n    \"Uids\": [\n        \"2\",\n        \"1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dfe39c29-ce97-44df-ba79-7d947d465694\",\n        \"DeleteResult\": {\n            \"Code\": 0,\n            \"ErrorMsg\": \"\"\n        }\n    }\n}",
         "title": "Removing two members from the room"
@@ -18,9 +18,9 @@
     ],
     "DescribeAppStatistics": [
       {
-        "document": "查询实时语音和离线语音2019-08-01至2019-08-03的用量统计",
+        "document": "This example shows you how to query the usage statistics of Voice Chat and Voice Message Service between August 1 and August 3, 2019.",
         "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAppStatistics\n<Common request parameters>\n\n{\n    \"Services\": [\n        \"VoiceMessage\",\n        \"RealTimeSpeech\"\n    ],\n    \"StartDate\": \"2019-08-01\",\n    \"EndDate\": \"2019-08-03\",\n    \"BizId\": \"140000001\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"AppStatistics\": [\n                {\n                    \"VoiceFilterStatisticsItem\": {\n                        \"Duration\": 1\n                    },\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandPcu\": 1,\n                        \"OverseaDuration\": 1,\n                        \"OverseaPcu\": 1,\n                        \"OverseaDau\": 1,\n                        \"MainLandDuration\": 1,\n                        \"MainLandDau\": 1\n                    },\n                    \"StreamTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"RealtimeTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 1\n                    },\n                    \"AudioTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"Date\": \"2020-09-22\",\n                    \"OverseaTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    }\n                },\n                {\n                    \"VoiceFilterStatisticsItem\": {\n                        \"Duration\": 1\n                    },\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandPcu\": 1,\n                        \"MainLandDuration\": 1,\n                        \"OverseaPcu\": 1,\n                        \"OverseaDau\": 1,\n                        \"OverseaDuration\": 1,\n                        \"MainLandDau\": 1\n                    },\n                    \"Date\": \"2020-09-22\",\n                    \"StreamTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"RealtimeTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 1\n                    },\n                    \"AudioTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"OverseaTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    }\n                },\n                {\n                    \"VoiceFilterStatisticsItem\": {\n                        \"Duration\": 1\n                    },\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandPcu\": 1,\n                        \"MainLandDuration\": 1,\n                        \"OverseaPcu\": 1,\n                        \"OverseaDau\": 1,\n                        \"OverseaDuration\": 1,\n                        \"MainLandDau\": 1\n                    },\n                    \"Date\": \"2020-09-22\",\n                    \"StreamTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"RealtimeTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 1\n                    },\n                    \"AudioTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"OverseaTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    }\n                }\n            ]\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"AppStatistics\": [\n                {\n                    \"VoiceFilterStatisticsItem\": {\n                        \"Duration\": 1\n                    },\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandPcu\": 1,\n                        \"OverseaDuration\": 1,\n                        \"OverseaPcu\": 1,\n                        \"OverseaDau\": 1,\n                        \"MainLandDuration\": 1,\n                        \"MainLandDau\": 1\n                    },\n                    \"StreamTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"RealtimeTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 1\n                    },\n                    \"AudioTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"Date\": \"2020-09-22\",\n                    \"OverseaTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    }\n                },\n                {\n                    \"VoiceFilterStatisticsItem\": {\n                        \"Duration\": 1\n                    },\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandPcu\": 1,\n                        \"MainLandDuration\": 1,\n                        \"OverseaPcu\": 1,\n                        \"OverseaDau\": 1,\n                        \"OverseaDuration\": 1,\n                        \"MainLandDau\": 1\n                    },\n                    \"Date\": \"2020-09-22\",\n                    \"StreamTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"RealtimeTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 1\n                    },\n                    \"AudioTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"OverseaTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    }\n                },\n                {\n                    \"VoiceFilterStatisticsItem\": {\n                        \"Duration\": 1\n                    },\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandPcu\": 1,\n                        \"MainLandDuration\": 1,\n                        \"OverseaPcu\": 1,\n                        \"OverseaDau\": 1,\n                        \"OverseaDuration\": 1,\n                        \"MainLandDau\": 1\n                    },\n                    \"Date\": \"2020-09-22\",\n                    \"StreamTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"RealtimeTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 1\n                    },\n                    \"AudioTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    },\n                    \"OverseaTextStatisticsItem\": {\n                        \"Data\": 0.0\n                    }\n                }\n            ]\n        },\n        \"RequestId\": \"099d942a-f5c5-40d2-b96b-5c26a35813e0\"\n    }\n}",
         "title": "Querying the usage statistics of Voice Chat and Voice Message Service between August 1 and August 3, 2019"
       }
     ],
@@ -32,12 +32,52 @@
         "title": "Querying data details"
       }
     ],
+    "DescribeRecordInfo": [
+      {
+        "document": "This example shows you how to query a recording task.",
+        "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordInfo\n<Common request parameters>\n\n{\n    \"TaskId\": 446192236330927912,\n    \"BizId\": 3400352518\n}",
+        "output": "{\n    \"Response\": {\n        \"RoomId\": \"7743\",\n        \"RecordMode\": 1,\n        \"RecordInfo\": [\n            {\n                \"RecordStatus\": 2,\n                \"RecordBeginTime\": 1234567868,\n                \"UserId\": \"6787\",\n                \"FileName\": \"/3400352518_2314_447947346201176660_9081\"\n            }\n        ],\n        \"RequestId\": \"h9167d24-a2c6-1125-a5bd-5c023ba721c2\"\n    }\n}",
+        "title": "Querying a recording task"
+      }
+    ],
+    "DescribeTaskInfo": [
+      {
+        "document": "This example shows you how to query the recording task in a room. The task ID is returned in the API response.",
+        "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTaskInfo\n<Common request parameters>\n\n{\n    \"RoomId\": \"9832\",\n    \"BizId\": 3400352518\n}",
+        "output": "{\n    \"Response\": {\n        \"SubscribeRecordUserIds\": {\n            \"SubscribeUserIds\": [\n                3342\n            ],\n            \"UnSubscribeUserIds\": [\n                7619\n            ]\n        },\n        \"RecordMode\": 1,\n        \"RequestId\": \"h9167d24-a2c6-1125-a5bd-5c023ba721c2\",\n        \"TaskId\": 446192236330927912\n    }\n}",
+        "title": "Querying the recording task in a room"
+      }
+    ],
     "ModifyAppStatus": [
       {
         "document": "",
         "input": "https://gme.tencentcloudapi.com/?Action=ModifyAppStatus\n&BizId=140000001\n&Status=close\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"BizId\": 140000001,\n            \"Status\": \"close\"\n        },\n        \"RequestId\": \"e2900289-f21e-43a8-a3bf-0b439cdbbbb8\"\n    }\n}",
         "title": "Turning off GME application 140000001"
+      }
+    ],
+    "ModifyRecordInfo": [
+      {
+        "document": "This example shows you how to modify recording configurations.",
+        "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecordInfo\n<Common request parameters>\n\n{\n    \"SubscribeRecordUserIds\": {\n        \"SubscribeUserIds\": [\n            1342\n        ],\n        \"UnSubscribeUserIds\": [\n            9872\n        ]\n    },\n    \"RecordMode\": 1,\n    \"TaskId\": 446192236330927912,\n    \"BizId\": 3400352518\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"h9167d24-a2c6-1125-a5bd-5c023ba721c2\"\n    }\n}",
+        "title": "Modifying recording configurations"
+      }
+    ],
+    "StartRecord": [
+      {
+        "document": "This example shows you how to start recording.",
+        "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartRecord\n<Common request parameters>\n\n{\n    \"RecordMode\": 1,\n    \"SubscribeRecordUserIds\": {\n        \"SubscribeUserIds\": [\n            1145\n        ],\n        \"UnSubscribeUserIds\": [\n            1987\n        ]\n    },\n    \"RoomId\": \"1987\",\n    \"BizId\": 3400352518\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 446192236330927912,\n        \"RequestId\": \"h9167d24-a2c6-1125-a5bd-5c023ba721c2\"\n    }\n}",
+        "title": "Starting recording"
+      }
+    ],
+    "StopRecord": [
+      {
+        "document": "This example shows you how to stop recording.",
+        "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopRecord\n<Common request parameters>\n\n{\n    \"BizId\": 3400352518,\n    \"TaskId\": 446192236330927912\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"h9167d24-a2c6-1125-a5bd-5c023ba721c2\"\n    }\n}",
+        "title": "Stopping recording"
       }
     ]
   },

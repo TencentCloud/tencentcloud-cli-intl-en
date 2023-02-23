@@ -998,6 +998,16 @@
           "required": true,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the feature of automatic abnormal node replacement is enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsCvmReplace",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1559,7 +1569,7 @@
         },
         {
           "default": "",
-          "document": "The Hive-shared metadatabase type. Valid values:\n<li>`EMR_NEW_META`: The cluster creates a metadatabase by default.</li>\n<li>`EMR_EXIST_META`: The cluster uses a specified EMR-MetaDB instance.</li>\n<li>`USER_CUSTOM_META`: The cluster uses a custom metadatabase instance.</li>",
+          "document": "The Hive-shared metadatabase type. Valid values:\n<li>`EMR_DEFAULT_META`: The cluster creates one by default.</li>\n<li>`EMR_EXIST_META`: The cluster uses the specified EMR metadatabase instance.</li>\n<li>`USER_CUSTOM_META`: The cluster uses a custom metadatabase instance.</li>",
           "example": "无",
           "member": "string",
           "name": "MetaType",
