@@ -2563,7 +2563,6 @@
       "document": "CreateRocketMQTopic request structure.",
       "members": [
         {
-          "default": "",
           "document": "Topic name, which can contain 3–64 letters, digits, hyphens, and underscores",
           "example": "test",
           "member": "string",
@@ -2572,7 +2571,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Topic namespace. Currently, you can create topics only in one single namespace.",
           "example": "无",
           "member": "string",
@@ -2581,8 +2579,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Topic type. Valid values: Normal, GlobalOrder, PartitionedOrder.",
+          "document": "Topic type. Valid values: `Normal`, `PartitionedOrder`, `Transaction`, `DelayScheduled`.",
           "example": "Default",
           "member": "string",
           "name": "Type",
@@ -2590,7 +2587,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
           "member": "string",
@@ -2599,7 +2595,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Topic remarks (up to 128 characters)",
           "example": "备注",
           "member": "string",
@@ -2608,7 +2603,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of partitions, which doesn't take effect for globally sequential messages",
           "example": "1",
           "member": "int64",
@@ -4535,7 +4529,6 @@
       "document": "DescribeRabbitMQNodeList request structure.",
       "members": [
         {
-          "default": "",
           "document": "TDMQ for RabbitMQ cluster ID",
           "example": "amqp-xxx",
           "member": "string",
@@ -4544,7 +4537,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset",
           "example": "1",
           "member": "uint64",
@@ -4553,13 +4545,44 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The maximum entries per page",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Node name for fuzzy search",
+          "example": "node-xxx",
+          "member": "string",
+          "name": "NodeName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Name and value of a filter.\nCurrently, only the `nodeStatus` filter is supported.\nValid values: `running`, `down`.\nIt is an array type and can contain multiple filters.\n",
+          "example": "nodeStatus running/down",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Sorting by a specified element.\nValid values: `cpuUsage`, `diskUsage`.",
+          "example": "cpuUsage/diskUsage",
+          "member": "string",
+          "name": "SortElement",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Sorting order.\nValid values: `ascend`, `descend`.",
+          "example": "ascend/descend",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6853,13 +6876,57 @@
       "document": "TDMQ for RabbitMQ node information",
       "members": [
         {
-          "default": "",
           "document": "Node name\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "node-xx",
           "member": "string",
           "name": "NodeName",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Node status\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "running/down",
+          "member": "string",
+          "name": "NodeStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "CPU utilization\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10%",
+          "member": "string",
+          "name": "CPUUsage",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Memory usage in MB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "Memory",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Disk utilization\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20%",
+          "member": "string",
+          "name": "DiskUsage",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of RabbitMQ Erlang processes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "ProcessNumber",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -6869,7 +6936,6 @@
       "document": "TDMQ for RabbitMQ exclusive instance information",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "amqp-xxxx",
           "member": "string",
@@ -6879,7 +6945,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
           "example": "abc",
           "member": "string",
@@ -6889,7 +6954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance version\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "4.9.3",
           "member": "string",
@@ -6899,7 +6963,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed).",
           "example": "0",
           "member": "uint64",
@@ -6909,7 +6972,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of nodes",
           "example": "5",
           "member": "uint64",
@@ -6919,7 +6981,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance specification name",
           "example": "基础型",
           "member": "string",
@@ -6929,7 +6990,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Peak TPS",
           "example": "10000",
           "member": "uint64",
@@ -6939,7 +6999,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Peak bandwidth in Mbps",
           "example": "1200",
           "member": "uint64",
@@ -6949,7 +7008,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage capacity in GB",
           "example": "100",
           "member": "uint64",
@@ -6959,7 +7017,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance expiration time in milliseconds",
           "example": "100000",
           "member": "uint64",
@@ -6969,7 +7026,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).",
           "example": "0",
           "member": "uint64",
@@ -6979,7 +7035,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Payment mode. `0`: Postpaid; `1`: Prepaid.",
           "example": "0",
           "member": "uint64",
@@ -6989,7 +7044,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Remarks\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -6999,7 +7053,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance specification ID",
           "example": "vip-basic-1",
           "member": "string",
@@ -7007,6 +7060,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Cluster exception\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "异常信息",
+          "member": "string",
+          "name": "ExceptionInformation",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7365,94 +7427,94 @@
       "document": "RocketMQ cluster configuration",
       "members": [
         {
-          "default": "",
           "document": "Maximum TPS per namespace",
           "example": "8000",
           "member": "uint64",
           "name": "MaxTpsPerNamespace",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of namespaces",
           "example": "10",
           "member": "uint64",
           "name": "MaxNamespaceNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of used namespaces",
           "example": "3",
           "member": "uint64",
           "name": "UsedNamespaceNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of topics",
           "example": "1000",
           "member": "uint64",
           "name": "MaxTopicNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of used topics",
           "example": "8",
           "member": "uint64",
           "name": "UsedTopicNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of groups",
           "example": "10000",
           "member": "uint64",
           "name": "MaxGroupNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of used groups",
           "example": "10",
           "member": "uint64",
           "name": "UsedGroupNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum message retention period in milliseconds",
           "example": "100000",
           "member": "uint64",
           "name": "MaxRetentionTime",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum message delay in milliseconds",
           "example": "100000",
           "member": "uint64",
           "name": "MaxLatencyTime",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The maximum number of queues in a single topic\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "16",
+          "member": "uint64",
+          "name": "MaxQueuesPerTopic",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7991,7 +8053,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal).",
+          "document": "Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed).",
           "example": "0",
           "member": "uint64",
           "name": "Status",

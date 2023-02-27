@@ -26,10 +26,10 @@
     ],
     "CleanGrafanaInstance": [
       {
-        "document": "",
+        "document": "This example shows you how to forcibly terminate a TencentCloud Managed Service for Grafana (TCMG) instance.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CleanGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
-        "title": "Forcibly terminating a TencentCloud Managed Service for Grafana (TCMG) instance"
+        "title": "Forcibly terminating a TCMG instance"
       }
     ],
     "CreateAlarmNotice": [
@@ -82,7 +82,7 @@
     ],
     "CreateGrafanaNotificationChannel": [
       {
-        "document": "",
+        "document": "This example shows you how to create a Grafana alert channel.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"ChannelName\": \"test\",\n    \"OrgId\": 0,\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"ChannelId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Creating a Grafana alert channel"
@@ -102,6 +102,50 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusAgent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-sd234234\",\n    \"Name\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"AgentId\": \"agent-xxx\",\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Creating a Prometheus agent"
+      }
+    ],
+    "CreatePrometheusAlertPolicy": [
+      {
+        "document": "This example shows you how to create an alerting rule.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusAlertPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AlertRule\": {\n        \"Name\": \"xx\",\n        \"Rules\": [\n            {\n                \"Describe\": \"xx\",\n                \"Name\": \"xx\",\n                \"For\": \"xx\",\n                \"Labels\": [\n                    {}\n                ],\n                \"Rule\": \"xx\",\n                \"Template\": \"xx\",\n                \"Annotations\": [\n                    {}\n                ]\n            }\n        ],\n        \"Notification\": {\n            \"AlertManager\": {\n                \"Url\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"ClusterType\": \"xx\"\n            },\n            \"RepeatInterval\": \"xx\",\n            \"WebHook\": \"xx\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 0,\n            \"PhoneCircleInterval\": 0,\n            \"NotifyWay\": [\n                \"xx\"\n            ],\n            \"ReceiverGroups\": [\n                1\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 0,\n            \"TimeRangeStart\": \"xx\",\n            \"Type\": \"xx\",\n            \"TimeRangeEnd\": \"xx\"\n        },\n        \"TemplateId\": \"xx\",\n        \"ClusterId\": \"xx\",\n        \"UpdatedAt\": \"xx\",\n        \"Id\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating an alerting rule"
+      },
+      {
+        "document": "This example shows you how to create an alerting rule, with Alertmanager being the alert channel.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusAlertPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AlertRule\": {\n        \"Name\": \"xx\",\n        \"Rules\": [\n            {\n                \"Describe\": \"xx\",\n                \"Name\": \"xx\",\n                \"For\": \"xx\",\n                \"Labels\": [\n                    {}\n                ],\n                \"Rule\": \"xx\",\n                \"Template\": \"xx\",\n                \"RuleState\": 0,\n                \"Annotations\": [\n                    {}\n                ]\n            }\n        ],\n        \"Notification\": {\n            \"AlertManager\": {\n                \"Url\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"ClusterType\": \"xx\"\n            },\n            \"RepeatInterval\": \"xx\",\n            \"WebHook\": \"xx\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 0,\n            \"PhoneCircleInterval\": 0,\n            \"NotifyWay\": [\n                \"xx\"\n            ],\n            \"ReceiverGroups\": [\n                \"xx\"\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 0,\n            \"TimeRangeStart\": \"xx\",\n            \"Type\": \"xx\",\n            \"TimeRangeEnd\": \"xx\"\n        },\n        \"TemplateId\": \"xx\",\n        \"ClusterId\": \"xx\",\n        \"UpdatedAt\": \"xx\",\n        \"Id\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"alert-xxx\",\n        \"RequestId\": \"3dfe620f-11b8-4301-b279-1fdadedf7a59\"\n    }\n}",
+        "title": "Creating an alerting rule, with Alertmanager being the alert channel"
+      }
+    ],
+    "CreatePrometheusClusterAgent": [
+      {
+        "document": "This example shows you how to associate with an EKS cluster.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusClusterAgent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-2tghe0lv\",\n    \"Agents\": [\n        {\n            \"Region\": \"ap-beijing\",\n            \"EnableExternal\": \"false\",\n            \"ClusterId\": \"cls-ou716dcp\",\n            \"NotScrape\": \"true\",\n            \"ClusterType\": \"eks\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"562197b9-5253-4981-ab2c-8c648fc5dec8\"\n    }\n}",
+        "title": "Associating with an EKS cluster"
+      },
+      {
+        "document": "This example shows you how to associate with an EKS cluster.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusClusterAgent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Agents\": [\n        {\n            \"EnableExternal\": true,\n            \"Region\": \"xx\",\n            \"ClusterId\": \"xx\",\n            \"ClusterType\": \"xx\",\n            \"NotInstallBasicScrape\": true,\n            \"InClusterPodConfig\": {\n                \"HostNet\": true,\n                \"Tolerations\": [\n                    {\n                        \"Operator\": \"xx\",\n                        \"Effect\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"NodeSelector\": [\n                    {}\n                ]\n            },\n            \"NotScrape\": true,\n            \"ExternalLabels\": [\n                {}\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Associating with a cluster"
+      }
+    ],
+    "CreatePrometheusConfig": [
+      {
+        "document": "This example shows you how to add a configuration.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=CreatePrometheusConfig\n&InstanceId=prom-xxx\n&ClusterType=tke\n&ClusterId=cls-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Adding a configuration"
+      }
+    ],
+    "CreatePrometheusGlobalNotification": [
+      {
+        "document": "This example shows you how to create a global alert notification channel.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusGlobalNotification\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Notification\": {\n        \"AlertManager\": {\n            \"Url\": \"xx\",\n            \"ClusterId\": \"xx\",\n            \"ClusterType\": \"xx\"\n        },\n        \"RepeatInterval\": \"xx\",\n        \"WebHook\": \"xx\",\n        \"Enabled\": true,\n        \"PhoneNotifyOrder\": [\n            1\n        ],\n        \"PhoneInnerInterval\": 0,\n        \"PhoneCircleInterval\": 0,\n        \"NotifyWay\": [\n            \"xx\"\n        ],\n        \"ReceiverGroups\": [\n            \"xx\"\n        ],\n        \"PhoneArriveNotice\": true,\n        \"PhoneCircleTimes\": 0,\n        \"TimeRangeStart\": \"xx\",\n        \"Type\": \"xx\",\n        \"TimeRangeEnd\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating a global alert notification channel"
       }
     ],
     "CreatePrometheusMultiTenantInstancePostPayMode": [
@@ -210,10 +254,10 @@
     ],
     "DeleteGrafanaNotificationChannel": [
       {
-        "document": "",
+        "document": "This example shows you how to delete a Grafana alert channel.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"ChannelIDs\": [\n        \"nchannel-abcd1234\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Deleting a Grafana notification channel"
+        "title": "Deleting a Grafana alert channel"
       }
     ],
     "DeletePolicyGroup": [
@@ -222,6 +266,30 @@
         "input": "https://monitor.tencentcloudapi.com/?Action=DeletePolicyGroup\n&Module=monitor\n&GroupId.0=11111\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb66c2-b4d6-4c2c-90a9-617d80347ab5\"\n    }\n}",
         "title": "Deleting alarm policy group"
+      }
+    ],
+    "DeletePrometheusAlertPolicy": [
+      {
+        "document": "This example shows you how to delete a Prometheus alerting rule.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePrometheusAlertPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AlertIds\": [\n        \"xx\"\n    ],\n    \"Names\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Deleting a Prometheus alerting rule"
+      }
+    ],
+    "DeletePrometheusClusterAgent": [
+      {
+        "document": "This example shows you how to delete an agent.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePrometheusClusterAgent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Agents\": [\n        {}\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Deleting an agent"
+      }
+    ],
+    "DeletePrometheusConfig": [
+      {
+        "document": "This example shows you how to delete Prometheus configurations.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DeletePrometheusConfig\n&InstanceId=prom-xxx\n&ClusterType=tke\n&ClusterId=cls-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Deleting Prometheus configurations"
       }
     ],
     "DeletePrometheusRecordRuleYaml": [
@@ -444,7 +512,7 @@
     ],
     "DescribeGrafanaEnvironments": [
       {
-        "document": "列出 Grafana 环境变量",
+        "document": "This example shows you how to list Grafana environment variables.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"Envs\": \"{}\"\n    }\n}",
         "title": "Listing Grafana environment variables"
@@ -468,9 +536,9 @@
     ],
     "DescribeGrafanaNotificationChannels": [
       {
-        "document": "",
+        "document": "This example shows you how to list Grafana alert channels.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaNotificationChannels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"ChannelState\": 0,\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"ChannelName\": \"test\",\n    \"ChannelIDs\": [\n        \"nchannel-abcd1234\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"ExtraOrgIds\": [\n                    \"xx\"\n                ],\n                \"OrgIds\": \"xx\",\n                \"Receivers\": [\n                    \"xx\"\n                ],\n                \"ChannelId\": \"nchannel-abcd1234\",\n                \"OrganizationIds\": [\n                \"OrgId\": \"xx\",\n                \"UpdatedAt\": \"2020-09-22\",\n                \"ChannelName\": \"xx\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"ChannelId\": \"xx\",\n                \"ChannelName\": \"xx\",\n                \"Receivers\": [\n                    \"xx\"\n                ],\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\",\n                \"UpdatedAt\": \"2020-09-22T00:00:00+00:00\",\n                \"OrgId\": \"xx\",\n                \"ExtraOrgIds\": [\n                    \"xx\"\n                ],\n                \"OrgIds\": [\n                    \"xx\"\n                ],\n                \"OrganizationIds\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Listing Grafana alert channels"
       }
     ],
@@ -554,12 +622,36 @@
         "title": "Getting the list of alerts"
       }
     ],
+    "DescribePrometheusClusterAgents": [
+      {
+        "document": "This example shows you how to pull the agent information.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusClusterAgents\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Agents\": [\n            {\n                \"Status\": \"xx\",\n                \"ClusterName\": \"xx\",\n                \"ExternalLabels\": [\n                    {}\n                ],\n                \"ClusterId\": \"xx\",\n                \"ClusterType\": \"xx\",\n                \"Region\": \"xx\",\n                \"VpcId\": \"xx\",\n                \"FailedReason\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Pulling the agent information"
+      }
+    ],
     "DescribePrometheusConfig": [
       {
         "document": "This example shows you how to get the Prometheus configuration.",
         "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusConfig\r\n&InstanceId=prom-xxx\r\n&ClusterType=tke\r\n&ClusterId=cls-xxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Getting the Prometheus configuration"
+      }
+    ],
+    "DescribePrometheusGlobalConfig": [
+      {
+        "document": "This example shows you how to get the instance-level monitoring configurations.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusGlobalConfig\n&InstanceId=prom-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"PodMonitors\": [\n            {\n                \"Config\": \"xx\",\n                \"Name\": \"xx\",\n                \"TemplateId\": \"xx\"\n            }\n        ],\n        \"Config\": \"xx\",\n        \"RawJobs\": [\n            {\n                \"Config\": \"xx\",\n                \"Name\": \"xx\",\n                \"TemplateId\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"ServiceMonitors\": [\n            {\n                \"Config\": \"xx\",\n                \"Name\": \"xx\",\n                \"TemplateId\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Getting the instance-level monitoring configurations"
+      }
+    ],
+    "DescribePrometheusGlobalNotification": [
+      {
+        "document": "This example shows you how to query the global alert notification channel.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusGlobalNotification\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Notification\": {\n            \"AlertManager\": {\n                \"Url\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"ClusterType\": \"xx\"\n            },\n            \"RepeatInterval\": \"xx\",\n            \"WebHook\": \"xx\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 0,\n            \"PhoneCircleInterval\": 0,\n            \"NotifyWay\": [\n                \"xx\"\n            ],\n            \"ReceiverGroups\": [\n                \"xx\"\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 0,\n            \"TimeRangeStart\": \"xx\",\n            \"Type\": \"xx\",\n            \"TimeRangeEnd\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the global alert notification channel"
       }
     ],
     "DescribePrometheusInstanceDetail": [
@@ -632,6 +724,14 @@
         "title": "Listing Prometheus scrape tasks"
       }
     ],
+    "DescribePrometheusTargetsTMP": [
+      {
+        "document": "This example shows you how to get the list of targets.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusTargetsTMP\n&InstanceId=prom-xxx\n&ClusterType=tke\n&ClusterId=cls-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Jobs\": [\n            {}\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of targets"
+      }
+    ],
     "DescribePrometheusTemp": [
       {
         "document": "This example shows you how to get the list of templates.",
@@ -650,7 +750,7 @@
     ],
     "DescribePrometheusZones": [
       {
-        "document": "",
+        "document": "This example shows you how to list the AZs of Tencent Managed Service for Prometheus (TMP).",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusZones\n<Common request parameters>\n\n{\n    \"RegionId\": \"1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"ZoneSet\": [\n            {\n                \"ZoneState\": 1,\n                \"ZoneName\": \"xx\"\n                \"RegionId\": 0,\n                \"Zone\": \"xx\",\n                \"ZoneId\": 160001\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Listing TMP AZs"
@@ -828,6 +928,38 @@
         "title": "Updating policy group"
       }
     ],
+    "ModifyPrometheusAgentExternalLabels": [
+      {
+        "document": "This example shows you how to modify a label.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusAgentExternalLabels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ExternalLabels\": [\n        {}\n    ],\n    \"ClusterId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying a label"
+      }
+    ],
+    "ModifyPrometheusAlertPolicy": [
+      {
+        "document": "This example shows you how to modify an alerting rule.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusAlertPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AlertRule\": {\n        \"Name\": \"xx\",\n        \"Rules\": [\n            {\n                \"Describe\": \"xx\",\n                \"Name\": \"xx\",\n                \"For\": \"xx\",\n                \"Labels\": [\n                    {}\n                ],\n                \"Rule\": \"xx\",\n                \"Template\": \"xx\",\n                \"Annotations\": [\n                    {}\n                ]\n            }\n        ],\n        \"Notification\": {\n            \"AlertManager\": {\n                \"Url\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"ClusterType\": \"xx\"\n            },\n            \"RepeatInterval\": \"xx\",\n            \"WebHook\": \"xx\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 0,\n            \"PhoneCircleInterval\": 0,\n            \"NotifyWay\": [\n                \"xx\"\n            ],\n            \"ReceiverGroups\": [\n                1\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 0,\n            \"TimeRangeStart\": \"xx\",\n            \"Type\": \"xx\",\n            \"TimeRangeEnd\": \"xx\"\n        },\n        \"TemplateId\": \"xx\",\n        \"ClusterId\": \"xx\",\n        \"UpdatedAt\": \"xx\",\n        \"Id\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Modifying an alerting rule"
+      }
+    ],
+    "ModifyPrometheusConfig": [
+      {
+        "document": "This example shows you how to add a configuration.",
+        "input": "https://monitor.tencentcloudapi.com/?Action=ModifyPrometheusConfig\n&InstanceId=prom-xxx\n&ClusterType=tke\n&ClusterId=cls-xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Adding a configuration"
+      }
+    ],
+    "ModifyPrometheusGlobalNotification": [
+      {
+        "document": "This example shows you how to modify the global alert notification channel.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusGlobalNotification\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Notification\": {\n        \"AlertManager\": {\n            \"Url\": \"xx\",\n            \"ClusterId\": \"xx\",\n            \"ClusterType\": \"xx\"\n        },\n        \"RepeatInterval\": \"xx\",\n        \"WebHook\": \"xx\",\n        \"Enabled\": true,\n        \"PhoneNotifyOrder\": [\n            1\n        ],\n        \"PhoneInnerInterval\": 0,\n        \"PhoneCircleInterval\": 0,\n        \"NotifyWay\": [\n            \"xx\"\n        ],\n        \"ReceiverGroups\": [\n            \"xx\"\n        ],\n        \"PhoneArriveNotice\": true,\n        \"PhoneCircleTimes\": 0,\n        \"TimeRangeStart\": \"xx\",\n        \"Type\": \"xx\",\n        \"TimeRangeEnd\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying the global alert notification channel"
+      }
+    ],
     "ModifyPrometheusInstanceAttributes": [
       {
         "document": "",
@@ -862,7 +994,7 @@
     ],
     "ResumeGrafanaInstance": [
       {
-        "document": "",
+        "document": "This example shows you how to restore a TCMG instance.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
         "title": "Restoring a TCMG instance"
@@ -990,7 +1122,7 @@
     ],
     "UpdateGrafanaEnvironments": [
       {
-        "document": "",
+        "document": "This example shows you how to update Grafana environment variables.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"Envs\": \"{}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Updating Grafana environment variables"
@@ -1006,10 +1138,10 @@
     ],
     "UpdateGrafanaNotificationChannel": [
       {
-        "document": "",
+        "document": "This example shows you how to update the Grafana alert channel.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"ChannelId\": \"nchannel-abcd1234\",\n    \"ChannelName\": \"test\",\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Updating the Grafana notification channel"
+        "title": "Updating the Grafana alert channel"
       }
     ],
     "UpdateGrafanaWhiteList": [
@@ -1062,7 +1194,7 @@
     ],
     "UpgradeGrafanaInstance": [
       {
-        "document": "",
+        "document": "This example shows you how to upgrade a TCMG instance",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-12345678\",\n    \"Alias\": \"v7.4.2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Upgrading a TCMG instance"

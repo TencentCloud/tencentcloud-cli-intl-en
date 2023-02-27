@@ -175,6 +175,13 @@
       "output": "DescribeBackupDownloadRestrictionResponse",
       "status": "online"
     },
+    "DescribeBackupEncryptionStatus": {
+      "document": "This API is used to query the default encryption status of an instance backup.",
+      "input": "DescribeBackupEncryptionStatusRequest",
+      "name": "Queries the default encryption status of an instance backup",
+      "output": "DescribeBackupEncryptionStatusResponse",
+      "status": "online"
+    },
     "DescribeBackupOverview": {
       "document": "This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).",
       "input": "DescribeBackupOverviewRequest",
@@ -560,6 +567,13 @@
       "output": "ModifyBackupDownloadRestrictionResponse",
       "status": "online"
     },
+    "ModifyBackupEncryptionStatus": {
+      "document": "This API is used to set the default encryption status of an instance backup. ",
+      "input": "ModifyBackupEncryptionStatusRequest",
+      "name": "Sets the default encryption status of an instance backup",
+      "output": "ModifyBackupEncryptionStatusResponse",
+      "status": "online"
+    },
     "ModifyCDBProxyConnectionPool": {
       "document": "This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.",
       "input": "ModifyCDBProxyConnectionPoolRequest",
@@ -686,6 +700,13 @@
       "output": "OpenAuditServiceResponse",
       "status": "online"
     },
+    "OpenDBInstanceEncryption": {
+      "document": "This API is used to enable the encryption feature for instance data storage, and custom keys are supported.\n\nNote: Before enabling data storage encryption for an instance, you need to perform the following operations:\n\n1. [Initialize an instance](https://intl.cloud.tencent.com/document/api/236/15873?from_cn_redirect=1).\n\n2. Enable [KMS service](https://console.cloud.tencent.com/kms2)\n\n3. [Grant permission to access KMS](https://console.cloud.tencent.com/cam/role) for TencentDB for MySQL. The role name is `MySQL_QCSRole`, and the preset policy name is `QcloudAccessForMySQLRole`.\n\nThis API calling may take up to 10 seconds, causing the client to time out. If it returns `InternalError`, call `DescribeDBInstanceInfo` to confirm whether the backend encryption is enabled successfully.",
+      "input": "OpenDBInstanceEncryptionRequest",
+      "name": "Enables data storage encryption",
+      "output": "OpenDBInstanceEncryptionResponse",
+      "status": "online"
+    },
     "OpenDBInstanceGTID": {
       "document": "This API (OpenDBInstanceGTID) is used to enable GTID for a TencentDB instance. Only instances on or above version 5.6 are supported.",
       "input": "OpenDBInstanceGTIDRequest",
@@ -804,13 +825,6 @@
       "name": "Switches to a new instance",
       "output": "SwitchForUpgradeResponse",
       "status": "online"
-    },
-    "UpgradeCDBProxy": {
-      "document": "接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置\n\nThis API is used to upgrade the configuration of database proxy.",
-      "input": "UpgradeCDBProxyRequest",
-      "name": "This API is used to upgrade the database proxy configuration. It has been disused. Use `AdjustCdbProxy` instead.",
-      "output": "UpgradeCDBProxyResponse",
-      "status": "deprecated"
     },
     "UpgradeCDBProxyVersion": {
       "document": "This API is used to upgrade the version of database proxy.",
@@ -2923,7 +2937,7 @@
         },
         {
           "default": "",
-          "document": "Backup method of target instance. Value range: logical (logical cold backup), physical (physical cold backup).",
+          "document": "Target backup method. Valid values: `logical` (logical cold backup), `physical` (physical cold backup), `snapshot` (snapshot backup). Basic Edition instances only support snapshot backups.",
           "example": "\"\"",
           "member": "string",
           "name": "BackupMethod",
@@ -5041,6 +5055,42 @@
       ],
       "type": "object"
     },
+    "DescribeBackupEncryptionStatusRequest": {
+      "document": "DescribeBackupEncryptionStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-XXXX, which is the same as that displayed in the TencentDB console.",
+          "example": "cdb-XXXX",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupEncryptionStatusResponse": {
+      "document": "DescribeBackupEncryptionStatus response structure.",
+      "members": [
+        {
+          "document": "Whether the physical cold backup is enabled for the instance. Valid values: `on`, `off`.",
+          "example": "on",
+          "member": "string",
+          "name": "EncryptionStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBackupOverviewRequest": {
       "document": "DescribeBackupOverview request structure.",
       "members": [
@@ -6967,6 +7017,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6974,7 +7025,8 @@
         },
         {
           "default": "",
-          "document": "Start timestamp.",
+          "document": "Start timestamp, such as 1585142640.",
+          "example": "1585142640",
           "member": "uint64",
           "name": "StartTime",
           "required": true,
@@ -6982,7 +7034,8 @@
         },
         {
           "default": "",
-          "document": "End timestamp.",
+          "document": "End timestamp, such as 1585142640.",
+          "example": "1585142640",
           "member": "uint64",
           "name": "EndTime",
           "required": true,
@@ -6991,6 +7044,7 @@
         {
           "default": "",
           "document": "List of keywords to match. Up to 15 keywords are supported.",
+          "example": "[\"keywords0\\n\"]",
           "member": "string",
           "name": "KeyWords",
           "required": false,
@@ -6999,6 +7053,7 @@
         {
           "default": "",
           "document": "The number of results per page in paginated queries. Default value: 100. Maximum value: 400.",
+          "example": "400",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7007,6 +7062,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7015,6 +7071,7 @@
         {
           "default": "",
           "document": "This parameter is valid only for source or disaster recovery instances. Valid value: `slave`, which indicates pulling logs from the replica.",
+          "example": "\"\"",
           "member": "string",
           "name": "InstType",
           "required": false,
@@ -7792,6 +7849,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7799,7 +7857,8 @@
         },
         {
           "default": "",
-          "document": "Start timestamp.",
+          "document": "Start timestamp, such as 1585142640.",
+          "example": "1585142640",
           "member": "uint64",
           "name": "StartTime",
           "required": true,
@@ -7807,7 +7866,8 @@
         },
         {
           "default": "",
-          "document": "End timestamp.",
+          "document": "End timestamp, such as 1585142640.",
+          "example": "1585142640",
           "member": "uint64",
           "name": "EndTime",
           "required": true,
@@ -7816,6 +7876,7 @@
         {
           "default": "",
           "document": "Client `Host` list.",
+          "example": "[\"userhosts0\\n\"]",
           "member": "string",
           "name": "UserHosts",
           "required": false,
@@ -7824,6 +7885,7 @@
         {
           "default": "",
           "document": "Client username list.",
+          "example": "[\"usename0\\n\"]",
           "member": "string",
           "name": "UserNames",
           "required": false,
@@ -7832,6 +7894,7 @@
         {
           "default": "",
           "document": "Accessed database list.",
+          "example": "[\"database0\\n\"]",
           "member": "string",
           "name": "DataBases",
           "required": false,
@@ -7840,6 +7903,7 @@
         {
           "default": "",
           "document": "Sort by field. Valid values: Timestamp, QueryTime, LockTime, RowsExamined, RowsSent.",
+          "example": "RowsSent",
           "member": "string",
           "name": "SortBy",
           "required": false,
@@ -7848,6 +7912,7 @@
         {
           "default": "",
           "document": "Sorting order. Valid values: ASC (ascending), DESC (descending).",
+          "example": "DESC",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -7856,6 +7921,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7864,6 +7930,7 @@
         {
           "default": "",
           "document": "The number of results per page in paginated queries. Default value: 100. Maximum value: 400.",
+          "example": "400",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7872,6 +7939,7 @@
         {
           "default": "",
           "document": "This parameter is valid only for source or disaster recovery instances. Valid value: `slave`, which indicates pulling logs from the replica.",
+          "example": "master",
           "member": "string",
           "name": "InstType",
           "required": false,
@@ -10208,6 +10276,42 @@
       ],
       "type": "object"
     },
+    "ModifyBackupEncryptionStatusRequest": {
+      "document": "ModifyBackupEncryptionStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-XXXX, which is the same as that displayed in the TencentDB console.",
+          "example": "cdb-XXXX",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Default encryption status for the new auto-generated physical backup files. Valid values: `on`, `off`.",
+          "example": "on",
+          "member": "string",
+          "name": "EncryptionStatus",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupEncryptionStatusResponse": {
+      "document": "ModifyBackupEncryptionStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyCDBProxyConnectionPoolRequest": {
       "document": "ModifyCDBProxyConnectionPool request structure.",
       "members": [
@@ -11144,6 +11248,51 @@
     },
     "OpenAuditServiceResponse": {
       "document": "OpenAuditService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenDBInstanceEncryptionRequest": {
+      "document": "OpenDBInstanceEncryption request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "TencentDB instance ID",
+          "example": "cdb-qwer1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom key ID, which is the unique CMK ID. If this value is empty, the key KMS-CDB auto-generated by Tencent Cloud will be used.",
+          "example": "testkey",
+          "member": "string",
+          "name": "KeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom storage region, such as ap-guangzhou. When `KeyId` is not empty, this parameter is required.",
+          "example": "ap-guangzou",
+          "member": "string",
+          "name": "KeyRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenDBInstanceEncryptionResponse": {
+      "document": "OpenDBInstanceEncryption response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -14008,96 +14157,6 @@
         }
       ],
       "usage": "out"
-    },
-    "UpgradeCDBProxyRequest": {
-      "document": "UpgradeCDBProxy request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID",
-          "example": "cdb-pr1rb3j1",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Database proxy ID",
-          "example": "proxy-p11rb3j",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Number of proxy nodes",
-          "example": "2",
-          "member": "int64",
-          "name": "ProxyCount",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of CPU cores per proxy node",
-          "example": "4",
-          "member": "int64",
-          "name": "Cpu",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Memory per proxy node",
-          "example": "8000",
-          "member": "int64",
-          "name": "Mem",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Load rebalance mode. Valid values: `auto`, `manual`",
-          "example": "auto",
-          "member": "string",
-          "name": "ReloadBalance",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Upgrade time. Valid values: `nowTime` (upgrade immediately), `timeWindow` (upgrade during instance maintenance time)",
-          "example": "nowTime",
-          "member": "string",
-          "name": "UpgradeTime",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "UpgradeCDBProxyResponse": {
-      "document": "UpgradeCDBProxy response structure.",
-      "members": [
-        {
-          "document": "Async request ID\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "3689c0eb-a92d-77ce-0ee2-17d99f604e64",
-          "member": "string",
-          "name": "AsyncRequestId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "UpgradeCDBProxyVersionRequest": {
       "document": "UpgradeCDBProxyVersion request structure.",
