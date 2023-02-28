@@ -42,10 +42,10 @@
     ],
     "CancelKeyDeletion": [
       {
-        "document": "This example shows you how to cancel the schedule deletion for a CMK.",
-        "input": "https://kms.tencentcloudapi.com/?Action=CancelKeyDeletion\n&KeyId=\"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxx\",\n        \"KeyId\": \"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n    }\n}",
-        "title": "Canceling schedule deletion"
+        "document": "This example shows you how to cancel a scheduled deletion task of a CMK.",
+        "input": "POST / HTTP/1.1\nHost: kms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelKeyDeletion\n<Common request parameters>\n\n{\n    \"KeyId\": \"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e8f23a7-50b2-4c8e-bd23-0a98cb643f88\",\n        \"KeyId\": \"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n    }\n}",
+        "title": "Canceling a scheduled deletion task"
       }
     ],
     "CreateKey": [
@@ -59,8 +59,8 @@
     "CreateWhiteBoxKey": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=CreateWhiteBoxKey\r\n&Alias=test_alias&Description=test_description&Algorithm=SM4\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3691b76c-1ba5-4f93-88ad-858d23ba6c8a\",\n        \"EncryptKey\": \"AAAAAHP6lsgUa4mYE/cT5LGkquR3xKzUG+cB6oWJ7exbmfR37G6QCB2dEjpdq6+JvmC7cbiDXUFaExxSHQTjlJAzTh/T4p6BZy31uiPXogOnsDEm/vGnh3AJQBopXreiUYe54ZlpJPd/yZocQhsFhiNw2Bmqy6bkp4LrzT2FvzHh5YhwNLRuJnou3G5OecuvaNQoz2L9hkCSc4s7iUaiCMzzDgCnfCYhqgKP+HtaqOMv0LKRzTjSYKxdmzWjPT1vMUxv2Mtk+fF/5gEI6z++eybnWsyJHTx03YnF52sVw5RNs3axXRmOQWUOIoswKmb8M/urWdUio6ZZeE2fMPBg2H2GJvf5wbtCsHLFwdUZBQJ/VcgLXHj0VQxUdUFffL/yZfvIOXAzACvkiZmUEIRP422s5EXIJFfLzA5S+aJgl1Kwp7XI\",\n        \"DecryptKey\": \"AAAAAHP6lsgUa4mYE/cT5LGkquR3xKzUG+cB6oWJ7exbmfR37G6QCB2dEjpdq6+JvmC7cbiDXUFaExxSHQTjlJAzTh/T4p6BZy31uiPXogOnsDEm/vGnh3AJQBopXreiUYe54ZlpJPd/yZocQhsFhiNw2Bmqy6bkp4LrzT2FvzHh5YhwNLRuJnou3G5OecuvaNQoz2L9hkCSc4s7iUaiCMzzDgCnfCYhqgKP+HtaqOMv0LKRzTjSYKxdmzWjPT1vMUxv2Mtk+fF/5gEI6z++eybnWsyJHTx03YnF52sVw5RNs3axXRmOQWUOIoswKmb8M/urWdUio6ZZeE2fMPBg2H2GJvf5wbtCsHLFwdUZBQJ/VcgLXHj0VQxUdUFffL/yZfvIOXAzACvkiZmUEIRP422s5EXIJFfLzA5S+aJgl1Kwp7XI\",\n        \"KeyId\": \"3235f222-6e40-11ea-8f2f-5254006d0810\"\n    }\n}",
+        "input": "https://kms.tencentcloudapi.com/?Action=CreateWhiteBoxKey\n&Alias=test_alias\n&Description=test_description\n&Algorithm=SM4\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3691b76c-1ba5-4f93-88ad-858d23ba6c8a\",\n        \"EncryptKey\": \"AAAAAHP6lsgUa4mYE/cT5LGkquR3xKzUG+cB6oWJ7exbmfR37G6QCB2dEjpdq6+JvmC7cbiDXUFaExxSHQTjlJAzTh/T4p6BZy31uiPXogOnsDEm/vGnh3AJQBopXreiUYe54ZlpJPd/yZocQhsFhiNw2Bmqy6bkp4LrzT2FvzHh5YhwNLRuJnou3G5OecuvaNQoz2L9hkCSc4s7iUaiCMzzDgCnfCYhqgKP+HtaqOMv0LKRzTjSYKxdmzWjPT1vMUxv2Mtk+fF/5gEI6z++eybnWsyJHTx03YnF52sVw5RNs3axXRmOQWUOIoswKmb8M/urWdUio6ZZeE2fMPBg2H2GJvf5wbtCsHLFwdUZBQJ/VcgLXHj0VQxUdUFffL/yZfvIOXAzACvkiZmUEIRP422s5EXIJFfLzA5S+aJgl1Kwp7XI\",\n        \"DecryptKey\": \"AAAAAHP6lsgUa4mYE/cT5LGkquR3xKzUG+cB6oWJ7exbmfR37G6QCB2dEjpdq6+JvmC7cbiDXUFaExxSHQTjlJAzTh/T4p6BZy31uiPXogOnsDEm/vGnh3AJQBopXreiUYe54ZlpJPd/yZocQhsFhiNw2Bmqy6bkp4LrzT2FvzHh5YhwNLRuJnou3G5OecuvaNQoz2L9hkCSc4s7iUaiCMzzDgCnfCYhqgKP+HtaqOMv0LKRzTjSYKxdmzWjPT1vMUxv2Mtk+fF/5gEI6z++eybnWsyJHTx03YnF52sVw5RNs3axXRmOQWUOIoswKmb8M/urWdUio6ZZeE2fMPBg2H2GJvf5wbtCsHLFwdUZBQJ/VcgLXHj0VQxUdUFffL/yZfvIOXAzACvkiZmUEIRP422s5EXIJFfLzA5S+aJgl1Kwp7XI\",\n        \"KeyId\": \"3235f222-6e40-11ea-8f2f-5254006d0810\",\n        \"TagMsg\": \"xx\",\n        \"TagCode\": 1\n    }\n}",
         "title": "Creating a white-box key"
       }
     ],
@@ -83,7 +83,7 @@
     "DeleteWhiteBoxKey": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DeleteWhiteBoxKey\r\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=DeleteWhiteBoxKey\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"850bf779-2249-4995-8c55-b3966daf0a8c\"\n    }\n}",
         "title": "Deleting a white-box key"
       }
@@ -113,7 +113,7 @@
     "DescribeWhiteBoxDecryptKey": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxDecryptKey\r\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxDecryptKey\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8788b5f3-8eaa-48a8-915a-b7c52f57065e\",\n        \"DecryptKey\": \"AAAAACL4R9T1M3r3/S9XpMbUbwHJUKbq/tll0Bop7LG90lHpj+DKmOiEE0Rs5rRrMNaCYIWzWJyU0SNQoX1WNn06QB2qrhDCXEPdwMwgJHx+YfJHUh/eSF5/LUEv27ltidqJyUk3HF5CZgjkN901hFEPf9ZCJcEo5XrORpopW7Ur6svPAjDtIPN3kUDCTqgTPC+FBX0cO/zEZFeMMAU2BPwe6f5O1x5BTrCBEf4qJDpZqT/WxXvSid8pFQ8uSxMqaf0ot57NzfuWG92oAe9HQ7bDCcfuBN7nXX+QipQIBxD/LVWk7zrHtLD/TJfAAoTuE7QKc/lSTOpI1xkTxJq/AFLd5K9EaBN7kpAkAsponZc20Tpk+KlyWE3NHdQrION9fsxtUBl5tz/l6T1j49SR5J2axZ2nnkA3o7L1WIGiv7r3tkd+\"\n    }\n}",
         "title": "Getting a white-box decryption key"
       }
@@ -121,7 +121,7 @@
     "DescribeWhiteBoxDeviceFingerprints": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxDeviceFingerprints\r\n&KeyId=cd850a3d-9b1b-11ea-a96a-5254006d0810\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxDeviceFingerprints\n&KeyId=cd850a3d-9b1b-11ea-a96a-5254006d0810\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f643be96-3ea8-4abe-b148-0cc74436b2c1\",\n        \"DeviceFingerprints\": [\n            {\n                \"Identity\": \"c19c024c-2ba1-11b2-a85c-96f970f4a8e1\",\n                \"Description\": \"desc\"\n            }\n        ]\n    }\n}",
         "title": "Getting the device fingerprint list of a specified key"
       }
@@ -129,25 +129,25 @@
     "DescribeWhiteBoxKey": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxKey\r\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"395989ef-4e4a-4f16-856d-3bb5a86ba99c\",\n        \"KeyInfo\": {\n            \"KeyId\": \"244dab8c-6dad-11ea-80c6-5254006d0810\",\n            \"Alias\": \"xx\",\n            \"CreateTime\": 1585040099,\n            \"Description\": \"xx\",\n            \"CreatorUin\": 0,\n            \"OwnerUin\": 0,\n            \"Status\": \"Disabled\",\n            \"Algorithm\": \"SM4\",\n            \"EncryptKey\": \"AAAAACL4R9T1M3r3/S9XpMbUbwHJUKbq/tll0Bop7LG90lHpj+DKmOiEE0Rs5rRrMNaCYIWzWJyU0SNQoX1WNn06QB2qrhDCXEPdwMwgJHx+YfJHUh/eSF5/LUEv27ltidqJyUk3HF5CZgjkN901hFEPf9ZCJcEo5XrORpopW7Ur6svPAjDtIPN3kUDCTqgTPC+FBX0cO/zEZFeMMAU2BPwe6f5O1x5BTrCBEf4qJDpZqT/WxXvSid8pFQ8uSxMqaf0ot57NzfuWG92oAe9HQ7bDCcfuBN7nXX+QipQIBxD/LVWk7zrHtLD/TJfAAoTuE7QKc/lSTOpI1xkTxJq/AFLd5K9EaBN7kpAkAsponZc20Tpk+KlyWE3NHdQrION9fsxtUBl5tz/l6T1j49SR5J2axZ2nnkA3o7L1WIGiv7r3tkd+\",\n            \"DecryptKey\": \"AAAAACL4R9T1M3r3/S9XpMbUbwHJUKbq/tll0Bop7LG90lHpj+DKmOiEE0Rs5rRrMNaCYIWzWJyU0SNQoX1WNn06QB2qrhDCXEPdwMwgJHx+YfJHUh/eSF5/LUEv27ltidqJyUk3HF5CZgjkN901hFEPf9ZCJcEo5XrORpopW7Ur6svPAjDtIPN3kUDCTqgTPC+FBX0cO/zEZFeMMAU2BPwe6f5O1x5BTrCBEf4qJDpZqT/WxXvSid8pFQ8uSxMqaf0ot57NzfuWG92oAe9HQ7bDCcfuBN7nXX+QipQIBxD/LVWk7zrHtLD/TJfAAoTuE7QKc/lSTOpI1xkTxJq/AFLd5K9EaBN7kpAkAsponZc20Tpk+KlyWE3NHdQrION9fsxtUBl5tz/l6T1j49SR5J2axZ2nnkA3o7L1WIGiv7r3tkd+\"\n        }\n    }\n}",
+        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxKey\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"395989ef-4e4a-4f16-856d-3bb5a86ba99c\",\n        \"KeyInfo\": {\n            \"KeyId\": \"244dab8c-6dad-11ea-80c6-5254006d0810\",\n            \"Alias\": \"xx\",\n            \"CreateTime\": 1585040099,\n            \"Description\": \"xx\",\n            \"CreatorUin\": 0,\n            \"OwnerUin\": 0,\n            \"Status\": \"Disabled\",\n            \"Algorithm\": \"SM4\",\n            \"EncryptKey\": \"AAAAACL4R9T1M3r3/S9XpMbUbwHJUKbq/tll0Bop7LG90lHpj+DKmOiEE0Rs5rRrMNaCYIWzWJyU0SNQoX1WNn06QB2qrhDCXEPdwMwgJHx+YfJHUh/eSF5/LUEv27ltidqJyUk3HF5CZgjkN901hFEPf9ZCJcEo5XrORpopW7Ur6svPAjDtIPN3kUDCTqgTPC+FBX0cO/zEZFeMMAU2BPwe6f5O1x5BTrCBEf4qJDpZqT/WxXvSid8pFQ8uSxMqaf0ot57NzfuWG92oAe9HQ7bDCcfuBN7nXX+QipQIBxD/LVWk7zrHtLD/TJfAAoTuE7QKc/lSTOpI1xkTxJq/AFLd5K9EaBN7kpAkAsponZc20Tpk+KlyWE3NHdQrION9fsxtUBl5tz/l6T1j49SR5J2axZ2nnkA3o7L1WIGiv7r3tkd+\",\n            \"DecryptKey\": \"AAAAACL4R9T1M3r3/S9XpMbUbwHJUKbq/tll0Bop7LG90lHpj+DKmOiEE0Rs5rRrMNaCYIWzWJyU0SNQoX1WNn06QB2qrhDCXEPdwMwgJHx+YfJHUh/eSF5/LUEv27ltidqJyUk3HF5CZgjkN901hFEPf9ZCJcEo5XrORpopW7Ur6svPAjDtIPN3kUDCTqgTPC+FBX0cO/zEZFeMMAU2BPwe6f5O1x5BTrCBEf4qJDpZqT/WxXvSid8pFQ8uSxMqaf0ot57NzfuWG92oAe9HQ7bDCcfuBN7nXX+QipQIBxD/LVWk7zrHtLD/TJfAAoTuE7QKc/lSTOpI1xkTxJq/AFLd5K9EaBN7kpAkAsponZc20Tpk+KlyWE3NHdQrION9fsxtUBl5tz/l6T1j49SR5J2axZ2nnkA3o7L1WIGiv7r3tkd+\",\n            \"DeviceFingerprintBind\": true,\n            \"ResourceId\": \"xx\"\n        }\n    }\n}",
         "title": "Displaying white-box key information"
       }
     ],
     "DescribeWhiteBoxKeyDetails": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxKeyDetails\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f6308605-f9d7-4a69-9401-c542cd414e00\",\n        \"KeyInfos\": [\n            {\n                \"KeyId\": \"244dab8c-6dad-11ea-80c6-5254006d0810\",\n                \"Alias\": \"xx\",\n                \"CreateTime\": 1585040099,\n                \"Description\": \"xx\",\n                \"CreatorUin\": 0,\n                \"OwnerUin\": 0,\n                \"Status\": \"Disabled\",\n                \"Algorithm\": \"SM4\",\n                \"EncryptKey\": \"AAAAACL4R9T1M3r3/S9XpMbUbwHJUKbq/tll0Bop7LG90lHpj+DKmOiEE0Rs5rRrMNaCYIWzWJyU0SNQoX1WNn06QB2qrhDCXEPdwMwgJHx+YfJHUh/eSF5/LUEv27ltidqJyUk3HF5CZgjkN901hFEPf9ZCJcEo5XrORpopW7Ur6svPAjDtIPN3kUDCTqgTPC+FBX0cO/zEZFeMMAU2BPwe6f5O1x5BTrCBEf4qJDpZqT/WxXvSid8pFQ8uSxMqaf0ot57NzfuWG92oAe9HQ7bDCcfuBN7nXX+QipQIBxD/LVWk7zrHtLD/TJfAAoTuE7QKc/lSTOpI1xkTxJq/AFLd5K9EaBN7kpAkAsponZc20Tpk+KlyWE3NHdQrION9fsxtUBl5tz/l6T1j49SR5J2axZ2nnkA3o7L1WIGiv7r3tkd+\",\n                \"DecryptKey\": \"AAAAACL4R9T1M3r3/S9XpMbUbwHJUKbq/tll0Bop7LG90lHpj+DKmOiEE0Rs5rRrMNaCYIWzWJyU0SNQoX1WNn06QB2qrhDCXEPdwMwgJHx+YfJHUh/eSF5/LUEv27ltidqJyUk3HF5CZgjkN901hFEPf9ZCJcEo5XrORpopW7Ur6svPAjDtIPN3kUDCTqgTPC+FBX0cO/zEZFeMMAU2BPwe6f5O1x5BTrCBEf4qJDpZqT/WxXvSid8pFQ8uSxMqaf0ot57NzfuWG92oAe9HQ7bDCcfuBN7nXX+QipQIBxD/LVWk7zrHtLD/TJfAAoTuE7QKc/lSTOpI1xkTxJq/AFLd5K9EaBN7kpAkAsponZc20Tpk+KlyWE3NHdQrION9fsxtUBl5tz/l6T1j49SR5J2axZ2nnkA3o7L1WIGiv7r3tkd+\"\n            },\n            {\n                \"KeyId\": \"3d2de9cd-6daf-11ea-af24-5254006d0810\",\n                \"Alias\": \"xxx\",\n                \"CreateTime\": 1585041000,\n                \"Description\": \"xx\",\n                \"CreatorUin\": 0,\n                \"OwnerUin\": 0,\n                \"Status\": \"Enabled\",\n                \"Algorithm\": \"SM4\",\n                \"EncryptKey\": \"AAAAAE2+4Kz2XEgQkdJk2tZuDunuvGOrGd2lbD6tIZESi2sBNR/aTF2Bx/GWdl5sBNlfUKTIsrwxONNABo65mm6x1KmTUIZT/3aVVqK7PLINZ51g0t7i0gERdiimLxjVwQUstPLFqR2hrfcVR+TvheGskQgYJEpdQ1wthcOlm37SRjAvd6OdDx7gQtdutgf49SZ9YCVoYRf5phQDrKSc2WfxI96UwO2zoTCKD+aRB9u3hTzd7Z305kMJ6e+thcgUd+zzCy8KR/nAMeZ/8PKDsrQW/UsugZJLEBdrVk0vD0dQUCYGG7nSTjzS877+570H+WvyNfCCvzLvfu50PA7gLvyXLodppwqWJPOhqfPw9muoec9BD6vA1jxDnhlF6nb0GEh5V6QsAJUyVXzWMXJEce99u1DzeS4pRsc09/7GQ0HauJRz\",\n                \"DecryptKey\": \"AAAAAE2+4Kz2XEgQkdJk2tZuDunuvGOrGd2lbD6tIZESi2sBNR/aTF2Bx/GWdl5sBNlfUKTIsrwxONNABo65mm6x1KmTUIZT/3aVVqK7PLINZ51g0t7i0gERdiimLxjVwQUstPLFqR2hrfcVR+TvheGskQgYJEpdQ1wthcOlm37SRjAvd6OdDx7gQtdutgf49SZ9YCVoYRf5phQDrKSc2WfxI96UwO2zoTCKD+aRB9u3hTzd7Z305kMJ6e+thcgUd+zzCy8KR/nAMeZ/8PKDsrQW/UsugZJLEBdrVk0vD0dQUCYGG7nSTjzS877+570H+WvyNfCCvzLvfu50PA7gLvyXLodppwqWJPOhqfPw9muoec9BD6vA1jxDnhlF6nb0GEh5V6QsAJUyVXzWMXJEce99u1DzeS4pRsc09/7GQ0HauJRz\"\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: kms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWhiteBoxKeyDetails\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"KeyInfos\": [\n            {\n                \"Status\": \"xx\",\n                \"DecryptKey\": \"xx\",\n                \"KeyId\": \"xx\",\n                \"Description\": \"xx\",\n                \"CreatorUin\": 1,\n                \"ResourceId\": \"xx\",\n                \"OwnerUin\": 1,\n                \"Algorithm\": \"xx\",\n                \"Alias\": \"xx\",\n                \"EncryptKey\": \"xx\",\n                \"CreateTime\": 1,\n                \"DeviceFingerprintBind\": true\n            },\n            {\n                \"Status\": \"xx\",\n                \"DecryptKey\": \"xx\",\n                \"KeyId\": \"xx\",\n                \"Description\": \"xx\",\n                \"CreatorUin\": 1,\n                \"ResourceId\": \"xx\",\n                \"OwnerUin\": 1,\n                \"Algorithm\": \"xx\",\n                \"Alias\": \"xx\",\n                \"EncryptKey\": \"xx\",\n                \"CreateTime\": 1,\n                \"DeviceFingerprintBind\": true\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Getting the white-box key list"
       }
     ],
     "DescribeWhiteBoxServiceStatus": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxServiceStatus\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=DescribeWhiteBoxServiceStatus\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a5ab931-bb22-4d55-9042-e1ef1a36c941\",\n        \"ServiceEnabled\": true\n    }\n}",
-        "title": "Getting the white-box key service status"
+        "title": "Querying the white-box key service status"
       }
     ],
     "DisableKey": [
@@ -177,7 +177,7 @@
     "DisableWhiteBoxKey": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DisableWhiteBoxKey\r\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=DisableWhiteBoxKey\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"850bf779-2249-4995-8c55-b3966daf0a8c\"\n    }\n}",
         "title": "Disabling a white-box key"
       }
@@ -185,9 +185,9 @@
     "DisableWhiteBoxKeys": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=DisableWhiteBoxKeys\r\n&KeyIds.0=23e80852-1e38-11e9-b129-5cb9019b4b01\r\n&KeyIds.1=23e80852-1e38-11e9-b129-5cb9019b4b02\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: kms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableWhiteBoxKeys\n<Common request parameters>\n\n{\n    \"KeyIds\": [\n        \"23e80852-1e38-11e9-b129-5cb9019b4b02\",\n        \"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\n    }\n}",
-        "title": "Disabling white-box keys in batches"
+        "title": "Batching disabling white-box keys "
       }
     ],
     "EnableKey": [
@@ -201,7 +201,7 @@
     "EnableKeyRotation": [
       {
         "document": "This example shows you how to enable key rotation for a specified CMK.",
-        "input": "https://kms.tencentcloudapi.com/?Action=EnableKeyRotation\n&KeyId=23e80852-1e38-11e9-b129-5cb9019b4b01\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: kms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableKeyRotation\n<Common request parameters>\n\n{\n    \"KeyId\": \"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\n    }\n}",
         "title": "Enabling key rotation"
       }
@@ -217,7 +217,7 @@
     "EnableWhiteBoxKey": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=EnableWhiteBoxKey\r\n&KeyId=23e80852-1e38-11e9-b129-5cb9019b4b01\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=EnableWhiteBoxKey\n&KeyId=23e80852-1e38-11e9-b129-5cb9019b4b01\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"850bf779-2249-4995-8c55-b3966daf0a8c\"\n    }\n}",
         "title": "Enabling a white-box key"
       }
@@ -225,9 +225,9 @@
     "EnableWhiteBoxKeys": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=EnableWhiteBoxKeys\r\n&KeyIds.0=23e80852-1e38-11e9-b129-5cb9019b4b01\r\n&KeyIds.1=23e80852-1e38-11e9-b129-5cb9019b4b02\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=EnableWhiteBoxKeys\n&KeyIds.0=23e80852-1e38-11e9-b129-5cb9019b4b01\n&KeyIds.1=23e80852-1e38-11e9-b129-5cb9019b4b02\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"850bf779-2249-4995-8c55-b3966daf0a8c\"\n    }\n}",
-        "title": "Enabling white-box keys in batches"
+        "title": "Batch enabling white-box keys"
       }
     ],
     "Encrypt": [
@@ -241,7 +241,7 @@
     "EncryptByWhiteBox": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=EncryptByWhiteBox\r\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\r\n&PlainText=UGxhaW5UZXh0\r\n&<Common request parameters>",
+        "input": "https://kms.tencentcloudapi.com/?Action=EncryptByWhiteBox\n&KeyId=244dab8c-6dad-11ea-80c6-5254006d0810\n&PlainText=UGxhaW5UZXh0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4b3be01e-117a-43f5-aa34-dd5034efe3dd\",\n        \"InitializationVector\": \"BQbVImt3p_xr8VQebZaXGQ==\",\n        \"CipherText\": \"ZKHH2la4DpwlkwjANQ5hgw==\"\n    }\n}",
         "title": "Encrypting data with a white-box key"
       }
@@ -296,8 +296,8 @@
     ],
     "GetServiceStatus": [
       {
-        "document": "This example shows you how to query the service status.",
-        "input": "https://kms.tencentcloudapi.com/?Action=GetServiceStatus\n&<Common request parameters>",
+        "document": "This example shows you how to query service status.",
+        "input": "POST / HTTP/1.1\nHost: kms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetServiceStatus\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"ServiceEnabled\": true,\n        \"InvalidType\": 1,\n        \"UserLevel\": 0,\n        \"ProResourceId\": \"kms_pro_12345\",\n        \"ProRenewFlag\": 1,\n        \"ProExpireTime\": 1603701385,\n        \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\",\n        \"ExclusiveHSMEnabled\": false,\n        \"ExclusiveVSMEnabled\": false\n    }\n}",
         "title": "Querying the service status"
       }
@@ -305,7 +305,7 @@
     "ImportKeyMaterial": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=ImportKeyMaterial\n&KeyId=23e80852-1e38-11e9-b129-5cb9019b4b01\n&EncryptedKeyMaterial=dgqtAzLde+xsR5q3kwOsWu4bst7FaE4sbhhf1OHCMujhjTJTnFGEubKowVFnFC96e2vUvO5fwGvfNcPIDkg6q7iuFviM0BepCmF9Fyk3tluJVRf/Nv8FCccANXmsZDPxtSHdcD00/dQg1i2BIaLMP3/VFBDVEK7AzRhlTkrNiout4pavGSCAF+uBl2Vmnq6fF4DT37B0Q0WQ4NyfUwDCSR0VSF9vwqommhudJUhv4+21xHMgUCdbFvVoOmZP/Md5Sb4rbMbWi5qRpLusi8W3KKTyJ8onp7UC+0qi6DTw4XCq4UPniFNJXIxUOSVXpZHQKFCJXr6/cxNAci8eMTTwfA==\n&ImportToken=Sy+GF4f+XxUan1sfSBfqWQmyJeVO30wcqLEMoW4REpxBApJqYG9zc37OM0Z3qT/mvLofzM3hwVJSTzIITcAo6ew3LidOJ3nwNoVNOM2wnrL+g9puwP0GpbbSwTd16X9E\n&ValidTo=0\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: kms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ImportKeyMaterial\n<Common request parameters>\n\n{\n    \"ValidTo\": \"0\",\n    \"KeyId\": \"23e80852-1e38-11e9-b129-5cb9019b4b01\",\n    \"ImportToken\": \"Sy+GF4f+XxUan1sfSBfqWQmyJeVO30wcqLEMoW4REpxBApJqYG9zc37OM0Z3qT/mvLofzM3hwVJSTzIITcAo6ew3LidOJ3nwNoVNOM2wnrL+g9puwP0GpbbSwTd16X9E\",\n    \"EncryptedKeyMaterial\": \"dgqtAzLde+xsR5q3kwOsWu4bst7FaE4sbhhf1OHCMujhjTJTnFGEubKowVFnFC96e2vUvO5fwGvfNcPIDkg6q7iuFviM0BepCmF9Fyk3tluJVRf/Nv8FCccANXmsZDPxtSHdcD00/dQg1i2BIaLMP3/VFBDVEK7AzRhlTkrNiout4pavGSCAF+uBl2Vmnq6fF4DT37B0Q0WQ4NyfUwDCSR0VSF9vwqommhudJUhv4+21xHMgUCdbFvVoOmZP/Md5Sb4rbMbWi5qRpLusi8W3KKTyJ8onp7UC+0qi6DTw4XCq4UPniFNJXIxUOSVXpZHQKFCJXr6/cxNAci8eMTTwfA==\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\n    }\n}",
         "title": "Importing key material"
       }
@@ -313,8 +313,8 @@
     "ListAlgorithms": [
       {
         "document": "",
-        "input": "https://kms.tencentcloudapi.com/?Action=ListAlgorithms\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"460fe7ff-f4db-4509-9b20-208badcfb915\",\n        \"SymmetricAlgorithms\": [\n            {\n                \"KeyUsage\": \"ENCRYPT_DECRYPT\",\n                \"Algorithm\": \"SM4\"\n            }\n        ],\n        \"AsymmetricAlgorithms\": [\n            {\n                \"KeyUsage\": \"ASYMMETRIC_DECRYPT_SM2\",\n                \"Algorithm\": \"SM2\"\n            },\n            {\n                \"KeyUsage\": \"ASYMMETRIC_DECRYPT_RSA_2048\",\n                \"Algorithm\": \"RSA_2048\"\n            }\n        ],\n        \"AsymmetricSignVerifyAlgorithms\": [\n            {\n                \"KeyUsage\": \"ASYMMETRIC_SIGN_VERIFY_SM2\",\n                \"Algorithm\": \"SM2\"\n            }\n        ]\n    }\n}",
+        "input": "https://kms.tencentcloudapi.com/?Action=ListAlgorithms\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"460fe7ff-f4db-4509-9b20-208badcfb915\",\n        \"SymmetricAlgorithms\": [\n            {\n                \"KeyUsage\": \"ENCRYPT_DECRYPT\",\n                \"Algorithm\": \"SM4\"\n            }\n        ],\n        \"AsymmetricAlgorithms\": [\n            {\n                \"KeyUsage\": \"ASYMMETRIC_DECRYPT_SM2\",\n                \"Algorithm\": \"SM2\"\n            },\n            {\n                \"KeyUsage\": \"ASYMMETRIC_DECRYPT_RSA_2048\",\n                \"Algorithm\": \"RSA_2048\"\n            }\n        ]\n    }\n}",
         "title": "Listing encryption methods supported in the current region"
       }
     ],
@@ -353,8 +353,8 @@
     "ScheduleKeyDeletion": [
       {
         "document": "This example shows you how to delete a specified CMK on the 7th day upon schedule deletion.",
-        "input": "https://kms.tencentcloudapi.com/?Action=ScheduleKeyDeletion\n&KeyId=\"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n&PendingWindowInDays=7\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DeletionDate\": 1559318399,\n        \"KeyId\": \"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: kms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ScheduleKeyDeletion\n<Common request parameters>\n\n{\n    \"PendingWindowInDays\": \"7\",\n    \"KeyId\": \"\\\"23e80852-1e38-11e9-b129-5cb9019b4b01\\\"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e8f23a7-50b2-4c8e-bd23-0a98cb643f88\",\n        \"DeletionDate\": 1559318399,\n        \"KeyId\": \"23e80852-1e38-11e9-b129-5cb9019b4b01\"\n    }\n}",
         "title": "Scheduling deletion"
       }
     ],

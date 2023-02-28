@@ -15,9 +15,9 @@
       "status": "online"
     },
     "CreateProject": {
-      "document": "This API is used to create a project (owned by the specified team).",
+      "document": "This API is used to create a RUM application which belongs to a specific team.",
       "input": "CreateProjectRequest",
-      "name": "Creates project",
+      "name": "Creates a RUM application",
       "output": "CreateProjectResponse",
       "status": "online"
     },
@@ -31,14 +31,14 @@
     "CreateStarProject": {
       "document": "This API is used to add a starred project.",
       "input": "CreateStarProjectRequest",
-      "name": "Adds starred project",
+      "name": "Creates a starred application",
       "output": "CreateStarProjectResponse",
       "status": "online"
     },
     "CreateTawInstance": {
-      "document": "This API is used to create a RUM instance.",
+      "document": "This API is used to create a RUM business system.",
       "input": "CreateTawInstanceRequest",
-      "name": "Creates RUM instance",
+      "name": "Creates a RUM business system",
       "output": "CreateTawInstanceResponse",
       "status": "online"
     },
@@ -52,7 +52,7 @@
     "DeleteInstance": {
       "document": "This API is used to delete an instance. The deleted instance cannot be recovered.",
       "input": "DeleteInstanceRequest",
-      "name": "Deletes instance",
+      "name": "Deletes a RUM business system",
       "output": "DeleteInstanceResponse",
       "status": "online"
     },
@@ -80,7 +80,7 @@
     "DeleteProject": {
       "document": "This API is used to delete the specified RUM project.",
       "input": "DeleteProjectRequest",
-      "name": "Deletes RUM project",
+      "name": "Deletes a RUM application",
       "output": "DeleteProjectResponse",
       "status": "online"
     },
@@ -94,7 +94,7 @@
     "DeleteStarProject": {
       "document": "This API is used to delete a starred project for the specified user.",
       "input": "DeleteStarProjectRequest",
-      "name": "Deletes starred project",
+      "name": "Deletes a starred application",
       "output": "DeleteStarProjectResponse",
       "status": "online"
     },
@@ -246,9 +246,9 @@
       "status": "online"
     },
     "DescribeLogList": {
-      "document": "This API is used to get the list of logs in a project (created by an instance).",
+      "document": "This API is used to get the log list. It has been deprecated. Use `DescribeRumLogList` instead.",
       "input": "DescribeLogListRequest",
-      "name": "Gets log list",
+      "name": "Gets the log list (It has been deprecated. Use `DescribeRumLogList` instead.)",
       "output": "DescribeLogListResponse",
       "status": "online"
     },
@@ -274,16 +274,16 @@
       "status": "online"
     },
     "DescribeProjectLimits": {
-      "document": "This API is used to get the list of project reporting rates.",
+      "document": "This API is used to get the sampling information of an application’s reporting APIs.",
       "input": "DescribeProjectLimitsRequest",
-      "name": "Gets the list of project reporting rates",
+      "name": "Gets the sampling information of an application’s reporting APIs",
       "output": "DescribeProjectLimitsResponse",
       "status": "online"
     },
     "DescribeProjects": {
       "document": "This API is used to get the list of projects (under teams created by an instance).",
       "input": "DescribeProjectsRequest",
-      "name": "Gets project list",
+      "name": "Gets the RUM application list",
       "output": "DescribeProjectsResponse",
       "status": "online"
     },
@@ -302,9 +302,9 @@
       "status": "online"
     },
     "DescribeReleaseFiles": {
-      "document": "This API is used to get the list of sourcemap files of a project.",
+      "document": "This API is used to get the list of source maps of an application.",
       "input": "DescribeReleaseFilesRequest",
-      "name": "Gets the list of sourcemap files of project",
+      "name": "Gets the list of source maps of an application",
       "output": "DescribeReleaseFilesResponse",
       "status": "online"
     },
@@ -313,6 +313,20 @@
       "input": "DescribeRumGroupLogRequest",
       "name": "Gets RUM log aggregation information",
       "output": "DescribeRumGroupLogResponse",
+      "status": "online"
+    },
+    "DescribeRumLogExport": {
+      "document": "This API is used to get the list of logs in a project (created by an instance).",
+      "input": "DescribeRumLogExportRequest",
+      "name": "Exports the RUM log list",
+      "output": "DescribeRumLogExportResponse",
+      "status": "online"
+    },
+    "DescribeRumLogExports": {
+      "document": "This API is used to get the list of exported logs in a project.",
+      "input": "DescribeRumLogExportsRequest",
+      "name": "Gets the list of exported RUM logs",
+      "output": "DescribeRumLogExportsResponse",
       "status": "online"
     },
     "DescribeRumLogList": {
@@ -358,16 +372,16 @@
       "status": "online"
     },
     "ModifyInstance": {
-      "document": "This API is used to modify an instance.",
+      "document": "This API is used to modify a RUM business system.",
       "input": "ModifyInstanceRequest",
-      "name": "Modifies instance",
+      "name": "Modifies a RUM business system",
       "output": "ModifyInstanceResponse",
       "status": "online"
     },
     "ModifyProject": {
-      "document": "This API is used to modify a RUM project.",
+      "document": "This API is used to modify the RUM application information.",
       "input": "ModifyProjectRequest",
-      "name": "Modifies project",
+      "name": "Modifies the RUM application information",
       "output": "ModifyProjectResponse",
       "status": "online"
     },
@@ -379,23 +393,30 @@
       "status": "online"
     },
     "ResumeInstance": {
-      "document": "This API is used to resume an instance.",
+      "document": "This API is used to recover a RUM business system so that you can use the application to report data normally.",
       "input": "ResumeInstanceRequest",
-      "name": "Resumes instance",
+      "name": "Recovers the RUM application information",
       "output": "ResumeInstanceResponse",
+      "status": "online"
+    },
+    "ResumeProject": {
+      "document": "This API is used to recover an application and resume data reporting.",
+      "input": "ResumeProjectRequest",
+      "name": "Recovers an application",
+      "output": "ResumeProjectResponse",
       "status": "online"
     },
     "StopInstance": {
       "document": "This API is used to stop an instance.",
       "input": "StopInstanceRequest",
-      "name": "Stops instance",
+      "name": "Stops a RUM business system",
       "output": "StopInstanceResponse",
       "status": "online"
     },
     "StopProject": {
       "document": "This API is used to stop a project from reporting data.",
       "input": "StopProjectRequest",
-      "name": "Stops a project from reporting data",
+      "name": "Stops an application from reporting data",
       "output": "StopProjectResponse",
       "status": "online"
     }
@@ -5644,15 +5665,15 @@
       ],
       "type": "object"
     },
-    "DescribeRumLogListRequest": {
-      "document": "DescribeRumLogList request structure.",
+    "DescribeRumLogExportRequest": {
+      "document": "DescribeRumLogExport request structure.",
       "members": [
         {
           "default": "",
-          "document": "Sorting order (required). Valid values: `desc`, `asc`.",
-          "example": "asc",
+          "document": "Export identifier name",
+          "example": "标识",
           "member": "string",
-          "name": "OrderBy",
+          "name": "Name",
           "required": true,
           "type": "string"
         },
@@ -5664,24 +5685,6 @@
           "name": "StartTime",
           "required": true,
           "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
-          "example": "无",
-          "member": "int64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Page number",
-          "example": "无",
-          "member": "int64",
-          "name": "Page",
-          "required": true,
-          "type": "int"
         },
         {
           "default": "",
@@ -5705,6 +5708,152 @@
           "default": "",
           "document": "Project ID (required)",
           "example": "100",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter field",
+          "example": "无",
+          "member": "string",
+          "name": "Fields",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumLogExportResponse": {
+      "document": "DescribeRumLogExport response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumLogExportsRequest": {
+      "document": "DescribeRumLogExports request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Page size",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID (required)",
+          "example": "100",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumLogExportsResponse": {
+      "document": "DescribeRumLogExports response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumLogListRequest": {
+      "document": "DescribeRumLogList request structure.",
+      "members": [
+        {
+          "document": "Sorting order (required). Valid values: `desc`, `asc`.",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderBy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Start time in milliseconds. It is in timestamp format and is required.",
+          "example": "1665993060000",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Page number",
+          "example": "无",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Query statement, which is required and can contain up to 4,096 characters.",
+          "example": "id:100",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "End time in milliseconds. It is in timestamp format and is required.",
+          "example": "1665996660000",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Project ID (required)",
+          "example": "120000",
           "member": "int64",
           "name": "ID",
           "required": true,
@@ -6564,6 +6713,32 @@
     },
     "ResumeInstanceResponse": {
       "document": "ResumeInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeProjectRequest": {
+      "document": "ResumeProject request structure.",
+      "members": [
+        {
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeProjectResponse": {
+      "document": "ResumeProject response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

@@ -1142,15 +1142,19 @@
       "members": [
         {
           "document": "White-box key information list",
+          "example": "无",
           "member": "WhiteboxKeyInfo",
           "name": "KeyInfos",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Total number of keys\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Total white-box keys.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1406,10 +1410,20 @@
         {
           "default": "",
           "document": "Unique CMK ID",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
           "member": "string",
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The interval between each key rotation in days. Value range: 7 - 365 (default).",
+          "example": "365",
+          "member": "uint64",
+          "name": "RotateDays",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1962,7 +1976,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Ultimate Edition expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Expiration time of the KMS Ultimate edition. It’s represented in a Unix Epoch timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1603701385",
           "member": "uint64",
           "name": "ProExpireTime",

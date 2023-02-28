@@ -18,10 +18,10 @@
     ],
     "CreateProject": [
       {
-        "document": "Creating RUM project",
-        "input": "https://rum.tencentcloudapi.com/?Action=CreateProject\n&Name='Test project'\n&Desc='Project description'\n&InstanceID=\"taw-123\"\n&Type=web\n&URL='http://www.qq.com'\n&Repo='http://github.com/xxx'\n&Rate=\"10\"\n&EnableURLGroup=1\n&<Common request parameters>",
+        "document": "This example shows you how to create a RUM application.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProject\n<Common request parameters>\n\n{\n    \"Name\": \"'Test project'\",\n    \"InstanceID\": \"\\\"taw-123\\\"\",\n    \"Repo\": \"'http://github.com/xxx'\",\n    \"URL\": \"'http://www.qq.com'\",\n    \"Rate\": \"\\\"10\\\"\",\n    \"EnableURLGroup\": \"1\",\n    \"Type\": \"web\",\n    \"Desc\": \"'Project description'\"\n}",
         "output": "{\n    \"Response\": {\n        \"ID\": 1,\n        \"Key\": \"RlOmCVbPrKd4\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Creating RUM project"
+        "title": "Creating a RUM application"
       }
     ],
     "CreateReleaseFile": [
@@ -34,10 +34,10 @@
     ],
     "CreateStarProject": [
       {
-        "document": "Adding starred project",
-        "input": "https://rum.tencentcloudapi.com/?Action=CreateStarProject\n&ID=1\n&InstanceID=taw-123\n&<Common request parameters>",
+        "document": "This example shows you how to create a starred application.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStarProject\n<Common request parameters>\n\n{\n    \"InstanceID\": \"taw-123\",\n    \"ID\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Adding starred project"
+        "title": "Creating a starred application"
       }
     ],
     "CreateTawInstance": [
@@ -64,10 +64,10 @@
     ],
     "DeleteInstance": [
       {
-        "document": "Deleting instance",
+        "document": "This example shows you how to delete a RUM business system.",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rum-abcd1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
-        "title": "Deleting instance"
+        "title": "Deleting a RUM business system"
       }
     ],
     "DeleteLogExport": [
@@ -96,10 +96,10 @@
     ],
     "DeleteProject": [
       {
-        "document": "Deleting RUM project",
-        "input": "https://rum.tencentcloudapi.com/?Action=DeleteProject\n&ID=6\n&<Common request parameters>",
+        "document": "This example shows you how to delete a RUM application.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteProject\n<Common request parameters>\n\n{\n    \"ID\": \"6\"\n}",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Deleting RUM project"
+        "title": "Deleting a RUM application"
       }
     ],
     "DeleteReleaseFile": [
@@ -112,10 +112,10 @@
     ],
     "DeleteStarProject": [
       {
-        "document": "Deleting starred project",
-        "input": "https://rum.tencentcloudapi.com/?Action=DeleteStarProject\n&ID=1\n&InstanceID=taw-123\n&<Common request parameters>",
+        "document": "This example shows you how to delete a starred application.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStarProject\n<Common request parameters>\n\n{\n    \"InstanceID\": \"taw-123\",\n    \"ID\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Deleting starred project"
+        "title": "Deleting a starred application"
       }
     ],
     "DeleteWhitelist": [
@@ -249,7 +249,7 @@
     "DescribeDataReportCount": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeDataReportCount\n&ID=1\n&StartTime=1625444040\n&EndTime=1625454840\n&ReportType=custom\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataReportCount\n<Common request parameters>\n\n{\n    \"EndTime\": \"1625454840\",\n    \"ReportType\": \"custom\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1625444040\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Getting the number of reported data entries"
       }
@@ -350,24 +350,24 @@
     ],
     "DescribeProjectLimits": [
       {
-        "document": "Getting sample list",
+        "document": "This example shows you how to get the sampling information of an application’s reporting APIs.",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectLimits\n<Common request parameters>\n\n{\n    \"ProjectID\": \"8\"\n}",
         "output": "{\n    \"Response\": {\n        \"ProjectLimitSet\": [\n            {\n                \"ID\": 17,\n                \"ProjectID\": 8,\n                \"ProjectInterface\": \"web\",\n                \"ReportRate\": 10,\n                \"ReportType\": 1\n            }\n        ],\n        \"RequestId\": \"6f867613-843d-410a-8000-c74477ca48a8\"\n    }\n}",
-        "title": "Getting sample list"
+        "title": "Getting the sampling information of an application’s reporting APIs"
       }
     ],
     "DescribeProjects": [
       {
-        "document": "Getting RUM project list by filter",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&Filters.0.Name='Name'\n&Filters.0.Values.0='Test project name'\n&Filters.0.Values.1='Test project name 2'\n&<Common request parameters>",
+        "document": "This example shows you how to get the RUM application list by filter.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjects\n<Common request parameters>\n\n{\n    \"Limit\": \"20\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"'Test project name 2'\",\n                \"'Test project name'\"\n            ],\n            \"Name\": \"'Name'\"\n        }\n    ],\n    \"Offset\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting RUM project list by filter"
+        "title": "Getting the RUM application list by filter"
       },
       {
-        "document": "Getting RUM project list",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&<Common request parameters>",
+        "document": "This examples shows you how to get the RUM application list.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjects\n<Common request parameters>\n\n{\n    \"Limit\": \"20\",\n    \"Offset\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting RUM project list"
+        "title": "Getting the RUM application list"
       }
     ],
     "DescribePvList": [
@@ -388,10 +388,10 @@
     ],
     "DescribeReleaseFiles": [
       {
-        "document": "Getting release file list",
+        "document": "This example shows you how to get the list of source maps of an application",
         "input": "https://rum.tencentcloudapi.com/?Action=DescribeReleaseFiles\n&ProjectID=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Files\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting release file list"
+        "title": "Getting the list of source maps of an application"
       }
     ],
     "DescribeRumGroupLog": [
@@ -408,18 +408,46 @@
         "title": "2312"
       }
     ],
-    "DescribeRumLogList": [
+    "DescribeRumLogExport": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogList\n<Common request parameters>\n\n{\n    \"OrderBy\": \"\\\"desc\\\"\",\n    \"StartTime\": \"\\\"1\\\"\",\n    \"Limit\": \"10\",\n    \"Query\": \"\\\"xxx\\\"\",\n    \"EndTime\": \"\\\"20\\\"\",\n    \"ID\": \"10\",\n    \"Page\": \"1\"\n}",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogExport\n<Common request parameters>\n\n{\n    \"Name\": \"xx\",\n    \"Fields\": [\n        \"xx\"\n    ],\n    \"StartTime\": \"xx\",\n    \"Query\": \"xx\",\n    \"EndTime\": \"xx\",\n    \"ID\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Getting the log list"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogList\n<Common request parameters>\n\n{\n    \"OrderBy\": \"asc\",\n    \"ID\": \"1\",\n    \"Limit\": \"1\",\n    \"StartTime\": \"1665994920000\",\n    \"Query\": \"id:1\",\n    \"EndTime\": \"1\",\n    \"Page\": \"1\"\n}",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogExport\n<Common request parameters>\n\n{\n    \"Query\": \"id:1\",\n    \"EndTime\": \"1\",\n    \"Name\": \"\",\n    \"StartTime\": \"1665994920000\",\n    \"ID\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"763188d1-9f99-45e8-8bbf-bcdffa8f58f0\",\n        \"Result\": \"\"\n    }\n}",
+        "title": "1212"
+      }
+    ],
+    "DescribeRumLogExports": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogExports\n<Common request parameters>\n\n{\n    \"PageSize\": \"10\",\n    \"ID\": \"10\",\n    \"PageNum\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
+        "title": "Getting the log list"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogExports\n<Common request parameters>\n\n{\n    \"PageNum\": \"1\",\n    \"ID\": \"1\",\n    \"PageSize\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"641faf00-efc4-46b5-b3ce-03383133dc08\",\n        \"Result\": \"\"\n    }\n}",
+        "title": "xc"
+      }
+    ],
+    "DescribeRumLogList": [
+      {
+        "document": "This example shows you how to get the log list.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogList\n<Common request parameters>\n\n{\n    \"OrderBy\": \"desc\",\n    \"ID\": \"120000\",\n    \"Limit\": \"100\",\n    \"StartTime\": \"1665994920000\",\n    \"Query\": \"id:120000\",\n    \"EndTime\": \"1673417492913\",\n    \"Page\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"72ef03a0-01a8-443e-908a-8573fbeaafcd\",\n        \"Result\": \"\"\n    }\n}",
-        "title": "1"
+        "title": "Getting the log list"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogList\n<Common request parameters>\n\n{\n    \"OrderBy\": \"asc\",\n    \"ID\": \"4\",\n    \"Limit\": \"1\",\n    \"StartTime\": \"1676390400000\",\n    \"Query\": \"id:4\",\n    \"EndTime\": \"1676476799000\",\n    \"Page\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a6bafa2f-3f6a-4f1a-b9a3-d1d848d34168\",\n        \"Result\": \"\"\n    }\n}",
+        "title": "123"
       }
     ],
     "DescribeRumStatsLogList": [
@@ -438,10 +466,10 @@
     ],
     "DescribeScores": [
       {
-        "document": "Getting homepage score",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeScores\n&ID=1\n&StartTime=2020011920\n&EndTime=2022051914\n&<Common request parameters>",
+        "document": "This example shows you how to get the homepage score.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeScores\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022051914\",\n    \"ID\": \"1\",\n    \"StartTime\": \"2020011920\"\n}",
         "output": "{\n    \"Response\": {\n        \"ScoreSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting homepage score"
+        "title": "Getting the homepage score"
       }
     ],
     "DescribeTawAreas": [
@@ -478,10 +506,10 @@
     ],
     "ModifyProject": [
       {
-        "document": "Modifying RUM project",
-        "input": "https://rum.tencentcloudapi.com/?Action=ModifyProject\n&ID=6\n&Name='Test project'\n&<Common request parameters>",
+        "document": "This example shows you how to modify the RUM application information.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProject\n<Common request parameters>\n\n{\n    \"ID\": \"6\",\n    \"Name\": \"'Test project'\"\n}",
         "output": "{\n    \"Response\": {\n        \"ID\": 1,\n        \"Msg\": \"success\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Modifying RUM project"
+        "title": "Modifying the RUM application information"
       }
     ],
     "ModifyProjectLimit": [
@@ -506,20 +534,28 @@
         "title": "Resuming instance"
       }
     ],
+    "ResumeProject": [
+      {
+        "document": "This example shows you how to recover an application.",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeProject\n<Common request parameters>\n\n{\n    \"ProjectId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
+        "title": "Recovering an application"
+      }
+    ],
     "StopInstance": [
       {
-        "document": "Stopping instance",
+        "document": "This example shows you how to stop an instance. Once the instance is stopped, all applications in the business system will be unable to report data.",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rum-abcd1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
-        "title": "Stopping instance"
+        "title": "Stopping an instance"
       }
     ],
     "StopProject": [
       {
-        "document": "Stopping a project",
+        "document": "This example shows you how to stop an application from reporting data.",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopProject\n<Common request parameters>\n\n{\n    \"ProjectId\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
-        "title": "Stopping a project"
+        "title": "Stopping an application from reporting data"
       }
     ]
   },
