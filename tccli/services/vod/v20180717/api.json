@@ -112,6 +112,13 @@
       "output": "CreateReviewTemplateResponse",
       "status": "online"
     },
+    "CreateRoundPlay": {
+      "document": "This API is used to create a playlist. You can create at most 100 playlists.\nFor each video on the list, you can either use the original file or a transcoding file.\nThe files must be in HLS format. Preferably, they should have the same bitrate and resolution.",
+      "input": "CreateRoundPlayRequest",
+      "name": "Creates a playlist",
+      "output": "CreateRoundPlayResponse",
+      "status": "online"
+    },
     "CreateSampleSnapshotTemplate": {
       "document": "This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.",
       "input": "CreateSampleSnapshotTemplateRequest",
@@ -257,6 +264,13 @@
       "input": "DeleteReviewTemplateRequest",
       "name": "Deletes a moderation template",
       "output": "DeleteReviewTemplateResponse",
+      "status": "online"
+    },
+    "DeleteRoundPlay": {
+      "document": "This API is used to delete a playlist.",
+      "input": "DeleteRoundPlayRequest",
+      "name": "Deletes a playlist",
+      "output": "DeleteRoundPlayResponse",
       "status": "online"
     },
     "DeleteSampleSnapshotTemplate": {
@@ -476,6 +490,13 @@
       "output": "DescribeReviewTemplatesResponse",
       "status": "online"
     },
+    "DescribeRoundPlays": {
+      "document": "This API is used to query playlists.",
+      "input": "DescribeRoundPlaysRequest",
+      "name": "Queries playlists",
+      "output": "DescribeRoundPlaysResponse",
+      "status": "online"
+    },
     "DescribeSampleSnapshotTemplates": {
       "document": "This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.",
       "input": "DescribeSampleSnapshotTemplatesRequest",
@@ -686,6 +707,13 @@
       "output": "ModifyReviewTemplateResponse",
       "status": "online"
     },
+    "ModifyRoundPlay": {
+      "document": "This API is used to modify a playlist.\nThe modification will only take effect for new playback requests. For ongoing playback, the old playlist will be playable for seven days after the modification.",
+      "input": "ModifyRoundPlayRequest",
+      "name": "Modifies a playlist",
+      "output": "ModifyRoundPlayResponse",
+      "status": "online"
+    },
     "ModifySampleSnapshotTemplate": {
       "document": "This API is used to modify a custom sampled screencapturing template.",
       "input": "ModifySampleSnapshotTemplateRequest",
@@ -803,6 +831,13 @@
       "input": "PushUrlCacheRequest",
       "name": "Prefetches URLs",
       "output": "PushUrlCacheResponse",
+      "status": "online"
+    },
+    "RebuildMedia": {
+      "document": "This API is used to remaster audio/video.",
+      "input": "RebuildMediaRequest",
+      "name": "Remasters audio/video",
+      "output": "RebuildMediaResponse",
       "status": "online"
     },
     "RefreshUrlCache": {
@@ -5962,6 +5997,30 @@
       ],
       "type": "object"
     },
+    "ArtifactRepairInfo": {
+      "document": "Artifact removal (smoothing) configuration.",
+      "members": [
+        {
+          "document": "Whether to enable artifact removal. Valid values:\n<li>`ON`</li>\n<li>`OFF</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The artifact removal type. This parameter is valid only if `Switch` is `ON`. Valid values:\n<li>`weak`</li>\n<li>`strong`</li>\nDefault value: `weak`.",
+          "example": "weak",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AsrFullTextConfigureInfo": {
       "document": "Control parameter of full speech recognition task.",
       "members": [
@@ -6145,12 +6204,37 @@
       ],
       "type": "object"
     },
+    "AudioDenoiseInfo": {
+      "document": "Noise removal configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable noise removal. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:\n<li>`weak`</li>\n<li>`normal`</li>\n<li>`strong`</li>\nDefault value: `weak`.",
+          "example": "weak",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AudioTemplateInfo": {
       "document": "Audio stream configuration parameter",
       "members": [
         {
-          "default": "",
-          "document": "The audio codec.\nIf `Container` parameter is `mp3`, the valid value is:\n<li>libmp3lame</li>\nIf `Container` is `ogg` or `flac`, the valid value is:\n<li>flac</li>\nIf `Container` is `m4a`, the valid values are:\n<li>libfdk_aac</li>\n<li>libmp3lame</li>\n<li>ac3</li>\nIf `Container` is `mp4` or `flv`, the valid values are:\n<li>libfdk_aac: more suitable for mp4</li>\n<li>libmp3lame: More suitable for flv</li>\n<li>mp2</li>\nIf `Container` is `hls`, the valid values are:\n<li>libfdk_aac</li>\nIf `Format` is `HLS` or `MPEG-DASH`, the valid values are:\n<li>libfdk_aac</li>",
+          "document": "The audio codec.\nIf `Container` is `mp3`, the valid value is:\n<li>`libmp3lame`</li>\nIf `Container` is `ogg` or `flac`, the valid value is:\n<li>`flac`</li>\nIf `Container` is `m4a`, the valid values are:\n<li>`libfdk_aac`</li>\n<li>`libmp3lame`</li>\n<li>`ac3`</li>\nIf `Container` is `mp4` or `flv`, the valid values are:\n<li>`libfdk_aac` (Recommended for MP4)</li>\n<li>`libmp3lame` (Recommended for FLV)</li>\n<li>`mp2`</li>\nIf `Container` is `hls`, the valid value is:\n<li>`libfdk_aac`</li>\nIf `Format` is `HLS` or `MPEG-DASH`, the valid value is:\n<li>`libfdk_aac`</li>\nIf `Container` is `wav`, the valid value is:\n<li>`pcm16`</li>",
           "example": "无",
           "member": "string",
           "name": "Codec",
@@ -6159,7 +6243,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Audio stream bitrate in Kbps. Value range: 0 and [26, 256].\nIf the value is 0, the bitrate of the audio stream will be the same as that of the original audio.",
           "example": "无",
           "member": "uint64",
@@ -6169,8 +6252,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Audio stream sample rate. Valid values:\n<li>32,000</li>\n<li>44,100</li>\n<li>48,000</li>\nIn Hz.",
+          "document": "The audio sample rate. Valid values:\n<li>`16000` (valid only if `Codec` is `pcm16`)</li>\n<li>`32000`</li>\n<li>`44100`</li>\n<li>`48000`</li>\nUnit: Hz.",
           "example": "无",
           "member": "uint64",
           "name": "SampleRate",
@@ -6179,7 +6261,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Audio channel system. Valid values:\n<li>1: mono-channel</li>\n<li>2: dual-channel</li>\n<li>6: stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).\nDefault value: 2",
           "example": "无",
           "member": "int64",
@@ -6195,8 +6276,7 @@
       "document": "Audio stream configuration parameter",
       "members": [
         {
-          "default": "",
-          "document": "The audio codec.\nIf `Container` parameter is `mp3`, the valid value is:\n<li>libmp3lame</li>\nIf `Container` is `ogg` or `flac`, the valid value is:\n<li>flac</li>\nIf `Container` is `m4a`, the valid values are:\n<li>libfdk_aac</li>\n<li>libmp3lame</li>\n<li>ac3</li>\nIf `Container` is `mp4` or `flv`, the valid values are:\n<li>libfdk_aac: more suitable for mp4</li>\n<li>libmp3lame: More suitable for flv</li>\n<li>mp2</li>\nIf `Container` is `hls`, the valid values are:\n<li>libfdk_aac</li>\nIf `Format` is `HLS` or `MPEG-DASH`, the valid values are:\n<li>libfdk_aac</li>",
+          "document": "The audio codec.\nIf `Container` is `mp3`, the valid value is:\n<li>`libmp3lame`</li>\nIf `Container` is `ogg` or `flac`, the valid value is:\n<li>`flac`</li>\nIf `Container` is `m4a`, the valid values are:\n<li>`libfdk_aac`</li>\n<li>`libmp3lame`</li>\n<li>`ac3`</li>\nIf `Container` is `mp4` or `flv`, the valid values are:\n<li>`libfdk_aac` (Recommended for MP4)</li>\n<li>`libmp3lame` (Recommended for FLV)</li>\n<li>`mp2`</li>\nIf `Container` is `hls`, the valid value is:\n<li>`libfdk_aac`</li>\nIf `Format` is `HLS` or `MPEG-DASH`, the valid value is:\n<li>`libfdk_aac`</li>\nIf `Container` is `wav`, the valid value is:\n<li>`pcm16`</li>",
           "example": "无",
           "member": "string",
           "name": "Codec",
@@ -6205,7 +6285,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.",
           "example": "无",
           "member": "uint64",
@@ -6215,8 +6294,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Audio stream sample rate. Valid values:\n<li>32,000</li>\n<li>44,100</li>\n<li>48,000</li>\nIn Hz.",
+          "document": "The audio sample rate. Valid values:\n<li>`16000` (valid only if `Codec` is `pcm16`)</li>\n<li>`32000`</li>\n<li>`44100`</li>\n<li>`48000`</li>\nUnit: Hz.",
           "example": "无",
           "member": "uint64",
           "name": "SampleRate",
@@ -6225,7 +6303,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Audio channel system. Valid values:\n<li>1: mono-channel</li>\n<li>2: dual-channel</li>\n<li>6: stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).",
           "example": "无",
           "member": "int64",
@@ -6543,6 +6620,30 @@
         }
       ],
       "usage": "out"
+    },
+    "ColorEnhanceInfo": {
+      "document": "Color enhancement configuration.",
+      "members": [
+        {
+          "document": "Whether to enable color enhancement. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The color enhancement type. This parameter is valid only if `Switch` is `ON`.\n<li>`weak`</li>\n<li>`normal`</li>\n<li>`strong`</li>\nDefault value: `weak`.",
+          "example": "weak",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "CommitUploadRequest": {
       "document": "CommitUpload request structure.",
@@ -8488,7 +8589,7 @@
       "document": "CreateReviewTemplate request structure.",
       "members": [
         {
-          "document": "The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>Polity: Politically sensitive content</li> <li>`Moan`: Moaning</li>",
+          "document": "The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>`Moan`: Moaning</li>",
           "example": "无",
           "member": "string",
           "name": "Labels",
@@ -8531,6 +8632,80 @@
           "member": "int64",
           "name": "Definition",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoundPlayRequest": {
+      "document": "CreateRoundPlay request structure.",
+      "members": [
+        {
+          "document": "The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "2018-12-01T00:00:00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The files on the list.\n<li>Array length limit: 100.</li>",
+          "example": "无",
+          "member": "RoundPlayListItemInfo",
+          "name": "RoundPlaylist",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The playlist name (not longer than 64 characters).",
+          "example": "MyRound",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The playlist description (not longer than 256 characters).",
+          "example": "my first round",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoundPlayResponse": {
+      "document": "CreateRoundPlay response structure.",
+      "members": [
+        {
+          "document": "The playlist ID, which is unique.",
+          "example": "无",
+          "member": "string",
+          "name": "RoundPlayId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The playlist URL.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -8961,8 +9136,7 @@
       "document": "CreateTranscodeTemplate request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.",
+          "document": "The container format. Valid values: `mp4`, `flv`, `hls`, `mp3`, `flac`, `ogg`, `m4a`, `wav` ( `mp3`, `flac`, `ogg`, `m4a`, and `wav` are audio file formats).",
           "example": "mp4",
           "member": "string",
           "name": "Container",
@@ -8970,7 +9144,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
           "example": "0",
           "member": "uint64",
@@ -8979,7 +9152,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Transcoding template name. Length limit: 64 characters.",
           "example": "转码模板1",
           "member": "string",
@@ -8988,7 +9160,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Template description. Length limit: 256 characters.",
           "example": "自定义模板1",
           "member": "string",
@@ -8997,7 +9168,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>\nDefault value: 0.",
           "example": "0",
           "member": "int64",
@@ -9006,7 +9176,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>\nDefault value: 0.",
           "example": "0",
           "member": "int64",
@@ -9015,7 +9184,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Video stream configuration parameter. This field is required when `RemoveVideo` is 0.",
           "example": "无",
           "member": "VideoTemplateInfo",
@@ -9024,7 +9192,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.",
           "example": "无",
           "member": "AudioTemplateInfo",
@@ -9033,7 +9200,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "TESHD transcoding parameter.",
           "example": "无",
           "member": "TEHDConfig",
@@ -9042,7 +9208,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The segment type. This parameter is valid only if `Container` is `hls`. Valid values:\n<li>ts: TS segment</li>\n<li>fmp4: fMP4 segment</li>\nDefault: ts",
           "example": "无",
           "member": "string",
@@ -9713,6 +9878,40 @@
     },
     "DeleteReviewTemplateResponse": {
       "document": "DeleteReviewTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoundPlayRequest": {
+      "document": "DeleteRoundPlay request structure.",
+      "members": [
+        {
+          "document": "The playlist ID, which is unique.",
+          "example": "无",
+          "member": "string",
+          "name": "RoundPlayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoundPlayResponse": {
+      "document": "DeleteRoundPlay response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -11793,6 +11992,72 @@
       ],
       "type": "object"
     },
+    "DescribeRoundPlaysRequest": {
+      "document": "DescribeRoundPlays request structure.",
+      "members": [
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "0",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The playlist IDs. Array length limit: 100.",
+          "example": "无",
+          "member": "string",
+          "name": "RoundPlayIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The number of records to return. Default value: 10. Maximum value: 100.",
+          "example": "0",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoundPlaysResponse": {
+      "document": "DescribeRoundPlays response structure.",
+      "members": [
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the playlists.",
+          "example": "无",
+          "member": "RoundPlayInfo",
+          "name": "RoundPlaySet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSampleSnapshotTemplatesRequest": {
       "document": "DescribeSampleSnapshotTemplates request structure.",
       "members": [
@@ -12319,11 +12584,10 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: WeChat publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on WeChat Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>",
+          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li>`RebuildMedia`; Remastering audio/video</li>\n<li> `ReviewAudioVideo`: Moderation</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12332,7 +12596,6 @@
           "example": "FINISH",
           "member": "string",
           "name": "Status",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12341,7 +12604,6 @@
           "example": "2019-02-21T08:27:42Z",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12350,7 +12612,6 @@
           "example": "2019-02-21T08:27:43Z",
           "member": "string",
           "name": "BeginProcessTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12359,7 +12620,6 @@
           "example": "2019-02-21T08:27:44Z",
           "member": "string",
           "name": "FinishTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12368,7 +12628,6 @@
           "example": "无",
           "member": "ProcedureTask",
           "name": "ProcedureTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12377,7 +12636,6 @@
           "example": "无",
           "member": "EditMediaTask",
           "name": "EditMediaTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12386,7 +12644,6 @@
           "example": "无",
           "member": "WechatPublishTask",
           "name": "WechatPublishTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12395,7 +12652,6 @@
           "example": "无",
           "member": "ComposeMediaTask",
           "name": "ComposeMediaTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12404,7 +12660,6 @@
           "example": "无",
           "member": "SplitMediaTask",
           "name": "SplitMediaTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12413,7 +12668,6 @@
           "example": "无",
           "member": "WechatMiniProgramPublishTask",
           "name": "WechatMiniProgramPublishTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12422,7 +12676,6 @@
           "example": "无",
           "member": "PullUploadTask",
           "name": "PullUploadTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12431,7 +12684,6 @@
           "example": "无",
           "member": "TranscodeTask2017",
           "name": "TranscodeTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12440,7 +12692,6 @@
           "example": "无",
           "member": "ConcatTask2017",
           "name": "ConcatTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12449,7 +12700,6 @@
           "example": "无",
           "member": "ClipTask2017",
           "name": "ClipTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12458,7 +12708,6 @@
           "example": "无",
           "member": "CreateImageSpriteTask2017",
           "name": "CreateImageSpriteTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12467,7 +12716,6 @@
           "example": "无",
           "member": "SnapshotByTimeOffsetTask2017",
           "name": "SnapshotByTimeOffsetTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12476,7 +12724,14 @@
           "example": "无",
           "member": "RemoveWatermarkTask",
           "name": "RemoveWatermarkTask",
-          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The information of an audio/video remastering task. This parameter is valid only if `TaskType` is `RebuildMedia`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RebuildMediaTask",
+          "name": "RebuildMediaTask",
           "type": "object",
           "value_allowed_null": true
         },
@@ -12485,7 +12740,6 @@
           "example": "无",
           "member": "ExtractTraceWatermarkTask",
           "name": "ExtractTraceWatermarkTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12494,7 +12748,6 @@
           "example": "无",
           "member": "ReviewAudioVideoTask",
           "name": "ReviewAudioVideoTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12503,7 +12756,6 @@
           "example": "无",
           "member": "ReduceMediaBitrateTask",
           "name": "ReduceMediaBitrateTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12512,7 +12764,6 @@
           "example": "无",
           "member": "DescribeFileAttributesTask",
           "name": "DescribeFileAttributesTask",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -13448,7 +13699,6 @@
       "document": "Event notification content, where TranscodeCompleteEvent, ConcatCompleteEvent, ClipCompleteEvent, CreateImageSpriteCompleteEvent, and SnapshotByTimeOffsetCompleteEvent are event notifications for tasks that are initiated by v2017-compatible APIs.",
       "members": [
         {
-          "default": "",
           "document": "Event handler. The caller must call `ConfirmEvents` to confirm that the message has been received, and the confirmation is valid for 30 seconds. After the confirmation expires, the event can be obtained again.",
           "example": "123",
           "member": "string",
@@ -13458,8 +13708,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "<b>Supported event types:</b>\n<li>`NewFileUpload`: Video uploaded.</li>\n<li>`ProcedureStateChanged`: Task flow status changed.</li>\n<li>`FileDeleted`: Video deleted.</li>\n<li>`PullComplete`: Finished video pulling.</li>\n<li>`EditMediaComplete`: Finished video editing.</li>\n<li>`SplitMediaComplete`: Finished video splitting.</li>\n<li>`WechatPublishComplete`: Published to WeChat.</li>\n<li>`ComposeMediaComplete`: Finished producing the media file.</li>\n<li>`WechatMiniProgramPublishComplete`: Finished publishing on WeChat Mini Program.</li>\n<li>`FastClipMediaComplete`: Finished quick clipping.</li>\n<li>`ReviewAudioVideoComplete`: Finished moderation.</li>\n<li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li>\n<li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li>\n<b>v2017 task types:</b>\n<li>`TranscodeComplete`: Finished video transcoding.</li>\n<li>`ConcatComplete`: Finished video splicing.</li>\n<li>`ClipComplete`: Finished video clipping.</li>\n<li>`CreateImageSpriteComplete`: Finished image sprite generation.</li>\n<li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>",
+          "document": "<b>Supported event types:</b>\n<li>`NewFileUpload`: Video uploaded.</li>\n<li>`ProcedureStateChanged`: Task flow status changed.</li>\n<li>`FileDeleted`: Video deleted.</li>\n<li>`RestoreMediaComplete`: Video retrieved.</li>\n<li>`PullComplete`: Finished video pulling.</li>\n<li>`EditMediaComplete`: Finished video editing.</li>\n<li>`SplitMediaComplete`: Finished video splitting.</li>\n<li>`ComposeMediaComplete`: Finished producing the media file.</li>\n<li>`WechatMiniProgramPublishComplete`: Finished publishing on Weixin Mini Program.</li>\n<li>`RemoveWatermark`: Watermark removed.</li>\n<li>`RebuildMediaComplete`: Finished audio/video remastering.</li>\n<li>`ReviewAudioVideoComplete`: Finished moderation.</li>\n<li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li>\n<li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li>\n<b>v2017 task types:</b>\n<li>`TranscodeComplete`: Finished video transcoding.</li>\n<li>`ConcatComplete`: Finished video splicing.</li>\n<li>`ClipComplete`: Finished video clipping.</li>\n<li>`CreateImageSpriteComplete`: Finished image sprite generation.</li>\n<li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>",
           "example": "null",
           "member": "string",
           "name": "EventType",
@@ -13468,7 +13717,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Video upload completion event, which is valid if the event type is `NewFileUpload`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "FileUploadTask",
@@ -13478,7 +13726,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task flow status change event, which is valid if the event type is `ProcedureStateChanged`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ProcedureTask",
@@ -13488,7 +13735,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "File deletion event, which is valid if the event type is `FileDeleted`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "FileDeleteTask",
@@ -13498,7 +13744,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Video pull for upload completion event, which is valid if the event type is `PullComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "PullUploadTask",
@@ -13508,7 +13753,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Video editing completion event, which is valid if the event type is `EditMediaComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "EditMediaTask",
@@ -13518,8 +13762,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Video splitting completion event, which is valid if the event type is `EditMediaComplete`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The notification for completing video splitting, which is valid if the event type is `SplitMediaComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "SplitMediaTask",
           "name": "SplitMediaCompleteEvent",
@@ -13528,7 +13771,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Media file composing task completion event, which is valid when the event type is `ComposeMediaComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ComposeMediaTask",
@@ -13538,7 +13780,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Video clipping completion event, which is valid if the event type is `ClipComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ClipTask2017",
@@ -13548,7 +13789,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Video transcoding completion event, which is valid if the event type is `TranscodeComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "TranscodeTask2017",
@@ -13558,7 +13798,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image sprite generating completion event, which is valid if the event type is `CreateImageSpriteComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "CreateImageSpriteTask2017",
@@ -13568,7 +13807,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Video splicing completion event, which is valid if the event type is `ConcatComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ConcatTask2017",
@@ -13578,7 +13816,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Time point screencapturing completion event, which is valid when the event type is `CreateSnapshotByTimeOffsetComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "SnapshotByTimeOffsetTask2017",
@@ -13588,7 +13825,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Release on WeChat completion event, which is valid if the event type is `WechatPublishComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "WechatPublishTask",
@@ -13598,7 +13834,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Release on WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "WechatMiniProgramPublishTask",
@@ -13608,8 +13843,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Watermark removal completion event. This parameter is valid only if `TaskType` is `RemoveWatermark`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The notification for completing watermark removal. This parameter is valid only if the event type is `RemoveWatermark`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "RemoveWatermarkTask",
           "name": "RemoveWatermarkCompleteEvent",
@@ -13618,8 +13852,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The notification for completing video retrieval. This parameter is valid if the event type is `RestoreMediaComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "RestoreMediaTask",
           "name": "RestoreMediaCompleteEvent",
@@ -13628,8 +13861,16 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The callback for the completion of digital watermark extraction. This parameter is valid only if `EventType` is `ExtractTraceWatermarkComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The notification for completing audio/video remastering. This parameter is valid only if the event type is `RebuildMediaComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "RebuildMediaTask",
+          "name": "RebuildMediaCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The notification for completing digital watermark extraction. This parameter is valid only if `EventType` is `ExtractTraceWatermarkComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ExtractTraceWatermarkTask",
           "name": "ExtractTraceWatermarkCompleteEvent",
@@ -13638,7 +13879,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The callback for the completion of the moderation task. This parameter is valid only if `EventType` is `ReviewAudioVideoComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ReviewAudioVideoTask",
@@ -13648,7 +13888,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is invalid now.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ReduceMediaBitrateTask",
@@ -13658,7 +13897,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The event of finishing getting file attributes. This parameter is valid only if `EventType` is `DescribeFileAttributesComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "DescribeFileAttributesTask",
@@ -14089,6 +14327,32 @@
       ],
       "usage": "in"
     },
+    "FaceEnhanceInfo": {
+      "document": "Face enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable face enhancement. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The face enhancement strength. This parameter is valid only if `Switch` is `ON`. Value range: 0.0 – 1.0.\nDefault value: `0.0`.",
+          "example": "0",
+          "member": "float",
+          "name": "Intensity",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "FileDeleteResultItem": {
       "document": "The result of file deletion.",
       "members": [
@@ -14315,6 +14579,30 @@
         }
       ],
       "usage": "in"
+    },
+    "HDRInfo": {
+      "document": "High dynamic range (HDR) configuration.",
+      "members": [
+        {
+          "document": "Whether to enable HDR. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The HDR type. Valid values:\n<li>`hdr10`</li>\n<li>`hlg`</li>\n\nNote:\n<li>This parameter is valid only if `Switch` is `ON`.</li>\n<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx265`.</li>",
+          "example": "hlg",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "HeadTailConfigureInfo": {
       "document": "Control parameter of video opening and ending credits recognition task.",
@@ -15194,6 +15482,30 @@
         }
       ],
       "usage": "in"
+    },
+    "LowLightEnhanceInfo": {
+      "document": "Low-light enhancement configuration.",
+      "members": [
+        {
+          "document": "Whether to enable low-light enhancement. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The low-light enhancement type. This parameter is valid only if `Switch` is `ON`.\n<li>`normal`</li>\nDefault value: `normal`.",
+          "example": "normal",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ManageTaskRequest": {
       "document": "ManageTask request structure.",
@@ -19202,7 +19514,7 @@
           "type": "string"
         },
         {
-          "document": "The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>Polity: Politically sensitive content</li> <li>`Moan`: Moaning</li>",
+          "document": "The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>`Moan`: Moaning</li>",
           "example": "无",
           "member": "string",
           "name": "Labels",
@@ -19214,6 +19526,72 @@
     },
     "ModifyReviewTemplateResponse": {
       "document": "ModifyReviewTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoundPlayRequest": {
+      "document": "ModifyRoundPlay request structure.",
+      "members": [
+        {
+          "document": "The playlist ID, which is unique.",
+          "example": "无",
+          "member": "string",
+          "name": "RoundPlayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "2018-12-01T00:00:00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The files on the list.\n<li>Array length limit: 100.</li>",
+          "example": "无",
+          "member": "RoundPlayListItemInfo",
+          "name": "RoundPlaylist",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The playlist name (not longer than 64 characters).",
+          "example": "MyRound",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The playlist description (not longer than 256 characters).",
+          "example": "my first round",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoundPlayResponse": {
+      "document": "ModifyRoundPlay response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -19651,7 +20029,6 @@
       "document": "ModifyTranscodeTemplate request structure.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID of transcoding template.",
           "example": "1008",
           "member": "int64",
@@ -19660,7 +20037,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
           "example": "0",
           "member": "uint64",
@@ -19669,8 +20045,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.",
+          "document": "The container format. Valid values: `mp4`, `flv`, `hls`, `mp3`, `flac`, `ogg`, `m4a`, `wav` ( `mp3`, `flac`, `ogg`, `m4a`, and `wav` are audio file formats).",
           "example": "mp4",
           "member": "string",
           "name": "Container",
@@ -19678,7 +20053,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Transcoding template name. Length limit: 64 characters.",
           "example": "转码模板1",
           "member": "string",
@@ -19687,7 +20061,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Template description. Length limit: 256 characters.",
           "example": "自定义模板1",
           "member": "string",
@@ -19696,7 +20069,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
           "example": "0",
           "member": "int64",
@@ -19705,7 +20077,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
           "example": "0",
           "member": "int64",
@@ -19714,7 +20085,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Video stream configuration parameter.",
           "example": "无",
           "member": "VideoTemplateInfoForUpdate",
@@ -19723,7 +20093,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Audio stream configuration parameter.",
           "example": "无",
           "member": "AudioTemplateInfoForUpdate",
@@ -19732,7 +20101,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "TESHD transcoding parameter.",
           "example": "无",
           "member": "TEHDConfigForUpdate",
@@ -19741,7 +20109,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The segment type. This parameter is valid only if `Container` is `hls`. Valid values:\n<li>ts: TS segment</li>\n<li>fmp4: fMP4 segment</li>",
           "example": "无",
           "member": "string",
@@ -22412,6 +22779,735 @@
       ],
       "type": "object"
     },
+    "RebuildMediaRequest": {
+      "document": "RebuildMedia request structure.",
+      "members": [
+        {
+          "document": "The file ID.",
+          "example": "123abc",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "1",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.",
+          "example": "1",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The end offset (seconds). If you do not specify this, the segment will end at the end of the video.",
+          "example": "2",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The video quality remastering parameters.",
+          "example": "无",
+          "member": "RepairInfo",
+          "name": "RepairInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The smart frame interpolation parameters.",
+          "example": "无",
+          "member": "VideoFrameInterpolationInfo",
+          "name": "VideoFrameInterpolationInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The super resolution parameters.",
+          "example": "无",
+          "member": "SuperResolutionInfo",
+          "name": "SuperResolutionInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The high dynamic range (HDR) parameters.",
+          "example": "无",
+          "member": "HDRInfo",
+          "name": "HDRInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The image noise removal parameters.",
+          "example": "无",
+          "member": "VideoDenoiseInfo",
+          "name": "VideoDenoiseInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The noise removal parameters.",
+          "example": "无",
+          "member": "AudioDenoiseInfo",
+          "name": "AudioDenoiseInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The color enhancement parameters.",
+          "example": "无",
+          "member": "ColorEnhanceInfo",
+          "name": "ColorInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The detail enhancement parameters.",
+          "example": "无",
+          "member": "SharpEnhanceInfo",
+          "name": "SharpInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The face enhancement parameters.",
+          "example": "无",
+          "member": "FaceEnhanceInfo",
+          "name": "FaceInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The low-light enhancement parameters.",
+          "example": "无",
+          "member": "LowLightEnhanceInfo",
+          "name": "LowLightInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The banding removal parameters.",
+          "example": "无",
+          "member": "ScratchRepairInfo",
+          "name": "ScratchRepairInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The artifact removal (smoothing) parameters.",
+          "example": "无",
+          "member": "ArtifactRepairInfo",
+          "name": "ArtifactRepairInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The output parameters of the file.",
+          "example": "无",
+          "member": "RebuildMediaTargetInfo",
+          "name": "TargetInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "1",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "1",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The task priority, which can be a value from -10 to 10. The higher the value, the higher the priority. If this parameter is left empty, 0 will be used.",
+          "example": "1",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "A reserved parameter.",
+          "example": "1",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RebuildMediaResponse": {
+      "document": "RebuildMedia response structure.",
+      "members": [
+        {
+          "document": "The ID of the audio/video remastering task. You need to provide this ID to query the task status.",
+          "example": "123-xxx-xx",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RebuildMediaTargetAudioStream": {
+      "document": "The output audio parameters of an audio/video remastering task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The audio codec.\nIf `Container` is `mp3`, the valid value is:\n<li>`libmp3lame`</li>\nIf `Container` is `ogg` or `flac`, the valid value is:\n<li>`flac`</li>\nIf `Container` is `m4a`, the valid values are:\n<li>`libfdk_aac`</li>\n<li>`libmp3lame`</li>\n<li>`ac3`</li>\nIf `Container` is `mp4` or `flv`, the valid values are:\n<li>`libfdk_aac` (Recommended for MP4)</li>\n<li>`libmp3lame` (Recommended for FLV)</li>\n<li>`mp2`</li>\nIf `Container` is `hls`, the valid value is:\n<li>`libfdk_aac`</li>",
+          "example": "libfdk_aac",
+          "member": "string",
+          "name": "Codec",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio bitrate, in Kbps. Value range: 0 and 26-256.\nIf the value is `0`, the original audio bitrate will be used.",
+          "example": "128",
+          "member": "int64",
+          "name": "Bitrate",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio sample rate. Valid values:\n<li>`32000`</li>\n<li>`44100`</li>\n<li>`48000`</li>\n\nUnit: Hz.",
+          "example": "44100",
+          "member": "int64",
+          "name": "SampleRate",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio channels. Valid values:\n<li>`1`: Mono-channel</li>\n<li>`2`: Dual-channel</li>\n<li>`6`: Stereo</li>\n\nYou cannot set this parameter to `6` if the container format is an audio format (FLAC, OGG, MP3, M4A).\nDefault value: `2`.",
+          "example": "2",
+          "member": "int64",
+          "name": "AudioChannel",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RebuildMediaTargetInfo": {
+      "document": "The parameters of an audio/video remastering output file.",
+      "members": [
+        {
+          "default": "",
+          "document": "The filename. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.",
+          "example": "name",
+          "member": "string",
+          "name": "MediaName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The description (up to 128 characters). If you do not specify this, the description will be empty.",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the “Other” category.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time of the output file, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=). The file will be deleted after the specified expiration time. By default, the file will never expire.",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output container format. Valid values: `mp4` (default), `flv`, `hls`.",
+          "example": "flv",
+          "member": "string",
+          "name": "Container",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output video parameters.",
+          "example": "无",
+          "member": "RebuildMediaTargetVideoStream",
+          "name": "VideoStream",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output audio parameters.",
+          "example": "无",
+          "member": "RebuildMediaTargetAudioStream",
+          "name": "AudioStream",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to remove video data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>\n\nDefault value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "RemoveVideo",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to remove audio data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>\n\nDefault value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "RemoveAudio",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RebuildMediaTargetVideoStream": {
+      "document": "The output video parameters of an audio/video remastering task.",
+      "members": [
+        {
+          "document": "The video codec. Valid values:\n<li>`libx264`: H.264</li>\n<li>`libx265`: H.265</li>\n<li>`av1`: AOMedia Video 1</li>\nThe default codec is H.264.",
+          "example": "libx264",
+          "member": "string",
+          "name": "Codec",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video bitrate (Kbps). Value range: 0 and 128-35000.\nIf the value is `0`, the original video bitrate will be used.",
+          "example": "1000",
+          "member": "int64",
+          "name": "Bitrate",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video frame rate (Hz). Value range: 0-100. If the value is `0`, the original video frame rate will be used.",
+          "example": "25",
+          "member": "int64",
+          "name": "Fps",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resolution adaption. Valid values:\n<li>`open`: Enable. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>\n<li>`close`: Disable. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>\n\nDefault value: `open`.",
+          "example": "open",
+          "member": "string",
+          "name": "ResolutionAdaptive",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The maximum video width (or long side), in pixels. Value range: 0 and 128-8192.\n<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\n\nDefault value: `0`.",
+          "example": "128",
+          "member": "int64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The maximum video height (or short side), in pixels. Value range: 0 and 128-8192.\n<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\n\nDefault value: `0`.",
+          "example": "128",
+          "member": "int64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The fill mode, which indicates how a video is resized when the video’s original aspect ratio is different from the target aspect ratio. Valid values:\n<li>`stretch`: Stretch the image frame by frame to fill the entire screen. The video image may become \"squashed\" or \"stretched\" after transcoding.</li>\n<li>`black`: Keep the image's original aspect ratio and fill the blank space with black bars.</li>\n\nDefault value: `stretch`.",
+          "example": "black",
+          "member": "string",
+          "name": "FillType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of frames between two I-frames. Valid values: 0 and 1-100000.\nIf this parameter is `0` or left empty, the interval will be determined by the system.",
+          "example": "125",
+          "member": "int64",
+          "name": "Gop",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RebuildMediaTask": {
+      "document": "The information of an audio/video remastering task.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "123-xxx-xx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The task flow status. Valid values:\n<li>`PROCESSING`</li>\n<li>`FINISH`</li>",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The error code. `0` indicates the task is successful. Other values indicate that the task failed.\n<li>`40000`: Invalid input parameter.</li>\n<li>`60000`: Source file error (e.g., video data is corrupted).</li>\n<li>`70000`: Internal server error. Please try again.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The error message.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The task progress. Value range: 0-100.",
+          "example": "0",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The input parameters of the audio/video remastering task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RebuildMediaTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The output parameters of the audio/video remastering task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RebuildMediaTaskOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The metadata of the output file.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MediaMetaData",
+          "name": "MetaData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "123",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "123",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RebuildMediaTaskInput": {
+      "document": "The input parameters of an audio/video remastering task.",
+      "members": [
+        {
+          "document": "The file ID.",
+          "example": "123",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.",
+          "example": "0",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The end offset (seconds). If you do not specify this, the segment will end at the end of the video.",
+          "example": "0",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video quality remastering parameters.",
+          "example": "无",
+          "member": "RepairInfo",
+          "name": "RepairInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The smart frame interpolation parameters.",
+          "example": "无",
+          "member": "VideoFrameInterpolationInfo",
+          "name": "VideoFrameInterpolationInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The super resolution parameters.",
+          "example": "无",
+          "member": "SuperResolutionInfo",
+          "name": "SuperResolutionInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The high dynamic range (HDR) parameters.",
+          "example": "无",
+          "member": "HDRInfo",
+          "name": "HDRInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The image noise removal parameters.",
+          "example": "无",
+          "member": "VideoDenoiseInfo",
+          "name": "VideoDenoiseInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The noise removal parameters.",
+          "example": "无",
+          "member": "AudioDenoiseInfo",
+          "name": "AudioDenoiseInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The color enhancement parameters.",
+          "example": "无",
+          "member": "ColorEnhanceInfo",
+          "name": "ColorInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The detail enhancement parameters.",
+          "example": "无",
+          "member": "SharpEnhanceInfo",
+          "name": "SharpInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The face enhancement parameters.",
+          "example": "无",
+          "member": "FaceEnhanceInfo",
+          "name": "FaceInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The low-light enhancement parameters.",
+          "example": "无",
+          "member": "LowLightEnhanceInfo",
+          "name": "LowLightInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The banding removal parameters.",
+          "example": "无",
+          "member": "ScratchRepairInfo",
+          "name": "ScratchRepairInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The artifact removal (smoothing) parameters.",
+          "example": "无",
+          "member": "ArtifactRepairInfo",
+          "name": "ArtifactRepairInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The output parameters of the file.",
+          "example": "无",
+          "member": "RebuildMediaTargetInfo",
+          "name": "TargetInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RebuildMediaTaskOutput": {
+      "document": "The output parameters of an audio/video remastering task.",
+      "members": [
+        {
+          "document": "The file type, such as MP4 and FLV.",
+          "example": "mp4",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The playback URL of the output file.",
+          "example": "http://125.xxx.mp4",
+          "member": "string",
+          "name": "FileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The file ID.",
+          "example": "123",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The filename. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.",
+          "example": "mediaName",
+          "member": "string",
+          "name": "MediaName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The ID of the file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the “Other” category.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ClassId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The expiration time of the output file, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=). The file will be deleted after the specified expiration time. By default, the file will never expire.",
+          "example": "9999-12-31T23:59:59Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ReduceMediaBitrateAdaptiveDynamicStreamingResult": {
       "document": "The information of an adaptive bitrate (bitrate reduction) task.",
       "members": [
@@ -23006,6 +24102,32 @@
         }
       ],
       "usage": "out"
+    },
+    "RepairInfo": {
+      "document": "The video quality remastering parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable video quality remastering. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video quality remastering type. This parameter is valid only if `Switch` is `ON`.\n<li>`weak`</li>\n<li>`normal`</li>\n<li>`strong`</li>\nDefault value: `weak`.",
+          "example": "weak",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ResetProcedureTemplateRequest": {
       "document": "ResetProcedureTemplate request structure.",
@@ -23905,7 +25027,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The moderation type in the format of `Form.Label`. This parameter is valid if `Suggestion` is `review` or `block`.\n`Form` indicates the type of inappropriate content detected. Valid values:\n<li>`Image` (people or icons in images)</li>\n<li>`OCR` (text in images)</li>\n<li>`ASR` (speech)</li>\n<li>`Voice`</li>\n`Label` indicates the violation label. Valid values:\n<li>`Porn` (pornographic content)</li>\n<li>`Terror` (terrorist content)</li>\n<li>Polity (politically sensitive content)</li>\n<li>`Ad`</li>\n<li>`Illegal` (illegal content)</li>\n<li>`Religion`</li>\n<li>`Abuse`</li>\n<li>`Moan`</li>",
+          "document": "The moderation type in the format of `Form.Label`. This parameter is valid if `Suggestion` is `review` or `block`.\n`Form` indicates the type of inappropriate content detected. Valid values:\n<li>`Image` (people or icons in images)</li>\n<li>`OCR` (text in images)</li>\n<li>`ASR` (speech)</li>\n<li>`Voice`</li>\n`Label` indicates the violation label. Valid values:\n<li>`Porn` (pornographic content)</li>\n<li>`Terror` (terrorist content)</li>\n<li>`Polity` (politically sensitive content)</li>\n<li>`Ad` (advertisement)</li>\n<li>`Illegal` (illegal content)</li>\n<li>`Abuse`</li>\n<li>`Moan`</li>",
           "example": "无",
           "member": "string",
           "name": "TypeSet",
@@ -24000,6 +25122,90 @@
         }
       ],
       "usage": "out"
+    },
+    "RoundPlayInfo": {
+      "document": "The information of a playlist.",
+      "members": [
+        {
+          "document": "The playlist ID.",
+          "example": "无",
+          "member": "string",
+          "name": "RoundPlayId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "2018-12-01T00:00:00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The files on the list.",
+          "example": "无",
+          "member": "RoundPlayListItemInfo",
+          "name": "RoundPlaylist",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The playlist name (not longer than 64 characters).",
+          "example": "Shift",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The playlist description (not longer than 256 characters).",
+          "example": "roundplay",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RoundPlayListItemInfo": {
+      "document": "The information of a file on a playlist.",
+      "members": [
+        {
+          "document": "The file ID.",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The type of the media played. Valid values:\n<li>`Transcode`: A transcoding output. Because a file may be bound to multiple transcoding templates, you need to specify `Definition` if the type is `Transcode`.</li>\n<li>`Original`: The original file.</li>\nThe file must be in HLS format.",
+          "example": "Transcode",
+          "member": "string",
+          "name": "AudioVideoType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The transcoding template used to generate the transcoding output played. This parameter is required if `AudioVideoType` is `Transcode`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SDMCDrmKeyProviderInfo": {
       "document": "The DRM key information provided by SDMC.",
@@ -24206,6 +25412,39 @@
         }
       ],
       "usage": "out"
+    },
+    "ScratchRepairInfo": {
+      "document": "Banding removal configuration.",
+      "members": [
+        {
+          "document": "Whether to enable banding removal. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The banding removal strength. Value range: 0.0 – 1.0. This parameter is valid only if `Switch` is `ON`.\nDefault value: `0.0`.",
+          "example": "0",
+          "member": "float",
+          "name": "Intensity",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The banding removal type. This parameter is valid only if `Switch` is `ON`. Valid values:\n<li>`normal`</li>\nDefault value: `normal`.",
+          "example": "normal",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SearchMediaRequest": {
       "document": "SearchMedia request structure.",
@@ -24551,6 +25790,32 @@
         }
       ],
       "type": "object"
+    },
+    "SharpEnhanceInfo": {
+      "document": "Detail enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable detail enhancement. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The detail enhancement strength. Value range: 0.0 – 1.0. This parameter is valid only if `Switch` is `ON`.\nDefault value: `0.0`.",
+          "example": "0",
+          "member": "float",
+          "name": "Intensity",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SimpleHlsClipRequest": {
       "document": "SimpleHlsClip request structure.",
@@ -25534,6 +26799,42 @@
         }
       ],
       "usage": "in"
+    },
+    "SuperResolutionInfo": {
+      "document": "Super resolution configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable super resolution. Valid values:\n<li>ON</li>\n<li>`OFF`</li>\nIf super resolution is enabled, the output resolution will double.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The super resolution type. This parameter is valid only if `Switch` is `ON`. Valid values:\n<li>`lq`: For low-resolution videos with obvious noise</li>\n<li>`hq`: For high-resolution videos</li>\nDefault value: `lq`.",
+          "example": "lq",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ratio of the target resolution to the original resolution. Valid values: `2`.\nDefault value: `2`.",
+          "example": "2",
+          "member": "int64",
+          "name": "Size",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SvgWatermarkInput": {
       "document": "Input parameter of SVG watermarking template",
@@ -27069,6 +28370,58 @@
         }
       ],
       "usage": "in"
+    },
+    "VideoDenoiseInfo": {
+      "document": "Image noise removal configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable image noise removal. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:\n<li>`weak`</li>\n<li>`strong`</li>\nDefault value: `weak`.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VideoFrameInterpolationInfo": {
+      "document": "Smart frame interpolation configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable smart frame interpolation. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The frame rate. Value range: (0, 60]. This parameter is valid only if `Switch` is `ON`. By default, the original frame rate will be used.",
+          "example": "25",
+          "member": "int64",
+          "name": "Fps",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "VideoTemplateInfo": {
       "document": "Video stream configuration parameter",

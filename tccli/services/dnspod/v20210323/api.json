@@ -1,24 +1,73 @@
 {
   "actions": {
     "CreateDomain": {
-      "document": "This API is used to add a domain.\n",
+      "document": "This API is used to add a domain.",
       "input": "CreateDomainRequest",
       "name": "Adds a domain",
       "output": "CreateDomainResponse",
       "status": "online"
     },
+    "CreateDomainAlias": {
+      "document": "This API is used to create a domain alias.",
+      "input": "CreateDomainAliasRequest",
+      "name": "Creates a domain alias",
+      "output": "CreateDomainAliasResponse",
+      "status": "online"
+    },
+    "CreateDomainBatch": {
+      "document": "This API is used to bulk add domains.",
+      "input": "CreateDomainBatchRequest",
+      "name": "Bulk adds domains",
+      "output": "CreateDomainBatchResponse",
+      "status": "online"
+    },
+    "CreateDomainGroup": {
+      "document": "This API is used to create a domain group.",
+      "input": "CreateDomainGroupRequest",
+      "name": "Creates a domain group",
+      "output": "CreateDomainGroupResponse",
+      "status": "online"
+    },
     "CreateRecord": {
-      "document": "This API is used to add a record.\n",
+      "document": "This API is used to add a record.",
       "input": "CreateRecordRequest",
       "name": "Adds a record",
       "output": "CreateRecordResponse",
       "status": "online"
     },
+    "CreateRecordBatch": {
+      "document": "This API is used to bulk add records.",
+      "input": "CreateRecordBatchRequest",
+      "name": "Bulk adds records",
+      "output": "CreateRecordBatchResponse",
+      "status": "online"
+    },
+    "CreateRecordGroup": {
+      "document": "This API is used to add a record group.",
+      "input": "CreateRecordGroupRequest",
+      "name": "Adds a record group",
+      "output": "CreateRecordGroupResponse",
+      "status": "online"
+    },
     "DeleteDomain": {
-      "document": "This API is used to delete a domain.\n",
+      "document": "This API is used to delete a domain.",
       "input": "DeleteDomainRequest",
       "name": "Deletes a domain",
       "output": "DeleteDomainResponse",
+      "status": "online"
+    },
+    "DeleteDomainAlias": {
+      "document": "This API is used to delete a domain alias.",
+      "input": "DeleteDomainAliasRequest",
+      "name": "Deletes a domain alias",
+      "output": "DeleteDomainAliasResponse",
+      "status": "online"
+    },
+    "DeleteDomainBatch": {
+      "document": "This API is used to batch delete domains.",
+      "input": "DeleteDomainBatchRequest",
+      "name": "Batch deletes domains",
+      "output": "DeleteDomainBatchResponse",
       "status": "online"
     },
     "DeleteRecord": {
@@ -28,11 +77,67 @@
       "output": "DeleteRecordResponse",
       "status": "online"
     },
+    "DeleteRecordGroup": {
+      "document": "This API is used to delete a record group.",
+      "input": "DeleteRecordGroupRequest",
+      "name": "Deletes a record group",
+      "output": "DeleteRecordGroupResponse",
+      "status": "online"
+    },
+    "DeleteShareDomain": {
+      "document": "This API is used to unshare a domain.",
+      "input": "DeleteShareDomainRequest",
+      "name": "Unshares a domain",
+      "output": "DeleteShareDomainResponse",
+      "status": "online"
+    },
     "DescribeDomain": {
       "document": "This API is used to get the information of a domain.",
       "input": "DescribeDomainRequest",
       "name": "Gets the information of a domain",
       "output": "DescribeDomainResponse",
+      "status": "online"
+    },
+    "DescribeDomainAliasList": {
+      "document": "This API is used to get the list of domain aliases.",
+      "input": "DescribeDomainAliasListRequest",
+      "name": "Gets the list of domain aliases",
+      "output": "DescribeDomainAliasListResponse",
+      "status": "online"
+    },
+    "DescribeDomainGroupList": {
+      "document": "This API is used to get the list of domain groups.",
+      "input": "DescribeDomainGroupListRequest",
+      "name": "Gets the list of domain groups",
+      "output": "DescribeDomainGroupListResponse",
+      "status": "online"
+    },
+    "DescribeDomainList": {
+      "document": "This API is used to get the list of domains.",
+      "input": "DescribeDomainListRequest",
+      "name": "Gets the list of domains",
+      "output": "DescribeDomainListResponse",
+      "status": "online"
+    },
+    "DescribeDomainLogList": {
+      "document": "This API is used to get the log of a domain.",
+      "input": "DescribeDomainLogListRequest",
+      "name": "Gets the log of a domain",
+      "output": "DescribeDomainLogListResponse",
+      "status": "online"
+    },
+    "DescribeDomainPurview": {
+      "document": "This API is used to get the permissions of a domain.",
+      "input": "DescribeDomainPurviewRequest",
+      "name": "Gets the permissions of a domain",
+      "output": "DescribeDomainPurviewResponse",
+      "status": "online"
+    },
+    "DescribeDomainShareInfo": {
+      "document": "This API is used to get the domain sharing information.",
+      "input": "DescribeDomainShareInfoRequest",
+      "name": "Gets the domain sharing information",
+      "output": "DescribeDomainShareInfoResponse",
       "status": "online"
     },
     "DescribeRecord": {
@@ -42,11 +147,53 @@
       "output": "DescribeRecordResponse",
       "status": "online"
     },
+    "DescribeRecordGroupList": {
+      "document": "This API is used to query the list of DNS record groups.",
+      "input": "DescribeRecordGroupListRequest",
+      "name": "Queries the list of DNS record groups",
+      "output": "DescribeRecordGroupListResponse",
+      "status": "online"
+    },
+    "DescribeRecordLineList": {
+      "document": "This API is used to get the split zones allowed by the domain level.",
+      "input": "DescribeRecordLineListRequest",
+      "name": "Gets the split zones allowed by the domain level",
+      "output": "DescribeRecordLineListResponse",
+      "status": "online"
+    },
     "DescribeRecordList": {
       "document": "This API is used to get the DNS records of a domain.",
       "input": "DescribeRecordListRequest",
       "name": "Gets DNS records of a domain",
       "output": "DescribeRecordListResponse",
+      "status": "online"
+    },
+    "DescribeRecordType": {
+      "document": "This API is used to get the record type allowed by the domain level.",
+      "input": "DescribeRecordTypeRequest",
+      "name": "Gets the record type allowed by the domain level",
+      "output": "DescribeRecordTypeResponse",
+      "status": "online"
+    },
+    "DescribeSubdomainAnalytics": {
+      "document": "This API is used to collect statistics on the DNS query volume of a subdomain. It helps you understand the traffic and time period distribution and allows you to view statistics in the last three months. It is available only for domains under a paid plan.",
+      "input": "DescribeSubdomainAnalyticsRequest",
+      "name": "Collects statistics on the DNS query volume of a subdomain",
+      "output": "DescribeSubdomainAnalyticsResponse",
+      "status": "online"
+    },
+    "ModifyDomainLock": {
+      "document": "This API is used to lock a domain.",
+      "input": "ModifyDomainLockRequest",
+      "name": "Locks a domain",
+      "output": "ModifyDomainLockResponse",
+      "status": "online"
+    },
+    "ModifyDomainOwner": {
+      "document": "This API is used to transfer ownership of a domain.",
+      "input": "ModifyDomainOwnerRequest",
+      "name": "Transfers ownership of a domain",
+      "output": "ModifyDomainOwnerResponse",
       "status": "online"
     },
     "ModifyDomainRemark": {
@@ -63,11 +210,53 @@
       "output": "ModifyDomainStatusResponse",
       "status": "online"
     },
+    "ModifyDomainUnlock": {
+      "document": "This API is used to unlock a domain.",
+      "input": "ModifyDomainUnlockRequest",
+      "name": "Unlocks a domain",
+      "output": "ModifyDomainUnlockResponse",
+      "status": "online"
+    },
     "ModifyRecord": {
       "document": "This API is used to modify a record.",
       "input": "ModifyRecordRequest",
       "name": "Modifies a record",
       "output": "ModifyRecordResponse",
+      "status": "online"
+    },
+    "ModifyRecordBatch": {
+      "document": "This API is used to bulk modify records.",
+      "input": "ModifyRecordBatchRequest",
+      "name": "Bulk modifies records",
+      "output": "ModifyRecordBatchResponse",
+      "status": "online"
+    },
+    "ModifyRecordGroup": {
+      "document": "This API is used to modify a record group.",
+      "input": "ModifyRecordGroupRequest",
+      "name": "Modifies a record group",
+      "output": "ModifyRecordGroupResponse",
+      "status": "online"
+    },
+    "ModifyRecordRemark": {
+      "document": "This API is used to set the remarks of a record.",
+      "input": "ModifyRecordRemarkRequest",
+      "name": "Sets the remarks of a record",
+      "output": "ModifyRecordRemarkResponse",
+      "status": "online"
+    },
+    "ModifyRecordStatus": {
+      "document": "This API is used to modify the DNS record status.",
+      "input": "ModifyRecordStatusRequest",
+      "name": "Sets the record status",
+      "output": "ModifyRecordStatusResponse",
+      "status": "online"
+    },
+    "ModifyRecordToGroup": {
+      "document": "This API is used to add a record to a group.",
+      "input": "ModifyRecordToGroupRequest",
+      "name": "Adds a record to a group",
+      "output": "ModifyRecordToGroupResponse",
       "status": "online"
     }
   },
@@ -77,6 +266,544 @@
     "serviceShortName": "dnspod"
   },
   "objects": {
+    "AddRecordBatch": {
+      "document": "Records to be bulk added",
+      "members": [
+        {
+          "default": "",
+          "document": "Record type. For more information, see the `DescribeRecordType` API.",
+          "example": "A",
+          "member": "string",
+          "name": "RecordType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record value.",
+          "example": "129.23.32.32",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subdomain (host record), which is `@` by default.",
+          "example": "www",
+          "member": "string",
+          "name": "SubDomain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API. If neither `RecordLine` nor `RecordLineId` is specified, the default split zone will be used.",
+          "example": "百度",
+          "member": "string",
+          "name": "RecordLine",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Split zone ID of the DNS record. If both `RecordLine` and `RecordLineId` are specified, `RecordLineId` will be used.",
+          "example": "90=0",
+          "member": "string",
+          "name": "RecordLineId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record weight (not supported).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Weight",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MX record value. It is `0` by default for non-MX records and required for MX records.",
+          "example": "20",
+          "member": "uint64",
+          "name": "MX",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TTL value of the record, which is `600` by default.",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record status (not supported). Valid values: `0` (disabled); `1` (enabled). Default value: `1`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Enabled",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record remarks (not supported).",
+          "example": "test",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "BatchRecordInfo": {
+      "document": "Record information in the bulk task",
+      "members": [
+        {
+          "default": "",
+          "document": "Record ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "158",
+          "member": "uint64",
+          "name": "RecordId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subdomain (host record).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "www",
+          "member": "string",
+          "name": "SubDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record type. For more information, see the `DescribeRecordType` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "A",
+          "member": "string",
+          "name": "RecordType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "百度",
+          "member": "string",
+          "name": "RecordLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "129.23.32.32",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TTL value of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record adding status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waiting",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "plus",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the record in the list",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Enabled",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MX weight of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "uint64",
+          "name": "MX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateDomainAliasRequest": {
+      "document": "CreateDomainAlias request structure.",
+      "members": [
+        {
+          "document": "Domain alias",
+          "example": "cc.cc",
+          "member": "string",
+          "name": "DomainAlias",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Domain",
+          "example": "myfm.cc",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "145521",
+          "member": "int64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDomainAliasResponse": {
+      "document": "CreateDomainAlias response structure.",
+      "members": [
+        {
+          "document": "Domain alias ID",
+          "example": "11",
+          "member": "int64",
+          "name": "DomainAliasId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDomainBatchDetail": {
+      "document": "Response structure for bulk adding domains",
+      "members": [
+        {
+          "default": "",
+          "document": "See `RecordInfoBatch`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CreateDomainBatchRecord",
+          "name": "RecordList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain level\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DP_FREE",
+          "member": "string",
+          "name": "DomainGrade",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task running status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waiting",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "plus",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateDomainBatchRecord": {
+      "document": "Record information in the task of bulk adding domains",
+      "members": [
+        {
+          "default": "",
+          "document": "Subdomain (host record).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "www",
+          "member": "string",
+          "name": "SubDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record type. For more information, see the `DescribeRecordType` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "A",
+          "member": "string",
+          "name": "RecordType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "百度",
+          "member": "string",
+          "name": "RecordLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "129.23.32.32",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TTL value of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record adding status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waiting",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "plus",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the record in the list",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateDomainBatchRequest": {
+      "document": "CreateDomainBatch request structure.",
+      "members": [
+        {
+          "document": "Domain array",
+          "example": "[dnspod1.cn,dnspod2.cn]",
+          "member": "string",
+          "name": "DomainList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Add A records of @ and www for each domain with the record value of the IP. If this parameter is not passed in or is set to an empty string or null, only the domain but not the records will be added.",
+          "example": "11.22.33.44",
+          "member": "string",
+          "name": "RecordValue",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDomainBatchResponse": {
+      "document": "CreateDomainBatch response structure.",
+      "members": [
+        {
+          "document": "Information of the bulk added domains",
+          "example": "无",
+          "member": "CreateDomainBatchDetail",
+          "name": "DetailList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bulk task ID",
+          "example": "10",
+          "member": "uint64",
+          "name": "JobId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDomainGroupRequest": {
+      "document": "CreateDomainGroup request structure.",
+      "members": [
+        {
+          "document": "Domain group",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDomainGroupResponse": {
+      "document": "CreateDomainGroup response structure.",
+      "members": [
+        {
+          "document": "Domain group ID",
+          "example": "无",
+          "member": "int64",
+          "name": "GroupId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateDomainRequest": {
       "document": "CreateDomain request structure.",
       "members": [
@@ -120,6 +847,298 @@
           "name": "DomainInfo",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRecordBatchDetail": {
+      "document": "Response structure for bulk adding records",
+      "members": [
+        {
+          "default": "",
+          "document": "See `RecordInfoBatch`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CreateRecordBatchRecord",
+          "name": "RecordList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain level\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DP_FREE",
+          "member": "string",
+          "name": "DomainGrade",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task running status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waiting",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "plus",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "142123",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateRecordBatchRecord": {
+      "document": "Record information in the task of bulk adding records",
+      "members": [
+        {
+          "default": "",
+          "document": "Subdomain (host record).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "www",
+          "member": "string",
+          "name": "SubDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record type. For more information, see the `DescribeRecordType` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "A",
+          "member": "string",
+          "name": "RecordType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "百度",
+          "member": "string",
+          "name": "RecordLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "129.23.32.32",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TTL value of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Record adding status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waiting",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "plus",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the record in the list",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MX weight of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "uint64",
+          "name": "MX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateRecordBatchRequest": {
+      "document": "CreateRecordBatch request structure.",
+      "members": [
+        {
+          "document": "Domain ID. Separate multiple ones by comma.",
+          "example": "31,32",
+          "member": "string",
+          "name": "DomainIdList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Record array",
+          "example": "无",
+          "member": "AddRecordBatch",
+          "name": "RecordList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRecordBatchResponse": {
+      "document": "CreateRecordBatch response structure.",
+      "members": [
+        {
+          "document": "Information of the bulk added domains",
+          "example": "无",
+          "member": "CreateRecordBatchDetail",
+          "name": "DetailList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bulk task ID",
+          "example": "101",
+          "member": "uint64",
+          "name": "JobId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRecordGroupRequest": {
+      "document": "CreateRecordGroup request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "xxyy.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Group name",
+          "example": "分组2",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.",
+          "example": "3123",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRecordGroupResponse": {
+      "document": "CreateRecordGroup response structure.",
+      "members": [
+        {
+          "document": "New group ID",
+          "example": "1578",
+          "member": "uint64",
+          "name": "GroupId",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -257,6 +1276,146 @@
       ],
       "type": "object"
     },
+    "DeleteDomainAliasRequest": {
+      "document": "DeleteDomainAlias request structure.",
+      "members": [
+        {
+          "document": "Domain alias ID. You can view all domain aliases and their IDs via the `DescribeDomainAliasList` API.",
+          "example": "14564",
+          "member": "int64",
+          "name": "DomainAliasId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Domain",
+          "example": "myfm.cc",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "4324242",
+          "member": "int64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDomainAliasResponse": {
+      "document": "DeleteDomainAlias response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDomainBatchDetail": {
+      "document": "Details of batch deleting domains",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain ID.",
+          "example": "12124",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domain name.",
+          "example": "domain.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "Error",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The domain deletion status.",
+          "example": "waiting",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The operation.",
+          "example": "remove",
+          "member": "string",
+          "name": "Operation",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteDomainBatchRequest": {
+      "document": "DeleteDomainBatch request structure.",
+      "members": [
+        {
+          "document": "The domain array.",
+          "example": "[\"domain.com\"]",
+          "member": "string",
+          "name": "DomainList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDomainBatchResponse": {
+      "document": "DeleteDomainBatch response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "213",
+          "member": "uint64",
+          "name": "JobId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The array of task details.",
+          "example": "无",
+          "member": "DeleteDomainBatchDetail",
+          "name": "DetailList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteDomainRequest": {
       "document": "DeleteDomain request structure.",
       "members": [
@@ -283,6 +1442,48 @@
     },
     "DeleteDomainResponse": {
       "document": "DeleteDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRecordGroupRequest": {
+      "document": "DeleteRecordGroup request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "xxyy.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Group ID",
+          "example": "145",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.",
+          "example": "3123",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRecordGroupResponse": {
+      "document": "DeleteRecordGroup response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -338,6 +1539,305 @@
       ],
       "type": "object"
     },
+    "DeleteShareDomainRequest": {
+      "document": "DeleteShareDomain request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Account of the domain to be shared",
+          "example": "qcloud_uin_100000014227@qcloud.com",
+          "member": "string",
+          "name": "Account",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "61",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteShareDomainResponse": {
+      "document": "DeleteShareDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainAliasListRequest": {
+      "document": "DescribeDomainAliasList request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "myfm.cc",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "134243",
+          "member": "int64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainAliasListResponse": {
+      "document": "DescribeDomainAliasList response structure.",
+      "members": [
+        {
+          "document": "List of domain aliases",
+          "example": "无",
+          "member": "DomainAliasInfo",
+          "name": "DomainAliasList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainGroupListRequest": {
+      "document": "DescribeDomainGroupList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeDomainGroupListResponse": {
+      "document": "DescribeDomainGroupList response structure.",
+      "members": [
+        {
+          "document": "Group list",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "GroupList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainListRequest": {
+      "document": "DescribeDomainList request structure.",
+      "members": [
+        {
+          "document": "Domain group type. Valid values: `ALL`, `MINE`, `SHARE`, `ISMARK`, `PAUSE`, `VIP`, `RECENT`, `SHARE_OUT`. Default value: `ALL`.",
+          "example": "ALL",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Record offset starting from `0`. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Number of domains to be obtained. For example, `20` indicates to obtain 20 domains. Default value: `3000`.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Group ID, which can be passed in to get all domains in the specified group",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Keyword for searching for a domain",
+          "example": "qq",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainListResponse": {
+      "document": "DescribeDomainList response structure.",
+      "members": [
+        {
+          "document": "Statistics on the list page",
+          "example": "无",
+          "member": "DomainCountInfo",
+          "name": "DomainCountInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Domain list",
+          "example": "无",
+          "member": "DomainListItem",
+          "name": "DomainList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainLogListRequest": {
+      "document": "DescribeDomainLogList request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "61",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Record offset starting from `0`. Default value: `0`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Total number of logs to be obtained. For example, `20` indicates to obtain 20 logs. Default value: `500`. Maximum value: `500`.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainLogListResponse": {
+      "document": "DescribeDomainLogList response structure.",
+      "members": [
+        {
+          "document": "Domain information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"2021-01-18 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 ftp 值 64]",
+          "member": "string",
+          "name": "LogList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of results per page",
+          "example": "100",
+          "member": "uint64",
+          "name": "PageSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of logs",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainPurviewRequest": {
+      "document": "DescribeDomainPurview request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "1923",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainPurviewResponse": {
+      "document": "DescribeDomainPurview response structure.",
+      "members": [
+        {
+          "document": "Permission list of the domain",
+          "example": "无",
+          "member": "PurviewInfo",
+          "name": "PurviewList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDomainRequest": {
       "document": "DescribeDomain request structure.",
       "members": [
@@ -372,6 +1872,172 @@
           "name": "DomainInfo",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainShareInfoRequest": {
+      "document": "DescribeDomainShareInfo request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "61",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainShareInfoResponse": {
+      "document": "DescribeDomainShareInfo response structure.",
+      "members": [
+        {
+          "document": "Domain sharing information",
+          "example": "无",
+          "member": "DomainShareInfo",
+          "name": "ShareList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Owner account of the domain",
+          "example": "qcloud_uin_100000014226@qcloud.com",
+          "member": "string",
+          "name": "Owner",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordGroupListRequest": {
+      "document": "DescribeRecordGroupList request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "xxyy.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.",
+          "example": "3123",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Number of items per page for pagination",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordGroupListResponse": {
+      "document": "DescribeRecordGroupList response structure.",
+      "members": [
+        {
+          "document": "Group list",
+          "example": "无",
+          "member": "RecordGroupInfo",
+          "name": "GroupList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordLineListRequest": {
+      "document": "DescribeRecordLineList request structure.",
+      "members": [
+        {
+          "document": "Domain.",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Domain level.\n+ Original plan. Valid values: `D_FREE` (Free Plan); `D_PLUS` (Individual Plus Plan); `D_EXTRA` (Enterprise 1 Plan); `D_EXPERT` (Enterprise 2 Plan); `D_ULTRA` (Enterprise 3 Plan).\n+ New plan. Valid values: `DP_FREE` (Free Version); `DP_PLUS` (Professional); `DP_EXTRA` (Enterprise Basic); `DP_EXPERT` (Enterprise); `DP_ULTRA` (Ultimate).",
+          "example": "DP_PLUS",
+          "member": "string",
+          "name": "DomainGrade",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "1923",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordLineListResponse": {
+      "document": "DescribeRecordLineList response structure.",
+      "members": [
+        {
+          "document": "List of split zones.",
+          "example": "无",
+          "member": "LineInfo",
+          "name": "LineList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of split zone groups.",
+          "example": "无",
+          "member": "LineGroupInfo",
+          "name": "LineGroupList",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -580,6 +2246,318 @@
         }
       ],
       "type": "object"
+    },
+    "DescribeRecordTypeRequest": {
+      "document": "DescribeRecordType request structure.",
+      "members": [
+        {
+          "document": "Domain level.\n+ Original plan. Valid values: `D_FREE` (Free Plan); `D_PLUS` (Individual Plus Plan); `D_EXTRA` (Enterprise 1 Plan); `D_EXPERT` (Enterprise 2 Plan); `D_ULTRA` (Enterprise 3 Plan).\n+ New plan. Valid values: `DP_FREE` (Free Version); `DP_PLUS` (Professional); `DP_EXTRA` (Enterprise Basic); `DP_EXPERT` (Enterprise); `DP_ULTRA` (Ultimate).",
+          "example": "DP_Plus",
+          "member": "string",
+          "name": "DomainGrade",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordTypeResponse": {
+      "document": "DescribeRecordType response structure.",
+      "members": [
+        {
+          "document": "List of record types",
+          "example": "无",
+          "member": "string",
+          "name": "TypeList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubdomainAnalyticsRequest": {
+      "document": "DescribeSubdomainAnalytics request structure.",
+      "members": [
+        {
+          "document": "The domain of the DNS query volume to be queried",
+          "example": "example.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Query start date in the format of `YYYY-MM-DD`",
+          "example": "2022-06-08",
+          "member": "string",
+          "name": "StartDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Query end date in the format of `YYYY-MM-DD`",
+          "example": "2022-06-14",
+          "member": "string",
+          "name": "EndDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The subdomain of the DNS query volume to be queried",
+          "example": "www",
+          "member": "string",
+          "name": "Subdomain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "`DATE`: Daily. `HOUR`: Hourly",
+          "example": "DATE",
+          "member": "string",
+          "name": "DnsFormat",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "1111",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubdomainAnalyticsResponse": {
+      "document": "DescribeSubdomainAnalytics response structure.",
+      "members": [
+        {
+          "document": "DNS query volume in the current statistical dimension",
+          "example": "无",
+          "member": "DomainAnalyticsDetail",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistics on the DNS query volume of a subdomain",
+          "example": "无",
+          "member": "SubdomainAnalyticsInfo",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DNS query volume of the subdomain alias",
+          "example": "无",
+          "member": "SubdomainAliasAnalyticsItem",
+          "name": "AliasData",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DomainAliasInfo": {
+      "document": "Information of a domain alias",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain alias ID",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain alias",
+          "example": "mm.com",
+          "member": "string",
+          "name": "DomainAlias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DomainAnalyticsDetail": {
+      "document": "DNS query volume in the current statistical dimension",
+      "members": [
+        {
+          "default": "",
+          "document": "DNS query volume in the current statistical dimension",
+          "example": "1000",
+          "member": "uint64",
+          "name": "Num",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Collection date for daily collection",
+          "example": "2022-05-16",
+          "member": "string",
+          "name": "DateKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last hour (0–23) for hourly collection. For example, if `HourKey` is `23`, the DNS query volume in the statistical period of 22:00–23:00 will be collected.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "HourKey",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DomainCountInfo": {
+      "document": "List statistics by page",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of eligible domains",
+          "example": "1",
+          "member": "uint64",
+          "name": "DomainTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of all domains that can be viewed by the user",
+          "example": "1",
+          "member": "uint64",
+          "name": "AllTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of domains added under the user account",
+          "example": "1",
+          "member": "uint64",
+          "name": "MineTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of domains shared with the user",
+          "example": "1",
+          "member": "uint64",
+          "name": "ShareTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of paid domains",
+          "example": "1",
+          "member": "uint64",
+          "name": "VipTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of suspended domains",
+          "example": "1",
+          "member": "uint64",
+          "name": "PauseTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of domains with a DNS configuration error",
+          "example": "1",
+          "member": "uint64",
+          "name": "ErrorTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of locked domains",
+          "example": "1",
+          "member": "uint64",
+          "name": "LockTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of blocked domains",
+          "example": "1",
+          "member": "uint64",
+          "name": "SpamTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of domains that will expire within 30 days",
+          "example": "1",
+          "member": "uint64",
+          "name": "VipExpire",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of domains shared with others",
+          "example": "1",
+          "member": "uint64",
+          "name": "ShareOutTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of domains in the specified group",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DomainCreateInfo": {
       "document": "Domain information returned during domain creation",
@@ -863,6 +2841,514 @@
       ],
       "usage": "out"
     },
+    "DomainListItem": {
+      "document": "Element in the domain list",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID assigned to the domain by the system",
+          "example": "12",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original format of the domain",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain status. Valid values: `ENABLE` (normal), `PAUSE` (suspended), `SPAM` (blocked).",
+          "example": "ENABLE",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default TTL of the default DNS record of the domain",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether CNAME flattening is enabled. Valid values: `ENABLE` (enabled); `DISABLE` (disabled).",
+          "example": "DISABLE",
+          "member": "string",
+          "name": "CNAMESpeedup",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DNS configuration status. Valid values: `DNSERROR` (error), an empty string (normal).",
+          "example": "DNSERROR",
+          "member": "string",
+          "name": "DNSStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plan level code of the domain",
+          "example": "DP_FREE",
+          "member": "string",
+          "name": "Grade",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group ID of the domain",
+          "example": "1",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether search engine push optimization is enabled. Valid values: `YES` (yes), `NO` (no).",
+          "example": "NO",
+          "member": "string",
+          "name": "SearchEnginePush",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain remarks",
+          "example": "重要域名",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Punycode-encoded domain format",
+          "example": "xn--a9.com",
+          "member": "string",
+          "name": "Punycode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Effective DNS assigned to the domain by the system",
+          "example": "[\"f1g1ns1.dnspod.net\",\"f1g1ns2.dnspod.net\"]",
+          "member": "string",
+          "name": "EffectiveDNS",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number corresponding to the plan level of the domain",
+          "example": "5",
+          "member": "uint64",
+          "name": "GradeLevel",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plan name",
+          "example": "免费版",
+          "member": "string",
+          "name": "GradeTitle",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a paid plan",
+          "example": "YES",
+          "member": "string",
+          "name": "IsVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Activation time of the paid plan",
+          "example": "2021-04-07 13:34:20",
+          "member": "datetime",
+          "name": "VipStartAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiry time of the paid plan",
+          "example": "2022-04-07 13:34:20",
+          "member": "datetime",
+          "name": "VipEndAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether VIP automatic renewal is enabled for the domain. Valid values: `YES` (yes); `NO` (no). Default value: `DEFAULT`.",
+          "example": "YES",
+          "member": "string",
+          "name": "VipAutoRenew",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of records under the domain",
+          "example": "20",
+          "member": "uint64",
+          "name": "RecordCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain adding time",
+          "example": "2020-05-21 16:08:29",
+          "member": "datetime",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain update time",
+          "example": "2021-04-01 18:09:58",
+          "member": "datetime",
+          "name": "UpdatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account of the domain",
+          "example": "abc@tencent.com",
+          "member": "string",
+          "name": "Owner",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DomainShareInfo": {
+      "document": "Domain sharing information",
+      "members": [
+        {
+          "default": "",
+          "document": "Account with which the domain is shared",
+          "example": "qcloud_uin_100000014227@qcloud.com",
+          "member": "string",
+          "name": "ShareTo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sharing mode. Valid values: `rw` (read/write), `r` (read-only).",
+          "example": "r",
+          "member": "string",
+          "name": "Mode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sharing status. Valid values: `enabled` (shared successfully); `pending` (the account shared to does not exist and is pending registration).",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupInfo": {
+      "document": "List of domain groups",
+      "members": [
+        {
+          "default": "",
+          "document": "Group ID",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group name",
+          "example": "很少修改",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group type",
+          "example": "system",
+          "member": "string",
+          "name": "GroupType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of domains in the group",
+          "example": "1",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LineGroupInfo": {
+      "document": "Information of a split zone group",
+      "members": [
+        {
+          "default": "",
+          "document": "Split zone group ID",
+          "example": "15=0",
+          "member": "string",
+          "name": "LineId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Split zone group name",
+          "example": "华北",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group type",
+          "example": "system",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of split zones in the split zone group",
+          "example": "无",
+          "member": "string",
+          "name": "LineList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LineInfo": {
+      "document": "Information of a split zone",
+      "members": [
+        {
+          "default": "",
+          "document": "Split zone name",
+          "example": "电信",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Split zone ID",
+          "example": "10=0",
+          "member": "string",
+          "name": "LineId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LockInfo": {
+      "document": "Domain lock information",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain ID",
+          "example": "62",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain unlock code",
+          "example": "M3xkbnNwb2Quc2l0ZXwxNjE3MzMwODMwfDhlMTkyODZlOGJjMjU4MDBlNjVlZDA1",
+          "member": "string",
+          "name": "LockCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Automatic unlock date of the domain",
+          "example": "2021-05-02",
+          "member": "date",
+          "name": "LockEnd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyDomainLockRequest": {
+      "document": "ModifyDomainLock request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Number of days to lock the domain. The maximum number of locked days can be obtained by calling the API for getting the permissions of a domain.",
+          "example": "30",
+          "member": "uint64",
+          "name": "LockDays",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "1923",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainLockResponse": {
+      "document": "ModifyDomainLock response structure.",
+      "members": [
+        {
+          "document": "Domain lock information",
+          "example": "无",
+          "member": "LockInfo",
+          "name": "LockInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainOwnerRequest": {
+      "document": "ModifyDomainOwner request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The account to which to transfer the domain, which can be an UIN or email address",
+          "example": "test@gmail.com",
+          "member": "string",
+          "name": "Account",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "61",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainOwnerResponse": {
+      "document": "ModifyDomainOwner response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDomainRemarkRequest": {
       "document": "ModifyDomainRemark request structure.",
       "members": [
@@ -943,6 +3429,316 @@
     },
     "ModifyDomainStatusResponse": {
       "document": "ModifyDomainStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainUnlockRequest": {
+      "document": "ModifyDomainUnlock request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Domain unlock code, which will be returned when the domain is locked.",
+          "example": "M3xkbnNwb2Quc2l0ZXwxNjE3MzMwNjQzfGZhYjA3YTI0ODcwNzIzMmNjNjI5YzZh",
+          "member": "string",
+          "name": "LockCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "1923",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainUnlockResponse": {
+      "document": "ModifyDomainUnlock response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordBatchDetail": {
+      "document": "Response structure for bulk adding records",
+      "members": [
+        {
+          "default": "",
+          "document": "See `RecordInfoBatchModify`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BatchRecordInfo",
+          "name": "RecordList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain level\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DP_FREE",
+          "member": "string",
+          "name": "DomainGrade",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task running status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waiting",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "plus",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "142123",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyRecordBatchRequest": {
+      "document": "ModifyRecordBatch request structure.",
+      "members": [
+        {
+          "document": "Array of record IDs. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
+          "example": "[31,32]",
+          "member": "uint64",
+          "name": "RecordIdList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The field to be modified. Valid values: `sub_domain`, `record_type`, `area`, `value`, `mx`, `ttl`, `status`.",
+          "example": "sub_domain",
+          "member": "string",
+          "name": "Change",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The value to be changed to, which is required and subject to the `change` field.",
+          "example": "www",
+          "member": "string",
+          "name": "ChangeTo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The record value to be changed to, which is required only if the `change` field is `record_type`.",
+          "example": "test",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "MX record priority, which is required only if the `Change` field is `mx`.",
+          "example": "test",
+          "member": "string",
+          "name": "MX",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordBatchResponse": {
+      "document": "ModifyRecordBatch response structure.",
+      "members": [
+        {
+          "document": "Bulk task ID",
+          "example": "101",
+          "member": "uint64",
+          "name": "JobId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "See `modifyRecordBatchDetail`.",
+          "example": "无",
+          "member": "ModifyRecordBatchDetail",
+          "name": "DetailList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordGroupRequest": {
+      "document": "ModifyRecordGroup request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "xxyy.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Group name",
+          "example": "分组2",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "ID of the group to be modified",
+          "example": "146",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.",
+          "example": "3123",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordGroupResponse": {
+      "document": "ModifyRecordGroup response structure.",
+      "members": [
+        {
+          "document": "ID of the modified group",
+          "example": "1578",
+          "member": "uint64",
+          "name": "GroupId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordRemarkRequest": {
+      "document": "ModifyRecordRemark request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
+          "example": "162",
+          "member": "uint64",
+          "name": "RecordId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "1923",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "DNS record remarks. To delete the remarks, submit empty content.",
+          "example": "这是解析记录的备注",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordRemarkResponse": {
+      "document": "ModifyRecordRemark response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1088,6 +3884,140 @@
       ],
       "type": "object"
     },
+    "ModifyRecordStatusRequest": {
+      "document": "ModifyRecordStatus request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "dnspod.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
+          "example": "162",
+          "member": "uint64",
+          "name": "RecordId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Record status. Valid values: `ENABLE`, `DISABLE`. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.",
+          "example": "ENABLE",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
+          "example": "1923",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordStatusResponse": {
+      "document": "ModifyRecordStatus response structure.",
+      "members": [
+        {
+          "document": "Record ID.",
+          "example": "161",
+          "member": "uint64",
+          "name": "RecordId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordToGroupRequest": {
+      "document": "ModifyRecordToGroup request structure.",
+      "members": [
+        {
+          "document": "Domain",
+          "example": "xxyy.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Group ID",
+          "example": "145",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Record ID. Separate multiple IDs by vertical bar (\"|\").",
+          "example": "123232|2343232",
+          "member": "string",
+          "name": "RecordId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.",
+          "example": "3123",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordToGroupResponse": {
+      "document": "ModifyRecordToGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PurviewInfo": {
+      "document": "Domain permission",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission name",
+          "example": "分省线路类型",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission value",
+          "example": "yes",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RecordCountInfo": {
       "document": "Count info of the queried record list",
       "members": [
@@ -1119,6 +4049,42 @@
           "name": "TotalCount",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RecordGroupInfo": {
+      "document": "Information of a DNS record group",
+      "members": [
+        {
+          "default": "",
+          "document": "Group ID",
+          "example": "1344",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group name",
+          "example": "分组1",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group type. Valid values: `system`, `user`.",
+          "example": "user",
+          "member": "string",
+          "name": "GroupType",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1274,7 +4240,6 @@
       "document": "Record list elements",
       "members": [
         {
-          "default": "",
           "document": "The record ID.",
           "example": "1",
           "member": "uint64",
@@ -1284,7 +4249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record value.",
           "example": "1.1.1.1",
           "member": "string",
@@ -1294,7 +4258,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record status. Valid values: `ENABLE` (enabled), `DISABLE` (disabled).",
           "example": "ENABLE",
           "member": "string",
@@ -1304,7 +4267,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The update time.",
           "example": "2021-03-28 11:27:09",
           "member": "datetime",
@@ -1314,7 +4276,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The host name.",
           "example": "www",
           "member": "string",
@@ -1324,7 +4285,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record split zone.",
           "example": "默认",
           "member": "string",
@@ -1334,7 +4294,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The split zone ID.",
           "example": "0",
           "member": "string",
@@ -1344,7 +4303,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record type.",
           "example": "A",
           "member": "string",
@@ -1354,7 +4312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record weight, which is required for round-robin DNS records.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20",
           "member": "uint64",
@@ -1364,7 +4321,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The monitoring status of the record. Valid values: `OK` (normal), `WARN` (warning), and `DOWN` (downtime). It is empty if no monitoring is set or the monitoring is suspended.",
           "example": "OK",
           "member": "string",
@@ -1374,7 +4330,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record remarks.",
           "example": "用于api",
           "member": "string",
@@ -1384,7 +4339,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record cache time.",
           "example": "600",
           "member": "uint64",
@@ -1394,7 +4348,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The MX value, applicable to the MX record only.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "uint64",
@@ -1402,6 +4355,107 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "Whether it is a default NS record.",
+          "example": "true",
+          "member": "bool",
+          "name": "DefaultNS",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SubdomainAliasAnalyticsItem": {
+      "document": "DNS query volume of the subdomain alias",
+      "members": [
+        {
+          "default": "",
+          "document": "Statistics on the DNS query volume of a subdomain",
+          "example": "无",
+          "member": "SubdomainAnalyticsInfo",
+          "name": "Info",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DNS query volume in the current statistical dimension",
+          "example": "无",
+          "member": "DomainAnalyticsDetail",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SubdomainAnalyticsInfo": {
+      "document": "Statistics on the DNS query volume of a subdomain",
+      "members": [
+        {
+          "default": "",
+          "document": "`DATE`: Daily; `HOUR`: Hourly",
+          "example": "DATE",
+          "member": "string",
+          "name": "DnsFormat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total DNS query volume for the current statistical period",
+          "example": "10000",
+          "member": "uint64",
+          "name": "DnsTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The queried domain",
+          "example": "example.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start date of the current statistical period",
+          "example": "2022-06-08",
+          "member": "string",
+          "name": "StartDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End date of the current statistical period",
+          "example": "2022-06-14",
+          "member": "string",
+          "name": "EndDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subdomain",
+          "example": "www",
+          "member": "string",
+          "name": "Subdomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

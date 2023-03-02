@@ -542,7 +542,7 @@
         },
         {
           "default": "",
-          "document": "Whether it is an admin account. Default value: no",
+          "document": "Whether it is an admin account. Valid values: `true` (Yes. It is an admin account when the instance is a basic edition type and `AccountType` is `L0`; it is a privileged account when the instance is a dual-server high availability edition type and `AccountType` is `L1`.), `false` (No. It is a standard account when `AccountType` is `L3`.)",
           "example": "false",
           "member": "bool",
           "name": "IsAdmin",
@@ -556,6 +556,16 @@
           "example": "sql",
           "member": "string",
           "name": "Authentication",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)",
+          "example": "L0",
+          "member": "string",
+          "name": "AccountType",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -675,6 +685,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account type. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).",
+          "example": "L0",
+          "member": "string",
+          "name": "AccountType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -707,8 +727,8 @@
       "document": "Database account permission information, which is set when the database is created",
       "members": [
         {
-          "default": "",
           "document": "Database username",
+          "example": "db_test",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -716,11 +736,20 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Database permissions. ReadWrite: read/write, ReadOnly: read-only",
+          "document": "Database permission. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the database permissions of this account), `DBOwner` (owner).",
+          "example": "ReadOnly",
           "member": "string",
           "name": "Privilege",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Account name. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).",
+          "example": "L0",
+          "member": "string",
+          "name": "AccountType",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -752,12 +781,22 @@
         },
         {
           "default": "",
-          "document": "Whether it is an admin account",
+          "document": "Whether the account has the admin permission. Valid values: `true` (Yes. It is an admin account when the instance is a basic edition type and `AccountType` is `L0`; it is a privileged account when the instance is a dual-server high availability edition type and `AccountType` is `L1`.), `false` (No. The admin permission is disabled by default).",
           "example": "true",
           "member": "bool",
           "name": "IsAdmin",
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)",
+          "example": "L0",
+          "member": "string",
+          "name": "AccountType",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2796,6 +2835,7 @@
         {
           "default": "",
           "document": "Database name",
+          "example": "db_test",
           "member": "string",
           "name": "DBName",
           "required": true,
@@ -2804,7 +2844,8 @@
         },
         {
           "default": "",
-          "document": "Database permissions. ReadWrite: read/write, ReadOnly: read-only",
+          "document": "Database permissions. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `DBOwner` (owner)",
+          "example": "ReadOnly",
           "member": "string",
           "name": "Privilege",
           "required": true,
@@ -2820,6 +2861,7 @@
         {
           "default": "",
           "document": "Database name",
+          "example": "db_test",
           "member": "string",
           "name": "DBName",
           "required": true,
@@ -2828,7 +2870,8 @@
         },
         {
           "default": "",
-          "document": "Permission change information. ReadWrite: read/write, ReadOnly: read-only, Delete: the account has the permission to delete this database",
+          "document": "Permission modification information. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the account's permission to this database), `DBOwner` (owner).",
+          "example": "ReadWrite",
           "member": "string",
           "name": "Privilege",
           "required": true,
@@ -2862,11 +2905,36 @@
       ],
       "usage": "in"
     },
+    "DBRenameRes": {
+      "document": "Database renaming response parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the new database",
+          "example": "new_db",
+          "member": "string",
+          "name": "NewName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the old database",
+          "example": "old_db",
+          "member": "string",
+          "name": "OldName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DbNormalDetail": {
       "document": "Database configurations",
       "members": [
         {
-          "default": "",
           "document": "Whether it is subscribed. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2876,7 +2944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Database collation",
           "example": "Chinese_PRC_CI_AS",
           "member": "string",
@@ -2886,7 +2953,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the cleanup task is enabled to automatically remove old change tracking information when CT is enabled. Valid values: `0` (no), `1` (yes)",
           "example": "\"\"",
           "member": "string",
@@ -2896,7 +2962,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether SQL Server Service Broker is enabled. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2906,7 +2971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether CDC is enabled. Valid values: `0` (disabled), `1` (enabled)",
           "example": "0",
           "member": "string",
@@ -2916,7 +2980,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether CT is enabled. Valid values: `0` (disabled), `1` (enabled)",
           "example": "0",
           "member": "string",
@@ -2926,7 +2989,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is encrypted. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2936,7 +2998,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether full-text indexes are enabled. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2946,7 +3007,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is a mirror database. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2956,7 +3016,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is published. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2966,7 +3025,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether snapshots are enabled. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2976,7 +3034,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is trustworthy. Valid values: `0` (no), `1` (yes)",
           "example": "0",
           "member": "string",
@@ -2986,7 +3043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Mirroring state",
           "example": "SYNCHRONIZED",
           "member": "string",
@@ -2996,7 +3052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Database name",
           "example": "mirror_test37",
           "member": "string",
@@ -3006,7 +3061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Recovery model",
           "example": "FULL",
           "member": "string",
@@ -3016,7 +3070,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Retention period (in days) of change tracking information",
           "example": "\"\"",
           "member": "string",
@@ -3026,7 +3079,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Database status",
           "example": "ONLINE",
           "member": "string",
@@ -3036,12 +3088,20 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User type",
           "example": "MULTI_USER",
           "member": "string",
           "name": "UserAccessDesc",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database creation time",
+          "example": "2023-01-01 12:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4081,7 +4141,6 @@
       "document": "DescribeDBInstanceInter request structure.",
       "members": [
         {
-          "default": "",
           "document": "The maximum number of results returned per page. Value range: 1-100.",
           "example": "10",
           "member": "int64",
@@ -4090,7 +4149,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter by instance ID",
           "example": "mssql-dj5i29c5n",
           "member": "string",
@@ -4099,7 +4157,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filter by status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6` (Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).",
           "example": "1",
           "member": "int64",
@@ -4108,7 +4165,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The list of instance version numbers",
           "example": "无",
           "member": "string",
@@ -4117,7 +4173,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Instance AZ ID in the format of ap-guangzhou-2",
           "example": "ap-guangzhou-2",
           "member": "string",
@@ -4126,7 +4181,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Page number. Default value: `0`.",
           "example": "0",
           "member": "int64",
@@ -6097,6 +6151,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name set of renamed databases\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "DBRenameRes",
+          "name": "DBRename",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6290,6 +6354,7 @@
         {
           "default": "",
           "document": "ID of imported target instance",
+          "example": "mssql-rdc0gajn",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6298,6 +6363,7 @@
         {
           "default": "",
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "example": "mssql-backup-migration-kpl74n9l",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -6306,6 +6372,7 @@
         {
           "default": "",
           "document": "Task name",
+          "example": "字符串",
           "member": "string",
           "name": "MigrationName",
           "required": false,
@@ -6314,6 +6381,7 @@
         {
           "default": "",
           "document": "Migration task restoration type: FULL,FULL_LOG,FULL_DIFF",
+          "example": "FULL",
           "member": "string",
           "name": "RecoveryType",
           "required": false,
@@ -6322,6 +6390,7 @@
         {
           "default": "",
           "document": "COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.",
+          "example": "COS_UPLOAD",
           "member": "string",
           "name": "UploadType",
           "required": false,
@@ -6330,8 +6399,18 @@
         {
           "default": "",
           "document": "If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "example": "[\"db1.bak\\n\"]",
           "member": "string",
           "name": "BackupFiles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Name set of databases to be renamed",
+          "example": "[{\"OldName\":\"test1\",\"NewName\":\"test2\"}]",
+          "member": "RenameRestoreDatabase",
+          "name": "DBRename",
           "required": false,
           "type": "list"
         }
@@ -7393,7 +7472,7 @@
       "usage": "out"
     },
     "RenameRestoreDatabase": {
-      "document": "Used in the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, and `CloneDB` APIs to specify and rename the database to be restored, rolled back, migrated, or cloned.",
+      "document": "It is used to specify and rename the database to be restored through the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, `CloneDB` or `ModifyBackupMigration` APIs.",
       "members": [
         {
           "default": "",
@@ -7481,7 +7560,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "RestartDBInstanceRequest": {
       "document": "RestartDBInstance request structure.",

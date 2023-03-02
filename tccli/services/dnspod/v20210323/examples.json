@@ -2,75 +2,243 @@
   "actions": {
     "CreateDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\",\n    \"IsMark\": \"no\",\n    \"GroupId\": 2\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DomainInfo\": {\n            \"Id\": 62,\n            \"Punycode\": \"dnspod.com\",\n            \"Domain\": \"dnspod.com\",\n            \"GradeNsList\": [\n                \"source.dnspod.net\",\n                \"low.dnspod.net\"\n            ]\n        }\n    }\n}",
         "title": "Adding a domain"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"iceice.club\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"674a208e-4829-4c2d-a519-a85f2f9bb223\",\n        \"DomainInfo\": {\n            \"GradeNsList\": [\n                \"eunice.dnspod.net\",\n                \"country.dnspod.net\"\n            ],\n            \"Id\": 15,\n            \"Punycode\": \"iceice.club\",\n            \"Domain\": \"iceice.club\"\n        }\n    }\n}",
         "title": "CreateDomain_success"
       }
     ],
+    "CreateDomainAlias": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomainAlias\n<Common request parameters>\n\n{\n    \"Domain\": \"myfm.cc\",\n    \"DomainAlias\": \"cc.cc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DomainAliasId\": 16080\n    }\n}",
+        "title": "Creating a domain alias"
+      }
+    ],
+    "CreateDomainBatch": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomainBatch\n<Common request parameters>\n\n{\n    \"DomainList\": [\n        \"tencent1.com\",\n        \"tencent2.com\"\n    ],\n    \"RecordValue\": \"11.22.33.44\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DetailList\": [\n            {\n                \"RecordList\": [\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": 600,\n                        \"Id\": 0,\n                        \"SubDomain\": \"www\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"11.22.33.45\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    },\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": 600,\n                        \"Id\": 1,\n                        \"SubDomain\": \"@\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"11.22.33.45\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    }\n                ],\n                \"Id\": 0,\n                \"Domain\": \"tencent12.com\",\n                \"DomainGrade\": \"DP_FREE\",\n                \"ErrMsg\": null,\n                \"Status\": \"waiting\",\n                \"Operation\": \"plus\"\n            },\n            {\n                \"RecordList\": [\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": 600,\n                        \"Id\": 0,\n                        \"SubDomain\": \"www\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"11.22.33.45\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    },\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": 600,\n                        \"Id\": 1,\n                        \"SubDomain\": \"@\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"11.22.33.45\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    }\n                ],\n                \"Id\": 1,\n                \"Domain\": \"tencent13.com\",\n                \"DomainGrade\": \"DP_FREE\",\n                \"ErrMsg\": null,\n                \"Status\": \"waiting\",\n                \"Operation\": \"plus\"\n            }\n        ],\n        \"JobId\": 30\n    }\n}",
+        "title": "Bulk adding domains"
+      }
+    ],
+    "CreateDomainGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomainGroup\n<Common request parameters>\n\n{\n    \"GroupName\": \"Rainbow project\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"GroupId\": 1977\n    }\n}",
+        "title": "Creating a domain group"
+      }
+    ],
     "CreateRecord": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"SubDomain\": \"bbbb\",\n    \"RecordType\": \"A\",\n    \"RecordLine\": \"Default\",\n    \"RecordLineId\": \"0\",\n    \"Value\": \"129.23.32.32\",\n    \"MX\": 0,\n    \"TTL\": 600,\n    \"Weight\": 10,\n    \"Status\": \"DISABLE\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordId\": 162\n    }\n}",
         "title": "Adding a record"
       }
     ],
+    "CreateRecordBatch": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRecordBatch\n<Common request parameters>\n\n{\n    \"DomainIdList\": [\n        49,\n        53\n    ],\n    \"RecordList\": [\n        {\n            \"SubDomain\": \"aa,bb\",\n            \"RecordType\": \"A\",\n            \"RecordLine\": \"Default\",\n            \"Value\": \"11.22.33.44\",\n            \"TTL\": 600\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DetailList\": [\n            {\n                \"RecordList\": [\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": \"600\",\n                        \"Id\": 0,\n                        \"SubDomain\": \"www\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"1.2.3.4\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    },\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": \"600\",\n                        \"Id\": 1,\n                        \"SubDomain\": \"wap\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"1.2.3.4\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    },\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": \"600\",\n                        \"Id\": 2,\n                        \"SubDomain\": \"bbs\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"1.2.3.4\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    }\n                ],\n                \"Id\": 0,\n                \"DomainId\": 48,\n                \"Domain\": \"dnsapi6.cn\",\n                \"DomainGrade\": \"DP_PLUS\",\n                \"ErrMsg\": null,\n                \"Status\": \"waiting\",\n                \"Operation\": null\n            },\n            {\n                \"RecordList\": [\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": \"600\",\n                        \"Id\": 0,\n                        \"SubDomain\": \"www\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"1.2.3.4\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    },\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": \"600\",\n                        \"Id\": 1,\n                        \"SubDomain\": \"wap\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"1.2.3.4\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    },\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": \"600\",\n                        \"Id\": 2,\n                        \"SubDomain\": \"bbs\",\n                        \"RecordType\": \"A\",\n                        \"Value\": \"1.2.3.4\",\n                        \"ErrMsg\": null,\n                        \"Status\": \"waiting\",\n                        \"Operation\": \"plus\"\n                    }\n                ],\n                \"Id\": 1,\n                \"DomainId\": 49,\n                \"Domain\": \"dnsapi1.cn\",\n                \"DomainGrade\": \"DP_FREE\",\n                \"ErrMsg\": null,\n                \"Status\": \"waiting\",\n                \"Operation\": null\n            }\n        ],\n        \"JobId\": 34\n    }\n}",
+        "title": "Bulk adding records"
+      }
+    ],
+    "CreateRecordGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRecordGroup\n<Common request parameters>\n\n{\n    \"Domain\": \"domain.com\",\n    \"GroupName\": \"Group 2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ec8949ba-ec3c-446e-b9eb-5aeafa238f0a\",\n        \"GroupId\": 146\n    }\n}",
+        "title": "Adding a record group"
+      }
+    ],
     "DeleteDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
         "title": "Deleting the domain `dnspod.com`"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"iceice.club\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d459ba8-f335-4508-b6b2-efed8b531c8c\"\n    }\n}",
         "title": "Deleting the domain `iceice.club`"
       }
     ],
+    "DeleteDomainAlias": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomainAlias\n<Common request parameters>\n\n{\n    \"DomainAliasId\": 121212,\n    \"Domain\": \"myfm.cc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Deleting a domain alias"
+      }
+    ],
+    "DeleteDomainBatch": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomainBatch\n<Common request parameters>\n\n{\n    \"DomainList\": [\n        \"sdfsdfsdf.com\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0f8cc178-1a8d-4923-a24d-2b47883386f7\",\n        \"JobId\": \"1701611\",\n        \"DetailList\": [\n            {\n                \"DomainId\": \"12620428\",\n                \"Domain\": \"sdfsdfsdf.com\",\n                \"Error\": null,\n                \"Status\": \"waiting\",\n                \"Operation\": \"remove\"\n            }\n        ]\n    }\n}",
+        "title": "Batch deleting domains"
+      }
+    ],
     "DeleteRecord": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"RecordId\": 162\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
         "title": "Deleting a DNS record"
       }
     ],
+    "DeleteRecordGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRecordGroup\n<Common request parameters>\n\n{\n    \"Domain\": \"domain.com\",\n    \"GroupId\": 156\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ec8949ba-ec3c-446e-b9eb-5aeafa238f0a\"\n    }\n}",
+        "title": "Deleting a record group"
+      }
+    ],
+    "DeleteShareDomain": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteShareDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\",\n    \"Account\": \"qcloud_uin_100000014226@qcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Unsharing a domain"
+      }
+    ],
     "DescribeDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DomainInfo\": {\n            \"DnspodNsList\": [\n                \"source.dnspod.net\",\n                \"low.dnspod.net\"\n            ],\n            \"ActualNsList\": [\n                \"f1g1ns1.dnspod.net\",\n                \"f1g1ns2.dnspod.net\"\n            ],\n            \"RecordCount\": 2,\n            \"DomainId\": 61,\n            \"DnsStatus\": \"dnserror\",\n            \"IsVip\": \"no\",\n            \"Punycode\": \"tencent8.com\",\n            \"Grade\": \"DP_FREE\",\n            \"GradeLevel\": 2,\n            \"GradeTitle\": \"Free Edition\",\n            \"Status\": \"enable\",\n            \"GroupId\": 1,\n            \"IsMark\": \"no\",\n            \"Remark\": \"\",\n            \"UserId\": 1,\n            \"CreatedOn\": \"2021-04-06 15:51:45\",\n            \"UpdatedOn\": \"2021-04-06 15:51:45\",\n            \"TTL\": 600,\n            \"Owner\": \"qcloud_uin_100000014226@qcloud.com\",\n            \"CnameSpeedup\": \"disable\",\n            \"Uin\": \"100000014226\",\n            \"OwnerNick\": \"Loccsser\",\n            \"Domain\": \"tencent8.com\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DomainInfo\": {\n            \"DnspodNsList\": [\n                \"source.dnspod.net\",\n                \"low.dnspod.net\"\n            ],\n            \"ActualNsList\": [\n                \"f1g1ns1.dnspod.net\",\n                \"f1g1ns2.dnspod.net\"\n            ],\n            \"RecordCount\": 2,\n            \"DomainId\": 61,\n            \"DnsStatus\": \"dnserror\",\n            \"IsVip\": \"no\",\n            \"Punycode\": \"tencent8.com\",\n            \"Grade\": \"DP_FREE\",\n            \"GradeLevel\": 2,\n            \"GradeTitle\": \"Free Version\",\n            \"Status\": \"enable\",\n            \"GroupId\": 1,\n            \"IsMark\": \"no\",\n            \"Remark\": \"\",\n            \"UserId\": 1,\n            \"CreatedOn\": \"2021-04-06 15:51:45\",\n            \"UpdatedOn\": \"2021-04-06 15:51:45\",\n            \"TTL\": 600,\n            \"Owner\": \"qcloud_uin_100000014226@qcloud.com\",\n            \"CnameSpeedup\": \"disable\",\n            \"Uin\": \"100000014226\",\n            \"OwnerNick\": \"Loccsser\",\n            \"Domain\": \"tencent8.com\"\n        }\n    }\n}",
         "title": "Getting the information of a domain"
+      }
+    ],
+    "DescribeDomainAliasList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainAliasList\n<Common request parameters>\n\n{\n    \"Domain\": \"myfm.cc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DomainAliasList\": [\n            {\n                \"DomainAlias\": \"cc.cc\",\n                \"Id\": 16063\n            }\n        ]\n    }\n}",
+        "title": "Getting the list of domain aliases"
+      }
+    ],
+    "DescribeDomainGroupList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainGroupList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"GroupList\": [\n            {\n                \"GroupId\": 1,\n                \"GroupName\": \"Default group\",\n                \"GroupType\": \"system\",\n                \"Size\": 3\n            }\n        ]\n    }\n}",
+        "title": "Getting the list of domain groups"
+      }
+    ],
+    "DescribeDomainList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainList\n<Common request parameters>\n\n{\n    \"Type\": \"ALL\",\n    \"Keyword\": \"abc\",\n    \"Limit\": 2,\n    \"Offset\": 0,\n    \"GroupId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"561cdfcb-37a6-47de-b3c5-2b038e2c2276\",\n        \"DomainCountInfo\": {\n            \"DomainTotal\": 4,\n            \"AllTotal\": 4,\n            \"MineTotal\": 4,\n            \"ShareTotal\": 0,\n            \"VipTotal\": 1,\n            \"PauseTotal\": 0,\n            \"ErrorTotal\": 4,\n            \"LockTotal\": 0,\n            \"SpamTotal\": 0,\n            \"VipExpire\": 0,\n            \"ShareOutTotal\": 0,\n            \"GroupTotal\": 3\n        },\n        \"DomainList\": [\n            {\n                \"TTL\": 600,\n                \"CNAMESpeedup\": \"DISABLE\",\n                \"DNSStatus\": \"DNSERROR\",\n                \"DomainId\": 12609493,\n                \"Status\": \"ENABLE\",\n                \"Grade\": \"DP_ULTRA\",\n                \"GroupId\": \"1\",\n                \"Remark\": \"\",\n                \"CreatedOn\": \"2020-05-21 16:08:29\",\n                \"UpdatedOn\": \"2021-04-01 18:09:58\",\n                \"Punycode\": \"shenhailong.club\",\n                \"Name\": \"shenhailong.club\",\n                \"GradeLevel\": 10,\n                \"GradeTitle\": \"Ultimate\",\n                \"IsVip\": \"YES\",\n                \"Owner\": \"qcloud_uin_100000012799@qcloud.com\",\n                \"VipStartAt\": \"0000-00-00 00:00:00\",\n                \"VipEndAt\": \"0000-00-00 00:00:00\",\n                \"VipAutoRenew\": \"NO\",\n                \"SearchEnginePush\": \"NO\",\n                \"RecordCount\": 6,\n                \"EffectiveDNS\": [\n                    \"ns3.dnsv5.com\",\n                    \"ns4.dnsv5.com\"\n                ]\n            },\n            {\n                \"TTL\": 600,\n                \"CNAMESpeedup\": \"DISABLE\",\n                \"DNSStatus\": \"DNSERROR\",\n                \"DomainId\": 12610063,\n                \"Status\": \"ENABLE\",\n                \"Grade\": \"DP_FREE\",\n                \"GroupId\": \"1\",\n                \"Remark\": \"\",\n                \"CreatedOn\": \"2020-08-18 17:52:30\",\n                \"UpdatedOn\": \"2020-08-18 17:52:30\",\n                \"Punycode\": \"shenhailong.xn--fiqs8s\",\n                \"Name\": \"shenhailong.China\",\n                \"GradeLevel\": 2,\n                \"GradeTitle\": \"Free Version\",\n                \"IsVip\": \"NO\",\n                \"Owner\": \"qcloud_uin_100000012799@qcloud.com\",\n                \"VipStartAt\": \"0000-00-00 00:00:00\",\n                \"VipEndAt\": \"0000-00-00 00:00:00\",\n                \"VipAutoRenew\": \"NO\",\n                \"SearchEnginePush\": \"NO\",\n                \"RecordCount\": 2,\n                \"EffectiveDNS\": [\n                    \"f1g1ns1.dnspod.net\",\n                    \"f1g1ns2.dnspod.net\"\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Getting the list of domains"
+      }
+    ],
+    "DescribeDomainLogList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainLogList\n<Common request parameters>\n\n{\n    \"Domain\": \"test.com\",\n    \"Limit\": 100,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"LogList\": [\n            \"2021-01-18 12:06:11: (111.111.111.111) Add A record line Default ftp value 64.144.7.51\"\n        ],\n        \"PageSize\": 100,\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Getting the log of a domain"
+      }
+    ],
+    "DescribeDomainPurview": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainPurview\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"PurviewList\": [\n            {\n                \"Name\": \"URL Forward\",\n                \"Value\": \"10\"\n            },\n            {\n                \"Name\": \"NS record count\",\n                \"Value\": \"99999\"\n            },\n            {\n                \"Name\": \"AAAA record count\",\n                \"Value\": \"99999\"\n            },\n            {\n                \"Name\": \"SRV record count\",\n                \"Value\": \"99999\"\n            },\n            {\n                \"Name\": \"domain alias count\",\n                \"Value\": \"10\"\n            },\n            {\n                \"Name\": \"max domain lock days\",\n                \"Value\": \"365\"\n            },\n            {\n                \"Name\": \"max domain share count\",\n                \"Value\": \"1000\"\n            },\n            {\n                \"Name\": \"max sub domain level\",\n                \"Value\": \"12\"\n            },\n            {\n                \"Name\": \"max Spread Record level\",\n                \"Value\": \"10\"\n            },\n            {\n                \"Name\": \"max DNS balance count\",\n                \"Value\": \"60\"\n            },\n            {\n                \"Name\": \"min TTL value\",\n                \"Value\": \"1\"\n            },\n            {\n                \"Name\": \"enable mix Spread Reserved\",\n                \"Value\": \"yes\"\n            },\n            {\n                \"Name\": \"enhanced split zone type\",\n                \"Value\": \"yes\"\n            },\n            {\n                \"Name\": \"Split zone type by province\",\n                \"Value\": \"yes\"\n            },\n            {\n                \"Name\": \"Split zone type by continent\",\n                \"Value\": \"yes\"\n            }\n        ]\n    }\n}",
+        "title": "Getting the permissions of a domain"
+      }
+    ],
+    "DescribeDomainShareInfo": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainShareInfo\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"ShareList\": [\n            {\n                \"ShareTo\": \"qcloud_uin_100000014227@qcloud.com\",\n                \"Mode\": \"r\",\n                \"Status\": \"enabled\"\n            }\n        ],\n        \"Owner\": \"qcloud_uin_100000014226@qcloud.com\"\n    }\n}",
+        "title": "Getting the domain sharing information"
       }
     ],
     "DescribeRecord": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"RecordId\": 162\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordInfo\": {\n            \"Id\": 158,\n            \"SubDomain\": \"wwww\",\n            \"RecordType\": \"A\",\n            \"RecordLine\": \"Baidu\",\n            \"RecordLineId\": \"90=0\",\n            \"Value\": \"129.23.32.32\",\n            \"Weight\": null,\n            \"MX\": 0,\n            \"TTL\": 10,\n            \"Enabled\": 1,\n            \"MonitorStatus\": \"Ok\",\n            \"Remark\": \"\",\n            \"UpdatedOn\": \"2021-03-31 11:38:02\",\n            \"DomainId\": 62\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordInfo\": {\n            \"Id\": 158,\n            \"SubDomain\": \"wwww\",\n            \"RecordType\": \"A\",\n            \"RecordLine\": \"Baidu\",\n            \"RecordLineId\": \"90=0\",\n            \"Value\": \"129.23.32.32\",\n            \"Weight\": null,\n            \"MX\": 0,\n            \"TTL\": 10,\n            \"Enabled\": 1,\n            \"MonitorStatus\": \"Ok\",\n            \"Remark\": \"Remarks\",\n            \"UpdatedOn\": \"2021-03-31 11:38:02\",\n            \"DomainId\": 62\n        }\n    }\n}",
         "title": "Getting the information of a record"
+      }
+    ],
+    "DescribeRecordGroupList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordGroupList\n<Common request parameters>\n\n{\n    \"Domain\": \"recordgroup.com\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0076ce66-aff3-4d2b-bd6e-92bf053ae150\",\n        \"GroupList\": [\n            {\n                \"GroupId\": 0,\n                \"GroupName\": \"Default group\",\n                \"GroupType\": \"system\"\n            },\n            {\n                \"GroupId\": 144,\n                \"GroupName\": \"Group name\",\n                \"GroupType\": \"user\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the list of DNS record groups"
+      }
+    ],
+    "DescribeRecordLineList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordLineList\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"DomainGrade\": \"DP_ULTRA\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"LineGroupList\": [\n            {\n                \"LineId\": \"998=3\",\n                \"Name\": \"Group 2\",\n                \"LineList\": [\n                    \"Global\",\n                    \"The third_line\",\n                    \"The second_line\"\n                ],\n                \"Type\": \"user\"\n            },\n            {\n                \"Name\": \"Northeast China\",\n                \"LineId\": \"15=1\",\n                \"LineList\": [\n                    \"China Mobile, Heilongjiang\",\n                    \"China Telecom, Heilongjiang\",\n                    \"China Unicom, Heilongjiang\",\n                    \"China Mobile, Jilin\",\n                    \"China Telecom, Jilin\",\n                    \"China Unicom, Jilin\",\n                    \"China Mobile, Liaoning\",\n                    \"China Telecom, Liaoning\",\n                    \"China Unicom, Liaoning\"\n                ],\n                \"Type\": \"system\"\n            },\n            {\n                \"Name\": \"Hong Kong/Macao/Taiwan (China)\",\n                \"LineId\": \"15=7\",\n                \"LineList\": [\n                    \"Hong Kong (China)\",\n                    \"Macao (China)\",\n                    \"Taiwan (China)\"\n                ],\n                \"Type\": \"system\"\n            }\n        ],\n        \"LineList\": [\n            {\n                \"Name\": \"Default\",\n                \"LineId\": \"0\"\n            },\n            {\n                \"Name\": \"Global\",\n                \"LineId\": \"3=0\"\n            },\n            {\n                \"Name\": \"Chinese mainland\",\n                \"LineId\": \"7=0\"\n            },\n            {\n                \"Name\": \"China Telecom\",\n                \"LineId\": \"10=0\"\n            },\n            {\n                \"Name\": \"China Unicom\",\n                \"LineId\": \"10=1\"\n            }\n        ]\n    }\n}",
+        "title": "Setting the remarks of a record"
       }
     ],
     "DescribeRecordList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 2,\n    \"Domain\": \"shenjianing.com\",\n    \"DomainId\": 123,\n    \"Subdomain\": \"www\",\n    \"Keyword\": \"dnspod\",\n    \"RecordType\": \"NS\",\n    \"RecordLine\": \"Default\",\n    \"RecordLineId\": \"0\",\n    \"SortField\": \"type\",\n    \"SortType\": \"ASC\",\n    \"GroupId\": 34\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"561cdfcb-37a6-47de-b3c5-2b038e2c2276\",\n        \"RecordCountInfo\": {\n            \"SubdomainCount\": 2,\n            \"TotalCount\": 2,\n            \"ListCount\": 2\n        },\n        \"RecordList\": [\n            {\n                \"RecordId\": 556507778,\n                \"Value\": \"f1g1ns1.dnspod.net.\",\n                \"Status\": \"ENABLE\",\n                \"UpdatedOn\": \"2021-03-28 11:27:09\",\n                \"Name\": \"@\",\n                \"Line\": \"Default\",\n                \"LineId\": \"0\",\n                \"Type\": \"NS\",\n                \"Weight\": null,\n                \"MonitorStatus\": \"\",\n                \"Remark\": \"\",\n                \"TTL\": 86400,\n                \"MX\": 0\n            },\n            {\n                \"RecordId\": 556507779,\n                \"Value\": \"f1g1ns2.dnspod.net.\",\n                \"Status\": \"ENABLE\",\n                \"UpdatedOn\": \"2021-03-28 11:27:09\",\n                \"Name\": \"@\",\n                \"Line\": \"Default\",\n                \"LineId\": \"0\",\n                \"Type\": \"NS\",\n                \"Weight\": null,\n                \"MonitorStatus\": \"\",\n                \"Remark\": \"\",\n                \"TTL\": 86400,\n                \"MX\": 0\n            }\n        ]\n    }\n}",
-        "title": "Querying DNS records of a domain"
+        "title": "Querying the DNS records of a domain"
+      }
+    ],
+    "DescribeRecordType": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordType\n<Common request parameters>\n\n{\n    \"DomainGrade\": \"DP_Expert\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"TypeList\": [\n            \"A\",\n            \"CNAME\",\n            \"MX\",\n            \"TXT\",\n            \"NS\",\n            \"AAAA\",\n            \"SPF\",\n            \"SRV\",\n            \"CAA\",\n            \"URL\",\n            \"Framed URL\"\n        ]\n    }\n}",
+        "title": "Getting the record type allowed by the domain level"
+      }
+    ],
+    "DescribeSubdomainAnalytics": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubdomainAnalytics\n<Common request parameters>\n\n{\n    \"Domain\": \"example.com\",\n    \"StartDate\": \"2022-06-14\",\n    \"EndDate\": \"2022-06-14\",\n    \"Subdomain\": \"www\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"AliasData\": [\n            {\n                \"Data\": [\n                    {\n                        \"DateKey\": \"20220608\",\n                        \"HourKey\": null,\n                        \"Num\": 0\n                    },\n                    {\n                        \"DateKey\": \"20220609\",\n                        \"HourKey\": null,\n                        \"Num\": 0\n                    },\n                    {\n                        \"DateKey\": \"20220610\",\n                        \"HourKey\": null,\n                        \"Num\": 0\n                    },\n                    {\n                        \"DateKey\": \"20220611\",\n                        \"HourKey\": null,\n                        \"Num\": 0\n                    },\n                    {\n                        \"DateKey\": \"20220612\",\n                        \"HourKey\": null,\n                        \"Num\": 0\n                    },\n                    {\n                        \"DateKey\": \"20220613\",\n                        \"HourKey\": null,\n                        \"Num\": 0\n                    },\n                    {\n                        \"DateKey\": \"20220614\",\n                        \"HourKey\": null,\n                        \"Num\": 0\n                    }\n                ],\n                \"Info\": {\n                    \"DnsFormat\": \"DATE\",\n                    \"DnsTotal\": 0,\n                    \"Domain\": \"examplealis.com\",\n                    \"EndDate\": \"2022-06-14\",\n                    \"StartDate\": \"2022-06-08\",\n                    \"Subdomain\": \"www\"\n                }\n            }\n        ],\n        \"Data\": [\n            {\n                \"DateKey\": \"20220608\",\n                \"HourKey\": null,\n                \"Num\": 0\n            },\n            {\n                \"DateKey\": \"20220609\",\n                \"HourKey\": null,\n                \"Num\": 0\n            },\n            {\n                \"DateKey\": \"20220610\",\n                \"HourKey\": null,\n                \"Num\": 0\n            },\n            {\n                \"DateKey\": \"20220611\",\n                \"HourKey\": null,\n                \"Num\": 0\n            },\n            {\n                \"DateKey\": \"20220612\",\n                \"HourKey\": null,\n                \"Num\": 0\n            },\n            {\n                \"DateKey\": \"20220613\",\n                \"HourKey\": null,\n                \"Num\": 0\n            },\n            {\n                \"DateKey\": \"20220614\",\n                \"HourKey\": null,\n                \"Num\": 0\n            }\n        ],\n        \"Info\": {\n            \"DnsFormat\": \"DATE\",\n            \"DnsTotal\": 0,\n            \"Domain\": \"example.com\",\n            \"EndDate\": \"2022-06-14\",\n            \"StartDate\": \"2022-06-08\",\n            \"Subdomain\": \"www\"\n        }\n    }\n}",
+        "title": "Collecting statistics on the DNS query volume of a subdomain"
+      }
+    ],
+    "ModifyDomainLock": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainLock\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"LockDays\": 30\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"LockInfo\": {\n            \"DomainId\": 62,\n            \"LockCode\": \"M3xkbnNwb2Quc2l0ZXwxNjE3MzMwODMwfDhlMTkyODZlOGJjMjU4MDBlNjVlZDA1NDFhZjM4NzJm\",\n            \"LockEnd\": \"2021-05-02\"\n        }\n    }\n}",
+        "title": "Locking a domain"
+      }
+    ],
+    "ModifyDomainOwner": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainOwner\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\",\n    \"Account\": \"test@gmail.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Transferring ownership of a domain"
       }
     ],
     "ModifyDomainRemark": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainRemark\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"Remark\": \"This is the dedicated domain of XXX\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
         "title": "Setting the remarks of a domain"
@@ -78,18 +246,66 @@
     ],
     "ModifyDomainStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainStatus\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\",\n    \"Status\": \"disable\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
         "title": "Modifying the status of a domain"
       }
     ],
+    "ModifyDomainUnlock": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainUnlock\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"LockCode\": \"M3xkbnNwb2Quc2l0ZXwxNjE3MzMwNjQzfGZhYjA3YTI0ODcwNzIzMmNjNjI5YzZhNzA1ZmMxOGY1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Unlocking a domain"
+      }
+    ],
     "ModifyRecord": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"SubDomain\": \"bbbb\",\n    \"RecordType\": \"A\",\n    \"RecordLine\": \"Default\",\n    \"RecordLineId\": \"0\",\n    \"Value\": \"129.23.32.32\",\n    \"MX\": 0,\n    \"TTL\": 600,\n    \"Weight\": 10,\n    \"Status\": \"DISABLE\",\n    \"RecordId\": 162\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordId\": 162\n    }\n}",
         "title": "Adding a record"
+      }
+    ],
+    "ModifyRecordBatch": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecordBatch\n<Common request parameters>\n\n{\n    \"RecordIdList\": [\n        101,\n        102\n    ],\n    \"Change\": \"record_type\",\n    \"ChangeTo\": \"MX\",\n    \"Value\": \"test.aaaaaaa.com\",\n    \"MX\": 23\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DetailList\": [\n            {\n                \"RecordList\": [\n                    {\n                        \"RecordLine\": \"Default\",\n                        \"TTL\": \"600\",\n                        \"MX\": \"21\",\n                        \"RecordId\": \"178\",\n                        \"SubDomain\": \"test\",\n                        \"RecordType\": \"MX\",\n                        \"Value\": \"test.aaaaaaa.com.\",\n                        \"Enabled\": 1,\n                        \"Status\": \"waiting\",\n                        \"ErrMsg\": null,\n                        \"Id\": 0,\n                        \"Operation\": \"edit\"\n                    }\n                ],\n                \"DomainId\": 49,\n                \"Domain\": \"dnsapi1.cn\",\n                \"ErrMsg\": null,\n                \"Status\": \"waiting\",\n                \"Operation\": null,\n                \"DomainGrade\": \"DP_FREE\",\n                \"Id\": 0\n            }\n        ],\n        \"JobId\": 67\n    }\n}",
+        "title": "Bulk modifying records"
+      }
+    ],
+    "ModifyRecordGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecordGroup\n<Common request parameters>\n\n{\n    \"Domain\": \"domain.com\",\n    \"GroupName\": \"Group 2\",\n    \"GroupId\": 145\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ec8949ba-ec3c-446e-b9eb-5aeafa238f0a\",\n        \"GroupId\": 145\n    }\n}",
+        "title": "Modifying a record group"
+      }
+    ],
+    "ModifyRecordRemark": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecordRemark\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"RecordId\": 162,\n    \"Remark\": \"It is the remarks of the DNS record\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Setting the remarks of a record"
+      }
+    ],
+    "ModifyRecordStatus": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecordStatus\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"RecordId\": 161,\n    \"Status\": \"ENABLE\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordId\": 161\n    }\n}",
+        "title": "Setting the record status"
+      }
+    ],
+    "ModifyRecordToGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecordToGroup\n<Common request parameters>\n\n{\n    \"Domain\": \"domain.com\",\n    \"GroupId\": 156,\n    \"RecordId\": \"123232|2343232\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ec8949ba-ec3c-446e-b9eb-5aeafa238f0a\"\n    }\n}",
+        "title": "Adding a record to a group"
       }
     ]
   },
