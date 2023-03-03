@@ -1535,7 +1535,6 @@
       "document": "The on-cloud recording parameters.",
       "members": [
         {
-          "default": "",
           "document": "The recording mode.\n1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.\n2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.",
           "example": "1",
           "member": "uint64",
@@ -1545,7 +1544,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time period (seconds) to wait to automatically stop recording after there are no anchors (users who publish streams) in a room. Value range: 5-86400 (max 24 hours). Default value: 30.",
           "example": "30",
           "member": "uint64",
@@ -1555,7 +1553,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The media type of the streams to record.\n0: Audio and video streams (default)\n1: Audio streams only\n2: Video streams only",
           "example": "3",
           "member": "uint64",
@@ -1565,7 +1562,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The allowlist/blocklist for stream subscription.",
           "example": "无",
           "member": "SubscribeStreamUserIds",
@@ -1575,7 +1571,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.",
           "example": "0",
           "member": "uint64",
@@ -1585,7 +1580,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.",
           "example": "0",
           "member": "uint64",
@@ -1595,7 +1589,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.\nThis parameter is invalid if the output format is HLS.",
           "example": "1440",
           "member": "uint64",
@@ -1603,6 +1596,15 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The type of stream to record. `0`: The primary stream and substream; `1`: The primary stream; `2`: The substream.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "MediaId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"

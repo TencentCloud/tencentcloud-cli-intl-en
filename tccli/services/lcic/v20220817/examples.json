@@ -1,5 +1,61 @@
 {
   "actions": {
+    "AddGroupMember": [
+      {
+        "document": "This example shows you how to add users to a group.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddGroupMember\n<Common request parameters>\n\n{\n    \"GroupId\": \"abcdfdfg\",\n    \"SdkAppId\": 12345678,\n    \"MemberIds\": [\n        \"dfgdfg\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Add users to a group"
+      }
+    ],
+    "BatchAddGroupMember": [
+      {
+        "document": "This example shows you how to add users to multiple groups.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchAddGroupMember\n<Common request parameters>\n\n{\n    \"GroupIds\": [\n        \"abcdfdfg\",\n        \"dfgsdgsdg\"\n    ],\n    \"SdkAppId\": 12345678,\n    \"MemberIds\": [\n        \"dfgdfg\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Adding users to multiple groups"
+      }
+    ],
+    "BatchCreateGroupWithMembers": [
+      {
+        "document": "This example shows you how to create multiple groups.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchCreateGroupWithMembers\n<Common request parameters>\n\n{\n    \"SdkAppId\": 12345678,\n    \"GroupBaseInfos\": [\n        {\n            \"GroupName\": \"test1\",\n            \"TeacherId\": \"abc\"\n        },\n        {\n            \"GroupName\": \"test2\"\n        }\n    ],\n    \"MemberIds\": [\n        \"abc\",\n        \"bcd\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupIds\": [\n            \"2CvDgjRNjylAsBZB4iZc0F6koXe\",\n            \"abcddredrtertet\"\n        ],\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Creating multiple groups"
+      }
+    ],
+    "BatchCreateRoom": [
+      {
+        "document": "This example shows you how to create a classroom.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoom\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"RoomInfos\": [\n        {\n            \"AutoMic\": 1,\n            \"Name\": \"xx\",\n            \"AudioQuality\": 1,\n            \"TurnOffMic\": 1,\n            \"MaxMicNumber\": 1,\n            \"SubType\": \"xx\",\n            \"StartTime\": 1,\n            \"TeacherId\": \"xx\",\n            \"EndTime\": 1,\n            \"Resolution\": 1,\n            \"DisableRecord\": 1,\n            \"Assistants\": []\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RoomIds\": [\n            301234567\n        ],\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Creating a classroom"
+      }
+    ],
+    "BatchDeleteGroupMember": [
+      {
+        "document": "This example shows you how to remove users from multiple groups.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchDeleteGroupMember\n<Common request parameters>\n\n{\n    \"GroupIds\": [\n        \"abcdfdfg\",\n        \"dfgsdgsdg\"\n    ],\n    \"SdkAppId\": 12345678,\n    \"MemberIds\": [\n        \"dfgdfg\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Removing users from multiple groups"
+      }
+    ],
+    "BatchDeleteRecord": [
+      {
+        "document": "This API shows you how to delete the recordings of multiple rooms at a time.",
+        "input": "{\n  \"RoomIds\": [\n    0\n  ],\n  \"SdkAppId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RoomIds\": [\n            0\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting the recordings of multiple rooms"
+      }
+    ],
+    "BatchRegister": [
+      {
+        "document": "This API shows you how to register multiple users at a time.",
+        "input": "{\n  \"Users\": [\n    {\n      \"SdkAppId\": 1,\n      \"Name\": \"xx\",\n      \"OriginId\": \"xx\",\n      \"Avatar\": \"xx\"\n    }\n  ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Users\": [\n            {\n                \"SdkAppId\": 1,\n                \"UserId\": \"xx\",\n                \"OriginId\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Registering multiple users"
+      }
+    ],
     "BindDocumentToRoom": [
       {
         "document": "",
@@ -14,6 +70,22 @@
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDocument\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"DocumentUrl\": \"xx\",\n    \"DocumentName\": \"xx\",\n    \"Owner\": \"xx\",\n    \"TranscodeType\": 1,\n    \"Permission\": 1,\n    \"DocumentType\": \"xx\",\n    \"DocumentSize\": 100\n}",
         "output": "{\n    \"Response\": {\n        \"DocumentId\": \"xx\",\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Creating a document."
+      }
+    ],
+    "CreateGroupWithMembers": [
+      {
+        "document": "This example shows you how to create a group and specify its members.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGroupWithMembers\n<Common request parameters>\n\n{\n    \"GroupName\": \"test\",\n    \"SdkAppId\": 12345678,\n    \"MemberIds\": [\n        \"abc\",\n        \"bcd\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupId\": \"2CvDgjRNjylAsBZB4iZc0F6koXe\",\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Creating a group"
+      }
+    ],
+    "CreateGroupWithSubGroup": [
+      {
+        "document": "This example shows you how to merge groups.",
+        "input": "{\n    \"GroupName\": \"test\",\n   \"SdkAppId\": 12345678,\n   \"TeacherId\": \"dfgdfg\",\n   \"SubGroupIds\":[\"abc\", \"bcd\"]\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupId\": \"2CvDgjRNjylAsBZB4iZc0F6koXe\",\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Merging groups"
       }
     ],
     "CreateRoom": [
@@ -32,6 +104,38 @@
         "title": "Creating a spectator."
       }
     ],
+    "DeleteDocument": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDocument\n<Common request parameters>\n\n{\n    \"DocumentId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Deleting a document"
+      }
+    ],
+    "DeleteGroup": [
+      {
+        "document": "This example shows you how to delete groups.",
+        "input": "{\n    \"GroupIds\": [\"abcdfdfg\"],\n   \"SdkAppId\": 12345678\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Deleting groups"
+      }
+    ],
+    "DeleteGroupMember": [
+      {
+        "document": "This example shows you how to remove users from a specific group.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGroupMember\n<Common request parameters>\n\n{\n    \"GroupId\": \"abcdfdfg\",\n    \"SdkAppId\": 12345678,\n    \"MemberIds\": [\n        \"dfgdfg\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Removing users from a specific group"
+      }
+    ],
+    "DeleteRecord": [
+      {
+        "document": "This example shows you how to delete the recording files of a specific room.",
+        "input": "{\n  \"RoomId\": 0,\n  \"SdkAppId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Configuring watermarks"
+      }
+    ],
     "DeleteRoom": [
       {
         "document": "",
@@ -40,20 +144,76 @@
         "title": "Deleting a room."
       }
     ],
+    "DescribeCurrentMemberList": [
+      {
+        "document": "This example shows you how to get the user list of a room. This API will not work if a room has ended or expired.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCurrentMemberList\n<Common request parameters>\n\n{\n    \"RoomId\": 123,\n    \"Page\": 1,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"xx\",\n        \"MemberRecords\": [\n            {\n                \"UserName\": \"xx\",\n                \"Mic\": 1,\n                \"UserId\": \"xx\",\n                \"Rewords\": 1,\n                \"AnswerQuestions\": 1,\n                \"HandUps\": 1,\n                \"Camera\": 1,\n                \"FirstJoinTimestamp\": 1,\n                \"LastQuitTimestamp\": 1,\n                \"PresentTime\": 1,\n                \"Silence\": 1\n            }\n        ]\n    }\n}",
+        "title": "Getting the user list of a room"
+      }
+    ],
+    "DescribeDocument": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDocument\n<Common request parameters>\n\n{\n    \"DocumentId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"UpdateTime\": 1,\n        \"DocumentUrl\": \"xx\",\n        \"TranscodeState\": 1,\n        \"Permission\": 1,\n        \"TranscodeType\": 1,\n        \"DocumentName\": \"xx\",\n        \"TranscodeInfo\": \"xx\",\n        \"DocumentSize\": 1,\n        \"TranscodeResult\": \"xx\",\n        \"SdkAppId\": 1,\n        \"DocumentType\": \"xx\",\n        \"Owner\": \"xx\",\n        \"TranscodeProgress\": 1,\n        \"DocumentId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the information of a document"
+      }
+    ],
+    "DescribeDocumentsByRoom": [
+      {
+        "document": "This example shows you how to query the documents of a specific room.",
+        "input": "{\n  \"RoomId\": 1,\n  \"SdkAppId\":1234567\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Documents\": [\n            {\n                \"DocumentId\": \"xx\",\n                \"DocumentUrl\": \"xx\",\n                \"DocumentName\": \"xx\",\n                \"Owner\": \"xx\",\n                \"SdkAppId\": 1,\n                \"Permission\": 1,\n                \"TranscodeResult\": \"xx\",\n                \"TranscodeType\": 1,\n                \"TranscodeProgress\": 1,\n                \"TranscodeState\": 1,\n                \"TranscodeInfo\": \"xx\",\n                \"DocumentType\": \"xx\",\n                \"DocumentSize\": 1,\n                \"UpdateTime\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the documents of a specific room"
+      }
+    ],
+    "DescribeGroup": [
+      {
+        "document": "This example shows you how to get the details of a group.",
+        "input": "{\n    \"GroupId\": \"abcdfdfg\",\n   \"SdkAppId\": 12345678\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupId\": \"xx\",\n        \"GroupName\": \"xx\",\n        \"TeacherId\": \"xx\",\n        \"GroupType\": 1,\n        \"SubGroupIds\": [\n            \"xx\"\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the details of a group"
+      }
+    ],
+    "DescribeGroupList": [
+      {
+        "document": "This example shows you how to query groups.",
+        "input": "{\n    \"SdkAppId\": 12345678\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"Total\": 1,\n        \"GroupInfos\": [\n            {\n                \"GroupId\": \"adfgdfg\",\n                \"GroupName\": \"test\",\n                \"GroupType\": 0\n            }\n        ]\n    }\n}",
+        "title": "Querying groups"
+      }
+    ],
+    "DescribeGroupMemberList": [
+      {
+        "document": "This example shows you how to get the members of a group.",
+        "input": "{\n    \"GroupId\": \"abcdfdfg\",\n    \"SdkAppId\": 12345678\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\",\n        \"Total\": 2,\n        \"MemberIds\": [\n            \"dfgdfgd\",\n            \"dfgsdfg\"\n        ]\n    }\n}",
+        "title": "Getting the members of a group"
+      }
+    ],
     "DescribeRoom": [
       {
-        "document": "Obtaining the information of a classroom.",
+        "document": "This example shows you how to get the details of a room.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoom\n<Common request parameters>\n\n{\n    \"RoomId\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"AutoMic\": 1,\n        \"RecordUrl\": \"xx\",\n        \"Name\": \"xx\",\n        \"AudioQuality\": 1,\n        \"MaxMicNumber\": 1,\n        \"SubType\": \"xx\",\n        \"SdkAppId\": 1,\n        \"RequestId\": \"xx\",\n        \"StartTime\": 1,\n        \"TeacherId\": \"xx\",\n        \"Assistants\": [\n            \"xx\"\n        ],\n        \"EndTime\": 1,\n        \"Resolution\": 1,\n        \"DisableRecord\": 1\n    }\n}",
-        "title": "Getting room information."
+        "output": "{\n    \"Response\": {\n        \"AutoMic\": 1,\n        \"RecordUrl\": \"xx\",\n        \"Name\": \"xx\",\n        \"AudioQuality\": 1,\n        \"MaxMicNumber\": 1,\n        \"SubType\": \"xx\",\n        \"SdkAppId\": 1,\n        \"RequestId\": \"xx\",\n        \"StartTime\": 1,\n        \"TeacherId\": \"xx\",\n        \"Assistants\": [\n            \"xx\"\n        ],\n        \"EndTime\": 1,\n        \"Resolution\": 1,\n        \"DisableRecord\": 1,\n        \"Status\": 0,\n        \"GroupId\": \"afdg\"\n    }\n}",
+        "title": "Getting the details of a room"
       }
     ],
     "DescribeRoomStatistics": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoomStatistics\n<Common request parameters>\n\n{\n    \"RoomId\": 123,\n    \"Page\": 1,\n    \"Limit\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"MemberNumber\": 1,\n        \"Total\": 1,\n        \"PeakMemberNumber\": 1,\n        \"RequestId\": \"xx\",\n        \"MemberRecords\": [\n            {\n                \"UserName\": \"xx\",\n                \"Mic\": 1,\n                \"UserId\": \"xx\",\n                \"Rewords\": 1,\n                \"AnswerQuestions\": 1,\n                \"HandUps\": 1,\n                \"Camera\": 1,\n                \"FirstJoinTimestamp\": 1,\n                \"LastQuitTimestamp\": 1,\n                \"PresentTime\": 1,\n                \"Silence\": 1\n            }\n        ]\n    }\n}",
-        "title": "Obtaining the statistics of a room."
+        "document": "获取房间统计信息示例",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoomStatistics\n<common request parameters>\n\n{\n    \"RoomId\": 1,\n    \"Page\": 1,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"PeakMemberNumber\": 1,\n        \"MemberNumber\": 1,\n        \"Total\": 1,\n        \"MemberRecords\": [\n            {\n                \"UserId\": \"xx\",\n                \"UserName\": \"xx\",\n                \"PresentTime\": 1,\n                \"Camera\": 1,\n                \"Mic\": 1,\n                \"Silence\": 1,\n                \"AnswerQuestions\": 1,\n                \"HandUps\": 1,\n                \"FirstJoinTimestamp\": 1,\n                \"LastQuitTimestamp\": 1,\n                \"Rewords\": 1,\n                \"IPAddress\": \"xx\",\n                \"Location\": \"xx\",\n                \"Device\": 0\n            }\n        ],\n        \"RealStartTime\": 1,\n        \"RealEndTime\": 1,\n        \"MessageCount\": 1,\n        \"MicCount\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "示例"
+      }
+    ],
+    "DescribeSdkAppIdUsers": [
+      {
+        "document": "This example shows you how to get the user list of an application.",
+        "input": "{\n  \"SdkAppId\": 123456\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Users\": [\n            {\n                \"Name\": \"xx\",\n                \"UserId\": \"xx\",\n                \"Avatar\": \"xx\",\n                \"SdkAppId\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the user list of an application"
       }
     ],
     "DescribeUser": [
@@ -62,6 +222,14 @@
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUser\n<Common request parameters>\n\n{\n    \"UserId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Name\": \"xx\",\n        \"UserId\": \"xx\",\n        \"Avatar\": \"xx\",\n        \"SdkAppId\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "This API is used to obtain user profile."
+      }
+    ],
+    "GetWatermark": [
+      {
+        "document": "This example shows you how to get watermark settings.",
+        "input": "{\n  \"SdkAppId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TeacherLogo\": {\n            \"Url\": \"xx\",\n            \"Width\": 0,\n            \"Height\": 0,\n            \"LocationX\": 0,\n            \"LocationY\": 0\n        },\n        \"BoardLogo\": {\n            \"Url\": \"xx\",\n            \"Width\": 0,\n            \"Height\": 0,\n            \"LocationX\": 0,\n            \"LocationY\": 0\n        },\n        \"BackgroundPicture\": {\n            \"Url\": \"xx\"\n        },\n        \"Text\": {\n            \"Text\": \"xx\",\n            \"Color\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting watermark settings"
       }
     ],
     "LoginOriginId": [
@@ -88,6 +256,30 @@
         "title": "Modifying an application."
       }
     ],
+    "ModifyGroup": [
+      {
+        "document": "This example shows you how to modify a group.",
+        "input": "{\n    \"GroupId\": \"test\",\n   \"SdkAppId\": 12345678,\n   \"GroupName\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
+        "title": "Modifying a group"
+      }
+    ],
+    "ModifyRoom": [
+      {
+        "document": "This example shows you how to modify room parameters.",
+        "input": "{\n  \"RoomId\": 1,\n  \"SdkAppId\":1234567,\n  \"StartTime\": 1,\n  \"EndTime\": 1,\n  \"TeacherId\": \"xx\",\n  \"Name\": \"xx\",\n  \"AudienceType\": 1,\n  \"Resolution\": 1,\n  \"MaxMicNumber\": 1,\n  \"AutoMic\": 1,\n  \"TurnOffMic\": 1,\n  \"AudioQuality\": 1,\n  \"SubType\": \"xx\",\n  \"DisableRecord\": 1,\n  \"Assistants\": [\n    \"xx\"\n  ],\n  \"RTCAudienceNumber\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying a room"
+      }
+    ],
+    "ModifyUserProfile": [
+      {
+        "document": "This example shows you how to modify a user profile.",
+        "input": "{\n    \"UserId\": \"xxx\",\n    \"Nickname\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying a user profile"
+      }
+    ],
     "RegisterUser": [
       {
         "document": "",
@@ -102,6 +294,14 @@
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetAppCustomContent\n<Common request parameters>\n\n{\n    \"SdkAppId\": 123,\n    \"CustomContent\": [\n        {\n            \"Scene\": \"default\",\n            \"LogoUrl\": \"https://yourdomain.com/logo.png\",\n            \"HomeUrl\": \"https://yourdomain.com/login\",\n            \"JsUrl\": \"https://yourdomain.com/default.js\",\n            \"CssUrl\": \"https://yourdomain.com/default.css\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Setting the custom content of an application."
+      }
+    ],
+    "SetWatermark": [
+      {
+        "document": "This example shows you how to configure watermarks.",
+        "input": "{\n  \"SdkAppId\": 1,\n  \"TeacherUrl\": \"xx\",\n  \"BoardUrl\": \"xx\",\n  \"VideoUrl\": \"xx\",\n  \"BoardW\": 0,\n  \"BoardH\": 0,\n  \"BoardX\": 0,\n  \"BoardY\": 0,\n  \"TeacherW\": 0,\n  \"TeacherH\": 0,\n  \"TeacherX\": 0,\n  \"TeacherY\": 0,\n  \"Text\": \"xx\",\n  \"TextColor\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Configuring watermarks"
       }
     ],
     "UnbindDocumentFromRoom": [

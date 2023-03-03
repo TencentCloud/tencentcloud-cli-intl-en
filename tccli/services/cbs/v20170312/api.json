@@ -42,6 +42,13 @@
       "output": "CreateAutoSnapshotPolicyResponse",
       "status": "online"
     },
+    "CreateDiskBackup": {
+      "document": "This API is used to create a backup point for a cloud disk.",
+      "input": "CreateDiskBackupRequest",
+      "name": "Creates a backup point for a cloud disk",
+      "output": "CreateDiskBackupResponse",
+      "status": "online"
+    },
     "CreateDisks": {
       "document": "This API is used to create cloud disks.\n\n* This API supports creating a cloud disk with a data disk snapshot so that the snapshot data can be copied to the purchased cloud disk.\n* This API is async. A cloud disk ID list will be returned when a request is made successfully, but it does not mean that the creation has been completed. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query cloud disks by `DiskId`. If a new cloud disk can be found and its status is `UNATTACHED` or `ATTACHED`, the cloud disk has been created successfully.",
       "input": "CreateDisksRequest",
@@ -106,11 +113,11 @@
       "status": "online"
     },
     "DescribeDiskOperationLogs": {
-      "document": "This API (DescribeDiskOperationLogs) is used to query a list of cloud disk operation logs.\n\nThis can be filtered according to the cloud disk ID. The format of cloud disk IDs is as follows: disk-a1kmcp13.\n",
+      "document": "接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007\n\nThis API (DescribeDiskOperationLogs) is used to query a list of cloud disk operation logs.\n\nThis can be filtered according to the cloud disk ID. The format of cloud disk IDs is as follows: disk-a1kmcp13.\n",
       "input": "DescribeDiskOperationLogsRequest",
       "name": "Querying a Cloud Disk Operation Log List",
       "output": "DescribeDiskOperationLogsResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "DescribeDisks": {
       "document": "This API (DescribeDisks) is used to query the list of cloud disks.\n\n* The details of the cloud disk can be queried based on the ID, type or status of the cloud disk. The relationship between different conditions is AND. For more information about filtering, please see the `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit`; the default is 20) of cloud disk lists are returned to the current user.",
@@ -127,11 +134,11 @@
       "status": "online"
     },
     "DescribeSnapshotOperationLogs": {
-      "document": "This API (DescribeSnapshotOperationLogs) is used to query a list of snapshot operation logs.\n\nYou can filter according to the snapshot ID. The snapshot ID format is as follows: snap-a1kmcp13.\n",
+      "document": "接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007\n\nThis API is used to query the operation logs of a snapshot. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.\n",
       "input": "DescribeSnapshotOperationLogsRequest",
       "name": "Querying a Snapshot Operation Log List",
       "output": "DescribeSnapshotOperationLogsResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "DescribeSnapshotSharePermission": {
       "document": "This API is used to query the sharing information of snapshots.",
@@ -771,6 +778,51 @@
           "document": "The time that initial backup will start.",
           "member": "string",
           "name": "NextTriggerTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDiskBackupRequest": {
+      "document": "CreateDiskBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the cloud disk for which to create a backup point.",
+          "example": "disk-xxxxxxxx",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the cloud disk backup point, which can contain up to 100 characters.",
+          "example": "未命名",
+          "member": "string",
+          "name": "DiskBackupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDiskBackupResponse": {
+      "document": "CreateDiskBackup response structure.",
+      "members": [
+        {
+          "document": "ID of the cloud disk backup point.",
+          "example": "dbp-xxxxxxxx",
+          "member": "string",
+          "name": "DiskBackupId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1786,7 +1838,6 @@
       "document": "The details of a cloud disk",
       "members": [
         {
-          "default": "",
           "document": "Whether the cloud disk terminates along with the instance mounted to it. <br><li>true: Cloud disk will also be terminated when instance terminates, so only hourly postpaid cloud disk are supported.<br><li>false: Cloud disk does not terminate when instance terminates.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "false",
           "member": "bool",
@@ -1796,7 +1847,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Auto renewal flag. Supported values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically<br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
@@ -1806,7 +1856,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cloud disk types. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium Cloud Disk <br><li>CLOUD_BSSD: General Purpose SSD <br><li>CLOUD_SSD: SSD <br><li>CLOUD_HSSD: Enhanced SSD <br><li>CLOUD_TSSD: Tremendous SSD",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -1816,7 +1865,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The state of the cloud disk. Value range: <br><li>UNATTACHED: Not mounted <br><li>ATTACHING: Mounting <br><li>ATTACHED: Mounted <br><li>DETACHING: Un-mounting <br><li>EXPANDING: Expanding <br><li>ROLLBACKING: Rolling back <br><li>TORECYCE: Pending recycling. <br><li>DUMPING: Copying the hard drive.",
           "example": "UNATTACHED",
           "member": "string",
@@ -1826,7 +1874,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total number of snapshots of the cloud disk.",
           "example": "0",
           "member": "int64",
@@ -1836,7 +1883,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cloud disk already mounted to CVM, and both CVM and cloud disk use monthly subscription.<br><li>true: CVM has auto-renewal flag set up, but cloud disk does not.<br><li>false: Cloud disk auto-renewal flag set up normally.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "true",
           "member": "bool",
@@ -1846,7 +1892,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the cloud disk is in the status of snapshot rollback. Value range: <br><li>false: No <br><li>true: Yes",
           "example": "false",
           "member": "bool",
@@ -1856,7 +1901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "For non-shareable cloud disks, this parameter is null. For shareable cloud disks, this parameters indicates this cloud disk's Instance IDs currently mounted to the CVM.",
           "example": "[]",
           "member": "string",
@@ -1866,7 +1910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the cloud disk is encrypted. Value range: <br><li>false: Not encrypted <br><li>true: Encrypted.",
           "example": "false",
           "member": "bool",
@@ -1876,7 +1919,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cloud disk name.",
           "example": "unname",
           "member": "string",
@@ -1886,7 +1928,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifies whether to create a snapshot when the cloud disk is terminated due to overdue payment or expiration. `true`: create snapshot; `false`: do not create snapshot.",
           "example": "true",
           "member": "bool",
@@ -1896,7 +1937,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The tag bound to the cloud disk. The value Null is used when no tag is bound to the cloud disk.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "\"\"",
           "member": "Tag",
@@ -1906,7 +1946,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the CVM to which the cloud disk is mounted.",
           "example": "ins-xxxxxxx",
           "member": "string",
@@ -1916,7 +1955,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cloud disk mount method. Valid values: <br><li>PF: mount as a PF (Physical Function)<br><li>VF: mount as a VF (Virtual Function)\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "PF",
           "member": "string",
@@ -1926,7 +1964,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the periodic snapshot associated to the cloud disk. This parameter is returned only if the value of parameter ReturnBindAutoSnapshotPolicy is TRUE when the API DescribeDisks is called.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "null",
           "member": "string",
@@ -1936,7 +1973,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Extra performance for a cloud disk, in MB/sec.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -1946,7 +1982,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether cloud disk is in process of type change. Value range: <br><li>false: Cloud disk not in process of type change. <br><li>true: Cloud disk type change has been launched, and migration is in process.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "false",
           "member": "bool",
@@ -1956,7 +1991,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cloud disk ID.",
           "example": "disk-xxxxxxxx",
           "member": "string",
@@ -1966,7 +2000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total capacity of the snapshots of the cloud disk. Unit: MB.",
           "example": "0",
           "member": "uint64",
@@ -1976,7 +2009,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Location of the cloud disk.",
           "example": "{\"Zone\":\"ap-guangzhou-2\",\"ProjectId\":0}",
           "member": "Placement",
@@ -1986,7 +2018,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Determines whether or not prepaid cloud disk supports active return. <br><li>true: Active return supported.<br><li>false: Active return not supported.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "true",
           "member": "bool",
@@ -1996,7 +2027,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Expiration time of the cloud disk.",
           "example": "2021-02-01 12:00:00",
           "member": "datetime",
@@ -2006,7 +2036,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the cloud disk is mounted to the CVM. Value range: <br><li>false: Unmounted <br><li>true: Mounted.",
           "example": "false",
           "member": "bool",
@@ -2016,7 +2045,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cloud disk size (in GB).",
           "example": "50",
           "member": "uint64",
@@ -2026,7 +2054,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration progress of cloud disk type change, from 0 to 100.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "0",
           "member": "uint64",
@@ -2036,7 +2063,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cloud disk type. Value range:<br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.",
           "example": "SYSTEM_DISK",
           "member": "string",
@@ -2046,7 +2072,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing method. Value range: <br><li>PREPAID: Prepaid, that is, monthly subscription<br><li>POSTPAID_BY_HOUR: Postpaid, that is, pay as you go.",
           "example": "PREPAID",
           "member": "string",
@@ -2056,7 +2081,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is an elastic cloud disk. false: Non-elastic cloud disk; true: Elastic cloud disk.",
           "example": "true",
           "member": "bool",
@@ -2066,7 +2090,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the cloud disk has the capability to create snapshots. Value range: <br><li>false: Cannot create snapshots. true: Can create snapshots.",
           "example": "true",
           "member": "bool",
@@ -2076,7 +2099,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is only applicable when the instance is already mounted to the cloud disk, and both the instance and the cloud disk use monthly subscription. <br><li>true: Expiration time of cloud disk is earlier than that of the instance.<br><li>false:Expiration time of cloud disk is later than that of the instance.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "true",
           "member": "bool",
@@ -2086,7 +2108,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Rollback progress of a cloud disk snapshot.",
           "example": "0",
           "member": "uint64",
@@ -2096,7 +2117,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of days from current time until disk expiration (only applicable for prepaid disks).\nNote: This field may return null, indicating that no valid value was found.",
           "example": "20",
           "member": "int64",
@@ -2106,7 +2126,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "In circumstances where the prepaid cloud disk does not support active return, this parameter indicates the reason that return is not supported. Value range: <br><li>1: The cloud disk has already been returned. <br><li>2: The cloud disk has already expired. <br><li>3: The cloud disk does not support return. <br><li> 8: The limit on the number of returns is exceeded.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "10",
           "member": "int64",
@@ -2116,7 +2135,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether or not cloud disk is shareable cloud disk.",
           "example": "false",
           "member": "bool",
@@ -2126,7 +2144,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time of the cloud disk.",
           "example": "2021-01-01 12:00:00",
           "member": "datetime",
@@ -2136,7 +2153,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. ",
           "example": "0",
           "member": "int64",
@@ -2146,7 +2162,15 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "document": "Quota of cloud disk backup points, i.e., the maximum number of backup points that a cloud disk can have.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DiskBackupQuota",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "Number of used cloud disk backups.",
           "example": "0",
           "member": "uint64",
@@ -2156,7 +2180,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type of the instance mounted to the cloud disk. Valid values: <br><li>CVM<br><li>EKS",
           "example": "CVM",
           "member": "string",
@@ -2164,6 +2187,24 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "ins-xxx",
+          "member": "string",
+          "name": "LastAttachInsId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrorPrompt",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3714,38 +3755,12 @@
       "usage": "out"
     },
     "SnapshotOperationLog": {
-      "document": "The snapshot operation log.",
+      "document": "Snapshot operation log (disused).",
       "members": [
         {
           "default": "",
-          "document": "UIN of operator.\nNote: This field may return null, indicating that no valid value was found.",
-          "member": "string",
-          "name": "Operator",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Operation type. Value range:\nSNAP_OPERATION_DELETE: Delete snapshot\nSNAP_OPERATION_ROLLBACK: Roll back snapshot\nSNAP_OPERATION_MODIFY: Modify snapshot attributes\nSNAP_OPERATION_CREATE: Create snapshot\nSNAP_OPERATION_COPY: Cross-region replication of snapshot\nASP_OPERATION_CREATE_SNAP: Create snapshot with scheduled snapshot policy\nASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy",
-          "member": "string",
-          "name": "Operation",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "ID of snapshot being operated.",
-          "member": "string",
-          "name": "SnapshotId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
           "document": "Status of operation. Value range:\nSUCCESS: Operation successful \nFAILED: Operation failed \nPROCESSING: Operation in process",
+          "example": "SUCCESS",
           "member": "string",
           "name": "OperationState",
           "required": true,
@@ -3755,6 +3770,7 @@
         {
           "default": "",
           "document": "Start time",
+          "example": "2018-12-18 17:52:38",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -3763,7 +3779,38 @@
         },
         {
           "default": "",
+          "document": "UIN of operator.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "546800003",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of snapshot being operated.",
+          "example": "snap-0y61iiyj",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation type. Value range:\nSNAP_OPERATION_DELETE: Delete snapshot\nSNAP_OPERATION_ROLLBACK: Roll back snapshot\nSNAP_OPERATION_MODIFY: Modify snapshot attributes\nSNAP_OPERATION_CREATE: Create snapshot\nSNAP_OPERATION_COPY: Cross-region replication of snapshot\nASP_OPERATION_CREATE_SNAP: Create snapshot with scheduled snapshot policy\nASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy",
+          "example": "SNAP_OPERATION_ROLLBACK",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "End time",
+          "example": "2018-12-18 17:52:38",
           "member": "string",
           "name": "EndTime",
           "required": true,

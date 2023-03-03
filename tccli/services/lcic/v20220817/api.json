@@ -1,5 +1,54 @@
 {
   "actions": {
+    "AddGroupMember": {
+      "document": "This API is used to add users to a group.",
+      "input": "AddGroupMemberRequest",
+      "name": "Adds users to a group",
+      "output": "AddGroupMemberResponse",
+      "status": "online"
+    },
+    "BatchAddGroupMember": {
+      "document": "This API is used to add users to multiple groups at a time.",
+      "input": "BatchAddGroupMemberRequest",
+      "name": "Adds users to multiple groups",
+      "output": "BatchAddGroupMemberResponse",
+      "status": "online"
+    },
+    "BatchCreateGroupWithMembers": {
+      "document": "This API is used to create multiple groups at a time.",
+      "input": "BatchCreateGroupWithMembersRequest",
+      "name": "Creates multiple groups",
+      "output": "BatchCreateGroupWithMembersResponse",
+      "status": "online"
+    },
+    "BatchCreateRoom": {
+      "document": "This API is used to create multiple rooms at a time.",
+      "input": "BatchCreateRoomRequest",
+      "name": "Creates multiple rooms",
+      "output": "BatchCreateRoomResponse",
+      "status": "online"
+    },
+    "BatchDeleteGroupMember": {
+      "document": "This API is used to remove users from multiple groups at a time.",
+      "input": "BatchDeleteGroupMemberRequest",
+      "name": "Removes users from multiple groups",
+      "output": "BatchDeleteGroupMemberResponse",
+      "status": "online"
+    },
+    "BatchDeleteRecord": {
+      "document": "This API is used to delete the recordings of multiple rooms.",
+      "input": "BatchDeleteRecordRequest",
+      "name": "Deletes the recordings of multiple rooms",
+      "output": "BatchDeleteRecordResponse",
+      "status": "online"
+    },
+    "BatchRegister": {
+      "document": "This API is used to register multiple users (up to 1,000) at a time. If a user ID already exists, the existing one will be overwritten.",
+      "input": "BatchRegisterRequest",
+      "name": "Registers multiple users",
+      "output": "BatchRegisterResponse",
+      "status": "online"
+    },
     "BindDocumentToRoom": {
       "document": "This API is used to bind a document to a room.",
       "input": "BindDocumentToRoomRequest",
@@ -12,6 +61,20 @@
       "input": "CreateDocumentRequest",
       "name": "Creates a document.",
       "output": "CreateDocumentResponse",
+      "status": "online"
+    },
+    "CreateGroupWithMembers": {
+      "document": "This API is used to create a group and specify its members.",
+      "input": "CreateGroupWithMembersRequest",
+      "name": "Creates a group",
+      "output": "CreateGroupWithMembersResponse",
+      "status": "online"
+    },
+    "CreateGroupWithSubGroup": {
+      "document": "This API is used to merge groups.",
+      "input": "CreateGroupWithSubGroupRequest",
+      "name": "Merges groups",
+      "output": "CreateGroupWithSubGroupResponse",
       "status": "online"
     },
     "CreateRoom": {
@@ -28,11 +91,81 @@
       "output": "CreateSupervisorResponse",
       "status": "online"
     },
+    "DeleteDocument": {
+      "document": "This API is used to delete a document.",
+      "input": "DeleteDocumentRequest",
+      "name": "Deletes a document",
+      "output": "DeleteDocumentResponse",
+      "status": "online"
+    },
+    "DeleteGroup": {
+      "document": "This API is used to delete one or multiple groups.",
+      "input": "DeleteGroupRequest",
+      "name": "Deletes groups",
+      "output": "DeleteGroupResponse",
+      "status": "online"
+    },
+    "DeleteGroupMember": {
+      "document": "This API is used to remove users from a group.",
+      "input": "DeleteGroupMemberRequest",
+      "name": "Removes users from a group",
+      "output": "DeleteGroupMemberResponse",
+      "status": "online"
+    },
+    "DeleteRecord": {
+      "document": "This example shows you how to delete the recording files of a specific room.",
+      "input": "DeleteRecordRequest",
+      "name": "Deletes the recording files of a specific room",
+      "output": "DeleteRecordResponse",
+      "status": "online"
+    },
     "DeleteRoom": {
       "document": "This API is used to delete a room.",
       "input": "DeleteRoomRequest",
       "name": "Deletes a room.",
       "output": "DeleteRoomResponse",
+      "status": "online"
+    },
+    "DescribeCurrentMemberList": {
+      "document": "This API is used to get the user list of a room. This API will not work if a room has ended or expired.",
+      "input": "DescribeCurrentMemberListRequest",
+      "name": "Gets the user list of a room",
+      "output": "DescribeCurrentMemberListResponse",
+      "status": "online"
+    },
+    "DescribeDocument": {
+      "document": "This API is used to get the information of a specific document.",
+      "input": "DescribeDocumentRequest",
+      "name": "Gets the information of a document",
+      "output": "DescribeDocumentResponse",
+      "status": "online"
+    },
+    "DescribeDocumentsByRoom": {
+      "document": "This API is used to get the document list of a specific room.",
+      "input": "DescribeDocumentsByRoomRequest",
+      "name": "Gets the documents of a specific room",
+      "output": "DescribeDocumentsByRoomResponse",
+      "status": "online"
+    },
+    "DescribeGroup": {
+      "document": "This API is used to get the details of a group.",
+      "input": "DescribeGroupRequest",
+      "name": "Gets the details of a group",
+      "output": "DescribeGroupResponse",
+      "status": "online"
+    },
+    "DescribeGroupList": {
+      "document": "This API is used to query groups.",
+      "input": "DescribeGroupListRequest",
+      "name": "Queries groups",
+      "output": "DescribeGroupListResponse",
+      "status": "online"
+    },
+    "DescribeGroupMemberList": {
+      "document": "This API is used to get the members of a group.",
+      "input": "DescribeGroupMemberListRequest",
+      "name": "Gets the members of a group",
+      "output": "DescribeGroupMemberListResponse",
       "status": "online"
     },
     "DescribeRoom": {
@@ -49,11 +182,25 @@
       "output": "DescribeRoomStatisticsResponse",
       "status": "online"
     },
+    "DescribeSdkAppIdUsers": {
+      "document": "This API is used to get the user list of a specific application.",
+      "input": "DescribeSdkAppIdUsersRequest",
+      "name": "Gets the user list of an application",
+      "output": "DescribeSdkAppIdUsersResponse",
+      "status": "online"
+    },
     "DescribeUser": {
       "document": "This API is used to obtain user profile.",
       "input": "DescribeUserRequest",
       "name": "Obtains user profile.",
       "output": "DescribeUserResponse",
+      "status": "online"
+    },
+    "GetWatermark": {
+      "document": "This API is used to get watermark settings.",
+      "input": "GetWatermarkRequest",
+      "name": "Gets watermark settings",
+      "output": "GetWatermarkResponse",
       "status": "online"
     },
     "LoginOriginId": {
@@ -77,6 +224,27 @@
       "output": "ModifyAppResponse",
       "status": "online"
     },
+    "ModifyGroup": {
+      "document": "This API is used to modify a group.",
+      "input": "ModifyGroupRequest",
+      "name": "Modifies a group",
+      "output": "ModifyGroupResponse",
+      "status": "online"
+    },
+    "ModifyRoom": {
+      "document": "This API is used to modify a room.",
+      "input": "ModifyRoomRequest",
+      "name": "Modifies a room",
+      "output": "ModifyRoomResponse",
+      "status": "online"
+    },
+    "ModifyUserProfile": {
+      "document": "This API is used to modify a user profile such as the nickname and profile photo.",
+      "input": "ModifyUserProfileRequest",
+      "name": "Modifies a user profile",
+      "output": "ModifyUserProfileResponse",
+      "status": "online"
+    },
     "RegisterUser": {
       "document": "This API is used to register a user.",
       "input": "RegisterUserRequest",
@@ -89,6 +257,13 @@
       "input": "SetAppCustomContentRequest",
       "name": "Sets the custom content of an application.",
       "output": "SetAppCustomContentResponse",
+      "status": "online"
+    },
+    "SetWatermark": {
+      "document": "This API is used to configure watermarks.",
+      "input": "SetWatermarkRequest",
+      "name": "Configures watermarks",
+      "output": "SetWatermarkResponse",
       "status": "online"
     },
     "UnbindDocumentFromRoom": {
@@ -105,6 +280,48 @@
     "serviceShortName": "lcic"
   },
   "objects": {
+    "AddGroupMemberRequest": {
+      "document": "AddGroupMember request structure.",
+      "members": [
+        {
+          "document": "The group ID.",
+          "example": "dfgsdgsg",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The users. Array length limit: 200.",
+          "example": "无",
+          "member": "string",
+          "name": "MemberIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddGroupMemberResponse": {
+      "document": "AddGroupMember response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AppCustomContent": {
       "document": "Custom application content",
       "members": [
@@ -157,6 +374,348 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "BackgroundPictureConfig": {
+      "document": "Background image settings.",
+      "members": [
+        {
+          "document": "The URL of the background image.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "url",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BatchAddGroupMemberRequest": {
+      "document": "BatchAddGroupMember request structure.",
+      "members": [
+        {
+          "document": "The target group IDs. Array length limit: 100.",
+          "example": "dfgsdgsg",
+          "member": "string",
+          "name": "GroupIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The users to add. Array length limit: 200.",
+          "example": "无",
+          "member": "string",
+          "name": "MemberIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchAddGroupMemberResponse": {
+      "document": "BatchAddGroupMember response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchCreateGroupWithMembersRequest": {
+      "document": "BatchCreateGroupWithMembers request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "12345678",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The information of the groups to create. Array length limit: 256.",
+          "example": "无",
+          "member": "GroupBaseInfo",
+          "name": "GroupBaseInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The group members. Array length limit: 200.",
+          "example": "无",
+          "member": "string",
+          "name": "MemberIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchCreateGroupWithMembersResponse": {
+      "document": "BatchCreateGroupWithMembers response structure.",
+      "members": [
+        {
+          "document": "The IDs of the groups created, which are in the same order as the elements in the request parameter `GroupBaseInfos.N`.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchCreateRoomRequest": {
+      "document": "BatchCreateRoom request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The information of the rooms to create.",
+          "example": "无",
+          "member": "RoomInfo",
+          "name": "RoomInfos",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchCreateRoomResponse": {
+      "document": "BatchCreateRoom response structure.",
+      "members": [
+        {
+          "document": "The IDs of the rooms created, which are in the same order as they are passed in.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RoomIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeleteGroupMemberRequest": {
+      "document": "BatchDeleteGroupMember request structure.",
+      "members": [
+        {
+          "document": "The target group IDs. Array length limit: 100.",
+          "example": "dfgsdgsg",
+          "member": "string",
+          "name": "GroupIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The users to remove. Array length limit: 256.",
+          "example": "无",
+          "member": "string",
+          "name": "MemberIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeleteGroupMemberResponse": {
+      "document": "BatchDeleteGroupMember response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeleteRecordRequest": {
+      "document": "BatchDeleteRecord request structure.",
+      "members": [
+        {
+          "document": "The room IDs.\t",
+          "example": "无",
+          "member": "int64",
+          "name": "RoomIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeleteRecordResponse": {
+      "document": "BatchDeleteRecord response structure.",
+      "members": [
+        {
+          "document": "The IDs of the rooms whose recordings are deleted.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RoomIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchRegisterRequest": {
+      "document": "BatchRegister request structure.",
+      "members": [
+        {
+          "document": "The information of the users to register.",
+          "example": "无",
+          "member": "BatchUserRequest",
+          "name": "Users",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchRegisterResponse": {
+      "document": "BatchRegister response structure.",
+      "members": [
+        {
+          "document": "The information of the successfully registered users.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BatchUserInfo",
+          "name": "Users",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchUserInfo": {
+      "document": "The information of registered users.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.\n",
+          "example": "123",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user’s ID in your system. If the same request parameter is not specified, the value of this parameter will be the same as `UserId`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OriginId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BatchUserRequest": {
+      "document": "The information of the users to register.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The username.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user’s ID in your system, which must be unique across the same application.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OriginId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user’s profile photo.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Avatar",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
@@ -305,6 +864,122 @@
       ],
       "type": "object"
     },
+    "CreateGroupWithMembersRequest": {
+      "document": "CreateGroupWithMembers request structure.",
+      "members": [
+        {
+          "document": "The group name.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The user ID of the teacher.",
+          "example": "adfgdsfgdf",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The group members. Array length limit: 200.",
+          "example": "无",
+          "member": "string",
+          "name": "MemberIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGroupWithMembersResponse": {
+      "document": "CreateGroupWithMembers response structure.",
+      "members": [
+        {
+          "document": "The ID of the successfully created group.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGroupWithSubGroupRequest": {
+      "document": "CreateGroupWithSubGroup request structure.",
+      "members": [
+        {
+          "document": "The group name after merging.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "12345678",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The IDs of the groups to merge. Duplicate group IDs are not allowed. Array length limit: 40.",
+          "example": "无",
+          "member": "string",
+          "name": "SubGroupIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The user ID of the teacher.",
+          "example": "abc",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGroupWithSubGroupResponse": {
+      "document": "CreateGroupWithSubGroup response structure.",
+      "members": [
+        {
+          "document": "The ID of the merged group.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateRoomRequest": {
       "document": "CreateRoom request structure.",
       "members": [
@@ -357,7 +1032,7 @@
           "type": "int"
         },
         {
-          "document": "Room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher",
+          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only. ",
           "example": "abc",
           "member": "string",
           "name": "SubType",
@@ -365,7 +1040,7 @@
           "type": "string"
         },
         {
-          "document": "Teacher ID, which is the `UserId` obtained by the `RegisterUser` API.",
+          "document": "The user ID of the teacher. User IDs are returned by the user registration APIs. The user specified will have teacher permissions in the room created.",
           "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
           "member": "string",
           "name": "TeacherId",
@@ -397,7 +1072,7 @@
           "type": "int"
         },
         {
-          "document": "Teacher assistant IDs, which are the `UserId` obtained by the `RegisterUser` API.",
+          "document": "The user IDs of the teaching assistants. User IDs are returned by the user registration APIs. The users specified will have teaching assistant permissions in the room created.",
           "example": "无",
           "member": "string",
           "name": "Assistants",
@@ -411,6 +1086,14 @@
           "name": "RecordLayout",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "The ID of the group to bind. If you specify this parameter, only members of the group can enter this room.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -452,6 +1135,143 @@
       ],
       "type": "object"
     },
+    "DeleteDocumentRequest": {
+      "document": "DeleteDocument request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The document ID.",
+          "example": "xx",
+          "member": "string",
+          "name": "DocumentId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDocumentResponse": {
+      "document": "DeleteDocument response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupMemberRequest": {
+      "document": "DeleteGroupMember request structure.",
+      "members": [
+        {
+          "document": "The group ID. You cannot remove members from a merged group.",
+          "example": "dfgsdgsg",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The users. Array length limit: 200.",
+          "example": "无",
+          "member": "string",
+          "name": "MemberIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupMemberResponse": {
+      "document": "DeleteGroupMember response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupRequest": {
+      "document": "DeleteGroup request structure.",
+      "members": [
+        {
+          "document": "The IDs of the groups to delete.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupResponse": {
+      "document": "DeleteGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRecordRequest": {
+      "document": "DeleteRecord request structure.",
+      "members": [
+        {
+          "document": "The room ID.\t",
+          "example": "无",
+          "member": "int64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "无",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRecordResponse": {
+      "document": "DeleteRecord response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteRoomRequest": {
       "document": "DeleteRoom request structure.",
       "members": [
@@ -470,6 +1290,513 @@
     "DeleteRoomResponse": {
       "document": "DeleteRoom response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCurrentMemberListRequest": {
+      "document": "DescribeCurrentMemberList request structure.",
+      "members": [
+        {
+          "document": "The room ID.",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000`.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCurrentMemberListResponse": {
+      "document": "DescribeCurrentMemberList response structure.",
+      "members": [
+        {
+          "document": "The total number of records.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user list.",
+          "example": "无",
+          "member": "MemberRecord",
+          "name": "MemberRecords",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocumentRequest": {
+      "document": "DescribeDocument request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The (unique) document ID.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocumentResponse": {
+      "document": "DescribeDocument response structure.",
+      "members": [
+        {
+          "document": "The document ID.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The document’s original URL.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The document title.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user ID of the document’s owner.",
+          "example": "abc",
+          "member": "string",
+          "name": "Owner",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The application ID.",
+          "example": "123",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The document access type.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Permission",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code.",
+          "example": "xx",
+          "member": "string",
+          "name": "TranscodeResult",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The transcoding type.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TranscodeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The transcoding progress. Value range: 0-100.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TranscodeProgress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The transcoding status. `0`: The file is not transcoded. `1`: The file is being transcoded. `2`: Transcoding failed. `3`: Transcoding is successful.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TranscodeState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The error message for failed transcoding.",
+          "example": "abc",
+          "member": "string",
+          "name": "TranscodeInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The document type.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The document size (bytes).",
+          "example": "1",
+          "member": "uint64",
+          "name": "DocumentSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The time (Unix timestamp) when the document was last updated.",
+          "example": "1",
+          "member": "uint64",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocumentsByRoomRequest": {
+      "document": "DescribeDocumentsByRoom request structure.",
+      "members": [
+        {
+          "document": "The room ID.",
+          "example": "312345678",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records to return per page. The maximum value can be `1000`. The default value is `100`.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The document access type.\n[0]: The private documents of the owner.\n[1]: The public documents of the owner.\n[0,1]: The private and public documents of the owner.\n[2]: The private and public documents of all users (including the owner).\nDefault value: [2].",
+          "example": "[2]",
+          "member": "uint64",
+          "name": "Permission",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The user ID of the document owner. If you do not specify this, the information of all documents under the application will be returned.",
+          "example": "abc",
+          "member": "string",
+          "name": "Owner",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocumentsByRoomResponse": {
+      "document": "DescribeDocumentsByRoom response structure.",
+      "members": [
+        {
+          "document": "The information of the documents.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DocumentInfo",
+          "name": "Documents",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupListRequest": {
+      "document": "DescribeGroupList request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000` and is `20` by default.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The user ID of the teacher, which is used as the filter. This parameter and `MemberId` are mutually exclusive. If both are specified, only this parameter will take effect.",
+          "example": "abc",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The user ID of a member, which is used as the filter. This parameter and `TeacherId` are mutually exclusive.",
+          "example": "abc",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupListResponse": {
+      "document": "DescribeGroupList response structure.",
+      "members": [
+        {
+          "document": "The total number of groups that meet the conditions.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "GroupInfos",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupMemberListRequest": {
+      "document": "DescribeGroupMemberList request structure.",
+      "members": [
+        {
+          "document": "The group ID.",
+          "example": "dfgsdgsg",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. The default value is `1`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000` and is `20` by default.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupMemberListResponse": {
+      "document": "DescribeGroupMemberList response structure.",
+      "members": [
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user IDs of the members.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MemberIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupRequest": {
+      "document": "DescribeGroup request structure.",
+      "members": [
+        {
+          "document": "The group ID.",
+          "example": "dfgsdgsg",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupResponse": {
+      "document": "DescribeGroup response structure.",
+      "members": [
+        {
+          "document": "The group ID.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The group name.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user ID of the group’s teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TeacherId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The group type.\n`0`: Ordinary group.\n`1`: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "GroupType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The IDs of the sub-groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubGroupIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -569,7 +1896,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher\t",
+          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only.",
           "example": "video",
           "member": "string",
           "name": "SubType",
@@ -601,6 +1928,22 @@
           "value_allowed_null": true
         },
         {
+          "document": "The class status. `0`: The class has not started. `1`: The class has started. `2`: The class ended. `3`: The class expired.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -613,7 +1956,6 @@
       "document": "DescribeRoomStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "Room ID",
           "example": "1234657",
           "member": "uint64",
@@ -622,7 +1964,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Current page in pagination, which starts from 1.",
           "example": "1",
           "member": "uint64",
@@ -631,7 +1972,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of data entries to return per page. Maximum value: 1000",
           "example": "10",
           "member": "uint64",
@@ -650,7 +1990,6 @@
           "example": "1",
           "member": "uint64",
           "name": "PeakMemberNumber",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -659,7 +1998,6 @@
           "example": "1",
           "member": "uint64",
           "name": "MemberNumber",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -668,7 +2006,6 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -677,9 +2014,98 @@
           "example": "无",
           "member": "MemberRecord",
           "name": "MemberRecords",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The actual start time of the room, in Unix timestamp, accurate to seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1675677337",
+          "member": "uint64",
+          "name": "RealStartTime",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The actual end time of the room, in Unix timestamp, accurate to seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1675677337",
+          "member": "uint64",
+          "name": "RealEndTime",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The total number of room messages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MessageCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of mics in the room.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MicCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSdkAppIdUsersRequest": {
+      "document": "DescribeSdkAppIdUsers request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. The default value is `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records to return per page. The default value is `20`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSdkAppIdUsersResponse": {
+      "document": "DescribeSdkAppIdUsers response structure.",
+      "members": [
+        {
+          "document": "The total number of users.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserInfo",
+          "name": "Users",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -752,6 +2178,271 @@
         }
       ],
       "type": "object"
+    },
+    "DocumentInfo": {
+      "document": "Document Information.",
+      "members": [
+        {
+          "document": "The document ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The document’s original URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The document title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user ID of the document’s owner.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "Owner",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The application ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The document access type. `0`: Private; `1`: Public.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Permission",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "TranscodeResult",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The transcoding type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TranscodeType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The transcoding progress. Value range: 0-100.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TranscodeProgress",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The transcoding status. `0`: The file is not transcoded. `1`: The file is being transcoded. `2`: Transcoding failed. `3`: Transcoding is successful.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TranscodeState",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The error message for failed transcoding.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "TranscodeInfo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The document type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "DocumentType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The document size (bytes).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DocumentSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The time (Unix timestamp) when the document was last updated.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GetWatermarkRequest": {
+      "document": "GetWatermark request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetWatermarkResponse": {
+      "document": "GetWatermark response structure.",
+      "members": [
+        {
+          "document": "The watermark settings for the teacher’s video.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WatermarkConfig",
+          "name": "TeacherLogo",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The watermark settings for the whiteboard.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WatermarkConfig",
+          "name": "BoardLogo",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The background image.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BackgroundPictureConfig",
+          "name": "BackgroundPicture",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The watermark text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TextMarkConfig",
+          "name": "Text",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupBaseInfo": {
+      "document": "The information of the groups to create.",
+      "members": [
+        {
+          "document": "The group names.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user ID of the teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "GroupInfo": {
+      "document": "The information of the groups queried.",
+      "members": [
+        {
+          "document": "Group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "fdghdhdfh",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The group name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user ID of the teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The group type. \n`0`: Ordinary group. \n`1`: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "群组类型",
+          "member": "uint64",
+          "name": "GroupType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The IDs of the sub-groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubGroupIds",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "LoginOriginIdRequest": {
       "document": "LoginOriginId request structure.",
@@ -856,7 +2547,6 @@
       "document": "Member record information",
       "members": [
         {
-          "default": "",
           "document": "User ID",
           "example": "abc",
           "member": "string",
@@ -866,7 +2556,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username",
           "example": "abc",
           "member": "string",
@@ -876,7 +2565,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Online duration, in seconds",
           "example": "1",
           "member": "uint64",
@@ -886,7 +2574,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the camera is enabled",
           "example": "1",
           "member": "uint64",
@@ -896,7 +2583,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the mic is enabled",
           "example": "1",
           "member": "uint64",
@@ -906,7 +2592,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the user is muted",
           "example": "1",
           "member": "uint64",
@@ -916,7 +2601,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of questions answered by the user",
           "example": "1",
           "member": "uint64",
@@ -926,7 +2610,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of hand raising times",
           "example": "1",
           "member": "uint64",
@@ -936,7 +2619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "First time that the user entered the room, in UNIX timestamp format",
           "example": "1234657",
           "member": "uint64",
@@ -946,7 +2628,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last time that the user left the room, in UNIX timestamp format",
           "example": "1234657",
           "member": "uint64",
@@ -956,12 +2637,56 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of rewards received",
           "example": "1",
           "member": "uint64",
           "name": "Rewords",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user’s IP address.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "IPAddress",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user’s location.",
+          "example": "城市(国家)",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user’s device type. `0`: Unknown; `1`: Windows; `2`: macOS; `3`: Android; `4`: iOS; `5`: Web; `6`: Mobile webpage; `7`: Weixin Mini Program.",
+          "example": "5",
+          "member": "int64",
+          "name": "Device",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of times each member mics.",
+          "example": "1",
+          "member": "int64",
+          "name": "PerMemberMicCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of messages sent by each member.",
+          "example": "2",
+          "member": "int64",
+          "name": "PerMemberMessageCount",
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -986,12 +2711,242 @@
           "name": "Callback",
           "required": false,
           "type": "string"
+        },
+        {
+          "document": "The callback key.",
+          "example": "无",
+          "member": "string",
+          "name": "CallbackKey",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
     },
     "ModifyAppResponse": {
       "document": "ModifyApp response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGroupRequest": {
+      "document": "ModifyGroup request structure.",
+      "members": [
+        {
+          "document": "The ID of the group to modify.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The user ID of the teacher.",
+          "example": "adfgdsfgdf",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The new group name.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGroupResponse": {
+      "document": "ModifyGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoomRequest": {
+      "document": "ModifyRoom request structure.",
+      "members": [
+        {
+          "document": "The room ID.",
+          "example": "312345678",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The room start time (Unix timestamp).",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The room end time (Unix timestamp).",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The user ID of the teacher. User IDs are returned by the user registration APIs.",
+          "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The room name.",
+          "example": "房间名称",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Resolution",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaxMicNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: `0`: No (default value); `1`: Yes.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoMic",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudioQuality",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.",
+          "example": "video",
+          "member": "string",
+          "name": "SubType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DisableRecord",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.",
+          "example": "无",
+          "member": "string",
+          "name": "Assistants",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The ID of the group to bind.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoomResponse": {
+      "document": "ModifyRoom response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserProfileRequest": {
+      "document": "ModifyUserProfile request structure.",
+      "members": [
+        {
+          "document": "The ID of the user whose profile will be modified.",
+          "example": "abc",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The new username to use.",
+          "example": "abc",
+          "member": "string",
+          "name": "Nickname",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The URL of the new profile photo.",
+          "example": "abc",
+          "member": "string",
+          "name": "Avatar",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserProfileResponse": {
+      "document": "ModifyUserProfile response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1074,6 +3029,156 @@
       ],
       "type": "object"
     },
+    "RoomInfo": {
+      "document": "The information of the room to create.",
+      "members": [
+        {
+          "document": "The room name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "房间名称",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The room start time (Unix timestamp).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The room end time (Unix timestamp).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Resolution",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaxMicNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "videodoc",
+          "member": "string",
+          "name": "SubType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user ID of the teacher. User IDs are returned by the user registration APIs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: `0`: No (default value); `1`: Yes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoMic",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0`: Yes (default value); `1`: No.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TurnOffMic",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudioQuality",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DisableRecord",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Assistants",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of RTC users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RTCAudienceNumber",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The audience type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudienceType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The recording layout.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RecordLayout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The ID of the group to bind.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xfdfgdf",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
     "SetAppCustomContentRequest": {
       "document": "SetAppCustomContent request structure.",
       "members": [
@@ -1110,6 +3215,160 @@
       ],
       "type": "object"
     },
+    "SetWatermarkRequest": {
+      "document": "SetWatermark request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.\t",
+          "example": "12333",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The URL of the watermark for the teacher’s video. If you pass in an empty string, the teacher’s video will not have a watermark.",
+          "example": "url",
+          "member": "string",
+          "name": "TeacherUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The URL of the watermark for the whiteboard. If you pass in an empty string, the whiteboard video will not have a watermark.",
+          "example": "无",
+          "member": "string",
+          "name": "BoardUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The image displayed when there is no video. If you pass in an empty string, no images will be displayed.",
+          "example": "无",
+          "member": "string",
+          "name": "VideoUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The width of the whiteboard’s watermark, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is `0`.",
+          "example": "无",
+          "member": "float",
+          "name": "BoardW",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The height of the whiteboard’s watermark, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is `0`.",
+          "example": "无",
+          "member": "float",
+          "name": "BoardH",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The horizontal offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "BoardX",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The vertical offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "BoardY",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The width of the watermark for the teacher’s video, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is `0`.",
+          "example": "无",
+          "member": "float",
+          "name": "TeacherW",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The height of the watermark for the teacher’s video, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is `0`.",
+          "example": "无",
+          "member": "float",
+          "name": "TeacherH",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The horizontal offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "TeacherX",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The vertical offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "TeacherY",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The watermark text. If you pass in an empty string, there will be no text.",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The watermark text color.",
+          "example": "无",
+          "member": "string",
+          "name": "TextColor",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetWatermarkResponse": {
+      "document": "SetWatermark response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextMarkConfig": {
+      "document": "The watermark text.",
+      "members": [
+        {
+          "document": "The watermark text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "text",
+          "member": "string",
+          "name": "Text",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The watermark text color.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Color",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "UnbindDocumentFromRoomRequest": {
       "document": "UnbindDocumentFromRoom request structure.",
       "members": [
@@ -1145,6 +3404,99 @@
         }
       ],
       "type": "object"
+    },
+    "UserInfo": {
+      "document": "The user information.",
+      "members": [
+        {
+          "document": "The application ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The username.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The URL of profile photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "Avatar",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "WatermarkConfig": {
+      "document": "Watermark settings.",
+      "members": [
+        {
+          "document": "The URL of the watermark image.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "url",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The watermark width, which is expressed as a percentage of the video width.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "Width",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The watermark height, which is expressed as a percentage of the video height.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "Height",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The horizontal offset of the watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "LocationX",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The vertical offset of the watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "LocationY",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"
