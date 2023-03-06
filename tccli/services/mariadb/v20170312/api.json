@@ -252,6 +252,13 @@
       "output": "ModifyAccountPrivilegesResponse",
       "status": "online"
     },
+    "ModifyDBEncryptAttributes": {
+      "document": "This API is used to modify the instance data encryption.",
+      "input": "ModifyDBEncryptAttributesRequest",
+      "name": "Modifies the encryption attributes of the instance data",
+      "output": "ModifyDBEncryptAttributesResponse",
+      "status": "online"
+    },
     "ModifyDBInstancesProject": {
       "document": "This API is used to modify the project to which TencentDB instances belong.",
       "input": "ModifyDBInstancesProjectRequest",
@@ -4294,6 +4301,42 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBEncryptAttributesRequest": {
+      "document": "ModifyDBEncryptAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the data encryption (Once enabled, it can’t be disabled). Valid values: `1` (Yes), `0` (No. Default）",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptEnabled",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBEncryptAttributesResponse": {
+      "document": "ModifyDBEncryptAttributes response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

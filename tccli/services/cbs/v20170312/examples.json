@@ -10,7 +10,7 @@
     ],
     "ApplySnapshot": [
       {
-        "document": "回滚云盘某个快照节点",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=ApplySnapshot\n&DiskId=disk-lzrg2pwi\n&SnapshotId=snap-gybrif0z\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cc96242e-566c-ae6a-b74a-5a1f823683b2\"\n    }\n}",
         "title": "Rollback Snapshot"
@@ -78,7 +78,7 @@
     ],
     "CreateSnapshot": [
       {
-        "document": "用户创建快照",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSnapshot\n<Common request parameters>\n\n{\n    \"SnapshotName\": \"snap_201711301015\",\n    \"Deadline\": \"2022-01-08T09:47:55+00:00\",\n    \"DiskId\": \"disk-lzrg2pwi\"\n}",
         "output": "{\n    \"Response\": {\n        \"SnapshotId\": \"snap-gybrif0z\",\n        \"RequestId\": \"1bd35eca-0c9a-6e0b-938a-5a1f80511c19\"\n    }\n}",
         "title": "Creating a snapshot"
@@ -110,7 +110,7 @@
     ],
     "DescribeAutoSnapshotPolicies": [
       {
-        "document": "查询状态为NORMAL的定期快照策略",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=DescribeAutoSnapshotPolicies\r\n&Filters.0.Name=auto-snapshot-policy-state\r\n&Filters.0.Values.0=NORMAL\r\n&Limit=3\r\n&Offset=0\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicySet\": [\n            {\n                \"DiskIdSet\": [],\n                \"IsActivated\": 1,\n                \"AutoSnapshotPolicyState\": \"NORMAL\",\n                \"AutoSnapshotPolicyName\": \"Snapshot policy 1\",\n                \"IsPermanent\": 0,\n                \"NextTriggerTime\": \"2017-12-04 12:00:00\",\n                \"AutoSnapshotPolicyId\": \"asp-lfp6fi4f\",\n                \"Policy\": [\n                    {\n                        \"DayOfWeek\": [\n                            1,\n                            4\n                        ],\n                        \"Hour\": [\n                            12\n                        ]\n                    }\n                ],\n                \"CreateTime\": \"2017-11-01 10:46:22\",\n                \"RetentionDays\": 7\n            },\n            {\n                \"DiskIdSet\": [],\n                \"IsActivated\": 1,\n                \"AutoSnapshotPolicyState\": \"NORMAL\",\n                \"AutoSnapshotPolicyName\": \"Snapshot policy 2\",\n                \"IsPermanent\": 0,\n                \"NextTriggerTime\": \"2017-12-03 10:00:00\",\n                \"AutoSnapshotPolicyId\": \"asp-nqu08k2l\",\n                \"Policy\": [\n                    {\n                        \"DayOfWeek\": [\n                            0\n                        ],\n                        \"Hour\": [\n                            10\n                        ]\n                    }\n                ],\n                \"CreateTime\": \"2017-11-17 15:01:25\",\n                \"RetentionDays\": 7\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"701c8a35-ed66-fc79-3795-5a1fa72cdbf1\"\n    }\n}",
         "title": "Querying scheduled snapshot policies in the `NORMAL` state"
@@ -118,7 +118,7 @@
     ],
     "DescribeDiskAssociatedAutoSnapshotPolicy": [
       {
-        "document": "通过云硬盘ID查询云硬盘绑定的定期快照策略",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=DescribeDiskAssociatedAutoSnapshotPolicy\r\n&DiskId=disk-dw0bbzws\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicySet\": [\n            {\n                \"IsActivated\": 1,\n                \"AutoSnapshotPolicyName\": \"sds\",\n                \"IsPermanent\": 0,\n                \"NextTriggerTime\": \"2017-12-03 00:00:00\",\n                \"AutoSnapshotPolicyId\": \"asp-mrsrn243\",\n                \"Policy\": [\n                    {\n                        \"DayOfWeek\": [\n                            0\n                        ],\n                        \"Hour\": [\n                            0\n                        ]\n                    }\n                ],\n                \"CreateTime\": \"2017-11-17 15:09:12\",\n                \"RetentionDays\": 7\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"8612f14a-fd07-85b5-39f9-5a1fa51efa14\"\n    }\n}",
         "title": "Querying the scheduled snapshot policies associated with a cloud disk whose ID is `disk-dw0bbzws`"
@@ -142,7 +142,7 @@
     ],
     "DescribeDiskOperationLogs": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=DescribeDiskOperationLogs\r\n&Filters.0.Name=disk-id\r\n&Filters.0.Values.0=disk-ou4acu4i\r\n&<Common request parameters>",
         "output": "{\r\n  \"DiskOperationLogSet\": [\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:40:20\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_MODIFY\",\r\n      \"EndTime\": \"2018-09-19 20:40:20\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    },\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:40:16\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_MODIFY\",\r\n      \"EndTime\": \"2018-09-19 20:40:16\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    },\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:40:13\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_EXPAND\",\r\n      \"EndTime\": \"2018-09-19 20:40:13\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    },\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:39:59\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_CREATE\",\r\n      \"EndTime\": \"2018-09-19 20:39:59\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    }\r\n  ]\r\n}",
         "title": "Querying the operation logs of a cloud disk"
@@ -166,7 +166,7 @@
     ],
     "DescribeSnapshotOperationLogs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSnapshotOperationLogs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"snap-0y61iiyj\"\n            ],\n            \"Name\": \"snapshot-id\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"SnapshotOperationLogSet\": [\n            {\n                \"OperationState\": \"SUCCESS\",\n                \"StartTime\": \"2018-12-18 17:52:37\",\n                \"Operator\": \"546816713\",\n                \"SnapshotId\": \"snap-0y61iiyj\",\n                \"Operation\": \"SNAP_OPERATION_ROLLBACK\",\n                \"EndTime\": \"2018-12-18 17:52:38\"\n            },\n            {\n                \"OperationState\": \"SUCCESS\",\n                \"StartTime\": \"2018-12-18 17:51:47\",\n                \"Operator\": \"546816713\",\n                \"SnapshotId\": \"snap-0y61iiyj\",\n                \"Operation\": \"SNAP_OPERATION_ROLLBACK\",\n                \"EndTime\": \"2018-12-18 17:51:48\"\n            },\n            {\n                \"OperationState\": \"SUCCESS\",\n                \"StartTime\": \"2018-12-18 11:57:46\",\n                \"Operator\": \"\",\n                \"SnapshotId\": \"snap-0y61iiyj\",\n                \"Operation\": \"ASP_OPERATION_CREATE_SNAP\",\n                \"EndTime\": \"2018-12-18 11:57:47\"\n            }\n        ],\n        \"RequestId\": \"0dc7b07a-5f6b-46c4-b1d9-048e37d1c33c\"\n    }\n}",
         "title": "Querying the operation logs of a snapshot"
@@ -174,7 +174,7 @@
     ],
     "DescribeSnapshotSharePermission": [
       {
-        "document": "查询某个快照的分享信息",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=DescribeSnapshotSharePermission\r\n&SnapshotId=snap-asxafa65                   \r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4ab150b9-538d-48fb-8821-7fa185f1d07c\",\n        \"SharePermissionSet\": [\n            {\n                \"CreatedTime\": \"2019-07-08 00:00:06\",\n                \"AccountId\": \"123456789\"\n            }\n        ]\n    }\n}",
         "title": "Querying the sharing information of a snapshot"
@@ -222,10 +222,10 @@
     ],
     "InquirePriceModifyDiskExtraPerformance": [
       {
-        "document": "500G HSSD 额外购买200M性能询价",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=InquirePriceModifyDiskExtraPerformance\n&DiskId=disk-dritwhhm\n&ThroughputPerformance=200\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"55db49cf-b9d7-da27-825b-3232332eeewezxdsdrdew\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": -192.06,\n            \"UnitPrice\": null,\n            \"UnitPriceHigh\": null,\n            \"OriginalPriceHigh\": null,\n            \"OriginalPrice\": -192.06,\n            \"UnitPriceDiscount\": null,\n            \"UnitPriceDiscountHigh\": null,\n            \"DiscountPriceHigh\": null,\n            \"ChargeUnit\": null\n        }\n    }\n}",
-        "title": "Querying the price of purchasing the extra throughput performance of 200 Mbps "
+        "title": "Querying the price of purchasing the extra throughput performance of 200 Mbps"
       }
     ],
     "InquiryPriceCreateDisks": [
@@ -244,7 +244,7 @@
     ],
     "InquiryPriceResizeDisk": [
       {
-        "document": "查询云盘扩容到200G的价格",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceResizeDisk\r\n&DiskId=disk-dw0bbzws\r\n&DiskSize=200\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"DiscountPrice\": 210.09,\n            \"OriginalPrice\": 210.09\n        },\n        \"RequestId\": \"2ba7b520-ddb4-f5ea-34d1-5a1f80434911\"\n    }\n}",
         "title": "Querying the price for expanding a cloud disk to 200 GB"
@@ -296,7 +296,7 @@
     ],
     "ModifySnapshotAttribute": [
       {
-        "document": "修改某个快照的名称",
+        "document": " ",
         "input": "https://cbs.tencentcloudapi.com/?Action=ModifySnapshotAttribute\n&SnapshotId=snap-gybrif0z\n&SnapshotName=snap_201711301143\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"55db49cf-b9d7-da27-825b-5a02ba6884ca\"\n    }\n}",
         "title": "Renaming a snapshot"
@@ -320,7 +320,7 @@
     ],
     "TerminateDisks": [
       {
-        "document": "销毁两块云硬盘",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminateDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"disk-g27hqeo2\",\n        \"disk-lzrg2pwi\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"52c965d2-5deb-459a-8b5a-b3b9a1376544\"\n    }\n}",
         "title": "Batch returning cloud disks"

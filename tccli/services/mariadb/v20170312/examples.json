@@ -50,7 +50,7 @@
     ],
     "CreateDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mariadb.tencentcloudapi.com/?Action=CreateDBInstance\n&Zones.0=ap-guangzhou-2\n&Zones.1=ap-guangzhou-2\n&Memory=2000\n&Storage=10000\n&NodeCount=1\n&Count=1\n&Period=1\n&AutoVoucher=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"DealName\": \"20171103110163\",\n        \"InstanceIds\": null\n    }\n}",
         "title": "Creating a monthly subscribed TencentDB instance"
@@ -58,7 +58,7 @@
     ],
     "CreateHourDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateHourDBInstance\n<Common request parameters>\n\n{\n    \"DbVersionId\": \"5.7.17\",\n    \"VpcId\": \"vpc-n2vdqxdx\",\n    \"Storage\": \"10\",\n    \"Zones\": [\n        \"ap-guangzhou-1\",\n        \"ap-guangzhou-1\"\n    ],\n    \"SubnetId\": \"subnet-j2ezrypg\",\n    \"Memory\": \"2\",\n    \"NodeCount\": \"2\"\n}",
         "output": "{\n    \"Response\": {\n        \"DealName\": \"20200409111543\",\n        \"InstanceIds\": [\n            \"tdsql-dup8gl6t\"\n        ],\n        \"FlowId\": 22051110000,\n        \"RequestId\": \"05ad9b30-ac0a-4945-afd5-3d405d537a93\"\n    }\n}",
         "title": "Creating a pay-as-you-go instance"
@@ -286,6 +286,14 @@
         "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyAccountPrivileges\n&InstanceId=tdsql-f35wr6wj\n&Accounts.0.User=ajnnw\n&GlobalPrivileges.0=SELECT\n&Accounts.0.Host=127.0.0.1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"FlowId\": 145623\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "ModifyDBEncryptAttributes": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBEncryptAttributes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-xxx\",\n    \"EncryptEnabled\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "None"
       }
     ],
     "ModifyDBInstancesProject": [
