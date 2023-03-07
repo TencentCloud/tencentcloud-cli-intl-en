@@ -58,7 +58,7 @@
     ],
     "CreateClusters": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusters\n<Common request parameters>\n\n{\n    \"Count\": 1,\n    \"StoragePayMode\": \"0\",\n    \"VpcId\": \"vpc-1ptuei0b\",\n    \"Zone\": \"ap-guangzhou-3\",\n    \"AdminPassword\": \"passwd@admin\",\n    \"DbType\": \"MYSQL\",\n    \"ProjectId\": \"0\",\n    \"DbVersion\": \"10.0\",\n    \"Storage\": 100,\n    \"PayMode\": \"0\",\n    \"ClusterName\": \"newInstance\",\n    \"StorageLimit\": \"100\",\n    \"RollbackStrategy\": \"noneRollback\",\n    \"Memory\": \"4\",\n    \"SubnetId\": \"subnet-1tmw9t4o\",\n    \"Cpu\": 2,\n    \"HaCount\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"ResourceIds\": [\n            \"cynosdbmysql-ins-67rmucgk\"\n        ],\n        \"RequestId\": \"132075\",\n        \"TranId\": \"20190522160000003106844584180998\",\n        \"ClusterIds\": [\n            \"cynosdbmysql-sls-9nts65r2\"\n        ],\n        \"BigDealIds\": [\n            \"xxx\"\n        ],\n        \"DealNames\": [\n            \"20190522112283\"\n        ]\n    }\n}",
         "title": "Creating a cluster"
@@ -346,8 +346,8 @@
     ],
     "ModifyBackupConfig": [
       {
-        "document": "This example shows you how to modify backup configuration.",
-        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupConfig\n<Common request parameters>\n\n{\n    \"BackupTimeBeg\": \"7200\",\n    \"ReserveDuration\": \"604800\",\n    \"ClusterId\": \"cynosdbmysql-45knmnra\",\n    \"BackupTimeEnd\": \"21600\"\n}",
+        "document": "This example shows you how to modify the backup configuration.",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupConfig\n<Common request parameters>\n\n{\n    \"BackupTimeBeg\": \"7200\",\n    \"ReserveDuration\": \"604800\",\n    \"ClusterId\": \"cynosdbmysql-45knmnra\",\n    &BackupTimeEnd=21600\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Modifying the backup configuration of a cluster"
       }
@@ -406,6 +406,14 @@
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyMaintainPeriodConfig\n&InstanceId=cynosdbmysql-ins-n7ocdslw\n&MaintainStartTime=3600\n&MaintainDuration=3600\n&MaintainWeekDays.0=Mon\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"165202\"\n    }\n}",
         "title": "Modifying the instance maintenance window"
+      }
+    ],
+    "ModifyVipVport": [
+      {
+        "document": "",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyVipVport\n&ClusterId=xxx\n&InstanceGrpId=xxx\n&Vip=xx.xx.xx.xx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Modifying an IP port"
       }
     ],
     "OfflineCluster": [

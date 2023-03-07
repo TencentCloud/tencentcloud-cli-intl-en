@@ -16,6 +16,22 @@
         "title": "Applying to create a customer account"
       }
     ],
+    "DescribeCustomerBillDetail": [
+      {
+        "document": "This example shows you how to get the customer bill details through API.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerBillDetail\n<Common request parameters>\n\n{\n    \"CustomerUin\": 1,\n    \"Month\": \"2023-02\",\n    \"PayMode\": \"postPay\",\n    \"ActionType\": \"postpay_deduct_h\",\n    \"IsConfirmed\": \"0\",\n    \"PageSize\": 10,\n    \"Page\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"DetailSet\": [\n            {\n                \"PayerAccountId\": 1230,\n                \"OwnerAccountId\": 132,\n                \"OperatorAccountId\": 321,\n                \"ProductName\": \"cloud block storage\",\n                \"BillingMode\": \"Pay-As-You-Go resources\",\n                \"ProjectName\": \"default\",\n                \"Region\": \"East Chinaxa0(Shanghai)\",\n                \"AvailabilityZone\": \"Shanghai Zone 1\",\n                \"InstanceId\": \"123456\",\n                \"InstanceName\": \"name\",\n                \"SubProductName\": \"HDD cloud block storage\",\n                \"TransactionType\": \"Hourly settlement\",\n                \"TransactionId\": \"2023010112345678\",\n                \"TransactionTime\": \"2023-01-01 00:01:02\",\n                \"UsageStartTime\": \"2023-01-01 00:01:02\",\n                \"UsageEndTime\": \"2023-01-01 00:01:02\",\n                \"ComponentType\": \"volume size\",\n                \"ComponentName\": \"HDD cloud block storage-volume size\",\n                \"ComponentListPrice\": \"0.1\",\n                \"ComponentPriceMeasurementUnit\": \"USD/GB/Second\",\n                \"ComponentUsage\": \"100\",\n                \"ComponentUsageUnit\": \"GB\",\n                \"UsageDuration\": \"100\",\n                \"DurationUnit\": \"Second\",\n                \"OriginalCost\": \"10\",\n                \"DiscountRate\": \"1\",\n                \"Currency\": \"USD\",\n                \"TotalAmountAfterDiscount\": \"10\",\n                \"VoucherDeduction\": \"0\",\n                \"TotalCost\": \"10\"\n            }\n        ],\n        \"RequestId\": \"asdfgh\"\n    }\n}",
+        "title": "DescribeCustomerBillDetail"
+      }
+    ],
+    "DescribeCustomerBillSummary": [
+      {
+        "document": "This example shows you how to get the total amount of customer bills through API.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerBillSummary\n<Common request parameters>\n\n{\n    \"CustomerUin\": 1,\n    \"Month\": \"2023-02\",\n    \"PayMode\": \"postPay\",\n    \"ActionType\": \"postpay_deduct_h\",\n    \"IsConfirmed\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCost\": 0,\n        \"RequestId\": \"123456\"\n    }\n}",
+        "title": "DescribeCustomerBillSummary"
+      }
+    ],
     "GetCountryCodes": [
       {
         "document": "",

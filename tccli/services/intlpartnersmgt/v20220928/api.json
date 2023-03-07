@@ -14,6 +14,20 @@
       "output": "CreateAccountResponse",
       "status": "online"
     },
+    "DescribeCustomerBillDetail": {
+      "document": "This API is used to query the customer bill details.",
+      "input": "DescribeCustomerBillDetailRequest",
+      "name": "Queries the customer bill details",
+      "output": "DescribeCustomerBillDetailResponse",
+      "status": "online"
+    },
+    "DescribeCustomerBillSummary": {
+      "document": "This API is used to query the total amount of customer bills.",
+      "input": "DescribeCustomerBillSummaryRequest",
+      "name": "Queries the total amount of customer bills",
+      "output": "DescribeCustomerBillSummaryResponse",
+      "status": "online"
+    },
     "GetCountryCodes": {
       "document": "This API is used to obtain country/region codes.",
       "input": "GetCountryCodesRequest",
@@ -137,6 +151,282 @@
         }
       ],
       "type": "object"
+    },
+    "BillDetailData": {
+      "document": "Customer bill details",
+      "members": [
+        {
+          "document": "Reseller account\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2000111111",
+          "member": "int64",
+          "name": "PayerAccountId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Customer account\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2000111111",
+          "member": "int64",
+          "name": "OwnerAccountId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Operator account\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2000111111",
+          "member": "int64",
+          "name": "OperatorAccountId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProductName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Billing mode\n`Monthly subscription` (Monthly subscription)\n`Pay-As-You-Go resources` (Pay-as-you-go)\n`Standard RI` (Reserved instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BillingMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Project name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AvailabilityZone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Subproduct name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubProductName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Settlement type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TransactionType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Transaction ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TransactionId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Settlement time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TransactionTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Start time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UsageStartTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "End time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UsageEndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Component\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Component name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Component list price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentListPrice",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Price unit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentPriceMeasurementUnit",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Component usage\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentUsage",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Component usage unit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentUsageUnit",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UsageDuration",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Duration unit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DurationUnit",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Original cost\nOriginal cost = component list price * component usage * usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OriginalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discount, which defaults to `1`, indicating there is no discount.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DiscountRate",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Currency\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Currency",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted total\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TotalAmountAfterDiscount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Voucher deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherDeduction",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total cost = discounted total - voucher deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CountryCodeItem": {
       "document": "Element type of the `GetCountryCodes` API",
@@ -282,6 +572,162 @@
           "name": "Uin",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerBillDetailRequest": {
+      "document": "DescribeCustomerBillDetail request structure.",
+      "members": [
+        {
+          "document": "Customer UIN",
+          "example": "123456",
+          "member": "uint64",
+          "name": "CustomerUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The queried month in “YYYY-MM” format, such as 2023-01.",
+          "example": "2023-02",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "A pagination parameter that specifies the number of entries per page",
+          "example": "1",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "A pagination parameter that specifies the current page number",
+          "example": "10",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Billing mode. Valid values:\n`prePay` (Monthly subscription)\n`postPay` (Pay-as-you-go)",
+          "example": "prePay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Transaction type. Valid values:\n`prepay_purchase` (Purchase)\n`prepay_renew` (Renewal)\n`prepay_modify` (Upgrade/Downgrade)\n`prepay_return` ( Monthly subscription refund)\n`postpay_deduct` (Pay-as-you-go)\n`postpay_deduct_h` (Hourly settlement)\n`postpay_deduct_d` (Daily settlement)\n`postpay_deduct_m` (Monthly settlement)\n`offline_deduct` (Offline project deduction)\n`online_deduct` (Offline product deduction)\n`recon_deduct` (Adjustment - deduction)\n`recon_increase` (Adjustment - compensation)\n`ripay_purchase` (One-off RI Fee)\n`postpay_deduct_s` (Spot)\n`ri_hour_pay` (Hourly RI fee)\n`prePurchase` (New monthly subscription)\n`preRenew` (Monthly subscription renewal)\n`preUpgrade` (Upgrade/Downgrade)\n`preDowngrade` (Upgrade/Downgrade)\n`svp_hour_pay` (Hourly Savings Plan fee)\n`recon_guarantee` (Minimum spend deduction)\n`pre_purchase` (New monthly subscription)\n`pre_renew` (Monthly subscription renewal)\n`pre_upgrade` (Upgrade/Downgrade)\n`pre_downgrade` (Upgrade/Downgrade)",
+          "example": "pre_upgrade",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Payment status\n`0`: N/A\n`1`: Paid\n`2`: Unpaid",
+          "example": "1",
+          "member": "string",
+          "name": "IsConfirmed",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerBillDetailResponse": {
+      "document": "DescribeCustomerBillDetail response structure.",
+      "members": [
+        {
+          "document": "Total number of data entries",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{...}",
+          "member": "BillDetailData",
+          "name": "DetailSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerBillSummaryRequest": {
+      "document": "DescribeCustomerBillSummary request structure.",
+      "members": [
+        {
+          "document": "Customer UIN",
+          "example": "123456",
+          "member": "uint64",
+          "name": "CustomerUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The queried month in “YYYY-MM” format, such as 2023-01.",
+          "example": "2023-02",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Billing mode. Valid values:\n`prePay` (Monthly subscription)\n`postPay` (Pay-as-you-go)",
+          "example": "prePay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Transaction type. Valid values:\n`prepay_purchase` (Purchase)\n`prepay_renew` (Renewal)\n`prepay_modify` (Upgrade/Downgrade)\n`prepay_return` (Monthly subscription refund)\n`postpay_deduct` (Pay-as-you-go)\n`postpay_deduct_h` (Hourly settlement)\n`postpay_deduct_d` (Daily settlement)\n`postpay_deduct_m` (Monthly settlement)\n`offline_deduct` (Offline project deduction)\n`online_deduct` (Offline product deduction)\n`recon_deduct` (Adjustment - deduction)\n`recon_increase` (Adjustment - compensation)\n`ripay_purchase` (One-off RI Fee)\n`postpay_deduct_s` (Spot)\n`ri_hour_pay` (Hourly RI fee)\n`prePurchase` (New monthly subscription)\n`preRenew` (Monthly subscription renewal)\n`preUpgrade` (Upgrade/Downgrade)\n`preDowngrade` (Upgrade/Downgrade)\n`svp_hour_pay` (Hourly Savings Plan fee)\n`recon_guarantee` (Minimum spend deduction)\n`pre_purchase` (New monthly subscription)\n`pre_renew` (Monthly subscription renewal)\n`pre_upgrade` (Upgrade/Downgrade)\n`pre_downgrade` (Upgrade/Downgrade)",
+          "example": "pre_upgrade",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Payment status\n`0`: N/A\n`1`: Paid\n`2`: Unpaid",
+          "example": "1",
+          "member": "string",
+          "name": "IsConfirmed",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerBillSummaryResponse": {
+      "document": "DescribeCustomerBillSummary response structure.",
+      "members": [
+        {
+          "document": "Total amount",
+          "example": "123.45",
+          "member": "float",
+          "name": "TotalCost",
+          "type": "float",
           "value_allowed_null": false
         },
         {

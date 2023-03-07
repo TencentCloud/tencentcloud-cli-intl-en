@@ -357,6 +357,13 @@
       "output": "ModifyMaintainPeriodConfigResponse",
       "status": "online"
     },
+    "ModifyVipVport": {
+      "document": "This API is used to modify the IP and port of an instance group.",
+      "input": "ModifyVipVportRequest",
+      "name": "Modifies the IP and port of an instance group",
+      "output": "ModifyVipVportResponse",
+      "status": "online"
+    },
     "OfflineCluster": {
       "document": "This API is used to deactivate a cluster.",
       "input": "OfflineClusterRequest",
@@ -6734,6 +6741,87 @@
         }
       ],
       "usage": "both"
+    },
+    "ModifyVipVportRequest": {
+      "document": "ModifyVipVport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance group ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "InstanceGrpId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target IP to be modified",
+          "example": "xx.xx.xx.xx",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target port to be modified",
+          "example": "5432",
+          "member": "int64",
+          "name": "Vport",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "DbType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid hours of old IPs. If it is set to `0` hours, the IPs will be released immediately.",
+          "example": "0",
+          "member": "int64",
+          "name": "OldIpReserveHours",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVipVportResponse": {
+      "document": "ModifyVipVport response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Module": {
       "document": "Modules supported by the system",
