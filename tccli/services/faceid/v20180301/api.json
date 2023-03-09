@@ -134,7 +134,7 @@
         },
         {
           "default": "",
-          "document": "Card type. Valid values: `HK` (Hong Kong ID cards) (default), `ML` (Malaysian ID cards), `PhilippinesVoteID` (Philippine voters ID cards), and `PhilippinesDrivingLicense` (Philippine driving licenses).",
+          "document": "The card type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `PhilippinesVoteID` (Philippine voters ID card), `PhilippinesDrivingLicense` (Philippine driver's license), and `IndonesiaIDCard` (Indonesian identity card).",
           "example": "HK",
           "member": "string",
           "name": "IdCardType",
@@ -259,7 +259,6 @@
       "document": "The result of a single authentication or OCR process during the identity verification.",
       "members": [
         {
-          "default": "",
           "document": "Whether the authentication or OCR process is successful.",
           "example": "true",
           "member": "bool",
@@ -269,7 +268,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The video for ID card authentication. This field is returned only if the video-based ID card authentication is enabled. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
@@ -279,7 +277,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The identity document image. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
@@ -289,8 +286,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The OCR result (in JSON) of the identity document image. If authentication or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\nWhen the value of `IdCardType` is `HK`:\n- CnName string: Chinese name\n- EnName string: English name\n- TelexCode string: The code corresponding to the Chinese name\n- Sex string: Gender. Valid values: `M` (male) and `F` (female).\n- Birthday string: Date of birth.\n- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum string: ID number.\n- Symbol string: The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate string: The date of first issuance.\n- CurrentIssueDate string: The date of latest issuance.\n\nWhen the value of `IdCardType` is `ML`:\n- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday string: Date of birth.\n- ID string: ID number.\n- Name string: Name.\n- Address string: Address.\n- Type string: Identity document type.\n\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday string: Date of birth.\n- Address string: Address.\n- LastName string: Family name.\n- FirstName string: First name.\n- VIN string: VIN number.\n- CivilStatus string: Marital status.\n- Citizenship string: Citizenship.\n- PrecinctNo string: Region.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex string: Gender.\n- Birthday string: Date of birth.\n- Name string: Name.\n- Address string: Address.\n- LastName string: Family name.\n- FirstName string: First name.\n- MiddleName string: Middle name.\n- Nationality string: Nationality.\n- LicenseNo string: License number.\n- ExpiresDate string: Validity period.\n- AgencyCode string: Agency code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The OCR result (in JSON) of the identity document image. If authentication or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Chinese name.\n- EnName (string): English name.\n- TelexCode (string): The code corresponding to the Chinese name.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): ID number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): The date of first issuance.\n- CurrentIssueDate (string): The date of latest issuance.\n\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): ID number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Family name.\n- FirstName (string): First name.\n- VIN (string): VIN number.\n- CivilStatus (string): Marital status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Region.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Family name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Validity period.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Identity document No.\n- Nama (string): Name.\n- TempatTglLahir (string): Place/Date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Profession.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date of the identity document.\n- IssuedDate (string): Date of issuance.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
           "name": "CardInfoOcrJson",
@@ -299,7 +295,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The request ID of a single process.",
           "example": "c6df4b3d-d1aa-4d49-a676-d44baf379613",
           "member": "string",

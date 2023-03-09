@@ -26,8 +26,8 @@
     ],
     "CreateDBInstance": [
       {
-        "document": "This example shows you how to create a v4.0 instance. To create instances in other versions, please specify the version you need as instructed in the input parameter description.",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateDBInstance\n&Memory=4\n&Volume=250\n&GoodsNum=1\n&Zone=ap-guangzhou-2\n&VpcId=vpc-0akbol5v\n&SubnetId=subnet-fyrtjbqw\n&ProjectId=0\n&MongoVersion=MONGO_40_WT\n&MachineCode=HIO10G\n&NodeNum=3\n&Period=1\n&Password=pwd123456\n&ClusterType=REPLSET\n&ReplicateSetNum=1\n&<Common request parameters>",
+        "document": "This example shows you how to create a v4.0 instance. To create instances in other versions, specify the version you need as instructed in the input parameter description.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstance\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-0akbol5v\",\n    \"GoodsNum\": 1,\n    \"Zone\": \"ap-guangzhou-2\",\n    \"ProjectId\": \"0\",\n    \"MachineCode\": \"HIO10G\",\n    \"Period\": \"1\",\n    \"ClusterType\": \"REPLSET\",\n    \"Volume\": 250,\n    \"MongoVersion\": \"MONGO_40_WT\",\n    \"NodeNum\": \"3\",\n    \"ReplicateSetNum\": \"1\",\n    \"Memory\": \"4\",\n    \"SubnetId\": \"subnet-fyrtjbqw\",\n    \"Password\": \"pwd123456\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d88095e5-50e8-4245-a0cf-993a536f9b20\",\n        \"DealId\": \"7142863\",\n        \"InstanceIds\": [\n            \"cmgo-po5f899l\"\n        ]\n    }\n}",
         "title": "Creating a monthly subscribed TencentDB instance"
       }
@@ -46,14 +46,6 @@
         "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeAsyncRequestInfo\n&AsyncRequestId=4762\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e600a8d0-9014-11ea-84c1-01cccde830c6\",\n        \"Status\": \"success\"\n    }\n}",
         "title": "Querying async task status"
-      }
-    ],
-    "DescribeBackupAccess": [
-      {
-        "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeBackupAccess\r\n&InstanceId=cmgo-f0vrx2v9\r\n&BackupName=cmgo-f0vrx2v9_2019-09-02_04:49\r\n&<Common request parameters>",
-        "output": "{\r\n        \"Bucket\":\"cmongo-cd-backup\",\r\n        \"Files\":[\r\n            {\r\n                \"File\":\"cmongo_hotbackup/cmgo-f0vrx2v9_0/1567370984\",\r\n                \"ReplicaSetId\":\"cmgo-f0vrx2v9_0\"\r\n            }\r\n        ],\r\n        \"Region\":\"ap-chengdu\",\r\n        \"RequestId\":\"7e108f10-d228-11e9-b27e-9500754d2540\"\r\n}",
-        "title": "Getting the permission to download an instance backup"
       }
     ],
     "DescribeBackupDownloadTask": [
@@ -131,9 +123,9 @@
     "DescribeSpecInfo": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeSpecInfo\r\n&Region=ap-guangzhou\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpecInfo\n<Common request parameters>\n\n{\n    \"Zone\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a8c7ade4-2d22-4f5e-9e71-f546f15e6d67\",\n        \"SpecInfoList\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"SpecItems\": [\n                    {\n                        \"ClusterType\": 0,\n                        \"Conns\": 1500,\n                        \"Cpu\": 2,\n                        \"DefaultStorage\": 25600,\n                        \"EngineName\": \"WiredTiger\",\n                        \"MachineType\": \"HIO10G\",\n                        \"MaxNodeNum\": 3,\n                        \"MaxReplicateSetNodeNum\": 5,\n                        \"MaxReplicateSetNum\": 20,\n                        \"MaxStorage\": 512000,\n                        \"Memory\": 4096,\n                        \"MinNodeNum\": 3,\n                        \"MinReplicateSetNodeNum\": 3,\n                        \"MinReplicateSetNum\": 2,\n                        \"MinStorage\": 102400,\n                        \"MongoVersionCode\": \"MONGO_36_WT\",\n                        \"MongoVersionValue\": 4,\n                        \"Qps\": 5000,\n                        \"SpecCode\": \"mongo.HIO10G.4g\",\n                        \"Status\": 1,\n                        \"Version\": \"3.6\"\n                    },\n                    {\n                        \"ClusterType\": 0,\n                        \"Conns\": 1500,\n                        \"Cpu\": 2,\n                        \"DefaultStorage\": 25600,\n                        \"EngineName\": \"WiredTiger\",\n                        \"MachineType\": \"HIO10G\",\n                        \"MaxNodeNum\": 3,\n                        \"MaxReplicateSetNodeNum\": 5,\n                        \"MaxReplicateSetNum\": 20,\n                        \"MaxStorage\": 512000,\n                        \"Memory\": 4096,\n                        \"MinNodeNum\": 3,\n                        \"MinReplicateSetNodeNum\": 3,\n                        \"MinReplicateSetNum\": 2,\n                        \"MinStorage\": 102400,\n                        \"MongoVersionCode\": \"MONGO_3_WT\",\n                        \"MongoVersionValue\": 2,\n                        \"Qps\": 5000,\n                        \"SpecCode\": \"mongo.HIO10G.4g\",\n                        \"Status\": 1,\n                        \"Version\": \"3.2\"\n                    },\n                    {\n                        \"ClusterType\": 1,\n                        \"Conns\": 15000,\n                        \"Cpu\": 48,\n                        \"DefaultStorage\": 4096000,\n                        \"EngineName\": \"WiredTiger\",\n                        \"MachineType\": \"HIO10G\",\n                        \"MaxNodeNum\": 3,\n                        \"MaxReplicateSetNodeNum\": 5,\n                        \"MaxReplicateSetNum\": 20,\n                        \"MaxStorage\": 6144000,\n                        \"Memory\": 524288,\n                        \"MinNodeNum\": 3,\n                        \"MinReplicateSetNodeNum\": 3,\n                        \"MinReplicateSetNum\": 2,\n                        \"MinStorage\": 1536000,\n                        \"MongoVersionCode\": \"MONGO_36_WT\",\n                        \"MongoVersionValue\": 4,\n                        \"Qps\": 42000,\n                        \"SpecCode\": \"mongo.HIO10G.512g\",\n                        \"Status\": 1,\n                        \"Version\": \"3.6\"\n                    }\n                ],\n                \"Zone\": \"ap-guangzhou-3\"\n            }\n        ]\n    }\n}",
-        "title": "Querying purchasable TencentDB instances"
+        "title": "Querying a purchasable instance"
       }
     ],
     "FlushInstanceRouterConfig": [
@@ -147,7 +139,7 @@
     "InquirePriceCreateDBInstances": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceCreateDBInstances\n&Zone=ap-guangzhou-4\n&NodeNum=3\n&Memory=4\n&Volume=100\n&MongoVersion=MONGO_36_WT\n&MachineCode=HIO10G\n&GoodsNum=2\n&Period=1\n&ClusterType=REPLSET\n&ReplicateSetNum=1\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceCreateDBInstances\r\n&Zone=ap-guangzhou-4\r\n&NodeNum=3\r\n&Memory=4\r\n&Volume=100\r\n&MongoVersion=MONGO_36_WT\r\n&MachineCode=HIO10G\r\n&GoodsNum=2\r\n&Period=1\r\n&ClusterType=REPLSET\r\n&ReplicateSetNum=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"DiscountPrice\": 1340,\n            \"OriginalPrice\": 1340,\n            \"UnitPrice\": 670\n        },\n        \"RequestId\": \"fb8b4646-389d-44cc-ab8c-98c081cbdad3\"\n    }\n}",
         "title": "Querying purchase price of an instance"
       }

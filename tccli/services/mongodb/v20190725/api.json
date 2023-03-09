@@ -42,13 +42,6 @@
       "output": "DescribeAsyncRequestInfoResponse",
       "status": "online"
     },
-    "DescribeBackupAccess": {
-      "document": "备份下载功能已调整，此接口即将下线\n\nTencentDB will soon stop supporting this API as the backup download feature has been modified.\n\nThis API is used to get the permission to download a backup file. The detailed backup file information can be obtained through the `DescribeDBBackups` API.",
-      "input": "DescribeBackupAccessRequest",
-      "name": "Gets the permission to download an instance backup",
-      "output": "DescribeBackupAccessResponse",
-      "status": "offline"
-    },
     "DescribeBackupDownloadTask": {
       "document": "This API is used to query backup download task information.",
       "input": "DescribeBackupDownloadTaskRequest",
@@ -380,30 +373,6 @@
           "name": "Status",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "BackupFile": {
-      "document": "Storage information of a backup file",
-      "members": [
-        {
-          "default": "",
-          "document": "ID of the replica set/shard to which a backup file belongs",
-          "member": "string",
-          "name": "ReplicateSetId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Path to a backup file",
-          "member": "string",
-          "name": "File",
-          "required": true,
-          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -943,7 +912,7 @@
         {
           "default": "",
           "document": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).",
-          "example": "TGIO",
+          "example": "HIO10G",
           "member": "string",
           "name": "MachineCode",
           "required": true,
@@ -996,7 +965,7 @@
         },
         {
           "default": "",
-          "document": "Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of \"instance ID+@+root account UIN\". For example, if the instance ID is \"cmgo-higv73ed\" and the root account UIN \"100000001\", the instance password will be \"cmgo-higv73ed@100000001\".",
+          "document": "Instance password. If it is left empty, the password is in the default format of \"instance ID+@+root account UIN\". For example, if the instance ID is \"cmgo-higv73ed\" and the root account UIN \"100000001\", the instance password will be \"cmgo-higv73ed@100000001\". The custom password must contain 8-32 characters in at least two of the following types: letters, digits, and symbols (!@#%^*()_).",
           "example": "pwd123456",
           "member": "string",
           "name": "Password",
@@ -1110,6 +1079,33 @@
           "name": "MongosNodeNum",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of read-only nodes. Value range: 2-7.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ReadonlyNodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The AZ where the read-only node is deployed",
+          "example": "无",
+          "member": "string",
+          "name": "ReadonlyNodeAvailabilityZoneList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The AZ where the hidden node resides. It is required for cross-AZ instances.",
+          "example": "无",
+          "member": "string",
+          "name": "HiddenZone",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1221,61 +1217,6 @@
           "name": "Status",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBackupAccessRequest": {
-      "document": "DescribeBackupAccess request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Name of the backup file for which to get the download permission",
-          "member": "string",
-          "name": "BackupName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBackupAccessResponse": {
-      "document": "DescribeBackupAccess response structure.",
-      "members": [
-        {
-          "document": "Instance region",
-          "member": "string",
-          "name": "Region",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The bucket where a backup file is located",
-          "member": "string",
-          "name": "Bucket",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Storage information of a backup file",
-          "member": "BackupFile",
-          "name": "Files",
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -2096,7 +2037,7 @@
         },
         {
           "default": "",
-          "document": "The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.",
+          "document": "Number of primary and secondary nodes per shard. <br>Value range: It can be queried by the <a href=\"https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1\">DescribeSpecInfo</a> API, and the `MinNodeNum` and `MaxNodeNum` parameters are the minimal and maximum value respectively.</li></ul>",
           "example": "3",
           "member": "int64",
           "name": "NodeNum",
@@ -2114,7 +2055,7 @@
         },
         {
           "default": "",
-          "document": "Instance disk size in GB.",
+          "document": " Instance disk size. <ul><li>Unit: GB</li><li>Value range: It can be queried by the <a href=\"https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1\">DescribeSpecInfo</a> API, and `MinStorage` and `MaxStorage` parameters are the minimal and maximum value of the disk size respectively.</br>",
           "example": "100",
           "member": "int64",
           "name": "Volume",
@@ -2123,7 +2064,7 @@
         },
         {
           "default": "",
-          "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.",
+          "document": "Instance version information. <ul><li>For specific supported versions, query through the <a href=\"https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1\">DescribeSpecInfo</a> API, the returned parameter `MongoVersionCode` in data structure `SpecItems` is the supported version information. </li><li>The correspondences between parameters and versions are as follows <ul><li>MONGO_3_WT: MongoDB 3.2 WiredTiger storage engine version. </li><li>MONGO_3_ROCKS: MongoDB 3.2 RocksDB storage engine version. </li><li>MONGO_36_WT: MongoDB 3.6 WiredTiger storage engine version. </li><li>MONGO_40_WT: MongoDB 4.0 WiredTiger storage engine version. </li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger storage engine version. </li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger storage engine version. </li></ul>",
           "example": "MONGO_36_WT",
           "member": "string",
           "name": "MongoVersion",
@@ -2150,15 +2091,6 @@
         },
         {
           "default": "",
-          "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
-          "example": "1",
-          "member": "int64",
-          "name": "Period",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
           "document": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).",
           "example": "REPLSET",
           "member": "string",
@@ -2173,6 +2105,78 @@
           "member": "int64",
           "name": "ReplicateSetNum",
           "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "2",
+          "member": "uint64",
+          "name": "MongosCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "4",
+          "member": "uint64",
+          "name": "MongosMemory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "3",
+          "member": "uint64",
+          "name": "MongosNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "ConfigServerCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "2",
+          "member": "uint64",
+          "name": "ConfigServerMemory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "50",
+          "member": "uint64",
+          "name": "ConfigServerVolume",
+          "required": false,
           "type": "int"
         }
       ],
@@ -2336,8 +2340,8 @@
       "document": "Instance details",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
+          "example": "cmgo-7pjedvz7",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2345,8 +2349,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
+          "example": "test-instance",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -2354,8 +2358,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing type. Valid value: 0 (pay-as-you-go)",
+          "example": "1",
           "member": "uint64",
           "name": "PayMode",
           "required": true,
@@ -2363,8 +2367,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID",
+          "example": "无",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -2372,8 +2376,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance),",
+          "document": "Cluster type. Valid values: `0` (replica set instance), `1` (sharded instance).",
+          "example": "1",
           "member": "uint64",
           "name": "ClusterType",
           "required": true,
@@ -2381,8 +2385,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region information",
+          "example": "无",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -2390,8 +2394,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "AZ information",
+          "example": "无",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -2399,8 +2403,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Network type. Valid values: 0 (basic network), 1 (VPC)",
+          "example": "1",
           "member": "uint64",
           "name": "NetType",
           "required": true,
@@ -2408,8 +2412,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID",
+          "example": "vpc-0vjmgwtn",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -2417,8 +2421,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet ID of VPC",
+          "example": "subnet-emtfpj2o",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -2426,8 +2430,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (running), -2 (expired)",
+          "document": "Instance status. Valid values: `0` (to be initialized), `1` (in process), `2` (running), `-2` (expired).",
+          "example": "2",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2435,8 +2439,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance IP",
+          "example": "10.100.0.0",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -2444,8 +2448,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Port number",
+          "example": "27017",
           "member": "uint64",
           "name": "Vport",
           "required": true,
@@ -2453,8 +2457,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance creation time",
+          "example": "2010-07-25 18:00:00",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -2462,8 +2466,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance expiration time",
+          "example": "2010-07-25 20:00:00",
           "member": "datetime",
           "name": "DeadLine",
           "required": true,
@@ -2471,8 +2475,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance version information",
+          "example": "MONGO_42_WT",
           "member": "string",
           "name": "MongoVersion",
           "required": true,
@@ -2480,8 +2484,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance memory size in MB",
+          "example": "4",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -2489,8 +2493,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance disk size in MB",
+          "example": "120",
           "member": "uint64",
           "name": "Volume",
           "required": true,
@@ -2498,8 +2502,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of CPU cores of an instance",
+          "example": "2",
           "member": "uint64",
           "name": "CpuNum",
           "required": true,
@@ -2507,8 +2511,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance machine type",
+          "example": "HIO10G",
           "member": "string",
           "name": "MachineType",
           "required": true,
@@ -2516,8 +2520,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of secondary nodes of an instance",
+          "example": "2",
           "member": "uint64",
           "name": "SecondaryNum",
           "required": true,
@@ -2525,8 +2529,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of instance shards",
+          "example": "3",
           "member": "uint64",
           "name": "ReplicationSetNum",
           "required": true,
@@ -2534,8 +2538,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance auto-renewal flag. Valid values: 0 (manual renewal), 1 (auto-renewal), 2 (no renewal upon expiration)",
+          "document": "Instance auto-renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal), `2` (no renewal upon expiration)",
+          "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": true,
@@ -2543,8 +2547,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Used capacity in MB",
+          "example": "100",
           "member": "uint64",
           "name": "UsedVolume",
           "required": true,
@@ -2552,8 +2556,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Start time of the maintenance time window",
+          "document": "Start time of the maintenance time",
+          "example": "04:00:00",
           "member": "string",
           "name": "MaintenanceStart",
           "required": true,
@@ -2561,8 +2565,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "End time of the maintenance time window",
+          "document": "End time of the maintenance time",
+          "example": "05:00:00",
           "member": "string",
           "name": "MaintenanceEnd",
           "required": true,
@@ -2570,8 +2574,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard information",
+          "example": "无",
           "member": "ShardInfo",
           "name": "ReplicaSets",
           "required": true,
@@ -2579,8 +2583,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of read-only instances",
+          "example": "无",
           "member": "DBInstanceInfo",
           "name": "ReadonlyInstances",
           "required": true,
@@ -2588,8 +2592,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of disaster recovery instances",
+          "example": "无",
           "member": "DBInstanceInfo",
           "name": "StandbyInstances",
           "required": true,
@@ -2597,8 +2601,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of temp instances",
+          "example": "无",
           "member": "DBInstanceInfo",
           "name": "CloneInstances",
           "required": true,
@@ -2606,8 +2610,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its primary instance",
+          "document": "Information of associated instances. For a regular instance, this field represents the information of its temp instance; for a temp instance, this field represents the information of its regular instance; and for a read-only instance or a disaster recovery instance, this field represents the information of its primary instance.",
+          "example": "无",
           "member": "DBInstanceInfo",
           "name": "RelatedInstance",
           "required": true,
@@ -2615,8 +2619,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance tag information set",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": true,
@@ -2624,8 +2628,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance version tag",
+          "document": "Instance version",
+          "example": "4",
           "member": "uint64",
           "name": "InstanceVer",
           "required": true,
@@ -2633,8 +2637,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance version tag",
+          "document": "Instance version",
+          "example": "1",
           "member": "uint64",
           "name": "ClusterVer",
           "required": true,
@@ -2642,8 +2646,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Protocol information. Valid values: 1 (mongodb), 2 (dynamodb)",
+          "document": "Protocol information. Valid values: `1` (mongodb), `2` (dynamodb).",
+          "example": "0",
           "member": "uint64",
           "name": "Protocol",
           "required": true,
@@ -2651,8 +2655,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance type. Valid values: 1 (promoted instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)",
+          "example": "1",
           "member": "uint64",
           "name": "InstanceType",
           "required": true,
@@ -2660,8 +2664,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance status description",
+          "example": "运行中",
           "member": "string",
           "name": "InstanceStatusDesc",
           "required": true,
@@ -2669,13 +2673,85 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Physical instance ID. For an instance that has been rolled back and replaced, its InstanceId and RealInstanceId are different. The physical instance ID is needed in such scenarios as getting monitoring data from Barad",
+          "example": "cmgo-8go1o9xl",
           "member": "string",
           "name": "RealInstanceId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Number of mongos nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "uint64",
+          "name": "MongosNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "mongos node memory\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "MongosMemory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of mongos nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MongosCpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of ConfigServer nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "uint64",
+          "name": "ConfigServerNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Memory of ConfigServer node\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "ConfigServerMemory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Disk size of ConfigServer node\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "uint64",
+          "name": "ConfigServerVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "CPU number of ConfigServer node\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ConfigServerCpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of read-only nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "uint64",
+          "name": "ReadonlyNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4025,7 +4101,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     }
   },
   "version": "1.0"
