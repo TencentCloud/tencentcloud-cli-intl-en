@@ -147,6 +147,20 @@
       "output": "DescribeConsumerGroupResponse",
       "status": "online"
     },
+    "DescribeDatahubTopic": {
+      "document": "This API is used to get the DataHub topic attributes.",
+      "input": "DescribeDatahubTopicRequest",
+      "name": "Gets the DataHub topic attributes",
+      "output": "DescribeDatahubTopicResponse",
+      "status": "online"
+    },
+    "DescribeDatahubTopics": {
+      "document": "This API is used to query the DataHub topic list.",
+      "input": "DescribeDatahubTopicsRequest",
+      "name": "Queries the DataHub topic list",
+      "output": "DescribeDatahubTopicsResponse",
+      "status": "online"
+    },
     "DescribeGroup": {
       "document": "This API is used to enumerate consumer groups (simplified).",
       "input": "DescribeGroupRequest",
@@ -2024,6 +2038,82 @@
       ],
       "type": "object"
     },
+    "DatahubTopicDTO": {
+      "document": "DataHub topic",
+      "members": [
+        {
+          "default": "",
+          "document": "Name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "example": "xxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of partitions",
+          "example": "1",
+          "member": "uint64",
+          "name": "PartitionNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time",
+          "example": "3600000",
+          "member": "uint64",
+          "name": "RetentionMs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "xxx",
+          "member": "string",
+          "name": "Note",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status (`1`: In use; `2`: Deleting)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteAclRequest": {
       "document": "DeleteAcl request structure.",
       "members": [
@@ -2626,6 +2716,228 @@
       ],
       "type": "object"
     },
+    "DescribeDatahubTopicRequest": {
+      "document": "DescribeDatahubTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatahubTopicResp": {
+      "document": "DataHub topic details",
+      "members": [
+        {
+          "default": "",
+          "document": "Name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "example": "xxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of partitions",
+          "example": "1",
+          "member": "uint64",
+          "name": "PartitionNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time",
+          "example": "3600000",
+          "member": "uint64",
+          "name": "RetentionMs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Note",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password",
+          "example": "xxx",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status (`1`: In use; `2`: Deleting)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service routing address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeDatahubTopicResponse": {
+      "document": "DescribeDatahubTopic response structure.",
+      "members": [
+        {
+          "document": "Returned result object",
+          "example": "无",
+          "member": "DescribeDatahubTopicResp",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatahubTopicsRequest": {
+      "document": "DescribeDatahubTopics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Keyword for query",
+          "example": "xxx",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query offset, which defaults to `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of results to be returned in this request. Default value: `50`. Maximum value: `50`.",
+          "example": "50",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatahubTopicsResp": {
+      "document": "DataHub topic list",
+      "members": [
+        {
+          "default": "",
+          "document": "Total count",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "DatahubTopicDTO",
+          "name": "TopicList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeDatahubTopicsResponse": {
+      "document": "DescribeDatahubTopics response structure.",
+      "members": [
+        {
+          "document": "Topic list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "DescribeDatahubTopicsResp",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeGroup": {
       "document": "`DescribeGroup` response entity",
       "members": [
@@ -2928,6 +3240,14 @@
           "example": "[instance-will-s]",
           "member": "string",
           "name": "InstanceIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Filter instances by a set of tags",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagList",
           "required": false,
           "type": "list"
         }

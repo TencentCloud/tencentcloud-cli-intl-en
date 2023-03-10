@@ -14,6 +14,20 @@
       "output": "ConfigureSyncJobResponse",
       "status": "online"
     },
+    "ContinueMigrateJob": {
+      "document": "This API is used to resume a paused migration task.",
+      "input": "ContinueMigrateJobRequest",
+      "name": "Resumes a paused migration task",
+      "output": "ContinueMigrateJobResponse",
+      "status": "online"
+    },
+    "ContinueSyncJob": {
+      "document": "This API is used to resume a paused data sync task.",
+      "input": "ContinueSyncJobRequest",
+      "name": "Resumes a paused sync task",
+      "output": "ContinueSyncJobResponse",
+      "status": "online"
+    },
     "CreateCheckSyncJob": {
       "document": "This API is used to verify a sync task by checking required parameters and peripheral configuration.",
       "input": "CreateCheckSyncJobRequest",
@@ -173,6 +187,20 @@
       "input": "ModifyMigrationJobRequest",
       "name": "Configures a migration task",
       "output": "ModifyMigrationJobResponse",
+      "status": "online"
+    },
+    "PauseMigrateJob": {
+      "document": "This API is used to pause a migration task.",
+      "input": "PauseMigrateJobRequest",
+      "name": "Pauses a migration task",
+      "output": "PauseMigrateJobResponse",
+      "status": "online"
+    },
+    "PauseSyncJob": {
+      "document": "This API is used to pause a data sync task.",
+      "input": "PauseSyncJobRequest",
+      "name": "Pauses a data sync task",
+      "output": "PauseSyncJobResponse",
       "status": "online"
     },
     "RecoverMigrateJob": {
@@ -390,6 +418,26 @@
       "members": [
         {
           "default": "",
+          "document": "Configuration parameters of the check task\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CompareOptions",
+          "name": "Options",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Consistency check objects\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CompareObject",
+          "name": "Objects",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Comparison conclusion. Valid values: `same`, `different`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -450,12 +498,62 @@
         },
         {
           "default": "",
+          "document": "The estimated number of tables\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "NearlyTableCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Number of inconsistent data rows\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "DifferentRows",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Source database row count, which takes effect only when the comparison type is **Row count comparison**.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SrcSampleRows",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Target database row count, which takes effect only when the comparison type is **Row count comparison**.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "DstSampleRows",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "StartedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FinishedAt",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -492,7 +590,7 @@
       "members": [
         {
           "default": "",
-          "document": "Object migration mode. Valid values: `all`, `partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Data comparison object mode (`all`: Entire instance; `partial`: Some objects)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "all",
           "member": "string",
           "name": "ObjectMode",
@@ -502,10 +600,20 @@
         },
         {
           "default": "",
-          "document": "Migration database/table configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Object list\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CompareObjectItem",
           "name": "ObjectItems",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Advanced object type (`account`: Account; `index`: Index; `shardkey`: Shard key, which may be adjusted later; `schema`: Database/table structure)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "account",
+          "member": "string",
+          "name": "AdvancedObjects",
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -518,7 +626,7 @@
       "members": [
         {
           "default": "",
-          "document": "The database to be migrated\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Database name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "db1",
           "member": "string",
           "name": "DbName",
@@ -538,7 +646,7 @@
         },
         {
           "default": "",
-          "document": "The schema to be migrated\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Schema name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "schema1",
           "member": "string",
           "name": "SchemaName",
@@ -584,6 +692,42 @@
           "name": "Views",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CompareOptions": {
+      "document": "Consistency check options",
+      "members": [
+        {
+          "default": "",
+          "document": "Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "dataCheck",
+          "member": "string",
+          "name": "Method",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sampling rate. Value range: 0-100%.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "SampleRate",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of threads, which defaults to 1. Value range: 1-5.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ThreadCount",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -636,7 +780,7 @@
       "members": [
         {
           "default": "",
-          "document": "Migration task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "dts-e7ukka6g",
           "member": "string",
           "name": "JobId",
@@ -743,6 +887,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "dataCheck",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration information of the comparison task\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CompareOptions",
+          "name": "Options",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Consistency check prompt message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -803,7 +977,6 @@
       "document": "ConfigureSyncJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.",
           "example": "sync-werwfs23",
           "member": "string",
@@ -812,8 +985,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `noProxy`. Note that the valid values are subject to the current link.",
+          "document": "Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet). Note that the valid values are subject to the current link.",
           "example": "cdb",
           "member": "string",
           "name": "SrcAccessType",
@@ -821,8 +993,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `noProxy`. Note that the valid values are subject to the current link.",
+          "document": "Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `ckafka` (CKafka instance). Note that the valid values are subject to the current link.",
           "example": "extranet",
           "member": "string",
           "name": "DstAccessType",
@@ -830,16 +1001,6 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Sync task options",
-          "example": "无",
-          "member": "Options",
-          "name": "Options",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
           "document": "Information of synced database/table objects",
           "example": "无",
           "member": "Objects",
@@ -848,7 +1009,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Sync task name",
           "example": "test",
           "member": "string",
@@ -857,7 +1017,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Enumerated values: `liteMode`: Lite mode; `fullMode`: Standard mode",
           "example": "fullMode",
           "member": "string",
@@ -866,7 +1025,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.",
           "example": "Immediate",
           "member": "string",
@@ -875,7 +1033,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Expected start time in the format of \"2006-01-02 15:04:05\", which is required if `RunMode` is `Timed`.",
           "example": "2022-12-06 00:00:00",
           "member": "string",
@@ -884,8 +1041,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Source database information. This parameter is used by single-node databases.",
+          "document": "Source database information. This parameter only applies to single-node databases, and `SrcNodeType` must be `single`.",
           "example": "无",
           "member": "Endpoint",
           "name": "SrcInfo",
@@ -893,7 +1049,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Target database information. This parameter is used by single-node databases.",
           "example": "无",
           "member": "Endpoint",
@@ -902,7 +1057,14 @@
           "type": "object"
         },
         {
-          "default": "",
+          "document": "Sync task options",
+          "example": "无",
+          "member": "Options",
+          "name": "Options",
+          "required": false,
+          "type": "object"
+        },
+        {
           "document": "Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.",
           "example": "5",
           "member": "int64",
@@ -977,6 +1139,58 @@
       ],
       "usage": "both"
     },
+    "ContinueMigrateJobRequest": {
+      "document": "ContinueMigrateJob request structure.",
+      "members": [
+        {
+          "document": "Data migration task ID",
+          "example": "dts-xxxxxxxx",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ContinueMigrateJobResponse": {
+      "document": "ContinueMigrateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ContinueSyncJobRequest": {
+      "document": "ContinueSyncJob request structure.",
+      "members": [
+        {
+          "document": "Sync task ID",
+          "example": "sync-xxxxxx",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ContinueSyncJobResponse": {
+      "document": "ContinueSyncJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateCheckSyncJobRequest": {
       "document": "CreateCheckSyncJob request structure.",
       "members": [
@@ -1009,7 +1223,7 @@
       "members": [
         {
           "default": "",
-          "document": "Migration task ID",
+          "document": "Task ID",
           "example": "dts-p1sposne",
           "member": "string",
           "name": "JobId",
@@ -1040,6 +1254,15 @@
           "example": "无",
           "member": "CompareObject",
           "name": "Objects",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Consistency check options",
+          "example": "无",
+          "member": "CompareOptions",
+          "name": "Options",
           "required": false,
           "type": "object"
         }
@@ -2317,6 +2540,24 @@
           "name": "Offset",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Check task ID",
+          "example": "dts-5ftw8366-compare-n0pee6pc",
+          "member": "string",
+          "name": "CompareTaskId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.",
+          "example": "[\"running\"]",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3338,7 +3579,6 @@
       "document": "Information of the source and target databases in data sync",
       "members": [
         {
-          "default": "",
           "document": "Region name, such as `ap-guangzhou`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
@@ -3348,7 +3588,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node type of TDSQL for MySQL. Enumerated values: `proxy`, `set`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "proxy",
           "member": "string",
@@ -3358,7 +3597,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database kernel type, which is used to distinguish between different kernels in TDSQL. Valid values: `percona`, `mariadb`, `mysql`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "mariadb",
           "member": "string",
@@ -3368,7 +3606,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database instance ID in the format of `cdb-powiqx8q`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cdb-wew23ed",
           "member": "string",
@@ -3378,7 +3615,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance IP address, which is required if the access type is not `cdb`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "192.168.1.12",
           "member": "string",
@@ -3388,7 +3624,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance port, which is required if the access type is not `cdb`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "3306",
           "member": "uint64",
@@ -3398,7 +3633,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Username, which is required for an instance authenticated by username and password.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "user",
           "member": "string",
@@ -3408,7 +3642,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Password, which is required for an instance authenticated by username and password.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1234",
           "member": "string",
@@ -3418,7 +3651,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database name, which is required if the database type is `cdwpg`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "postgress",
           "member": "string",
@@ -3428,7 +3660,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpc-23rwfdg",
           "member": "string",
@@ -3438,7 +3669,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subnet-tke9sfg",
           "member": "string",
@@ -3448,7 +3678,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ins-9emwf2d",
           "member": "string",
@@ -3458,7 +3687,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "dcg-9sdfksk",
           "member": "string",
@@ -3468,7 +3696,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpngw-3dsfwf2",
           "member": "string",
@@ -3478,7 +3705,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CCN instance ID in the format of `ccn-afp6kltc`, which is required if the access type is `ccn`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ccn-afp6kltc",
           "member": "string",
@@ -3488,7 +3714,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cloud vendor type. For Alibaba Cloud ApsaraDB for RDS instances, enter `aliyun`; otherwise, enter `others`. Default value: `others`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "aliyun",
           "member": "string",
@@ -3498,7 +3723,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5.6",
           "member": "string",
@@ -3508,7 +3732,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance account, which is required if the operation is performed across accounts.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3518,7 +3741,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "other",
           "member": "string",
@@ -3528,7 +3750,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The role used for cross-account sync, which can contain [a-zA-Z0-9\\-\\_]+ and is required if the operation is performed across accounts.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "dts test_role",
           "member": "string",
@@ -3538,7 +3759,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "External role ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3548,7 +3768,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the temporary key, which is required if the operation is performed across accounts.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3558,7 +3777,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Key of the temporary key, which is required if the operation is performed across accounts.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3568,7 +3786,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Temporary token, which is required if the operation is performed across accounts.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3578,11 +3795,19 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "UnEncrypted",
           "member": "string",
           "name": "EncryptConn",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TencentVPC",
+          "member": "string",
+          "name": "DatabaseNetEnv",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4176,7 +4401,7 @@
       "members": [
         {
           "default": "",
-          "document": "Migration task ID",
+          "document": "Task ID",
           "example": "无",
           "member": "string",
           "name": "JobId",
@@ -4203,7 +4428,7 @@
         },
         {
           "default": "",
-          "document": "Data comparison object mode. Valid values: `sameAsMigrate` (all migration objects); `custom` (custom mode). Default value: `sameAsMigrate`.",
+          "document": "Data comparison object mode. Valid values: `sameAsMigrate` (All migration objects), `custom` (Custom mode. The custom comparison objects must be a subset of the migration objects). Default value: `sameAsMigrate`.",
           "example": "无",
           "member": "string",
           "name": "ObjectMode",
@@ -4216,6 +4441,15 @@
           "example": "无",
           "member": "CompareObject",
           "name": "Objects",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Consistency check options",
+          "example": "无",
+          "member": "CompareOptions",
+          "name": "Options",
           "required": false,
           "type": "object"
         }
@@ -4409,9 +4643,8 @@
       "document": "Description of synced database objects",
       "members": [
         {
-          "default": "",
           "document": "Migration object type, such as `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "Partial",
           "member": "string",
           "name": "Mode",
           "required": false,
@@ -4419,7 +4652,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Sync object, which is required if `Mode` is `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Database",
@@ -4429,7 +4661,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Advanced object type, such as function and procedure. If you need to sync advanced objects, the initialization type must include structure initialization; that is, `Options.InitType` must be `Structure` or `Full`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4439,8 +4670,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "",
+          "document": "A redundant field that specifies the online DDL type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OnlineDDL",
           "name": "OnlineDDL",
@@ -4453,7 +4683,17 @@
     },
     "OnlineDDL": {
       "document": "Online DDL type",
-      "members": [],
+      "members": [
+        {
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
       "usage": "out"
     },
     "Options": {
@@ -4531,6 +4771,60 @@
         }
       ],
       "usage": "both"
+    },
+    "PauseMigrateJobRequest": {
+      "document": "PauseMigrateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "example": "dts-xxxxxxxx",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PauseMigrateJobResponse": {
+      "document": "PauseMigrateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PauseSyncJobRequest": {
+      "document": "PauseSyncJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sync task ID",
+          "example": "sync-xxxxxx",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PauseSyncJobResponse": {
+      "document": "PauseSyncJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ProcessProgress": {
       "document": "Task step information",
@@ -4728,7 +5022,6 @@
       "document": "ResumeMigrateJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "example": "dts-1kl0iy0v",
           "member": "string",
@@ -4737,8 +5030,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Task resumption mode. Valid values: `clearData` (clear the target instance data); `overwrite` (execute the task in overwrite mode); `normal` (follow the normal process without performing additional operations).",
+          "document": "Task resumption mode. Valid values: `clearData` (Clearing the target instance data); `overwrite` (Executing the task in overwrite mode); `normal` (Following the normal process without additional operations). `clearData` and `overwrite` are only valid for Redis links and `normal` for non-Redis links.",
           "example": "overwrite ",
           "member": "string",
           "name": "ResumeOption",
@@ -4833,7 +5125,7 @@
           "type": "list"
         },
         {
-          "document": "",
+          "document": "When the check fails due to foreign key dependency, you can use this field to specify whether to migrate the foreign key dependency. The foreign key dependency won’t be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `shield`, and will be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `migrate`.",
           "example": "shield",
           "member": "string",
           "name": "ForeignKeyFlag",
@@ -4847,7 +5139,7 @@
       "document": "SkipCheckItem response structure.",
       "members": [
         {
-          "document": "",
+          "document": "Message prompted for skipping the check item\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "skip item successfully",
           "member": "string",
           "name": "Message",
@@ -5383,7 +5675,6 @@
       "document": "Step information of the sync task",
       "members": [
         {
-          "default": "",
           "document": "Total number of steps\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -5393,7 +5684,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Current step\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -5403,7 +5693,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Overall progress\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -5413,7 +5702,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Progress of the current step\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -5423,7 +5711,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Data volume difference between the sync source and target\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -5433,7 +5720,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Time difference between the sync source and target\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -5443,7 +5729,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Overall description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -5453,13 +5738,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Step details\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "StepInfo",
           "name": "StepInfos",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cause of the failure of initiating data consistency check\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CauseOfCompareDisable",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -5775,7 +6068,6 @@
       "document": "Synced table description",
       "members": [
         {
-          "default": "",
           "document": "Table name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -5785,7 +6077,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "New table name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -5795,11 +6086,28 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Filter condition\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "FilterCondition",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The temp tables to be synced. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured sync objects are table-level ones and `TableEditMode` is `pt`. To sync temp tables generated when pt-osc or other tools are used during the sync process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named \"t1\", configure this parameter as [\"\\_t1\\_new\",\"\\_t1\\_old\"]; to perform the gh-ost operation on t1, configure it as [\"\\_t1\\_ghc\",\"\\_t1\\_gho\",\"\\_t1\\_del\"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"_t1_old\",_t1_new\"]",
+          "member": "string",
+          "name": "TmpTables",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "pt",
+          "member": "string",
+          "name": "TableEditMode",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -5811,7 +6119,6 @@
       "document": "The set of table objects, which is required if `TableMode` is `partial`.",
       "members": [
         {
-          "default": "",
           "document": "Name of the migrated table, which is case-sensitive\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "t1",
           "member": "string",
@@ -5821,8 +6128,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Name of the table after migration, which is required if `TableEditMode` is `rename`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "New name of the migrated table. This parameter is required when `TableEditMode` is `rename`. It is mutually exclusive with `TmpTables`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "t1_new",
           "member": "string",
           "name": "NewTableName",
@@ -5831,8 +6137,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Temp table to be migrated, which is required if `TableEditMode` is `pt`. To sync temp tables that may be generated during migration by tools such as pt-online-schema-change, you can use this parameter to configure the temp table names.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The temp tables to be migrated. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured migration objects are table-level ones and `TableEditMode` is `pt`. To migrate temp tables generated when pt-osc or other tools are used during the migration process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named \"t1\", configure this parameter as [\"_t1_new\",\"_t1_old\"]; to perform the gh-ost operation on t1, configure it as [\"_t1_ghc\",\"_t1_gho\",\"_t1_del\"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"_t1_old\",_t1_new\"]",
           "member": "string",
           "name": "TmpTables",
@@ -5841,7 +6146,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "rename",
           "member": "string",
