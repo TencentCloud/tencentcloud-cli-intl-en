@@ -234,7 +234,7 @@
     "DescribeBizTrend": {
       "document": "This API is used to get the traffic flow data collected in the specified period.",
       "input": "DescribeBizTrendRequest",
-      "name": "Gets the traffic flow data collected in the specified period",
+      "name": "Queries the time series traffic data of an Anti-DDoS Advanced instance",
       "output": "DescribeBizTrendResponse",
       "status": "online"
     },
@@ -1204,6 +1204,15 @@
           "member": "uint64",
           "name": "ElasticServiceBandwidth",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bandwidth quota given away by Tencent Cloud",
+          "example": "50",
+          "member": "int64",
+          "name": "GiftServiceBandWidth",
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -7301,6 +7310,16 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration status of the passive health check. Values: `0` (Normal), `1` (configuration in progress) and `2` (configuration failed).",
+          "example": "无",
+          "member": "uint64",
+          "name": "PassiveStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -7375,7 +7394,6 @@
       "document": "Layer-7 forwarding rule",
       "members": [
         {
-          "default": "",
           "document": "Domain name",
           "example": "www.baidu.com",
           "member": "string",
@@ -7385,7 +7403,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of forwarding types",
           "example": "1",
           "member": "ProxyTypeInfo",
@@ -7395,7 +7412,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of real servers",
           "example": "1.1.1.1",
           "member": "SourceServer",
@@ -7405,7 +7421,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of the Anti-DDoS instance",
           "example": "xxx",
           "member": "InstanceRelation",
@@ -7415,13 +7430,30 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of the Anti-DDoS instance configured",
           "example": "xxx",
           "member": "RuleInstanceRelation",
           "name": "InstanceDetailRule",
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Protocol",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Port number",
+          "example": "无",
+          "member": "int64",
+          "name": "Vport",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -8923,8 +8955,8 @@
       "document": "Real server details",
       "members": [
         {
-          "default": "",
           "document": "Types of the real server address, such as IP or domain name.",
+          "example": "无",
           "member": "string",
           "name": "RealServer",
           "required": true,
@@ -8932,8 +8964,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Types of the real server address:\n`1`: domain name\n`2`: IP\n]",
+          "example": "无",
           "member": "int64",
           "name": "RsType",
           "required": true,
@@ -8941,11 +8973,20 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Forward weight of the real server. Value range: 1–100.",
+          "example": "无",
           "member": "int64",
           "name": "Weight",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Port number. Value range: 0-65535.",
+          "example": "无",
+          "member": "int64",
+          "name": "Port",
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
