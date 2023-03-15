@@ -667,7 +667,6 @@
       "document": "Image information.",
       "members": [
         {
-          "default": "",
           "document": "Image ID, which is the unique identifier of `Blueprint`.",
           "example": "lhbp-5exe07sc",
           "member": "string",
@@ -677,7 +676,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image title to be displayed.",
           "example": "Discuz! Q",
           "member": "string",
@@ -687,7 +685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image version to be displayed.",
           "example": "1.0.0",
           "member": "string",
@@ -697,17 +694,15 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Image description information.",
+          "document": "Image description information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "discuzq",
           "member": "string",
           "name": "Description",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "OS name.",
           "example": "CentOS 7.6 64bit",
           "member": "string",
@@ -717,7 +712,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "OS type.",
           "example": "CENTOS",
           "member": "string",
@@ -727,7 +721,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "OS type, such as LINUX_UNIX and WINDOWS.",
           "example": "LINUX_UNIX",
           "member": "string",
@@ -737,7 +730,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image type, such as APP_OS, PURE_OS, and PRIVATE.",
           "example": "APP_OS",
           "member": "string",
@@ -747,7 +739,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image picture URL.",
           "example": "无",
           "member": "string",
@@ -757,7 +748,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "System disk size required by image in GB.",
           "example": "20",
           "member": "int64",
@@ -767,7 +757,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image status.",
           "example": "NORMAL",
           "member": "string",
@@ -777,7 +766,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-02T09:16:16Z",
           "member": "datetime_iso",
@@ -787,7 +775,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image name.",
           "example": "discuzq",
           "member": "string",
@@ -797,7 +784,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the image supports automation tools.",
           "example": "true",
           "member": "bool",
@@ -807,7 +793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory size required by image in GB.",
           "example": "1",
           "member": "int64",
@@ -817,7 +802,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the Lighthouse image shared from a CVM image\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "img-cs2rrmp0",
           "member": "string",
@@ -827,7 +811,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "URL of official website of the open-source project",
           "example": "\"\"",
           "member": "string",
@@ -837,7 +820,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Guide documentation URL",
           "example": "\"\"",
           "member": "string",
@@ -847,13 +829,21 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Array of IDs of scenes associated with an image\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"lhsc-123456\"]",
           "member": "string",
           "name": "SceneIdSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Docker version.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "20.10.5",
+          "member": "string",
+          "name": "DockerVersion",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -1833,7 +1823,7 @@
           "type": "int"
         },
         {
-          "document": "Filter list\n<li>blueprint-id</li>Filter by the **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by the **image type**.\nValid values: `APP_OS` (application image); `PURE_OS` (system image); `PRIVATE` (custom image) and `SHARED` (shared image)\nType: String\nRequired: no\n<li>platform-type</li>Filter by the **image operating system**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by the **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by the **image status**.\nType: String\nRequired: no\n<li>scene-id</li>Filter by the **scene ID**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters`, each of which can contain up to 00 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
+          "document": "Filter list.\n<li>blueprint-id</li>Filter by the **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by the **image type**.\nValid values: `APP_OS` (application image), `PURE_OS` (system image), `DOCKER` (Docker container image), `PRIVATE` (custom image), `SHARED` (shared image)\nType: String\nRequired: no\n<li>platform-type</li>Filter by the **image operating system**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by the **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by the **image status**.\nType: String\nRequired: no\n<li>scene-id</li>Filter by the **scene ID**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters`, each of which can contain up to 100 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
           "example": " [         {             \"Name\": \"blueprint-type\",             \"",
           "member": "Filter",
           "name": "Filters",
@@ -3486,7 +3476,6 @@
       "document": "Disk information",
       "members": [
         {
-          "default": "",
           "document": "Disk ID",
           "example": "lhdisk-p1zflrif",
           "member": "string",
@@ -3496,7 +3485,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID",
           "example": "lhins-anxwfvxh",
           "member": "string",
@@ -3506,7 +3494,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Availability zone",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -3516,7 +3503,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk name",
           "example": "disk-name",
           "member": "string",
@@ -3526,7 +3512,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk type",
           "example": "DATA_DISK",
           "member": "string",
@@ -3536,7 +3521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk media type",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -3546,7 +3530,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk payment type",
           "example": "PREPAID",
           "member": "string",
@@ -3556,7 +3539,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk size",
           "example": "20",
           "member": "int64",
@@ -3566,7 +3548,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Renewal flag",
           "example": "NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
@@ -3576,7 +3557,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk status. Values: \n<li>`PENDING`: Creating</li>\n<li>`UNATTACHED`: Not attached</li>\n<li>`ATTACHING`: Attaching</li>\n<li>`ATTACHED`: Attached</li>\n<li>`DETACHING`: Detaching</li>\n<li>`SHUTDOWN`: Isolated</li>\n<li>`CREATED_FAILED`: Failed to create</li>\n<li>`TERMINATING`: Terminating</li>\n<li>`DELETING`: Deleting</li>\n<li>`FREEZING`: Freezing</li>",
           "example": "UNATTACHED",
           "member": "string",
@@ -3586,7 +3566,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the disk is attached to an instance",
           "example": "False",
           "member": "bool",
@@ -3596,7 +3575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to release the disk along with the instance",
           "example": "False",
           "member": "bool",
@@ -3606,7 +3584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last operation",
           "example": "CreateDisks",
           "member": "string",
@@ -3616,7 +3593,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last operation status",
           "example": "SUCCESS",
           "member": "string",
@@ -3626,7 +3602,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last request ID",
           "example": "b786faac-d27b-4f70-a52e-3ae725e0f639",
           "member": "string",
@@ -3636,17 +3611,15 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.",
+          "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-08-25T08:50:57Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-08-25T08:50:57Z",
           "member": "datetime_iso",
@@ -3656,7 +3629,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Isolation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-08-25T08:50:57Z",
           "member": "datetime_iso",
@@ -3666,7 +3638,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Total disk backups",
           "example": "1",
           "member": "int64",
@@ -3676,7 +3647,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk backup quota",
           "example": "1",
           "member": "int64",
@@ -4394,7 +4364,6 @@
       "document": "InquirePriceCreateInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance package ID.",
           "example": "bundle_ntp_small1_500",
           "member": "string",
@@ -4403,7 +4372,14 @@
           "type": "string"
         },
         {
-          "default": "",
+          "document": "Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": true,
+          "type": "object"
+        },
+        {
           "document": "Number of instances to be created. Default value: 1.",
           "example": "2",
           "member": "int64",
@@ -4412,16 +4388,6 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.",
-          "example": "无",
-          "member": "InstanceChargePrepaid",
-          "name": "InstanceChargePrepaid",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
           "document": "Application image ID, which is required if a paid application image is used and can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
           "example": "lhbp-aaaabbbb",
           "member": "string",
@@ -4510,11 +4476,11 @@
           "type": "list"
         },
         {
-          "document": "Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.",
+          "document": "Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.",
           "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
-          "required": false,
+          "required": true,
           "type": "object"
         },
         {
@@ -5989,7 +5955,6 @@
       "document": "Snapshot information.",
       "members": [
         {
-          "default": "",
           "document": "Snapshot ID.",
           "example": "无",
           "member": "string",
@@ -5999,7 +5964,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type of the disk for which the snapshot is created. Valid values: <li>SYSTEM_DISK: system disk</li>",
           "example": "无",
           "member": "string",
@@ -6009,7 +5973,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the disk for which the snapshot is created.",
           "example": "无",
           "member": "string",
@@ -6019,7 +5982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Size of the disk in GB for which the snapshot is created.",
           "example": "无",
           "member": "int64",
@@ -6029,7 +5991,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Snapshot name, which is a custom snapshot alias.",
           "example": "无",
           "member": "string",
@@ -6039,7 +6000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Snapshot status. Valid values:\n<li>NORMAL: normal </li>\n<li>CREATING: creating</li>\n<li>ROLLBACKING: rolling back</li>",
           "example": "无",
           "member": "string",
@@ -6049,7 +6009,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Snapshot creation or rollback progress in percentage. After success, the value of this field will become 100.",
           "example": "无",
           "member": "int64",
@@ -6059,7 +6018,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last snapshot operation. It is recorded only during snapshot creation and rollback.\nExample values: CreateInstanceSnapshot, RollbackInstanceSnapshot.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -6069,7 +6027,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last snapshot operation status. It is recorded only during snapshot creation and rollback.\nValid values:\n<li>SUCCESS: operation succeeded</li>\n<li>OPERATING: the operation is being executed</li>\n<li>FAILED: operation failed</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -6079,7 +6036,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Unique request ID for the last snapshot operation. It is recorded only during snapshot creation and rollback.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -6089,14 +6045,13 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Snapshot creation time.",
+          "document": "Snapshot creation time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

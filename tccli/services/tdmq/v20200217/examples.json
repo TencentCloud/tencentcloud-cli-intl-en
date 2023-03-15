@@ -420,9 +420,17 @@
         "title": "Getting the topic list"
       }
     ],
-    "DescribeRocketMQVipInstances": [
+    "DescribeRocketMQVipInstanceDetail": [
       {
         "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQVipInstanceDetail\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-rd3545bkkj49\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c6d158b6-89b2-40d1-b1f6-5973f0f00cd5\",\n        \"ClusterInfo\": {\n            \"ClusterId\": \"rocketmq-rd3545bkkj49\",\n            \"ClusterName\": \"test-example\",\n            \"Region\": \"ap-beijing\",\n            \"CreateTime\": 1620321019000,\n            \"SupportNamespaceEndpoint\": true,\n            \"Remark\": \"modified\",\n            \"PublicEndPoint\": \"pulsar://xxxxx.com:6650\",\n            \"Vpcs\": [\n                {\n                    \"SubnetId\": \"xx\",\n                    \"VpcId\": \"xx\"\n                }\n            ],\n            \"IsVip\": true,\n            \"RocketMQFlag\": true,\n            \"VpcEndPoint\": \"pulsar://xxxxx.com:6650\"\n        },\n        \"InstanceConfig\": {\n            \"MaxTpsPerNamespace\": 8000,\n            \"UsedNamespaceNum\": 1,\n            \"MaxTopicNum\": 1000,\n            \"UsedTopicNum\": 2,\n            \"MaxGroupNum\": 10000,\n            \"UsedGroupNum\": 1,\n            \"MaxNamespaceNum\": 10,\n            \"ConfigDisplay\": \"xx\",\n            \"NodeCount\": 2,\n            \"NodeDistribution\": [],\n            \"TopicDistribution\": []\n        }\n    }\n}",
+        "title": "huo"
+      }
+    ],
+    "DescribeRocketMQVipInstances": [
+      {
+        "document": "获取实例列表",
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQVipInstances\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"xx\"\n            ],\n            \"Name\": \"xx\"\n        }\n    ],\n    \"Offset\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Instances\": [\n            {\n                \"Status\": 1,\n                \"PayMode\": 1,\n                \"Remark\": \"xx\",\n                \"AutoRenewFlag\": 1,\n                \"InstanceId\": \"xx\",\n                \"NodeCount\": 1,\n                \"ExpireTime\": 1,\n                \"InstanceVersion\": \"xx\",\n                \"MaxStorage\": 1,\n                \"MaxBandWidth\": 1,\n                \"SpecName\": \"xx\",\n                \"ConfigDisplay\": \"xx\",\n                \"InstanceName\": \"xx\",\n                \"MaxTps\": 1\n            }\n        ]\n    }\n}",
         "title": "Getting the instance list"

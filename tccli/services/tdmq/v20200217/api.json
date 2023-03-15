@@ -357,6 +357,13 @@
       "output": "DescribeRocketMQTopicsResponse",
       "status": "online"
     },
+    "DescribeRocketMQVipInstanceDetail": {
+      "document": "This API is used to get the information of a specific TDMQ for RocketMQ exclusive cluster.",
+      "input": "DescribeRocketMQVipInstanceDetailRequest",
+      "name": "Gets the information of a specific TDMQ for RocketMQ exclusive cluster",
+      "output": "DescribeRocketMQVipInstanceDetailResponse",
+      "status": "online"
+    },
     "DescribeRocketMQVipInstances": {
       "document": "This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.",
       "input": "DescribeRocketMQVipInstancesRequest",
@@ -5111,6 +5118,51 @@
       ],
       "type": "object"
     },
+    "DescribeRocketMQVipInstanceDetailRequest": {
+      "document": "DescribeRocketMQVipInstanceDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "rocketmq-xxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRocketMQVipInstanceDetailResponse": {
+      "document": "DescribeRocketMQVipInstanceDetail response structure.",
+      "members": [
+        {
+          "document": "Cluster information",
+          "example": "无",
+          "member": "RocketMQClusterInfo",
+          "name": "ClusterInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster configuration",
+          "example": "无",
+          "member": "RocketMQInstanceConfig",
+          "name": "InstanceConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRocketMQVipInstancesRequest": {
       "document": "DescribeRocketMQVipInstances request structure.",
       "members": [
@@ -5689,6 +5741,42 @@
         }
       ],
       "usage": "in"
+    },
+    "InstanceNodeDistribution": {
+      "document": "Information of instance node distribution",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "example": "100001",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of nodes",
+          "example": "2",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ModifyClusterRequest": {
       "document": "ModifyCluster request structure.",
@@ -7883,6 +7971,120 @@
       ],
       "usage": "out"
     },
+    "RocketMQInstanceConfig": {
+      "document": "Instance configurations of a TDMQ for RocketMQ exclusive cluster",
+      "members": [
+        {
+          "document": "Maximum TPS per namespace",
+          "example": "8000",
+          "member": "uint64",
+          "name": "MaxTpsPerNamespace",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum number of namespaces",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxNamespaceNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of used namespaces",
+          "example": "3",
+          "member": "uint64",
+          "name": "UsedNamespaceNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum number of topics",
+          "example": "1000",
+          "member": "uint64",
+          "name": "MaxTopicNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of used topics",
+          "example": "8",
+          "member": "uint64",
+          "name": "UsedTopicNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum number of groups",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxGroupNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of used groups",
+          "example": "10",
+          "member": "uint64",
+          "name": "UsedGroupNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster type",
+          "example": "标准版",
+          "member": "string",
+          "name": "ConfigDisplay",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of nodes in the cluster",
+          "example": "2",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Node distribution",
+          "example": "无",
+          "member": "InstanceNodeDistribution",
+          "name": "NodeDistribution",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Topic distribution",
+          "example": "无",
+          "member": "RocketMQTopicDistribution",
+          "name": "TopicDistribution",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "16",
+          "member": "uint64",
+          "name": "MaxQueuesPerTopic",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RocketMQNamespace": {
       "document": "RocketMQ namespace information",
       "members": [
@@ -8011,6 +8213,32 @@
           "example": "100000",
           "member": "uint64",
           "name": "UpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RocketMQTopicDistribution": {
+      "document": "TDMQ for RocketMQ topic distribution",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic type",
+          "example": "Normal",
+          "member": "string",
+          "name": "TopicType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of topics",
+          "example": "10",
+          "member": "uint64",
+          "name": "Count",
           "required": true,
           "type": "int",
           "value_allowed_null": false

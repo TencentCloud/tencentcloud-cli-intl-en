@@ -136,7 +136,7 @@
   },
   "metadata": {
     "apiVersion": "2020-10-28",
-    "serviceNameCN": "腾讯云自动化助手",
+    "serviceNameCN": "自动化助手",
     "serviceShortName": "tat"
   },
   "objects": {
@@ -144,7 +144,6 @@
       "document": "TAT agent information",
       "members": [
         {
-          "default": "",
           "document": "Instance ID.",
           "example": "无",
           "member": "string",
@@ -154,7 +153,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Agent version.",
           "example": "无",
           "member": "string",
@@ -164,7 +162,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last heartbeat time",
           "example": "无",
           "member": "datetime_iso",
@@ -174,7 +171,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Agent status. Valid values:\n<li> `Online`\n<li> `Offline`",
           "example": "无",
           "member": "string",
@@ -184,13 +180,21 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Agent runtime environment. Valid values:\n<li> `Linux`: Linux instance\n<li> `Windows`: Windows instance",
           "example": "无",
           "member": "string",
           "name": "Environment",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Features supported by the TAT agent.",
+          "example": "[\"NEW_FEATURE\"]",
+          "member": "string",
+          "name": "SupportFeatures",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -412,7 +416,6 @@
       "document": "Command execution details.",
       "members": [
         {
-          "default": "",
           "document": "Base64-encoded command.",
           "example": "无",
           "member": "string",
@@ -422,7 +425,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command type.",
           "example": "SHELL",
           "member": "string",
@@ -432,7 +434,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Timeout period.",
           "example": "60",
           "member": "uint64",
@@ -442,7 +443,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution path.",
           "example": "/root",
           "member": "string",
@@ -452,12 +452,29 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The user who executes the command.",
           "example": "root",
           "member": "string",
           "name": "Username",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "URL of the COS bucket to store the output",
+          "example": "https://<名称>-<AppId>.cos.ap-beijing.myqcloud.com",
+          "member": "string",
+          "name": "OutputCOSBucketUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Prefix of the output file name ",
+          "example": "agent",
+          "member": "string",
+          "name": "OutputCOSKeyPrefix",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }

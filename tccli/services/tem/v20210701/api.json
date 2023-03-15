@@ -325,7 +325,7 @@
   },
   "metadata": {
     "apiVersion": "2021-07-01",
-    "serviceNameCN": "弹性微服务 TEM",
+    "serviceNameCN": "弹性微服务",
     "serviceShortName": "tem"
   },
   "objects": {
@@ -1005,7 +1005,6 @@
       "document": "CreateEnvironment request structure.",
       "members": [
         {
-          "default": "",
           "document": "Environment name",
           "example": "namespace-a",
           "member": "string",
@@ -1014,25 +1013,6 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "VPC name",
-          "example": "vpc-1n5javez",
-          "member": "string",
-          "name": "Vpc",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "List of subnets",
-          "example": "{",
-          "member": "string",
-          "name": "SubnetIds",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
           "document": "Environment description",
           "example": "命名空间名",
           "member": "string",
@@ -1041,7 +1021,22 @@
           "type": "string"
         },
         {
-          "default": "",
+          "document": "VPC name",
+          "example": "vpc-1n5javez",
+          "member": "string",
+          "name": "Vpc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "List of subnets",
+          "example": "subnet-xxxx",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
           "document": "Kubernetes version",
           "example": "1.16.9",
           "member": "string",
@@ -1050,7 +1045,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -1059,7 +1053,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the TSW service",
           "example": "true",
           "member": "bool",
@@ -1068,7 +1061,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Tag",
           "example": "1",
           "member": "Tag",
@@ -1077,7 +1069,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Environment type. Values: `test`, `pre`, `prod`",
           "example": "test",
           "member": "string",
@@ -1086,11 +1077,42 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The region to create the environment",
           "example": "ap-shanghai",
           "member": "string",
           "name": "CreateRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether to create a VPC",
+          "example": "false",
+          "member": "bool",
+          "name": "SetupVpc",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "Whether to create a TMP instance",
+          "example": "false",
+          "member": "bool",
+          "name": "SetupPrometheus",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "TMP instance ID",
+          "example": "prom-xxx",
+          "member": "string",
+          "name": "PrometheusId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "APM ID",
+          "example": "apm-xxx",
+          "member": "string",
+          "name": "ApmId",
           "required": false,
           "type": "string"
         }
@@ -4405,7 +4427,6 @@
       "document": "Configuration of log exporting rule",
       "members": [
         {
-          "default": "",
           "document": "First line regex\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "*",
           "member": "string",
@@ -4415,7 +4436,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Withdrawl result\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "[\"k1\", \"k2\"]",
           "member": "string",
@@ -4425,7 +4445,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Filter keys\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "[\"k1\"]",
           "member": "string",
@@ -4435,7 +4454,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Filter values\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "[\"v1*\"]",
           "member": "string",
@@ -4445,7 +4463,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log regex\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "*",
           "member": "string",
@@ -4455,7 +4472,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Time field\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "time",
           "member": "string",
@@ -4465,7 +4481,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Time Format\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "%Y-%m-%d %H:%M:%S",
           "member": "string",
@@ -4475,7 +4490,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "- Enable the upload of the log that failed to parse\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "true",
           "member": "string",
@@ -4485,11 +4499,28 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Key of log failed to be parsed\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "LogParseFailure",
           "member": "string",
           "name": "UnMatchedKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "tracking\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Backtracking",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Separator\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Delimiter",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6154,7 +6185,6 @@
       "document": "List of application versions",
       "members": [
         {
-          "default": "",
           "document": "Version name",
           "example": "1",
           "member": "string",
@@ -6164,7 +6194,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status of version",
           "example": "1",
           "member": "string",
@@ -6174,7 +6203,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "(Disused) Whether to enable elastic scaling",
           "example": "1",
           "member": "int64",
@@ -6184,7 +6212,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of current instances",
           "example": "10",
           "member": "int64",
@@ -6194,7 +6221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Version ID",
           "example": "10",
           "member": "string",
@@ -6204,7 +6230,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "(Disused) Log output configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "LogOutputConf",
@@ -6214,7 +6239,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Expected number of instances\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -6224,7 +6248,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Deployment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -6234,7 +6257,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -6244,7 +6266,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Environment ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -6254,7 +6275,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Environment name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -6264,7 +6284,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -6274,7 +6293,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -6284,7 +6302,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the application is being deployed\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -6294,7 +6311,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Status of batch deployment\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -6304,7 +6320,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Availability zones\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -6314,7 +6329,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node information\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "NodeInfo",
@@ -6324,7 +6338,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Pod information\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "DescribeRunPodPage",
@@ -6334,7 +6347,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Workload information\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "WorkloadInfo",
@@ -6344,12 +6356,20 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
           "name": "CreateDate",
           "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4",
+          "member": "string",
+          "name": "RegionId",
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -6528,7 +6548,6 @@
       "document": "Environment startup processes (Only applications started by the environment startup)",
       "members": [
         {
-          "default": "",
           "document": "Number of applications to start\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -6538,11 +6557,19 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of started applictions\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "StartedApplicationNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of applications failed to be started\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "StartFailedApplicationNum",
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -6554,7 +6581,6 @@
       "document": "Processes stopped by the environment (Only applications stopped by the action of stopping the environment)",
       "members": [
         {
-          "default": "",
           "document": "Number of applications to stop\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -6564,11 +6590,19 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of stopped applications\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "StoppedApplicationNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of applications failed to be stopped\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "StopFailedApplicationNum",
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -7022,7 +7056,6 @@
       "document": "Version information",
       "members": [
         {
-          "default": "",
           "document": "Version ID",
           "example": "1",
           "member": "string",
@@ -7032,7 +7065,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Application ID",
           "example": "1",
           "member": "string",
@@ -7042,7 +7074,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Deployment mode",
           "example": "1",
           "member": "string",
@@ -7052,7 +7083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "JDK version",
           "example": "1",
           "member": "string",
@@ -7062,7 +7092,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description",
           "example": "1",
           "member": "string",
@@ -7072,7 +7101,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Deployed version",
           "example": "1",
           "member": "string",
@@ -7082,7 +7110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Publish mode",
           "example": "1",
           "member": "string",
@@ -7092,7 +7119,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Launch parameter",
           "example": "1",
           "member": "string",
@@ -7102,7 +7128,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of initial pods",
           "example": "1",
           "member": "int64",
@@ -7112,7 +7137,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CPU specification",
           "example": "1",
           "member": "float",
@@ -7122,7 +7146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory specification",
           "example": "1",
           "member": "float",
@@ -7132,7 +7155,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image path",
           "example": "1",
           "member": "string",
@@ -7142,7 +7164,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image name",
           "example": "1",
           "member": "string",
@@ -7152,7 +7173,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Image version",
           "example": "1",
           "member": "string",
@@ -7162,7 +7182,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Scaling configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "EsInfo",
@@ -7172,7 +7191,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Environment configuration",
           "example": "1",
           "member": "Pair",
@@ -7182,7 +7200,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage configuration",
           "example": "1",
           "member": "StorageConf",
@@ -7192,7 +7209,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Running status",
           "example": "1",
           "member": "string",
@@ -7202,7 +7218,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC",
           "example": "1",
           "member": "string",
@@ -7212,7 +7227,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnets",
           "example": "1",
           "member": "string",
@@ -7222,7 +7236,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "1",
           "member": "string",
@@ -7232,7 +7245,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Modification time",
           "example": "1",
           "member": "string",
@@ -7242,7 +7254,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Mounting configuration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "StorageMountConf",
@@ -7252,7 +7263,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Version name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7262,7 +7272,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log output configuration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "LogOutputConf",
@@ -7272,7 +7281,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7282,7 +7290,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application description\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7292,7 +7299,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Environment name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7302,7 +7308,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Environment ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7312,7 +7317,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Public network address\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7322,7 +7326,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable public network access\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -7332,7 +7335,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of current instances\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -7342,7 +7344,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of expected instances\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -7352,7 +7353,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Programming Language\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7362,7 +7362,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Program package name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7372,7 +7371,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable auto scaling\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -7382,7 +7380,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Auto scaling policy\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -7392,7 +7389,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image tag\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7402,7 +7398,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable logging\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -7412,7 +7407,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Minimum number of instances\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7422,7 +7416,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Security group IDs\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7432,7 +7425,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image command\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ls",
           "member": "string",
@@ -7442,7 +7434,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image command parameters\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"-c\", \"100\"]",
           "member": "string",
@@ -7452,7 +7443,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to use the default registry configurations\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "bool",
@@ -7462,7 +7452,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "EKS access configuration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "EksService",
@@ -7472,7 +7461,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Mounting configurations\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "MountedSettingConf",
@@ -7482,7 +7470,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log path information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7492,7 +7479,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The script to execute right after the startup\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7502,7 +7488,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The script to run before stop\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7512,7 +7497,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration of aliveness probe\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "HealthCheckConfig",
@@ -7522,7 +7506,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration of readiness probe\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "HealthCheckConfig",
@@ -7532,7 +7515,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Auto scaling policy\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "HorizontalAutoscaler",
@@ -7542,7 +7524,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scheduled auto scaling policy\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "CronHorizontalAutoscaler",
@@ -7552,7 +7533,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Availability zone of the application\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7562,7 +7542,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The latest deployment time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7572,7 +7551,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The latest successful deployment time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7582,7 +7560,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Information of the node whether the application is deployed\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "NodeInfo",
@@ -7592,7 +7569,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image type. Values: `0` (Demo image), `1` (Normal image)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -7602,7 +7578,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -7612,7 +7587,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "(Disused) Whether to enable linkage tracing and report. It only takes effect when EnableTracing = `1`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -7622,7 +7596,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image type. `0`: Individual image; `1`: Enterprise image; `2`: Public image\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "uint64",
@@ -7632,7 +7605,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Status of batch deployment: `batch_updating`, `batch_updating_waiting_confirm`\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "batch_updating",
           "member": "string",
@@ -7642,7 +7614,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "APM instance ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "apm-xxx",
           "member": "string",
@@ -7652,7 +7623,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Workload information \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "WorkloadInfo",
@@ -7662,7 +7632,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable application acceleration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -7672,7 +7641,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration of the startup probe\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "HealthCheckConfig",
@@ -7682,7 +7650,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "OS version. Values:\n- ALPINE\n- CENTOS\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7692,7 +7659,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image repository server\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7702,7 +7668,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the application is being deployed\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -7712,7 +7677,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable application metric monitoring \nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "EnablePrometheusConf",
@@ -7722,7 +7686,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it’s stopped manually\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "bool",
@@ -7732,7 +7695,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TCR instance ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7742,7 +7704,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`1`: Automatically enable metrics collection (open-telemetry)\n`0`: Disable metrics collection\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -7752,7 +7713,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User AppId\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -7762,7 +7722,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Sub Account UIN\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -7772,7 +7731,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User UIN\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -7782,7 +7740,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -7792,7 +7749,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application group ID\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -7802,7 +7758,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable registry\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "int64",
@@ -7812,7 +7767,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Array of scaling rules\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "Autoscaler",
@@ -7822,7 +7776,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Modifier\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -7832,7 +7785,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creator\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -7842,7 +7794,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Deployment strategy\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "DeployStrategyConf",
@@ -7852,7 +7803,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of pods\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "DescribeRunPodPage",
@@ -7862,7 +7812,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the configuration has been changed during deployment\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "bool",
@@ -7872,13 +7821,30 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to encode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PreStopEncoded",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to encode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PostStartEncoded",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
