@@ -2786,7 +2786,6 @@
       "document": "Instance information",
       "members": [
         {
-          "default": "",
           "document": "User `Uin`",
           "example": "11111111",
           "member": "string",
@@ -2796,7 +2795,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User `AppId`",
           "example": "11111111",
           "member": "int64",
@@ -2806,7 +2804,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cynosmysql-xxxxxxxx",
           "member": "string",
@@ -2816,7 +2813,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster name",
           "example": "MyClusterName",
           "member": "string",
@@ -2826,7 +2822,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID",
           "example": "cynosmysql-ins-xxxxxxxx",
           "member": "string",
@@ -2836,7 +2831,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
           "example": "MyInstanceName",
           "member": "string",
@@ -2846,7 +2840,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID",
           "example": "0",
           "member": "int64",
@@ -2856,7 +2849,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region",
           "example": "ap-guangzhou",
           "member": "string",
@@ -2866,7 +2858,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "AZ",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -2876,7 +2867,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance status",
           "example": "running",
           "member": "string",
@@ -2886,7 +2876,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance status description",
           "example": "运行中",
           "member": "string",
@@ -2896,7 +2885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Database type",
           "example": "MYSQL",
           "member": "string",
@@ -2906,7 +2894,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Database version",
           "example": "5.7",
           "member": "string",
@@ -2916,7 +2903,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of CPU cores",
           "example": "1",
           "member": "int64",
@@ -2926,7 +2912,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory in GB",
           "example": "1",
           "member": "int64",
@@ -2936,7 +2921,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage capacity in GB",
           "example": "1000",
           "member": "int64",
@@ -2946,7 +2930,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance type",
           "example": "master",
           "member": "string",
@@ -2956,7 +2939,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Current instance role",
           "example": "master",
           "member": "string",
@@ -2966,7 +2948,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Update time",
           "example": "2021-06-08 14:29:25",
           "member": "datetime",
@@ -2976,7 +2957,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "2021-06-08 14:29:25",
           "member": "datetime",
@@ -2986,7 +2966,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID",
           "example": "vpc-xxxxxxxx",
           "member": "string",
@@ -2996,7 +2975,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet ID",
           "example": "subnet-xxxxxxxx",
           "member": "string",
@@ -3006,7 +2984,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private IP of instance",
           "example": "1.2.3.4",
           "member": "string",
@@ -3016,7 +2993,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private port of instance",
           "example": "3306",
           "member": "int64",
@@ -3026,7 +3002,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing mode",
           "example": "1",
           "member": "int64",
@@ -3036,7 +3011,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance expiration time",
           "example": "2021-07-08 14:29:25",
           "member": "datetime",
@@ -3046,7 +3020,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Termination deadline",
           "example": "0 天",
           "member": "string",
@@ -3056,7 +3029,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Isolation time",
           "example": "2021-07-08 14:29:25",
           "member": "datetime",
@@ -3066,7 +3038,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Network type",
           "example": "无",
           "member": "int64",
@@ -3076,7 +3047,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public domain name",
           "example": "无",
           "member": "string",
@@ -3086,7 +3056,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public IP",
           "example": "2.3.4.5",
           "member": "string",
@@ -3096,7 +3065,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public port",
           "example": "7654",
           "member": "int64",
@@ -3106,7 +3074,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public network status",
           "example": "无",
           "member": "string",
@@ -3116,7 +3083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance termination time",
           "example": "无",
           "member": "string",
@@ -3126,7 +3092,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TDSQL-C kernel version",
           "example": "2.0.12",
           "member": "string",
@@ -3136,7 +3101,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task in progress",
           "example": "ProcessingTask",
           "member": "string",
@@ -3146,7 +3110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Renewal flag",
           "example": "1",
           "member": "int64",
@@ -3156,7 +3119,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum number of CPU cores for serverless instance",
           "example": "1",
           "member": "float",
@@ -3166,7 +3128,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of CPU cores for serverless instance",
           "example": "2",
           "member": "float",
@@ -3176,7 +3137,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Serverless instance status. Valid values:\nresume\npause",
           "example": "resume",
           "member": "string",
@@ -3186,7 +3146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Prepaid storage ID\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "cynosmysql-xxxxxxxx",
           "member": "string",
@@ -3196,7 +3155,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Storage billing mode",
           "example": "1",
           "member": "int64",
@@ -3206,7 +3164,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Physical zone",
           "example": "无",
           "member": "string",
@@ -3216,7 +3173,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Business type\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
@@ -3226,7 +3182,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ObjectTask",
@@ -3236,7 +3191,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to freeze\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "yes",
           "member": "string",
@@ -3246,12 +3200,38 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The resource tag\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
           "name": "ResourceTags",
           "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Source AZ\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MasterZone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Replica AZ\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SlaveZones",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "InstanceNetInfo",
+          "name": "InstanceNetInfo",
+          "required": false,
           "type": "list",
           "value_allowed_null": true
         }
@@ -5963,6 +5943,111 @@
         }
       ],
       "usage": "in"
+    },
+    "InstanceNetInfo": {
+      "document": "",
+      "members": [
+        {
+          "document": "",
+          "example": "ro",
+          "member": "string",
+          "name": "InstanceGroupType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "cynosdbmysql-grp-qwertyui",
+          "member": "string",
+          "name": "InstanceGroupId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "vpc-qwerty",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "subnet-qwerty",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "NetType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "123.123.123.1",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "1234",
+          "member": "int64",
+          "name": "Vport",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "aa.com",
+          "member": "string",
+          "name": "WanDomain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "12.12.23.3",
+          "member": "string",
+          "name": "WanIP",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "12345",
+          "member": "int64",
+          "name": "WanPort",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "init",
+          "member": "string",
+          "name": "WanStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "InstanceSpec": {
       "document": "Details of purchasable instance specifications. `Cpu` and `Memory` determine the instance specification during instance creation. The value range of the storage capacity is [MinStorageSize,MaxStorageSize]",

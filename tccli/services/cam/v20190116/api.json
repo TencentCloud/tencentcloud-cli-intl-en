@@ -204,9 +204,9 @@
       "status": "online"
     },
     "DescribeSafeAuthFlagColl": {
-      "document": "This API is used to query security settings.",
+      "document": "This API is used to get a sub-account’s security settings.",
       "input": "DescribeSafeAuthFlagCollRequest",
-      "name": "Queries security settings",
+      "name": "Gets a sub-account’s security settings",
       "output": "DescribeSafeAuthFlagCollResponse",
       "status": "online"
     },
@@ -3303,7 +3303,6 @@
           "example": "100000546533",
           "member": "uint64",
           "name": "Uin",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3312,7 +3311,6 @@
           "example": "test124",
           "member": "string",
           "name": "Name",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3321,7 +3319,6 @@
           "example": "1001774",
           "member": "uint64",
           "name": "Uid",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3330,7 +3327,6 @@
           "example": "test",
           "member": "string",
           "name": "Remark",
-          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3339,7 +3335,6 @@
           "example": "1",
           "member": "uint64",
           "name": "ConsoleLogin",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3348,7 +3343,6 @@
           "example": "10086",
           "member": "string",
           "name": "PhoneNum",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3357,7 +3351,6 @@
           "example": "86",
           "member": "string",
           "name": "CountryCode",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3366,9 +3359,24 @@
           "example": "123@qq.com",
           "member": "string",
           "name": "Email",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Last login IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "RecentlyLoginIP",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Last login time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-02-27 14:59:08",
+          "member": "string",
+          "name": "RecentlyLoginTime",
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

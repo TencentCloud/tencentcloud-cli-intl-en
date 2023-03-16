@@ -71,7 +71,7 @@
       "status": "online"
     },
     "DescribeCheckSyncJobResult": {
-      "document": "This API is used to query the result of a sync check task.",
+      "document": "This API is used to query the result of the sync check task and check the required parameters and peripheral configurations.",
       "input": "DescribeCheckSyncJobResultRequest",
       "name": "Queries the result of a sync check task",
       "output": "DescribeCheckSyncJobResultResponse",
@@ -1555,7 +1555,6 @@
       "document": "Instance information",
       "members": [
         {
-          "default": "",
           "document": "Instance region\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1565,7 +1564,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instances network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cdb",
           "member": "string",
@@ -1575,7 +1573,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "mysql",
           "member": "string",
@@ -1585,7 +1582,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node type. Valid values: empty or `simple` (general node); `cluster` (cluster node).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "simple",
           "member": "string",
@@ -1595,7 +1591,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DBInfo",
@@ -1605,7 +1600,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance service provider, such as \"aliyun\" and \"others\".\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "others",
           "member": "string",
@@ -1615,13 +1609,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "For MongoDB, you can define the following parameters: \t['AuthDatabase':'admin', \n'AuthFlag': \"1\",\t'AuthMechanism':\"SCRAM-SHA-1\"]\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "KeyValuePairOption",
           "name": "ExtraAttr",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TencentVPC",
+          "member": "string",
+          "name": "DatabaseNetEnv",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2043,7 +2045,6 @@
       "document": "The database/table objects to be synced",
       "members": [
         {
-          "default": "",
           "document": "Name of the database to be migrated or synced, which is required if `ObjectMode` is `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2053,7 +2054,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Name of the database after migration or sync, which is the same as the source database name by default.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2063,8 +2063,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter. To sync an entire database, set this parameter to `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "DbMode",
@@ -2073,7 +2072,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The schema to be migrated or synced\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2083,7 +2081,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Name of the schema after migration or sync\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2093,8 +2090,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "TableMode",
@@ -2103,7 +2099,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The set of table objects, which is required if `TableMode` is `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Table",
@@ -2113,8 +2108,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "View selection mode. Valid values: `All`, `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "View selection mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "ViewMode",
@@ -2123,7 +2117,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The set of view objects, which is required if `ViewMode` is `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "View",
@@ -2133,8 +2126,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Sync mode. Valid values: `Partial`, `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "FunctionMode",
@@ -2143,7 +2135,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is required if `FunctionMode` is `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2153,8 +2144,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Sync mode. Valid values: `Partial`, `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "ProcedureMode",
@@ -2163,7 +2153,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is required if `ProcedureMode` is `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2173,9 +2162,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Trigger migration mode (`all`: All objects; `partial`: Some objects)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "partial",
+          "document": "Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Partial",
           "member": "string",
           "name": "TriggerMode",
           "required": false,
@@ -2183,7 +2171,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2193,9 +2180,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Event migration mode (`all`: All objects; `partial`: Some objects)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "partial",
+          "document": "Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Partial",
           "member": "string",
           "name": "EventMode",
           "required": false,
@@ -2203,7 +2189,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2317,9 +2302,8 @@
       "document": "DescribeCheckSyncJobResult request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Sync task ID",
-          "example": "无",
+          "document": "Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task. This parameter is required.",
+          "example": "sync-werwfs23",
           "member": "string",
           "name": "JobId",
           "required": false,
@@ -2332,11 +2316,10 @@
       "document": "DescribeCheckSyncJobResult response structure.",
       "members": [
         {
-          "document": "Check result\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Execution status of the check task. Valid values: `notStarted`, `running`, `failed`, `success`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Status",
-          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2345,7 +2328,6 @@
           "example": "无",
           "member": "uint64",
           "name": "StepCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -2354,16 +2336,14 @@
           "example": "无",
           "member": "uint64",
           "name": "StepCur",
-          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "Overall progress\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Overall progress. Value range: 0-100.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Progress",
-          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -2372,7 +2352,6 @@
           "example": "无",
           "member": "StepInfo",
           "name": "StepInfos",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4643,7 +4622,7 @@
       "document": "Description of synced database objects",
       "members": [
         {
-          "document": "Migration object type, such as `Partial`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sync object type. Valid value: `Partial` (default).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Partial",
           "member": "string",
           "name": "Mode",
@@ -5443,9 +5422,8 @@
       "document": "Step details",
       "members": [
         {
-          "default": "",
           "document": "Step number\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "StepNo",
           "required": false,
@@ -5453,9 +5431,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Step name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "连接DB检查",
           "member": "string",
           "name": "StepName",
           "required": false,
@@ -5463,9 +5440,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Step ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ConnectDBCheck",
           "member": "string",
           "name": "StepId",
           "required": false,
@@ -5473,9 +5449,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Current status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Status of the current step. Valid values: `notStarted`, `running`, `failed`, `finished, `skipped`, `paused`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "finished",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -5483,8 +5458,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Step start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Step start time, which may be null.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "StartTime",
@@ -5493,9 +5467,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[]",
           "member": "StepTip",
           "name": "Errors",
           "required": false,
@@ -5503,9 +5476,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Warning message\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[]",
           "member": "StepTip",
           "name": "Warnings",
           "required": false,
@@ -5513,9 +5485,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Progress of the current step\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Progress of the current step. Value range: 0-100.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
           "member": "int64",
           "name": "Progress",
           "required": false,

@@ -105,6 +105,13 @@
       "output": "DescribeAutoBackupConfigResponse",
       "status": "online"
     },
+    "DescribeBackupDownloadRestriction": {
+      "document": "This API is used to query the download address for a database backup file in the current region.",
+      "input": "DescribeBackupDownloadRestrictionRequest",
+      "name": "Queries the restrictions for downloading a backup file",
+      "output": "DescribeBackupDownloadRestrictionResponse",
+      "status": "online"
+    },
     "DescribeBackupUrl": {
       "document": "This API is used to query the download address of a backup RDB file.",
       "input": "DescribeBackupUrlRequest",
@@ -418,6 +425,13 @@
       "input": "ModifyAutoBackupConfigRequest",
       "name": "Configures automatic backup",
       "output": "ModifyAutoBackupConfigResponse",
+      "status": "online"
+    },
+    "ModifyBackupDownloadRestriction": {
+      "document": "This API is used to modify the network information and address for downloading a backup file.",
+      "input": "ModifyBackupDownloadRestrictionRequest",
+      "name": "Modifies the restrictions for downloading a backup file",
+      "output": "ModifyBackupDownloadRestrictionResponse",
       "status": "online"
     },
     "ModifyDBInstanceSecurityGroups": {
@@ -1797,6 +1811,63 @@
           "name": "BinlogStorageDays",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadRestrictionRequest": {
+      "document": "DescribeBackupDownloadRestriction request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeBackupDownloadRestrictionResponse": {
+      "document": "DescribeBackupDownloadRestriction response structure.",
+      "members": [
+        {
+          "document": "Type of the network restrictions for downloading backup files. Valid values:\n\n- `NoLimit`: Backup files can be downloaded over both public and private networks.\n- `LimitOnlyIntranet`: Backup files can be downloaded only at private network addresses auto-assigned by Tencent Cloud.\n- `Customize`: Backup files can be downloaded only in the customized VPC.",
+          "example": "NoLimit",
+          "member": "string",
+          "name": "LimitType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Only `In` can be passed in for this parameter, indicating that backup files can be downloaded in the custom `LimitVpc`.",
+          "example": "In",
+          "member": "string",
+          "name": "VpcComparisonSymbol",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether backups can be downloaded at the custom `LimitIp` address.\n\n- `In`: Download is allowed for the custom IP.\n- `NotIn`: Download is not allowed for the custom IP.",
+          "example": "In",
+          "member": "string",
+          "name": "IpComparisonSymbol",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VPC ID of the custom backup file download address, which will be displayed if `LimitType` is `Customize`.",
+          "example": "无",
+          "member": "BackupLimitVpcItem",
+          "name": "LimitVpc",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VPC ID of the custom backup file download address, which will be displayed if `LimitType` is `Customize`.",
+          "example": "[\"10.1.1.12\", \"10.1.1.13\"]",
+          "member": "string",
+          "name": "LimitIp",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -6703,6 +6774,64 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadRestrictionRequest": {
+      "document": "ModifyBackupDownloadRestriction request structure.",
+      "members": [
+        {
+          "document": "Type of the network restrictions for downloading backup files. Valid values:\n\n- `NoLimit`: Backup files can be downloaded over both public and private networks.\n- `LimitOnlyIntranet`: Backup files can be downloaded only at private network addresses auto-assigned by Tencent Cloud.\n- `Customize`: Backup files can be downloaded only in the customized VPC.",
+          "example": "NoLimit",
+          "member": "string",
+          "name": "LimitType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Only `In` can be passed in for this parameter, indicating that backup files can be downloaded in the custom `LimitVpc`.",
+          "example": "In",
+          "member": "string",
+          "name": "VpcComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether backups can be downloaded at the custom `LimitIp` address.\n\n- `In`: Download is allowed for the custom IP.\n- `NotIn`: Download is not allowed for the custom IP.",
+          "example": "In",
+          "member": "string",
+          "name": "IpComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "VPC ID of the custom backup file download address, which is required if `LimitType` is `Customize`.",
+          "example": "无",
+          "member": "BackupLimitVpcItem",
+          "name": "LimitVpc",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "VPC IP of the custom backup file download address, which is required if `LimitType` is `Customize`.\n",
+          "example": "[\"10.1.1.12\", \"10.1.1.13\"]",
+          "member": "string",
+          "name": "LimitIp",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadRestrictionResponse": {
+      "document": "ModifyBackupDownloadRestriction response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

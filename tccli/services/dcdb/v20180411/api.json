@@ -273,6 +273,13 @@
       "output": "ModifyAccountPrivilegesResponse",
       "status": "online"
     },
+    "ModifyDBEncryptAttributes": {
+      "document": "This API is used to modify the instance data encryption.",
+      "input": "ModifyDBEncryptAttributesRequest",
+      "name": "Modifies the encryption attributes of the instance data",
+      "output": "ModifyDBEncryptAttributesResponse",
+      "status": "online"
+    },
     "ModifyDBInstanceName": {
       "document": "This API is used to modify instance name.",
       "input": "ModifyDBInstanceNameRequest",
@@ -979,16 +986,14 @@
       "document": "CreateDCDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "AZs to deploy shard nodes. You can specify up to two AZs. When the shard specification is 1-source-2-replica, two of the nodes are deployed in the first AZ.\nThe current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.",
-          "example": "[\"ap-guangzhou-2\\r\\n\",\"ap-guangzhou-2\\r\\n\"]",
+          "example": "[\"ap-guangzhou-2\",\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "Zones",
           "required": true,
           "type": "list"
         },
         {
-          "default": "",
           "document": "Validity period in months",
           "example": "1",
           "member": "int64",
@@ -997,7 +1002,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Shard memory size in GB, which can be obtained \n by querying the instance specification through `DescribeShardSpec` API.",
           "example": "2",
           "member": "int64",
@@ -1006,7 +1010,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Shard storage size in GB, which can be obtained\n by querying the instance specification through `DescribeShardSpec` API.",
           "example": "10",
           "member": "int64",
@@ -1015,7 +1018,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of nodes in a single shard, which can be obtained\n by querying the instance specification through `DescribeShardSpec` API.",
           "example": "3",
           "member": "int64",
@@ -1024,7 +1026,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of shards in the instance. Value range: 2-8. You can increase up to 64 shards by upgrading your instance.",
           "example": "2",
           "member": "int64",
@@ -1033,7 +1034,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of instances to be purchased",
           "example": "1",
           "member": "int64",
@@ -1042,7 +1042,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
           "example": "无",
           "member": "int64",
@@ -1051,7 +1050,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.",
           "example": "无",
           "member": "string",
@@ -1060,7 +1058,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC subnet ID, which is required when `VpcId` is specified.",
           "example": "无",
           "member": "string",
@@ -1069,16 +1066,14 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Database engine version. Valid values: 8.0.18, 10.1.9, 5.7.17.\n8.0.18 - MySQL 8.0.18；\n10.1.9: MariaDB 10.1.9;\n5.7.17: Percona 5.7.17.\nIf this parameter is left empty, `5.7.17` will be used.",
-          "example": "5.7.17",
+          "document": "Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.",
+          "example": "5.7",
           "member": "string",
           "name": "DbVersionId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to automatically use vouchers. This option is disabled by default.",
           "example": "true",
           "member": "bool",
@@ -1087,7 +1082,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Voucher ID list. Currently, you can specify only one voucher.",
           "example": "无",
           "member": "string",
@@ -1096,7 +1090,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Security group ID",
           "example": "无",
           "member": "string",
@@ -1105,7 +1098,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom name of the instance",
           "example": "无",
           "member": "string",
@@ -1114,7 +1106,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether IPv6 is supported",
           "example": "无",
           "member": "int64",
@@ -1123,7 +1114,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Array of tag key-value pairs",
           "example": "无",
           "member": "ResourceTag",
@@ -1132,7 +1122,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync; default value: `2`).",
           "example": "无",
           "member": "DBParamValue",
@@ -1141,7 +1130,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "DCN source region",
           "example": "无",
           "member": "string",
@@ -1150,7 +1138,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "DCN source instance ID",
           "example": "无",
           "member": "string",
@@ -1159,7 +1146,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users). If no renewal is required, set it to `0`.",
           "example": "0",
           "member": "int64",
@@ -1168,7 +1154,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Security group IDs in array. This parameter is compatible with the old parameter `SecurityGroupId`.",
           "example": "无",
           "member": "string",
@@ -1213,7 +1198,6 @@
       "document": "CreateHourDCDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Shard memory in GB, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "2",
           "member": "int64",
@@ -1222,7 +1206,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Shard capacity in GB, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "10",
           "member": "int64",
@@ -1231,7 +1214,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of nodes per shard, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "2",
           "member": "int64",
@@ -1240,7 +1222,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.",
           "example": "2",
           "member": "int64",
@@ -1249,7 +1230,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of instances to be purchased",
           "example": "1",
           "member": "int64",
@@ -1258,7 +1238,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
           "example": "0",
           "member": "int64",
@@ -1267,7 +1246,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.",
           "example": "0",
           "member": "string",
@@ -1276,7 +1254,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC subnet ID, which is required when `VpcId` is specified",
           "example": "0",
           "member": "string",
@@ -1285,7 +1262,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The number of CPU cores per shard, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "0",
           "member": "int64",
@@ -1294,16 +1270,14 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Database engine version. Valid values:\n10.0.10: MariaDB 10.0.10;\n10.1.9: MariaDB 10.1.9;\n5.7.17: Percona 5.7.17.\nIf this parameter is left empty, `10.1.9` will be used.",
-          "example": "5.7.17",
+          "document": "Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.",
+          "example": "5.7",
           "member": "string",
           "name": "DbVersionId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "document": "AZs to deploy shard nodes. You can specify up to two AZs.",
           "example": "[\"ap-guangzhou-1\"]",
           "member": "string",
@@ -1312,7 +1286,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Security group ID",
           "example": "sg-12345",
           "member": "string",
@@ -1321,7 +1294,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom name of the instance",
           "example": "实例名称",
           "member": "string",
@@ -1330,7 +1302,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether IPv6 is supported",
           "example": "0",
           "member": "int64",
@@ -1339,7 +1310,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Array of tag key-value pairs",
           "example": "无",
           "member": "ResourceTag",
@@ -1348,7 +1318,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "If you create a disaster recovery instance, you need to use this parameter to specify the region of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1357,7 +1326,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "If you create a disaster recovery instance, you need to use this parameter to specify the ID of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).",
           "example": "tdsqlshard-123",
           "member": "string",
@@ -1366,7 +1334,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).",
           "example": "无",
           "member": "DBParamValue",
@@ -1375,7 +1342,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "ID of the instance to be rolled back",
           "example": "无",
           "member": "string",
@@ -1384,7 +1350,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Rollback time",
           "example": "无",
           "member": "string",
@@ -1393,7 +1358,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Array of security group IDs (this parameter is compatible with the old parameter `SecurityGroupId`)",
           "example": "无",
           "member": "string",
@@ -4813,6 +4777,42 @@
       ],
       "type": "object"
     },
+    "ModifyDBEncryptAttributesRequest": {
+      "document": "ModifyDBEncryptAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsqlshard-ow728lmc`",
+          "example": "tdsqlshard-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the data encryption (Once enabled, it can’t be disabled). Valid values: `1` (Yes), `0` (No. Default).",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptEnabled",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBEncryptAttributesResponse": {
+      "document": "ModifyDBEncryptAttributes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBInstanceNameRequest": {
       "document": "ModifyDBInstanceName request structure.",
       "members": [
@@ -5427,7 +5427,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "SecurityGroup": {
       "document": "Security group details",

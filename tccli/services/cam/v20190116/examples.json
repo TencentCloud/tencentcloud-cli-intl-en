@@ -171,7 +171,7 @@
     "DeleteRole": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DeleteRole\n&RoleId=4611686018427844696\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRole\n<Common request parameters>\n\n{\n    \"RoleId\": \"4611686018427844696\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc9759b5-5345-490e-b276-a3a0dd45004c\"\n    }\n}",
         "title": "Deleting a role"
       }
@@ -228,16 +228,16 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoleList\n<Common request parameters>\n\n{\n    \"Rp\": \"5\",\n    \"Page\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"RoleId\": \"4611686018427757165\",\n                \"RoleName\": \"CloudAudit_QCSRole\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"effect\\\":\\\"allow\\\",\\\"action\\\":\\\"name/sts:AssumeRole\\\",\\\"principal\\\":{\\\"service\\\":[\\\"cloudaudit.cloud.tencent.com\\\"]}}]}\",\n                “Description”: “CloudAudit's tracking set creation authorization includes permissions to query and create Cloud Object Storage (COS) buckets as well as CMQ message queues. This enables CloudAudit to ship tracking logs to COS and send CMQ notifications.”,\n                \"AddTime\": \"2019-05-17 11:35:02\",\n                \"UpdateTime\": \"2019-05-17 11:35:02\",\n                \"ConsoleLogin\": 0\n            },\n            {\n                \"RoleId\": \"4611686018427733635\",\n                \"RoleName\": \"testk8u8732u\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"name/sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"qcs\\\":\\\"qcs::cam::uin/909619400:root\\\"}},{\\\"action\\\":\\\"name/sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"qcs\\\":\\\"qcs::cam::uin/2385420691:root\\\"}}]}\",\n                \"Description\": \"1gfdg4\",\n                \"AddTime\": \"2019-04-24 16:09:38\",\n                \"UpdateTime\": \"2019-04-24 16:09:38\",\n                \"ConsoleLogin\": 1\n            },\n            {\n                \"RoleId\": \"4611686018427731422\",\n                \"RoleName\": \"fewfewgcc44\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"name/sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"qcs\\\":\\\"qcs::cam::uin/3374997817:root\\\"}}]}\",\n                \"Description\": \"34\",\n                \"AddTime\": \"2019-04-22 15:25:40\",\n                \"UpdateTime\": \"2019-04-22 15:25:40\",\n                \"ConsoleLogin\": 0\n            },\n            {\n                \"RoleId\": \"4611686018427445962\",\n                \"RoleName\": \"BK_QcsRole\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"effect\\\":\\\"allow\\\",\\\"action\\\":\\\"name/sts:AssumeRole\\\",\\\"principal\\\":{\\\"service\\\":\\\"blueking.cloud.tencent.com\\\"}}]}\",\n                “Description”: “This permission enables BlueKing autonomous Ops platform to access your Tencent Cloud resources and query server information.”,\n                \"AddTime\": \"2018-08-24 22:38:39\",\n                \"UpdateTime\": \"2018-08-24 22:38:39\",\n                \"ConsoleLogin\": 0\n            },\n            {\n                \"RoleId\": \"4611686018427424559\",\n                \"RoleName\": \"testroleName_1263\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":[\\\"name/sts:AssumeRole\\\"],\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"qcs\\\":[\\\"qcs::cam::uin/2385420691:root\\\"]}}]}\",\n                \"Description\": \"testiujjc\",\n                \"AddTime\": \"2018-08-20 16:30:46\",\n                \"UpdateTime\": \"2019-04-18 10:37:59\",\n                \"ConsoleLogin\": 1\n            }\n        ],\n        \"TotalNum\": 14,\n        \"RequestId\": \"a786b78c-ef8b-4331-b1e5-f287c8b41743\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AddTime\": \"2020-11-28 10:05:52\",\n                \"ConsoleLogin\": 0,\n                \"DeletionTaskId\": null,\n                \"Description\": \"The current role is the TencentCloud Automation Tools (TAT) service-linked role, and it will access your other Tencent Cloud resources within the permissions granted by the associated policies.\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"service\\\":[\\\"command.tat.cloud.tencent.com\\\"]}}]}\",\n                \"RoleId\": \"4611686018433460000\",\n                \"RoleName\": \"TAT_QCSLinkedRoleInCommand\",\n                \"RoleType\": \"service_linked\",\n                \"SessionDuration\": 43200,\n                \"Tags\": [],\n                \"UpdateTime\": \"2020-11-28 10:05:52\"\n            },\n            {\n                \"AddTime\": \"2020-06-28 12:07:06\",\n                \"ConsoleLogin\": 0,\n                \"DeletionTaskId\": null,\n                \"Description\": \"The current role is the CVM service-linked role, and it will access your other Tencent Cloud resources within the permissions granted by the associated policies.\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"service\\\":[\\\"cvmsmartdiagnostic.cvm.cloud.tencent.com\\\"]}}]}\",\n                \"RoleId\": \"4611686018432380000\",\n                \"RoleName\": \"CVM_QCSLinkedRoleInCVMSmartDiagnostic\",\n                \"RoleType\": \"service_linked\",\n                \"SessionDuration\": 43200,\n                \"Tags\": [\n                    {\n                        \"Key\": \"K1\",\n                        \"Value\": \"V7\"\n                    }\n                ],\n                \"UpdateTime\": \"2020-06-28 12:07:06\"\n            }\n        ],\n        \"RequestId\": \"36d78422-f6ce-4edb-a5a0-a217b366aa70\",\n        \"TotalNum\": 2\n    }\n}",
         "title": "Getting the role list"
       }
     ],
     "DescribeSafeAuthFlagColl": [
       {
-        "document": "",
+        "document": "This example shows you how to get a sub-account’s security settings.",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSafeAuthFlagColl\n<Common request parameters>\n\n{\n    \"SubUin\": \"1234567\"\n}",
         "output": "{\n    \"Response\": {\n        \"LoginFlag\": {\n            \"Phone\": 1,\n            \"Token\": 0,\n            \"Stoken\": 0,\n            \"Wechat\": 0,\n            \"Custom\": 0\n        },\n        \"ActionFlag\": {\n            \"Phone\": 0,\n            \"Token\": 0,\n            \"Stoken\": 0,\n            \"Wechat\": 0,\n            \"Custom\": 0\n        },\n        \"OffsiteFlag\": {\n            \"VerifyFlag\": 0,\n            \"NotifyPhone\": 1,\n            \"NotifyEmail\": 1,\n            \"NotifyWechat\": 1,\n            \"Tips\": 0\n        },\n        \"RequestId\": \"9626da03-4645-4c54-ba90-74836284af0c\"\n    }\n}",
-        "title": "Querying security settings"
+        "title": "Getting a sub-account’s security settings"
       }
     ],
     "DescribeSafeAuthFlagIntl": [
@@ -369,9 +369,9 @@
     "GetSecurityLastUsed": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSecurityLastUsed\n<Common request parameters>\n\n{\n    \"SecretIdList\": [\n        \" AKID3zjFYeZGjxylS0MXUDiy1pPo15yqjXGp\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"SecretIdLastUsedRows\": [\n            {\n                \"SecretId\": \"AKID3zjFYeZGjxylS0MXUDiy1pPo15yqjXGp\",\n                \"LastUsedDate\": \"2022-12-19\",\n                \"LastSecretUsedDate\": 1671681023555\n            }\n        ],\n        \"RequestId\": \"b790d4ca-5692-42ae-8a8c-d15c6ed976db\"\n    }\n}",
-        "title": "Querying the most recent time the key was accessed"
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSecurityLastUsed\n<Common request parameters>\n\n{\n    \"SecretIdList\": [\n        \"***\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"SecretIdLastUsedRows\": [\n            {\n                \"SecretId\": \"***\",\n                \"LastUsedDate\": \"2022-12-19\",\n                \"LastSecretUsedDate\": 1671681023555\n            }\n        ],\n        \"RequestId\": \"b790d4ca-5692-42ae-8a8c-d15c6ed976db\"\n    }\n}",
+        "title": "Querying the last time when the key was accessed"
       }
     ],
     "GetServiceLinkedRoleDeletionStatus": [
@@ -384,9 +384,9 @@
     ],
     "GetUser": [
       {
-        "document": "",
+        "document": "This example shows you how to query the sub-user information.",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetUser\n<Common request parameters>\n\n{\n    \"Name\": \"test124\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Uin\": 100000546533,\n        \"Name\": \"test124\",\n        \"Uid\": 1001774,\n        \"Remark\": \"test\",\n        \"ConsoleLogin\": 1,\n        \"PhoneNum\": \"10086\",\n        \"CountryCode\": \"86\",\n        \"Email\": \"123@qq.com\",\n        \"RequestId\": \"33674182-e53d-416b-b6ce-bd7e7536b5d6\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Uin\": 100000546533,\n        \"Name\": \"test124\",\n        \"Uid\": 1001774,\n        \"Remark\": \"test\",\n        \"ConsoleLogin\": 1,\n        \"PhoneNum\": \"10086\",\n        \"CountryCode\": \"86\",\n        \"Email\": \"123@qq.com\",\n        \"RecentlyLoginIP\": \"1.1.1.1\",\n        \"RecentlyLoginTime\": \"2023-02-27 14:59:08\",\n        \"RequestId\": \"33674182-e53d-416b-b6ce-bd7e7536b5d6\"\n    }\n}",
         "title": "Querying a sub-user"
       }
     ],

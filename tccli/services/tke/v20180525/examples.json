@@ -2,10 +2,10 @@
   "actions": {
     "AcquireClusterAdminRole": [
       {
-        "document": "When a CAM admin sub-account is granted this action permission, it can acquire the cluster admin role through this API to access resources in the Kubernetes cluster.",
-        "input": "https://tke.tencentcloudapi.com/?Action=AcquireClusterAdminRole\n&ClusterId=cls-xxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
-        "title": "Acquiring the admin role of a cluster"
+        "document": "This example shows you how to assign the cluster admin role to a sub-account to access resources in the Kubernetes cluster.",
+        "input": "https://tke.tencentcloudapi.com/?Action=AcquireClusterAdminRole\n&ClusterId=cls-7ph3twqe\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"24564577-a642-4164-8752-4668d4ca8886\"\n    }\n}",
+        "title": "Assigning the cluster admin role"
       }
     ],
     "AddExistedInstances": [
@@ -42,9 +42,9 @@
     ],
     "CheckInstancesUpgradeAble": [
       {
-        "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=CheckInstancesUpgradeAble\n&ClusterId=cls-xxxxxx\n&InstanceIds.0=ins-q40fqbso\n&InstanceIds.1=ins-hvldgo6w\n&InstanceIds.2=ins-hrtaxazg\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ClusterVersion\": \"1.14.3-tk8s-v1.1-1\",\n        \"LatestVersion\": \"1.14.3-tk8s-v1.1-1\",\n        \"Total\": 3,\n        \"RequestId\": \"123\",\n        \"UpgradeAbleInstances\": [\n            {\n                \"InstanceId\": \"ins-q40fqbso\",\n                \"LatestVersion\": \"xx\",\n                \"Version\": \"1.14.3-tk8s-v1.0\"\n            },\n            {\n                \"InstanceId\": \"ins-hvldgo6w\",\n                \"LatestVersion\": \"xx\",\n                \"Version\": \"1.14.3-tk8s-v1.0\"\n            },\n            {\n                \"InstanceId\": \"ins-hrtaxazg\",\n                \"LatestVersion\": \"xx\",\n                \"Version\": \"1.14.3-tk8s-v1.0\"\n            }\n        ]\n    }\n}",
+        "document": "This example shows you how to check whether the node can be upgraded.",
+        "input": "https://tke.tencentcloudapi.com/?Action=CheckInstancesUpgradeAble\n&ClusterId=cls-7ph3twqe\n&InstanceIds.0=ins-q40fqbso\n&InstanceIds.1=ins-hvldgo6w\n&InstanceIds.2=ins-hrtaxazg\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ClusterVersion\": \"1.22.5\",\n        \"LatestVersion\": \"1.22.5\",\n        \"Total\": 3,\n        \"RequestId\": \"123\",\n        \"UnavailableVersionReason\": {\n            \"InstanceId\": \"ins-mq0fqbso\",\n            \"Reason\": \"instance already the master latest version\"\n        },\n        \"UpgradeAbleInstances\": [\n            {\n                \"InstanceId\": \"ins-q40fqbso\",\n                \"LatestVersion\": \"1.22.5\",\n                \"Version\": \"1.20.6\"\n            },\n            {\n                \"InstanceId\": \"ins-hvldgo6w\",\n                \"LatestVersion\": \"1.22.5\",\n                \"Version\": \"1.20.6\"\n            },\n            {\n                \"InstanceId\": \"ins-hrtaxazg\",\n                \"LatestVersion\": \"1.22.5\",\n                \"Version\": \"1.20.6\"\n            }\n        ]\n    }\n}",
         "title": "Checking whether the node can be upgraded"
       }
     ],
@@ -142,7 +142,7 @@
     ],
     "CreateEdgeLogConfig": [
       {
-        "document": "",
+        "document": "创建边缘集群日志采集规则",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateEdgeLogConfig\n&LogConfig=xxxxxx\n&ClusterId=xxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
         "title": "Creating log collection rule"
@@ -150,10 +150,10 @@
     ],
     "CreatePrometheusAlertRule": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusAlertRule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AlertRule\": {\n        \"TemplateId\": \"xx\",\n        \"Name\": \"xx\",\n        \"Rules\": [\n            {\n                \"Describe\": \"xx\",\n                \"Name\": \"xx\",\n                \"For\": \"xx\",\n                \"Labels\": [\n                    {\n                        \"Name\": \"xx\",\n                        \"Value\": \"xx\"\n                    }\n                ],\n                \"Rule\": \"xx\",\n                \"Template\": \"xx\",\n                \"Annotations\": [\n                    {\n                        \"Name\": \"xx\",\n                        \"Value\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"Notification\": {\n            \"WebHook\": \"xx\",\n            \"RepeatInterval\": \"xx\",\n            \"TimeRangeStart\": \"xx\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 0,\n            \"PhoneCircleInterval\": 0,\n            \"NotifyWay\": [\n                \"xx\"\n            ],\n            \"ReceiverGroups\": [\n                1\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 0,\n            \"Type\": \"xx\",\n            \"TimeRangeEnd\": \"xx\"\n        },\n        \"Interval\": \"xx\",\n        \"UpdatedAt\": \"xx\",\n        \"Id\": \"xx\"\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"Id\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Adding an alarm rule"
+        "document": "This example shows you how to create an alert rule by using a template.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusAlertRule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-test\",\n    \"AlertRule\": {\n        \"TemplateId\": \"temp-test\",\n        \"Name\": \"test\",\n        \"Rules\": [\n            {\n                \"Describe\": \"Pod is in NotReady status for more than 15 minutes\",\n                \"Name\": \"KubePodNotReady\",\n                \"For\": \"\",\n                \"Labels\": [\n                    {\n                        \"Name\": \"severity\",\n                        \"Value\": \"warning\"\n                    }\n                ],\n                \"Rule\": \"sum by (cluster,namespace, pod) (\\n  max by(cluster,namespace, pod) (\\n    kube_pod_status_phase{job=\\\"kube-state-metrics\\\", phase=~\\\"Pending|Unknown\\\"}\\n  ) * on(cluster,namespace, pod) group_left(owner_kind) topk by(cluster,namespace, pod) (\\n    1, max by(cluster,namespace, pod, owner_kind) (kube_pod_owner{owner_kind!=\\\"Job\\\"})\\n  )\\n) > 0\\n\",\n                \"Template\": \"cluster {{ $labels.cluster }}/namespace {{ $labels.namespace }}/Pod {{ $labels.pod }} is in NotReady status for more than 15 minutes\",\n                \"Annotations\": [\n                    {\n                        \"Name\": \"content\",\n                        \"Value\": \"pod crash\"\n                    }\n                ]\n            }\n        ],\n        \"Notification\": {\n            \"RepeatInterval\": \"5h\",\n            \"TimeRangeStart\": \"00:00:00\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 0,\n            \"PhoneCircleInterval\": 0,\n            \"NotifyWay\": [\n                \"SMS\"\n            ],\n            \"ReceiverGroups\": [\n                1\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 0,\n            \"Type\": \"amp\",\n            \"TimeRangeEnd\": \"23:59:59\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"alert-123\",\n        \"RequestId\": \"85438a95-6e0d-422e-a099-123456789\"\n    }\n}",
+        "title": "Creating an alert rule"
       }
     ],
     "CreateTKEEdgeCluster": [
@@ -198,16 +198,16 @@
     ],
     "DeleteClusterInstances": [
       {
-        "document": "This example shows you how to delete a node in a cluster.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterInstances\n&ClusterId=cls-xxxxxx\n&InstanceIds.0=ins-xxxxx\n&InstanceDeleteMode=terminate\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"SuccInstanceIds\": [\n            \"xxx\"\n        ],\n        \"FailedInstanceIds\": [\n            \"xxx\"\n        ],\n        \"NotFoundInstanceIds\": [\n            \"xxx\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Deleting a node in a cluster"
+        "document": "This example shows you how to delete instances in a cluster.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterInstances\n&ClusterId=cls-7ph3twqe\n&InstanceIds.0=ins-1w67yfj8\n&InstanceDeleteMode=terminate\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"SuccInstanceIds\": [\n            \"ins-1w67yfj8\"\n        ],\n        \"FailedInstanceIds\": [\n            \"ins-1w67yfj9\"\n        ],\n        \"NotFoundInstanceIds\": [\n            \"ins-1w67yfj0\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Deleting instances in a cluster"
       }
     ],
     "DeleteClusterNodePool": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterNodePool\n&ClusterId=cls-xxxxxx\n&NodePoolIds.0=np-xxxxxxxx\n&KeepInstance=true\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteClusterNodePool\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxx\",\n    \"KeepInstance\": \"true\",\n    \"NodePoolIds\": [\n        \"np-xxxxxxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxx\"\n    }\n}",
         "title": "Deleting a node pool"
       }
@@ -262,7 +262,7 @@
     ],
     "DeleteEdgeClusterInstances": [
       {
-        "document": "",
+        "document": "删除边缘集群计算节点",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteEdgeClusterInstances\r\n&ClusterId=cls-xxxxx\r\n&InstanceIds.0=xxxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"187c16d5-1f53-4e88-b684-077f0c7369b2\"\n    }\n}",
         "title": "Deleting an edge compute instance"
@@ -286,10 +286,10 @@
     ],
     "DescribeAvailableClusterVersion": [
       {
-        "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeAvailableClusterVersion\n&ClusterId=cls-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Clusters\": [\n            {\n                \"ClusterId\": \"xx\",\n                \"Versions\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"Versions\": [\n            \"1.8.13\"\n        ]\n    }\n}",
-        "title": "Obtaining the versions that the cluster can upgrade to"
+        "document": "This example shows you how to obtain the versions that are available for cluster upgrade.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeAvailableClusterVersion\n&ClusterId=cls-7ph3twqe\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Clusters\": [\n            {\n                \"ClusterId\": \"cls-7ph3twqe\",\n                \"Versions\": [\n                    \"1.22.5\"\n                ]\n            }\n        ],\n        \"RequestId\": \"d367ff5c-3871-4f1b-b8f1-4d51ea689e29\",\n        \"Versions\": [\n            \"1.22.5\"\n        ]\n    }\n}",
+        "title": "Obtaining the versions that are available for cluster upgrade"
       }
     ],
     "DescribeAvailableTKEEdgeVersion": [
@@ -303,8 +303,8 @@
     "DescribeClusterAsGroupOption": [
       {
         "document": "This example shows you how to configure cluster auto scaling.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroupOption\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ClusterAsGroupOption\": {\n            \"ScaleDownUnreadyTime\": 0,\n            \"ScaleDownDelay\": 0,\n            \"ScaleDownUtilizationThreshold\": 0,\n            \"MaxTotalUnreadyPercentage\": 0,\n            \"IsScaleDownEnabled\": true,\n            \"OkTotalUnreadyCount\": 0,\n            \"SkipNodesWithSystemPods\": true,\n            \"MaxEmptyBulkDelete\": 0,\n            \"UnregisteredNodeRemovalTime\": 0,\n            \"SkipNodesWithLocalStorage\": true,\n            \"IgnoreDaemonSetsUtilization\": true,\n            \"Expander\": \"xxx\",\n            \"ScaleDownUnneededTime\": 0\n        },\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroupOption\n&ClusterId=cls-hca1bmif\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ClusterAsGroupOption\": {\n            \"ScaleDownUnreadyTime\": 0,\n            \"ScaleDownDelay\": 0,\n            \"ScaleDownUtilizationThreshold\": 0,\n            \"MaxTotalUnreadyPercentage\": 0,\n            \"IsScaleDownEnabled\": true,\n            \"OkTotalUnreadyCount\": 0,\n            \"SkipNodesWithSystemPods\": true,\n            \"MaxEmptyBulkDelete\": 0,\n            \"UnregisteredNodeRemovalTime\": 0,\n            \"SkipNodesWithLocalStorage\": true,\n            \"IgnoreDaemonSetsUtilization\": true,\n            \"Expander\": \"random\",\n            \"ScaleDownUnneededTime\": 0\n        },\n        \"RequestId\": \"1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed\"\n    }\n}",
         "title": "Configuring cluster auto scaling"
       }
     ],
@@ -318,10 +318,10 @@
     ],
     "DescribeClusterAuthenticationOptions": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterAuthenticationOptions\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\",\n        \"ServiceAccounts\": {\n            \"JWKSURI\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com/openid/v1/jwks\",\n            \"Issuer\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com\"\n        },\n        \"OIDCConfig\": {\n            \"AutoCreateOIDCConfig\": true,\n            \"AutoInstallPodIdentityWebhookAddon\": true,\n            \"AutoCreateClientId\": [\n                \"xx\"\n            ]\n        },\n        \"LatestOperationState\": \"Updating\"\n    }\n}",
-        "title": "Querying cluster authentication configurations"
+        "document": "This example shows you how to query cluster authentication configuration.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterAuthenticationOptions\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-7ph3twqe\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"24564577-a642-4164-8752-4668d4ca8886\",\n        \"ServiceAccounts\": {\n            \"JWKSURI\": \"https://cls-7ph3twqe.ccs.tencent-cloud.com/openid/v1/jwks\",\n            \"Issuer\": \"https://cls-7ph3twqe.ccs.tencent-cloud.com\"\n        },\n        \"OIDCConfig\": {\n            \"AutoCreateOIDCConfig\": true,\n            \"AutoInstallPodIdentityWebhookAddon\": true,\n            \"AutoCreateClientId\": [\n                \"84ec9912f0be4066be862afaff9d3c48\"\n            ]\n        },\n        \"LatestOperationState\": \"Updating\"\n    }\n}",
+        "title": "Querying cluster authentication configuration"
       }
     ],
     "DescribeClusterCommonNames": [
@@ -334,9 +334,9 @@
     ],
     "DescribeClusterEndpointStatus": [
       {
-        "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterEndpointStatus\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Status\": \"Created\"\n    }\n}",
+        "document": "This example shows you how to query the status of the cluster access port.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterEndpointStatus\n&ClusterId=cls-7ph3twqe\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Status\": \"Created\",\n        \"ErrorMsg\": \"error\"\n    }\n}",
         "title": "Querying the status of the cluster access port"
       }
     ],
@@ -350,7 +350,7 @@
     ],
     "DescribeClusterEndpoints": [
       {
-        "document": "",
+        "document": "获取集群访问地址",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterEndpoints\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-65r1c5nu\"\n}",
         "output": "{\n    \"Response\": {\n        \"CertificationAuthority\": \"xxx\",\n        \"ClusterIntranetDomain\": \"xx\",\n        \"ClusterExternalDomain\": \"xx\",\n        \"SecurityGroup\": \"xx\",\n        \"ClusterExternalEndpoint\": \"12.34.56.78\",\n        \"ClusterIntranetEndpoint\": \"10.0.0.1\",\n        \"ClusterDomain\": \"cls-65r1c5nu.ccs.tencent-cloud.com\",\n        \"ClusterExternalACL\": [\n            \"10.0.0.0/24\"\n        ],\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
         "title": "Querying cluster access addresses"
@@ -358,17 +358,17 @@
     ],
     "DescribeClusterInstances": [
       {
-        "document": "This example shows you how to query information of instances in a cluster.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterInstances\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"InstanceAdvancedSettings\": {\n                    \"DockerGraphPath\": \"xx\",\n                    \"Labels\": [\n                        {\n                            \"Name\": \"xx\",\n                            \"Value\": \"xx\"\n                        }\n                    ],\n                    \"ExtraArgs\": {\n                        \"Kubelet\": [\n                            \"xx\"\n                        ]\n                    },\n                    \"Unschedulable\": 0,\n                    \"UserScript\": \"xx\",\n                    \"MountTarget\": \"xx\",\n                    \"DataDisks\": [\n                        {\n                            \"DiskPartition\": \"xx\",\n                            \"DiskType\": \"xx\",\n                            \"DiskSize\": 0,\n                            \"FileSystem\": \"xx\",\n                            \"AutoFormatAndMount\": true,\n                            \"MountTarget\": \"xx\"\n                        }\n                    ]\n                },\n                \"InstanceId\": \"xx\",\n                \"InstanceRole\": \"xx\",\n                \"LanIP\": \"xx\",\n                \"DrainStatus\": \"xx\",\n                \"AutoscalingGroupId\": \"xx\",\n                \"InstanceState\": \"xx\",\n                \"CreatedTime\": \"xx\",\n                \"NodePoolId\": \"xx\",\n                \"FailedReason\": \"xx\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying information of instances in a cluster"
+        "document": "This example shows you how to query the information of instances in a cluster.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterInstances\n&ClusterId=cls-7ph3twqe\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"InstanceAdvancedSettings\": {\n                    \"DockerGraphPath\": \"/data/docker\",\n                    \"Labels\": [\n                        {\n                            \"Name\": \"key\",\n                            \"Value\": \"value\"\n                        }\n                    ],\n                    \"ExtraArgs\": {\n                        \"Kubelet\": [\n                            \"--register-node=true\"\n                        ]\n                    },\n                    \"Unschedulable\": 0,\n                    \"UserScript\": \"ZWNobyAiMTAuMTA3LjEwMy41N\",\n                    \"MountTarget\": \"/var/lib/docker\",\n                    \"DataDisks\": [\n                        {\n                            \"DiskPartition\": \"\",\n                            \"DiskType\": \"CLOUD_PREMIUM\",\n                            \"DiskSize\": 0,\n                            \"FileSystem\": \"ext4\",\n                            \"AutoFormatAndMount\": true,\n                            \"MountTarget\": \"/var/lib/docker\"\n                        }\n                    ]\n                },\n                \"InstanceId\": \"ins-wggphft5\",\n                \"InstanceRole\": \"WORKER\",\n                \"LanIP\": \"10.0.39.19\",\n                \"DrainStatus\": \"drained\",\n                \"AutoscalingGroupId\": \"asg-ewqsfgrt\",\n                \"InstanceState\": \"running\",\n                \"CreatedTime\": \"2021-02-22T07:14:11Z\",\n                \"NodePoolId\": \"np-3j4elm0k\",\n                \"FailedReason\": \"=Ready:True\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
+        "title": "Querying the information of instances in a cluster"
       }
     ],
     "DescribeClusterKubeconfig": [
       {
-        "document": "",
+        "document": "This example shows you how to obtain the cluster kubeconfig file. Different sub-accounts have their own kubeconfig files. The kubeconfig file contains the kube-apiserver client certificate of the corresponding sub-account. By default, the client certificate is created when this API is called for the first time, and the certificate is valid for 20 years with no permissions granted. For the cluster owner or primary account, the cluster-admin permission is granted by default.",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterKubeconfig\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-65r1c5nu\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Kubeconfig\": \"xxx\",\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Kubeconfig\": \"[REDACTED]\",\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
         "title": "Obtaining the cluster kubeconfig file"
       }
     ],
@@ -382,25 +382,25 @@
     ],
     "DescribeClusterLevelChangeRecords": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterLevelChangeRecords\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"ClusterID\": \"xx\",\n    \"EndAt\": \"xx\",\n    \"StartAt\": \"xx\",\n    \"Offset\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Items\": [\n            {\n                \"Status\": \"xx\",\n                \"EndedAt\": \"xx\",\n                \"ClusterID\": \"xx\",\n                \"TriggerType\": \"xx\",\n                \"NewLevel\": \"xx\",\n                \"OldLevel\": \"xx\",\n                \"StartedAt\": \"xx\",\n                \"Message\": \"xx\",\n                \"ID\": \"xx\"\n            }\n        ]\n    }\n}",
+        "document": "This example shows you how to query the cluster model adjustment history.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterLevelChangeRecords\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"ClusterID\": \"cls-7t1eo183\",\n    \"EndAt\": \"2022-07-11 17:45:02\",\n    \"StartAt\": \"2022-07-11 16:45:02\",\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ClusterID\": \"cls-7t1eo183\",\n                \"EndedAt\": \"2022-07-11 17:45:02\",\n                \"ID\": \"548\",\n                \"Message\": \"\",\n                \"NewLevel\": \"L20\",\n                \"OldLevel\": \"L5\",\n                \"StartedAt\": \"2022-07-11 17:40:22\",\n                \"Status\": \"success\",\n                \"TriggerType\": \"manual\"\n            }\n        ],\n        \"RequestId\": \"24564577-a642-4164-8752-4668d4ca8886\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the cluster model adjustment history"
       }
     ],
     "DescribeClusterNodePoolDetail": [
       {
-        "document": "查询节点池详情",
+        "document": "This example shows you how to query the details of a node pool.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterNodePoolDetail\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NodePool\": {\n            \"AutoscalingGroupId\": \"asg-xxx\",\n            \"AutoscalingGroupStatus\": \"enabled\",\n            \"ClusterInstanceId\": \"cls-xxx\",\n            \"DesiredNodesNum\": 0,\n            \"Labels\": [],\n            \"LaunchConfigurationId\": \"asc-xxx\",\n            \"LifeState\": \"normal\",\n            \"MaxNodesNum\": 1,\n            \"MinNodesNum\": 0,\n            \"Name\": \"test\",\n            \"NodeCountSummary\": {\n                \"AutoscalingAdded\": {\n                    \"Initializing\": 0,\n                    \"Joining\": 0,\n                    \"Normal\": 0,\n                    \"Total\": 0\n                },\n                \"ManuallyAdded\": {\n                    \"Initializing\": 0,\n                    \"Joining\": 0,\n                    \"Normal\": 1,\n                    \"Total\": 1\n                }\n            },\n            \"NodePoolId\": \"np-xxxxx\",\n            \"Taints\": []\n        },\n        \"RequestId\": \"xxx\"\n    }\n}",
-        "title": "Querying detailed information of a node pool"
+        "output": "{\n    \"Response\": {\n        \"NodePool\": {\n            \"NodePoolId\": \"xx\",\n            \"Name\": \"xx\",\n            \"ClusterInstanceId\": \"xx\",\n            \"LifeState\": \"xx\",\n            \"LaunchConfigurationId\": \"xx\",\n            \"AutoscalingGroupId\": \"xx\",\n            \"Labels\": [\n                {\n                    \"Name\": \"xx\",\n                    \"Value\": \"xx\"\n                }\n            ],\n            \"Taints\": [\n                {\n                    \"Key\": \"xx\",\n                    \"Value\": \"xx\",\n                    \"Effect\": \"xx\"\n                }\n            ],\n            \"NodeCountSummary\": {\n                \"ManuallyAdded\": {\n                    \"Joining\": 0,\n                    \"Initializing\": 0,\n                    \"Normal\": 0,\n                    \"Total\": 0\n                },\n                \"AutoscalingAdded\": {\n                    \"Joining\": 0,\n                    \"Initializing\": 0,\n                    \"Normal\": 0,\n                    \"Total\": 0\n                }\n            },\n            \"AutoscalingGroupStatus\": \"xx\",\n            \"MaxNodesNum\": 0,\n            \"MinNodesNum\": 0,\n            \"DesiredNodesNum\": 0,\n            \"NodePoolOs\": \"xx\",\n            \"OsCustomizeType\": \"xx\",\n            \"ImageId\": \"xx\",\n            \"DesiredPodNum\": 0,\n            \"UserScript\": \"xx\",\n            \"Tags\": [\n                {\n                    \"Key\": \"xx\",\n                    \"Value\": \"xx\"\n                }\n            ],\n            \"DeletionProtection\": true\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying details of a node pool"
       }
     ],
     "DescribeClusterNodePools": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterNodePools\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NodePoolSet\": [\n            {\n                \"AutoscalingGroupId\": \"asg-xxxxx\",\n                \"AutoscalingGroupStatus\": \"enabled\",\n                \"ClusterInstanceId\": \"cls-xxxxx\",\n                \"DesiredNodesNum\": 1,\n                \"Labels\": [],\n                \"LaunchConfigurationId\": \"asc-xxxxx\",\n                \"LifeState\": \"normal\",\n                \"MaxNodesNum\": 1,\n                \"MinNodesNum\": 0,\n                \"Name\": \"test2\",\n                \"NodeCountSummary\": {\n                    \"AutoscalingAdded\": {\n                        \"Initializing\": 0,\n                        \"Joining\": 0,\n                        \"Normal\": 1,\n                        \"Total\": 1\n                    },\n                    \"ManuallyAdded\": {\n                        \"Initializing\": 0,\n                        \"Joining\": 0,\n                        \"Normal\": 0,\n                        \"Total\": 0\n                    }\n                },\n                \"NodePoolId\": \"np-xxxx\",\n                \"Taints\": []\n            }\n        ],\n        \"RequestId\": \"xxxxxx\",\n        \"TotalCount\": 1\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterNodePools\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NodePoolSet\": [\n            {\n                \"AutoscalingGroupId\": \"\",\n                \"AutoscalingGroupStatus\": \"\",\n                \"ClusterInstanceId\": \"cls-69hshd30\",\n                \"DeletionProtection\": false,\n                \"DesiredNodesNum\": 1,\n                \"DesiredPodNum\": 0,\n                \"ImageId\": \"\",\n                \"Labels\": [],\n                \"LaunchConfigurationId\": \"\",\n                \"LifeState\": \"normal\",\n                \"MaxNodesNum\": 1,\n                \"MinNodesNum\": 0,\n                \"Name\": \"test\",\n                \"NodeCountSummary\": {\n                    \"AutoscalingAdded\": {\n                        \"Initializing\": 0,\n                        \"Joining\": 0,\n                        \"Normal\": 0,\n                        \"Total\": 0\n                    },\n                    \"ManuallyAdded\": {\n                        \"Initializing\": 0,\n                        \"Joining\": 0,\n                        \"Normal\": 0,\n                        \"Total\": 1\n                    }\n                },\n                \"NodePoolId\": \"np-5tx2l4de\",\n                \"NodePoolOs\": \"\",\n                \"OsCustomizeType\": \"\",\n                \"Tags\": null,\n                \"Taints\": [],\n                \"UserScript\": \"\"\n            }\n        ],\n        \"RequestId\": \"efb810cb-d5a2-4147-88ec-cd1e28c5202e\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the node pool list"
       }
     ],
@@ -510,7 +510,7 @@
     ],
     "DescribeEdgeLogSwitches": [
       {
-        "document": "",
+        "document": "边缘集群日志开关",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEdgeLogSwitches\n<Common request parameters>\n\n{\n    \"ClusterIds\": [\n        \"cls-xxx1\",\n        \"cls-xxx2\"\n    ]\n}",
         "output": "{\r\n    \"Response\":{\r\n        \"SwitchSet\":[\r\n            {\r\n                \"ClusterId\":\"cls-xxx1\",\r\n                \"Audit\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Event\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Log\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                }\r\n            },\r\n            {\r\n                \"ClusterId\":\"cls-xxx2\",\r\n                \"Audit\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Event\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Log\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                }\r\n            }\r\n        ],\r\n        \"RequestId\":\"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
         "title": "Querying TKE Edge cluster log switches"
@@ -518,10 +518,10 @@
     ],
     "DescribeEnableVpcCniProgress": [
       {
-        "document": "This API is used to query the process of the async task created when the user calls EnableVpcCniNetworkType to enable VPC-CNI network mode for GR cluster. ",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnableVpcCniProgress\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"ErrorMessage\": \"xxxx\",\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying the task progress of enabling VPC-CNI mode"
+        "document": "When `EnableVpcCniNetworkType` is called, an async task is created. This example shows you how to query the progress of the task, with the result of task failed returned.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnableVpcCniProgress\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcdefgh\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"Failed\",\n        \"ErrorMessage\": \"ipamd has not been installed yet\",\n        \"RequestId\": \"defc0237-d413-4079-9faa-7f3ff928d224\"\n    }\n}",
+        "title": "Querying the progress of enabling VPC-CNI network mode (task failed)"
       }
     ],
     "DescribeExistedInstances": [
@@ -534,25 +534,25 @@
     ],
     "DescribeImages": [
       {
-        "document": "",
+        "document": "This example shows you how to obtain image information.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeImages\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageInstanceSet\": [\n            {\n                \"Alias\": \"xx\",\n                \"OsCustomizeType\": \"xx\",\n                \"OsName\": \"xx\",\n                \"ImageId\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageInstanceSet\": [\n            {\n                \"Alias\": \"Tencent Linux 2.2 64bit (tkernel3)\",\n                \"OsCustomizeType\": \"GENERAL\",\n                \"OsName\": \"tlinux2.2(tkernel3)x86_64\",\n                \"ImageId\": \"img-2lr9q49h\"\n            }\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Obtaining image information"
       }
     ],
     "DescribePrometheusInstance": [
       {
-        "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribePrometheusInstance\n&InstanceId=prom-xxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"QueryAddress\": \"xx\",\n        \"VpcId\": \"xx\",\n        \"Name\": \"xx\",\n        \"InstanceId\": \"xx\",\n        \"COSBucket\": \"xx\",\n        \"AlertManagerUrl\": \"xx\",\n        \"Grafana\": {\n            \"Domain\": \"xx\",\n            \"Internet\": \"xx\",\n            \"Enabled\": true,\n            \"AdminUser\": \"xx\",\n            \"Address\": \"xx\"\n        },\n        \"RequestId\": \"xx\",\n        \"SubnetId\": \"xx\"\n    }\n}",
+        "document": "This example shows you how to query the details of the managed PROM instance.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribePrometheusInstance\n&InstanceId=prom-abc\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"QueryAddress\": \"http://10.0.0.1:9090\",\n        \"VpcId\": \"vpc-abcdfgfg\",\n        \"Name\": \"tps-test\",\n        \"InstanceId\": \"prom-abcdefg\",\n        \"COSBucket\": \"prometheus-prom-abcdefg-data-1234567895\",\n        \"AlertManagerUrl\": \"\",\n        \"Grafana\": {\n            \"Domain\": \"\",\n            \"Internet\": \"close\",\n            \"Enabled\": true,\n            \"AdminUser\": \"admin\",\n            \"Address\": \"http://10.0.0.2\"\n        },\n        \"RequestId\": \"55054791-f4ff-4c33-afd2-dsahdjahdahada\",\n        \"SubnetId\": \"subnet-dsadsada\"\n    }\n}",
         "title": "Querying the details of the managed PROM instance"
       }
     ],
     "DescribeRegions": [
       {
         "document": "This example shows you how to obtain the region list.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeRegions\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RegionInstanceSet\": [\n            {\n                \"Status\": \"xx\",\n                \"Remark\": \"xx\",\n                \"RegionId\": 0,\n                \"FeatureGates\": \"xx\",\n                \"Alias\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRegions\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RegionInstanceSet\": [\n            {\n                \"RegionName\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"Status\": \"\",\n                \"FeatureGates\": \"\",\n                \"Alias\": \"gz\",\n                \"Remark\": \"\"\n            }\n        ],\n        \"RequestId\": \"d367ff5c-3871-4f1b-b8f1-4d51ea689e29\"\n    }\n}",
         "title": "Obtaining the region list"
       }
     ],
@@ -567,14 +567,14 @@
     "DescribeRouteTableConflicts": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeRouteTableConflicts\n&RouteTableCidrBlock=10.4.0.0/16\n&VpcId=vpc-xxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"HasConflict\": false,\n        \"RouteTableConflictSet\": [\n            {\n                \"RouteTableType\": \"CcsCluster\",\n                \"RouteTableCidrBlock\": \"172.20.0.0/16\",\n                \"RouteTableName\": \"xxxx\",\n                \"RouteTableId\": \"xxxx\"\n            }\n        ],\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
-        "title": "Querying whether a route table has conflicts"
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRouteTableConflicts\n<Common request parameters>\n\n{\n    \"RouteTableCidrBlock\": \"10.4.0.0/16\",\n    \"VpcId\": \"vpc-abcdefgh\"\n}",
+        "output": "{\n    \"Response\": {\n        \"HasConflict\": false,\n        \"RouteTableConflictSet\": [\n            {\n                \"RouteTableType\": \"CcsCluster\",\n                \"RouteTableCidrBlock\": \"172.20.0.0/16\",\n                \"RouteTableName\": \"tke-test\",\n                \"RouteTableId\": \"cls-abcdefgh\"\n            }\n        ],\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
+        "title": "Querying the route table conflicts"
       }
     ],
     "DescribeTKEEdgeClusterCredential": [
       {
-        "document": "",
+        "document": "获取边缘集群的认证信息，其中包含kubeconfig文件",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeTKEEdgeClusterCredential\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Addresses\": [\n            {\n                \"Type\": \"advertise\",\n                \"Ip\": \"169.254.128.200\",\n                \"Port\": 60002\n            },\n            {\n                \"Type\": \"public\",\n                \"Ip\": \"100.98.109.15\",\n                \"Port\": 11126\n            }\n        ],\n        \"Credential\": {\n            \"CACert\": \"LS0tLS1CRUdJTiBDRVJUSUZJQ0FULQo=\",\n            \"Token\": \"WBnCe69iqui0HuEZJ0Yac2hvwxQ1jG0j\"\n        },\n        \"CoreDns\": \"yes\",\n        \"HealthRegion\": \"yes\",\n        \"Health\": \"yes\",\n        \"GridDaemon\": \"yes\",\n        \"PublicLB\": {\n            \"Enabled\": true,\n            \"AllowFromCidrs\": [\n                \"xx\"\n            ]\n        },\n        \"InternalLB\": {\n            \"SubnetId\": [\n                \"xx\"\n            ],\n            \"Enabled\": true\n        },\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Obtaining the access authentication information of an edge compute cluster"
@@ -655,8 +655,8 @@
     "EnableVpcCniNetworkType": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableVpcCniNetworkType\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"EnableStaticIp\": false,\n    \"VpcCniType\": \"tke-route-eni\",\n    \"Subnets\": [\n        \"xxx\",\n        \"yyy\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableVpcCniNetworkType\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcdefgh\",\n    \"EnableStaticIp\": false,\n    \"VpcCniType\": \"tke-route-eni\",\n    \"Subnets\": [\n        \"subnet-abcdefg1\",\n        \"subnet-abcdefg2\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"defc0237-d413-4079-9faa-7f3ff928d224\"\n    }\n}",
         "title": "Enabling VPC-CNI network mode"
       }
     ],
@@ -678,9 +678,9 @@
     ],
     "GetUpgradeInstanceProgress": [
       {
-        "document": "",
+        "document": "This example shows you how to query the upgrade status.",
         "input": "https://tke.tencentcloudapi.com/?Action=GetUpgradeInstanceProgress\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"LifeState\": \"xx\",\n        \"Instances\": [\n            {\n                \"StartAt\": \"xx\",\n                \"InstanceID\": \"xx\",\n                \"Detail\": [\n                    {\n                        \"StartAt\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"LifeState\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    }\n                ],\n                \"EndAt\": \"xx\",\n                \"CheckResult\": {\n                    \"Items\": [\n                        {\n                            \"WorkLoadKind\": \"xx\",\n                            \"After\": 1,\n                            \"Namespace\": \"xx\",\n                            \"WorkLoadName\": \"xx\",\n                            \"Pods\": [\n                                \"xx\"\n                            ],\n                            \"Before\": 1\n                        }\n                    ],\n                    \"CheckPass\": true,\n                    \"SinglePods\": [\n                        \"xx\"\n                    ]\n                },\n                \"LifeState\": \"xx\"\n            }\n        ],\n        \"Done\": 1,\n        \"RequestId\": \"xx\",\n        \"ClusterStatus\": {\n            \"PodTotal\": 0,\n            \"NotReadyPod\": 0\n        },\n        \"Total\": 3\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterStatus\": {\n            \"PodTotal\": 0,\n            \"NotReadyPod\": 0\n        },\n        \"Done\": 0,\n        \"Instances\": [\n            {\n                \"CheckResult\": {\n                    \"CheckPass\": false,\n                    \"Items\": [\n                        {\n                            \"After\": 0,\n                            \"Before\": 2,\n                            \"Namespace\": \"default\",\n                            \"Pods\": [\n                                \"kubernetes-proxy-67fd23cf4d-2tcxw\",\n                                \"kubernetes-proxy-67fd23cf4d-qd99j\"\n                            ],\n                            \"WorkLoadKind\": \"ReplicaSet\",\n                            \"WorkLoadName\": \"kubernetes-proxy-67fd23cf4d\"\n                        }\n                    ],\n                    \"SinglePods\": []\n                },\n                \"Detail\": [\n                    {\n                        \"EndAt\": null,\n                        \"FailedMsg\": \"precheck failed\",\n                        \"LifeState\": \"failed\",\n                        \"StartAt\": \"2023-02-08T08:29:51Z\",\n                        \"Step\": \"preCheck\"\n                    },\n                    {\n                        \"EndAt\": null,\n                        \"FailedMsg\": \"\",\n                        \"LifeState\": \"pending\",\n                        \"StartAt\": null,\n                        \"Step\": \"drain\"\n                    },\n                    {\n                        \"EndAt\": null,\n                        \"FailedMsg\": \"\",\n                        \"LifeState\": \"pending\",\n                        \"StartAt\": null,\n                        \"Step\": \"remove\"\n                    },\n                    {\n                        \"EndAt\": null,\n                        \"FailedMsg\": \"\",\n                        \"LifeState\": \"pending\",\n                        \"StartAt\": null,\n                        \"Step\": \"reset\"\n                    },\n                    {\n                        \"EndAt\": null,\n                        \"FailedMsg\": \"\",\n                        \"LifeState\": \"pending\",\n                        \"StartAt\": null,\n                        \"Step\": \"postCheck\"\n                    }\n                ],\n                \"EndAt\": null,\n                \"InstanceID\": \"ins-wggphft5\",\n                \"LifeState\": \"paused\",\n                \"StartAt\": \"2023-02-08T16:29:46+08:00\"\n            }\n        ],\n        \"LifeState\": \"aborted\",\n        \"RequestId\": \"b224fa4b-fedf-4061-baa9-d547ew858df\",\n        \"Total\": 1\n    }\n}",
         "title": "Querying the upgrade status"
       }
     ],
@@ -711,22 +711,22 @@
     "ModifyClusterAttribute": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterAttribute\n<Common request parameters>\n\n{\n    \"AutoUpgradeClusterLevel\": {\n        \"IsAutoUpgrade\": true\n    },\n    \"ClusterName\": \"xx\",\n    \"ProjectId\": 0,\n    \"ClusterDesc\": \"xx\",\n    \"ClusterId\": \"xx\",\n    \"ClusterLevel\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"AutoUpgradeClusterLevel\": {\n            \"IsAutoUpgrade\": true\n        },\n        \"ClusterName\": \"xx\",\n        \"ProjectId\": 0,\n        \"ClusterDesc\": \"xx\",\n        \"QGPUShareEnable\": true,\n        \"RequestId\": \"xx\",\n        \"ClusterLevel\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterAttribute\n<Common request parameters>\n\n{\n    \"AutoUpgradeClusterLevel\": {\n        \"IsAutoUpgrade\": true\n    },\n    \"ClusterName\": \"tke-test\",\n    \"ProjectId\": 0,\n    \"ClusterDesc\": \"test\",\n    \"ClusterId\": \"cls-7ph3twqe\",\n    \"ClusterLevel\": \"L5\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoUpgradeClusterLevel\": {\n            \"IsAutoUpgrade\": true\n        },\n        \"ClusterName\": \"tke-test\",\n        \"ProjectId\": 0,\n        \"ClusterDesc\": \"test\",\n        \"QGPUShareEnable\": true,\n        \"RequestId\": \"24564577-a642-4164-8752-4668d4ca8886\",\n        \"ClusterLevel\": \"L5\"\n    }\n}",
         "title": "Modifying cluster attributes"
       }
     ],
     "ModifyClusterAuthenticationOptions": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterAuthenticationOptions\n<Common request parameters>\n\n{\n    \"ServiceAccounts\": {\n        \"JWKSURI\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com/openid/v1/jwks\",\n        \"Issuer\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com\",\n        \"AutoCreateDiscoveryAnonymousAuth\": true\n    },\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "document": "This example shows you how to modify cluster authentication configuration.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterAuthenticationOptions\n<Common request parameters>\n\n{\n    \"ServiceAccounts\": {\n        \"JWKSURI\": \"https://cls-7ph3twqe.ccs.tencent-cloud.com/openid/v1/jwks\",\n        \"Issuer\": \"https://cls-7ph3twqe.ccs.tencent-cloud.com\",\n        \"AutoCreateDiscoveryAnonymousAuth\": true\n    },\n    \"ClusterId\": \"cls-7ph3twqe\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
         "title": "Modifying cluster authentication configuration"
       }
     ],
     "ModifyClusterEndpointSP": [
       {
-        "document": "",
+        "document": "修改托管集群外网端口的安全策略",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterEndpointSP\n<Common request parameters>\n\n{\n    \"SecurityPolicies\": [\n        \"192.168.1.0/24\"\n    ],\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Modifying the security policy for the public network port of a managed cluster"
@@ -751,33 +751,33 @@
     "ModifyNodePoolInstanceTypes": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=ModifyNodePoolInstanceTypes\n&ClusterId=cls-xxx\n&NodePoolId=np-xxx\n&InstanceTypes.0=ins-xxx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNodePoolInstanceTypes\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxx\",\n    \"InstanceTypes\": [\n        \"ins-xxx\"\n    ],\n    \"NodePoolId\": \"np-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxxxx\"\n    }\n}",
-        "title": "Modifying node pool model"
+        "title": "Modifying the node pool model"
       }
     ],
     "ModifyPrometheusAlertRule": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusAlertRule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AlertRule\": {\n        \"TemplateId\": \"xx\",\n        \"Name\": \"xx\",\n        \"Rules\": [\n            {\n                \"Describe\": \"xx\",\n                \"Name\": \"xx\",\n                \"For\": \"xx\",\n                \"Labels\": [\n                    {\n                        \"Name\": \"xx\",\n                        \"Value\": \"xx\"\n                    }\n                ],\n                \"Rule\": \"xx\",\n                \"Template\": \"xx\",\n                \"Annotations\": [\n                    {\n                        \"Name\": \"xx\",\n                        \"Value\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"Notification\": {\n            \"WebHook\": \"xx\",\n            \"RepeatInterval\": \"xx\",\n            \"TimeRangeStart\": \"xx\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 0,\n            \"PhoneCircleInterval\": 0,\n            \"NotifyWay\": [\n                \"xx\"\n            ],\n            \"ReceiverGroups\": [\n                1\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 0,\n            \"Type\": \"xx\",\n            \"TimeRangeEnd\": \"xx\"\n        },\n        \"Interval\": \"xx\",\n        \"UpdatedAt\": \"xx\",\n        \"Id\": \"xx\"\n    }\n}",
+        "document": "This example shows you how to modify an alert rule.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusAlertRule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-sdgfsdhg\",\n    \"AlertRule\": {\n        \"TemplateId\": \"\",\n        \"Name\": \"test\",\n        \"Rules\": [\n            {\n                \"Describe\": \"Pod is in NotReady status for more than 15 minutes\",\n                \"Name\": \"KubePodNotReady\",\n                \"For\": \"15m\",\n                \"Labels\": [\n                    {\n                        \"Name\": \"severity\",\n                        \"Value\": \"warning\"\n                    }\n                ],\n                \"Rule\": \"sum by (cluster,namespace, pod) (\\n  max by(cluster,namespace, pod) (\\n    kube_pod_status_phase{job=\\\"kube-state-metrics\\\", phase=~\\\"Pending|Unknown\\\"}\\n  ) * on(cluster,namespace, pod) group_left(owner_kind) topk by(cluster,namespace, pod) (\\n    1, max by(cluster,namespace, pod, owner_kind) (kube_pod_owner{owner_kind!=\\\"Job\\\"})\\n  )\\n) > 0\\n\",\n                \"Template\": \"\",\n                \"Annotations\": [\n                    {\n                        \"Name\": \"content\",\n                        \"Value\": \"pod not ready\"\n                    }\n                ]\n            }\n        ],\n        \"Notification\": {\n            \"RepeatInterval\": \"5h\",\n            \"TimeRangeStart\": \"00:00:00\",\n            \"Enabled\": true,\n            \"PhoneNotifyOrder\": [\n                1\n            ],\n            \"PhoneInnerInterval\": 180,\n            \"PhoneCircleInterval\": 180,\n            \"NotifyWay\": [\n                \"CALL\"\n            ],\n            \"ReceiverGroups\": [\n                1\n            ],\n            \"PhoneArriveNotice\": true,\n            \"PhoneCircleTimes\": 3,\n            \"Type\": \"amp\",\n            \"TimeRangeEnd\": \"23:59:59\"\n        },\n        \"Id\": \"alert-dsdafg\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Modifying an alarm rule"
       }
     ],
     "RemoveNodeFromNodePool": [
       {
-        "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=RemoveNodeFromNodePool\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxxxxxxx\n&InstanceIds.0=ins-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxx\"\n    }\n}",
+        "document": "This example shows you how to remove nodes from a node pool.",
+        "input": "https://tke.tencentcloudapi.com/?Action=RemoveNodeFromNodePool\n&ClusterId=cls-hca1bmif\n&NodePoolId=np-5tx2jmn9\n&InstanceIds.0=ins-74mbca66\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed\"\n    }\n}",
         "title": "Removing nodes from a node pool"
       }
     ],
     "SetNodePoolNodeProtection": [
       {
-        "document": "When scale-in is triggered, the nodes automatically created by the scaling group will not be removed from the cluster.",
-        "input": "https://tke.tencentcloudapi.com/?Action=SetNodePoolNodeProtection\n&ClusterId=cls-xxx\n&NodePoolId=np-xxx\n&InstanceIds.0=ins-xxx\n&ProtectedFromScaleIn=true\n&<Common request parameters>",
+        "document": "This example shows you how to prevent nodes from being removed from the cluster by the scaling group when scale-in is triggered.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetNodePoolNodeProtection\n<Common request parameters>\n\n{\n    \"ProtectedFromScaleIn\": \"true\",\n    \"ClusterId\": \"cls-xxx\",\n    \"InstanceIds\": [\n        \"ins-xxx\"\n    ],\n    \"NodePoolId\": \"np-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"SucceedInstanceIds\": [\n            \"ins-xxx\"\n        ],\n        \"FailedInstanceIds\": [\n            \"xx\"\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Setting removal protection for the node in a node pool"
+        "title": "Setting removal protection for nodes in a node pool"
       }
     ],
     "UninstallEdgeLogAgent": [

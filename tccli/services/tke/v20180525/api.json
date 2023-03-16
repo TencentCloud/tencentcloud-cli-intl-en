@@ -36,7 +36,7 @@
       "status": "online"
     },
     "CheckInstancesUpgradeAble": {
-      "document": "This API is used to check which nodes can be upgraded in the given node list. ",
+      "document": "This API is used to query nodes eligible for an upgrade in the given node list.",
       "input": "CheckInstancesUpgradeAbleRequest",
       "name": "Checks whether the nodes can be upgraded",
       "output": "CheckInstancesUpgradeAbleResponse",
@@ -302,7 +302,7 @@
       "status": "online"
     },
     "DescribeClusterInstances": {
-      "document": " This API is used to query information of one or more instances in a cluster. ",
+      "document": "This API is used to query information of node instances in a cluster.",
       "input": "DescribeClusterInstancesRequest",
       "name": "Queries the information of one or more nodes in a cluster.",
       "output": "DescribeClusterInstancesResponse",
@@ -582,7 +582,7 @@
       "status": "online"
     },
     "GetUpgradeInstanceProgress": {
-      "document": "This API is used to obtain the current progress of the node upgrade. ",
+      "document": "This API is used to obtain the current progress of the node upgrade.",
       "input": "GetUpgradeInstanceProgressRequest",
       "name": "Obtains the current progress of the node upgrade",
       "output": "GetUpgradeInstanceProgressResponse",
@@ -652,7 +652,7 @@
       "status": "online"
     },
     "ModifyPrometheusAlertRule": {
-      "document": "This API is used to modify an alarm rule. ",
+      "document": "This API is used to modify an alert rule.",
       "input": "ModifyPrometheusAlertRuleRequest",
       "name": "Modifies an alarm rule",
       "output": "ModifyPrometheusAlertRuleResponse",
@@ -1208,6 +1208,7 @@
       "members": [
         {
           "document": "The current minor version of cluster Master",
+          "example": "1.20.6",
           "member": "string",
           "name": "ClusterVersion",
           "type": "string",
@@ -1215,6 +1216,7 @@
         },
         {
           "document": "The latest minor version of cluster Master corresponding major version",
+          "example": "1.22.5",
           "member": "string",
           "name": "LatestVersion",
           "type": "string",
@@ -1222,6 +1224,7 @@
         },
         {
           "document": "List of nodes that can be upgraded\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "UpgradeAbleInstancesItem",
           "name": "UpgradeAbleInstances",
           "type": "list",
@@ -1229,9 +1232,18 @@
         },
         {
           "document": "Total number\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "3",
           "member": "int64",
           "name": "Total",
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Reason why the upgrade is not available\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UnavailableReason",
+          "name": "UnavailableVersionReason",
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -8327,6 +8339,46 @@
       "members": [
         {
           "default": "",
+          "document": "When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "16",
+          "member": "int64",
+          "name": "DesiredPodNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GPU driver parameters\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "GPUArgs",
+          "name": "GPUArgs",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "#!/bin/sh echo \"hello world\"",
+          "member": "string",
+          "name": "PreStartUserScript",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node taint\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Taint",
+          "name": "Taints",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 (xfs for tlinux system) and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.\nNote: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "/tmp",
           "member": "string",
@@ -8394,49 +8446,9 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "16",
-          "member": "int64",
-          "name": "DesiredPodNumber",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "GPU driver parameters\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
-          "member": "GPUArgs",
-          "name": "GPUArgs",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "#!/bin/sh echo \"hello world\"",
-          "member": "string",
-          "name": "PreStartUserScript",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Node taint\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
-          "member": "Taint",
-          "name": "Taints",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "InstanceDataDiskMountSetting": {
       "document": "Mounting configuration of the CVM instance data disk",
@@ -10727,6 +10739,30 @@
       ],
       "usage": "out"
     },
+    "UnavailableReason": {
+      "document": "Reason for unavailability",
+      "members": [
+        {
+          "document": "Instance ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ins-q40fqbso",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Reason\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "instance already the master latest version",
+          "member": "string",
+          "name": "Reason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "UninstallEdgeLogAgentRequest": {
       "document": "UninstallEdgeLogAgent request structure.",
       "members": [
@@ -10874,8 +10910,8 @@
       "document": "Upgradeable node information",
       "members": [
         {
-          "default": "",
           "document": "Node ID",
+          "example": "无",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -10883,8 +10919,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The current version of the node",
+          "example": "无",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -10892,13 +10928,31 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The latest minor version of the current version\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "LatestVersion",
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "document": "RuntimeVersion",
+          "example": "无",
+          "member": "string",
+          "name": "RuntimeVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "RuntimeLatestVersion",
+          "example": "无",
+          "member": "string",
+          "name": "RuntimeLatestVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
