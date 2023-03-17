@@ -14,6 +14,13 @@
       "output": "CheckCertificateResponse",
       "status": "online"
     },
+    "CreateAccelerationDomain": {
+      "document": "This API is used to connect a domain to EdgeOne.",
+      "input": "CreateAccelerationDomainRequest",
+      "name": "Connects a domain to EdgeOne",
+      "output": "CreateAccelerationDomainResponse",
+      "status": "online"
+    },
     "CreateAliasDomain": {
       "document": "This API is used to create an alias domain name.",
       "input": "CreateAliasDomainRequest",
@@ -98,6 +105,13 @@
       "output": "CreateZoneResponse",
       "status": "online"
     },
+    "DeleteAccelerationDomains": {
+      "document": "This API is used to batch remove accelerated domain names.",
+      "input": "DeleteAccelerationDomainsRequest",
+      "name": "Batch remove accelerated domain names",
+      "output": "DeleteAccelerationDomainsResponse",
+      "status": "online"
+    },
     "DeleteAliasDomain": {
       "document": "This API is used to delete an alias domain name.",
       "input": "DeleteAliasDomainRequest",
@@ -138,6 +152,13 @@
       "input": "DeleteZoneRequest",
       "name": "Deletes a site",
       "output": "DeleteZoneResponse",
+      "status": "online"
+    },
+    "DescribeAccelerationDomains": {
+      "document": "This API is used to query accelerated domain names. Paging, sorting and filtering are supported.",
+      "input": "DescribeAccelerationDomainsRequest",
+      "name": "Queries accelerated domain names",
+      "output": "DescribeAccelerationDomainsResponse",
       "status": "online"
     },
     "DescribeAddableEntityList": {
@@ -336,6 +357,13 @@
       "output": "DescribeTimingL7CacheDataResponse",
       "status": "online"
     },
+    "DescribeTimingL7SourceData": {
+      "document": "This API is used to query the L7 time-series data of origin-pull.",
+      "input": "DescribeTimingL7SourceDataRequest",
+      "name": "Queries the time-series origin-pull data",
+      "output": "DescribeTimingL7SourceDataResponse",
+      "status": "online"
+    },
     "DescribeTopL7AnalysisData": {
       "document": "This API is used to query the top-ranked L7 traffic data.",
       "input": "DescribeTopL7AnalysisDataRequest",
@@ -432,6 +460,20 @@
       "input": "IdentifyZoneRequest",
       "name": "Verifies site ownership",
       "output": "IdentifyZoneResponse",
+      "status": "online"
+    },
+    "ModifyAccelerationDomain": {
+      "document": "This API is used to modify an accelerated domain name.",
+      "input": "ModifyAccelerationDomainRequest",
+      "name": "Modifies an accelerated domain name",
+      "output": "ModifyAccelerationDomainResponse",
+      "status": "online"
+    },
+    "ModifyAccelerationDomainStatuses": {
+      "document": "This API is used to batch modify the status of accelerated domains.",
+      "input": "ModifyAccelerationDomainStatusesRequest",
+      "name": "Batch modifies the status of accelerated domains.",
+      "output": "ModifyAccelerationDomainStatusesResponse",
       "status": "online"
     },
     "ModifyAliasDomain": {
@@ -590,6 +632,84 @@
       ],
       "usage": "both"
     },
+    "AccelerationDomain": {
+      "document": "Accelerated domain name",
+      "members": [
+        {
+          "document": "Details of the origin.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OriginDetail",
+          "name": "OriginDetail",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Creation time of the accelerated domain name.",
+          "example": "2020-09-22T00:00:00+00:00",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Accelerated domain name",
+          "example": "www.example.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Modification time of the accelerated domain name.",
+          "example": "2020-09-22T00:00:00+00:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the site.",
+          "example": "zone-20hyebgyfsko",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status of the accelerated domain name. Values:\n<li>`online`: Activated</li>\n<li>`process`: Being deployed</li>\n<li>`offline`: Disabled</li>\n<li>`forbidden`: Blocked</li>\n<li>`init`: Pending activation</li>",
+          "example": "online",
+          "member": "string",
+          "name": "DomainStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The CNAME address.",
+          "example": "www.example.com.eo.dnse1.com",
+          "member": "string",
+          "name": "Cname",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "pending",
+          "member": "string",
+          "name": "IdentificationStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AclCondition": {
       "document": "The condition that makes up an access control rule",
       "members": [
@@ -658,6 +778,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom managed rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AclUserRule",
+          "name": "Customizes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -802,8 +932,7 @@
       "document": "Rule engine feature operation. A feature can be of only one of the following three types, so each item in the `RuleAction` array can be of only one of the following types. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view more requirements for entering feature items.",
       "members": [
         {
-          "default": "",
-          "document": "Common feature operation. Features of this type include:\n<li>`AccessUrlRedirect`: Access URL rewrite</li>\n<li>`UpstreamUrlRedirect`: Origin-pull URL rewrite</li>\n<li>`QUIC`: QUIC</li>\n<li>`WebSocket`: WebSocket</li>\n<li>`VideoSeek`: Video dragging</li>\n<li>`Authentication`: Token authentication</li>\n<li>`CacheKey`: Custom cache key</li>\n<li>`Cache`: Node cache TTL</li>\n<li>`MaxAge`: Browser cache TTL</li>\n<li>`OfflineCache`: Offline cache</li>\n<li>`SmartRouting`: Smart acceleration</li>\n<li>`RangeOriginPull`: Range GETs</li>\n<li>`UpstreamHttp2`: HTTP/2 forwarding</li>\n<li>`HostHeader`: Host header rewrite</li>\n<li>`ForceRedirect`: Force HTTPS</li>\n<li>`OriginPullProtocol`: Origin-pull HTTPS</li>\n<li>`CachePrefresh`: Cache prefresh</li>\n<li>`Compression`: Smart compression</li>\n<li>`Hsts`</li>\n<li>`ClientIpHeader`</li>\n<li>`TlsVersion`</li>\n<li>`OcspStapling`</li>\n<li>`Http2`: HTTP/2 access</li>\n<li>`UpstreamFollowRedirect: Follow origin redirect</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Common feature operation. Values:\n<li>`AccessUrlRedirect`: Access URL rewrite</li>\n<li>`UpstreamUrlRedirect`: Origin-pull URL rewrite</li>\n<li>`QUIC`: QUIC</li>\n<li>`WebSocket`: WebSocket</li>\n<li>`VideoSeek`: Video dragging</li>\n<li>`Authentication`: Token authentication</li>\n<li>`CacheKey`: Custom cache key</li>\n<li>`Cache`: Node cache TTL</li>\n<li>`MaxAge`: Browser cache TTL</li>\n<li>`OfflineCache`: Offline cache</li>\n<li>`SmartRouting`: Smart acceleration</li>\n<li>`RangeOriginPull`: Range GETs</li>\n<li>`UpstreamHttp2`: HTTP/2 forwarding</li>\n<li>`HostHeader`: Host header rewrite</li>\n<li>`ForceRedirect`: Force HTTPS</li>\n<li>`OriginPullProtocol`: Origin-pull HTTPS</li>\n<li>`CachePrefresh`: Cache prefresh</li>\n<li>`Compression`: Smart compression</li>\n<li>`Hsts`</li>\n<li>`ClientIpHeader`</li>\n<li>`TlsVersion`</li>\n<li>`OcspStapling`</li>\n<li>`Http2`: HTTP/2 access</li>\n<li>`UpstreamFollowRedirect`: Follow origin redirect</li>\n<li>`Origin`: Origin</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "NormalAction",
           "name": "NormalAction",
@@ -812,7 +941,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Feature operation with a request/response header. Features of this type include:\n<li>`RequestHeader`: HTTP request header modification.</li>\n<li>`ResponseHeader`: HTTP response header modification.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RewriteAction",
@@ -822,7 +950,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Feature operation with a status code. Features of this type include:\n<li>`ErrorPage`: Custom error page.</li>\n<li>`StatusCodeCache`: Status code cache TTL.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CodeAction",
@@ -2016,6 +2143,51 @@
       ],
       "usage": "both"
     },
+    "CreateAccelerationDomainRequest": {
+      "document": "CreateAccelerationDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site related with the accelerated domain name.",
+          "example": "zone-225qgrnvbi9w",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Accelerated domain name",
+          "example": "qq.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Details of the origin.",
+          "example": "无",
+          "member": "OriginInfo",
+          "name": "OriginInfo",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccelerationDomainResponse": {
+      "document": "CreateAccelerationDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAliasDomainRequest": {
       "document": "CreateAliasDomain request structure.",
       "members": [
@@ -2947,6 +3119,51 @@
       ],
       "usage": "both"
     },
+    "DeleteAccelerationDomainsRequest": {
+      "document": "DeleteAccelerationDomains request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site related with the accelerated domain name.",
+          "example": "zone-225qgrnvbi9w",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of accelerated domain names to be deleted.",
+          "example": "[\"qq.com\"]",
+          "member": "string",
+          "name": "DomainNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to forcibly delete a domain name if it is associated with resources (such as alias domain names and traffic scheduling policies). \n<li>`true`: Delete the domain name and all associated resources.</li>\n<li>`false`: Do not delete the domain name and all associated resources.</li>If it’s not specified, the default value `false` is used.",
+          "example": "true",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccelerationDomainsResponse": {
+      "document": "DeleteAccelerationDomains response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteAliasDomainRequest": {
       "document": "DeleteAliasDomain request structure.",
       "members": [
@@ -3163,6 +3380,96 @@
       ],
       "type": "object"
     },
+    "DescribeAccelerationDomainsRequest": {
+      "document": "DescribeAccelerationDomains request structure.",
+      "members": [
+        {
+          "document": "Site ID of the accelerated domain name. If it’s not specified, all accelerated domain names under the site are returned.",
+          "example": "zone-20hyebgyfsko",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries. Values:\n<li>`domain-name`:<br>   <strong>Accelerated domain name</strong><br>   Type: String<br>Required: No\n<li>`origin-type`:<br>   <strong>Type of the origin</strong><br>   Type: String<br>   Required: No\n<li>`origin`:<br>   <strong>Primary origin</strong><br>   Type: String<br>   Required: No\n<li>`backup-origin`<br>   <strong>Secondary origin</strong><br>   Type: String<br>   Required: No",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The sorting order. Values:\n<li>`asc`: Ascending order.</li>\n<li>`desc`: Descending order.</li>Default value: `asc`.",
+          "example": "asc",
+          "member": "string",
+          "name": "Direction",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The match mode. Values:\n<li>`all`: Return all matches.</li>\n<li>`any`: Return any match.</li>Default value: `all`.",
+          "example": "all",
+          "member": "string",
+          "name": "Match",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Limit on paginated queries. Default value: 20. Maximum value: 200.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Offset for paginated queries. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The sorting criteria. Values:\n<li>`created_on`: Creation time of the accelerated domain name.</li>\n<li>`domain-name`: Acceleration domain name.</li>\n</li>Default value: `domain-name`.",
+          "example": "domain-name",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccelerationDomainsResponse": {
+      "document": "DescribeAccelerationDomains response structure.",
+      "members": [
+        {
+          "document": "Total number of matched accelerated domain names.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of accelerated domain names.",
+          "example": "无",
+          "member": "AccelerationDomain",
+          "name": "AccelerationDomains",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAddableEntityListRequest": {
       "document": "DescribeAddableEntityList request structure.",
       "members": [
@@ -3182,6 +3489,15 @@
           "member": "string",
           "name": "EntityType",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The service region. Values:\n<li>`mainland`: Chinese mainland.</li>\n<li>`overseas`: Regions outside the Chinese mainland.</li>For an account registered on the Chinese site, it defaults to `mainland`. For an account registered on the international site, it defaults to `overseas`.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
           "type": "string"
         }
       ],
@@ -4997,7 +5313,7 @@
         },
         {
           "default": "",
-          "document": "Filters\n<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.</li>\n<li>`province`<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`. </li>\n<li>`isp`<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>\n<li>`domain`<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`url`<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`referer`<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`resourceType`<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>\n<li>`statusCode`<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4；<br>   `6`: IPv6.</li>\n<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>\n<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>",
+          "document": "Filters\n<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.</li>\n<li>`province`:<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`. </li>\n<li>`isp`:<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others.</li>\n<li>`domain`:<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`url`:<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`referer`:<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`resourceType`<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>\n<li>`socket`:<br>   Filter by the specified <strong>HTTP protocol type</strong><br>   Values:<br>   `HTTP`: HTTP protocol;<br>   `HTTPS`: HTTPS protocol;<br>   `QUIC`: QUIC protocol.</li>\n<li>`statusCode`:<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`:<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`:<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>\n<li>`tagKey`:<br>   Filter by the specified <strong>tag key</strong></li>\n<li>`tagValue`<br>   Filter by the specified <strong>tag value</strong></li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -5145,6 +5461,105 @@
       ],
       "type": "object"
     },
+    "DescribeTimingL7SourceDataRequest": {
+      "document": "DescribeTimingL7SourceData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time of the query period.",
+          "example": "2020-04-29T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of the query period.",
+          "example": "2020-04-30T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of metrics. Values:\n<li>`l7Flow_outFlux_hy`: EdgeOne request traffic</li>\n<li>`l7Flow_outBandwidth_hy`: EdgeOne request bandwidth</li>\n<li>`l7Flow_inFlux_hy`: Origin response traffic</li>\n<li>`l7Flow_inBandwidth_hy`: Origin response bandwidth</li>\n<li>`l7Flow_request_hy`: Origin-pull requests</li>",
+          "example": "l7Flow_flow",
+          "member": "string",
+          "name": "MetricNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
+          "example": "[\"zoneId1\",\"zoneId2\"]",
+          "member": "string",
+          "name": "ZoneIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The query granularity. Values:\n<li>`min`: 1 minute</li>\n<li>`5min`: 5 minutes</li>\n<li>`hour`: 1 hour</li>\n<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. **Query period < 1 hour**: 1-minute granularity; **1 hour < query period < 2 days**: 5-minute granularity; **2 days < query period < 7 days**: 1 hour granularity; **Query period > 7 days**: 1 day granularity.",
+          "example": "hour",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions. See below for details: \n<li>`domain`:<br>   Filter by <strong>the origin domain</strong><br>   Type: String<br>   Required: No</li>\n<li>`origin`:<br>   Filter by <strong>the origin</strong><br>   Type: String<br>   Required: No</li>\n<li>`originGroup`:<br>   Filter by <strong>the origin group</strong>, such as origin-xxxxx.<br>   Type: String<br>   Required: No</li>\n<li>`flowType`:<br>   Filter by <strong>the origin response type</strong>. This parameter takes precedence over `MetricNames.N`.<br>   Type: String<br>   Required: No<br>   Values:<br>   `inFlow`: Origin response data, corresponding to `l7Flow_inFlux_hy`, `l7Flow_inBandwidth_hy` and `l7Flow_request_hy` in `MetricNames.N`.<br>   `outFlow`: EdgeOne request data, corresponding to `l7Flow_outFlux_hy`, `l7Flow_outBandwidth_hy` and `l7Flow_request_hy` in `MetricNames.N`.</li>",
+          "example": "无",
+          "member": "QueryCondition",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimingL7SourceDataResponse": {
+      "document": "DescribeTimingL7SourceData response structure.",
+      "members": [
+        {
+          "document": "Total number of query results.",
+          "example": "20",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of time series traffic data.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "TimingDataRecord",
+          "name": "TimingDataRecords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTopL7AnalysisDataRequest": {
       "document": "DescribeTopL7AnalysisData request structure.",
       "members": [
@@ -5195,7 +5610,7 @@
         },
         {
           "default": "",
-          "document": "Filter conditions. See below for details: \n<li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href=\"https://zh.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>\n<li>`province`:<br>   Filter by the <strong>province name</strong>. It’s only available when `Area` is `mainland`. <br>   Type: String<br>   Required: No</li>\n<li>`isp`:<br>   Filter by the <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Type: String<br>   Required: No<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>\n<li>`domain`:<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`url`:<br>   Filter by the <strong>URL</strong>, such as `/content`. Separate multiple URLs with semicolons. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>\n<li>`referer`:<br>   Filter by the <strong>Referer header</strong>, such as `example.com`. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No</li>\n<li>`resourceType`:<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>\n<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>\n<li>`statusCode`:<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`:<br>   Filter by the <strong>browser type</strong>. The query period cannot exceed 30 days. <br>   Type:  String<br>   Required:  No<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `Linux`：Linux OS;<br>   `MacOS`: OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`:<br>   Filter by the <strong>IP version</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`:<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
+          "document": "Filters\n<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.</li>\n<li>`province`:<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`.</li>\n<li>`isp`:<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>\n<li>`domain`:<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`url`:<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`referer`:<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`resourceType`:<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>\n<li>`socket`<br>   Filter by the specified <strong>HTTP protocol type</strong><br>   Values:<br>   `HTTP`: HTTP protocol;<br>   `HTTPS`: HTTPS protocol;<br>   `QUIC`: QUIC protocol.</li>\n<li>`statusCode`:<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>  In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`:<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`:<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>\n<li>`tagKey`:<br>   Filter by the specified <strong>tag key</strong></li>\n<li>`tagValue`:<br>   Filter by the specified <strong>tag value</strong></li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -5645,7 +6060,7 @@
         },
         {
           "default": "",
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`attackType`: Attack type;</li>\n<li>`riskLevel`: Risk level;</li>\n<li>`action`: Action;</li>\n<li>`ruleId`: Rule ID;</li>\n<li>`sipCountryCode`: Country code of the attacker IP;</li>\n<li>`attackIp`: Attacker IP;</li>\n<li>`oriDomain`: Attacked subdomain name;</li>\n<li>`eventId`: Event ID;</li>\n<li>`ua`: User agent;</li>\n<li>`requestMethod`: Request method;</li>\n<li>`uri`: Uniform resource identifier.</li>",
+          "document": "Filters for the query. Values:\n<li>`attackType`: Attack type</li>\n<li>`riskLevel`: Risk level</li>\n<li>`action`: Action</li>\n<li>`ruleId`: Rule ID</li>\n<li>`sipCountryCode`: Country code of the attacker IP</li>\n<li>`attackIp`: Attacker IP</li>\n<li>`realClientIp`: Real client IP</li>\n<li>`oriDomain`: Attacked subdomain name</li>\n<li>`eventId`: Event ID</li>\n<li>`ua`: User agent</li>\n<li>`requestMethod`: Request method</li>\n<li>`uri`: Uniform resource identifier</li>",
           "example": "[{\"Key\":\"test key\",\"Operator\":\"equal\",\"Value\":[\"123\",\"33\"]}]",
           "member": "QueryCondition",
           "name": "QueryCondition",
@@ -7157,6 +7572,30 @@
       ],
       "usage": "in"
     },
+    "FirstPartConfig": {
+      "document": "The configuration to detect slow attacks based on the transfer period the first 8 KB of requests",
+      "members": [
+        {
+          "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The transfer period threshold of the first 8 KB. If the threshold is reached, it’s considered a slow attack. Default: `5`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "StatTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "FollowOrigin": {
       "document": "The origin cache configuration",
       "members": [
@@ -7893,6 +8332,101 @@
         }
       ],
       "usage": "both"
+    },
+    "ModifyAccelerationDomainRequest": {
+      "document": "ModifyAccelerationDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site related with the accelerated domain name.",
+          "example": "zone-225qgrnvbi9w",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Accelerated domain name",
+          "example": "qq.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Details of the origin.",
+          "example": "无",
+          "member": "OriginInfo",
+          "name": "OriginInfo",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccelerationDomainResponse": {
+      "document": "ModifyAccelerationDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccelerationDomainStatusesRequest": {
+      "document": "ModifyAccelerationDomainStatuses request structure.",
+      "members": [
+        {
+          "document": "ID of the site related with the accelerated domain name.",
+          "example": "zone-225qgrnvbi9w",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "List of accelerated domain names to be modified.",
+          "example": "[\"qq.com\"]",
+          "member": "string",
+          "name": "DomainNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Status of the accelerated domain name. Values:\n<li>`online`: Enabled</li>\n<li>`offline`: Disabled</li>",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Whether to force suspension when the domain name has associated resources (such as alias domain names and traffic scheduling policies). Values:\n<li>`true`: Suspend the domain name and all associated resources.</li>\n<li>`true`: Do not suspend the domain name and all associated resources.</li>Default value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccelerationDomainStatusesResponse": {
+      "document": "ModifyAccelerationDomainStatuses response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyAliasDomainRequest": {
       "document": "ModifyAliasDomain request structure.",
@@ -9160,6 +9694,75 @@
       ],
       "usage": "both"
     },
+    "OriginDetail": {
+      "document": "Details of the origin.",
+      "members": [
+        {
+          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>",
+          "example": "ip_domain",
+          "member": "string",
+          "name": "OriginType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Origin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the secondary origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates that secondary origins are not used.",
+          "example": "\"origin-07fa3f6c-4498-11ed-a368-5254006ca63d\"",
+          "member": "string",
+          "name": "BackupOrigin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name of the primary origin group (valid when `OriginType=ORIGIN_GROUP`).",
+          "example": "\"QQ\"",
+          "member": "string",
+          "name": "OriginGroupName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name of the secondary origin group (valid when `OriginType=ORIGIN_GROUP` and `BackupOrigin` is specified).",
+          "example": "\"腾讯云\"",
+          "member": "string",
+          "name": "BackOriginGroupName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:\n<li>`on`: Enable private authentication.</li>\n<li>`off`: Disable private authentication.</li>\nIf this field is not specified, the default value `off` is used.",
+          "example": "on",
+          "member": "string",
+          "name": "PrivateAccess",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The private authentication parameters. This field is valid when `PrivateAccess=on`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrivateParameter",
+          "name": "PrivateParameters",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "OriginGroup": {
       "document": "Origin group information.",
       "members": [
@@ -9255,6 +9858,57 @@
         }
       ],
       "usage": "out"
+    },
+    "OriginInfo": {
+      "document": "Details of the origin.",
+      "members": [
+        {
+          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ip_domain",
+          "member": "string",
+          "name": "OriginType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Origin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the secondary origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates that secondary origins are not used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"origin-07fa3f6c-4498-11ed-a368-5254006ca63d\"",
+          "member": "string",
+          "name": "BackupOrigin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:\n<li>`on`: Enable private authentication.</li>\n<li>`off`: Disable private authentication.</li>If this field is not specified, the default value `off` is used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "on",
+          "member": "string",
+          "name": "PrivateAccess",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The private authentication parameters. This field is valid when `PrivateAccess=on`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrivateParameter",
+          "name": "PrivateParameters",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
     },
     "OriginProtectionInfo": {
       "document": "Origin protection configuration",
@@ -9719,10 +10373,9 @@
       "usage": "out"
     },
     "RateLimitConfig": {
-      "document": "Rate limiting configuration",
+      "document": "Rate limiting rules",
       "members": [
         {
-          "default": "",
           "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "off",
           "member": "string",
@@ -9732,7 +10385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The settings of the custom rate limiting rule. If it is null, the settings that were last configured will be used.",
           "example": "无",
           "member": "RateLimitUserRule",
@@ -9742,7 +10394,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The settings of the rate limiting template. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RateLimitTemplate",
@@ -9752,13 +10403,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The client filtering settings. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RateLimitIntelligence",
           "name": "RateLimitIntelligence",
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The custom rate limiting rules. If it is `null`, the previous settings is used.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "RateLimitUserRule",
+          "name": "RateLimitCustomizes",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -10105,9 +10764,8 @@
       "document": "Billable resource",
       "members": [
         {
-          "default": "",
           "document": "The resource ID.",
-          "example": "edgeone-xxx",
+          "example": "edgeone-2cnw94j16y39",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -10115,7 +10773,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing mode\n`0`: Pay-as-you-go",
           "example": "0",
           "member": "int64",
@@ -10125,7 +10782,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "无",
           "member": "datetime_iso",
@@ -10135,7 +10791,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The effective time.",
           "example": "无",
           "member": "datetime_iso",
@@ -10145,7 +10800,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The expiration time.",
           "example": "无",
           "member": "datetime_iso",
@@ -10155,7 +10809,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The plan status. Values:\n<li>`normal`: Normal</li>\n<li>`isolated`: Isolated</li>\n<li>`destroyed`: Terminated</li>",
           "example": "normal",
           "member": "string",
@@ -10165,7 +10818,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Pricing query parameter",
           "example": "无",
           "member": "Sv",
@@ -10175,7 +10827,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable auto-renewal. Values:\n<li>`0`: Default status.</li>\n<li>`1`: Enable auto-renewal.</li>\n<li>`2`: Disable auto-renewal.</li>",
           "example": "1",
           "member": "int64",
@@ -10185,9 +10836,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the resource associated with the plan.",
-          "example": "edgeone-xxx",
+          "example": "edgeone-2cnw94j16y39",
           "member": "string",
           "name": "PlanId",
           "required": true,
@@ -10195,8 +10845,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The region. Values:\n<li>`mainland`: Chinese mainland.</li>\n<li>`overseas`: Outside the Chinese mainland.</li>",
+          "document": "Applicable area. Values:\n<li>`mainland`: Chinese mainland</li>\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`global`: Global</li>",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -11123,7 +11772,6 @@
       "document": "Security configuration",
       "members": [
         {
-          "default": "",
           "document": "The settings of the managed rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "WafConfig",
@@ -11133,7 +11781,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The settings of the rate limiting rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RateLimitConfig",
@@ -11143,7 +11790,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The settings of the custom rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AclConfig",
@@ -11153,7 +11799,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The settings of the bot configuration. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BotConfig",
@@ -11163,7 +11808,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The switch setting of the layer-7 protection. If it is null, the setting that was last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SwitchConfig",
@@ -11173,7 +11817,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The settings of the basic access control rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "IpTableConfig",
@@ -11183,7 +11826,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The settings of the exception rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ExceptConfig",
@@ -11193,7 +11835,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The settings of the custom block page. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DropPageConfig",
@@ -11203,11 +11844,19 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Security template settings\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "TemplateConfig",
           "name": "TemplateConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Slow attack defense configuration. If it is `null`, the previous setting is used.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SlowPostConfig",
+          "name": "SlowPostConfig",
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -11420,6 +12069,90 @@
           "name": "MatchContent",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SlowPostConfig": {
+      "document": "Slow attack defense configuration.",
+      "members": [
+        {
+          "document": "Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detect slow attacks by the transfer period of the first 8 KB of requests\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "FirstPartConfig",
+          "name": "FirstPartConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Detect slow attacks by the data rate of the main body (excluding the first 8 KB) of requests\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SlowRateConfig",
+          "name": "SlowRateConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The action to taken when a slow attack is detected. Values:\n<li>`monitor`: Observe</li>\n<li>`drop`: Block the request</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "monitor",
+          "member": "string",
+          "name": "Action",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the rule\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SlowRateConfig": {
+      "document": "The configuration to detect slow attacks",
+      "members": [
+        {
+          "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The sampling interval in seconds. In this way, the first 8 KB of the request is ignored. The rest of data is separated in to multiple parts according to this interval for slow attack measurement.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "5",
+          "member": "uint64",
+          "name": "Interval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The transfer rate threshold in bps. When the transfer rate of a sample is lower than the threshold, it’s considered a slow attack and handled according to the specified `Action`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "80",
+          "member": "uint64",
+          "name": "Threshold",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -12591,7 +13324,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The real client IP.",
           "example": "192.168.1.1",
           "member": "string",
           "name": "RealClientIp",
@@ -12601,7 +13334,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The ISO-3166 alpha-2 country code of the real client IP.",
           "example": "CN",
           "member": "string",
           "name": "RealClientIpCountryCode",
@@ -12879,6 +13612,16 @@
           "name": "AliasZoneName",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it’s a fake site. Values:\n<li>`0`: Non-fake site</li>\n<li>`1`: Fake site</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsFake",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

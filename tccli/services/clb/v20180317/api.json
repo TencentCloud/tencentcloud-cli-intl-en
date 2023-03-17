@@ -399,6 +399,13 @@
       "output": "ModifyDomainAttributesResponse",
       "status": "online"
     },
+    "ModifyFunctionTargets": {
+      "document": "This API is used to modify the cloud functions associated with a load balancing forwarding rule.",
+      "input": "ModifyFunctionTargetsRequest",
+      "name": "Modifies the cloud functions associated with a forwarding rule",
+      "output": "ModifyFunctionTargetsResponse",
+      "status": "online"
+    },
     "ModifyListener": {
       "document": "This API (ModifyListener) is used to modify the attributes of a CLB listener, such as listener name, health check parameter, certificate information, and forwarding policy.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyListenerRequest",
@@ -414,9 +421,9 @@
       "status": "online"
     },
     "ModifyLoadBalancerSla": {
-      "document": "This API is used to upgrade shared CLB instances to LCU-supported CLB instances.",
+      "document": "This API is used to upgrade a pay-as-you-go shared CLB instance to an LCU-supported CLB instance.<br/>\nLimits\n- This API can be used to upgrade only a pay-as-you-go shared instance. A monthly subscription shared instance must be upgraded in the console.\n- An LCU-supported instance cannot be rolled back to a shared instance.\n- LCU-supported instances are in beta testing. To upgrade to an LCU-supported instance, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.\n- Classic CLB instances cannot be upgraded to LCU-supported instances.",
       "input": "ModifyLoadBalancerSlaRequest",
-      "name": "Upgrades to LCU-supported CLB instances",
+      "name": "Upgrades to an LCU-supported instance",
       "output": "ModifyLoadBalancerSlaResponse",
       "status": "online"
     },
@@ -1800,7 +1807,7 @@
         },
         {
           "default": "",
-          "document": "Guaranteed performance specification.",
+          "document": "Specification of the LCU-supported instance.",
           "example": "sla-1",
           "member": "string",
           "name": "SlaType",
@@ -2014,7 +2021,7 @@
           "type": "list"
         },
         {
-          "document": "Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application).",
+          "document": "Listener protocol. Values: TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC",
           "example": "TCP",
           "member": "string",
           "name": "Protocol",
@@ -2279,7 +2286,7 @@
         },
         {
           "default": "",
-          "document": "Specifies a VIP for the CLB instance.\n<ul><li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.</li>\n<li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.\n</li></ul>",
+          "document": "Specifies the VIP for the application of a CLB instance. This parameter is optional. If you do not specify this parameter, the system automatically assigns a value for the parameter. IPv4 and IPv6 CLB instances support this parameter, but IPv6 NAT64 CLB instances do not.\nNote: If the specified VIP is occupied or is not within the IP range of the specified VPC subnet, you cannot use the VIP to create a CLB instance in a private network or an IPv6 BGP CLB instance in a public network.",
           "example": "139.X.X.X",
           "member": "string",
           "name": "Vip",
@@ -2297,7 +2304,7 @@
         },
         {
           "default": "",
-          "document": "Exclusive cluster information. This parameter is required for creating exclusive clusters of CLB instances.",
+          "document": "Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.",
           "example": "无",
           "member": "ExclusiveCluster",
           "name": "ExclusiveCluster",
@@ -2306,7 +2313,7 @@
         },
         {
           "default": "",
-          "document": "Creates an LCU-supported CLB instance\n<ul><li>To create an LCU-supported CLB, this field is required and the value is `SLA`. LCU-supports CLBs adopt the pay-as-you-go model and their performance is guaranteed.</li>\n<li>It’s not required for a shared CLB instance.</li></ul>",
+          "document": "Creates an LCU-supported instance.\n<ul><li>To create an LCU-supported instance, set this parameter to `SLA`, which indicates that an LCU-supported instance is created with the default specification in pay-as-you-go mode.\n<ul><li>If you enable general LCU-supported instances, `SLA` corresponds to the Super Large 1 specification. General LCU-supported instances are in beta testing, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.</li>\n<li>If you enable ultra-large LCU-supported instances, `SLA` corresponds to the Super Large 4 specification. Ultra-large LCU-supported instances are in beta testing, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.</li></ul></li><li>This parameter is not required when you create a shared instance.</li></ul>",
           "example": "无",
           "member": "string",
           "name": "SlaType",
@@ -4735,7 +4742,6 @@
       "document": "DescribeTargets request structure.",
       "members": [
         {
-          "default": "",
           "document": "CLB instance ID.",
           "example": "lb-10iq9lou",
           "member": "string",
@@ -4744,7 +4750,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of listener IDs (20 IDs at most).",
           "example": "无",
           "member": "string",
@@ -4753,7 +4758,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Listener protocol type",
           "example": "HTTP",
           "member": "string",
@@ -4762,13 +4766,20 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Listener port",
           "example": "80",
           "member": "int64",
           "name": "Port",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Query the list of backend services associated with a load balancer\n<li> `location-id` - String - Optional - Rule ID, such as \"loc-12345678\".</li>\n<li> `private-ip-address` - String - Optional - Backend service private IP, such as `172.16.1.1`</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -5849,7 +5860,6 @@
       "document": "CLB instance information",
       "members": [
         {
-          "default": "",
           "document": "CLB instance ID.",
           "example": "lb-fwzzxxxx",
           "member": "string",
@@ -5859,9 +5869,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CLB instance name.",
-          "example": "name",
+          "example": "Name",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -5869,7 +5878,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CLB instance network type:\nOPEN: public network; INTERNAL: private network.",
           "example": "OPEN",
           "member": "string",
@@ -5879,7 +5887,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CLB type identifier. Value range: 1 (CLB); 0 (classic CLB).",
           "example": "1",
           "member": "uint64",
@@ -5889,8 +5896,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "CLB instance domain name. This field is provided only to public network classic CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Domain name of the CLB instance. It is only available for public classic CLBs. This parameter will be discontinued soon. Please use `LoadBalancerDomain` instead.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "www.aaa.com",
           "member": "string",
           "name": "Domain",
@@ -5899,7 +5905,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of VIPs of a CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "x.x.x.x",
           "member": "string",
@@ -5909,7 +5914,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CLB instance status, including:\n0: creating; 1: running.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -5919,7 +5923,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CLB instance creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2020-12-08 08:00:00",
           "member": "string",
@@ -5929,7 +5932,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last status change time of a CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2020-12-08 08:00:00",
           "member": "string",
@@ -5939,7 +5941,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the project to which a CLB instance belongs. 0: default project.",
           "example": "0",
           "member": "uint64",
@@ -5949,7 +5950,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpc-mj65xxxx",
           "member": "string",
@@ -5959,7 +5959,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Protective CLB identifier. Value range: 1 (protective), 0 (non-protective).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -5969,7 +5968,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "SNAT is enabled for all private network classic CLB created before December 2016.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -5979,7 +5977,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "0: not isolated; 1: isolated.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -5989,7 +5986,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log information. Only the public network CLB that have HTTP or HTTPS listeners can generate logs.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": " null",
           "member": "string",
@@ -5999,7 +5995,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet where a CLB instance resides (meaningful only for private network VPC CLB)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subnet-lzj3xxxx",
           "member": "string",
@@ -6009,7 +6004,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CLB instance tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TagInfo",
@@ -6019,7 +6013,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Security group of a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "sg-hx6dxxxx",
           "member": "string",
@@ -6029,7 +6022,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Basic information of a backend server bound to a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TargetRegionInfo",
@@ -6039,7 +6031,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Anycast CLB publishing region. For non-anycast CLB, this field returns an empty string.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": " null",
           "member": "string",
@@ -6049,7 +6040,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP version. Valid values: ipv4, ipv6\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "ipv4",
           "member": "string",
@@ -6059,7 +6049,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC ID in a numeric form\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "77599",
           "member": "uint64",
@@ -6069,7 +6058,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ISP to which a CLB IP address belongs\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "BGP",
           "member": "string",
@@ -6079,7 +6067,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Primary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ZoneInfo",
@@ -6089,7 +6076,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Secondary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ZoneInfo",
@@ -6099,7 +6085,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CLB instance isolation time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2022-02-12 12:15:08",
           "member": "string",
@@ -6109,7 +6094,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CLB instance expiration time, which takes effect only for prepaid instances\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:15:08",
           "member": "string",
@@ -6119,7 +6103,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Billing mode of CLB instance. Valid values: PREPAID (monthly subscription), POSTPAID_BY_HOUR (pay as you go).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
@@ -6129,7 +6112,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CLB instance network attributes\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InternetAccessible",
@@ -6139,7 +6121,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Prepaid billing attributes of a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LBChargePrepaid",
@@ -6149,7 +6130,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Logset ID of CLB Log Service (CLS)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "c32fc818-e984-414a-b8f5-3985b4c5xxxx",
           "member": "string",
@@ -6159,7 +6139,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log topic ID of CLB Log Service (CLS)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "c32fc818-e984-414a-b8f5-3985b4c5xxxx",
           "member": "string",
@@ -6169,7 +6148,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IPv6 address of a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2402:4e00:1000:4e00:0:920b:5519:d96d",
           "member": "string",
@@ -6179,7 +6157,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Reserved field which can be ignored generally.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ExtraInfo",
@@ -6189,7 +6166,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether an Anti-DDoS Pro instance can be bound\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -6199,7 +6175,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom configuration ID at the CLB instance level\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "pz-5itmxxxxx",
           "member": "string",
@@ -6209,7 +6184,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether a real server opens the traffic from a CLB instance to the internet\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -6219,7 +6193,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Private network dedicated cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ExclusiveCluster",
@@ -6229,7 +6202,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is meaningful only when the IP address version is `ipv6`. Valid values: IPv6Nat64, IPv6FullChain\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "IPv6FullChain",
           "member": "string",
@@ -6239,7 +6211,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable SnatPro.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -6249,7 +6220,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`SnatIp` list after SnatPro load balancing is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SnatIp",
@@ -6259,8 +6229,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Performance guarantee specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Specification of the LCU-supported instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": " null",
           "member": "string",
           "name": "SlaType",
@@ -6269,7 +6238,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether VIP is blocked\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -6279,7 +6247,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Time blocked or unblocked\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:15:08",
           "member": "string",
@@ -6289,7 +6256,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the IP type is the local BGP",
           "example": "false",
           "member": "bool",
@@ -6299,7 +6265,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Dedicated layer-7 tag.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "FOR_TEST",
           "member": "string",
@@ -6309,7 +6274,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "If the layer-7 listener of an IPv6FullChain CLB instance is enabled, the CLB instance can be bound with an IPv4 and an IPv6 CVM instance simultaneously.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -6319,7 +6283,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Availability zone of a VPC-based private network CLB instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -6329,7 +6292,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is an NFV CLB instance. No returned information: no; l7nfv: yes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -6339,7 +6301,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Health check logset ID of CLB CLS\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "c32fc818-e984-414a-b8f5-3985b4c51111",
           "member": "string",
@@ -6349,7 +6310,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Health check log topic ID of CLB CLS\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "c32fc818-e984-414a-b8f5-3985b4c52222",
           "member": "string",
@@ -6359,8 +6319,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "",
+          "document": "Cluster ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cluster-1234xxxx",
           "member": "string",
           "name": "ClusterIds",
@@ -6369,13 +6328,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CLB attribute\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "DeleteProtect",
           "member": "string",
           "name": "AttributeFlags",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Domain name of the CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "lb-xxxxxxx-e4841923c1214a90.clb.ap-guangzhou.tencentclb.com",
+          "member": "string",
+          "name": "LoadBalancerDomain",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -6538,7 +6505,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Custom configuration ID at the CLB instance level.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Custom configuration IDs of CLB instances. Multiple IDs must be separated by commas (,).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "pz-12345678",
           "member": "string",
           "name": "ConfigId",
@@ -6718,7 +6685,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Domain name of the CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "lb-xxxxxxx-e4841923c1214a90.clb.ap-guangzhou.tencentclb.com",
           "member": "string",
           "name": "LoadBalancerDomain",
@@ -6768,6 +6735,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-xxxxxxx",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -6777,6 +6745,7 @@
         {
           "default": "",
           "document": "CLB instance name",
+          "example": "test-name",
           "member": "string",
           "name": "LoadBalancerName",
           "required": true,
@@ -6786,6 +6755,7 @@
         {
           "default": "",
           "document": "CLB instance region",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -6795,6 +6765,7 @@
         {
           "default": "",
           "document": "CLB instance VIP",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -6804,11 +6775,22 @@
         {
           "default": "",
           "document": "Maximum outbound bandwidth in Mbps",
+          "example": "17",
           "member": "float",
           "name": "OutBandwidth",
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB domain name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-guang.safsadf.tencentclb.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7138,6 +7120,78 @@
       ],
       "type": "object"
     },
+    "ModifyFunctionTargetsRequest": {
+      "document": "ModifyFunctionTargets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-1234abcd",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLB listener ID",
+          "example": "lis-1234tgbh",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The backend cloud functions to modify",
+          "example": "无",
+          "member": "FunctionTarget",
+          "name": "FunctionTargets",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or `Domain`+`Url`.",
+          "example": "loc-1234rrrr",
+          "member": "string",
+          "name": "LocationId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target rule domain name. This parameter does not take effect if `LocationId` is specified.",
+          "example": "www.123.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target rule URL. This parameter does not take effect if `LocationId` is specified.",
+          "example": "/test",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionTargetsResponse": {
+      "document": "ModifyFunctionTargets response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyListenerRequest": {
       "document": "ModifyListener request structure.",
       "members": [
@@ -7246,7 +7300,7 @@
           "type": "object"
         },
         {
-          "document": "Maximum number of listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. ",
+          "document": "The maximum number of concurrent connections at the listener level. This parameter takes effect only on LCU-supported instances and TCP/UDP/TCP_SSL/QUIC listeners. Value range: 1 to the maximum concurrency of the instance. -1 indicates that no limit is set on concurrent connections.",
           "example": "-1",
           "member": "int64",
           "name": "MaxConn",
@@ -7254,7 +7308,7 @@
           "type": "int"
         },
         {
-          "document": "Maximum number of listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. ",
+          "document": "The maximum number of new connections at the listener level. This parameter takes effect only on LCU-supported instances and TCP/UDP/TCP_SSL/QUIC listeners. Value range: 1 to the maximum number of new connections of the instance. -1 indicates that no limit is set on concurrent connections.",
           "example": "-1",
           "member": "int64",
           "name": "MaxCps",
@@ -7299,7 +7353,7 @@
         },
         {
           "default": "",
-          "document": "Region information of the real server bound to a CLB.",
+          "document": "The backend service information of cross-region binding 1.0",
           "example": "无",
           "member": "TargetRegionInfo",
           "name": "TargetRegionInfo",
@@ -7326,7 +7380,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable SnatPro",
+          "document": "Whether to enable cross-region binding 2.0",
           "example": "false",
           "member": "bool",
           "name": "SnatPro",
@@ -7368,8 +7422,7 @@
       "document": "ModifyLoadBalancerSla request structure.",
       "members": [
         {
-          "default": "",
-          "document": "CLB instance information",
+          "document": "CLB instance information.",
           "example": "无",
           "member": "SlaUpdateParam",
           "name": "LoadBalancerSla",
@@ -7845,7 +7898,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "CLB instance ID.",
           "example": "lb-1234abcd",
           "member": "string",
           "name": "LoadBalancerId",
@@ -7854,7 +7907,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "CLB listener ID.",
           "example": "lis-1234tgbh",
           "member": "string",
           "name": "ListenerId",
@@ -7863,7 +7916,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "SCF functions to be bound.",
           "example": "无",
           "member": "FunctionTarget",
           "name": "FunctionTargets",
@@ -7872,7 +7925,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "ID of the target forwarding rule. To bind an SCF function to a L7 forwarding rule, this parameter or `Domain+Url` is required.",
           "example": "loc-1234rrrr",
           "member": "string",
           "name": "LocationId",
@@ -7881,7 +7934,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Domain name of the target forwarding rule. It is ignored if `LocationId` is specified.",
           "example": "www.123.com",
           "member": "string",
           "name": "Domain",
@@ -7890,7 +7943,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "URL of the target forwarding rule. It is ignored if `LocationId` is specified.",
           "example": "/test",
           "member": "string",
           "name": "Url",
@@ -8756,8 +8809,8 @@
       "document": "Information of the real server bound to a forwarding rule under an HTTP/HTTPS listener",
       "members": [
         {
-          "default": "",
           "document": "Forwarding rule ID",
+          "example": "无",
           "member": "string",
           "name": "LocationId",
           "required": true,
@@ -8765,8 +8818,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name of the forwarding rule",
+          "example": "无",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -8774,8 +8827,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Forwarding rule path.",
+          "example": "无",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -8783,10 +8836,19 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Real server information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Backend",
           "name": "Targets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Information about backend SCF functions.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FunctionTarget",
+          "name": "FunctionTargets",
           "required": true,
           "type": "list",
           "value_allowed_null": true
@@ -9039,7 +9101,7 @@
       "type": "object"
     },
     "SlaUpdateParam": {
-      "document": "Instance specification adjustment parameters",
+      "document": "Parameters for upgrading to an LCU-supported instance",
       "members": [
         {
           "default": "",
@@ -9053,7 +9115,7 @@
         },
         {
           "default": "",
-          "document": "To upgrade to LCU-supported CLB instances. It must be `SLA`.",
+          "document": "This parameter is set to a fixed value of `SLA`, which specifies to upgrade to an LCU-supported instance of default specification.\n<ul><li>If you enable general LCU-supported instances, `SLA` corresponds to the Super Large 1 specification. General LCU-supported instances are in beta testing, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.</li>\n<li>If you enable ultra-large LCU-supported instances, SLA corresponds to the Super Large 4 specification. Ultra-large LCU-supported instances are in beta testing, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.</li></ul>",
           "example": "SLA",
           "member": "string",
           "name": "SlaType",
@@ -9443,6 +9505,7 @@
         {
           "default": "",
           "document": "Private IP of the target",
+          "example": "'10.0.0.1'",
           "member": "string",
           "name": "IP",
           "required": true,
@@ -9452,6 +9515,7 @@
         {
           "default": "",
           "document": "Port bound to the target",
+          "example": "80",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -9461,6 +9525,7 @@
         {
           "default": "",
           "document": "Current health status. true: healthy; false: unhealthy.",
+          "example": "true",
           "member": "bool",
           "name": "HealthStatus",
           "required": true,
@@ -9470,6 +9535,7 @@
         {
           "default": "",
           "document": "Instance ID of the target, such as ins-12345678",
+          "example": "'ins-12345678'",
           "member": "string",
           "name": "TargetId",
           "required": true,
@@ -9478,7 +9544,18 @@
         },
         {
           "default": "",
-          "document": "Detailed information of the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status.",
+          "document": "Detailed information about the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status.",
+          "example": "'Alive'",
+          "member": "string",
+          "name": "HealthStatusDetail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed information about the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status. This parameter will be discarded soon. We recommend that you use the HealthStatusDetail parameter.",
+          "example": "'Alive'",
           "member": "string",
           "name": "HealthStatusDetial",
           "required": true,

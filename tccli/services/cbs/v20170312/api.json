@@ -113,7 +113,7 @@
       "status": "online"
     },
     "DescribeDiskOperationLogs": {
-      "document": "接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007\n\nThis API (DescribeDiskOperationLogs) is used to query a list of cloud disk operation logs.\n\nThis can be filtered according to the cloud disk ID. The format of cloud disk IDs is as follows: disk-a1kmcp13.\n",
+      "document": "接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007\n\nThis API has been disused. Use the CloudAudit API instead, For more information, visit https://tapd.woa.com/pro/prong/stories/view/1010114221880719007.\n\nThis API is used to query the operation logs of a cloud disk. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.",
       "input": "DescribeDiskOperationLogsRequest",
       "name": "Querying a Cloud Disk Operation Log List",
       "output": "DescribeDiskOperationLogsResponse",
@@ -134,7 +134,7 @@
       "status": "online"
     },
     "DescribeSnapshotOperationLogs": {
-      "document": "接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007\n\nThis API is used to query the operation logs of a snapshot. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.\n",
+      "document": "接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007\n\nThis API has been disused. Use the CloudAudit API instead, For more information, visit https://tapd.woa.com/pro/prong/stories/view/1010114221880719007.\n\nThis API is used to query the operation logs of a snapshot. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.\n",
       "input": "DescribeSnapshotOperationLogsRequest",
       "name": "Querying a Snapshot Operation Log List",
       "output": "DescribeSnapshotOperationLogsResponse",
@@ -273,6 +273,52 @@
     "serviceShortName": "cbs"
   },
   "objects": {
+    "AdvancedRetentionPolicy": {
+      "document": "Retention policy for scheduled snapshots. All four parameters are required.",
+      "members": [
+        {
+          "default": "",
+          "document": "Retains one latest snapshot each day within `Days` days. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "6",
+          "member": "uint64",
+          "name": "Days",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Retains one latest snapshot each week within `Weeks` weeks. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "uint64",
+          "name": "Weeks",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Retains one latest snapshot each month within `Months` months. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "uint64",
+          "name": "Months",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Retains one latest snapshot each year within `Years` years. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Years",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ApplyDiskBackupRequest": {
       "document": "ApplyDiskBackup request structure.",
       "members": [
@@ -490,7 +536,6 @@
       "document": "This describes the detailed information of the scheduled snapshot policy.",
       "members": [
         {
-          "default": "",
           "document": "The list of cloud disk IDs that the current scheduled snapshot policy is bound to.",
           "example": "[\"disk-pe1vkgim\"]",
           "member": "string",
@@ -500,7 +545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether scheduled snapshot policy is activated.",
           "example": "true",
           "member": "bool",
@@ -510,7 +554,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Scheduled snapshot policy state. Value range:<br><li>NORMAL: Normal<br><li>ISOLATED: Isolated.",
           "example": "NORMAL",
           "member": "string",
@@ -520,7 +563,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is to replicate a snapshot across accounts. `1`: yes, `0`: no.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -530,7 +572,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the snapshot created by this scheduled snapshot policy is retained permanently.",
           "example": "false",
           "member": "bool",
@@ -540,7 +581,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time the scheduled snapshot will be triggered again.",
           "example": "2022-05-31 11:00:00",
           "member": "datetime",
@@ -550,7 +590,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Scheduled snapshot policy name.",
           "example": "test",
           "member": "string",
@@ -560,7 +599,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Scheduled snapshot policy ID.",
           "example": "asp-nz3ytdwj",
           "member": "string",
@@ -570,7 +608,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The policy for executing the scheduled snapshot.",
           "example": "无",
           "member": "Policy",
@@ -580,7 +617,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time the scheduled snapshot policy was created.",
           "example": "2022-01-11 10:45:51",
           "member": "datetime",
@@ -590,7 +626,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of days the snapshot created by this scheduled snapshot policy is retained.",
           "example": "1",
           "member": "uint64",
@@ -600,7 +635,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the replication target account\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -610,12 +644,56 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of IDs of the instances associated with the scheduled snapshot policy.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"ins-og3j7lue\"]",
           "member": "string",
           "name": "InstanceIdSet",
           "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of months for which the snapshots created by this scheduled snapshot policy can be retained.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RetentionMonths",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The maximum number of snapshots created by this scheduled snapshot policy that can be retained.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "uint64",
+          "name": "RetentionAmount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Retention policy for scheduled snapshots.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AdvancedRetentionPolicy",
+          "name": "AdvancedRetentionPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "null",
+          "member": "string",
+          "name": "CopyFromAccountUin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
           "type": "list",
           "value_allowed_null": true
         }
@@ -3239,7 +3317,6 @@
       "document": "Execution policy for scheduled snapshot. It indicates that a scheduled snapshot policy is executed at the specified `Hour` in the days specified by `DayOfWeek` or `DayOfMonth` or once every `IntervalDays` days. Note: `DayOfWeek`, `DayOfMonth`, and `IntervalDays` are mutually exclusive, and only one policy rule can be set.",
       "members": [
         {
-          "default": "",
           "document": "Specifies the time that that the scheduled snapshot policy will be triggered. The unit is hour. The value range is [0-23]. 00:00-23:00 is a total of 24 time points that can be selected. 1 indicates 01:00, and so on.",
           "example": "[11,12,13]",
           "member": "uint64",
@@ -3249,13 +3326,30 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifies the days of the week, from Monday to Sunday, on which a scheduled snapshot will be triggered. Value range: [0, 6]. 0 indicates triggering on Sunday, 1-6 indicate triggering on Monday-Saturday.",
           "example": "[0,1,2]",
           "member": "uint64",
           "name": "DayOfWeek",
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Specifies the dates of the month on which a scheduled snapshot will be triggered. Value range: [1, 31]. `1` to `31` indicate the specific dates of the month; for example, `5` indicates the 5th day of the month. Note: If you set a date that does not exist in some months such as 29, 30, and 31, these months will be skipped for scheduled snapshot creation.",
+          "example": "[2, 3, 4]",
+          "member": "uint64",
+          "name": "DayOfMonth",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Specifies the interval for creating scheduled snapshots in days. Value range: [1, 365]. For example, if it is set to `5`, scheduled snapshots will be created every 5 days. Note: If you choose to back up by day, the time for the first backup is theoretically the day when the backup policy is created. If the backup policy creation time on the current day is later than the set backup time, the first backup will be performed in the second backup cycle.",
+          "example": "50",
+          "member": "uint64",
+          "name": "IntervalDays",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

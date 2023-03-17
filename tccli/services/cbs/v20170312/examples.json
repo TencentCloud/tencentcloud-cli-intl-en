@@ -10,10 +10,10 @@
     ],
     "ApplySnapshot": [
       {
-        "document": " ",
+        "document": "This example shows you how to roll back a cloud disk to the specified snapshot point in time.",
         "input": "https://cbs.tencentcloudapi.com/?Action=ApplySnapshot\n&DiskId=disk-lzrg2pwi\n&SnapshotId=snap-gybrif0z\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cc96242e-566c-ae6a-b74a-5a1f823683b2\"\n    }\n}",
-        "title": "Rollback Snapshot"
+        "title": "Rolling back a snapshot"
       }
     ],
     "AttachDisks": [
@@ -134,7 +134,7 @@
     ],
     "DescribeDiskConfigQuota": [
       {
-        "document": "",
+        "document": "查询上海五区高性能云硬盘的可售卖规格",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskConfigQuota\n<Common request parameters>\n\n{\n    \"InquiryType\": \"INQUIRY_CBS_CONFIG\",\n    \"DiskChargeType\": \"POSTPAID_BY_HOUR\",\n    \"Zones\": [\n        \"ap-shanghai-5\"\n    ],\n    \"DiskTypes\": [\n        \"CLOUD_PREMIUM\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DiskConfigSet\": [\n            {\n                \"Available\": true,\n                \"MaxDiskSize\": 32000,\n                \"Zone\": \"ap-shanghai-5\",\n                \"InstanceFamily\": null,\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"StepSize\": 1,\n                \"ExtraPerformanceRange\": null,\n                \"DeviceClass\": null,\n                \"DiskUsage\": \"DATA_DISK\",\n                \"MinDiskSize\": 10,\n                \"DiskChargeType\": \"PREPAID\"\n            }\n        ],\n        \"RequestId\": \"50346458-c053-47f1-b60f-5507e7cc5b26\"\n    }\n}",
         "title": "Querying the purchasable specifications of Premium Cloud Disk in Shanghai Zone 5"
@@ -296,8 +296,8 @@
     ],
     "ModifySnapshotAttribute": [
       {
-        "document": " ",
-        "input": "https://cbs.tencentcloudapi.com/?Action=ModifySnapshotAttribute\n&SnapshotId=snap-gybrif0z\n&SnapshotName=snap_201711301143\n&<Common request parameters>",
+        "document": "This example shows you how to rename a cloud disk.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=ModifySnapshotAttribute\n&SnapshotId=snap-gybrif0z\n&SnapshotName=snap_201711301143\n&<Common Request Parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"55db49cf-b9d7-da27-825b-5a02ba6884ca\"\n    }\n}",
         "title": "Renaming a snapshot"
       }
@@ -320,7 +320,7 @@
     ],
     "TerminateDisks": [
       {
-        "document": " ",
+        "document": "This example shows you how to terminate two cloud disks.",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminateDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"disk-g27hqeo2\",\n        \"disk-lzrg2pwi\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"52c965d2-5deb-459a-8b5a-b3b9a1376544\"\n    }\n}",
         "title": "Batch returning cloud disks"

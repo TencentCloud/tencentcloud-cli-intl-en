@@ -21,6 +21,34 @@
       "output": "DescribeCloudRecordingResponse",
       "status": "online"
     },
+    "DescribeMixTranscodingUsage": {
+      "document": "This API is used to query your usage of TRTC’s On-Cloud MixTranscoding service.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "input": "DescribeMixTranscodingUsageRequest",
+      "name": "Queries TRTC On-Cloud MixTranscoding usage",
+      "output": "DescribeMixTranscodingUsageResponse",
+      "status": "online"
+    },
+    "DescribeRecordingUsage": {
+      "document": "This API is used to query your TRTC recording usage.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "input": "DescribeRecordingUsageRequest",
+      "name": "Queries TRTC recording usage",
+      "output": "DescribeRecordingUsageResponse",
+      "status": "online"
+    },
+    "DescribeRelayUsage": {
+      "document": "This API is used to query your usage of TRTC’s relay to CDN service.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "input": "DescribeRelayUsageRequest",
+      "name": "Queries TRTC relay to CDN usage",
+      "output": "DescribeRelayUsageResponse",
+      "status": "online"
+    },
+    "DescribeTrtcUsage": {
+      "document": "This API is used to query your TRTC audio/video duration.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "input": "DescribeTrtcUsageRequest",
+      "name": "Queries TRTC audio/video duration",
+      "output": "DescribeTrtcUsageResponse",
+      "status": "online"
+    },
     "DismissRoom": {
       "document": "This API is used to remove all users from a room and dismiss the room. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.",
       "input": "DismissRoomRequest",
@@ -522,6 +550,267 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMixTranscodingUsageRequest": {
+      "document": "DescribeMixTranscodingUsage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date in the format of YYYY-MM-DD.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
+          "example": "1400123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMixTranscodingUsageResponse": {
+      "document": "DescribeMixTranscodingUsage response structure.",
+      "members": [
+        {
+          "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
+          "example": "无",
+          "member": "string",
+          "name": "UsageKey",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The usage data in each time unit.",
+          "example": "无",
+          "member": "TrtcUsage",
+          "name": "UsageList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordingUsageRequest": {
+      "document": "DescribeRecordingUsage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date in the format of YYYY-MM-DD.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to query single-stream or mixed-stream recording. Valid values: `single`, `multi`.",
+          "example": "\"single\"",
+          "member": "string",
+          "name": "MixType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
+          "example": "1400123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordingUsageResponse": {
+      "document": "DescribeRecordingUsage response structure.",
+      "members": [
+        {
+          "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
+          "example": "无",
+          "member": "string",
+          "name": "UsageKey",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The usage data in each time unit.",
+          "example": "无",
+          "member": "TrtcUsage",
+          "name": "UsageList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRelayUsageRequest": {
+      "document": "DescribeRelayUsage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date in the format of YYYY-MM-DD.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
+          "example": "1400123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRelayUsageResponse": {
+      "document": "DescribeRelayUsage response structure.",
+      "members": [
+        {
+          "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
+          "example": "无",
+          "member": "string",
+          "name": "UsageKey",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The usage data in each time unit.",
+          "example": "无",
+          "member": "TrtcUsage",
+          "name": "UsageList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcUsageRequest": {
+      "document": "DescribeTrtcUsage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date in the format of YYYY-MM-DD.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
+          "example": "2022-01-01 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
+          "example": "1400123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcUsageResponse": {
+      "document": "DescribeTrtcUsage response structure.",
+      "members": [
+        {
+          "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
+          "example": "无",
+          "member": "string",
+          "name": "UsageKey",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The usage data in each time unit.",
+          "example": "无",
+          "member": "TrtcUsage",
+          "name": "UsageList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1183,8 +1472,7 @@
       "document": "The Watermark information.",
       "members": [
         {
-          "default": "",
-          "document": "The watermark type. The default is 0, which indicates an image watermark.",
+          "document": "The watermark type. Valid values: `0` (default): Image; `1`: Text.",
           "example": "0",
           "member": "uint64",
           "name": "WaterMarkType",
@@ -1193,7 +1481,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The watermark image information. This parameter is required if `WaterMarkType` is 0.",
           "example": "WaterMarkImage",
           "member": "McuWaterMarkImage",
@@ -1201,6 +1488,93 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "WaterMarkText",
+          "member": "McuWaterMarkText",
+          "name": "WaterMarkText",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "McuWaterMarkText": {
+      "document": "The text watermark configuration.",
+      "members": [
+        {
+          "document": "The text.",
+          "example": "\"XXX\"",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The watermark width (pixels).",
+          "example": "64",
+          "member": "uint64",
+          "name": "WaterMarkWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The watermark height (pixels).",
+          "example": "64",
+          "member": "uint64",
+          "name": "WaterMarkHeight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The horizontal offset (pixels) of the watermark.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The vertical offset (pixels) of the watermark.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationY",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The font size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "uint64",
+          "name": "FontSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The text color. The default color is white. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0xFFFFFF",
+          "member": "string",
+          "name": "FontColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0x000000",
+          "member": "string",
+          "name": "BackGroundColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
@@ -2210,6 +2584,32 @@
         }
       ],
       "usage": "in"
+    },
+    "TrtcUsage": {
+      "document": "The TRTC audio/video duration generated in a certain time period.",
+      "members": [
+        {
+          "default": "",
+          "document": "The time point in the format of `YYYY-MM-DD HH:mm:ss`. If more than one day is queried, `HH:mm:ss` is `00:00:00`.",
+          "example": "无",
+          "member": "string",
+          "name": "TimeKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The usage (minutes). Each element of this parameter corresponds to an element of `UsageKey` in the order they are listed.",
+          "example": "无",
+          "member": "float",
+          "name": "UsageValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "UpdatePublishCdnStreamRequest": {
       "document": "UpdatePublishCdnStream request structure.",
