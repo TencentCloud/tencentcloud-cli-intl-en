@@ -7,6 +7,20 @@
       "output": "CancelTaskResponse",
       "status": "online"
     },
+    "CreateInternalTable": {
+      "document": "This API is used to create a managed internal table. It has been disused.",
+      "input": "CreateInternalTableRequest",
+      "name": "Creates a managed internal table",
+      "output": "CreateInternalTableResponse",
+      "status": "online"
+    },
+    "CreateResultDownload": {
+      "document": "This API is used to create a query result download task.",
+      "input": "CreateResultDownloadRequest",
+      "name": "Creates a query result download task",
+      "output": "CreateResultDownloadResponse",
+      "status": "online"
+    },
     "CreateSparkApp": {
       "document": "This API is used to create a Spark application.",
       "input": "CreateSparkAppRequest",
@@ -42,6 +56,13 @@
       "output": "DeleteSparkAppResponse",
       "status": "online"
     },
+    "DescribeResultDownload": {
+      "document": "This API is used to get a query result download task.",
+      "input": "DescribeResultDownloadRequest",
+      "name": "Gets a query result download task",
+      "output": "DescribeResultDownloadResponse",
+      "status": "online"
+    },
     "DescribeSparkAppJob": {
       "document": "This API is used to query a specific Spark application.",
       "input": "DescribeSparkAppJobRequest",
@@ -75,6 +96,20 @@
       "input": "DescribeTasksRequest",
       "name": "Queries the list of tasks",
       "output": "DescribeTasksResponse",
+      "status": "online"
+    },
+    "GenerateCreateMangedTableSql": {
+      "document": "This API is used to generate SQL statements for creating a managed table.",
+      "input": "GenerateCreateMangedTableSqlRequest",
+      "name": "Generates SQL statements for creating a managed table",
+      "output": "GenerateCreateMangedTableSqlResponse",
+      "status": "online"
+    },
+    "ModifyGovernEventRule": {
+      "document": "This API is used to change data governance event thresholds.",
+      "input": "ModifyGovernEventRuleRequest",
+      "name": "Changes data governance event thresholds",
+      "output": "ModifyGovernEventRuleResponse",
       "status": "online"
     },
     "ModifySparkApp": {
@@ -231,11 +266,127 @@
       ],
       "usage": "both"
     },
+    "CreateInternalTableRequest": {
+      "document": "CreateInternalTable request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The basic table information.",
+          "example": "无",
+          "member": "TableBaseInfo",
+          "name": "TableBaseInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The table fields.",
+          "example": "无",
+          "member": "TColumn",
+          "name": "Columns",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The table partitions.",
+          "example": "无",
+          "member": "TPartition",
+          "name": "Partitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The table properties.",
+          "example": "无",
+          "member": "Property",
+          "name": "Properties",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInternalTableResponse": {
+      "document": "CreateInternalTable response structure.",
+      "members": [
+        {
+          "document": "The SQL statements for creating the managed internal table.",
+          "example": "无",
+          "member": "string",
+          "name": "Execution",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateResultDownloadRequest": {
+      "document": "CreateResultDownload request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The result query task ID.",
+          "example": "123abc456",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The result format.",
+          "example": "CSV",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to re-generate a file to download. This parameter applies only when the last task is `timeout` or `error`.",
+          "example": "true",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateResultDownloadResponse": {
+      "document": "CreateResultDownload response structure.",
+      "members": [
+        {
+          "document": "The download task ID.",
+          "example": "1234214",
+          "member": "string",
+          "name": "DownloadId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateSparkAppRequest": {
       "document": "CreateSparkApp request structure.",
       "members": [
         {
-          "default": "",
           "document": "Spark application name",
           "example": "app-test",
           "member": "string",
@@ -244,7 +395,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "1: Spark JAR application; 2: Spark streaming application",
           "example": "1,2",
           "member": "int64",
@@ -253,7 +403,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The data engine executing the Spark job",
           "example": "spark-engine",
           "member": "string",
@@ -262,7 +411,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Execution entry of the Spark application",
           "example": "test.jar",
           "member": "string",
@@ -271,7 +419,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Execution role ID of the Spark job",
           "example": "12",
           "member": "int64",
@@ -280,7 +427,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Driver resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
           "example": "small",
           "member": "string",
@@ -289,7 +435,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Executor resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
           "example": "small",
           "member": "string",
@@ -298,7 +443,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of Spark job executors",
           "example": "1",
           "member": "int64",
@@ -307,7 +451,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "This field has been disused. Use the `Datasource` field instead.",
           "example": "kafka-datasource",
           "member": "string",
@@ -316,7 +459,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether it is upload locally. Valid values: `cos`, `lakefs`.",
           "example": "cos",
           "member": "string",
@@ -325,7 +467,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Main class of the Spark JAR job during execution",
           "example": "org.test.WordCount",
           "member": "string",
@@ -334,7 +475,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Spark configurations separated by line break",
           "example": "spark.default.parallelism=2000",
           "member": "string",
@@ -343,7 +483,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether it is upload locally. Valid values: `cos`, `lakefs`.",
           "example": "cos",
           "member": "string",
@@ -352,7 +491,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Dependency JAR packages of the Spark JAR job separated by comma",
           "example": "com.test.jar",
           "member": "string",
@@ -361,7 +499,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether it is upload locally. Valid values: `cos`, `lakefs`.",
           "example": "cos",
           "member": "string",
@@ -370,7 +507,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Dependency resources of the Spark job separated by comma",
           "example": "spark-default.properties",
           "member": "string",
@@ -379,7 +515,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command line parameters of the Spark job",
           "example": "10",
           "member": "string",
@@ -388,7 +523,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter takes effect only for Spark flow tasks.",
           "example": "1",
           "member": "int64",
@@ -397,7 +531,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data source name",
           "example": "kafka-datasource",
           "member": "string",
@@ -406,7 +539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "PySpark: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
           "example": "cos",
           "member": "string",
@@ -415,7 +547,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.",
           "example": "test.py",
           "member": "string",
@@ -424,7 +555,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Archives: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
           "example": "cos",
           "member": "string",
@@ -433,13 +563,36 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Archives: Dependency resources",
           "example": "file1.tar.gz#abc",
           "member": "string",
           "name": "AppArchives",
           "required": false,
           "type": "string"
+        },
+        {
+          "document": "The Spark image version.",
+          "example": "1.0",
+          "member": "string",
+          "name": "SparkImage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The Spark image version name.",
+          "example": "spark:3.2.1-java ",
+          "member": "string",
+          "name": "SparkImageVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The specified executor count (max), which defaults to 1. This parameter applies if the \"Dynamic\" mode is selected. If the \"Dynamic\" mode is not selected, the executor count is equal to `AppExecutorNums`.",
+          "example": "1",
+          "member": "int64",
+          "name": "AppExecutorMaxNumbers",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -447,6 +600,14 @@
     "CreateSparkAppResponse": {
       "document": "CreateSparkApp response structure.",
       "members": [
+        {
+          "document": "The unique ID of the application.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "04529f7b-2e3a-70d7-72b4-a0d288ba300c",
+          "member": "string",
+          "name": "SparkAppId",
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -645,6 +806,11 @@
       ],
       "type": "object"
     },
+    "DataGovernPolicy": {
+      "document": "The data governance rules.",
+      "members": [],
+      "usage": "both"
+    },
     "DeleteSparkAppRequest": {
       "document": "DeleteSparkApp request structure.",
       "members": [
@@ -663,6 +829,87 @@
     "DeleteSparkAppResponse": {
       "document": "DeleteSparkApp response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResultDownloadRequest": {
+      "document": "DescribeResultDownload request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The query task ID.",
+          "example": "11123",
+          "member": "string",
+          "name": "DownloadId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResultDownloadResponse": {
+      "document": "DescribeResultDownload response structure.",
+      "members": [
+        {
+          "document": "The file save path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cosn://bucket/123",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The task status. Valid values: `init`, `queue`, `format`, `compress`, `success`, `timeout`, and `error`.",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The task exception cause.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "Reason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The temporary secret ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "SecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The temporary secret key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The temporary token.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Token",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1104,6 +1351,22 @@
       ],
       "type": "object"
     },
+    "Execution": {
+      "document": "SQL statement objects",
+      "members": [
+        {
+          "default": "",
+          "document": "The automatically generated SQL statements.",
+          "example": "CREATE DATABASE `test`;;",
+          "member": "string",
+          "name": "SQL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Filter": {
       "document": "Query list filter parameter",
       "members": [
@@ -1130,6 +1393,69 @@
       ],
       "usage": "in"
     },
+    "GenerateCreateMangedTableSqlRequest": {
+      "document": "GenerateCreateMangedTableSql request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The basic table information.",
+          "example": "无",
+          "member": "TableBaseInfo",
+          "name": "TableBaseInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The table fields.",
+          "example": "无",
+          "member": "TColumn",
+          "name": "Columns",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The table partitions.",
+          "example": "无",
+          "member": "TPartition",
+          "name": "Partitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The table properties.",
+          "example": "无",
+          "member": "Property",
+          "name": "Properties",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GenerateCreateMangedTableSqlResponse": {
+      "document": "GenerateCreateMangedTableSql response structure.",
+      "members": [
+        {
+          "document": "The SQL statements for creating the managed internal table.",
+          "example": "无",
+          "member": "Execution",
+          "name": "Execution",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "KVPair": {
       "document": "Configuration format",
       "members": [
@@ -1154,13 +1480,29 @@
           "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
+    },
+    "ModifyGovernEventRuleRequest": {
+      "document": "ModifyGovernEventRule request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ModifyGovernEventRuleResponse": {
+      "document": "ModifyGovernEventRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifySparkAppRequest": {
       "document": "ModifySparkApp request structure.",
       "members": [
         {
-          "default": "",
           "document": "Spark application name",
           "example": "app-test",
           "member": "string",
@@ -1169,7 +1511,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "1: Spark JAR application; 2: Spark streaming application",
           "example": "1,2",
           "member": "int64",
@@ -1178,7 +1519,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The data engine executing the Spark job",
           "example": "spark-engine",
           "member": "string",
@@ -1187,7 +1527,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Execution entry of the Spark application",
           "example": "test.jar",
           "member": "string",
@@ -1196,7 +1535,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Execution role ID of the Spark job",
           "example": "12",
           "member": "int64",
@@ -1205,7 +1543,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Driver resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
           "example": "small",
           "member": "string",
@@ -1214,7 +1551,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Executor resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
           "example": "small",
           "member": "string",
@@ -1223,7 +1559,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of Spark job executors",
           "example": "1",
           "member": "int64",
@@ -1232,7 +1567,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Spark application ID",
           "example": "batch_ssta",
           "member": "string",
@@ -1241,7 +1575,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This field has been disused. Use the `Datasource` field instead.",
           "example": "kafka-datasource",
           "member": "string",
@@ -1250,7 +1583,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether it is uploaded locally. Valid values: `cos`, `lakefs`.",
           "example": "cos",
           "member": "string",
@@ -1259,7 +1591,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Main class of the Spark JAR job during execution",
           "example": "org.test.WordCount",
           "member": "string",
@@ -1268,7 +1599,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Spark configurations separated by line break",
           "example": "spark.default.parallelism=2000",
           "member": "string",
@@ -1277,7 +1607,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "JAR resource dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
           "example": "cos",
           "member": "string",
@@ -1286,7 +1615,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Dependency JAR packages of the Spark JAR job separated by comma",
           "example": "com.test.jar",
           "member": "string",
@@ -1295,7 +1623,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "File resource dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
           "example": "cos",
           "member": "string",
@@ -1304,7 +1631,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Dependency resources of the Spark job separated by comma",
           "example": "spark-default.properties",
           "member": "string",
@@ -1313,7 +1639,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "PySpark: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
           "example": "cos",
           "member": "string",
@@ -1322,7 +1647,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.",
           "example": "test.py",
           "member": "string",
@@ -1331,7 +1655,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command line parameters of the Spark job",
           "example": "10",
           "member": "string",
@@ -1340,7 +1663,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter takes effect only for Spark flow tasks.",
           "example": "1",
           "member": "int64",
@@ -1349,7 +1671,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data source name",
           "example": "kafka-datasource",
           "member": "string",
@@ -1358,7 +1679,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Archives: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
           "example": "cos",
           "member": "string",
@@ -1367,13 +1687,36 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Archives: Dependency resources",
           "example": "file1.tar.gz#abc",
           "member": "string",
           "name": "AppArchives",
           "required": false,
           "type": "string"
+        },
+        {
+          "document": "The Spark image version.",
+          "example": "1.0",
+          "member": "string",
+          "name": "SparkImage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The Spark image version name.",
+          "example": "spark:3.2.1-java ",
+          "member": "string",
+          "name": "SparkImageVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The specified executor count (max), which defaults to 1. This parameter applies if the \"Dynamic\" mode is selected. If the \"Dynamic\" mode is not selected, the executor count is equal to `AppExecutorNums`.",
+          "example": "1",
+          "member": "int64",
+          "name": "AppExecutorMaxNumbers",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1389,6 +1732,32 @@
         }
       ],
       "type": "object"
+    },
+    "Property": {
+      "document": "Properties of database and table",
+      "members": [
+        {
+          "default": "",
+          "document": "The property key name.",
+          "example": "owner",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The property value.",
+          "example": "create by zhangsan",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SQLTask": {
       "document": " SQL query task",
@@ -1420,7 +1789,6 @@
       "document": "Spark job details",
       "members": [
         {
-          "default": "",
           "document": "Spark job ID",
           "example": "4a7cad6bb86211ec9c616e6f30623d72",
           "member": "string",
@@ -1430,7 +1798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Spark job name",
           "example": "test-app",
           "member": "string",
@@ -1440,7 +1807,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Spark job type. Valid values: `1` (batch job), `2` (streaming job).",
           "example": "1",
           "member": "int64",
@@ -1450,7 +1816,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Engine name",
           "example": "spark-engine",
           "member": "string",
@@ -1460,7 +1825,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field has been disused. Use the `Datasource` field instead.",
           "example": "kafka",
           "member": "string",
@@ -1470,7 +1834,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the program package is uploaded locally. Valid values: `cos`, `lakefs`.",
           "example": "cos",
           "member": "string",
@@ -1480,7 +1843,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Program package path",
           "example": "cosn://bucket/example.jar",
           "member": "string",
@@ -1490,7 +1852,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Role ID",
           "example": "1",
           "member": "int64",
@@ -1500,7 +1861,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Main class of Spark job execution",
           "example": "org.tencent.Example",
           "member": "string",
@@ -1510,7 +1870,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command line parameters of the Spark job separated by space",
           "example": "1 2",
           "member": "string",
@@ -1520,7 +1879,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Native Spark configurations separated by line break",
           "example": "spark.network.timeout=120s",
           "member": "string",
@@ -1530,7 +1888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the dependency JAR packages are uploaded locally. Valid values: `cos`, `lakefs`.",
           "example": "cos",
           "member": "string",
@@ -1540,7 +1897,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dependency JAR packages of the Spark job separated by comma",
           "example": "example.jar",
           "member": "string",
@@ -1550,7 +1906,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the dependency file is uploaded locally. Valid values: `cos`, `lakefs`.",
           "example": "cos",
           "member": "string",
@@ -1560,7 +1915,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dependency files of the Spark job separated by comma",
           "example": "cos",
           "member": "string",
@@ -1570,7 +1924,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Driver resource size of the Spark job",
           "example": "small",
           "member": "string",
@@ -1580,7 +1933,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Executor resource size of the Spark job",
           "example": "small",
           "member": "string",
@@ -1590,7 +1942,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of Spark job executors",
           "example": "1",
           "member": "int64",
@@ -1600,7 +1951,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of retries of the Spark flow task",
           "example": "3",
           "member": "int64",
@@ -1610,7 +1960,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Spark job creator",
           "example": "test",
           "member": "string",
@@ -1620,7 +1969,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Spark job creation time",
           "example": "1",
           "member": "int64",
@@ -1630,7 +1978,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Spark job update time",
           "example": "1",
           "member": "uint64",
@@ -1640,7 +1987,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last task ID of the Spark job",
           "example": "4a7cad6bb86211ec9c616e6f30623d72",
           "member": "string",
@@ -1650,7 +1996,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last status of the Spark job",
           "example": "0",
           "member": "int64",
@@ -1660,7 +2005,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Spark streaming job statistics\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "StreamingStatistics",
@@ -1670,7 +2014,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Data source name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "kafka-datasource",
           "member": "string",
@@ -1680,7 +2023,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "PySpark: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cos",
           "member": "string",
@@ -1690,7 +2032,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Note: This returned value has been disused.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.py",
           "member": "string",
@@ -1700,7 +2041,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Archives: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cos",
           "member": "string",
@@ -1710,7 +2050,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Archives: Dependency resources\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "file1.tar.gz#abc",
           "member": "string",
@@ -1720,7 +2059,15 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "document": "The Spark image version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "string",
+          "name": "SparkImage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.py",
           "member": "string",
@@ -1730,7 +2077,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of tasks running or ready to run under the current job\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5",
           "member": "int64",
@@ -1740,12 +2086,20 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Engine status. -100 (default value): unknown; -2–11: normal.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "DataEngineStatus",
           "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The specified executor count (max), which defaults to 1. This parameter applies if the \"Dynamic\" mode is selected. If the \"Dynamic\" mode is not selected, the executor count is equal to `JobExecutorNums`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "JobExecutorMaxNumbers",
+          "required": false,
           "type": "int",
           "value_allowed_null": true
         }
@@ -1912,6 +2266,244 @@
         }
       ],
       "type": "object"
+    },
+    "TColumn": {
+      "document": "Table field information",
+      "members": [
+        {
+          "default": "",
+          "document": "The field name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The field type.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The field description.",
+          "example": "无",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The default field value.",
+          "example": "无",
+          "member": "string",
+          "name": "Default",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the field is not null.",
+          "example": "无",
+          "member": "bool",
+          "name": "NotNull",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TPartition": {
+      "document": "Table partition information",
+      "members": [
+        {
+          "default": "",
+          "document": "The field name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The field type.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The field description.",
+          "example": "无",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The partition type.",
+          "example": "无",
+          "member": "string",
+          "name": "PartitionType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The partition format.",
+          "example": "无",
+          "member": "string",
+          "name": "PartitionFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The separator count of the partition conversion policy.",
+          "example": "无",
+          "member": "int64",
+          "name": "PartitionDot",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The partition conversion policy.",
+          "example": "无",
+          "member": "string",
+          "name": "Transform",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The policy parameters.",
+          "example": "无",
+          "member": "string",
+          "name": "TransformArgs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TableBaseInfo": {
+      "document": "Table configurations",
+      "members": [
+        {
+          "default": "",
+          "document": "The database name.",
+          "example": "database1",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The table name.",
+          "example": "table",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The data source name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CosDataCatalog",
+          "member": "string",
+          "name": "DatasourceConnectionName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The table remarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "TableComment",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The specific type: `table` or `view`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "table",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The data format type, such as `hive` and `iceberg`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "hive",
+          "member": "string",
+          "name": "TableFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The table creator name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "UserAlias",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The table creator ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100019878767",
+          "member": "string",
+          "name": "UserSubUin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The data governance configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DataGovernPolicy",
+          "name": "GovernPolicy",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "Task": {
       "document": "Task type, such as SQL query.",

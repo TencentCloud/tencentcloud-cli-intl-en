@@ -337,7 +337,7 @@
       "status": "online"
     },
     "ModifyIndex": {
-      "document": "This API is used to modify the index configuration.\n",
+      "document": "This API is used to modify the index configuration. It is subject to the default request frequency limit, and the number of concurrent requests to the same log topic cannot exceed 1, i.e., the index configuration of only one log topic can be modified at a time.\n",
       "input": "ModifyIndexRequest",
       "name": "Modifies index",
       "output": "ModifyIndexResponse",
@@ -400,7 +400,7 @@
       "status": "online"
     },
     "UploadLog": {
-      "document": "## Note\nTo ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API [Uploading Structured Logs](https://intl.cloud.tencent.com/document/api/614/16873?from_cn_redirect=1) to upload logs.\n\nFor the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Collection via SDK](https://intl.cloud.tencent.com/document/product/614/45006).\n\n`UploadLog` allows you to synchronously upload log data. If you still want to continue to use this API instead of the optimized one, read this document.\n\n## Feature Description\n\nThis API is used to write logs to a specified log topic.\n\nCLS provides the following two modes:\n\n#### Load balancing mode\n\nIn this mode, logs will be automatically written to a target partition among all readable/writable partitions under the current log topic based on the load balancing principle. This mode is suitable for scenarios where sequential consumption is not needed.\n\n#### Hash routing mode\n\nIn this mode, data will be written to a target partition that meets the range requirements based on the carried hash value (`X-CLS-HashKey`). For example, a log source can be bound to a topic partition through `HashKey`, strictly guaranteeing the sequence of the data written to and consumed in this partition.\n\n                 \n\n#### Input parameters (pb binary streams in `body`)\n\n| Parameter | Type | Location | Required | Description |\n| ------------ | ------- | ---- | ---- | ------------------------------------------------------------ |\n| logGroupList | message | pb    | Yes   | The `logGroup` list, which describes the encapsulated log groups. We recommend you enter up to five `logGroup` values.                     |\n\n`LogGroup` description:\n\n| Parameter     | Required | Description                                                         |\n| ----------- | -------- | ------------------------------------------------------------ |\n| logs        | Yes       | Log array consisting of multiple `Log` values. The `Log` indicates a log, and a `LogGroup` can contain up to 10,000 `Log` values. |\n| contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: \"{context ID}-{LogGroupID}\". <br>Context ID: Uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: A 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |\n| filename    | No       | Log filename                                                   |\n| source      | No       | Log source, which is generally the machine IP                           |\n| logTags     | No       | Tag list of logs                                               |\n\n`Log` description:\n\n| Parameter | Required | Description |\n| -------- | -------- | ------------------------------------------------------------ |\n| time | Yes | Unix timestamp of log time in seconds or milliseconds (recommended) |\n| contents | No | Log content in key-value format. A log can contain multiple key-value pairs. |\n\n`Content` description:\n\n| Parameter | Required | Description |\n| ------ | -------- | ------------------------------------------------------------ |\n| key    | Yes       | Key of a field group in one log, which cannot start with `_`.                 |\n| value  | Yes       | Value of a field group. The `value` of one log cannot exceed 1 MB and the total `value` in `LogGroup` cannot exceed 5 MB. |\n\n`LogTag` description:\n\n| Parameter     | Required | Description                                                         |\n| ------ | -------- | -------------------------------- |\n| key    | Yes       | Key of a custom tag             |\n| value  | Yes       | Value corresponding to the custom tag key |\n\n## pb Compilation Sample\n\nThis sample describes how to use the protoc compiler to compile the pb description file into a log upload API in C++.\n\n> ?Currently, protoc supports compilation in multiple programming languages such as Java, C++, and Python. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).\n\n#### 1. Install Protocol Buffers\n\nDownload [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the sample is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and go to the directory:\n\n```\ntar -zxvf protobuf-2.6.1.tar.gz -C /usr/local/ && cd /usr/local/protobuf-2.6.1\n```\n\nRun the following commands to start compilation and installation, and configure the environment variables:\n\n```\n[root@VM_0_8_centos protobuf-2.6.1]# ./configure \n[root@VM_0_8_centos protobuf-2.6.1]# make && make install\n[root@VM_0_8_centos protobuf-2.6.1]# export PATH=$PATH:/usr/local/protobuf-2.6.1/bin\n```\n\nAfter the compilation succeeds, run the following command to check the version:\n\n```\n[root@VM_0_8_centos protobuf-2.6.1]# protoc --version\nliprotoc 2.6.1\n```\n\n#### 2. Create a pb description file\n\nA pb description file is an agreed-on data interchange format for communication. To upload logs, compile the specified protocol format to an API in the target programming language and add the API to the project code. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).\n\nCreate a pb message description file `cls.proto` based on the pb data format content specified by CLS.\n\n> !The pb description file content cannot be modified, and the filename must end with `.proto`.\n\nThe content of `cls.proto` (pb description file) is as follows:\n\n```\npackage cls;\n\nmessage Log\n{\n    message Content\n    {\n        required string key   = 1; // Key of each field group\n        required string value = 2; // Value of each field group\n    }\n    required int64   time     = 1; // Unix timestamp\n    repeated Content contents = 2; // Multiple key-value pairs in one log\n}\n\nmessage LogTag\n{\n    required string key       = 1;\n    required string value     = 2;\n}\n\nmessage LogGroup\n{\n    repeated Log    logs        = 1; // Log array consisting of multiple logs\n    optional string contextFlow = 2; // This parameter does not take effect currently\n    optional string filename    = 3; // Log filename\n    optional string source      = 4; // Log source, which is generally the machine IP\n    repeated LogTag logTags     = 5;\n}\n\nmessage LogGroupList\n{\n    repeated LogGroup logGroupList = 1; // Log group list\n}\n```\n\n#### 3. Compile and generate the API\n\nThis sample uses the proto compiler to generate a C++ file in the same directory as the `cls.proto` file. Run the following compilation command:\n\n```\nprotoc --cpp_out=./ ./cls.proto \n```\n\n> ?`--cpp_out=./ ` indicates that the file will be compiled in cpp format and output to the current directory. `./cls.proto` indicates the `cls.proto` description file in the current directory.\n\nAfter the compilation succeeds, the code file in the corresponding programming language will be generated. This sample generates the `cls.pb.h` header file and [cls.pb.cc](http://cls.pb.cc) code implementation file as shown below:\n\n```\n[root@VM_0_8_centos protobuf-2.6.1]# protoc --cpp_out=./ ./cls.proto\n[root@VM_0_8_centos protobuf-2.6.1]# ls\ncls.pb.cc cls.pb.h cls.proto\n```\n\n#### 4. Call the API\n\nImport the generated `cls.pb.h` header file into the code and call the API for data encapsulation.",
+      "document": "## Note\nTo ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API to upload logs. For more information about the API, see [Uploading Log via API](https://www.tencentcloud.com/document/product/614/50267).\n\nFor the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Uploading Log via SDK](https://intl.cloud.tencent.com/document/product/614/45006).\n\n`UploadLog` allows you to synchronously upload log data. If you still want to continue to use this API instead of the optimized one, read this document.\n\n## Feature Description\n\nThis API is used to write logs to a specified log topic.\n\nCLS provides the following two modes:\n\n#### Load balancing mode\n\nIn this mode, logs will be automatically written to a target partition among all readable/writable partitions under the current log topic based on the load balancing principle. This mode is suitable for scenarios where sequential consumption is not needed.\n\n#### Hash routing mode\n\nIn this mode, data will be written to a target partition that meets the range requirements based on the carried hash value (`X-CLS-HashKey`). For example, a log source can be bound to a topic partition through `HashKey`, strictly guaranteeing the sequence of the data written to and consumed in this partition.\n\n                 \n\n#### Input parameters (pb binary streams in `body`)\n\n| Parameter | Type | Location | Required | Description |\n| ------------ | ------- | ---- | ---- | ------------------------------------------------------------ |\n| logGroupList | message | pb    | Yes   | The `logGroup` list, which describes the encapsulated log groups. We recommend you enter up to five `logGroup` values.                     |\n\n`LogGroup` description:\n\n| Parameter     | Required | Description                                                         |\n| ----------- | -------- | ------------------------------------------------------------ |\n| logs        | Yes       | Log array consisting of multiple `Log` values. The `Log` indicates a log, and a `LogGroup` can contain up to 10,000 `Log` values. |\n| contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: \"{context ID}-{LogGroupID}\". <br>Context ID: Uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: A 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |\n| filename    | No       | Log filename                                                   |\n| source      | No       | Log source, which is generally the machine IP                           |\n| logTags     | No       | List of log tags                                               |\n\n`Log` description:\n\n| Parameter | Required | Description |\n| -------- | -------- | ------------------------------------------------------------ |\n| time | Yes | Unix timestamp of log time in seconds or milliseconds (recommended) |\n| contents | No | Log content in key-value format. A log can contain multiple key-value pairs. |\n\n`Content` description:\n\n| Parameter | Required | Description |\n| ------ | -------- | ------------------------------------------------------------ |\n| key    | Yes       | Key of a field group in one log, which cannot start with `_`.                 |\n| value  | Yes       | Value of a field group. The `value` of one log cannot exceed 1 MB and the total `value` in `LogGroup` cannot exceed 5 MB. |\n\n`LogTag` description:\n\n| Parameter     | Required | Description                                                         |\n| ------ | -------- | -------------------------------- |\n| key    | Yes       | Key of a custom tag             |\n| value  | Yes       | Value corresponding to the custom tag key |\n\n## pb Compilation Sample\n\nThis sample describes how to use the protoc compiler to compile the pb description file into a log upload API in C++.\n\n> ?Currently, protoc supports compilation in multiple programming languages such as Java, C++, and Python. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).\n\n#### 1. Install Protocol Buffers\n\nDownload [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the sample is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and go to the directory:\n\n```\ntar -zxvf protobuf-2.6.1.tar.gz -C /usr/local/ && cd /usr/local/protobuf-2.6.1\n```\n\nRun the following commands to start compilation and installation, and configure the environment variables:\n\n```\n[root@VM_0_8_centos protobuf-2.6.1]# ./configure \n[root@VM_0_8_centos protobuf-2.6.1]# make && make install\n[root@VM_0_8_centos protobuf-2.6.1]# export PATH=$PATH:/usr/local/protobuf-2.6.1/bin\n```\n\nAfter the compilation succeeds, run the following command to check the version:\n\n```\n[root@VM_0_8_centos protobuf-2.6.1]# protoc --version\nliprotoc 2.6.1\n```\n\n#### 2. Create a pb description file\n\nA pb description file is an agreed-on data interchange format for communication. To upload logs, compile the specified protocol format to an API in the target programming language and add the API to the project code. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).\n\nCreate a pb message description file `cls.proto` based on the pb data format content specified by CLS.\n\n> !The pb description file content cannot be modified, and the filename must end with `.proto`.\n\nThe content of `cls.proto` (pb description file) is as follows:\n\n```\npackage cls;\n\nmessage Log\n{\n    message Content\n    {\n        required string key   = 1; // Key of each field group\n        required string value = 2; // Value of each field group\n    }\n    required int64   time     = 1; // Unix timestamp\n    repeated Content contents = 2; // Multiple key-value pairs in one log\n}\n\nmessage LogTag\n{\n    required string key       = 1;\n    required string value     = 2;\n}\n\nmessage LogGroup\n{\n    repeated Log    logs        = 1; // Log array consisting of multiple logs\n    optional string contextFlow = 2; // This parameter does not take effect currently\n    optional string filename    = 3; // Log filename\n    optional string source      = 4; // Log source, which is generally the machine IP\n    repeated LogTag logTags     = 5;\n}\n\nmessage LogGroupList\n{\n    repeated LogGroup logGroupList = 1; // Log group list\n}\n```\n\n#### 3. Compile and generate the API\n\nThis sample uses the proto compiler to generate a C++ file in the same directory as the `cls.proto` file. Run the following compilation command:\n\n```\nprotoc --cpp_out=./ ./cls.proto \n```\n\n> ?`--cpp_out=./` indicates that the file will be compiled in cpp format and output to the current directory. `./cls.proto` indicates the `cls.proto` description file in the current directory.\n\nAfter the compilation succeeds, the code file in the corresponding programming language will be generated. This sample generates the `cls.pb.h` header file and [cls.pb.cc](http://cls.pb.cc) code implementation file as shown below:\n\n```\n[root@VM_0_8_centos protobuf-2.6.1]# protoc --cpp_out=./ ./cls.proto\n[root@VM_0_8_centos protobuf-2.6.1]# ls\ncls.pb.cc cls.pb.h cls.proto\n```\n\n#### 4. Call the API\n\nImport the generated `cls.pb.h` header file into the code and call the API for data encapsulation.",
       "input": "UploadLogRequest",
       "name": "Uploads log",
       "output": "UploadLogResponse",
@@ -1757,7 +1757,7 @@
         },
         {
           "default": "",
-          "document": "Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields",
+          "document": "Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`). Default value: `false`. Recommended value: `true`.\n* `false`: Full-text indexing does not include internal fields.\n* `true`: Full-text indexing includes internal fields.",
           "example": "true",
           "member": "bool",
           "name": "IncludeInternalFields",
@@ -1766,7 +1766,7 @@
         },
         {
           "default": "",
-          "document": "Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).",
+          "document": "Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`). Default value: `0`. Recommended value: `1`.\n* `0`: Full-text indexing includes only the metadata fields with key-value indexing enabled.\n* `1`: Full-text indexing includes all metadata fields.\n* `2`: Full-text indexing does not include metadata fields.",
           "example": "0",
           "member": "uint64",
           "name": "MetadataFlag",
@@ -2961,7 +2961,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`)\n* `false`: Full-text indexing does not include internal fields.\n* `true`: Full-text indexing includes internal fields.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "IncludeInternalFields",
@@ -2970,7 +2970,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`)\n* `0`: Full-text indexing includes only the metadata fields with key-value indexing enabled.\n* `1`: Full-text indexing includes all metadata fields.\n* `2`: Full-text indexing does not include metadata fields.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "MetadataFlag",
@@ -4281,7 +4281,7 @@
       "members": [
         {
           "default": "",
-          "document": "When a key value or metafield index needs to be configured for a field, the metafield `Key` does not need to be prefixed with `__TAG__.` and is consistent with the one when logs are uploaded. `__TAG__.` will be prefixed automatically for display in the console.",
+          "document": "Name of the field for which you want to configure a key-value or metadata field index. The name can contain letters, digits, underscores, and symbols -./@ and cannot start with an underscore.\n\nNote:\nFor a metadata field, set its `Key` to be consistent with the one for log uploading, without prefixing it with `__TAG__.`. `__TAG__.` will be prefixed automatically for display in the console.\n2. The total number of keys in key-value indexes (`KeyValue`) and metadata field indexes (`Tag`) cannot exceed 300.\n3. The number of levels in `Key` cannot exceed 10. Example: a.b.c.d.e.f.g.h.j.k\n4. JSON parent and child fields (such as “a” and “a.b”) cannot be contained at the same time.",
           "example": "无",
           "member": "string",
           "name": "Key",
@@ -5223,7 +5223,7 @@
         },
         {
           "default": "",
-          "document": "Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields",
+          "document": "Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`). Default value: `false`. Recommended value: `true`.\n* `false`: Full-text indexing does not include internal fields.\n* `true`: Full-text indexing includes internal fields.",
           "example": "false",
           "member": "bool",
           "name": "IncludeInternalFields",
@@ -5232,7 +5232,7 @@
         },
         {
           "default": "",
-          "document": "Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).",
+          "document": "Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`). Default value: `0`. Recommended value: `1`.\n* `0`: Full-text indexing includes only metadata fields with key-value indexing enabled.\n* `1`: Full-text indexing includes all metadata fields.\n* `2`: Full-text indexing does not include metadata fields.",
           "example": "0",
           "member": "uint64",
           "name": "MetadataFlag",
@@ -5880,11 +5880,12 @@
       "type": "object"
     },
     "RuleInfo": {
-      "document": "Index rule. At least one of the `FullText`, `KeyValue`, and `Tag` parameters must be valid.",
+      "document": "Index rule. At least one of the `FullText`, `KeyValue`, and `Tag` parameters must be valid.\n",
       "members": [
         {
           "default": "",
-          "document": "Full-Text index configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Full-text index configuration. If the configuration is left empty, full-text indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "FullTextInfo",
           "name": "FullText",
           "required": false,
@@ -5893,7 +5894,8 @@
         },
         {
           "default": "",
-          "document": "Key-Value index configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Key-value index configuration. If the configuration is left empty, key-value indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "RuleKeyValueInfo",
           "name": "KeyValue",
           "required": false,
@@ -5902,7 +5904,8 @@
         },
         {
           "default": "",
-          "document": "Metafield index configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Metadata field index configuration. If the configuration is left empty, metadata field indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "RuleTagInfo",
           "name": "Tag",
           "required": false,
@@ -5918,6 +5921,7 @@
         {
           "default": "",
           "document": "Case sensitivity",
+          "example": "false",
           "member": "bool",
           "name": "CaseSensitive",
           "required": true,
@@ -5926,7 +5930,8 @@
         },
         {
           "default": "",
-          "document": "Key-Value pair information of the index to be created. Up to 100 key-value pairs can be configured.",
+          "document": "Key-value pair information of the index to be created",
+          "example": "空",
           "member": "KeyValueInfo",
           "name": "KeyValues",
           "required": false,
@@ -5967,15 +5972,6 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the log topic to be searched",
-          "example": "682d0718-07bb-4ec0-9fda-f1e9a2767e0b",
-          "member": "string",
-          "name": "TopicId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "Start time of the log to be searched, which is a Unix timestamp in milliseconds",
           "example": "1608794854000",
           "member": "int64",
@@ -5994,11 +5990,20 @@
         },
         {
           "default": "",
-          "document": "Statement for search and analysis. Maximum length: 12 KB\nA statement is in the format of <a href=\"https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1\" target=\"_blank\">[search rule]</a> | <a href=\"https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1\" target=\"_blank\">[SQL statement]</a>. You can omit the pipe symbol <code> | </code> and SQL statement when log analysis is not required.",
+          "document": "Search and analysis statement. Maximum length: 12 KB\nA statement is in the format of <a href=\"https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1\" target=\"_blank\">[search criteria]</a> | <a href=\"https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1\" target=\"_blank\">[SQL statement]</a>. You can omit the pipe symbol <code> | </code> and SQL statement when log analysis is not required.\nQueries all logs using * or an empty string",
           "example": "http_status:200",
           "member": "string",
           "name": "Query",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the log topic to be searched",
+          "example": "682d0718-07bb-4ec0-9fda-f1e9a2767e0b",
+          "member": "string",
+          "name": "TopicId",
+          "required": false,
           "type": "string"
         },
         {
@@ -6013,7 +6018,7 @@
         {
           "default": "",
           "document": "You can pass through the `Context` value (validity: an hour) returned by the API last time to continue to get logs (up to 10,000 raw logs).\nNotes:\n* Do not modify any other parameters while passing through the `Context` parameter.\n* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.\n* To continue to get analysis results, see <a href=\"https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1\" target=\"_blank\">SQL LIMIT Syntax</a>.",
-          "example": "context",
+          "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
           "member": "string",
           "name": "Context",
           "required": false,
@@ -6460,7 +6465,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "TopicInfo": {
       "document": "Log topic information",
@@ -6698,7 +6703,7 @@
         },
         {
           "default": "",
-          "document": "Whether Chinese characters are contained\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether Chinese characters are contained. For `long` and `double` fields, set them to `false`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
           "name": "ContainZH",
