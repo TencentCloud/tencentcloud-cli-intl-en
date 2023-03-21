@@ -1011,7 +1011,7 @@
   },
   "metadata": {
     "apiVersion": "2018-07-24",
-    "serviceNameCN": "云监控",
+    "serviceNameCN": "腾讯云可观测平台",
     "serviceShortName": "monitor"
   },
   "objects": {
@@ -1052,7 +1052,6 @@
       "document": "Notification template ID and the list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.",
       "members": [
         {
-          "default": "",
           "document": "Notification template ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1062,7 +1061,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"Remind\",\"Serious\"]",
           "member": "string",
@@ -1908,8 +1906,8 @@
       "document": "Metric trigger condition of alarm policy",
       "members": [
         {
-          "default": "",
-          "document": "Metric trigger condition operator. Valid values: 0 (OR), 1 (AND)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Judgment condition of an alarm trigger condition (`0`: Any; `1`: All; `2`: Composite). When the value is set to `2` (i.e., composite trigger conditions), this parameter should be used together with `ComplexExpression`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "IsUnionRule",
           "required": true,
@@ -1917,12 +1915,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Alarm trigger condition list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AlarmPolicyRule",
           "name": "Rules",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The judgment expression of composite alarm trigger conditions, which is valid when the value of `IsUnionRule` is `2`. This parameter is used to determine that an alarm condition is met only when the expression values are `True` for multiple trigger conditions.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "(1 OR 2) AND (3 OR 4)",
+          "member": "string",
+          "name": "ComplexExpression",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2728,7 +2735,7 @@
         {
           "default": "",
           "document": "Notification template name, which can contain up to 60 characters",
-          "example": "默认通知模版",
+          "example": "默认通知模板",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -3417,8 +3424,8 @@
       "document": "Alarm threshold condition passed in when a policy is created.",
       "members": [
         {
-          "default": "",
           "document": "Metric ID.",
+          "example": "无",
           "member": "int64",
           "name": "MetricId",
           "required": true,
@@ -3426,8 +3433,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.",
+          "example": "无",
           "member": "int64",
           "name": "AlarmNotifyType",
           "required": true,
@@ -3435,8 +3442,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.",
+          "example": "无",
           "member": "int64",
           "name": "AlarmNotifyPeriod",
           "required": true,
@@ -3444,8 +3451,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. This parameter is optional if a default comparative type is configured for the metric.",
+          "example": "无",
           "member": "int64",
           "name": "CalcType",
           "required": false,
@@ -3453,8 +3460,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Comparative value. This parameter is optional if the metric has no requirement.",
+          "example": "无",
           "member": "float",
           "name": "CalcValue",
           "required": false,
@@ -3462,8 +3469,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data aggregation period in seconds. This parameter is optional if the metric has a default value.",
+          "example": "无",
           "member": "int64",
           "name": "CalcPeriod",
           "required": false,
@@ -3471,8 +3478,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of consecutive periods after which an alarm will be triggered.",
+          "example": "无",
           "member": "int64",
           "name": "ContinuePeriod",
           "required": false,
@@ -3480,8 +3487,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "If a metric is created based on a template, the RuleId of the metric in the template must be passed in.",
+          "document": "If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.",
+          "example": "无",
           "member": "int64",
           "name": "RuleId",
           "required": false,
@@ -3495,8 +3502,8 @@
       "document": "Event alarm condition passed in when a policy is created.",
       "members": [
         {
-          "default": "",
           "document": "Alarm event ID.",
+          "example": "无",
           "member": "int64",
           "name": "EventId",
           "required": true,
@@ -3504,8 +3511,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.",
+          "example": "无",
           "member": "int64",
           "name": "AlarmNotifyType",
           "required": true,
@@ -3513,8 +3520,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.",
+          "example": "无",
           "member": "int64",
           "name": "AlarmNotifyPeriod",
           "required": true,
@@ -3522,8 +3529,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "If a metric is created based on a template, the RuleId of the metric in the template must be passed in.",
+          "document": "If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.",
+          "example": "无",
           "member": "int64",
           "name": "RuleId",
           "required": false,
@@ -3539,6 +3546,7 @@
         {
           "default": "",
           "document": "Policy group name.",
+          "example": "test_group",
           "member": "string",
           "name": "GroupName",
           "required": true,
@@ -3547,6 +3555,7 @@
         {
           "default": "",
           "document": "The value is fixed to monitor.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -3555,6 +3564,7 @@
         {
           "default": "",
           "document": "Name of the view to which the policy group belongs. If the policy group is created based on a template, this parameter is optional.",
+          "example": "cvm_device",
           "member": "string",
           "name": "ViewName",
           "required": false,
@@ -3563,6 +3573,7 @@
         {
           "default": "",
           "document": "ID of the project to which the policy group belongs, which will be used for authentication.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -3571,6 +3582,7 @@
         {
           "default": "",
           "document": "ID of a template-based policy group. This parameter is required only when the policy group is created based on a template.",
+          "example": "123",
           "member": "int64",
           "name": "ConditionTempGroupId",
           "required": false,
@@ -3579,6 +3591,7 @@
         {
           "default": "",
           "document": "Whether the policy group is shielded. The value 0 indicates that the policy group is not shielded. The value 1 indicates that the policy group is shielded. The default value is 0.",
+          "example": "1",
           "member": "int64",
           "name": "IsShielded",
           "required": false,
@@ -3587,6 +3600,7 @@
         {
           "default": "",
           "document": "Remarks of the policy group.",
+          "example": "backup_group",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -3595,6 +3609,7 @@
         {
           "default": "",
           "document": "Insertion time in the format of Unix timestamp. If this parameter is not configured, the backend processing time is used.",
+          "example": "106648246",
           "member": "int64",
           "name": "InsertTime",
           "required": false,
@@ -3603,6 +3618,7 @@
         {
           "default": "",
           "document": "Alarm threshold rules in the policy group.",
+          "example": "无",
           "member": "CreatePolicyGroupCondition",
           "name": "Conditions",
           "required": false,
@@ -3611,6 +3627,7 @@
         {
           "default": "",
           "document": "Event alarm rules in the policy group.",
+          "example": "无",
           "member": "CreatePolicyGroupEventCondition",
           "name": "EventConditions",
           "required": false,
@@ -3618,7 +3635,8 @@
         },
         {
           "default": "",
-          "document": "Whether it is a backend call. If the value is 1, rules from the policy template will be used to fill in the `Conditions` and `EventConditions` fields.",
+          "document": "Whether it is a backend call. Rules pulled from the policy template will be used to fill in the `Conditions` and `EventConditions` fields only when the value of this parameter is `1`.",
+          "example": "0",
           "member": "int64",
           "name": "BackEndCall",
           "required": false,
@@ -3627,6 +3645,7 @@
         {
           "default": "",
           "document": "The 'AND' and 'OR' rules for alarm metrics. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met.",
+          "example": "1",
           "member": "int64",
           "name": "IsUnionRule",
           "required": false,
@@ -7563,8 +7582,8 @@
       "document": "Policy conditions returned by the DescribePolicyConditionList API",
       "members": [
         {
-          "default": "",
           "document": "Policy view name.",
+          "example": "无",
           "member": "string",
           "name": "PolicyViewName",
           "required": true,
@@ -7572,8 +7591,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Event alarm conditions.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "DescribePolicyConditionListEventMetric",
           "name": "EventMetrics",
           "required": true,
@@ -7581,8 +7600,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to support multiple regions.",
+          "example": "无",
           "member": "bool",
           "name": "IsSupportMultiRegion",
           "required": true,
@@ -7590,8 +7609,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Metric alarm conditions.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "DescribePolicyConditionListMetric",
           "name": "Metrics",
           "required": true,
@@ -7599,8 +7618,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Policy type name.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -7608,8 +7627,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Sorting ID.",
+          "example": "无",
           "member": "int64",
           "name": "SortId",
           "required": true,
@@ -7617,8 +7636,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to support default policies.",
+          "example": "无",
           "member": "bool",
           "name": "SupportDefault",
           "required": true,
@@ -7626,12 +7645,21 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of regions that support this policy type.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "string",
           "name": "SupportRegions",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Deprecated information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribePolicyConditionListResponseDeprecatingInfo",
+          "name": "DeprecatingInfo",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -8065,6 +8093,39 @@
         }
       ],
       "type": "object"
+    },
+    "DescribePolicyConditionListResponseDeprecatingInfo": {
+      "document": "DescribePolicyConditionListResponseDeprecatingInfo",
+      "members": [
+        {
+          "document": "Whether to hide\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "Hidden",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Names of new views\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NewViewNames",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "DescribePolicyGroupInfoCallback": {
       "document": "User callback information output by the policy query",
@@ -9405,7 +9466,7 @@
         },
         {
           "default": "",
-          "document": "Filter by product type. For example, 'cvm' indicates Cloud Virtual Machine.",
+          "document": "Filter by product type. For example, \"cvm\" indicates Cloud Virtual Machine.",
           "example": "cvm",
           "member": "string",
           "name": "ProductName",
@@ -9414,7 +9475,7 @@
         },
         {
           "default": "",
-          "document": "Filter by product name. For example, \"guest_reboot\" indicates server restart.",
+          "document": "Filter by event name. For example, \"guest_reboot\" indicates instance restart.",
           "example": "guest_reboot",
           "member": "string",
           "name": "EventName",
@@ -9423,7 +9484,7 @@
         },
         {
           "default": "",
-          "document": "Affected object, such as \"ins-19708ino\"",
+          "document": "Affected object, such as \"ins-19708ino\".",
           "example": "ins-19708ino",
           "member": "string",
           "name": "InstanceId",
@@ -9837,6 +9898,46 @@
     "DescribePrometheusConfigResponse": {
       "document": "DescribePrometheusConfig response structure.",
       "members": [
+        {
+          "document": "Global configuration",
+          "example": "无",
+          "member": "string",
+          "name": "Config",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ServiceMonitor configuration",
+          "example": "无",
+          "member": "PrometheusConfigItem",
+          "name": "ServiceMonitors",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "PodMonitor configuration",
+          "example": "无",
+          "member": "PrometheusConfigItem",
+          "name": "PodMonitors",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Raw jobs",
+          "example": "无",
+          "member": "PrometheusConfigItem",
+          "name": "RawJobs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "PrometheusConfigItem",
+          "name": "Probes",
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -13897,7 +13998,6 @@
       "document": "Binding between a notification template and a policy",
       "members": [
         {
-          "default": "",
           "document": "Alert notification template ID",
           "example": "notice-xxx",
           "member": "string",
@@ -13907,7 +14007,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of IDs of the alerting rules bound to an alarm notification template",
           "example": "无",
           "member": "string",

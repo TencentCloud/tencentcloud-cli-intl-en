@@ -376,7 +376,6 @@
       "document": "Record information in the bulk task",
       "members": [
         {
-          "default": "",
           "document": "Record ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "158",
           "member": "uint64",
@@ -386,7 +385,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subdomain (host record).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "www",
           "member": "string",
@@ -396,7 +394,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record type. For more information, see the `DescribeRecordType` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "A",
           "member": "string",
@@ -406,7 +403,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "百度",
           "member": "string",
@@ -416,7 +412,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record value\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "129.23.32.32",
           "member": "string",
@@ -426,7 +421,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TTL value of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "600",
           "member": "uint64",
@@ -436,7 +430,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record adding status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "waiting",
           "member": "string",
@@ -446,7 +439,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "plus",
           "member": "string",
@@ -456,7 +448,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -466,7 +457,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the record in the list",
           "example": "1",
           "member": "uint64",
@@ -476,7 +466,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -486,12 +475,20 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "MX weight of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "12",
           "member": "uint64",
           "name": "MX",
           "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The record weight.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Weight",
+          "required": false,
           "type": "int",
           "value_allowed_null": true
         }

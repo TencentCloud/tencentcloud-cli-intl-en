@@ -608,7 +608,6 @@
       "document": "CreateDBInstanceHour request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance memory size in GB",
           "example": "4",
           "member": "uint64",
@@ -617,7 +616,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance disk size in GB",
           "example": "250",
           "member": "uint64",
@@ -626,8 +624,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Number of replica sets. When a replica set instance is created, this parameter must be set to 1. When a sharding instance is created, please see the parameters returned by the DescribeSpecInfo API",
+          "document": "Number of replica sets\n- Number of the replica set instances to be created. Valid value: `1`.\n- Number of sharded cluster instances to be created. You can get the specific purchasable specifications through the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API.",
           "example": "1",
           "member": "uint64",
           "name": "ReplicateSetNum",
@@ -635,8 +632,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.",
+          "document": "The number of nodes in each replica set. You can get the specific purchasable specifications through the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API.",
           "example": "2",
           "member": "uint64",
           "name": "NodeNum",
@@ -644,8 +640,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition; MONGO_42_WT: MongoDB 4.2 WiredTiger Edition.",
+          "document": "Version information. You can get the specific purchasable specifications through the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API.\n- MONGO_36_WT：MongoDB 3.6 WiredTiger storage engine\n- MONGO_40_WT：MongoDB 4.0 WiredTiger storage engine\n- MONGO_42_WT：MongoDB 4.2 WiredTiger storage engine\n- MONGO_44_WT：MongoDB 4.4 WiredTiger storage engine",
           "example": "MONGO_3_WT",
           "member": "string",
           "name": "MongoVersion",
@@ -653,17 +648,15 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Server type. HIO: high IO; HIO10G: 10-Gigabit high IO",
-          "example": "TGIO",
+          "document": "Machine type\n- HIO: High IO\n- HIO10G: 10-Gigabit high IO",
+          "example": "HIO10G",
           "member": "string",
           "name": "MachineCode",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Number of instances. Minimum value: 1. Maximum value: 10",
+          "document": "Number of instances. Value range: 1-10.",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -671,8 +664,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "AZ in the format of ap-guangzhou-2. If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.",
+          "document": "AZ information in the format of ap-guangzhou-2\n- For more information, query through the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API.\n- If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -680,8 +672,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Instance type. REPLSET: replica set; SHARD: sharding cluster",
+          "document": "Instance architecture type\n- REPLSET: Replica set\n- SHARD: Sharded cluster",
           "example": "REPLSET",
           "member": "string",
           "name": "ClusterType",
@@ -689,8 +680,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "VPC ID. If this parameter is not set, the basic network will be selected by default",
+          "document": "VPC ID",
           "example": "无",
           "member": "string",
           "name": "VpcId",
@@ -698,8 +688,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "VPC subnet ID. If VpcId is set, then SubnetId will be required",
+          "document": "VPC subnet ID. If `VpcId` is set, then `SubnetId` will be required.",
           "example": "无",
           "member": "string",
           "name": "SubnetId",
@@ -707,8 +696,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of \"instance ID+@+root account UIN\". For example, if the instance ID is \"cmgo-higv73ed\" and the root account UIN \"100000001\", the instance password will be \"cmgo-higv73ed@100000001\".",
+          "document": "Instance password\n- If it is left empty, the password is in the default format of \"instance ID+@+root account UIN\". For example, if the instance ID is \"cmgo-higv73ed\" and the root account UIN \"100000001\", the instance password will be \"cmgo-higv73ed@100000001\". \n- The custom password must contain 8-32 characters in at least two of the following types: letters, digits, and symbols (!@#%^*()_).",
           "example": "无",
           "member": "string",
           "name": "Password",
@@ -716,8 +704,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Project ID. If this parameter is not set, the default project will be used",
+          "document": "Project ID. If it is left empty, `Default project` will be used.",
           "example": "无",
           "member": "int64",
           "name": "ProjectId",
@@ -725,7 +712,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance tag information",
           "example": "无",
           "member": "TagInfo",
@@ -734,8 +720,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Instance type. Valid values: `1` (primary instance), `2` (temp instance), `3` (read-only instance), `4` (disaster recovery instance), `5` (cloned instance).",
+          "document": "Instance type. Valid values:\n- `1`: Primary instance\n- `3`: Read-only instance\n- `4`: Disaster recovery instance",
           "example": "1",
           "member": "int64",
           "name": "Clone",
@@ -743,8 +728,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Parent instance ID. It is required if the `Clone` is 3 or 4.",
+          "document": "Parent instance ID. It is required if the `Clone` is `3` or `4`, that is, read-only instance or disaster recovery instance",
           "example": "无",
           "member": "string",
           "name": "Father",
@@ -752,8 +736,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Security group.",
+          "document": "Security group",
           "example": "无",
           "member": "string",
           "name": "SecurityGroup",
@@ -761,8 +744,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "The point in time to which the cloned instance will be rolled back. This parameter is required for a cloned instance. The point in time in the format of 2021-08-13 16:30:00 must be within the last seven days.",
+          "document": "Rollback time of the cloned instance\n- This parameter is required for a cloned instance in the format of 2021-08-13 16:30:00.\n- Time range for rollback: You can roll back data in the last 7 days.",
           "example": "无",
           "member": "string",
           "name": "RestoreTime",
@@ -770,8 +752,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Instance name, which can contain up to 60 letters, digits, or symbols (_-).",
+          "document": "Instance name, which can contain up to 60 letters, digits, and symbols (_-).",
           "example": "无",
           "member": "string",
           "name": "InstanceName",
@@ -779,8 +760,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "AZ list when multi-AZ deployment is enabled. For the specific purchasable versions which support multi-AZ deployment, please see the return result of the `DescribeSpecInfo` API. Notes: 1. Nodes of a multi-AZ instance must be deployed across three AZs. 2. To ensure a successful cross-AZ switch, you should not deploy most of the nodes to the same AZ. (For example, a three-node sharded cluster instance does not support deploying two or more nodes in the same AZ.) 3. MongoDB 4.2 and later versions do not support multi-AZ deployment. 4. Read-Only and disaster recovery instances do not support multi-AZ deployment. 5. Instances in the classic network do not support multi-AZ deployment.",
+          "document": "List of multi-AZ deployed nodes. For more information, query through the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API.\n- Nodes of a multi-AZ instance must be deployed across three AZs. Most nodes of the cluster can’t be deployed in the same AZ. For example, a three-node sharded cluster instance does not support deploying two or more nodes in the same AZ.\n- MongoDB 4.2 and later versions do not support multi-AZ deployment.\n- Read-only and disaster recovery instances do not support multi-AZ deployment.\n-Instances in the classic network do not support multi-AZ deployment.",
           "example": "无",
           "member": "string",
           "name": "AvailabilityZoneList",
@@ -788,8 +768,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "The number of mongos CPUs, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
+          "document": "Number of Mongos CPU cores\n- This parameter is not required for a sharded cluster instance of MongoDB 3.6 WiredTiger or later.\n- If this parameter is not configured, the mongos specification will be configured based on the mongod specification, and the default specification is free of charge.",
           "example": "无",
           "member": "uint64",
           "name": "MongosCpu",
@@ -797,8 +776,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "The size of mongos memory, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
+          "document": "Mongos memory size\n- This parameter is not required for a sharded cluster instance of MongoDB 3.6 WiredTiger or later.\n- If this parameter is not configured, the mongos specification will be configured based on the mongod specification, and the default specification is free of charge.",
           "example": "无",
           "member": "uint64",
           "name": "MongosMemory",
@@ -806,13 +784,36 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "The number of mongos routers, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. Note: please purchase 3-32 mongos routers for high availability.",
+          "document": "Number of Monogs\n- This parameter is not required for a sharded cluster instance of MongoDB 3.6 WiredTiger or later.\n- If this parameter is not configured, the mongos specification will be configured based on the mongod specification, and the default specification is free of charge.",
           "example": "无",
           "member": "uint64",
           "name": "MongosNodeNum",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Number of read-only nodes. Value range: 0-5.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ReadonlyNodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "AZ of read-only nodes, which is required when `ReadonlyNodeNum` is not `0` in cross-AZ instance deployment.",
+          "example": "无",
+          "member": "string",
+          "name": "ReadonlyNodeAvailabilityZoneList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "AZ where the hidden node resides, which is required in cross-AZ instance deployment.",
+          "example": "无",
+          "member": "string",
+          "name": "HiddenZone",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -822,13 +823,15 @@
       "members": [
         {
           "document": "Order ID",
+          "example": "20190709160000003502416120946732",
           "member": "string",
           "name": "DealId",
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "List of IDs of created instances",
+          "document": "List of IDs of the created instances",
+          "example": "[\"cmgo-m26c6jsf\"]",
           "member": "string",
           "name": "InstanceIds",
           "type": "list",
