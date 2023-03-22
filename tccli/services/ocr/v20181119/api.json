@@ -387,7 +387,6 @@
       "document": "GeneralBasicOCR request structure.",
       "members": [
         {
-          "default": "",
           "document": "Base64-encoded value of image/PDF.\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.",
           "example": "无",
           "member": "string",
@@ -396,7 +395,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "URL address of image/PDF. (This field is not supported outside Chinese mainland)\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -405,7 +403,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Reserved field.",
           "example": "无",
           "member": "string",
@@ -414,7 +411,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Language to recognize\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\n`zh`: Chinese-English mix\n`zh_rare`: supports letters, digits, rare Chinese characters, Traditional Chinese characters, special characters, etc.\n`auto`\n`mix`: language mix\n`jap`: Japanese\n`kor`: Korean\n`spa`: Spanish\n`fre`: French\n`ger`: German\n`por`: Portuguese\n`vie`: Vietnamese\n`may`: Malay\n`rus`: Russian\n`ita`: Italian\n`hol`: Dutch\n`swe`: Swedish\n`fin`: Finnish\n`dan`: Danish\n`nor`: Norwegian\n`hun`: Hungarian\n`tha`: Thai\n`hi`: Hindi\n`ara`: Arabic",
           "example": "无",
           "member": "string",
@@ -423,7 +419,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.",
           "example": "无",
           "member": "bool",
@@ -432,7 +427,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.",
           "example": "无",
           "member": "uint64",
@@ -441,7 +435,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to return the character information. Default value: `false`",
           "example": "无",
           "member": "bool",
@@ -460,7 +453,6 @@
           "example": "无",
           "member": "TextDetection",
           "name": "TextDetections",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -469,7 +461,6 @@
           "example": "zh",
           "member": "string",
           "name": "Language",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -478,7 +469,6 @@
           "example": "6.5",
           "member": "float",
           "name": "Angel",
-          "required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -487,7 +477,6 @@
           "example": "0",
           "member": "int64",
           "name": "PdfPageSize",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -869,25 +858,22 @@
           "example": "E6918C",
           "member": "string",
           "name": "ID",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Name",
-          "example": "LIM HEG CHUN STEE",
+          "example": "BROWN BENJAMIN",
           "member": "string",
           "name": "Name",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Date of birth",
-          "example": "无",
+          "example": "20230414",
           "member": "string",
           "name": "DateOfBirth",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -896,16 +882,14 @@
           "example": "M",
           "member": "string",
           "name": "Sex",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Expiration date",
-          "example": "230414",
+          "example": "20230414",
           "member": "string",
           "name": "DateOfExpiration",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -914,7 +898,6 @@
           "example": "SGP",
           "member": "string",
           "name": "IssuingCountry",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -923,7 +906,6 @@
           "example": "SGP",
           "member": "string",
           "name": "Nationality",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -932,7 +914,6 @@
           "example": "[]",
           "member": "int64",
           "name": "Warn",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -941,7 +922,6 @@
           "example": "无",
           "member": "string",
           "name": "Image",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -950,7 +930,6 @@
           "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"},\"Name\":{\"Confidence\":\"0.9500\"},\"ID\":{\"Confidence\":\"0.9500\"},\"Nationality\":{\"Confidence\":\"0.9500\"},\"Sex\":{\"Confidence\":\"0.9500\"},\"DateOfExpiration\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -959,7 +938,6 @@
           "example": "P<CANBROWN<<BENJAMIN<<<<<<<<<<<<<<<<<<<<<<<<",
           "member": "string",
           "name": "CodeSet",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -968,9 +946,24 @@
           "example": "JK123488<3CAN8510168M2603298<<<<<<<<<<<<<<04",
           "member": "string",
           "name": "CodeCrc",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The surname.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "BROWN",
+          "member": "string",
+          "name": "Surname",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The given name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "BENJAMIN",
+          "member": "string",
+          "name": "GivenName",
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
