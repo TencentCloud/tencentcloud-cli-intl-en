@@ -85,7 +85,7 @@
       "status": "online"
     },
     "DescribeAutoSnapshotPolicies": {
-      "document": "This API (DescribeAutoSnapshotPolicies) is used to query scheduled snapshot policies.\n\n* You can query the detailed information of scheduled snapshot policies by ID, name, or status. Insert `AND` between different values. For details on filtering information, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit`; the default is 20) of the scheduled snapshot policy lists are returned to the current user.\n",
+      "document": "This API is used to query scheduled snapshot policies.\n\n* You can filter scheduled snapshot policies by ID, name, state, etc. The relationship between different filters is logical `AND`. For details on filters, see `Filter`.\n* If no parameter is specified, a certain number of scheduled snapshot policies under the current account will be returned. The number is specified by `Limit` and is 20 by default.",
       "input": "DescribeAutoSnapshotPoliciesRequest",
       "name": "Querying a Scheduled Snapshot Policy",
       "output": "DescribeAutoSnapshotPoliciesResponse",
@@ -680,7 +680,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Source account ID of the copied snapshot policy\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
           "name": "CopyFromAccountUin",
@@ -689,7 +689,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "Tag",
           "name": "Tags",
@@ -1912,6 +1912,111 @@
       ],
       "type": "object"
     },
+    "DetailPrice": {
+      "document": "Pricing details for the cloud disk.",
+      "members": [
+        {
+          "document": "Name of the billable item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DiskSpace",
+          "member": "string",
+          "name": "PriceTitle",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Name of the billable item displayed in the console.",
+          "example": "云盘空间",
+          "member": "string",
+          "name": "PriceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Original price of a monthly subscribed cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.0",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted price of a monthly subscribed cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.0",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Original unit price of a pay-as-you-go cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10.0",
+          "member": "float",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discount unit price of a pay-as-you-go cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10.0",
+          "member": "float",
+          "name": "UnitPriceDiscount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Billing unit for pay-as-you-go cloud disks. Valid value: `HOUR` (billed hourly).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HOUR",
+          "member": "string",
+          "name": "ChargeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Original highly-precise price of a monthly subscribed cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "string",
+          "name": "OriginalPriceHigh",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted highly-precise price of a monthly subscribed cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "string",
+          "name": "DiscountPriceHigh",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Original highly-precise unit price of a pay-as-you-go cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "string",
+          "name": "UnitPriceHigh",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted highly-precise unit price of a pay-as-you-go cloud disk, in USD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "string",
+          "name": "UnitPriceDiscountHigh",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Disk": {
       "document": "The details of a cloud disk",
       "members": [
@@ -2267,7 +2372,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "ID of the last instance to which the cloud disk is attached\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ins-xxx",
           "member": "string",
           "name": "LastAttachInsId",
@@ -2276,7 +2381,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Error message for the last operation of the cloud disk\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
           "name": "ErrorPrompt",
@@ -2423,7 +2528,6 @@
       "document": "Cloud disk configuration.",
       "members": [
         {
-          "default": "",
           "document": "Whether the configuration is available.",
           "example": "false",
           "member": "bool",
@@ -2433,7 +2537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing method. Value range: <br><li>PREPAID: Prepaid, that is, monthly subscription<br><li>POSTPAID_BY_HOUR: Postpaid, that is, pay as you go.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
@@ -2443,7 +2546,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The [Availability Region](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) of the cloud drive.",
           "example": "ap-guangzhou-2",
           "member": "string",
@@ -2453,7 +2555,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance model series. For more information, please see [Instance Models](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1)\nNote: This field may return null, indicating that no valid value was found.",
           "example": "N1",
           "member": "string",
@@ -2463,7 +2564,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Type of cloud disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.",
           "example": "CLOUD_BASIC",
           "member": "string",
@@ -2473,7 +2573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum increment of cloud disk size adjustment in GB.\nNote: This field might return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "uint64",
@@ -2483,7 +2582,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Additional performance range.\nNote: This field might return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "int64",
@@ -2493,7 +2591,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance model.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "null",
           "member": "string",
@@ -2503,7 +2600,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cloud disk type. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.",
           "example": "DATA_DISK",
           "member": "string",
@@ -2513,7 +2609,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The minimum configurable cloud disk size (in GB).",
           "example": "10",
           "member": "uint64",
@@ -2523,7 +2618,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The maximum configurable cloud disk size (in GB).",
           "example": "32000",
           "member": "uint64",
@@ -2531,6 +2625,15 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "Price of a monthly subscribed or pay-as-you-go cloud disk.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"UnitPriceDiscount\":0.09,\"UnitPrice\":0.09,\"ChargeDiskSize\":100,\"ChargeUnit\":\"HOUR\"}",
+          "member": "Price",
+          "name": "Price",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3251,7 +3354,6 @@
       "document": "This describes the abstract location of the instance, including the availability zone in which it is located, the projects to which it belongs, and the ID and name of the dedicated clusters to which it belongs.",
       "members": [
         {
-          "default": "",
           "document": "The ID of the [Availability Zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) to which the cloud disk belongs. This parameter can be obtained from the Zone field in the returned values of [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1).",
           "example": "ap-shanghai-2",
           "member": "string",
@@ -3261,7 +3363,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cage ID. When it is an input parameter, the specified CageID resource is operated, and it can be left blank. When it is an output parameter, it is the ID of the cage the resource belongs to, and it can be left blank.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "cage-xxxxxxxx",
           "member": "string",
@@ -3271,7 +3372,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the project to which the instance belongs. This parameter can be obtained from the projectId field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.",
           "example": "0",
           "member": "uint64",
@@ -3281,7 +3381,15 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "document": "Project name of the instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Default Project",
+          "member": "string",
+          "name": "ProjectName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "Dedicated cluster name. When it is an input parameter, it is ignored.  When it is an output parameter, it is the name of the dedicated cluster the cloud disk belongs to, and it can be left blank.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "CdcName",
           "member": "string",
@@ -3291,7 +3399,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of dedicated cluster which the instance belongs to. When it is an input parameter, the specified CdcId dedicated cluster resource is operated, and it can be left blank. When it is an output parameter, it is the ID of the dedicated cluster which the resource belongs to, and it can be left blank.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "cdc-xxxxxxxx",
           "member": "string",
@@ -3301,7 +3408,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Dedicated cluster ID",
           "example": "cluster-xxxxxxxx",
           "member": "string",
@@ -3359,17 +3465,6 @@
       "document": "The cost of a prepaid order.",
       "members": [
         {
-          "default": "",
-          "document": "Original payment of a monthly-subscribed cloud disk or a snapshot, in USD.",
-          "example": "1.0",
-          "member": "float",
-          "name": "OriginalPrice",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
           "document": "Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD.",
           "example": "1.0",
           "member": "float",
@@ -3379,37 +3474,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Original payment of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.",
-          "example": "\"1.00\"",
-          "member": "string",
-          "name": "OriginalPriceHigh",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.",
-          "example": "\"1.00\"",
-          "member": "string",
-          "name": "DiscountPriceHigh",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Original unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1.0",
-          "member": "float",
-          "name": "UnitPrice",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
           "document": "Billing unit for pay-as-you-go cloud disks. Valid value: <br><li>HOUR: billed hourly.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"h\"",
           "member": "string",
@@ -3419,17 +3483,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Discount unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1.0",
-          "member": "float",
-          "name": "UnitPriceDiscount",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
           "document": "Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"1.00\"",
           "member": "string",
@@ -3439,13 +3492,66 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "document": "Original payment of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.",
+          "example": "\"1.00\"",
+          "member": "string",
+          "name": "OriginalPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Original payment of a monthly-subscribed cloud disk or a snapshot, in USD.",
+          "example": "1.0",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discount unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "UnitPriceDiscount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
           "document": "Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"1.00\"",
           "member": "string",
           "name": "UnitPriceDiscountHigh",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.",
+          "example": "\"1.00\"",
+          "member": "string",
+          "name": "DiscountPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Original unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Detailed billing items\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "DetailPrice",
+          "name": "DetailPrices",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

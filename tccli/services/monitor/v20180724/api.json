@@ -4342,7 +4342,6 @@
       "document": "DeleteAlarmNotices request structure.",
       "members": [
         {
-          "default": "",
           "document": "Module name. Enter \"monitor\" here",
           "example": "monitor",
           "member": "string",
@@ -4351,7 +4350,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Alarm notification template ID list",
           "example": "[\"notice-235h325y\",\"notice-h25hj534h\"]",
           "member": "string",
@@ -4360,7 +4358,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Binding between a notification template and a policy",
           "example": "无",
           "member": "NoticeBindPolicys",
@@ -9931,7 +9928,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Probes",
           "example": "无",
           "member": "PrometheusConfigItem",
           "name": "Probes",
@@ -11033,7 +11030,6 @@
       "document": "DescribeStatisticData request structure.",
       "members": [
         {
-          "default": "",
           "document": "Module, whose value is fixed at `monitor`",
           "example": "monitor",
           "member": "string",
@@ -11042,16 +11038,14 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Namespace. Valid values: QCE/TKE",
-          "example": "QCE/TKE",
+          "document": "Namespace. Valid values: `QCE`, `TKE2`.",
+          "example": "QCE/TKE2",
           "member": "string",
           "name": "Namespace",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "document": "Metric name list",
           "example": "[\"K8sPodCpuCoreUsed\"]",
           "member": "string",
@@ -11060,7 +11054,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Dimension condition. The `=` and `in` operators are supported",
           "example": "无",
           "member": "MidQueryCondition",
@@ -11069,7 +11062,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Statistical period in seconds. Default value: 300. Optional values: 60, 300, 3,600, and 86,400.\nDue to the storage period limit, the statistical period is subject to the time range of statistics:\n60s: The time range is less than 12 hours, and the timespan between `StartTime` and the current time cannot exceed 15 days.\n300s: The time range is less than three days, and the timespan between `StartTime` and the current time cannot exceed 31 days.\n3,600s: The time range is less than 30 days, and the timespan between `StartTime` and the current time cannot exceed 93 days.\n86,400s: The time range is less than 186 days, and the timespan between `StartTime` and the current time cannot exceed 186 days.",
           "example": "300",
           "member": "uint64",
@@ -11078,7 +11070,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00",
           "example": "2020-11-24T15:15:50+08:00",
           "member": "string",
@@ -11087,7 +11078,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time, which is the current time by default, such as 2020-12-08T19:51:23+08:00",
           "example": "2020-11-24T15:25:50+08:00",
           "member": "string",
@@ -11096,7 +11086,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "`groupBy` by the specified dimension",
           "example": "[\"K8sPodCpuCoreUsed\"]",
           "member": "string",
@@ -12417,7 +12406,26 @@
     },
     "Label": {
       "document": "Tags in K8s, which generally exist in the form of an array.",
-      "members": [],
+      "members": [
+        {
+          "document": "Label name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Label value",
+          "example": "xxx",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
       "usage": "both"
     },
     "LogAlarmReq": {
@@ -14445,7 +14453,35 @@
     },
     "PrometheusAgentInfo": {
       "document": "Information of managed Prometheus agent",
-      "members": [],
+      "members": [
+        {
+          "document": "Cluster type",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Remarks",
+          "example": "xxx",
+          "member": "string",
+          "name": "Describe",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
       "usage": "in"
     },
     "PrometheusAgentOverview": {
@@ -14520,6 +14556,15 @@
           "member": "string",
           "name": "FailedReason",
           "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Agent name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         }
