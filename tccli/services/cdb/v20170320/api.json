@@ -505,11 +505,11 @@
       "status": "online"
     },
     "InitDBInstances": {
-      "document": "This API is used to initialize a TencentDB instance, including initial password, default character set, and instance port number. But it is disused and not recommended. You can now set the instance information by using the parameter `Password`, `ParamList`, and `Port` respectively in the `CreateDBInstance` and `CreateDBInstanceHour` APIs.",
+      "document": "该接口不再维护，参考CreateDBInstance+API文档，在发货时即可完成初始化。\n\nThis API is used to initialize a TencentDB instance, including initial password, default character set, and instance port number. But it is disused and not recommended. You can now set the instance information by using the parameter `Password`, `ParamList`, and `Port` respectively in the `CreateDBInstance` and `CreateDBInstanceHour` APIs.",
       "input": "InitDBInstancesRequest",
       "name": "Initializes a new instance",
       "output": "InitDBInstancesResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "IsolateDBInstance": {
       "document": "This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible.",
@@ -2458,6 +2458,7 @@
         {
           "default": "",
           "document": "ID of the original instance in a clone task",
+          "example": "\"\"",
           "member": "string",
           "name": "SrcInstanceId",
           "required": true,
@@ -2467,6 +2468,7 @@
         {
           "default": "",
           "document": "ID of the cloned instance in a clone task",
+          "example": "\"\"",
           "member": "string",
           "name": "DstInstanceId",
           "required": true,
@@ -2476,6 +2478,7 @@
         {
           "default": "",
           "document": "Clone task ID",
+          "example": "1",
           "member": "int64",
           "name": "CloneJobId",
           "required": true,
@@ -2485,6 +2488,7 @@
         {
           "default": "",
           "document": "The policy used in a clone task. Valid values: `timepoint` (roll back to a specific point in time), `backupset` (roll back by using a specific backup file).",
+          "example": "\"\"",
           "member": "string",
           "name": "RollbackStrategy",
           "required": true,
@@ -2494,6 +2498,7 @@
         {
           "default": "",
           "document": "The point in time to which the cloned instance will be rolled back",
+          "example": "\"\"",
           "member": "string",
           "name": "RollbackTargetTime",
           "required": true,
@@ -2503,6 +2508,7 @@
         {
           "default": "",
           "document": "Task start time",
+          "example": "\"\"",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -2512,6 +2518,7 @@
         {
           "default": "",
           "document": "Task end time",
+          "example": "\"\"",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -2521,10 +2528,31 @@
         {
           "default": "",
           "document": "Task status. Valid values: `initial`, `running`, `wait_complete`, `success`, `failed`.",
+          "example": "\"\"",
           "member": "string",
           "name": "TaskStatus",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Clone instance region ID",
+          "example": "1",
+          "member": "int64",
+          "name": "NewRegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source instance region ID",
+          "example": "2",
+          "member": "int64",
+          "name": "SrcRegionId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -2750,7 +2778,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ConnectionPoolInfo": {
       "document": "Connection pool information",
