@@ -1,49 +1,49 @@
 {
   "actions": {
     "AddGroupMember": {
-      "document": "This API is used to add users to a group.",
+      "document": "This API is used to add users to a group.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "AddGroupMemberRequest",
       "name": "Adds users to a group",
       "output": "AddGroupMemberResponse",
       "status": "online"
     },
     "BatchAddGroupMember": {
-      "document": "This API is used to add users to multiple groups at a time.",
+      "document": "This API is used to add users to multiple groups at a time.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "BatchAddGroupMemberRequest",
       "name": "Adds users to multiple groups",
       "output": "BatchAddGroupMemberResponse",
       "status": "online"
     },
     "BatchCreateGroupWithMembers": {
-      "document": "This API is used to create multiple groups at a time.",
+      "document": "This API is used to create multiple groups at a time.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "BatchCreateGroupWithMembersRequest",
       "name": "Creates multiple groups",
       "output": "BatchCreateGroupWithMembersResponse",
       "status": "online"
     },
     "BatchCreateRoom": {
-      "document": "This API is used to create multiple rooms at a time.",
+      "document": "This API is used to create multiple rooms at a time.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "BatchCreateRoomRequest",
       "name": "Creates multiple rooms",
       "output": "BatchCreateRoomResponse",
       "status": "online"
     },
     "BatchDeleteGroupMember": {
-      "document": "This API is used to remove users from multiple groups at a time.",
+      "document": "This API is used to remove users from multiple groups at a time.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "BatchDeleteGroupMemberRequest",
       "name": "Removes users from multiple groups",
       "output": "BatchDeleteGroupMemberResponse",
       "status": "online"
     },
     "BatchDeleteRecord": {
-      "document": "This API is used to delete the recordings of multiple rooms.",
+      "document": "This API is used to delete the recordings of multiple rooms.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "BatchDeleteRecordRequest",
       "name": "Deletes the recordings of multiple rooms",
       "output": "BatchDeleteRecordResponse",
       "status": "online"
     },
     "BatchRegister": {
-      "document": "This API is used to register multiple users (up to 1,000) at a time. If a user ID already exists, the existing one will be overwritten.",
+      "document": "This API is used to register multiple users (up to 1,000) at a time. If a user ID already exists, the existing one will be overwritten.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "BatchRegisterRequest",
       "name": "Registers multiple users",
       "output": "BatchRegisterResponse",
@@ -64,21 +64,21 @@
       "status": "online"
     },
     "CreateGroupWithMembers": {
-      "document": "This API is used to create a group and specify its members.",
+      "document": "his API is used to create a group and specify its members.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "CreateGroupWithMembersRequest",
       "name": "Creates a group",
       "output": "CreateGroupWithMembersResponse",
       "status": "online"
     },
     "CreateGroupWithSubGroup": {
-      "document": "This API is used to merge groups.",
+      "document": "This API is used to merge groups.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "CreateGroupWithSubGroupRequest",
       "name": "Merges groups",
       "output": "CreateGroupWithSubGroupResponse",
       "status": "online"
     },
     "CreateRoom": {
-      "document": "This API is used to create a room.",
+      "document": "This API is used to create a room.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "CreateRoomRequest",
       "name": "Creates a room.",
       "output": "CreateRoomResponse",
@@ -92,28 +92,28 @@
       "status": "online"
     },
     "DeleteDocument": {
-      "document": "This API is used to delete a document.",
+      "document": "This API is used to delete a document.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DeleteDocumentRequest",
       "name": "Deletes a document",
       "output": "DeleteDocumentResponse",
       "status": "online"
     },
     "DeleteGroup": {
-      "document": "This API is used to delete one or multiple groups.",
+      "document": "This API is used to delete one or multiple groups.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DeleteGroupRequest",
       "name": "Deletes groups",
       "output": "DeleteGroupResponse",
       "status": "online"
     },
     "DeleteGroupMember": {
-      "document": "This API is used to remove users from a group.",
+      "document": "This API is used to remove users from a group.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DeleteGroupMemberRequest",
       "name": "Removes users from a group",
       "output": "DeleteGroupMemberResponse",
       "status": "online"
     },
     "DeleteRecord": {
-      "document": "This example shows you how to delete the recording files of a specific room.",
+      "document": "This example shows you how to delete the recording files of a specific room.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DeleteRecordRequest",
       "name": "Deletes the recording files of a specific room",
       "output": "DeleteRecordResponse",
@@ -127,63 +127,63 @@
       "status": "online"
     },
     "DescribeCurrentMemberList": {
-      "document": "This API is used to get the user list of a room. This API will not work if a room has ended or expired.",
+      "document": "This API is used to get the user list of a room. This API will not work if a room has ended or expired.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeCurrentMemberListRequest",
       "name": "Gets the user list of a room",
       "output": "DescribeCurrentMemberListResponse",
       "status": "online"
     },
     "DescribeDocument": {
-      "document": "This API is used to get the information of a specific document.",
+      "document": "This API is used to get the information of a specific document.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeDocumentRequest",
       "name": "Gets the information of a document",
       "output": "DescribeDocumentResponse",
       "status": "online"
     },
     "DescribeDocumentsByRoom": {
-      "document": "This API is used to get the document list of a specific room.",
+      "document": "This API is used to get the document list of a specific room.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeDocumentsByRoomRequest",
       "name": "Gets the documents of a specific room",
       "output": "DescribeDocumentsByRoomResponse",
       "status": "online"
     },
     "DescribeGroup": {
-      "document": "This API is used to get the details of a group.",
+      "document": "This API is used to get the details of a group.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeGroupRequest",
       "name": "Gets the details of a group",
       "output": "DescribeGroupResponse",
       "status": "online"
     },
     "DescribeGroupList": {
-      "document": "This API is used to query groups.",
+      "document": "This API is used to query groups.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeGroupListRequest",
       "name": "Queries groups",
       "output": "DescribeGroupListResponse",
       "status": "online"
     },
     "DescribeGroupMemberList": {
-      "document": "This API is used to get the members of a group.",
+      "document": "This API is used to get the members of a group.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeGroupMemberListRequest",
       "name": "Gets the members of a group",
       "output": "DescribeGroupMemberListResponse",
       "status": "online"
     },
     "DescribeRoom": {
-      "document": "This API is used to get room information.",
+      "document": "This API is used to get room information.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeRoomRequest",
       "name": "Gets room information.",
       "output": "DescribeRoomResponse",
       "status": "online"
     },
     "DescribeRoomStatistics": {
-      "document": "This API is used to obtain the statistics of a room. It can be called only after the room is ended.",
+      "document": "This API is used to obtain the statistics of a room. It can be called only after the room is ended.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeRoomStatisticsRequest",
       "name": "Obtains the statistics of a room.",
       "output": "DescribeRoomStatisticsResponse",
       "status": "online"
     },
     "DescribeSdkAppIdUsers": {
-      "document": "This API is used to get the user list of a specific application.",
+      "document": "This API is used to get the user list of a specific application.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeSdkAppIdUsersRequest",
       "name": "Gets the user list of an application",
       "output": "DescribeSdkAppIdUsersResponse",
@@ -196,8 +196,15 @@
       "output": "DescribeUserResponse",
       "status": "online"
     },
+    "GetRoomMessage": {
+      "document": "This API is used to get the message history of a room (room messages are retained for seven days).",
+      "input": "GetRoomMessageRequest",
+      "name": "Gets the message history of a room",
+      "output": "GetRoomMessageResponse",
+      "status": "online"
+    },
     "GetWatermark": {
-      "document": "This API is used to get watermark settings.",
+      "document": "This API is used to get watermark settings.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "GetWatermarkRequest",
       "name": "Gets watermark settings",
       "output": "GetWatermarkResponse",
@@ -218,28 +225,28 @@
       "status": "online"
     },
     "ModifyApp": {
-      "document": "This API is used to modify an application.",
+      "document": "This API is used to modify an application.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "ModifyAppRequest",
       "name": "Modifies an application.",
       "output": "ModifyAppResponse",
       "status": "online"
     },
     "ModifyGroup": {
-      "document": "This API is used to modify a group.",
+      "document": "This API is used to modify a group.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "ModifyGroupRequest",
       "name": "Modifies a group",
       "output": "ModifyGroupResponse",
       "status": "online"
     },
     "ModifyRoom": {
-      "document": "This API is used to modify a room.",
+      "document": "This API is used to modify a room.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "ModifyRoomRequest",
       "name": "Modifies a room",
       "output": "ModifyRoomResponse",
       "status": "online"
     },
     "ModifyUserProfile": {
-      "document": "This API is used to modify a user profile such as the nickname and profile photo.",
+      "document": "This API is used to modify a user profile such as the nickname and profile photo.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "ModifyUserProfileRequest",
       "name": "Modifies a user profile",
       "output": "ModifyUserProfileResponse",
@@ -260,7 +267,7 @@
       "status": "online"
     },
     "SetWatermark": {
-      "document": "This API is used to configure watermarks.",
+      "document": "This API is used to configure watermarks.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "SetWatermarkRequest",
       "name": "Configures watermarks",
       "output": "SetWatermarkResponse",
@@ -323,7 +330,7 @@
       "type": "object"
     },
     "AppCustomContent": {
-      "document": "Custom application content",
+      "document": "Custom application content\nUsed by actions: SetAppCustomContent.",
       "members": [
         {
           "default": "",
@@ -573,7 +580,7 @@
       "document": "BatchDeleteRecord request structure.",
       "members": [
         {
-          "document": "The room IDs.\t",
+          "document": "The room IDs.",
           "example": "无",
           "member": "int64",
           "name": "RoomIds",
@@ -581,7 +588,7 @@
           "type": "list"
         },
         {
-          "document": "The SDKAppID assigned by LCIC.\t",
+          "document": "The SDKAppID assigned by LCIC.",
           "example": "无",
           "member": "uint64",
           "name": "SdkAppId",
@@ -595,7 +602,7 @@
       "document": "BatchDeleteRecord response structure.",
       "members": [
         {
-          "document": "The IDs of the rooms whose recordings are deleted.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The IDs of the rooms whose recordings are deleted. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "RoomIds",
@@ -629,7 +636,7 @@
       "document": "BatchRegister response structure.",
       "members": [
         {
-          "document": "The information of the successfully registered users.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of the successfully registered users. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BatchUserInfo",
           "name": "Users",
@@ -646,7 +653,7 @@
       "type": "object"
     },
     "BatchUserInfo": {
-      "document": "The information of registered users.",
+      "document": "The information of registered users.\nUsed by actions: BatchRegister.",
       "members": [
         {
           "document": "The SDKAppID assigned by LCIC.\n",
@@ -658,7 +665,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The user ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID. Note: This field may return null, indicating that no valid values can be obtained",
           "example": "无",
           "member": "string",
           "name": "UserId",
@@ -667,7 +674,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user’s ID in your system. If the same request parameter is not specified, the value of this parameter will be the same as `UserId`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user’s ID in your system. If the same request parameter is not specified, the value of this parameter will be the same as UserId. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "OriginId",
@@ -679,10 +686,10 @@
       "usage": "out"
     },
     "BatchUserRequest": {
-      "document": "The information of the users to register.",
+      "document": "The information of the users to register.\nUsed by actions: BatchRegister.",
       "members": [
         {
-          "document": "The SDKAppID assigned by LCIC.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The SDKAppID assigned by LCIC.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "123",
           "member": "uint64",
           "name": "SdkAppId",
@@ -691,7 +698,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The username.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The username.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Name",
@@ -700,7 +707,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user’s ID in your system, which must be unique across the same application.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user’s ID in your system, which must be unique across the same application.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "OriginId",
@@ -709,7 +716,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user’s profile photo.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user’s profile photo.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Avatar",
@@ -1016,7 +1023,7 @@
           "type": "int"
         },
         {
-          "document": "Resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD",
+          "document": "\tResolution. Valid values: 1: SD; 2: HD; 3: FHD",
           "example": "1",
           "member": "uint64",
           "name": "Resolution",
@@ -1024,7 +1031,7 @@
           "type": "int"
         },
         {
-          "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]\t",
+          "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]",
           "example": "1",
           "member": "uint64",
           "name": "MaxMicNumber",
@@ -1032,7 +1039,7 @@
           "type": "int"
         },
         {
-          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only. ",
+          "document": "The room subtype. Valid values: videodoc: Document + Video; video: Video only.",
           "example": "abc",
           "member": "string",
           "name": "SubType",
@@ -1048,7 +1055,7 @@
           "type": "string"
         },
         {
-          "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: `0`: No (default value); `1`: Yes.",
+          "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AutoMic",
@@ -1056,7 +1063,7 @@
           "type": "int"
         },
         {
-          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.",
+          "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AudioQuality",
@@ -1064,7 +1071,7 @@
           "type": "int"
         },
         {
-          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.",
+          "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
           "name": "DisableRecord",
@@ -1242,7 +1249,7 @@
       "document": "DeleteRecord request structure.",
       "members": [
         {
-          "document": "The room ID.\t",
+          "document": "The room ID.",
           "example": "无",
           "member": "int64",
           "name": "RoomId",
@@ -1319,7 +1326,7 @@
           "type": "int"
         },
         {
-          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000`.",
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed 1000.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -1457,7 +1464,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The transcoding status. `0`: The file is not transcoded. `1`: The file is being transcoded. `2`: Transcoding failed. `3`: Transcoding is successful.",
+          "document": "The transcoding status. 0: The file is not transcoded. 1: The file is being transcoded. 2: Transcoding failed. 3: Transcoding is successful.",
           "example": "1",
           "member": "uint64",
           "name": "TranscodeState",
@@ -1538,7 +1545,7 @@
           "type": "int"
         },
         {
-          "document": "The maximum number of records to return per page. The maximum value can be `1000`. The default value is `100`.",
+          "document": "The maximum number of records to return per page. The maximum value can be 1000. The default value is 100.",
           "example": "100",
           "member": "int64",
           "name": "Limit",
@@ -1546,7 +1553,7 @@
           "type": "int"
         },
         {
-          "document": "The document access type.\n[0]: The private documents of the owner.\n[1]: The public documents of the owner.\n[0,1]: The private and public documents of the owner.\n[2]: The private and public documents of all users (including the owner).\nDefault value: [2].",
+          "document": "The document access type. [0]: The private documents of the owner. [1]: The public documents of the owner. [0,1]: The private and public documents of the owner. [2]: The private and public documents of all users (including the owner). Default value: [2].",
           "example": "[2]",
           "member": "uint64",
           "name": "Permission",
@@ -1568,7 +1575,7 @@
       "document": "DescribeDocumentsByRoom response structure.",
       "members": [
         {
-          "document": "The information of the documents.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of the documents. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DocumentInfo",
           "name": "Documents",
@@ -1612,7 +1619,7 @@
           "type": "int"
         },
         {
-          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000` and is `20` by default.",
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed 1000 and is 20 by default.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -1620,7 +1627,7 @@
           "type": "int"
         },
         {
-          "document": "The user ID of the teacher, which is used as the filter. This parameter and `MemberId` are mutually exclusive. If both are specified, only this parameter will take effect.",
+          "document": "The user ID of the teacher, which is used as the filter. This parameter and MemberId are mutually exclusive. If both are specified, only this parameter will take effect.",
           "example": "abc",
           "member": "string",
           "name": "TeacherId",
@@ -1628,7 +1635,7 @@
           "type": "string"
         },
         {
-          "document": "The user ID of a member, which is used as the filter. This parameter and `TeacherId` are mutually exclusive.",
+          "document": "The user ID of a member, which is used as the filter. This parameter and TeacherId are mutually exclusive.",
           "example": "abc",
           "member": "string",
           "name": "MemberId",
@@ -1650,7 +1657,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The information of the groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of the groups. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "GroupInfo",
           "name": "GroupInfos",
@@ -1686,7 +1693,7 @@
           "type": "int"
         },
         {
-          "document": "The page to return records from. The default value is `1`.",
+          "document": "The page to return records from. The default value is 1.",
           "example": "1",
           "member": "uint64",
           "name": "Page",
@@ -1694,7 +1701,7 @@
           "type": "int"
         },
         {
-          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000` and is `20` by default.",
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed 1000 and is 20 by default.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -1716,7 +1723,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The user IDs of the members.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user IDs of the members. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "MemberIds",
@@ -1774,7 +1781,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The user ID of the group’s teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID of the group’s teacher. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "TeacherId",
@@ -1782,7 +1789,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The group type.\n`0`: Ordinary group.\n`1`: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.",
+          "document": "The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.",
           "example": "无",
           "member": "uint64",
           "name": "GroupType",
@@ -1790,7 +1797,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The IDs of the sub-groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "SubGroupIds",
@@ -1864,7 +1871,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD\t",
+          "document": "Resolution. Valid values: 1: SD; 2: HD; 3: FHD",
           "example": "1",
           "member": "uint64",
           "name": "Resolution",
@@ -1872,7 +1879,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]\t",
+          "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]",
           "example": "1",
           "member": "uint64",
           "name": "MaxMicNumber",
@@ -1880,7 +1887,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: `0`: No (default value); `1`: Yes.\t",
+          "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AutoMic",
@@ -1888,7 +1895,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.\t",
+          "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AudioQuality",
@@ -1896,7 +1903,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only.",
+          "document": "The room subtype. Valid values: videodoc: Document + Video; video: Video only.",
           "example": "video",
           "member": "string",
           "name": "SubType",
@@ -1904,7 +1911,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.\t",
+          "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
           "name": "DisableRecord",
@@ -1912,7 +1919,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Assistant ID list\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Assistant ID list Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Assistants",
@@ -1920,7 +1927,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Recording URL. This parameter exists only after a room is ended.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Recording URL. This parameter exists only after a room is ended. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "RecordUrl",
@@ -1928,7 +1935,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The class status. `0`: The class has not started. `1`: The class has started. `2`: The class ended. `3`: The class expired.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The class status. 0: The class has not started. 1: The class has started. 2: The class ended. 3: The class expired. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "Status",
@@ -1936,7 +1943,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "GroupId",
@@ -2018,7 +2025,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The actual start time of the room, in Unix timestamp, accurate to seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The actual start time of the room, in Unix timestamp, accurate to seconds. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1675677337",
           "member": "uint64",
           "name": "RealStartTime",
@@ -2026,7 +2033,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The actual end time of the room, in Unix timestamp, accurate to seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The actual end time of the room, in Unix timestamp, accurate to seconds. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1675677337",
           "member": "uint64",
           "name": "RealEndTime",
@@ -2034,7 +2041,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The total number of room messages.",
+          "document": "The total message count of the room.",
           "example": "1",
           "member": "uint64",
           "name": "MessageCount",
@@ -2042,7 +2049,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The total number of mics in the room.",
+          "document": "The total number of mic-on students in the room.",
           "example": "1",
           "member": "uint64",
           "name": "MicCount",
@@ -2070,7 +2077,7 @@
           "type": "int"
         },
         {
-          "document": "The page to return records from. The default value is `1`.",
+          "document": "The page to return records from. The default value is 1.",
           "example": "1",
           "member": "int64",
           "name": "Page",
@@ -2078,7 +2085,7 @@
           "type": "int"
         },
         {
-          "document": "The maximum number of records to return per page. The default value is `20`.",
+          "document": "The maximum number of records to return per page. The default value is 20.",
           "example": "1",
           "member": "int64",
           "name": "Limit",
@@ -2100,7 +2107,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The information of the users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of the users. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "UserInfo",
           "name": "Users",
@@ -2180,10 +2187,10 @@
       "type": "object"
     },
     "DocumentInfo": {
-      "document": "Document Information.",
+      "document": "Document Information.\nUsed by actions: DescribeDocumentsByRoom.",
       "members": [
         {
-          "document": "The document ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The document ID. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "DocumentId",
@@ -2192,7 +2199,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The document’s original URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The document’s original URL. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "DocumentUrl",
@@ -2201,7 +2208,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The document title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The document title. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "DocumentName",
@@ -2210,7 +2217,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID of the document’s owner.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID of the document’s owner. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "Owner",
@@ -2219,7 +2226,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The application ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The application ID. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "123",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2228,7 +2235,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The document access type. `0`: Private; `1`: Public.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The document access type. 0: Private; 1: Public. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "Permission",
@@ -2237,7 +2244,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
           "name": "TranscodeResult",
@@ -2246,7 +2253,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The transcoding type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The transcoding type. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "TranscodeType",
@@ -2255,7 +2262,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The transcoding progress. Value range: 0-100.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The transcoding progress. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "TranscodeProgress",
@@ -2264,7 +2271,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The transcoding status. `0`: The file is not transcoded. `1`: The file is being transcoded. `2`: Transcoding failed. `3`: Transcoding is successful.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The transcoding status. 0: The file is not transcoded. 1: The file is being transcoded. 2: Transcoding failed. 3: Transcoding is successful. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "TranscodeState",
@@ -2273,7 +2280,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The error message for failed transcoding.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The error message for failed transcoding. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
           "name": "TranscodeInfo",
@@ -2282,7 +2289,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The document type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The document type. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
           "name": "DocumentType",
@@ -2291,7 +2298,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The document size (bytes).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The document size (bytes). Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "DocumentSize",
@@ -2300,7 +2307,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The time (Unix timestamp) when the document was last updated.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The time (Unix timestamp) when the document was last updated. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "uint64",
           "name": "UpdateTime",
@@ -2311,11 +2318,69 @@
       ],
       "usage": "out"
     },
+    "GetRoomMessageRequest": {
+      "document": "GetRoomMessage request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "无",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The room ID.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The starting message sequence. Messages before this sequence will be returned (not including the message whose sequence is `seq`).",
+          "example": "无",
+          "member": "int64",
+          "name": "Seq",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of messages to return. The value of this parameter cannot exceed the maximum message count allowed by your package.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRoomMessageResponse": {
+      "document": "GetRoomMessage response structure.",
+      "members": [
+        {
+          "document": "The message list.",
+          "example": "无",
+          "member": "MessageList",
+          "name": "Messages",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetWatermarkRequest": {
       "document": "GetWatermark request structure.",
       "members": [
         {
-          "document": "The SDKAppID assigned by LCIC.\t",
+          "document": "The SDKAppID assigned by LCIC.",
           "example": "无",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2329,7 +2394,7 @@
       "document": "GetWatermark response structure.",
       "members": [
         {
-          "document": "The watermark settings for the teacher’s video.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The watermark settings for the teacher’s video. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "WatermarkConfig",
           "name": "TeacherLogo",
@@ -2337,7 +2402,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The watermark settings for the whiteboard.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The watermark settings for the whiteboard. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "WatermarkConfig",
           "name": "BoardLogo",
@@ -2345,7 +2410,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The background image.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The background image. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BackgroundPictureConfig",
           "name": "BackgroundPicture",
@@ -2353,7 +2418,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The watermark text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The watermark text. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TextMarkConfig",
           "name": "Text",
@@ -2370,10 +2435,10 @@
       "type": "object"
     },
     "GroupBaseInfo": {
-      "document": "The information of the groups to create.",
+      "document": "The information of the groups to create.\nUsed by actions: BatchCreateGroupWithMembers.",
       "members": [
         {
-          "document": "The group names.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The group names. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "GroupName",
@@ -2382,7 +2447,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID of the teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID of the teacher. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "TeacherId",
@@ -2394,10 +2459,10 @@
       "usage": "in"
     },
     "GroupInfo": {
-      "document": "The information of the groups queried.",
+      "document": "The information of the groups queried.\nUsed by actions: DescribeGroupList.",
       "members": [
         {
-          "document": "Group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Group ID Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "fdghdhdfh",
           "member": "string",
           "name": "GroupId",
@@ -2406,7 +2471,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The group name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The group name. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "GroupName",
@@ -2415,7 +2480,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID of the teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID of the teacher. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "TeacherId",
@@ -2424,7 +2489,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The group type. \n`0`: Ordinary group. \n`1`: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "群组类型",
           "member": "uint64",
           "name": "GroupType",
@@ -2433,7 +2498,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The IDs of the sub-groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "SubGroupIds",
@@ -2544,7 +2609,7 @@
       "type": "object"
     },
     "MemberRecord": {
-      "document": "Member record information",
+      "document": "Member record information\nUsed by actions: DescribeCurrentMemberList, DescribeRoomStatistics.",
       "members": [
         {
           "document": "User ID",
@@ -2664,7 +2729,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The user’s device type. `0`: Unknown; `1`: Windows; `2`: macOS; `3`: Android; `4`: iOS; `5`: Web; `6`: Mobile webpage; `7`: Weixin Mini Program.",
+          "document": "The user’s device type. 0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.",
           "example": "5",
           "member": "int64",
           "name": "Device",
@@ -2673,7 +2738,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The number of times each member mics.",
+          "document": "The number of times a user turned their mic on.",
           "example": "1",
           "member": "int64",
           "name": "PerMemberMicCount",
@@ -2682,13 +2747,88 @@
           "value_allowed_null": false
         },
         {
-          "document": "The number of messages sent by each member.",
+          "document": "The number of messages sent by a user.",
           "example": "2",
           "member": "int64",
           "name": "PerMemberMessageCount",
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MessageItem": {
+      "document": "The information of a message.",
+      "members": [
+        {
+          "document": "The message type. `0`: Text; `1`: Image.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "MessageType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The text. This parameter is valid if `MessageType` is `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "text",
+          "member": "string",
+          "name": "TextMessage",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The image URL. This parameter is valid if `MessageType` is `1`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "url",
+          "member": "string",
+          "name": "ImageMessage",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MessageList": {
+      "document": "The list of historical messages.",
+      "members": [
+        {
+          "document": "The message timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1676879993",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The sender.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FromAccount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The message sequence, which is unique across a class. The earlier a message is sent, the lower the sequence.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Seq",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The message content.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MessageItem",
+          "name": "MessageBody",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2837,7 +2977,7 @@
           "type": "string"
         },
         {
-          "document": "The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.",
+          "document": "The resolution. Valid values: 1: SD; 2: HD; 3: FHD.",
           "example": "1",
           "member": "uint64",
           "name": "Resolution",
@@ -2853,7 +2993,7 @@
           "type": "int"
         },
         {
-          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: `0`: No (default value); `1`: Yes.",
+          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AutoMic",
@@ -2861,7 +3001,7 @@
           "type": "int"
         },
         {
-          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.",
+          "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AudioQuality",
@@ -2869,7 +3009,7 @@
           "type": "int"
         },
         {
-          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.",
+          "document": "The room subtype. Valid values: videodoc: Document + Video; video: Video only; coteaching: Dual-teacher.",
           "example": "video",
           "member": "string",
           "name": "SubType",
@@ -2877,7 +3017,7 @@
           "type": "string"
         },
         {
-          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.",
+          "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
           "name": "DisableRecord",
@@ -3030,10 +3170,10 @@
       "type": "object"
     },
     "RoomInfo": {
-      "document": "The information of the room to create.",
+      "document": "The information of the room to create.\nUsed by actions: BatchCreateRoom.",
       "members": [
         {
-          "document": "The room name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The room name. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "房间名称",
           "member": "string",
           "name": "Name",
@@ -3042,7 +3182,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The room start time (Unix timestamp).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The room start time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1659600138",
           "member": "uint64",
           "name": "StartTime",
@@ -3051,7 +3191,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The room end time (Unix timestamp).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The room end time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1659600138",
           "member": "uint64",
           "name": "EndTime",
@@ -3060,7 +3200,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The resolution. Valid values: 1: SD; 2: HD; 3: FHD. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "Resolution",
@@ -3069,7 +3209,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "MaxMicNumber",
@@ -3087,7 +3227,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID of the teacher. User IDs are returned by the user registration APIs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID of the teacher. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
           "member": "string",
           "name": "TeacherId",
@@ -3096,7 +3236,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: `0`: No (default value); `1`: Yes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "AutoMic",
@@ -3105,7 +3245,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0`: Yes (default value); `1`: No.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: 0: Yes (default value); 1: No. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "TurnOffMic",
@@ -3114,7 +3254,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "AudioQuality",
@@ -3123,7 +3263,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "DisableRecord",
@@ -3132,7 +3272,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Assistants",
@@ -3141,7 +3281,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The number of RTC users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of RTC users. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "RTCAudienceNumber",
@@ -3150,7 +3290,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The audience type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The audience type. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "AudienceType",
@@ -3159,7 +3299,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The recording layout.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The recording layout. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "RecordLayout",
@@ -3168,7 +3308,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The ID of the group to bind.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The ID of the group to bind. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xfdfgdf",
           "member": "string",
           "name": "GroupId",
@@ -3219,7 +3359,7 @@
       "document": "SetWatermark request structure.",
       "members": [
         {
-          "document": "The SDKAppID assigned by LCIC.\t",
+          "document": "The SDKAppID assigned by LCIC.",
           "example": "12333",
           "member": "uint64",
           "name": "SdkAppId",
@@ -3251,7 +3391,7 @@
           "type": "string"
         },
         {
-          "document": "The width of the whiteboard’s watermark, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is `0`.",
+          "document": "The width of the whiteboard’s watermark, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
           "name": "BoardW",
@@ -3259,7 +3399,7 @@
           "type": "float"
         },
         {
-          "document": "The height of the whiteboard’s watermark, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is `0`.",
+          "document": "The height of the whiteboard’s watermark, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
           "name": "BoardH",
@@ -3267,7 +3407,7 @@
           "type": "float"
         },
         {
-          "document": "The horizontal offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
+          "document": "The horizontal offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
           "example": "无",
           "member": "float",
           "name": "BoardX",
@@ -3275,7 +3415,7 @@
           "type": "float"
         },
         {
-          "document": "The vertical offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
+          "document": "The vertical offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
           "example": "无",
           "member": "float",
           "name": "BoardY",
@@ -3283,7 +3423,7 @@
           "type": "float"
         },
         {
-          "document": "The width of the watermark for the teacher’s video, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is `0`.",
+          "document": "The width of the watermark for the teacher’s video, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
           "name": "TeacherW",
@@ -3291,7 +3431,7 @@
           "type": "float"
         },
         {
-          "document": "The height of the watermark for the teacher’s video, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is `0`.",
+          "document": "The height of the watermark for the teacher’s video, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
           "name": "TeacherH",
@@ -3299,7 +3439,7 @@
           "type": "float"
         },
         {
-          "document": "The horizontal offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
+          "document": "The horizontal offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
           "example": "无",
           "member": "float",
           "name": "TeacherX",
@@ -3307,7 +3447,7 @@
           "type": "float"
         },
         {
-          "document": "The vertical offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
+          "document": "The vertical offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
           "example": "无",
           "member": "float",
           "name": "TeacherY",
@@ -3346,10 +3486,10 @@
       "type": "object"
     },
     "TextMarkConfig": {
-      "document": "The watermark text.",
+      "document": "The watermark text.\nUsed by actions: GetWatermark.",
       "members": [
         {
-          "document": "The watermark text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The watermark text. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "text",
           "member": "string",
           "name": "Text",
@@ -3358,7 +3498,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The watermark text color.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The watermark text color. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Color",
@@ -3406,10 +3546,10 @@
       "type": "object"
     },
     "UserInfo": {
-      "document": "The user information.",
+      "document": "The user information.\nUsed by actions: DescribeSdkAppIdUsers.",
       "members": [
         {
-          "document": "The application ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The application ID. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "123456",
           "member": "uint64",
           "name": "SdkAppId",
@@ -3418,7 +3558,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
           "member": "string",
           "name": "UserId",
@@ -3427,7 +3567,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The username.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The username. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "Name",
@@ -3436,7 +3576,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The URL of profile photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The URL of profile photo. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "Avatar",
@@ -3448,10 +3588,10 @@
       "usage": "out"
     },
     "WatermarkConfig": {
-      "document": "Watermark settings.",
+      "document": "Watermark settings.\nUsed by actions: GetWatermark.",
       "members": [
         {
-          "document": "The URL of the watermark image.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The URL of the watermark image. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "url",
           "member": "string",
           "name": "Url",
@@ -3460,7 +3600,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The watermark width, which is expressed as a percentage of the video width.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The watermark width, which is expressed as a percentage of the video width. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "Width",
@@ -3469,7 +3609,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The watermark height, which is expressed as a percentage of the video height.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The watermark height, which is expressed as a percentage of the video height. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "Height",
@@ -3478,7 +3618,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The horizontal offset of the watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The horizontal offset of the watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "LocationX",
@@ -3487,7 +3627,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The vertical offset of the watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The vertical offset of the watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "LocationY",

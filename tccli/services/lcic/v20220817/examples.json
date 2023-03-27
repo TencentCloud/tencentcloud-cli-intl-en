@@ -98,7 +98,7 @@
     ],
     "CreateSupervisor": [
       {
-        "document": "",
+        "document": "创建巡课教师",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSupervisor\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Creating a spectator."
@@ -202,10 +202,10 @@
     ],
     "DescribeRoomStatistics": [
       {
-        "document": "获取房间统计信息示例",
-        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoomStatistics\n<common request parameters>\n\n{\n    \"RoomId\": 1,\n    \"Page\": 1,\n    \"Limit\": 1\n}",
+        "document": "This example shows you how to get the statistics of a room.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoomStatistics\n<Common request parameters>\n\n{\n    \"RoomId\": 1,\n    \"Page\": 1,\n    \"Limit\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"PeakMemberNumber\": 1,\n        \"MemberNumber\": 1,\n        \"Total\": 1,\n        \"MemberRecords\": [\n            {\n                \"UserId\": \"xx\",\n                \"UserName\": \"xx\",\n                \"PresentTime\": 1,\n                \"Camera\": 1,\n                \"Mic\": 1,\n                \"Silence\": 1,\n                \"AnswerQuestions\": 1,\n                \"HandUps\": 1,\n                \"FirstJoinTimestamp\": 1,\n                \"LastQuitTimestamp\": 1,\n                \"Rewords\": 1,\n                \"IPAddress\": \"xx\",\n                \"Location\": \"xx\",\n                \"Device\": 0\n            }\n        ],\n        \"RealStartTime\": 1,\n        \"RealEndTime\": 1,\n        \"MessageCount\": 1,\n        \"MicCount\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "示例"
+        "title": "Getting the statistics of a room"
       }
     ],
     "DescribeSdkAppIdUsers": [
@@ -222,6 +222,14 @@
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUser\n<Common request parameters>\n\n{\n    \"UserId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Name\": \"xx\",\n        \"UserId\": \"xx\",\n        \"Avatar\": \"xx\",\n        \"SdkAppId\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "This API is used to obtain user profile."
+      }
+    ],
+    "GetRoomMessage": [
+      {
+        "document": "This example shows you how to get the message history of a room.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetRoomMessage\n<Common request parameters>\n\n{\n    \"SdkAppId\": 0,\n    \"RoomId\": 1,\n    \"Seq\": 0,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Messages\": [\n            {\n                \"Timestamp\": 0,\n                \"FromAccount\": \"xx\",\n                \"Seq\": 0,\n                \"MessageBody\": [\n                    {\n                        \"MessageType\": 0,\n                        \"TextMessage\": \"xx\",\n                        \"ImageMessage\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the message history of a room"
       }
     ],
     "GetWatermark": [

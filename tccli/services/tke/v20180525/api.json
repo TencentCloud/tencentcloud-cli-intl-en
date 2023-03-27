@@ -435,7 +435,7 @@
       "status": "online"
     },
     "DescribeEdgeLogSwitches": {
-      "document": "This API is used to query the status of events, audits and logs.",
+      "document": "This API is used to query the status of event storage, cluster auditing and logging.",
       "input": "DescribeEdgeLogSwitchesRequest",
       "name": "Queries TKE Edge cluster log switches",
       "output": "DescribeEdgeLogSwitchesResponse",
@@ -924,7 +924,6 @@
       "document": "AddVpcCniSubnets request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxx",
           "member": "string",
@@ -933,7 +932,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The subnets added for the cluster container network",
           "example": "[\"subnet-xxxxx\\n\"]",
           "member": "string",
@@ -942,13 +940,20 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "ID of the VPC where the cluster resides",
           "example": "vpc-xxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
           "type": "string"
+        },
+        {
+          "document": "Whether to skip adding the VPC IP range to `NonMasqueradeCIDRs` field of `ip-masq-agent-config`. Default value: `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "SkipAddingNonMasqueradeCIDRs",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -7185,7 +7190,6 @@
       "document": "Edge compute cluster information",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -7195,7 +7199,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster name",
           "example": "test",
           "member": "string",
@@ -7205,7 +7208,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID",
           "example": "vpc-xxxxxxxx",
           "member": "string",
@@ -7215,7 +7217,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster Pod CIDR block",
           "example": "10.0.0.1/16",
           "member": "string",
@@ -7225,7 +7226,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster service CIDR block",
           "example": "10.1.1.1/16",
           "member": "string",
@@ -7235,7 +7235,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "",
           "example": "1.20.6",
           "member": "string",
@@ -7245,7 +7244,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster status",
           "example": "Running",
           "member": "string",
@@ -7255,7 +7253,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster description",
           "example": "test",
           "member": "string",
@@ -7265,7 +7262,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster creation time",
           "example": "2022-08-09 16:54:33",
           "member": "string",
@@ -7275,7 +7271,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Edge cluster version",
           "example": "2.2",
           "member": "string",
@@ -7285,7 +7280,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of Pods on the node\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "61",
           "member": "int64",
@@ -7295,7 +7289,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster advanced settings\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ClusterAdvancedSettings",
           "member": "EdgeClusterAdvancedSettings",
@@ -7305,11 +7298,28 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TKE edge cluster level\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "L5",
           "member": "string",
           "name": "Level",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to support auto upgrade of cluster spec level\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoUpgradeClusterLevel",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster billing mode. Valid values: `POSTPAID_BY_HOUR`, `PREPAID`\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "ChargeType",
           "required": false,
           "type": "string",
           "value_allowed_null": true

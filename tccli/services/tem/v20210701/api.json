@@ -3499,7 +3499,6 @@
       "document": "EKS service information",
       "members": [
         {
-          "default": "",
           "document": "Service name",
           "example": "xxx",
           "member": "string",
@@ -3509,7 +3508,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Available ports",
           "example": "[1,2]",
           "member": "int64",
@@ -3519,7 +3517,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Yaml contents",
           "example": "1",
           "member": "string",
@@ -3529,7 +3526,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Service name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -3539,7 +3535,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Version name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "xxxx",
           "member": "string",
@@ -3549,7 +3544,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Private IP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -3559,7 +3553,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Public IP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -3569,7 +3562,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The access type. Valid values:\n- EXTERNAL (internet access)\n- VPC (Intra-VPC access)\n- CLUSTER (Intra-cluster access)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -3579,7 +3571,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet ID. It is filled when the access type is `VPC`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -3589,7 +3580,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -3599,7 +3589,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Port mapping\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "PortMapping",
@@ -3609,7 +3598,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Details of each type of access configuration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[{\"name\":\"test\"}]",
           "member": "ServicePortMapping",
@@ -3619,7 +3607,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Flush all types\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -3629,7 +3616,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`0`: Do not inject. `1`: Inject registry information automatically for the next deployment\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -3639,7 +3625,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The application ID returned.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "app-123",
           "member": "string",
@@ -3649,13 +3634,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether all the application IPs are ready\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
           "name": "AllIpDone",
           "required": false,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "CLB domain name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "lb-xxxx.com",
+          "member": "string",
+          "name": "ExternalDomain",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -4025,7 +4018,6 @@
       "document": "Ingress configuration",
       "members": [
         {
-          "default": "",
           "document": "Environment ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "env-xxx",
           "member": "string",
@@ -4035,9 +4027,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Environment namespace",
-          "example": "default",
+          "example": "Default",
           "member": "string",
           "name": "ClusterNamespace",
           "required": true,
@@ -4045,7 +4036,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ip version",
           "example": "IPV4",
           "member": "string",
@@ -4055,7 +4045,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ingress name",
           "example": "ingress name",
           "member": "string",
@@ -4065,7 +4054,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rules configuration",
           "example": "rules 配置",
           "member": "IngressRule",
@@ -4075,7 +4063,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "clb ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "clb-xxx",
           "member": "string",
@@ -4085,7 +4072,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TLS configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "tls 配置",
           "member": "IngressTls",
@@ -4095,7 +4081,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Environment cluster ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "cls-xxx",
           "member": "string",
@@ -4105,7 +4090,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "clb ip\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "10.10.10.10",
           "member": "string",
@@ -4115,7 +4099,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2010-11-11 22:21:11",
           "member": "string",
@@ -4125,7 +4108,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to listen on both the HTTP 80 port and HTTPS 443 port. The default value is `false`. The optional value `true` means listening on both the HTTP 80 port and HTTPS 443 port.",
           "example": "false",
           "member": "bool",
@@ -4135,11 +4117,19 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Redirection mode. Values:\n- `AUTO` (automatically redirect HTTP to HTTPS)\n- `NONE` (no redirection)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
           "name": "RewriteType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "CLB domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "Domain",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6043,7 +6033,6 @@
       "document": "Port mapping details",
       "members": [
         {
-          "default": "",
           "document": "Specifies how a layer-4 proxy is created.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ClusterIP",
           "member": "string",
@@ -6053,7 +6042,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "consumer",
           "member": "string",
@@ -6063,7 +6051,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VIP for access within the environment\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "10.0.0.2",
           "member": "string",
@@ -6073,7 +6060,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster external IP\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "202.0.0.2",
           "member": "string",
@@ -6083,7 +6069,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "subnet-123",
           "member": "string",
@@ -6093,7 +6078,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "vpc-123",
           "member": "string",
@@ -6103,7 +6087,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Load balancer ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "clb-123",
           "member": "string",
@@ -6113,7 +6096,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "YAML contents\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "yaml",
           "member": "string",
@@ -6123,7 +6105,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of exposed ports\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[100,2000,3000]",
           "member": "int64",
@@ -6133,13 +6114,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Port mapping array \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "ServicePortMappingItem",
           "name": "PortMappingItemList",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "CLB domain name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "lb-xxxx.com",
+          "member": "string",
+          "name": "ExternalDomain",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

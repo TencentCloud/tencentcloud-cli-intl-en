@@ -142,10 +142,10 @@
     ],
     "CreateEdgeLogConfig": [
       {
-        "document": "创建边缘集群日志采集规则",
-        "input": "https://tke.tencentcloudapi.com/?Action=CreateEdgeLogConfig\n&LogConfig=xxxxxx\n&ClusterId=xxxxx\n&<Common request parameters>",
+        "document": "This example shows you how to create a log collection rule for an edge cluster.",
+        "input": "https://tke.tencentcloudapi.com/?Action=CreateEdgeLogConfig\n&LogConfig={\"apiVersion\":\"cls.cloud.tencent.com/v1\",\"kind\":\"LogConfig\"... }\n&ClusterId=cls-1234abcd\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
-        "title": "Creating log collection rule"
+        "title": "Creating a log collection rule"
       }
     ],
     "CreatePrometheusAlertRule": [
@@ -254,18 +254,18 @@
     ],
     "DeleteEdgeCVMInstances": [
       {
-        "document": "This example shows you how to delete an edge CVM instance.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DeleteEdgeCVMInstances\n&ClusterID=cls-xxxxx\n&CvmIdSet.0=ecm-xxxxx\n&<Common request parameters>",
+        "document": "This example shows you how to delete edge CVM instances.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DeleteEdgeCVMInstances\n&ClusterID=cls-1234abcd\n&CvmIdSet.0=cvm-gdf53454\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"187c16d5-1f53-4e88-b684-077f0c7369b2\"\n    }\n}",
-        "title": "Deleting an edge CVM instance"
+        "title": "Deleting edge CVM instances"
       }
     ],
     "DeleteEdgeClusterInstances": [
       {
-        "document": "删除边缘集群计算节点",
-        "input": "https://tke.tencentcloudapi.com/?Action=DeleteEdgeClusterInstances\r\n&ClusterId=cls-xxxxx\r\n&InstanceIds.0=xxxx\r\n&<Common request parameters>",
+        "document": "This example shows you how to delete nodes from an edge cluster.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DeleteEdgeClusterInstances\n&ClusterId=cls-1234abcd\n&InstanceIds.0=cvm-xgj3ca32\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"187c16d5-1f53-4e88-b684-077f0c7369b2\"\n    }\n}",
-        "title": "Deleting an edge compute instance"
+        "title": "Deleting nodes from an edge cluster"
       }
     ],
     "DeletePrometheusAlertRule": [
@@ -350,9 +350,9 @@
     ],
     "DescribeClusterEndpoints": [
       {
-        "document": "获取集群访问地址",
+        "document": "This example shows you how to query cluster access addresses.",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterEndpoints\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-65r1c5nu\"\n}",
-        "output": "{\n    \"Response\": {\n        \"CertificationAuthority\": \"xxx\",\n        \"ClusterIntranetDomain\": \"xx\",\n        \"ClusterExternalDomain\": \"xx\",\n        \"SecurityGroup\": \"xx\",\n        \"ClusterExternalEndpoint\": \"12.34.56.78\",\n        \"ClusterIntranetEndpoint\": \"10.0.0.1\",\n        \"ClusterDomain\": \"cls-65r1c5nu.ccs.tencent-cloud.com\",\n        \"ClusterExternalACL\": [\n            \"10.0.0.0/24\"\n        ],\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"CertificationAuthority\": \"\",\n        \"ClusterIntranetDomain\": \"cls.domain\",\n        \"ClusterExternalDomain\": \"cls.domain\",\n        \"SecurityGroup\": \"sg-2quou3re\",\n        \"ClusterExternalEndpoint\": \"12.34.56.78\",\n        \"ClusterIntranetEndpoint\": \"10.0.0.1\",\n        \"ClusterDomain\": \"cls-65r1c5nu.ccs.tencent-cloud.com\",\n        \"ClusterExternalACL\": [\n            \"10.0.0.0/24\"\n        ],\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
         "title": "Querying cluster access addresses"
       }
     ],
@@ -423,8 +423,8 @@
     "DescribeClusterSecurity": [
       {
         "document": "This example shows you how to query the secret information of a cluster.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterSecurity\n&ClusterId=cls-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"UserName\": \"xx\",\n        \"Domain\": \"xx\",\n        \"CertificationAuthority\": \"xx\",\n        \"Kubeconfig\": \"xx\",\n        \"PgwEndpoint\": \"xx\",\n        \"JnsGwEndpoint\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"SecurityPolicy\": [\n            \"xx\"\n        ],\n        \"ClusterExternalEndpoint\": \"xx\",\n        \"Password\": \"xx\"\n    }\n}",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterSecurity\n&ClusterId=cls-7ph3twqe\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"UserName\": \"admin\",\n        \"Domain\": \"cls-7ph3twqe.ccs.tencent-cloud.com\",\n        \"CertificationAuthority\": \"\",\n        \"Kubeconfig\": \"\",\n        \"PgwEndpoint\": \"0.0.0.0\",\n        \"JnsGwEndpoint\": \"127.0.0.1:8080\",\n        \"RequestId\": \"5f792091-66a7-40fc-8043-4d8b9537fa44\",\n        \"SecurityPolicy\": [\n            \"192.168.0.1\"\n        ],\n        \"ClusterExternalEndpoint\": \"https://127.0.0.1\",\n        \"Password\": \"\"\n    }\n}",
         "title": "Querying secret information of a cluster"
       }
     ],
@@ -510,10 +510,10 @@
     ],
     "DescribeEdgeLogSwitches": [
       {
-        "document": "边缘集群日志开关",
+        "document": "This example shows you how to query the status of log-related features.",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEdgeLogSwitches\n<Common request parameters>\n\n{\n    \"ClusterIds\": [\n        \"cls-xxx1\",\n        \"cls-xxx2\"\n    ]\n}",
-        "output": "{\r\n    \"Response\":{\r\n        \"SwitchSet\":[\r\n            {\r\n                \"ClusterId\":\"cls-xxx1\",\r\n                \"Audit\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Event\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Log\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                }\r\n            },\r\n            {\r\n                \"ClusterId\":\"cls-xxx2\",\r\n                \"Audit\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Event\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Log\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                }\r\n            }\r\n        ],\r\n        \"RequestId\":\"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Querying TKE Edge cluster log switches"
+        "output": "{\n    \"Response\":{\n        \"SwitchSet\":[\n            {\n                \"ClusterId\":\"cls-xxx2\",\n                \"Audit\":{\n                   \"Enable\": true,\n                   \"TopicSet\": \"a0cd4067-c9a1-a895-907d-03b4025e4f2c\",\n                   \"TopicId\": \"sadfssfasdf-c9a1-a895-907d-03b4025e4f2c\"\n                },\n                \"Event\":{\n                   \"Enable\": true,\n                   \"TopicSet\": \"sadfssfasdf-564f-a895-907d-03b4025e4f2c\",\n                   \"TopicId\": \"sadfssfasdf-564f-a895-907d-5465tdtewrt\"\n                },\n                \"Log\":{\n                   \"Enable\": true,\n                   \"TopicSet\": \"3465345-564f-a895-907d-03b4025e4f2c\",\n                   \"TopicId\": \"6750000-564f-a895-907d-03b4025e4f2c\"\n                }\n            }\n        ],\n        \"RequestId\":\"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Querying the status of log-related features"
       }
     ],
     "DescribeEnableVpcCniProgress": [
@@ -574,10 +574,10 @@
     ],
     "DescribeTKEEdgeClusterCredential": [
       {
-        "document": "获取边缘集群的认证信息，其中包含kubeconfig文件",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeTKEEdgeClusterCredential\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
+        "document": "This example shows you how to obtain access authentication information of an edge cluster, including the kubeconfig file.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeTKEEdgeClusterCredential\n&ClusterId=cls-1234abcd\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Addresses\": [\n            {\n                \"Type\": \"advertise\",\n                \"Ip\": \"169.254.128.200\",\n                \"Port\": 60002\n            },\n            {\n                \"Type\": \"public\",\n                \"Ip\": \"100.98.109.15\",\n                \"Port\": 11126\n            }\n        ],\n        \"Credential\": {\n            \"CACert\": \"LS0tLS1CRUdJTiBDRVJUSUZJQ0FULQo=\",\n            \"Token\": \"WBnCe69iqui0HuEZJ0Yac2hvwxQ1jG0j\"\n        },\n        \"CoreDns\": \"yes\",\n        \"HealthRegion\": \"yes\",\n        \"Health\": \"yes\",\n        \"GridDaemon\": \"yes\",\n        \"PublicLB\": {\n            \"Enabled\": true,\n            \"AllowFromCidrs\": [\n                \"xx\"\n            ]\n        },\n        \"InternalLB\": {\n            \"SubnetId\": [\n                \"xx\"\n            ],\n            \"Enabled\": true\n        },\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Obtaining the access authentication information of an edge compute cluster"
+        "title": "Obtaining the access authentication information of an edge cluster"
       }
     ],
     "DescribeTKEEdgeClusterStatus": [
@@ -726,8 +726,8 @@
     ],
     "ModifyClusterEndpointSP": [
       {
-        "document": "修改托管集群外网端口的安全策略",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterEndpointSP\n<Common request parameters>\n\n{\n    \"SecurityPolicies\": [\n        \"192.168.1.0/24\"\n    ],\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
+        "document": "This example shows you how to modify the security policy for the public network port of a managed cluster.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterEndpointSP\n<Common request parameters>\n\n{\n    \"SecurityPolicies\": [\n        \"192.168.1.0/24\"\n    ],\n    \"ClusterId\": \"cls-7ph3twqe\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Modifying the security policy for the public network port of a managed cluster"
       }

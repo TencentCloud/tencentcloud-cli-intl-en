@@ -49,6 +49,13 @@
       "output": "CreateConsumerResponse",
       "status": "online"
     },
+    "CreateCosRecharge": {
+      "document": "This API is used to create a COS import task.",
+      "input": "CreateCosRechargeRequest",
+      "name": "Creates a COS import task",
+      "output": "CreateCosRechargeResponse",
+      "status": "online"
+    },
     "CreateExport": {
       "document": "This API is used to create a download task. To get the returned download address, call `DescribeExports` to view the task list. The `CosPath` parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1",
       "input": "CreateExportRequest",
@@ -78,9 +85,9 @@
       "status": "online"
     },
     "CreateShipper": {
-      "document": "This API is used to create a shipping rule. Note: To use this API, you need to check whether you have configured the role and permission for COS shipping tasks. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1",
+      "document": "This API is used to create a task to ship to COS. Note: To use this API, you need to check whether you have configured the role and permission for shipping to COS. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1",
       "input": "CreateShipperRequest",
-      "name": "Creates a shipping rule",
+      "name": "Creates a task to ship to COS",
       "output": "CreateShipperResponse",
       "status": "online"
     },
@@ -210,6 +217,13 @@
       "output": "DescribeConsumerResponse",
       "status": "online"
     },
+    "DescribeCosRecharges": {
+      "document": "This API is used to get COS import configuration.",
+      "input": "DescribeCosRechargesRequest",
+      "name": "Gets COS import configuration",
+      "output": "DescribeCosRechargesResponse",
+      "status": "online"
+    },
     "DescribeExports": {
       "document": "This API is used to get the list of log download tasks.",
       "input": "DescribeExportsRequest",
@@ -281,14 +295,14 @@
       "status": "online"
     },
     "DescribeShippers": {
-      "document": "This API is used to get the list of shipping rules.",
+      "document": "This API is used to get the configuration of the task of shipping to COS.",
       "input": "DescribeShippersRequest",
-      "name": "Gets the list of shipping rules",
+      "name": "Gets the configuration of the task of shipping to COS",
       "output": "DescribeShippersResponse",
       "status": "online"
     },
     "DescribeTopics": {
-      "document": " This API is used to get the list of log topics and supports pagination.",
+      "document": "This API is used to get the list of log topics and supports pagination.",
       "input": "DescribeTopicsRequest",
       "name": "Gets the list of log topics",
       "output": "DescribeTopicsResponse",
@@ -334,6 +348,13 @@
       "input": "ModifyConsumerRequest",
       "name": "Modifies a shipping task",
       "output": "ModifyConsumerResponse",
+      "status": "online"
+    },
+    "ModifyCosRecharge": {
+      "document": "This API is used to modify a COS import task.",
+      "input": "ModifyCosRechargeRequest",
+      "name": "Modifies a COS import task",
+      "output": "ModifyCosRechargeResponse",
       "status": "online"
     },
     "ModifyIndex": {
@@ -1293,6 +1314,147 @@
       ],
       "usage": "both"
     },
+    "CosRechargeInfo": {
+      "document": "COS import configuration information.",
+      "members": [
+        {
+          "document": "COS import configuration ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "03efb75a-0f89-41b0-8cc6-90xxxxxxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the log topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "03efb75a-0f89-41b0-8cc6-90xxxxxxxxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the logset.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "03efb75a-0f89-41b0-8cc6-90xxxxxxxxx",
+          "member": "string",
+          "name": "LogsetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "COS import task name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx任务导入",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "COS bucket.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bucket1",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "COS bucket region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "BucketRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The prefix of the folder where COS files are located.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/var/test",
+          "member": "string",
+          "name": "Prefix",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The type of log collected. `json_log`: JSON logs; `delimiter_log`: separator logs; `minimalist_log`: full text in a single line\nDefault value: `minimalist_log`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "minimalist_log",
+          "member": "string",
+          "name": "LogType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Status. `0`: Created, `1`: Running, `2`: Stopped, `3`: Completed, `4`: Run failed\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the configuration is enabled. `0`: Not enabled, `1`: Enabled\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Enable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-11-08 14:40:22",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-11-08 14:40:22",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Progress in percentage.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Valid values: \"\" (default), \"gzip\", \"lzop\", \"snappy\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "gzip",
+          "member": "string",
+          "name": "Compress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "See the description of the `ExtractRuleInfo` structure.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ExtractRuleInfo",
+          "name": "ExtractRuleInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CreateAlarmNoticeRequest": {
       "document": "CreateAlarmNotice request structure.",
       "members": [
@@ -1625,6 +1787,96 @@
     },
     "CreateConsumerResponse": {
       "document": "CreateConsumer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosRechargeRequest": {
+      "document": "CreateCosRecharge request structure.",
+      "members": [
+        {
+          "document": "ID of the log topic.",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "ID of the logset.",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "LogsetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Shipping task name.",
+          "example": "cos导入",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "COS bucket.",
+          "example": "bucket1",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Region where the COS bucket is located.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "BucketRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The prefix of the folder where COS files are located.",
+          "example": "var/xxx",
+          "member": "string",
+          "name": "Prefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The type of log collected. `json_log`: JSON logs; `delimiter_log`: separator logs; `minimalist_log`: full text in a single line\nDefault value: `minimalist_log`",
+          "example": "minimalist_log",
+          "member": "string",
+          "name": "LogType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Valid values: \"\" (default), \"gzip\", \"lzop\", \"snappy\"",
+          "example": "gzip",
+          "member": "string",
+          "name": "Compress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Extraction rule. If `ExtractRule` is set, `LogType` must be set.",
+          "example": "无",
+          "member": "ExtractRuleInfo",
+          "name": "ExtractRuleInfo",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosRechargeResponse": {
+      "document": "CreateCosRecharge response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2032,11 +2284,10 @@
       "document": "CreateShipper response structure.",
       "members": [
         {
-          "document": "Shipping rule ID",
+          "document": "Shipping task ID.",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
           "name": "ShipperId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2832,6 +3083,56 @@
           "name": "Compression",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRechargesRequest": {
+      "document": "DescribeCosRecharges request structure.",
+      "members": [
+        {
+          "document": "ID of the log topic.",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Status. `0`: Created, `1`: Running, `2`: Stopped, `3`: Completed, `4`: Run failed",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether the configuration is enabled. `0`: Not enabled, `1`: Enabled",
+          "example": "1",
+          "member": "uint64",
+          "name": "Enable",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRechargesResponse": {
+      "document": "DescribeCosRecharges response structure.",
+      "members": [
+        {
+          "document": "See the description of the `CosRechargeInfo` structure.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CosRechargeInfo",
+          "name": "Data",
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -5191,6 +5492,56 @@
       ],
       "type": "object"
     },
+    "ModifyCosRechargeRequest": {
+      "document": "ModifyCosRecharge request structure.",
+      "members": [
+        {
+          "document": "COS import configuration ID.",
+          "example": "03efb75a-0f89-41b0-8cc6-90xxxxxxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "ID of the log topic.",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "COS import task name.",
+          "example": "导入任务1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether the configuration is enabled. `0`: Not enabled, `1`: Enabled",
+          "example": "1",
+          "member": "uint64",
+          "name": "Enable",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosRechargeResponse": {
+      "document": "ModifyCosRecharge response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyIndexRequest": {
       "document": "ModifyIndex request structure.",
       "members": [
@@ -6447,22 +6798,22 @@
       "document": "Description of the tag pair bound to a resource instance when it is created",
       "members": [
         {
-          "default": "",
-          "document": "Tag key",
+          "document": "The tag key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Key",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Tag value",
+          "document": "The tag value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Value",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -6471,7 +6822,6 @@
       "document": "Log topic information",
       "members": [
         {
-          "default": "",
           "document": "Logset ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
@@ -6481,7 +6831,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log topic ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
@@ -6491,7 +6840,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log topic name",
           "example": "test",
           "member": "string",
@@ -6501,7 +6849,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of topic partitions",
           "example": "1",
           "member": "int64",
@@ -6511,7 +6858,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether index is enabled",
           "example": "true",
           "member": "bool",
@@ -6521,7 +6867,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cloud product identifier. If the log topic is created by another cloud product, this field returns the name of the cloud product, such as `CDN` or `TKE`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -6531,7 +6876,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "无",
           "member": "string",
@@ -6541,7 +6885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether collection is enabled in the log topic",
           "example": "true",
           "member": "bool",
@@ -6551,7 +6894,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of tags bound to log topic\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -6561,7 +6903,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether automatic split is enabled for this topic\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -6571,7 +6912,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum number of partitions to split into for this topic if automatic split is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "50",
           "member": "int64",
@@ -6581,7 +6921,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log topic storage class\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "hot",
           "member": "string",
@@ -6591,7 +6930,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "30",
           "member": "int64",
@@ -6601,7 +6939,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cloud product sub-identifier. If the log topic is created by another cloud product, this field returns the name of the cloud product and its log type, such as `TKE-Audit` or `TKE-Event`. Some products only return the cloud product identifier (`AssumerName`), without this field.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "TKE-Audio",
           "member": "string",
@@ -6611,13 +6948,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log topic description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx部门xx业务topic",
           "member": "string",
           "name": "Describes",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The lifecycle of hot storage when log transitioning is enabled. The value of `hotPeriod` is smaller than that of `Period`.\nThe hot storage period is the value of `hotPeriod`, and the cold storage period is the value of `Period` minus the value of `hotPeriod`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "HotPeriod",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

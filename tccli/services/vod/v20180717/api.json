@@ -1178,7 +1178,6 @@
       "document": "Adaptive bitrate streaming information",
       "members": [
         {
-          "default": "",
           "document": "Adaptive bitrate streaming specification.",
           "example": "10",
           "member": "int64",
@@ -1188,8 +1187,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Container format. Valid values: hls, dash.",
+          "document": "The packaging format. Valid values:\n<li>`HLS`</li>\n<li>`DASH`</li>",
           "example": "HLS",
           "member": "string",
           "name": "Package",
@@ -1198,7 +1196,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Encryption type.",
           "example": "SimpleAES",
           "member": "string",
@@ -1208,7 +1205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Playback address.",
           "example": "http://xxx.myqcloud.com/xxx.mp4",
           "member": "string",
@@ -1218,7 +1214,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File size (bytes)\n<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>\n<li>If the file is a DASH file, the value of this parameter is the sum of the size of the MPD and segment files.</li>\n<li><font color=red>Note</font>: For adaptive bitrate streaming files generated before 2022-01-10T16:00:00Z, the value of this parameter is `0`.</li>",
           "example": "100",
           "member": "int64",
@@ -1228,7 +1223,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The watermark type. Valid values:\n<li>Trace: Digital watermark</li>\n<li>None: Regular watermark</li>",
           "example": "Trace",
           "member": "string",
@@ -1236,9 +1230,18 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The information of the streams.",
+          "example": "无",
+          "member": "MediaSubStreamInfoItem",
+          "name": "SubStreamSet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "AdaptiveDynamicStreamingTaskInput": {
       "document": "Input parameter type of adaptive bitrate streaming",
@@ -12584,7 +12587,7 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li>`RebuildMedia`; Remastering audio/video</li>\n<li> `ReviewAudioVideo`: Moderation</li>",
+          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li>`RebuildMedia`; Remastering audio/video</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -14786,7 +14789,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ImageProcessingTemplate": {
       "document": "An image processing template, which can contain at most three operations, for example, cropping, scaling, and cropping again.",
@@ -15904,7 +15907,6 @@
       "document": "Basic information of VOD media file",
       "members": [
         {
-          "default": "",
           "document": "Media filename.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15914,7 +15916,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Media file description.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15924,7 +15925,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time of media file in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15934,7 +15934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last update time of media file (by an operation that triggers updating of media file information such as modifying video attributes or initiating video processing) in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15944,7 +15943,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expiration time of media file in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. `9999-12-31T23:59:59Z` means \"never expire\".\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15954,7 +15952,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Category ID of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -15964,7 +15961,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Category name of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15974,7 +15970,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Category path to media file separated by \"-\", such as \"new first-level category - new second-level category\".\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15984,7 +15979,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cover image address of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -15994,7 +15988,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Media file container, such as mp4 and flv.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -16004,7 +15997,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "URL of source media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -16014,7 +16006,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source information of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MediaSourceData",
@@ -16024,7 +16015,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Region](https://intl.cloud.tencent.com/document/product/266/9760).",
           "example": "无",
           "member": "string",
@@ -16034,7 +16024,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag information of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -16044,7 +16033,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique ID of an LVB recording file.",
           "example": "无",
           "member": "string",
@@ -16054,7 +16042,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File type:\n<li>Video: video file</li>\n<li>Audio: audio file</li>\n<li>Image: image file</li>",
           "example": "无",
           "member": "string",
@@ -16064,8 +16051,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "File status. Valid values: Normal, Forbidden.\n\n*Note: this field is not supported yet.",
+          "document": "The file status. Valid values: `Normal`, `Forbidden`.\n\n*Note: This field is not supported yet.\t",
           "example": "无",
           "member": "string",
           "name": "Status",
@@ -16074,7 +16060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage class of a media file:\n<li>STANDARD</li>\n<li>STANDARD_IA</li>\n<li>ARCHIVE</li>\n<li>DEEP_ARCHIVE</li>",
           "example": "STANDARD",
           "member": "string",
@@ -17918,6 +17903,48 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MediaSubStreamInfoItem": {
+      "document": "The stream information of adaptive bitrate streaming.",
+      "members": [
+        {
+          "document": "The stream type. Valid values:\n<li>`audio`: Audio only</li>\n<li>`video`: Video (may include audio)</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video width (px) if `Type` is `video`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video height (px) if `Type` is `video`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The file size (bytes).\n<font color=red>Note:</font>For adaptive bitrate streaming files generated before 2023-02-09T16:00:00Z, the value of this parameter is `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Size",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -26216,7 +26243,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "SpecificationDataItem": {
       "document": "Statistics of task with specified specification.",
