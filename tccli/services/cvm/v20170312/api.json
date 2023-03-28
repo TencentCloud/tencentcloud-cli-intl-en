@@ -218,7 +218,7 @@
       "status": "online"
     },
     "DescribeRegions": {
-      "document": "This API is suspended. To query the information of regions, use [DescribeZones](https://intl.cloud.tencent.com/document/product/1596/77929?from_cn_redirect=1).",
+      "document": "This API is suspended. To query the information of regions, use [DescribeZones](https://intl.cloud.tencent.com/document/product/1596/77930?from_cn_redirect=1).",
       "input": "DescribeRegionsRequest",
       "name": "Queries the list of regions",
       "output": "DescribeRegionsResponse",
@@ -508,34 +508,34 @@
       "document": "Scheduled tasks.",
       "members": [
         {
-          "default": "",
-          "document": "Additional data",
-          "member": "Externals",
-          "name": "Externals",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
           "document": "Timer name. Currently `TerminateInstances` is the only supported value.",
+          "example": "\"xx\"",
           "member": "string",
           "name": "TimerAction",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Execution time, which must be at least 5 minutes later than the current time. For example, 2018-5-29 11:26:40.",
+          "document": "Execution time, which follows the ISO8601 standard and uses UTC time. It must be at least 5 minutes later than the current time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 2018-05-29T11:26:40Z.",
+          "example": "\"xx\"",
           "member": "string",
           "name": "ActionTime",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
+        },
+        {
+          "document": "Additional data",
+          "example": "{\"StorageBlockAttr\":{\"MinSize\":0,\"MaxSize\":0,\"Type\":\"xx\"}}",
+          "member": "Externals",
+          "name": "Externals",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "AllocateHostsRequest": {
       "document": "AllocateHosts request structure.",
@@ -3871,6 +3871,15 @@
           "name": "LicenseType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Boot mode",
+          "example": "Legacy BIOS",
+          "member": "string",
+          "name": "BootMode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4811,7 +4820,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "InstanceFamilyConfig": {
       "document": "Describes the model family of the instance.\nExamples: {'InstanceFamilyName': 'Standard S1', 'InstanceFamily': 'S1'}, {'InstanceFamilyName': 'Network-optimized N1', 'InstanceFamily': 'N1'}, {'InstanceFamilyName': 'High IO I1', 'InstanceFamily': 'I1'}, etc.",
@@ -4859,7 +4868,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "InstanceStatus": {
       "document": "Describes instance states. For state types, see [here](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).",
@@ -8197,18 +8206,26 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "TerminateInstancesRequest": {
       "document": "TerminateInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.",
+          "example": "['ins-2pajzo4q']",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "document": "Release the monthly subscribed data disks attached to the instance",
+          "example": "True",
+          "member": "bool",
+          "name": "ReleasePrepaidDataDisks",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

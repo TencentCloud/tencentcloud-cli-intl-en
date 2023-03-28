@@ -72,7 +72,7 @@
     ],
     "CreateNamespace": [
       {
-        "document": "",
+        "document": "在企业版中创建命名空间",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateNamespace\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"mytest\",\n    \"IsPublic\": \"true\",\n    \"RegistryId\": \"tcr-okmj78\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Creating a namespace"
@@ -318,14 +318,6 @@
         "title": "Listing a rule"
       }
     ],
-    "DescribeInstanceAll": [
-      {
-        "document": "",
-        "input": "https://tcr.tencentcloudapi.com/?Action=DescribeInstanceAll\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Registries\": [\n            {\n                \"RegistryId\": \"cls-xxxxxxx\",\n                \"RegistryName\": \"aaa\",\n                \"Status\": \"Running\",\n                \"RegistryType\": \"standard\",\n                \"PublicDomain\": \"mytest.tencentcloudcr.com\",\n                \"InternalEndpoint\": \"8.9.10.9\",\n                \"ExpiredAt\": \"2020-09-10\",\n                \"PayMod\": 1,\n                \"RenewFlag\": 1\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
-        "title": "Viewing the list of instances"
-      }
-    ],
     "DescribeInstanceAllNamespaces": [
       {
         "document": "This example shows you how to query the information of all namespaces in an instance.",
@@ -546,7 +538,7 @@
     ],
     "ModifyNamespace": [
       {
-        "document": "",
+        "document": "用于更新命名空间信息",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyNamespace\r\n&RegistryId=tcr-okmj78\r\n&NamespaceName=mytest\r\n&IsPublic=true\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Updating the namespace information"

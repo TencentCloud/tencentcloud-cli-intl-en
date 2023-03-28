@@ -273,13 +273,6 @@
       "output": "DescribeImmutableTagRulesResponse",
       "status": "online"
     },
-    "DescribeInstanceAll": {
-      "document": "This API is used to query the information of all instances.",
-      "input": "DescribeInstanceAllRequest",
-      "name": "Queries the information of all instances",
-      "output": "DescribeInstanceAllResponse",
-      "status": "online"
-    },
     "DescribeInstanceAllNamespaces": {
       "document": "This API is used to query the list of all namespaces in an instance.",
       "input": "DescribeInstanceAllNamespacesRequest",
@@ -843,6 +836,14 @@
           "example": "false",
           "member": "bool",
           "name": "SyncTag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "Whether to enable the COS Multi-AZ feature",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableCosMAZ",
           "required": false,
           "type": "bool"
         }
@@ -2655,87 +2656,6 @@
     "DescribeInstanceAllNamespacesResponse": {
       "document": "DescribeInstanceAllNamespaces response structure.",
       "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeInstanceAllRequest": {
-      "document": "DescribeInstanceAll request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "List of instance IDs (if it is empty,\nit indicates to get all instances under the current account)",
-          "example": "tcr-xxxxxxxx",
-          "member": "string",
-          "name": "Registryids",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Offset. Default value: 0.",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Maximum number of output entries. Default value: 20. Maximum value: 100.",
-          "example": "20",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Filters",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Whether to get the instances in all regions. Default value: False.",
-          "example": "false",
-          "member": "bool",
-          "name": "AllRegion",
-          "required": false,
-          "type": "bool"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeInstanceAllResponse": {
-      "document": "DescribeInstanceAll response structure.",
-      "members": [
-        {
-          "document": "Total number of instances",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of instances\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "Registry",
-          "name": "Registries",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

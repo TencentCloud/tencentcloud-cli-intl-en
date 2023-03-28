@@ -1049,12 +1049,44 @@
           "type": "object"
         },
         {
+          "document": "Source database information. This parameter is valid for multi-node databases, and the value of `SrcNodeType` must be `cluster`.",
+          "example": "无",
+          "member": "SyncDBEndpointInfos",
+          "name": "SrcInfos",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Enumerated values: `single` (for single-node source database), `cluster` (for multi-node source database).",
+          "example": "cluster",
+          "member": "string",
+          "name": "SrcNodeType",
+          "required": false,
+          "type": "string"
+        },
+        {
           "document": "Target database information. This parameter is used by single-node databases.",
           "example": "无",
           "member": "Endpoint",
           "name": "DstInfo",
           "required": false,
           "type": "object"
+        },
+        {
+          "document": "Target database information. This parameter is valid for multi-node databases, and the value of `DstNodeType` must be `cluster`.",
+          "example": "无",
+          "member": "SyncDBEndpointInfos",
+          "name": "DstInfos",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Enumerated values: `single` (for single-node target database), `cluster` (for multi-node target database).",
+          "example": "无",
+          "member": "string",
+          "name": "DstNodeType",
+          "required": false,
+          "type": "string"
         },
         {
           "document": "Sync task options",
@@ -1420,7 +1452,6 @@
       "document": "CreateSyncJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Billing mode. Valid values: `PrePay` (monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.",
           "example": "PrePay",
           "member": "string",
@@ -1429,7 +1460,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.",
           "example": "mysql",
           "member": "string",
@@ -1438,7 +1468,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source database region, such as `ap-guangzhou`.",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1447,8 +1476,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.",
+          "document": "Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, `tdsqlmysql`, and `kafka`.",
           "example": "mysql",
           "member": "string",
           "name": "DstDatabaseType",
@@ -1456,7 +1484,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target database region, such as `ap-guangzhou`.",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1465,7 +1492,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sync task specification, such as `Standard`.",
           "example": "Standard",
           "member": "string",
@@ -1474,7 +1500,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag information",
           "example": "无",
           "member": "TagItem",
@@ -1483,7 +1508,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The number of sync tasks purchased at a time. Value range: [1, 10]. Default value: `1`.",
           "example": "1",
           "member": "uint64",
@@ -1492,7 +1516,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled). Default value: `0`.",
           "example": "1",
           "member": "uint64",
@@ -1501,7 +1524,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Sync link specification, such as `micro`, `small`, `medium`, and `large`. Default value: `medium`.",
           "example": "large",
           "member": "string",
@@ -1510,7 +1532,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sync task name",
           "example": "test_job",
           "member": "string",
@@ -1519,7 +1540,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the existing task used to create a similar task",
           "example": "sync-1dd3rjvt",
           "member": "string",
@@ -4080,6 +4100,48 @@
       ],
       "usage": "out"
     },
+    "KafkaOption": {
+      "document": "Sync options configured when the target database is Kafka",
+      "members": [
+        {
+          "document": "Type of data that is delivered to Kafka, such as `Avro` and `Json`.",
+          "example": "Avro,Json",
+          "member": "string",
+          "name": "DataType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Topic sync policy, such as `Single` (deliver all data to a single topic), `Multi` (deliver data to multiple custom topics).",
+          "example": "Single（集中投递到单topic）,Multi (自定义topic名称)",
+          "member": "string",
+          "name": "TopicType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Topic for DDL storage",
+          "example": "test",
+          "member": "string",
+          "name": "DDLTopicName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Topic description",
+          "example": "无",
+          "member": "TopicRule",
+          "name": "TopicRules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "KeyValuePairOption": {
       "document": "Additional configuration information",
       "members": [
@@ -4679,7 +4741,6 @@
       "document": "Data sync options",
       "members": [
         {
-          "default": "",
           "document": "Sync initialization option. Valid values: `data` (full data initialization); `Structure` (structure initialization); `Full` (full data and structure initialization); `None` (incremental data only). Default value: `Full`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4689,7 +4750,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Processing method for duplicate tables. Valid values: `ReportErrorAfterCheck`, `InitializeAfterDelete`, `ExecuteAfterIgnore`. Default value: `ReportErrorAfterCheck`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4699,7 +4759,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Conflict processing option. Valid values: `ReportError` (report an error); `Ignore` (ignore); `Cover` (overwrite); `ConditionCover` (conditionally overwrite). Default value: `ReportError`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4709,7 +4768,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to add the additional column\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "bool",
@@ -4719,7 +4777,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "DML and DDL options to be synced. Valid values: `Insert` (INSERT operations); `Update` (UPDATE operations); `Delete` (DELETE operations); `DDL` (structure sync); `PartialDDL` (custom option, which is used together with `DdlOptions`). You can also leave this parameter empty.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4729,7 +4786,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Detailed option for conflict processing, such as condition rows and operations in conditional overwrite.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ConflictHandleOption",
@@ -4739,13 +4795,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "DDL statements to be synced\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DdlOption",
           "name": "DdlOptions",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Kafka sync options\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "KafkaOption",
+          "name": "KafkaOption",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -5642,6 +5706,48 @@
       ],
       "type": "object"
     },
+    "SyncDBEndpointInfos": {
+      "document": "Node information of multi-node databases configured for data sync. This data structure is valid for multi-node databases such as TDSQL for MySQL. For single-node databases such as MySQL, use `Endpoint` instead.",
+      "members": [
+        {
+          "document": "Region of the database\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdb",
+          "member": "string",
+          "name": "AccessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tdsqlmysql",
+          "member": "string",
+          "name": "DatabaseType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Database information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Endpoint",
+          "name": "Info",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "SyncDetailInfo": {
       "document": "Step information of the sync task",
       "members": [
@@ -6176,6 +6282,66 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TopicRule": {
+      "document": "Topic description",
+      "members": [
+        {
+          "document": "Topic name",
+          "example": "test",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Topic partitioning policy. If the topic sync policy is delivering data to multiple custom topics (`TopicType` = `Multi`), the value of this parameter is `Random` (deliver to a random partition). If the topic sync policy is delivering all data to a single topic (`TopicType` = `Single`), this parameter has three valid values: `AllInPartitionZero` (deliver all data to partition0), `PartitionByTable` (partition by table name), `PartitionByTableAndKey` (partition by table name and primary key).",
+          "example": " Random（自定义topic时使用），AllInPartitionZero（全部投递至partition0）, PartitionByTable(按表名分区)，PartitionByTableAndKey(按表名加主键分区)",
+          "member": "string",
+          "name": "PartitionType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.",
+          "example": "Regular（正则匹配）, Default(不符合匹配规则的剩余库)",
+          "member": "string",
+          "name": "DbMatchMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.",
+          "example": "db1",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.",
+          "example": "Regular（正则匹配）, Default(不符合匹配规则的剩余表)",
+          "member": "string",
+          "name": "TableMatchMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.",
+          "example": "tb1",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
