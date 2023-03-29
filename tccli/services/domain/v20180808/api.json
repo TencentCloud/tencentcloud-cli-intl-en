@@ -1,0 +1,3001 @@
+{
+  "actions": {
+    "BatchModifyIntlDomainDNS": {
+      "document": "This API is used to bulk modify DNS servers for domains.",
+      "input": "BatchModifyIntlDomainDNSRequest",
+      "name": "Bulk modifies DNS servers for domains",
+      "output": "BatchModifyIntlDomainDNSResponse",
+      "status": "online"
+    },
+    "BatchModifyIntlDomainInfo": {
+      "document": "This API is used to bulk modify registrant information.",
+      "input": "BatchModifyIntlDomainInfoRequest",
+      "name": "Bulk modifies registrant information",
+      "output": "BatchModifyIntlDomainInfoResponse",
+      "status": "online"
+    },
+    "CheckIntlDomainNew": {
+      "document": "This API is used to check whether a domain is available for registration.",
+      "input": "CheckIntlDomainNewRequest",
+      "name": "Checks whether a domain is available for registration",
+      "output": "CheckIntlDomainNewResponse",
+      "status": "online"
+    },
+    "CreateIntlDomainBatch": {
+      "document": "This API is used to bulk register domains.",
+      "input": "CreateIntlDomainBatchRequest",
+      "name": "Bulk registers domains",
+      "output": "CreateIntlDomainBatchResponse",
+      "status": "online"
+    },
+    "CreateIntlPhoneEmail": {
+      "document": "This API is used to verify a mobile number or an email address via a verification code.",
+      "input": "CreateIntlPhoneEmailRequest",
+      "name": "Verifies a mobile number or an email address via a verification code",
+      "output": "CreateIntlPhoneEmailResponse",
+      "status": "online"
+    },
+    "CreateIntlTemplate": {
+      "document": "This API is used to add a registrant profile.",
+      "input": "CreateIntlTemplateRequest",
+      "name": "Adds a registrant profile",
+      "output": "CreateIntlTemplateResponse",
+      "status": "online"
+    },
+    "DeleteIntlPhoneEmail": {
+      "document": "This API is used to delete a mobile number or an email address.",
+      "input": "DeleteIntlPhoneEmailRequest",
+      "name": "Deletes a mobile number or an email address",
+      "output": "DeleteIntlPhoneEmailResponse",
+      "status": "online"
+    },
+    "DeleteIntlTemplate": {
+      "document": "This API is used to delete a registrant profile.",
+      "input": "DeleteIntlTemplateRequest",
+      "name": "Deletes a registrant profile",
+      "output": "DeleteIntlTemplateResponse",
+      "status": "online"
+    },
+    "DescribeIntlBatchDetailStatus": {
+      "document": "This API is used to query the status of a bulk task.",
+      "input": "DescribeIntlBatchDetailStatusRequest",
+      "name": "Queries the status of a bulk task",
+      "output": "DescribeIntlBatchDetailStatusResponse",
+      "status": "online"
+    },
+    "DescribeIntlBatchOperationLogs": {
+      "document": "This API is used to query the logs of bulk domain purchase.",
+      "input": "DescribeIntlBatchOperationLogsRequest",
+      "name": "Queries the logs of bulk domain purchase",
+      "output": "DescribeIntlBatchOperationLogsResponse",
+      "status": "online"
+    },
+    "DescribeIntlDomain": {
+      "document": "This API is used to query domain information.",
+      "input": "DescribeIntlDomainRequest",
+      "name": "Queries domain information",
+      "output": "DescribeIntlDomainResponse",
+      "status": "online"
+    },
+    "DescribeIntlDomainBatchDetails": {
+      "document": "This API is used to get the log details of bulk domain purchase.",
+      "input": "DescribeIntlDomainBatchDetailsRequest",
+      "name": "Gets the log details of bulk domain purchase",
+      "output": "DescribeIntlDomainBatchDetailsResponse",
+      "status": "online"
+    },
+    "DescribeIntlDomainList": {
+      "document": "This API is used to query the \"My domains\" list.",
+      "input": "DescribeIntlDomainListRequest",
+      "name": "Queries the \"My domains\" list",
+      "output": "DescribeIntlDomainListResponse",
+      "status": "online"
+    },
+    "DescribeIntlDomainPriceNewList": {
+      "document": "This API is used to get the price list by domain suffix.",
+      "input": "DescribeIntlDomainPriceNewListRequest",
+      "name": "Gets the price list by domain suffix",
+      "output": "DescribeIntlDomainPriceNewListResponse",
+      "status": "online"
+    },
+    "DescribeIntlPhoneEmailList": {
+      "document": "This API is used to get the list of verified mobile numbers and email addresses.",
+      "input": "DescribeIntlPhoneEmailListRequest",
+      "name": "Gets the list of verified mobile numbers and email addresses",
+      "output": "DescribeIntlPhoneEmailListResponse",
+      "status": "online"
+    },
+    "DescribeIntlTemplate": {
+      "document": "This API is used to get the details of a registrant profile.",
+      "input": "DescribeIntlTemplateRequest",
+      "name": "Gets the details of a registrant profile",
+      "output": "DescribeIntlTemplateResponse",
+      "status": "online"
+    },
+    "DescribeIntlTemplateList": {
+      "document": "This API is used to get the list of registrant profiles.",
+      "input": "DescribeIntlTemplateListRequest",
+      "name": "Gets the list of registrant profiles",
+      "output": "DescribeIntlTemplateListResponse",
+      "status": "online"
+    },
+    "ModifyOwnerIntlBatch": {
+      "document": "This API is used to bulk transfer domains to another account.",
+      "input": "ModifyOwnerIntlBatchRequest",
+      "name": "Bulk transfers domains to another account",
+      "output": "ModifyOwnerIntlBatchResponse",
+      "status": "online"
+    },
+    "RenewIntlDomainBatch": {
+      "document": "This API is used to bulk renew domains.",
+      "input": "RenewIntlDomainBatchRequest",
+      "name": "Bulk renews domains",
+      "output": "RenewIntlDomainBatchResponse",
+      "status": "online"
+    },
+    "SendIntlPhoneEmailCode": {
+      "document": "This API is used to send a verification code to a mobile number or an email address.",
+      "input": "SendIntlPhoneEmailCodeRequest",
+      "name": "Sends a verification code to a mobile number or an email address",
+      "output": "SendIntlPhoneEmailCodeResponse",
+      "status": "online"
+    },
+    "SetIntlDomainAutoRenew": {
+      "document": "This API is used to set auto-renewal.",
+      "input": "SetIntlDomainAutoRenewRequest",
+      "name": "Sets auto-renewal",
+      "output": "SetIntlDomainAutoRenewResponse",
+      "status": "online"
+    },
+    "TransferInIntlDomainBatch": {
+      "document": "This API is used to bulk transfer domains in.",
+      "input": "TransferInIntlDomainBatchRequest",
+      "name": "Bulk transfers domains in",
+      "output": "TransferInIntlDomainBatchResponse",
+      "status": "online"
+    },
+    "TransferProhibitionIntlBatch": {
+      "document": "This API is used to bulk set transfer prohibition for domains.",
+      "input": "TransferProhibitionIntlBatchRequest",
+      "name": "Bulk sets transfer prohibition for domains",
+      "output": "TransferProhibitionIntlBatchResponse",
+      "status": "online"
+    },
+    "UpdateProhibitionIntlBatch": {
+      "document": "This API is used to bulk set update prohibition for domains.",
+      "input": "UpdateProhibitionIntlBatchRequest",
+      "name": "Bulk sets update prohibition for domains",
+      "output": "UpdateProhibitionIntlBatchResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-08-08",
+    "serviceNameCN": "域名注册",
+    "serviceShortName": "domain"
+  },
+  "objects": {
+    "AdminContact": {
+      "document": "The admin contact.",
+      "members": [
+        {
+          "default": "",
+          "document": "The first name.",
+          "example": "Test",
+          "member": "string",
+          "name": "FirstName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last name.",
+          "example": "Test",
+          "member": "string",
+          "name": "LastName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The country or region name, such as `CN`.",
+          "example": "CN",
+          "member": "string",
+          "name": "Country",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The province or state name.",
+          "example": "Guangdong",
+          "member": "string",
+          "name": "Province",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The city name.",
+          "example": "Shenzhen",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address line 1.",
+          "example": "Nanshan Road",
+          "member": "string",
+          "name": "AddressLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The zip code.",
+          "example": "816000",
+          "member": "string",
+          "name": "ZipCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The email address.",
+          "example": "123@qq.com",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The mobile number, such as `+86.13600000000`.",
+          "example": "+86.1360000000",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The company or organization name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CompanyName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The job title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "JobTitle",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The address line 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "AddressLineTwo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The fax number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Fax",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BatchDomainBuyDetails": {
+      "document": "The log details of bulk domain purchase  ",
+      "members": [
+        {
+          "default": "",
+          "document": "The details ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).",
+          "example": "new",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domains.",
+          "example": "xx.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The status. Valid values: `SUCCESS`, `FAILURE`",
+          "example": "SUCCESS ",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The reason for failure.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "fail",
+          "member": "string",
+          "name": "Reason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "2021-04-23 17:40:27",
+          "member": "string",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The update time.",
+          "example": "2021-04-23 17:40:27",
+          "member": "string",
+          "name": "UpdatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Null: The DNS service is not transferred. `false`: The DNS service failed to be transferred. `true`: The DNS service is transferred successfully.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "TransferDnsResult",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The reason for failure, expressed in Chinese.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "原因",
+          "member": "string",
+          "name": "ReasonZh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The payment status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PayStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BatchDomainBuyLog": {
+      "document": "The log of bulk domain purchase",
+      "members": [
+        {
+          "default": "",
+          "document": "The log ID.",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The quantity.",
+          "member": "int64",
+          "name": "Number",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The execution status. Valid values: `doing`, `done`",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The submission time.",
+          "member": "string",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BatchModifyIntlDomainDNSRequest": {
+      "document": "BatchModifyIntlDomainDNS request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The target domains.",
+          "example": "[\"h101.tencent.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The domain DNS array.",
+          "example": "[\"f1g1ns2.dnspod.net\",\"f1g1ns2.dnspod.net\"]",
+          "member": "string",
+          "name": "Dns",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `batch_modify_domain_dns1`, `batch_modify_domain_dns2`, `batch_modify_domain_dns3`",
+          "example": "batch_modify_domain_dns1",
+          "member": "string",
+          "name": "BatchAction",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyIntlDomainDNSResponse": {
+      "document": "BatchModifyIntlDomainDNS response structure.",
+      "members": [
+        {
+          "document": "The log ID.",
+          "example": "54",
+          "member": "uint64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyIntlDomainInfoRequest": {
+      "document": "BatchModifyIntlDomainInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domains whose information is to be modified.",
+          "example": "[\"h101.tencent.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The profile ID.",
+          "example": "tmpl-xxxxx",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the 60-day inter-registrar transfer lock.",
+          "example": "true",
+          "member": "bool",
+          "name": "LockTransfer",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyIntlDomainInfoResponse": {
+      "document": "BatchModifyIntlDomainInfo response structure.",
+      "members": [
+        {
+          "document": "The log ID.",
+          "example": "318",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BillingContact": {
+      "document": "The contact person for bills.",
+      "members": [
+        {
+          "default": "",
+          "document": "The first name.",
+          "example": "Test",
+          "member": "string",
+          "name": "FirstName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last name.",
+          "example": "Test",
+          "member": "string",
+          "name": "LastName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The country or region name, such as `CN`.",
+          "example": "CN",
+          "member": "string",
+          "name": "Country",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The province or state name.",
+          "example": "Guangdong",
+          "member": "string",
+          "name": "Province",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The city name.",
+          "example": "Shenzhen",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address line 1.",
+          "example": "Nanshan Road",
+          "member": "string",
+          "name": "AddressLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The zip code.",
+          "example": "816000",
+          "member": "string",
+          "name": "ZipCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The email address.",
+          "example": "123@qq.com",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The mobile number, such as `+86.13600000000`.",
+          "example": "+86.1360000000",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The company or organization name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CompanyName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The job title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "JobTitle",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The address line 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "AddressLineTwo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The fax number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Fax",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CheckIntlDomainNewRequest": {
+      "document": "CheckIntlDomainNew request structure.",
+      "members": [
+        {
+          "document": "The name of the domain to be checked.",
+          "example": "domain.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Period, in years. If this parameter is left empty, premium domains cannot be queried.",
+          "example": "1",
+          "member": "string",
+          "name": "Period",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckIntlDomainNewResponse": {
+      "document": "CheckIntlDomainNew response structure.",
+      "members": [
+        {
+          "document": "The name of the domain checked.",
+          "example": "domain.com",
+          "member": "string",
+          "name": "DomainName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the domain is available for registration.",
+          "example": "1",
+          "member": "bool",
+          "name": "Available",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The reason why the domain cannot be registered.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Reason",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the domain is a premium one.",
+          "example": "false",
+          "member": "bool",
+          "name": "Premium",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The domain price.",
+          "example": "35",
+          "member": "float",
+          "name": "Price",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the domain name involves restricted words.",
+          "example": "false",
+          "member": "bool",
+          "name": "BlackWord",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The premium domain description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Describe",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The price for renewing the premium domain.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "float",
+          "name": "FeeRenew",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The real price of the domain. For a premium domain, its price varies depending on the period. For a non-premium domain, the price is the 1-year price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "float",
+          "name": "RealPrice",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The price for transferring a premium domain in.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "FeeTransfer",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The price for redeeming a premium domain.",
+          "example": "0",
+          "member": "float",
+          "name": "FeeRestore",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The period (in years) of the domain.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Period",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The reason why the domain cannot be registered, expressed in Chinese.",
+          "example": "xx",
+          "member": "string",
+          "name": "ReasonZh",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The internal error code.",
+          "example": "1001",
+          "member": "string",
+          "name": "ResCode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIntlDomainBatchRequest": {
+      "document": "CreateIntlDomainBatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The profile ID.",
+          "example": "tmpl-xxxxxx",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The purchase period (years) of the domain. Value range: [1-10]",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The domains (maximum 4,000) to purchase.",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The payment method. Valid values: `0` (online payment), `1` (account balance), `2` (package), `3` (offline settlement).",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable auto-renewal.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the transfer prohibition lock.",
+          "example": "true",
+          "member": "bool",
+          "name": "TransferProhibition",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the update prohibition lock.",
+          "example": "true",
+          "member": "bool",
+          "name": "UpdateProhibition",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIntlDomainBatchResponse": {
+      "document": "CreateIntlDomainBatch response structure.",
+      "members": [
+        {
+          "document": "The bulk purchase log ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "318",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIntlPhoneEmailRequest": {
+      "document": "CreateIntlPhoneEmail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The type. Valid values: `1` (mobile number), `2` (email address).",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The mobile number or email address.",
+          "example": "12345678911",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The verification code.",
+          "example": "123456",
+          "member": "string",
+          "name": "VerifyCode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIntlPhoneEmailResponse": {
+      "document": "CreateIntlPhoneEmail response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIntlTemplateRequest": {
+      "document": "CreateIntlTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The registrant contact.",
+          "example": "无",
+          "member": "RegistrantContact",
+          "name": "RegistrantContact",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The admin contact.",
+          "example": "无",
+          "member": "AdminContact",
+          "name": "AdminContact",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The technical contact.",
+          "example": "无",
+          "member": "TechnicalContact",
+          "name": "TechnicalContact",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The contact person for bills.",
+          "example": "无",
+          "member": "BillingContact",
+          "name": "BillingContact",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The profile type. Valid values: `I` (individual, default), `E` (organization).",
+          "example": "I",
+          "member": "string",
+          "name": "TemplateType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIntlTemplateResponse": {
+      "document": "CreateIntlTemplate response structure.",
+      "members": [
+        {
+          "document": "The profile ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIntlPhoneEmailRequest": {
+      "document": "DeleteIntlPhoneEmail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The type. Valid values: `1` (mobile number), `2` (email address).",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The mobile number or email address.",
+          "example": "11@qq.com",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIntlPhoneEmailResponse": {
+      "document": "DeleteIntlPhoneEmail response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIntlTemplateRequest": {
+      "document": "DeleteIntlTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of the target registrant profile.",
+          "example": "xx",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIntlTemplateResponse": {
+      "document": "DeleteIntlTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlBatchDetailStatusRequest": {
+      "document": "DescribeIntlBatchDetailStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The IDs of the logs to be queried.",
+          "example": "[1,2]",
+          "member": "int64",
+          "name": "LogIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlBatchDetailStatusResponse": {
+      "document": "DescribeIntlBatchDetailStatus response structure.",
+      "members": [
+        {
+          "document": "The details.",
+          "example": "无",
+          "member": "IntlBatchDetails",
+          "name": "Details",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlBatchOperationLogsRequest": {
+      "document": "DescribeIntlBatchOperationLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The offset. Default value: 0",
+          "example": "整型",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "整型",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlBatchOperationLogsResponse": {
+      "document": "DescribeIntlBatchOperationLogs response structure.",
+      "members": [
+        {
+          "document": "The total count.",
+          "example": "204",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The log list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BatchDomainBuyLog",
+          "name": "DomainBatchLogSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainBatchDetailsRequest": {
+      "document": "DescribeIntlDomainBatchDetails request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The log ID.",
+          "example": "整型",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: 0",
+          "example": "整型",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "整型",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The sort key. Valid values: `Domain`, `UpdateOn`, `Status`",
+          "example": "Status",
+          "member": "string",
+          "name": "OrderByKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `0` (ascending), `1` (descending).",
+          "example": "1",
+          "member": "int64",
+          "name": "OrderBy",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainBatchDetailsResponse": {
+      "document": "DescribeIntlDomainBatchDetails response structure.",
+      "members": [
+        {
+          "document": "The total count.",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The list of log details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BatchDomainBuyDetails",
+          "name": "DomainBatchDetailSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainListRequest": {
+      "document": "DescribeIntlDomainList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The page number in pagination cases.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records on each page in pagination cases.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The domain keyword for fuzzy search.",
+          "example": "zbc",
+          "member": "string",
+          "name": "KeyWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The registration time sort order. Valid values: `1` (descending), `2` (ascending).",
+          "example": "0",
+          "member": "int64",
+          "name": "OrderByRegTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The expiration time sort order. Valid values: `1` (descending), `2` (ascending).",
+          "example": "0",
+          "member": "int64",
+          "name": "OrderByExpireTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The domain status.\n`all`: All domains.\n`UrgentNeedRenew`: The domains that are in urgent need of renewal.\n`RedemptionPending`: The domains that are in urgent need of redemption.\n`nosubmit`: The domains with unverified identities.\n`tran`: The domains that are being transferred in.",
+          "example": "all",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The DNS type. Valid values: `1` (DNSPod), `2` (others).",
+          "example": "1",
+          "member": "uint64",
+          "name": "DnsStatus",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The domain sort order. Valid values: `1` (descending), `2` (ascending).",
+          "example": "0",
+          "member": "uint64",
+          "name": "OrderByDomainName",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainListResponse": {
+      "document": "DescribeIntlDomainList response structure.",
+      "members": [
+        {
+          "document": "The domain information set.",
+          "example": "无",
+          "member": "IntlDomainInfo",
+          "name": "DomainSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of domains.",
+          "example": "108",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainPriceNewListRequest": {
+      "document": "DescribeIntlDomainPriceNewList request structure.",
+      "members": [
+        {
+          "document": "The list of domain suffixes for which you want to query prices. This parameter defaults to all suffixes.",
+          "example": "[\".com\"]",
+          "member": "string",
+          "name": "TldList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The purchase year of the domains for which you want to query prices. This parameter defaults to all years.",
+          "example": "1",
+          "member": "int64",
+          "name": "Year",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).",
+          "example": "new",
+          "member": "string",
+          "name": "Operation",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainPriceNewListResponse": {
+      "document": "DescribeIntlDomainPriceNewList response structure.",
+      "members": [
+        {
+          "document": "The price list of domains.",
+          "example": "无",
+          "member": "PriceInfoNew",
+          "name": "PriceList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainRequest": {
+      "document": "DescribeIntlDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain ID.",
+          "example": "1",
+          "member": "string",
+          "name": "DomainId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlDomainResponse": {
+      "document": "DescribeIntlDomain response structure.",
+      "members": [
+        {
+          "document": "The domain information.",
+          "example": "无",
+          "member": "IntlDomainInfo",
+          "name": "DomainInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlPhoneEmailListRequest": {
+      "document": "DescribeIntlPhoneEmailList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The type. Valid values: `1` (mobile number), `2` (email address).",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records on each page in pagination cases.",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The page number in pagination cases.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlPhoneEmailListResponse": {
+      "document": "DescribeIntlPhoneEmailList response structure.",
+      "members": [
+        {
+          "document": "The list of verified mobile numbers and email addresses.",
+          "example": "无",
+          "member": "IntlPhoneEmailLists",
+          "name": "PhoneEmailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total count.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlTemplateListRequest": {
+      "document": "DescribeIntlTemplateList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of entries.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The domain registrant keyword for exact match.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The type. Valid values: `all` (all types), `I` (individual), `E` (organization).",
+          "example": "I",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlTemplateListResponse": {
+      "document": "DescribeIntlTemplateList response structure.",
+      "members": [
+        {
+          "document": "The registrant profile list information.",
+          "example": "{}",
+          "member": "IntlTemplate",
+          "name": "TemplateSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total count.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlTemplateRequest": {
+      "document": "DescribeIntlTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of a registrant profile.",
+          "example": "xx",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIntlTemplateResponse": {
+      "document": "DescribeIntlTemplate response structure.",
+      "members": [
+        {
+          "document": "The details of the registrant profile.",
+          "example": "无",
+          "member": "IntlTemplateInfo",
+          "name": "Template",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IntlBatchDetails": {
+      "document": "The details of the bulk task",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the bulk task.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task status.",
+          "example": "doing",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The reason.",
+          "example": "xx",
+          "member": "string",
+          "name": "Reason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The reason, expressed in Chinese.",
+          "example": "xx",
+          "member": "string",
+          "name": "ReasonZh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IntlContactInfo": {
+      "document": "The contact information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The city name.",
+          "example": "厦门",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The country or region name.",
+          "example": "中国",
+          "member": "string",
+          "name": "Country",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The email address.",
+          "example": "xx",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domain registrant.",
+          "example": "xx",
+          "member": "string",
+          "name": "OrganizationName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The province or state name.",
+          "example": "福建省",
+          "member": "string",
+          "name": "Province",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the registrant.",
+          "example": "xx",
+          "member": "string",
+          "name": "RegistrantName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The registrant type. Valid values: `I` (individual), `E` (organization).",
+          "example": "I",
+          "member": "string",
+          "name": "RegistrantType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The detailed address.",
+          "example": "街道",
+          "member": "string",
+          "name": "Street",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The mobile number.",
+          "example": "12345677890",
+          "member": "string",
+          "name": "Telephone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The zip code.",
+          "example": "123456",
+          "member": "string",
+          "name": "ZipCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The first name.",
+          "example": "san",
+          "member": "string",
+          "name": "FirstName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last name.",
+          "example": "zhang",
+          "member": "string",
+          "name": "LastName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The company name.",
+          "example": "xx公司",
+          "member": "string",
+          "name": "CompanyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IntlDomainInfo": {
+      "document": "The domain information set.",
+      "members": [
+        {
+          "default": "",
+          "document": "The auto-renewal flag. Valid values: `0` (disabled by default), `1` (enabled), `2` (disabled).",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The registration time.",
+          "example": "2021-04-23 17:40:27",
+          "member": "string",
+          "name": "CreationDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domain ID.",
+          "example": "1",
+          "member": "string",
+          "name": "DomainId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DNS status. Valid values: `1` (DNSPod), `2` (others), `3` (unknown).",
+          "example": "1",
+          "member": "int64",
+          "name": "DnsStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domains.",
+          "example": "test.cn",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domain status.",
+          "example": "['ok']",
+          "member": "string",
+          "name": "DomainStatus",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The purchase status of the domain. Valid values:\n`ok`: Normal.\n`RegisterPending`: Pending registration.\n`RegisterDoing`: Registration in progress.\n`RegisterFailed`: Registration failed.\n`RenewPending`: Renewal grace period.\n`RenewDoing`: Renewing.\n`RedemptionPending`: Redemption period.\n`AboutToExpire`: About to expire.\n`TransferPending`: Pending transfer.\n`TransferTransing`: Transfer in progress.\n`TransferFailed`: Transfer failed.",
+          "example": "ok",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration date.",
+          "example": "2021-04-23",
+          "member": "string",
+          "name": "ExpirationDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The auto-renewal flag. Valid values: `1` (enabled), `2` (disabled), `3` (disabled by default).",
+          "example": "3",
+          "member": "int64",
+          "name": "ExpireMessage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the domain is a premium one.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPremium",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The DNS server of the domain.",
+          "example": " [                     \"f1g1ns1.dnspod.net\"                 ]",
+          "member": "string",
+          "name": "Dns",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The contact information.",
+          "example": "1",
+          "member": "IntlContactInfo",
+          "name": "ContactInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of years available for renewal. The value `0` indicates that the domain has reached its maximum validity period (10 years) and cannot be renewed.",
+          "example": "1",
+          "member": "int64",
+          "name": "CanRenewYears",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The registrar type. If the value is `epp`, the registration time on the page is followed by (UTC). Otherwise, it is followed by (UTC+8).",
+          "example": "epp",
+          "member": "string",
+          "name": "RegistrarType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The account to which the domain belongs.",
+          "example": "111111",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The profile ID.",
+          "example": "temp-123456",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether DNSSEC is supported.",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportDnssec",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "WHOIS privacy service status. Valid values: `1` (enabled), `2` (disabled), `3` (enabling), `4` (disabling).",
+          "example": "1",
+          "member": "int64",
+          "name": "WhoisPrivacy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)",
+          "example": "NotModify",
+          "member": "string",
+          "name": "ModifyStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)",
+          "example": "NotModify",
+          "member": "string",
+          "name": "DnsModifyStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IntlPhoneEmailLists": {
+      "document": "The list of verified mobile numbers and email addresses.",
+      "members": [
+        {
+          "default": "",
+          "document": "The mobile number or email address.",
+          "example": "12345678",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type. Valid values: `1` (mobile number), `2` (email address).",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The verification time.",
+          "example": "2021-04-23 17:40:27",
+          "member": "string",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IntlTemplate": {
+      "document": "The details of the registrant profile.",
+      "members": [
+        {
+          "default": "",
+          "document": "The registrant contact.",
+          "example": "{}",
+          "member": "RegistrantContact",
+          "name": "RegistrantContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The admin contact.",
+          "example": "{}",
+          "member": "AdminContact",
+          "name": "AdminContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The technical contact.",
+          "example": "{}",
+          "member": "TechnicalContact",
+          "name": "TechnicalContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The contact person for bills.",
+          "example": "{}",
+          "member": "BillingContact",
+          "name": "BillingContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "2021-08-13 11:00:00",
+          "member": "datetime",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The profile ID.",
+          "example": "tmpl-123121",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the profile is the default one.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsDefault",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last update time.",
+          "example": "2021-08-13 11:00:00",
+          "member": "datetime",
+          "name": "UpdatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IntlTemplateInfo": {
+      "document": "The registrant profile details.",
+      "members": [
+        {
+          "default": "",
+          "document": "The registrant contact.",
+          "example": "{}",
+          "member": "RegistrantContact",
+          "name": "RegistrantContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The admin contact.",
+          "example": "{}",
+          "member": "AdminContact",
+          "name": "AdminContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The technical contact.",
+          "example": "{}",
+          "member": "TechnicalContact",
+          "name": "TechnicalContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The contact person for bills.",
+          "example": "{}",
+          "member": "BillingContact",
+          "name": "BillingContact",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "example": "2021-08-13 11:00:00",
+          "member": "datetime",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The profile ID.",
+          "example": "tmpl-123121",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The registrant type. Valid values: `I` (individual), `E` (organization).",
+          "example": "I",
+          "member": "string",
+          "name": "TemplateType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last updated time.",
+          "example": "2021-08-13 11:00:00",
+          "member": "datetime",
+          "name": "UpdatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The account ID.",
+          "example": "12345678",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the profile is the default one.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsDefault",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyOwnerIntlBatchRequest": {
+      "document": "ModifyOwnerIntlBatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domains.",
+          "example": "[\"aa.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The user ID.",
+          "example": "12456",
+          "member": "string",
+          "name": "ToUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to transfer the DNS service.",
+          "example": "true",
+          "member": "bool",
+          "name": "DnsTransfer",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwnerIntlBatchResponse": {
+      "document": "ModifyOwnerIntlBatch response structure.",
+      "members": [
+        {
+          "document": "The ID of the bulk task.",
+          "example": "1",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PriceInfoNew": {
+      "document": "The price information of the domains.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain suffix, such as `.com`.",
+          "example": ".com",
+          "member": "string",
+          "name": "Tld",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The purchase years. Value range: [1-10]",
+          "example": "1",
+          "member": "uint64",
+          "name": "Year",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The original price of the domain.",
+          "example": "1.00",
+          "member": "float",
+          "name": "Price",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The current price of the domain.",
+          "example": "1.00",
+          "member": "float",
+          "name": "RealPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).",
+          "example": "xxx",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Title",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RegistrantContact": {
+      "document": "The registrant contact.",
+      "members": [
+        {
+          "default": "",
+          "document": "The first name.",
+          "example": "Test",
+          "member": "string",
+          "name": "FirstName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last name.",
+          "example": "Test",
+          "member": "string",
+          "name": "LastName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The country or region name, such as `CN`.",
+          "example": "CN",
+          "member": "string",
+          "name": "Country",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The province or state name.",
+          "example": "Guangdong",
+          "member": "string",
+          "name": "Province",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The city name.",
+          "example": "Shenzhen",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address line 1.",
+          "example": "Nanshan Road",
+          "member": "string",
+          "name": "AddressLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The zip code.",
+          "example": "816000",
+          "member": "string",
+          "name": "ZipCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The email address.",
+          "example": "123@qq.com",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The mobile number, such as `+86.1360000000`.",
+          "example": "+86.1360000000",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The company or organization name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CompanyName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The job title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "JobTitle",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The address line 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "AddressLineTwo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The fax number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Fax",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RenewIntlDomainBatchRequest": {
+      "document": "RenewIntlDomainBatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domains to check.",
+          "example": "[\"aa.com\",\"bb.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The period (1 to 10 years). If this parameter is left empty, premium domains cannot be checked.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Payment method. Valid value: `1` (account balance).",
+          "example": "1",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable auto-renewal.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewIntlDomainBatchResponse": {
+      "document": "RenewIntlDomainBatch response structure.",
+      "members": [
+        {
+          "document": "The ID of the bulk task.",
+          "example": "1",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendIntlPhoneEmailCodeRequest": {
+      "document": "SendIntlPhoneEmailCode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The type. Valid values: `1` (mobile number), `2` (email address).",
+          "example": "2",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The mobile number or email address.",
+          "example": "111@qq.com",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendIntlPhoneEmailCodeResponse": {
+      "document": "SendIntlPhoneEmailCode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetIntlDomainAutoRenewRequest": {
+      "document": "SetIntlDomainAutoRenew request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain ID.",
+          "example": "1",
+          "member": "string",
+          "name": "DomainId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable auto-renewal. Valid values: `1` (enable), `2` (disable).",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetIntlDomainAutoRenewResponse": {
+      "document": "SetIntlDomainAutoRenew response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TechnicalContact": {
+      "document": "The technical contact.",
+      "members": [
+        {
+          "default": "",
+          "document": "The first name.",
+          "example": "Test",
+          "member": "string",
+          "name": "FirstName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last name.",
+          "example": "Test",
+          "member": "string",
+          "name": "LastName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The country or region name, such as `CN`.",
+          "example": "CN",
+          "member": "string",
+          "name": "Country",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The province or state name.",
+          "example": "Guangdong",
+          "member": "string",
+          "name": "Province",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The city name.",
+          "example": "Shenzhen",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address line 1.",
+          "example": "Nanshan Road",
+          "member": "string",
+          "name": "AddressLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The zip code.",
+          "example": "816000",
+          "member": "string",
+          "name": "ZipCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The email address.",
+          "example": "123@qq.com",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The mobile number, such as `+86.13600000000`.",
+          "example": "+86.1360000000",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The company or organization name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CompanyName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The job title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "JobTitle",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The address line 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "AddressLineTwo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The fax number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Fax",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TransferInIntlDomainBatchRequest": {
+      "document": "TransferInIntlDomainBatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The profile ID.",
+          "example": "tmpl-xxxxxx",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The transfer passwords for the domains.",
+          "example": "[\"xxxxx\"]",
+          "member": "string",
+          "name": "PassWords",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The domains to be bulk transferred in.",
+          "example": "[\"aa.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The payment method. Valid value: `1` (account balance).",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable auto-renewal.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the transfer prohibition lock.",
+          "example": "true",
+          "member": "bool",
+          "name": "TransferProhibition",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the update prohibition lock.",
+          "example": "true",
+          "member": "bool",
+          "name": "UpdateProhibition",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the 60-day inter-registrar transfer lock.",
+          "example": "true",
+          "member": "bool",
+          "name": "LockTransfer",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "TransferInIntlDomainBatchResponse": {
+      "document": "TransferInIntlDomainBatch response structure.",
+      "members": [
+        {
+          "document": "The bulk purchase log ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "318",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TransferProhibitionIntlBatchRequest": {
+      "document": "TransferProhibitionIntlBatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain array.",
+          "example": "['aa.com']",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable transfer prohibition. Valid values: `true` (enable), `false` (disable).",
+          "example": "true",
+          "member": "bool",
+          "name": "Status",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "TransferProhibitionIntlBatchResponse": {
+      "document": "TransferProhibitionIntlBatch response structure.",
+      "members": [
+        {
+          "document": "The log ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateProhibitionIntlBatchRequest": {
+      "document": "UpdateProhibitionIntlBatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain array.",
+          "example": "[\"aaa.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable update prohibition. Valid values: `true` (enable), `false` (disable).",
+          "example": "true",
+          "member": "bool",
+          "name": "Status",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateProhibitionIntlBatchResponse": {
+      "document": "UpdateProhibitionIntlBatch response structure.",
+      "members": [
+        {
+          "document": "The log ID.",
+          "example": "11",
+          "member": "int64",
+          "name": "LogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

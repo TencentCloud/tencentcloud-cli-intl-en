@@ -440,6 +440,15 @@
       "document": "CreateAccessRules response structure.",
       "members": [
         {
+          "document": "List of permission rules\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessRule",
+          "name": "AccessRules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -984,6 +993,24 @@
           "example": "0",
           "member": "uint64",
           "name": "DegradeCapacityUsed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "COS DEEP ARCHIVE storage usage, in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DeepArchiveCapacityUsed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "COS INTELLIGENT TIERING storage usage, in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "IntelligentCapacityUsed",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -1871,7 +1898,7 @@
         },
         {
           "default": "",
-          "document": "Transition type (`1`: transition to ARCHIVE; `2`: delete; `3`: transition to STANDARD_IA)",
+          "document": "Transition type (`1`: ARCHIVE; `2`: Delete; `3`: STANDARD_IA; `4`: DEEP ARCHIVE; `5`: INTELLIGENT TIERING)",
           "example": "1",
           "member": "uint64",
           "name": "Type",

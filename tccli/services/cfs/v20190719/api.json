@@ -235,7 +235,6 @@
       "document": "Snapshot policy information",
       "members": [
         {
-          "default": "",
           "document": "Snapshot policy ID",
           "example": "asp-xx",
           "member": "string",
@@ -245,7 +244,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Snapshot policy name",
           "example": "xx",
           "member": "string",
@@ -255,7 +253,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Snapshot policy creation time",
           "example": "xx",
           "member": "string",
@@ -265,7 +262,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of bound file systems",
           "example": "2",
           "member": "uint64",
@@ -275,8 +271,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The day of the week on which to regularly back up the snapshot",
+          "document": "The specific day of the week on which to create a snapshot. This parameter is mutually exclusive with `DayOfMonth` and `IntervalDays`.",
           "example": "['1','2']",
           "member": "string",
           "name": "DayOfWeek",
@@ -285,7 +280,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The hour of a day at which to regularly back up the snapshot",
           "example": "['3','4']",
           "member": "string",
@@ -295,7 +289,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to activate the scheduled snapshot feature",
           "example": "1",
           "member": "uint64",
@@ -305,7 +298,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Next time to trigger snapshot",
           "example": "xx",
           "member": "string",
@@ -315,7 +307,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Snapshot policy status",
           "example": "1",
           "member": "string",
@@ -325,7 +316,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account ID",
           "example": "122445",
           "member": "uint64",
@@ -335,7 +325,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Retention period",
           "example": "3",
           "member": "uint64",
@@ -345,7 +334,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region",
           "example": "xx",
           "member": "string",
@@ -355,7 +343,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File system information",
           "example": "112",
           "member": "FileSystemByPolicy",
@@ -363,6 +350,24 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The specific day of the month on which to create a snapshot. This parameter is mutually exclusive with `DayOfWeek` and `IntervalDays`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "'1,2,3,4'",
+          "member": "string",
+          "name": "DayOfMonth",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The snapshot interval (1 to 365 days). This parameter is mutually exclusive with `DayOfWeek` and `DayOfMonth`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "uint64",
+          "name": "IntervalDays",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -575,16 +580,6 @@
       "document": "CreateAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
-          "document": "The day of the week on which to repeat the snapshot operation",
-          "example": "xx",
-          "member": "string",
-          "name": "DayOfWeek",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "The time point when to repeat the snapshot operation",
           "example": "xx",
           "member": "string",
@@ -593,7 +588,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Policy name",
           "example": "xx",
           "member": "string",
@@ -602,11 +596,34 @@
           "type": "string"
         },
         {
-          "default": "",
+          "document": "The day of the week on which to repeat the snapshot operation",
+          "example": "xx",
+          "member": "string",
+          "name": "DayOfWeek",
+          "required": false,
+          "type": "string"
+        },
+        {
           "document": "Snapshot retention period",
           "example": "3",
           "member": "uint64",
           "name": "AliveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The specific day (day 1 to day 31) of the month on which to create a snapshot.",
+          "example": "无",
+          "member": "string",
+          "name": "DayOfMonth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The snapshot interval, in days.",
+          "example": "无",
+          "member": "uint64",
+          "name": "IntervalDays",
           "required": false,
           "type": "int"
         }
@@ -1963,7 +1980,6 @@
       "document": "Basic information of a file system",
       "members": [
         {
-          "default": "",
           "document": "Creation time",
           "example": "无",
           "member": "string",
@@ -1973,7 +1989,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom name",
           "example": "无",
           "member": "string",
@@ -1983,7 +1998,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File system ID",
           "example": "无",
           "member": "string",
@@ -1993,7 +2007,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File system status",
           "example": "无",
           "member": "string",
@@ -2003,7 +2016,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Used file system capacity",
           "example": "无",
           "member": "uint64",
@@ -2013,7 +2025,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum storage limit of a file system",
           "example": "无",
           "member": "uint64",
@@ -2023,7 +2034,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region ID",
           "example": "无",
           "member": "uint64",
@@ -2033,7 +2043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region name",
           "example": "无",
           "member": "string",
@@ -2043,7 +2052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File system protocol type",
           "example": "无",
           "member": "string",
@@ -2053,7 +2061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File system storage class",
           "example": "无",
           "member": "string",
@@ -2063,7 +2070,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Prepaid storage pack bound with the file system",
           "example": "无",
           "member": "string",
@@ -2073,7 +2079,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Prepaid bandwidth pack bound to a file system (not supported currently)",
           "example": "无",
           "member": "string",
@@ -2083,7 +2088,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of permission groups bound to a file system",
           "example": "无",
           "member": "PGroup",
@@ -2093,7 +2097,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom name",
           "example": "无",
           "member": "string",
@@ -2103,7 +2106,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether a file system is encrypted",
           "example": "无",
           "member": "bool",
@@ -2113,7 +2115,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Key used for encryption, which can be the key ID or ARN",
           "example": "无",
           "member": "string",
@@ -2123,7 +2124,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Application ID",
           "example": "无",
           "member": "int64",
@@ -2133,7 +2133,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput",
           "example": "无",
           "member": "float",
@@ -2143,7 +2142,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total capacity of the file system",
           "example": "无",
           "member": "uint64",
@@ -2153,7 +2151,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File system tag list",
           "example": "无",
           "member": "TagInfo",
@@ -2161,6 +2158,24 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The lifecycle management status of a file system.",
+          "example": "无",
+          "member": "string",
+          "name": "TieringState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The details about tiered storage.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TieringDetailInfo",
+          "name": "TieringDetail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2719,7 +2734,12 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
+    },
+    "TieringDetailInfo": {
+      "document": "The details about tiered storage.",
+      "members": [],
+      "usage": "both"
     },
     "UnbindAutoSnapshotPolicyRequest": {
       "document": "UnbindAutoSnapshotPolicy request structure.",
@@ -2770,7 +2790,6 @@
       "document": "UpdateAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "document": "Snapshot policy ID",
           "example": "asp-xx",
           "member": "string",
@@ -2779,7 +2798,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Snapshot policy name",
           "example": "xx",
           "member": "string",
@@ -2788,7 +2806,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The day of the week on which to regularly back up the snapshot",
           "example": "['0','1']",
           "member": "string",
@@ -2797,7 +2814,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The hour of a day at which to regularly back up the snapshot",
           "example": "['0','1']",
           "member": "string",
@@ -2806,7 +2822,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Snapshot retention period",
           "example": "20",
           "member": "uint64",
@@ -2815,11 +2830,26 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to activate the scheduled snapshot feature",
           "example": "0",
           "member": "uint64",
           "name": "IsActivated",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The specific day of the month on which to create a snapshot. This parameter is mutually exclusive with `DayOfWeek`.",
+          "example": "'1,3,4,10'",
+          "member": "string",
+          "name": "DayOfMonth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The snapshot interval. This parameter is mutually exclusive with `DayOfWeek` and `DayOfMonth`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IntervalDays",
           "required": false,
           "type": "int"
         }
