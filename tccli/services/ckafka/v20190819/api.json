@@ -35,6 +35,13 @@
       "output": "CreateConsumerResponse",
       "status": "online"
     },
+    "CreateDatahubTopic": {
+      "document": "This API is used to create a DataHub topic.",
+      "input": "CreateDatahubTopicRequest",
+      "name": "Creates a DataHub topic",
+      "output": "CreateDatahubTopicResponse",
+      "status": "online"
+    },
     "CreateInstancePost": {
       "document": "This API is used to create a pay-as-you-go instance.",
       "input": "CreateInstancePostRequest",
@@ -1535,6 +1542,78 @@
       ],
       "type": "object"
     },
+    "CreateDatahubTopicRequest": {
+      "document": "CreateDatahubTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of partitions, which should be greater than 0.",
+          "example": "1",
+          "member": "int64",
+          "name": "PartitionNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message retention period in milliseconds. The current minimum value is 60,000 ms.",
+          "example": "60000",
+          "member": "int64",
+          "name": "RetentionMs",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Topic remarks, which are a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.",
+          "example": "note",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag list",
+          "example": "1",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDatahubTopicResponse": {
+      "document": "CreateDatahubTopic response structure.",
+      "members": [
+        {
+          "document": "Returned creation result",
+          "example": "无",
+          "member": "DatahubTopicResp",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateInstancePostRequest": {
       "document": "CreateInstancePost request structure.",
       "members": [
@@ -2109,6 +2188,22 @@
           "name": "Status",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatahubTopicResp": {
+      "document": "DataHub topic response",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name",
+          "example": "xxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

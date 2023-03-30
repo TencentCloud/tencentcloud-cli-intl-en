@@ -682,7 +682,6 @@
       "document": "AddInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cynosdbmysql-6gtlgm5l",
           "member": "string",
@@ -691,7 +690,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of CPU cores",
           "example": "2",
           "member": "int64",
@@ -700,7 +698,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Memory in GB",
           "example": "4",
           "member": "int64",
@@ -709,7 +706,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of added read-only instances. Value range: (0,16].",
           "example": "1",
           "member": "int64",
@@ -718,8 +714,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Instance group ID, which is used when you add an instance to an existing RO group. If this parameter is left empty, an RO group will be created. We recommend you not pass in this value on the current version.",
+          "document": "Instance group ID, which will be used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created. But it is not recommended to pass in this parameter for the current version, as this version has been disused.",
           "example": "cynosmysql-grp-xxxxxxxx",
           "member": "string",
           "name": "InstanceGrpId",
@@ -727,8 +722,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "VPC ID. This parameter has been disused.",
+          "document": "VPC ID",
           "example": "vpc-1ptuei0b",
           "member": "string",
           "name": "VpcId",
@@ -736,8 +730,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Subnet ID. If `VpcId` is set, `SubnetId` is required. This parameter has been disused.",
+          "document": "Subnet ID. If `VpcId` is set, `SubnetId` is required.",
           "example": "subnet-1tmw9t4o",
           "member": "string",
           "name": "SubnetId",
@@ -745,7 +738,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The port used when adding an RO group. Value range: [0,65535).",
           "example": "2000",
           "member": "int64",
@@ -754,7 +746,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance name. String length range: [0,64).",
           "example": "cynosmysql-xxxxxxxx",
           "member": "string",
@@ -763,7 +754,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0",
           "example": "0",
           "member": "int64",
@@ -772,7 +762,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Database type. Valid values: \n<li> MYSQL </li>",
           "example": "MYSQL",
           "member": "string",
@@ -781,7 +770,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Order source. String length range: [0,64).",
           "example": "api",
           "member": "string",
@@ -790,7 +778,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)",
           "example": "0",
           "member": "int64",
@@ -799,7 +786,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Parameter template ID",
           "example": "0",
           "member": "int64",
@@ -808,11 +794,18 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Parameter list, which is valid only if `InstanceParams` is passed in to `ParamTemplateId`.",
           "example": "无",
           "member": "ModifyParamItem",
           "name": "InstanceParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Security group ID. You can specify an security group when creating a read-only instance.",
+          "example": "sg-rgf3qgld",
+          "member": "string",
+          "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
         }
@@ -3227,7 +3220,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Instance network information\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "InstanceNetInfo",
           "name": "InstanceNetInfo",
@@ -5945,10 +5938,10 @@
       "usage": "in"
     },
     "InstanceNetInfo": {
-      "document": "",
+      "document": "Instance network information",
       "members": [
         {
-          "document": "",
+          "document": "Network type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ro",
           "member": "string",
           "name": "InstanceGroupType",
@@ -5957,7 +5950,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Instance group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cynosdbmysql-grp-qwertyui",
           "member": "string",
           "name": "InstanceGroupId",
@@ -5966,7 +5959,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpc-qwerty",
           "member": "string",
           "name": "VpcId",
@@ -5975,7 +5968,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subnet-qwerty",
           "member": "string",
           "name": "SubnetId",
@@ -5984,7 +5977,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Network type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "NetType",
@@ -5993,7 +5986,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "VPC IP\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "123.123.123.1",
           "member": "string",
           "name": "Vip",
@@ -6002,7 +5995,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "VPC port\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1234",
           "member": "int64",
           "name": "Vport",
@@ -6011,7 +6004,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Public network domain name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "aa.com",
           "member": "string",
           "name": "WanDomain",
@@ -6029,7 +6022,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Public network port\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "12345",
           "member": "int64",
           "name": "WanPort",
@@ -6038,7 +6031,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Public network status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "init",
           "member": "string",
           "name": "WanStatus",

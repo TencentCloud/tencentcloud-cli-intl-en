@@ -40,6 +40,14 @@
         "title": "Creating a consumer"
       }
     ],
+    "CreateDatahubTopic": [
+      {
+        "document": "",
+        "input": "https://ckafka.tencentcloudapi.com/?Action=CreateDatahubTopic\n&Name=xxx\n&PartitionNum=1\n&RetentionMs=3600000\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TopicName\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating a topic"
+      }
+    ],
     "CreateInstancePost": [
       {
         "document": "",

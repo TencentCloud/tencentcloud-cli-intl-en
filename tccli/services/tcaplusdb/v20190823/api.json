@@ -655,7 +655,7 @@
         },
         {
           "default": "",
-          "document": "Cluster type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Cluster type. Valid values: `0` and `1` (shared cluster), `2` (dedicated cluster).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ClusterType",
@@ -665,7 +665,7 @@
         },
         {
           "default": "",
-          "document": "Cluster status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Cluster status. Valid values: `0` (Running), `1` (Isolated. This status is caused by overdue payments), `2` (To be repossessed. This status is caused when the cluster is actively deleted.),·`3` (To be released. The resources occupied by the table can be released in this status.), `4` (Modifying).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ClusterStatus",
@@ -789,6 +789,16 @@
           "example": "0",
           "member": "uint64",
           "name": "IsReadOnlyUlogBackupExpireDay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "restproxy Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "RestProxyStatus",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -3878,6 +3888,7 @@
         {
           "default": "",
           "document": "The unique ID of the access layer (tcaproxy)",
+          "example": "1.2.2.2",
           "member": "string",
           "name": "ProxyUid",
           "required": true,
@@ -3887,6 +3898,7 @@
         {
           "default": "",
           "document": "Machine type",
+          "example": "0",
           "member": "string",
           "name": "MachineType",
           "required": true,
@@ -3896,6 +3908,7 @@
         {
           "default": "",
           "document": "The speed of processing request packets",
+          "example": "0",
           "member": "int64",
           "name": "ProcessSpeed",
           "required": true,
@@ -3905,6 +3918,7 @@
         {
           "default": "",
           "document": "Request packet delay",
+          "example": "0",
           "member": "int64",
           "name": "AverageProcessDelay",
           "required": true,
@@ -3914,11 +3928,22 @@
         {
           "default": "",
           "document": "The speed of processing delayed request packets",
+          "example": "0",
           "member": "int64",
           "name": "SlowProcessSpeed",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.46.0",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4337,6 +4362,7 @@
         {
           "default": "",
           "document": "The unique ID of the storage layer (tcapsvr)",
+          "example": "1.2.2.2",
           "member": "string",
           "name": "ServerUid",
           "required": true,
@@ -4346,6 +4372,7 @@
         {
           "default": "",
           "document": "Machine type",
+          "example": "master",
           "member": "string",
           "name": "MachineType",
           "required": true,
@@ -4355,6 +4382,7 @@
         {
           "default": "",
           "document": "Memory utilization",
+          "example": "0",
           "member": "int64",
           "name": "MemoryRate",
           "required": true,
@@ -4364,6 +4392,7 @@
         {
           "default": "",
           "document": "Disk utilization",
+          "example": "0",
           "member": "int64",
           "name": "DiskRate",
           "required": true,
@@ -4373,6 +4402,7 @@
         {
           "default": "",
           "document": "The number of reads",
+          "example": "0",
           "member": "int64",
           "name": "ReadNum",
           "required": true,
@@ -4382,11 +4412,22 @@
         {
           "default": "",
           "document": "The number of writes",
+          "example": "0",
           "member": "int64",
           "name": "WriteNum",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.46.0",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4864,6 +4905,7 @@
         {
           "default": "",
           "document": "Table group ID",
+          "example": "\"123\"",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
@@ -4873,6 +4915,7 @@
         {
           "default": "",
           "document": "Table group name",
+          "example": "\"ZoneName\"",
           "member": "string",
           "name": "TableGroupName",
           "required": true,
@@ -4882,6 +4925,7 @@
         {
           "default": "",
           "document": "Table group creation time",
+          "example": "20211011",
           "member": "datetime",
           "name": "CreatedTime",
           "required": true,
@@ -4891,6 +4935,7 @@
         {
           "default": "",
           "document": "Number of tables in table group",
+          "example": "10",
           "member": "uint64",
           "name": "TableCount",
           "required": true,
@@ -4900,11 +4945,52 @@
         {
           "default": "",
           "document": "Total table storage capacity in MB in table group",
+          "example": "100",
           "member": "uint64",
           "name": "TotalSize",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of days before the backup files of the Txh tables expire and are deleted.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TxhBackupExpireDay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether MySQL load rebalancing is enabled. Valid values: `0` (Disabled), `1` (Enabling), `2` (Enabled).",
+          "example": "1",
+          "member": "uint64",
+          "name": "EnableMysql",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MySQL load rebalancing vip\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.0.0.0",
+          "member": "string",
+          "name": "MysqlConnIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MySQL load rebalancing vport\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3306",
+          "member": "uint64",
+          "name": "MysqlConnPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
