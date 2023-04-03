@@ -28,6 +28,13 @@
       "output": "CloseServerlessDBExtranetAccessResponse",
       "status": "online"
     },
+    "CreateBaseBackup": {
+      "document": "This API is used to create a full backup of an instance.",
+      "input": "CreateBaseBackupRequest",
+      "name": "Creates a full backup of an instance",
+      "output": "CreateBaseBackupResponse",
+      "status": "online"
+    },
     "CreateDBInstanceNetworkAccess": {
       "document": "This API is used to add a network for an instance.",
       "input": "CreateDBInstanceNetworkAccessRequest",
@@ -84,11 +91,25 @@
       "output": "CreateServerlessDBInstanceResponse",
       "status": "online"
     },
+    "DeleteBaseBackup": {
+      "document": "This API is used to delete the specified full backup of an instance.",
+      "input": "DeleteBaseBackupRequest",
+      "name": "Deletes a full backup of an instance",
+      "output": "DeleteBaseBackupResponse",
+      "status": "online"
+    },
     "DeleteDBInstanceNetworkAccess": {
       "document": "This API is used to delete a network of an instance.",
       "input": "DeleteDBInstanceNetworkAccessRequest",
       "name": "Deletes a network of an instance",
       "output": "DeleteDBInstanceNetworkAccessResponse",
+      "status": "online"
+    },
+    "DeleteLogBackup": {
+      "document": "This API is used to delete the specified log backup of an instance.",
+      "input": "DeleteLogBackupRequest",
+      "name": "Deletes a log backup of an instance",
+      "output": "DeleteLogBackupResponse",
       "status": "online"
     },
     "DeleteParameterTemplate": {
@@ -133,11 +154,46 @@
       "output": "DescribeAvailableRecoveryTimeResponse",
       "status": "online"
     },
+    "DescribeBackupDownloadURL": {
+      "document": "This API is used to get the download URL of a backup.",
+      "input": "DescribeBackupDownloadURLRequest",
+      "name": "Gets the download URL of a backup",
+      "output": "DescribeBackupDownloadURLResponse",
+      "status": "online"
+    },
+    "DescribeBackupOverview": {
+      "document": "This API is used to query the backup overview. It will return the current number and size of backups, free backup space size, and paid backup space size (all size values are in bytes).",
+      "input": "DescribeBackupOverviewRequest",
+      "name": "Queries the backup overview",
+      "output": "DescribeBackupOverviewResponse",
+      "status": "online"
+    },
     "DescribeBackupPlans": {
       "document": "This API is used to query all backup plans of an instance.",
       "input": "DescribeBackupPlansRequest",
       "name": "Queries backup plans",
       "output": "DescribeBackupPlansResponse",
+      "status": "online"
+    },
+    "DescribeBackupSummaries": {
+      "document": "This API is used to query the backup statistics of an instance. It will return the number and size (bytes) of backups of the instance.",
+      "input": "DescribeBackupSummariesRequest",
+      "name": "Queries the backup statistics",
+      "output": "DescribeBackupSummariesResponse",
+      "status": "online"
+    },
+    "DescribeBaseBackups": {
+      "document": "This API is used to query the list of full backups.",
+      "input": "DescribeBaseBackupsRequest",
+      "name": "Queries the list of full backups",
+      "output": "DescribeBaseBackupsResponse",
+      "status": "online"
+    },
+    "DescribeClasses": {
+      "document": "This API is used to query purchasable instance specifications.",
+      "input": "DescribeClassesRequest",
+      "name": "Queries purchasable specifications",
+      "output": "DescribeClassesResponse",
       "status": "online"
     },
     "DescribeCloneDBInstanceSpec": {
@@ -196,6 +252,13 @@
       "output": "DescribeDBSlowlogsResponse",
       "status": "online"
     },
+    "DescribeDBVersions": {
+      "document": "This API is used to query the list of supported database versions.",
+      "input": "DescribeDBVersionsRequest",
+      "name": "Queries the list of supported database versions",
+      "output": "DescribeDBVersionsResponse",
+      "status": "online"
+    },
     "DescribeDBXlogs": {
       "document": "This API is used to get the instance Xlog list.",
       "input": "DescribeDBXlogsRequest",
@@ -222,6 +285,13 @@
       "input": "DescribeEncryptionKeysRequest",
       "name": "Gets instance key list",
       "output": "DescribeEncryptionKeysResponse",
+      "status": "online"
+    },
+    "DescribeLogBackups": {
+      "document": "This API is used to query the list of log backups.",
+      "input": "DescribeLogBackupsRequest",
+      "name": "Queries the list of log backups",
+      "output": "DescribeLogBackupsResponse",
       "status": "online"
     },
     "DescribeOrders": {
@@ -364,6 +434,13 @@
       "output": "ModifyBackupPlanResponse",
       "status": "online"
     },
+    "ModifyBaseBackupExpireTime": {
+      "document": "This API is used to modify the expiration time of the specified full backup of an instance.",
+      "input": "ModifyBaseBackupExpireTimeRequest",
+      "name": "Modifies the expiration time of a full backup",
+      "output": "ModifyBaseBackupExpireTimeResponse",
+      "status": "online"
+    },
     "ModifyDBInstanceDeployment": {
       "document": "This API is used to modify the AZs where the nodes of a source instance reside.",
       "input": "ModifyDBInstanceDeploymentRequest",
@@ -495,6 +572,13 @@
       "input": "UpgradeDBInstanceRequest",
       "name": "Upgrades instance configuration (deprecated)",
       "output": "UpgradeDBInstanceResponse",
+      "status": "online"
+    },
+    "UpgradeDBInstanceKernelVersion": {
+      "document": "This API is used to upgrade the kernel version of an instance.",
+      "input": "UpgradeDBInstanceKernelVersionRequest",
+      "name": "Upgrades the kernel version of an instance",
+      "output": "UpgradeDBInstanceKernelVersionResponse",
       "status": "online"
     }
   },
@@ -791,6 +875,268 @@
       ],
       "usage": "out"
     },
+    "BackupSummary": {
+      "document": "Instance backup statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of log backups of an instance",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size of log backups of an instance",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of manually created full backups of an instance",
+          "example": "0",
+          "member": "uint64",
+          "name": "ManualBaseBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size of manually created full backups of an instance",
+          "example": "0",
+          "member": "uint64",
+          "name": "ManualBaseBackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of automatically created full backups of an instance",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoBaseBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size of automatically created full backups of an instance",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoBaseBackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of backups",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total backup size",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalBackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BaseBackup": {
+      "document": "Full backup information of a database",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID of a backup file",
+          "example": "f6adc02a-432e-536f-a5f3-3dbf40ecd683",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup file name.",
+          "example": "0",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup method, including physical and logical.",
+          "example": "0",
+          "member": "string",
+          "name": "BackupMethod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup mode, including automatic and manual.",
+          "example": "0",
+          "member": "string",
+          "name": "BackupMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup task status",
+          "example": "0",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup set size in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup start time",
+          "example": "0",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup end time",
+          "example": "0",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup expiration time",
+          "example": "0",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ClassInfo": {
+      "document": "Database instance specification",
+      "members": [
+        {
+          "document": "Specification ID",
+          "example": "无",
+          "member": "string",
+          "name": "SpecCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of CPU cores",
+          "example": "无",
+          "member": "uint64",
+          "name": "CPU",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Memory size in MB",
+          "example": "无",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum storage capacity in GB supported by this specification",
+          "example": "无",
+          "member": "uint64",
+          "name": "MaxStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Minimum storage capacity in GB supported by this specification",
+          "example": "无",
+          "member": "uint64",
+          "name": "MinStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Estimated QPS for this specification",
+          "example": "无",
+          "member": "uint64",
+          "name": "QPS",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CloneDBInstanceRequest": {
       "document": "CloneDBInstance request structure.",
       "members": [
@@ -1063,6 +1409,33 @@
     },
     "CloseServerlessDBExtranetAccessResponse": {
       "document": "CloseServerlessDBExtranetAccess response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBaseBackupRequest": {
+      "document": "CreateBaseBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBaseBackupResponse": {
+      "document": "CreateBaseBackup response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2384,7 +2757,6 @@
       "document": "Instance details",
       "members": [
         {
-          "default": "",
           "document": "Instance region such as ap-guangzhou, which corresponds to the `Region` field of `RegionSet`",
           "example": "ap-guangzhou",
           "member": "string",
@@ -2394,7 +2766,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -2404,7 +2775,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID",
           "example": "1",
           "member": "uint64",
@@ -2414,7 +2784,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID",
           "example": "vpc-xxxxxxxx",
           "member": "string",
@@ -2424,7 +2793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "SubnetId",
           "example": "subnet-xxxxxxxx",
           "member": "string",
@@ -2434,7 +2802,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
           "member": "string",
@@ -2444,7 +2811,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
           "example": "xxxx",
           "member": "string",
@@ -2454,8 +2820,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`",
+          "document": "Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, upgrading (upgrading kernel version).",
           "example": "applying",
           "member": "string",
           "name": "DBInstanceStatus",
@@ -2464,7 +2829,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Assigned instance memory size in GB",
           "example": "2",
           "member": "uint64",
@@ -2474,7 +2838,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Assigned instance storage capacity in GB",
           "example": "10",
           "member": "uint64",
@@ -2484,7 +2847,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of assigned CPUs",
           "example": "2",
           "member": "uint64",
@@ -2494,7 +2856,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Purchasable specification ID",
           "example": "cdb.pg.ts1.2g",
           "member": "string",
@@ -2504,7 +2865,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)",
           "example": "primary",
           "member": "string",
@@ -2514,7 +2874,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported",
           "example": "standard",
           "member": "string",
@@ -2524,7 +2883,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance database character set",
           "example": "utf-8",
           "member": "string",
@@ -2534,7 +2892,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "PostgreSQL version number",
           "example": "12.4",
           "member": "string",
@@ -2544,7 +2901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance creation time",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
@@ -2554,7 +2910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance last modified time",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
@@ -2564,7 +2919,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance expiration time",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
@@ -2574,7 +2928,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance isolation time",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
@@ -2584,7 +2937,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing mode. postpaid: pay-as-you-go",
           "example": "prepaid",
           "member": "string",
@@ -2594,7 +2946,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to renew automatically. 1: yes, 0: no",
           "example": "1",
           "member": "uint64",
@@ -2604,7 +2955,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance network connection information",
           "example": "无",
           "member": "DBInstanceNetInfo",
@@ -2614,7 +2964,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Machine type",
           "example": "TS85",
           "member": "string",
@@ -2624,7 +2973,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User `AppId`",
           "example": "123455",
           "member": "uint64",
@@ -2634,7 +2982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance `Uid`",
           "example": "12344",
           "member": "uint64",
@@ -2644,7 +2991,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)",
           "example": "1",
           "member": "uint64",
@@ -2654,7 +3000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The information of tags associated with instances.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -2664,7 +3009,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Primary instance information, which is returned only when the instance is read-only\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "postgres-xxxxxxxx",
           "member": "string",
@@ -2674,7 +3018,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of read-only instances\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "6",
           "member": "int64",
@@ -2684,7 +3027,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The status of a instance in a read-only group\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "ok",
           "member": "string",
@@ -2694,7 +3036,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Elimination time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2014-08-03 12:00",
           "member": "string",
@@ -2704,7 +3045,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database kernel version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "v12.4_r1.0",
           "member": "string",
@@ -2714,7 +3054,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Network access list of the instance (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NetworkAccess",
@@ -2724,7 +3063,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "PostgreSQL major version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "12",
           "member": "string",
@@ -2734,7 +3072,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance node information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DBNode",
@@ -2744,7 +3081,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the instance supports TDE data encryption. Valid values: 0 (no), 1 (yes)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2754,7 +3090,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "",
           "example": "postgresql",
           "member": "string",
@@ -2764,7 +3099,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration information of database engine\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2888,6 +3222,42 @@
       ],
       "usage": "both"
     },
+    "DeleteBaseBackupRequest": {
+      "document": "DeleteBaseBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-apzvwncr",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base backup ID",
+          "example": "4c144959-aca8-5266-bb96-7fb7aa2ca409",
+          "member": "string",
+          "name": "BaseBackupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBaseBackupResponse": {
+      "document": "DeleteBaseBackup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteDBInstanceNetworkAccessRequest": {
       "document": "DeleteDBInstanceNetworkAccess request structure.",
       "members": [
@@ -2942,6 +3312,42 @@
           "type": "int",
           "value_allowed_null": true
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLogBackupRequest": {
+      "document": "DeleteLogBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-apzvwncr",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log backup ID",
+          "example": "4c144959-aca8-5266-bb96-7fb7aa2ca409",
+          "member": "string",
+          "name": "LogBackupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLogBackupResponse": {
+      "document": "DeleteLogBackup response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3233,6 +3639,167 @@
       ],
       "type": "object"
     },
+    "DescribeBackupDownloadURLRequest": {
+      "document": "DescribeBackupDownloadURL request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup type. Valid values: `LogBackup`, `BaseBackup`.",
+          "example": "LogBackup",
+          "member": "string",
+          "name": "BackupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique backup ID.",
+          "example": "f6adc02a-432e-536f-a5f3-3dbf40ecd683",
+          "member": "string",
+          "name": "BackupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Validity period of a URL, which is 12 hours by default.",
+          "example": "12",
+          "member": "uint64",
+          "name": "URLExpireTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadURLResponse": {
+      "document": "DescribeBackupDownloadURL response structure.",
+      "members": [
+        {
+          "document": "Backup download URL",
+          "example": "无",
+          "member": "string",
+          "name": "BackupDownloadURL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupOverviewRequest": {
+      "document": "DescribeBackupOverview request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeBackupOverviewResponse": {
+      "document": "DescribeBackupOverview response structure.",
+      "members": [
+        {
+          "document": "Total free space size in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalFreeSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Used free space size in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "UsedFreeSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Used paid space size in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "UsedBillingSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of log backups",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Log backup size in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of manually created full backups",
+          "example": "0",
+          "member": "uint64",
+          "name": "ManualBaseBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Size of manually created full backups in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "ManualBaseBackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of automatically created full backups",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoBaseBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Size of automatically created full backups in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoBaseBackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBackupPlansRequest": {
       "document": "DescribeBackupPlans request structure.",
       "members": [
@@ -3257,6 +3824,236 @@
           "member": "BackupPlan",
           "name": "Plans",
           "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupSummariesRequest": {
+      "document": "DescribeBackupSummaries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset, which starts from 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: Filter by instance ID (in string format).\ndb-instance-name: Filter by instance name (in string format).\ndb-instance-ip: Filter by instance VPC IP (in string format).",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values: `TotalBackupSize`, `LogBackupSize`, `ManualBaseBackupSize`, `AutoBaseBackupSize`.",
+          "example": "TotalBackupSize",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupSummariesResponse": {
+      "document": "DescribeBackupSummaries response structure.",
+      "members": [
+        {
+          "document": "Backup statistics list.",
+          "example": "无",
+          "member": "BackupSummary",
+          "name": "BackupSummarySet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of all queried backups.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBaseBackupsRequest": {
+      "document": "DescribeBaseBackups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Minimum end time of a backup in the format of `2018-01-01 00:00:00`. It is 7 days ago by default.",
+          "example": "2018-06-10 17:06:38",
+          "member": "string",
+          "name": "MinFinishTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.",
+          "example": "2018-06-10 17:06:38",
+          "member": "string",
+          "name": "MaxFinishTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: Filter by instance ID (in string format).\ndb-instance-name: Filter by instance name (in string format).\ndb-instance-ip: Filter by instance VPC IP (in string format).",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset, which starts from 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.",
+          "example": "StartTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBaseBackupsResponse": {
+      "document": "DescribeBaseBackups response structure.",
+      "members": [
+        {
+          "document": "Number of queried full backups",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of full backup details",
+          "example": "无",
+          "member": "BaseBackup",
+          "name": "BaseBackupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClassesRequest": {
+      "document": "DescribeClasses request structure.",
+      "members": [
+        {
+          "document": "AZ ID, which can be obtained through the `DescribeZones` API.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Database engines. Valid values:\n1. `postgresql` (TencentDB for PostgreSQL)\n2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Major version of a database, such as 12 or 13, which can be obtained through the `DescribeDBVersions` API.",
+          "example": "12",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClassesResponse": {
+      "document": "DescribeClasses response structure.",
+      "members": [
+        {
+          "document": "List of database specifications",
+          "example": "无",
+          "member": "ClassInfo",
+          "name": "ClassInfoSet",
           "type": "list",
           "value_allowed_null": false
         },
@@ -3805,6 +4602,31 @@
       ],
       "type": "object"
     },
+    "DescribeDBVersionsRequest": {
+      "document": "DescribeDBVersions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeDBVersionsResponse": {
+      "document": "DescribeDBVersions response structure.",
+      "members": [
+        {
+          "document": "List of database versions",
+          "example": "无",
+          "member": "Version",
+          "name": "VersionSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBXlogsRequest": {
       "document": "DescribeDBXlogs request structure.",
       "members": [
@@ -3990,6 +4812,105 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogBackupsRequest": {
+      "document": "DescribeLogBackups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Minimum end time of a backup in the format of `2018-01-01 00:00:00`. It is 7 days ago by default.",
+          "example": "2018-06-10 17:06:38",
+          "member": "string",
+          "name": "MinFinishTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.",
+          "example": "2018-06-10 17:06:38",
+          "member": "string",
+          "name": "MaxFinishTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: Filter by instance ID (in string format).\ndb-instance-name: Filter by instance name (in string format).\ndb-instance-ip: Filter by instance VPC IP (in string format).",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset, which starts from 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.",
+          "example": "StartTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogBackupsResponse": {
+      "document": "DescribeLogBackups response structure.",
+      "members": [
+        {
+          "document": "Number of queried log backups",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of log backup details",
+          "example": "无",
+          "member": "LogBackup",
+          "name": "LogBackupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5473,6 +6394,112 @@
       ],
       "type": "object"
     },
+    "LogBackup": {
+      "document": "Log backup information of a database",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "0",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID of a backup file",
+          "example": "0",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup file name",
+          "example": "0",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup method, including physical and logical.",
+          "example": "0",
+          "member": "string",
+          "name": "BackupMethod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup mode, including automatic and manual.",
+          "example": "0",
+          "member": "string",
+          "name": "BackupMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup task status",
+          "example": "0",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup set size in bytes",
+          "example": "0",
+          "member": "uint64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup start time",
+          "example": "0",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup end time",
+          "example": "0",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup expiration time",
+          "example": "0",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ModifyAccountRemarkRequest": {
       "document": "ModifyAccountRemark request structure.",
       "members": [
@@ -5568,6 +6595,51 @@
     },
     "ModifyBackupPlanResponse": {
       "document": "ModifyBackupPlan response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBaseBackupExpireTimeRequest": {
+      "document": "ModifyBaseBackupExpireTime request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base backup ID",
+          "example": "f6adc02a-432e-536f-a5f3-3dbf40ecd683",
+          "member": "string",
+          "name": "BaseBackupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New expiration time",
+          "example": "2006-01-02 15:04:05",
+          "member": "string",
+          "name": "NewExpireTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBaseBackupExpireTimeResponse": {
+      "document": "ModifyBaseBackupExpireTime response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -8147,6 +9219,78 @@
       ],
       "usage": "both"
     },
+    "UpgradeDBInstanceKernelVersionRequest": {
+      "document": "UpgradeDBInstanceKernelVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-aser1j2o",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target kernel version, which can be obtained in the `AvailableUpgradeTarget` field returned by the `DescribeDBVersions` API.",
+          "example": "v12.4_r1.5",
+          "member": "string",
+          "name": "TargetDBKernelVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch time after the kernel version upgrade. Valid values:\n`0` (default value): Switch now.\n`1`: Switch at the specified time.\n`2`: Switch in the maintenance time.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SwitchTag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is `0` or `2`, this parameter is invalid.",
+          "example": "01:00:00",
+          "member": "string",
+          "name": "SwitchStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is `0` or `2`, this parameter is invalid. The difference between `SwitchStartTime` and `SwitchEndTime` cannot be less than 30 minutes.",
+          "example": "01:30:00",
+          "member": "string",
+          "name": "SwitchEndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to perform a precheck on the current operation of upgrading the instance kernel version. Valid values:\n`true`: Performs a precheck without upgrading the kernel version. Check items include request parameters, kernel version compatibility, and instance parameters.\n`false` (default value): Sends a normal request and upgrades the kernel version directly after the check is passed.",
+          "example": "true",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeDBInstanceKernelVersionResponse": {
+      "document": "UpgradeDBInstanceKernelVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UpgradeDBInstanceRequest": {
       "document": "UpgradeDBInstance request structure.",
       "members": [
@@ -8260,6 +9404,75 @@
       ],
       "type": "object"
     },
+    "Version": {
+      "document": "Database version information",
+      "members": [
+        {
+          "document": "Database engines. Valid values:\n1. `postgresql` (TencentDB for PostgreSQL)\n2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database version, such as 12.4.",
+          "example": "12.4",
+          "member": "string",
+          "name": "DBVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database major version, such as 12.",
+          "example": "12",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database kernel version, such as v12.4_r1.3.",
+          "example": "v12.4_r1.3",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of features supported by the database kernel, such as:\nTDE: Supports data encryption.",
+          "example": "[\"TDE\"]",
+          "member": "string",
+          "name": "SupportedFeatureNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database version status. Valid values:\n`AVAILABLE`.\n`DEPRECATED`.",
+          "example": "AVAILABLE",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of versions to which this database version (`DBKernelVersion`) can be upgraded.",
+          "example": "[\"v12.4_r1.4\"]",
+          "member": "string",
+          "name": "AvailableUpgradeTarget",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Xlog": {
       "document": "Database Xlog information",
       "members": [
@@ -8355,7 +9568,7 @@
         },
         {
           "default": "",
-          "document": "Availability status. Valid values: `UNAVAILABLE`, `AVAILABLE`, `SELLOUT`",
+          "document": "Availability status. Valid values:\n`UNAVAILABLE`.\n`AVAILABLE`.\n`SELLOUT`.\n`SUPPORTMODIFYONLY` (supports configuration adjustment).",
           "example": "AVAILABLE",
           "member": "string",
           "name": "ZoneState",

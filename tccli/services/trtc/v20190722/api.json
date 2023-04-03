@@ -22,28 +22,35 @@
       "status": "online"
     },
     "DescribeMixTranscodingUsage": {
-      "document": "This API is used to query your usage of TRTC’s On-Cloud MixTranscoding service.\nNote: This API is not available for applications whose SDKAppID starts with `14`.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "document": "This API is used to query your usage of TRTC’s On-Cloud MixTranscoding service.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
       "input": "DescribeMixTranscodingUsageRequest",
       "name": "Queries TRTC On-Cloud MixTranscoding usage",
       "output": "DescribeMixTranscodingUsageResponse",
       "status": "online"
     },
     "DescribeRecordingUsage": {
-      "document": "This API is used to query your TRTC recording usage.\nNote: This API is not available for applications whose SDKAppID starts with `14`.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "document": "This API is used to query your TRTC recording usage.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
       "input": "DescribeRecordingUsageRequest",
       "name": "Queries TRTC recording usage",
       "output": "DescribeRecordingUsageResponse",
       "status": "online"
     },
     "DescribeRelayUsage": {
-      "document": "This API is used to query your usage of TRTC’s relay to CDN service.\nNote: This API is not available for applications whose SDKAppID starts with `14`.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "document": "This API is used to query your usage of TRTC’s relay to CDN service.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
       "input": "DescribeRelayUsageRequest",
       "name": "Queries TRTC relay to CDN usage",
       "output": "DescribeRelayUsageResponse",
       "status": "online"
     },
+    "DescribeTrtcRoomUsage": {
+      "document": "This API is used to query usage data grouped by room.\n- The queried period cannot exceed 24 hours. If the period spans two different days, the data returned may not be accurate due to a delay in data collection. You can make multiple calls to query the usage on different days.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is one call every 15 seconds.",
+      "input": "DescribeTrtcRoomUsageRequest",
+      "name": "Queries usage data grouped by room",
+      "output": "DescribeTrtcRoomUsageResponse",
+      "status": "online"
+    },
     "DescribeTrtcUsage": {
-      "document": "This API is used to query your TRTC audio/video duration.\nNote: This API is not available for applications whose SDKAppID starts with `14`.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
+      "document": "This API is used to query your TRTC audio/video duration.\n- If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.\n- The period queried per request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is five calls per second.",
       "input": "DescribeTrtcUsageRequest",
       "name": "Queries TRTC audio/video duration",
       "output": "DescribeTrtcUsageResponse",
@@ -749,6 +756,48 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcRoomUsageRequest": {
+      "document": "DescribeTrtcRoomUsage request structure.",
+      "members": [
+        {
+          "document": "",
+          "example": "1400017192",
+          "member": "uint64",
+          "name": "SdkAppid",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "",
+          "example": "2023-01-06 00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "",
+          "example": "2023-01-06 10:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcRoomUsageResponse": {
+      "document": "DescribeTrtcRoomUsage response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
