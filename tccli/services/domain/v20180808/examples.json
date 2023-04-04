@@ -26,8 +26,8 @@
     ],
     "CreateIntlDomainBatch": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost:domain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIntlDomainBatch\n<Common request parameters>\n\n{\n    \"Domains\": [\n        \"xx\"\n    ],\n    \"PayMode\": 0,\n    \"Period\": 1,\n    \"TemplateId\": \"xx\"\n}",
+        "document": "This example shows you how to bulk register domains.",
+        "input": "POST / HTTP/1.1\nHost:domain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIntlDomainBatch\n<Common request parameters>\n\n{\n    \"Domains\": [\n        \"a.com\"\n    ],\n    \"PayMode\": 0,\n    \"Period\": 1,\n    \"TemplateId\": \"tmpl-aabb\"\n}",
         "output": "{\n    \"Response\": {\n        \"LogId\": 318,\n        \"RequestId\": \"1684afa4-0bf7-49f8-a630-ab460e5c038e\"\n    }\n}",
         "title": "Bulk registering domains"
       }

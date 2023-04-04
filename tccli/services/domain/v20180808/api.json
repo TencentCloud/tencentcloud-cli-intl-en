@@ -862,7 +862,6 @@
       "document": "CreateIntlDomainBatch request structure.",
       "members": [
         {
-          "default": "",
           "document": "The profile ID.",
           "example": "tmpl-xxxxxx",
           "member": "string",
@@ -871,7 +870,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The purchase period (years) of the domain. Value range: [1-10]",
           "example": "1",
           "member": "int64",
@@ -880,7 +878,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The domains (maximum 4,000) to purchase.",
           "example": "qq.com",
           "member": "string",
@@ -889,7 +886,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The payment method. Valid values: `0` (online payment), `1` (account balance), `2` (package), `3` (offline settlement).",
           "example": "0",
           "member": "int64",
@@ -898,7 +894,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable auto-renewal.",
           "example": "true",
           "member": "bool",
@@ -907,7 +902,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Whether to enable the transfer prohibition lock.",
           "example": "true",
           "member": "bool",
@@ -916,13 +910,20 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Whether to enable the update prohibition lock.",
           "example": "true",
           "member": "bool",
           "name": "UpdateProhibition",
           "required": false,
           "type": "bool"
+        },
+        {
+          "document": "The custom DNS servers",
+          "example": "a.dnspod.com",
+          "member": "string",
+          "name": "CustomDns",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

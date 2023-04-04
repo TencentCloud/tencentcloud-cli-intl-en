@@ -322,6 +322,13 @@
       "output": "DescribeReplicationGroupResponse",
       "status": "online"
     },
+    "DescribeSSLStatus": {
+      "document": "This API is used to query SSL status.",
+      "input": "DescribeSSLStatusRequest",
+      "name": "Queries SSL status",
+      "output": "DescribeSSLStatusResponse",
+      "status": "online"
+    },
     "DescribeSlowLog": {
       "document": "This API is used to query the records of slow query.",
       "input": "DescribeSlowLogRequest",
@@ -4033,6 +4040,72 @@
           "name": "Groups",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSSLStatusRequest": {
+      "document": "DescribeSSLStatus request structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSSLStatusResponse": {
+      "document": "DescribeSSLStatus response structure.",
+      "members": [
+        {
+          "document": "Certificate download address",
+          "example": "https://",
+          "member": "string",
+          "name": "CertDownloadUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Expiration time of the certificate download address",
+          "example": "2022-05-31 10:47:29",
+          "member": "string",
+          "name": "UrlExpiredTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SSL configuration status of an instance. Valid values: `true` (enable), `false` (disable).",
+          "example": "false",
+          "member": "bool",
+          "name": "SSLConfig",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the instance supports SSL. Valid values: `true` (Yes. When minor version is upgraded.), `false` (No).",
+          "example": "false",
+          "member": "bool",
+          "name": "FeatureSupport",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SSL configuration status. Valid values: `1`(Configuring), `2` (Configured).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "type": "int",
           "value_allowed_null": false
         },
         {
