@@ -573,8 +573,7 @@
       "document": "DescribeOrganizationMemberAuthIdentities request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Offset.",
+          "document": "Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -582,8 +581,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "document": "Limit, which defaults to `10`. Value range: 1-50.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -591,9 +589,8 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Organization member UIN.",
-          "example": "1000001",
+          "example": "11111111111",
           "member": "int64",
           "name": "MemberUin",
           "required": true,
@@ -606,11 +603,10 @@
       "document": "DescribeOrganizationMemberAuthIdentities response structure.",
       "members": [
         {
-          "document": "List.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List of authorizable identities\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgMemberAuthIdentity",
           "name": "Items",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -619,7 +615,6 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -708,8 +703,7 @@
       "document": "DescribeOrganizationMembers request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Offset.",
+          "document": "Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -717,8 +711,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "document": "Limit, which defaults to `10`. Value range: 1-50.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -726,7 +719,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).",
           "example": "en",
           "member": "string",
@@ -735,7 +727,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Search by member name or ID.",
           "example": "test",
           "member": "string",
@@ -744,7 +735,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Entity name.",
           "example": "\"\"",
           "member": "string",
@@ -753,7 +743,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
           "example": "\"\"",
           "member": "string",
@@ -1530,7 +1519,6 @@
       "document": "Authorizable identity of the organization member",
       "members": [
         {
-          "default": "",
           "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "111",
           "member": "int64",
@@ -1540,8 +1528,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Role name of an identity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "IdentityRoleName",
@@ -1550,8 +1537,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Identity role alias.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Role alias of an identity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "IdentityRoleAliasName",
@@ -1560,7 +1546,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1570,7 +1555,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1580,13 +1564,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Identity type (`1`: Preset; `2`: Custom)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentityType",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

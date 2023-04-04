@@ -22,7 +22,7 @@
       "status": "online"
     },
     "BatchCreateRoom": {
-      "document": "This API is used to create multiple rooms at a time.\nA maximum of 20 requests can be initiated per second for this API.",
+      "document": "This API is used to create multiple rooms at a time.",
       "input": "BatchCreateRoomRequest",
       "name": "Creates multiple rooms",
       "output": "BatchCreateRoomResponse",
@@ -91,6 +91,13 @@
       "output": "CreateSupervisorResponse",
       "status": "online"
     },
+    "DeleteAppCustomContent": {
+      "document": "This API is used to delete the custom elements. The `Scenes` parameter specifies the custom elements to delete. If `Scenes` is empty, all custom elements will be deleted.",
+      "input": "DeleteAppCustomContentRequest",
+      "name": "Deletes custom elements",
+      "output": "DeleteAppCustomContentResponse",
+      "status": "online"
+    },
     "DeleteDocument": {
       "document": "This API is used to delete a document.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DeleteDocumentRequest",
@@ -131,6 +138,13 @@
       "input": "DescribeCurrentMemberListRequest",
       "name": "Gets the user list of a room",
       "output": "DescribeCurrentMemberListResponse",
+      "status": "online"
+    },
+    "DescribeDeveloper": {
+      "document": "This API is used to get the developer information.",
+      "input": "DescribeDeveloperRequest",
+      "name": "Gets the developer information",
+      "output": "DescribeDeveloperResponse",
       "status": "online"
     },
     "DescribeDocument": {
@@ -194,6 +208,13 @@
       "input": "DescribeUserRequest",
       "name": "Obtains user profile.",
       "output": "DescribeUserResponse",
+      "status": "online"
+    },
+    "GetRoomEvent": {
+      "document": "This API is used to get the events of a room. It only works within one hour after a class ends.",
+      "input": "GetRoomEventRequest",
+      "name": "Gets the events of a room",
+      "output": "GetRoomEventResponse",
       "status": "online"
     },
     "GetRoomMessage": {
@@ -665,7 +686,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The user ID. Note: This field may return null, indicating that no valid values can be obtained",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "UserId",
@@ -674,7 +695,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user’s ID in your system. If the same request parameter is not specified, the value of this parameter will be the same as UserId. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "OriginId",
@@ -1127,11 +1148,64 @@
     },
     "CreateSupervisorRequest": {
       "document": "CreateSupervisor request structure.",
-      "members": [],
+      "members": [
+        {
+          "document": "The application ID.",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The user IDs.",
+          "example": "无",
+          "member": "string",
+          "name": "Users",
+          "required": true,
+          "type": "list"
+        }
+      ],
       "type": "object"
     },
     "CreateSupervisorResponse": {
       "document": "CreateSupervisor response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAppCustomContentRequest": {
+      "document": "DeleteAppCustomContent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The application ID.",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The custom elements (for which a scene has been configured) to delete. If this is empty, all custom elements will be deleted.",
+          "example": "无",
+          "member": "string",
+          "name": "Scenes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAppCustomContentResponse": {
+      "document": "DeleteAppCustomContent response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1364,6 +1438,31 @@
       ],
       "type": "object"
     },
+    "DescribeDeveloperRequest": {
+      "document": "DescribeDeveloper request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeDeveloperResponse": {
+      "document": "DescribeDeveloper response structure.",
+      "members": [
+        {
+          "document": "",
+          "example": "123",
+          "member": "string",
+          "name": "DeveloperId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDocumentRequest": {
       "document": "DescribeDocument request structure.",
       "members": [
@@ -1575,7 +1674,7 @@
       "document": "DescribeDocumentsByRoom response structure.",
       "members": [
         {
-          "document": "The information of the documents. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DocumentInfo",
           "name": "Documents",
@@ -1657,7 +1756,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The information of the groups. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "GroupInfo",
           "name": "GroupInfos",
@@ -1723,7 +1822,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The user IDs of the members. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "MemberIds",
@@ -1781,7 +1880,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The user ID of the group’s teacher. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "TeacherId",
@@ -1797,7 +1896,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "SubGroupIds",
@@ -2318,6 +2417,137 @@
       ],
       "usage": "out"
     },
+    "EventDataInfo": {
+      "document": "The information of a room event.",
+      "members": [
+        {
+          "document": "The room ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The ID of the user to whom the event occurred.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EventInfo": {
+      "document": "The event information.",
+      "members": [
+        {
+          "document": "The Unix timestamp (seconds) when the event occurred.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "Timestamp",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The event type. Valid values:\n`RoomStart`: The class started. `RoomEnd`: The class ended. `MemberJoin`: A user joined. `MemberQuit`: A user left. `RecordFinish`: Recording is finished.",
+          "example": "RoomStart",
+          "member": "string",
+          "name": "EventType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The details of the event, including the room ID and the user to whom the event occurred.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"RoomId\":1234}",
+          "member": "EventDataInfo",
+          "name": "EventData",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GetRoomEventRequest": {
+      "document": "GetRoomEvent request structure.",
+      "members": [
+        {
+          "document": "The room ID.",
+          "example": "301234567",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The application ID.",
+          "example": "12345",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The starting page. Pagination starts from 1. This parameter is valid only if `keyword` is empty.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records (up to 200) per page. This parameter is valid only if `keyword` is empty.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The type of events to query. Valid values:\n`RoomStart`: The class started.\n`RoomEnd`: The class ended.\n`MemberJoin`: A user joined.\n`MemberQuit`: A user left.\n`RecordFinish`: Recording is finished.",
+          "example": "RoomStart",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRoomEventResponse": {
+      "document": "GetRoomEvent response structure.",
+      "members": [
+        {
+          "document": "The total number of events for the room. The value of this parameter is not affected by `keyword`.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The event details, including the type and time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Timestamp\":1234,\"EventType\":\"RoomStart\",\"EventData\":{\"RoomId\":123456}}]",
+          "member": "EventInfo",
+          "name": "Events",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetRoomMessageRequest": {
       "document": "GetRoomMessage request structure.",
       "members": [
@@ -2462,7 +2692,7 @@
       "document": "The information of the groups queried.\nUsed by actions: DescribeGroupList.",
       "members": [
         {
-          "document": "Group ID Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "fdghdhdfh",
           "member": "string",
           "name": "GroupId",
@@ -2471,7 +2701,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The group name. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "GroupName",
@@ -2480,7 +2710,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID of the teacher. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "TeacherId",
@@ -2489,7 +2719,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "群组类型",
           "member": "uint64",
           "name": "GroupType",
@@ -2498,7 +2728,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "SubGroupIds",
@@ -3173,7 +3403,7 @@
       "document": "The information of the room to create.\nUsed by actions: BatchCreateRoom.",
       "members": [
         {
-          "document": "The room name. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The room name.",
           "example": "房间名称",
           "member": "string",
           "name": "Name",
@@ -3182,7 +3412,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The room start time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The room start time (Unix timestamp).",
           "example": "1659600138",
           "member": "uint64",
           "name": "StartTime",
@@ -3191,7 +3421,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The room end time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The room end time (Unix timestamp).",
           "example": "1659600138",
           "member": "uint64",
           "name": "EndTime",
@@ -3200,7 +3430,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The resolution. Valid values: 1: SD; 2: HD; 3: FHD. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.",
           "example": "1",
           "member": "uint64",
           "name": "Resolution",
@@ -3209,7 +3439,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16.",
           "example": "1",
           "member": "uint64",
           "name": "MaxMicNumber",
@@ -3218,7 +3448,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.",
           "example": "videodoc",
           "member": "string",
           "name": "SubType",
@@ -3227,7 +3457,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID of the teacher. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user ID of the teacher. User IDs are returned by the user registration APIs.",
           "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
           "member": "string",
           "name": "TeacherId",
@@ -3236,7 +3466,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: `0` (default): No; `1`: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AutoMic",
@@ -3245,7 +3475,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: 0: Yes (default value); 1: No. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0` (default): Yes; `1`: No.",
           "example": "1",
           "member": "uint64",
           "name": "TurnOffMic",
@@ -3254,7 +3484,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to enable the high audio quality mode. Valid values: `0` (default): No; `1`: Yes.",
           "example": "1",
           "member": "uint64",
           "name": "AudioQuality",
@@ -3263,7 +3493,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to disable auto recording. Valid values: `0` (default): No; `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
           "name": "DisableRecord",
@@ -3272,7 +3502,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.",
           "example": "无",
           "member": "string",
           "name": "Assistants",
@@ -3281,7 +3511,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The number of RTC users. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of RTC users.",
           "example": "1",
           "member": "uint64",
           "name": "RTCAudienceNumber",
@@ -3290,7 +3520,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The audience type. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The audience type.",
           "example": "1",
           "member": "uint64",
           "name": "AudienceType",
@@ -3299,7 +3529,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The recording layout. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The recording layout.",
           "example": "1",
           "member": "uint64",
           "name": "RecordLayout",
@@ -3549,7 +3779,7 @@
       "document": "The user information.\nUsed by actions: DescribeSdkAppIdUsers.",
       "members": [
         {
-          "document": "The application ID. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "123456",
           "member": "uint64",
           "name": "SdkAppId",
@@ -3558,7 +3788,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The user ID. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
           "member": "string",
           "name": "UserId",
@@ -3567,7 +3797,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The username. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "Name",
@@ -3576,7 +3806,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The URL of profile photo. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "Avatar",

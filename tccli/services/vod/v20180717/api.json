@@ -883,7 +883,7 @@
       "status": "online"
     },
     "SearchMedia": {
-      "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of tags (`Tags`). Any file that matches one or more of the tags will be returned. For example, assume that there are tags `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either tag will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the tag \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
+      "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of labels (`Tags`). Any file that matches one or more of the labels will be returned. For example, assume that there are labels `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either label will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the file formats (`MediaTypes`), such as MP4, AVI, and MP3. All files in the specified formats will be returned. For example, if you set `MediaTypes` to MP4 and MP3, all files in these two formats will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the label \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
       "input": "SearchMediaRequest",
       "name": "Searches for media information",
       "output": "SearchMediaResponse",
@@ -23182,7 +23182,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The maximum video width (or long side), in pixels. Value range: 0 and 128-8192.\n<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\n\nDefault value: `0`.",
+          "document": "The maximum video width (or long side) in pixels. Value range: 0 and 128-4096.\n<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\n\nDefault value: `0`.",
           "example": "128",
           "member": "int64",
           "name": "Width",
@@ -23191,7 +23191,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The maximum video height (or short side), in pixels. Value range: 0 and 128-8192.\n<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\n\nDefault value: `0`.",
+          "document": "The maximum video width (or short side) in pixels. Value range: 0 and [128, 4096].\n<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\n\nDefault value: `0`.",
           "example": "128",
           "member": "int64",
           "name": "Height",
@@ -25477,7 +25477,6 @@
       "document": "SearchMedia request structure.",
       "members": [
         {
-          "default": "",
           "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
           "example": "无",
           "member": "uint64",
@@ -25486,7 +25485,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "File ID set. Any element in the set can be matched.\n<li>Array length limit: 10.</li>\n<li>ID length limit: 40 characters.</li>",
           "example": "无",
           "member": "string",
@@ -25495,7 +25493,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The file names to use for fuzzy search, which are sorted by relevance in descending order.\n<li>Name length limit: 100 characters.</li>\n<li>Array length limit: 10</li>",
           "example": "无",
           "member": "string",
@@ -25504,7 +25501,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The file name prefixes to search.\n<li>Prefix length limit: 100 characters.</li>\n<li>Array length limit: 10.</li>",
           "example": "无",
           "member": "string",
@@ -25513,7 +25509,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "File description set. Media file descriptions are fuzzily matched. The higher the match rate, the higher-ranked the result.\n<li>Length limit for a single description: 100 characters</li>\n<li>Array length limit: 10</li>",
           "example": "无",
           "member": "string",
@@ -25522,7 +25517,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Category ID set. The categories of the specified IDs and all subcategories in the set are matched.\n<li>Array length limit: 10.</li>",
           "example": "无",
           "member": "int64",
@@ -25531,7 +25525,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The tags to search. A file is considered a match if it has any of the tags specified.\n<li>Tag length limit: 32 characters.</li>\n<li>Array length limit: 16.</li>",
           "example": "无",
           "member": "string",
@@ -25540,7 +25533,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "File type. Any element in the set can be matched.\n<li>Video: video file</li>\n<li>Audio: audio file</li>\n<li>Image: image file</li>",
           "example": "无",
           "member": "string",
@@ -25549,7 +25541,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).\n<li>Array length limit: 10.</li>",
           "example": "无",
           "member": "string",
@@ -25558,7 +25549,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The live stream code array. A media file will be returned if it matches any element in the array.\n<li>Array length limit: 10</li>",
           "example": "无",
           "member": "string",
@@ -25567,7 +25557,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Matches files created within the time period.\n<li>Includes specified start and end points in time.</li>",
           "example": "无",
           "member": "TimeRange",
@@ -25576,7 +25565,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Files whose expiration time points are within the specified time range will be returned. Expired files will not be returned.\n<li>The files whose expiration time points are on the start or end time of the specified range will also be returned.</li>",
           "example": "无",
           "member": "TimeRange",
@@ -25585,7 +25573,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Sorting order.\n<li>Valid value of `Sort.Field`: CreateTime.</li>\n<li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>",
           "example": "无",
           "member": "SortBy",
@@ -25594,7 +25581,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "<div id=\"p_offset\">Start offset of a paged return. Default value: 0. Entries from No. \"Offset\" to No. \"Offset + Limit - 1\" will be returned.\n<li>Value range: \"Offset + Limit\" cannot be more than 5,000. (For more information, please see <a href=\"#maxResultsDesc\">Limit on the Number of Results Returned by API</a>)</li></div>",
           "example": "无",
           "member": "uint64",
@@ -25603,7 +25589,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "<div id=\"p_limit\">Number of entries returned by a paged query. Default value: 10. Entries from No. \"Offset\" to No. \"Offset + Limit - 1\" will be returned.\n<li>Value range: \"Offset + Limit\" cannot be more than 5,000. (For more information, please see <a href=\"#maxResultsDesc\">Limit on the Number of Results Returned by API</a>)</li></div>",
           "example": "无",
           "member": "uint64",
@@ -25612,7 +25597,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Specifies information entry that needs to be returned for all media files. Multiple entries can be specified simultaneously. N starts from 0. If this field is left empty, all information entries will be returned by default. Valid values:\n<li>basicInfo (basic video information).</li>\n<li>metaData (video metadata).</li>\n<li>transcodeInfo (result information of video transcoding).</li>\n<li>animatedGraphicsInfo (result information of animated image generating task).</li>\n<li>imageSpriteInfo (image sprite information).</li>\n<li>snapshotByTimeOffsetInfo (point-in-time screenshot information).</li>\n<li>sampleSnapshotInfo (sampled screenshot information).</li>\n<li>keyFrameDescInfo (timestamp information).</li>\n<li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>\n<li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>",
           "example": "无",
           "member": "string",
@@ -25621,7 +25605,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Regions](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).\n<li>Length limit for a single region: 20 characters</li>\n<li>Array length limit: 20</li>",
           "example": "无",
           "member": "string",
@@ -25630,7 +25613,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "An array of storage classes. Valid values:\n<li>STANDARD</li>\n<li>STANDARD_IA</li>\n<li>ARCHIVE</li>\n<li>DEEP_ARCHIVE</li>",
           "example": "无",
           "member": "string",
@@ -25639,7 +25621,30 @@
           "type": "list"
         },
         {
-          "default": "",
+          "document": "The file formats.\n<li>Array length limit: 10</li>",
+          "example": "无",
+          "member": "string",
+          "name": "MediaTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "ReviewResults",
+          "required": false,
+          "type": "list"
+        },
+        {
           "document": "The TRTC application IDs. Any file that matches one of the application IDs will be returned.\n<li>Array length limit: 10</li>",
           "example": "无",
           "member": "uint64",
@@ -25648,7 +25653,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The TRTC room IDs. Any file that matches one of the room IDs will be returned.\n<li>Element length limit: 64 characters.</li>\n<li>Array length limit: 10.</li>",
           "example": "无",
           "member": "string",
@@ -25657,7 +25661,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "(This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)\nSearch text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -25666,7 +25669,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "(This is not recommended. `SourceTypes` should be used instead)\nMedia file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).",
           "example": "无",
           "member": "string",
@@ -25675,7 +25677,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "(Not recommended. Consider using `StreamIds` instead.)\nThe live stream code.",
           "example": "无",
           "member": "string",
@@ -25684,7 +25685,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "(This is not recommended. `CreateTime` should be used instead)\nStart time in the creation time range.\n<li>After or at the start time.</li>\n<li>If `CreateTime.After` also exists, it will be used first.</li>\n<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>",
           "example": "无",
           "member": "string",
@@ -25693,7 +25693,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "(This is not recommended. `CreateTime` should be used instead)\nEnd time in the creation time range.\n<li>Before the end time.</li>\n<li>If `CreateTime.Before` also exists, it will be used first.</li>\n<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>",
           "example": "无",
           "member": "string",
@@ -25702,7 +25701,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter is invalid now.",
           "example": "无",
           "member": "string",
@@ -25711,7 +25709,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "This parameter is invalid now.",
           "example": "无",
           "member": "string",
@@ -28428,7 +28425,6 @@
       "document": "Smart frame interpolation configuration.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable smart frame interpolation. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
           "example": "ON",
           "member": "string",
@@ -28438,8 +28434,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The frame rate. Value range: (0, 60]. This parameter is valid only if `Switch` is `ON`. By default, the original frame rate will be used.",
+          "document": "The frame rate. Value range: (0, 100]. This parameter is valid only if `Switch` is `ON`. By default, the original frame rate will be used.",
           "example": "25",
           "member": "int64",
           "name": "Fps",

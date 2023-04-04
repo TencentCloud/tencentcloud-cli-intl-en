@@ -552,7 +552,7 @@
     ],
     "ModifyDomainAttributes": [
       {
-        "document": "",
+        "document": "This example shows you how to modify the domain name attributes of a layer-7 listener.",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainAttributes\n<Common request parameters>\n\n{\n    \"Domain\": \"foo.net\",\n    \"ListenerId\": \"lbl-n8mb2r3a\",\n    \"LoadBalancerId\": \"lb-1wvl0ejw\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"db141822-c025-4765-88d4-02bdec0e67ed\"\n    }\n}",
         "title": "Modifying the domain name attributes of a layer-7 listener"

@@ -1363,7 +1363,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "COS bucket region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Region where the COS bucket is located.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "BucketRegion",
@@ -4316,7 +4316,6 @@
       "document": "Full-Text index configuration",
       "members": [
         {
-          "default": "",
           "document": "Case sensitivity",
           "example": "false",
           "member": "bool",
@@ -4326,8 +4325,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Separator of the full-text index. Each character represents a separator.\nOnly symbols, \\n\\t\\r, and escape character \\ are supported.\nNote: \\n\\t\\r can be directly enclosed in double quotes as the input parameter without escaping.",
+          "document": "Separator of the full-text index. Each character represents a separator.\nOnly symbols, \\n\\t\\r, and escape character \\ are supported.\nNote: \\n\\t\\r can be directly enclosed in double quotes as the input parameter without escaping. When debugging with API Explorer, use the JSON parameter input method to avoid repeated escaping of \\n\\t\\r.",
           "example": "xxx",
           "member": "string",
           "name": "Tokenizer",
@@ -4336,7 +4334,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether Chinese characters are contained\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -4607,7 +4604,6 @@
       "document": "Log context information",
       "members": [
         {
-          "default": "",
           "document": "Log source device",
           "example": "100.105.60.255",
           "member": "string",
@@ -4617,7 +4613,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Collection path",
           "example": "/usr/local/services/cls_cgi_api3-1.0/log/cls_cgi.log.20210425",
           "member": "string",
@@ -4627,7 +4622,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log content",
           "example": "{\"__TAG__\":{\"full_name\":\"[N][腾讯云CLS_互联网] - [现网运营][上海园区] - [CGI3.",
           "member": "string",
@@ -4637,7 +4631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log package number",
           "example": "528C1318606EFEB8-1A0",
           "member": "string",
@@ -4647,7 +4640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log number in log package",
           "example": "196609",
           "member": "int64",
@@ -4657,7 +4649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log timestamp",
           "example": "2021-04-25 14:25:00.000",
           "member": "int64",
@@ -4667,12 +4658,29 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source host name of logs\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "hostName-1",
           "member": "string",
           "name": "HostName",
           "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Raw log (this parameter has a value only when an exception occurred while creating indexes for logs).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"content\":\"test\"}",
+          "member": "string",
+          "name": "RawLog",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The cause of index creation exception (this parameter has a value only when an exception occurred while creating indexes for logs).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "IndexAllFail:fields like 'a' and 'a.b' can not appear in the same topic",
+          "member": "string",
+          "name": "IndexStatus",
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -4683,7 +4691,6 @@
       "document": "Log result information",
       "members": [
         {
-          "default": "",
           "document": "Log time in milliseconds",
           "example": "1619162953000",
           "member": "int64",
@@ -4693,7 +4700,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log topic ID",
           "example": "4463e7b0-3ec8-41a1-ae48-5d24b22167c2",
           "member": "string",
@@ -4703,7 +4709,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log topic name",
           "example": "test",
           "member": "string",
@@ -4713,7 +4718,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log source IP",
           "example": "10.0.0.1",
           "member": "string",
@@ -4723,7 +4727,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log filename",
           "example": "/test/access.log",
           "member": "string",
@@ -4733,7 +4736,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the request package for log reporting",
           "example": "0",
           "member": "string",
@@ -4743,7 +4745,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log ID in request package",
           "example": "0",
           "member": "string",
@@ -4753,7 +4754,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Serialized JSON string of log content\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"content\":\"test\"}",
           "member": "string",
@@ -4763,12 +4763,29 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Source host name of logs\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "hostName-1",
           "member": "string",
           "name": "HostName",
           "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Raw log (this parameter has a value only when an exception occurred while creating indexes for logs).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"content\":\"test\"}",
+          "member": "string",
+          "name": "RawLog",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The cause of index creation exception (this parameter has a value only when an exception occurred while creating indexes for logs).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "IndexAllFail:fields like 'a' and 'a.b' can not appear in the same topic",
+          "member": "string",
+          "name": "IndexStatus",
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -6322,7 +6339,6 @@
       "document": "SearchLog request structure.",
       "members": [
         {
-          "default": "",
           "document": "Start time of the log to be searched, which is a Unix timestamp in milliseconds",
           "example": "1608794854000",
           "member": "int64",
@@ -6331,7 +6347,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "End time of the log to be searched, which is a Unix timestamp in milliseconds",
           "example": "1608794855000",
           "member": "int64",
@@ -6340,7 +6355,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Search and analysis statement. Maximum length: 12 KB\nA statement is in the format of <a href=\"https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1\" target=\"_blank\">[search criteria]</a> | <a href=\"https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1\" target=\"_blank\">[SQL statement]</a>. You can omit the pipe symbol <code> | </code> and SQL statement when log analysis is not required.\nQueries all logs using * or an empty string",
           "example": "http_status:200",
           "member": "string",
@@ -6349,7 +6363,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the log topic to be searched",
           "example": "682d0718-07bb-4ec0-9fda-f1e9a2767e0b",
           "member": "string",
@@ -6358,7 +6371,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The number of raw logs returned by a single query. Maximum value: 1000. You need to use `Context` to continue to get logs.\nNotes:\n* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.\n* To limit the number of analysis results, see <a href=\"https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1\" target=\"_blank\">SQL LIMIT Syntax</a>.",
           "example": "100",
           "member": "int64",
@@ -6367,7 +6379,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "You can pass through the `Context` value (validity: an hour) returned by the API last time to continue to get logs (up to 10,000 raw logs).\nNotes:\n* Do not modify any other parameters while passing through the `Context` parameter.\n* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.\n* To continue to get analysis results, see <a href=\"https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1\" target=\"_blank\">SQL LIMIT Syntax</a>.",
           "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
           "member": "string",
@@ -6376,7 +6387,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Time order of the logs returned. Valid values: `asc` (ascending); `desc`: (descending). Default value: `desc`\nNotes:\n* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.\n* To sort the analysis results, see <a href=\"https://intl.cloud.tencent.com/document/product/614/58978?from_cn_redirect=1\" target=\"_blank\">SQL ORDER BY Syntax</a>.",
           "example": "asc",
           "member": "string",
@@ -6385,7 +6395,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "If the value is `true`, the new response method will be used, and the output parameters `AnalysisRecords` and `Columns` will be valid.\nIf the value is `false`, the old response method will be used, and the output parameters `AnalysisResults` and `ColNames` will be valid.\nThe two response methods differ slightly in terms of encoding format. You are advised to use the new method (`true`).",
           "example": "false",
           "member": "bool",
@@ -6394,13 +6403,20 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Indicates whether to sample raw logs before statistical analysis (`Query` includes SQL statements).\n`0`: Auto-sample.\n`0–1`: Sample by the specified sample rate, such as `0.02`.\n`1`: Precise analysis without sampling.\nDefault value: `1`",
           "example": "0.1",
           "member": "float",
           "name": "SamplingRate",
           "required": false,
           "type": "float"
+        },
+        {
+          "document": "Search syntax.\n`0` (default): Lucene; `1`: CQL.\nFor more information, visit https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SyntaxRule",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7017,7 +7033,6 @@
       "document": "Index description information of the field for which key-value index needs to be enabled",
       "members": [
         {
-          "default": "",
           "document": "Field type. Valid values: `long`, `text`, `double`",
           "example": "long",
           "member": "string",
@@ -7027,8 +7042,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Separator of fields. Each character represents a separator.\nOnly symbols, \\n\\t\\r, and escape character \\ are supported.\n`long` and `double` fields need to be null.\nNote: \\n\\t\\r can be directly enclosed in double quotes as the input parameter without escaping.",
+          "document": "Separator of fields. Each character represents a separator.\nOnly symbols, \\n\\t\\r, and escape character \\ are supported.\n`long` and `double` fields need to be null.\nNote: \\n\\t\\r can be directly enclosed in double quotes as the input parameter without escaping. When debugging with API Explorer, use the JSON parameter input method to avoid repeated escaping of \\n\\t\\r.",
           "example": ".*",
           "member": "string",
           "name": "Tokenizer",
@@ -7037,7 +7051,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the analysis feature is enabled for the field",
           "example": "true",
           "member": "bool",
@@ -7047,7 +7060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether Chinese characters are contained. For `long` and `double` fields, set them to `false`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
