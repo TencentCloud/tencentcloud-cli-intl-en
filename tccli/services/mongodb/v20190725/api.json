@@ -127,7 +127,7 @@
       "status": "online"
     },
     "InquirePriceModifyDBInstanceSpec": {
-      "document": "This API is used to query price of instance specification adjustment.",
+      "document": "This API is used to query the price of instance specification adjustment.",
       "input": "InquirePriceModifyDBInstanceSpecRequest",
       "name": "Queries price of specification adjustment",
       "output": "InquirePriceModifyDBInstanceSpecResponse",
@@ -1530,7 +1530,8 @@
       "members": [
         {
           "default": "",
-          "document": "List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "document": "List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB console page.",
+          "example": "cmgo-hcscymcl",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -1538,7 +1539,8 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: 0 (all instances), 1 (promoted), 2 (temp), 3 (read-only), -1 (promoted + read-only + disaster recovery)",
+          "document": "Instance type. Valid values: <ul><li>`0`: All instances. </li><li>`1`: Regular instances. </li><li>`2`: Temp instances. </li><li>`3`: Read-only instances. </li><li>`-1`: Regular instances, read-only instances, disaster recovery instances.</li></ul>",
+          "example": "0",
           "member": "int64",
           "name": "InstanceType",
           "required": false,
@@ -1546,7 +1548,8 @@
         },
         {
           "default": "",
-          "document": "Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance), -1 (all instances)",
+          "document": "Cluster type. Valid values: <ul><li>`0`: Replica set instances. </li><li>`1`: Sharded cluster instances. </li><li>`-1`: All instances.</li></ul>",
+          "example": "0",
           "member": "int64",
           "name": "ClusterType",
           "required": false,
@@ -1554,7 +1557,8 @@
         },
         {
           "default": "",
-          "document": "Instance status. Valid values: `0` (to be initialized), `1` (executing task), `2` (running), `-2` (isolated monthly-subscribed instance), `-3` (isolated pay-as-you-go instance)",
+          "document": "Instance status. Valid values: <ul><li>`0`: To be initialized. </li><li>`1`: In process. </li><li>`2`: Valid. </li><li>`-2`: Isolated (for monthly subscribed instances). </li><li>`-3`: Isolated (for pay-as-you-go instances).</li></ul>",
+          "example": "2",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -1562,7 +1566,8 @@
         },
         {
           "default": "",
-          "document": "VPC ID. This parameter can be left empty for the basic network",
+          "document": "VPC ID. This parameter can be left empty for the classic network.",
+          "example": "1",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1570,7 +1575,8 @@
         },
         {
           "default": "",
-          "document": "Subnet ID of VPC. This parameter can be left empty for the basic network. If it is passed in as an input parameter, the corresponding VpcId must be set",
+          "document": "Subnet ID of VPC. This parameter can be left empty for the classic network. If it is passed in as an input parameter, the corresponding VpcId must be set.",
+          "example": "1",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -1579,6 +1585,7 @@
         {
           "default": "",
           "document": "Billing type. Valid value: 0 (pay-as-you-go)",
+          "example": "1",
           "member": "int64",
           "name": "PayMode",
           "required": false,
@@ -1586,7 +1593,8 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned for a single request. Valid values: 1-100. Default value: 20",
+          "document": "Number of results returned per request. Default value: `20`. Value range: [1,100].",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -1594,7 +1602,8 @@
         },
         {
           "default": "",
-          "document": "Offset. Default value: 0",
+          "document": "Offset. Default value: `0`.",
+          "example": "1",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -1602,7 +1611,8 @@
         },
         {
           "default": "",
-          "document": "Sort by field of the returned result set. Currently, supported values include \"ProjectId\", \"InstanceName\", and \"CreateTime\". The return results are sorted in ascending order by default.",
+          "document": "Sort by field of the returned result set. Valid values: `ProjectId`, `InstanceName`, `CreateTime`. The return results are sorted in ascending order by default.",
+          "example": "无",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -1610,7 +1620,8 @@
         },
         {
           "default": "",
-          "document": "Sorting method of the return result set. Currently, \"ASC\" or \"DESC\" is supported",
+          "document": "Sorting method of the return result set. Valid values: `ASC`, `DESC`.",
+          "example": "无",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -1619,6 +1630,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "无",
           "member": "uint64",
           "name": "ProjectIds",
           "required": false,
@@ -1626,7 +1638,8 @@
         },
         {
           "default": "",
-          "document": "Search keyword, which can be instance ID, instance name, or complete IP",
+          "document": "Search keyword, which can be instance ID, instance name, or complete IP.",
+          "example": "无",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -1635,10 +1648,11 @@
         {
           "default": "",
           "document": "Tag information",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": false,
-          "type": "object"
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1647,16 +1661,20 @@
       "document": "DescribeDBInstances response structure.",
       "members": [
         {
-          "document": "Number of eligible instances.",
+          "document": "Number of eligible instances",
+          "example": "19",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "List of instance details",
+          "example": "无",
           "member": "InstanceDetail",
           "name": "InstanceDetails",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1876,7 +1894,6 @@
       "document": "DescribeSlowLogs request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
           "example": "cmgo-a3bm93hf",
           "member": "string",
@@ -1885,7 +1902,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
           "example": "2020-04-20 00:00:00",
           "member": "datetime",
@@ -1894,7 +1910,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
           "example": "2020-04-20 22:00:00",
           "member": "datetime",
@@ -1903,7 +1918,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.",
           "example": "100",
           "member": "uint64",
@@ -1912,7 +1926,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.",
           "example": "0",
           "member": "uint64",
@@ -1921,7 +1934,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.",
           "example": "100",
           "member": "uint64",
@@ -1930,8 +1942,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.",
+          "document": "Return format of slow log. The original slow log format is returned by default, and the format can be set to JSON on versions 4.4 and later.",
           "example": "json",
           "member": "string",
           "name": "Format",
@@ -2208,8 +2219,7 @@
       "document": "InquirePriceModifyDBInstanceSpec request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console.",
+          "document": "Instance ID in the format of cmgo-p8vn****. It is the same as the instance ID displayed in the TencentDB console.",
           "example": "cmgo-8oij5631",
           "member": "string",
           "name": "InstanceId",
@@ -2217,7 +2227,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance memory size in GB after specification adjustment.",
           "example": "8",
           "member": "int64",
@@ -2226,7 +2235,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance disk size in GB after specification adjustment.",
           "example": "200",
           "member": "int64",
@@ -2235,8 +2243,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity remains unchanged.",
+          "document": "Number of instance nodes. The number of nodes is left unchanged by default and cannot be changed currently.",
           "example": "3",
           "member": "int64",
           "name": "NodeNum",
@@ -2244,8 +2251,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity remains unchanged.",
+          "document": "Number of instance shards. The number of shards is left unchanged by default and cannot be changed currently.",
           "example": "2",
           "member": "int64",
           "name": "ReplicateSetNum",
