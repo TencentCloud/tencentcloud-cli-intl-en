@@ -2370,7 +2370,6 @@
       "document": "Returned cluster list sample",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "emr-xxxx",
           "member": "string",
@@ -2380,7 +2379,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status description\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "状态描述",
           "member": "string",
@@ -2390,7 +2388,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster name",
           "example": "集群名字",
           "member": "string",
@@ -2400,7 +2397,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster region",
           "example": "集群地域",
           "member": "uint64",
@@ -2410,7 +2406,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User APPID",
           "example": "663622",
           "member": "uint64",
@@ -2420,7 +2415,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "创建时间",
           "member": "string",
@@ -2430,7 +2424,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Running time",
           "example": "运行时间",
           "member": "string",
@@ -2440,7 +2433,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster IP",
           "example": "集群ID",
           "member": "string",
@@ -2450,7 +2442,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster version",
           "example": "集群版本",
           "member": "string",
@@ -2460,7 +2451,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster billing mode",
           "example": "0",
           "member": "uint64",
@@ -2470,7 +2460,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "EMR ID",
           "example": "23321",
           "member": "uint64",
@@ -2480,7 +2469,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "44333",
           "member": "uint64",
@@ -2490,7 +2478,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Project ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "4555",
           "member": "uint64",
@@ -2500,7 +2487,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "4552",
           "member": "uint64",
@@ -2510,7 +2496,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "3422",
           "member": "uint64",
@@ -2520,7 +2505,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "45666",
           "member": "uint64",
@@ -2530,7 +2514,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "zone",
           "member": "string",
@@ -2540,7 +2523,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Status code\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2550,7 +2532,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance tag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[]",
           "member": "Tag",
@@ -2560,7 +2541,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Alarm information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "告警信息",
           "member": "string",
@@ -2570,7 +2550,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is a Woodpecker cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2580,7 +2559,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "emr",
           "member": "string",
@@ -2590,7 +2568,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "emr",
           "member": "string",
@@ -2600,7 +2577,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC ID string\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "vpc-lzd3w8jz",
           "member": "string",
@@ -2610,7 +2586,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet ID string\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "subnet-3d73yezg",
           "member": "string",
@@ -2620,7 +2595,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster type\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "spark",
           "member": "string",
@@ -2630,7 +2604,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is a multi-AZ cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2640,7 +2613,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is a manually deployed cluster\nNote: This field may return null, indicating that no valid value can be obtained. ",
           "example": "false",
           "member": "bool",
@@ -2650,13 +2622,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Client component information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"hdfs-2.8.5\",true]",
           "member": "SoftDependInfo",
           "name": "OutSideSoftInfo",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the current cluster supports external clients.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSupportOutsideCluster",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],
