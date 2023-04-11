@@ -8,6 +8,14 @@
         "title": "Canceling a task"
       }
     ],
+    "CreateDataEngine": [
+      {
+        "document": "This example shows you how to create an engine.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDataEngine\n<Common request parameters>\n\n{\n    \"EngineType\": \"xx\",\n    \"DataEngineName\": \"xx\",\n    \"ClusterType\": \"xx\",\n    \"MinClusters\": 0,\n    \"MaxClusters\": 0,\n    \"DefaultDataEngine\": true,\n    \"CidrBlock\": \"xx\",\n    \"Mode\": 0,\n    \"Message\": \"xx\",\n    \"AutoResume\": true,\n    \"Size\": 0,\n    \"PayMode\": 0,\n    \"TimeSpan\": 0,\n    \"TimeUnit\": \"xx\",\n    \"AutoRenew\": 0,\n    \"Tags\": [\n        {\n            \"TagKey\": \"xx\",\n            \"TagValue\": \"xx\"\n        }\n    ],\n    \"AutoSuspend\": true,\n    \"CrontabResumeSuspend\": 0,\n    \"CrontabResumeSuspendStrategy\": {\n        \"ResumeTime\": \"xx\",\n        \"SuspendTime\": \"xx\",\n        \"SuspendStrategy\": 0\n    },\n    \"EngineExecType\": \"xx\",\n    \"MaxConcurrency\": 0,\n    \"TolerableQueueTime\": 0,\n    \"AutoSuspendTime\": 0,\n    \"ResourceType\": \"xx\",\n    \"ImageVersionName\": \"SuperSQL-P 1.1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataEngineId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating an engine"
+      }
+    ],
     "CreateInternalTable": [
       {
         "document": "",
@@ -62,6 +70,38 @@
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action:DeleteSparkApp\n<Common request parameters>\n\n{\n    \"AppName\": \"spark-app\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
         "title": "Deleting a Spark application"
+      }
+    ],
+    "DescribeEngineUsageInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEngineUsageInfo\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 128,\n        \"Used\": 64,\n        \"Available\": 64,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "example"
+      }
+    ],
+    "DescribeForbiddenTablePro": [
+      {
+        "document": "example",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeForbiddenTablePro\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "example"
+      }
+    ],
+    "DescribeLakeFsDirSummary": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLakeFsDirSummary\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Example 1"
+      }
+    ],
+    "DescribeLakeFsInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLakeFsInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Example 1"
       }
     ],
     "DescribeResultDownload": [
@@ -142,6 +182,22 @@
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SuspendResumeDataEngine\n<Common request parameters>\n\n{\n    \"Operate\": \"xx\",\n    \"DataEngineName\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"DataEngineName\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "test"
+      }
+    ],
+    "SwitchDataEngine": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchDataEngine\n<Common request parameters>\n\n{\n    \"DataEngineName\": \"test\",\n    \"StartStandbyCluster\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2f67771a-a384-4b4e-86a5-146d8829ae2d\"\n    }\n}",
+        "title": "test"
+      }
+    ],
+    "UpdateRowFilter": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateRowFilter\n<Common request parameters>\n\n{\n    \"Policy\": {\n        \"Table\": \"TableName\",\n        \"Catalog\": \"COSDataCatalog\",\n        \"Operation\": \"ALL\",\n        \"Database\": \"DatabaseName\"\n    },\n    \"PolicyId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
+        "title": "Updating the row filter policy"
       }
     ]
   },

@@ -7,6 +7,13 @@
       "output": "CancelTaskResponse",
       "status": "online"
     },
+    "CreateDataEngine": {
+      "document": "This API is used to create a data engine.",
+      "input": "CreateDataEngineRequest",
+      "name": "Creates a data engine",
+      "output": "CreateDataEngineResponse",
+      "status": "online"
+    },
     "CreateInternalTable": {
       "document": "This API is used to create a managed internal table. It has been disused.",
       "input": "CreateInternalTableRequest",
@@ -54,6 +61,34 @@
       "input": "DeleteSparkAppRequest",
       "name": "Deletes a Spark application",
       "output": "DeleteSparkAppResponse",
+      "status": "online"
+    },
+    "DescribeEngineUsageInfo": {
+      "document": "This API is used to query the resource usage of a data engine based on its ID.",
+      "input": "DescribeEngineUsageInfoRequest",
+      "name": "Queries the resource usage of a data engine",
+      "output": "DescribeEngineUsageInfoResponse",
+      "status": "online"
+    },
+    "DescribeForbiddenTablePro": {
+      "document": "This API is used to get the list of disabled table attributes.",
+      "input": "DescribeForbiddenTableProRequest",
+      "name": "Gets the list of disabled table attributes",
+      "output": "DescribeForbiddenTableProResponse",
+      "status": "online"
+    },
+    "DescribeLakeFsDirSummary": {
+      "document": "This API is used to query the summary of a specified directory in a managed storage.",
+      "input": "DescribeLakeFsDirSummaryRequest",
+      "name": "Queries the summary of a specified directory in a managed storage",
+      "output": "DescribeLakeFsDirSummaryResponse",
+      "status": "online"
+    },
+    "DescribeLakeFsInfo": {
+      "document": "This API is used to query managed storage information.",
+      "input": "DescribeLakeFsInfoRequest",
+      "name": "Queries managed storage information",
+      "output": "DescribeLakeFsInfoResponse",
       "status": "online"
     },
     "DescribeResultDownload": {
@@ -124,6 +159,20 @@
       "input": "SuspendResumeDataEngineRequest",
       "name": "Suspends or resumes a data engine",
       "output": "SuspendResumeDataEngineResponse",
+      "status": "online"
+    },
+    "SwitchDataEngine": {
+      "document": "This API is used to switch between the primary and standby clusters.",
+      "input": "SwitchDataEngineRequest",
+      "name": "Switches between the primary and standby clusters",
+      "output": "SwitchDataEngineResponse",
+      "status": "online"
+    },
+    "UpdateRowFilter": {
+      "document": "This API is used to update row filters. Please note that it updates filters only but not catalogs, databases, or tables.",
+      "input": "UpdateRowFilterRequest",
+      "name": "Updates row filters",
+      "output": "UpdateRowFilterResponse",
       "status": "online"
     }
   },
@@ -265,6 +314,264 @@
         }
       ],
       "usage": "both"
+    },
+    "CreateDataEngineRequest": {
+      "document": "CreateDataEngine request structure.",
+      "members": [
+        {
+          "document": "The engine type. Valid values: `spark` and `presto`.",
+          "example": "spark",
+          "member": "string",
+          "name": "EngineType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The name of the virtual cluster.",
+          "example": "test",
+          "member": "string",
+          "name": "DataEngineName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The cluster type. Valid values: `spark_private`, `presto_private`, `presto_cu`, and `spark_cu`.",
+          "example": "presto_private",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The billing mode. Valid values: `0` (shared engine), `1` (pay-as-you-go), and `2` (monthly subscription).",
+          "example": "0",
+          "member": "int64",
+          "name": "Mode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Whether to automatically start the clusters.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoResume",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "document": "The minimum number of clusters.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinClusters",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of clusters.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxClusters",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether the cluster is the default one.",
+          "example": "true",
+          "member": "bool",
+          "name": "DefaultDataEngine",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "The VPC CIDR block.",
+          "example": "10.10.0.0/16",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The description.",
+          "example": "test",
+          "member": "string",
+          "name": "Message",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The cluster size.",
+          "example": "1",
+          "member": "int64",
+          "name": "Size",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The pay mode. Valid value: `0` (postpaid, default) and `1` (prepaid) (currently not available).",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The resource period. For the postpaid mode, the value is 3600 (default); for the prepaid mode, the value must be in the range of 1–120, representing purchasing the resource for 1–120 months.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The unit of the resource period. Valid values: `s` (default) for the postpaid mode and `m` for the prepaid mode.",
+          "example": "s",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The auto-renewal status of the resource. For the postpaid mode, no renewal is required, and the value is fixed to `0`. For the prepaid mode, valid values are `0` (manual), `1` (auto), and `2` (no renewal). If this parameter is set to `0` for a key account in the prepaid mode, auto-renewal applies. It defaults to `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The tags to be set for the resource being created.",
+          "example": "无",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Whether to automatically suspend clusters. Valid values: `false` (default, no) and `true` (yes).",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoSuspend",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "Whether to enable scheduled start and suspension of clusters. Valid values: `0` (disable) and `1` (enable). Note: This policy and the auto-suspension policy are mutually exclusive.",
+          "example": "1",
+          "member": "int64",
+          "name": "CrontabResumeSuspend",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The complex policy for scheduled start and suspension, including the start/suspension time and suspension policy.",
+          "example": "无",
+          "member": "CrontabResumeSuspendStrategy",
+          "name": "CrontabResumeSuspendStrategy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The type of tasks to be executed by the engine, which defaults to SQL.",
+          "example": "SQL/STREAM/BATCH",
+          "member": "string",
+          "name": "EngineExecType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The max task concurrency of a cluster, which defaults to 5.",
+          "example": "5",
+          "member": "int64",
+          "name": "MaxConcurrency",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The task queue time limit, which defaults to 0. When the actual queue time exceeds the value set here, scale-out may be triggered. Setting this parameter to 0 represents that scale-out may be triggered immediately after a task queues up.",
+          "example": "0",
+          "member": "int64",
+          "name": "TolerableQueueTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The cluster auto-suspension time, which defaults to 10 min.",
+          "example": "10",
+          "member": "int64",
+          "name": "AutoSuspendTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The resource type. Valid values: `Standard_CU` (standard) and `Memory_CU` (memory).",
+          "example": "Standard_CU",
+          "member": "string",
+          "name": "ResourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The advanced configurations of clusters.",
+          "example": "无",
+          "member": "DataEngineConfigPair",
+          "name": "DataEngineConfigPairs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The version name of cluster image, such as SuperSQL-P 1.1 and SuperSQL-S 3.2. If no value is passed in, a cluster is created using the latest image version.",
+          "example": "SuperSQL-P 1.1",
+          "member": "string",
+          "name": "ImageVersionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The name of the primary cluster.",
+          "example": "test",
+          "member": "string",
+          "name": "MainClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "ElasticSwitch",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "ElasticLimit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDataEngineResponse": {
+      "document": "CreateDataEngine response structure.",
+      "members": [
+        {
+          "document": "The ID of the virtual engine.",
+          "example": "xx",
+          "member": "string",
+          "name": "DataEngineId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateInternalTableRequest": {
       "document": "CreateInternalTable request structure.",
@@ -806,6 +1113,47 @@
       ],
       "type": "object"
     },
+    "CrontabResumeSuspendStrategy": {
+      "document": "Scheduled start and suspension information",
+      "members": [
+        {
+          "default": "",
+          "document": "The scheduled start time, such as 8:00 AM every Monday.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000000-08:00:00",
+          "member": "string",
+          "name": "ResumeTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The scheduled suspension time, such as 8:00 PM every Monday.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000000-20:00:00",
+          "member": "string",
+          "name": "SuspendTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The suspension setting. Valid values: `0` (suspension after task end, default) and `1` (force suspension).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "SuspendStrategy",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DataEngineConfigPair": {
+      "document": "Engine configurations",
+      "members": [],
+      "usage": "both"
+    },
     "DataGovernPolicy": {
       "document": "The data governance rules.",
       "members": [],
@@ -828,6 +1176,111 @@
     },
     "DeleteSparkAppResponse": {
       "document": "DeleteSparkApp response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEngineUsageInfoRequest": {
+      "document": "DescribeEngineUsageInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The house ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DataEngineId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEngineUsageInfoResponse": {
+      "document": "DescribeEngineUsageInfo response structure.",
+      "members": [
+        {
+          "document": "The total cluster spec.",
+          "example": "无",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The used cluster spec.",
+          "example": "无",
+          "member": "int64",
+          "name": "Used",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The available cluster spec.",
+          "example": "无",
+          "member": "int64",
+          "name": "Available",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeForbiddenTableProRequest": {
+      "document": "DescribeForbiddenTablePro request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeForbiddenTableProResponse": {
+      "document": "DescribeForbiddenTablePro response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLakeFsDirSummaryRequest": {
+      "document": "DescribeLakeFsDirSummary request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeLakeFsDirSummaryResponse": {
+      "document": "DescribeLakeFsDirSummary response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLakeFsInfoRequest": {
+      "document": "DescribeLakeFsInfo request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeLakeFsInfoResponse": {
+      "document": "DescribeLakeFsInfo response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1733,6 +2186,182 @@
       ],
       "type": "object"
     },
+    "Policy": {
+      "document": "Permission objects",
+      "members": [
+        {
+          "default": "",
+          "document": "The name of the target database. `*` represents all databases in the current catalog. To grant admin permissions, it must be `*`; to grant data connection permissions, it must be null; to grant other permissions, it can be any database.",
+          "example": "test_database",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the target data source. To grant admin permission, it must be `*` (all resources at this level); to grant data source and database permissions, it must be `COSDataCatalog` or `*`; to grant table permissions, it can be a custom data source; if it is left empty, `DataLakeCatalog` is used. Note: To grant permissions on a custom data source, the permissions that can be managed in the Data Lake Compute console are subsets of the account permissions granted when you connect the data source to the console.",
+          "example": "DataLakeCatalog",
+          "member": "string",
+          "name": "Catalog",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the target table. `*` represents all tables in the current database. To grant admin permissions, it must be `*`; to grant data connection and database permissions, it must be null; to grant other permissions, it can be any table.",
+          "example": "test_table",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The target permissions, which vary by permission level. Admin: `ALL` (default); data connection: `CREATE`; database: `ALL`, `CREATE`, `ALTER`, and `DROP`; table: `ALL`, `SELECT`, `INSERT`, `ALTER`, `DELETE`, `DROP`, and `UPDATE`. Note: For table permissions, if a data source other than `COSDataCatalog` is specified, only the `SELECT` permission can be granted here.",
+          "example": "ALL",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The permission type. Valid values: `ADMIN`, `DATASOURCE`, `DATABASE`, `TABLE`, `VIEW`, `FUNCTION`, `COLUMN`, and `ENGINE`. Note: If it is left empty, `ADMIN` is used.",
+          "example": "ADMIN",
+          "member": "string",
+          "name": "PolicyType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the target function. `*` represents all functions in the current catalog. To grant admin permissions, it must be `*`; to grant data connection permissions, it must be null; to grant other permissions, it can be any function.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "fun1",
+          "member": "string",
+          "name": "Function",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The name of the target view. `*` represents all views in the current database. To grant admin permissions, it must be `*`; to grant data connection and database permissions, it must be null; to grant other permissions, it can be any view.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "view1",
+          "member": "string",
+          "name": "View",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The name of the target column. `*` represents all columns. To grant admin permissions, it must be `*`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "column1",
+          "member": "string",
+          "name": "Column",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The name of the target data engine. `*` represents all engines. To grant admin permissions, it must be `*`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "dataEngine1",
+          "member": "string",
+          "name": "DataEngine",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the grantee is allowed to further grant the permissions. Valid values: `false` (default) and `true` (the grantee can grant permissions gained here to other sub-users).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "ReAuth",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The permission source, which is not required when input parameters are passed in. Valid values: `USER` (from the user) and `WORKGROUP` (from one or more associated work groups).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "USER",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The grant mode, which is not required as an input parameter. Valid values: `COMMON` and `SENIOR`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "COMMON",
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The operator, which is not required as an input parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12345678",
+          "member": "string",
+          "name": "Operator",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The permission policy creation time, which is not required as an input parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-07-28 16:19:32",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The ID of the work group, which applies only when the value of the `Source` field is `WORKGROUP`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "SourceId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The name of the work group, which applies only when the value of the `Source` field is `WORKGROUP`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test_group",
+          "member": "string",
+          "name": "SourceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Property": {
       "document": "Properties of database and table",
       "members": [
@@ -2267,6 +2896,42 @@
       ],
       "type": "object"
     },
+    "SwitchDataEngineRequest": {
+      "document": "SwitchDataEngine request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The name of the primary cluster.",
+          "example": "test",
+          "member": "string",
+          "name": "DataEngineName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to start the standby cluster.",
+          "example": "false",
+          "member": "bool",
+          "name": "StartStandbyCluster",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDataEngineResponse": {
+      "document": "SwitchDataEngine response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TColumn": {
       "document": "Table field information",
       "members": [
@@ -2500,6 +3165,32 @@
           "name": "GovernPolicy",
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TagInfo": {
+      "document": "Tag pair info",
+      "members": [
+        {
+          "default": "",
+          "document": "The tag key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tagKey1",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The tag value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tagValue1",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3154,6 +3845,42 @@
         }
       ],
       "usage": "out"
+    },
+    "UpdateRowFilterRequest": {
+      "document": "UpdateRowFilter request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the row filter policy, which can be obtained using the `DescribeUserInfo` or `DescribeWorkGroupInfo` API.",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The new filter policy.",
+          "example": "无",
+          "member": "Policy",
+          "name": "Policy",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRowFilterResponse": {
+      "document": "UpdateRowFilter response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     }
   },
   "version": "1.0"
