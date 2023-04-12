@@ -73,7 +73,7 @@
     "DescribeForbiddenTablePro": {
       "document": "This API is used to get the list of disabled table attributes.",
       "input": "DescribeForbiddenTableProRequest",
-      "name": "Gets the list of disabled table attributes",
+      "name": "Gets the list of disabled table attributes (new)",
       "output": "DescribeForbiddenTableProResponse",
       "status": "online"
     },
@@ -2730,6 +2730,15 @@
           "name": "JobExecutorMaxNumbers",
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The image version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "pyspark3.2",
+          "member": "string",
+          "name": "SparkImageVersion",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
