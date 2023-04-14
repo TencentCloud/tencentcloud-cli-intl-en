@@ -64,6 +64,14 @@
         "title": "Sample request"
       }
     ],
+    "CloneInstances": [
+      {
+        "document": "克隆实例",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneInstances\n<Common request parameters>\n\n{\n    \"AlarmPolicyList\": [\n        \"xx\"\n    ],\n    \"TemplateId\": \"xx\",\n    \"VpcId\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"AutoRenew\": 1,\n    \"SubnetId\": \"xx\",\n    \"Password\": \"xx\",\n    \"GoodsNum\": 1,\n    \"ProjectId\": 0,\n    \"ZoneId\": 1,\n    \"ResourceTags\": [\n        {\n            \"TagKey\": \"xx\",\n            \"TagValue\": \"xx\"\n        }\n    ],\n    \"VPort\": 1,\n    \"InstanceName\": \"xx\",\n    \"SecurityGroupIdList\": [\n        \"xx\"\n    ],\n    \"NodeSet\": [\n        {\n            \"ZoneName\": \"xx\",\n            \"NodeType\": 0,\n            \"NodeId\": 0,\n            \"ZoneId\": 1\n        }\n    ],\n    \"Period\": 1,\n    \"BillingMode\": 0,\n    \"BackupId\": \"xx\",\n    \"NoAuth\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a836c00-175f-11eb-aeb3-db134c8d8fec\",\n        \"InstanceIds\": [\n            \"crs-kic39axx\"\n        ],\n        \"DealId\": \"22716\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "CloseSSL": [
       {
         "document": "",
@@ -184,7 +192,7 @@
     ],
     "DescribeInstanceDealDetail": [
       {
-        "document": "查询订单信息",
+        "document": "This example shows you how to query the order information.",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceDealDetail\n&DealIds.0=6959052\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealDetails\": [\n            {\n                \"DealId\": \"6959052\",\n                \"DealName\": \"20181101110365\",\n                \"ZoneId\": 100002,\n                \"GoodsNum\": 1,\n                \"Creater\": \"1817983094\",\n                \"CreatTime\": \"2018-11-01 21:12:05\",\n                \"OverdueTime\": \"2018-11-16 21:12:05\",\n                \"EndTime\": \"2018-11-01 21:13:18\",\n                \"Status\": 4,\n                \"Description\": \"Successfully delivered\",\n                \"Price\": 91949,\n                \"InstanceIds\": [\n                    \"crs-bz8prb7x\"\n                ]\n            }\n        ],\n        \"RequestId\": \"5d739ed7-af13-489f-b005-aaa57aeaf022\"\n    }\n}",
         "title": "Sample request"
@@ -320,10 +328,10 @@
     ],
     "DescribeParamTemplateInfo": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeParamTemplateInfo\n<Common request parameters>\n\n{\n    \"TemplateId\": \"crs-cfg-7mgtd2ro\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Description\": \"MyCustomParamTemplate\",\n        \"Items\": [\n            {\n                \"CurrentValue\": \"\",\n                \"Default\": \"\\\"\\\"\",\n                \"Description\": \"commands in such config will not be allowed to run in this instance,you can config multi commands like this 'flushdb,keys'\",\n                \"EnumValue\": [\n                    \"flushall\",\n                    \"flushdb\",\n                    \"keys\",\n                    \"hgetall\",\n                    \"eval\",\n                    \"evalsha\",\n                    \"script\"\n                ],\n                \"Max\": \"\",\n                \"Min\": \"\",\n                \"Name\": \"disable-command-list\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"multi\"\n            },\n            {\n                \"CurrentValue\": \"512\",\n                \"Default\": \"512\",\n                \"Description\": \"Hashes are encoded using a memory efficient data structure when they have a small number of entries\",\n                \"EnumValue\": null,\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"Name\": \"hash-max-ziplist-entries\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"64\",\n                \"Default\": \"64\",\n                \"Description\": \"Hashes are encoded using a memory efficient data structure when the biggest entry does not exceed a given threshold\",\n                \"EnumValue\": null,\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"Name\": \"hash-max-ziplist-value\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"10\",\n                \"Default\": \"10\",\n                \"Description\": \"The frequency at which Redis background tasks are performed. A higher value results in higher CPU consumption but smaller latency. We recommend that you do not specify a value larger than 100.\",\n                \"EnumValue\": null,\n                \"Max\": \"500\",\n                \"Min\": \"1\",\n                \"Name\": \"hz\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"integer\"\n            }\n        ],\n        \"Name\": \"redis_automation_is_awesome_1\",\n        \"ProductType\": 2,\n        \"RequestId\": \"72881d6c-c2a0-42af-862a-a5de09de104d\",\n        \"TemplateId\": \"crs-cfg-7mgtd2ro\",\n        \"TotalCount\": 14\n    }\n}",
-        "title": "Sample"
+        "document": "查询指定参数模板ID的模板信息",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeParamTemplateInfo\n<common request parameters>\n\n{\n    \"TemplateId\": \"crs-cfg-7mgt****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Description\": \"MyCustomParamTemplate\",\n        \"Items\": [\n            {\n                \"CurrentValue\": \"\",\n                \"Default\": \"\\\"\\\"\",\n                \"Description\": \"commands in such config will not be allowed to run in this instance,you can config multi commands like this 'flushdb,keys'\",\n                \"EnumValue\": [\n                    \"flushall\",\n                    \"flushdb\",\n                    \"keys\",\n                    \"hgetall\",\n                    \"eval\",\n                    \"evalsha\",\n                    \"script\"\n                ],\n                \"Max\": \"\",\n                \"Min\": \"\",\n                \"Name\": \"disable-command-list\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"multi\"\n            },\n            {\n                \"CurrentValue\": \"512\",\n                \"Default\": \"512\",\n                \"Description\": \"Hashes are encoded using a memory efficient data structure when they have a small number of entries\",\n                \"EnumValue\": null,\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"Name\": \"hash-max-ziplist-entries\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"64\",\n                \"Default\": \"64\",\n                \"Description\": \"Hashes are encoded using a memory efficient data structure when the biggest entry does not exceed a given threshold\",\n                \"EnumValue\": null,\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"Name\": \"hash-max-ziplist-value\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"10\",\n                \"Default\": \"10\",\n                \"Description\": \"The frequency at which Redis background tasks are performed. A higher value results in higher CPU consumption but smaller latency. We recommend that you do not specify a value larger than 100.\",\n                \"EnumValue\": null,\n                \"Max\": \"500\",\n                \"Min\": \"1\",\n                \"Name\": \"hz\",\n                \"NeedReboot\": 0,\n                \"ParamType\": \"integer\"\n            }\n        ],\n        \"Name\": \"redis_automation_is_awesome_1\",\n        \"ProductType\": 2,\n        \"RequestId\": \"72881d6c-c2a0-42af-862a-a5de09de104d\",\n        \"TemplateId\": \"crs-cfg-7mgt****\",\n        \"TotalCount\": 14\n    }\n}",
+        "title": "查询参数模板信息"
       }
     ],
     "DescribeParamTemplates": [
@@ -368,18 +376,18 @@
     ],
     "DescribeReplicationGroup": [
       {
-        "document": "查询单个复制组信息",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeReplicationGroup\n<Common request parameters>\n\n{\n    \"SearchKey\": \"xx\",\n    \"Limit\": 20,\n    \"GroupId\": \"xx\",\n    \"Offset\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"65e950b9-78e8-49b1-9200-0e62a1925557\",\n        \"Groups\": [\n            {\n                \"Status\": 37,\n                \"Remark\": \"xx\",\n                \"InstanceCount\": 1,\n                \"Instances\": [\n                    {\n                        \"Engine\": \"Redis Community Edition\",\n                        \"Vip6\": \"xx\",\n                        \"UpdateTime\": \"2022-11-02 15:04:05\",\n                        \"VpcID\": 16770550,\n                        \"InstanceId\": \"crs-9c36****\",\n                        \"RedisShardSize\": 1024,\n                        \"RegionId\": 1,\n                        \"RedisShardNum\": 1,\n                        \"Status\": 1,\n                        \"Vip\": \"10.0.4.42\",\n                        \"DiskSize\": 0,\n                        \"CreateTime\": \"2022-11-02 15:04:05\",\n                        \"ProductType\": 9,\n                        \"AppId\": 0,\n                        \"Role\": \"rw\",\n                        \"VPort\": 6379,\n                        \"ZoneId\": 1,\n                        \"InstanceName\": \"crs-test\",\n                        \"RedisReplicasNum\": 1,\n                        \"GrocerySysId\": 1000259\n                    }\n                ],\n                \"RegionId\": 1,\n                \"GroupName\": \"crs-ben-test\",\n                \"AppId\": 0,\n                \"GroupId\": \"crs-rpl-lkgv****\"\n            }\n        ]\n    }\n}",
+        "document": "This example shows you how to query the information of a single replication group.",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeReplicationGroup\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"GroupId\": \"crs-rpl-lkgv****\",\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"65e950b9-78e8-49b1-9200-0e62a1925557\",\n        \"Groups\": [\n            {\n                \"Status\": 37,\n                \"Remark\": \"Test replication group\",\n                \"InstanceCount\": 1,\n                \"Instances\": [\n                    {\n                        \"Engine\": \"Redis Community Edition\",\n                        \"Vip6\": \"\",\n                        \"UpdateTime\": \"2022-11-02 15:04:05\",\n                        \"VpcID\": 16770550,\n                        \"InstanceId\": \"crs-9c36****\",\n                        \"RedisShardSize\": 1024,\n                        \"RegionId\": 1,\n                        \"RedisShardNum\": 1,\n                        \"Status\": 1,\n                        \"Vip\": \"10.0.4.42\",\n                        \"DiskSize\": 0,\n                        \"CreateTime\": \"2022-11-02 15:04:05\",\n                        \"ProductType\": 9,\n                        \"AppId\": 0,\n                        \"Role\": \"rw\",\n                        \"VPort\": 6379,\n                        \"ZoneId\": 1,\n                        \"InstanceName\": \"crs-test\",\n                        \"RedisReplicasNum\": 1,\n                        \"GrocerySysId\": 1000259\n                    }\n                ],\n                \"RegionId\": 1,\n                \"GroupName\": \"crs-ben-test\",\n                \"AppId\": 0,\n                \"GroupId\": \"crs-rpl-lkgv****\"\n            }\n        ]\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeSSLStatus": [
       {
-        "document": "查询实例 SSL 认证信息",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeSSLStatus\n&InstanceId=crs-2btr9ryn\n&<common request parameters>",
+        "document": "This example shows you how to query the SSL authentication information of an instance.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeSSLStatus\n&InstanceId=crs-2btr9ryn\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CertDownloadUrl\": \"abc\",\n        \"UrlExpiredTime\": \"abc\",\n        \"SSLConfig\": true,\n        \"FeatureSupport\": true,\n        \"Status\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "示例1"
+        "title": "Example 1"
       }
     ],
     "DescribeSlowLog": [
@@ -488,10 +496,10 @@
     ],
     "ModfiyInstancePassword": [
       {
-        "document": "重置实例密码",
-        "input": "https://redis.tencentcloudapi.com/?Action=ModfiyInstancePassword\n&InstanceId=crs-5a4py64p\n&OldPassword=zy456987\n&Password=456987zy\n&<Common request parameters>",
+        "document": "重置实例的访问密码",
+        "input": "https://redis.tencentcloudapi.com/?Action=ModfiyInstancePassword\n&InstanceId=crs-5a4p****\n&OldPassword=zy45****\n&Password=4569****\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cca16225-a169-4f11-b1cf-13398200f604\",\n        \"TaskId\": 16661\n    }\n}",
-        "title": "Sample request"
+        "title": "变更密码"
       }
     ],
     "ModifyAutoBackupConfig": [

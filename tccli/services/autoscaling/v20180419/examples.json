@@ -24,7 +24,7 @@
     ],
     "ClearLaunchConfigurationAttributes": [
       {
-        "document": "",
+        "document": "The following example clears the data disks of the launch configuration `asc-kr4beurf`. And do not assign data disks to CVMs created by using `asc-kr4beurf`.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ClearLaunchConfigurationAttributes\n<Common request parameters>\n\n{\n    \"LaunchConfigurationId\": \"asc-kr4beurf\",\n    \"ClearDataDisks\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"382c6cad-15ae-496a-a965-66b95674f5a7\"\n    }\n}",
         "title": "Clearing data disk information of the launch configuration"
@@ -32,13 +32,13 @@
     ],
     "CompleteLifecycleAction": [
       {
-        "document": "",
+        "document": "This example shows you how to complete a lifecycle action of the specific instance by specifying the `InstanceId`.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CompleteLifecycleAction\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ins-ni8bpmve\",\n    \"LifecycleActionResult\": \"CONTINUE\",\n    \"LifecycleHookId\": \"ash-fbjiexz7\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d0cf47b9-4236-491c-bfab-106947198afe\"\n    }\n}",
         "title": "Completing a lifecycle action by specifying the `InstanceId`"
       },
       {
-        "document": "",
+        "document": "This example shows you how to complete a lifecycle action of the specific instance by specifying the `LifecycleActionToken`, which is contained in the message sent by the lifecycle hook to TDMQ.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CompleteLifecycleAction\n<Common request parameters>\n\n{\n    \"LifecycleActionResult\": \"CONTINUE\",\n    \"LifecycleHookId\": \"ash-fbjiexz7\",\n    \"LifecycleActionToken\": \"4d910016-2590-444d-8f4a-c14940036902\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"de792ffe-e37e-4f1d-8534-300b555739da\"\n    }\n}",
         "title": "Completing a lifecycle action by specifying the `LifecycleActionToken`"
@@ -134,16 +134,22 @@
     ],
     "CreateScalingPolicy": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-12wjuh0s\",\n    \"Cooldown\": \"60\",\n    \"ScalingPolicyName\": \"cpu_policy_test\",\n    \"AdjustmentType\": \" CHANGE_IN_CAPACITY\",\n    \"MetricAlarm\": {\n        \"Period\": \"60\",\n        \"ContinuousTime\": \"5\",\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Statistic\": \"AVERAGE\",\n        \"Threshold\": \"50\",\n        \"MetricName\": \"CPU_UTILIZATION\"\n    },\n    \"NotificationUserGroupIds\": [\n        \"1678\"\n    ],\n    \"AdjustmentValue\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"AutoScalingPolicyId\": \"asp-iir70sxv\",\n        \"RequestId\": \"fb02c8bd-5f38-4786-91b6-0c6e06a88832\"\n    }\n}",
-        "title": "Increasing the desired capacity by one if the average CPU utilization is over 50% within 1 minute for 5 consecutive occurrences"
+        "document": "The following policy keeps the average CPU utilization of the scaling group stay around 60%, warms up instances added for scale-out for 300 seconds, and allows scale-in.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-9dn1a5y6\",\n    \"ScalingPolicyName\": \"cpu_target_tracking_test\",\n    \"ScalingPolicyType\": \"TARGET_TRACKING\",\n    \"PredefinedMetricType\": \"ASG_AVG_CPU_UTILIZATION\",\n    \"EstimatedInstanceWarmup\": 300,\n    \"DisableScaleIn\": false,\n    \"TargetValue\": 60\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoScalingPolicyId\": \"asp-ljr51ssq\",\n        \"RequestId\": \"58a8ac17-e864-4bf6-81c7-c5dc63b0057d\"\n    }\n}",
+        "title": "Creating a target tracking policy for average CPU utilization"
       },
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-12wjuh0s\",\n    \"Cooldown\": \"300\",\n    \"ScalingPolicyName\": \"mem_policy_test\",\n    \"AdjustmentType\": \" PERCENT_CHANGE_IN_CAPACITY\",\n    \"MetricAlarm\": {\n        \"Period\": \"60\",\n        \"ContinuousTime\": \"5\",\n        \"ComparisonOperator\": \"LESS_THAN\",\n        \"Statistic\": \"AVERAGE\",\n        \"Threshold\": \"50\",\n        \"MetricName\": \"MEM_UTILIZATION\"\n    },\n    \"NotificationUserGroupIds\": [\n        \"1678\"\n    ],\n    \"AdjustmentValue\": \"-50\"\n}",
+        "document": "This example shows you how to increase the desired capacity by one if the average CPU utilization is over 50% within 1 minute for 5 consecutive occurrences.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-12wjuh0s\",\n    \"Cooldown\": \"60\",\n    \"ScalingPolicyType\": \"SIMPLE\",\n    \"ScalingPolicyName\": \"cpu_policy_test\",\n    \"AdjustmentType\": \" CHANGE_IN_CAPACITY\",\n    \"MetricAlarm\": {\n        \"Period\": \"60\",\n        \"ContinuousTime\": \"5\",\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Statistic\": \"AVERAGE\",\n        \"Threshold\": \"50\",\n        \"MetricName\": \"CPU_UTILIZATION\"\n    },\n    \"NotificationUserGroupIds\": [\n        \"1678\"\n    ],\n    \"AdjustmentValue\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoScalingPolicyId\": \"asp-iir70sxv\",\n        \"RequestId\": \"fb02c8bd-5f38-4786-91b6-0c6e06a88832\"\n    }\n}",
+        "title": "Creating a simple policy for average CPU utilization"
+      },
+      {
+        "document": "This example shows you how to decrease the capacity by 50% if the average MEM utilization is below 35% within 1 minute for 5 consecutive occurrences.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-12wjuh0s\",\n    \"Cooldown\": \"300\",\n    \"ScalingPolicyType\": \"SIMPLE\",\n    \"ScalingPolicyName\": \"mem_policy_test\",\n    \"AdjustmentType\": \" PERCENT_CHANGE_IN_CAPACITY\",\n    \"MetricAlarm\": {\n        \"Period\": \"60\",\n        \"ContinuousTime\": \"5\",\n        \"ComparisonOperator\": \"LESS_THAN\",\n        \"Statistic\": \"AVERAGE\",\n        \"Threshold\": \"50\",\n        \"MetricName\": \"MEM_UTILIZATION\"\n    },\n    \"NotificationUserGroupIds\": [\n        \"1678\"\n    ],\n    \"AdjustmentValue\": \"-50\"\n}",
         "output": "{\n    \"Response\": {\n        \"AutoScalingPolicyId\": \"asp-f59pppuh\",\n        \"RequestId\": \"116213d6-2269-44cc-af76-c4a8dc7dbdf9\"\n    }\n}",
-        "title": "Removing 50% instances if the average memory utilization is below 35% within 1 minute for 5 consecutive occurrences"
+        "title": "Creating a simple policy for average MEM utilization"
       }
     ],
     "CreateScheduledAction": [
@@ -312,10 +318,10 @@
     ],
     "DescribeScalingPolicies": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeScalingPolicies\n<Common request parameters>\n\n{\n    \"AutoScalingPolicyIds\": [\n        \"asp-5zffv598\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ScalingPolicySet\": [\n            {\n                \"AutoScalingGroupId\": \"asg-gbqa1n66\",\n                \"AutoScalingPolicyId\": \"asp-5zffv598\",\n                \"Cooldown\": 100,\n                \"ScalingPolicyName\": \"cpu-test\",\n                \"AdjustmentType\": \"CHANGE_IN_CAPACITY\",\n                \"MetricAlarm\": {\n                    \"Period\": 60,\n                    \"ContinuousTime\": 5,\n                    \"ComparisonOperator\": \"GREATER_THAN_OR_EQUAL_TO\",\n                    \"Statistic\": \"AVERAGE\",\n                    \"Threshold\": 60,\n                    \"MetricName\": \"CPU_UTILIZATION\"\n                },\n                \"NotificationUserGroupIds\": [],\n                \"AdjustmentValue\": 10\n            }\n        ],\n        \"RequestId\": \"351dd0ef-27bc-4312-9287-48cd0835274b\"\n    }\n}",
-        "title": "Querying alarm-triggered policies"
+        "document": "This example shows you how to query a simple alarm triggering policy by a specific policy ID.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeScalingPolicies\n<Common request parameters>\n\n{\n    \"AutoScalingPolicyIds\": [\n        \"asp-7mme2ule\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ScalingPolicySet\": [\n            {\n                \"EstimatedInstanceWarmup\": null,\n                \"MetricAlarms\": null,\n                \"AutoScalingGroupId\": \"asg-9dn1a5y6\",\n                \"PredefinedMetricType\": null,\n                \"ScalingPolicyType\": \"SIMPLE\",\n                \"DisableScaleIn\": null,\n                \"AutoScalingPolicyId\": \"asp-7mme2ule\",\n                \"NotificationUserGroupIds\": [],\n                \"Cooldown\": 666,\n                \"ScalingPolicyName\": \"simple_policy_test\",\n                \"AdjustmentType\": \"CHANGE_IN_CAPACITY\",\n                \"MetricAlarm\": {\n                    \"ComparisonOperator\": \"GREATER_THAN\",\n                    \"Period\": 60,\n                    \"ContinuousTime\": 5,\n                    \"Threshold\": 20,\n                    \"Statistic\": \"AVERAGE\",\n                    \"PreciseThreshold\": 20,\n                    \"MetricName\": \"CPU_UTILIZATION\"\n                },\n                \"TargetValue\": null,\n                \"AdjustmentValue\": 3\n            }\n        ],\n        \"RequestId\": \"297c6ed3-aa1c-43f4-be0f-10e513a86e6e\"\n    }\n}",
+        "title": "Querying a simple policy"
       }
     ],
     "DescribeScheduledActions": [
@@ -374,14 +380,14 @@
     ],
     "ModifyAutoScalingGroup": [
       {
-        "document": "",
+        "document": "This example shows you how to modify the `VpcId` and `SubnetIds` of the specific scaling group.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoScalingGroup\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-ka0s0q80\",\n    \"SubnetIds\": [\n        \"subnet-b0vxjhot\",\n        \"subnet-3tmerl37\"\n    ],\n    \"VpcId\": \"vpc-hy436tmc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c503ddc6-496c-44c9-8cec-e9f1c3f9c11c\"\n    }\n}",
         "title": "Modifying the VPC subnet information of a scaling group"
       },
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoScalingGroup\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-ka0s0q80\",\n    \"MinSize\": \"1\",\n    \"MaxSize\": \"10\",\n    \"DesiredCapacity\": \"3\"\n}",
+        "document": "This example shows you how to modify the desired capacity of a scaling group to 3, the maximum capacity to 10, and the minimum capacity to 1.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoScalingGroup\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-ka0s0q80\",\n    \"MinSize\": 1,\n    \"MaxSize\": 10,\n    \"DesiredCapacity\": 3\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b41d8d30-21d4-412c-b7f3-53041879968c\"\n    }\n}",
         "title": "Modifying the desired, maximum, and minimum capacity of a scaling group"
       }
@@ -396,16 +402,16 @@
     ],
     "ModifyLaunchConfigurationAttributes": [
       {
-        "document": "",
+        "document": "This example shows you how to modify the image name to `img-8toqc6s3`, modify the instance type to `S2.SMALL1`, and modify the launch configuration name to `updated_config` for the specified launch configuration `asc-291kq6ku`.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLaunchConfigurationAttributes\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-8toqc6s3\",\n    \"InstanceTypes\": [\n        \"S2.SMALL1\"\n    ],\n    \"LaunchConfigurationName\": \"updated_config\",\n    \"LaunchConfigurationId\": \"asc-291kq6ku\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"07022dcb-5bba-48f0-a2b0-800ad006d031\"\n    }\n}",
         "title": "Modifying the image, instance type and name of the specified launch configuration"
       },
       {
-        "document": "",
+        "document": "This example shows you how to modify `UserData` to an empty string for the specified launch configuration `asc-291kq6ku`.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLaunchConfigurationAttributes\n<Common request parameters>\n\n{\n    \"LaunchConfigurationId\": \"asc-291kq6ku\",\n    \"UserData\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c027f22-3a3b-489a-a77a-89c53fc15212\"\n    }\n}",
-        "title": "Clearing UserData"
+        "title": "Clearing `UserData`"
       }
     ],
     "ModifyLifecycleHook": [
@@ -454,10 +460,16 @@
     ],
     "ModifyScalingPolicy": [
       {
-        "document": "",
+        "document": "This example shows you how to modify attributes of a target tracking policy by a specified policy ID.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingPolicyId\": \"asp-9uroe7ta\",\n    \"ScalingPolicyName\": \"target-trackiing-test-policy\",\n    \"DisableScaleIn\": false,\n    \"EstimatedInstanceWarmup\": 300,\n    \"TargetValue\": 60,\n    \"PredefinedMetricType\": \"ASG_AVG_CPU_UTILIZATION\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"881a6752-55e8-4485-878a-a80065732a9f\"\n    }\n}",
+        "title": "Modifying attributes of a target tracking policy"
+      },
+      {
+        "document": "This example shows you how to modify attributes of a simple policy by a specified policy ID.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingPolicyId\": \"asp-iir70sxv\",\n    \"Cooldown\": \"60\",\n    \"ScalingPolicyName\": \"cpu_policy_test\",\n    \"AdjustmentType\": \"CHANGE_IN_CAPACITY\",\n    \"MetricAlarm\": {\n        \"Period\": \"60\",\n        \"ContinuousTime\": \"5\",\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Statistic\": \"AVERAGE\",\n        \"Threshold\": \"50\",\n        \"MetricName\": \"CPU_USAGE\"\n    },\n    \"NotificationUserGroupIds\": [\n        \"1678\"\n    ],\n    \"AdjustmentValue\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"91413a64-9587-486b-aef4-9aba5e8a0068\"\n    }\n}",
-        "title": "Modifying an alarm-triggered policy"
+        "title": "Modifying attributes of a simple policy"
       }
     ],
     "ModifyScheduledAction": [

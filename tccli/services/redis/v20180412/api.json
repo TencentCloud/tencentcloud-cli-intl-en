@@ -56,6 +56,13 @@
       "output": "ClearInstanceResponse",
       "status": "online"
     },
+    "CloneInstances": {
+      "document": "This API is used to clone a complete instance based on the current instance backup file.",
+      "input": "CloneInstancesRequest",
+      "name": "Clones an instance",
+      "output": "CloneInstancesResponse",
+      "status": "online"
+    },
     "CloseSSL": {
       "document": "This API is used to disable SSL.",
       "input": "CloseSSLRequest",
@@ -323,7 +330,7 @@
       "status": "online"
     },
     "DescribeSSLStatus": {
-      "document": "This API is used to query SSL status.",
+      "document": "This API is used to query the SSL authentication information of an instance, such as enablement status, configuration status, and certificate address.",
       "input": "DescribeSSLStatusRequest",
       "name": "Queries SSL status",
       "output": "DescribeSSLStatusResponse",
@@ -421,7 +428,7 @@
       "status": "online"
     },
     "ModfiyInstancePassword": {
-      "document": "This API is used to change the Redis password.",
+      "document": "This API is used to modify the access password for an instance.",
       "input": "ModfiyInstancePasswordRequest",
       "name": "Changes the Redis password",
       "output": "ModfiyInstancePasswordResponse",
@@ -1167,6 +1174,192 @@
           "name": "TaskId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneInstancesRequest": {
+      "document": "CloneInstances request structure.",
+      "members": [
+        {
+          "document": "ID of the current instance",
+          "example": "crs-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Number of instance to be cloned each time. You can purchase up to 100 monthly subscribed instances or up to 30 pay-as-you-go instances at a time. You can purchase up to 100 instances in each region.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "ID of the AZ where the clone instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
+          "example": "100001",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Billing mode. Valid values: <ul><li>`0` (Pay-as-you-go) </li><li>`1` (Monthly subscription) </li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "BillingMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Purchase duration of an instance. <ul><li>Unit: Month</li><li>Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`, `48`, `60` (for monthly subscription mode).</li><li> Valid value: `1` (for pay-as-you-go mode).</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Security group ID, which can be obtained on the <b>Security Group</b> page in the console.",
+          "example": "[\"sg-bmadczm1\"]",
+          "member": "string",
+          "name": "SecurityGroupIdList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Backup ID of the clone instance, which can be obtained through the [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1) API.",
+          "example": "无",
+          "member": "string",
+          "name": "BackupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Whether the clone instance supports password-free access. Valid values: <ul><li>`true` (Yes)</li><li>`false` (No. When SSL or public network is enabled). Default value: `false`.</li></ul>",
+          "example": "false",
+          "member": "bool",
+          "name": "NoAuth",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "VPC ID. If this parameter is not passed in, the classic network will be selected by default.",
+          "example": "vpc-pxyzim13",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "VPC subnet ID, which is not required for the classic network.",
+          "example": "subnet-7jbabche",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Name of the clone instance. <br>Enter up to 60 letters, digits, hyphens, and underscores.</br>",
+          "example": "MyInstanceName",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The access password of the clone instance. <ul><li>When the input parameter <b>NoAuth</b> is <b>true</b>, this parameter is not required. </li><li>When the instance is Redis 2.8, 4.0, or 5.0, the password must contain 8–30 characters in at least two of the following types: lowercase letters, uppercase letters, digits, and special characters `()`~!@#$%^&*-+=_|{}[]:;<>,.?/` and cannot start with `/`.</li><li>When the instance is CKV 3.2, the password must and can only contain 8–30 letters and digits.</li></ul>",
+          "example": "123456MyP@ssword",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The auto-renewal flag. Valid values <ul><li>`0`: Manual renewal (default) </li><li>`1`: Auto-renewal. </li><li>`2`: Not auto-renewal (set by user)</ul>",
+          "example": "9",
+          "member": "uint64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Customized port. Valid range: 1024-65535. Default value: `6379`.",
+          "example": "6378",
+          "member": "uint64",
+          "name": "VPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Node information of an instance. <ul><li>Currently supported type and AZ information of a node to be configured (master node or replica node) For more information, see [RedisNodeInfo](https://intl.cloud.tencent.com/document/product/239/20022?from_cn_redirect=1#RedisNodeInfo).</li><li>This parameter is not required for single-AZ deployment.</li></ul>",
+          "example": "无",
+          "member": "RedisNodeInfo",
+          "name": "NodeSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Project ID, which can be obtained in <b>Account Center</b> > <b>Project Management</b> in the upper-right corner in the console.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Tag to be bound for the clone instance",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "The ID of a parameter template to be applied to the clone instance, which can be obtained on <b>Parameter Template</b> page in the console. If this parameter is not configured, the default parameter template will be applied.",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Alarm policy ID of the specified clone instance, which can be obtained on <b>Cloud Monitor</b> > <b>Alarm Configuration</b> > <b>Alarm Policy</b> in the console.",
+          "example": "无",
+          "member": "string",
+          "name": "AlarmPolicyList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneInstancesResponse": {
+      "document": "CloneInstances response structure.",
+      "members": [
+        {
+          "document": "Request task ID",
+          "example": "199878234",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Clone instance ID",
+          "example": "[\"crs-3sz5wdav\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -2554,7 +2747,6 @@
           "example": "无",
           "member": "TradeDealDetail",
           "name": "DealDetails",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3983,7 +4175,6 @@
       "document": "DescribeReplicationGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Number of instances returned per page. Default value: `20`.",
           "example": "20",
           "member": "int64",
@@ -3992,7 +4183,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination offset, which is an integral multiple of `Limit`. `offset` = `limit` * (page number - 1).",
           "example": "0",
           "member": "int64",
@@ -4001,7 +4191,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Replication group ID",
           "example": "crs-rpl-deindi7de",
           "member": "string",
@@ -4010,8 +4199,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Keyword for fuzzy search, which can be an instance name or instance ID.",
+          "document": "Key words for fuzzy query, which can be set as the ID or name of a replication group.",
           "example": "crs-deindi7de",
           "member": "string",
           "name": "SearchKey",
@@ -4069,7 +4257,7 @@
       "document": "DescribeSSLStatus response structure.",
       "members": [
         {
-          "document": "Certificate download address",
+          "document": "Download address for SSL certificate",
           "example": "https://",
           "member": "string",
           "name": "CertDownloadUrl",
@@ -4085,7 +4273,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "SSL configuration status of an instance. Valid values: `true` (enable), `false` (disable).",
+          "document": "Whether the SSL is enabled for the identified instance.\n- `true`: Enabled\n- `false`: Disabled",
           "example": "false",
           "member": "bool",
           "name": "SSLConfig",
@@ -4093,7 +4281,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Whether the instance supports SSL. Valid values: `true` (Yes. When minor version is upgraded.), `false` (No).",
+          "document": "Whether SSL is supported for the identified instance.\n-`true`: Supported\n-`false`: Not supported",
           "example": "false",
           "member": "bool",
           "name": "FeatureSupport",
@@ -4101,7 +4289,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "SSL configuration status. Valid values: `1`(Configuring), `2` (Configured).",
+          "document": "Status of SSL configuration\n- `1`: Configuring\n- `2`: Configured successfully",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -4726,7 +4914,6 @@
       "document": "Replication group info",
       "members": [
         {
-          "default": "",
           "document": "User App ID",
           "example": "100001",
           "member": "int64",
@@ -4736,8 +4923,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan",
+          "document": "Region ID\n- `1`: Guangzhou \n- `4`: Shanghai \n- `5`: Hong Kong (China) \n- `6`: Toronto \n- `7`: Shanghai Finance \n- `8`: Beijing \n- `9`: Singapore\n- `11`: Shenzhen Finance\n- `15`: Silicon Valley (West US)\n- `16`: Chengdu \n- `17`: Germany \n- `18`: South Korea \n- `19`: Chongqing \n- `21`: India \n- `22`: Virginia (East US)\n- `23`: Thailand \n- `24`: Russia \n- `25`: Japan",
           "example": "1",
           "member": "int64",
           "name": "RegionId",
@@ -4746,8 +4932,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Replication group info",
+          "document": "Replication group ID",
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupId",
@@ -4756,8 +4941,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Replication group name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Replication group name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupName",
@@ -4766,8 +4950,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Replication group status. Valid values: 37 (Associating replication group), 38 (Reconnecting to replication group), 51 (Disassociating the replication group), 52 (Switching primary instance in the replication group), 53 (Modifying roles)",
+          "document": "Status of replication group\n- `37`: Associating replication group\n- `38`: Reconnecting to replication group\n- `51`: Disassociating replication group\n- `52`: Switching with master instance in replication group\n- `53`: Modifying the roles",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -4776,7 +4959,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of replication groups",
           "example": "20",
           "member": "int64",
@@ -4786,8 +4968,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instances in replication group\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Instance information in replication groups\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "复制组实例",
           "member": "Instances",
           "name": "Instances",
@@ -4796,8 +4977,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Remarks\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Remark",
@@ -6721,24 +6901,24 @@
       "document": "ModfiyInstancePassword request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "document": "Old password of an instance",
+          "example": "zy456987",
           "member": "string",
           "name": "OldPassword",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
-          "document": "New password of an instance",
+          "document": "New instance password, which has the following requirements:\n- It must contain 8-30 characters, preferably 12 or more.\n- It cannot start with a slash (/)\n- It must contain two of the following three types: lowercase letters, uppercase letters, and symbols (()~!@#$%^&*-+=_|{}[]:;<>,.?/)",
+          "example": "456987zy",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -6752,6 +6932,7 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "16661",
           "member": "int64",
           "name": "TaskId",
           "type": "int",

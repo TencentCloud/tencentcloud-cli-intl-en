@@ -737,7 +737,6 @@
       "document": "AddExistedInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-berpx5vg",
           "member": "string",
@@ -746,7 +745,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance list. Spot instance is not supported.",
           "example": "[]",
           "member": "string",
@@ -755,7 +753,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Detailed information of the instance",
           "example": "{}",
           "member": "InstanceAdvancedSettings",
@@ -764,7 +761,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.",
           "example": "{}",
           "member": "EnhancedService",
@@ -773,7 +769,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Node login information (currently only supports using Password or single KeyIds)",
           "example": "{}",
           "member": "LoginSettings",
@@ -782,7 +777,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.",
           "example": "\"\"",
           "member": "string",
@@ -791,7 +785,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)",
           "example": "[]",
           "member": "string",
@@ -800,7 +793,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Node pool options",
           "example": "{}",
           "member": "NodePoolOption",
@@ -809,7 +801,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck",
           "example": "[]",
           "member": "string",
@@ -818,7 +809,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "This parameter is used to customize the configuration of an instance, which corresponds to the `InstanceIds` one-to-one in sequence. If this parameter is passed in, the default parameter `InstanceAdvancedSettings` will be overwritten and will not take effect. If this parameter is not passed in, the `InstanceAdvancedSettings` will take effect for each instance.\n\nThe array length of `InstanceAdvancedSettingsOverride` should be the same as the array length of `InstanceIds`. If its array length is greater than the `InstanceIds` array length, an error will be reported. If its array length is less than the `InstanceIds` array length, the instance without corresponding configuration will use the default configuration.",
           "example": "[]",
           "member": "InstanceAdvancedSettings",
@@ -827,8 +817,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Node image (it is required when creating a node)",
+          "document": "Node image",
           "example": "无",
           "member": "string",
           "name": "ImageId",
@@ -1264,7 +1253,6 @@
       "document": "Cluster information struct",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxx",
           "member": "string",
@@ -1274,7 +1262,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster name",
           "example": "集群",
           "member": "string",
@@ -1284,7 +1271,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster description",
           "example": "示例集群",
           "member": "string",
@@ -1294,7 +1280,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster version. The default value is 1.10.5.",
           "example": "1.20.6",
           "member": "string",
@@ -1304,7 +1289,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster operating system. centOS 7.2x86_64 or ubuntu 16.04.1 LTSx86_64. Default value: ubuntu 16.04.1 LTSx86_64",
           "example": "ubuntu16.04.1 LTSx86_64",
           "member": "string",
@@ -1314,7 +1298,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster type. Managed cluster: MANAGED_CLUSTER; Self-deployed cluster: INDEPENDENT_CLUSTER.",
           "example": "INDEPENDENT_CLUSTER",
           "member": "string",
@@ -1324,7 +1307,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster network-related parameters",
           "example": "无",
           "member": "ClusterNetworkSettings",
@@ -1334,7 +1316,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Current number of nodes in the cluster",
           "example": "3",
           "member": "uint64",
@@ -1344,7 +1325,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the project to which the cluster belongs",
           "example": "0",
           "member": "uint64",
@@ -1354,7 +1334,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag description list.",
           "example": "无",
           "member": "TagSpecification",
@@ -1364,8 +1343,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Cluster status (`Running`, `Creating`, `Idling` or `Abnormal`)",
+          "document": "Cluster status. Values: `Trading` (Preparing), `Creating`, `Running`, `Deleting`, `Idling` (Idle), `Recovering`, `Scaling`, `Upgrading` (Upgrading the cluster), `WaittingForConnect` (Pending registration), `Pause` (Cluster upgrade paused), `NodeUpgrading` (Upgrading the node), `RuntimeUpgrading` (Upgrading the node runtime), `MasterScaling` (Scaling Master), `ClusterLevelUpgrading` (Adjusting cluster specification level), `ResourceIsolate` (Isolating), `ResourceIsolated` (Isolated), `ResourceReverse` (Overdue payment made. Recovering the cluster), and `Abnormal`.",
           "example": "Running",
           "member": "string",
           "name": "ClusterStatus",
@@ -1374,7 +1352,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))",
           "example": "{\\\"NodeNameType\\\":\\\"lan-ip\\\",\\\"NetworkType\\\":\\\"GR\\\"}",
           "member": "string",
@@ -1384,7 +1361,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of primary nodes currently in the cluster",
           "example": "1",
           "member": "uint64",
@@ -1394,7 +1370,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the image used by the cluster\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1404,7 +1379,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Container image tag\nNote: This field may return null, indicating that no valid value was found.",
           "example": "GENERAL",
           "member": "string",
@@ -1414,7 +1388,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Runtime environment of the cluster. Values can be `docker` or `containerd`.\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "docker",
           "member": "string",
@@ -1424,7 +1397,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "2021-06-16T07:42:57Z",
           "member": "string",
@@ -1434,7 +1406,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether Deletion Protection is enabled\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "false",
           "member": "bool",
@@ -1444,7 +1415,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Specifies whether the cluster supports external nodes.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "bool",
@@ -1454,7 +1424,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster models. It’s valid for managed clusters.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "L5",
           "member": "string",
@@ -1464,7 +1433,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The target cluster model for auto-upgrade\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "true",
           "member": "bool",
@@ -1474,7 +1442,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable qGPU Sharing\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -1484,13 +1451,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Runtime version\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1.4.3",
           "member": "string",
           "name": "RuntimeVersion",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of current etcd in the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ClusterEtcdNodeNum",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -2552,6 +2527,16 @@
           "example": "10.0.0.0/24",
           "member": "string",
           "name": "Ipv6ServiceCIDR",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster Cilium Mode configuration\n- clusterIP\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"clusterIP\"",
+          "member": "string",
+          "name": "CiliumMode",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -10513,7 +10498,15 @@
       "document": "ServiceAccount authentication configuration",
       "members": [
         {
-          "default": "",
+          "document": "Use TKE default issuer and jwksuri\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "UseTKEDefault",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
           "document": "service-account-issuer\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "https://cls-xxxxxxxx.ccs.tencent-cloud.com",
           "member": "string",
@@ -10523,7 +10516,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "service-account-jwks-uri\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "https://cls-xxxxxxxx.ccs.tencent-cloud.com:60002/openid/v1/jwks",
           "member": "string",
@@ -10533,7 +10525,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "If it is set to `true`, a RABC rule is automatically created to allow anonymous users to access `/.well-known/openid-configuration` and `/openid/v1/jwks`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",

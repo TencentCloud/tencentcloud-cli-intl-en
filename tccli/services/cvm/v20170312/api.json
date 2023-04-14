@@ -508,7 +508,7 @@
       "document": "Scheduled tasks.",
       "members": [
         {
-          "document": "Timer name. Currently `TerminateInstances` is the only supported value.",
+          "document": "Timer action. Valid value: `TerminateInstances`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"xx\"",
           "member": "string",
           "name": "TimerAction",
@@ -517,7 +517,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Execution time, which follows the ISO8601 standard and uses UTC time. It must be at least 5 minutes later than the current time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 2018-05-29T11:26:40Z.",
+          "document": "Action time, which follows the ISO8601 standard and uses UTC time. It must be 5 minutes later than the current time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 2018-05-29T11:26:40Z.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"xx\"",
           "member": "string",
           "name": "ActionTime",
@@ -526,7 +526,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Additional data",
+          "document": "Extended data\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"StorageBlockAttr\":{\"MinSize\":0,\"MaxSize\":0,\"Type\":\"xx\"}}",
           "member": "Externals",
           "name": "Externals",
@@ -721,7 +721,7 @@
     "ChcDeployExtraConfig": {
       "document": "Configuration options for MiniOS of the CHC deployment network",
       "members": [],
-      "usage": "in"
+      "usage": "both"
     },
     "ChcHost": {
       "document": "CHC host information",
@@ -4802,22 +4802,22 @@
       "document": "Describes the billing method of an instance.",
       "members": [
         {
-          "default": "",
-          "document": "Subscription period; unit: month; valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "document": "Subscription period (in month). Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`, `48’, `60`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "Period",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.",
+          "document": "Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: `NOTIFY_AND_MANUAL_RENEW`. When `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis if the account has sufficient balance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -4850,22 +4850,22 @@
       "document": "Options related to bidding requests",
       "members": [
         {
-          "default": "",
-          "document": "Options related to bidding",
+          "document": "Spot-related options\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SpotMarketOptions",
           "name": "SpotOptions",
           "required": true,
           "type": "object",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "spot",
-          "document": "Market option type. Currently `spot` is the only supported value.",
+          "document": "Market type. Valid value: `spot`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "MarketType",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5563,7 +5563,6 @@
       "document": "Information of instance launch template versions",
       "members": [
         {
-          "default": "",
           "document": "Location of the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "Placement",
@@ -5573,7 +5572,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance model.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "S1.SMALL2",
           "member": "string",
@@ -5583,7 +5581,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance name.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "MyInstance",
           "member": "string",
@@ -5593,7 +5590,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance billing mode. Valid values: <br><li>`POSTPAID_BY_HOUR`: postpaid for pay-as-you-go instances <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs.<br>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "PREPAID",
           "member": "string",
@@ -5603,7 +5599,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance system disk information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "SystemDisk",
@@ -5613,7 +5608,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance data disk information. This parameter only covers the data disks purchased together with the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "DataDisk",
@@ -5623,7 +5617,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance bandwidth information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "InternetAccessible",
@@ -5633,7 +5626,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Information of the VPC where the instance resides.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "VirtualPrivateCloud",
@@ -5643,7 +5635,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`ID` of the image used to create the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "img-pi0aa46r",
           "member": "string",
@@ -5653,7 +5644,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "['sg-rf6ogz49']",
           "member": "string",
@@ -5663,7 +5653,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Login settings of the instance. Currently, only the key associated with the instance is returned.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "LoginSettings",
@@ -5673,7 +5662,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CAM role name.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "testroleName001",
           "member": "string",
@@ -5683,7 +5671,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HPC cluster `ID`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "hpc-a5n666lo",
           "member": "string",
@@ -5693,7 +5680,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of instances purchased.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -5703,7 +5689,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Enhanced service.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "EnhancedService",
@@ -5713,7 +5698,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "TXlVc2VyRGF0YQo=",
           "member": "string",
@@ -5723,7 +5707,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Placement group ID. You can only specify one.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "['ps-3p88qhfo']",
           "member": "string",
@@ -5733,7 +5716,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "ActionTimer",
@@ -5743,7 +5725,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "InstanceMarketOptionsRequest",
@@ -5753,7 +5734,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Hostname of a CVM.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "MyHostName",
           "member": "string",
@@ -5763,7 +5743,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "A string used to ensure the idempotency of the request.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "system-f3827db9-c58a-49cc-bf10-33fc1923a34a",
           "member": "string",
@@ -5773,7 +5752,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Prepaid mode. This parameter indicates relevant parameter settings for monthly-subscribed instances.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "InstanceChargePrepaid",
@@ -5783,13 +5761,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "NA",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to enable termination protection. Valid values:\n\nTRUE: Termination protection is enabled.\nFALSE: Termination protection is disabled.\n\nDefault value: `FALSE`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "DisableApiTermination",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],
@@ -8186,24 +8172,22 @@
       "document": "Description of tags associated with resource instances during instance creation.",
       "members": [
         {
-          "default": "",
-          "document": "The type of resource that the tag is bound to. Valid values: `instance` (for CVM), `host` (for CDH), `image` (for image), and `keypair` (for key).",
+          "document": "Resource type. Valid values: `instance` (CVM), `host` (CDH), `image` (for image), and `keypair` (for key).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "instance",
           "member": "string",
           "name": "ResourceType",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "List of tags",
+          "document": "Tag pairs\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": true,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
