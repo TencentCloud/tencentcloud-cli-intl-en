@@ -10,8 +10,8 @@
     ],
     "ApplySdkVerificationToken": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplySdkVerificationToken\n<Common request parameters>\n\n{\n    \"NeedVerifyIdCard\": true,\n    \"Extra\": \"xx\",\n    \"IdCardType\": \"HK\"\n}",
+        "document": "This example shows you how to apply for a verification token.",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplySdkVerificationToken\n<Common request parameters>\n\n{\n    \"NeedVerifyIdCard\": true,\n    \"Extra\": \"fewfewf\",\n    \"IdCardType\": \"HK\"\n}",
         "output": "{\n    \"Response\": {\n        \"SdkToken\": \"A561B769-C347-4724-A69A-6C3B3483E107\",\n        \"RequestId\": \"d73c0c05-f7ff-419c-84cb-0756303b1925\"\n    }\n}",
         "title": "Applying for a token"
       }
@@ -46,6 +46,22 @@
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateReflectSequence\n<Common request parameters>\n\n{\n    \"DeviceDataUrl\": \"https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud.com/faceid%2FApplyWebVerificationToken%2F1300268875%2F20b11b59-572d-406d-8d94-e6e05782134c\",\n    \"DeviceDataMd5\": \"d41d8cd98f00b204e9800998ecf8427e\"\n}",
         "output": "{\n    \"Response\": {\n        \"ReflectSequenceUrl\": \"https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud.com\",\n        \"ReflectSequenceMd5\": \"d41d8cd98f00b204e9800998ecf8427e\",\n        \"RequestId\": \"32-323233-323\"\n    }\n}",
         "title": "Obtaining a light sequence"
+      }
+    ],
+    "GetFaceIdResultIntl": [
+      {
+        "document": "This example shows you how to get the verification result.",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetFaceIdResultIntl\n<Common request parameters>\n\n{\n    \"SdkToken\": \"aeee6d62-b2b2-4634-9662-919a5ac729ab\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n        \"Description\": \"Success\",\n        \"BestFrame\": \"AAAAHGZ0eXBtcDQyAAAAAWlzb2...\",\n        \"Video\": \"/9j/4AAQSkZJRgABAQAASABIAAD/4QBMR...\",\n        \"Similarity\": 98.8,\n        \"Extra\": \"abc\",\n        \"RequestId\": \"aea12d62-b2b2-4634-9662-919a5ac729ab\"\n    }\n}",
+        "title": "Getting the verification result"
+      }
+    ],
+    "GetFaceIdTokenIntl": [
+      {
+        "document": "\t\nThis example shows you how to apply for an SDK-based verification token.",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetFaceIdTokenIntl\n<Common request parameters>\n\n{\n    \"CheckMode\": \"liveness\",\n    \"SecureLevel\": \"4\",\n    \"Extra\": \"idxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c27f8a53-1766-4d62-84fc-c400843e9e21\",\n        \"SdkToken\": \"91BF5AD0-C5C9-41CC-9562-DB35BBA2712D\"\n    }\n}",
+        "title": "Applying for a token"
       }
     ],
     "GetLivenessResult": [

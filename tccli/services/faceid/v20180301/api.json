@@ -42,6 +42,20 @@
       "output": "GenerateReflectSequenceResponse",
       "status": "online"
     },
+    "GetFaceIdResultIntl": {
+      "document": "This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for two hours (2*3,600s) after generation and can be called multiple times.",
+      "input": "GetFaceIdResultIntlRequest",
+      "name": "Gets the result of an SDK-based liveness detection process",
+      "output": "GetFaceIdResultIntlResponse",
+      "status": "online"
+    },
+    "GetFaceIdTokenIntl": {
+      "document": "This API is used to apply for an SDK token before calling the liveness detection and face comparison SDK each time. The SDK token is used throughout the identity verification process and to get the verification result after the verification is completed. A token is valid for one identity verification process only.",
+      "input": "GetFaceIdTokenIntlRequest",
+      "name": "Applies for an SDK token",
+      "output": "GetFaceIdTokenIntlResponse",
+      "status": "online"
+    },
     "GetLivenessResult": {
       "document": "This API is used to get the verification result with the corresponding token (SdkToken) after the liveness detection is completed. The token is valid for two hours after issuance and can be called multiple times.",
       "input": "GetLivenessResultRequest",
@@ -124,7 +138,6 @@
       "document": "ApplySdkVerificationToken request structure.",
       "members": [
         {
-          "default": "",
           "document": "Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.",
           "example": "true",
           "member": "bool",
@@ -133,8 +146,7 @@
           "type": "bool"
         },
         {
-          "default": "",
-          "document": "The card type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `PhilippinesVoteID` (Philippine voters ID card), `PhilippinesDrivingLicense` (Philippine driver's license), and `IndonesiaIDCard` (Indonesian identity card).",
+          "document": "The card type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `PhilippinesVoteID` (Philippine voters ID card), `IndonesiaIDCard` (Indonesian identity card), `SingaporeIDCard` (Singapore identity card), and `PhilippinesDrivingLicense` (Philippine driver's license).",
           "example": "HK",
           "member": "string",
           "name": "IdCardType",
@@ -142,7 +154,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Disable the modification of the OCR result by the user. Default value: `false` (modification allowed).",
           "example": "true",
           "member": "bool",
@@ -151,7 +162,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned based on the warnings. If the value of `NeedVerifyIdCard` is `true`, the value of this field will also be `true`.",
           "example": "true",
           "member": "bool",
@@ -160,7 +170,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.",
           "example": "1",
           "member": "string",
@@ -692,6 +701,138 @@
           "member": "string",
           "name": "ReflectSequenceMd5",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFaceIdResultIntlRequest": {
+      "document": "GetFaceIdResultIntl request structure.",
+      "members": [
+        {
+          "document": "The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.\t",
+          "example": "aeee6d62-b2b2-4634-9662-919a5ac729ab",
+          "member": "string",
+          "name": "SdkToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFaceIdResultIntlResponse": {
+      "document": "GetFaceIdResultIntl response structure.",
+      "members": [
+        {
+          "document": "The return code of the verification result.\n0: Succeeded.\n1001: System error.\n1004: Liveness detection and face comparison failed.\n2004: The image passed in is too large or too small.\n2012: Several faces were detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n-999: The verification process wasn't finished.",
+          "example": "0",
+          "member": "string",
+          "name": "Result",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The description of the verification result.",
+          "example": "Success",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The best frame screenshot (in Base64) obtained during the verification.",
+          "example": "无",
+          "member": "string",
+          "name": "BestFrame",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video file (Base64) for verification.",
+          "example": "无",
+          "member": "string",
+          "name": "Video",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "89.99",
+          "member": "float",
+          "name": "Similarity",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The pass-through parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Extra",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFaceIdTokenIntlRequest": {
+      "document": "GetFaceIdTokenIntl request structure.",
+      "members": [
+        {
+          "document": "The detection mode. Valid values:\n`liveness`: Liveness detection only.\n`compare`: Liveness detection and face comparison.\nDefault value: `liveness`.",
+          "example": "liveness",
+          "member": "string",
+          "name": "CheckMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The verification security level. Valid values:\n`1`: Video-based liveness detection.\n`2`: Motion-based liveness detection.\n`3`: Reflection-based liveness detection.\n`4`: Motion- and reflection-based liveness detection.\nDefault value: `4`.",
+          "example": "1",
+          "member": "string",
+          "name": "SecureLevel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The image for comparison in the `compare` (liveness detection and face comparison) mode. This parameter is required when the value of `CheckMode` is `compare`.",
+          "example": "无",
+          "member": "string",
+          "name": "Image",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The pass-through parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "Extra",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFaceIdTokenIntlResponse": {
+      "document": "GetFaceIdTokenIntl response structure.",
+      "members": [
+        {
+          "document": "The SDK token, which is used throughout the verification process and to get the verification result.",
+          "example": "0749c982-499e-4d1d-9e6a-103390933016",
+          "member": "string",
+          "name": "SdkToken",
           "type": "string",
           "value_allowed_null": false
         },
