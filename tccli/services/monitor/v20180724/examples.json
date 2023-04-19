@@ -66,10 +66,10 @@
     ],
     "CreateGrafanaInstance": [
       {
-        "document": "创建Grafana实例",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaInstance\n<Common request parameters>\n\n{\n    \"SubnetIds\": [\n        \"xx\"\n    ],\n    \"VpcId\": \"xx\",\n    \"InstanceName\": \"xx\",\n    \"GrafanaInitPassword\": \"test\",\n    \"EnableInternet\": true\n}",
+        "document": "This example shows you how to create a TencentCloud Managed Service for Grafana (TCMG) instance.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaInstance\n<Common request parameters>\n\n{\n    \"SubnetIds\": [\n        \"subnet-123\"\n    ],\n    \"VpcId\": \"vpc-123\",\n    \"InstanceName\": \"test\",\n    \"GrafanaInitPassword\": \"test\",\n    \"EnableInternet\": true\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"grafana-c1enzs01\",\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
-        "title": "Creating a Grafana instance"
+        "title": "Creating a TCMG instance"
       }
     ],
     "CreateGrafanaIntegration": [
@@ -127,7 +127,7 @@
       },
       {
         "document": "This example shows you how to associate with an EKS cluster.",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusClusterAgent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Agents\": [\n        {\n            \"EnableExternal\": true,\n            \"Region\": \"xx\",\n            \"ClusterId\": \"xx\",\n            \"ClusterType\": \"xx\",\n            \"NotInstallBasicScrape\": true,\n            \"InClusterPodConfig\": {\n                \"HostNet\": true,\n                \"Tolerations\": [\n                    {\n                        \"Operator\": \"xx\",\n                        \"Effect\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"NodeSelector\": [\n                    {\n                        \"Name\": \"xx\",\n                        \"Value\": \"xx\"\n                    }\n                ]\n            },\n            \"NotScrape\": true,\n            \"ExternalLabels\": [\n                {\n                    \"Name\": \"xx\",\n                    \"Value\": \"xx\"\n                }\n            ]\n        }\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusClusterAgent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xxx\",\n    \"Agents\": [\n        {\n            \"EnableExternal\": true,\n            \"Region\": \"xxx\",\n            \"ClusterId\": \"xxx\",\n            \"ClusterType\": \"xxx\",\n            \"NotInstallBasicScrape\": true,\n            \"InClusterPodConfig\": {\n                \"HostNet\": true,\n                \"Tolerations\": [\n                    {\n                        \"Operator\": \"xxx\",\n                        \"Effect\": \"xxx\",\n                        \"Key\": \"xxx\"\n                    }\n                ],\n                \"NodeSelector\": [\n                    {\n                        \"Name\": \"xxx\",\n                        \"Value\": \"xxx\"\n                    }\n                ]\n            },\n            \"NotScrape\": true,\n            \"ExternalLabels\": [\n                {\n                    \"Name\": \"xxx\",\n                    \"Value\": \"xxx\"\n                }\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
         "title": "Associating with a cluster"
       }
@@ -388,10 +388,10 @@
     ],
     "DescribeAlarmNoticeCallbacks": [
       {
-        "document": "",
+        "document": "This example shows you how to query the list of all callback URLs under an account.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmNoticeCallbacks\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\"\n}",
         "output": "{\n    \"Response\": {\n        \"URLNotices\": [\n            {\n                \"URL\": \"http://www.test1.com/validate\",\n                \"IsValid\": 0\n            },\n            {\n                \"URL\": \"http://www.test2.com/validate\",\n                \"IsValid\": 0\n            },\n            {\n                \"URL\": \"https://www.test3.com/validate\",\n                \"IsValid\": 1\n            }\n        ],\n        \"RequestId\": \"neh390an4opw0-45nw\"\n    }\n}",
-        "title": "Getting the list of all callback URLs under account"
+        "title": "Querying the list of all callback URLs under an account"
       }
     ],
     "DescribeAlarmNotices": [
@@ -560,7 +560,7 @@
     ],
     "DescribeMonitorTypes": [
       {
-        "document": "",
+        "document": "This example shows you how to query all monitoring types.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMonitorTypes\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\"\n}",
         "output": "{\n    \"Response\": {\n        \"MonitorTypes\": [\n            \"MT_QCE\"\n        ],\n        \"MonitorTypeInfos\": [\n            {\n                \"Id\": \"1002\",\n                \"Name\": \"MT_QCE\",\n                \"SortId\": 1\n            }\n        ],\n        \"RequestId\": \"d96ec542-6547-4af2-91ac-fee85c1b8b85\"\n    }\n}",
         "title": "Querying all monitoring types"
@@ -858,7 +858,7 @@
     ],
     "ModifyAlarmNotice": [
       {
-        "document": "",
+        "document": "修改通知模板",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmNotice\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"NoticeId\": \"notice-2gf892hg\",\n    \"Name\": \"noticeAAA\",\n    \"NoticeType\": \"ALL\",\n    \"NoticeLanguage\": \"zh-CN\",\n    \"UserNotices\": [\n        {\n            \"ReceiverType\": \"USER\",\n            \"UserIds\": [\n                10001\n            ],\n            \"NoticeWay\": [\n                \"SMS\",\n                \"EMAIL\"\n            ],\n            \"StartTime\": 0,\n            \"EndTime\": 1,\n            \"PhoneOrder\": [\n                10001\n            ],\n            \"PhoneCircleInterval\": 60,\n            \"PhoneCircleTimes\": 2,\n            \"PhoneInnerInterval\": 60,\n            \"NeedPhoneArriveNotice\": 1,\n            \"PhoneCallType\": \"CIRCLE\"\n        }\n    ],\n    \"URLNotices\": [\n        {\n            \"URL\": \"http://www.test.com\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"neh390an4opw0-45nw\"\n    }\n}",
         "title": "Modifying a notification template"
@@ -882,10 +882,10 @@
     ],
     "ModifyAlarmPolicyNotice": [
       {
-        "document": "",
+        "document": "This example shows you how to modify the notification template bound to the alarm policy \"policy-asgh3gb2\".",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmPolicyNotice\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"PolicyId\": \"policy-asgh3gb2\",\n    \"NoticeIds\": [\n        \"notice-bv9b4ghqbg\",\n        \"notice-gj2n9wnt29\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"29ghj2hh-45-h53h234h-23\"\n    }\n}",
-        "title": "Modifying alarm notification template bound to alarm policy"
+        "title": "Modifying alarm notification template bound to an alarm policy"
       }
     ],
     "ModifyAlarmPolicyStatus": [
@@ -898,10 +898,10 @@
     ],
     "ModifyAlarmPolicyTasks": [
       {
-        "document": "",
+        "document": "This example shows you how to modify the tasks triggered by an alarm policy.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmPolicyTasks\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"PolicyId\": \"policy-29ng82fs\",\n    \"TriggerTasks\": [\n        {\n            \"Type\": \"AS\",\n            \"TaskConfig\": \"{\\\"Region\\\":\\\"ap-guangzhou\\\",\\\"Group\\\":\\\"asg-0zhspjx\\\",\\\"Policy\\\":\\\"asp-ganig28\\\"}\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"29ghj2hh-45-h53h234h-23\"\n    }\n}",
-        "title": "Modifying task triggered by alarm policy"
+        "title": "Modifying the tasks triggered by an alarm policy."
       }
     ],
     "ModifyAlarmReceivers": [

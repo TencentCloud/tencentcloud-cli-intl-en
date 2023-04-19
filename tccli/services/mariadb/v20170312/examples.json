@@ -50,7 +50,7 @@
     ],
     "CreateDBInstance": [
       {
-        "document": " ",
+        "document": "This example shows you how to create a monthly subscribed TencentDB instance",
         "input": "https://mariadb.tencentcloudapi.com/?Action=CreateDBInstance\n&Zones.0=ap-guangzhou-2\n&Zones.1=ap-guangzhou-2\n&Memory=2000\n&Storage=10000\n&NodeCount=1\n&Count=1\n&Period=1\n&AutoVoucher=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"DealName\": \"20171103110163\",\n        \"InstanceIds\": null\n    }\n}",
         "title": "Creating a monthly subscribed TencentDB instance"
@@ -58,7 +58,7 @@
     ],
     "CreateHourDBInstance": [
       {
-        "document": " ",
+        "document": "This example shows you how to create a pay-as-you-go instance.",
         "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateHourDBInstance\n<Common request parameters>\n\n{\n    \"DbVersionId\": \"5.7.17\",\n    \"VpcId\": \"vpc-n2vdqxdx\",\n    \"Storage\": \"10\",\n    \"Zones\": [\n        \"ap-guangzhou-1\",\n        \"ap-guangzhou-1\"\n    ],\n    \"SubnetId\": \"subnet-j2ezrypg\",\n    \"Memory\": \"2\",\n    \"NodeCount\": \"2\"\n}",
         "output": "{\n    \"Response\": {\n        \"DealName\": \"20200409111543\",\n        \"InstanceIds\": [\n            \"tdsql-dup8gl6t\"\n        ],\n        \"FlowId\": 22051110000,\n        \"RequestId\": \"05ad9b30-ac0a-4945-afd5-3d405d537a93\"\n    }\n}",
         "title": "Creating a pay-as-you-go instance"
@@ -88,12 +88,28 @@
         "title": "None"
       }
     ],
+    "DescribeBackupFiles": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupFiles\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Files\": [\n            {\n                \"BackupType\": \"Data\",\n                \"EndTime\": \"2022-05-20 00:02:19\",\n                \"FileName\": \"cos_xtrabackup+1652976129+20220520+000209+3085636221+xbstream.lz4\",\n                \"FilePath\": \"cos_backup/tdsql/set_1652843814_8559529/xtrabackup/2022-05-20/cos_xtrabackup+1652976129+20220520+000209+3085636221+xbstream.lz4\",\n                \"FileSize\": 48721218,\n                \"InstanceId\": \"tdsql-lyzax5rb\",\n                \"InstanceName\": \"test-name\",\n                \"InstanceStatus\": 2,\n                \"ManualBackup\": 0,\n                \"ShardId\": \"\",\n                \"StartTime\": \"2022-05-20 00:02:09\"\n            },\n            {\n                \"BackupType\": \"Data\",\n                \"EndTime\": \"2022-05-19 00:23:03\",\n                \"FileName\": \"cos_xtrabackup+1652890972+20220519+002252+3085636221+xbstream.lz4\",\n                \"FilePath\": \"cos_backup/tdsql/set_1652843814_8559529/xtrabackup/2022-05-19/cos_xtrabackup+1652890972+20220519+002252+3085636221+xbstream.lz4\",\n                \"FileSize\": 47738611,\n                \"InstanceId\": \"tdsql-lyzax5rb\",\n                \"InstanceName\": \"test-name\",\n                \"InstanceStatus\": 2,\n                \"ManualBackup\": 0,\n                \"ShardId\": \"\",\n                \"StartTime\": \"2022-05-19 00:22:52\"\n            },\n            {\n                \"BackupType\": \"Data\",\n                \"EndTime\": \"2022-05-18 11:44:52\",\n                \"FileName\": \"cos_xtrabackup+1652845485+20220518+114445+3085636221+xbstream.lz4\",\n                \"FilePath\": \"cos_backup/tdsql/set_1652843814_8559529/xtrabackup/2022-05-18/cos_xtrabackup+1652845485+20220518+114445+3085636221+xbstream.lz4\",\n                \"FileSize\": 10281128,\n                \"InstanceId\": \"tdsql-lyzax5rb\",\n                \"InstanceName\": \"test-name\",\n                \"InstanceStatus\": 2,\n                \"ManualBackup\": 0,\n                \"ShardId\": \"\",\n                \"StartTime\": \"2022-05-18 11:44:45\"\n            },\n            {\n                \"BackupType\": \"Binlog\",\n                \"EndTime\": \"2022-05-20 17:13:31\",\n                \"FileName\": \"binlog+1652843821+20220518+111701+3085636221+binlog.000002.lz4\",\n                \"FilePath\": \"cos_backup/tdsql/set_1652843814_8559529/binlog/2022-05-18/binlog+1652843821+20220518+111701+3085636221+binlog.000002.lz4\",\n                \"FileSize\": 51119079,\n                \"InstanceId\": \"tdsql-lyzax5rb\",\n                \"InstanceName\": \"test-name\",\n                \"InstanceStatus\": 2,\n                \"ManualBackup\": 0,\n                \"ShardId\": \"\",\n                \"StartTime\": \"2022-05-18 11:17:01\"\n            }\n        ],\n        \"RequestId\": \"dce77e5f-57b9-4df5-9889-1a4b9f318659\",\n        \"TotalCount\": 4\n    }\n}",
+        "title": "None"
+      }
+    ],
     "DescribeDBEncryptAttributes": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBEncryptAttributes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-lyzax5rb\"\n}",
         "output": "{\n    \"Response\": {\n        \"CipherText\": \"\",\n        \"EncryptStatus\": 0,\n        \"ExpireDate\": \"1970-01-01\",\n        \"RequestId\": \"7c04c9f9-4b1b-4eed-ac21-45d1d8a261f4\"\n    }\n}",
         "title": "None"
+      }
+    ],
+    "DescribeDBInstanceDetail": [
+      {
+        "document": "This example shows you how to query the details of a centralized (non-distributed) instance.",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-h178kq75\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoRenewFlag\": 0,\n        \"Cpu\": 1,\n        \"CreateTime\": \"2023-02-27 17:58:50\",\n        \"DbEngine\": \"MySQL\",\n        \"DbVersion\": \"8.0.24\",\n        \"DbVersionId\": \"8.0\",\n        \"DcnDstNum\": 1,\n        \"DcnFlag\": 1,\n        \"DcnStatus\": 2,\n        \"EncryptStatus\": 0,\n        \"ExclusterId\": \"\",\n        \"ExclusterType\": 0,\n        \"InstanceId\": \"tdsql-h178kq75\",\n        \"InstanceName\": \"cdz\",\n        \"InstanceType\": 2,\n        \"Ipv6Flag\": 0,\n        \"IsAuditSupported\": true,\n        \"IsEncryptSupported\": 0,\n        \"IsMaxUserConnectionsSupported\": true,\n        \"IsTmp\": 0,\n        \"LogStorage\": 8,\n        \"Machine\": \"TS85\",\n        \"MasterZone\": \"ap-guangzhou-3\",\n        \"Memory\": 2,\n        \"NodeCount\": 2,\n        \"NodesInfo\": [\n            {\n                \"NodeId\": \"60af5538060f\",\n                \"Role\": \"master\"\n            },\n            {\n                \"NodeId\": \"12c58811dbfd\",\n                \"Role\": \"slave\"\n            }\n        ],\n        \"PayMode\": \"postpaid\",\n        \"PeriodEndTime\": \"0001-01-01 00:00:00\",\n        \"Pid\": 1002231,\n        \"ProjectId\": 0,\n        \"Qps\": 2100,\n        \"Region\": \"ap-guangzhou\",\n        \"ReplicaConfig\": null,\n        \"ReplicaStatus\": null,\n        \"RequestId\": \"40b4a902-5217-4e18-8db1-10e0ff01be62\",\n        \"ResourceTags\": [],\n        \"RsAccessStrategy\": 0,\n        \"SlaveZones\": [\n            \"ap-guangzhou-3\"\n        ],\n        \"Status\": 2,\n        \"StatusDesc\": \"Running\",\n        \"Storage\": 10,\n        \"StorageUsage\": \"0.010\",\n        \"SubnetId\": \"subnet-8ve8m3xy\",\n        \"TdsqlVersion\": \"Designed based on MySQL 8.0.24 (compatible with MySQL 8.0)\"\n        \"Vip\": \"10.1.0.13\",\n        \"Vip6\": \"\",\n        \"VpcId\": \"vpc-0rjtvrlz\",\n        \"Vport\": 3306,\n        \"WanDomain\": \"\",\n        \"WanPort\": 0,\n        \"WanPortIpv6\": 0,\n        \"WanStatus\": 0,\n        \"WanStatusIpv6\": 0,\n        \"WanVip\": \"\",\n        \"WanVipv6\": \"\",\n        \"Zone\": \"ap-guangzhou-3\"\n    }\n}",
+        "title": "Querying the instance details"
       }
     ],
     "DescribeDBInstances": [
@@ -290,9 +306,9 @@
     ],
     "ModifyDBEncryptAttributes": [
       {
-        "document": "",
+        "document": "This example shows you how to enable the transparent data encryption for an instance.",
         "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBEncryptAttributes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-xxx\",\n    \"EncryptEnabled\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"afb70c41-025e-4cec-bec3-6207a5d635d6\"\n    }\n}",
         "title": "None"
       }
     ],

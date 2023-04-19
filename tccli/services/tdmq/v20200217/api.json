@@ -63,6 +63,13 @@
       "output": "CreateEnvironmentRoleResponse",
       "status": "online"
     },
+    "CreateRabbitMQVipInstance": {
+      "document": "This API is used to create a TDMQ for RabbitMQ exclusive instance.",
+      "input": "CreateRabbitMQVipInstanceRequest",
+      "name": "Creates a TDMQ for RabbitMQ exclusive instance",
+      "output": "CreateRabbitMQVipInstanceResponse",
+      "status": "online"
+    },
     "CreateRocketMQCluster": {
       "document": "This API is used to create a RocketMQ cluster.",
       "input": "CreateRocketMQClusterRequest",
@@ -2359,6 +2366,120 @@
     "CreateEnvironmentRoleResponse": {
       "document": "CreateEnvironmentRole response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQVipInstanceRequest": {
+      "document": "CreateRabbitMQVipInstance request structure.",
+      "members": [
+        {
+          "document": "AZ",
+          "example": "[100003,100004]",
+          "member": "int64",
+          "name": "ZoneIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "VPC ID",
+          "example": "vpc-xxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "VPC subnet ID",
+          "example": "subnet-xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Cluster name",
+          "example": "testCluster",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Node specification (`rabbit-vip-basic-1`: Basic; `rabbit-vip-basic-2`: Standard; `rabbit-vip-basic-3`: Advanced I; `rabbit-vip-basic-4`: Advanced II). If this parameter is left empty, the default value is `rabbit-vip-basic-1`.",
+          "example": "rabbit-vip-basic-1",
+          "member": "string",
+          "name": "NodeSpec",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Number of nodes, which is at least three for multi-AZ deployment. If this parameter is left empty, the value will be set to 1 for single-AZ deployment and 3 for multi-AZ deployment by default.",
+          "example": "1",
+          "member": "int64",
+          "name": "NodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Storage capacity of a single node, which is 200 GB by default.",
+          "example": "200",
+          "member": "int64",
+          "name": "StorageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to enable mirrored queue. Default value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableCreateDefaultHaMirrorQueue",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "Whether to enable auto-renewal. Default value: `true`.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "Validity period, which is one month by default.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQVipInstanceResponse": {
+      "document": "CreateRabbitMQVipInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230110002025620411234",
+          "member": "string",
+          "name": "TranId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "amqp-aegnagjg",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

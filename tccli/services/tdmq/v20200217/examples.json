@@ -84,6 +84,14 @@
         "title": "Creating environment role"
       }
     ],
+    "CreateRabbitMQVipInstance": [
+      {
+        "document": "This example shows you how to create a TDMQ for RabbitMQ exclusive instance.",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRabbitMQVipInstance\n<Common request parameters>\n\n{\n    \"ZoneIds\": [\n        190001\n    ],\n    \"NodeSpec\": \"rabbit-vip-basic-2\",\n    \"NodeNum\": 1,\n    \"StorageSize\": 100,\n    \"VpcId\": \"vpc-xxx\",\n    \"SubnetId\": \"subnet-xxx\",\n    \"ClusterName\": \"ApiCreate\",\n    \"EnableCreateDefaultHaMirrorQueue\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"sadasfdsfs\",\n        \"TranId\": \"20230110002025620411234\",\n        \"InstanceId\": \"amqp-aegnagjg\"\n    }\n}",
+        "title": "Creating a TDMQ for RabbitMQ exclusive instance"
+      }
+    ],
     "CreateRocketMQCluster": [
       {
         "document": "",
@@ -286,10 +294,10 @@
     ],
     "DescribeCmqQueueDetail": [
       {
-        "document": "",
+        "document": "This example shows you how to obtain the queue details.",
         "input": "https://tdmq.tencentcloudapi.com/?Action=DescribeCmqQueueDetail\n&QueueName=cmq-xxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"QueueDescribe\": {\n            \"QueueId\": \"xx\",\n            \"RewindSeconds\": 1,\n            \"CreateUin\": 1,\n            \"TenantId\": \"xx\",\n            \"LastModifyTime\": 1,\n            \"VisibilityTimeout\": 1,\n            \"QueueName\": \"xx\",\n            \"Trace\": true,\n            \"Tags\": [\n                {\n                    \"TagKey\": \"xx\",\n                    \"TagValue\": \"xx\"\n                }\n            ],\n            \"NamespaceName\": \"xx\",\n            \"RewindMsgNum\": 1,\n            \"MaxDelaySeconds\": 1,\n            \"TransactionPolicy\": {\n                \"MaxQueryCount\": 1,\n                \"FirstQueryInterval\": 1\n            },\n            \"MsgRetentionSeconds\": 1,\n            \"DelayMsgNum\": 1,\n            \"MaxMsgHeapNum\": 1,\n            \"PollingWaitSeconds\": 1,\n            \"Bps\": 1,\n            \"InactiveMsgNum\": 1,\n            \"DeadLetterPolicy\": {\n                \"DeadLetterQueue\": \"xx\",\n                \"Policy\": 1,\n                \"MaxTimeToLive\": 1,\n                \"MaxReceiveCount\": 1\n            },\n            \"ActiveMsgNum\": 1,\n            \"MaxMsgSize\": 1,\n            \"MinMsgTime\": 1,\n            \"DeadLetterSource\": [\n                {\n                    \"QueueId\": \"xx\",\n                    \"QueueName\": \"xx\"\n                }\n            ],\n            \"Transaction\": true,\n            \"Qps\": 1,\n            \"CreateTime\": 1\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Getting CMQ queue details"
+        "output": "{\n    \"Response\": {\n        \"QueueDescribe\": {\n            \"QueueId\": \"abc\",\n            \"QueueName\": \"abc\",\n            \"Qps\": 1,\n            \"Bps\": 1,\n            \"MaxDelaySeconds\": 1,\n            \"MaxMsgHeapNum\": 1,\n            \"PollingWaitSeconds\": 1,\n            \"MsgRetentionSeconds\": 1,\n            \"VisibilityTimeout\": 1,\n            \"MaxMsgSize\": 1,\n            \"RewindSeconds\": 1,\n            \"CreateTime\": 1,\n            \"LastModifyTime\": 1,\n            \"ActiveMsgNum\": 1,\n            \"InactiveMsgNum\": 1,\n            \"DelayMsgNum\": 1,\n            \"RewindMsgNum\": 1,\n            \"MinMsgTime\": 1,\n            \"Transaction\": true,\n            \"DeadLetterSource\": [\n                {\n                    \"QueueId\": \"abc\",\n                    \"QueueName\": \"abc\"\n                }\n            ],\n            \"DeadLetterPolicy\": {\n                \"DeadLetterQueue\": \"abc\",\n                \"Policy\": 1,\n                \"MaxTimeToLive\": 1,\n                \"MaxReceiveCount\": 1\n            },\n            \"TransactionPolicy\": {\n                \"FirstQueryInterval\": 1,\n                \"MaxQueryCount\": 1\n            },\n            \"CreateUin\": 1,\n            \"Tags\": null,\n            \"Trace\": true,\n            \"TenantId\": \"abc\",\n            \"NamespaceName\": \"abc\",\n            \"Status\": 0,\n            \"MaxUnackedMsgNum\": 0,\n            \"MaxMsgBacklogSize\": 0,\n            \"RetentionSizeInMB\": 1\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Obtaining CMQ queue details"
       }
     ],
     "DescribeCmqQueues": [

@@ -36,9 +36,9 @@
       "status": "online"
     },
     "CreateAlarmPolicy": {
-      "document": "This API is used to create a Cloud Monitor alarm policy.",
+      "document": "This API is used to create an alarm policy.",
       "input": "CreateAlarmPolicyRequest",
-      "name": "Creates a Cloud Monitor alarm policy",
+      "name": "Creates an alarm policy",
       "output": "CreateAlarmPolicyResponse",
       "status": "online"
     },
@@ -99,7 +99,7 @@
       "status": "online"
     },
     "CreatePrometheusClusterAgent": {
-      "document": "This API is used to associate a Cloud Monitor (CM)-integrated Tencent Managed Service for Prometheus (TMP) 2.0 instance with a cluster.",
+      "document": "This API is used to associate a cluster with a Cloud Monitor (CM)-integrated Tencent Managed Service for Prometheus (TMP) 2.0 instance.",
       "input": "CreatePrometheusClusterAgentRequest",
       "name": "Associates a TMP 2.0 instance with a cluster",
       "output": "CreatePrometheusClusterAgentResponse",
@@ -169,7 +169,7 @@
       "status": "online"
     },
     "DeleteAlarmNotices": {
-      "document": "This API is used to delete alarm notification templates.",
+      "document": "This API is used to delete an alarm notification template.",
       "input": "DeleteAlarmNoticesRequest",
       "name": "Deletes alarm notification templates in batches",
       "output": "DeleteAlarmNoticesResponse",
@@ -323,7 +323,7 @@
       "status": "online"
     },
     "DescribeAlarmNoticeCallbacks": {
-      "document": "This API is used to get all the callback URLs of an alarm notification template.",
+      "document": "This API is used to obtain all the callback URLs of an alarm notification template.",
       "input": "DescribeAlarmNoticeCallbacksRequest",
       "name": "Gets the list of all callback URLs under account",
       "output": "DescribeAlarmNoticeCallbacksResponse",
@@ -463,7 +463,7 @@
       "status": "online"
     },
     "DescribeMonitorTypes": {
-      "document": "This API is used to list all the monitor types supported by CM.",
+      "document": "This API is used to list all the monitoring types supported by CM.",
       "input": "DescribeMonitorTypesRequest",
       "name": "Queries monitor types",
       "output": "DescribeMonitorTypesResponse",
@@ -743,7 +743,7 @@
       "status": "online"
     },
     "ModifyAlarmPolicyTasks": {
-      "document": "This API is used to modify the task triggered by an alarm policy. The `TriggerTasks` field contains the list of triggered tasks. If an empty array is passed in for `TriggerTasks`, it indicates to unbind all the triggered tasks from this policy.",
+      "document": "This API is used to modify the tasks triggered by alarm policy, which are listed by the value of the `TriggerTasks` field. If an empty array is passed in for `TriggerTasks`, it means unbinding all the trigger tasks from the policy.",
       "input": "ModifyAlarmPolicyTasksRequest",
       "name": "Modifies task triggered by alarm policy",
       "output": "ModifyAlarmPolicyTasksResponse",
@@ -820,11 +820,11 @@
       "status": "online"
     },
     "PutMonitorData": {
-      "document": "The default API request rate limit is 50 requests/sec.\nThe default upper limit on metrics of a single tenant is 100.\nA maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.\n\nThe reporting timestamp is the timestamp when you want to save the data. We recommend that you construct a timestamp at integer minutes.\nThe time range of a timestamp is from 300 seconds before the current time to the current time.\nThe data of the same IP metric/value pair must be reported by minute in chronological order.",
+      "document": "对应的功能控制台及后端服务已于2年前下线，剩余该API接口未下线。\n\nThe default API request rate limit is 50 requests/sec.\nThe default upper limit on metrics of a single tenant is 100.\nA maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.\n\nThe reporting timestamp is the timestamp when you want to save the data. We recommend that you construct a timestamp at integer minutes.\nThe time range of a timestamp is from 300 seconds before the current time to the current time.\nThe data of the same IP metric/value pair must be reported by minute in chronological order.",
       "input": "PutMonitorDataRequest",
       "name": "Customizes monitoring data to be reported.",
       "output": "PutMonitorDataResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "ResumeGrafanaInstance": {
       "document": "This API is used to restore a Grafana instance.",
@@ -4009,6 +4009,14 @@
           "member": "string",
           "name": "Content",
           "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Rule name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
           "type": "string"
         }
       ],
@@ -13224,7 +13232,6 @@
       "document": "ModifyAlarmPolicyNotice request structure.",
       "members": [
         {
-          "default": "",
           "document": "Module name, which is specified as `monitor`.",
           "example": "monitor",
           "member": "string",
@@ -13233,7 +13240,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Alarm policy ID. If both `PolicyIds` and this parameter are returned, only `PolicyIds` takes effect.",
           "example": "policy-asgh3gb2",
           "member": "string",
@@ -13242,7 +13248,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of alarm notification template IDs.",
           "example": "[\"notice-bv9b4ghqbg\",\"notice-gj2n9wnt29\"]",
           "member": "string",
@@ -13251,11 +13256,18 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Alarm policy ID array, which can be used to associate notification templates with multiple alarm policies. Max value: 30.",
           "example": "[\"policy-asgh3gb2\", \"policy-2vh28fhb\"]",
           "member": "string",
           "name": "PolicyIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Notification rules for different alarm levels",
+          "example": "无",
+          "member": "AlarmHierarchicalNotice",
+          "name": "HierarchicalNotices",
           "required": false,
           "type": "list"
         }
@@ -14825,6 +14837,15 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "document": "Whether to enable the default recording rule",
+          "example": "无",
+          "member": "bool",
+          "name": "OpenDefaultRecord",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
@@ -16537,24 +16558,24 @@
       "document": "SendCustomAlarmMsg request structure.",
       "members": [
         {
-          "default": "",
           "document": "API component name. The value for the current API is monitor.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Message policy ID, which is configured on the custom message page of Cloud Monitor.",
+          "document": "Message policy ID, which is configured on the custom message page.",
+          "example": "cm-04rhwvwg",
           "member": "string",
           "name": "PolicyId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom message content that a user wants to send.",
+          "example": "xxx",
           "member": "string",
           "name": "Msg",
           "required": true,
