@@ -84,6 +84,13 @@
       "output": "DescribeAccountsResponse",
       "status": "online"
     },
+    "DescribeBackupFiles": {
+      "document": "This API is used to query the list of backup files.",
+      "input": "DescribeBackupFilesRequest",
+      "name": "Queries the list of backup files",
+      "output": "DescribeBackupFilesResponse",
+      "status": "online"
+    },
     "DescribeDBLogFiles": {
       "document": "This API is used to get the list of various logs of a database, including cold backups, binlogs, errlogs, and slowlogs.",
       "input": "DescribeDBLogFilesRequest",
@@ -117,6 +124,13 @@
       "input": "DescribeDBSyncModeRequest",
       "name": "Queries the sync mode",
       "output": "DescribeDBSyncModeResponse",
+      "status": "online"
+    },
+    "DescribeDCDBInstanceDetail": {
+      "document": "This API is used to get the details of a TDSQL instance.",
+      "input": "DescribeDCDBInstanceDetailRequest",
+      "name": "Gets the details of a TDSQL instance",
+      "output": "DescribeDCDBInstanceDetailResponse",
       "status": "online"
     },
     "DescribeDCDBInstanceNodeInfo": {
@@ -2821,6 +2835,123 @@
       ],
       "type": "object"
     },
+    "DescribeBackupFilesRequest": {
+      "document": "DescribeBackupFiles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query by instance ID",
+          "example": "tdsqlshard-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query by shard ID",
+          "example": "shard-xxxx",
+          "member": "string",
+          "name": "ShardId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).",
+          "example": "Binlog",
+          "member": "string",
+          "name": "BackupType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query by start time",
+          "example": "2022-05-10 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query by end time",
+          "example": "2022-05-10 12:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting dimension. Valid values: `Time`, `Size`.",
+          "example": "Time",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `DESC`, `ASC`.",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupFilesResponse": {
+      "document": "DescribeBackupFiles response structure.",
+      "members": [
+        {
+          "document": "List of backup files",
+          "example": "无",
+          "member": "InstanceBackupFileItem",
+          "name": "Files",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBLogFilesRequest": {
       "document": "DescribeDBLogFiles request structure.",
       "members": [
@@ -3216,6 +3347,432 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDCDBInstanceDetailRequest": {
+      "document": "DescribeDCDBInstanceDetail request structure.",
+      "members": [
+        {
+          "document": "Instance ID, such as dcdbt-7oaxtcb7.",
+          "example": "tdsqlshard-rlye31jd",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDCDBInstanceDetailResponse": {
+      "document": "DescribeDCDBInstanceDetail response structure.",
+      "members": [
+        {
+          "document": "Instance ID, such as dcdbt-7oaxtcb7.",
+          "example": "tdsqlshard-rlye31jd",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance name",
+          "example": "tdsqlshard-rlye31jd",
+          "member": "string",
+          "name": "InstanceName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated).",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Current status of the instance",
+          "example": "运行中",
+          "member": "string",
+          "name": "StatusDesc",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance private IP address",
+          "example": "172.16.0.39",
+          "member": "string",
+          "name": "Vip",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Private port of instance",
+          "example": "3306",
+          "member": "int64",
+          "name": "Vport",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of instance nodes. Valid values: `2` (1-source-1-replica), `3` (1-source-2-replica).",
+          "example": "2",
+          "member": "int64",
+          "name": "NodeCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance region, such as ap-guangzhou.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance VPC ID, such as vpc-r9jr0de3.",
+          "example": "vpc-4x1eyoyv",
+          "member": "string",
+          "name": "VpcId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VPC subnet ID of an instance, such as subnet-6rqs61o2.",
+          "example": "subnet-58oypmoq",
+          "member": "string",
+          "name": "SubnetId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).",
+          "example": "0",
+          "member": "int64",
+          "name": "WanStatus",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Domain name for public network access, which can be resolved by the public network.",
+          "example": "无",
+          "member": "string",
+          "name": "WanDomain",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public IP address, which can be accessed over the public network.",
+          "example": "无",
+          "member": "string",
+          "name": "WanVip",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public network access port",
+          "example": "0",
+          "member": "int64",
+          "name": "WanPort",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Project ID of the instance",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Automatic renewal flag for an instance. Valid values: `0` (normal renewal), `1` (auto-renewal), `3` (no renewal upon expiration).",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Dedicated cluster ID",
+          "example": "dbdc-odgvdv66",
+          "member": "string",
+          "name": "ExclusterId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Billing mode. Valid values: `prepaid` (monthly subscription), `postpaid` (pay-as-you-go).",
+          "example": "prepaid",
+          "member": "string",
+          "name": "PayMode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time of the instance in the format of 2006-01-02 15:04:05",
+          "example": "2020-04-08 13:59:39",
+          "member": "datetime",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Expiration time of the instance in the format of 2006-01-02 15:04:05",
+          "example": "2020-05-08 13:59:39",
+          "member": "datetime",
+          "name": "PeriodEndTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database version information",
+          "example": "5.7.17",
+          "member": "string",
+          "name": "DbVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the instance supports audit. Valid values: `1` (yes), `0` (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "IsAuditSupported",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether data encryption is supported for an instance. Valid values: `1` (yes), `0` (no).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsEncryptSupported",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance machine model",
+          "example": "SH02D",
+          "member": "string",
+          "name": "Machine",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance memory size in GB, which is the sum of the memory of all shards.",
+          "example": "12",
+          "member": "int64",
+          "name": "Memory",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance disk storage size in GB, which is the sum of the disk size of all shards.",
+          "example": "40",
+          "member": "int64",
+          "name": "Storage",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance storage space utilization. It is calculated by dividing the sum of the used disk size of all shards by the total disk size of all shards.",
+          "example": "0.001",
+          "member": "float",
+          "name": "StorageUsage",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Size of log storage space in GB",
+          "example": "16",
+          "member": "int64",
+          "name": "LogStorage",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Product type ID",
+          "example": "11128",
+          "member": "int64",
+          "name": "Pid",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Source AZ",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "MasterZone",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Replica AZ",
+          "example": "[\"ap-guangzhou-1\"]",
+          "member": "string",
+          "name": "SlaveZones",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Shard information",
+          "example": "无",
+          "member": "ShardBriefInfo",
+          "name": "Shards",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Private network IPv6 address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Vip6",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of CPU cores of an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance QPS\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4000",
+          "member": "int64",
+          "name": "Qps",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Database engine\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Mysql",
+          "member": "string",
+          "name": "DbEngine",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether IPv6 is supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Ipv6Flag",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Public IPv6 address, which can be accessed over the public network\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "WanVipv6",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "WanStatusIpv6",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Public network IPv6 port\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "WanPortIpv6",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Tag information",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DCN type. Valid values: `0` (N/A), `1` (source instance), `2` (disaster recovery read-only instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DcnFlag",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "DCN status. Valid values: `0` (N/A), `1` (creating), `2` (syncing), `3` (disconnected).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DcnStatus",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of DCN disaster recovery instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DcnDstNum",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery read-only instance), `4` (dedicated disaster recovery read-only instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceType",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the instance supports setting the connection limit, which is not supported for kernel version 10.1.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsMaxUserConnectionsSupported",
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The displayed database version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5.7",
+          "member": "string",
+          "name": "DbVersionId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Encryption status. Valid values: `0` (disabled), `1` (enabled).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptStatus",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Type of dedicated cluster. Valid values: `0` (public cloud), `1` (finance cage), `2` (CDC cluster).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ExclusterType",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Nearby VPC access\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "RsAccessStrategy",
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4460,6 +5017,122 @@
       ],
       "type": "object"
     },
+    "InstanceBackupFileItem": {
+      "document": "Backup file details of an instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsqlshard-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "tdsqlshard-xxx",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard ID",
+          "example": "shard-xxx",
+          "member": "string",
+          "name": "ShardId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File path",
+          "example": "/backup/xxx.lz4",
+          "member": "string",
+          "name": "FilePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File name",
+          "example": "xxx.lz4",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File size",
+          "example": "1",
+          "member": "int64",
+          "name": "FileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).",
+          "example": "Binlog",
+          "member": "string",
+          "name": "BackupType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Manual backup. Valid values: `0` (no), `1` (yes).",
+          "example": "0",
+          "member": "int64",
+          "name": "ManualBackup",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup start time",
+          "example": "2022-05-10 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup end time",
+          "example": "2022-05-10 12:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "IsolateDedicatedDBInstanceRequest": {
       "document": "IsolateDedicatedDBInstance request structure.",
       "members": [
@@ -5213,6 +5886,30 @@
       ],
       "type": "object"
     },
+    "NodeInfo": {
+      "document": "Node information description",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role. Valid values: `master`, `slave`.",
+          "member": "string",
+          "name": "Role",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ParamConstraint": {
       "document": "Parameter constraint",
       "members": [
@@ -5536,6 +6233,162 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ShardBriefInfo": {
+      "document": "TDSQL shard information",
+      "members": [
+        {
+          "default": "",
+          "document": "Shard serial ID",
+          "example": "set_1612751240_1",
+          "member": "string",
+          "name": "ShardSerialId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard ID, such as shard-7vg1o339.",
+          "example": "shard-lbt0utcz",
+          "member": "string",
+          "name": "ShardInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard running status",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of shard running status",
+          "example": "运行中",
+          "member": "string",
+          "name": "StatusDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard creation time",
+          "example": "2021-02-08 10:25:08",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard memory size in GB",
+          "example": "2",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard disk size in GB",
+          "example": "10",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log disk space size of a shard in GB",
+          "example": "8",
+          "member": "int64",
+          "name": "LogDisk",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of shard nodes",
+          "example": "3",
+          "member": "int64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk space utilization of a shard",
+          "example": "0.007",
+          "member": "float",
+          "name": "StorageUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version information of the shard proxy",
+          "example": "1.14.63-M-V2R667D003",
+          "member": "string",
+          "name": "ProxyVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source AZ of a shard",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "ShardMasterZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Replica AZ of a shard",
+          "example": "[\"ap-guangzhou-1\", \"ap-guangzhou-2\"]",
+          "member": "string",
+          "name": "ShardSlaveZones",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "NodeInfo",
+          "name": "NodesInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

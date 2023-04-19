@@ -28,6 +28,13 @@
       "output": "CreateAclResponse",
       "status": "online"
     },
+    "CreateAclRule": {
+      "document": "This API shows you how to create an ACL rule.",
+      "input": "CreateAclRuleRequest",
+      "name": "Creates an ACL rule",
+      "output": "CreateAclRuleResponse",
+      "status": "online"
+    },
     "CreateConsumer": {
       "document": "This API is used to create a consumer group.",
       "input": "CreateConsumerRequest",
@@ -131,6 +138,13 @@
       "input": "DescribeACLRequest",
       "name": "Enumerates ACLs",
       "output": "DescribeACLResponse",
+      "status": "online"
+    },
+    "DescribeAclRule": {
+      "document": "This API is used to query the ACL rule list.",
+      "input": "DescribeAclRuleRequest",
+      "name": "Queries the ACL rule list",
+      "output": "DescribeAclRuleResponse",
       "status": "online"
     },
     "DescribeAppInfo": {
@@ -292,6 +306,20 @@
       "input": "InquireCkafkaPriceRequest",
       "name": "Queries the price of a CKafka instance",
       "output": "InquireCkafkaPriceResponse",
+      "status": "online"
+    },
+    "ModifyAclRule": {
+      "document": "This API is used to modify an ACL policy, and currently only supports specifying whether to apply the preset rule to new topics.",
+      "input": "ModifyAclRuleRequest",
+      "name": "Modifies an ACL policy",
+      "output": "ModifyAclRuleResponse",
+      "status": "online"
+    },
+    "ModifyDatahubTopic": {
+      "document": "This API is used to modify the DataHub topic attributes.",
+      "input": "ModifyDatahubTopicRequest",
+      "name": "Modifies the DataHub topic attributes",
+      "output": "ModifyDatahubTopicResponse",
       "status": "online"
     },
     "ModifyGroupOffsets": {
@@ -608,6 +636,32 @@
         }
       ],
       "usage": "in"
+    },
+    "AclRuleResp": {
+      "document": "Results returned by the `AclRuleList` API",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of data entries",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ACL rule list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AclRule",
+          "name": "AclRuleList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "AppIdResponse": {
       "document": "`AppId` query result",
@@ -1468,6 +1522,105 @@
           "member": "JgwOperateResponse",
           "name": "Result",
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAclRuleRequest": {
+      "document": "CreateAclRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL resource type. Currently, the only valid value is `Topic`.",
+          "example": "Topic",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Matching type. Valid values: `PREFIXED`(match by prefix), `PRESET` (match by preset policy).",
+          "example": "PREFIXED",
+          "member": "string",
+          "name": "PatternType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "test",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL rule list",
+          "example": "无",
+          "member": "AclRuleInfo",
+          "name": "RuleList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Prefix value for prefix match",
+          "example": "topic-",
+          "member": "string",
+          "name": "Pattern",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A parameter used to specify whether the preset ACL rule is applied to new topics",
+          "example": "1",
+          "member": "int64",
+          "name": "IsApplied",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Remarks for ACL rules",
+          "example": "xxx",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAclRuleResponse": {
+      "document": "CreateAclRule response structure.",
+      "members": [
+        {
+          "document": "Unique key of a rule",
+          "example": "1",
+          "member": "int64",
+          "name": "Result",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -2621,6 +2774,69 @@
           "document": "Returned ACL result set object",
           "member": "AclResponse",
           "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAclRuleRequest": {
+      "document": "DescribeAclRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL rule name",
+          "example": "xxx",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL rule matching type",
+          "example": "xxx",
+          "member": "string",
+          "name": "PatternType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to read simplified ACL rules",
+          "example": "false",
+          "member": "bool",
+          "name": "IsSimplified",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAclRuleResponse": {
+      "document": "DescribeAclRule response structure.",
+      "members": [
+        {
+          "document": "The set of returned ACL rules",
+          "example": "无",
+          "member": "AclRuleResp",
+          "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5901,6 +6117,123 @@
         }
       ],
       "usage": "out"
+    },
+    "ModifyAclRuleRequest": {
+      "document": "ModifyAclRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL policy name",
+          "example": "xxx",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to be applied to new topics",
+          "example": "1",
+          "member": "int64",
+          "name": "IsApplied",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAclRuleResponse": {
+      "document": "ModifyAclRule response structure.",
+      "members": [
+        {
+          "document": "Unique key of a rule",
+          "example": "1",
+          "member": "int64",
+          "name": "Result",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatahubTopicRequest": {
+      "document": "ModifyDatahubTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message retention period in ms. The current minimum value is 60,000 ms.",
+          "example": "1000",
+          "member": "int64",
+          "name": "RetentionMs",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Topic remarks, which are a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag list",
+          "example": "1",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatahubTopicResponse": {
+      "document": "ModifyDatahubTopic response structure.",
+      "members": [
+        {
+          "document": "Returned result set",
+          "example": "无",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyGroupOffsetsRequest": {
       "document": "ModifyGroupOffsets request structure.",

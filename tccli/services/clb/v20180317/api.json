@@ -2139,6 +2139,14 @@
           "name": "MaxCps",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Connection idle timeout period (in seconds). It’s only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900. To set a period longer than 2000 seconds (up to 3600 seconds), please submit a [submit](https://console.cloud.tencent.com/workorder/category). ",
+          "example": "900",
+          "member": "int64",
+          "name": "IdleConnectTimeout",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5281,6 +5289,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The load balancing hostname.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "lb-xxxxx.tencentclb.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5463,7 +5481,6 @@
       "document": "Listener information",
       "members": [
         {
-          "default": "",
           "document": "CLB listener ID",
           "example": "lbl-odt45qxx",
           "member": "string",
@@ -5473,7 +5490,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Listener protocol",
           "example": "HTTP",
           "member": "string",
@@ -5483,7 +5499,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Listener port",
           "example": "80",
           "member": "int64",
@@ -5493,7 +5508,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of certificates bound to the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CertificateOutput",
@@ -5503,7 +5517,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Health check information of the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HealthCheck",
@@ -5513,7 +5526,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Request scheduling method\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "WRR",
           "member": "string",
@@ -5523,7 +5535,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Session persistence time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -5533,7 +5544,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable the SNI feature (this parameter is only meaningful for HTTPS listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -5543,7 +5553,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "All forwarding rules under a listener (this parameter is meaningful only for HTTP/HTTPS listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RuleOutput",
@@ -5553,9 +5562,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Listener name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "name",
+          "example": "Name",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -5563,7 +5571,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Listener creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-03-01 15:27:04",
           "member": "string",
@@ -5573,7 +5580,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "End port of a port range\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -5583,7 +5589,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Real server type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NODE",
           "member": "string",
@@ -5593,7 +5598,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Basic information of a bound target group. This field will be returned when a target group is bound to a listener.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BasicTargetGroupInfo",
@@ -5603,7 +5607,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "NORMAL",
           "member": "string",
@@ -5613,7 +5616,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether a persistent connection is enabled (1: enabled; 0: disabled). This parameter can only be configured in HTTP/HTTPS listeners.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -5623,7 +5625,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Only the NAT64 CLB TCP listeners are supported.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -5633,7 +5634,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -5643,7 +5643,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Attribute of listener\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "Stop",
           "member": "string",
@@ -5653,7 +5652,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of bound target groups\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BasicTargetGroupInfo",
@@ -5663,7 +5661,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum number of concurrent listener connections. If it’s set to `-1`, the listener speed is not limited. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "-1",
           "member": "int64",
@@ -5673,12 +5670,20 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum number of new listener connections. If it’s set to `-1`, the listener speed is not limited. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "-1",
           "member": "int64",
           "name": "MaxCps",
           "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Connection idle timeout period (in seconds). It’s only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "900",
+          "member": "int64",
+          "name": "IdleConnectTimeout",
+          "required": false,
           "type": "int",
           "value_allowed_null": true
         }
@@ -7310,6 +7315,14 @@
           "example": "-1",
           "member": "int64",
           "name": "MaxCps",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Connection idle timeout period (in seconds). It’s only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900. To set a period longer than 2000 seconds (up to 3600 seconds), please submit a [submit](https://console.cloud.tencent.com/workorder/category). ",
+          "example": "900",
+          "member": "int64",
+          "name": "IdleConnectTimeout",
           "required": false,
           "type": "int"
         }
