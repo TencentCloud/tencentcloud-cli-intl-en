@@ -225,11 +225,11 @@
       "status": "online"
     },
     "DescribeCDBProxy": {
-      "document": "This API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.",
+      "document": "接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。\n\nThis API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.",
       "input": "DescribeCDBProxyRequest",
       "name": "Queries the information of database proxy",
       "output": "DescribeCDBProxyResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "DescribeCdbZoneConfig": {
       "document": "This API is used to query the purchasable specifications of TencentDB instances in a region.",
@@ -400,11 +400,11 @@
       "status": "online"
     },
     "DescribeProxyConnectionPoolConf": {
-      "document": "This API is used to query the connection pool configuration of database proxy.",
+      "document": "当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。\n\nThis API is used to query the connection pool configuration of database proxy.",
       "input": "DescribeProxyConnectionPoolConfRequest",
       "name": "Queries the connection pool configuration of database proxy",
       "output": "DescribeProxyConnectionPoolConfResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "DescribeProxyCustomConf": {
       "document": "This API is used to query the proxy configuration.",
@@ -582,25 +582,25 @@
       "status": "online"
     },
     "ModifyCDBProxyConnectionPool": {
-      "document": "This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.",
+      "document": "当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。\n\nThis API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.",
       "input": "ModifyCDBProxyConnectionPoolRequest",
       "name": "Configures the connection pool of database proxy",
       "output": "ModifyCDBProxyConnectionPoolResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "ModifyCDBProxyDesc": {
-      "document": "This API is used to modify the description of database proxy.",
+      "document": "当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。\n\nThis API is used to modify the description of database proxy.",
       "input": "ModifyCDBProxyDescRequest",
       "name": "Modifies the description of database proxy",
       "output": "ModifyCDBProxyDescResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "ModifyCDBProxyVipVPort": {
-      "document": "This API is used to modify the VIP or port of database proxy.",
+      "document": "当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。\n\nThis API is used to modify the VIP or port of database proxy.",
       "input": "ModifyCDBProxyVipVPortRequest",
       "name": "Modifies the VIP or port of database proxy",
       "output": "ModifyCDBProxyVipVPortResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "ModifyDBInstanceName": {
       "document": "This API (ModifyDBInstanceName) is used to rename a TencentDB instance.",
@@ -729,11 +729,11 @@
       "status": "online"
     },
     "QueryCDBProxy": {
-      "document": "This API is used to query the proxy details.",
+      "document": "当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。\n\nThis API is used to query the proxy details.",
       "input": "QueryCDBProxyRequest",
       "name": "Queries the proxy details",
       "output": "QueryCDBProxyResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "ReleaseIsolatedDBInstances": {
       "document": "This API is used to deisolate an isolated TencentDB instance.",
@@ -2319,7 +2319,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Number of keys in the statistic report",
+          "document": "Number of occurrences of the key value",
           "example": "26",
           "member": "uint64",
           "name": "Count",
@@ -14705,7 +14705,6 @@
       "document": "UpgradeDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in output parameters.",
           "example": "\"cdb-c1nl9rpv\"",
           "member": "string",
@@ -14714,7 +14713,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the memory that can be upgraded to.",
           "example": "8000",
           "member": "int64",
@@ -14723,7 +14721,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the disk that can be upgraded to.",
           "example": "200",
           "member": "int64",
@@ -14732,7 +14729,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
           "example": "0",
           "member": "int64",
@@ -14741,7 +14737,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
           "example": "0",
           "member": "int64",
@@ -14750,7 +14745,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the supported AZs.",
           "example": "\"\"",
           "member": "string",
@@ -14759,7 +14753,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Version of primary instance database engine. Valid values: 5.5, 5.6, 5.7.",
           "example": "\"5.7\"",
           "member": "string",
@@ -14768,7 +14761,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Mode of switch to new instance. Valid values: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.",
           "example": "0",
           "member": "int64",
@@ -14777,7 +14769,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "AZ information of secondary database 2, which is empty by default. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
           "example": "\"\"",
           "member": "string",
@@ -14786,7 +14777,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.",
           "example": "\"master\"",
           "member": "string",
@@ -14795,7 +14785,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The resource isolation type after the instance is upgraded. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). If this parameter is left empty, the resource isolation type will be the same as the original one.",
           "example": "\"UNIVERSAL\"",
           "member": "string",
@@ -14804,8 +14793,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "The number of CPU cores after the instance is upgraded. If this parameter is left empty, the number of CPU cores will be automatically filled in according to the `Memory` value.",
+          "document": "The number of CPU cores after the instance is upgraded. If this parameter is left empty, it will be subject to the `Memory` value.",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -14813,8 +14801,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Whether to enable QuickChange. Valid values: `0` (no), `1` (yes), `2` (QuickChange preferred). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.",
+          "document": "QuickChange options. Valid values: `0` (common upgrade), `1` (QuickChange), `2` (QuickChange first). After QuickChange is enabled, the required resources will be checked. QuickChange will be performed only when the required resources support the feature; otherwise, an error message will be returned.",
           "example": "1",
           "member": "int64",
           "name": "FastUpgrade",
@@ -14822,7 +14809,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Delay threshold. Value range: 1-10. Default value: `10`.",
           "example": "2",
           "member": "int64",
@@ -14831,7 +14817,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to migrate the source node across AZs. Valid values: `0` (no), `1`(yes). Default value: `0`. If it is `1`, you can modify the source node AZ.",
           "example": "1",
           "member": "int64",
@@ -14840,11 +14825,18 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "New AZ of the source node. This field is only valid when `CrossCluster` is `1`. Only migration across AZs in the same region is supported.",
           "example": "\"ap-guangzhou-1\"",
           "member": "string",
           "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Processing logic of the intra-AZ read-only instance for cross-cluster migration. Valid values: `together` (intra-AZ read-only instances will be migrated to the target AZ with the source instance by default.), `severally` (intra-AZ read-only instances will maintain the original deployment mode and will not be migrated to the target AZ.).",
+          "example": "\"together\"",
+          "member": "string",
+          "name": "RoTransType",
           "required": false,
           "type": "string"
         }

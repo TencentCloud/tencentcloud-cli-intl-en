@@ -90,10 +90,10 @@
     ],
     "CreateRoom": [
       {
-        "document": "This example shows you how to create a classroom.",
-        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoom\n<Common request parameters>\n\n{\n    \"AutoMic\": 1,\n    \"Name\": \"xx\",\n    \"AudioQuality\": 1,\n    \"MaxMicNumber\": 1,\n    \"SubType\": \"xx\",\n    \"SdkAppId\": 1,\n    \"StartTime\": 1,\n    \"TeacherId\": \"xx\",\n    \"EndTime\": 1,\n    \"Resolution\": 1,\n    \"DisableRecord\": 1,\n    \"Assistants\": []\n}",
-        "output": "{\n    \"Response\": {\n        \"RoomId\": 301234567,\n        \"RequestId\": \"213das\"\n    }\n}",
-        "title": "Creating a room."
+        "document": "This example shows you how to create a room.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoom\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"StartTime\": 1,\n    \"EndTime\": 1,\n    \"TeacherId\": \"abc\",\n    \"SdkAppId\": 1,\n    \"Resolution\": 1,\n    \"MaxMicNumber\": 1,\n    \"AutoMic\": 1,\n    \"TurnOffMic\": 1,\n    \"AudioQuality\": 1,\n    \"SubType\": \"abc\",\n    \"DisableRecord\": 1,\n    \"Assistants\": [\n        \"abc\"\n    ],\n    \"RTCAudienceNumber\": 1,\n    \"AudienceType\": 1,\n    \"RecordLayout\": 1,\n    \"GroupId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RoomId\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Creating a room"
       }
     ],
     "CreateSupervisor": [
@@ -152,6 +152,14 @@
         "title": "Deleting a room."
       }
     ],
+    "DescribeAnswerList": [
+      {
+        "document": "This example shows you how to get the answers to a quiz question in a room.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAnswerList\n<Common request parameters>\n\n{\n    \"QuestionId\": \"69d2345d-0p80-7821-b3b7-cbfsdew\",\n    \"Page\": 1,\n    \"Limit\": 100\n}",
+        "output": "{\n    \"Response\": {\n        \"AnswerInfo\": [\n            {\n                \"Answer\": 12,\n                \"CostTime\": 10,\n                \"IsCorrect\": 0,\n                \"Name\": \"zhangsan\",\n                \"UserId\": \"2MANXmcVsYjgo9Bk00mvONkvekd\"\n            },\n            {\n                \"Answer\": 33,\n                \"CostTime\": 6,\n                \"IsCorrect\": 0,\n                \"Name\": \"lisi\",\n                \"UserId\": \"2NP9SrTzakytuidv429i4rbNepD\"\n            }\n        ],\n        \"RequestId\": \"8cc600da-b066-476a-a527-ee19c46f77f9\",\n        \"Total\": 2\n    }\n}",
+        "title": "Getting the answers to a quiz question in a room"
+      }
+    ],
     "DescribeCurrentMemberList": [
       {
         "document": "This example shows you how to get the user list of a room. This API will not work if a room has ended or expired.",
@@ -162,9 +170,9 @@
     ],
     "DescribeDeveloper": [
       {
-        "document": "示例",
+        "document": "This example shows you how to get the developer information.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDeveloper\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"123\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DeveloperId\": \"123\",\n        \"RequestId\": \"123\"\n    }\n}",
         "title": "Getting the developer information"
       }
     ],
@@ -208,6 +216,14 @@
         "title": "Getting the members of a group"
       }
     ],
+    "DescribeQuestionList": [
+      {
+        "document": "This example shows you how to get the quiz details of a room.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeQuestionList\n<Common request parameters>\n\n{\n    \"RoomId\": 382651668,\n    \"Page\": 1,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"QuestionInfo\": [\n            {\n                \"AnswerStats\": [\n                    {\n                        \"Answer\": 1,\n                        \"Count\": 0\n                    },\n                    {\n                        \"Answer\": 2,\n                        \"Count\": 1\n                    },\n                    {\n                        \"Answer\": 4,\n                        \"Count\": 0\n                    },\n                    {\n                        \"Answer\": 8,\n                        \"Count\": 1\n                    },\n                    {\n                        \"Answer\": 16,\n                        \"Count\": 0\n                    }\n                ],\n                \"CorrectAnswer\": 8,\n                \"Duration\": 0,\n                \"QuestionContent\": \"Test\",\n                \"QuestionId\": \"7bd1e2cf-4291-447e-bd9d-123007abcf9a\"\n            }\n        ],\n        \"RequestId\": \"2b0b1930-c032-4b8b-b4da-33a333da78d1\",\n        \"Total\": 2\n    }\n}",
+        "title": "Getting the quiz details of a room"
+      }
+    ],
     "DescribeRoom": [
       {
         "document": "This example shows you how to get the details of a room.",
@@ -232,6 +248,14 @@
         "title": "Getting the user list of an application"
       }
     ],
+    "DescribeSupervisors": [
+      {
+        "document": "This example shows you how to get the spectators of a room.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSupervisors\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"Limit\": 1,\n    \"Page\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Page\": 1,\n        \"Limit\": 1,\n        \"UserIds\": [\n            \"abc\"\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Getting the spectators of a room"
+      }
+    ],
     "DescribeUser": [
       {
         "document": "",
@@ -252,8 +276,16 @@
       {
         "document": "This example shows you how to get the message history of a room.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetRoomMessage\n<Common request parameters>\n\n{\n    \"SdkAppId\": 0,\n    \"RoomId\": 1,\n    \"Seq\": 0,\n    \"Limit\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"Messages\": [\n            {\n                \"Timestamp\": 0,\n                \"FromAccount\": \"xx\",\n                \"Seq\": 0,\n                \"MessageBody\": [\n                    {\n                        \"MessageType\": 0,\n                        \"TextMessage\": \"xx\",\n                        \"ImageMessage\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Messages\": [\n            {\n                \"Timestamp\": 0,\n                \"FromAccount\": \"abc\",\n                \"Seq\": 0,\n                \"MessageBody\": [\n                    {\n                        \"MessageType\": 0,\n                        \"TextMessage\": \"abc\",\n                        \"ImageMessage\": \"abc\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Getting the message history of a room"
+      }
+    ],
+    "GetRooms": [
+      {
+        "document": "This example shows you how to get the room list.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetRooms\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"StartTime\": 1,\n    \"EndTime\": 1,\n    \"Page\": 1,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Rooms\": [\n            {\n                \"Name\": \"abc\",\n                \"RoomId\": 1,\n                \"Status\": 1,\n                \"StartTime\": 1,\n                \"EndTime\": 1,\n                \"RealStartTime\": 1,\n                \"RealEndTime\": 1,\n                \"Resolution\": 1,\n                \"MaxRTCMember\": 1,\n                \"ReplayUrl\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Getting the room list"
       }
     ],
     "GetWatermark": [
@@ -322,10 +354,10 @@
     ],
     "SetAppCustomContent": [
       {
-        "document": "",
+        "document": "This example shows you how to configure custom content for an application.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetAppCustomContent\n<Common request parameters>\n\n{\n    \"SdkAppId\": 123,\n    \"CustomContent\": [\n        {\n            \"Scene\": \"default\",\n            \"LogoUrl\": \"https://yourdomain.com/logo.png\",\n            \"HomeUrl\": \"https://yourdomain.com/login\",\n            \"JsUrl\": \"https://yourdomain.com/default.js\",\n            \"CssUrl\": \"https://yourdomain.com/default.css\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
-        "title": "Setting the custom content of an application."
+        "title": "Configuring custom content for an application"
       }
     ],
     "SetWatermark": [

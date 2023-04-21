@@ -133,6 +133,13 @@
       "output": "DeleteRoomResponse",
       "status": "online"
     },
+    "DescribeAnswerList": {
+      "document": "This API is used to get the answers to a quiz question in a room.",
+      "input": "DescribeAnswerListRequest",
+      "name": "Gets the answers to a quiz question in a room",
+      "output": "DescribeAnswerListResponse",
+      "status": "online"
+    },
     "DescribeCurrentMemberList": {
       "document": "This API is used to get the user list of a room. This API will not work if a room has ended or expired.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeCurrentMemberListRequest",
@@ -182,6 +189,13 @@
       "output": "DescribeGroupMemberListResponse",
       "status": "online"
     },
+    "DescribeQuestionList": {
+      "document": "This API is used to get the quiz details of a room.",
+      "input": "DescribeQuestionListRequest",
+      "name": "Gets the quiz details of a room",
+      "output": "DescribeQuestionListResponse",
+      "status": "online"
+    },
     "DescribeRoom": {
       "document": "This API is used to get room information.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "DescribeRoomRequest",
@@ -203,6 +217,13 @@
       "output": "DescribeSdkAppIdUsersResponse",
       "status": "online"
     },
+    "DescribeSupervisors": {
+      "document": "This API is used to get the spectators of a room.",
+      "input": "DescribeSupervisorsRequest",
+      "name": "Gets the spectators of a room",
+      "output": "DescribeSupervisorsResponse",
+      "status": "online"
+    },
     "DescribeUser": {
       "document": "This API is used to obtain user profile.",
       "input": "DescribeUserRequest",
@@ -222,6 +243,13 @@
       "input": "GetRoomMessageRequest",
       "name": "Gets the message history of a room",
       "output": "GetRoomMessageResponse",
+      "status": "online"
+    },
+    "GetRooms": {
+      "document": "This API is used to get the room list.",
+      "input": "GetRoomsRequest",
+      "name": "Gets the room list",
+      "output": "GetRoomsResponse",
       "status": "online"
     },
     "GetWatermark": {
@@ -349,6 +377,81 @@
         }
       ],
       "type": "object"
+    },
+    "AnswerInfo": {
+      "document": "The answers to a quiz question in a room.",
+      "members": [
+        {
+          "document": "The username.",
+          "example": "1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The answer. Bits are used to indicate the options chosen. For example, `0x1` indicates that option A is chosen; `0x11` indicates that A and B are chosen, and so on.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Answer",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The time used.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CostTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user ID.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the answer is correct. `1`: Correct; `0`: Incorrect.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsCorrect",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AnswerStat": {
+      "document": "The statistics for each type of answer.",
+      "members": [
+        {
+          "document": "The answer. Bits are used to indicate the options chosen. For example, `0x1` indicates that option A is chosen; `0x11` indicates that A and B are chosen, and so on.",
+          "example": "1",
+          "member": "int64",
+          "name": "Answer",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of users that submitted the answer.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AppCustomContent": {
       "document": "Custom application content\nUsed by actions: SetAppCustomContent.",
@@ -1084,6 +1187,14 @@
           "type": "int"
         },
         {
+          "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0` (default): Yes; `1`: No.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TurnOffMic",
+          "required": false,
+          "type": "int"
+        },
+        {
           "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -1106,6 +1217,22 @@
           "name": "Assistants",
           "required": false,
           "type": "list"
+        },
+        {
+          "document": "The number of RTC users.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RTCAudienceNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The audience type.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudienceType",
+          "required": false,
+          "type": "int"
         },
         {
           "document": "Recording layout",
@@ -1380,6 +1507,64 @@
       ],
       "type": "object"
     },
+    "DescribeAnswerListRequest": {
+      "document": "DescribeAnswerList request structure.",
+      "members": [
+        {
+          "document": "The question ID.",
+          "example": "0491cbde-opd4-4d4c-a063-96864eccc73c",
+          "member": "string",
+          "name": "QuestionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "1",
+          "example": "分页查询当前页数，从1开始递增，默认值为1",
+          "member": "int64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "100",
+          "example": "每页数据量，最大1000，默认值为100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAnswerListResponse": {
+      "document": "DescribeAnswerList response structure.",
+      "members": [
+        {
+          "document": "The total number of answers.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "A list of the answers.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnswerInfo",
+          "name": "AnswerInfo",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCurrentMemberListRequest": {
       "document": "DescribeCurrentMemberList request structure.",
       "members": [
@@ -1447,7 +1632,7 @@
       "document": "DescribeDeveloper response structure.",
       "members": [
         {
-          "document": "",
+          "document": "The developer ID.",
           "example": "123",
           "member": "string",
           "name": "DeveloperId",
@@ -1912,6 +2097,64 @@
       ],
       "type": "object"
     },
+    "DescribeQuestionListRequest": {
+      "document": "DescribeQuestionList request structure.",
+      "members": [
+        {
+          "document": "The room ID.",
+          "example": "312345678",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQuestionListResponse": {
+      "document": "DescribeQuestionList response structure.",
+      "members": [
+        {
+          "document": "The total number of quiz questions.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "A list of the questions.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "课堂回答问题列表",
+          "member": "QuestionInfo",
+          "name": "QuestionInfo",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRoomRequest": {
       "document": "DescribeRoom request structure.",
       "members": [
@@ -2212,6 +2455,80 @@
           "name": "Users",
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSupervisorsRequest": {
+      "document": "DescribeSupervisors request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.\n",
+          "example": "1",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records per page. The maximum value allowed is 100, and the default value is 20.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSupervisorsResponse": {
+      "document": "DescribeSupervisors response structure.",
+      "members": [
+        {
+          "document": "The total number of spectators.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The current page number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Page",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of records on the current page.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "A list of the spectators.",
+          "example": "无",
+          "member": "string",
+          "name": "UserIds",
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2594,6 +2911,80 @@
           "example": "无",
           "member": "MessageList",
           "name": "Messages",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRoomsRequest": {
+      "document": "GetRooms request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.\n",
+          "example": "无",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The start time. The default start time is 30 minutes before the current time.",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The end time. The default end time is 30 minutes after the current time.",
+          "example": "无",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The number of records per page. The default is 10.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRoomsResponse": {
+      "document": "GetRooms response structure.",
+      "members": [
+        {
+          "document": "The total number of rooms.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The room list.",
+          "example": "无",
+          "member": "RoomItem",
+          "name": "Rooms",
           "type": "list",
           "value_allowed_null": false
         },
@@ -3327,6 +3718,57 @@
       ],
       "type": "object"
     },
+    "QuestionInfo": {
+      "document": "The details of a quiz question.",
+      "members": [
+        {
+          "document": "The question ID.",
+          "example": "a304828e-c109-436e-aada-59aec20b7aab",
+          "member": "string",
+          "name": "QuestionId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The question.",
+          "example": "测试题",
+          "member": "string",
+          "name": "QuestionContent",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The time limit for the question. If you set this parameter to `0`, there will not be a time limit.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Duration",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The correct answer. Bits are used to indicate the options that should be chosen. For example, `0x1` indicates option A; `0x11` indicates A and B, and so on.",
+          "example": "1",
+          "member": "int64",
+          "name": "CorrectAnswer",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The statistics for each type of answer.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnswerStat",
+          "name": "AnswerStats",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RegisterUserRequest": {
       "document": "RegisterUser request structure.",
       "members": [
@@ -3548,6 +3990,111 @@
         }
       ],
       "usage": "in"
+    },
+    "RoomItem": {
+      "document": "The room list.",
+      "members": [
+        {
+          "document": "The name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "room",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The room ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The room status. `0`: Not started; `1`: Started; `2`: Ended.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The scheduled start time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The scheduled end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The actual start time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RealStartTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The actual end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RealEndTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The resolution. `1`: SD.\n`2`: HD\n`3`: FHD\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Resolution",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The maximum number of mic-on users allowed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MaxRTCMember",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The URL of the room's recording. This parameter has been deprecated. Please use `RecordUrl` instead.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ReplayUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The recording URL (HTTPS), which is generated only after a room ends.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RecordUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "SetAppCustomContentRequest": {
       "document": "SetAppCustomContent request structure.",
