@@ -42,6 +42,41 @@
       "output": "MLIDPassportOCRResponse",
       "status": "online"
     },
+    "RecognizeIndonesiaIDCardOCR": {
+      "document": "This API is used to recognize an Indonesian identity card.\n\nThe API request rate is limited to 20 requests/sec by default.",
+      "input": "RecognizeIndonesiaIDCardOCRRequest",
+      "name": "Recognizes an Indonesian identity card",
+      "output": "RecognizeIndonesiaIDCardOCRResponse",
+      "status": "online"
+    },
+    "RecognizePhilippinesDrivingLicenseOCR": {
+      "document": "This API is used to recognize a Philippine driver's license.",
+      "input": "RecognizePhilippinesDrivingLicenseOCRRequest",
+      "name": "Recognizes a Philippine driver's license",
+      "output": "RecognizePhilippinesDrivingLicenseOCRResponse",
+      "status": "online"
+    },
+    "RecognizePhilippinesSssIDOCR": {
+      "document": "This API is used to recognize a Philippine SSSID/UMID card.",
+      "input": "RecognizePhilippinesSssIDOCRRequest",
+      "name": "Recognizes a Philippine SSSID/UMID card",
+      "output": "RecognizePhilippinesSssIDOCRResponse",
+      "status": "online"
+    },
+    "RecognizePhilippinesTinIDOCR": {
+      "document": "This API is used to recognize a Philippine TIN ID card.",
+      "input": "RecognizePhilippinesTinIDOCRRequest",
+      "name": "Recognizes a Philippine TIN ID card",
+      "output": "RecognizePhilippinesTinIDOCRResponse",
+      "status": "online"
+    },
+    "RecognizePhilippinesVoteIDOCR": {
+      "document": "This API is used to recognize a Philippine voters ID card. It can recognize fields such as first name, family name, date of birth, civil status, citizenship, address, precinct, and voter's identification number (VIN).\n\nThe API request rate is limited to 20 requests/sec by default.",
+      "input": "RecognizePhilippinesVoteIDOCRRequest",
+      "name": "Recognizes a Philippine voters ID card",
+      "output": "RecognizePhilippinesVoteIDOCRResponse",
+      "status": "online"
+    },
     "TableOCR": {
       "document": "This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "TableOCRRequest",
@@ -974,6 +1009,647 @@
       ],
       "type": "object"
     },
+    "RecognizeIndonesiaIDCardOCRRequest": {
+      "document": "RecognizeIndonesiaIDCardOCR request structure.",
+      "members": [
+        {
+          "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
+          "example": "image",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether to return the identity photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "document": "The scene, which defaults to `V1`.\nValid values:\nV1\nV2",
+          "example": "无",
+          "member": "string",
+          "name": "Scene",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeIndonesiaIDCardOCRResponse": {
+      "document": "RecognizeIndonesiaIDCardOCR response structure.",
+      "members": [
+        {
+          "document": "The Single Identity Number.",
+          "example": "360XXXXXX",
+          "member": "string",
+          "name": "NIK",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The full name.",
+          "example": "INM",
+          "member": "string",
+          "name": "Nama",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The place and date of birth.",
+          "example": "JAKARTA 13-01-1987",
+          "member": "string",
+          "name": "TempatTglLahir",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The gender.",
+          "example": "LAKEI",
+          "member": "string",
+          "name": "JenisKelamin",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The blood type.",
+          "example": "o",
+          "member": "string",
+          "name": "GolDarah",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The address.",
+          "example": "BANJARSARI",
+          "member": "string",
+          "name": "Alamat",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The street.",
+          "example": "00/000",
+          "member": "string",
+          "name": "RTRW",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The village.",
+          "example": "PAKEMBINANGUN",
+          "member": "string",
+          "name": "KelDesa",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The region.",
+          "example": "LAKEI",
+          "member": "string",
+          "name": "Kecamatan",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The religion.",
+          "example": "ATHOLIK",
+          "member": "string",
+          "name": "Agama",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The marital status.",
+          "example": "KAWFN",
+          "member": "string",
+          "name": "StatusPerkawinan",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The occupation.",
+          "example": "KARYAWAN",
+          "member": "string",
+          "name": "Perkerjaan",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The nationality.",
+          "example": "INM",
+          "member": "string",
+          "name": "KewargaNegaraan",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The expiry date.",
+          "example": "SEUMUR",
+          "member": "string",
+          "name": "BerlakuHingga",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The issue date.",
+          "example": "15-05-2015",
+          "member": "string",
+          "name": "IssuedDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The photo.",
+          "example": "无",
+          "member": "string",
+          "name": "Photo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The province, which is supported when the value of `Scene` is `V2`.",
+          "example": "无",
+          "member": "string",
+          "name": "Provinsi",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The city, which is supported when the value of `Scene` is `V2`.",
+          "example": "无",
+          "member": "string",
+          "name": "Kota",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesDrivingLicenseOCRRequest": {
+      "document": "RecognizePhilippinesDrivingLicenseOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
+          "example": "image",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to return the identity photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesDrivingLicenseOCRResponse": {
+      "document": "RecognizePhilippinesDrivingLicenseOCR response structure.",
+      "members": [
+        {
+          "document": "The Base64-encoded identity photo.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "HeadPortrait",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The full name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Name",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The last name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "LastName",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The first name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "FirstName",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The middle name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "MiddleName",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The nationality.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Nationality",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The gender.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Sex",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The address.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Address",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The license No.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "LicenseNo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The expiration date.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "ExpiresDate",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The agency code.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "AgencyCode",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The date of birth.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Birthday",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesSssIDOCRRequest": {
+      "document": "RecognizePhilippinesSssIDOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to return the identity photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
+          "example": "image",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesSssIDOCRResponse": {
+      "document": "RecognizePhilippinesSssIDOCR response structure.",
+      "members": [
+        {
+          "document": "The Base64-encoded identity photo.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "HeadPortrait",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The common reference number (CRN).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "LicenseNumber",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The full name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "FullName",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The date of birth.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Birthday",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesTinIDOCRRequest": {
+      "document": "RecognizePhilippinesTinIDOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to return the identity photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
+          "example": "image",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesTinIDOCRResponse": {
+      "document": "RecognizePhilippinesTinIDOCR response structure.",
+      "members": [
+        {
+          "document": "The Base64-encoded identity photo.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "HeadPortrait",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The tax identification number (TIN).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "LicenseNumber",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "FullName",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The address.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Address",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The birth date.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Birthday",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The issue date.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "IssueDate",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesVoteIDOCRRequest": {
+      "document": "RecognizePhilippinesVoteIDOCR request structure.",
+      "members": [
+        {
+          "document": "Whether to return the identity photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
+          "example": "image",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesVoteIDOCRResponse": {
+      "document": "RecognizePhilippinesVoteIDOCR response structure.",
+      "members": [
+        {
+          "document": "The Base64-encoded identity photo.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "HeadPortrait",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The voter's identification number (VIN).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "VIN",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The first name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "FirstName",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The last name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "LastName",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The date of birth.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Birthday",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The civil status.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "CivilStatus",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The citizenship.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Citizenship",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The address.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Address",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The precinct.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "PrecinctNo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TableOCRRequest": {
       "document": "TableOCR request structure.",
       "members": [
@@ -1091,6 +1767,32 @@
           "example": "无",
           "member": "DetectedWordCoordPoint",
           "name": "WordCoordPoint",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TextDetectionResult": {
+      "document": "Recognition result",
+      "members": [
+        {
+          "default": "",
+          "document": "The recognized text line content.",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The coordinates, represented in the coordinates of the four points.",
+          "example": "无",
+          "member": "Coord",
+          "name": "Polygon",
           "required": true,
           "type": "list",
           "value_allowed_null": false

@@ -723,37 +723,34 @@
       "document": "A subtask of a scheme.",
       "members": [
         {
-          "default": "",
-          "document": "The subtask type.\n<li>`input`: The start.</li>\n<li>`output`: The end.</li>\n<li>`action-trans`: Transcoding.</li>\n<li>`action-samplesnapshot`: Sampled screencapturing.</li>\n<li>`action-AIAnalysis`: Content analysis.</li>\n<li>`action-AIRecognition`: Content recognition.</li>\n<li>`action-aiReview`: Content moderation.</li>\n<li>`action-animated-graphics`: Animated screenshot generation.</li>\n<li>`action-image-sprite`: Image sprite generation.</li>\n<li>`action-snapshotByTimeOffset`: Time point screencapturing.</li>\n<li>`action-adaptive-substream`: Adaptive bitrate streaming.</li>",
+          "document": "The subtask type.\n<li>`input`: The start.</li>\n<li>`output`: The end.</li>\n<li>`action-trans`: Transcoding.</li>\n<li>`action-samplesnapshot`: Sampled screencapturing.</li>\n<li>`action-AIAnalysis`: Content analysis.</li>\n<li>`action-AIRecognition`: Content recognition.</li>\n<li>`action-aiReview`: Content moderation.</li>\n<li>`action-animated-graphics`: Animated screenshot generation.</li>\n<li>`action-image-sprite`: Image sprite generation.</li>\n<li>`action-snapshotByTimeOffset`: Time point screencapturing.</li>\n<li>`action-adaptive-substream`: Adaptive bitrate streaming.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "input",
           "member": "string",
           "name": "ActivityType",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The indexes of the subsequent actions.",
+          "document": "The indexes of the subsequent actions.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ReardriveIndex",
           "required": false,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The parameters of a subtask.",
+          "document": "The parameters of a subtask.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ActivityPara",
           "name": "ActivityPara",
           "required": false,
           "type": "object",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ActivityPara": {
       "document": "A subtask of a scheme.",
@@ -1219,6 +1216,7 @@
         {
           "default": "",
           "document": "Task type. Valid values:\n<li>Classification: intelligent categorization</li>\n<li>Cover: intelligent cover generating</li>\n<li>Tag: intelligent tagging</li>\n<li>FrameTag: intelligent frame-specific tagging</li>\n<li>Highlight: intelligent highlight generating</li>",
+          "example": "Classification",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1228,6 +1226,7 @@
         {
           "default": "",
           "document": "Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.",
+          "example": "无",
           "member": "AiAnalysisTaskClassificationResult",
           "name": "ClassificationTask",
           "required": true,
@@ -1237,6 +1236,7 @@
         {
           "default": "",
           "document": "Query result of intelligent cover generating task in video content analysis, which is valid if task type is `Cover`.",
+          "example": "无",
           "member": "AiAnalysisTaskCoverResult",
           "name": "CoverTask",
           "required": true,
@@ -1246,6 +1246,7 @@
         {
           "default": "",
           "document": "Query result of intelligent tagging task in video content analysis, which is valid if task type is `Tag`.",
+          "example": "无",
           "member": "AiAnalysisTaskTagResult",
           "name": "TagTask",
           "required": true,
@@ -1255,8 +1256,19 @@
         {
           "default": "",
           "document": "Query result of intelligent frame-specific tagging task in video content analysis, which is valid if task type is `FrameTag`.",
+          "example": "无",
           "member": "AiAnalysisTaskFrameTagResult",
           "name": "FrameTagTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of a highlight generation task. This parameter is valid if `Type` is `Highlight`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskHighlightResult",
+          "name": "HighlightTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -1561,6 +1573,96 @@
       ],
       "usage": "out"
     },
+    "AiAnalysisTaskHighlightInput": {
+      "document": "The input of an intelligent highlight generation task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the intelligent highlight generation template.",
+          "member": "uint64",
+          "name": "Definition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskHighlightOutput": {
+      "document": "The output of an intelligent highlight generation task.",
+      "members": [
+        {
+          "default": "",
+          "document": "A list of the highlight segments generated.",
+          "member": "MediaAiAnalysisHighlightItem",
+          "name": "HighlightSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The storage location of the highlight segments.",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskHighlightResult": {
+      "document": "The result of an intelligent highlight generation task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. `0`: The task succeeded; other values: The task failed.",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of the intelligent highlight generation task.",
+          "member": "AiAnalysisTaskHighlightInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of the intelligent highlight generation task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "AiAnalysisTaskHighlightOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AiAnalysisTaskInput": {
       "document": "AI video intelligent analysis input parameter types",
       "members": [
@@ -1828,6 +1930,30 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AiQualityControlTaskInput": {
+      "document": "The parameters for a video quality control task.",
+      "members": [
+        {
+          "document": "The ID of the quality control template.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The channel extension parameter, which is a serialized JSON string.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ChannelExtPara",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5974,7 +6100,6 @@
       "document": "CreateSchedule request structure.",
       "members": [
         {
-          "default": "",
           "document": "The scheme name (max 128 characters). This name should be unique across your account.",
           "example": "trans-100020-100030-100040",
           "member": "string",
@@ -5983,7 +6108,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The trigger of the scheme. If a file is uploaded to the specified bucket, the scheme will be triggered.",
           "example": "无",
           "member": "WorkflowTrigger",
@@ -5992,7 +6116,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The subtasks of the scheme.",
           "example": "无",
           "member": "Activity",
@@ -6001,7 +6124,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The bucket to save the output file. If you do not specify this parameter, the bucket in `Trigger` will be used.",
           "example": "无",
           "member": "TaskOutputStorage",
@@ -6010,8 +6132,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "The directory to save the output file, such as `/movie/201907/`. If you do not specify this parameter, the directory of the source file will be used.",
+          "document": "The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.\nIf you do not specify this, the file will be saved to the trigger directory.",
           "example": "\"\"",
           "member": "string",
           "name": "OutputDir",
@@ -6019,7 +6140,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The notification configuration. If you do not specify this parameter, notifications will not be sent.",
           "example": "无",
           "member": "TaskNotifyConfig",
@@ -6387,7 +6507,6 @@
       "document": "CreateWorkflow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Workflow name of up to 128 characters, which must be unique for the same user.",
           "example": "trans-100020-100030-100040",
           "member": "string",
@@ -6396,7 +6515,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.",
           "example": "无",
           "member": "WorkflowTrigger",
@@ -6405,7 +6523,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The location to save the output file of media processing. If this parameter is left empty, the storage location in `Trigger` will be inherited.",
           "example": "无",
           "member": "TaskOutputStorage",
@@ -6414,8 +6531,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "The directory to save the media processing output file, such as `/movie/201907/`. If this parameter is left empty, the output file will be saved to the same directory where the source file is located.",
+          "document": "The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.\nIf you do not specify this, the file will be saved to the trigger directory.",
           "example": "\"\"",
           "member": "string",
           "name": "OutputDir",
@@ -6423,7 +6539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The media processing parameters to use.",
           "example": "无",
           "member": "MediaProcessTaskInput",
@@ -6432,7 +6547,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Type parameter of a video content audit task.",
           "example": "无",
           "member": "AiContentReviewTaskInput",
@@ -6441,7 +6555,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Video content analysis task parameter.",
           "example": "无",
           "member": "AiAnalysisTaskInput",
@@ -6450,7 +6563,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Type parameter of a video content recognition task.",
           "example": "无",
           "member": "AiRecognitionTaskInput",
@@ -6459,7 +6571,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Event notification configuration for a task. If this parameter is left empty, no event notifications will be obtained.",
           "example": "无",
           "member": "TaskNotifyConfig",
@@ -6468,7 +6579,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
           "example": "0",
           "member": "int64",
@@ -7441,7 +7551,6 @@
       "document": "DescribeSchedules request structure.",
       "members": [
         {
-          "default": "",
           "document": "The IDs of the schemes to query. Array length limit: 100.",
           "example": "无",
           "member": "int64",
@@ -7450,8 +7559,15 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "The scheme status. Valid values:\n<li>`Enabled`</li>\n<li>`Disabled`</li>\nIf you do not specify this parameter, schemes in both statuses will be returned.",
+          "document": "The trigger type. Valid values:\n<li>`CosFileUpload`: The scheme is triggered when a file is uploaded to Tencent Cloud Object Storage (COS).</li>\n<li>`AwsS3FileUpload`: The scheme is triggered when a file is uploaded to AWS S3.</li>\nIf you do not specify this parameter or leave it empty, all schemes will be returned regardless of the trigger type.",
+          "example": "无",
+          "member": "string",
+          "name": "TriggerType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The scheme status. Valid values:\n<li>`Enabled`</li>\n<li>`Disabled`</li>\nIf you do not specify this parameter, all schemes will be returned regardless of the status.",
           "example": "“”",
           "member": "string",
           "name": "Status",
@@ -7459,7 +7575,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The pagination offset. Default value: 0.",
           "example": "0",
           "member": "uint64",
@@ -7468,7 +7583,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The maximum number of records to return. Default value: 10. Maximum value: 100.",
           "example": "0",
           "member": "uint64",
@@ -8753,6 +8867,39 @@
       ],
       "usage": "in"
     },
+    "HighlightSegmentItem": {
+      "document": "The information of a highlight segment.",
+      "members": [
+        {
+          "default": "",
+          "document": "The confidence score.",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time offset of the segment.",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time offset of the segment.",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ImageQualityEnhanceConfig": {
       "document": "Overall enhancement configuration.",
       "members": [
@@ -9463,8 +9610,7 @@
       "document": "Result of AI-based live stream audit",
       "members": [
         {
-          "default": "",
-          "document": "The type of the moderation result. Valid values:\n<li>ImagePorn</li>\n<li>ImageTerrorism</li>\n<li>ImagePolitical</li>\n<li>PornVoice (pornographic content in speech)</li>",
+          "document": "The type of moderation result. Valid values:\n<li>ImagePorn</li>\n<li>ImageTerrorism</li>\n<li>ImagePolitical</li>\n<li>VoicePorn</li>",
           "example": "\"\"",
           "member": "string",
           "name": "Type",
@@ -9473,7 +9619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Result of porn information detection in image, which is valid when `Type` is `ImagePorn`.",
           "example": "无",
           "member": "LiveStreamAiReviewImagePornResult",
@@ -9483,7 +9628,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The result of detecting sensitive information in images, which is valid if `Type` is `ImageTerrorism`.",
           "example": "无",
           "member": "LiveStreamAiReviewImageTerrorismResult",
@@ -9493,7 +9637,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The result of detecting sensitive information in images, which is valid if `Type` is `ImagePolitical`.",
           "example": "无",
           "member": "LiveStreamAiReviewImagePoliticalResult",
@@ -9503,8 +9646,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Result of porn information detection in speech, which is valid when `Type` is `PornVoice`.",
+          "document": "The result for moderation of pornographic content in audio. This parameter is valid if `Type` is `VoicePorn`.",
           "example": "无",
           "member": "LiveStreamAiReviewVoicePornResult",
           "name": "VoicePornResultSet",
@@ -10190,6 +10332,57 @@
           "document": "List of tags in time period.",
           "member": "MediaAiAnalysisFrameTagItem",
           "name": "TagSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MediaAiAnalysisHighlightItem": {
+      "document": "The information of intelligently generated highlight segments.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL of the highlight segments.",
+          "member": "string",
+          "name": "HighlightPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URL of the thumbnail.",
+          "member": "string",
+          "name": "CovImgPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The confidence score. Value range: 0-100.",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The duration of the highlights.",
+          "member": "float",
+          "name": "Duration",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A list of the highlight segments.",
+          "member": "HighlightSegmentItem",
+          "name": "SegmentSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -12497,7 +12690,6 @@
       "document": "ModifySchedule request structure.",
       "members": [
         {
-          "default": "",
           "document": "The scheme ID.",
           "example": "20010",
           "member": "int64",
@@ -12506,7 +12698,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The scheme name.",
           "example": "“”",
           "member": "string",
@@ -12515,7 +12706,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The trigger of the scheme.",
           "example": "无",
           "member": "WorkflowTrigger",
@@ -12524,7 +12714,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The subtasks of the scheme.\nNote: You need to pass in the full list of subtasks even if you want to change only some of the subtasks.",
           "example": "无",
           "member": "Activity",
@@ -12533,7 +12722,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The bucket to save the output file.",
           "example": "无",
           "member": "TaskOutputStorage",
@@ -12542,8 +12730,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "The directory to save the output file.\nNote: If this parameter is left empty, the current `OutputDir` value will be invalidated.",
+          "document": "The directory to save the media processing output file, which must start and end with `/`.\nNote: If this parameter is left empty, the current `OutputDir` value will be invalidated.",
           "example": "无",
           "member": "string",
           "name": "OutputDir",
@@ -12551,7 +12738,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The notification configuration.",
           "example": "无",
           "member": "TaskNotifyConfig",
@@ -13111,7 +13297,6 @@
       "document": "Custom specification parameters for video processing, which are used to override corresponding parameters in templates.",
       "members": [
         {
-          "default": "",
           "document": "Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.",
           "example": "mp4",
           "member": "string",
@@ -13121,7 +13306,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
           "example": "0",
           "member": "uint64",
@@ -13131,7 +13315,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
           "example": "0",
           "member": "uint64",
@@ -13141,7 +13324,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Video stream configuration parameter.",
           "example": "NULL",
           "member": "VideoTemplateInfoForUpdate",
@@ -13151,7 +13333,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Audio stream configuration parameter.",
           "example": "NULL",
           "member": "AudioTemplateInfoForUpdate",
@@ -13161,7 +13342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TESHD transcoding parameter.",
           "example": "NULL",
           "member": "TEHDConfigForUpdate",
@@ -13171,7 +13351,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The subtitle settings.",
           "example": "NULL",
           "member": "SubtitleTemplate",
@@ -13179,6 +13358,15 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The information of the external audio track to add.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaInputInfo",
+          "name": "AddonAudioStream",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -14021,7 +14209,6 @@
       "document": "ProcessMedia request structure.",
       "members": [
         {
-          "default": "",
           "document": "The information of the file to process.",
           "example": "无",
           "member": "MediaInputInfo",
@@ -14030,7 +14217,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The storage location of the media processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.",
           "example": "无",
           "member": "TaskOutputStorage",
@@ -14039,8 +14225,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "The directory to save the media processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be saved to the directory in `InputInfo`.",
+          "document": "The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.\nIf you do not specify this parameter, the file will be saved to the directory specified in `InputInfo`.",
           "example": "无",
           "member": "string",
           "name": "OutputDir",
@@ -14048,79 +14233,6 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "The media processing parameters to use.",
-          "example": "无",
-          "member": "MediaProcessTaskInput",
-          "name": "MediaProcessTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Type parameter of a video content audit task.",
-          "example": "无",
-          "member": "AiContentReviewTaskInput",
-          "name": "AiContentReviewTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Video content analysis task parameter.",
-          "example": "无",
-          "member": "AiAnalysisTaskInput",
-          "name": "AiAnalysisTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Type parameter of a video content recognition task.",
-          "example": "无",
-          "member": "AiRecognitionTaskInput",
-          "name": "AiRecognitionTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.",
-          "example": "无",
-          "member": "TaskNotifyConfig",
-          "name": "TaskNotifyConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
-          "example": "无",
-          "member": "int64",
-          "name": "TasksPriority",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
-          "example": "无",
-          "member": "string",
-          "name": "SessionId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "example": "无",
-          "member": "string",
-          "name": "SessionContext",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "The scheme ID.\nNote 1: About `OutputStorage` and `OutputDir`\n<li>If an output storage and directory are specified for a subtask of the scheme, those output settings will be applied.</li>\n<li>If an output storage and directory are not specified for the subtasks of a scheme, the output parameters passed in the `ProcessMedia` API will be applied.</li>\nNote 2: If `TaskNotifyConfig` is specified, the specified settings will be used instead of the default callback settings of the scheme.\n\nNote 3: The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.",
           "example": "无",
           "member": "int64",
@@ -14129,7 +14241,78 @@
           "type": "int"
         },
         {
-          "default": "",
+          "document": "The media processing parameters to use.",
+          "example": "无",
+          "member": "MediaProcessTaskInput",
+          "name": "MediaProcessTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Type parameter of a video content audit task.",
+          "example": "无",
+          "member": "AiContentReviewTaskInput",
+          "name": "AiContentReviewTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Video content analysis task parameter.",
+          "example": "无",
+          "member": "AiAnalysisTaskInput",
+          "name": "AiAnalysisTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Type parameter of a video content recognition task.",
+          "example": "无",
+          "member": "AiRecognitionTaskInput",
+          "name": "AiRecognitionTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The parameters of a quality control task.",
+          "example": "无",
+          "member": "AiQualityControlTaskInput",
+          "name": "AiQualityControlTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.",
+          "example": "无",
+          "member": "TaskNotifyConfig",
+          "name": "TaskNotifyConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
+          "example": "无",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
           "document": "The task type.\n<li> `Online` (default): A task that is executed immediately.</li>\n<li> `Offline`: A task that is executed when the system is idle (within three days by default).</li>",
           "example": "Online",
           "member": "string",
@@ -14338,6 +14521,120 @@
         }
       ],
       "usage": "in"
+    },
+    "QualityControlData": {
+      "document": "The quality check output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether there is an audio track. `true` indicates that there isn't.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "NoAudio",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether there is a video track. `true` indicates that there isn't.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "NoVideo",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The no-reference video quality score. Value range: 0-100.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "95",
+          "member": "int64",
+          "name": "QualityEvaluationScore",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The issues detected by quality control.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "QualityControlResult",
+          "name": "QualityControlResultSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "QualityControlItem": {
+      "document": "The information of a checked segment in quality control.",
+      "members": [
+        {
+          "document": "The confidence score. Value range: 0-100.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "Confidence",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The start timestamp (second) of the segment.",
+          "example": "12.3",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The end timestamp (second) of the segment.",
+          "example": "15.7",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The coordinates (px) of the top left and bottom right corner.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "AreaCoordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "QualityControlResult": {
+      "document": "The issues detected by quality control.",
+      "members": [
+        {
+          "default": "",
+          "document": "The issue type. Valid values:\n`Jitter`\n`Blur`\n`LowLighting`\n`HighLighting` (overexposure)\n`CrashScreen` (video corruption)\n`BlackWhiteEdge`\n`SolidColorScreen` (blank screen)\n`Noise`\n`Mosaic` (pixelation)\n`QRCode`\n`AppletCode` (Weixin Mini Program code)\n`BarCode`\n`LowVoice`\n`HighVoice`\n`NoVoice`\n`LowEvaluation` (low no-reference video quality score)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The information of a checked segment in quality control.",
+          "example": "无",
+          "member": "QualityControlItem",
+          "name": "QualityControlItems",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "RawImageWatermarkInput": {
       "document": "Input parameter of image watermark template",
@@ -14935,6 +15232,72 @@
       ],
       "usage": "out"
     },
+    "ScheduleQualityControlTaskResult": {
+      "document": "The result of a quality control task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "\"xx\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of the quality control task.",
+          "example": "NULL",
+          "member": "AiQualityControlTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of the quality control task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "QualityControlData",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ScheduleRecognitionTaskResult": {
       "document": "The result of a content recognition task of a scheme.",
       "members": [
@@ -15071,7 +15434,6 @@
       "document": "The information of a scheme.",
       "members": [
         {
-          "default": "",
           "document": "The scheme ID.",
           "example": "NULL",
           "member": "string",
@@ -15081,7 +15443,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The scheme status. Valid values:\n<li>PROCESSING</li>\n<li>FINISH</li>",
           "example": "NULL",
           "member": "string",
@@ -15091,7 +15452,24 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "document": "If the value returned is not 0, there was a source error. If 0 is returned, refer to the error codes of the corresponding task type.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
           "document": "The information of the file processed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NULL",
           "member": "MediaInputInfo",
@@ -15101,7 +15479,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The metadata of the source video.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NULL",
           "member": "MediaMetaData",
@@ -15111,7 +15488,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The output of the scheme.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NULL",
           "member": "ActivityResult",
@@ -17440,7 +17816,6 @@
       "document": "The information of the media processing task.",
       "members": [
         {
-          "default": "",
           "document": "The media processing task ID.",
           "example": "NULL",
           "member": "string",
@@ -17450,7 +17825,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task flow status. Valid values:\n<li>PROCESSING: Processing;</li>\n<li>FINISH: Completed.</li>",
           "example": "NULL",
           "member": "string",
@@ -17460,7 +17834,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "If the value returned is not 0, there was a source error. If 0 is returned, refer to the error codes of the corresponding task type.",
           "example": "NULL",
           "member": "int64",
@@ -17470,7 +17843,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Except those for source errors, error messages vary with task type.",
           "example": "NULL",
           "member": "string",
@@ -17480,7 +17852,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The information of the file processed.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "NULL",
           "member": "MediaInputInfo",
@@ -17490,7 +17861,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Metadata of a source video.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NULL",
           "member": "MediaMetaData",
@@ -17500,7 +17870,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The execution status and result of the media processing task.",
           "example": "NULL",
           "member": "MediaProcessTaskResult",
@@ -17510,7 +17879,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution status and result of a video content audit task.",
           "example": "NULL",
           "member": "AiContentReviewResult",
@@ -17520,7 +17888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution status and result of video content analysis task.",
           "example": "NULL",
           "member": "AiAnalysisResult",
@@ -17530,7 +17897,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution status and result of a video content recognition task.",
           "example": "NULL",
           "member": "AiRecognitionResult",
@@ -17538,6 +17904,15 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The execution status and result of a quality control task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "ScheduleQualityControlTaskResult",
+          "name": "AiQualityControlTaskResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

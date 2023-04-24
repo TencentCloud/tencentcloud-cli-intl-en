@@ -78,7 +78,7 @@
       "status": "online"
     },
     "CreateImageProcessingTemplate": {
-      "document": "This API is used to create a custom image processing template. You can create up to 16 templates, and each template can contain up to three operations, for example, cropping, scaling, and cropping again.",
+      "document": "This API is used to create a custom image processing template. A template can include at most 10 operations, for example, crop-scale-crop-blur-scale-crop-scale-crop-blur-scale. You can have up to 16 image processing templates.",
       "input": "CreateImageProcessingTemplateRequest",
       "name": "Creates an image processing template",
       "output": "CreateImageProcessingTemplateResponse",
@@ -103,6 +103,13 @@
       "input": "CreateProcedureTemplateRequest",
       "name": "Creates a task flow template",
       "output": "CreateProcedureTemplateResponse",
+      "status": "online"
+    },
+    "CreateRebuildMediaTemplate": {
+      "document": "This API is used to create a remaster template.",
+      "input": "CreateRebuildMediaTemplateRequest",
+      "name": "Creates a remaster template",
+      "output": "CreateRebuildMediaTemplateResponse",
       "status": "online"
     },
     "CreateReviewTemplate": {
@@ -257,6 +264,13 @@
       "input": "DeleteProcedureTemplateRequest",
       "name": "Deletes a task flow template",
       "output": "DeleteProcedureTemplateResponse",
+      "status": "online"
+    },
+    "DeleteRebuildMediaTemplate": {
+      "document": "This API is used to delete a remaster template.",
+      "input": "DeleteRebuildMediaTemplateRequest",
+      "name": "Deletes a remaster template",
+      "output": "DeleteRebuildMediaTemplateResponse",
       "status": "online"
     },
     "DeleteReviewTemplate": {
@@ -474,6 +488,13 @@
       "input": "DescribeProcedureTemplatesRequest",
       "name": "Gets the list of task flow templates",
       "output": "DescribeProcedureTemplatesResponse",
+      "status": "online"
+    },
+    "DescribeRebuildMediaTemplates": {
+      "document": "This API is used to query remaster templates.",
+      "input": "DescribeRebuildMediaTemplatesRequest",
+      "name": "Queries remaster templates",
+      "output": "DescribeRebuildMediaTemplatesResponse",
       "status": "online"
     },
     "DescribeReviewDetails": {
@@ -700,6 +721,13 @@
       "output": "ModifyPersonSampleResponse",
       "status": "online"
     },
+    "ModifyRebuildMediaTemplate": {
+      "document": "This API is used to modify a remaster template.",
+      "input": "ModifyRebuildMediaTemplateRequest",
+      "name": "Modifies a remaster template",
+      "output": "ModifyRebuildMediaTemplateResponse",
+      "status": "online"
+    },
     "ModifyReviewTemplate": {
       "document": "This API is used to modify a custom moderation template.\n> The templates can only be used by the APIs [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).",
       "input": "ModifyReviewTemplateRequest",
@@ -840,6 +868,13 @@
       "output": "RebuildMediaResponse",
       "status": "online"
     },
+    "RebuildMediaByTemplate": {
+      "document": "This API is used to start a remaster task using a template.",
+      "input": "RebuildMediaByTemplateRequest",
+      "name": "Starts a remaster task using a template",
+      "output": "RebuildMediaByTemplateResponse",
+      "status": "online"
+    },
     "RefreshUrlCache": {
       "document": "1. This API is used to purge URLs.\n2. The URL domain names must have already been registered with VOD.\n3. Up to 20 URLs can be specified in one request.\n4. By default, the maximum number of URLs allowed for purge per day is 100,000.",
       "input": "RefreshUrlCacheRequest",
@@ -883,7 +918,7 @@
       "status": "online"
     },
     "SearchMedia": {
-      "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of labels (`Tags`). Any file that matches one or more of the labels will be returned. For example, assume that there are labels `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either label will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the file formats (`MediaTypes`), such as MP4, AVI, and MP3. All files in the specified formats will be returned. For example, if you set `MediaTypes` to MP4 and MP3, all files in these two formats will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the label \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
+      "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of labels (`Tags`). Any file that matches one or more of the labels will be returned. For example, assume that there are labels `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either label will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the file formats (`MediaTypes`), such as MP4, AVI, and MP3. All files in the specified formats will be returned. For example, if you set `MediaTypes` to MP4 and MP3, all files in these two formats will be returned.\n- Specify the file statuses (`Status`). Files in the specified statuses will be returned. Valid values: `Normal`, `SystemForbidden` (blocked by VOD), `Forbidden` (blocked by you). If you set `Status` to `Normal` and `Forbidden`, files in either status will be returned.\n- Specify the types of moderation results (`ReviewResults`). Files that have the specified types of moderation results will be returned. Valid values include `pass`, `block`, and more. If you set `ReviewResults` to `pass` and `block`, files whose moderation result is \"pass\" or \"block\" will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the label \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
       "input": "SearchMediaRequest",
       "name": "Searches for media information",
       "output": "SearchMediaResponse",
@@ -7155,24 +7190,24 @@
       "document": "ConfirmEvents request structure.",
       "members": [
         {
-          "default": "",
           "document": "Event handler, i.e., the `EventSet. EventHandle` field in the output parameters of the [event notification pulling](https://intl.cloud.tencent.com/document/product/266/33433?from_cn_redirect=1) API.\nArray length limit: 16.",
+          "example": "无",
           "member": "string",
           "name": "EventHandles",
           "required": true,
           "type": "list"
         },
         {
-          "default": "",
           "document": "Reserved field for special purposes.",
+          "example": "无",
           "member": "string",
           "name": "ExtInfo",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -8150,8 +8185,7 @@
       "document": "CreateImageProcessingTemplate request structure.",
       "members": [
         {
-          "default": "",
-          "document": "An array of image processing operations. The operations will be performed in the specified order.\n<li>Length limit: 3.</li>",
+          "document": "An array of image processing operations. The operations will be performed in the specified order.\n<li>Length limit: 10.</li>",
           "example": "无",
           "member": "ImageOperation",
           "name": "Operations",
@@ -8159,7 +8193,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
           "example": "123",
           "member": "uint64",
@@ -8168,7 +8201,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The name of the image processing template. Length limit: 64 characters.",
           "example": "MyCenterCut",
           "member": "string",
@@ -8177,7 +8209,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The template description. Length limit: 256 characters.",
           "example": "MyCenterCut",
           "member": "string",
@@ -8579,6 +8610,112 @@
     "CreateProcedureTemplateResponse": {
       "document": "CreateProcedureTemplate response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRebuildMediaTemplateRequest": {
+      "document": "CreateRebuildMediaTemplate request structure.",
+      "members": [
+        {
+          "document": "The output container format. Valid values: `mp4`, `flv`, `hls`.",
+          "example": "无",
+          "member": "string",
+          "name": "Container",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The remaster template name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The template description.",
+          "example": "无",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The video remaster parameters.",
+          "example": "无",
+          "member": "RebuildVideoInfo",
+          "name": "RebuildVideoInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The audio remaster parameters.",
+          "example": "无",
+          "member": "RebuildAudioInfo",
+          "name": "RebuildAudioInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The output video parameters.",
+          "example": "无",
+          "member": "RebuildMediaTargetVideoStream",
+          "name": "TargetVideoInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The output audio parameters.",
+          "example": "无",
+          "member": "RebuildMediaTargetAudioStream",
+          "name": "TargetAudioInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Whether to remove video data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>\nDefault value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "RemoveVideo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to remove audio data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>\nDefault value: 0.",
+          "example": "无",
+          "member": "string",
+          "name": "RemoveAudio",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRebuildMediaTemplateResponse": {
+      "document": "CreateRebuildMediaTemplate response structure.",
+      "members": [
+        {
+          "document": "The remaster template ID.",
+          "example": "10000",
+          "member": "int64",
+          "name": "Definition",
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -9847,6 +9984,40 @@
     },
     "DeleteProcedureTemplateResponse": {
       "document": "DeleteProcedureTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRebuildMediaTemplateRequest": {
+      "document": "DeleteRebuildMediaTemplate request structure.",
+      "members": [
+        {
+          "document": "The remaster template ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "int64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRebuildMediaTemplateResponse": {
+      "document": "DeleteRebuildMediaTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -11631,7 +11802,6 @@
       "document": "DescribeMediaProcessUsageData request structure.",
       "members": [
         {
-          "default": "",
           "document": "Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2020-09-07T00:00:00+08:00",
           "member": "string",
@@ -11640,7 +11810,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.",
           "example": "2020-09-09T23:59:59+08:00",
           "member": "string",
@@ -11649,7 +11818,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
           "example": "无",
           "member": "uint64",
@@ -11658,8 +11826,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "The type of media processing task. Valid values:\n<li>Transcoding: General transcoding</li>\n<li>Transcoding-TESHD: Top Speed Codec transcoding</li>\n<li>Editing: Video editing</li>\n<li>Editing-TESHD: Top Speed Codec editing</li>\n<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>\n<li>ContentAudit: Content moderation</li>\n<li> ContentRecognition: Content recognition</li>\n<li>RemoveWatermark: Watermark removal</li>\n<li> ExtractTraceWatermark: Digital watermark extraction</li>\n<li> AddTraceWatermark: Digital watermarking</li>\n<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>",
+          "document": "The type of media processing task. Valid values:\n<li>`Transcoding`: General transcoding</li>\n<li>`Transcoding-TESHD`: Top Speed Codec transcoding</li>\n<li>`Editing`: Video editing</li>\n<li>`Editing-TESHD`: Top Speed Codec editing</li>\n<li>`AdaptiveBitrateStreaming`: Adaptive bitrate streaming</li>\n<li>`ContentAudit`: Content moderation</li>\n<li>`ContentRecognition`: Content recognition</li>\n<li>`RemoveWatermark`: Watermark removal</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`AddTraceWatermark`: Digital watermarking</li>\n<li>`RebuildMedia`: Remaster</li>\n<li>`Transcode` Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>",
           "example": "Transcoding-TESHD",
           "member": "string",
           "name": "Type",
@@ -11843,6 +12010,80 @@
           "document": "List of task flow template details.",
           "member": "ProcedureTemplate",
           "name": "ProcedureTemplateSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRebuildMediaTemplatesRequest": {
+      "document": "DescribeRebuildMediaTemplates request structure.",
+      "members": [
+        {
+          "document": "The remaster template IDs.",
+          "example": "无",
+          "member": "int64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "int64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The template type. Valid values:\n<li>`Preset`</li>\n<li>`Custom`</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The pagination offset. Default value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records to return. Default value: 10. Maximum value: 100.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRebuildMediaTemplatesResponse": {
+      "document": "DescribeRebuildMediaTemplates response structure.",
+      "members": [
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The details of the remaster templates.",
+          "example": "无",
+          "member": "RebuildMediaTemplate",
+          "name": "RebuildMediaTemplateSet",
           "type": "list",
           "value_allowed_null": false
         },
@@ -14716,6 +14957,42 @@
       ],
       "usage": "in"
     },
+    "ImageBlur": {
+      "document": "Image blurring parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The blur type. Valid values:\n<li>`Gaussian`</li>",
+          "example": "Gaussian",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The radius of the blur. Value range: 1-50. This parameter is valid if `Type` is `Gaussian`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Radius",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The standard deviation of the Gaussian distribution, which must be greater than 0. This parameter is valid if `Type` is `Gaussian`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Sigma",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ImageCenterCut": {
       "document": "Image cropping details.",
       "members": [
@@ -14762,8 +15039,8 @@
       "document": "An image operation.",
       "members": [
         {
-          "default": "",
           "document": "The image processing type. Valid values:\n<li>`Scale`: Scaling</li>\n<li>`CenterCut`: Cropping</li>",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -14771,8 +15048,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The scaling details. This parameter is valid only if `Type` is `Scale`.",
+          "example": "无",
           "member": "ImageScale",
           "name": "Scale",
           "required": false,
@@ -14780,10 +15057,19 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The cropping details. This parameter is valid only if `Type` is `CenterCut`.",
+          "example": "无",
           "member": "ImageCenterCut",
           "name": "CenterCut",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image blurring. This parameter is valid only if `Type` is `Blur`.",
+          "example": "无",
+          "member": "ImageBlur",
+          "name": "Blur",
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -19505,6 +19791,112 @@
       ],
       "type": "object"
     },
+    "ModifyRebuildMediaTemplateRequest": {
+      "document": "ModifyRebuildMediaTemplate request structure.",
+      "members": [
+        {
+          "document": "The remaster template ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The remaster template name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The template description.",
+          "example": "无",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The video remaster parameters.",
+          "example": "无",
+          "member": "RebuildVideoInfo",
+          "name": "RebuildVideoInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The audio remaster parameters.",
+          "example": "无",
+          "member": "RebuildAudioInfo",
+          "name": "RebuildAudioInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The output video parameters.",
+          "example": "无",
+          "member": "RebuildMediaTargetVideoStream",
+          "name": "TargetVideoInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The output audio parameters.",
+          "example": "无",
+          "member": "RebuildMediaTargetAudioStream",
+          "name": "TargetAudioInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The output container format. Valid values: `mp4`, `flv`, `hls`.",
+          "example": "无",
+          "member": "string",
+          "name": "Container",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether to remove video data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>",
+          "example": "无",
+          "member": "int64",
+          "name": "RemoveVideo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to remove audio data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>",
+          "example": "无",
+          "member": "int64",
+          "name": "RemoveAudio",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRebuildMediaTemplateResponse": {
+      "document": "ModifyRebuildMediaTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyReviewTemplateRequest": {
       "document": "ModifyReviewTemplate request structure.",
       "members": [
@@ -22518,7 +22910,6 @@
       "document": "PullUpload request structure.",
       "members": [
         {
-          "default": "",
           "document": "The URL of the media to pull, which can be in HLS format, but not DASH format.\nFor more information about supported extensions, see [Media types](https://intl.cloud.tencent.com/document/product/266/9760#media-types). Please make sure the URL is accessible.",
           "example": "http://www.abc.com/abc.mp4",
           "member": "string",
@@ -22527,7 +22918,14 @@
           "type": "string"
         },
         {
-          "default": "",
+          "document": "The file format (extension). For information about supported extensions, see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).\nIf you do not specify this parameter or pass in an empty string, the file obtained will have the same extension as `MediaUrl`.",
+          "example": "mp4",
+          "member": "string",
+          "name": "MediaType",
+          "required": false,
+          "type": "string"
+        },
+        {
           "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
           "example": "无",
           "member": "uint64",
@@ -22536,7 +22934,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Media name.",
           "example": "无",
           "member": "string",
@@ -22545,7 +22942,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The URL of the video to pull. Supported formats include GIF, JPEG (JPG), and PNG.",
           "example": "无",
           "member": "string",
@@ -22554,7 +22950,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subsequent task for media. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1).",
           "example": "无",
           "member": "string",
@@ -22563,7 +22958,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
           "example": "无",
           "member": "datetime_iso",
@@ -22572,7 +22966,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies upload region. This is only applicable to users that have special requirements for the upload region:\n<li>If it is left empty, the upload region is your [default region](https://intl.cloud.tencent.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4);</li>\n<li>If it is specified, please make sure that the upload region has been [enabled for storage](https://intl.cloud.tencent.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li>",
           "example": "无",
           "member": "string",
@@ -22581,7 +22974,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.",
           "example": "无",
           "member": "int64",
@@ -22590,7 +22982,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The source context which is used to pass through the user request information. After `Procedure` is specified, the task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
           "example": "无",
           "member": "string",
@@ -22599,7 +22990,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
           "example": "无",
           "member": "string",
@@ -22608,7 +22998,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Reserved field for special purposes.",
           "example": "无",
           "member": "string",
@@ -22617,7 +23006,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters.",
           "example": "无",
           "member": "string",
@@ -22805,6 +23193,160 @@
         }
       ],
       "type": "object"
+    },
+    "RebuildAudioInfo": {
+      "document": "The audio remaster parameters.",
+      "members": [
+        {
+          "document": "The noise removal parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioDenoiseInfo",
+          "name": "AudioDenoiseInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RebuildMediaByTemplateRequest": {
+      "document": "RebuildMediaByTemplate request structure.",
+      "members": [
+        {
+          "document": "The file ID.",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The remaster template ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.",
+          "example": "无",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The end offset (seconds). If you do not specify this, the segment will end at the end of the video.",
+          "example": "无",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "document": "The parameters for the output file of remastering.",
+          "example": "无",
+          "member": "RebuildMediaOutputConfig",
+          "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The task priority, which can be a value from -10 to 10. The higher the value, the higher the priority. If this parameter is left empty, 0 will be used.",
+          "example": "无",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "A reserved parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RebuildMediaByTemplateResponse": {
+      "document": "RebuildMediaByTemplate response structure.",
+      "members": [
+        {
+          "document": "The ID of the remaster task. You need to provide this ID to query the task status.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RebuildMediaOutputConfig": {
+      "document": "The parameters for the output file of a remaster task.",
+      "members": [
+        {
+          "ValueAllowedNull": true,
+          "document": "The filename. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.",
+          "example": "name",
+          "member": "string",
+          "name": "MediaName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "ValueAllowedNull": true,
+          "document": "The ID of the file's category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the \"Other\" category.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "ValueAllowedNull": true,
+          "document": "The expiration time of the output file, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?lang=en&pg=). The file will be deleted after the specified expiration time. By default, the file will never expire.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "RebuildMediaRequest": {
       "document": "RebuildMedia request structure.",
@@ -23356,6 +23898,15 @@
           "value_allowed_null": false
         },
         {
+          "document": "The ID of the remaster template.",
+          "example": "无",
+          "member": "int64",
+          "name": "Definition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "The video quality remastering parameters.",
           "example": "无",
           "member": "RepairInfo",
@@ -23534,6 +24085,234 @@
         }
       ],
       "usage": "out"
+    },
+    "RebuildMediaTemplate": {
+      "document": "The details of a remaster template.",
+      "members": [
+        {
+          "document": "The remaster template ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Definition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The template type. Valid values:\n<li>`Preset`</li>\n<li>`Custom`</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The remaster template name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The template description.",
+          "example": "无",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video remaster parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RebuildVideoInfo",
+          "name": "RebuildVideoInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The audio remaster parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RebuildAudioInfo",
+          "name": "RebuildAudioInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The output video parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RebuildMediaTargetVideoStream",
+          "name": "TargetVideoInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The output audio parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RebuildMediaTargetAudioStream",
+          "name": "TargetAudioInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The output file format. Valid values: `mp4` (default), `hls`.",
+          "example": "无",
+          "member": "string",
+          "name": "Container",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to remove video data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>\nDefault value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "RemoveVideo",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to remove audio data. Valid values:\n<li>`0`: No</li>\n<li>`1`: Yes</li>\nDefault value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "RemoveAudio",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The template creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The last updated time of the template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RebuildVideoInfo": {
+      "document": "The video remaster parameters.",
+      "members": [
+        {
+          "document": "The image restoration parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RepairInfo",
+          "name": "RepairInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The smart frame interpolation parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoFrameInterpolationInfo",
+          "name": "VideoFrameInterpolationInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The super resolution parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SuperResolutionInfo",
+          "name": "SuperResolutionInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The high dynamic range (HDR) configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "HDRInfo",
+          "name": "HDRInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The image noise removal parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoDenoiseInfo",
+          "name": "VideoDenoiseInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The color enhancement parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ColorEnhanceInfo",
+          "name": "ColorInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The detail enhancement parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SharpEnhanceInfo",
+          "name": "SharpInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The face enhancement parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FaceEnhanceInfo",
+          "name": "FaceInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The low-light enhancement parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LowLightEnhanceInfo",
+          "name": "LowLightInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The banding removal parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScratchRepairInfo",
+          "name": "ScratchRepairInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The artifact removal parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ArtifactRepairInfo",
+          "name": "ArtifactRepairInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ReduceMediaBitrateAdaptiveDynamicStreamingResult": {
       "document": "The information of an adaptive bitrate (bitrate reduction) task.",
@@ -25629,7 +26408,7 @@
           "type": "list"
         },
         {
-          "document": "",
+          "document": "The file statuses.\n<li>`Normal`</li>\n<li>`SystemForbidden` (blocked by VOD)</li>\n<li>`Forbidden` (blocked by you)</li>",
           "example": "无",
           "member": "string",
           "name": "Status",
@@ -25637,7 +26416,7 @@
           "type": "list"
         },
         {
-          "document": "",
+          "document": "The types of moderation result.\n<li>`pass`</li>\n<li>`review` (the content may be non-compliant and needs to be reviewed)</li>\n<li>`block` (the content is non-compliant and should be blocked)</li>\n<li>`notModerated` (the file hasn't been moderated yet)</li>",
           "example": "无",
           "member": "string",
           "name": "ReviewResults",
@@ -27114,8 +27893,7 @@
       "document": "Video processing task statistics.",
       "members": [
         {
-          "default": "",
-          "document": "The task type.\n<li>Transcoding: General transcoding</li>\n<li>Transcoding-TESHD: Top Speed Codec transcoding</li>\n<li>Editing: Video editing</li>\n<li>Editing-TESHD: Top Speed Codec editing</li>\n<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>\n<li>ContentAudit: Content moderation</li>\n<li> ContentRecognition: Content recognition</li>\n<li>RemoveWatermark: Watermark removal</li>\n<li> ExtractTraceWatermark: Digital watermark extraction</li>\n<li> AddTraceWatermark: Digital watermarking</li>\n<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>",
+          "document": "The task type.\n<li>`Transcoding`: General transcoding</li>\n<li>`Transcoding-TESHD`: Top Speed Codec transcoding</li>\n<li>`Editing`: Video editing</li>\n<li>`Editing-TESHD`: Top Speed Codec editing</li>\n<li>`AdaptiveBitrateStreaming`: Adaptive bitrate streaming</li>\n<li>ContentAudit: Content moderation</li>\n<li>`ContentRecognition`: Content recognition</li>\n<li>RemoveWatermark: Watermark removal</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`AddTraceWatermark`: Digital watermarking</li>\n<li>`RebuildMedia`: Remaster</li>\n<li>`Transcode` Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>",
           "example": "无",
           "member": "string",
           "name": "TaskType",
@@ -27124,7 +27902,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task statistics overview (usage unit: second).",
           "example": "无",
           "member": "TaskStatDataItem",
@@ -27134,8 +27911,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The detailed statistics of different tasks.\nTranscoding:\n<li>Remuxing</li>\n<li>Audio</li>\n<li>Standard.H264.SD</li>\n<li>Standard.H264.HD</li>\n<li>Standard.H264.FHD</li>\n<li>Standard.H264.2K</li>\n<li>Standard.H264.4K</li>\n<li>Standard.H265.SD</li>\n<li>Standard.H265.HD</li>\n<li>Standard.H265.FHD</li>\n<li>Standard.H265.2K</li>\n<li>Standard.H265.4K</li>\n<li>TESHD-10.H264.SD</li>\n<li>TESHD-10.H264.HD</li>\n<li>TESHD-10.H264.FHD</li>\n<li>TESHD-10.H264.2K</li>\n<li>TESHD-10.H264.4K</li>\n<li>TESHD-10.H265.SD</li>\n<li>TESHD-10.H265.HD</li>\n<li>TESHD-10.H265.FHD</li>\n<li>TESHD-10.H265.2K</li>\n<li>TESHD-10.H265.4K</li>\n<li>Edit.Audio</li>\n<li>Edit.H264.SD</li>\n<li>Edit.H264.HD</li>\n<li>Edit.H264.FHD</li>\n<li>Edit.H264.2K</li>\n<li>Edit.H264.4K</li>\n<li>Edit.H265.SD</li>\n<li>Edit.H265.HD</li>\n<li>Edit.H265.FHD</li>\n<li>Edit.H265.2K</li>\n<li>Edit.H265.4K</li>\n<li>Edit.TESHD-10.H264.SD</li>\n<li>Edit.TESHD-10.H264.HD</li>\n<li>Edit.TESHD-10.H264.FHD</li>\n<li>Edit.TESHD-10.H264.2K</li>\n<li>Edit.TESHD-10.H264.4K</li>\n<li>Edit.TESHD-10.H265.SD</li>\n<li>Edit.TESHD-10.H265.HD</li>\n<li>Edit.TESHD-10.H265.FHD</li>\n<li>Edit.TESHD-10.H265.2K</li>\n<li>Edit.TESHD-10.H265.4K</li>\nWatermark removal:\n<li>480P: 640 x 480 and below</li>\n<li>720P: 1280 x 720 and below</li>\n<li>1080P: 1920 x 1080 and below</li>\n<li>2K: 2560 x 1440 and below</li>\n<li>4K: 3840 x 2160 and below</li>\n<li>8K: 7680 x 4320 and below</li>",
+          "document": "The usage statistics for different task types.\nTranscoding:\n<li>`Remuxing`</li>\n<li>`Audio` (audio transcoding)</li>\n<li>`Standard.H264.SD`</li>\n<li>`Standard.H264.HD`</li>\n<li>`Standard.H264.FHD`</li>\n<li>`Standard.H264.2K`</li>\n<li>`Standard.H264.4K`</li>\n<li>`Standard.H265.SD`</li>\n<li>`Standard.H265.HD`</li>\n<li>`Standard.H265.FHD`</li>\n<li>`Standard.H265.2K`</li>\n<li>`Standard.H265.4K`</li>\n<li>`TESHD-10.H264.SD` (H.264 SD Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H264.HD` (H.264 HD Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H264.FHD` (H.264 FHD Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H264.2K` (H.264 2K Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H264.4K` (H.264 4K Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H265.SD` (H.265 SD Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H265.HD` (H.265 HD Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H265.FHD` (H.265 FHD Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H265.2K` (H.265 2K Top Speed Codec transcoding)</li>\n<li>`TESHD-10.H265.4K` (H.265 4K Top Speed Codec transcoding)</li>\n<li>`Edit.Audio`</li>\n<li>`Edit.H264.SD` (H.264 SD video editing)</li>\n<li>`Edit.H264.HD` (H.264 HD video editing)</li>\n<li>`Edit.H264.FHD` (H.264 FHD video editing)</li>\n<li>`Edit.H264.2K` (H.264 2K video editing)</li>\n<li>`Edit.H264.4K` (H.264 4K video editing)</li>\n<li>`Edit.H265.SD` (H.265 SD video editing)</li>\n<li>`Edit.H265.HD` (H.265 HD video editing)</li>\n<li>`Edit.H265.FHD` (H.265 FHD video editing)</li>\n<li>`Edit.H265.2K` (H.265 2K video editing)</li>\n<li>`Edit.H265.4K` (H.265 4K video editing)</li>\n<li>`Edit.TESHD-10.H264.SD` (H.264 SD Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H264.HD` (H.264 HD Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H264.FHD` (H.264 FHD Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H264.2K` (H.264 2K Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H264.4K` (H.264 4K Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H265.SD` (H.265 SD Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H265.HD` (H.265 HD Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H265.FHD` (H.265 FHD Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H265.2K` (H.265 2K Top Speed Codec video editing)</li>\n<li>`Edit.TESHD-10.H265.4K` (H.265 4K Top Speed Codec video editing)</li>\nThe watermark removal/remaster specifications. Valid values:\n<li>`480P` (short side ≤ 480 px)</li>\n<li>`720P` (short side ≤ 720 px)</li>\n<li>`1080P` (short side ≤ 1080 px)</li>\n<li>`2K` (short side ≤ 1440 px)</li>\n<li>`4K` (short side ≤ 2160 px)</li>\n<li>`8K` (short side ≤ 4320 px)</li>\n<li>`audio`</li>",
           "example": "无",
           "member": "SpecificationDataItem",
           "name": "Details",
