@@ -16,6 +16,30 @@
         "title": "Applying to create a customer account"
       }
     ],
+    "DescribeBillSummaryByPayMode": [
+      {
+        "document": "This example shows you how to obtain the total amount of customer bills by payment mode.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummaryByPayMode\n<Common request parameters>\n\n{\n    \"BillMonth\": \"2022-11\",\n    \"CustomerUin\": 123456\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryOverview\": [\n            {\n                \"PayMode\": \"postPay\",\n                \"PayModeName\": \"Pay-As-You-Go resources\",\n                \"OriginalCost\": \"100.00000000\",\n                \"Detail\": [\n                    {\n                        \"ActionType\": \"postpay_deduct_h\",\n                        \"ActionTypeName\": \"Hourly settlement\",\n                        \"OriginalCost\": \"100.00000000\",\n                        \"VoucherPayAmount\": \"100.00000000\",\n                        \"TotalCost\": \"100.00000000\"\n                    }\n                ],\n                \"VoucherPayAmount\": \"100.00000000\",\n                \"TotalCost\": \"100.00000000\"\n            }\n        ],\n        \"RequestId\": \"asdfgh\"\n    }\n}",
+        "title": "Obtaining the total amount of customer bills by payment mode"
+      }
+    ],
+    "DescribeBillSummaryByProduct": [
+      {
+        "document": "This example shows you how to obtain the total amount of customer bills by product.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummaryByProduct\n<Common request parameters>\n\n{\n    \"BillMonth\": \"2022-11\",\n    \"CustomerUin\": 123456\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryOverview\": [\n            {\n                \"BusinessCode\": \"p_cbs\",\n                \"BusinessCodeName\": \"cloud block storage\",\n                \"OriginalCost\": \"100.00000000\",\n                \"VoucherPayAmount\": \"100.00000000\",\n                \"TotalCost\": \"100.00000000\"\n            }\n        ],\n        \"RequestId\": \"asdfgh\"\n    }\n}",
+        "title": "Obtaining the total amount of customer bills by product"
+      }
+    ],
+    "DescribeBillSummaryByRegion": [
+      {
+        "document": "This example shows you how to obtain the total amount of customer bills by region.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummaryByRegion\n<Common request parameters>\n\n{\n    \"BillMonth\": \"2022-11\",\n    \"CustomerUin\": 123456\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryOverview\": [\n            {\n                \"RegionId\": \"8\",\n                \"RegionName\": \"1North China (Beijing)\",\n                \"OriginalCost\": \"100.00000000\",\n                \"VoucherPayAmount\": \"100.00000000\",\n                \"TotalCost\": \"100.00000000\"\n            }\n        ],\n        \"RequestId\": \"asdfgh\"\n    }\n}",
+        "title": "Obtaining the total amount of customer bills by region"
+      }
+    ],
     "DescribeCustomerBillDetail": [
       {
         "document": "This example shows you how to get the customer bill details through API.",

@@ -14,6 +14,27 @@
       "output": "CreateAccountResponse",
       "status": "online"
     },
+    "DescribeBillSummaryByPayMode": {
+      "document": "This API is used to obtain the total amount of customer bills by payment mode.",
+      "input": "DescribeBillSummaryByPayModeRequest",
+      "name": "Obtains the total amount of customer bills by payment mode",
+      "output": "DescribeBillSummaryByPayModeResponse",
+      "status": "online"
+    },
+    "DescribeBillSummaryByProduct": {
+      "document": "This API is used to obtain the total amount of customer bills by product.",
+      "input": "DescribeBillSummaryByProductRequest",
+      "name": "Obtains the total amount of customer bills by product",
+      "output": "DescribeBillSummaryByProductResponse",
+      "status": "online"
+    },
+    "DescribeBillSummaryByRegion": {
+      "document": "This API is used to obtain the total amount of customer bills by region.",
+      "input": "DescribeBillSummaryByRegionRequest",
+      "name": "Obtains the total amount of customer bills by region",
+      "output": "DescribeBillSummaryByRegionResponse",
+      "status": "online"
+    },
     "DescribeCustomerBillDetail": {
       "document": "This API is used to query the customer bill details.",
       "input": "DescribeCustomerBillDetailRequest",
@@ -98,6 +119,57 @@
     "serviceShortName": "intlpartnersmgt"
   },
   "objects": {
+    "ActionSummaryOverviewItem": {
+      "document": "Transaction type details in the customer bill data totaled by payment mode",
+      "members": [
+        {
+          "document": "Transaction type code\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postpay_deduct_h",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Transaction type name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Hourly settlement",
+          "member": "string",
+          "name": "ActionTypeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "OriginalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "TotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AllocateCustomerCreditRequest": {
       "document": "AllocateCustomerCredit request structure.",
       "members": [
@@ -428,6 +500,57 @@
       ],
       "usage": "out"
     },
+    "BusinessSummaryOverviewItem": {
+      "document": "Product details in the customer bill data totaled by product",
+      "members": [
+        {
+          "document": "Product code\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "p_cbs",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cloud block storage",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List price accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "OriginalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "TotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CountryCodeItem": {
       "document": "Element type of the `GetCountryCodes` API",
       "members": [
@@ -573,6 +696,132 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByPayModeRequest": {
+      "document": "DescribeBillSummaryByPayMode request structure.",
+      "members": [
+        {
+          "document": "Bill month in the format of \"yyyy-MM\"",
+          "example": "2022-11",
+          "member": "string",
+          "name": "BillMonth",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Customer UIN",
+          "example": "123456",
+          "member": "int64",
+          "name": "CustomerUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByPayModeResponse": {
+      "document": "DescribeBillSummaryByPayMode response structure.",
+      "members": [
+        {
+          "document": "Payment mode details in the customer bill data totaled by payment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{...}",
+          "member": "PayModeSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByProductRequest": {
+      "document": "DescribeBillSummaryByProduct request structure.",
+      "members": [
+        {
+          "document": "Bill month in the format of \"yyyy-MM\"",
+          "example": "2022-11",
+          "member": "string",
+          "name": "BillMonth",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Customer UIN",
+          "example": "123456",
+          "member": "int64",
+          "name": "CustomerUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByProductResponse": {
+      "document": "DescribeBillSummaryByProduct response structure.",
+      "members": [
+        {
+          "document": "Bill details from the product dimension\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{...}",
+          "member": "BusinessSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByRegionRequest": {
+      "document": "DescribeBillSummaryByRegion request structure.",
+      "members": [
+        {
+          "document": "Bill month in the format of \"yyyy-MM\"",
+          "example": "2022-11",
+          "member": "string",
+          "name": "BillMonth",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Customer UIN",
+          "example": "123456",
+          "member": "int64",
+          "name": "CustomerUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByRegionResponse": {
+      "document": "DescribeBillSummaryByRegion response structure.",
+      "members": [
+        {
+          "document": "Region details in the customer bill data totaled by region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[...]",
+          "member": "RegionSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -764,6 +1013,66 @@
         }
       ],
       "type": "object"
+    },
+    "PayModeSummaryOverviewItem": {
+      "document": "Payment mode details in the customer bill data totaled by payment mode",
+      "members": [
+        {
+          "document": "Billing mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postPay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Billing mode name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Pay-As-You-Go resources",
+          "member": "string",
+          "name": "PayModeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "OriginalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Bill details in each payment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{...}]",
+          "member": "ActionSummaryOverviewItem",
+          "name": "Detail",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "TotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "QueryCreditAllocationHistoryData": {
       "document": "Returned information for querying the customer credit allocation records",
@@ -1493,6 +1802,57 @@
         }
       ],
       "type": "object"
+    },
+    "RegionSummaryOverviewItem": {
+      "document": "Region details in the customer bill data totaled by region",
+      "members": [
+        {
+          "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "string",
+          "name": "RegionId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Region name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "North China (Beijing)",
+          "member": "string",
+          "name": "RegionName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "OriginalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00000000",
+          "member": "string",
+          "name": "TotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

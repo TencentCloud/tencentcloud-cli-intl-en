@@ -43,10 +43,17 @@
       "status": "online"
     },
     "DeleteTags": {
-      "document": "This API is used to delete multiple tag key-value pairs.",
+      "document": "This API is used to delete tag keys and tag values in batches.",
       "input": "DeleteTagsRequest",
       "name": "Batch deletes tags",
       "output": "DeleteTagsResponse",
+      "status": "online"
+    },
+    "DescribeProjects": {
+      "document": "This API is used to get project lists.",
+      "input": "DescribeProjectsRequest",
+      "name": "Gets project lists",
+      "output": "DescribeProjectsResponse",
       "status": "online"
     },
     "DescribeResourceTags": {
@@ -458,6 +465,69 @@
     "DeleteTagsResponse": {
       "document": "DeleteTags response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectsRequest": {
+      "document": "DescribeProjects request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "If this parameter is 1, all projects (including hidden ones) will be queried. If it is 0, only non-hidden projects will be queried.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AllList",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Fixed value: 1,000.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectsResponse": {
+      "document": "DescribeProjects response structure.",
+      "members": [
+        {
+          "document": "Total number of data entries.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Project list.",
+          "example": "无",
+          "member": "Project",
+          "name": "Projects",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1979,6 +2049,62 @@
       ],
       "type": "object"
     },
+    "Project": {
+      "document": "Project information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project name.",
+          "example": "project_1",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator UIN.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CreatorUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project description.",
+          "example": "info",
+          "member": "string",
+          "name": "ProjectInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "example": "2022-08-03 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ResourceIdTag": {
       "document": "Resource tag key value",
       "members": [
@@ -2207,8 +2333,7 @@
       "document": "TagResources request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.\nValue range of N: 0–9",
+          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.\nValue range of N: 0–9",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
           "name": "ResourceList",
@@ -2216,7 +2341,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag key and value.\nIf multiple tags are specified, all such tags will be created and bound to the specified resources.\nFor each resource, each tag key can have only one value. If you try to add an existing tag key, the corresponding tag value will be updated to the new value.\nNon-existent tags will be automatically created.\nValue range of N: 0–9",
           "example": "无",
           "member": "Tag",
@@ -2286,7 +2410,7 @@
       "members": [
         {
           "default": "",
-          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.\nValue range of N: 0–9",
+          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.\nValue range of N: 0–9",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
           "name": "ResourceList",

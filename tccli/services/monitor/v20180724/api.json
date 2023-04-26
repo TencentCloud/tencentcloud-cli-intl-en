@@ -575,7 +575,7 @@
       "status": "online"
     },
     "DescribePrometheusInstancesOverview": {
-      "document": "This API is used to get the list of CM-integrated instances.",
+      "document": "This API is used to obtain the list of Tencent Managed Service for Prometheus (TMP) instances and the clusters associated with them.",
       "input": "DescribePrometheusInstancesOverviewRequest",
       "name": "Gets the list of v2.0 instances",
       "output": "DescribePrometheusInstancesOverviewResponse",
@@ -820,7 +820,7 @@
       "status": "online"
     },
     "PutMonitorData": {
-      "document": "对应的功能控制台及后端服务已于2年前下线，剩余该API接口未下线。\n\nThe default API request rate limit is 50 requests/sec.\nThe default upper limit on metrics of a single tenant is 100.\nA maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.\n\nThe reporting timestamp is the timestamp when you want to save the data. We recommend that you construct a timestamp at integer minutes.\nThe time range of a timestamp is from 300 seconds before the current time to the current time.\nThe data of the same IP metric/value pair must be reported by minute in chronological order.",
+      "document": "对应的功能控制台及后端服务已于2年前下线，剩余该API接口未下线。\n\nThis API is not deprecated, but its related console features and backend services were deactivated two years ago.\n\nThe default API request rate limit is 50 requests/sec.\nThe default upper limit on metrics of a single tenant is 100.\nA maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.\n\nThe reporting timestamp is the timestamp when you want to save the data. We recommend that you construct a timestamp at integer minutes.\nThe time range of a timestamp is from 300 seconds before the current time to the current time.\nThe data of the same IP metric/value pair must be reported by minute in chronological order.",
       "input": "PutMonitorDataRequest",
       "name": "Customizes monitoring data to be reported.",
       "output": "PutMonitorDataResponse",
@@ -9862,6 +9862,14 @@
           "value_allowed_null": false
         },
         {
+          "document": "Whether the TMP instance is associated with the cluster for the first time. If so, you need to configure recording rules for it. This also applies if it has no default recording rule.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsFirstBind",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -11499,34 +11507,49 @@
       "document": "Query filter",
       "members": [
         {
-          "default": "",
           "document": "Filter method. Valid values: `=`, `!=`, `in`.",
           "example": "=",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Filter dimension name",
           "example": "serviceName",
           "member": "string",
           "name": "Key",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Filter value. For the `in` filter method, separate multiple values by comma.",
           "example": "sso-api",
           "member": "string",
           "name": "Value",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Filter name",
+          "example": "abc",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Filter value range",
+          "example": "[\"aa\", \"bb\"]",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
@@ -15484,6 +15507,24 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "Resource pack status (`0`: Unavailable; `1`: Available)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ResourcePackageStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource pack specification name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "”xxxx“",
+          "member": "string",
+          "name": "ResourcePackageSpecName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

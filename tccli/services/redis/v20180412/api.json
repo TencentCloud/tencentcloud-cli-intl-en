@@ -57,7 +57,7 @@
       "status": "online"
     },
     "CloneInstances": {
-      "document": "This API is used to clone a complete instance based on the current instance backup file.",
+      "document": "This API is used to clone a complete new instance based on the current instance backup file.",
       "input": "CloneInstancesRequest",
       "name": "Clones an instance",
       "output": "CloneInstancesResponse",
@@ -78,7 +78,7 @@
       "status": "online"
     },
     "CreateInstances": {
-      "document": "This API is used to create a Redis instance.",
+      "document": "This API is used to create an TencentDB or Redis instance.",
       "input": "CreateInstancesRequest",
       "name": "Creates Redis instance",
       "output": "CreateInstancesResponse",
@@ -124,6 +124,13 @@
       "input": "DescribeBackupUrlRequest",
       "name": "Queries the download address of backup RDB",
       "output": "DescribeBackupUrlResponse",
+      "status": "online"
+    },
+    "DescribeBandwidthRange": {
+      "document": "This API is used to query the information of instance bandwidth.",
+      "input": "DescribeBandwidthRangeRequest",
+      "name": "Queries the information of instance bandwidth",
+      "output": "DescribeBandwidthRangeResponse",
       "status": "online"
     },
     "DescribeCommonDBInstances": {
@@ -281,7 +288,7 @@
       "status": "online"
     },
     "DescribeParamTemplateInfo": {
-      "document": "This API is used to query the parameter template details.",
+      "document": "This API is used to query the details of a parameter template.",
       "input": "DescribeParamTemplateInfoRequest",
       "name": "Queries parameter template details",
       "output": "DescribeParamTemplateInfoResponse",
@@ -516,6 +523,13 @@
       "input": "ReleaseWanAddressRequest",
       "name": "Disables public network API",
       "output": "ReleaseWanAddressResponse",
+      "status": "online"
+    },
+    "RemoveReplicationInstance": {
+      "document": "This API is used to remove a member from a replication group.",
+      "input": "RemoveReplicationInstanceRequest",
+      "name": "Removes a member from a replication group",
+      "output": "RemoveReplicationInstanceResponse",
       "status": "online"
     },
     "RenewInstance": {
@@ -844,10 +858,10 @@
       "usage": "out"
     },
     "BackupLimitVpcItem": {
-      "document": "VPC information of the custom backup file download address.",
+      "document": "The VPC that corresponds to the configured download address of the backup file",
       "members": [
         {
-          "document": "Region of the VPC of the custom backup file download address.",
+          "document": "The region of the VPC that corresponds to the download address of the backup file",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -856,7 +870,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "VPC list of the custom backup file download address.",
+          "document": "The list of VPCs that correspond to the download addresses of the backup files",
           "example": "[\"vpc-b3ksv7yt\", \"vpc-a9pl9fiu\"]",
           "member": "string",
           "name": "VpcList",
@@ -1189,7 +1203,7 @@
       "document": "CloneInstances request structure.",
       "members": [
         {
-          "document": "ID of the current instance",
+          "document": "The ID of the source instance to be cloned, such as \"crs-xjhsdj****\". Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.",
           "example": "crs-xxx",
           "member": "string",
           "name": "InstanceId",
@@ -1197,7 +1211,7 @@
           "type": "string"
         },
         {
-          "document": "Number of instance to be cloned each time. You can purchase up to 100 monthly subscribed instances or up to 30 pay-as-you-go instances at a time. You can purchase up to 100 instances in each region.",
+          "document": "The number of clone instances at a time\n- The maximum number of monthly subscribed instances is 100 for each purchase.\n- The maximum number of pay-as-you-go instances is 30 for each purchase.",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -1253,7 +1267,7 @@
           "type": "bool"
         },
         {
-          "document": "VPC ID. If this parameter is not passed in, the classic network will be selected by default.",
+          "document": "The VPC ID of the clone instance. If this parameter is not passed in, the classic network will be selected by default.",
           "example": "vpc-pxyzim13",
           "member": "string",
           "name": "VpcId",
@@ -1261,7 +1275,7 @@
           "type": "string"
         },
         {
-          "document": "VPC subnet ID, which is not required for the classic network.",
+          "document": "The VPC subnet ID to which the clone instance belongs, which is not required for the classic network.",
           "example": "subnet-7jbabche",
           "member": "string",
           "name": "SubnetId",
@@ -1285,7 +1299,7 @@
           "type": "string"
         },
         {
-          "document": "The auto-renewal flag. Valid values <ul><li>`0`: Manual renewal (default) </li><li>`1`: Auto-renewal. </li><li>`2`: Not auto-renewal (set by user)</ul>",
+          "document": "The auto-renewal flag. Valid values <ul><li>`0`: Manual renewal (default). </li><li>`1`: Auto-renewal. </li><li>`2`: Not auto-renewal (set by user).</ul>",
           "example": "9",
           "member": "uint64",
           "name": "AutoRenew",
@@ -1309,7 +1323,7 @@
           "type": "list"
         },
         {
-          "document": "Project ID, which can be obtained in <b>Account Center</b> > <b>Project Management</b> in the upper-right corner in the console.",
+          "document": "Project ID. Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), and find the project ID in <b>Account Center</b> > <b>Project Management</b> in the top-right corner.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -1325,7 +1339,7 @@
           "type": "list"
         },
         {
-          "document": "The ID of a parameter template to be applied to the clone instance, which can be obtained on <b>Parameter Template</b> page in the console. If this parameter is not configured, the default parameter template will be applied.",
+          "document": "The parameter template ID associated with the clone instance\n- If this parameter is not configured, the system will automatically adapt the corresponding default template based on the selected compatible version and architecture.\n- You can query the parameter template list of the instance to get the template ID through the [DescribeParamTemplates](https://intl.cloud.tencent.com/document/product/239/58750?from_cn_redirect=1) API.",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -1333,7 +1347,7 @@
           "type": "string"
         },
         {
-          "document": "Alarm policy ID of the specified clone instance, which can be obtained on <b>Cloud Monitor</b> > <b>Alarm Configuration</b> > <b>Alarm Policy</b> in the console.",
+          "document": "The alarm policy ID of the instance to be cloned. Log in to the [Tencent Cloud Observable Platform console](https://console.cloud.tencent.com/monitor/alarm2/policy), and get the policy ID in <b>Alarm Management</b> > <b>Policy Management</b>.",
           "example": "无",
           "member": "string",
           "name": "AlarmPolicyList",
@@ -1516,8 +1530,7 @@
       "document": "CreateInstances request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `15` (Redis 6.0 Memory Edition in standard architecture), `16` (Redis 6.0 Memory Edition in cluster architecture)",
+          "document": "Instance type\n<ul><li>`2`: Redis 2.8 Memory Edition (Standard Architecture). </li><li>`3`: CKV 3.2 Memory Edition (Standard Architecture). </li><li>`4`: CKV 3.2 Memory Edition (Cluster Architecture). </li><li>`6`: Redis 4.0 Memory Edition (Standard Architecture). </li><li>`7`: Redis 4.0 Memory Edition (Cluster Architecture). </li><li>`8`: Redis 5.0 Memory Edition (Standard Architecture). </li><li>`9`: Redis 5.0 Memory Edition (Cluster Architecture). </li><li>`15`: Redis 6.2 Memory Edition (Standard Architecture). </li><li>`16`: Redis 6.2 Memory Edition (Cluster Architecture).</li></ul>",
           "example": "6",
           "member": "uint64",
           "name": "TypeId",
@@ -1525,8 +1538,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).\nIf `TypeId` is the standard architecture, `MemSize` indicates the total memory capacity of the instance; if `TypeId` is the cluster architecture, `MemSize` indicates the memory capacity per shard.",
+          "document": "Memory capacity in MB, which must be an integer multiple of 1024. For specific specifications, query the sales specifications in all regions through the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.\n- When **TypeId** is a standard architecture, **MemSize** is the total memory capacity of the instance;\n- When **TypeId** is a cluster architecture, **MemSize** is the single-shard memory capacity.",
           "example": "4096",
           "member": "uint64",
           "name": "MemSize",
@@ -1534,8 +1546,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).",
+          "document": "The number of instances for each purchase. For details, query the sales specifications in all regions through the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -1543,8 +1554,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Length of purchase in months, which is required when creating a monthly subscribed instance. Valid values: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, set the parameter to `1`.",
+          "document": "The purchase duration of an instance\n- If `BillingMode` is `1`, that is, when the billing mode is monthly subscription, you need to set this parameter to specify the duration of the purchased instance. Unit: month. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36].\n- If `BillingMode` is `0`, that is, when the billing mode is pay-as-you-go, you need to set this parameter to `1`.",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -1552,7 +1562,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Billing mode. 0: pay-as-you-go",
           "example": "0",
           "member": "int64",
@@ -1561,7 +1570,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
           "example": "100002",
           "member": "uint64",
@@ -1570,8 +1578,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.\nIf the instance `TypeId` is Redis 2.8, 4.0, or 5.0, the password cannot start with \"/\" and must contain 8–30 characters in at least two of the following character types: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).\nIf the instance `TypeId` is CKV 3.2, the password can contain 8–30 letters and digits.",
+          "document": "Instance access password\n- When the input parameter `NoAuth` is `true`, it means that the instance access is set to be password-free, and the `Password` field does not need to be configured; otherwise, `Password` is a required parameter.\n- When the instance type `TypeId` is Redis 2.8 Memory Edition (Standard Architecture), Redis 4.0, 5.0, 6.0 (regardless of architecture), the password must contains 8-30 characters in at least two of the following types: lowercase letters, uppercase letters, digits, and symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/), and it cannot start with a slash (/).\n- When the instance type **TypeId** is CKV 3.2 Memory Edition (regardless of architecture), the password contains 8-30 letters and digits and excludes other characters.",
           "example": "123456MyP@ssword",
           "member": "string",
           "name": "Password",
@@ -1579,8 +1586,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "VPC ID such as vpc-sad23jfdfk. If this parameter is not passed in, the classic network will be selected by default. Use the VPC list querying API to query.",
+          "document": "VPC ID. If this parameter is not passed in, the classic network will be selected by default. You can query the specific VPC ID in the [VPC console](https://console.cloud.tencent.com/vpc).",
           "example": "vpc-pxyzim13",
           "member": "string",
           "name": "VpcId",
@@ -1588,8 +1594,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "In the classic network, `subnetId` is invalid. In a VPC subnet, the value is the subnet ID, such as subnet-fdj24n34j2.",
+          "document": "VPC subnet ID. This parameter is not required for the classic network. You can get the specific subnet ID by querying the subnet list in the [VPC console](https://console.cloud.tencent.com/vpc).",
           "example": "subnet-7jbabche",
           "member": "string",
           "name": "SubnetId",
@@ -1597,8 +1602,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Project ID. The value is subject to the `projectId` returned by user account > user account querying APIs > project list.",
+          "document": "Project ID. Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), go to the account information menu in the top-right corner, and select **Project Management** to query the project ID.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -1606,8 +1610,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
+          "document": "Auto-renewal flag\n- `0`: Manual renewal (default).\n- `1`: Auto-renewal.\n- `2`: Not auto-renewal (set by user).",
           "example": "0",
           "member": "uint64",
           "name": "AutoRenew",
@@ -1615,8 +1618,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Array of security group IDs.",
+          "document": "Array of security group IDs. Get the security group ID of the instance through the [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1) API.",
           "example": "[\"sg-bmadczm1\"]",
           "member": "string",
           "name": "SecurityGroupIdList",
@@ -1624,8 +1626,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535].",
+          "document": "User-defined network port. Default value: `6379`. Range: [1024,65535].",
           "example": "6378",
           "member": "uint64",
           "name": "VPort",
@@ -1633,8 +1634,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Number of shards in an instance. This parameter is required for Cluster Edition instances. Valid values: [3,5,8,12,16,24,32,64,96,128].",
+          "document": "Quantity of instance shards\n- This parameter is not required for instances of Standard Edition.\n- For instances of Cluster Edition, the range of shard quantity is [1, 3, 5, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128].",
           "example": "1",
           "member": "int64",
           "name": "RedisShardNum",
@@ -1642,8 +1642,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Number of replicas in the instance. Redis 2.8 Standard Edition and CKV Standard Edition support 1 replica. Standard/Cluster Edition 4.0 and 5.0 support 1–5 replicas.",
+          "document": "Quantity of instance replicas\n- For Redis Memory Edition 4.0, 5.0, 6.2 (regardless of architecture), the range of replica quantity is [1,5].\n- For Redis 2.8 Standard Edition and CKV Standard Edition, the replica quantity is `1`.",
           "example": "1",
           "member": "int64",
           "name": "RedisReplicasNum",
@@ -1651,8 +1650,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Whether to support read-only replicas. Neither Redis 2.8 Standard Edition nor CKV Standard Edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed to replica nodes. To enable read-only replicas, we recommend you create two or more replicas.",
+          "document": "Whether to support read-only replicas.\n- Redis 2.8 Standard Edition and CKV Standard Edition don’t support read-only replicas.\n- If read-only replicas are enabled, read/write separation will be automatically enabled for an instance, with write requests routed to the master node and read requests to the replica node.\n- To enable read-only replicas, we recommend that you create two or more replicas.",
           "example": "true",
           "member": "bool",
           "name": "ReplicasReadonly",
@@ -1660,8 +1658,7 @@
           "type": "bool"
         },
         {
-          "default": "",
-          "document": "Instance name, which can contain up to 60 letters, digits, underscores, or hyphens.",
+          "document": "Instance name, which can contain up to 60 letters, digits, hyphens, and underscores.",
           "example": "MyInstanceName",
           "member": "string",
           "name": "InstanceName",
@@ -1669,8 +1666,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.",
+          "document": "Whether to support password-free access for an instance\n- `true`: The instance access is password-free.\n- `false`: The instance access is password-enabled. Default value: `false`. Only instances in a VPC support the password-free access.",
           "example": "false",
           "member": "bool",
           "name": "NoAuth",
@@ -1678,8 +1674,7 @@
           "type": "bool"
         },
         {
-          "default": "",
-          "document": "Node information of the instance. Currently, information about the node type (master or replica) and node AZ can be passed in. This parameter is not required for single-AZ deployed instances.",
+          "document": "The node information of the instance, including node ID, type, and AZ. For more information, see [RedisNodeInfo](https://intl.cloud.tencent.com/document/product/239/20022?from_cn_redirect=1).\nNode information of an instance. Currently, information about the node type (master or replica) and node AZ can be passed in. This parameter is not required for instances deployed in a single AZ.",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -1687,8 +1682,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Tag bound to the instance to be purchased",
+          "document": "The tag for an instance",
           "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
@@ -1696,7 +1690,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1705,8 +1698,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "ID of the parameter template applied to the created instance. If this parameter is left blank, the default parameter template will be applied.",
+          "document": "The parameter template ID associated with the instance\n- If this parameter is not configured, the system will automatically adapt the corresponding default template based on the selected compatible version and architecture.\n- Query the list of parameter templates of an instance to get the template ID through the [DescribeParamTemplates](https://intl.cloud.tencent.com/document/product/239/58750?from_cn_redirect=1) API.",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -1714,8 +1706,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "false: send a normal request and create an instance directly after the check is passed (default value); true: send a check request without creating an instance.",
+          "document": "An internal parameter used to indicate whether to check when creating an instance.\n- `false`: Default value. Send a normal request and create an instance if all the requirements are met.\n- `true`: Send a check request and create no instance.",
           "example": "true",
           "member": "bool",
           "name": "DryRun",
@@ -1723,8 +1714,7 @@
           "type": "bool"
         },
         {
-          "default": "",
-          "document": "Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)",
+          "document": "The product edition of the instance\n- `local`: Local Disk Edition.\n- `cloud`: Cloud Disk Edition.\n- `cdc`: Dedicated Cluster Edition. Default value: `local`.",
           "example": "cdc",
           "member": "string",
           "name": "ProductVersion",
@@ -1732,8 +1722,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Dedicated cluster ID, which is required when `ProductVersion` is \"cdc\".",
+          "document": "Exclusive cluster ID. When `ProductVersion` is set to `cdc`, this parameter is required.",
           "example": "crs-cdc-0xigvn3t",
           "member": "string",
           "name": "RedisClusterId",
@@ -1751,7 +1740,6 @@
           "example": "199878234",
           "member": "string",
           "name": "DealId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1760,7 +1748,6 @@
           "example": "crs-3sz5wdav",
           "member": "string",
           "name": "InstanceIds",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2175,6 +2162,69 @@
           "name": "BackupInfos",
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBandwidthRangeRequest": {
+      "document": "DescribeBandwidthRange request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBandwidthRangeResponse": {
+      "document": "DescribeBandwidthRange response structure.",
+      "members": [
+        {
+          "document": "Standard bandwidth, which is the bandwidth allocated by the system to each node when an instance is purchased.",
+          "example": "1",
+          "member": "int64",
+          "name": "BaseBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The additional bandwidth of the instance. If the standard bandwidth does not meet your needs, you can increase the bandwidth on your own. <ul><li>If read-only replica is enabled, the total instance bandwidth = additional bandwidth * shard quantity + standard bandwidth * shard quantity * Max ([read-only replica quantity, 1]). The shard quantity in the standard architecture is 1. </li><li>If read-only replica is not enabled, the total instance bandwidth = additional bandwidth * shard quantity + standard bandwidth * shard quantity. The shard quantity in the standard architecture is 1.</li></ul>",
+          "example": "1",
+          "member": "int64",
+          "name": "AddBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The lower limit for additional bandwidth",
+          "example": "1",
+          "member": "int64",
+          "name": "MinAddBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The upper limit for additional bandwidth",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxAddBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3789,8 +3839,7 @@
       "document": "DescribeParamTemplateInfo request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Parameter template ID.",
+          "document": "The parameter template ID for query. Get parameter template list information through the [DescribeParamTemplates](https://intl.cloud.tencent.com/document/product/239/58750?from_cn_redirect=1) API.",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -3804,11 +3853,10 @@
       "document": "DescribeParamTemplateInfo response structure.",
       "members": [
         {
-          "document": "Number of instance parameters",
+          "document": "Quantity of parameters in the parameter template",
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3817,7 +3865,6 @@
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3826,16 +3873,14 @@
           "example": "CustomParamTemplate",
           "member": "string",
           "name": "Name",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)",
+          "document": "Product type\n- `2`: Redis 2.8 Memory Edition (Standard Architecture).\n- `3`: CKV 3.2 Memory Edition (Standard Architecture).\n- `4`: CKV 3.2 Memory Edition (Cluster Architecture).\n- `5`: Redis 2.8 Memory Edition (Standalone).\n- `6`: Redis 4.0 Memory Edition (Standard Architecture).\n- `7`: Redis 4.0 Memory Edition (Cluster Architecture).\n- `8`: Redis 5.0 Memory Edition (Standard Architecture).\n- `9`: Redis 5.0 Memory Edition (Cluster Architecture).\n- `15`: Redis 6.2 Memory Edition (Standard Architecture).\n- `16`: Redis 6.2 Memory Edition (Cluster Architecture).",
           "example": "6",
           "member": "uint64",
           "name": "ProductType",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3844,16 +3889,14 @@
           "example": "MyCustomParamTemplate",
           "member": "string",
           "name": "Description",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Parameter details",
+          "document": "Parameter details, including parameter name, current value, default value, maximum value, minimum value, enumeration value and other information.",
           "example": "无",
           "member": "ParameterDetail",
           "name": "Items",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4914,7 +4957,7 @@
       "document": "Replication group info",
       "members": [
         {
-          "document": "User App ID",
+          "document": "User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.",
           "example": "100001",
           "member": "int64",
           "name": "AppId",
@@ -4932,7 +4975,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Replication group ID",
+          "document": "Replication group ID in the format of \"crs-rpl-deind****\"",
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupId",
@@ -5409,8 +5452,8 @@
       "document": "Information list of instance shards",
       "members": [
         {
-          "default": "",
-          "document": "Shard node name",
+          "document": "The name of a shard node",
+          "example": "无",
           "member": "string",
           "name": "ShardName",
           "required": true,
@@ -5418,8 +5461,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Shard node ID",
+          "document": "The serial number of a shard node",
+          "example": "无",
           "member": "string",
           "name": "ShardId",
           "required": true,
@@ -5427,8 +5470,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Role",
+          "document": "The role of a shard node\n- `0`: Master node.\n- `1`: Replica node.",
+          "example": "无",
           "member": "int64",
           "name": "Role",
           "required": true,
@@ -5436,8 +5479,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of keys",
+          "example": "无",
           "member": "int64",
           "name": "Keys",
           "required": true,
@@ -5445,8 +5488,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Slot information",
+          "example": "无",
           "member": "string",
           "name": "Slots",
           "required": true,
@@ -5454,8 +5497,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Storage capacity",
+          "document": "Used Capacity",
+          "example": "无",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -5463,8 +5506,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Capacity slope",
+          "example": "无",
           "member": "float",
           "name": "StorageSlope",
           "required": true,
@@ -5472,8 +5515,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "ID of the runtime node of the instance",
+          "document": "Instance runtime node ID",
+          "example": "无",
           "member": "string",
           "name": "Runid",
           "required": true,
@@ -5481,8 +5524,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Service status. 0: down; 1: on",
+          "document": "Service status\n- `0`: Down.\n- `1`: On.",
+          "example": "无",
           "member": "int64",
           "name": "Connected",
           "required": true,
@@ -5798,8 +5841,8 @@
       "document": "History of instance parameter modifications",
       "members": [
         {
-          "default": "",
           "document": "Parameter name",
+          "example": "无",
           "member": "string",
           "name": "ParamName",
           "required": true,
@@ -5807,8 +5850,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Value before modification",
+          "document": "The value of the parameter before modification",
+          "example": "无",
           "member": "string",
           "name": "PreValue",
           "required": true,
@@ -5816,8 +5859,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Value after modification",
+          "document": "The value of the parameter after modification",
+          "example": "无",
           "member": "string",
           "name": "NewValue",
           "required": true,
@@ -5825,8 +5868,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Status. 1: modifying the parameter configuration; 2: modified the parameter configuration successfully; 3: failed to modify the parameter configuration",
+          "document": "Parameter configuration status\n- `1`: The parameter configuration is being modified.\n- `2`: The parameter configuration has been modified successfully.\n- `3`: Failed to modify the parameter configuration.",
+          "example": "无",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -5834,8 +5877,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Modification time",
+          "example": "无",
           "member": "string",
           "name": "ModifyTime",
           "required": true,
@@ -5849,7 +5892,7 @@
       "document": "Proxy slow query details",
       "members": [
         {
-          "document": "Duration of the slow query in ms.",
+          "document": "Slow query duration in milliseconds",
           "example": "无",
           "member": "int64",
           "name": "Duration",
@@ -5867,7 +5910,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Command",
+          "document": "Slow query command",
           "example": "无",
           "member": "string",
           "name": "Command",
@@ -5876,7 +5919,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Command line details",
+          "document": "Detailed command line information of slow query",
           "example": "无",
           "member": "string",
           "name": "CommandLine",
@@ -5942,7 +5985,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "User AppID",
+          "document": "User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.\n",
           "example": "12345",
           "member": "int64",
           "name": "Appid",
@@ -6023,7 +6066,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance creation time",
+          "document": "Instance creation time in the format of \"2020-01-15 10:20:00\"",
           "example": "2020-01-15 10:20:00",
           "member": "string",
           "name": "Createtime",
@@ -6032,7 +6075,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance capacity in MB",
+          "document": "Instance memory capacity in MB (1 MB = 1024 KB)",
           "example": "1451",
           "member": "float",
           "name": "Size",
@@ -6041,7 +6084,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "This field has been disused. You can use the [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1) API to query the capacity used by the instance.",
+          "document": "This field has been disused. You can use the TCOP’s [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1) API to query the capacity used by the instance.",
           "example": "0",
           "member": "float",
           "name": "SizeUsed",
@@ -6050,7 +6093,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance type. <ul><li>`1`: Redis 2.8 memory edition in cluster architecture. </li><li>`2`: Redis 2.8 memory edition in standard architecture. </li><li>`3`: CKV 3.2 memory edition in standard architecture. </li><li>`4`: CKV 3.2 memory edition in cluster architecture. </li><li>`5`: Redis 2.8 memory edition in standalone architecture. </li></li><li>`6`: Redis 4.0 memory edition in standard architecture. </li></li><li>`7`: Redis 4.0 memory edition in cluster architecture. </li></li><li>`8`: Redis 5.0 memory edition in standard architecture. </li></li><li>`9`: Redis 5.0 memory edition in cluster architecture. </li></ul>",
+          "document": "Instance type\n- `2`: Redis 2.8 Memory Edition (Standard Architecture).\n- `3`: CKV 3.2 Memory Edition (Standard Architecture).\n- `4`: CKV 3.2 Memory Edition (Cluster Architecture).\n- `5`: Redis 2.8 Memory Edition (Standalone).\n- `6`: Redis 4.0 Memory Edition (Standard Architecture).\n- `7`: Redis 4.0 Memory Edition (Cluster Architecture).\n- `8`: Redis 5.0 Memory Edition (Standard Architecture).\n- `9`: Redis 5.0 Memory Edition (Cluster Architecture).\n- `15`: Redis 6.2 Memory Edition (Standard Architecture).\n- `16`: Redis 6.2 Memory Edition (Cluster Architecture).",
           "example": "7",
           "member": "int64",
           "name": "Type",
@@ -6068,7 +6111,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance expiration time",
+          "document": "The time when a monthly subscribed instance expires",
           "example": "2020-02-15 10:20:00",
           "member": "string",
           "name": "DeadlineTime",
@@ -6131,7 +6174,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Scheduled deactivation time",
+          "document": "The default termination time for isolated instances in the format of \"2020-02-15 10:20:00\". By default, a pay-as-you-go instance will be terminated after two hours of isolation, and a monthly subscribed instance will be terminated after seven days by default.",
           "example": "2020-02-15 10:20:00",
           "member": "string",
           "name": "OfflineTime",
@@ -6203,7 +6246,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Isolation time",
+          "document": "The time when an instance start to be isolated",
           "example": "0000-00-00 00:00:00",
           "member": "string",
           "name": "CloseTime",
@@ -6320,7 +6363,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Monitoring granularity type. <ul><li>`1m`: Monitoring at 1-minute granularity. </li><li>`5s`: Monitoring at 5-second granularity. </li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Monitoring granularity. <ul><li>`1m`: Monitoring at one-minute granularity. This granularity has been disused. For more information, see [1-Minute Granularity Will Be Disused](https://www.tencentcloud.com/document/product/239/50440).</li><li>`5s`: Monitoring at five-second granularity.</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5s",
           "member": "string",
           "name": "MonitorVersion",
@@ -6374,7 +6417,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Polaris service address\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Polaris service address, which is for internal use.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "txcloud-paas-crs-xxx",
           "member": "string",
           "name": "PolarisServer",
@@ -6587,8 +6630,7 @@
       "document": "Instances in replication group",
       "members": [
         {
-          "default": "",
-          "document": "User AppID",
+          "document": "User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.",
           "example": "100001",
           "member": "int64",
           "name": "AppId",
@@ -6597,7 +6639,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID",
           "example": "crs-deindi7de",
           "member": "string",
@@ -6607,7 +6648,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
           "example": "crs-deindi7de-name",
           "member": "string",
@@ -6617,7 +6657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region ID. <ul><li>`1`: Guangzhou. </li><li>`4`: Shanghai. </li><li>`5`: Hong Kong (China). </li> <li>`6`: Toronto. </li> <li>`7`: Shanghai Finance. </li> <li>`8`: Beijing. </li> <li>`9`: Singapore. </li> <li>`11`: Shenzhen Finance. </li> <li>`15`: West US (Silicon Valley). </li> </ul>",
           "example": "1",
           "member": "uint64",
@@ -6627,7 +6666,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region ID",
           "example": "100001",
           "member": "uint64",
@@ -6637,7 +6675,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of replicas",
           "example": "1",
           "member": "uint64",
@@ -6647,7 +6684,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of shards",
           "example": "3",
           "member": "int64",
@@ -6657,7 +6693,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard memory size.",
           "example": "16",
           "member": "int64",
@@ -6667,7 +6702,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance disk size\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "400",
           "member": "int64",
@@ -6677,7 +6711,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Engine: Redis Community Edition, Tencent Cloud CKV.",
           "example": "社区版Redis",
           "member": "string",
@@ -6687,7 +6720,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Read-write permission of the instance. <ul><li>`rw`: Read/Write. </li><li>`r`: Read-only. </li></ul>",
           "example": "rw",
           "member": "string",
@@ -6697,7 +6729,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance VIP",
           "example": "127.0.0.1",
           "member": "string",
@@ -6707,7 +6738,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "IPv6",
           "member": "string",
@@ -6717,7 +6747,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC ID, such as `75101`.",
           "example": "1",
           "member": "int64",
@@ -6727,7 +6756,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance port",
           "example": "6379",
           "member": "int64",
@@ -6737,7 +6765,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance status. <ul><li>`0`: Uninitialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>",
           "example": "0",
           "member": "int64",
@@ -6747,7 +6774,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Repository ID",
           "example": "15007",
           "member": "int64",
@@ -6757,8 +6783,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance type. <ul><li>`1`: Redis 2.8 Memory Edition (Cluster Architecture). </li><li>`2`: Redis 2.8 Memory Edition (Standard Architecture). </li><li>`3`: CKV 3.2 Memory Edition (Standard Architecture). </li><li>`4`: CKV 3.2 Memory Edition (Cluster Architecture). </li><li>`5`: Redis 2.8 Standalone Edition. </li><li>`6`: Redis 4.0 Memory Edition (Standard Architecture). </li><li>`7`: Redis 4.0 Memory Edition (Cluster Architecture). </li><li>`8`: Redis 5.0 Memory Edition (Standard Architecture). </li><li>`9`: Redis 5.0 Memory Edition (Cluster Architecture). </li></ul>",
+          "document": "Instance type\n- `2`: Redis 2.8 Memory Edition (Standard Architecture).\n- `3`: CKV 3.2 Memory Edition (Standard Architecture).\n- `4`: CKV 3.2 Memory Edition (Cluster Architecture)\n- `5`: Redis 2.8 Memory Edition (Standalone)\n- `6`: Redis 4.0 Memory Edition (Standard Architecture).\n- `7`: Redis 4.0 Memory Edition (Cluster Architecture)\n- `8`: Redis 5.0 Memory Edition (Standard Architecture).\n- `9`: Redis 5.0 Memory Edition (Cluster Architecture)\n- `15`: Redis 6.2 Memory Edition (Standard Architecture).\n- `16`: Redis 6.2 Memory Edition (Cluster Architecture)",
           "example": "7",
           "member": "int64",
           "name": "ProductType",
@@ -6767,7 +6792,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time when the instance was added to the replication group.",
           "example": "0000-00-00 00:00:00",
           "member": "string",
@@ -6777,7 +6801,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time when instances in the replication group were updated.",
           "example": "0000-00-00 00:00:00",
           "member": "string",
@@ -6901,7 +6924,7 @@
       "document": "ModfiyInstancePassword request structure.",
       "members": [
         {
-          "document": "Instance ID",
+          "document": "Instance ID, such as \"crs-xjhsdj****\". Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.",
           "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
@@ -7759,7 +7782,6 @@
       "document": "Parameter template information",
       "members": [
         {
-          "default": "",
           "document": "Parameter template ID",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
@@ -7769,7 +7791,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter template name",
           "example": "CustomParamTemplate",
           "member": "string",
@@ -7779,7 +7800,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter template description",
           "example": "MyCustomParamTemplate",
           "member": "string",
@@ -7789,8 +7809,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)",
+          "document": "Instance type\n- `2`: Redis 2.8 Memory Edition (Standard Architecture).\n- `3`: CKV 3.2 Memory Edition (Standard Architecture).\n- `4`: CKV 3.2 Memory Edition (Cluster Architecture).\n- `5`: Redis 2.8 Memory Edition (Standalone).\n- `6`: Redis 4.0 Memory Edition (Standard Architecture).\n- `7`: Redis 4.0 Memory Edition (Cluster Architecture).\n- `8`: Redis 5.0 Memory Edition (Standard Architecture).\n- `9`: Redis 5.0 Memory Edition (Cluster Architecture).\n- `15`: Redis 6.2 Memory Edition (Standard Architecture).\n- `16`: Redis 6.2 Memory Edition (Cluster Architecture).",
           "example": "6",
           "member": "uint64",
           "name": "ProductType",
@@ -7805,7 +7824,6 @@
       "document": "Details of the parameters in the parameter template",
       "members": [
         {
-          "default": "",
           "document": "Parameter name",
           "example": "slowlog-log-slower-than",
           "member": "string",
@@ -7815,8 +7833,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Data type of the parameter",
+          "document": "Parameter Type",
           "example": "integer",
           "member": "string",
           "name": "ParamType",
@@ -7825,7 +7842,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default value of the parameter",
           "example": "10",
           "member": "string",
@@ -7835,7 +7851,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter description",
           "example": "Over this time the command is recorded in us.a negative number d",
           "member": "string",
@@ -7845,8 +7860,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Current value",
+          "document": "Current value of the parameter",
           "example": "5",
           "member": "string",
           "name": "CurrentValue",
@@ -7855,8 +7869,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Whether the database needs to be restarted for the modified parameter to take effect. Valid values: 0 (no); 1 (yes).",
+          "document": "Whether to restart the database for the modified parameters to take effect\n- `0`: No restart.\n- `1`: Restart required.",
           "example": "0",
           "member": "int64",
           "name": "NeedReboot",
@@ -7865,7 +7878,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum value of the parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -7875,7 +7887,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Minimum value of the parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "string",
@@ -7885,8 +7896,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "string",
           "name": "EnumValue",
@@ -7901,8 +7911,8 @@
       "document": "Product information",
       "members": [
         {
-          "default": "",
-          "document": "Product type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `10` (Redis 4.0 Hybrid Storage Edition (Tendis)).",
+          "document": "Product type\n- `2`: Redis 2.8 Memory Edition (Standard Architecture).\n- `3`: CKV 3.2 Memory Edition (Standard Architecture).\n- `4`: CKV 3.2 Memory Edition (Cluster Architecture).\n- `5`: Redis 2.8 Memory Edition (Standalone).\n- `6`: Redis 4.0 Memory Edition (Standard Architecture).\n- `7`: Redis 4.0 Memory Edition (Cluster Architecture).\n- `8`: Redis 5.0 Memory Edition (Standard Architecture).\n- `9`: Redis 5.0 Memory Edition (Cluster Architecture).\n- `15`: Redis 6.2 Memory Edition (Standard Architecture).\n- `16`: Redis 6.2 Memory Edition (Cluster Architecture).",
+          "example": "无",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -7910,8 +7920,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Product name: Redis Master-Replica Edition, CKV Master-Replica Edition, CKV Cluster Edition, Redis Standalone Edition, Redis Cluster Edition, Tendis Hybrid Storage Edition",
+          "document": "Product names, including Redis Master-Replica Edition, Redis Standalone Edition, Redis 4.0 Cluster Edition, CKV Master-Replica Edition, and CKV Standalone Edition.",
+          "example": "无",
           "member": "string",
           "name": "TypeName",
           "required": true,
@@ -7919,8 +7929,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum purchasable quantity",
+          "example": "无",
           "member": "int64",
           "name": "MinBuyNum",
           "required": true,
@@ -7928,8 +7938,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum purchasable quantity",
+          "example": "无",
           "member": "int64",
           "name": "MaxBuyNum",
           "required": true,
@@ -7937,8 +7947,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Whether a product is sold out",
+          "document": "Whether a product is sold out\n- `true`: Sold out.\n- `false`: Not sold out.",
+          "example": "无",
           "member": "bool",
           "name": "Saleout",
           "required": true,
@@ -7946,8 +7956,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Product engine: Tencent Cloud CKV or Redis community edition",
+          "document": "Product engines, including Tencent Cloud CKV and Redis Community Edition.",
+          "example": "无",
           "member": "string",
           "name": "Engine",
           "required": true,
@@ -7955,8 +7965,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Compatible version: Redis 2.8, Redis 3.2, or Redis 4.0",
+          "document": "Compatible versions, including Redis 2.8, 3.2, 4.0, 5.0, and 6.2.",
+          "example": "无",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -7964,8 +7974,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total capacity in GB",
+          "example": "无",
           "member": "string",
           "name": "TotalSize",
           "required": true,
@@ -7973,8 +7983,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard size in GB",
+          "example": "无",
           "member": "string",
           "name": "ShardSize",
           "required": true,
@@ -7982,8 +7992,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Number of replicas",
+          "document": "Quantity of replicas",
+          "example": "无",
           "member": "string",
           "name": "ReplicaNum",
           "required": true,
@@ -7991,8 +8001,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Number of shards",
+          "document": "Quantity of shards",
+          "example": "无",
           "member": "string",
           "name": "ShardNum",
           "required": true,
@@ -8000,8 +8010,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Supported billing method. 1: monthly subscription; 0: pay-as-you-go",
+          "document": "Supported billing modes\n- `1`: Monthly subscription.\n- `0`: Pay-as-you-go.",
+          "example": "无",
           "member": "string",
           "name": "PayMode",
           "required": true,
@@ -8009,8 +8019,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Whether to support read-only replicas",
+          "document": "Whether to support read-only replicas\n- `true`: Supported.\n-`false`: Not supported.",
+          "example": "无",
           "member": "bool",
           "name": "EnableRepicaReadOnly",
           "required": true,
@@ -8191,7 +8201,6 @@
       "document": "Instance information",
       "members": [
         {
-          "default": "",
           "document": "Instance name",
           "example": "InstanceName",
           "member": "string",
@@ -8201,7 +8210,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID",
           "example": "crs-xxxxxxx",
           "member": "string",
@@ -8211,8 +8219,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "User ID",
+          "document": "User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.",
           "example": "000000000",
           "member": "int64",
           "name": "AppId",
@@ -8221,8 +8228,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance project ID",
+          "document": "Project ID of the instance",
           "example": "000000000",
           "member": "int64",
           "name": "ProjectId",
@@ -8231,7 +8237,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance region",
           "example": "1",
           "member": "string",
@@ -8241,7 +8246,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance AZ",
           "example": "100001",
           "member": "string",
@@ -8251,8 +8255,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance network ID",
+          "document": "Instance VPC ID",
           "example": "vpc-xxxxxx",
           "member": "string",
           "name": "VpcId",
@@ -8261,8 +8264,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Subnet ID",
+          "document": "VPC subnet ID",
           "example": "sub-vcp-xxx",
           "member": "string",
           "name": "SubnetId",
@@ -8271,8 +8273,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance status. 1: task running; 2: instance running; -2: instance isolated; -3: instance being eliminated; -4: instance eliminated",
+          "document": "Instance status information\n- `1`: Task running.\n- `2`: Instance running.\n- `-2`: Instance isolated.\n- `-3`: Instance being eliminated.\n- `-4`: Instance eliminated.",
           "example": "1",
           "member": "string",
           "name": "Status",
@@ -8281,8 +8282,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance network IP",
+          "document": "Private network IP address of an instance",
           "example": "127.0.0.1",
           "member": "string",
           "name": "Vips",
@@ -8291,7 +8291,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance network port",
           "example": "6379",
           "member": "int64",
@@ -8301,7 +8300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance creation time",
           "example": "yyyy-MM-dd",
           "member": "string",
@@ -8311,8 +8309,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription",
+          "document": "Billing type\n- `0`: Pay-as-you-go.\n- `1`: Monthly subscription.",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
@@ -8321,8 +8318,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Network type. Valid values: 0 (classic network); 1 (VPC).",
+          "document": "Network Type\n- `0`: Classic network.\n- `1`: VPC.",
           "example": "1",
           "member": "int64",
           "name": "NetType",
@@ -8577,6 +8573,60 @@
       ],
       "type": "object"
     },
+    "RemoveReplicationInstanceRequest": {
+      "document": "RemoveReplicationInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Replication group ID",
+          "example": "crs-rpl-",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data sync type. Valid values: `true` (strong sync is required), `false` (strong sync is not required, only the master instance can be deleted).",
+          "example": "false",
+          "member": "bool",
+          "name": "SyncType",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveReplicationInstanceResponse": {
+      "document": "RemoveReplicationInstance response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "156156",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RenewInstanceRequest": {
       "document": "RenewInstance request structure.",
       "members": [
@@ -8740,8 +8790,8 @@
       "document": "Tag bound to the instance purchased via API",
       "members": [
         {
-          "default": "",
           "document": "Tag key",
+          "example": "无",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -8749,8 +8799,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Tag value",
+          "document": "The value corresponding to the tag key",
+          "example": "无",
           "member": "string",
           "name": "TagValue",
           "required": true,

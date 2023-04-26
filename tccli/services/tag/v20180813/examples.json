@@ -3,7 +3,7 @@
     "AddResourceTag": [
       {
         "document": "",
-        "input": "https://tag.tencentcloudapi.com/?Action=AddResourceTag\r\n&TagKey=testTagKey\r\n&TagValue=testTagValue\r\n&Resource=qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddResourceTag\n<Common request parameters>\n\n{\n    \"TagKey\": \"testTagKey\",\n    \"Resource\": \"qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\",\n    \"TagValue\": \"testTagValue\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Associating resources with a tag"
       }
@@ -54,6 +54,14 @@
         "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteTags\n<Common request parameters>\n\n{\n    \"Tags\": [\n        {\n            \"TagKey\": \"09221\",\n            \"TagValue\": \"092211\"\n        },\n        {\n            \"TagKey\": \"09221\",\n            \"TagValue\": \"092212\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"131fd253-b2de-4190-a1c1-13ce*********\"\n    }\n}",
         "title": "Deleting tags"
+      }
+    ],
+    "DescribeProjects": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjects\n<Common request parameters>\n\n{\n    \"Limit\": \"500\",\n    \"AllList\": \"0\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Projects\": [\n            {\n                \"ProjectId\": 1024701,\n                \"ProjectName\": \"test1\",\n                \"CreatorUin\": 100000548134,\n                \"ProjectInfo\": \"\",\n                \"CreateTime\": \"2021-10-13 11:03:30\"\n            }\n        ],\n        \"RequestId\": \"d75bbc07-f5bd-4020-b4bd-f877e9ccd1db\"\n    }\n}",
+        "title": "Getting project lists"
       }
     ],
     "DescribeResourceTags": [
@@ -193,15 +201,15 @@
     "ModifyResourceTags": [
       {
         "document": "",
-        "input": "https://tag.tencentcloudapi.com/?Action=ModifyResourceTags\n&Resource=qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\n&ReplaceTags.0.TagKey=testTagKey1\n&ReplaceTags.0.TagValue=testTagValue1\n&ReplaceTags.1.TagKey=testTagKey2\n&ReplaceTags.1.TagValue=testTagValue2\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceTags\n<Common request parameters>\n\n{\n    \"ReplaceTags\": [\n        {\n            \"TagKey\": \"testTagKey2\",\n            \"TagValue\": \"testTagValue2\"\n        },\n        {\n            \"TagKey\": \"testTagKey1\",\n            \"TagValue\": \"testTagValue1\"\n        }\n    ],\n    \"Resource\": \"qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Replacing tags associated with resource with input tags"
+        "title": "Replacing tags associated with a resource with input tags"
       },
       {
         "document": "",
-        "input": "https://tag.tencentcloudapi.com/?Action=ModifyResourceTags\n&Resource=qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\n&DeleteTags.0.TagKey=testTagKey1\n&DeleteTags.1.TagKey=testTagKey2\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceTags\n<Common request parameters>\n\n{\n    \"DeleteTags\": [\n        {\n            \"TagKey\": \"testTagKey2\"\n        },\n        {\n            \"TagKey\": \"testTagKey1\"\n        }\n    ],\n    \"Resource\": \"qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Batch unbinding tags from resource"
+        "title": "Unassociating multiple tags from a resource"
       }
     ],
     "ModifyResourcesTagValue": [
@@ -214,10 +222,10 @@
     ],
     "TagResources": [
       {
-        "document": "",
+        "document": "This example shows you how to bind tags to resources",
         "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TagResources\n<Common request parameters>\n\n{\n    \"ResourceList\": [\n        \"qcs::cvm:ap-beijing:uin/10000055****:instance/ins-****\",\n        \"qcs::cvm:ap-shanghai:uin/10000055****:volme/volme-****\"\n    ],\n    \"Tags\": [\n        {\n            \"TagKey\": \"11\",\n            \"TagValue\": \"11\"\n        },\n        {\n            \"TagKey\": \"22\",\n            \"TagValue\": \"22\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"FailedResources\": [],\n        \"RequestId\": \"a4c9f540-b04e-47c4-a267-4a398b70d2f5\"\n    }\n}",
-        "title": "Binding tag to resource"
+        "title": "Binding tags to resources"
       }
     ],
     "UnTagResources": [
@@ -231,7 +239,7 @@
     "UpdateResourceTagValue": [
       {
         "document": "",
-        "input": "https://tag.tencentcloudapi.com/?Action=UpdateResourceTagValue\r\n&TagKey=testTagKey\r\n&TagValue=testTagValue\r\n&Resource=qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateResourceTagValue\n<Common request parameters>\n\n{\n    \"TagKey\": \"testTagKey\",\n    \"Resource\": \"qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\",\n    \"TagValue\": \"testTagValue\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Modifying resource tag values"
       }
