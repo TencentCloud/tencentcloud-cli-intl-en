@@ -26,10 +26,10 @@
     ],
     "CreateAlarm": [
       {
-        "document": "",
+        "document": "This example shows you how to create an alarm policy.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAlarm\n<Common request parameters>\n\n{\n    \"AlarmNoticeIds\": [\n        \"notice-b02af159-f67b-44c3-877c-a55343f874c3\"\n    ],\n    \"Name\": \"test\",\n    \"TriggerCount\": 1,\n    \"AlarmPeriod\": 0,\n    \"MonitorTime\": {\n        \"Type\": \"Period\",\n        \"Time\": 10\n    },\n    \"AlarmTargets\": [\n        {\n            \"TopicId\": \"be3d88bb-a9cb-4d29-b697-0fcfbfd601ef\",\n            \"Number\": 1,\n            \"Query\": \"* | select count(*) as count\",\n            \"EndTimeOffset\": 0,\n            \"StartTimeOffset\": 0,\n            \"LogsetId\": \"fe3d45bb-a9cb-4d29-b697-0fcfbfd601ef\"\n        }\n    ],\n    \"Condition\": \"$1.count > 10\"\n}",
         "output": "{\n    \"Response\": {\n        \"AlarmId\": \"alarm-479dec34-4a59-11eb-b378-0242ac130002\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Creating alarm policy"
+        "title": "Creating an alarm policy"
       }
     ],
     "CreateAlarmNotice": [
@@ -90,10 +90,10 @@
     ],
     "CreateMachineGroup": [
       {
-        "document": "创建机器组",
+        "document": "This example shows you how to create a machine group.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMachineGroup\n<Common request parameters>\n\n{\n    \"GroupName\": \"testname\",\n    \"MachineGroupType\": {\n        \"Type\": \"ip\",\n        \"Values\": [\n            \"10.10.1.119\"\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Creating machine group"
+        "title": "Creating a machine group"
       }
     ],
     "CreateShipper": [
@@ -218,10 +218,18 @@
     ],
     "DescribeAlarms": [
       {
-        "document": "",
+        "document": "This example shows you how to get the list of alarm policies.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarms\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"Alarms\": [],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting the list of alarm policies"
+      }
+    ],
+    "DescribeAlertRecordHistory": [
+      {
+        "document": "This example shows you how to query uncleared alarms in a specified period.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlertRecordHistory\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 20,\n    \"From\": 1681401600000,\n    \"To\": 1681487999999,\n    \"Filters\": [\n        {\n            \"Key\": \"status\",\n            \"Values\": [\n                \"0\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Records\": [\n            {\n                \"RecordId\": \"977c26df-d47f-404c-b0d2-c9ccd73f1407\",\n                \"AlarmId\": \"alarm-98ba728c-3888-4049-b510-20e26de53894\",\n                \"AlarmName\": \"TKE Demo event log alarm policy_100001001014\",\n                \"TopicId\": \"0337bf0c-7a38-456a-bd59-ba2feaa55195\",\n                \"TopicName\": \"TKE Demo event log topic_100001001014\",\n                \"Region\": \"ap-chongqing\",\n                \"Trigger\": \"$1.Warning events > 0\",\n                \"TriggerCount\": 1,\n                \"AlarmPeriod\": 15,\n                \"Notices\": [\n                    {\n                        \"Name\": \"TKE Demo event log notification group_100001001014\",\n                        \"AlarmNoticeId\": \"notice-117dbad3-cc1b-4455-b112-76b0658dddc2\"\n                    }\n                ],\n                \"Duration\": 90,\n                \"Status\": 0,\n                \"CreateTime\": 1681439122000,\n                \"AlarmLevel\": 0,\n                \"MonitorObjectType\": 0,\n                \"GroupTriggerCondition\": []\n            },\n            {\n                \"RecordId\": \"1be40239-505f-4f1a-a6aa-4b71a9757d8a\",\n                \"AlarmId\": \"alarm-7be9386d-01e9-4b8b-a54e-fe00f6b15b1d\",\n                \"AlarmName\": \"TKE Demo audit log alarm policy_100001001014\",\n                \"TopicId\": \"6a4adc63-d145-4da4-a0e7-72bb1a9f8fcd\",\n                \"TopicName\": \"TKE Demo audit log topic_100001001014\",\n                \"Region\": \"ap-chongqing\",\n                \"Trigger\": \"$1.Actions > 10\",\n                \"TriggerCount\": 1,\n                \"AlarmPeriod\": 15,\n                \"Notices\": [\n                    {\n                        \"Name\": \"TKE Demo audit log notification group_100001001014\",\n                        \"AlarmNoticeId\": \"notice-f7d09113-b870-4f98-b99d-38d8ecf5393b\"\n                    }\n                ],\n                \"Duration\": 90,\n                \"Status\": 0,\n                \"CreateTime\": 1681438941000,\n                \"AlarmLevel\": 0,\n                \"MonitorObjectType\": 0,\n                \"GroupTriggerCondition\": []\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"431449a5-95ab-4168-9a0e-7db48692d917\"\n    }\n}",
+        "title": "Querying uncleared alarms"
       }
     ],
     "DescribeConfigMachineGroups": [
@@ -234,7 +242,7 @@
     ],
     "DescribeConfigs": [
       {
-        "document": "",
+        "document": "根据主题ID获取采集配置详情",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"configId\",\n            \"Values\": [\n                \"xxxx-xxx-xxxx\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"Configs\": [\n            {\n                \"ConfigId\": \"xxxx-xx-xx-xx-yyyyyyyy\",\n                \"Name\": \"testname\",\n                \"Path\": \"/abc/log/test.log\",\n                \"LogType\": \"delimiter_log\",\n                \"ExtractRule\": {\n                    \"TimeKey\": \"date\",\n                    \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n                    \"Delimiter\": \"|\",\n                    \"LogRegex\": \".*\",\n                    \"BeginRegex\": \"^\",\n                    \"Keys\": [\n                        \"date\",\n                        \"\",\n                        \"content\"\n                    ],\n                    \"FilterKeyRegex\": [\n                        {\n                            \"Key\": \"xx\",\n                            \"Regex\": \"xxxx\"\n                        }\n                    ],\n                    \"UnMatchLogKey\": \"testlog\",\n                    \"UnMatchUpLoadSwitch\": true,\n                    \"Backtracking\": -1\n                },\n                \"UserDefineRule\": \"xxxx\",\n                \"UpdateTime\": \"2017-08-08 12:12:12\",\n                \"CreateTime\": \"2017-08-08 12:12:12\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting collection configuration"
@@ -290,7 +298,7 @@
     ],
     "DescribeLogsets": [
       {
-        "document": "",
+        "document": "获取日志集列表",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogsets\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"xx\",\n        \"Logsets\": [\n            {\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"CreateTime\": \"xx\",\n                \"RoleName\": \"xx\",\n                \"AssumerName\": \"xx\",\n                \"TopicCount\": 0,\n                \"LogsetName\": \"xx\",\n                \"LogsetId\": \"xx\"\n            }\n        ]\n    }\n}",
         "title": "Getting the list of logsets"
@@ -306,7 +314,7 @@
     ],
     "DescribeMachineGroups": [
       {
-        "document": "",
+        "document": "获取包含指定标签的机器组列表",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMachineGroups\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Values\": [\n                \"k1\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"MachineGroups\": [\n            {\n                \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\",\n                \"GroupName\": \"testgroup\",\n                \"MachineGroupType\": {\n                    \"Type\": \"ip\",\n                    \"Values\": [\n                        \"10.10.1.119\"\n                    ]\n                },\n                \"CreateTime\": \"2020-10-11 19:22:33\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting the list of machine groups"
@@ -370,10 +378,10 @@
     ],
     "ModifyAlarm": [
       {
-        "document": "",
+        "document": "This example shows you how to modify an alarm policy.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarm\n<Common request parameters>\n\n{\n    \"AlarmNoticeIds\": [\n        \"notice-479dec34-4a59-11eb-b378-0242ac130002\"\n    ],\n    \"Name\": \"test\",\n    \"TriggerCount\": 1,\n    \"AlarmPeriod\": 0,\n    \"MonitorTime\": {\n        \"Type\": \"Period\",\n        \"Time\": 10\n    },\n    \"AlarmTargets\": [\n        {\n            \"TopicId\": \"6f574591-01b0-4475-bf0c-68255839a35d\",\n            \"Number\": 1,\n            \"Query\": \"* | select source\",\n            \"EndTimeOffset\": 0,\n            \"StartTimeOffset\": 0,\n            \"LogsetId\": \"ff574591-01b0-4475-bf0c-68255839a35d\"\n        }\n    ],\n    \"Condition\": \"$1.source='10.0.0.1'\",\n    \"AlarmId\": \"alarm-bea71170-4a59-11eb-b378-0242ac130002\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Modifying alarm policy"
+        "title": "Modifying an alarm policy"
       }
     ],
     "ModifyAlarmNotice": [
@@ -426,10 +434,10 @@
     ],
     "ModifyMachineGroup": [
       {
-        "document": "修改机器组",
+        "document": "This example shows you how to modify a machine group.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMachineGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\",\n    \"GroupName\": \"testgroup\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Modifying machine group"
+        "title": "Modifying a machine group"
       }
     ],
     "ModifyShipper": [
@@ -442,7 +450,7 @@
     ],
     "ModifyTopic": [
       {
-        "document": "修改日志主题",
+        "document": "This example shows you how to modify a log topic.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTopic\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxxxxx-xx-xx-xx-xxxxxxxx\",\n    \"TopicName\": \"testname\",\n    \"Status\": false,\n    \"Tags\": [],\n    \"Period\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying a log topic"
@@ -468,7 +476,7 @@
       {
         "document": "This example shows you how to query the logs with HTTP response status code (http_code) of 200.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SearchLog\n<Common request parameters>\n\n{\n    \"TopicId\": \"601c2a87-ca8e-49c9-xxxx-27286a970db5\",\n    \"From\": 1679901909686,\n    \"To\": 1679902809686,\n    \"Query\": \"http_code:\\\"200\\\"\",\n    \"Limit\": 1,\n    \"Sort\": \"desc\",\n    \"UseNewAnalysis\": true,\n    \"SyntaxRule\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"Context\": \"Y29udGV4dC0zZDVmZGI2NC1jNDZkLTQ2NzktYWM2OC1jYzg2NjUxYmVlMWExNjc5OTAyODEwNDM0\",\n        \"ListOver\": false,\n        \"Analysis\": false,\n        \"ColNames\": [],\n        \"Columns\": null,\n        \"Results\": [\n            {\n                \"Time\": 1679902806070,\n                \"TopicId\": \"601c2a87-ca8e-49c9-xxxx-27286a970db5\",\n                \"TopicName\": \"Log topic of CDN demo access logs_10000100xxxx\",\n                \"Source\": \"\",\n                \"FileName\": \"\",\n                \"HostName\": \"\",\n                \"PkgId\": \"\",\n                \"PkgLogId\": \"\",\n                \"LogJson\": \"{\\\"referer\\\":\\\"http://qwunsag.2022.qq.com/prizes?activity_code=AVGCHaQFX02Eb\\\",\\\"method\\\":\\\"GET\\\",\\\"isp\\\":\\\"China Unicom\\\",\\\"remote_port\\\":\\\"45088\\\",\\\"ua\\\":\\\"Mozilla/5.0 (Linux; Android 9; INE-AL00 Build/HUAWEIINE-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/3211 MMWEBSDK/20210601 Mobile Safari/537.36 MMWEBID/6389 MicroMessenger/8.0.11.1980(0x28000B5B) Process/toolsmp WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64\\\",\\\"uuid\\\":\\\"acf1010c853f4a24bb3e92cc34e283e2\\\",\\\"version\\\":\\\"1\\\",\\\"file_size\\\":\\\"186358\\\",\\\"url\\\":\\\"/loxtxt/979884858.png\\\",\\\"request_range\\\":\\\"-\\\",\\\"rsp_size\\\":\\\"186830\\\",\\\"hit\\\":\\\"hit\\\",\\\"request_time\\\":\\\"2808\\\",\\\"http_code\\\":\\\"200\\\",\\\"param\\\":\\\"-\\\",\\\"sys_address\\\":\\\"9.130.154.208\\\",\\\"proto\\\":\\\"HTTPS\\\",\\\"host\\\":\\\"test.2022.cls.cn\\\",\\\"sys_datasource\\\":\\\"cq.3.4.v1.2.17\\\",\\\"client_ip\\\":\\\"116.116.247.167\\\",\\\"time\\\":\\\"1679902806070\\\",\\\"app_id\\\":\\\"1302700768\\\",\\\"prov\\\":\\\"Inner Mongolia Autonomous Region\\\",\\\"timestamp\\\":\\\"2023-03-27T15:40:06+08:00\\\"}\",\n                \"RawLog\": \"\",\n                \"IndexStatus\": \"\"\n            }\n        ],\n        \"AnalysisResults\": [],\n        \"AnalysisRecords\": null,\n        \"RequestId\": \"79f593e5-1374-4463-xxxx-c49d0b3c5290\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Context\": \"Y29udGV4dC0zZDVmZGI2NC1jNDZkLTQ2NzktYWM2OC1jYzg2NjUxYmVlMWExNjc5OTAyODEwNDM0\",\n        \"ListOver\": false,\n        \"Analysis\": false,\n        \"ColNames\": [],\n        \"Columns\": null,\n        \"Results\": [\n            {\n                \"Time\": 1679902806070,\n                \"TopicId\": \"601c2a87-ca8e-49c9-xxxx-27286a970db5\",\n                \"TopicName\": \"Log topic of CDN demo access logs_10000100xxxx\",\n                \"Source\": \"\",\n                \"FileName\": \"\",\n                \"HostName\": \"\",\n                \"PkgId\": \"\",\n                \"PkgLogId\": \"\",\n                \"LogJson\": \"{\\\"referer\\\":\\\"http://qwunsag.2022.qq.com/prizes?activity_code=AVGCHaQFX02Eb\\\",\\\"method\\\":\\\"GET\\\",\\\"isp\\\":\\\"China Unicom\\\",\\\"remote_port\\\":\\\"45088\\\",\\\"ua\\\":\\\"Mozilla/5.0 (Linux; Android 9; INE-AL00 Build/HUAWEIINE-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/3211 MMWEBSDK/20210601 Mobile Safari/537.36 MMWEBID/6389 MicroMessenger/8.0.11.1980(0x28000B5B) Process/toolsmp WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64\\\",\\\"uuid\\\":\\\"acf1010c853f4a24bb3e92cc34e283e2\\\",\\\"version\\\":\\\"1\\\",\\\"file_size\\\":\\\"186358\\\",\\\"url\\\":\\\"/loxtxt/979884858.png\\\",\\\"request_range\\\":\\\"-\\\",\\\"rsp_size\\\":\\\"186830\\\",\\\"hit\\\":\\\"hit\\\",\\\"request_time\\\":\\\"2808\\\",\\\"http_code\\\":\\\"200\\\",\\\"param\\\":\\\"-\\\",\\\"sys_address\\\":\\\"9.130.154.208\\\",\\\"proto\\\":\\\"HTTPS\\\",\\\"host\\\":\\\"test.2022.cls.cn\\\",\\\"sys_datasource\\\":\\\"cq.3.4.v1.2.17\\\",\\\"client_ip\\\":\\\"116.116.247.167\\\",\\\"time\\\":\\\"1679902806070\\\",\\\"app_id\\\":\\\"1302700768\\\",\\\"prov\\\":\\\"Inner Mongolia Autonomous Region\\\",\\\"timestamp\\\":\\\"2023-03-27T15:40:06+08:00\\\"}\",\n                \"RawLog\": \"\",\n                \"IndexStatus\": \"\"\n            }\n        ],\n        \"AnalysisResults\": [],\n        \"AnalysisRecords\": null,\n        \"RequestId\": \"79f593e5-1374-4463-xxxx-c49d0b3c5290\",\n        \"SamplingRate\": 0\n    }\n}",
         "title": "Querying logs"
       }
     ],

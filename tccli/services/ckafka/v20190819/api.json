@@ -2350,7 +2350,6 @@
       "document": "DataHub topic response",
       "members": [
         {
-          "default": "",
           "document": "Topic name",
           "example": "xxx",
           "member": "string",
@@ -2358,6 +2357,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "TopicId\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

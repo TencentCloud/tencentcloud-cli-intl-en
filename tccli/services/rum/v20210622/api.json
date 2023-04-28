@@ -5453,11 +5453,18 @@
       "document": "DescribeReleaseFileSign request structure.",
       "members": [
         {
-          "default": "",
           "document": "Timeout period. If it is not set, it will be 5 minutes by default",
           "example": "10",
           "member": "int64",
           "name": "Timeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Bucket type. Valid values: `1`: (Web, which is the default value), `2` (Application).",
+          "example": "2",
+          "member": "int64",
+          "name": "FileType",
           "required": false,
           "type": "int"
         }
@@ -7272,7 +7279,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "Whitelist": {
       "document": "Allowlist",

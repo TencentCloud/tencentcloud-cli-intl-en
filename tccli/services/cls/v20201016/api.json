@@ -196,6 +196,13 @@
       "output": "DescribeAlarmsResponse",
       "status": "online"
     },
+    "DescribeAlertRecordHistory": {
+      "document": "This API is used to get alarm records, such as today's uncleared alarms.",
+      "input": "DescribeAlertRecordHistoryRequest",
+      "name": "Gets alarm records",
+      "output": "DescribeAlertRecordHistoryResponse",
+      "status": "online"
+    },
     "DescribeConfigMachineGroups": {
       "document": "This API is used to get the machine group bound to a collection rule configuration.",
       "input": "DescribeConfigMachineGroupsRequest",
@@ -863,13 +870,12 @@
       ],
       "usage": "out"
     },
-    "AnalysisDimensional": {
-      "document": "Multi-Dimensional analysis dimension",
+    "AlertHistoryNotice": {
+      "document": "Details about an alarm notification group",
       "members": [
         {
-          "default": "",
-          "document": "Analysis name",
-          "example": "status 502 pv",
+          "document": "Notification group name",
+          "example": "shicao_test",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -877,37 +883,208 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Type of data being analyzed. Valid values: `query`; `field`; `original`",
+          "document": "Notification group ID",
+          "example": "无",
+          "member": "string",
+          "name": "AlarmNoticeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AlertHistoryRecord": {
+      "document": "Alarm record details",
+      "members": [
+        {
+          "document": "Alarm record ID",
+          "example": "7cfbe19f-99af-42ca-8f9f-b59d1f9c6157",
+          "member": "string",
+          "name": "RecordId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm policy ID",
+          "example": "alarm-8211a509-xxxx-43dd-9ec0-6a6e7bc92552",
+          "member": "string",
+          "name": "AlarmId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm policy name",
+          "example": "日志错误数超限",
+          "member": "string",
+          "name": "AlarmName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the monitored object",
+          "example": "0bf009c5-53f3-4f60-xxxx-341d732ed5b9",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name of the monitored object",
+          "example": "Nginx请求日志",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Region of the monitored object",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Trigger condition",
+          "example": "$1.d > 300",
+          "member": "string",
+          "name": "Trigger",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of cycles for which the alarm lasts. An alarm will be triggered only after the trigger condition is met for the number of cycles specified by `TriggerCount`.",
+          "example": "1",
+          "member": "int64",
+          "name": "TriggerCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm notification frequency (minutes)",
+          "example": "15",
+          "member": "int64",
+          "name": "AlarmPeriod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Notification group",
+          "example": "无",
+          "member": "AlertHistoryNotice",
+          "name": "Notices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm duration (minutes)",
+          "example": "60",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm status. Valid values: `0` (uncleared), `1` (cleared), `2` (expired)",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm generation time, which is a Unix timestamp in ms",
+          "example": "1619359718000",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Group information corresponding to triggering by group\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Key\":\"$1.count\",\"Value\":\"100\"}]",
+          "member": "GroupTriggerConditionInfo",
+          "name": "GroupTriggerCondition",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Alarm severity. Valid values: `0` (Warn), `1` (Info), `2` (Critical)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "AlarmLevel",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Type of the monitored object\n`0`: The same object is specified for all statements. `1`: An object is separately specified for each statement. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "MonitorObjectType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalysisDimensional": {
+      "document": "Multi-Dimensional analysis dimension",
+      "members": [
+        {
+          "document": "Analysis name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "status 502 pv",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Type of data being analyzed. Valid values: `query`, `field`, `original`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "query",
           "member": "string",
           "name": "Type",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Analysis content",
+          "document": "Analysis content\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "*|select count(1) as pv where status = 502",
           "member": "string",
           "name": "Content",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Configuration",
+          "document": "Configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AlarmAnalysisConfig",
           "name": "ConfigInfo",
           "required": false,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ApplyConfigToMachineGroupRequest": {
       "document": "ApplyConfigToMachineGroup request structure.",
@@ -2304,7 +2481,6 @@
       "document": "CreateTopic request structure.",
       "members": [
         {
-          "default": "",
           "document": "Logset ID",
           "example": "xxxxxx-xx-xx-xx-xxxxxxxx",
           "member": "string",
@@ -2313,7 +2489,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log topic name",
           "example": "testname",
           "member": "string",
@@ -2322,7 +2497,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of log topic partitions. Default value: 1. Maximum value: 10",
           "example": "1",
           "member": "int64",
@@ -2331,7 +2505,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag description list. This parameter is used to bind a tag to a log topic. Up to 10 tag key-value pairs are supported, and a resource can be bound to only one tag key.",
           "example": "无",
           "member": "Tag",
@@ -2340,7 +2513,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to enable automatic split. Default value: true",
           "example": "true",
           "member": "bool",
@@ -2349,7 +2521,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Maximum number of partitions to split into for this topic if automatic split is enabled. Default value: 50",
           "example": "50",
           "member": "int64",
@@ -2358,7 +2529,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Log topic storage type. Valid values: `hot` (STANDARD storage); `cold` (IA storage). Default value: `hot`.",
           "example": "hot",
           "member": "string",
@@ -2367,13 +2537,36 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.",
           "example": "30",
           "member": "int64",
           "name": "Period",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Log topic description",
+          "example": "xx部门xx任务topic",
+          "member": "string",
+          "name": "Describes",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "`0`: Disable log transitioning.\nA value other than `0`: The number of STANDARD storage days after log transitioning is enabled (valid only if `StorageType` is `hot`). Note: `HotPeriod` should be greater than or equal to `7` and less than `Period`.",
+          "example": "7",
+          "member": "uint64",
+          "name": "HotPeriod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to enable web tracking. Valid values: `false` (disable); `true` (enable)",
+          "example": "false",
+          "member": "bool",
+          "name": "IsWebTracking",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2912,6 +3105,80 @@
           "name": "TotalCount",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlertRecordHistoryRequest": {
+      "document": "DescribeAlertRecordHistory request structure.",
+      "members": [
+        {
+          "document": "Start time of the query range, which is a Unix timestamp in ms",
+          "example": "1619063300000",
+          "member": "uint64",
+          "name": "From",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "End time of the query range, which is a Unix timestamp in ms",
+          "example": "1619581700000",
+          "member": "uint64",
+          "name": "To",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Page offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Maximum number of entries per page. Maximum value: 100",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "- alertId: Filter by alarm policy ID. Type: String; optional\n- topicId: Filter by ID of monitored object. Type: String; optional\n- status: Filter by alarm status. Type: String, optional. Valid values: `0` (uncleared), `1` (cleared), `2` (expired)\n- alarmLevel: Filter by alarm severity. Type: String, optional. Valid values: `0` (Warn), `1` (Info), `2` (Critical)\n\nEach request can have up to 10 `Filters` and 100 `Filter.Values`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlertRecordHistoryResponse": {
+      "document": "DescribeAlertRecordHistory response structure.",
+      "members": [
+        {
+          "document": "Total alarm records",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm record details",
+          "example": "无",
+          "member": "AlertHistoryRecord",
+          "name": "Records",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3936,6 +4203,21 @@
       ],
       "type": "object"
     },
+    "DynamicIndex": {
+      "document": "Dynamic index configuration",
+      "members": [
+        {
+          "document": "Dynamic index configuration status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Status",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ExcludePathInfo": {
       "document": "Blocklist path information",
       "members": [
@@ -4497,6 +4779,30 @@
         }
       ],
       "type": "object"
+    },
+    "GroupTriggerConditionInfo": {
+      "document": "Condition of triggering by group",
+      "members": [
+        {
+          "document": "Name of the field for triggering by group",
+          "example": "$1.count",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Value of the field for triggering by group",
+          "example": "100",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "HistogramInfo": {
       "document": "Histogram details",
@@ -5887,7 +6193,6 @@
       "document": "ModifyTopic request structure.",
       "members": [
         {
-          "default": "",
           "document": "Log topic ID",
           "example": "xxxxxx-xx-xx-xx-xxxxxxxx",
           "member": "string",
@@ -5896,7 +6201,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log topic name",
           "example": "testname",
           "member": "string",
@@ -5905,7 +6209,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag description list. This parameter is used to bind a tag to a log topic. Up to 10 tag key-value pairs are supported, and they must be unique.",
           "example": "无",
           "member": "Tag",
@@ -5914,7 +6217,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to start collection for this log topic",
           "example": "true",
           "member": "bool",
@@ -5923,7 +6225,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Whether to enable automatic split",
           "example": "true",
           "member": "bool",
@@ -5932,7 +6233,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Maximum number of partitions to split into for this topic if automatic split is enabled",
           "example": "50",
           "member": "int64",
@@ -5941,13 +6241,36 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.",
           "example": "30",
           "member": "int64",
           "name": "Period",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Log topic description",
+          "example": "xx部门xx业务topic",
+          "member": "string",
+          "name": "Describes",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "`0`: Disable log transitioning.\nA value other than `0`: The number of STANDARD storage days after log transitioning is enabled (valid only if `StorageType` is `hot`). Note: `HotPeriod` should be greater than or equal to `7` and less than `Period`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "HotPeriod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to enable web tracking. Valid values: `false` (disable); `true` (enable)",
+          "example": "false",
+          "member": "bool",
+          "name": "IsWebTracking",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -6248,10 +6571,9 @@
       "type": "object"
     },
     "RuleInfo": {
-      "document": "Index rule. At least one of the `FullText`, `KeyValue`, and `Tag` parameters must be valid.\n",
+      "document": "Index rule. At least one of the `FullText`, `KeyValue`, and `Tag` parameters must be valid.",
       "members": [
         {
-          "default": "",
           "document": "Full-text index configuration. If the configuration is left empty, full-text indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "空",
           "member": "FullTextInfo",
@@ -6261,7 +6583,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Key-value index configuration. If the configuration is left empty, key-value indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "空",
           "member": "RuleKeyValueInfo",
@@ -6271,11 +6592,19 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Metadata field index configuration. If the configuration is left empty, metadata field indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "空",
           "member": "RuleTagInfo",
           "name": "Tag",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Dynamic index configuration. If the configuration is empty, dynamic indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DynamicIndex",
+          "name": "DynamicIndex",
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6411,7 +6740,7 @@
           "type": "float"
         },
         {
-          "document": "Search syntax.\n`0` (default): Lucene; `1`: CQL.\nFor more information, visit https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules.",
+          "document": "Search syntax\n`0` (default): Lucene; `1`: CQL.\nFor more information, see <a href=\"https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules\" target=\"_blank\">Syntax Rules</a>",
           "example": "1",
           "member": "uint64",
           "name": "SyntaxRule",
@@ -6426,10 +6755,9 @@
       "members": [
         {
           "document": "You can pass through the `Context` value (validity: 1 hour) returned by this API to continue to get more logs.",
-          "example": "context",
+          "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
           "member": "string",
           "name": "Context",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6438,7 +6766,6 @@
           "example": "1",
           "member": "bool",
           "name": "ListOver",
-          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -6447,7 +6774,6 @@
           "example": "false",
           "member": "bool",
           "name": "Analysis",
-          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -6456,7 +6782,6 @@
           "example": "无",
           "member": "LogInfo",
           "name": "Results",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6465,7 +6790,6 @@
           "example": "[]",
           "member": "string",
           "name": "ColNames",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6474,7 +6798,6 @@
           "example": "无",
           "member": "LogItems",
           "name": "AnalysisResults",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6483,7 +6806,6 @@
           "example": "[\"xxx\",\"yy\"]",
           "member": "string",
           "name": "AnalysisRecords",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6492,8 +6814,15 @@
           "example": "无",
           "member": "Column",
           "name": "Columns",
-          "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Sample rate used in this statistical analysis\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.1",
+          "member": "float",
+          "name": "SamplingRate",
+          "type": "float",
           "value_allowed_null": true
         },
         {

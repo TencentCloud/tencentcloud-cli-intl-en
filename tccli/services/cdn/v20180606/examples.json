@@ -8,6 +8,14 @@
         "title": "Adding one or more domains to a specified log topic"
       }
     ],
+    "AddCdnDomain": [
+      {
+        "document": "This example shows you how to add an acceleration domain name.",
+        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddCdnDomain\n<Common request parameters>\n\n{\n    \"Origin\": {\n        \"OriginType\": \"ip\",\n        \"Origins\": [\n            \"1.1.1.1\"\n        ]\n    },\n    \"ProjectId\": \"0\",\n    \"Domain\": \"www.test.com\",\n    \"ServiceType\": \"web\",\n    \"Area\": \"mainland\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a4ac88a3-a159-47ac-9b87-19185d7deb09\"\n    }\n}",
+        "title": "Adding an acceleration domain name"
+      }
+    ],
     "CreateClsLogTopic": [
       {
         "document": "",
@@ -58,7 +66,7 @@
     ],
     "DescribeCdnDomainLogs": [
       {
-        "document": "",
+        "document": "查询域名指定时间段的日志列表",
         "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCdnDomainLogs\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"EndTime\": \"2019-09-04 12:00:00\",\n    \"StartTime\": \"2019-09-04 00:00:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"123\",\n        \"DomainLogs\": [\n            {\n                \"Area\": \"mainland\",\n                \"StartTime\": \"2019-09-04 23:00:00\",\n                \"EndTime\": \"2019-09-04 23:59:59\",\n                \"LogPath\": \"http://www.test.qcloud.com/20190904/23/201909042300-www.test.com.gz?st=hGzJr0QFpo3jYM2uj7kkjA&e=3135214538\",\n                \"LogName\": \"2019090423\"\n            }\n        ],\n        \"TotalCount\": 300\n    }\n}",
         "title": "Querying the log download link"
@@ -314,16 +322,10 @@
     ],
     "UpdateDomainConfig": [
       {
-        "document": "",
+        "document": "This example shows you how to update domain name configurations.",
         "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDomainConfig\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"Domain\": \"www.test.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"23cd4005-496f-4bc4-87d8-ab348d5b0c17\"\n    }\n}",
         "title": "Updating domain name configurations"
-      },
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"test02.lukachen.work\",\n    \"HttpsBilling\": {\n        \"Switch\": \"on\"\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"283d5206-8768-4322-8a68-8c1d09afcdff\"\n    }\n}",
-        "title": "bennyddeng-test"
       }
     ],
     "UpdatePayType": [
@@ -336,7 +338,7 @@
     ],
     "UpdateScdnDomain": [
       {
-        "document": "",
+        "document": "This example shows you how to modify SCDN domain name configuration.",
         "input": "https://cdn.tencentcloudapi.com/?Action=UpdateScdnDomain\n&Domain=www.test.com\n&Acl.Switch=on\n&Acl.ScriptData.0.RuleName=test\n&Acl.ScriptData.0.Result=refuse\n&Acl.ScriptData.0.Configure.0.MatchKey=params\n&Acl.ScriptData.0.Configure.0.LogiOperator=exclude\n&Acl.ScriptData.0.Configure.0.MatchValue=www.attatck.com\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08b287d9-6342-4b70-9ec7-201efcd93b9d\",\n        \"Result\": \"Success\"\n    }\n}",
         "title": "Modifying SCDN domain name configuration"

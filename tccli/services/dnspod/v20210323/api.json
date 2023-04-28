@@ -321,7 +321,7 @@
         },
         {
           "default": "",
-          "document": "Record weight (not supported).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The record weight (not supported).",
           "example": "10",
           "member": "uint64",
           "name": "Weight",
@@ -945,7 +945,6 @@
       "document": "Record information in the task of bulk adding records",
       "members": [
         {
-          "default": "",
           "document": "Subdomain (host record).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "www",
           "member": "string",
@@ -955,7 +954,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record type. For more information, see the `DescribeRecordType` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "A",
           "member": "string",
@@ -965,7 +963,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "百度",
           "member": "string",
@@ -975,7 +972,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record value\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "129.23.32.32",
           "member": "string",
@@ -985,7 +981,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TTL value of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "600",
           "member": "uint64",
@@ -995,7 +990,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record adding status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "waiting",
           "member": "string",
@@ -1005,7 +999,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "plus",
           "member": "string",
@@ -1015,7 +1008,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -1025,7 +1017,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the record in the list",
           "example": "1",
           "member": "uint64",
@@ -1035,12 +1026,20 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "MX weight of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "12",
           "member": "uint64",
           "name": "MX",
           "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The record weight.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Weight",
+          "required": false,
           "type": "int",
           "value_allowed_null": true
         }
@@ -1649,7 +1648,7 @@
       "document": "DescribeDomainList request structure.",
       "members": [
         {
-          "document": "Domain group type. Valid values: `ALL`, `MINE`, `SHARE`, `ISMARK`, `PAUSE`, `VIP`, `RECENT`, `SHARE_OUT`. Default value: `ALL`.",
+          "document": "The domain group type. Valid values: `ALL` (default), `MINE`, `SHARE`, `ISMARK`, `PAUSE`, `VIP`, `RECENT`, `SHARE_OUT`, and `FREE`.",
           "example": "ALL",
           "member": "string",
           "name": "Type",

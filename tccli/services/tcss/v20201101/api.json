@@ -12829,11 +12829,10 @@
       "document": "DescribeAssetHostDetail response structure.",
       "members": [
         {
-          "document": "CWPP UUID",
+          "document": "TCSS UUID",
           "example": "无",
           "member": "string",
           "name": "UUID",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12842,7 +12841,6 @@
           "example": "无",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12851,7 +12849,6 @@
           "example": "无",
           "member": "string",
           "name": "HostName",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12860,7 +12857,6 @@
           "example": "无",
           "member": "string",
           "name": "Group",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12869,7 +12865,6 @@
           "example": "无",
           "member": "string",
           "name": "HostIP",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12878,7 +12873,6 @@
           "example": "无",
           "member": "string",
           "name": "OsName",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12887,7 +12881,6 @@
           "example": "无",
           "member": "string",
           "name": "AgentVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12896,7 +12889,6 @@
           "example": "无",
           "member": "string",
           "name": "KernelVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12905,7 +12897,6 @@
           "example": "无",
           "member": "string",
           "name": "DockerVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12914,7 +12905,6 @@
           "example": "无",
           "member": "string",
           "name": "DockerAPIVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12923,7 +12913,6 @@
           "example": "无",
           "member": "string",
           "name": "DockerGoVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12932,7 +12921,6 @@
           "example": "无",
           "member": "string",
           "name": "DockerFileSystemDriver",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12941,7 +12929,6 @@
           "example": "无",
           "member": "string",
           "name": "DockerRootDir",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12950,7 +12937,6 @@
           "example": "无",
           "member": "uint64",
           "name": "ImageCnt",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -12959,7 +12945,6 @@
           "example": "无",
           "member": "uint64",
           "name": "ContainerCnt",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -12968,7 +12953,6 @@
           "example": "无",
           "member": "string",
           "name": "K8sMasterIP",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12977,7 +12961,6 @@
           "example": "无",
           "member": "string",
           "name": "K8sVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12986,7 +12969,6 @@
           "example": "无",
           "member": "string",
           "name": "KubeProxyVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12995,7 +12977,6 @@
           "example": "无",
           "member": "string",
           "name": "Status",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -13004,7 +12985,6 @@
           "example": "无",
           "member": "bool",
           "name": "IsContainerd",
-          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -13013,7 +12993,6 @@
           "example": "无",
           "member": "string",
           "name": "MachineType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -13022,7 +13001,6 @@
           "example": "无",
           "member": "string",
           "name": "PublicIp",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -13031,7 +13009,6 @@
           "example": "无",
           "member": "string",
           "name": "InstanceID",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -13040,7 +13017,6 @@
           "example": "无",
           "member": "int64",
           "name": "RegionID",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -13049,7 +13025,6 @@
           "example": "无",
           "member": "ProjectInfo",
           "name": "Project",
-          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -13058,7 +13033,6 @@
           "example": "无",
           "member": "TagInfo",
           "name": "Tags",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -16363,7 +16337,6 @@
           "example": "cls-jvrv0kf2",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16372,7 +16345,6 @@
           "example": "tke_test",
           "member": "string",
           "name": "ClusterName",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16381,7 +16353,6 @@
           "example": "20",
           "member": "int64",
           "name": "ScanTaskProgress",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16390,7 +16361,6 @@
           "example": "1.8.8",
           "member": "string",
           "name": "ClusterVersion",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16399,7 +16369,6 @@
           "example": "docker",
           "member": "string",
           "name": "ContainerRuntime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16408,7 +16377,6 @@
           "example": "2",
           "member": "uint64",
           "name": "ClusterNodeNum",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16417,7 +16385,6 @@
           "example": "Running",
           "member": "string",
           "name": "ClusterStatus",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16426,7 +16393,6 @@
           "example": "MANAGED_CLUSTER",
           "member": "string",
           "name": "ClusterType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16435,7 +16401,6 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16444,7 +16409,6 @@
           "example": "3",
           "member": "uint64",
           "name": "SeriousRiskCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16453,7 +16417,6 @@
           "example": "2",
           "member": "uint64",
           "name": "HighRiskCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16462,7 +16425,6 @@
           "example": "4",
           "member": "uint64",
           "name": "MiddleRiskCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16471,7 +16433,6 @@
           "example": "5",
           "member": "uint64",
           "name": "HintRiskCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16480,7 +16441,6 @@
           "example": "无",
           "member": "string",
           "name": "CheckStatus",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16489,7 +16449,6 @@
           "example": "无",
           "member": "string",
           "name": "DefenderStatus",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16498,7 +16457,6 @@
           "example": "2021-10-19 12:26:56",
           "member": "string",
           "name": "TaskCreateTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16507,7 +16465,6 @@
           "example": "PublicNetwork",
           "member": "string",
           "name": "NetworkType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16516,7 +16473,6 @@
           "example": "https://10.100.0.123:60002",
           "member": "string",
           "name": "ApiServerAddress",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16525,7 +16481,6 @@
           "example": "4",
           "member": "uint64",
           "name": "NodeCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16534,7 +16489,6 @@
           "example": "4",
           "member": "uint64",
           "name": "NamespaceCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16543,7 +16497,6 @@
           "example": "4",
           "member": "uint64",
           "name": "WorkloadCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16552,7 +16505,6 @@
           "example": "5",
           "member": "uint64",
           "name": "PodCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16561,7 +16513,6 @@
           "example": "5",
           "member": "uint64",
           "name": "ServiceCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16570,8 +16521,15 @@
           "example": "5",
           "member": "uint64",
           "name": "IngressCount",
-          "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IPs of the primary nodes",
+          "example": "127.0.0.1;127.0.0.2;",
+          "member": "string",
+          "name": "MasterIps",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -16596,7 +16554,6 @@
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16605,7 +16562,6 @@
           "example": "3",
           "member": "uint64",
           "name": "RiskClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16614,7 +16570,6 @@
           "example": "2",
           "member": "uint64",
           "name": "UncheckClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16623,7 +16578,6 @@
           "example": "5",
           "member": "uint64",
           "name": "ManagedClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16632,7 +16586,6 @@
           "example": "3",
           "member": "uint64",
           "name": "IndependentClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16641,7 +16594,6 @@
           "example": "3",
           "member": "uint64",
           "name": "NoRiskClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16650,7 +16602,6 @@
           "example": "3",
           "member": "uint64",
           "name": "CheckedClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16659,7 +16610,6 @@
           "example": "2",
           "member": "uint64",
           "name": "AutoCheckClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16668,7 +16618,6 @@
           "example": "2",
           "member": "uint64",
           "name": "ManualCheckClusterCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16677,7 +16626,14 @@
           "example": "1",
           "member": "uint64",
           "name": "FailedClusterCount",
-          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of clusters not imported",
+          "example": "3",
+          "member": "uint64",
+          "name": "NotImportedClusterCount",
           "type": "int",
           "value_allowed_null": false
         },
@@ -25703,7 +25659,6 @@
           "example": "10",
           "member": "int64",
           "name": "VulTotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -25712,7 +25667,6 @@
           "example": "1",
           "member": "int64",
           "name": "SeriousVulCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -25721,7 +25675,6 @@
           "example": "1",
           "member": "int64",
           "name": "SuggestVulCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -25730,7 +25683,6 @@
           "example": "1",
           "member": "int64",
           "name": "PocExpLevelVulCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -25739,7 +25691,6 @@
           "example": "1",
           "member": "int64",
           "name": "RemoteExpLevelVulCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -25748,7 +25699,46 @@
           "example": "1",
           "member": "int64",
           "name": "SeriousVulNewestImageCount",
-          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of high-priority system vulnerabilities",
+          "example": "1",
+          "member": "int64",
+          "name": "SystemVulnerabilityFocusCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of high-priority web vulnerabilities",
+          "example": "1",
+          "member": "int64",
+          "name": "WebVulnerabilityFocusCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of affected local images",
+          "example": "1",
+          "member": "int64",
+          "name": "SeriousVulnerabilityLocalImageCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of affected repository images",
+          "example": "1",
+          "member": "int64",
+          "name": "SeriousVulnerabilityRegistryImageCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of emergency vulnerabilities",
+          "example": "1",
+          "member": "int64",
+          "name": "EmergencyVulnerabilityCount",
           "type": "int",
           "value_allowed_null": false
         },

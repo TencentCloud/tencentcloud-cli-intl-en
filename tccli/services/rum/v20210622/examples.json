@@ -42,7 +42,7 @@
     ],
     "CreateTawInstance": [
       {
-        "document": "",
+        "document": "创建实例",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTawInstance\n<Common request parameters>\n\n{\n    \"AreaId\": 1,\n    \"InstanceName\": \"test\",\n    \"ChargeType\": 1,\n    \"DataRetentionDays\": 30,\n    \"InstanceDesc\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"taw-4vVPH0Jn\",\n        \"DealName\": \"\",\n        \"RequestId\": \"57f4d8a2-13b6-4ac0-9f0b-0acc7bbc1d61\"\n    }\n}",
         "title": "Querying an instance"
@@ -380,10 +380,10 @@
     ],
     "DescribeReleaseFileSign": [
       {
-        "document": "",
+        "document": "This example shows you how to obtain the temporary key.",
         "input": "https://rum.tencentcloudapi.com/?Action=DescribeReleaseFileSign\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SecretKey\": \"dahfldaflndfdfdsf\",\n        \"SecretID\": \"asdkadalsdlsafk\",\n        \"SessionToken\": \"fdslkfjdkjfldsjfdfdf\",\n        \"StartTime\": 1232132132,\n        \"ExpiredTime\": 123212143434,\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting temporary key"
+        "title": "Obtaining the temporary key"
       }
     ],
     "DescribeReleaseFiles": [

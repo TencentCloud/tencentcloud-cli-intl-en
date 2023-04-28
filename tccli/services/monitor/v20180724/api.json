@@ -10018,6 +10018,14 @@
           "value_allowed_null": true
         },
         {
+          "document": "List of probes and the corresponding targets information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusConfigItem",
+          "name": "Probes",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -14787,7 +14795,7 @@
       "usage": "both"
     },
     "PrometheusClusterAgentBasic": {
-      "document": "Basic information of the cluster associated with a CM-integrated TMP instance.",
+      "document": "Basic information of the cluster associated with a Tencent Cloud Observability Platform (TCOP)-integrated TMP instance.",
       "members": [
         {
           "document": "Cluster ID",
@@ -14910,7 +14918,6 @@
       "document": "Prometheus configuration",
       "members": [
         {
-          "default": "",
           "document": "Name",
           "example": "xxx",
           "member": "string",
@@ -14920,7 +14927,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Configuration content",
           "example": "xxx",
           "member": "string",
@@ -14930,13 +14936,21 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "If the configuration comes from a template, this parameter is the template ID, which is used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
           "name": "TemplateId",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of targets\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "Targets",
+          "name": "Targets",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -15712,6 +15726,33 @@
           "name": "ClusterId",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of rules\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -16869,6 +16910,48 @@
       ],
       "usage": "out"
     },
+    "Targets": {
+      "document": "Number of scrape targets",
+      "members": [
+        {
+          "document": "The total count\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of online targets\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Up",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of offline targets\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Down",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of unknown status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Unknown",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "TaskStepInfo": {
       "document": "Task step information",
       "members": [
@@ -17086,10 +17169,9 @@
       "usage": "in"
     },
     "URLNotice": {
-      "document": "Cloud Monitor alarm notification template - callback notification details",
+      "document": "Alarm notification template – callback notification details",
       "members": [
         {
-          "default": "",
           "document": "Callback URL, which can contain up to 256 characters\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "http://www.123.com",
           "member": "string",
@@ -17099,7 +17181,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether verification is passed. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -17109,7 +17190,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Verification code\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "82hf8t",
           "member": "string",
@@ -17119,7 +17199,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Start time of the notification in seconds, which is calculated from 00:00:00.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -17129,7 +17208,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "End time of the notification in seconds, which is calculated from 00:00:00.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "86399",
           "member": "int64",
@@ -17139,7 +17217,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Notification cycle. The values 1-7 indicate Monday to Sunday.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[1,2,5]",
           "member": "int64",
@@ -18196,10 +18273,9 @@
       "type": "object"
     },
     "UserNotice": {
-      "document": "Cloud Monitor alarm notification template - user notification details",
+      "document": "Alarm notification template – user notification details",
       "members": [
         {
-          "default": "",
           "document": "Recipient type. Valid values: USER (user), GROUP (user group)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "USER",
           "member": "string",
@@ -18209,7 +18285,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Notification start time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -18219,7 +18294,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "86399",
           "member": "int64",
@@ -18229,7 +18303,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Notification channel list. Valid values: `EMAIL` (email), `SMS` (SMS), `CALL` (phone), `WECHAT` (WeChat), `RTX` (WeCom)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"SMS\", \"CALL\"]",
           "member": "string",
@@ -18239,7 +18312,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User `uid` list\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "[100001,100002]",
           "member": "int64",
@@ -18249,7 +18321,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User group ID list\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "[10001,10002]",
           "member": "int64",
@@ -18259,7 +18330,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Phone polling list\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "[100001,100002]",
           "member": "int64",
@@ -18269,7 +18339,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of phone pollings. Value range: 1–5\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -18279,7 +18348,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Call interval in seconds within one polling. Value range: 60–900\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "60",
           "member": "int64",
@@ -18289,7 +18357,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Polling interval in seconds. Value range: 60–900\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "60",
           "member": "int64",
@@ -18299,7 +18366,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether receipt notification is required. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -18309,7 +18375,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Dial type. `SYNC` (simultaneous dial), `CIRCLE` (polled dial). Default value: `CIRCLE`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "SYNC",
           "member": "string",
@@ -18319,7 +18384,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Notification cycle. The values 1-7 indicate Monday to Sunday.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[1,2,5]",
           "member": "int64",

@@ -64,6 +64,14 @@
         "title": "Creating a security audit log export task"
       }
     ],
+    "DeleteDBDiagReportTasks": [
+      {
+        "document": "This example shows you how to delete health report generation tasks.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action= DeleteDBDiagReportTasks\n&InstanceId=cdb-inste123\n&Product=mysql\n&AsyncRequestIds.0=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5fdab910-5c9e-11eb-a610-8717ee1b1000\",\n        \"Status\": 0\n    }\n}",
+        "title": "Deleting health report generation tasks"
+      }
+    ],
     "DeleteSecurityAuditLogExportTasks": [
       {
         "document": "",
@@ -210,10 +218,10 @@
     ],
     "DescribeSlowLogTopSqls": [
       {
-        "document": "按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。",
-        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSlowLogTopSqls\n&InstanceId=test\n&SortBy=QueryTime\n&OrderBy=ASC\n&Limit=10\n&Offset=0\n&StartTime=2019-01-01 00:00:00\n&EndTime=2019-01-01 01:00:00\n&SchemaList.0.Schema=dbName\n&<common request parameters>",
+        "document": "This example shows you how to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSlowLogTopSqls\n&InstanceId=test\n&SortBy=QueryTime\n&OrderBy=ASC\n&Limit=10\n&Offset=0\n&StartTime=2019-01-01 00:00:00\n&EndTime=2019-01-01 01:00:00\n&SchemaList.0.Schema=dbName\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed279d8b-a9d9-48d6-9429-e0fde000994a\",\n        \"TotalCount\": 1,\n        \"Rows\": [\n            {\n                \"QueryTimeMin\": 0.0,\n                \"LockTimeMin\": 0.0,\n                \"QueryTimeMax\": 14.086705,\n                \"QueryTimeRatio\": 0.0,\n                \"RowsSentRatio\": 0.0,\n                \"RowsSentMax\": 0,\n                \"RowsExaminedMin\": 0,\n                \"RowsSentMin\": 0,\n                \"SqlText\": \"select * from user\",\n                \"Schema\": \"test\",\n                \"LockTimeMax\": 0.0,\n                \"LockTimeRatio\": 0.0,\n                \"ExecTimes\": 2,\n                \"LockTimeAvg\": 0.0,\n                \"RowsExamined\": 0,\n                \"RowsSentAvg\": 0.0,\n                \"QueryTime\": 28.17341,\n                \"RowsExaminedAvg\": 0.0,\n                \"RowsExaminedMax\": 0,\n                \"RowsSent\": 0,\n                \"RowsExaminedRatio\": 0.0,\n                \"QueryTimeAvg\": 0.0,\n                \"SqlTemplate\": \"select * from user where name=?\",\n                \"LockTime\": 0.0,\n                \"Md5\": \"2323847233\"\n            }\n        ]\n    }\n}",
-        "title": "获取慢SQL模版列表 "
+        "title": "Obtaining the slow SQL template list "
       }
     ],
     "DescribeSlowLogUserHostStats": [
@@ -222,6 +230,14 @@
         "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSlowLogUserHostStats\n&Product=mysql\n&InstanceId=cdb-c1nl9rpv\n&StartTime=2020-09-21T00:00:00+00:00\n&EndTime=2020-09-22T00:00:00+00:00\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"e2a51350-8c9f-11eb-bc0f-c9f5ab88d057\",\n        \"Items\": [\n            {\n                \"UserHost\": \"10.3.1.1\",\n                \"Ratio\": 50,\n                \"Count\": 29\n            },\n            {\n                \"UserHost\": \"10.3.1.2\",\n                \"Ratio\": 50,\n                \"Count\": 29\n            }\n        ]\n    }\n}",
         "title": "Obtaining the statistical distribution chart of slow log source addresses."
+      }
+    ],
+    "DescribeSlowLogs": [
+      {
+        "document": "This example shows you how to query slow log details in a specified time period by SQL template.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action= DescribeSlowLogs\n&Product=mysql\n&InstanceId=test\n&Md5=12323242323\n&Limit=10\n&Offset=0\n&StartTime=2020-09-22T00:00:00+00:00\n&EndTime=2020-09-22T00:00:00+00:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"ea7afb20-cf8d-11ed-9231-5be1865f5f0a\",\n        \"Rows\": [\n            {\n                \"LockTime\": 0,\n                \"UserHost\": \"169.254.128.9\",\n                \"RowsSent\": 1,\n                \"UserName\": \"root\",\n                \"Database\": \"information_schema\",\n                \"SqlText\": \"/* dbbrain user mark */select SLEEP(10)\",\n                \"QueryTime\": 10,\n                \"RowsExamined\": 0,\n                \"Timestamp\": \"2023-03-31 10:47:35\"\n            },\n            {\n                \"LockTime\": 0,\n                \"UserHost\": \"169.254.128.9\",\n                \"RowsSent\": 1,\n                \"UserName\": \"root\",\n                \"Database\": \"information_schema\",\n                \"SqlText\": \"/* dbbrain user mark */select SLEEP(8)\",\n                \"QueryTime\": 8,\n                \"RowsExamined\": 0,\n                \"Timestamp\": \"2023-03-31 10:47:45\"\n            }\n        ]\n    }\n}",
+        "title": "Querying slow log details in a specified time period by SQL template"
       }
     ],
     "DescribeTopSpaceSchemaTimeSeries": [

@@ -7,6 +7,13 @@
       "output": "AddCLSTopicDomainsResponse",
       "status": "online"
     },
+    "AddCdnDomain": {
+      "document": "This API is used to add a CDN acceleration domain name. Up to 100 domain names can be added per minute.",
+      "input": "AddCdnDomainRequest",
+      "name": "Adds an acceleration domain name.",
+      "output": "AddCdnDomainResponse",
+      "status": "online"
+    },
     "CreateClsLogTopic": {
       "document": "This API is used to create a log topic. Up to 10 log topics can be created under one logset.",
       "input": "CreateClsLogTopicRequest",
@@ -420,6 +427,344 @@
     },
     "AddCLSTopicDomainsResponse": {
       "document": "AddCLSTopicDomains response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddCdnDomainRequest": {
+      "document": "AddCdnDomain request structure.",
+      "members": [
+        {
+          "document": "Domain name",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Acceleration domain name service type\n`web`: Webpage file downloads\n`download`: Large file downloads\n`media`: Audio and video on demand acceleration\n`hybrid`: Dynamic and static content acceleration\n`dynamic`: Dynamic content acceleration",
+          "example": "web",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Origin server configuration",
+          "example": "无",
+          "member": "Origin",
+          "name": "Origin",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "document": "Project ID. Default value: 0, indicating `Default Project`",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "IP blocklist/allowlist",
+          "example": "无",
+          "member": "IpFilter",
+          "name": "IpFilter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "IP rate limiting",
+          "example": "无",
+          "member": "IpFreqLimit",
+          "name": "IpFreqLimit",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Status code cache",
+          "example": "无",
+          "member": "StatusCodeCache",
+          "name": "StatusCodeCache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Smart compression",
+          "example": "无",
+          "member": "Compression",
+          "name": "Compression",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Bandwidth cap configuration",
+          "example": "无",
+          "member": "BandwidthAlert",
+          "name": "BandwidthAlert",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Range GETs configuration",
+          "example": "无",
+          "member": "RangeOriginPull",
+          "name": "RangeOriginPull",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "301/302 origin-pull follow-redirect configuration",
+          "example": "无",
+          "member": "FollowRedirect",
+          "name": "FollowRedirect",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Error code redirection (in beta)",
+          "example": "无",
+          "member": "ErrorPage",
+          "name": "ErrorPage",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Request header configuration",
+          "example": "无",
+          "member": "RequestHeader",
+          "name": "RequestHeader",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Response header configuration",
+          "example": "无",
+          "member": "ResponseHeader",
+          "name": "ResponseHeader",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Download speed configuration",
+          "example": "无",
+          "member": "DownstreamCapping",
+          "name": "DownstreamCapping",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Node cache key configuration",
+          "example": "无",
+          "member": "CacheKey",
+          "name": "CacheKey",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Header cache configuration",
+          "example": "无",
+          "member": "ResponseHeaderCache",
+          "name": "ResponseHeaderCache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Video dragging configuration",
+          "example": "无",
+          "member": "VideoSeek",
+          "name": "VideoSeek",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Cache validity configuration",
+          "example": "无",
+          "member": "Cache",
+          "name": "Cache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Cross-MLC-border origin-pull optimization",
+          "example": "无",
+          "member": "OriginPullOptimization",
+          "name": "OriginPullOptimization",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "HTTPS acceleration",
+          "example": "无",
+          "member": "Https",
+          "name": "Https",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Timestamp hotlink protection",
+          "example": "无",
+          "member": "Authentication",
+          "name": "Authentication",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "SEO optimization",
+          "example": "无",
+          "member": "Seo",
+          "name": "Seo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Force redirect by access protocol",
+          "example": "无",
+          "member": "ForceRedirect",
+          "name": "ForceRedirect",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Referer hotlink protection",
+          "example": "无",
+          "member": "Referer",
+          "name": "Referer",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Browser caching (in beta)",
+          "example": "无",
+          "member": "MaxAge",
+          "name": "MaxAge",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "IPv6 configuration (This feature is in beta and not generally available yet.)",
+          "example": "无",
+          "member": "Ipv6",
+          "name": "Ipv6",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Specific region configuration\nApplicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.",
+          "example": "无",
+          "member": "SpecificConfig",
+          "name": "SpecificConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration\nOverseas acceleration service must be enabled to use overseas acceleration and global acceleration.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Origin-pull timeout configuration",
+          "example": "无",
+          "member": "OriginPullTimeout",
+          "name": "OriginPullTimeout",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Tag configuration",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tag",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Ipv6 access configuration",
+          "example": "无",
+          "member": "Ipv6Access",
+          "name": "Ipv6Access",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Offline cache",
+          "example": "无",
+          "member": "OfflineCache",
+          "name": "OfflineCache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.",
+          "example": "无",
+          "member": "Quic",
+          "name": "Quic",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Access authentication for S3 origin",
+          "example": "无",
+          "member": "AwsPrivateAccess",
+          "name": "AwsPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Access authentication for OSS origin",
+          "example": "无",
+          "member": "OssPrivateAccess",
+          "name": "OssPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Origin-pull authentication for Huawei Cloud OBS origin",
+          "example": "无",
+          "member": "HwPrivateAccess",
+          "name": "HwPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Origin-pull authentication for Qiniu Cloud Kodo origin",
+          "example": "无",
+          "member": "QnPrivateAccess",
+          "name": "QnPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "Origin-pull authentication for other origins",
+          "example": "无",
+          "member": "OthersPrivateAccess",
+          "name": "OthersPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "HTTPS (enabled by default), which is a paid service. You can check the product document and Billing Overview for more information.",
+          "example": "无",
+          "member": "HttpsBilling",
+          "name": "HttpsBilling",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "AddCdnDomainResponse": {
+      "document": "AddCdnDomain response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1879,7 +2224,6 @@
       "document": "Basic domain configuration information, including CNAME, status, service type, acceleration region, creation time, last modified time, and origin server configuration.",
       "members": [
         {
-          "default": "",
           "document": "Domain name ID",
           "example": "cdn-123",
           "member": "string",
@@ -1889,7 +2233,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tencent Cloud account ID",
           "example": "1234567",
           "member": "int64",
@@ -1899,7 +2242,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceleration domain name",
           "example": "www.test.com",
           "member": "string",
@@ -1909,7 +2251,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CNAME address of domain name",
           "example": "www.test.com.cdn.dnsv1.com",
           "member": "string",
@@ -1919,8 +2260,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Acceleration service status\n`rejected`: The domain name is rejected due to expiration/deregistration of its ICP filing\n`processing`: Deploying\n`online`: Activated\n`offline`: Disabled",
+          "document": "Acceleration service status\n`rejected`: The domain name is rejected due to expiration/deregistration of its ICP filing\n`processing`: Deploying\n`closing`: Disabling\n`online`: Enabled\n`offline`: Disabled",
           "example": "online",
           "member": "string",
           "name": "Status",
@@ -1929,7 +2269,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID, which can be viewed on the Tencent Cloud project management page",
           "example": "0",
           "member": "int64",
@@ -1939,7 +2278,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name service type\n`web`: Static acceleration\n`download`: Download acceleration\n`media`: Streaming media VOD acceleration",
           "example": "web",
           "member": "string",
@@ -1949,7 +2287,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name creation time.",
           "example": "2021-04-01 00:00:00",
           "member": "datetime",
@@ -1959,7 +2296,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name update time.",
           "example": "2021-04-01 00:00:00",
           "member": "datetime",
@@ -1969,7 +2305,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Origin server configuration details.",
           "example": "8.8.8.8",
           "member": "Origin",
@@ -1979,7 +2314,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name block status\n`normal`: Normal\n`overdue`: The domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.\n`malicious`: The acceleration service has been forcibly disabled due to detection of malicious behavior.\n`ddos`: The acceleration service has been disabled due to large-scale DDoS attacks to the domain name\n`idle`: No operations or data has been detected for more than 90 days. The domain name is determined to be inactive which automatically disables the acceleration service. You can restart the service.\n`unlicensed`: The acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.\n`capping`: The configured upper limit for bandwidth has been reached.\n`readonly`: The domain name has a special configuration and has been locked.",
           "example": "normal",
           "member": "string",
@@ -1989,7 +2323,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceleration region\n`mainland`: Acceleration inside the Chinese mainland\n`overseas`: Acceleration outside the Chinese mainland\n`global`: Acceleration over the globe",
           "example": "mainland",
           "member": "string",
@@ -1999,7 +2332,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name lock status\n`normal`: Not locked\n`mainland`: Locked in the Chinese mainland\noverseas: Locked outside the Chinese mainland\nglobal: Locked globally",
           "example": "normal",
           "member": "string",
@@ -2009,7 +2341,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product of the domain name, either `cdn` or `ecdn`.",
           "example": "cdn",
           "member": "string",
@@ -2019,7 +2350,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Primary domain name",
           "example": "cdn-123",
           "member": "string",
@@ -4522,7 +4852,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Acceleration service status\n`rejected`: The domain name is rejected due to expiration/deregistration of its ICP filing\n`processing`: Deploying\n`online`: Enabled\n`offline`: Disabled",
+          "document": "Acceleration service status\n`rejected`: The domain name is rejected due to expiration/deregistration of its ICP filing\n`processing`: Deploying\n`closing`: Disabling\n`online`: Enabled\n`offline`: Disabled",
           "example": "online",
           "member": "string",
           "name": "Status",
@@ -5062,11 +5392,20 @@
           "value_allowed_null": true
         },
         {
-          "document": "HTTPS service\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "HTTPS (enabled by default)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HttpsBilling",
           "name": "HttpsBilling",
           "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Origin-pull authentication for other origins\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OthersPrivateAccess",
+          "name": "OthersPrivateAccess",
+          "required": false,
           "type": "object",
           "value_allowed_null": true
         }
@@ -5969,11 +6308,11 @@
       "usage": "both"
     },
     "HttpsBilling": {
-      "document": "When it’s not enabled, HTTPS requests are blocked.",
+      "document": "HTTPS. When it’s disabled, HTTPS requests are blocked.",
       "members": [
         {
           "default": "",
-          "document": "HTTPS Service",
+          "document": "HTTPS (enabled by default), which will incur charges.",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -6080,7 +6419,6 @@
       "document": "IP blocklist/allowlist configuration. This is disabled by default.",
       "members": [
         {
-          "default": "",
           "document": "IP blocklist/allowlist configuration switch\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
@@ -6090,7 +6428,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist type\n`whitelist`: IP allowlist\n`blacklist`: IP blocklist\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "blacklist",
           "member": "string",
@@ -6100,7 +6437,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist\nSupports IPs in X.X.X.X format, or IP ranges in /8, /16, /24 format.\nUp to 50 whitelists or blacklists can be entered\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[\"1.1.1.1\"]",
           "member": "string",
@@ -6110,7 +6446,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "null",
           "member": "IpFilterPathRule",
@@ -6120,9 +6455,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "[Unavailable soon] The code returned when the IP blocklist/allowlist verification fails.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "403",
+          "document": "(Disused) Expected HTTP code to return when the IP allowlist/blocklist verification fails. <br><font color=red>The 514 code is used instead.</font>\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "514",
           "member": "int64",
           "name": "ReturnCode",
           "required": false,
@@ -6262,7 +6596,7 @@
           "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "Ipv6Access": {
       "document": "IPv6 access configuration",
@@ -7535,6 +7869,57 @@
           "default": "",
           "document": "BucketName\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "hw-oss",
+          "member": "string",
+          "name": "Bucket",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OthersPrivateAccess": {
+      "document": "Origin-pull authentication for other origins",
+      "members": [
+        {
+          "document": "Whether to enable access authentication. Valid values: `on`, `off`.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Access ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "TXUIWY0BAR8I5NXZ693YU",
+          "member": "string",
+          "name": "AccessKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Key.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "4Gwn2uss513uytKysb6nOkWaGA6Z4V956n8NtSmg\t",
+          "member": "string",
+          "name": "SecretKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Region.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "gz",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Bucket name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "bucket-name",
           "member": "string",
           "name": "Bucket",
           "required": false,
@@ -10431,7 +10816,6 @@
       "document": "UpdateDomainConfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name",
           "example": "www.test.com",
           "member": "string",
@@ -10440,7 +10824,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Project ID",
           "example": "0",
           "member": "int64",
@@ -10449,7 +10832,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Origin server configuration",
           "example": "无",
           "member": "Origin",
@@ -10458,7 +10840,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist configuration",
           "example": "无",
           "member": "IpFilter",
@@ -10467,7 +10848,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "IP access limit configuration",
           "example": "无",
           "member": "IpFreqLimit",
@@ -10476,7 +10856,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Status code cache configuration",
           "example": "无",
           "member": "StatusCodeCache",
@@ -10485,7 +10864,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Smart compression configuration",
           "example": "无",
           "member": "Compression",
@@ -10494,7 +10872,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Bandwidth cap configuration",
           "example": "无",
           "member": "BandwidthAlert",
@@ -10503,7 +10880,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Range GETs configuration",
           "example": "无",
           "member": "RangeOriginPull",
@@ -10512,7 +10888,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "301/302 origin-pull follow-redirect configuration",
           "example": "无",
           "member": "FollowRedirect",
@@ -10521,7 +10896,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Error code redirect configuration (This feature is in beta and not generally available yet.)",
           "example": "无",
           "member": "ErrorPage",
@@ -10530,7 +10904,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Request header configuration",
           "example": "无",
           "member": "RequestHeader",
@@ -10539,7 +10912,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Response header configuration",
           "example": "无",
           "member": "ResponseHeader",
@@ -10548,7 +10920,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Download speed configuration",
           "example": "无",
           "member": "DownstreamCapping",
@@ -10557,7 +10928,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Node cache key configuration",
           "example": "无",
           "member": "CacheKey",
@@ -10566,7 +10936,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Header cache configuration",
           "example": "无",
           "member": "ResponseHeaderCache",
@@ -10575,7 +10944,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Video dragging configuration",
           "example": "无",
           "member": "VideoSeek",
@@ -10584,7 +10952,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Cache expiration time configuration",
           "example": "无",
           "member": "Cache",
@@ -10593,7 +10960,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "(Disused) Cross-border linkage optimization\\",
           "example": "无",
           "member": "OriginPullOptimization",
@@ -10602,7 +10968,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "HTTPS acceleration configuration",
           "example": "无",
           "member": "Https",
@@ -10611,7 +10976,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Timestamp hotlink protection configuration",
           "example": "无",
           "member": "Authentication",
@@ -10620,7 +10984,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "SEO configuration",
           "example": "无",
           "member": "Seo",
@@ -10629,7 +10992,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Protocol redirect configuration",
           "example": "无",
           "member": "ForceRedirect",
@@ -10638,7 +11000,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Referer configuration",
           "example": "无",
           "member": "Referer",
@@ -10647,7 +11008,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Browser cache configuration (This feature is in beta and not generally available yet.)",
           "example": "无",
           "member": "MaxAge",
@@ -10656,7 +11016,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Specific-region special configuration\nApplicable to cases where the acceleration domain name configuration differs for regions in and outside the Chinese mainland.",
           "example": "无",
           "member": "SpecificConfig",
@@ -10665,7 +11024,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Domain name service type\n`web`: Static acceleration\n`download`: Download acceleration\n`media`: Streaming media VOD acceleration",
           "example": "web",
           "member": "string",
@@ -10674,7 +11032,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Domain name acceleration region\n`mainland`: Acceleration inside the Chinese mainland\n`overseas`: Acceleration outside the Chinese mainland\n`global`: Acceleration over the globe\nAfter switching to global acceleration, configurations of the domain name will be deployed to the region inside or outside the Chinese mainland. The deployment will take some time as this domain name has special settings.",
           "example": "mainland",
           "member": "string",
@@ -10683,7 +11040,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Origin-pull timeout configuration",
           "example": "无",
           "member": "OriginPullTimeout",
@@ -10692,7 +11048,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Access authentication for S3 origin",
           "example": "无",
           "member": "AwsPrivateAccess",
@@ -10701,7 +11056,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "UA blocklist/allowlist configuration",
           "example": "无",
           "member": "UserAgentFilter",
@@ -10710,7 +11064,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Access control",
           "example": "无",
           "member": "AccessControl",
@@ -10719,7 +11072,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "URL rewriting configuration",
           "example": "无",
           "member": "UrlRedirect",
@@ -10728,7 +11080,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Access port configuration",
           "example": "[80,8080]",
           "member": "int64",
@@ -10737,7 +11088,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Timestamp hotlink protection advanced configuration (allowlist feature)",
           "example": "无",
           "member": "AdvancedAuthentication",
@@ -10746,7 +11096,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Origin-pull authentication advanced configuration (allowlist feature)",
           "example": "无",
           "member": "OriginAuthentication",
@@ -10755,7 +11104,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "IPv6 access configuration",
           "example": "无",
           "member": "Ipv6Access",
@@ -10764,7 +11112,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Offline cache",
           "example": "无",
           "member": "OfflineCache",
@@ -10773,7 +11120,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Merging pull requests",
           "example": "无",
           "member": "OriginCombine",
@@ -10782,7 +11128,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Post transport configuration",
           "example": "无",
           "member": "PostSize",
@@ -10791,7 +11136,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.",
           "example": "无",
           "member": "Quic",
@@ -10800,7 +11144,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Access authentication for OSS origin",
           "example": "无",
           "member": "OssPrivateAccess",
@@ -10809,7 +11152,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "WebSocket configuration",
           "example": "无",
           "member": "WebSocket",
@@ -10818,7 +11160,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Remote authentication configuration",
           "example": "无",
           "member": "RemoteAuthentication",
@@ -10827,7 +11168,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Shared CNAME configuration (only available to beta users)",
           "example": "无",
           "member": "ShareCname",
@@ -10836,7 +11176,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Access authentication for Huawei Cloud OBS origin",
           "example": "无",
           "member": "HwPrivateAccess",
@@ -10845,7 +11184,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Access authentication for QiNiu Cloud Kodo origin",
           "example": "无",
           "member": "QnPrivateAccess",
@@ -10854,8 +11192,15 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "HTTPS service",
+          "document": "Origin-pull authentication for other origins",
+          "example": "无",
+          "member": "OthersPrivateAccess",
+          "name": "OthersPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "HTTPS, which is a paid service. You can check the product document and Billing Overview for more information.",
           "example": "无",
           "member": "HttpsBilling",
           "name": "HttpsBilling",

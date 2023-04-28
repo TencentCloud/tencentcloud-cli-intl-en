@@ -56,6 +56,13 @@
       "output": "CreateSecurityAuditLogExportTaskResponse",
       "status": "online"
     },
+    "DeleteDBDiagReportTasks": {
+      "document": "This API is used to delete health report generation tasks by task ID.",
+      "input": "DeleteDBDiagReportTasksRequest",
+      "name": "Deletes health report generation tasks",
+      "output": "DeleteDBDiagReportTasksResponse",
+      "status": "online"
+    },
     "DeleteSecurityAuditLogExportTasks": {
       "document": "This API is used to delete a security audit log export task.",
       "input": "DeleteSecurityAuditLogExportTasksRequest",
@@ -185,7 +192,7 @@
     "DescribeSlowLogTopSqls": {
       "document": "This API is used to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.",
       "input": "DescribeSlowLogTopSqlsRequest",
-      "name": "Queries the slow log statistics in the specified time period by SQL template",
+      "name": "Obtains the slow SQL template list",
       "output": "DescribeSlowLogTopSqlsResponse",
       "status": "online"
     },
@@ -194,6 +201,13 @@
       "input": "DescribeSlowLogUserHostStatsRequest",
       "name": "Gets the statistical distribution chart of slow log source addresses",
       "output": "DescribeSlowLogUserHostStatsResponse",
+      "status": "online"
+    },
+    "DescribeSlowLogs": {
+      "document": "This API is used to obtain the slow query log details of a SQL template in a specified time period.",
+      "input": "DescribeSlowLogsRequest",
+      "name": "Obtains SQL template details in a specified time period",
+      "output": "DescribeSlowLogsResponse",
       "status": "online"
     },
     "DescribeTopSpaceSchemaTimeSeries": {
@@ -843,6 +857,56 @@
           "member": "uint64",
           "name": "AsyncRequestId",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDBDiagReportTasksRequest": {
+      "document": "DeleteDBDiagReportTasks request structure.",
+      "members": [
+        {
+          "document": "List of IDs of tasks to be deleted",
+          "example": "[123,12]",
+          "member": "int64",
+          "name": "AsyncRequestIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Instance ID",
+          "example": "crs-hor87q50",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL).\nDefault value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDBDiagReportTasksResponse": {
+      "document": "DeleteDBDiagReportTasks response structure.",
+      "members": [
+        {
+          "document": "Task deletion status (`0`: Successful)",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
           "type": "int",
           "value_allowed_null": false
         },
@@ -2491,6 +2555,136 @@
           "member": "SlowLogHost",
           "name": "Items",
           "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogsRequest": {
+      "document": "DescribeSlowLogs request structure.",
+      "members": [
+        {
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Instance ID",
+          "example": "cdb-insde12",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "MD5 value of a SQL template",
+          "example": "2693831786114179882",
+          "member": "string",
+          "name": "Md5",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Start time in the format of \"2019-09-10 12:13:14\".",
+          "example": "2019-01-01 00:00:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "End time in the format of \"2019-09-11 10:13:14\". The interval between the end time and the start time can be up to 7 days.",
+          "example": "2019-01-01 01:00:00",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The offset. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The number of queried items. Default value: `20`. Max value: `100`.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Database list",
+          "example": "[\"test\"]",
+          "member": "string",
+          "name": "DB",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Keyword",
+          "example": "[\"select\"]",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "User",
+          "example": "[\"root\",\"test\"]",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "ip",
+          "example": "[\"127.0.0.1\"]",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Duration range. The left and right borders of the range are the zeroth and first element of the array, respectively.",
+          "example": "[2,4]",
+          "member": "int64",
+          "name": "Time",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogsResponse": {
+      "document": "DescribeSlowLogs response structure.",
+      "members": [
+        {
+          "document": "Number of eligible entries.",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow log details",
+          "example": "无",
+          "member": "SlowLogInfoItem",
+          "name": "Rows",
           "type": "list",
           "value_allowed_null": false
         },
@@ -4689,6 +4883,93 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SlowLogInfoItem": {
+      "document": "Slow log details",
+      "members": [
+        {
+          "document": "Slow log start time",
+          "example": "2023-03-31 10:47:35",
+          "member": "string",
+          "name": "Timestamp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SQL statement",
+          "example": "select * from t",
+          "member": "string",
+          "name": "SqlText",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database",
+          "example": "information_schema",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User source\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "root",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "IP source\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "UserHost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Execution time in seconds",
+          "example": "12",
+          "member": "int64",
+          "name": "QueryTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Lock time in seconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "LockTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of scanned rows\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "int64",
+          "name": "RowsExamined",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of returned rows\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "122",
+          "member": "int64",
+          "name": "RowsSent",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
