@@ -70,7 +70,7 @@
     ],
     "CreateLiveCallbackTemplate": [
       {
-        "document": "",
+        "document": "请求示例",
         "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLiveCallbackTemplate\n<Common request parameters>\n\n{\n    \"StreamBeginNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=streamBegin\",\n    \"StreamEndNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=streamEnd\",\n    \"TemplateName\": \"testName\",\n    \"RecordNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=record\",\n    \"SnapshotNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=snapshot\",\n    \"PornCensorshipNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=porn\",\n    \"CallbackKey\": \"adasda131312\",\n    \"Description\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"TemplateId\": 1000,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
@@ -154,18 +154,18 @@
     ],
     "CreateLiveTranscodeRule": [
       {
-        "document": "",
+        "document": "This example shows you how to create a transcoding rule.",
         "input": "https://live.tencentcloudapi.com/?Action=CreateLiveTranscodeRule\n&DomainName=5000.liveplay.myqcloud.com\n&AppName=live\n&StreamName=stream1\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Sample request"
+        "title": "Creating a transcoding rule"
       }
     ],
     "CreateLiveTranscodeTemplate": [
       {
-        "document": "",
+        "document": "This example shows you how to create a transcoding template.",
         "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLiveTranscodeTemplate\n<Common request parameters>\n\n{\n    \"Profile\": \"main\",\n    \"AudioBitrate\": \"500\",\n    \"Rotate\": \"0\",\n    \"Description\": \"test\",\n    \"TemplateName\": \"900m\",\n    \"VideoBitrate\": \"900\",\n    \"Vcodec\": \"h264\",\n    \"Height\": \"250\",\n    \"Width\": \"250\",\n    \"NeedAudio\": \"1\",\n    \"FpsToOrig\": \"0\",\n    \"Fps\": \"30\",\n    \"BitrateToOrig\": \"0\",\n    \"HeightToOrig\": \"0\",\n    \"NeedVideo\": \"1\",\n    \"Gop\": \"3\",\n    \"Acodec\": \"aac\"\n}",
         "output": "{\n    \"Response\": {\n        \"TemplateId\": 1000,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Sample request"
+        "title": "Creating a transcoding template"
       }
     ],
     "CreateLiveWatermarkRule": [
@@ -182,6 +182,14 @@
         "input": "https://live.tencentcloudapi.com/?Action=CreateRecordTask\n&AppName=live\n&DomainName=5000.live.push.com\n&StreamName=livetest\n&StartTime=1589889600\n&EndTime=1589904000\n&TemplateId=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"TaskId\": \"UpTbk5RSVhRQFkAAfHwQCCjcRD0lRFcZ0xTSlNTQltlRVRLU1JAWW9EUb\"\n    }\n}",
         "title": "Sample"
+      }
+    ],
+    "CreateScreenshotTask": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=CreateScreenshotTask\n&AppName=live\n&DomainName=5000.live.push.com\n&StreamName=livetest\n&StartTime=1589889600\n&EndTime=1589904000\n&TemplateId=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"TaskId\": \"UpTbk5RSVhRQFkAAfHwQCCjcRD0lRFcZ0xTSlNTQltlRVRLU1JAWW9EUb\"\n    }\n}",
+        "title": "Creating a screencapturing task"
       }
     ],
     "DeleteLiveCallbackRule": [
@@ -554,10 +562,10 @@
     ],
     "DescribeLiveStreamState": [
       {
-        "document": "",
+        "document": "This example shows you how to query the status of a stream.",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveStreamState\n&DomainName=5000.livepush.myqcloud.com\n&AppName=live\n&StreamName=stream1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"StreamState\": \"active\",\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
-        "title": "Sample request"
+        "title": "Creating the status of a stream"
       }
     ],
     "DescribeLiveTimeShiftBillInfoList": [
@@ -778,10 +786,10 @@
     ],
     "ForbidLiveStream": [
       {
-        "document": "This example shows you how to prohibit a stream from being pushed.",
+        "document": "This example shows you how to disable a stream.",
         "input": "https://live.tencentcloudapi.com/?Action=ForbidLiveStream\n&DomainName=5000.livepush.myqcloud.com\n&AppName=live\n&StreamName=stream1\n&ResumeTime=2018-11-24T12:00:00Z\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
-        "title": "Sample request"
+        "title": "Disabling a stream"
       }
     ],
     "ModifyLiveCallbackTemplate": [
@@ -834,10 +842,10 @@
     ],
     "ModifyLivePushAuthKey": [
       {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLivePushAuthKey\r\n&DomainName=5000.livepush.myqcloud.com\r\n&Enable=0\r\n&MasterAuthKey=xxxx\r\n&BackupAuthKey=xxx\r\n&AuthDelta=300\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Sample request"
+        "document": "This example shows you how to modify authentication configuration for a push domain.",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLivePushAuthKey\n<Common request parameters>\n\n{\n    \"DomainName\": \"abc.com\",\n    \"Enable\": 0,\n    \"MasterAuthKey\": \"abc*&^\",\n    \"BackupAuthKey\": \"\",\n    \"AuthDelta\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e48b9f8d-d9d1-4de4-a732-5ab8a333c0d8\"\n    }\n}",
+        "title": "Modifying authentication configuration for a push domain"
       }
     ],
     "ModifyLiveRecordTemplate": [
@@ -866,10 +874,10 @@
     ],
     "ModifyLiveTranscodeTemplate": [
       {
-        "document": "",
+        "document": "This example shows you how to modify a transcoding template.",
         "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLiveTranscodeTemplate\n<Common request parameters>\n\n{\n    \"Profile\": \"main\",\n    \"AudioBitrate\": \"600\",\n    \"Rotate\": \"0\",\n    \"Description\": \"test\",\n    \"VideoBitrate\": \"1500\",\n    \"Vcodec\": \"h265\",\n    \"Height\": \"240\",\n    \"Width\": \"250\",\n    \"NeedAudio\": \"1\",\n    \"FpsToOrig\": \"0\",\n    \"Fps\": \"30\",\n    \"TemplateId\": \"1001\",\n    \"BitrateToOrig\": \"0\",\n    \"HeightToOrig\": \"0\",\n    \"NeedVideo\": \"1\",\n    \"Gop\": \"3\",\n    \"Acodec\": \"aac\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Sample request"
+        "title": "Modifying a transcoding template"
       }
     ],
     "ResumeDelayLiveStream": [

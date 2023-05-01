@@ -42,6 +42,13 @@
       "output": "BatchDeleteRecordResponse",
       "status": "online"
     },
+    "BatchDescribeDocument": {
+      "document": "This API is used to get courseware information.",
+      "input": "BatchDescribeDocumentRequest",
+      "name": "Gets courseware information",
+      "output": "BatchDescribeDocumentResponse",
+      "status": "online"
+    },
     "BatchRegister": {
       "document": "This API is used to register multiple users (up to 1,000) at a time. If a user ID already exists, the existing one will be overwritten.\nA maximum of 20 requests can be initiated per second for this API.",
       "input": "BatchRegisterRequest",
@@ -133,6 +140,13 @@
       "output": "DeleteRoomResponse",
       "status": "online"
     },
+    "DeleteSupervisor": {
+      "document": "This API is used to delete spectators.",
+      "input": "DeleteSupervisorRequest",
+      "name": "Deletes spectators",
+      "output": "DeleteSupervisorResponse",
+      "status": "online"
+    },
     "DescribeAnswerList": {
       "document": "This API is used to get the answers to a quiz question in a room.",
       "input": "DescribeAnswerListRequest",
@@ -160,6 +174,13 @@
       "name": "Gets the information of a document",
       "output": "DescribeDocumentResponse",
       "status": "online"
+    },
+    "DescribeDocuments": {
+      "document": "有新接口替换\n\nA new API is offered for this action now.\n\nThis API is used to query courseware. It has been deprecated. Please use `BatchDescribeDocument` instead.",
+      "input": "DescribeDocumentsRequest",
+      "name": "Queries courseware information",
+      "output": "DescribeDocumentsResponse",
+      "status": "deprecated"
     },
     "DescribeDocumentsByRoom": {
       "document": "This API is used to get the document list of a specific room.\nA maximum of 20 requests can be initiated per second for this API.",
@@ -229,6 +250,13 @@
       "input": "DescribeUserRequest",
       "name": "Obtains user profile.",
       "output": "DescribeUserResponse",
+      "status": "online"
+    },
+    "EndRoom": {
+      "document": "This API is used to end a room.",
+      "input": "EndRoomRequest",
+      "name": "Ends a room",
+      "output": "EndRoomResponse",
       "status": "online"
     },
     "GetRoomEvent": {
@@ -322,6 +350,13 @@
       "output": "SetWatermarkResponse",
       "status": "online"
     },
+    "StartRoom": {
+      "document": "This API is used to start a room. Before you call this API, make sure a user has entered the room so that the class is initialized.",
+      "input": "StartRoomRequest",
+      "name": "Starts a room",
+      "output": "StartRoomResponse",
+      "status": "online"
+    },
     "UnbindDocumentFromRoom": {
       "document": "This API is used to unbind a document from a room.",
       "input": "UnbindDocumentFromRoomRequest",
@@ -379,7 +414,7 @@
       "type": "object"
     },
     "AnswerInfo": {
-      "document": "The answers to a quiz question in a room.",
+      "document": "The answer to a quiz question.",
       "members": [
         {
           "document": "The username.",
@@ -730,6 +765,96 @@
           "example": "无",
           "member": "int64",
           "name": "RoomIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDescribeDocumentRequest": {
+      "document": "BatchDescribeDocument request structure.",
+      "members": [
+        {
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000`.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The courseware access. [0]: The private courseware of the specified user (`Owner`) will be returned; [1]: The public courseware of the specified user will be returned; [0,1]: Both the private and public courseware of the specified user will be returned; [2]: The private courseware of the specified user and the public courseware of all users (including `Owner`) will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Permission",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The user ID of the courseware owner. If you do not specify this, the information of all courseware under the application will be returned.",
+          "example": "无",
+          "member": "string",
+          "name": "Owner",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The filename keyword.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The courseware IDs. Non-existent IDs will be ignored.",
+          "example": "无",
+          "member": "string",
+          "name": "DocumentId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDescribeDocumentResponse": {
+      "document": "BatchDescribeDocument response structure.",
+      "members": [
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "无",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the courseware.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DocumentInfo",
+          "name": "Documents",
           "type": "list",
           "value_allowed_null": true
         },
@@ -1507,6 +1632,40 @@
       ],
       "type": "object"
     },
+    "DeleteSupervisorRequest": {
+      "document": "DeleteSupervisor request structure.",
+      "members": [
+        {
+          "document": "The application ID.",
+          "example": "12345",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The user IDs.",
+          "example": "无",
+          "member": "string",
+          "name": "Users",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSupervisorResponse": {
+      "document": "DeleteSupervisor response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAnswerListRequest": {
       "document": "DescribeAnswerList request structure.",
       "members": [
@@ -1873,6 +2032,96 @@
           "name": "Total",
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocumentsRequest": {
+      "document": "DescribeDocuments request structure.",
+      "members": [
+        {
+          "document": "The school ID.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "SchoolId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The page to return records from. Pagination starts from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000`.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The courseware access. [0]: The private courseware of the specified user (`Owner`) will be returned; [1]: The public courseware of the specified user will be returned; [0,1]: Both the private and public courseware of the specified user will be returned; [2]: The private courseware of the specified user and the public courseware of all users (including `Owner`) will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Permission",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "The user ID of the courseware owner. If you do not specify this parameter, all courseware under the school ID will be returned.",
+          "example": "无",
+          "member": "string",
+          "name": "Owner",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The filename keyword.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "The courseware IDs. Non-existent IDs will be ignored.",
+          "example": "无",
+          "member": "string",
+          "name": "DocumentId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocumentsResponse": {
+      "document": "DescribeDocuments response structure.",
+      "members": [
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "无",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the courseware.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DocumentInfo",
+          "name": "Documents",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2730,9 +2979,71 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "The number of pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Pages",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The width. This parameter is valid only if static document transcoding is used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The height. This parameter is valid only if static document transcoding is used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The thumbnail. Only transcoded courseware has thumbnails.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Cover",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
+    },
+    "EndRoomRequest": {
+      "document": "EndRoom request structure.",
+      "members": [
+        {
+          "document": "The room ID.",
+          "example": "3123456789",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "EndRoomResponse": {
+      "document": "EndRoom response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "EventDataInfo": {
       "document": "The information of a room event.",
@@ -3375,6 +3686,42 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The user role. `0`: Student; `1`: Teacher; `2`: Teaching Assistant; `3`: Spectator.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Role",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The class number.",
+          "example": "abc",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The sub-class number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubGroupId",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the user is on the stage.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Stage",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3719,7 +4066,7 @@
       "type": "object"
     },
     "QuestionInfo": {
-      "document": "The details of a quiz question.",
+      "document": "A quiz question in a room.",
       "members": [
         {
           "document": "The question ID.",
@@ -4252,6 +4599,32 @@
     },
     "SetWatermarkResponse": {
       "document": "SetWatermark response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartRoomRequest": {
+      "document": "StartRoom request structure.",
+      "members": [
+        {
+          "document": "The room ID.",
+          "example": "3123456789",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "StartRoomResponse": {
+      "document": "StartRoom response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

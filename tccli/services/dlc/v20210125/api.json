@@ -535,7 +535,7 @@
           "type": "string"
         },
         {
-          "document": "",
+          "document": "Whether to enable the scaling feature for a monthly subscribed Spark job cluster.",
           "example": "false",
           "member": "bool",
           "name": "ElasticSwitch",
@@ -543,7 +543,7 @@
           "type": "bool"
         },
         {
-          "document": "",
+          "document": "The upper limit (in CUs) for scaling of the monthly subscribed Spark job cluster.",
           "example": "0",
           "member": "int64",
           "name": "ElasticLimit",
@@ -900,6 +900,14 @@
           "name": "AppExecutorMaxNumbers",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "The ID of the associated Data Lake Compute query script.",
+          "example": "djskjd-12ssad-dsadx-eksjs-ewdm2",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1430,7 +1438,6 @@
       "document": "DescribeSparkAppJobs request structure.",
       "members": [
         {
-          "default": "",
           "document": "The returned results are sorted by this field.",
           "example": "create-time",
           "member": "string",
@@ -1439,7 +1446,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Descending or ascending order, such as `desc`.",
           "example": "desc",
           "member": "string",
@@ -1448,7 +1454,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filter by this parameter, which can be `spark-job-name`.",
           "example": "无",
           "member": "Filter",
@@ -1457,8 +1462,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Update start time",
+          "document": "The update start time in the format of yyyy-mm-dd HH:MM:SS.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -1466,8 +1470,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Update end time",
+          "document": "The update end time in the format of yyyy-mm-dd HH:MM:SS.",
           "example": "2022-01-02 00:00:00",
           "member": "string",
           "name": "EndTime",
@@ -1475,8 +1478,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Query list offset",
+          "document": "The query list offset, which defaults to 0.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -1484,8 +1486,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Query list limit",
+          "document": "The maximum number of queries allowed in the list, which defaults to 100.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -2170,6 +2171,14 @@
           "name": "AppExecutorMaxNumbers",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "The associated Data Lake Compute query script.",
+          "example": "dshd-dsdw-deksa-2esd-edsaw",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2737,6 +2746,33 @@
           "example": "pyspark3.2",
           "member": "string",
           "name": "SparkImageVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The ID of the associated Data Lake Compute query script.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "931a72aa-4f83-4d6a-adf1-2sdda0234a655",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "引擎类型",
+          "member": "string",
+          "name": "DataEngineClusterType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "引擎镜像版本",
+          "member": "string",
+          "name": "DataEngineImageVersion",
           "required": false,
           "type": "string",
           "value_allowed_null": true

@@ -13458,7 +13458,6 @@
       "document": "Domain name information",
       "members": [
         {
-          "default": "",
           "document": "Domain name",
           "example": "无",
           "member": "string",
@@ -13468,7 +13467,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceleration region information\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "AccelerateAreaInfo",
@@ -13478,7 +13476,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Deployment status. Valid values:\n<li>Online</li>\n<li>Deploying</li>\n<li>Locked: you cannot change the deployment status of locked domain names</li>",
           "example": "无",
           "member": "string",
@@ -13488,7 +13485,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "HTTPS configuration information\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "DomainHTTPSConfig",
@@ -13498,7 +13494,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "[Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986) configuration\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "UrlSignatureAuthPolicy",
@@ -13508,7 +13503,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "[Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/33985) configuration\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "RefererAuthPolicy",
@@ -13518,7 +13512,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The time when the domain name was added in the VOD system\n<li>The time is in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732).</li>",
           "example": "无",
           "member": "string",
@@ -13526,6 +13519,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The QUIC configuration for the domain.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DomainQUICConfig",
+          "name": "QUICConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -13539,6 +13541,21 @@
           "example": "无",
           "member": "string",
           "name": "CertExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DomainQUICConfig": {
+      "document": "The QUIC configuration of a domain.",
+      "members": [
+        {
+          "document": "The QUIC status. Valid values:\n<li>`Enabled`</li>\n<li>`Disabled`</li>",
+          "example": "Enabled",
+          "member": "string",
+          "name": "Status",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -20608,7 +20625,6 @@
       "document": "ModifyVodDomainConfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name",
           "example": "myexample.com",
           "member": "string",
@@ -20617,7 +20633,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
           "example": "无",
           "member": "uint64",
@@ -20626,7 +20641,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "[Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/14046?from_cn_redirect=1) policy",
           "example": "无",
           "member": "RefererAuthPolicy",
@@ -20635,11 +20649,18 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "[Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/14047?from_cn_redirect=1) policy",
           "example": "无",
           "member": "UrlSignatureAuthPolicy",
           "name": "UrlSignatureAuthPolicy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "document": "The QUIC configuration.",
+          "example": "无",
+          "member": "DomainQUICConfig",
+          "name": "QUICConfig",
           "required": false,
           "type": "object"
         }
@@ -24710,8 +24731,7 @@
       "document": "The output of a watermark removal task.",
       "members": [
         {
-          "default": "",
-          "document": "The file ID of the video.",
+          "document": "The file ID.",
           "example": "123",
           "member": "string",
           "name": "FileId",
@@ -24720,7 +24740,33 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "document": "The file type, such as MP4 or MP3.",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The playback URL of the output file.",
+          "example": "无",
+          "member": "string",
+          "name": "FileUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The filename, which can be up to 64 characters long.",
+          "example": "无",
+          "member": "string",
+          "name": "MediaName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
           "document": "The metadata of the video, including size, duration, video stream information, and audio stream information.",
           "example": "null",
           "member": "MediaMetaData",

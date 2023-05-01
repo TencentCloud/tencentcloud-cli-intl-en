@@ -113,7 +113,7 @@
       "status": "online"
     },
     "CreateLiveTranscodeRule": {
-      "document": "To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API to create a transcoding template and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).",
+      "document": "This API is used to create a transcoding rule that binds a template ID to a stream. Up to 50 transcoding rules can be created in total. Before you call this API, you need to first call [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) to get the template ID.\n<br>Related document: [Live Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).",
       "input": "CreateLiveTranscodeRuleRequest",
       "name": "Creates a transcoding rule",
       "output": "CreateLiveTranscodeRuleResponse",
@@ -138,6 +138,13 @@
       "input": "CreateRecordTaskRequest",
       "name": "Creates recording task (new)",
       "output": "CreateRecordTaskResponse",
+      "status": "online"
+    },
+    "CreateScreenshotTask": {
+      "document": "This API is used to create a screencapturing task that has a specific start and end time and takes screenshots according to the template configured.\n- Note\n1. If the stream is interrupted, screencapturing will stop. However, the task will still be valid before the specified end time, and screencapturing will be performed as required after the stream is resumed.\n2. Avoid creating screencapturing tasks with overlapping time periods. The system will execute at most three screencapturing tasks on the same stream at a time.\n3. Task records are only kept for three months.\n4. The new screencapturing APIs (CreateScreenshotTask/StopScreenshotTask/DeleteScreenshotTask) are not compatible with the legacy ones (CreateLiveInstantSnapshot/StopLiveInstantSnapshot). Do not mix them when you call APIs to manage screencapturing tasks.\n5. If you create a screencapturing task and publish the stream at the same time, the task may fail to be executed at the specified time. After creating a screencapturing task, we recommend you wait at least three seconds before publishing the stream.",
+      "input": "CreateScreenshotTaskRequest",
+      "name": "Creates a screencapturing task",
+      "output": "CreateScreenshotTaskResponse",
       "status": "online"
     },
     "DeleteLiveCallbackRule": {
@@ -297,7 +304,7 @@
     "DescribeLiveCallbackTemplate": {
       "document": "This API is used to get a single callback template.",
       "input": "DescribeLiveCallbackTemplateRequest",
-      "name": "Gets single callback template",
+      "name": "Gets a callback template",
       "output": "DescribeLiveCallbackTemplateResponse",
       "status": "online"
     },
@@ -659,7 +666,7 @@
       "status": "online"
     },
     "ForbidLiveStream": {
-      "document": "This API is used to forbid the push of a specific stream. You can preset a time point to resume the stream.",
+      "document": "This API is used to disable a stream. You can set a time to resume the stream.\nNote:\n1. As long as the correct stream name is passed in, the stream will be disabled successfully.\n2. If you want a stream to be disabled only if the push domain, push path, and stream name match, please submit a ticket.\n3. If you have configured domain groups, you must pass in the correct push domain in order to disable a stream.",
       "input": "ForbidLiveStreamRequest",
       "name": "Forbids a live stream.",
       "output": "ForbidLiveStreamResponse",
@@ -729,7 +736,7 @@
       "status": "online"
     },
     "ModifyLiveTimeShiftTemplate": {
-      "document": "This API is used to modify a standby stream template.",
+      "document": "This API is used to modify a time shifting template.",
       "input": "ModifyLiveTimeShiftTemplateRequest",
       "name": "Modifies a standby stream template",
       "output": "ModifyLiveTimeShiftTemplateResponse",
@@ -1169,7 +1176,6 @@
       "document": "Callback template information.",
       "members": [
         {
-          "default": "",
           "document": "Template ID.",
           "example": "1",
           "member": "int64",
@@ -1179,7 +1185,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Template name.",
           "example": "aaa",
           "member": "string",
@@ -1189,7 +1194,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description.",
           "example": "xxx",
           "member": "string",
@@ -1199,7 +1203,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Stream starting callback URL.",
           "example": "http://abc.com/abc",
           "member": "string",
@@ -1209,7 +1212,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Stream mixing callback URL (disused)",
           "example": "无",
           "member": "string",
@@ -1219,7 +1221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Interruption callback URL.",
           "example": "http://abc.com/abc",
           "member": "string",
@@ -1229,7 +1230,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Recording callback URL.",
           "example": "http://abc.com/abc",
           "member": "string",
@@ -1239,7 +1239,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Screencapturing callback URL.",
           "example": "http://abc.com/abc",
           "member": "string",
@@ -1249,7 +1248,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Porn detection callback URL.",
           "example": "http://abc.com/abc",
           "member": "string",
@@ -1259,7 +1257,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Callback authentication key.",
           "example": "def",
           "member": "string",
@@ -1269,12 +1266,20 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The push error callback URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "http://abc.com/abc",
           "member": "string",
           "name": "PushExceptionNotifyUrl",
           "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The audio/video moderation callback URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AudioAuditNotifyUrl",
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -2835,32 +2840,32 @@
       "document": "CreateLiveTranscodeRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "Playback domain name.",
+          "example": "xxx.xx.com",
           "member": "string",
           "name": "DomainName",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you only bind a domain name, leave this parameter empty.",
+          "document": "The push path, which is the same as `AppName` in the push and playback addresses and is `live` by default. If you only want to bind the template to a domain, pass in an empty string.",
+          "example": "live",
           "member": "string",
           "name": "AppName",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "document": "Stream name. If only the domain name or path is bound, leave this parameter blank.",
+          "example": "stream",
           "member": "string",
           "name": "StreamName",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "document": "Designates an existing template ID.",
+          "example": "1000",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -3239,6 +3244,105 @@
           "document": "A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.",
           "member": "string",
           "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateScreenshotTaskRequest": {
+      "document": "CreateScreenshotTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The stream name.",
+          "example": "livetest",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push domain.",
+          "example": "5000.live.push.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push path.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The task end time, which must be a Unix timestamp and later than `StartTime` and the current time. The end time and start time cannot be more than 24 hours apart.",
+          "example": "1589904000",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The ID of the screencapturing template, which is returned by `CreateLiveSnapshotTemplate`. If an incorrect template ID is passed in, the screencapturing task will fail.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The task start time, which must be a Unix timestamp and cannot be later than six days from the current time. If you do not specify this parameter, the task will start immediately.",
+          "example": "1589889600",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The publishing type. Valid values:\n`0` (default): Live stream\n`1`: Mixed stream",
+          "example": "0",
+          "member": "uint64",
+          "name": "StreamType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "An extension field, which is not defined currently and is empty by default.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Extension",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateScreenshotTaskResponse": {
+      "document": "CreateScreenshotTask response structure.",
+      "members": [
+        {
+          "document": "A unique task ID. If this parameter is returned, the screencapturing task is created successfully.",
+          "example": "UpTbk5RSVhRQFkAAfHwQCCjcRD0lRFcZ0xTSlNTQltlRVRLU1JAWW9EUb",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10772,8 +10876,8 @@
       "document": "Streaming event information.",
       "members": [
         {
-          "default": "",
           "document": "Application name.",
+          "example": "无",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -10781,8 +10885,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Push domain name.",
+          "example": "无",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -10790,8 +10894,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Stream name.",
+          "example": "无",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -10799,8 +10903,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Push start time.\nIn UTC format, such as 2019-01-07T12:00:00Z.",
+          "example": "无",
           "member": "string",
           "name": "StreamStartTime",
           "required": true,
@@ -10808,8 +10912,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Push end time.\nIn UTC format, such as 2019-01-07T15:00:00Z.",
+          "example": "无",
           "member": "string",
           "name": "StreamEndTime",
           "required": true,
@@ -10817,8 +10921,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Stop reason.",
+          "example": "无",
           "member": "string",
           "name": "StopReason",
           "required": true,
@@ -10826,8 +10930,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Push duration in seconds.",
+          "example": "无",
           "member": "uint64",
           "name": "Duration",
           "required": true,
@@ -10835,8 +10939,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Host IP.",
+          "document": "The IP address of the host.\nIf the stream is published from a private network, this parameter will be `-`.",
+          "example": "无",
           "member": "string",
           "name": "ClientIp",
           "required": true,
@@ -10844,8 +10948,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resolution.",
+          "example": "无",
           "member": "string",
           "name": "Resolution",
           "required": true,

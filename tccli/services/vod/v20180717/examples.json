@@ -760,10 +760,10 @@
     ],
     "DescribeStorageData": [
       {
-        "document": "查询当前存储情况",
+        "document": "This example shows you how to query your current storage usage.",
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeStorageData\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"MediaCount\": 100,\n        \"TotalStorage\": 4700000,\n        \"InfrequentStorage\": 0,\n        \"StandardStorage\": 2000000,\n        \"ArchiveStorage\": 1500000,\n        \"DeepArchiveStorage\": 1200000,\n        \"StorageStat\": [\n            {\n                \"Area\": \"Chinese Mainland\",\n                \"TotalStorage\": 3800000,\n                \"InfrequentStorage\": 0,\n                \"StandardStorage\": 1800000,\n                \"ArchiveStorage\": 1000000,\n                \"DeepArchiveStorage\": 1000000\n            },\n            {\n                \"Area\": \"Outside Chinese Mainland\",\n                \"TotalStorage\": 900000,\n                \"InfrequentStorage\": 0,\n                \"StandardStorage\": 200000,\n                \"ArchiveStorage\": 500000,\n                \"DeepArchiveStorage\": 200000\n            }\n        ],\n        \"RequestId\": \"12345678-90ab-cdef-1234-567890abcdef\"\n    }\n}",
-        "title": "Querying current storage information"
+        "title": "Querying current storage usage"
       }
     ],
     "DescribeStorageDetails": [
@@ -1176,22 +1176,22 @@
     ],
     "ModifyVodDomainConfig": [
       {
-        "document": "设置域名的 Key 防盗链",
+        "document": "This example shows you how to enable key hotlink protection for a domain.",
         "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainConfig\n&Domain=myexample.com\n&UrlSignatureAuthPolicy.Status=Enabled\n&UrlSignatureAuthPolicy.EncryptedKey=xxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-5594145287e1\"\n    }\n}",
         "title": "Enabling key hotlink protection for a domain"
       },
       {
-        "document": "设置域名的 Referer 防盗链",
+        "document": "This example shows you how to enable referer hotlink protection for a domain.",
         "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainConfig\n&Domain=myexample.com\n&RefererAuthPolicy.Status=Enabled\n&RefererAuthPolicy.AuthType=Black\n&RefererAuthPolicy.Referers.0=example.com\n&RefererAuthPolicy.BlankRefererAllowed=Yes\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-5594145287e1\"\n    }\n}",
         "title": "Enabling referer hotlink protection for a domain"
       },
       {
-        "document": "设置域名的 QUIC 配置",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainConfig\n&Domain=myexample.com\n&QUICConfig.Status=Enabled\n&<common request parameters>",
+        "document": "This example shows you how to enable QUIC for a domain.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainConfig\n&Domain=myexample.com\n&QUICConfig.Status=Enabled\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-5594145287e1\"\n    }\n}",
-        "title": "设置域名的 QUIC 配置"
+        "title": "Enabling QUIC for a domain"
       }
     ],
     "ModifyWatermarkTemplate": [

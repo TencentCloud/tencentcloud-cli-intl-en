@@ -110,7 +110,7 @@
     ],
     "CreateRocketMQNamespace": [
       {
-        "document": "",
+        "document": "创建命名空间",
         "input": "https://tdmq.tencentcloudapi.com/?\nAction=CreateRocketMQNamespace\n&ClusterId=rocketmq-2p9vx3ax9jxg\n&NamespaceId=example\n&Ttl=60000\n&RetentionTime=600000\n&Remark=example\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bf71e2ae-8b56-4231-87cf-0cbb6f421caa\"\n    }\n}",
         "title": "Creating namespace"
@@ -372,6 +372,22 @@
         "title": "Obtaining producer list"
       }
     ],
+    "DescribePulsarProInstanceDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePulsarProInstanceDetail\n<Common request parameters>\n\n{\n    \"ClusterId\": \"pulsar-test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterSpecInfo\": {\n            \"MaxTopics\": 1,\n            \"MaxNamespaces\": 1,\n            \"SpecName\": \"xx\",\n            \"MaxBandWidth\": 1,\n            \"ScalableTps\": 1,\n            \"MaxTps\": 1\n        },\n        \"NetworkAccessPointInfos\": [\n            {\n                \"SubnetId\": \"xx\",\n                \"InstanceId\": \"xx\",\n                \"Endpoint\": \"xx\",\n                \"VpcId\": \"xx\",\n                \"RouteType\": 1\n            }\n        ],\n        \"ClusterInfo\": {\n            \"Status\": 0,\n            \"Remark\": \"xx\",\n            \"NodeDistribution\": [\n                {\n                    \"NodeCount\": 1,\n                    \"ZoneId\": \"xx\",\n                    \"ZoneName\": \"xx\"\n                }\n            ],\n            \"ClusterName\": \"xx\",\n            \"ClusterId\": \"xx\",\n            \"MaxStorage\": 1,\n            \"Version\": \"xx\",\n            \"CreateTime\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Obtaining the details of TDMQ for Pulsar pro cluster instances"
+      }
+    ],
+    "DescribePulsarProInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePulsarProInstances\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"xx\"\n            ],\n            \"Name\": \"xx\"\n        }\n    ],\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Instances\": [\n            {\n                \"Status\": 1,\n                \"PayMode\": 1,\n                \"Remark\": \"xx\",\n                \"VpcId\": \"xx\",\n                \"AutoRenewFlag\": 1,\n                \"InstanceId\": \"xx\",\n                \"ScalableTps\": 1,\n                \"ExpireTime\": 1,\n                \"InstanceVersion\": \"xx\",\n                \"MaxStorage\": 1,\n                \"SpecName\": \"xx\",\n                \"ConfigDisplay\": \"xx\",\n                \"SubnetId\": \"xx\",\n                \"InstanceName\": \"xx\",\n                \"MaxTps\": 1\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the instance list"
+      }
+    ],
     "DescribeRabbitMQNodeList": [
       {
         "document": "This example shows you how to query the list of TDMQ for RabbitMQ exclusive cluster nodes.",
@@ -518,10 +534,10 @@
     ],
     "ModifyRocketMQCluster": [
       {
-        "document": "",
+        "document": "This example shows you how to modify the cluster information.",
         "input": "https://tdmq.tencentcloudapi.com/?\nAction=ModifyRocketMQCluster\n&ClusterId=rocketmq-rd3545bkkj49\n&ClusterName=test-example\n&Remark=modified\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ccfb8e00-54ac-40ad-9d24-036279fe3ad9\"\n    }\n}",
-        "title": "Modifying cluster"
+        "title": "Modifying cluster information"
       }
     ],
     "ModifyRocketMQGroup": [
@@ -534,7 +550,7 @@
     ],
     "ModifyRocketMQNamespace": [
       {
-        "document": "",
+        "document": "修改命名空间信息",
         "input": "https://tdmq.tencentcloudapi.com/?\nAction=ModifyRocketMQNamespace\n&ClusterId=rocketmq-2p9vx3ax9jxg\n&NamespaceId=example\n&Ttl=65000\n&RetentionTime=650000\n&Remark=example\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7c995fd0-9a78-4985-8874-244a20a1d47b\"\n    }\n}",
         "title": "Modifying namespace"
