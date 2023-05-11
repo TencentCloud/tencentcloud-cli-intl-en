@@ -1,10 +1,87 @@
 {
   "actions": {
+    "AttachInstances": {
+      "document": "This API is used to add existing instances to the compute environment.\nRequirements: <br/>\n1. The instance is not in the batch compute system.<br/>\n2. The instance is in “Running” status.<br/>\n3. Spot instances are not supported.<b/>\n\nFor instances added to the compute environment, their UserData will be reset, and the operating systems will be reinstalled.",
+      "input": "AttachInstancesRequest",
+      "name": "Adds instances to the compute environment",
+      "output": "AttachInstancesResponse",
+      "status": "online"
+    },
+    "CreateComputeEnv": {
+      "document": "This API is used to create a compute environment.",
+      "input": "CreateComputeEnvRequest",
+      "name": "Creates a compute environment",
+      "output": "CreateComputeEnvResponse",
+      "status": "online"
+    },
+    "CreateTaskTemplate": {
+      "document": "This API is used to create a task template.",
+      "input": "CreateTaskTemplateRequest",
+      "name": "Creates a task template",
+      "output": "CreateTaskTemplateResponse",
+      "status": "online"
+    },
+    "DeleteComputeEnv": {
+      "document": "This API is used to delete a compute environment.",
+      "input": "DeleteComputeEnvRequest",
+      "name": "Deletes a compute environment",
+      "output": "DeleteComputeEnvResponse",
+      "status": "online"
+    },
+    "DeleteJob": {
+      "document": "This API is used to delete a job.\nWhen a job is deleted, all related information is deleted and the job cannot be queried.\nTo delete a job, the job and all its task instances must be in SUCCEED or FAILED status.",
+      "input": "DeleteJobRequest",
+      "name": "Deletes a job",
+      "output": "DeleteJobResponse",
+      "status": "online"
+    },
+    "DeleteTaskTemplates": {
+      "document": "This API is used to delete task template information.",
+      "input": "DeleteTaskTemplatesRequest",
+      "name": "Deletes a task template",
+      "output": "DeleteTaskTemplatesResponse",
+      "status": "online"
+    },
     "DescribeAvailableCvmInstanceTypes": {
       "document": "This API is used to view the information of available CVM model configurations.",
       "input": "DescribeAvailableCvmInstanceTypesRequest",
       "name": "Gets the information of CVM model configurations available to BatchCompute",
       "output": "DescribeAvailableCvmInstanceTypesResponse",
+      "status": "online"
+    },
+    "DescribeComputeEnv": {
+      "document": "This API is used to query compute environment details.",
+      "input": "DescribeComputeEnvRequest",
+      "name": "Gets compute environment details",
+      "output": "DescribeComputeEnvResponse",
+      "status": "online"
+    },
+    "DescribeComputeEnvActivities": {
+      "document": "This API is used to query the information of activities in the compute environment.",
+      "input": "DescribeComputeEnvActivitiesRequest",
+      "name": "Queries the information of activities in the compute environment",
+      "output": "DescribeComputeEnvActivitiesResponse",
+      "status": "online"
+    },
+    "DescribeComputeEnvCreateInfo": {
+      "document": "This API is used to query the compute environment creation information.",
+      "input": "DescribeComputeEnvCreateInfoRequest",
+      "name": "Queries the creation information of a compute environment",
+      "output": "DescribeComputeEnvCreateInfoResponse",
+      "status": "online"
+    },
+    "DescribeComputeEnvCreateInfos": {
+      "document": "This API is used to view the list of information of compute environment creation, including name, description, type, environment parameters, notifications, and number of desired nodes.",
+      "input": "DescribeComputeEnvCreateInfosRequest",
+      "name": "Queries the list of compute environment creation information",
+      "output": "DescribeComputeEnvCreateInfosResponse",
+      "status": "online"
+    },
+    "DescribeComputeEnvs": {
+      "document": "This API is used to get the list of compute environments.",
+      "input": "DescribeComputeEnvsRequest",
+      "name": "Gets the list of compute environments",
+      "output": "DescribeComputeEnvsResponse",
       "status": "online"
     },
     "DescribeCvmZoneInstanceConfigInfos": {
@@ -20,6 +97,104 @@
       "name": "Queries instance category information",
       "output": "DescribeInstanceCategoriesResponse",
       "status": "online"
+    },
+    "DescribeJob": {
+      "document": "This API is used to query the details of a job, including internal task (`Task`) and dependency (`Dependence`) information.",
+      "input": "DescribeJobRequest",
+      "name": "Queries job details",
+      "output": "DescribeJobResponse",
+      "status": "online"
+    },
+    "DescribeJobSubmitInfo": {
+      "document": "This API is used to query the submission information of the specified job, with the return including the job submission information used as input parameters in the JobId and SubmitJob APIs.",
+      "input": "DescribeJobSubmitInfoRequest",
+      "name": "Queries job submission information",
+      "output": "DescribeJobSubmitInfoResponse",
+      "status": "online"
+    },
+    "DescribeJobs": {
+      "document": "This API is used to query the overview information of several jobs.",
+      "input": "DescribeJobsRequest",
+      "name": "Queries the list of jobs",
+      "output": "DescribeJobsResponse",
+      "status": "online"
+    },
+    "DescribeTask": {
+      "document": "This API is used to query the details of a specified task, including information of the task instances inside the task.",
+      "input": "DescribeTaskRequest",
+      "name": "Queries task details",
+      "output": "DescribeTaskResponse",
+      "status": "online"
+    },
+    "DescribeTaskLogs": {
+      "document": "This API is used to get the standard outputs and standard error logs of multiple task instances.",
+      "input": "DescribeTaskLogsRequest",
+      "name": "Queries task log details",
+      "output": "DescribeTaskLogsResponse",
+      "status": "online"
+    },
+    "DescribeTaskTemplates": {
+      "document": "This API is used to query the information of task templates.",
+      "input": "DescribeTaskTemplatesRequest",
+      "name": "Queries task templates",
+      "output": "DescribeTaskTemplatesResponse",
+      "status": "online"
+    },
+    "DetachInstances": {
+      "document": "This API is used to remove instances that from compute environment. ",
+      "input": "DetachInstancesRequest",
+      "name": "Removes instances from the compute environment",
+      "output": "DetachInstancesResponse",
+      "status": "online"
+    },
+    "ModifyComputeEnv": {
+      "document": "This API is used to modify the attributes of a compute environment.",
+      "input": "ModifyComputeEnvRequest",
+      "name": "Modifies a compute environment",
+      "output": "ModifyComputeEnvResponse",
+      "status": "online"
+    },
+    "ModifyTaskTemplate": {
+      "document": "This API is used to modify a task template.",
+      "input": "ModifyTaskTemplateRequest",
+      "name": "Modifies a task template",
+      "output": "ModifyTaskTemplateResponse",
+      "status": "online"
+    },
+    "RetryJobs": {
+      "document": "This API is used to retry the failed task instances in a job.\nJob retry is supported only if a job is in the \"FAILED\" state. After the retry operation succeeds, the job will retry the failing task instances in each task in turn according to the task dependencies specified in the \"DAG\". The history information of the task instances will be reset, the instances will participate in subsequent scheduling and execution as if they are run for the first time.",
+      "input": "RetryJobsRequest",
+      "name": "Retries jobs",
+      "output": "RetryJobsResponse",
+      "status": "online"
+    },
+    "TerminateComputeNode": {
+      "document": "This API is used to terminate a compute node.\nTermination is allowed for nodes in the CREATED, CREATION_FAILED, RUNNING or ABNORMAL state.",
+      "input": "TerminateComputeNodeRequest",
+      "name": "Terminates a compute node",
+      "output": "TerminateComputeNodeResponse",
+      "status": "online"
+    },
+    "TerminateComputeNodes": {
+      "document": "This API is used to terminate compute nodes in batches. It is not allowed to repeatedly terminate the same node.",
+      "input": "TerminateComputeNodesRequest",
+      "name": "Batch terminates the compute nodes",
+      "output": "TerminateComputeNodesResponse",
+      "status": "online"
+    },
+    "TerminateJob": {
+      "document": "This API is used to terminate a job.\nTermination is prohibited if a job is in the `SUBMITTED` state and does not take effect if it is in the `SUCCEED` state.\nJob termination is an asynchronous process, and the time it takes to complete the entire process is directly proportional to the total number of tasks. The effect of terminating a job is equivalent to performing the TerminateTaskInstance operation on all the task instances contained in the job. For more information on the specific effect and usage, see TerminateTaskInstance.",
+      "input": "TerminateJobRequest",
+      "name": "Terminates a job",
+      "output": "TerminateJobResponse",
+      "status": "online"
+    },
+    "TerminateTaskInstance": {
+      "document": "This API is used to terminate a task instance.\n`SUCCEED` and `FAILED` task instances: No action\n`SUBMITTED`, `PENDING`, and `RUNNABLE` task instances: Change status to `FAILED`.\n`STARTING`, `RUNNING` and `FAILED_INTERRUPTED` task instances: If `EnvId` is not specified, the CVM instance is terminated, and then the task status goes to `FAILED`. If `EnvId` is specified, the task instance changes to `FAILED`, then the related CVM instance is restarted. \n`FAILED_INTERRUPTED` task instances: The related resources and quotas will be released only after the termination actually succeeds.",
+      "input": "TerminateTaskInstanceRequest",
+      "name": "Terminates a task instance",
+      "output": "TerminateTaskInstanceResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -28,6 +203,1002 @@
     "serviceShortName": "batch"
   },
   "objects": {
+    "Activity": {
+      "document": "Information of the creation/termination activity of a compute node",
+      "members": [
+        {
+          "default": "",
+          "document": "Activity ID",
+          "member": "string",
+          "name": "ActivityId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute node ID",
+          "member": "string",
+          "name": "ComputeNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Activity type. Values: `CREATE_COMPUTE_NODE`, `TERMINATE_COMPUTE_NODE`",
+          "member": "string",
+          "name": "ComputeNodeActivityType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cause of the activity",
+          "member": "string",
+          "name": "Cause",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Activity state",
+          "member": "string",
+          "name": "ActivityState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reason of going to this state",
+          "member": "string",
+          "name": "StateReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Activity start time",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Activity end time\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CVM instance ID\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AgentRunningMode": {
+      "document": "Agent running mode",
+      "members": [
+        {
+          "default": "",
+          "document": "Scenario type. Windows is supported",
+          "member": "string",
+          "name": "Scene",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The user that runs the Agent",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The session that runs the Agent",
+          "member": "string",
+          "name": "Session",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
+    "AnonymousComputeEnv": {
+      "document": "Compute environment",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment management type",
+          "member": "string",
+          "name": "EnvType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment's parameters",
+          "member": "EnvData",
+          "name": "EnvData",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data disk mounting option",
+          "member": "MountDataDisk",
+          "name": "MountDataDisks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Agent running mode; applicable for Windows",
+          "member": "AgentRunningMode",
+          "name": "AgentRunningMode",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Application": {
+      "document": "Application information",
+      "members": [
+        {
+          "default": "",
+          "document": "Task execution command",
+          "member": "string",
+          "name": "Command",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Delivery form of the application. Values: `PACKAGE` (package stored in a remote location), `LOCAL` (local computer).",
+          "member": "string",
+          "name": "DeliveryForm",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remote storage path of the application package",
+          "member": "string",
+          "name": "PackagePath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Relevant configuration of the Docker used by the application. In case that the Docker configuration is used, \"LOCAL\" DeliveryForm means that the application software inside the Docker image is used directly and run in Docker mode; \"PACKAGE\" DeliveryForm means that the remote application package is run in Docker mode after being injected into the Docker image. To avoid compatibility issues with different versions of Docker, the Docker installation package and relevant dependencies are taken care of by BatchCompute. For custom images where Docker has already been installed, uninstall Docker first and then use the Docker feature.",
+          "member": "Docker",
+          "name": "Docker",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "both"
+    },
+    "AttachInstancesRequest": {
+      "document": "AttachInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-nuydksjj",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instances that added to the compute environment",
+          "example": "无",
+          "member": "Instance",
+          "name": "Instances",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachInstancesResponse": {
+      "document": "AttachInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Authentication": {
+      "document": "Authentication information",
+      "members": [
+        {
+          "default": "",
+          "document": "Authentication scenario such as COS",
+          "member": "string",
+          "name": "Scene",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SecretId",
+          "member": "string",
+          "name": "SecretId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SecretKey",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
+    "ComputeEnvCreateInfo": {
+      "document": "Compute environment creation information",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "EnvName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Compute environment description\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "EnvDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Compute environment type. Only \"MANAGED\" type is supported",
+          "member": "string",
+          "name": "EnvType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment parameter",
+          "member": "EnvData",
+          "name": "EnvData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data disk mounting option\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "MountDataDisk",
+          "name": "MountDataDisks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Input mapping\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "InputMapping",
+          "name": "InputMappings",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authorization information\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Authentication",
+          "name": "Authentications",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification information\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Notification",
+          "name": "Notifications",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of desired compute nodes",
+          "member": "uint64",
+          "name": "DesiredComputeNodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list of the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ComputeEnvData": {
+      "document": "Compute environment attributes",
+      "members": [
+        {
+          "default": "",
+          "document": "List of CVM instance types",
+          "member": "string",
+          "name": "InstanceTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ComputeEnvView": {
+      "document": "Compute environment information",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment name",
+          "member": "string",
+          "name": "EnvName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Location information",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute node statistical metrics",
+          "member": "ComputeNodeMetrics",
+          "name": "ComputeNodeMetrics",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment type",
+          "member": "string",
+          "name": "EnvType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of desired compute nodes",
+          "member": "uint64",
+          "name": "DesiredComputeNodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Next action",
+          "member": "string",
+          "name": "NextAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of compute nodes added to the compute environment",
+          "member": "uint64",
+          "name": "AttachedComputeNodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list bound to the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ComputeNode": {
+      "document": "Compute node",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute node ID",
+          "member": "string",
+          "name": "ComputeNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute node instance ID. In a CVM scenario, this parameter is the CVM InstanceId",
+          "member": "string",
+          "name": "ComputeNodeInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute node state",
+          "member": "string",
+          "name": "ComputeNodeState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size in GiB",
+          "member": "uint64",
+          "name": "Mem",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource creation time",
+          "member": "string",
+          "name": "ResourceCreatedTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Available capacity of the compute node when running TaskInstance. 0 means that the compute node is busy.",
+          "member": "uint64",
+          "name": "TaskInstanceNumAvailable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "BatchCompute Agent version",
+          "member": "string",
+          "name": "AgentVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of the instance",
+          "member": "string",
+          "name": "PrivateIpAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public IP of the instance",
+          "member": "string",
+          "name": "PublicIpAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source of compute environment resources. <br>`BATCH_CREATED`: Instances created by BatchCompute.<br>\n`USER_ATTACHED`: Instances added to the compute environment by the user.",
+          "member": "string",
+          "name": "ResourceOrigin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ComputeNodeMetrics": {
+      "document": "Compute node statistical metrics",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of compute nodes that have been submitted",
+          "member": "uint64",
+          "name": "SubmittedCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of compute nodes that are being created",
+          "member": "uint64",
+          "name": "CreatingCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of compute nodes that failed to be created",
+          "member": "uint64",
+          "name": "CreationFailedCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of compute nodes that have been created",
+          "member": "uint64",
+          "name": "CreatedCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of running compute nodes",
+          "member": "uint64",
+          "name": "RunningCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of compute nodes that are being terminated",
+          "member": "uint64",
+          "name": "DeletingCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of exceptional compute nodes",
+          "member": "uint64",
+          "name": "AbnormalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateComputeEnvRequest": {
+      "document": "CreateComputeEnv request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment information",
+          "example": "无",
+          "member": "NamedComputeEnv",
+          "name": "ComputeEnv",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Location information",
+          "example": "无",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "example": "无",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateComputeEnvResponse": {
+      "document": "CreateComputeEnv response structure.",
+      "members": [
+        {
+          "document": "Compute environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTaskTemplateRequest": {
+      "document": "CreateTaskTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task template name",
+          "example": "A",
+          "member": "string",
+          "name": "TaskTemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task template content with the same parameter requirements as the task",
+          "example": "无",
+          "member": "Task",
+          "name": "TaskTemplateInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Task template description",
+          "example": "test",
+          "member": "string",
+          "name": "TaskTemplateDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the tags you want to bind to a task template. Each task template supports up to 10 tags.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTaskTemplateResponse": {
+      "document": "CreateTaskTemplate response structure.",
+      "members": [
+        {
+          "document": "Task template ID",
+          "example": "task-tmpl-7vtx96n2",
+          "member": "string",
+          "name": "TaskTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DataDisk": {
+      "document": "Describes data disk information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.",
+          "example": "无",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><li>CLOUD_BSSD: Balanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to terminate the data disk when its CVM is terminated. Valid values:\n<li>TRUE: terminate the data disk when its CVM is terminated. This value only supports pay-as-you-go cloud disks billed on an hourly basis.\n<li>FALSE: retain the data disk when its CVM is terminated.<br>\nDefault value: TRUE<br>\nCurrently this parameter is only used in the `RunInstances` API.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "无",
+          "member": "bool",
+          "name": "DeleteWithInstance",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "无",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether the data disk is encrypted. Valid values: \n<li>TRUE: encrypted\n<li>FALSE: not encrypted<br>\nDefault value: FALSE<br>\nThis parameter is only used with `RunInstances`.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "Encrypt",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.\n\nCurrently, this parameter is only used in the `RunInstances` API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cloud disk performance, in MB/s\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ThroughputPerformance",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the dedicated cluster to which the instance belongs.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CdcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DeleteComputeEnvRequest": {
+      "document": "DeleteComputeEnv request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-3dhmblr3",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteComputeEnvResponse": {
+      "document": "DeleteComputeEnv response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteJobRequest": {
+      "document": "DeleteJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "job-f5da1edl",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteJobResponse": {
+      "document": "DeleteJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTaskTemplatesRequest": {
+      "document": "DeleteTaskTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "This API is used to delete task template information.",
+          "example": "[\"task-tmpl-7vtx96n2\\r\\n\"]",
+          "member": "string",
+          "name": "TaskTemplateIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTaskTemplatesResponse": {
+      "document": "DeleteTaskTemplates response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Dependence": {
+      "document": "Dependency",
+      "members": [
+        {
+          "default": "",
+          "document": "Dependency start task name ",
+          "member": "string",
+          "name": "StartTask",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Dependency end task name ",
+          "member": "string",
+          "name": "EndTask",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
     "DescribeAvailableCvmInstanceTypesRequest": {
       "document": "DescribeAvailableCvmInstanceTypes request structure.",
       "members": [
@@ -50,6 +1221,483 @@
           "member": "InstanceTypeConfig",
           "name": "InstanceTypeConfigSet",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvActivitiesRequest": {
+      "document": "DescribeComputeEnvActivities request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-lcpcej85",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned items",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter\n<li> `compute-node-id` - String - Optional - Filter by the compute node ID.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvActivitiesResponse": {
+      "document": "DescribeComputeEnvActivities response structure.",
+      "members": [
+        {
+          "document": "List of activities in the compute environment",
+          "example": "无",
+          "member": "Activity",
+          "name": "ActivitySet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of activities",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvCreateInfoRequest": {
+      "document": "DescribeComputeEnvCreateInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-lcpcej85",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvCreateInfoResponse": {
+      "document": "DescribeComputeEnvCreateInfo response structure.",
+      "members": [
+        {
+          "document": "Compute environment ID",
+          "example": "env-qleawxzt",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute environment name",
+          "example": "test compute env",
+          "member": "string",
+          "name": "EnvName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute environment description\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "test compute env",
+          "member": "string",
+          "name": "EnvDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Compute environment type. Only `MANAGED` is supported",
+          "example": "MANAGED",
+          "member": "string",
+          "name": "EnvType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute environment parameter",
+          "example": "无",
+          "member": "EnvData",
+          "name": "EnvData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data disk mounting option",
+          "example": "无",
+          "member": "MountDataDisk",
+          "name": "MountDataDisks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Input mapping",
+          "example": "无",
+          "member": "InputMapping",
+          "name": "InputMappings",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authorization information",
+          "example": "无",
+          "member": "Authentication",
+          "name": "Authentications",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Notification information",
+          "example": "无",
+          "member": "Notification",
+          "name": "Notifications",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of desired compute nodes",
+          "example": "2",
+          "member": "int64",
+          "name": "DesiredComputeNodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list bound to the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvCreateInfosRequest": {
+      "document": "DescribeComputeEnvCreateInfos request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of compute environment IDs, which cannot be specified together with the `Filters` parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "EnvIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions\n<li> `zone` - String - Optional - Filter by the availability zone.</li>\n<li> `env-id` - String - Optional - Filter by the compute environment ID.</li>\n<li> `env-name` - String - Optional - Filter by the compute environment name.</li>\nIt cannot be specified together with `EnvIds`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned items",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvCreateInfosResponse": {
+      "document": "DescribeComputeEnvCreateInfos response structure.",
+      "members": [
+        {
+          "document": "Number of compute environments",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of compute environment creation information",
+          "example": "无",
+          "member": "ComputeEnvCreateInfo",
+          "name": "ComputeEnvCreateInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvRequest": {
+      "document": "DescribeComputeEnv request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-lcpcej85",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvResponse": {
+      "document": "DescribeComputeEnv response structure.",
+      "members": [
+        {
+          "document": "Compute environment ID",
+          "example": "env-lcpcej85",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute environment name",
+          "example": "test compute env",
+          "member": "string",
+          "name": "EnvName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Location information",
+          "example": "无",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute environment creation time",
+          "example": "2018-03-08T11:48:43Z",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of compute nodes",
+          "example": "无",
+          "member": "ComputeNode",
+          "name": "ComputeNodeSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute node statistical metrics",
+          "example": "无",
+          "member": "ComputeNodeMetrics",
+          "name": "ComputeNodeMetrics",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of desired compute nodes",
+          "example": "2",
+          "member": "uint64",
+          "name": "DesiredComputeNodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute environment type",
+          "example": "MANAGED",
+          "member": "string",
+          "name": "EnvType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)",
+          "example": "CVM",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Next action",
+          "example": "xx",
+          "member": "string",
+          "name": "NextAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of compute nodes added to the compute environment",
+          "example": "0",
+          "member": "uint64",
+          "name": "AttachedComputeNodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list bound to the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvsRequest": {
+      "document": "DescribeComputeEnvs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of compute environment IDs, which cannot be specified together with the `Filters` parameter.",
+          "example": "[\"env-lcx7qbbr\\n\"]",
+          "member": "string",
+          "name": "EnvIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filters\n<li> `zone` - String - Optional - Availability zone.</li>\n<li> `env-id` - String - Optional - Compute environment ID.</li>\n<li> `env-name` - String - Optional - Compute environment name.</li>\n<li> `resource-type` - String - Optional - Compute resource type (`CVM` or `CPM`).</li>\n<li> `tag-key` - String - Optional - Tag key.</li>\n</li>`tag-value` - String - Optional - Tag value.</li>\n<li> `tag:tag-key` - String - Optional - Tag key-value pair. Replace `tag-key` with the actual tag key.</li>\nIt cannot be specified together with `EnvIds`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned items",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComputeEnvsResponse": {
+      "document": "DescribeComputeEnvs response structure.",
+      "members": [
+        {
+          "document": "List of compute environments",
+          "example": "无",
+          "member": "ComputeEnvView",
+          "name": "ComputeEnvSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of compute environments",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -118,6 +1766,975 @@
       ],
       "type": "object"
     },
+    "DescribeJobRequest": {
+      "document": "DescribeJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "job-97zcl3wt",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobResponse": {
+      "document": "DescribeJob response structure.",
+      "members": [
+        {
+          "document": "Job ID",
+          "example": "job-97zcl3wt",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Job name",
+          "example": "test job",
+          "member": "string",
+          "name": "JobName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Availability zone information",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Job priority",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Job state",
+          "example": "SUCCEED",
+          "member": "string",
+          "name": "JobState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation Date",
+          "example": "2018-02-07T09:29:09Z",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "End time",
+          "example": "2018-02-07T09:33:01Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task view information",
+          "example": "无",
+          "member": "TaskView",
+          "name": "TaskSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of the dependency among tasks",
+          "example": "无",
+          "member": "Dependence",
+          "name": "DependenceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task statistical metrics",
+          "example": "无",
+          "member": "TaskMetrics",
+          "name": "TaskMetrics",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task instance statistical metrics",
+          "example": "无",
+          "member": "TaskInstanceMetrics",
+          "name": "TaskInstanceMetrics",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Job failure reason",
+          "example": "无",
+          "member": "string",
+          "name": "StateReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of tags bound with the job.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Next action\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "NextAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobSubmitInfoRequest": {
+      "document": "DescribeJobSubmitInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "job-97zcl3wt",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobSubmitInfoResponse": {
+      "document": "DescribeJobSubmitInfo response structure.",
+      "members": [
+        {
+          "document": "Job ID",
+          "example": "job-97zcl3wt",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Job name",
+          "example": "test job",
+          "member": "string",
+          "name": "JobName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Job description",
+          "example": "xxx",
+          "member": "string",
+          "name": "JobDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Job priority. Tasks (Task) and task instances (TaskInstance) inherit the job priority",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of tasks in the job",
+          "example": "无",
+          "member": "Task",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Dependency information",
+          "example": "无",
+          "member": "Dependence",
+          "name": "Dependences",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of tags bound with the job.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobsRequest": {
+      "document": "DescribeJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of job IDs. It cannot be specified together with `Filters`.",
+          "example": "[\"job-7e7evk2x\\n\",\"job-3n2weaqt\\n\"]",
+          "member": "string",
+          "name": "JobIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter\n<li> `job-id` - String - Optional - Filter by the job ID.</li>\n<li> `job-name` - String - Optional - Filter by the job name.</li>\n<li> `job-state` - String - Optional - Filter by the job state.</li>\n<li> `zone` - String - Optional - Filter by the availability zone.</li>\n<li> `tag-key` - String - Optional - Tag key.</li>\n<li> `tag-value` - String - Optional - Tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. The tag-key should be replaced by a specified tag key.</li>\nIt cannot be specified together with `JobIds`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned items",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobsResponse": {
+      "document": "DescribeJobs response structure.",
+      "members": [
+        {
+          "document": "List of jobs",
+          "example": "无",
+          "member": "JobView",
+          "name": "JobSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of matched jobs",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskLogsRequest": {
+      "document": "DescribeTaskLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "job-mawzp3ja",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "example": "task",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Set of task instances",
+          "example": "[\"0\\r\\n\",\"1\\r\\n\"]",
+          "member": "uint64",
+          "name": "TaskInstanceIndexes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The start point of query",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of task instances returned",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskLogsResponse": {
+      "document": "DescribeTaskLogs response structure.",
+      "members": [
+        {
+          "document": "Total number of task instances",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Set of task instance log details",
+          "example": "无",
+          "member": "TaskInstanceLog",
+          "name": "TaskInstanceLogSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskRequest": {
+      "document": "DescribeTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "job-97zcl3wt",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "example": "A",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 100. Maximum value: 1,000.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter as detailed below:\n<li> `task-instance-type` - String - Optional - Filter by the task instance state. (`SUBMITTED`, `PENDING`, `RUNNABLE`, `STARTING`, `RUNNING`, `SUCCEED`, `FAILED`, `FAILED_INTERRUPTED`).</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskResponse": {
+      "document": "DescribeTask response structure.",
+      "members": [
+        {
+          "document": "Job ID",
+          "example": "job-97zcl3wt",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task name",
+          "example": "A",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task status",
+          "example": "SUCCEED",
+          "member": "string",
+          "name": "TaskState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time",
+          "example": "2018-02-07T09:29:09Z",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "End time",
+          "example": "2018-02-07T09:30:31Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of task instances",
+          "example": "2",
+          "member": "int64",
+          "name": "TaskInstanceTotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task instance information",
+          "example": "无",
+          "member": "TaskInstanceView",
+          "name": "TaskInstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task instance statistical metrics",
+          "example": "无",
+          "member": "TaskInstanceMetrics",
+          "name": "TaskInstanceMetrics",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskTemplatesRequest": {
+      "document": "DescribeTaskTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of task template IDs. It cannot be specified together with `Filters`.",
+          "example": "[\"task-tmpl-pq24rq1e\\n\",\"task-tmpl-606i415o\\n\"]",
+          "member": "string",
+          "name": "TaskTemplateIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter\n<li> `task-template-name` - String - Optional - Task template name.</li>\n<li> `tag-key` - String - Optional - Tag key.</li>\n<li> `tag-value` - String - Optional - Tag value.</li>\n<li> `tag:tag-key` - String - Optional - Tag key-value pair. The tag-key should be replaced by a specified tag key.</li>\nIt cannot be specified together with `TaskTemplateIds`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned items",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskTemplatesResponse": {
+      "document": "DescribeTaskTemplates response structure.",
+      "members": [
+        {
+          "document": "List of task templates",
+          "example": "无",
+          "member": "TaskTemplateView",
+          "name": "TaskTemplateSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of task templates",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachInstancesRequest": {
+      "document": "DetachInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-1mekuyxs",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instance IDs",
+          "example": "[\"ins-kjoossv5\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachInstancesResponse": {
+      "document": "DetachInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Docker": {
+      "document": "Docker container information",
+      "members": [
+        {
+          "default": "",
+          "document": "Docker Hub username or Tencent Registry username",
+          "example": "无",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Docker Hub password or Tencent Registry password",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "For Docker Hub, enter \"[user/repo]:[tag]\"; for Tencent Registry, enter \"ccr.ccs.tencentyun.com/[namespace/repo]:[tag]\"",
+          "example": "无",
+          "member": "string",
+          "name": "Image",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "For Docker Hub, this can be left blank, but please ensure public network access is present. For Tencent Registry, the server address is \"ccr.ccs.tencentyun.com\"",
+          "example": "无",
+          "member": "string",
+          "name": "Server",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum retry attempts to load docket images. Range: 0 - 10. Default: `0`",
+          "example": "0",
+          "member": "uint64",
+          "name": "MaxRetryCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Docker image loading timeout period (in seconds). Range: 1 - 360",
+          "example": "1",
+          "member": "uint64",
+          "name": "DelayOnRetry",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Docker command execution parameter\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "-u root",
+          "member": "string",
+          "name": "DockerRunOption",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EnhancedService": {
+      "document": "Describes the configuration of enhanced services, such as Cloud Security and Cloud Monitor.",
+      "members": [
+        {
+          "default": "",
+          "document": "Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.",
+          "example": "TRUE",
+          "member": "RunSecurityServiceEnabled",
+          "name": "SecurityService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.",
+          "example": "TRUE",
+          "member": "RunMonitorServiceEnabled",
+          "name": "MonitorService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.",
+          "example": "TRUE",
+          "member": "RunAutomationServiceEnabled",
+          "name": "AutomationService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EnvData": {
+      "document": "Compute environment information",
+      "members": [
+        {
+          "default": "",
+          "document": "CVM instance type. It cannot be specified together with `InstanceTypes` or `InstanceTypeOptions`.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM image ID",
+          "member": "string",
+          "name": "ImageId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk configuration of the instance",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data disk configuration of the instance",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the VPC configuration. It cannot be specified together with `Zones` and `VirtualPrivateClouds`.",
+          "member": "VirtualPrivateCloud",
+          "name": "VirtualPrivateCloud",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth configuration",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM instance display name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance login settings",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security groups associated with the instance",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to activate CWPP agent and Cloud Monitor. CWPP agent and Cloud Monitor are activated by default.",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM instance billing method <br><li>`POSTPAID_BY_HOUR` (default): Hourly-billed pay-as-you-go <br><li>`SPOTPAID`: Spot instance <br>",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Market-related options for instances, such as parameters related to spot instances.",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Types of CVM instances to create (up to 10). The system creates compute nodes of types specified in this list from top to down till the creation is successful. It cannot be specified together with `InstanceType` or `InstanceTypeOptions`. ",
+          "member": "string",
+          "name": "InstanceTypes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM instance model configuration. It cannot be specified together with `InstanceType` or `InstanceTypes`.",
+          "member": "InstanceTypeOptions",
+          "name": "InstanceTypeOptions",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of availability zones. You can create CVM cross AZs in the same region. It cannot be specified together with `VirtualPrivateCloud` or `VirtualPrivateClouds`.",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of VPCs (creation of CVM instances across VPCs is supported). It cannot be specified together with `VirtualPrivateCloud` or `Zones`.",
+          "member": "VirtualPrivateCloud",
+          "name": "VirtualPrivateClouds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EnvVar": {
+      "document": "Environment variable",
+      "members": [
+        {
+          "default": "",
+          "document": "Environment variable name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment variable value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
+    "EventConfig": {
+      "document": "Event configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Event type. Value range: <br/><li>`JOB_RUNNING`: The job is running, applicable to `SubmitJob`. </li><li>`JOB_SUCCEED`: The job succeeded, applicable to `SubmitJob`. </li><li>`JOB_FAILED`: The job failed, applicable to `SubmitJob`. </li><li>`JOB_FAILED_INTERRUPTED`: The job failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_RUNNING`: The task is running, applicable to `SubmitJob`. </li><li>`TASK_SUCCEED`: The task succeeded, applicable to `SubmitJob`. </li><li>`TASK_FAILED`: The task failed, applicable to `SubmitJob`. </li><li>`TASK_FAILED_INTERRUPTED`: The task failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_RUNNING`: The task instance is running, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_SUCCEED`: The task instance succeeded, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED`: The task instance failed, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED_INTERRUPTED`: The task instance failed and the instance is retained, applicable to `SubmitJob`. </li><li>`COMPUTE_ENV_CREATED`: the compute environment has been created, applicable to \"CreateComputeEnv\". </li><li>`COMPUTE_ENV_DELETED`: The compute environment has been deleted, applicable to `CreateComputeEnv`. </li><li>`COMPUTE_NODE_CREATED`: The compute node has been created, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_CREATION_FAILED`: The compute node creation failed, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_RUNNING`: The compute node is running, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_ABNORMAL`: The compute node is exceptional, applicable to \"CreateComputeEnv\" and \"SubmitJob\". </li><li>`COMPUTE_NODE_DELETING`: The compute node has been deleted, applicable to `CreateComputeEnv` and `SubmitJob`. </li>",
+          "member": "string",
+          "name": "EventName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom key-value pair",
+          "member": "EventVar",
+          "name": "EventVars",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EventVar": {
+      "document": "Custom key-value pair",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom key",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
     "Externals": {
       "document": "Additional data",
       "members": [
@@ -175,6 +2792,69 @@
       ],
       "usage": "in"
     },
+    "InputMapping": {
+      "document": "Input mapping",
+      "members": [
+        {
+          "default": "",
+          "document": "Source path",
+          "member": "string",
+          "name": "SourcePath",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination path",
+          "member": "string",
+          "name": "DestinationPath",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mounting configuration item parameter",
+          "member": "string",
+          "name": "MountOptionParameter",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
+    "Instance": {
+      "document": "Describes information of an instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image ID",
+          "member": "string",
+          "name": "ImageId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance login settings.",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "InstanceCategoryItem": {
       "document": "List of instance categories",
       "members": [
@@ -198,6 +2878,30 @@
         }
       ],
       "usage": "out"
+    },
+    "InstanceMarketOptionsRequest": {
+      "document": "Options related to bidding requests",
+      "members": [
+        {
+          "document": "Spot-related options\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SpotMarketOptions",
+          "name": "SpotOptions",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Market type. Valid value: `spot`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MarketType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "InstanceTypeConfig": {
       "document": "Information of InstanceTypeConfig available to BatchCompute",
@@ -250,12 +2954,46 @@
       ],
       "usage": "out"
     },
+    "InstanceTypeOptions": {
+      "document": "Instance model configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of CPU cores",
+          "member": "uint64",
+          "name": "CPU",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB.",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance model category. Values: `ALL` (default), `GENERAL`, `GENERAL_2`, `GENERAL_3`, `COMPUTE`, `COMPUTE_2`, and `COMPUTE_3`. ",
+          "member": "string",
+          "name": "InstanceCategories",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "InstanceTypeQuotaItem": {
       "document": "Describes instance model quota.",
       "members": [
         {
           "default": "",
           "document": "Availability zone.",
+          "example": "无",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -265,6 +3003,7 @@
         {
           "default": "",
           "document": "Instance model.",
+          "example": "无",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -274,6 +3013,7 @@
         {
           "default": "",
           "document": "Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.",
+          "example": "无",
           "member": "string",
           "name": "InstanceChargeType",
           "required": true,
@@ -283,6 +3023,7 @@
         {
           "default": "",
           "document": "ENI type. For example, 25 represents an ENI of 25 GB.",
+          "example": "无",
           "member": "int64",
           "name": "NetworkCard",
           "required": true,
@@ -292,6 +3033,7 @@
         {
           "default": "",
           "document": "Additional data.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "无",
           "member": "Externals",
           "name": "Externals",
           "required": true,
@@ -301,6 +3043,7 @@
         {
           "default": "",
           "document": "Number of CPU cores of an instance model.",
+          "example": "无",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -310,6 +3053,7 @@
         {
           "default": "",
           "document": "Instance memory capacity; unit: `GB`.",
+          "example": "无",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -319,6 +3063,7 @@
         {
           "default": "",
           "document": "Instance model family.",
+          "example": "无",
           "member": "string",
           "name": "InstanceFamily",
           "required": true,
@@ -328,6 +3073,7 @@
         {
           "default": "",
           "document": "Model name.",
+          "example": "无",
           "member": "string",
           "name": "TypeName",
           "required": true,
@@ -337,6 +3083,7 @@
         {
           "default": "",
           "document": "List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.",
+          "example": "无",
           "member": "LocalDiskType",
           "name": "LocalDiskTypeList",
           "required": true,
@@ -346,6 +3093,7 @@
         {
           "default": "",
           "document": "Whether an instance model is available. Valid values: <br><li>SELL: available <br><li>SOLD_OUT: sold out",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -355,6 +3103,7 @@
         {
           "default": "",
           "document": "Price of an instance model.",
+          "example": "无",
           "member": "ItemPrice",
           "name": "Price",
           "required": true,
@@ -364,6 +3113,7 @@
         {
           "default": "",
           "document": "Details of out-of-stock items\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "SoldOutReason",
           "required": true,
@@ -373,6 +3123,7 @@
         {
           "default": "",
           "document": "Private network bandwidth, in Gbps.",
+          "example": "无",
           "member": "float",
           "name": "InstanceBandwidth",
           "required": true,
@@ -382,6 +3133,7 @@
         {
           "default": "",
           "document": "The max packet sending and receiving capability (in 10k PPS).",
+          "example": "无",
           "member": "int64",
           "name": "InstancePps",
           "required": true,
@@ -391,6 +3143,7 @@
         {
           "default": "",
           "document": "Number of local storage blocks.",
+          "example": "无",
           "member": "int64",
           "name": "StorageBlockAmount",
           "required": true,
@@ -400,6 +3153,7 @@
         {
           "default": "",
           "document": "CPU type.",
+          "example": "无",
           "member": "string",
           "name": "CpuType",
           "required": true,
@@ -409,6 +3163,7 @@
         {
           "default": "",
           "document": "Number of GPUs of the instance.",
+          "example": "无",
           "member": "int64",
           "name": "Gpu",
           "required": true,
@@ -418,6 +3173,7 @@
         {
           "default": "",
           "document": "Number of FPGAs of the instance.",
+          "example": "无",
           "member": "int64",
           "name": "Fpga",
           "required": true,
@@ -427,14 +3183,77 @@
         {
           "default": "",
           "document": "Descriptive information of the instance.",
+          "example": "无",
           "member": "string",
           "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "float",
+          "name": "GpuCount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CPU clock rate of the instance",
+          "example": "无",
+          "member": "string",
+          "name": "Frequency",
           "required": true,
           "type": "string",
           "value_allowed_null": false
         }
       ],
       "usage": "out"
+    },
+    "InternetAccessible": {
+      "document": "Describes the accessibility of an instance in the public network, including its network billing method, maximum bandwidth, etc.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.",
+          "member": "string",
+          "name": "InternetChargeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to assign a public IP. Valid values: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you can choose whether to assign a public IP; by default a public IP will be assigned. If the public network bandwidth is 0 Mbps, you will not be able to assign a public IP.",
+          "member": "bool",
+          "name": "PublicIpAssigned",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.",
+          "member": "string",
+          "name": "BandwidthPackageId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ItemPrice": {
       "document": "Describes pricing information.",
@@ -613,6 +3432,93 @@
       ],
       "usage": "out"
     },
+    "JobView": {
+      "document": "Job information",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Job name",
+          "member": "string",
+          "name": "JobName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Job state",
+          "member": "string",
+          "name": "JobState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Job priority",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Location information\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Placement",
+          "name": "Placement",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task statistical metrics",
+          "member": "TaskMetrics",
+          "name": "TaskMetrics",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of tags bound with the job.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "LocalDiskType": {
       "document": "Describes local disk specifications.",
       "members": [
@@ -664,6 +3570,659 @@
       ],
       "usage": "out"
     },
+    "LoginSettings": {
+      "document": "Describes login settings of an instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Login password of the instance. <br><li>Linux instances: 8-16 characters, containing at least two of the following categories: [a-z, A-Z], [0-9] and [()`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>Windows instances: 12-16 characters, containing at least three of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+={}[]:;',.?/]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to keep the original settings of an image. Values: `TRUE` (default), `FALSE`. It cannot be specified together with `Password` or `KeyIds.N`. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. ",
+          "member": "string",
+          "name": "KeepImageLogin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyComputeEnvRequest": {
+      "document": "ModifyComputeEnv request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-lcpcej85",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of desired compute nodes",
+          "example": "2",
+          "member": "int64",
+          "name": "DesiredComputeNodeCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Compute environment name",
+          "example": "test-env",
+          "member": "string",
+          "name": "EnvName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Compute environment description",
+          "example": "test-env",
+          "member": "string",
+          "name": "EnvDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Compute environment attributes",
+          "example": "无",
+          "member": "ComputeEnvData",
+          "name": "EnvData",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyComputeEnvResponse": {
+      "document": "ModifyComputeEnv response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTaskTemplateRequest": {
+      "document": "ModifyTaskTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task template ID",
+          "example": "task-tmpl-606i415o",
+          "member": "string",
+          "name": "TaskTemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task template name",
+          "example": "A",
+          "member": "string",
+          "name": "TaskTemplateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task template description",
+          "example": "test",
+          "member": "string",
+          "name": "TaskTemplateDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task template information",
+          "example": "无",
+          "member": "Task",
+          "name": "TaskTemplateInfo",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTaskTemplateResponse": {
+      "document": "ModifyTaskTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MountDataDisk": {
+      "document": "Data disk mounting option",
+      "members": [
+        {
+          "default": "",
+          "document": "Mounting point. A valid path (for Linux) for a drive (for Windows, such as \"H:\\\\\")",
+          "member": "string",
+          "name": "LocalPath",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system type. Linux: `EXT3` (default) and `EXT4`. Windows: `NTFS`",
+          "member": "string",
+          "name": "FileSystemType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
+    "NamedComputeEnv": {
+      "document": "Compute environment",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment name",
+          "example": "test-env",
+          "member": "string",
+          "name": "EnvName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of desired compute nodes",
+          "example": "1",
+          "member": "int64",
+          "name": "DesiredComputeNodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment description",
+          "example": "test-env",
+          "member": "string",
+          "name": "EnvDescription",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment management type",
+          "example": "MANAGED",
+          "member": "string",
+          "name": "EnvType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment's specific parameters",
+          "example": "无",
+          "member": "EnvData",
+          "name": "EnvData",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data disk mounting option",
+          "example": "无",
+          "member": "MountDataDisk",
+          "name": "MountDataDisks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Authorization information",
+          "example": "无",
+          "member": "Authentication",
+          "name": "Authentications",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input mapping information",
+          "example": "无",
+          "member": "InputMapping",
+          "name": "InputMappings",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Agent running mode; applicable for Windows",
+          "example": "无",
+          "member": "AgentRunningMode",
+          "name": "AgentRunningMode",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notification information",
+          "example": "无",
+          "member": "Notification",
+          "name": "Notifications",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy for inactive nodes. Default: `RECREATE`, which means that instance resources will be re-created periodically for compute nodes where instance creation fails or is abnormally returned.",
+          "example": "RECREATE",
+          "member": "string",
+          "name": "ActionIfComputeNodeInactive",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 100 and the default value is `7`.",
+          "example": "1",
+          "member": "int64",
+          "name": "ResourceMaxRetryCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of tags to bind with a compute environment. Each compute environment can have up to 10 tags.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target of the notification\nValues: `CMQ`, `TDMQ_CMQ`\n`CMQ`: Tencent Cloud CMQ (default)\n`TDMQ_CMQ`: Tencent Cloud TDMQ_CMQ.<br/>Note: CMQ has been discontinued. Please use `TDMQ_CMQ`. See [CMQ Queue Migration to TDMQ for CMQ](https://intl.cloud.tencent.com/document/product/406/60860?from_cn_redirect=1)",
+          "example": "TDMQ_CMQ",
+          "member": "string",
+          "name": "NotificationTarget",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Notification": {
+      "document": "Notification information",
+      "members": [
+        {
+          "default": "",
+          "document": "CMQ topic name which should be valid and associated with a subscription",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event configuration",
+          "member": "EventConfig",
+          "name": "EventConfigs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "both"
+    },
+    "OutputMapping": {
+      "document": "Output mapping",
+      "members": [
+        {
+          "default": "",
+          "document": "Source path",
+          "example": "无",
+          "member": "string",
+          "name": "SourcePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination path",
+          "example": "无",
+          "member": "string",
+          "name": "DestinationPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output mapping options\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "OutputMappingOption",
+          "name": "OutputMappingOption",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OutputMappingConfig": {
+      "document": "Output mapping configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Storage type. Only `COS` is supported.",
+          "member": "string",
+          "name": "Scene",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of concurrent workers",
+          "member": "int64",
+          "name": "WorkerNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size of a worker part, in MB.",
+          "member": "int64",
+          "name": "WorkerPartSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OutputMappingOption": {
+      "document": "Output mapping options",
+      "members": [
+        {
+          "default": "",
+          "document": "The mapped output workspace on the container side for the instance.\n`BATCH_WORKSPACE` (Default): The workspace is the workspace defined for the usage of Batch Compute. Batch Compute ensures the isolation between jobs.\n`GLOBAL_WORKSPACE`: The workspace is the instance OS space..\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "BATCH_WORKSPACE",
+          "member": "string",
+          "name": "Workspace",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Placement": {
+      "document": "Placement of an instance, including its availability zone, project, host (for CDH products only), master host IP, etc.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.",
+          "example": "无",
+          "member": "string",
+          "name": "HostIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IPs of the hosts to create CVMs",
+          "example": "无",
+          "member": "string",
+          "name": "HostIps",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the CDH to which the instance belongs, only used as an output parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "HostId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RedirectInfo": {
+      "document": "Redirection information\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Standard output redirection path",
+          "member": "string",
+          "name": "StdoutRedirectPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Standard error redirection path",
+          "member": "string",
+          "name": "StderrRedirectPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Standard output redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`",
+          "member": "string",
+          "name": "StdoutRedirectFileName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Standard error redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`",
+          "member": "string",
+          "name": "StderrRedirectFileName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
+    "RedirectLocalInfo": {
+      "document": "Local redirection information",
+      "members": [
+        {
+          "default": "",
+          "document": "Standard output redirection local path",
+          "member": "string",
+          "name": "StdoutLocalPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Standard error redirection local path",
+          "member": "string",
+          "name": "StderrLocalPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Standard output redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`",
+          "member": "string",
+          "name": "StdoutLocalFileName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Standard error redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`",
+          "member": "string",
+          "name": "StderrLocalFileName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "both"
+    },
+    "RetryJobsRequest": {
+      "document": "RetryJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of job IDs.",
+          "example": "[\"job-rybewp57\\r\\n\",\"job-97zcl3wt\\r\\n\"]",
+          "member": "string",
+          "name": "JobIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RetryJobsResponse": {
+      "document": "RetryJobs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RunAutomationServiceEnabled": {
+      "document": "Describes the TAT service information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.",
+          "example": "TRUE",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RunMonitorServiceEnabled": {
+      "document": "Describes information related to the Cloud Monitor service.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "both"
+    },
+    "RunSecurityServiceEnabled": {
+      "document": "Describes information related to the Cloud Security service.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SpotMarketOptions": {
+      "document": "Options related to bidding.",
+      "members": [
+        {
+          "default": "one-time",
+          "document": "Bidding price",
+          "member": "string",
+          "name": "MaxPrice",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bidding request type. Currently only \"one-time\" is supported.",
+          "member": "string",
+          "name": "SpotInstanceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "StorageBlock": {
       "document": "Information on local HDD storage.",
       "members": [
@@ -696,6 +4255,878 @@
         }
       ],
       "usage": "out"
+    },
+    "SystemDisk": {
+      "document": "Describes information on the block device where the operating system is stored, i.e., the system disk.",
+      "members": [
+        {
+          "default": "",
+          "document": "System disk type. For more information about the limits of system disk types, please see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD cloud disk<br><li>CLOUD_PREMIUM: Premium cloud storage<br><li>CLOUD_BSSD: Balanced SSD<br><br>The disk currently in stock will be used by default.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk size; unit: GB; default value: 50 GB.",
+          "example": "无",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the dedicated cluster to which the instance belongs.",
+          "example": "无",
+          "member": "string",
+          "name": "CdcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Information on tags",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag value\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Task": {
+      "document": "Task",
+      "members": [
+        {
+          "default": "",
+          "document": "Application information",
+          "example": "无",
+          "member": "Application",
+          "name": "Application",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task name, which should be unique within a job",
+          "example": "test-task",
+          "member": "string",
+          "name": "TaskName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of running task instances",
+          "example": "1",
+          "member": "uint64",
+          "name": "TaskInstanceNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment information. One (and only one) parameter must be specified for ComputeEnv and EnvId.",
+          "example": "无",
+          "member": "AnonymousComputeEnv",
+          "name": "ComputeEnv",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compute environment ID. One (and only one) parameter must be specified for ComputeEnv and EnvId.",
+          "example": "env_238swek2",
+          "member": "string",
+          "name": "EnvId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Redirection information",
+          "example": "无",
+          "member": "RedirectInfo",
+          "name": "RedirectInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Local redirection information",
+          "example": "无",
+          "member": "RedirectLocalInfo",
+          "name": "RedirectLocalInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input mapping",
+          "example": "无",
+          "member": "InputMapping",
+          "name": "InputMappings",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output mapping",
+          "example": "无",
+          "member": "OutputMapping",
+          "name": "OutputMappings",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output mapping configuration",
+          "example": "无",
+          "member": "OutputMappingConfig",
+          "name": "OutputMappingConfigs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom environment variable",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Authorization information",
+          "example": "无",
+          "member": "Authentication",
+          "name": "Authentications",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The processing method after the TaskInstance fails; Value range: `TERMINATE` (default), `INTERRUPT`, `FAST_INTERRUPT`.",
+          "example": "TERMINATE",
+          "member": "string",
+          "name": "FailedAction",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum number of retries after the task fails. Range: 0 - 5. Default value: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "MaxRetryCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timeout period of the task in seconds. Defaults value: 86400",
+          "example": "86400",
+          "member": "uint64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum number of concurrent tasks. Range: 0 - 200000. There is no limit by default.",
+          "example": "100",
+          "member": "uint64",
+          "name": "MaxConcurrentNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Restarts the compute node after the task is completed. This is suitable for specifying the compute environment for task execution.",
+          "example": "false",
+          "member": "bool",
+          "name": "RestartComputeNode",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of retry attempts after failing to create computing resources such as the CVM in the task launch process. Default: `0`; Maximum: `100`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ResourceMaxRetryCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TaskInstanceLog": {
+      "document": "Task instance log details.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task instance",
+          "member": "uint64",
+          "name": "TaskInstanceIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Standard output log (Base64-encoded, up to 2048 bytes after decompression)\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "StdoutLog",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Standard error log (Base64-encoded, up to 2048 bytes after decompression)\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "StderrLog",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Standard output redirection path\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "StdoutRedirectPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Standard error redirection path\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "StderrRedirectPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Standard output redirection file name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "StdoutRedirectFileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Standard error redirection file name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "StderrRedirectFileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskInstanceMetrics": {
+      "document": "Task instance statistical metrics",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of submitted tasks",
+          "member": "int64",
+          "name": "SubmittedCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of pending tasks",
+          "member": "int64",
+          "name": "PendingCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of Runnable tasks",
+          "member": "int64",
+          "name": "RunnableCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of starting tasks",
+          "member": "int64",
+          "name": "StartingCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of running tasks",
+          "member": "int64",
+          "name": "RunningCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of successful tasks",
+          "member": "int64",
+          "name": "SucceedCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of failed and interrupted tasks",
+          "member": "int64",
+          "name": "FailedInterruptedCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of failed tasks",
+          "member": "int64",
+          "name": "FailedCount",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskInstanceView": {
+      "document": "Task instance view information",
+      "members": [
+        {
+          "default": "",
+          "document": "Task instance index",
+          "member": "int64",
+          "name": "TaskInstanceIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task instance state",
+          "member": "string",
+          "name": "TaskInstanceState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Exit code after application execution is completed\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "ExitCode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task instance state reason. If the task instance fails, the reason for the failure will be logged.",
+          "member": "string",
+          "name": "StateReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The `InstanceId` of the compute node (e.g., CVM instance) where the task instance is running. This field is empty if the task instance is not running or has already been completed and will change when the task instance is retried.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "ComputeNodeInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "LaunchTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Running start time\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "RunningTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task end time\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Redirection information",
+          "member": "RedirectInfo",
+          "name": "RedirectInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task instance state reason details. If the task instance fails, the reason for the failure will be logged",
+          "member": "string",
+          "name": "StateDetailedReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskMetrics": {
+      "document": "Task statistical metrics",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of submitted tasks",
+          "member": "int64",
+          "name": "SubmittedCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of pending tasks",
+          "member": "int64",
+          "name": "PendingCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of Runnable tasks",
+          "member": "int64",
+          "name": "RunnableCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of starting tasks",
+          "member": "int64",
+          "name": "StartingCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of running tasks",
+          "member": "int64",
+          "name": "RunningCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of successful tasks",
+          "member": "int64",
+          "name": "SucceedCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of failed and interrupted tasks",
+          "member": "int64",
+          "name": "FailedInterruptedCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Failed count",
+          "member": "int64",
+          "name": "FailedCount",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskTemplateView": {
+      "document": "Task template information",
+      "members": [
+        {
+          "default": "",
+          "document": "Task template ID",
+          "member": "string",
+          "name": "TaskTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task template name",
+          "member": "string",
+          "name": "TaskTemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task template description",
+          "member": "string",
+          "name": "TaskTemplateDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task template information",
+          "member": "Task",
+          "name": "TaskTemplateInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list bound to the task template.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskView": {
+      "document": "Task view information",
+      "members": [
+        {
+          "default": "",
+          "document": "Task name",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status",
+          "member": "string",
+          "name": "TaskState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TerminateComputeNodeRequest": {
+      "document": "TerminateComputeNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-lcx7qbbr",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Compute node ID",
+          "example": "node-lcpcej85",
+          "member": "string",
+          "name": "ComputeNodeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateComputeNodeResponse": {
+      "document": "TerminateComputeNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateComputeNodesRequest": {
+      "document": "TerminateComputeNodes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compute environment ID",
+          "example": "env-lcx7qbbr",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of compute node IDs",
+          "example": "无",
+          "member": "string",
+          "name": "ComputeNodeIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateComputeNodesResponse": {
+      "document": "TerminateComputeNodes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateJobRequest": {
+      "document": "TerminateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "job-rybewp57",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateJobResponse": {
+      "document": "TerminateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateTaskInstanceRequest": {
+      "document": "TerminateTaskInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "job-rybewp57",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "example": "A",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task instance index",
+          "example": "0",
+          "member": "int64",
+          "name": "TaskInstanceIndex",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateTaskInstanceResponse": {
+      "document": "TerminateTaskInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VirtualPrivateCloud": {
+      "document": "Describes information on VPC, including subnets, IP addresses, etc.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.",
+          "example": "vpc-2ij",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.",
+          "example": "subnet-2ks",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.",
+          "example": "FALSE",
+          "member": "bool",
+          "name": "AsVpcGateway",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.",
+          "example": "[]",
+          "member": "string",
+          "name": "PrivateIpAddresses",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of IPv6 addresses randomly generated for the ENI.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Ipv6AddressCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"

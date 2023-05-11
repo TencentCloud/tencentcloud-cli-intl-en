@@ -49,6 +49,13 @@
       "output": "CreateTablesResponse",
       "status": "online"
     },
+    "DeleteBackupRecords": {
+      "document": "This API is used to delete a manual backup.",
+      "input": "DeleteBackupRecordsRequest",
+      "name": "Deletes a manual backup",
+      "output": "DeleteBackupRecordsResponse",
+      "status": "online"
+    },
     "DeleteCluster": {
       "document": "This API is used to delete a TcaplusDB cluster, which will succeed only after all resources (including table groups and tables) in the cluster are released.",
       "input": "DeleteClusterRequest",
@@ -96,6 +103,13 @@
       "input": "DeleteTablesRequest",
       "name": "Drops table",
       "output": "DeleteTablesResponse",
+      "status": "online"
+    },
+    "DescribeBackupRecords": {
+      "document": "This API is used to query backup records.\n\nWhen querying the cluster level, set `TableGroupId` to `-1` and `TableName` to `-1`.\nWhen querying the cluster and table group levels, set `TableName` to `-1`.\nWhen querying the cluster, table group, and table levels, both `TableGroupId` and `TableName` cannot be set to `-1`.",
+      "input": "DescribeBackupRecordsRequest",
+      "name": "Queries backup records",
+      "output": "DescribeBackupRecordsResponse",
       "status": "online"
     },
     "DescribeClusterTags": {
@@ -315,6 +329,13 @@
       "output": "RollbackTablesResponse",
       "status": "online"
     },
+    "SetBackupExpireRule": {
+      "document": "This API is used to add/delete/modify backup expiration policy. `ClusterId` must be a specific cluster ID (appid).",
+      "input": "SetBackupExpireRuleRequest",
+      "name": "Adds/deletes/modifies backup expiration policy",
+      "output": "SetBackupExpireRuleResponse",
+      "status": "online"
+    },
     "SetTableDataFlow": {
       "document": "This API is used to enable data subscription for tables or modify the feature's configurations.",
       "input": "SetTableDataFlowRequest",
@@ -451,6 +472,168 @@
         }
       ],
       "usage": "in"
+    },
+    "BackupExpireRuleInfo": {
+      "document": "The details of backup retention policy\nPolicy for cluster: `ClusterId` = cluster ID, TableGroupId·= `-1`, `TableName`= `-1`.\nPolicy for cluster + table group: `ClusterId` = cluster ID, `TableGroupId` = table group ID, `TableName` = `-1`.\nPolicy for cluster + table group + table: ClusterId` = cluster ID, `TableGroupId` = table group ID, `TableName` = table name.\n\nFor `FileTag`, valid values: `0` (txh engine file), `1` (ulog file). When `FileTag` is set to `1`, `TableGroupId` = `-1` and `TableName` = `-1` remain unchanged.\n`ExpireDay` is an integer number falling in the range of 1 (inclusive) to 999 (exclusive).\nFor `OperType, valid values: `0` (Add), `1` (Delete), `2` (Modify). The values `0` and `2` can be mixed, and the backend implementation is compatible.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the table group where the table resides",
+          "example": "0",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "0",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "file tag, which is described above.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FileTag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Retention days, which is described above.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ExpireDay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation type, which is described above.",
+          "example": "0",
+          "member": "uint64",
+          "name": "OperType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "BackupRecords": {
+      "document": "Backup records\nWhen it is used as an output parameter, each field will be filled.\nWhen it is used as an input parameter, each field will be filled back into the structure as it is. This API can only be called if `FIleTag` = `OSDATA`.",
+      "members": [
+        {
+          "default": "",
+          "document": "Table group ID",
+          "example": "0",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "0",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup source",
+          "example": "0",
+          "member": "string",
+          "name": "BackupType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File tag: TCAPLUS_FULL or OSDATA",
+          "example": "0",
+          "member": "string",
+          "name": "FileTag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of shards",
+          "example": "0",
+          "member": "uint64",
+          "name": "ShardCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup batch date",
+          "example": "0",
+          "member": "string",
+          "name": "BackupBatchTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total size of backup files",
+          "example": "0",
+          "member": "uint64",
+          "name": "BackupFileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup success rate",
+          "example": "0",
+          "member": "string",
+          "name": "BackupSuccRate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup file expiration time",
+          "example": "0",
+          "member": "string",
+          "name": "BackupExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Business ID",
+          "example": "0",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ClearTablesRequest": {
       "document": "ClearTables request structure.",
@@ -1314,6 +1497,51 @@
       ],
       "type": "object"
     },
+    "DeleteBackupRecordsRequest": {
+      "document": "DeleteBackupRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID of the backup records to be deleted",
+          "example": "5674209986",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Details of the backup records to be deleted",
+          "example": "无",
+          "member": "BackupRecords",
+          "name": "BackupRecords",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBackupRecordsResponse": {
+      "document": "DeleteBackupRecords response structure.",
+      "members": [
+        {
+          "document": "`TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteClusterRequest": {
       "document": "DeleteCluster request structure.",
       "members": [
@@ -1629,6 +1857,87 @@
           "member": "TableResultNew",
           "name": "TableResults",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupRecordsRequest": {
+      "document": "DescribeBackupRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID, which is used to query a specified cluster",
+          "example": "10001",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "example": "12",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Table group ID used as a filter condition",
+          "example": "xx",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table name used as a filter condition",
+          "example": "xx",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupRecordsResponse": {
+      "document": "DescribeBackupRecords response structure.",
+      "members": [
+        {
+          "document": "Backup record details",
+          "example": "无",
+          "member": "BackupRecords",
+          "name": "BackupRecords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of returned entries",
+          "example": "92",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4455,6 +4764,51 @@
         }
       ],
       "usage": "out"
+    },
+    "SetBackupExpireRuleRequest": {
+      "document": "SetBackupExpireRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the tables reside",
+          "example": "5674209986",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of retention policies",
+          "example": "无",
+          "member": "BackupExpireRuleInfo",
+          "name": "BackupExpireRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SetBackupExpireRuleResponse": {
+      "document": "SetBackupExpireRule response structure.",
+      "members": [
+        {
+          "document": "`TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SetTableDataFlowRequest": {
       "document": "SetTableDataFlow request structure.",

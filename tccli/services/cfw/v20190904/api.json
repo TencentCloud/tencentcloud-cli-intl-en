@@ -14,10 +14,17 @@
       "output": "AddEnterpriseSecurityGroupRulesResponse",
       "status": "online"
     },
+    "AddNatAcRule": {
+      "document": "This API is used to add NAT access control rules.",
+      "input": "AddNatAcRuleRequest",
+      "name": "Adds NAT access control rules",
+      "output": "AddNatAcRuleResponse",
+      "status": "online"
+    },
     "CreateAcRules": {
-      "document": "This API is used to create rules.",
+      "document": "This API is used to create access control rules.",
       "input": "CreateAcRulesRequest",
-      "name": "Creates rules",
+      "name": "Creates access control rules.",
       "output": "CreateAcRulesResponse",
       "status": "online"
     },
@@ -98,6 +105,13 @@
       "output": "DescribeBlockByIpTimesListResponse",
       "status": "online"
     },
+    "DescribeBlockIgnoreList": {
+      "document": "This API is used to get allowlists or blocklists for intrusion prevention.",
+      "input": "DescribeBlockIgnoreListRequest",
+      "name": "Gets allowlists or blocklists for intrusion prevention",
+      "output": "DescribeBlockIgnoreListResponse",
+      "status": "online"
+    },
     "DescribeBlockStaticList": {
       "document": "This API is used to get the most frequent attacker.\n",
       "input": "DescribeBlockStaticListRequest",
@@ -131,6 +145,13 @@
       "input": "DescribeIPStatusListRequest",
       "name": "Gets the IP protection status",
       "output": "DescribeIPStatusListResponse",
+      "status": "online"
+    },
+    "DescribeNatAcRule": {
+      "document": "This API is used to get the NAT access control list.",
+      "input": "DescribeNatAcRuleRequest",
+      "name": "Gets the NAT access control list",
+      "output": "DescribeNatAcRuleResponse",
       "status": "online"
     },
     "DescribeNatFwInfoCount": {
@@ -274,9 +295,9 @@
       "status": "online"
     },
     "ModifyBlockIgnoreList": {
-      "document": "This API is used to:\nadd IPs/domains in the blocklist or ignored list\ndelete IPs/domains in the blocklist or ignored list\nmodify IPs/domains in the blocklist or ignored list",
+      "document": "This API is used to manage blocked/allowed IPs and domains.\nAdd IPs/domains to the blocked/allowed list\nRemove IPs/domains from the blocked/allowed list\nModify events related with the IPs/domains in the blocked/allowed list",
       "input": "ModifyBlockIgnoreListRequest",
-      "name": "Adds/Deletes/Modifies IPs/domains in the blocklist or ignored list",
+      "name": "Manages blocked/allowed IPs and domains.",
       "output": "ModifyBlockIgnoreListResponse",
       "status": "online"
     },
@@ -285,6 +306,27 @@
       "input": "ModifyBlockTopRequest",
       "name": "Pins or unpins a blocking log",
       "output": "ModifyBlockTopResponse",
+      "status": "online"
+    },
+    "ModifyEnterpriseSecurityDispatchStatus": {
+      "document": "This API is used to modify the publishing status of an enterprise security group.",
+      "input": "ModifyEnterpriseSecurityDispatchStatusRequest",
+      "name": "Modifies the publishing status of an enterprise security group",
+      "output": "ModifyEnterpriseSecurityDispatchStatusResponse",
+      "status": "online"
+    },
+    "ModifyEnterpriseSecurityGroupRule": {
+      "document": "This API is used to modify a new enterprise security group rule.",
+      "input": "ModifyEnterpriseSecurityGroupRuleRequest",
+      "name": "Modifies a new enterprise security group rule.",
+      "output": "ModifyEnterpriseSecurityGroupRuleResponse",
+      "status": "online"
+    },
+    "ModifyNatAcRule": {
+      "document": "This API is used to modify NAT access control rules.",
+      "input": "ModifyNatAcRuleRequest",
+      "name": "Modifies NAT access control rules",
+      "output": "ModifyNatAcRuleResponse",
       "status": "online"
     },
     "ModifyNatFwReSelect": {
@@ -306,6 +348,13 @@
       "input": "ModifyNatFwVpcDnsSwitchRequest",
       "name": "Modifies the VPC DNS status of NAT firewall instances",
       "output": "ModifyNatFwVpcDnsSwitchResponse",
+      "status": "online"
+    },
+    "ModifyNatSequenceRules": {
+      "document": "This API is used to change the sequence number of NAT firewall rules.",
+      "input": "ModifyNatSequenceRulesRequest",
+      "name": "Change the sequence number of NAT firewall rules",
+      "output": "ModifyNatSequenceRulesResponse",
       "status": "online"
     },
     "ModifyPublicIPSwitchStatus": {
@@ -350,6 +399,13 @@
       "output": "ModifySequenceRulesResponse",
       "status": "online"
     },
+    "ModifyStorageSetting": {
+      "document": "This API is used to modify the log retention period or to clear logs.",
+      "input": "ModifyStorageSettingRequest",
+      "name": "Modifies log storage settings",
+      "output": "ModifyStorageSettingResponse",
+      "status": "online"
+    },
     "ModifyTableStatus": {
       "document": "This API is used to modify rule list status.",
       "input": "ModifyTableStatusRequest",
@@ -369,6 +425,13 @@
       "input": "RemoveEnterpriseSecurityGroupRuleRequest",
       "name": "Deletes enterprise security group rules (new)",
       "output": "RemoveEnterpriseSecurityGroupRuleResponse",
+      "status": "online"
+    },
+    "RemoveNatAcRule": {
+      "document": "This API is used to delete NAT access control rules.",
+      "input": "RemoveNatAcRuleRequest",
+      "name": "Deletes NAT access control rules",
+      "output": "RemoveNatAcRuleResponse",
       "status": "online"
     },
     "SetNatFwDnatRule": {
@@ -721,6 +784,48 @@
       ],
       "type": "object"
     },
+    "AddNatAcRuleRequest": {
+      "document": "AddNatAcRule request structure.",
+      "members": [
+        {
+          "document": "NAT access control rules to be added.",
+          "example": "无",
+          "member": "CreateNatRuleItem",
+          "name": "Rules",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Source of the rules to be added. Generally, this parameter is not used. The value insert_rule indicates that rules in the specified location are inserted, and the value batch_import indicates that rules are imported in batches. If the parameter is left empty, rules defined in the API request are added.",
+          "example": "无",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddNatAcRuleResponse": {
+      "document": "AddNatAcRule response structure.",
+      "members": [
+        {
+          "document": "ID list of new rules.",
+          "example": "[8888, 8889]",
+          "member": "int64",
+          "name": "RuleUuid",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AssetZone": {
       "document": "AssetZone ",
       "members": [
@@ -825,6 +930,205 @@
       ],
       "usage": "both"
     },
+    "BetaInfoByACL": {
+      "document": "Canary publish information of the rule",
+      "members": [
+        {
+          "document": "Task ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1001",
+          "member": "int64",
+          "name": "TaskId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Task name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "任务xxx",
+          "member": "string",
+          "name": "TaskName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Last execution time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-03-02 10:00:00",
+          "member": "string",
+          "name": "LastTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BlockIgnoreRule": {
+      "document": "Allowlist or blocklist for intrusion prevention",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule IP.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ioc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Threat level.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "未知",
+          "member": "string",
+          "name": "Level",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Source event name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "封禁列表命中",
+          "member": "string",
+          "name": "EventName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Direction. Valid values: 0: outbound; 1: inbound.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Direction",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Protocol.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "中国广东省广州",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule type. Valid values: 1: block; 2: allow.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Action",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time when a rule starts to take effect.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-09-21 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time when a rule expires.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3000-01-01 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reason for ignoring.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "IgnoreReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security event source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "手动添加",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "UniqueId",
+          "member": "string",
+          "name": "UniqueId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of rule matching times.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MatchTimes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "中国",
+          "member": "string",
+          "name": "Country",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "comment",
+          "member": "string",
+          "name": "Comment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CfwNatDnatRule": {
       "document": "NAT firewall DNAT rules",
       "members": [
@@ -886,6 +1190,42 @@
           "name": "Description",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CommonFilter": {
+      "document": "Common filters for search",
+      "members": [
+        {
+          "default": "",
+          "document": "Search key.",
+          "example": "SrcIP",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Search values.",
+          "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enum of integers that represent relations between Name and Values.\nenum FilterOperatorType {\n    // Invalid\n    FILTER_OPERATOR_TYPE_INVALID = 0;\n    // Equal to\n    FILTER_OPERATOR_TYPE_EQUAL = 1;\n    // Greater than\n    FILTER_OPERATOR_TYPE_GREATER = 2;\n    // Less than\n    FILTER_OPERATOR_TYPE_LESS = 3;\n    // Greater than or equal to\n    FILTER_OPERATOR_TYPE_GREATER_EQ = 4;\n    // Less than or equal to\n    FILTER_OPERATOR_TYPE_LESS_EQ = 5;\n    // Not equal to\n    FILTER_OPERATOR_TYPE_NO_EQ = 6;\n    // In (contained in the array)\n    FILTER_OPERATOR_TYPE_IN = 7;\n    // Not in\n    FILTER_OPERATOR_TYPE_NOT_IN = 8;\n    // Fuzzily matched\n    FILTER_OPERATOR_TYPE_FUZZINESS = 9;\n    // Existing\n    FILTER_OPERATOR_TYPE_EXIST = 10;\n    // Not existing\n    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;\n    // Regular\n    FILTER_OPERATOR_TYPE_REGULAR = 12;\n}",
+          "example": "1",
+          "member": "int64",
+          "name": "OperatorType",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1073,6 +1413,15 @@
           "name": "CrossAZone",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP range of the firewall",
+          "example": "无",
+          "member": "FwCidrInfo",
+          "name": "FwCidrInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1190,6 +1539,15 @@
           "name": "Domain",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP range of the firewall",
+          "example": "无",
+          "member": "FwCidrInfo",
+          "name": "FwCidrInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1214,6 +1572,120 @@
         }
       ],
       "type": "object"
+    },
+    "CreateNatRuleItem": {
+      "document": "Parameters for creating an NAT access control rule",
+      "members": [
+        {
+          "document": "Access source. Example: `net: IP/CIDR(192.168.0.2)`",
+          "example": "192.168.0.2",
+          "member": "string",
+          "name": "SourceContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access source type. Values for inbound rules: `ip`, `net`, `template`, and `location`. Values for outbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`.",
+          "example": "ip",
+          "member": "string",
+          "name": "SourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access target. Example: `net: IP/CIDR(192.168.0.2); domain: domain name rule, e.g., *.qq.com",
+          "example": "*.qq.com",
+          "member": "string",
+          "name": "TargetContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access target type. Values for inbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`. Values for outbound rules: `ip`, `net`, `domain`, `template`, and `location`.",
+          "example": "domain",
+          "member": "string",
+          "name": "TargetType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Protocol. Values: `TCP`, `UDP`, `ICMP`, `ANY`, `HTTP`, `HTTPS`, `HTTP/HTTPS`, `SMTP`, `SMTPS`, `SMTP/SMTPS`, `FTP`, and `DNS`.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Specify how the CFW instance deals with the traffic hit the access control rule. Values: `accept` (allow), `drop` (reject), and `log` (observe).",
+          "example": "accept",
+          "member": "string",
+          "name": "RuleAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The port of the access control rule. Values: `-1/-1` (all ports) and `80` (Port 80)",
+          "example": "-1/-1",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rule direction. Values: `1` (Inbound) and `0` (Outbound)",
+          "example": "0",
+          "member": "uint64",
+          "name": "Direction",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rule sequence number",
+          "example": "1",
+          "member": "int64",
+          "name": "OrderIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rule status. `true` (Enabled); `false` (Disabled)",
+          "example": "true",
+          "member": "string",
+          "name": "Enable",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique ID of the rule, which is not required when you create a rule.",
+          "example": "8888",
+          "member": "int64",
+          "name": "Uuid",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Description",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
     },
     "CreateSecurityGroupRulesRequest": {
       "document": "CreateSecurityGroupRules request structure.",
@@ -1387,7 +1859,7 @@
       "document": "DeleteAllAccessControlRule response structure.",
       "members": [
         {
-          "document": "Status value. 0: modified successfully; !0: modification failed",
+          "document": "Status of the task. `0`: Modified successfully; Others: Modification failed",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -1528,6 +2000,237 @@
         }
       ],
       "type": "object"
+    },
+    "DescAcItem": {
+      "document": "Item in the access control list. Each item represents an access control rule.",
+      "members": [
+        {
+          "document": "Access source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access destination.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TargetContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Protocol.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Port.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Action that Cloud Firewall performs on the traffic. Valid values: accept (allow), drop (reject), and log (monitor).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "accept",
+          "member": "string",
+          "name": "RuleAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of rule matching times.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Rule sequence number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "OrderIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Access source type. Valid values for an inbound rule: ip, net, template, and location; valid values for an outbound rule: ip, net, template, instance, group, and tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ip",
+          "member": "string",
+          "name": "SourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access destination type. Valid values for an inbound rule: ip, net, template, instance, group, and tag; valid values for an outbound rule: ip, net, domain, template, and location.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ip",
+          "member": "string",
+          "name": "TargetType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Unique ID of the rule.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8888",
+          "member": "uint64",
+          "name": "Uuid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rule validity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Invalid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Valid values: 0: common rules; 1: regional rules.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsRegion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Country ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "CountryCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "City ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "CityCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Country name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CountryName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "City name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CityName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cloud provider code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloudCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Valid values: 0: common rules; 1: cloud provider rules.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsCloud",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rule status. Valid values: true: enabled; false: disabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "string",
+          "name": "Enable",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rule direction. Valid values: 1: inbound; 0: outbound.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Direction",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "UUID for internal use. Generally, this field is not required.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123456789",
+          "member": "int64",
+          "name": "InternalUuid",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rule status. This field is valid when you query rule matching details. Valid values: 0: new; 1: deleted; 2: edited and deleted.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Details of associated tasks\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BetaInfoByACL",
+          "name": "BetaList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "DescribeAcListsRequest": {
       "document": "DescribeAcLists request structure.",
@@ -1869,6 +2572,112 @@
           "name": "Data",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlockIgnoreListRequest": {
+      "document": "DescribeBlockIgnoreList request structure.",
+      "members": [
+        {
+          "document": "Number of entries per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Page offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Direction. Valid values: 1: inbound public access; 0: outbound public access; 3: private network access; empty string: all access.",
+          "example": "in",
+          "member": "string",
+          "name": "Direction",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Rule type. Valid values: 1: block; 2: allow.",
+          "example": "block",
+          "member": "uint64",
+          "name": "RuleType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Column by which rules are sorted. Valid values: EndTime: end time; StartTime: start time; MatchTimes: number of matching times.",
+          "example": "desc",
+          "member": "string",
+          "name": "Order",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Sort order. Valid values: desc: descending; asc: ascending.",
+          "example": "EndTime",
+          "member": "string",
+          "name": "By",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Search keys, in a JSON string. Valid values: {}: empty; domain: domain name; level: threat level; ignore_reason: reason for allowing access; rule_source: source of a security event; address: geographical location; common: fuzzy search.",
+          "example": "{\\\"service_type\\\":\"1\",\\\"service_name\\\":\\\"\\\"}",
+          "member": "string",
+          "name": "SearchValue",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlockIgnoreListResponse": {
+      "document": "DescribeBlockIgnoreList response structure.",
+      "members": [
+        {
+          "document": "List data.",
+          "example": "无",
+          "member": "BlockIgnoreRule",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of results, which is used for pagination.",
+          "example": "100",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status code. Valid values: 0: successful; others: failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "ReturnCode",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status message. Valid values: success: successful query; fail: failed query.",
+          "example": "success",
+          "member": "string",
+          "name": "ReturnMsg",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2245,6 +3054,112 @@
           "name": "ReturnMsg",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatAcRuleRequest": {
+      "document": "DescribeNatAcRule request structure.",
+      "members": [
+        {
+          "document": "Number of entries per page.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Page offset.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Index to be queried. This parameter is optional, and is used only in specific cases.",
+          "example": "vpc_rule",
+          "member": "string",
+          "name": "Index",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Filter condition combination.",
+          "example": "无",
+          "member": "CommonFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Start time for search. This parameter is optional.",
+          "example": "2022-07-27 16:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "End time for search. This parameter is optional.",
+          "example": "2022-07-27 16:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Valid values: desc: descending; asc: ascending. The returned results are sorted by the value of By. If this parameter is specified, By is also required.",
+          "example": "desc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Field by which the returned results are sorted.",
+          "example": "id",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatAcRuleResponse": {
+      "document": "DescribeNatAcRule response structure.",
+      "members": [
+        {
+          "document": "Total number of entries.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "NAT access control list data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescAcItem",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of entries returned without filtering.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AllTotal",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -3055,7 +3970,7 @@
       "document": "DescribeTLogInfo response structure.",
       "members": [
         {
-          "document": "None",
+          "document": "`NetworkNum`: Number of detected network scans\n `HandleNum`: Number of pending processing events\n\"BanNum\": \n  `VulNum`: Number of vulnerability exploits\n  \"OutNum`: Number of compromised servers\n\"BruteForceNum\": 0",
           "example": "无",
           "member": "TLogInfo",
           "name": "Data",
@@ -3349,6 +4264,68 @@
         }
       ],
       "type": "object"
+    },
+    "FwCidrInfo": {
+      "document": "Firewall IP range information",
+      "members": [
+        {
+          "default": "",
+          "document": "The IP range type of the firewall. Values: `VpcSelf` (VPC IP range preferred); `Assis` (Secondary IP range preferred); `Custom` (Custom IP range)",
+          "example": "VpcSelf",
+          "member": "string",
+          "name": "FwCidrType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The IP segment assigned for each VPC.",
+          "example": "无",
+          "member": "FwVpcCidr",
+          "name": "FwCidrLst",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The IP segment used by other firewalls. Specify this if you want to assign a dedicated segment for the firewall.",
+          "example": "172.10.0.0/24",
+          "member": "string",
+          "name": "ComFwCidr",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "FwVpcCidr": {
+      "document": "Firewall IP range of the VPC",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-xxx1",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP range of the firewall. The mask must be at least /24.",
+          "example": "192.168.0.0/24",
+          "member": "string",
+          "name": "FwCidr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "IPDefendStatus": {
       "document": "IP protection status",
@@ -3913,7 +4890,7 @@
       "members": [
         {
           "default": "",
-          "document": "1: blocklist; 2: ignore list",
+          "document": "Type of the rule. Values: `1` (Blocklist); `2` (Allowlist)",
           "example": "1",
           "member": "int64",
           "name": "RuleType",
@@ -3949,7 +4926,7 @@
         },
         {
           "default": "",
-          "document": "Time format: yyyy-MM-dd HH:mm:ss. Required when IocAction is edit or add",
+          "document": "End time of the period in the format of yyyy-MM-dd HH:mm:ss. It must be later than both the start time and the current time. It’s required when `IocAction` is `edit` or `add`. ",
           "example": "2020-04-30 18:56:16",
           "member": "string",
           "name": "EndTime",
@@ -4025,6 +5002,146 @@
       ],
       "type": "object"
     },
+    "ModifyEnterpriseSecurityDispatchStatusRequest": {
+      "document": "ModifyEnterpriseSecurityDispatchStatus request structure.",
+      "members": [
+        {
+          "document": "Status. Values: `0` (Publish now), `1` (Stop publishing)",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyEnterpriseSecurityDispatchStatusResponse": {
+      "document": "ModifyEnterpriseSecurityDispatchStatus response structure.",
+      "members": [
+        {
+          "document": "`0`: Modified successfully; Others: Modification failed\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyEnterpriseSecurityGroupRuleRequest": {
+      "document": "ModifyEnterpriseSecurityGroupRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "UUID of the rule, which can be obtained by querying the rule list",
+          "example": "123",
+          "member": "uint64",
+          "name": "RuleUuid",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Modification type. Values: `0` (Modify rule content), `1` (Toggle on/off a rule) and `2` (Toggle on/off all rules)",
+          "example": "0",
+          "member": "uint64",
+          "name": "ModifyType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The new rule content you want. It’s only required when you want to modify the rule content (`ModifyType=0`)",
+          "example": "无",
+          "member": "SecurityGroupRule",
+          "name": "Data",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "`0`: Do not enable; `1`: Enable",
+          "example": "0",
+          "member": "uint64",
+          "name": "Enable",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyEnterpriseSecurityGroupRuleResponse": {
+      "document": "ModifyEnterpriseSecurityGroupRule response structure.",
+      "members": [
+        {
+          "document": "Status value. `0`: Edited successfully; Others: Failed to edit",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of new rule generated after the modification",
+          "example": "35641",
+          "member": "uint64",
+          "name": "NewRuleUuid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatAcRuleRequest": {
+      "document": "ModifyNatAcRule request structure.",
+      "members": [
+        {
+          "document": "Array of rules to be modified.",
+          "example": "无",
+          "member": "CreateNatRuleItem",
+          "name": "Rules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatAcRuleResponse": {
+      "document": "ModifyNatAcRule response structure.",
+      "members": [
+        {
+          "document": "ID list of new rules that have been successfully modified.",
+          "example": "[8888, 8889]",
+          "member": "int64",
+          "name": "RuleUuid",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyNatFwReSelectRequest": {
       "document": "ModifyNatFwReSelect request structure.",
       "members": [
@@ -4063,6 +5180,15 @@
           "name": "VpcList",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IP range of the firewall",
+          "example": "无",
+          "member": "FwCidrInfo",
+          "name": "FwCidrInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4169,6 +5295,40 @@
           "type": "string",
           "value_allowed_null": true
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatSequenceRulesRequest": {
+      "document": "ModifyNatSequenceRules request structure.",
+      "members": [
+        {
+          "document": "Rule sequence number. Values: `OrderIndex` (Original sequence number), `NewOrderIndex` (New sequence number)",
+          "example": "[{\"OrderIndex\":100,\"NewOrderIndex\":100}]",
+          "member": "RuleChangeItem",
+          "name": "RuleChangeItems",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Rule direction. Values: `1` (Inbound) and `0` (Outbound)",
+          "example": "0",
+          "member": "uint64",
+          "name": "Direction",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatSequenceRulesResponse": {
+      "document": "ModifyNatSequenceRules response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4475,6 +5635,23 @@
       ],
       "type": "object"
     },
+    "ModifyStorageSettingRequest": {
+      "document": "ModifyStorageSetting request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ModifyStorageSettingResponse": {
+      "document": "ModifyStorageSetting response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyTableStatusRequest": {
       "document": "ModifyTableStatus request structure.",
       "members": [
@@ -4634,7 +5811,6 @@
       "document": "NAT instance card details",
       "members": [
         {
-          "default": "",
           "document": "NAT instance ID",
           "example": "cfwnat-4fb07125",
           "member": "string",
@@ -4644,7 +5820,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "NAT instance name",
           "example": "实例1",
           "member": "string",
@@ -4654,7 +5829,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance region",
           "example": "ap-shanghai",
           "member": "string",
@@ -4664,7 +5838,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "0: create new; 1: use existing",
           "example": "0",
           "member": "int64",
@@ -4674,7 +5847,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance bandwidth (Mbps)",
           "example": "20",
           "member": "int64",
@@ -4684,7 +5856,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Inbound traffic peak bandwidth (bps)",
           "example": "200",
           "member": "int64",
@@ -4694,7 +5865,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Outbound traffic peak bandwidth (bps)",
           "example": "231",
           "member": "uint64",
@@ -4704,7 +5874,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Chinese region information",
           "example": "广州",
           "member": "string",
@@ -4714,7 +5883,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public IP array\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "[\"106.55.4.81\"]",
           "member": "string",
@@ -4724,7 +5892,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Array of internal and external IPs\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "[\"10.255.1.20\"]",
           "member": "string",
@@ -4734,7 +5901,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Array of subnets associated with an instance\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "[\"subnet-0fl56e31\"]",
           "member": "string",
@@ -4744,7 +5910,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "0: normal 1: initializing\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "0",
           "member": "int64",
@@ -4754,7 +5919,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "华南地区",
           "member": "string",
@@ -4764,7 +5928,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Availability zone of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "广州六区",
           "member": "string",
@@ -4774,13 +5937,30 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Availability zone of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "广州七区",
           "member": "string",
           "name": "ZoneZhBak",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of used rules.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "RuleUsed",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The maximum number of rules allowed in the instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5000",
+          "member": "uint64",
+          "name": "RuleMax",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -4929,6 +6109,74 @@
         }
       ],
       "type": "object"
+    },
+    "RemoveNatAcRuleRequest": {
+      "document": "RemoveNatAcRule request structure.",
+      "members": [
+        {
+          "document": "UUIDs of the rules to delete, which can be obtained by querying the rule list. Note: If [-1] is passed in, all rules are deleted.",
+          "example": "无",
+          "member": "int64",
+          "name": "RuleUuid",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "document": "Rule direction. Valid values: 1: inbound; 0: outbound.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Direction",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveNatAcRuleResponse": {
+      "document": "RemoveNatAcRule response structure.",
+      "members": [
+        {
+          "document": "UUID list of the deleted rules.",
+          "example": "[8888,8889]",
+          "member": "int64",
+          "name": "RuleUuid",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RuleChangeItem": {
+      "document": "Changes of the rule sequence number.",
+      "members": [
+        {
+          "default": "",
+          "document": "Original sequence number",
+          "example": "100",
+          "member": "int64",
+          "name": "OrderIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "New sequence number",
+          "example": "101",
+          "member": "int64",
+          "name": "NewOrderIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "RuleInfoData": {
       "document": "Rule input object",

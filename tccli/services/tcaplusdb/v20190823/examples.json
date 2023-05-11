@@ -56,6 +56,14 @@
         "title": "Creating tables in batches"
       }
     ],
+    "DeleteBackupRecords": [
+      {
+        "document": "This API is used to delete backup records.",
+        "input": "POST / HTTP/1.1\nHost: tcaplusdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBackupRecords\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"BackupRecords\": [\n        {\n            \"BackupBatchTime\": \"xx\",\n            \"AppId\": 1,\n            \"TableName\": \"xx\",\n            \"ZoneId\": 1,\n            \"BackupType\": \"xx\",\n            \"FileTag\": \"xx\",\n            \"ShardCount\": 1,\n            \"BackupExpireTime\": \"xx\",\n            \"BackupSuccRate\": \"xx\",\n            \"BackupFileSize\": 1\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"TaskId\": \"xx\"\n    }\n}",
+        "title": "Deleting backup records"
+      }
+    ],
     "DeleteCluster": [
       {
         "document": "This example shows you how to delete a TcaplusDB cluster by specifying the cluster ID.",
@@ -110,6 +118,14 @@
         "input": "POST / HTTP/1.1\nHost: tcaplusdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteTables\n<Common request parameters>\n\n{\n    \"ClusterId\": \"5674209986\",\n    \"SelectedTables\": [\n        {\n            \"TableIdlType\": \"xx\",\n            \"TableGroupId\": \"101\",\n            \"FileExtType\": \"xx\",\n            \"TableInstanceId\": \"tcaplus-1f224454\",\n            \"Memo\": \"xx\",\n            \"TableName\": \"tb_example\",\n            \"ReservedReadQps\": 0,\n            \"ListElementNum\": 0,\n            \"ReservedVolume\": 0,\n            \"ReservedWriteQps\": 0,\n            \"FileSize\": 0,\n            \"FileContent\": \"xx\",\n            \"FileName\": \"xx\",\n            \"TableType\": \"xx\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ebc273d5-d56c-4c54-ad19-9b5a25815eed\",\n        \"TableResults\": [\n            {\n                \"Error\": null,\n                \"TableGroupId\": \"101\",\n                \"TableIdlType\": null,\n                \"TableInstanceId\": \"tcaplus-1f224454\",\n                \"TableName\": \"tb_example\",\n                \"TableType\": null,\n                \"TaskId\": \"5674209986-1180\",\n                \"TaskIds\": null\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Deleting a table"
+      }
+    ],
+    "DescribeBackupRecords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcaplusdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupRecords\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"ClusterId\": \"xx\",\n    \"TableGroupId\": \"xx\",\n    \"TableName\": \"xx\",\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 92,\n        \"BackupRecords\": [\n            {\n                \"BackupBatchTime\": \"xx\",\n                \"AppId\": 1,\n                \"TableName\": \"xx\",\n                \"ZoneId\": 1,\n                \"BackupType\": \"xx\",\n                \"FileTag\": \"xx\",\n                \"ShardCount\": 1,\n                \"BackupExpireTime\": \"xx\",\n                \"BackupSuccRate\": \"xx\",\n                \"BackupFileSize\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the list of cluster operation applications"
       }
     ],
     "DescribeClusterTags": [
@@ -364,6 +380,14 @@
         "input": "POST / HTTP/1.1\nHost: tcaplusdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollbackTables\n<Common request parameters>\n\n{\n    \"RollbackTime\": \"2019-08-29 10:00:00\",\n    \"ClusterId\": \"5674209986\",\n    \"Mode\": \"xx\",\n    \"SelectedTables\": [\n        {\n            \"TableIdlType\": \"PROTO\",\n            \"TableGroupId\": \"101\",\n            \"FileExtType\": \"txt\",\n            \"TableInstanceId\": \"tcaplus-1f224454\",\n            \"Memo\": \"xx\",\n            \"TableName\": \"tb_example\",\n            \"ReservedReadQps\": 0,\n            \"ListElementNum\": 0,\n            \"ReservedVolume\": 0,\n            \"ReservedWriteQps\": 0,\n            \"FileSize\": 0,\n            \"FileContent\": \"uin%20name%0A1%20calvin%0A2%20jacob%0A3%20matthew%0A%0A\",\n            \"FileName\": \"tb_example_key1\",\n            \"TableType\": \"xx\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128a5622-0de1-41ed-9850-483944f11370\",\n        \"TableResults\": [\n            {\n                \"Error\": null,\n                \"FileId\": \"604\",\n                \"TableGroupId\": \"101\",\n                \"SuccKeyNum\": 3,\n                \"TableIdlType\": \"PROTO\",\n                \"TableInstanceId\": \"tcaplus-1f224454\",\n                \"TableName\": \"tb_example\",\n                \"TableType\": null,\n                \"TaskId\": \"5674209986-1212\",\n                \"TaskIds\": null,\n                \"TotalKeyNum\": 3\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Rolling back a table by the primary key"
+      }
+    ],
+    "SetBackupExpireRule": [
+      {
+        "document": "This example shows you how to add/delete/modify backup expiration policy",
+        "input": "POST / HTTP/1.1\nHost: tcaplusdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetBackupExpireRule\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"BackupExpireRules\": [\n        {\n            \"ExpireDay\": 1,\n            \"OperType\": 1,\n            \"TableGroupId\": \"xx\",\n            \"TableName\": \"xx\",\n            \"FileTag\": 1\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"TaskId\": \"xx\"\n    }\n}",
+        "title": "Adding/deleting/modifying backup expiration policy"
       }
     ],
     "SetTableDataFlow": [

@@ -196,10 +196,10 @@
     ],
     "DescribeBackupDownloadURL": [
       {
-        "document": "",
+        "document": "This example shows you how to get a backup download link.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupDownloadURL\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-oamgybor\",\n    \"BackupType\": \"LogBackup\",\n    \"BackupId\": \"f9509fc2-2281-551c-b937-86d38cf79f3b\",\n    \"URLExpireTime\": 12\n}",
         "output": "{\n    \"Response\": {\n        \"BackupDownloadURL\": \"******\",\n        \"RequestId\": \"7c4e788e-5ec9-4125-bb80-7baabe2744dc\"\n    }\n}",
-        "title": "Getting the download URL of a backup"
+        "title": "Getting a backup download link"
       }
     ],
     "DescribeBackupOverview": [

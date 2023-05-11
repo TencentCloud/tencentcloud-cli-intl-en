@@ -2368,7 +2368,7 @@
         },
         {
           "default": "",
-          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy).",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -2413,7 +2413,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).",
+          "document": "Whether to enable SNI. Values: `on` (enable), `off` (disable). For creation of HTTP listener forwarding rules, SNI is disabled by default.",
           "example": "OFF",
           "member": "string",
           "name": "ServerNameIndicationSwitch",

@@ -189,6 +189,13 @@
       "output": "DescribeDBInstancesResponse",
       "status": "online"
     },
+    "DescribeDBInstancesAttribute": {
+      "document": "This API is used to query the attributes of an instance.",
+      "input": "DescribeDBInstancesAttributeRequest",
+      "name": "Queries the attributes of an instance",
+      "output": "DescribeDBInstancesAttributeResponse",
+      "status": "online"
+    },
     "DescribeDBs": {
       "document": "This API is used to query the list of databases",
       "input": "DescribeDBsRequest",
@@ -285,6 +292,13 @@
       "input": "DescribeUploadBackupInfoRequest",
       "name": "Queries backup upload permissions.",
       "output": "DescribeUploadBackupInfoResponse",
+      "status": "online"
+    },
+    "DescribeXEvents": {
+      "document": "This API is used to query the list of extended events.",
+      "input": "DescribeXEventsRequest",
+      "name": "Queries the list of extended events",
+      "output": "DescribeXEventsResponse",
       "status": "online"
     },
     "DescribeZones": {
@@ -442,16 +456,16 @@
       "status": "online"
     },
     "RestoreInstance": {
-      "document": "This API is used to restore an instance from a backup file.",
+      "document": "This API is used to roll back the database by backup set.",
       "input": "RestoreInstanceRequest",
-      "name": "Restores instance from backup file",
+      "name": "Rolls back the database by backup set",
       "output": "RestoreInstanceResponse",
       "status": "online"
     },
     "RollbackInstance": {
-      "document": "This API is used to roll back an instance.",
+      "document": "This API is used to roll back the instance by time point.",
       "input": "RollbackInstanceRequest",
-      "name": "Rolls back instance",
+      "name": "Rolls back the instance by time point",
       "output": "RollbackInstanceResponse",
       "status": "online"
     },
@@ -474,6 +488,13 @@
       "input": "StartIncrementalMigrationRequest",
       "name": "Starts incremental backup import tasks",
       "output": "StartIncrementalMigrationResponse",
+      "status": "online"
+    },
+    "StartInstanceXEvent": {
+      "document": "This API is used to start and stop an extended event.",
+      "input": "StartInstanceXEventRequest",
+      "name": "Starts and stops an extension event",
+      "output": "StartInstanceXEventResponse",
       "status": "online"
     },
     "TerminateDBInstance": {
@@ -2307,7 +2328,6 @@
       "document": "Instance details",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "mssql-dj5i29c5n",
           "member": "string",
@@ -2317,7 +2337,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
           "example": "Name",
           "member": "string",
@@ -2327,7 +2346,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID of instance",
           "example": "0",
           "member": "int64",
@@ -2337,7 +2355,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance region ID",
           "example": "1",
           "member": "int64",
@@ -2347,7 +2364,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance AZ ID",
           "example": "100004",
           "member": "int64",
@@ -2357,7 +2373,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance VPC ID, which will be 0 if the basic network is used",
           "example": "12345",
           "member": "int64",
@@ -2367,7 +2382,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance VPC subnet ID, which will be 0 if the basic network is used",
           "example": "67890",
           "member": "int64",
@@ -2377,7 +2391,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance status. Valid values: <li>1: creating</li> <li>2: running</li> <li>3: instance operations restricted (due to the ongoing primary-replica switch)</li> <li>4: isolated</li> <li>5: repossessing</li> <li>6: repossessed</li> <li>7: running tasks (such as backup and rollback tasks)</li> <li>8: eliminated</li> <li>9: expanding capacity</li> <li>10: migrating</li> <li>11: read-only</li> <li>12: restarting</li>  <li>13: modifying configuration and waiting for switch</li> <li>14: implementing pub/sub</li> <li>15: modifying pub/sub configuration</li> <li>16: modifying configuration and switching</li> <li>17: creating read-only instances</li>",
           "example": "2",
           "member": "int64",
@@ -2387,7 +2400,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance access IP",
           "example": "192.168.0.16",
           "member": "string",
@@ -2397,7 +2409,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance access port",
           "example": "1433",
           "member": "int64",
@@ -2407,7 +2418,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance creation time",
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
@@ -2417,7 +2427,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance update time",
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
@@ -2427,7 +2436,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance billing start time",
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
@@ -2437,7 +2445,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance billing end time",
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
@@ -2447,7 +2454,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance isolation time",
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
@@ -2457,7 +2463,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance memory size in GB",
           "example": "64",
           "member": "int64",
@@ -2467,7 +2472,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Used storage capacity of instance in GB",
           "example": "500",
           "member": "int64",
@@ -2477,7 +2481,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance storage capacity in GB",
           "example": "500",
           "member": "int64",
@@ -2487,7 +2490,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance version",
           "example": "SQL Server 2008 Enterprise",
           "member": "string",
@@ -2497,7 +2499,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance renewal flag",
           "example": "0",
           "member": "int64",
@@ -2507,7 +2508,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (private consumption)",
           "example": "1",
           "member": "int64",
@@ -2517,7 +2517,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance region name, such as ap-guangzhou",
           "example": "ap-guangzhou",
           "member": "string",
@@ -2527,7 +2526,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance AZ name, such as ap-guangzhou-1",
           "example": "ap-guangzhou-2",
           "member": "string",
@@ -2537,7 +2535,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup time point",
           "example": "00:00",
           "member": "string",
@@ -2547,7 +2544,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance billing mode. 0: pay-as-you-go",
           "example": "1",
           "member": "int64",
@@ -2557,7 +2553,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance UID",
           "example": "gamedb.gz000.cdb.db",
           "member": "string",
@@ -2567,7 +2562,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of CPU cores of instance",
           "example": "4",
           "member": "int64",
@@ -2577,7 +2571,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance version code",
           "example": "2008R2",
           "member": "string",
@@ -2587,7 +2580,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Physical server code",
           "example": "TS85",
           "member": "string",
@@ -2597,7 +2589,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing ID",
           "example": "1",
           "member": "int64",
@@ -2607,7 +2598,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique string-type ID of instance VPC in the format of `vpc-xxx`, which is an empty string if the basic network is used",
           "example": "vpc-xxxxx",
           "member": "string",
@@ -2617,7 +2607,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used",
           "example": "subnet-xxxxx",
           "member": "string",
@@ -2627,7 +2616,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance isolation.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "User",
           "member": "string",
@@ -2637,7 +2625,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Pub/sub flag. Valid values: SUB (subscribe instance), PUB (publish instance). If it is left empty, it refers to a regular instance without a pub/sub design.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "SUB",
           "member": "string",
@@ -2647,7 +2634,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Read-only flag. Valid values: RO (read-only instance), MASTER (primary instance with read-only instances). If it is left empty, it refers to an instance which is not read-only and has no RO group.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "MASTER",
           "member": "string",
@@ -2657,7 +2643,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Disaster recovery type. Valid values: MIRROR (image), ALWAYSON (AlwaysOn), SINGLE (singleton).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "MIRROR",
           "member": "string",
@@ -2667,7 +2652,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The list of tags associated with the instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "ResourceTag",
@@ -2677,7 +2661,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backup mode. Valid values: `master_pkg` (archive the backup files of the primary node (default value)), `master_no_pkg` (do not archive the backup files of the primary node), `slave_pkg` (archive the backup files of the replica node (valid for Always On clusters)), `slave_no_pkg` (do not archive the backup files of the replica node (valid for Always On clusters)). This parameter is invalid for read-only instances.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "master_pkg",
           "member": "string",
@@ -2687,7 +2670,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance backup info\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -2697,7 +2679,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backup cycle",
           "example": "1",
           "member": "int64",
@@ -2707,7 +2688,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup cycle type. Valid values: `daily`, `weekly`, `monthly`.",
           "example": "daily",
           "member": "string",
@@ -2717,7 +2697,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data (log) backup retention period",
           "example": "7",
           "member": "int64",
@@ -2727,7 +2706,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).",
           "example": "HA",
           "member": "string",
@@ -2737,7 +2715,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The target region of cross-region backup. If this parameter left empty, it indicates that cross-region backup is disabled.",
           "example": "[ap-guangzhou]",
           "member": "string",
@@ -2747,7 +2724,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cross-region backup status. Valid values: `enable` (enabled), `disable` (disabed)",
           "example": "enable",
           "member": "string",
@@ -2757,7 +2733,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The retention period of cross-region backup. Default value: 7 days",
           "example": "7",
           "member": "uint64",
@@ -2767,7 +2742,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name of the public network address",
           "example": "gz.xxx.sqlserver.tencent.com",
           "member": "string",
@@ -2777,7 +2751,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Port number of the public network",
           "example": "2032",
           "member": "int64",
@@ -2787,7 +2760,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.",
           "example": "Chinese_PRC_CI_AS",
           "member": "string",
@@ -2797,7 +2769,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "System time zone. Default value: `China Standard Time`.",
           "example": "China Standard Time",
           "member": "string",
@@ -2807,7 +2778,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the instance is deployed across AZs",
           "example": "false",
           "member": "bool",
@@ -2817,13 +2787,30 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Replica AZ information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "SlaveZones",
           "name": "SlaveZones",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Architecture type. Valid values: `SINGLE` (single-node), `DOUBLE` (two-node), `TRIPLE` (three-node).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DOUBLE",
+          "member": "string",
+          "name": "Architecture",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance type. Valid values: `EXCLUSIVE` (dedicated), `SHARED` (shared)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "EXCLUSIVE",
+          "member": "string",
+          "name": "Style",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -4221,6 +4208,96 @@
       ],
       "type": "object"
     },
+    "DescribeDBInstancesAttributeRequest": {
+      "document": "DescribeDBInstancesAttribute request structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstancesAttributeResponse": {
+      "document": "DescribeDBInstancesAttribute response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Archive backup status. Valid values: `enable` (enabled), `disable` (disabled)",
+          "example": "enable",
+          "member": "string",
+          "name": "RegularBackupEnable",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Archive backup retention period: [90-3650] days",
+          "example": "90",
+          "member": "uint64",
+          "name": "RegularBackupSaveDays",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Archive backup policy. Valid values: `years` (yearly); `quarters (quarterly); `months` (monthly).",
+          "example": "months",
+          "member": "string",
+          "name": "RegularBackupStrategy",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of retained archive backups",
+          "example": "1",
+          "member": "uint64",
+          "name": "RegularBackupCounts",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Archive backup start date in YYYY-MM-DD format, which is the current time by default.",
+          "example": "2022-10-10",
+          "member": "string",
+          "name": "RegularBackupStartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Block process threshold in milliseconds",
+          "example": "0",
+          "member": "int64",
+          "name": "BlockedThreshold",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Retention period for the files of slow SQL, blocking, deadlock, and extended events.",
+          "example": "7",
+          "member": "int64",
+          "name": "EventSaveDays",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBInstancesRequest": {
       "document": "DescribeDBInstances request structure.",
       "members": [
@@ -5299,6 +5376,88 @@
       ],
       "type": "object"
     },
+    "DescribeXEventsRequest": {
+      "document": "DescribeXEvents request structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "mssql-wy78shs8",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  deadlock` (deadlock event).",
+          "example": "slow",
+          "member": "string",
+          "name": "EventType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Generation start time of an extended file",
+          "example": "2023-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Generation end time of an extended file",
+          "example": "2023-01-01 12:05:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Page number. Default value: `0`",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Number of entries to be returned per page. Value range: 1-100. Default value: `20`",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeXEventsResponse": {
+      "document": "DescribeXEvents response structure.",
+      "members": [
+        {
+          "document": "List of extended events",
+          "example": "[]",
+          "member": "Events",
+          "name": "Events",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of extended events",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeZonesRequest": {
       "document": "DescribeZones request structure.",
       "members": [],
@@ -5329,6 +5488,117 @@
         }
       ],
       "type": "object"
+    },
+    "EventConfig": {
+      "document": "Threshold setting for an extended event",
+      "members": [
+        {
+          "document": "Event type. Valid values: `slow` (set threshold for slow SQL ), `blocked` (set threshold for the blocking and deadlock).",
+          "example": "slow",
+          "member": "string",
+          "name": "EventType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Threshold in milliseconds. Valid values: `0`(disable), `non-zero` (enable)",
+          "example": "1000",
+          "member": "int64",
+          "name": "Threshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "Events": {
+      "document": "Details of an extended event",
+      "members": [
+        {
+          "document": "ID",
+          "example": "100",
+          "member": "int64",
+          "name": "Id",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "File name of an extended event",
+          "example": "*.xel",
+          "member": "string",
+          "name": "FileName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "File size of an extended event",
+          "example": "1024",
+          "member": "int64",
+          "name": "Size",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  `deadlock` (deadlock event).",
+          "example": "slow",
+          "member": "string",
+          "name": "EventType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event record status. Valid values: `1` (succeeded), `2` (failed).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Generation start time of an extended file",
+          "example": "2023-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Generation end time of an extended file",
+          "example": "2023-01-01 12:05:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Download address on the private network",
+          "example": "无",
+          "member": "string",
+          "name": "InternalAddr",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Download address on the public network",
+          "example": "无",
+          "member": "string",
+          "name": "ExternalAddr",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "FileAction": {
       "document": "Information of allowed operation",
@@ -7599,7 +7869,6 @@
       "document": "RestoreInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of mssql-j8kv137v",
           "example": "mssql-njj2mtpl",
           "member": "string",
@@ -7608,7 +7877,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API",
           "example": "32687264876",
           "member": "int64",
@@ -7617,7 +7885,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.",
           "example": "mssql-njj2mtpl",
           "member": "string",
@@ -7626,7 +7893,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.",
           "example": "无",
           "member": "RenameRestoreDatabase",
@@ -7635,9 +7901,24 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Group ID of unarchived backup files grouped by backup task. This parameter is returned by the [DescribeBackups](https://intl.cloud.tencent.com/document/product/238/19943?from_cn_redirect=1) API.",
-          "example": "558800",
+          "document": "Rollback type. Valid values: `0` (overwriting), `1` (renaming).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Database to be overwritten, which is required when overwriting a rollback database.",
+          "example": "[\"test_db\"]",
+          "member": "string",
+          "name": "DBList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Group ID of unarchived backup files grouped by backup task",
+          "example": "2993992",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -8106,6 +8387,40 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartInstanceXEventRequest": {
+      "document": "StartInstanceXEvent request structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "mssql-wuw78w",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Whether to start or stop an extended event",
+          "example": "[]",
+          "member": "EventConfig",
+          "name": "EventConfig",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "StartInstanceXEventResponse": {
+      "document": "StartInstanceXEvent response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

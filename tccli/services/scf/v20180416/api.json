@@ -286,6 +286,13 @@
       "name": "Updates a namespace",
       "output": "UpdateNamespaceResponse",
       "status": "online"
+    },
+    "UpdateTriggerStatus": {
+      "document": "This API is used to update the trigger status.",
+      "input": "UpdateTriggerStatusRequest",
+      "name": "Updates the trigger tatus",
+      "output": "UpdateTriggerStatusResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -1146,6 +1153,7 @@
         {
           "default": "",
           "document": "Function name",
+          "example": "ledDummyAPITest",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -1154,6 +1162,7 @@
         {
           "default": "",
           "document": "Name of the trigger to be deleted",
+          "example": "trigger_name",
           "member": "string",
           "name": "TriggerName",
           "required": true,
@@ -1162,6 +1171,7 @@
         {
           "default": "",
           "document": "Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.",
+          "example": "timer",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1170,6 +1180,7 @@
         {
           "default": "",
           "document": "Function namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -1178,6 +1189,7 @@
         {
           "default": "",
           "document": "This field is required if a COS trigger is to be deleted. It stores the data {\"event\":\"cos:ObjectCreated:*\"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.",
+          "example": "无",
           "member": "string",
           "name": "TriggerDesc",
           "required": false,
@@ -1185,7 +1197,8 @@
         },
         {
           "default": "",
-          "document": "Function version information",
+          "document": "Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.",
+          "example": "$DEFAULT",
           "member": "string",
           "name": "Qualifier",
           "required": false,
@@ -2016,6 +2029,7 @@
       "members": [
         {
           "document": "Compatible runtimes",
+          "example": "demo",
           "member": "string",
           "name": "CompatibleRuntimes",
           "type": "list",
@@ -2023,6 +2037,7 @@
         },
         {
           "document": "SHA256 encoding of version file on the layer",
+          "example": "test",
           "member": "string",
           "name": "CodeSha256",
           "type": "string",
@@ -2030,6 +2045,7 @@
         },
         {
           "document": "Download address of version file on the layer",
+          "example": "http://demo",
           "member": "string",
           "name": "Location",
           "type": "string",
@@ -2037,6 +2053,7 @@
         },
         {
           "document": "Version creation time",
+          "example": "2023-01-01",
           "member": "string",
           "name": "AddTime",
           "type": "string",
@@ -2044,6 +2061,7 @@
         },
         {
           "document": "Version description",
+          "example": "demo",
           "member": "string",
           "name": "Description",
           "type": "string",
@@ -2051,6 +2069,7 @@
         },
         {
           "document": "License information",
+          "example": "LicenseInfoDemo",
           "member": "string",
           "name": "LicenseInfo",
           "type": "string",
@@ -2058,6 +2077,7 @@
         },
         {
           "document": "Version number",
+          "example": "l1",
           "member": "int64",
           "name": "LayerVersion",
           "type": "int",
@@ -2065,13 +2085,15 @@
         },
         {
           "document": "Layer name",
+          "example": "ln",
           "member": "string",
           "name": "LayerName",
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Current status of specific layer version. Valid values:\nActive: normal\nPublishing: publishing\nPublishFailed: publishing failed\nDeleted: deleted",
+          "document": "Current status of specific layer version. For the status values, [see here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)",
+          "example": "Active",
           "member": "string",
           "name": "Status",
           "type": "string",
@@ -2272,7 +2294,6 @@
       "document": "TCR image information",
       "members": [
         {
-          "default": "",
           "document": "Image repository type, which can be `personal` or `enterprise`",
           "example": "enterprise",
           "member": "string",
@@ -2282,7 +2303,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "{domain}/{namespace}/{imageName}:{tag}@{digest}",
           "example": "tcr.tencentcloudcr.com/namespace/test:latest",
           "member": "string",
@@ -2292,7 +2312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "tcr-xxx",
           "member": "string",
@@ -2302,7 +2321,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Disused\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"entrypoint.sh\"",
           "member": "string",
@@ -2312,7 +2330,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The command to start up the container, such as `python`. If it’s not specified, Entrypoint in Dockerfile is used.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -2322,13 +2339,30 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The parameters to start up the container. Separate parameters with spaces, such as `u app.py`. If it’s not specified, `CMD in Dockerfile is used.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "\"'",
           "member": "string",
           "name": "Args",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to enable image acceleration. It defaults to `False`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "False",
+          "member": "bool",
+          "name": "ContainerImageAccelerate",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Image function port settings\n`-1`: No port-specific image functions\n`0`: Default port (Port 9000)\nOthers: Special ports\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "9000",
+          "member": "int64",
+          "name": "ImagePort",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -2507,8 +2541,8 @@
       "document": "Layer version information",
       "members": [
         {
-          "default": "",
           "document": "Runtime applicable to a version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CompatibleRuntimes",
           "required": false,
@@ -2516,8 +2550,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time",
+          "example": "无",
           "member": "string",
           "name": "AddTime",
           "required": false,
@@ -2525,8 +2559,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Version description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -2534,8 +2568,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "License information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "LicenseInfo",
           "required": false,
@@ -2543,8 +2577,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Version number",
+          "example": "无",
           "member": "int64",
           "name": "LayerVersion",
           "required": true,
@@ -2552,8 +2586,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Layer name",
+          "example": "无",
           "member": "string",
           "name": "LayerName",
           "required": true,
@@ -2561,13 +2595,22 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Stamp\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Stamp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3968,6 +4011,7 @@
         {
           "default": "",
           "document": "It indicates the log output during the function execution. Null is returned for asynchronous invocations.",
+          "example": "\"\"",
           "member": "string",
           "name": "Log",
           "required": true,
@@ -3977,6 +4021,7 @@
         {
           "default": "",
           "document": "It indicates the response from the executed function. Null is returned for asynchronous invocations.",
+          "example": "\"hello from scf\"",
           "member": "string",
           "name": "RetMsg",
           "required": true,
@@ -3986,6 +4031,7 @@
         {
           "default": "",
           "document": "It indicates the error message of the executed function. Null is returned for asynchronous invocations.",
+          "example": "\" \"",
           "member": "string",
           "name": "ErrMsg",
           "required": true,
@@ -3995,6 +4041,7 @@
         {
           "default": "",
           "document": "It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.",
+          "example": "32",
           "member": "int64",
           "name": "MemUsage",
           "required": true,
@@ -4004,6 +4051,7 @@
         {
           "default": "",
           "document": "It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.",
+          "example": "100",
           "member": "float",
           "name": "Duration",
           "required": true,
@@ -4013,6 +4061,7 @@
         {
           "default": "",
           "document": "It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.",
+          "example": "100",
           "member": "int64",
           "name": "BillDuration",
           "required": true,
@@ -4022,6 +4071,7 @@
         {
           "default": "",
           "document": "ID of the executed function",
+          "example": "c2af8a64-c922-4d55-aee0-bd86a5c2cd12",
           "member": "string",
           "name": "FunctionRequestId",
           "required": true,
@@ -4030,7 +4080,8 @@
         },
         {
           "default": "",
-          "document": "`0` indicates successful execution. Null is returned for asynchronous invocations.",
+          "document": "The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. ",
+          "example": "200",
           "member": "int64",
           "name": "InvokeResult",
           "required": true,
@@ -4395,6 +4446,7 @@
         {
           "default": "",
           "document": "Number of COS triggers",
+          "example": "0",
           "member": "int64",
           "name": "Cos",
           "required": true,
@@ -4404,6 +4456,7 @@
         {
           "default": "",
           "document": "Number of timer triggers",
+          "example": "0",
           "member": "int64",
           "name": "Timer",
           "required": true,
@@ -4413,6 +4466,7 @@
         {
           "default": "",
           "document": "Number of CMQ triggers",
+          "example": "0",
           "member": "int64",
           "name": "Cmq",
           "required": true,
@@ -4422,6 +4476,7 @@
         {
           "default": "",
           "document": "Total number of triggers",
+          "example": "0",
           "member": "int64",
           "name": "Total",
           "required": true,
@@ -4431,6 +4486,7 @@
         {
           "default": "",
           "document": "Number of CKafka triggers",
+          "example": "0",
           "member": "int64",
           "name": "Ckafka",
           "required": true,
@@ -4440,6 +4496,7 @@
         {
           "default": "",
           "document": "Number of API Gateway triggers",
+          "example": "0",
           "member": "int64",
           "name": "Apigw",
           "required": true,
@@ -4449,6 +4506,7 @@
         {
           "default": "",
           "document": "Number of CLS triggers",
+          "example": "0",
           "member": "int64",
           "name": "Cls",
           "required": true,
@@ -4458,6 +4516,7 @@
         {
           "default": "",
           "document": "Number of CLB triggers",
+          "example": "0",
           "member": "int64",
           "name": "Clb",
           "required": true,
@@ -4467,6 +4526,7 @@
         {
           "default": "",
           "document": "Number of MPS triggers",
+          "example": "0",
           "member": "int64",
           "name": "Mps",
           "required": true,
@@ -4476,6 +4536,7 @@
         {
           "default": "",
           "document": "Number of CM triggers",
+          "example": "0",
           "member": "int64",
           "name": "Cm",
           "required": true,
@@ -4485,11 +4546,22 @@
         {
           "default": "",
           "document": "Number of VOD triggers",
+          "example": "0",
           "member": "int64",
           "name": "Vod",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of EventBridge triggers\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Eb",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4869,6 +4941,87 @@
     },
     "UpdateNamespaceResponse": {
       "document": "UpdateNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTriggerStatusRequest": {
+      "document": "UpdateTriggerStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)",
+          "example": "CLOSE",
+          "member": "string",
+          "name": "Enable",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function name.",
+          "example": "funcName",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Trigger name",
+          "example": "test",
+          "member": "string",
+          "name": "TriggerName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Trigger Type",
+          "example": "timer",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.",
+          "example": "$DEFAULT",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "To update a COS trigger, this field is required. It stores the data {\"event\":\"cos:ObjectCreated:*\"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.",
+          "example": "无",
+          "member": "string",
+          "name": "TriggerDesc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTriggerStatusResponse": {
+      "document": "UpdateTriggerStatus response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

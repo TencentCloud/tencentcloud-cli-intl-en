@@ -829,6 +829,52 @@
       ],
       "usage": "out"
     },
+    "BackupDownloadRestriction": {
+      "document": "Restriction information for downloading a backup",
+      "members": [
+        {
+          "document": "Type of the network restrictions for downloading backup files. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).",
+          "example": "无",
+          "member": "string",
+          "name": "RestrictionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether VPC is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).",
+          "example": "无",
+          "member": "string",
+          "name": "VpcRestrictionEffect",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether it is allowed to download the VPC ID list of the backup files.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Whether IP is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).",
+          "example": "无",
+          "member": "string",
+          "name": "IpRestrictionEffect",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether it is allowed to download IP list of the backup files.",
+          "example": "无",
+          "member": "string",
+          "name": "IpSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "BackupPlan": {
       "document": "Backup plan",
       "members": [
@@ -3643,7 +3689,6 @@
       "document": "DescribeBackupDownloadURL request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID.",
           "example": "postgres-xxxxxxxx",
           "member": "string",
@@ -3652,7 +3697,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Backup type. Valid values: `LogBackup`, `BaseBackup`.",
           "example": "LogBackup",
           "member": "string",
@@ -3661,7 +3705,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique backup ID.",
           "example": "f6adc02a-432e-536f-a5f3-3dbf40ecd683",
           "member": "string",
@@ -3670,13 +3713,20 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Validity period of a URL, which is 12 hours by default.",
           "example": "12",
           "member": "uint64",
           "name": "URLExpireTime",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Backup download restriction",
+          "example": "无",
+          "member": "BackupDownloadRestriction",
+          "name": "BackupDownloadRestriction",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"

@@ -16,6 +16,14 @@
         "title": "Creating enterprise security group rules (new)"
       }
     ],
+    "AddNatAcRule": [
+      {
+        "document": "This example shows you how to add NAT access control rules.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddNatAcRule\n<Common Request Parameters>\n\n{\n    \"Rules\": [\n        {\n            \"SourceContent\": \"xx\",\n            \"SourceType\": \"xx\",\n            \"TargetContent\": \"xx\",\n            \"TargetType\": \"xx\",\n            \"Protocol\": \"xx\",\n            \"RuleAction\": \"xx\",\n            \"Port\": \"xx\",\n            \"Direction\": 1,\n            \"OrderIndex\": 0,\n            \"Uuid\": 0,\n            \"Enable\": \"xx\",\n            \"Description\": \"xx\"\n        }\n    ],\n    \"From\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            0\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Adding NAT access control rules"
+      }
+    ],
     "CreateAcRules": [
       {
         "document": "",
@@ -111,7 +119,7 @@
     "DescribeAssociatedInstanceList": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssociatedInstanceList\n<Common request parameters>\n\n{\n    \"SearchValue\": \"\",\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"SecurityGroupId\": \"\",\n    \"Type\": \"\",\n    \"By\": \"\",\n    \"Order\": \"\",\n    \"Area\": \"ap-beijing\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssociatedInstanceList\n<Common request parameters>\n\n{\n    \"Area\": \"xx\",\n    \"SecurityGroupId\": \"xx\",\n    \"SearchValue\": \"xx\",\n    \"By\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"Type\": \"xx\",\n    \"Order\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"InstanceId\": \"eni-4ymwnaoe\",\n                \"InstanceName\": \"test-private\",\n                \"Type\": 5,\n                \"VpcId\": \"vpc-406waega\",\n                \"VpcName\": \"vpc---\",\n                \"PublicIp\": \"\",\n                \"Ip\": \"192.168.0.13,192.168.0.3\",\n                \"SecurityGroupCount\": 1\n            },\n            {\n                \"InstanceId\": \"eni-oskydbvm\",\n                \"InstanceName\": \"privat-test\",\n                \"Type\": 5,\n                \"VpcId\": \"vpc-dvc0qmmm\",\n                \"VpcName\": \"Dno\",\n                \"PublicIp\": \"\",\n                \"Ip\": \"172.21.0.12\",\n                \"SecurityGroupCount\": 0\n            }\n        ],\n        \"Total\": 2,\n        \"RequestId\": \"8f563b4d-8151-4db0-a822-9bde279d2079\"\n    }\n}",
         "title": "Getting the list of instances associated with a security group"
       }
@@ -122,6 +130,14 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBlockByIpTimesList\n<Common request parameters>\n\n{\n    \"Ip\": \"xx\",\n    \"EndTime\": \"xx\",\n    \"StartTime\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"StatTime\": \"xx\",\n                \"Num\": 0\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "DescribeBlockByIpTimesList"
+      }
+    ],
+    "DescribeBlockIgnoreList": [
+      {
+        "document": "This example shows you how to get the honeypot service list.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBlockIgnoreList\n<Common Request Parameters>\n\n{\n    \"Direction\": \"xx\",\n    \"SearchValue\": \"xx\",\n    \"RuleType\": 1,\n    \"By\": \"xx\",\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ReturnMsg\": \"xx\",\n        \"ReturnCode\": 0,\n        \"Data\": [\n            {\n                \"Domain\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"UniqueId\": \"xx\",\n                \"Level\": \"xx\",\n                \"Country\": \"xx\",\n                \"Direction\": 0,\n                \"EventName\": \"xx\",\n                \"Source\": \"xx\",\n                \"MatchTimes\": 0,\n                \"StartTime\": \"xx\",\n                \"Address\": \"xx\",\n                \"Action\": 0,\n                \"EndTime\": \"xx\",\n                \"Ioc\": \"xx\",\n                \"IgnoreReason\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"Total\": 1\n    }\n}",
+        "title": "Getting the honeypot service list"
       }
     ],
     "DescribeBlockStaticList": [
@@ -142,9 +158,9 @@
     ],
     "DescribeEnterpriseSecurityGroupRule": [
       {
-        "document": "This example shows you how to query enterprise security group rules (new).",
+        "document": "This example shows you how to query enterprise security group rules.",
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnterpriseSecurityGroupRule\n<Common request parameters>\n\n{\n    \"Enable\": \"xx\",\n    \"Protocol\": \"xx\",\n    \"Description\": \"xx\",\n    \"PageNo\": \"xx\",\n    \"SourceContent\": \"xx\",\n    \"ServiceTemplateId\": \"xx\",\n    \"PageSize\": \"xx\",\n    \"DestContent\": \"xx\",\n    \"RuleAction\": \"xx\",\n    \"Port\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Rules\": [\n            {\n                \"OrderIndex\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"SourceType\": \"xx\",\n                \"SourceContent\": \"xx\",\n                \"DestType\": \"xx\",\n                \"ServiceTemplateId\": \"xx\",\n                \"DestContent\": \"xx\",\n                \"RuleAction\": \"xx\",\n                \"Port\": \"xx\",\n                \"Description\": \"xx\"\n            }\n        ],\n        \"TotalCount\": \"xx\",\n        \"PageSize\": \"xx\",\n        \"PageNo\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Rules\": [\n            {\n                \"Id\": \"xxx-xxx\",\n                \"OrderIndex\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"SourceType\": \"xx\",\n                \"SourceContent\": \"xx\",\n                \"DestType\": \"xx\",\n                \"ServiceTemplateId\": \"xx\",\n                \"DestContent\": \"xx\",\n                \"RuleAction\": \"xx\",\n                \"Port\": \"xx\",\n                \"Enable\": \"true\",\n                \"Description\": \"xx\"\n            }\n        ],\n        \"TotalCount\": \"xx\",\n        \"PageSize\": \"xx\",\n        \"PageNo\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying enterprise security group rules (new)"
       }
     ],
@@ -162,6 +178,14 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIPStatusList\n<Common request parameters>\n\n{\n    \"IPList\": [\n        \"1.2.3.4\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"StatusList\": [\n            {\n                \"Status\": 0,\n                \"IP\": \"xx\"\n            }\n        ],\n        \"ReturnCode\": 0,\n        \"ReturnMsg\": \"Success\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "\"Alert Management\" -> \"Asset Security Events\" -> \"Asset Details\""
+      }
+    ],
+    "DescribeNatAcRule": [
+      {
+        "document": "This example shows you how to get the NAT access control list.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeNatAcRule\n<Common Request Parameters>\n\n{\n    \"Index\": \"xx\",\n    \"Filters\": [\n        {\n            \"Name\": \"xx\",\n            \"Values\": [\n                \"xx\"\n            ],\n            \"OperatorType\": 0\n        }\n    ],\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"StartTime\": \"xx\",\n    \"EndTime\": \"xx\",\n    \"Order\": \"xx\",\n    \"By\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Data\": [\n            {\n                \"SourceContent\": \"xx\",\n                \"TargetContent\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"Port\": \"xx\",\n                \"RuleAction\": \"xx\",\n                \"Description\": \"xx\",\n                \"Count\": 1,\n                \"OrderIndex\": 1,\n                \"SourceType\": \"xx\",\n                \"TargetType\": \"xx\",\n                \"Uuid\": 1,\n                \"Invalid\": 1,\n                \"IsRegion\": 1,\n                \"CountryCode\": 1,\n                \"CityCode\": 1,\n                \"CountryName\": \"xx\",\n                \"CityName\": \"xx\",\n                \"CloudCode\": \"xx\",\n                \"IsCloud\": 1,\n                \"Enable\": \"xx\",\n                \"Direction\": 1,\n                \"InstanceName\": \"xx\",\n                \"InternalUuid\": 0,\n                \"Status\": 1\n            }\n        ],\n        \"AllTotal\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the NAT access control list"
       }
     ],
     "DescribeNatFwInfoCount": [
@@ -215,7 +239,7 @@
     "DescribeRuleOverview": [
       {
         "document": "",
-        "input": "https://cfw.tencentcloudapi.com/?Action=DescribeRuleOverview\n&Placement.Zone=ap-guangzhou-2\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRuleOverview\n<Common request parameters>\n\n{\n    \"Direction\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"AllTotal\": 100,\n        \"StrategyNum\": 70,\n        \"StartRuleNum\": 70,\n        \"StopRuleNum\": 30,\n        \"RemainingNum\": 30,\n        \"RequestId\": \"cd0e1fdf-157d-438c-9bc8-75925e5d4e20\"\n    }\n}",
         "title": "Getting the rule list overview"
       }
@@ -247,7 +271,7 @@
     "DescribeTLogInfo": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTLogInfo\n<Common request parameters>\n\n{\n    \"EndTime\": \"xx\",\n    \"SearchValue\": \"xx\",\n    \"QueryType\": \"xx\",\n    \"StartTime\": \"xx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTLogInfo\n<Common request parameters>\n\n{\n    \"EndTime\": \"2021-09-18 12:00:00\",\n    \"SearchValue\": \"{country: 1, instance_id:instanceidtest, source:1}\",\n    \"QueryType\": \"1\",\n    \"StartTime\": \"2021-09-17 12:00:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"NetworkNum\": 0,\n            \"HandleNum\": 0,\n            \"BanNum\": 0,\n            \"VulNum\": 0,\n            \"OutNum\": 0,\n            \"BruteForceNum\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "DescribeTLogInfo"
       }
@@ -329,7 +353,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBlockIgnoreList\n<Common request parameters>\n\n{\n    \"IOC\": [\n        {\n            \"IP\": \"192.168.1.1\",\n            \"Direction\": 1,\n            \"Domain\": \"\"\n        }\n    ],\n    \"RuleType\": 1,\n    \"IocAction\": \"add\",\n    \"StartTime\": \"2021-04-16 18:01:09\",\n    \"EndTime\": \"3000-01-01 00:00:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"ReturnCode\": 0,\n        \"ReturnMsg\": \"success\",\n        \"RequestId\": \"cd0e1fdf-157d-438c-9bc8-75925e5d4e20\"\n    }\n}",
-        "title": "\"Intrusion Defense\" -> \"Blocklist/Ignored List\" -> \"Add/Delete/Modify\""
+        "title": "Modifying a block-/allowlist"
       }
     ],
     "ModifyBlockTop": [
@@ -338,6 +362,30 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBlockTop\n<Common request parameters>\n\n{\n    \"OpeType\": \"xx\",\n    \"UniqueId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Pinning to top/Unpinning"
+      }
+    ],
+    "ModifyEnterpriseSecurityDispatchStatus": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyEnterpriseSecurityDispatchStatus\n<Common request parameters>\n\n{\n    \"Status\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"RequestId\": \"b21d7f7c-3191-41a2-bd13-9a5f6d86ab44\"\n    }\n}",
+        "title": "Modifying the publishing status of an enterprise security group"
+      }
+    ],
+    "ModifyEnterpriseSecurityGroupRule": [
+      {
+        "document": "This example shows you how to modify an enterprise security group rule.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyEnterpriseSecurityGroupRule\n<Common request parameters>\n\n{\n    \"RuleUuid\": 1,\n    \"Data\": {\n        \"OrderIndex\": \"xx\",\n        \"Protocol\": \"xx\",\n        \"SourceType\": \"xx\",\n        \"SourceContent\": \"xx\",\n        \"DestType\": \"xx\",\n        \"ServiceTemplateId\": \"xx\",\n        \"DestContent\": \"xx\",\n        \"RuleAction\": \"xx\",\n        \"Port\": \"xx\",\n        \"Description\": \"xx\"\n    },\n    \"ModifyType\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"\",\n        \"Status\": 0,\n        \"NewRuleUuid\": 35641\n    }\n}",
+        "title": "Modifying a new enterprise security group rule"
+      }
+    ],
+    "ModifyNatAcRule": [
+      {
+        "document": "This example shows you how to modify NAT access control rules.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNatAcRule\n<Common Request Parameters>\n\n{\n    \"Rules\": [\n        {\n            \"SourceContent\": \"xx\",\n            \"SourceType\": \"xx\",\n            \"TargetContent\": \"xx\",\n            \"TargetType\": \"xx\",\n            \"Protocol\": \"xx\",\n            \"RuleAction\": \"xx\",\n            \"Port\": \"xx\",\n            \"Direction\": 1,\n            \"OrderIndex\": 0,\n            \"Uuid\": 0,\n            \"Enable\": \"xx\",\n            \"Description\": \"xx\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            0\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying NAT access control rules"
       }
     ],
     "ModifyNatFwReSelect": [
@@ -376,6 +424,14 @@
         "title": "SetNatFwVpcDnsSwitch Switching firewall VPC DNS toggles"
       }
     ],
+    "ModifyNatSequenceRules": [
+      {
+        "document": "This example shows you how to change the sequence number of NAT firewall rules.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNatSequenceRules\n<Common request parameters>\n\n{\n    \"RuleChangeItems\": [\n        {\n            \"OrderIndex\": 0,\n            \"NewOrderIndex\": 0\n        }\n    ],\n    \"Direction\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Changing the sequence number of NAT firewall rules"
+      }
+    ],
     "ModifyPublicIPSwitchStatus": [
       {
         "document": "",
@@ -395,9 +451,9 @@
     "ModifyRunSyncAsset": [
       {
         "document": "",
-        "input": "https://cfw.tencentcloudapi.com/?Action=ModifyRunSyncAsset\n&Type=1\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRunSyncAsset\n<Common request parameters>\n\n{\n    \"Type\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"RequestId\": \"b21d7f7c-3191-41a2-bd13-9a5f6d86ab44\"\n    }\n}",
-        "title": "Getting the assets to sync - Internet & VPC"
+        "title": "Syncing assets - Edge firewalls and inter-VPC firewalls"
       }
     ],
     "ModifySecurityGroupItemRuleStatus": [
@@ -424,6 +480,14 @@
         "title": "Modifying rule priority"
       }
     ],
+    "ModifyStorageSetting": [
+      {
+        "document": "This example shows you how to modify the log retention period (in days) or to clear logs.\nTo modify the log retention period, pass storagetime to StorageAction and set StorageDay to the desired number of days. Only certain options are provided for StorageDay. You can view the options in the corresponding drop-down list in the console.\nTo clear logs, pass storagecount to StorageAction. StorageDay is not required in this case.",
+        "input": "{\n  \"StorageDay\": 90,\n  \"StorageAction\": \"storagetime\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f5b034d5-da48-47a6-9d7c-5fb4a3cb7ea1\"\n    }\n}",
+        "title": "Modifying storage settings"
+      }
+    ],
     "ModifyTableStatus": [
       {
         "document": "",
@@ -446,6 +510,14 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveEnterpriseSecurityGroupRule\n<Common request parameters>\n\n{\n    \"RemoveType\": 0,\n    \"RuleUuid\": 8888\n}",
         "output": "{\n    \"Response\": {\n        \"RuleUuid\": 8888,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"Status\": 0\n    }\n}",
         "title": "Deleting enterprise security group rules (new)"
+      }
+    ],
+    "RemoveNatAcRule": [
+      {
+        "document": "This example shows you how to delete NAT access control rules.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveNatAcRule\n<Common Request Parameters>\n\n{\n    \"RuleUuid\": [\n        0\n    ],\n    \"Direction\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            0\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting NAT access control rules"
       }
     ],
     "SetNatFwDnatRule": [

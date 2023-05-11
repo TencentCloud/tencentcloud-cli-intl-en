@@ -226,7 +226,7 @@
     ],
     "DeleteProxyGroup": [
       {
-        "document": "",
+        "document": "This example shows you how to delete a connection group by its group ID.",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteProxyGroup\n<Common request parameters>\n\n{\n    \"Force\": \"0\",\n    \"GroupId\": \"lg-b7h4d02f\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"19a021f8-dff3-4890-8e7a-ed5054e22e49\"\n    }\n}",
         "title": "Deleting a connection group"

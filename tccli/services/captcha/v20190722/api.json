@@ -18,7 +18,6 @@
       "document": "DescribeCaptchaResult request structure.",
       "members": [
         {
-          "default": "",
           "document": "It must be `9` here. You can configure the CAPTCHA types in the console.",
           "example": "9",
           "member": "uint64",
@@ -27,7 +26,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The user verification ticket returned by the frontend callback function",
           "example": "xxxx",
           "member": "string",
@@ -36,7 +34,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The user public IP obtained from the customer backend server",
           "example": "127.0.0.1",
           "member": "string",
@@ -45,7 +42,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "A random string returned by the frontend callback function",
           "example": "xxx",
           "member": "string",
@@ -54,7 +50,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "CAPTCHA's app ID. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the CaptchaAppId in the \"Key\" column of the CAPTCHA list.",
           "example": "201111111",
           "member": "uint64",
@@ -63,7 +58,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "CAPTCHA's app key. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the AppSecretKey in the \"Key\" column of the CAPTCHA list. AppSecretKey is the key for CAPTCHA ticket verification performed by the server. Please keep it confidential and do not disclose it to any third parties.",
           "example": "xxxxxx",
           "member": "string",
@@ -72,8 +66,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Business ID, which is used to differentiate statistical data when this service is used in multiple businesses of a website or an app.",
+          "document": "Reserved field.",
           "example": "xxx",
           "member": "uint64",
           "name": "BusinessId",
@@ -81,8 +74,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Scenario ID, which is used to differentiate statistical data when this service is used in multiple scenarios of a website or an app.",
+          "document": "Reserved field.",
           "example": "xxx",
           "member": "uint64",
           "name": "SceneId",
@@ -90,7 +82,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "MAC address or unique identifier of a device",
           "example": "xxx",
           "member": "string",
@@ -99,7 +90,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Mobile equipment identity number",
           "example": "xxx",
           "member": "string",
@@ -108,7 +98,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Indicates whether to return the time when the frontend obtains the CAPTCHA. Valid values: 1 (return the time) and others.",
           "example": "1",
           "member": "int64",
@@ -123,11 +112,10 @@
       "document": "DescribeCaptchaResult response structure.",
       "members": [
         {
-          "document": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n  \n \n \n \n \n \n  \n ",
+          "document": "`1 OK`: Verification passed\n`7 captcha no match`: The passed in `Randstr` is invalid. Make sure it is the same as the `Randstr` returned from the frontend.\n`8 ticket expired`: The `Ticket` has expired. A ticket is valid for five minutes. Please generate a new `Ticket` and `Randstr`.\n`9 ticket reused`: The specified `Ticket` has been used. Please generate a new `Ticket` and `Randstr`.\n`15 decrypt fail`: The specified `Ticket` is invalid. Make sure it’s the same as the Ticket returned from the frontend. \n`16 appid-ticket mismatch`: The specified `CaptchaAppId` is invalid. Make sure it’s the same as the `CaptchaAppId` returned from the frontend. You can obtain it from the CAPTCHA console in **Verification management** > **Basic configuration**.\n`21 diff`. Ticket verification error. Possible reasons: 1) If the ticket contains the `terror` prefix, it’s usually the case that a disaster recovery ticket is generated due to the network connection problems of the user. You can choose to ignore it or verify again. 2) If the ticket does not include the `terror` prefix, Captcha detects security risk on this request . You can choose to block it or not.\n`100 appid-secretkey-ticket mismatch`: Parameter error. 1) Make sure `CaptchaAppId` and `AppSecretKey` are correct. `CaptchaAppId` and `AppSecretKey` in the CAPTACHA console under **Verification management** > **Basic configuration**. 2) Make sure the passed-in `Ticket` is generated by using the passed-in `CaptchaAppId`.",
           "example": "1",
           "member": "int64",
           "name": "CaptchaCode",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -136,7 +124,6 @@
           "example": "OK",
           "member": "string",
           "name": "CaptchaMsg",
-          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -145,7 +132,6 @@
           "example": "0",
           "member": "int64",
           "name": "EvilLevel",
-          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -154,9 +140,24 @@
           "example": "1583749870",
           "member": "int64",
           "name": "GetCaptchaTime",
-          "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "Blocking type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "EvilBitmap",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The time when the CAPTCHA is submitted.",
+          "example": "1583749870",
+          "member": "int64",
+          "name": "SubmitCaptchaTime",
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

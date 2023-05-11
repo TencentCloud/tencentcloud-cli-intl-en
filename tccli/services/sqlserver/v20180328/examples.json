@@ -234,6 +234,14 @@
         "title": "Querying the list of instances"
       }
     ],
+    "DescribeDBInstancesAttribute": [
+      {
+        "document": "This example shows you how to query the attributes of an instance.",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstancesAttribute\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-j8kv137v\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"mssql-j8kv137v\",\n        \"RegularBackupSaveDays\": 1,\n        \"RequestId\": \"7\",\n        \"RegularBackupCounts\": 1,\n        \"RegularBackupEnable\": \"enable\",\n        \"RegularBackupStrategy\": \"months\",\n        \"RegularBackupStartTime\": \"2022-10-10\",\n        \"EventSaveDays\": 0,\n        \"BlockedThreshold\": 6\n    }\n}",
+        "title": "Querying the attributes of the \"mssql-j8kv137v\" instance"
+      }
+    ],
     "DescribeDBs": [
       {
         "document": "",
@@ -344,6 +352,14 @@
         "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeUploadBackupInfo\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"BucketName\": \"cosbacktest-1254065710\",\n        \"ExpiredTime\": \"1601205149\",\n        \"Path\": \"251006279/sqlserver/mssql-rdc0gajn/migration/backup/mssql-backup-migration-kpl74n9l/\",\n        \"Region\": \"ap-guangzhou\",\n        \"RequestId\": \"6ce2010c-a9c2-474d-860e-f2c8581304eb\",\n        \"StartTime\": \"1601204649\",\n        \"TmpSecretId\": \"AKID44fDXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        \"TmpSecretKey\": \"2jWOoltcvf21JIsNUaXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        \"XCosSecurityToken\": \"J6nJk8Q30PaQwyvn4OF4oOezabX61kra1cf794342ff14c39705aa17584f81650YmAxWf4vkrV2ZK2Gcr_-kzjJ7a_fRRCeQtXd547VoWnmbJ2txpX6Kj_SywpVdS4c4sMrIn2aFir1nmTu--k_a9NDyykODaR2O3n-PP_k84qacwjb-XXXXXXXXXXXXXXXXXXXXXXXXX\"\n    }\n}",
         "title": "Querying the upload key of full backups"
+      }
+    ],
+    "DescribeXEvents": [
+      {
+        "document": "This example shows you how to query the record of an extended event for an instance, including slow SQL, blocking, and deadlock.",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeXEvents\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 2,\n    \"StartTime\": \"2023-03-05 11:49:08\",\n    \"EndTime\": \"2023-03-13 11:49:08\",\n    \"EventType\": \"slow\",\n    \"InstanceId\": \"mssql-qp7gu6ch\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"023a2da2-c152-11ed-b1aa-525400853186\",\n        \"TotalCount\": 10,\n        \"Events\": [\n            {\n                \"EndTime\": \"2023-03-10 15:45:05\",\n                \"EventType\": \"slow\",\n                \"ExternalAddr\": \"https://***\",\n                \"FileName\": \"autoed_instance_58001_20230220110419.xel\",\n                \"Id\": 1004,\n                \"InternalAddr\": \"https:***\",\n                \"Size\": 10240,\n                \"StartTime\": \"2023-03-10 15:44:15\",\n                \"Status\": 1\n            }\n        ]\n    }\n}",
+        "title": "DescribeXEvents"
       }
     ],
     "DescribeZones": [
@@ -530,18 +546,18 @@
     ],
     "RestoreInstance": [
       {
-        "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=RestoreInstance\n&InstanceId=mssql-njj2mtpl\n&BackupId=32687264876\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"FlowId\": 3546\n    }\n}",
-        "title": "Restoring an instance"
+        "document": "This example shows you how to roll back the database by backup set.",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestoreInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-u81902ja\",\n    \"BackupId\": 0,\n    \"TargetInstanceId\": \"mssql-u8190212\",\n    \"RenameRestore\": [\n        {\n            \"OldName\": \"test_db\",\n            \"NewName\": \"new_db\"\n        }\n    ],\n    \"GroupId\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 0,\n        \"RequestId\": \"tqKar0yjquorXdNkDzkAZ8lh1_JTWJq3\"\n    }\n}",
+        "title": "Rolling back the database by backup set"
       }
     ],
     "RollbackInstance": [
       {
-        "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=RollbackInstance\n&InstanceId=mssql-j8kv137v\n&Type=0\n&Time=2018-08-07 11:32:29\n&DBs.0=db1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"780339f6-30d7-419a-a30c-c2dc0933af1c\",\n        \"FlowId\": 1234\n    }\n}",
-        "title": "Rolling back \"db1\" in the \"mssql-j8kv137v\" instance to 11:32:29, August 7, 2018"
+        "document": "This example shows you how to roll back the database by time point.",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollbackInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-aj89iq78\",\n    \"Type\": 1,\n    \"DBs\": [\n        \"abc\"\n    ],\n    \"Time\": \"2020-09-22 00:00:00\",\n    \"TargetInstanceId\": \"mssql-aj89iq79\",\n    \"RenameRestore\": [\n        {\n            \"OldName\": \"abc\",\n            \"NewName\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 100023,\n        \"RequestId\": \"cd7a35be-2fbf-f3a6-210a-ea9afe158817\"\n    }\n}",
+        "title": "Rolling back the database by time point"
       }
     ],
     "RunMigration": [
@@ -566,6 +582,14 @@
         "input": "https://sqlserver.tencentcloudapi.com/?Action=StartIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1001403,\n        \"RequestId\": \"6f2b5d2b-a3c1-426d-8e1c-325a69ccb694\"\n    }\n}",
         "title": "Starting an incremental import task"
+      }
+    ],
+    "StartInstanceXEvent": [
+      {
+        "document": " This example shows you how to start and stop an extended event.",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartInstanceXEvent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-77auaua\",\n    \"EventConfig\": [\n        {\n            \"EventType\": \"slow\",\n            \"Threshold\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"AH7AAJ_909AA_AAAQ_2134343\"\n    }\n}",
+        "title": "StartInstanceXEvent"
       }
     ],
     "TerminateDBInstance": [
