@@ -42,6 +42,13 @@
       "output": "CheckInstancesUpgradeAbleResponse",
       "status": "online"
     },
+    "CreateBackupStorageLocation": {
+      "document": "This API is used to create a backup repository. You can specify the storage type (such as COS), the bucket region and the name. Up to 100 repositories can be created. Note that the settings of this API apply globally. You only need to create one backup repository, and back up TKE clusters in different regions in it.",
+      "input": "CreateBackupStorageLocationRequest",
+      "name": "Creates a backup repository",
+      "output": "CreateBackupStorageLocationResponse",
+      "status": "online"
+    },
     "CreateCluster": {
       "document": "This API is used to create a cluster.",
       "input": "CreateClusterRequest",
@@ -131,6 +138,13 @@
       "input": "CreateTKEEdgeClusterRequest",
       "name": "Creates a TKE Edge cluster",
       "output": "CreateTKEEdgeClusterResponse",
+      "status": "online"
+    },
+    "DeleteBackupStorageLocation": {
+      "document": "This API is used to delete a backup repository.",
+      "input": "DeleteBackupStorageLocationRequest",
+      "name": "Deletes a backup repository",
+      "output": "DeleteBackupStorageLocationResponse",
       "status": "online"
     },
     "DeleteCluster": {
@@ -250,6 +264,13 @@
       "input": "DescribeAvailableTKEEdgeVersionRequest",
       "name": "Queries the K8s versions supported by TKE Edge.",
       "output": "DescribeAvailableTKEEdgeVersionResponse",
+      "status": "online"
+    },
+    "DescribeBackupStorageLocations": {
+      "document": "This API is used to query backup repositories.",
+      "input": "DescribeBackupStorageLocationsRequest",
+      "name": "Queries backup repositories",
+      "output": "DescribeBackupStorageLocationsResponse",
       "status": "online"
     },
     "DescribeClusterAsGroupOption": {
@@ -679,6 +700,13 @@
       "output": "UninstallEdgeLogAgentResponse",
       "status": "online"
     },
+    "UpdateClusterKubeconfig": {
+      "document": "This API is used to update the Kubeconfig information of a cluster.",
+      "input": "UpdateClusterKubeconfigRequest",
+      "name": "Updates Kubeconfig information of the cluster",
+      "output": "UpdateClusterKubeconfigResponse",
+      "status": "online"
+    },
     "UpdateClusterVersion": {
       "document": "This API is used to upgrade the master component of the cluster to the specified version.",
       "input": "UpdateClusterVersionRequest",
@@ -1037,6 +1065,84 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BackupStorageLocation": {
+      "document": "Storage repository information",
+      "members": [
+        {
+          "document": "Backup repository name\t",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Repository region, such as `ap-guangzhou`\t",
+          "example": "ap-guangzhou\t",
+          "member": "string",
+          "name": "StorageRegion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The provider of storage service. It defaults to Tencent Cloud. \t\nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "tencentcloud",
+          "member": "string",
+          "name": "Provider",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "COS bucket name. For COS storage type, it must start with the prefix `tke-backup`. \t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tke-backup-xxx",
+          "member": "string",
+          "name": "Bucket",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "COS bucket path \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Path",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Storage repository status \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Available/Unavailable",
+          "member": "string",
+          "name": "State",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Status information \t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Last checked time \t\nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastValidationTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2708,11 +2814,68 @@
       ],
       "usage": "out"
     },
+    "CreateBackupStorageLocationRequest": {
+      "document": "CreateBackupStorageLocation request structure.",
+      "members": [
+        {
+          "document": "Repository region, such as `ap-guangzhou`",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "StorageRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "COS bucket name. For COS storage type, it must start with the prefix `tke-backup`.",
+          "example": "tke-backup-xxx",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Backup repository name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "The provider of storage service. It defaults to Tencent Cloud.",
+          "example": "tencentcloud",
+          "member": "string",
+          "name": "Provider",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "COS bucket path",
+          "example": "test",
+          "member": "string",
+          "name": "Path",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupStorageLocationResponse": {
+      "document": "CreateBackupStorageLocation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateClusterEndpointRequest": {
       "document": "CreateClusterEndpoint request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -2721,7 +2884,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The ID of the subnet where the cluster's port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster's VPC). ",
           "example": "subnet-xxxxxx",
           "member": "string",
@@ -2730,7 +2892,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).",
           "example": "true",
           "member": "bool",
@@ -2739,7 +2900,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "The domain name",
           "example": "cls.domain.com",
           "member": "string",
@@ -2748,7 +2908,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The security group in use, which must be passed in when public access is enabled.",
           "example": "sg-xxx",
           "member": "string",
@@ -2757,8 +2916,7 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "The LB parameter. Required only for public network access.",
+          "document": "Parameters used to create a CLB in JSON format. It’s only required for public network access. Example: `{\"InternetAccessible\":{\"InternetChargeType\":\"TRAFFIC_POSTPAID_BY_HOUR\",\"InternetMaxBandwidthOut\":\"200\"},\"VipIsp\":\"\",\"BandwidthPackageId\":\"\"}`. \nParameters: \n`InternetAccessible.InternetChargeType`: `TRAFFIC_POSTPAID_BY_HOUR`, `BANDWIDTH_POSTPAID_BY_HOUR`, `InternetAccessible.BANDWIDTH_PACKAGE` (Bill by the bandwidth package) \n`InternetMaxBandwidthOut`: Outbound bandwidth cap in Mbps. Range: 0 - 2048. It defaults to 10. \n`VipIsp`: The VIP provider. Values: `CMCC` (China Mobile), `CTCC` (China Telecom), `CUCC` (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode. \n`BandwidthPackageId`: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).",
           "example": "无",
           "member": "string",
           "name": "ExtensiveParameters",
@@ -3892,6 +4050,32 @@
       ],
       "usage": "out"
     },
+    "DeleteBackupStorageLocationRequest": {
+      "document": "DeleteBackupStorageLocation request structure.",
+      "members": [
+        {
+          "document": "Backup repository name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBackupStorageLocationResponse": {
+      "document": "DeleteBackupStorageLocation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteClusterAsGroupsRequest": {
       "document": "DeleteClusterAsGroups request structure.",
       "members": [
@@ -4556,6 +4740,40 @@
           "name": "EdgeVersionCurrent",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupStorageLocationsRequest": {
+      "document": "DescribeBackupStorageLocations request structure.",
+      "members": [
+        {
+          "document": "Names of repositories. If it’s not specified, all storage repository names in the current region are returned.",
+          "example": "[\"test-1\"]",
+          "member": "string",
+          "name": "Names",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupStorageLocationsResponse": {
+      "document": "DescribeBackupStorageLocations response structure.",
+      "members": [
+        {
+          "document": "Detailed information of the backup repository \nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BackupStorageLocation",
+          "name": "BackupStorageLocationSet",
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -7308,6 +7526,24 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "document": "Edge cluster component version \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.9.0",
+          "member": "string",
+          "name": "EdgeVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -7459,7 +7695,6 @@
       "document": "EnableVpcCniNetworkType request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxx",
           "member": "string",
@@ -7468,7 +7703,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The VPC-CNI mode. `tke-route-eni`: Multi-IP ENI, `tke-direct-eni`: Independent ENI",
           "example": "tke-route-eni;tke-direct-eni",
           "member": "string",
@@ -7477,7 +7711,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable static IP address",
           "example": "false",
           "member": "bool",
@@ -7486,7 +7719,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "The container subnet being used",
           "example": "[\"subnet-aaa\",\"subnet-bbb\"]",
           "member": "string",
@@ -7495,13 +7727,20 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Specifies when to release the IP after the Pod termination in static IP mode. It must be longer than 300 seconds. If this parameter is left empty, the IP address will never be released.",
           "example": "300",
           "member": "uint64",
           "name": "ExpiredSeconds",
           "required": false,
           "type": "int"
+        },
+        {
+          "document": "Whether to skip adding the VPC IP range to `NonMasqueradeCIDRs` field of `ip-masq-agent-config`. Default value: `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "SkipAddingNonMasqueradeCIDRs",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -10790,6 +11029,48 @@
       ],
       "type": "object"
     },
+    "UpdateClusterKubeconfigRequest": {
+      "document": "UpdateClusterKubeconfig request structure.",
+      "members": [
+        {
+          "document": "The cluster ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "List of sub-account UINs. If it’s not specified, the SubUin used to invoke this API is used.",
+          "example": "无",
+          "member": "string",
+          "name": "SubAccounts",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateClusterKubeconfigResponse": {
+      "document": "UpdateClusterKubeconfig response structure.",
+      "members": [
+        {
+          "document": "List of updated sub-account UINs \nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdatedSubAccounts",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UpdateClusterVersionRequest": {
       "document": "UpdateClusterVersion request structure.",
       "members": [
@@ -11227,7 +11508,6 @@
       "document": "Virtual node",
       "members": [
         {
-          "default": "",
           "document": "Node display name",
           "example": "测试节点",
           "member": "string",
@@ -11237,7 +11517,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet ID",
           "example": "subnet-xxxxxx",
           "member": "string",
@@ -11245,6 +11524,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Tencent Cloud tags",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"

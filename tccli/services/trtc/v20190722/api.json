@@ -1,7 +1,7 @@
 {
   "actions": {
     "CreateCloudRecording": {
-      "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can only save recording files to VOD (`CloudVod`).\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to VOD.\n* Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to VOD. After a recording task ends, you can go to the VOD console (https://console.cloud.tencent.com/vod/media) to view the recording files.",
+      "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can save recording files to Tencent Cloud VOD or COS.\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to the storage you specify.\nMixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to the storage you specify. After a recording task ends, you can go to the VOD console (https://console.tencentcloud.com/vod/media) or [COS console](https://console.cloud.tencent.com/cos/bucket) to view the recording files.",
       "input": "CreateCloudRecordingRequest",
       "name": "Starts an on-cloud recording task",
       "output": "CreateCloudRecordingResponse",
@@ -12,6 +12,13 @@
       "input": "DeleteCloudRecordingRequest",
       "name": "Stops an on-cloud recording task",
       "output": "DeleteCloudRecordingResponse",
+      "status": "online"
+    },
+    "DescribeCallDetailInfo": {
+      "document": "This API (the old `DescribeCallDetail`) is used to query the user list and call quality data of a specified time range in the last 14 days. If `DataType` is not null, the data of up to six users during a period of up to one hour can be queried (the period can start and end on different days). If `DataType` is null, the data of up to 100 users can be returned per page (the value of `PageSize` cannot exceed 100). Six users are queried by default. The period queried cannot exceed four hours. This API is used to query call quality and is not recommended for billing purposes.\n**Note**:\n1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.\n2. If you need to call this API, please upgrade the monitoring dashboard version to \"Standard\". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.",
+      "input": "DescribeCallDetailInfoRequest",
+      "name": "Queries the user list and call metrics",
+      "output": "DescribeCallDetailInfoResponse",
       "status": "online"
     },
     "DescribeCloudRecording": {
@@ -42,6 +49,20 @@
       "output": "DescribeRelayUsageResponse",
       "status": "online"
     },
+    "DescribeRoomInfo": {
+      "document": "This API (the old `DescribeRoomInformation`) is used to query the rooms of an application (`SDKAppID`) in the last 14 days. Up to 100 records can be returned per call (10 are returned by default).\n**Note**:\n1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.\n2. If you need to call this API, please upgrade the monitoring dashboard version to \"Standard\". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.",
+      "input": "DescribeRoomInfoRequest",
+      "name": "Queries the room list",
+      "output": "DescribeRoomInfoResponse",
+      "status": "online"
+    },
+    "DescribeScaleInfo": {
+      "document": "This API (the old `DescribeHistoryScale`) is used to query the daily number of rooms and users of an application (`SDKAppID`) in the last 14 days. Data for the current day cannot be queried.",
+      "input": "DescribeScaleInfoRequest",
+      "name": "Queries the number of rooms and users",
+      "output": "DescribeScaleInfoResponse",
+      "status": "online"
+    },
     "DescribeTrtcRoomUsage": {
       "document": "This API is used to query usage data grouped by room.\n- The queried period cannot exceed 24 hours. If the period spans two different days, the data returned may not be accurate due to a delay in data collection. You can make multiple calls to query the usage on different days.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is one call every 15 seconds.",
       "input": "DescribeTrtcRoomUsageRequest",
@@ -54,6 +75,27 @@
       "input": "DescribeTrtcUsageRequest",
       "name": "Queries TRTC audio/video duration",
       "output": "DescribeTrtcUsageResponse",
+      "status": "online"
+    },
+    "DescribeUnusualEvent": {
+      "document": "This API (the old `DescribeAbnormalEvent`) is used to query up to 20 random abnormal user experiences of an application (`SDKAppID`) in the last 14 days. The start and end time can be on two different days, but they cannot be more than one hour apart.\nFor details about the error events, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1\n**Note**:\n1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.\n2. If you need to call this API, please upgrade the monitoring dashboard version to \"Standard\". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.",
+      "input": "DescribeUnusualEventRequest",
+      "name": "Queries abnormal user experiences",
+      "output": "DescribeUnusualEventResponse",
+      "status": "online"
+    },
+    "DescribeUserEvent": {
+      "document": "This API (the old `DescribeDetailEvent`) is used to query the events of a call in the last 14 days, including user entry and exit, turning the camera on/off, etc.\n**Note**:\n1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.\n2. If you need to call this API, please upgrade the monitoring dashboard version to \"Standard\". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.",
+      "input": "DescribeUserEventRequest",
+      "name": "Queries the events during a call",
+      "output": "DescribeUserEventResponse",
+      "status": "online"
+    },
+    "DescribeUserInfo": {
+      "document": "This API (the old `DescribeUserInformation`) is used to query the user list of a specified time range (up to four hours) in the last 14 days. The data of up to 100 users can be returned per page (six are returned by default).\n**Note**:\n1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.\n2. If you need to call this API, please upgrade the monitoring dashboard version to \"Standard\". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.",
+      "input": "DescribeUserInfoRequest",
+      "name": "Queries the user list",
+      "output": "DescribeUserInfoResponse",
       "status": "online"
     },
     "DismissRoom": {
@@ -106,7 +148,7 @@
       "status": "online"
     },
     "StartPublishCdnStream": {
-      "document": "This API is used to mix streams and relay the mixed stream to CDNs. You can use this API to do the following:\n1. Publish (also known as “relay”) the audio/video stream of one anchor to CDNs. For details, see example 2 (starting a task to relay the audio and video of a stream) and example 3 (starting a task to relay only the audio of a stream).\n2. Mix the streams of multiple anchors in a room or in different rooms and publish the mixed stream to CDNs. You can use `AudioParams.SubscribeAudioList` to specify the users whose audios are mixed, and use `VideoParams.LayoutParams` to specify the layout of the anchors’ videos. For details, see example 1 (mixing streams and publishing the mixed stream to a CDN).\n3. Mix multiple streams in a room according to a template and publish the mixed stream to CDNs. The TRTC backend will detect the change of anchors in the room and adjust the video layout automatically according to the stream mixing template. The following template types are supported:\n     - Floating: The entire screen is covered by the video of the first user who enters the room, and the videos of other users are displayed as small windows in rows in the bottom-left corner in room entry sequence. The screen allows up to 4 rows of 4 small videos, which float over the large video. Up to 1 large and 15 small videos can be displayed.\n     - Grid: The videos of all users split the screen evenly. The more the users, the smaller the video dimensions. Up to 16 videos are supported.\n     - Screen sharing: This is designed for video conferencing and online education. The shared screen (or camera video of the anchor) is always displayed as the large video, which occupies the left half of the screen, and the videos of other users occupy the right half in up to two columns of up to eight small videos each. Up to 1 large video and 15 small videos can be displayed. If the upstream aspect ratio does not match the output, the large video on the left will be scaled and displayed in whole, while the small videos on the right will be cropped.\n4. Publish audio/video streams to up to 10 CDNs at a time. You can use `PublishCdnParams.PublishCdnUrl` to specify the URLs of the CDNs to publish to. To publish to Tencent Cloud’s CDN, set `PublishCdnParams.IsTencentCdn` to 1.\n5. Configure a server-side callback to have Tencent Cloud send relay status updates to your server in the form of HTTP/HTTPS POST requests. To use the callback for relay events, please contact Technical Support.\n6. The API supports four regions: Guangzhou, Shanghai, Beijing, and Hong Kong. If you relay to regions outside the Chinese mainland, select Hong Kong.\n \nNotes:\n1. **Because On-Cloud MixTranscoding is a paid feature, calling this API will incur MixTranscoding fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/49446?from_cn_redirect=1).**\n2. **Relaying to third-party CDNs will incur relaying fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/82155?from_cn_redirect=1).**\n\nOthers:\n1. You need to first call `StartPublishCdnStream` to start a relay task and get the task ID before you can use the `UpdatePublishCdnStream` API to modify the task and `StopPublishCdnStream` to stop the task.\n2. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.\n3. To ensure the stability of relaying, you cannot change the video codec, audio codec, audio sample rate, audio bitrate, or sound channels using the `UpdatePublishCdnStream` API. We recommend you pass in all the other parameters.\n4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.\n5. The `SequenceNumber` parameter is required when you call `UpdatePublishCdnStream` to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.\n6. You can create a relay task before anchors enter a room, in which case you need to manually call `StopPublishCdnStream` to stop the task. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period (`AgentParams.MaxIdleTime`) to elapse before stopping the relaying task.",
+      "document": "This API is used to mix streams and relay the mixed stream to CDNs. You can use this API to do the following:\n1. Publish (also known as \"relay\") the audio/video stream of one anchor to CDNs. For details, see example 2 (starting a task to relay the audio and video of a stream) and example 3 (starting a task to relay only the audio of a stream).\n2. Mix the streams of multiple anchors in a room or in different rooms and publish the mixed stream to CDNs. You can use `AudioParams.SubscribeAudioList` to specify the users whose audios are mixed, and use `VideoParams.LayoutParams` to specify the layout of the anchors’ videos. For details, see example 1 (mixing streams and publishing the mixed stream to a CDN).\n3. Mix multiple streams in a room according to a template and publish the mixed stream to CDNs. The TRTC backend will detect the change of anchors in the room and adjust the video layout automatically according to the stream mixing template. The following template types are supported:\n     - Floating: The entire screen is covered by the video of the first user who enters the room, and the videos of other users are displayed as small windows in rows in the bottom-left corner in room entry sequence. The screen allows up to 4 rows of 4 small videos, which float over the large video. Up to 1 large and 15 small videos can be displayed.\n     - Grid: The videos of all users split the screen evenly. The more the users, the smaller the video dimensions. Up to 16 videos are supported.\n     - Screen sharing: This is designed for video conferencing and online education. The shared screen (or camera video of the anchor) is always displayed as the large video, which occupies the left half of the screen, and the videos of other users occupy the right half in up to two columns of up to eight small videos each. Up to 1 large video and 15 small videos can be displayed. If the upstream aspect ratio does not match the output, the large video on the left will be scaled and displayed in whole, while the small videos on the right will be cropped.\n4. Publish audio/video streams to up to 10 CDNs at a time. You can use `PublishCdnParams.PublishCdnUrl` to specify the URLs of the CDNs to publish to. To publish to Tencent Cloud’s CDN, set `PublishCdnParams.IsTencentCdn` to 1.\n5. Configure a server-side callback to have Tencent Cloud send relay status updates to your server in the form of HTTP/HTTPS POST requests. To use the callback for relay events, please contact Technical Support.\n6. The API supports four regions: Guangzhou, Shanghai, Beijing, and Hong Kong. If you relay to regions outside the Chinese mainland, select Hong Kong.\n \nNotes:\n1. **Because On-Cloud MixTranscoding is a paid feature, calling this API will incur MixTranscoding fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/49446?from_cn_redirect=1).**\n2. **Relaying to third-party CDNs will incur relaying fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/82155?from_cn_redirect=1).**\n\nOthers:\n1. You need to first call `StartPublishCdnStream` to start a relay task and get the task ID before you can use the `UpdatePublishCdnStream` API to modify the task and `StopPublishCdnStream` to stop the task.\n2. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.\n3. To ensure the stability of relaying, you cannot change the video codec, audio codec, audio sample rate, audio bitrate, or sound channels using the `UpdatePublishCdnStream` API. We recommend you pass in all the other parameters when calling `UpdatePublishCdnStream`. If you only want to enable/disable transcoding, make sure you pass in all the other parameters.\n4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.\n5. The `SequenceNumber` parameter is required when you call `UpdatePublishCdnStream` to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.\n6. You can create a relay task before anchors enter a room, in which case you need to manually call `StopPublishCdnStream` to stop the task. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period (`AgentParams.MaxIdleTime`) to elapse before stopping the relaying task.",
       "input": "StartPublishCdnStreamRequest",
       "name": "Starts a relaying task",
       "output": "StartPublishCdnStreamResponse",
@@ -133,6 +175,81 @@
     "serviceShortName": "trtc"
   },
   "objects": {
+    "AbnormalEvent": {
+      "document": "The information of an error event (the possible cause of an abnormal user experience).",
+      "members": [
+        {
+          "default": "",
+          "document": "The error event ID. For details, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
+          "member": "uint64",
+          "name": "AbnormalEventId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PeerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AbnormalExperience": {
+      "document": "The information of an abnormal user experience and the possible causes.",
+      "members": [
+        {
+          "default": "",
+          "document": "The user ID.",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The abnormal experience ID.",
+          "member": "uint64",
+          "name": "ExperienceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The room ID (string).",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The possible error events.",
+          "member": "AbnormalEvent",
+          "name": "AbnormalEventList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The report time.",
+          "member": "uint64",
+          "name": "EventTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AgentParams": {
       "document": "The information of the relaying robot in the room.",
       "members": [
@@ -337,7 +454,6 @@
       "document": "CreateCloudRecording request structure.",
       "members": [
         {
-          "default": "",
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.",
           "example": "1234",
           "member": "uint64",
@@ -346,7 +462,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.",
           "example": "1234",
           "member": "string",
@@ -355,7 +470,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The [user ID](https://www.tencentcloud.com/document/product/647/37714#userid) of the recording robot in the TRTC room, which cannot be identical to the user IDs of anchors in the room or other recording robots. To distinguish this user ID from others, we recommend you include the room ID in the user ID.",
           "example": "recorder_1234",
           "member": "string",
@@ -364,7 +478,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The signature (similar to a login password) required for the recording robot to enter the room. Each user ID corresponds to a signature. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).",
           "example": "recorder_1234_sig",
           "member": "string",
@@ -373,7 +486,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The on-cloud recording parameters.",
           "example": "无",
           "member": "RecordParams",
@@ -382,8 +494,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "The cloud storage information of the recording file. Currently, you can only save recording files to Tencent Cloud VOD.",
+          "document": "The storage information of the recording file. Currently, you can save recording files to Tencent Cloud VOD or COS.",
           "example": "无",
           "member": "StorageParams",
           "name": "StorageParams",
@@ -391,7 +502,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The type of the TRTC room ID, which must be the same as the ID type of the room whose streams are recorded.\n0: String\n1: 32-bit integer (default)",
           "example": "1",
           "member": "uint64",
@@ -400,7 +510,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The stream mixing parameters, which are valid if the mixed-stream recording mode is used.",
           "example": "无",
           "member": "MixTranscodeParams",
@@ -409,7 +518,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The layout parameters, which are valid if the mixed-stream recording mode is used.",
           "example": "无",
           "member": "MixLayoutParams",
@@ -418,7 +526,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The amount of time (in hours) during which API requests can be made after recording starts. Calculation starts when a recording task is started (when the recording task ID is returned). Once the period elapses, the query, modification, and stop recording APIs can no longer be called, but the recording task will continue. The default value is `72` (three days), and the maximum and minimum values allowed are `720` (30 days) and `6` respectively. If you do not set this parameter, the query, modification, and stop recording APIs can be called within 72 hours after recording starts.",
           "example": "无",
           "member": "uint64",
@@ -427,7 +534,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users’ [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.",
           "example": "无",
           "member": "string",
@@ -494,6 +600,123 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCallDetailInfoRequest": {
+      "document": "DescribeCallDetailInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.",
+          "example": "1400xxxxxx_218695_1590065777",
+          "member": "string",
+          "name": "CommId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: If `DataType` is not null, the end time and start time cannot be more than one hour apart; if `DataType` is null, the end time and start time cannot be more than four hours apart.",
+          "example": "1590065877",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The application ID, such as `1400xxxxxx`.",
+          "example": "1400xxxxxx",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The users to query. If you do not specify this, the data of six users will be returned.",
+          "example": "[\"a\",\"b\"]",
+          "member": "string",
+          "name": "UserIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The metrics to query. If you do not specify this, only the user list will be returned. If you pass in `all`, all metrics will be returned.\n`appCpu`: The CPU utilization of the application.\n`sysCpu`: The CPU utilization of the system.\n`aBit`: The upstream/downstream audio bitrate (bps).\n`aBlock`: The audio stutter duration (ms).\n`bigvBit`: The upstream/downstream video bitrate (bps).\n`bigvCapFps`: The frame rate for capturing videos.\n`bigvEncFps`: The frame rate for sending videos.\n`bigvDecFps`: The rendering frame rate.\n`bigvBlock`: The video stutter duration (ms).\n`aLoss`: The upstream/downstream audio packet loss.\n`bigvLoss`: The upstream/downstream video packet loss.\n`bigvWidth`: The upstream/downstream resolution (width).\n`bigvHeight`: The upstream/downstream resolution (height).",
+          "example": "[\"bigvCapFps\"]",
+          "member": "string",
+          "name": "DataType",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The page number. The default is 0.\nNote: If `PageNumber` or `PageSize` is not specified, six records will be returned.",
+          "example": "0",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records per page. The default is `6`.\nValue range: 1-100.\nNote: If `DataType` is not null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `6`.\nIf `DataType` is null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `100`.",
+          "example": "6",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCallDetailInfoResponse": {
+      "document": "DescribeCallDetailInfo response structure.",
+      "members": [
+        {
+          "document": "The number of records returned.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserInformation",
+          "name": "UserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The call quality data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "QualityData",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -765,11 +988,159 @@
       ],
       "type": "object"
     },
+    "DescribeRoomInfoRequest": {
+      "document": "DescribeRoomInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The application ID, such as `1400xxxxxx`.",
+          "example": "1400xxxxxx",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: The end and start time cannot be more than 24 hours apart.",
+          "example": "1590065877",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The room ID, such as `223`.",
+          "example": "223",
+          "member": "string",
+          "name": "RoomId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The page number. The default is 0.\nNote: If `PageNumber` or `PageSize` is not specified, 10 records will be returned.",
+          "example": "0",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records per page. The default is `10`.\nValue range: 1-100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoomInfoResponse": {
+      "document": "DescribeRoomInfo response structure.",
+      "members": [
+        {
+          "document": "The number of records returned.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The room information.",
+          "example": "RoomList",
+          "member": "RoomState",
+          "name": "RoomList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScaleInfoRequest": {
+      "document": "DescribeScaleInfo request structure.",
+      "members": [
+        {
+          "document": "The application ID, such as `1400xxxxxx`.",
+          "example": "1400xxxxxx",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time should preferably be more than 24 hours apart.\nNote: Data is collected on a daily basis. To query the data of a day, make sure the end time is later than 00:00 on that day. Otherwise, no data will be returned. For example, to query the data on the 20th, the end time must be later than 00:00 on the 20th.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScaleInfoResponse": {
+      "document": "DescribeScaleInfo response structure.",
+      "members": [
+        {
+          "document": "The number of records returned.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The returned data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{   \"Time\": 1587830400,                 \"RoomNumbe",
+          "member": "ScaleInfomation",
+          "name": "ScaleList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTrtcRoomUsageRequest": {
       "document": "DescribeTrtcRoomUsage request structure.",
       "members": [
         {
-          "document": "",
+          "document": "The `SDKAppID` of the room.",
           "example": "1400017192",
           "member": "uint64",
           "name": "SdkAppid",
@@ -777,7 +1148,7 @@
           "type": "int"
         },
         {
-          "document": "",
+          "document": "The start time in the format of `YYYY-MM-DD HH:MM` (accurate to the minute).",
           "example": "2023-01-06 00:00",
           "member": "string",
           "name": "StartTime",
@@ -785,7 +1156,7 @@
           "type": "string"
         },
         {
-          "document": "",
+          "document": "The end time in the format of `YYYY-MM-DD HH:MM`. The start and end time cannot be more than 24 hours apart.",
           "example": "2023-01-06 10:00",
           "member": "string",
           "name": "EndTime",
@@ -798,6 +1169,14 @@
     "DescribeTrtcRoomUsageResponse": {
       "document": "DescribeTrtcRoomUsage response structure.",
       "members": [
+        {
+          "document": "The usage data grouped by room, in CSV format.",
+          "example": "\"RoomId,Audio,SD,hd,FullHD,2K,4K\\ntest_room,1,2,3,4,5,6\\n\"",
+          "member": "string",
+          "name": "Data",
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -860,6 +1239,258 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUnusualEventRequest": {
+      "document": "DescribeUnusualEvent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The application ID, such as `1400xxxxxx`.",
+          "example": "1400xxxxxx",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time cannot be more than one hour apart.",
+          "example": "1590065877",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The room ID. Up to 20 random abnormal user experiences of the specified room will be returned.",
+          "example": "223",
+          "member": "string",
+          "name": "RoomId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUnusualEventResponse": {
+      "document": "DescribeUnusualEvent response structure.",
+      "members": [
+        {
+          "document": "The number of records returned.\nValue range: 0-20.",
+          "example": "11",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the abnormal user experiences.",
+          "example": "无",
+          "member": "AbnormalExperience",
+          "name": "AbnormalExperienceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserEventRequest": {
+      "document": "DescribeUserEvent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.",
+          "example": "1400xxxxxx_3568_1588055615",
+          "member": "string",
+          "name": "CommId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: If you pass in an end time later than the room end time, the room end time will be used.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The user ID.",
+          "example": "user_66319581",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The room ID, such as `223`.",
+          "example": "1711",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The application ID, such as `1400xxxxxx`.",
+          "example": "1400xxxxxx",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserEventResponse": {
+      "document": "DescribeUserEvent response structure.",
+      "members": [
+        {
+          "document": "The event list. An empty array will be returned if no data is obtained.",
+          "example": "\"Data\": [             {                 \"Content\": [            ",
+          "member": "EventList",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserInfoRequest": {
+      "document": "DescribeUserInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.",
+          "example": "1400xxxxxx_218695_1590065777",
+          "member": "string",
+          "name": "CommId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
+          "example": "1590065777",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: The end and start time cannot be more than four hours apart.",
+          "example": "1590065877",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The application ID, such as `1400xxxxxx`.",
+          "example": "1400xxxxxx",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The users to query. If you do not specify this, the information of six users will be returned.\nArray length: 1-100.",
+          "example": "[\"a\",\"b\",\"c\"]",
+          "member": "string",
+          "name": "UserIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The page number. The default is 0.\nNote: If `PageNumber` or `PageSize` is not specified, six records will be returned.",
+          "example": "0",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records per page. The default is `6`.\nArray length: 1-100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserInfoResponse": {
+      "document": "DescribeUserInfo response structure.",
+      "members": [
+        {
+          "document": "The number of records returned.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The user information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "UserList",
+          "member": "UserInformation",
+          "name": "UserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -937,6 +1568,81 @@
         }
       ],
       "type": "object"
+    },
+    "EventList": {
+      "document": "A list of SDK or WebRTC events.",
+      "members": [
+        {
+          "default": "",
+          "document": "The event information.",
+          "member": "EventMessage",
+          "name": "Content",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The user ID of the sender.",
+          "member": "string",
+          "name": "PeerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "EventMessage": {
+      "document": "The event information, including the timestamp and event ID.",
+      "members": [
+        {
+          "default": "",
+          "document": "The video stream type. Valid values:\n`0`: A non-video event\n`2`: The big video\n`3`: The small video\n`7`: A relayed video",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The event reporting time in the format of UNIX timestamp (milliseconds), such as `1589891188801`.",
+          "member": "uint64",
+          "name": "Time",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
+          "member": "uint64",
+          "name": "EventId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The first event parameter, such as the video width.",
+          "member": "int64",
+          "name": "ParamOne",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The second event parameter, such as the video height.",
+          "member": "int64",
+          "name": "ParamTwo",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "MaxVideoUser": {
       "document": "The information of the large video in screen sharing or floating layout mode.",
@@ -1086,7 +1792,6 @@
       "document": "The layout parameters.",
       "members": [
         {
-          "default": "",
           "document": "The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.",
           "example": "UserMediaStream",
           "member": "UserMediaStream",
@@ -1096,7 +1801,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The video width (pixels). If you do not pass this parameter, 0 will be used.",
           "example": "1280",
           "member": "uint64",
@@ -1106,7 +1810,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The video height (pixels). If you do not pass this parameter, 0 will be used.",
           "example": "720",
           "member": "uint64",
@@ -1116,7 +1819,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The horizontal offset (pixels) of the video. The sum of `LocationX` and `ImageWidth` cannot exceed the width of the canvas. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
@@ -1126,7 +1828,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The vertical offset of the video. The sum of `LocationY` and `ImageHeight` cannot exceed the height of the canvas. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
@@ -1136,7 +1837,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The image layer of the video. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
@@ -1146,7 +1846,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
@@ -1156,8 +1855,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The background color of the video. Below are the values for some common colors:\nRed: 0xcc0033\nYellow: 0xcc9900\nGreen: 0xcccc33\nBlue: 0x99CCFF\nBlack: 0x000000\nWhite: 0xFFFFFF\nGrey: 0x999999",
+          "document": "(Not supported yet) The background color of a video. Below are the values for some commonly used colors:\nRed: `0xcc0033`\nYellow: `0xcc9900`\nGreen: `0xcccc33`\nBlue: `0x99CCFF`\nBlack: `0x000000`\nWhite: `0xFFFFFF`\nGrey: `0x999999`",
           "example": "0xFFFFFF",
           "member": "string",
           "name": "BackGroundColor",
@@ -1166,7 +1864,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.",
           "example": "xxxx",
           "member": "string",
@@ -1176,7 +1873,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom cropping.",
           "example": "xxx",
           "member": "McuCustomCrop",
@@ -1230,6 +1926,16 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image fill mode. This parameter is valid if the layout mode is screen sharing, floating, or grid. `0`: The image will be cropped. `1`: The image will be scaled. `2`: The image will be scaled and there may be black bars.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RenderMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -1256,7 +1962,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The SEI sending interval (milliseconds). The default value is 1000.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The SEI sending interval (milliseconds). The default value is 1000.",
           "example": "1000",
           "member": "uint64",
           "name": "Interval",
@@ -1265,7 +1971,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.",
           "example": "0",
           "member": "uint64",
           "name": "FollowIdr",
@@ -1307,7 +2013,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The SEI sending interval (milliseconds). The default value is 1000.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The SEI sending interval (milliseconds). The default value is 1000.",
           "example": "1000",
           "member": "uint64",
           "name": "Interval",
@@ -1316,7 +2022,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.",
           "example": "0",
           "member": "uint64",
           "name": "FollowIdr",
@@ -1539,7 +2245,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.",
           "example": "WaterMarkText",
           "member": "McuWaterMarkText",
           "name": "WaterMarkText",
@@ -1599,7 +2305,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The font size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The font size.",
           "example": "12",
           "member": "uint64",
           "name": "FontSize",
@@ -1608,7 +2314,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The text color. The default color is white. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The text color. The default color is white. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.\t",
           "example": "0xFFFFFF",
           "member": "string",
           "name": "FontColor",
@@ -1617,7 +2323,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.\t",
           "example": "0x000000",
           "member": "string",
           "name": "BackGroundColor",
@@ -1963,6 +2669,48 @@
       ],
       "type": "object"
     },
+    "QualityData": {
+      "document": "The quality data returned by ES.",
+      "members": [
+        {
+          "default": "",
+          "document": "The quality data.",
+          "member": "TimeValue",
+          "name": "Content",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The user ID.",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The remote user ID. An empty string indicates that the data is upstream data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PeerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The data type.",
+          "member": "string",
+          "name": "DataType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RecordParams": {
       "document": "The on-cloud recording parameters.",
       "members": [
@@ -2030,7 +2778,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The type of stream to record. `0`: The primary stream and substream; `1`: The primary stream; `2`: The substream.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The type of stream to record. `0` (default): The primary stream and substream; `1`: The primary stream; `2`: The substream.",
           "example": "0",
           "member": "uint64",
           "name": "MediaId",
@@ -2124,6 +2872,108 @@
         }
       ],
       "type": "object"
+    },
+    "RoomState": {
+      "document": "The room information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The call ID, which uniquely identifies a call.",
+          "member": "string",
+          "name": "CommId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The room ID.",
+          "member": "string",
+          "name": "RoomString",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The room creation time.",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The room termination time.",
+          "member": "uint64",
+          "name": "DestroyTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the room is terminated.",
+          "member": "bool",
+          "name": "IsFinished",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The user ID of the room creator.",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ScaleInfomation": {
+      "document": "The room and user number.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time for each day",
+          "member": "uint64",
+          "name": "Time",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of users. If a user enters a room multiple times, it will be counted as one user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "UserNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of room entries. Every time a user enters a room, it will be counted as one room entry.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "UserCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The total number of rooms of the application on a day.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "RoomNumbers",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "SetUserBlockedByStrRoomIdRequest": {
       "document": "SetUserBlockedByStrRoomId request structure.",
@@ -2253,7 +3103,6 @@
       "document": "StartPublishCdnStream request structure.",
       "members": [
         {
-          "default": "",
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
           "example": "1400188366",
           "member": "uint64",
@@ -2262,7 +3111,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The ID of the room whose streams are relayed (the main room).",
           "example": "room_1234",
           "member": "string",
@@ -2271,7 +3119,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The type of the `RoomId` parameter, which must be the same as the ID type of the room whose streams are relayed. 0: integer; 1: string.",
           "example": "1",
           "member": "uint64",
@@ -2280,7 +3127,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The information of the relaying robot in the room.",
           "example": "AgentParams",
           "member": "AgentParams",
@@ -2289,8 +3135,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "Whether to transcode the streams. 0: No; 1: Yes.",
+          "document": "Whether to transcode the streams. `0`: No. `1`: Yes. This parameter determines whether transcoding fees are charged. If it is `0`, streams will only be relayed, and no transcoding fees will be incurred. If it is `1`, streams will be transcoded before being relayed, and transcoding fees will be incurred.",
           "example": "1",
           "member": "uint64",
           "name": "WithTranscoding",
@@ -2298,8 +3143,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "The audio encoding parameters for relaying.",
+          "document": "The audio encoding parameters. Because audio is always transcoded (no fees are incurred), this parameter is required when you start a relay task.",
           "example": "AudioParams",
           "member": "McuAudioParams",
           "name": "AudioParams",
@@ -2307,7 +3151,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.",
           "example": "VideoParams",
           "member": "McuVideoParams",
@@ -2316,7 +3159,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.",
           "example": "SingleSubscribeParams",
           "member": "SingleSubscribeParams",
@@ -2325,8 +3167,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "The CDN information.",
+          "document": "The information of the CDNs to relay to. You need to specify at least one between this parameter and `FeedBackRoomParams.N`.",
           "example": "PublishCdnParams",
           "member": "McuPublishCdnParam",
           "name": "PublishCdnParams",
@@ -2334,7 +3175,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The stream mixing SEI parameters.",
           "example": "SeiParams",
           "member": "McuSeiParams",
@@ -2343,8 +3183,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "The information of the room to which streams are relayed.",
+          "document": "The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.",
           "example": "FeedBackRoomParams",
           "member": "McuFeedBackRoomParams",
           "name": "FeedBackRoomParams",
@@ -2470,8 +3309,7 @@
       "document": "The storage parameters.",
       "members": [
         {
-          "default": "",
-          "document": "The account information for third-party cloud storage. This parameter is not available currently. Please use `CloudVod` instead to save files to Tencent Cloud VOD.",
+          "document": "The account information for third-party storage. Please note that if you save files to COS, a recording-to-COS fee will be incurred. For details, see the document \"Billing of On-Cloud Recording\". If you save files to VOD, there won't be such a fee.",
           "example": "无",
           "member": "CloudStorage",
           "name": "CloudStorage",
@@ -2480,8 +3318,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The account information for saving files to Tencent Cloud VOD. This parameter is required. Currently, you can only save files to Tencent Cloud VOD.",
+          "document": "The account information for VOD storage.",
           "example": "无",
           "member": "CloudVod",
           "name": "CloudVod",
@@ -2634,6 +3471,30 @@
       ],
       "usage": "in"
     },
+    "TimeValue": {
+      "document": "The quality data, which consists of the `time` and `value` parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The UNIX timestamp (seconds), such as `1590065877`.",
+          "member": "uint64",
+          "name": "Time",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The metric value. For example, if the video capturing frame rate (`bigvCapFps`) at the time `1590065877` is `0`, the value of this parameter will be `0`.",
+          "member": "float",
+          "name": "Value",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "TrtcUsage": {
       "document": "The TRTC audio/video duration generated in a certain time period.",
       "members": [
@@ -2777,6 +3638,84 @@
       ],
       "type": "object"
     },
+    "UserInformation": {
+      "document": "The user information, including when the user entered/left the room.",
+      "members": [
+        {
+          "default": "",
+          "document": "The room ID.",
+          "member": "string",
+          "name": "RoomStr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The user ID.",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time when the user entered the room.",
+          "member": "uint64",
+          "name": "JoinTs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time when the user left the room. If the user is still in the room, the current time will be returned.",
+          "member": "uint64",
+          "name": "LeaveTs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The device type.",
+          "member": "string",
+          "name": "DeviceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The SDK version number.",
+          "member": "string",
+          "name": "SdkVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The client IP address.",
+          "member": "string",
+          "name": "ClientIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a user has left the room.",
+          "member": "bool",
+          "name": "Finished",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "UserMediaStream": {
       "document": "The stream information.",
       "members": [
@@ -2919,7 +3858,6 @@
       "document": "The watermark layout.",
       "members": [
         {
-          "default": "",
           "document": "The watermark type. 0 (default): image; 1: text (not supported yet).",
           "example": "0",
           "member": "uint64",
@@ -2929,7 +3867,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The information of watermark images. This parameter is required if the watermark type is image.",
           "example": "无",
           "member": "WaterMarkImage",
@@ -2937,6 +3874,102 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The information of the text watermark. This parameter is required if `WaterMarkType` is `1`.",
+          "example": "无",
+          "member": "WaterMarkChar",
+          "name": "WaterMarkChar",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The information of the timestamp watermark. This parameter is required if `WaterMarkType` is `2`.",
+          "example": "无",
+          "member": "WaterMarkTimestamp",
+          "name": "WaterMarkTimestamp",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "WaterMarkChar": {
+      "document": "",
+      "members": [
+        {
+          "document": "The Y coordinate of the text watermark from the top left.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Top",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The X coordinate of the text watermark from the top left.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Left",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The watermark width (pixels).",
+          "example": "200",
+          "member": "uint64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The watermark height (pixels).",
+          "example": "100",
+          "member": "uint64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The text.",
+          "example": "李专家",
+          "member": "string",
+          "name": "Chars",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The font size (pixels). The default value is `14`.",
+          "example": "14",
+          "member": "uint64",
+          "name": "FontSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The text color. The default color is white.",
+          "example": "0xFFFFFF",
+          "member": "string",
+          "name": "FontColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The background color. If this parameter is empty, the background will be transparent (default).",
+          "example": "0xbbccbb",
+          "member": "string",
+          "name": "BackGroundColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
@@ -2993,6 +4026,30 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "WaterMarkTimestamp": {
+      "document": "",
+      "members": [
+        {
+          "document": "The position of the timestamp watermark. Valid values: `0` (top left), `1` (top right), `2` (bottom left), `3` (bottom right), `4` (top center), `5` (bottom center), `6` (center).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Pos",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The time zone. The default is UTC+8.",
+          "example": "8",
+          "member": "uint64",
+          "name": "TimeZone",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"

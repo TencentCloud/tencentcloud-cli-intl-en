@@ -48,6 +48,14 @@
         "title": "Checking whether the node can be upgraded"
       }
     ],
+    "CreateBackupStorageLocation": [
+      {
+        "document": "This example shows you how to create a TKE storage repository.",
+        "input": "POST / HTTP/1.1 \nHost: tke.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: CreateBackupStorageLocation \n<Common request parameters>\n\n{\n    \"StorageRegion\": \"ap-guangzhou\",\n    \"Provider\": \"tencentcloud\",\n    \"Bucket\": \"tke-backup-xxx\",\n    \"Path\": \"\",\n    \"Name\": \"test-registry-1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4bef4bc7-edf2-4de6-a2e1-684bfc37185f\"\n    }\n}",
+        "title": "Creating a TKE storage repository"
+      }
+    ],
     "CreateCluster": [
       {
         "document": "This example shows you how to create a managed cluster.",
@@ -64,8 +72,8 @@
     ],
     "CreateClusterEndpoint": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterEndpoint\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-xxxxxx\",\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
+        "document": "This example shows you how to create a cluster access endpoint.",
+        "input": "POST / HTTP/1.1 \nHost: tke.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: CreateClusterEndpoint \n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-xxxxxx\",\n    \"ClusterId\": \"cls-xxxxxxxx\",\n    \"IsExtranet\": true,\n    \"SecurityGroup\": \"sg-xxxxx\",\n    \"ExtensiveParameters\": \"{\\\"InternetAccessible\\\":{\\\"InternetChargeType\\\":\\\"TRAFFIC_POSTPAID_BY_HOUR\\\",\\\"InternetMaxBandwidthOut\\\":200}}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a cluster access endpoint"
       }
@@ -158,10 +166,18 @@
     ],
     "CreateTKEEdgeCluster": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTKEEdgeCluster\n<Common request parameters>\n\n{\n    \"ClusterName\": \"for_test\",\n    \"PodCIDR\": \"172.16.0.0/20\",\n    \"VpcId\": \"vpc-xxx\",\n    \"ServiceCIDR\": \"192.168.0.0/18\",\n    \"K8SVersion\": \"1.12.4\"\n}",
         "output": "{\n    \"Response\": {\n        \"ClusterId\": \"cls-xxx\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a TKE Edge cluster"
+      }
+    ],
+    "DeleteBackupStorageLocation": [
+      {
+        "document": "This example shows you how to delete a backup repository. This does not clear the under layer storage data of the repository.",
+        "input": "POST / HTTP/1.1 \nHost: tke.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: DeleteBackupStorageLocation \n<Common request parameters>\n\n{\n    \"Name\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0878bad3-d0aa-4886-beac-7f4d450d55fa\"\n    }\n}",
+        "title": "Deleting a backup repository"
       }
     ],
     "DeleteCluster": [
@@ -246,7 +262,7 @@
     ],
     "DeleteECMInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteECMInstances\r\n&ClusterID=cls-xxxxx\r\n&EcmIdSet.0=ecm-xxxxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"187c16d5-1f53-4e88-b684-077f0c7369b2\"\n    }\n}",
         "title": "Deleting an ECM instance"
@@ -298,6 +314,14 @@
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailableTKEEdgeVersion\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Versions\": [\n            \"1.14.1\",\n            \"1.16.1\"\n        ],\n        \"EdgeVersionLatest\": \"1.0.1\",\n        \"EdgeVersionCurrent\": \"1.0.1\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Checking the supported K8s versions"
+      }
+    ],
+    "DescribeBackupStorageLocations": [
+      {
+        "document": "This example shows you how to query backup repositories.",
+        "input": "POST / HTTP/1.1 \nHost: tke.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: DescribeBackupStorageLocations \n<Common request parameters>\n\n{\n    \"Names\": [\n        \"abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupStorageLocationSet\": [\n            {\n                \"Name\": \"abc\",\n                \"StorageRegion\": \"ap-guangzhou\",\n                \"Provider\": \"tencentcloud\",\n                \"Bucket\": \"tke-backup-xx\",\n                \"Path\": \"\",\n                \"State\": \"Available\",\n                \"Message\": \"\",\n                \"LastValidationTime\": \"2023-04-07T03:18:10Z\"\n            }\n        ],\n        \"RequestId\": \"05670c78-3fa8-42c8-87ac-e6b06d0f1f96\"\n    }\n}",
+        "title": "Querying backup repositories"
       }
     ],
     "DescribeClusterAsGroupOption": [
@@ -598,7 +622,7 @@
     ],
     "DescribeTKEEdgeExternalKubeconfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeTKEEdgeExternalKubeconfig\r\n&ClusterId=cls123\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Kubeconfig\": \"123\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Obtaining the kubeconfig for access to an edge compute cluster through the public network"
@@ -606,7 +630,7 @@
     ],
     "DescribeTKEEdgeScript": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTKEEdgeScript\n<Common request parameters>\n\n{\n    \"Interface\": \"eth0\",\n    \"Config\": \"{\\\"Interface\\\":\\\"\\\",\\\"RuntimePath\\\":\\\"/var/lib/docker\\\",\\\"EdgeClusterVersion\\\":\\\"2.2\\\",\\\"TTL\\\":\\\"24h\\\", \\\"SkipInstallRuntime\\\":true}\",\n    \"ClusterId\": \"cls123\",\n    \"NodeName\": \"node\"\n}",
         "output": "{\n    \"Response\": {\n        \"Link\": \"www.tencent.com\",\n        \"Token\": \"123456\",\n        \"Command\": \"wget www.tencent.com\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"ScriptVersion\": \"xx\"\n    }\n}",
         "title": "Querying the URL of TKE Edge script"
@@ -654,8 +678,8 @@
     ],
     "EnableVpcCniNetworkType": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableVpcCniNetworkType\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcdefgh\",\n    \"EnableStaticIp\": false,\n    \"VpcCniType\": \"tke-route-eni\",\n    \"Subnets\": [\n        \"subnet-abcdefg1\",\n        \"subnet-abcdefg2\"\n    ]\n}",
+        "document": "This example shows you how to enable VPC-CNI network mode for a TKE cluster.",
+        "input": "POST / HTTP/1.1 \nHost: tke.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: EnableVpcCniNetworkType \n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-abcdefgh\",\n    \"EnableStaticIp\": false,\n    \"VpcCniType\": \"tke-route-eni\",\n    \"Subnets\": [\n        \"subnet-abcdefg1\",\n        \"subnet-abcdefg2\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"defc0237-d413-4079-9faa-7f3ff928d224\"\n    }\n}",
         "title": "Enabling VPC-CNI network mode"
       }
@@ -686,7 +710,7 @@
     ],
     "InstallEdgeLogAgent": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tke.tencentcloudapi.com/?Action=InstallEdgeLogAgent\n&ClusterId=\"\"\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
         "title": "Installing the log collection add-on on TKE Edge cluster nodes"
@@ -782,15 +806,23 @@
     ],
     "UninstallEdgeLogAgent": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tke.tencentcloudapi.com/?Action=UninstallEdgeLogAgent\n&ClusterId=cls-65r1c5nu\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
         "title": "Uninstalling the log collection add-on from TKE Edge cluster nodes"
       }
     ],
+    "UpdateClusterKubeconfig": [
+      {
+        "document": "This example shows you how to update the Kubeconfig information of a cluster.",
+        "input": "https://tke.tencentcloudapi.com/?Action=UpdateClusterKubeconfig \r\n&ClusterId=cls-65r1c5nu \r\n&SubAccounts.0=123456 \r\n&SubAccounts.1=123457 \r\n&SubAccounts.2=123458 \r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"UpdatedSubAccounts\": [\n            \"123456\",\n            \"123457\",\n            \"1234568\"\n        ],\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
+        "title": "Updating the Kubeconfig information of a cluster"
+      }
+    ],
     "UpdateClusterVersion": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tke.tencentcloudapi.com/?Action=UpdateClusterVersion\n&ClusterId=cls-xxxxxxxx\n&DstVersion=1.8.13\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Upgrading the cluster to the specified version"
@@ -798,7 +830,7 @@
     ],
     "UpdateEdgeClusterVersion": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEdgeClusterVersion\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\",\n    \"EdgeVersion\": \"1.0.1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Upgrading an edge cluster"
