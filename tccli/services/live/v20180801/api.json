@@ -266,6 +266,13 @@
       "output": "DescribeAllStreamPlayInfoListResponse",
       "status": "online"
     },
+    "DescribeBillBandwidthAndFluxList": {
+      "document": "This API is used to query the data of billable LVB bandwidth and traffic.",
+      "input": "DescribeBillBandwidthAndFluxListRequest",
+      "name": "Queries the data of billable LVB bandwidth and traffic",
+      "output": "DescribeBillBandwidthAndFluxListResponse",
+      "status": "online"
+    },
     "DescribeConcurrentRecordStreamNum": {
       "document": "This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.",
       "input": "DescribeConcurrentRecordStreamNumRequest",
@@ -1114,6 +1121,48 @@
           "document": "The API 3.0 error message.",
           "member": "string",
           "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BillDataInfo": {
+      "document": "Bandwidth and traffic information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time point in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bandwidth in Mbps.",
+          "member": "float",
+          "name": "Bandwidth",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic in MB.",
+          "member": "float",
+          "name": "Flux",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.",
+          "member": "string",
+          "name": "PeakTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -4059,6 +4108,129 @@
           "member": "MonitorStreamPlayInfo",
           "name": "DataInfoList",
           "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillBandwidthAndFluxListRequest": {
+      "document": "DescribeBillBandwidthAndFluxList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "2019-02-0100:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.",
+          "example": "2019-02-0100:10:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "LVB playback domain name. If this parameter is left empty, full data will be queried.",
+          "example": "[\"5000.playdomain.com\\n\"]",
+          "member": "string",
+          "name": "PlayDomains",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Valid values:\nMainland: query data for Mainland China,\nOversea: query data for regions outside Mainland China,\nDefault: query data for all regions.\nNote: LEB only supports querying data for all regions.",
+          "example": "Mainland",
+          "member": "string",
+          "name": "MainlandOrOversea",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data granularity. Valid values:\n5: 5-minute granularity (the query time span should be within 1 day),\n60: 1-hour granularity (the query time span should be within one month),\n1440: 1-day granularity (the query time span should be within one month).\nDefault value: 5.",
+          "example": "5",
+          "member": "uint64",
+          "name": "Granularity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.",
+          "example": "LEB",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region. Valid values:\nChina Mainland\nAsia Pacific I\nAsia Pacific II\nAsia Pacific III\nEurope\nNorth America\nSouth America\nMiddle East\nAfrica",
+          "example": "[\"China Mainland\"]",
+          "member": "string",
+          "name": "RegionNames",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillBandwidthAndFluxListResponse": {
+      "document": "DescribeBillBandwidthAndFluxList response structure.",
+      "members": [
+        {
+          "document": "Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "member": "string",
+          "name": "PeakBandwidthTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Peak bandwidth in Mbps.",
+          "member": "float",
+          "name": "PeakBandwidth",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "member": "string",
+          "name": "P95PeakBandwidthTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "95th percentile bandwidth in Mbps.",
+          "member": "float",
+          "name": "P95PeakBandwidth",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total traffic in MB.",
+          "member": "float",
+          "name": "SumFlux",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detailed data information.",
+          "member": "BillDataInfo",
+          "name": "DataInfoList",
           "type": "list",
           "value_allowed_null": false
         },

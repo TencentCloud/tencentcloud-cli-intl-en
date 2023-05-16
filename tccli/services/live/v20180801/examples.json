@@ -328,6 +328,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeBillBandwidthAndFluxList": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeBillBandwidthAndFluxList\n&PlayDomains.0=5000.playdomain.com\n&StartTime=2019-02-0100:00:00\n&EndTime=2019-02-0100:10:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"P95PeakBandwidth\": 117042.495,\n        \"P95PeakBandwidthTime\": \"2019-02-01 00:00:00\",\n        \"DataInfoList\": [\n            {\n                \"Bandwidth\": 117042.495,\n                \"Flux\": 4389093.551,\n                \"Time\": \"2019-02-01 00:00:00\",\n                \"PeakTime\": \"2019-02-01 00:00:00\"\n            },\n            {\n                \"Bandwidth\": 110364.995,\n                \"Flux\": 4138687.32,\n                \"Time\": \"2019-02-01 00:05:00\",\n                \"PeakTime\": \"2019-02-01 00:05:00\"\n            },\n            {\n                \"Bandwidth\": 99380.978,\n                \"Flux\": 3726786.679,\n                \"Time\": \"2019-02-01 00:10:00\",\n                \"PeakTime\": \"2019-02-01 00:10:00\"\n            }\n        ],\n        \"PeakBandwidth\": 117042.495,\n        \"PeakBandwidthTime\": \"2019-02-01 00:00:00\",\n        \"RequestId\": \"f54e3deb-f318-4148-8a68-3c959642f9ec\",\n        \"SumFlux\": 12254567.55\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeConcurrentRecordStreamNum": [
       {
         "document": "",
