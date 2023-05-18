@@ -45,14 +45,14 @@
     "GetFaceIdResultIntl": {
       "document": "This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for two hours (2*3,600s) after generation and can be called multiple times.",
       "input": "GetFaceIdResultIntlRequest",
-      "name": "Gets the result of an SDK-based liveness detection process",
+      "name": "Gets the verification result of liveness detection and face comparison",
       "output": "GetFaceIdResultIntlResponse",
       "status": "online"
     },
     "GetFaceIdTokenIntl": {
       "document": "This API is used to apply for an SDK token before calling the liveness detection and face comparison SDK each time. The SDK token is used throughout the identity verification process and to get the verification result after the verification is completed. A token is valid for one identity verification process only.",
       "input": "GetFaceIdTokenIntlRequest",
-      "name": "Applies for an SDK token",
+      "name": "Gets the SDK token for liveness detection and face comparison",
       "output": "GetFaceIdTokenIntlResponse",
       "status": "online"
     },
@@ -103,6 +103,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Enumerated value. Valid values: `1`, `2`, `3`, and `4`.\nTheir meanings are as follows:\n1 - silent\n2 - blinking\n3 - light\n4 - blinking + light (default)",
           "example": "1",
           "member": "string",
@@ -117,6 +118,7 @@
       "document": "ApplyLivenessToken response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The token used to identify an SDK-based verification process. It is valid for 10 minutes and can be used to get the verification result after the process is completed.",
           "example": "A561B769-C347-4724-A69A-6C3B3483E107",
           "member": "string",
@@ -138,6 +140,7 @@
       "document": "ApplySdkVerificationToken request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.",
           "example": "true",
           "member": "bool",
@@ -146,6 +149,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "The card type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `PhilippinesVoteID` (Philippine voters ID card), `IndonesiaIDCard` (Indonesian identity card), `SingaporeIDCard` (Singapore identity card), and `PhilippinesDrivingLicense` (Philippine driver's license).",
           "example": "HK",
           "member": "string",
@@ -154,6 +158,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Disable the modification of the OCR result by the user. Default value: `false` (modification allowed).",
           "example": "true",
           "member": "bool",
@@ -162,6 +167,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned based on the warnings. If the value of `NeedVerifyIdCard` is `true`, the value of this field will also be `true`.",
           "example": "true",
           "member": "bool",
@@ -170,6 +176,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.",
           "example": "1",
           "member": "string",
@@ -184,6 +191,7 @@
       "document": "ApplySdkVerificationToken response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.",
           "example": "A561B769-C347-4724-A69A-6C3B3483E107",
           "member": "string",
@@ -206,6 +214,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The web redirect URL after the verification is completed.",
           "example": "https://www.qq.com",
           "member": "string",
@@ -215,6 +224,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The COS URL of the image for face comparison, which can be obtained with one of the following methods:\n1. Call the `CreateUploadUrl` API to generate a URL and call it again after the image is successfully uploaded.\n2. Use an existing COS URL. For a private bucket, grant the download permission with a pre-signed URL. The corresponding COS bucket must be in the same region as the input parameter `Region`.",
           "example": "https://singapore-1257237511.cos.ap-singapore.myqcloud.com",
           "member": "string",
@@ -224,6 +234,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The MD5 hash values of the image for face comparison (CompareImageUrl).",
           "example": "1",
           "member": "string",
@@ -238,6 +249,7 @@
       "document": "ApplyWebVerificationToken response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The verification URL to be opened with a browser to start the verification process.",
           "example": "无",
           "member": "string",
@@ -247,6 +259,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The token used to identify a web-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.",
           "example": "无",
           "member": "string",
@@ -268,6 +281,7 @@
       "document": "The result of a single authentication or OCR process during the identity verification.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether the authentication or OCR process is successful.",
           "example": "true",
           "member": "bool",
@@ -277,6 +291,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The video for ID card authentication. This field is returned only if the video-based ID card authentication is enabled. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
@@ -286,6 +301,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The identity document image. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
@@ -295,6 +311,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The OCR result (in JSON) of the identity document image. If authentication or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Chinese name.\n- EnName (string): English name.\n- TelexCode (string): The code corresponding to the Chinese name.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): ID number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): The date of first issuance.\n- CurrentIssueDate (string): The date of latest issuance.\n\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): ID number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Family name.\n- FirstName (string): First name.\n- VIN (string): VIN number.\n- CivilStatus (string): Marital status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Region.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Family name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Validity period.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Identity document No.\n- Nama (string): Name.\n- TempatTglLahir (string): Place/Date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Profession.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date of the identity document.\n- IssuedDate (string): Date of issuance.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
@@ -304,6 +321,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The request ID of a single process.",
           "example": "c6df4b3d-d1aa-4d49-a676-d44baf379613",
           "member": "string",
@@ -320,6 +338,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The final comparison result.",
           "example": "0",
           "member": "string",
@@ -330,6 +349,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The description of the final comparison result.",
           "example": "success",
           "member": "string",
@@ -340,6 +360,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "无",
           "member": "FileInfo",
@@ -350,6 +371,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The video for this liveness detection process. The URL is valid for 10 minutes.",
           "example": "无",
           "member": "FileInfo",
@@ -360,6 +382,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The code of the liveness detection result.",
           "example": "0",
           "member": "string",
@@ -370,6 +393,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The description of the liveness detection result.",
           "example": "success",
           "member": "string",
@@ -380,6 +404,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The best face screenshot in this liveness detection. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
@@ -390,6 +415,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The profile photo screenshot from the identity document. The URL is valid for 10 minutes.",
           "example": "无",
           "member": "FileInfo",
@@ -400,6 +426,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The code of the face comparison result.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "string",
@@ -410,6 +437,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The description of the face comparison result.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "success",
           "member": "string",
@@ -420,6 +448,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Similarity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "52.77",
           "member": "float",
@@ -430,6 +459,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "This field is disused.",
           "example": "true",
           "member": "bool",
@@ -440,6 +470,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The identity document photo info edited by the user in JSON. If the value of `DisableChangeOcrResult` is `true`, the editing feature is disabled and this field does not exist. The URL is valid for 10 minutes.\nWhen the value of `IdCardType` is `HK`:\n- CnName string: Chinese name\n- EnName string: English name\n- TelexCode string: The code corresponding to the Chinese name\n- Sex string: Gender. Valid values: `M` (male) and `F` (female).\n- Birthday string: Date of birth.\n- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum string: ID number.\n- Symbol string: The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate string: The date of first issuance.\n- CurrentIssueDate string: The date of latest issuance.\n\nWhen the value of `IdCardType` is `ML`:\n- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday string\n- ID string\n- Name string\n- Address string\n- Type string: Identity document type.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
@@ -450,6 +481,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The request ID of this verification process.",
           "example": "无",
           "member": "string",
@@ -466,6 +498,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Target API",
           "example": "ApplyReflectVerificationToken",
           "member": "string",
@@ -480,6 +513,7 @@
       "document": "CreateUploadUrl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The URL for uploading contents with the `HTTP PUT` method.",
           "example": "https://example.com",
           "member": "string",
@@ -489,6 +523,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The resource URL obtained after this upload is completed and to be passed in where it is required later.",
           "example": "https://example.com",
           "member": "string",
@@ -498,6 +533,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The point in time when the upload/download link expires, which is a 10-bit Unix timestamp.",
           "example": "1637066164",
           "member": "int64",
@@ -520,6 +556,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "URL of the liveness detection data package generated by the SDK",
           "example": "https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud",
           "member": "string",
@@ -529,6 +566,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "MD5 hash value (32-bit) of the liveness detection data package generated by the SDK, which is used to verify the LiveData consistency.",
           "example": "d41d8cd98f00b204e9800998ecf8427e",
           "member": "string",
@@ -538,6 +576,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "URL of the target image for comparison",
           "example": "https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud",
           "member": "string",
@@ -547,6 +586,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "MD5 hash value (32-bit) of the target image for comparison, which is used to verify the `Image` consistency.",
           "example": "d41d8cd98f00b204e9800998ecf8427e",
           "member": "string",
@@ -561,6 +601,7 @@
       "document": "DetectReflectLivenessAndCompare response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Temporary URL of the best screenshot (.jpg) of the video after successful verification. Both the screenshot and the URL are valid for two hours only, so you need to download the screenshot within this period.",
           "example": "https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud",
           "member": "string",
@@ -570,6 +611,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "MD5 hash value (32-bit) of the best screenshot of the video after successful verification, which is used to verify the `BestFrame` consistency.",
           "example": "d41d8cd98f00b204e9800998ecf8427e",
           "member": "string",
@@ -579,6 +621,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.",
           "example": "Success",
           "member": "string",
@@ -588,6 +631,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Service result description",
           "example": "Success",
           "member": "string",
@@ -597,6 +641,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).",
           "example": "95.3",
           "member": "float",
@@ -619,6 +664,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The URL for downloading the file",
           "example": "http://example.com",
           "member": "string",
@@ -629,6 +675,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The 32-bit MD5 checksum of the file",
           "example": "c4f217871aaeb0180e40152f61658835",
           "member": "string",
@@ -639,6 +686,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The file size",
           "example": "344443",
           "member": "int64",
@@ -655,6 +703,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The resource URL of the data package generated by the SDK.",
           "example": "1",
           "member": "string",
@@ -664,6 +713,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The MD5 hash value of the data package generated by the SDK.",
           "example": "d41d8cd98f00b204e9800998ecf8427e",
           "member": "string",
@@ -673,6 +723,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "1 - silent\n2 - blinking\n3 - light\n4 - blinking + light (default)",
           "example": "2",
           "member": "string",
@@ -687,6 +738,7 @@
       "document": "GenerateReflectSequence response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.",
           "example": "https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud",
           "member": "string",
@@ -696,6 +748,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The MD5 hash value of the light sequence, which is used to check whether the light sequence is altered.",
           "example": "d41d8cd98f00b204e9800998ecf8427e",
           "member": "string",
@@ -717,6 +770,7 @@
       "document": "GetFaceIdResultIntl request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.\t",
           "example": "aeee6d62-b2b2-4634-9662-919a5ac729ab",
           "member": "string",
@@ -731,6 +785,7 @@
       "document": "GetFaceIdResultIntl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The return code of the verification result.\n0: Succeeded.\n1001: System error.\n1004: Liveness detection and face comparison failed.\n2004: The image passed in is too large or too small.\n2012: Several faces were detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n-999: The verification process wasn't finished.",
           "example": "0",
           "member": "string",
@@ -739,6 +794,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The description of the verification result.",
           "example": "Success",
           "member": "string",
@@ -747,6 +803,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The best frame screenshot (in Base64) obtained during the verification.",
           "example": "无",
           "member": "string",
@@ -755,6 +812,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The video file (Base64) for verification.",
           "example": "无",
           "member": "string",
@@ -763,6 +821,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "89.99",
           "member": "float",
@@ -771,6 +830,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The pass-through parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -791,6 +851,7 @@
       "document": "GetFaceIdTokenIntl request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The detection mode. Valid values:\n`liveness`: Liveness detection only.\n`compare`: Liveness detection and face comparison.\nDefault value: `liveness`.",
           "example": "liveness",
           "member": "string",
@@ -799,6 +860,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The verification security level. Valid values:\n`1`: Video-based liveness detection.\n`2`: Motion-based liveness detection.\n`3`: Reflection-based liveness detection.\n`4`: Motion- and reflection-based liveness detection.\nDefault value: `4`.",
           "example": "1",
           "member": "string",
@@ -807,7 +869,8 @@
           "type": "string"
         },
         {
-          "document": "The image for comparison in the `compare` (liveness detection and face comparison) mode. This parameter is required when the value of `CheckMode` is `compare`.",
+          "disabled": false,
+          "document": "The photo (in Base64) to compare. This parameter is required when the value of `CheckMode` is `compare`.",
           "example": "无",
           "member": "string",
           "name": "Image",
@@ -815,7 +878,8 @@
           "type": "string"
         },
         {
-          "document": "The pass-through parameter.",
+          "disabled": false,
+          "document": "The pass-through parameter, which can be omitted if there are no special requirements.",
           "example": "无",
           "member": "string",
           "name": "Extra",
@@ -829,6 +893,7 @@
       "document": "GetFaceIdTokenIntl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDK token, which is used throughout the verification process and to get the verification result.",
           "example": "0749c982-499e-4d1d-9e6a-103390933016",
           "member": "string",
@@ -850,6 +915,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The token used to identify an SDK-based verification process.",
           "example": "无",
           "member": "string",
@@ -864,6 +930,7 @@
       "document": "GetLivenessResult response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The final verification result.",
           "example": "无",
           "member": "string",
@@ -873,6 +940,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The description of the final verification result.",
           "example": "无",
           "member": "string",
@@ -882,6 +950,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The face screenshot.",
           "example": "4",
           "member": "FileInfo",
@@ -891,6 +960,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The video for the detection.",
           "example": "无",
           "member": "FileInfo",
@@ -913,6 +983,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The token used to identify an SDK-based verification process.",
           "example": "无",
           "member": "string",
@@ -927,6 +998,7 @@
       "document": "GetSdkVerificationResult response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The result of the entire verification process.",
           "example": "无",
           "member": "string",
@@ -936,6 +1008,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The result description.",
           "example": "无",
           "member": "string",
@@ -945,6 +1018,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The charge count.",
           "example": "4",
           "member": "int64",
@@ -954,6 +1028,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The results of multiple OCR processes (in order). The result of the final process is taken as the valid result.",
           "example": "无",
           "member": "CardVerifyResult",
@@ -963,6 +1038,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The results of multiple liveness detection processes (in order). The result of the final process is taken as the valid result.",
           "example": "无",
           "member": "CompareResult",
@@ -972,6 +1048,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Info passed in the process of getting the token.",
           "example": "无",
           "member": "string",
@@ -994,6 +1071,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The token for the web-based verification, which is generated with the `ApplyWebVerificationToken` API.",
           "example": "C3451931-19A5-4E41-AB65-15E694A54F69",
           "member": "string",
@@ -1008,6 +1086,7 @@
       "document": "GetWebVerificationResult response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -1017,6 +1096,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The description of the final verification result.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Success",
           "member": "string",
@@ -1026,6 +1106,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The temporary URL of the best face screenshot collected from the video stream. It is valid for 10 minutes. Download the image if needed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1035,6 +1116,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The MD5 hash value of the best face screenshot collected from the video stream. It can be used to check whether the image content is consistent with the file content.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1044,6 +1126,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The details list of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VerificationDetail",
@@ -1053,6 +1136,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The temporary URL of the video collected from the video stream. It is valid for 10 minutes. Download the video if needed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1062,6 +1146,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The MD5 hash value of the video collected from the video stream. It can be used to check whether the video content is consistent with the file content.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1084,6 +1169,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Liveness detection type. Valid values: LIP/ACTION/SILENT.\nLIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.",
           "example": "\"\"",
           "member": "string",
@@ -1093,6 +1179,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Base64 string of the image for face comparison.\nThe size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.\n\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.",
           "example": "\"\"",
           "member": "string",
@@ -1102,6 +1189,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "URL of the image for face comparison. The size of the downloaded image after Base64 encoding can be up to 3 MB. JPG and PNG formats are supported.\n\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.\n\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "\"\"",
           "member": "string",
@@ -1111,6 +1199,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Lip mode: set this parameter to a custom 4-digit verification code.\nAction mode: set this parameter to a custom action sequence (e.g., `2,1` or `1,2`).\nSilent mode: do not pass in this parameter.",
           "example": "\"\"",
           "member": "string",
@@ -1120,6 +1209,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Optional configuration (a JSON string)\n{\n\"BestFrameNum\": 2  // Return multiple best screenshots. Value range: 2−10\n}",
           "example": "\"\"",
           "member": "string",
@@ -1129,6 +1219,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Base64 string of the video for liveness detection.\nThe size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.\n\nEither the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.",
           "example": "\"\"",
           "member": "string",
@@ -1138,6 +1229,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "URL of the video for liveness detection. The size of the downloaded video after Base64 encoding can be up to 8 MB. It takes no more than 4 seconds to download. MP4, AVI, and FLV formats are supported.\n\nEither the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.\n\nWe recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "\"\"",
           "member": "string",
@@ -1152,6 +1244,7 @@
       "document": "LivenessCompare response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The best screenshot of the video after successful verification. The photo is Base64-encoded and in JPG format.",
           "member": "string",
           "name": "BestFrameBase64",
@@ -1159,6 +1252,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).",
           "member": "float",
           "name": "Sim",
@@ -1166,6 +1260,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Service error code. `Success` will be returned for success. For error information, please see the `FailedOperation` section in the error code list below.",
           "member": "string",
           "name": "Result",
@@ -1173,6 +1268,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Service result description.",
           "member": "string",
           "name": "Description",
@@ -1180,6 +1276,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "",
           "member": "string",
           "name": "BestFrameList",
@@ -1200,6 +1297,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -1210,6 +1308,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The description of the final verification result.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Success",
           "member": "string",
@@ -1220,6 +1319,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The result of this liveness detection process. `0` indicates success.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -1230,6 +1330,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The result description of this liveness detection process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Success",
           "member": "string",
@@ -1240,6 +1341,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -1250,6 +1352,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The result description of this comparison process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "success",
           "member": "string",
@@ -1260,6 +1363,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The timestamp (ms) of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1634884881441",
           "member": "uint64",
@@ -1270,6 +1374,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Valid range: [0.00, 100.00]. By default, the person in the screenshot is judged as the same person in the image if the similarity is greater than or equal to 70.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00",
           "member": "float",
@@ -1280,6 +1385,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique ID of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "3d12da91-db34-4e55-81c3-993a41d7ccb7",
           "member": "string",
@@ -1296,6 +1402,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.\n\nThe image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.",
           "example": "\"\"",
           "member": "string",
@@ -1305,6 +1412,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The 32-bit MD5 checksum of the image for comparison",
           "example": "682e24b207acf1825286c1fceef5631c",
           "member": "string",
@@ -1314,6 +1422,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.\n\nThe video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.",
           "example": "\"\"",
           "member": "string",
@@ -1323,6 +1432,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The 32-bit MD5 checksum of the video",
           "example": "682e24b207acf1825286c1fceef5631c",
           "member": "string",
@@ -1332,6 +1442,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.\n`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.",
           "example": "\"\"",
           "member": "string",
@@ -1341,6 +1452,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "LIP parameter: Pass in a custom 4-digit verification code.\nACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).\nSILENT parameter: Null.",
           "example": "\"\"",
           "member": "string",
@@ -1355,6 +1467,7 @@
       "document": "VideoLivenessCompare response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).",
           "example": "\"\"",
           "member": "float",
@@ -1364,6 +1477,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.",
           "example": "\"\"",
           "member": "string",
@@ -1373,6 +1487,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The service result description",
           "example": "\"\"",
           "member": "string",
@@ -1382,6 +1497,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The best video screenshot after successful verification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "FileInfo",
