@@ -77,6 +77,13 @@
       "output": "RecognizePhilippinesVoteIDOCRResponse",
       "status": "online"
     },
+    "SmartStructuralOCRV2": {
+      "document": "This API is used to recognize fields from cards, documents, bills, forms, contracts, and other structured information. It is flexible and efficient to use, without any configuration required. This API is suitable for recognizing structured information.\n\nA maximum of 10 requests can be initiated per second for this API.",
+      "input": "SmartStructuralOCRV2Request",
+      "name": "Smart Structured Information OCR V2",
+      "output": "SmartStructuralOCRV2Response",
+      "status": "online"
+    },
     "TableOCR": {
       "document": "This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "TableOCRRequest",
@@ -96,6 +103,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "无",
           "member": "string",
@@ -105,6 +113,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -114,6 +123,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`",
           "example": "false",
           "member": "bool",
@@ -123,6 +133,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return the card number image data after slicing. Default value: `false`",
           "example": "false",
           "member": "bool",
@@ -132,6 +143,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`",
           "example": "false",
           "member": "bool",
@@ -141,6 +153,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`",
           "example": "false",
           "member": "bool",
@@ -150,6 +163,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`",
           "example": "false",
           "member": "bool",
@@ -159,6 +173,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return the image quality value, which measures how clear an image is. Default value: `false`",
           "example": "false",
           "member": "bool",
@@ -173,6 +188,7 @@
       "document": "BankCardOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Card number",
           "example": "6225768888888888",
           "member": "string",
@@ -182,6 +198,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Bank information",
           "example": "招商银行(03080000)",
           "member": "string",
@@ -191,6 +208,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Expiration date. Format: 07/2023",
           "example": "07/2023",
           "member": "string",
@@ -200,6 +218,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Card type",
           "example": "贷记卡",
           "member": "string",
@@ -209,6 +228,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Card name",
           "example": "招商银行信用卡",
           "member": "string",
@@ -218,6 +238,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Sliced image data\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -227,6 +248,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Card number image data\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -236,6 +258,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Warning code:\n-9110: the bank card date is invalid. \n-9111: the bank card border is incomplete. \n-9112: the bank card image is reflective.\n-9113: the bank card image is a photocopy.\n-9114: the bank card image is a photograph.\nMultiple warning codes may be returned at a time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "[-9110]",
           "member": "int64",
@@ -245,6 +268,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "90",
           "member": "int64",
@@ -267,6 +291,7 @@
       "members": [
         {
           "default": "0",
+          "disabled": false,
           "document": "Horizontal coordinate",
           "member": "int64",
           "name": "X",
@@ -276,6 +301,7 @@
         },
         {
           "default": "0",
+          "disabled": false,
           "document": "Vertical coordinate",
           "member": "int64",
           "name": "Y",
@@ -291,6 +317,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner",
           "example": "无",
           "member": "Coord",
@@ -307,6 +334,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Confidence. Value range: 0–100",
           "example": "无",
           "member": "int64",
@@ -317,6 +345,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A possible character",
           "example": "无",
           "member": "string",
@@ -333,6 +362,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Base64-encoded value of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
           "example": "无",
           "member": "string",
@@ -342,6 +372,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nThe image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -351,6 +382,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return the character information. Default value: `false`",
           "example": "false",
           "member": "bool",
@@ -360,6 +392,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.",
           "example": "false",
           "member": "bool",
@@ -369,6 +402,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.",
           "example": "false",
           "member": "bool",
@@ -378,6 +412,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`",
           "example": "1",
           "member": "uint64",
@@ -392,6 +427,7 @@
       "document": "GeneralAccurateOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.",
           "example": "无",
           "member": "TextDetection",
@@ -401,6 +437,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.",
           "example": "0",
           "member": "float",
@@ -422,6 +459,7 @@
       "document": "GeneralBasicOCR request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Base64-encoded value of image/PDF.\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.",
           "example": "无",
           "member": "string",
@@ -430,6 +468,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "URL address of image/PDF. (This field is not supported outside Chinese mainland)\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -438,6 +477,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Reserved field.",
           "example": "无",
           "member": "string",
@@ -446,6 +486,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Language to recognize\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\n`zh`: Chinese-English mix\n`zh_rare`: supports letters, digits, rare Chinese characters, Traditional Chinese characters, special characters, etc.\n`auto`\n`mix`: language mix\n`jap`: Japanese\n`kor`: Korean\n`spa`: Spanish\n`fre`: French\n`ger`: German\n`por`: Portuguese\n`vie`: Vietnamese\n`may`: Malay\n`rus`: Russian\n`ita`: Italian\n`hol`: Dutch\n`swe`: Swedish\n`fin`: Finnish\n`dan`: Danish\n`nor`: Norwegian\n`hun`: Hungarian\n`tha`: Thai\n`hi`: Hindi\n`ara`: Arabic",
           "example": "无",
           "member": "string",
@@ -454,6 +495,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.",
           "example": "无",
           "member": "bool",
@@ -462,6 +504,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.",
           "example": "无",
           "member": "uint64",
@@ -470,6 +513,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to return the character information. Default value: `false`",
           "example": "无",
           "member": "bool",
@@ -484,6 +528,7 @@
       "document": "GeneralBasicOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.",
           "example": "无",
           "member": "TextDetection",
@@ -492,6 +537,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.",
           "example": "zh",
           "member": "string",
@@ -500,6 +546,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.",
           "example": "6.5",
           "member": "float",
@@ -508,6 +555,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of PDF pages to be returned if the image is a PDF. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -524,11 +572,28 @@
       ],
       "type": "object"
     },
+    "GroupInfo": {
+      "document": "The sequence number of an element group in the image",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The elements in each line.",
+          "example": "1",
+          "member": "LineInfo",
+          "name": "Groups",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "HKIDCardOCRRequest": {
       "document": "HKIDCardOCR request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to check for authenticity.",
           "example": "true",
           "member": "bool",
@@ -538,6 +603,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return identity photo.",
           "example": "false",
           "member": "bool",
@@ -547,6 +613,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Base64 string of the image\nSupported image formats: PNG, JPG, JPEG. GIF is not supported yet.\nSupported image size: The downloaded image cannot exceed 7 MB after being Base64-encoded, and it cannot take longer than 3 seconds to download the image.",
           "example": "无",
           "member": "string",
@@ -556,6 +623,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -570,6 +638,7 @@
       "document": "HKIDCardOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Name in Chinese",
           "example": "申能",
           "member": "string",
@@ -579,6 +648,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Name in English",
           "example": "SAN, Nan",
           "member": "string",
@@ -588,6 +658,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Telecode for the name in Chinese",
           "example": "300000000000",
           "member": "string",
@@ -597,6 +668,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Gender. Valid values: Male, Female",
           "example": "女F",
           "member": "string",
@@ -606,6 +678,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Date of birth",
           "example": "01-01-2001",
           "member": "string",
@@ -615,6 +688,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Permanent identity card.\n0: non-permanent;\n1: permanent;\n-1: unknown.",
           "example": "1",
           "member": "int64",
@@ -624,6 +698,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Identity card number",
           "example": "C000000(E)",
           "member": "string",
@@ -633,6 +708,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Document symbol, i.e., the symbol under the date of birth, such as \"***AZ\"",
           "example": "***AZ",
           "member": "string",
@@ -642,6 +718,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "First issue date",
           "example": "(09-99)",
           "member": "string",
@@ -651,6 +728,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Last receipt date",
           "example": "23-09-10",
           "member": "string",
@@ -660,6 +738,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Authenticity check.\n0: unable to judge (because the image is blurred, incomplete, reflective, too dark, etc.);\n1: forged;\n2: authentic.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -669,6 +748,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Base64-encoded identity photo\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -678,6 +758,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.\n-9102: Alarm for photocopied document\n-9103: Alarm for spoofed document\n-9104: Alarm for photoshopped document",
           "example": "[-9102,-9103]",
           "member": "int64",
@@ -700,6 +781,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "X-coordinate of top-left point.",
           "member": "int64",
           "name": "X",
@@ -709,6 +791,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Y-coordinate of top-left point.",
           "member": "int64",
           "name": "Y",
@@ -718,6 +801,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Width",
           "member": "int64",
           "name": "Width",
@@ -727,6 +811,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Height",
           "member": "int64",
           "name": "Height",
@@ -737,11 +822,70 @@
       ],
       "usage": "out"
     },
+    "ItemInfo": {
+      "document": "Structured element group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The key information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Key",
+          "name": "Key",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The value information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Value",
+          "name": "Value",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Key": {
+      "document": "Key information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The name of the recognized field.",
+          "example": "号码",
+          "member": "string",
+          "name": "AutoName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LineInfo": {
+      "document": "Line number",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The elements in a line",
+          "example": "无",
+          "member": "ItemInfo",
+          "name": "Lines",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MLIDCardOCRRequest": {
       "document": "MLIDCardOCR request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.",
           "example": "无",
           "member": "string",
@@ -751,6 +895,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The URL of an image. (This field is not available outside the Chinese mainland.)\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be low.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -760,6 +905,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return an image. Default value: `false`.",
           "example": "无",
           "member": "bool",
@@ -774,6 +920,7 @@
       "document": "MLIDCardOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "ID number",
           "example": "710716-08-6085",
           "member": "string",
@@ -783,6 +930,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Full name",
           "example": "KAVIN ONG KHI MN",
           "member": "string",
@@ -792,6 +940,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Address",
           "example": "NO 11 PERSIARN PERAJRIT 4 TAMA PERAK 31400 IPOH ERAK",
           "member": "string",
@@ -801,6 +950,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Gender",
           "example": "LEAKI",
           "member": "string",
@@ -810,6 +960,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Alarm codes\n-9103 Alarm for photographed certificate\n-9102 Alarm for photocopied certificate\n-9106 Alarm for covered certificate\n-9107 Alarm for blurry image",
           "example": "[]",
           "member": "int64",
@@ -819,6 +970,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Identity photo",
           "example": "无",
           "member": "string",
@@ -828,6 +980,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "This is an extended field, \nwith the confidence of a field recognition result returned in the following format.\n{\n  Field name:{\n    Confidence:0.9999\n  }\n}",
           "example": "{\"ID\":{\"Confidence\":\"1.0000\"},\"Name\":{\"Confidence\":\"0.9996\"},\"Address\":{\"Confidence\":\"0.9997\"},\"Sex\":{\"Confidence\":\"0.9999\"}}",
           "member": "string",
@@ -837,6 +990,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Certificate type\nMyKad  ID card\nMyPR    Permanent resident card\nMyTentera   Military identity card\nMyKAS    Temporary ID card\nPOLIS  Police card\nIKAD   Work permit\nMyKid   Kid card",
           "example": "MyKad",
           "member": "string",
@@ -846,6 +1000,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Date of birth. This field is available only for work permits (i-Kad) and ID cards (MyKad).",
           "example": "无",
           "member": "string",
@@ -868,6 +1023,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.",
           "member": "string",
           "name": "ImageBase64",
@@ -876,6 +1032,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return an image. Default value: false.",
           "member": "bool",
           "name": "RetImage",
@@ -889,6 +1046,7 @@
       "document": "MLIDPassportOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Passport ID",
           "example": "E6918C",
           "member": "string",
@@ -897,6 +1055,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Name",
           "example": "BROWN BENJAMIN",
           "member": "string",
@@ -905,6 +1064,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Date of birth",
           "example": "20230414",
           "member": "string",
@@ -913,6 +1073,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Gender (F: female, M: male)",
           "example": "M",
           "member": "string",
@@ -921,6 +1082,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Expiration date",
           "example": "20230414",
           "member": "string",
@@ -929,6 +1091,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Issuing country",
           "example": "SGP",
           "member": "string",
@@ -937,6 +1100,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Country/region code",
           "example": "SGP",
           "member": "string",
@@ -945,6 +1109,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Alarm codes\n-9103 Alarm for spoofed document\n-9102 Alarm for photocopied document (including black & white and color ones)\n-9106 Alarm for covered card",
           "example": "[]",
           "member": "int64",
@@ -953,6 +1118,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Identity photo",
           "example": "无",
           "member": "string",
@@ -961,6 +1127,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
           "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"},\"Name\":{\"Confidence\":\"0.9500\"},\"ID\":{\"Confidence\":\"0.9500\"},\"Nationality\":{\"Confidence\":\"0.9500\"},\"Sex\":{\"Confidence\":\"0.9500\"},\"DateOfExpiration\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
@@ -969,6 +1136,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The first row of the machine-readable zone (MRZ) at the bottom",
           "example": "P<CANBROWN<<BENJAMIN<<<<<<<<<<<<<<<<<<<<<<<<",
           "member": "string",
@@ -977,6 +1145,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The second row of the MRZ at the bottom",
           "example": "JK123488<3CAN8510168M2603298<<<<<<<<<<<<<<04",
           "member": "string",
@@ -985,6 +1154,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The surname.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "BROWN",
           "member": "string",
@@ -993,6 +1163,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The given name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "BENJAMIN",
           "member": "string",
@@ -1009,10 +1180,57 @@
       ],
       "type": "object"
     },
+    "Polygon": {
+      "document": "The coordinates of the four vertices of the text\nNote: This field may return null, indicating that no valid values can be obtained.",
+      "members": [
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The coordinates of the upper-left vertex.",
+          "member": "Coord",
+          "name": "LeftTop",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The coordinates of the upper-right vertex.",
+          "member": "Coord",
+          "name": "RightTop",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The coordinates of the lower-left vertex.",
+          "member": "Coord",
+          "name": "RightBottom",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The coordinates of the lower-right vertex.",
+          "member": "Coord",
+          "name": "LeftBottom",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RecognizeIndonesiaIDCardOCRRequest": {
       "document": "RecognizeIndonesiaIDCardOCR request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
           "member": "string",
@@ -1021,6 +1239,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -1029,6 +1248,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
           "member": "bool",
@@ -1037,6 +1257,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "The scene, which defaults to `V1`.\nValid values:\nV1\nV2",
           "example": "无",
           "member": "string",
@@ -1051,6 +1272,7 @@
       "document": "RecognizeIndonesiaIDCardOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The Single Identity Number.",
           "example": "360XXXXXX",
           "member": "string",
@@ -1059,6 +1281,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The full name.",
           "example": "INM",
           "member": "string",
@@ -1067,6 +1290,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The place and date of birth.",
           "example": "JAKARTA 13-01-1987",
           "member": "string",
@@ -1075,6 +1299,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The gender.",
           "example": "LAKEI",
           "member": "string",
@@ -1083,6 +1308,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The blood type.",
           "example": "o",
           "member": "string",
@@ -1091,6 +1317,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The address.",
           "example": "BANJARSARI",
           "member": "string",
@@ -1099,6 +1326,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The street.",
           "example": "00/000",
           "member": "string",
@@ -1107,6 +1335,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The village.",
           "example": "PAKEMBINANGUN",
           "member": "string",
@@ -1115,6 +1344,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The region.",
           "example": "LAKEI",
           "member": "string",
@@ -1123,6 +1353,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The religion.",
           "example": "ATHOLIK",
           "member": "string",
@@ -1131,6 +1362,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The marital status.",
           "example": "KAWFN",
           "member": "string",
@@ -1139,6 +1371,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The occupation.",
           "example": "KARYAWAN",
           "member": "string",
@@ -1147,6 +1380,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The nationality.",
           "example": "INM",
           "member": "string",
@@ -1155,6 +1389,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The expiry date.",
           "example": "SEUMUR",
           "member": "string",
@@ -1163,6 +1398,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The issue date.",
           "example": "15-05-2015",
           "member": "string",
@@ -1171,6 +1407,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The photo.",
           "example": "无",
           "member": "string",
@@ -1179,6 +1416,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The province, which is supported when the value of `Scene` is `V2`.",
           "example": "无",
           "member": "string",
@@ -1187,6 +1425,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The city, which is supported when the value of `Scene` is `V2`.",
           "example": "无",
           "member": "string",
@@ -1208,6 +1447,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
           "member": "string",
@@ -1217,6 +1457,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -1226,6 +1467,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
           "member": "bool",
@@ -1240,6 +1482,7 @@
       "document": "RecognizePhilippinesDrivingLicenseOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The Base64-encoded identity photo.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1249,6 +1492,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The full name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1258,6 +1502,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The last name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1267,6 +1512,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The first name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1276,6 +1522,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The middle name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1285,6 +1532,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The nationality.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1294,6 +1542,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The gender.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1303,6 +1552,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The address.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1312,6 +1562,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The license No.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1321,6 +1572,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The expiration date.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1330,6 +1582,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The agency code.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1339,6 +1592,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The date of birth.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1361,6 +1615,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
           "member": "bool",
@@ -1370,6 +1625,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
           "member": "string",
@@ -1379,6 +1635,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -1393,6 +1650,7 @@
       "document": "RecognizePhilippinesSssIDOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The Base64-encoded identity photo.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1402,6 +1660,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The common reference number (CRN).",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1411,6 +1670,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The full name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1420,6 +1680,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The date of birth.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1442,6 +1703,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
           "member": "bool",
@@ -1451,6 +1713,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
           "member": "string",
@@ -1460,6 +1723,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -1474,6 +1738,7 @@
       "document": "RecognizePhilippinesTinIDOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The Base64-encoded identity photo.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1483,6 +1748,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The tax identification number (TIN).",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1492,6 +1758,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1501,6 +1768,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The address.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1510,6 +1778,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The birth date.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1519,6 +1788,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The issue date.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1540,6 +1810,7 @@
       "document": "RecognizePhilippinesVoteIDOCR request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
           "member": "bool",
@@ -1548,6 +1819,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
           "member": "string",
@@ -1556,6 +1828,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
           "member": "string",
@@ -1570,6 +1843,7 @@
       "document": "RecognizePhilippinesVoteIDOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The Base64-encoded identity photo.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1578,6 +1852,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The voter's identification number (VIN).",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1586,6 +1861,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The first name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1594,6 +1870,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The last name.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1602,6 +1879,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The date of birth.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1610,6 +1888,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The civil status.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1618,6 +1897,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The citizenship.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1626,6 +1906,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The address.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1634,6 +1915,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The precinct.",
           "example": "无",
           "member": "TextDetectionResult",
@@ -1650,11 +1932,111 @@
       ],
       "type": "object"
     },
+    "SmartStructuralOCRV2Request": {
+      "document": "SmartStructuralOCRV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/docume",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsPdf",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `IsPdf` is `true`. Default value: `1`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PdfPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The names of the fields you want to return for the structured information recognition.\nFor example, if you want to return only the recognition result of the \"Name\" and \"Gender\" fields, set this parameter as follows:\nItemNames=[\"Name\",\"Gender\"]",
+          "example": "[\"key1\",\"key2\"]",
+          "member": "string",
+          "name": "ItemNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable recognition of all fields.",
+          "example": "无",
+          "member": "bool",
+          "name": "ReturnFullText",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "SmartStructuralOCRV2Response": {
+      "document": "SmartStructuralOCRV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.",
+          "example": "无",
+          "member": "float",
+          "name": "Angle",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The structural information (key-value).",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "StructuralList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The recognized text information.",
+          "example": "无",
+          "member": "WordItem",
+          "name": "WordList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TableOCRRequest": {
       "document": "TableOCR request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
           "member": "string",
           "name": "ImageBase64",
@@ -1663,6 +2045,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "member": "string",
           "name": "ImageUrl",
@@ -1676,6 +2059,7 @@
       "document": "TableOCR response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Recognized text. For more information, please click the link on the left",
           "member": "TextTable",
           "name": "TextDetections",
@@ -1683,6 +2067,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Base64-encoded Excel data.",
           "member": "string",
           "name": "Data",
@@ -1703,6 +2088,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Recognized text line content.",
           "example": "无",
           "member": "string",
@@ -1713,6 +2099,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Confidence. Value range: 0–100.",
           "example": "无",
           "member": "int64",
@@ -1723,6 +2110,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Text line coordinates, which are represented as 4 vertex coordinates.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Coord",
@@ -1733,6 +2121,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Extended field.\nThe paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.",
           "example": "无",
           "member": "string",
@@ -1743,6 +2132,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.",
           "example": "无",
           "member": "ItemCoord",
@@ -1753,6 +2143,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`",
           "example": "无",
           "member": "DetectedWords",
@@ -1763,6 +2154,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`",
           "example": "无",
           "member": "DetectedWordCoordPoint",
@@ -1779,6 +2171,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The recognized text line content.",
           "example": "无",
           "member": "string",
@@ -1789,6 +2182,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The coordinates, represented in the coordinates of the four points.",
           "example": "无",
           "member": "Coord",
@@ -1805,6 +2199,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Column index of the top-left corner of the cell.",
           "member": "int64",
           "name": "ColTl",
@@ -1814,6 +2209,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Row index of the top-left corner of the cell.",
           "member": "int64",
           "name": "RowTl",
@@ -1823,6 +2219,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Column index of the bottom-right corner of the cell.",
           "member": "int64",
           "name": "ColBr",
@@ -1832,6 +2229,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Row index of the bottom-right corner of the cell.",
           "member": "int64",
           "name": "RowBr",
@@ -1841,6 +2239,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cell text",
           "member": "string",
           "name": "Text",
@@ -1850,6 +2249,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cell type. Valid values: body, header, footer",
           "member": "string",
           "name": "Type",
@@ -1859,6 +2259,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Confidence. Value range: 0–100",
           "member": "int64",
           "name": "Confidence",
@@ -1868,6 +2269,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Text line coordinates, which are represented as 4 vertex coordinates.",
           "member": "Coord",
           "name": "Polygon",
@@ -1877,11 +2279,64 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Extended field",
           "member": "string",
           "name": "AdvancedInfo",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Value": {
+      "document": "Value information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The value of the recognized field.",
+          "example": "* 2 1 0 0 0 5 8 9 8 1 2 4 *",
+          "member": "string",
+          "name": "AutoContent",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The coordinates of the four vertices.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Polygon",
+          "name": "Coord",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "WordItem": {
+      "document": "The recognized text information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The text content.",
+          "example": "1234567",
+          "member": "string",
+          "name": "DetectedText",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The coordinates of the four vertices.",
+          "example": "[x1,y1,x2,y3,x3,y3,x4,y4]",
+          "member": "Polygon",
+          "name": "Coord",
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
