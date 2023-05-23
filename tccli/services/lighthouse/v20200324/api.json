@@ -357,6 +357,13 @@
       "output": "InquirePriceRenewInstancesResponse",
       "status": "online"
     },
+    "IsolateInstances": {
+      "document": "This API is used to return one or more Lighthouse instances. \n* Only `RUNNING` and `STOPPED` instances can be returned. \n* The instance status goes to `SHUTDOWN` after the API is called successfully. \n* Batch operations are supported. Up to 20 resources (including instances and data disks) can be returned in each request. \n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "IsolateInstancesRequest",
+      "name": "Isolates instances",
+      "output": "IsolateInstancesResponse",
+      "status": "online"
+    },
     "ModifyBlueprintAttribute": {
       "document": "This API is used to modify an image attribute.",
       "input": "ModifyBlueprintAttributeRequest",
@@ -393,10 +400,17 @@
       "status": "online"
     },
     "ModifyInstancesAttribute": {
-      "document": "This API is used to modify the attributes of instances.\n* The instance name is used only for users’ convenience.\n* Batch operations are supported. Each request can contain up to 100 instances at a time.\n* This API is async. A successful request will return a `RequestId`, it does not mean the operation is completed. You can call the `DescribeInstances` API to query the operation result. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "document": "This API is used to modify an instance attribute. \n* The instance name is used only for users’ convenience. \n* Batch operations are supported. The maximum number of instances in each request is 100.",
       "input": "ModifyInstancesAttributeRequest",
       "name": "Modifies instance attribute",
       "output": "ModifyInstancesAttributeResponse",
+      "status": "online"
+    },
+    "ModifyInstancesBundle": {
+      "document": "This API is used change one or more Lighthouse instance bundles. \n* Only `RUNNING` and `STOPPED` instances can be changed. \n* Batch operations are supported. The maximum number of instances in each request is 30. \n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "ModifyInstancesBundleRequest",
+      "name": "Changes the instance bundle.",
+      "output": "ModifyInstancesBundleResponse",
       "status": "online"
     },
     "ModifyInstancesLoginKeyPairAttribute": {
@@ -407,7 +421,7 @@
       "status": "online"
     },
     "ModifyInstancesRenewFlag": {
-      "document": "This API is used to modify the renewal flags of monthly subscribed instances.\n\n* Instances marked with \"auto-renewal\" will be automatically renewed for one month when they expire.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "document": "This API is used to change the auto-renewal setting of monthly-subscribed instances. \n\n* Instances with auto-renewal enabled are automatically renewed on a monthly basis upon the expiration. \n* Batch operations are supported. Up to 100 instances per request is allowed.",
       "input": "ModifyInstancesRenewFlagRequest",
       "name": "Modifies the renewal flags of instances",
       "output": "ModifyInstancesRenewFlagResponse",
@@ -488,6 +502,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-k31c771o",
           "member": "string",
@@ -497,6 +512,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Snapshot ID.",
           "example": "lhsnap-nv6aqcv6",
           "member": "string",
@@ -524,6 +540,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair ID list. Each request can contain up to 100 key pairs.",
           "example": "[\"lhkp-f7rjie1q\\n\"]",
           "member": "string",
@@ -533,6 +550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-ruy9d2tw\\n\"]",
           "member": "string",
@@ -560,6 +578,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "CCN instance ID.",
           "example": "ccn-f49l6u0z",
           "member": "string",
@@ -587,6 +606,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "\"lhins-anxwfvxh\"",
           "member": "string",
@@ -597,6 +617,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of elastic cloud disks attached to the instance",
           "example": "1",
           "member": "int64",
@@ -607,6 +628,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Upper limit of attached elastic cloud disks",
           "example": "5",
           "member": "int64",
@@ -623,6 +645,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-5vmz00i3\"]",
           "member": "string",
@@ -632,6 +655,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-qg08np8l",
           "member": "string",
@@ -641,6 +665,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether Auto-Renewal is enabled ",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
@@ -667,6 +692,7 @@
       "document": "Image information.",
       "members": [
         {
+          "disabled": false,
           "document": "Image ID, which is the unique identifier of `Blueprint`.",
           "example": "lhbp-5exe07sc",
           "member": "string",
@@ -676,6 +702,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image title to be displayed.",
           "example": "Discuz! Q",
           "member": "string",
@@ -685,6 +712,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image version to be displayed.",
           "example": "1.0.0",
           "member": "string",
@@ -694,6 +722,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image description information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "discuzq",
           "member": "string",
@@ -703,6 +732,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "OS name.",
           "example": "CentOS 7.6 64bit",
           "member": "string",
@@ -712,6 +742,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "OS type.",
           "example": "CENTOS",
           "member": "string",
@@ -721,6 +752,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "OS type, such as LINUX_UNIX and WINDOWS.",
           "example": "LINUX_UNIX",
           "member": "string",
@@ -730,6 +762,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image type, such as APP_OS, PURE_OS, and PRIVATE.",
           "example": "APP_OS",
           "member": "string",
@@ -739,6 +772,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image picture URL.",
           "example": "无",
           "member": "string",
@@ -748,6 +782,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "System disk size required by image in GB.",
           "example": "20",
           "member": "int64",
@@ -757,6 +792,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image status.",
           "example": "NORMAL",
           "member": "string",
@@ -766,6 +802,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-02T09:16:16Z",
           "member": "datetime_iso",
@@ -775,6 +812,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Image name.",
           "example": "discuzq",
           "member": "string",
@@ -784,6 +822,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the image supports automation tools.",
           "example": "true",
           "member": "bool",
@@ -793,6 +832,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Memory size required by image in GB.",
           "example": "1",
           "member": "int64",
@@ -802,6 +842,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "ID of the Lighthouse image shared from a CVM image\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "img-cs2rrmp0",
           "member": "string",
@@ -811,6 +852,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "URL of official website of the open-source project",
           "example": "\"\"",
           "member": "string",
@@ -820,6 +862,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Guide documentation URL",
           "example": "\"\"",
           "member": "string",
@@ -829,6 +872,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Array of IDs of scenes associated with an image\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"lhsc-123456\"]",
           "member": "string",
@@ -838,6 +882,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Docker version.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "20.10.5",
           "member": "string",
@@ -854,6 +899,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Image information.",
           "member": "Blueprint",
           "name": "Blueprint",
@@ -863,6 +909,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Software list.",
           "member": "Software",
           "name": "SoftwareSet",
@@ -872,6 +919,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "member": "string",
           "name": "InstanceId",
@@ -887,6 +935,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Original image unit price in USD.",
           "example": "0.008",
           "member": "float",
@@ -897,6 +946,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Original image total price in USD.",
           "example": "0.008",
           "member": "float",
@@ -907,6 +957,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discount.",
           "example": "100",
           "member": "int64",
@@ -917,6 +968,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discounted image total price in USD.",
           "example": "0.008",
           "member": "float",
@@ -932,7 +984,7 @@
       "document": "Package information.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Package ID.",
           "example": "bundle_gen_01",
           "member": "string",
@@ -942,7 +994,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Memory size in GB.",
           "example": "1",
           "member": "int64",
@@ -952,7 +1004,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -962,7 +1014,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "System disk size.",
           "example": "40",
           "member": "int64",
@@ -972,7 +1024,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Monthly network traffic in Gb.",
           "example": "300",
           "member": "int64",
@@ -982,7 +1034,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Whether Linux/Unix is supported.",
           "example": "true",
           "member": "bool",
@@ -992,7 +1044,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Whether Windows is supported.",
           "example": "true",
           "member": "bool",
@@ -1002,7 +1054,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Current package unit price information.",
           "example": " {           \"InstancePrice\": {             \"OriginalBundlePrice",
           "member": "Price",
@@ -1012,7 +1064,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Number of CPU cores.",
           "example": "1",
           "member": "int64",
@@ -1022,7 +1074,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Peak bandwidth in Mbps.",
           "example": "3",
           "member": "uint64",
@@ -1032,7 +1084,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Network billing mode.",
           "example": "TRAFFIC_POSTPAID_BY_HOUR",
           "member": "string",
@@ -1042,7 +1094,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Package sale status. Valid values: AVAILABLE, SOLD_OUT",
           "example": "SOLD_OUT",
           "member": "string",
@@ -1052,8 +1104,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Package type.\nValid values:\n<li> GENERAL_BUNDLE: general</li><li> STORAGE_BUNDLE: Storage</li>",
+          "disabled": false,
+          "document": "Bundle type. \nValid values: \n<li>STARTER_BUNDLE: Starter bundle</li>\n<li>GENERAL_BUNDLE: General bundle</li>\n<li>ENTERPRISE_BUNDLE: Enterprise bundle</li>\n<li>STORAGE_BUNDLE: Storage-optimized bundle</li>\n<li>EXCLUSIVE_BUNDLE: Dedicated bundle</li>\n<li>HK_EXCLUSIVE_BUNDLE: Hong Kong-dedicated bundle </li>\n<li>CAREFREE_BUNDLE: Lighthouse Care bundle</li>\n<li>BEFAST_BUNDLE: BeFast bundle </li>",
           "example": "GENERAL_BUNDLE",
           "member": "string",
           "name": "BundleType",
@@ -1062,7 +1114,17 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Bundle type description \nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "通用型",
+          "member": "string",
+          "name": "BundleTypeDescription",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Package tag.\nValid values:\n\"ACTIVITY\": promotional package\n\"NORMAL\": regular package\n\"CAREFREE\": carefree package",
           "example": "NORMAL",
           "member": "string",
@@ -1079,6 +1141,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "CCN instance ID.",
           "example": "ccn-f49l6u0z",
           "member": "string",
@@ -1089,6 +1152,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "CIDR block of associated instance.",
           "example": " [\"10.0.0.0/16\"]",
           "member": "string",
@@ -1099,6 +1163,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Associated instance status:\n\n•  PENDING: applying\n•  ACTIVE: connected\n•  EXPIRED: expired\n•  REJECTED: rejected\n•  DELETED: deleted\n•  FAILED: failed (it will be asynchronously unassociated after 2 hours)\n•  ATTACHING: associating\n•  DETACHING: unassociating\n•  DETACHFAILED: failed to unassociate (it will be asynchronously unassociated after 2 hours)",
           "example": "PENDING",
           "member": "string",
@@ -1109,6 +1174,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Association time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021-05-08 17:21:05",
           "member": "datetime",
@@ -1119,6 +1185,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks",
           "example": "Lighthouse attach ccn instance",
           "member": "string",
@@ -1135,6 +1202,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Environment variable key",
           "example": "K1",
           "member": "string",
@@ -1145,6 +1213,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment variable value",
           "example": "V1",
           "member": "string",
@@ -1160,7 +1229,7 @@
       "document": "CreateBlueprint request structure.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Image name, which can contain up to 60 characters.",
           "example": "test-blueprint",
           "member": "string",
@@ -1169,7 +1238,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Image description, which can contain up to 60 characters.",
           "example": "test-blueprint",
           "member": "string",
@@ -1178,13 +1247,22 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "ID of the instance for which to make an image.",
           "example": "lhins-aaaabbbb",
           "member": "string",
           "name": "InstanceId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to forcibly shut down the instance before creating the image \nValid values: \n`True`: Shut down and instance first \n`False`: Create the image when the instance is running \nDefault: `True` \nNote that if you create an image when the instance is running, there might be data loss.",
+          "example": "True",
+          "member": "bool",
+          "name": "ForcePowerOff",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1193,6 +1271,7 @@
       "document": "CreateBlueprint response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Custom image ID.",
           "example": "lhbp-xkeh87da",
           "member": "string",
@@ -1215,6 +1294,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-aglzynfg",
           "member": "string",
@@ -1224,6 +1304,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Firewall rule list.",
           "example": "无",
           "member": "FirewallRule",
@@ -1233,6 +1314,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
           "example": "无",
           "member": "uint64",
@@ -1260,6 +1342,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance for which to create a snapshot.",
           "example": "lhins-k31c771o",
           "member": "string",
@@ -1269,6 +1352,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Snapshot name, which can contain up to 60 characters.",
           "example": "snap_20200903",
           "member": "string",
@@ -1283,6 +1367,7 @@
       "document": "CreateInstanceSnapshot response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Snapshot ID.",
           "example": "lhsnap-nv6aqcv6",
           "member": "string",
@@ -1304,8 +1389,8 @@
       "document": "CreateInstances request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Bundle ID.",
+          "disabled": false,
+          "document": "Bundle ID. You can get it via the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1) API.",
           "example": "bundle_gen_03",
           "member": "string",
           "name": "BundleId",
@@ -1313,8 +1398,8 @@
           "type": "string"
         },
         {
-          "default": "",
-          "document": "Image ID",
+          "disabled": false,
+          "document": "Image ID. You can get it via the [DescribeBlueprints](https://intl.cloud.tencent.com/document/api/1207/47689?from_cn_redirect=1) API.",
           "example": "lhbp-g0tn7djh",
           "member": "string",
           "name": "BlueprintId",
@@ -1322,7 +1407,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.",
           "example": "无",
           "member": "InstanceChargePrepaid",
@@ -1331,7 +1416,7 @@
           "type": "object"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance display name.",
           "example": "mylighthouse",
           "member": "string",
@@ -1340,7 +1425,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Number of the instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.",
           "example": "1",
           "member": "uint64",
@@ -1349,7 +1434,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "List of availability zones. A random AZ is selected by default.",
           "example": "[\"ap-beijing-1\"]",
           "member": "string",
@@ -1358,7 +1443,7 @@
           "type": "list"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Whether the request is a dry run only.\n`true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.\nIf the dry run fails, the corresponding error code will be returned.\nIf the dry run succeeds, the RequestId will be returned.\n`false` (default value): send a normal request and create instance(s) if all the requirements are met.",
           "example": "false",
           "member": "bool",
@@ -1367,7 +1452,7 @@
           "type": "bool"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.",
           "example": "无",
           "member": "string",
@@ -1376,7 +1461,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Login password of the instance. It’s only available for Windows instances. If it’s not specified, it means that the user choose to set the login password after the instance creation.",
           "example": "无",
           "member": "LoginConfiguration",
@@ -1385,7 +1470,7 @@
           "type": "object"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Configuration of the containers to create",
           "example": "无",
           "member": "DockerContainerConfiguration",
@@ -1394,7 +1479,7 @@
           "type": "list"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Whether to use the vouchers automatically. It defaults to No.",
           "example": "false",
           "member": "bool",
@@ -1409,6 +1494,7 @@
       "document": "CreateInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of IDs created by using this API. The returning of IDs does not mean that the instances are created successfully.\n\nYou can call `DescribeInstances` API, and find the instance ID in the `InstancesSet` returned to check its status. If the `status` is `running`, the instance is created successfully.",
           "example": "无",
           "member": "string",
@@ -1431,6 +1517,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair name, which can contain up to 25 digits, letters, and underscores.",
           "example": "test_create_1",
           "member": "string",
@@ -1445,6 +1532,7 @@
       "document": "CreateKeyPair response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Key pair information.",
           "example": "无",
           "member": "KeyPair",
@@ -1467,6 +1555,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk ID.",
           "example": "lhdisk-f3vgfci1",
           "member": "string",
@@ -1477,6 +1566,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk unit price.",
           "example": "0.8",
           "member": "float",
@@ -1487,6 +1577,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Total price of cloud disk",
           "example": "0.8",
           "member": "float",
@@ -1497,6 +1588,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discount.",
           "example": "0.5",
           "member": "float",
@@ -1507,6 +1599,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discounted total price.",
           "example": "0.4",
           "member": "float",
@@ -1517,6 +1610,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance to which the data disk is mounted.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "lhins-abcdef",
           "member": "string",
@@ -1533,6 +1627,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Image ID list, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
           "example": "[\"lhbp-aaaabbbb\"]",
           "member": "string",
@@ -1560,6 +1655,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-aglzynfg",
           "member": "string",
@@ -1569,6 +1665,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Firewall rule list.",
           "example": "无",
           "member": "FirewallRule",
@@ -1578,6 +1675,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
           "example": "1",
           "member": "uint64",
@@ -1605,6 +1703,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair ID list. Each request can contain up to 10 key pairs.",
           "example": "[\"lhkp-1234abcd\\r\\n\"]",
           "member": "string",
@@ -1632,6 +1731,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of IDs of snapshots to be deleted, which can be queried through `DescribeSnapshots`.",
           "example": "[\"lhsnap-nv6aqcv6\\n\"]",
           "member": "string",
@@ -1659,6 +1759,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Restricted operation name.",
           "member": "string",
           "name": "Action",
@@ -1668,6 +1769,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Restricted operation message code.",
           "member": "string",
           "name": "Code",
@@ -1677,6 +1779,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Restricted operation message.",
           "member": "string",
           "name": "Message",
@@ -1692,6 +1795,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of scene IDs",
           "example": "[\"lhsc-123456\"]",
           "member": "string",
@@ -1701,6 +1805,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0",
           "example": "0",
           "member": "int64",
@@ -1710,6 +1815,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100",
           "example": "20",
           "member": "int64",
@@ -1724,6 +1830,7 @@
       "document": "DescribeAllScenes response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of scenes",
           "example": "无",
           "member": "SceneInfo",
@@ -1733,6 +1840,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total count of scenes",
           "example": "1",
           "member": "int64",
@@ -1755,6 +1863,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list, which currently can contain only one instance.",
           "example": "[\"lhins-f4s49nap\\r\\n\"]",
           "member": "string",
@@ -1769,6 +1878,7 @@
       "document": "DescribeBlueprintInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible image instances.",
           "example": "1",
           "member": "int64",
@@ -1778,6 +1888,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image instance list information.",
           "example": "无",
           "member": "BlueprintInstance",
@@ -1799,6 +1910,7 @@
       "document": "DescribeBlueprints request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Image ID list.",
           "example": "[\"lhbp-aaaabbbb\"]",
           "member": "string",
@@ -1807,6 +1919,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
@@ -1815,6 +1928,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
@@ -1823,6 +1937,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Filter list.\n<li>blueprint-id</li>Filter by the **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by the **image type**.\nValid values: `APP_OS` (application image), `PURE_OS` (system image), `DOCKER` (Docker container image), `PRIVATE` (custom image), `SHARED` (shared image)\nType: String\nRequired: no\n<li>platform-type</li>Filter by the **image operating system**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by the **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by the **image status**.\nType: String\nRequired: no\n<li>scene-id</li>Filter by the **scene ID**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters`, each of which can contain up to 100 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
           "example": " [         {             \"Name\": \"blueprint-type\",             \"",
           "member": "Filter",
@@ -1837,6 +1952,7 @@
       "document": "DescribeBlueprints response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible images.",
           "example": "1",
           "member": "int64",
@@ -1846,6 +1962,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image details list.",
           "example": " [             {                 \"BlueprintId\": \"lhbp-5e8807sc\",",
           "member": "Blueprint",
@@ -1868,6 +1985,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Package ID.",
           "example": "bundle_bw_small1_1",
           "member": "string",
@@ -1882,6 +2000,7 @@
       "document": "DescribeBundleDiscount response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Currency: CNY, USD.",
           "example": "CNY",
           "member": "string",
@@ -1891,6 +2010,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).",
           "example": "无",
           "member": "DiscountDetail",
@@ -1913,6 +2033,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Package ID list.",
           "example": "bundle_ntp_small1_500",
           "member": "string",
@@ -1922,6 +2043,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
@@ -1931,6 +2053,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "20",
           "member": "int64",
@@ -1940,6 +2063,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter list\n<li>bundle-id</li>Filter by the **bundle ID**.\nType: String\nRequired: No\n<li>support-platform-type</li>Filter by the **OS type**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: No\n<li>bundle-type</li>Filter by the **bundle type**.\nValid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)\nType: String\nRequired: No\n<li>bundle-state</li>Filter by the **bundle status**.\nValid values: `ONLINE`, `OFFLINE`\nType: String\nRequired: No\nEach request can contain up to 10 `Filters`, and up to 5 `Filter.Values` for each filter. You cannot specify both `BundleIds` and `Filters` at the same time.",
           "example": "无",
           "member": "Filter",
@@ -1949,6 +2073,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ list, which contains all AZs by default.",
           "example": "无",
           "member": "string",
@@ -1963,6 +2088,7 @@
       "document": "DescribeBundles response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of package details.",
           "example": "无",
           "member": "Bundle",
@@ -1972,6 +2098,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of eligible packages, which is used for pagination.",
           "example": "2",
           "member": "int64",
@@ -1998,6 +2125,7 @@
       "document": "DescribeCcnAttachedInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of instances associated with the CCN instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CcnAttachedInstance",
@@ -2020,6 +2148,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Filter list.\n<li>zone</li>Filter by availability zone.\nType: String\nRequired: no",
           "example": "无",
           "member": "Filter",
@@ -2034,6 +2163,7 @@
       "document": "DescribeDiskConfigs response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of cloud disk configurations.",
           "example": "无",
           "member": "DiskConfig",
@@ -2056,6 +2186,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk type. Valid values: \"CLOUD_PREMIUM\".",
           "example": "CLOUD_PREMIUM",
           "member": "string",
@@ -2065,6 +2196,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk size.",
           "example": "50",
           "member": "int64",
@@ -2074,6 +2206,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.",
           "example": "1",
           "member": "int64",
@@ -2088,6 +2221,7 @@
       "document": "DescribeDiskDiscount response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Currency: CNY, USD.",
           "example": "CNY",
           "member": "string",
@@ -2097,6 +2231,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).",
           "example": "无",
           "member": "DiscountDetail",
@@ -2119,6 +2254,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-eobj8huv\"]",
           "member": "string",
@@ -2133,6 +2269,7 @@
       "document": "DescribeDisksDeniedActions response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of operation limits of cloud disks.",
           "example": "无",
           "member": "DiskDeniedActions",
@@ -2155,6 +2292,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-p1zflrif\"]",
           "member": "string",
@@ -2164,6 +2302,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter list\ndisk-id\nFilter by **cloud disk ID**.\nType: String\nRequired: No\ninstance-id\nFilter by **instance ID**.\nType: String\nRequired: No\ndisk-name\nFilter by **cloud disk name**.\nType: String\nRequired: No\nzone\nFilter by **availability zone**.\nType: String\nRequired: No\ndisk-usage\nFilter by **cloud disk type**.\nType: String\nRequired: No\nValues: `SYSTEM_DISK` and `DATA_DISK`\ndisk-state\nFilter by **cloud disk status**.\nType: String\nRequired: No\nValues: See `DiskState` in [Disk](https://intl.cloud.tencent.com/document/api/1207/47576?from_cn_redirect=1#Disk)\nEach request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "Filter",
@@ -2173,6 +2312,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "100",
           "member": "int64",
@@ -2182,6 +2322,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -2191,6 +2332,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The field by which the cloud disks are sorted. Valid values: \"CREATED_TIME\" (creation time), \"EXPIRED_TIME\" (expiration time), \"DISK_SIZE\" (size of cloud disks). Default value: \"CREATED_TIME\".",
           "example": "CREATED_FIELD",
           "member": "string",
@@ -2200,6 +2342,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting order of the output cloud disks. Valid values: \"ASC\" (ascending order), \"DESC\" (descending order). Default value: \"DESC\".",
           "example": "ASC",
           "member": "string",
@@ -2214,6 +2357,7 @@
       "document": "DescribeDisks response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of cloud disk information.",
           "example": "无",
           "member": "Disk",
@@ -2223,6 +2367,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of eligible cloud disks.",
           "example": "10",
           "member": "int64",
@@ -2245,6 +2390,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-eobj8huv\"]",
           "member": "string",
@@ -2254,6 +2400,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -2263,6 +2410,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -2277,6 +2425,7 @@
       "document": "DescribeDisksReturnable response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of returnable cloud disks.",
           "example": "无",
           "member": "DiskReturnable",
@@ -2286,6 +2435,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of eligible cloud disks.",
           "example": "1",
           "member": "int64",
@@ -2308,6 +2458,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-aglzynfg",
           "member": "string",
@@ -2317,6 +2468,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -2326,6 +2478,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -2340,6 +2493,7 @@
       "document": "DescribeFirewallRules response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible firewall rules.",
           "example": "7",
           "member": "int64",
@@ -2349,6 +2503,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Firewall rule details list.",
           "example": "无",
           "member": "FirewallRuleInfo",
@@ -2358,6 +2513,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Firewall version number.",
           "example": "1",
           "member": "uint64",
@@ -2384,6 +2540,7 @@
       "document": "DescribeFirewallRulesTemplate response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible firewall rules.",
           "example": "9",
           "member": "int64",
@@ -2393,6 +2550,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Firewall rule details list.",
           "example": "无",
           "member": "FirewallRuleInfo",
@@ -2415,6 +2573,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Resource name list. Values:\n- `GENERAL_BUNDLE_INSTANCE`: General bundle\n- `STORAGE_BUNDLE_INSTANCE`:  Storage bundle \n- `ENTERPRISE_BUNDLE_INSTANCE`: Enterprise bundle \n- `EXCLUSIVE_BUNDLE_INSTANCE`： Dedicated bundle\n- `BEFAST_BUNDLE_INSTANCE`: BeFast bundle\n- `USER_KEY_PAIR`: Key pair\n- `SNAPSHOT`: Snapshot\n- `BLUEPRINT`: Custom image\n- `FREE_BLUEPRINT`: Free custom image\n- `DATA_DISK`: Data disk\n- `FIREWALL_RULE`: Firewall rules",
           "example": "[\"GENERAL_BUNDLE_INSTANCE\\n\"]",
           "member": "string",
@@ -2429,6 +2588,7 @@
       "document": "DescribeGeneralResourceQuotas response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of general resource quota details.",
           "example": "无",
           "member": "GeneralResourceQuota",
@@ -2451,6 +2611,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-j4liwha8",
           "member": "string",
@@ -2465,6 +2626,7 @@
       "document": "DescribeInstanceLoginKeyPairAttribute response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether to allow login with the default key pair. Valid values: YES, NO.",
           "example": "NO",
           "member": "string",
@@ -2487,6 +2649,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "lhins-ruy9d2tw",
           "member": "string",
@@ -2501,6 +2664,7 @@
       "document": "DescribeInstanceVncUrl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance VNC URL.",
           "example": "wss%3A%2F%2Fusevnc.qcloud.com%3A443%2Fvnc%3Fs%3D",
           "member": "string",
@@ -2523,6 +2687,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-ruy9d2tw\\n\"]",
           "member": "string",
@@ -2537,6 +2702,7 @@
       "document": "DescribeInstancesDeniedActions response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of instance operation limit details.",
           "example": "无",
           "member": "InstanceDeniedActions",
@@ -2559,6 +2725,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of instance IDs.",
           "example": "[\"lhins-anxwfvxh\"]",
           "member": "string",
@@ -2573,6 +2740,7 @@
       "document": "DescribeInstancesDiskNum response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Information of all attached disks",
           "example": "无",
           "member": "AttachDetail",
@@ -2582,6 +2750,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of attached cloud disks",
           "example": "1",
           "member": "int64",
@@ -2603,7 +2772,7 @@
       "document": "DescribeInstances request structure.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time.",
           "example": "无",
           "member": "string",
@@ -2612,8 +2781,8 @@
           "type": "list"
         },
         {
-          "default": "",
-          "document": "Filter list.\n<li>instance-name</li>Filter by **instance name**.\nType: String\nRequired: no\n<li>private-ip-address</li>Filter by **private IP of instance primary ENI**.\nType: String\nRequired: no\n<li>public-ip-address</li>Filter by **public IP of instance primary ENI**.\nType: String\nRequired: no\n<li>zone</li>Filter by the availability zone\nType: String\nRequired: no\n<li>instance-state</li>Filter by **instance status**.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.",
+          "disabled": false,
+          "document": "Filter list. \n<li>instance-name</li>Filter by the **instance name**. \nType: String \nRequired: No \n<li>private-ip-address</li>Filter by the **private IP of instance primary ENI**. \nType: String \nRequired: No \n<li>public-ip-address</li>Filter by the **public IP of instance primary ENI**. \nType: String \nRequired: No \n<li>zone</li>Filter by the availability zone. \nType: String \nRequired: No \n<li>instance-state</li>Filter by the **instance status**. \nType: String \nRequired: No \n<li>tag-key</li>Filter by the **tag key**. \nType: String \nRequired: No \n<li>tag-value</li>Filter by the **tag value**. \nType: String \nRequired: No \n<li> tag:tag-key</li>Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key. \nType: String \nRequired: No \nEach request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -2621,7 +2790,7 @@
           "type": "list"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
@@ -2630,7 +2799,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
@@ -2645,6 +2814,7 @@
       "document": "DescribeInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible instances.",
           "example": "1",
           "member": "int64",
@@ -2654,6 +2824,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of instance details",
           "example": "无",
           "member": "Instance",
@@ -2676,6 +2847,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-ruy9d2tw\\n\",\"lhins-xusdke45\\n\"]",
           "member": "string",
@@ -2685,6 +2857,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -2694,6 +2867,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -2708,6 +2882,7 @@
       "document": "DescribeInstancesReturnable response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible instances.",
           "example": "2",
           "member": "int64",
@@ -2717,6 +2892,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of returnable instance details.",
           "example": "无",
           "member": "InstanceReturnable",
@@ -2739,6 +2915,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "member": "string",
           "name": "InstanceIds",
@@ -2747,6 +2924,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -2755,6 +2933,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "member": "int64",
           "name": "Limit",
@@ -2768,6 +2947,7 @@
       "document": "DescribeInstancesTrafficPackages response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible instance traffic package details.",
           "member": "int64",
           "name": "TotalCount",
@@ -2775,6 +2955,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of instance traffic package details.",
           "member": "InstanceTrafficPackage",
           "name": "InstanceTrafficPackageSet",
@@ -2795,6 +2976,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair ID list.",
           "example": "[\"lhkp-omd12oc1\\r\\n\"]",
           "member": "string",
@@ -2804,6 +2986,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -2813,6 +2996,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -2822,6 +3006,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter list.\n<li>key-id</li>Filter by **key pair ID**.\nType: String\nRequired: no\n<li>key-name</li>Filter by the **key pair name**. Fuzzy match is supported.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each filter. `KeyIds` and `Filters` cannot be specified at the same time.",
           "example": "[{\"Name\":\"key-name\",\"Values\":[\"k1\"]}]",
           "member": "Filter",
@@ -2836,6 +3021,7 @@
       "document": "DescribeKeyPairs response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible key pairs.",
           "example": "1",
           "member": "int64",
@@ -2845,6 +3031,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of key pair details.",
           "example": "无",
           "member": "KeyPair",
@@ -2867,6 +3054,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-f4s3n38h",
           "member": "string",
@@ -2876,6 +3064,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter list\n<li>bundle-id</li>Filter by the **bundle ID**.\nType: String\nRequired: No\n<li>support-platform-type</li>Filter by the **OS type**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: No\n<li>bundle-type</li>Filter by the **bundle type**.\nValid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)\nType: String\nRequired: No\n<li>bundle-state</li>Filter by the **bundle status**.\nValid values: `ONLINE`, `OFFLINE`\nType: String\nRequired: No\nEach request can contain up to 10 `Filters`, and each filter can have up to 5 `Filter.Values`.",
           "example": "无",
           "member": "Filter",
@@ -2885,6 +3074,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
@@ -2894,6 +3084,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
@@ -2908,6 +3099,7 @@
       "document": "DescribeModifyInstanceBundles response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of matched instances.",
           "example": "3",
           "member": "int64",
@@ -2917,6 +3109,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "New package details",
           "example": "无",
           "member": "ModifyBundle",
@@ -2943,6 +3136,7 @@
       "document": "DescribeRegions response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of regions.",
           "example": "4",
           "member": "int64",
@@ -2952,6 +3146,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region information list.",
           "example": "无",
           "member": "RegionInfo",
@@ -2974,6 +3169,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "lhins-383nzmm1",
           "member": "string",
@@ -2983,6 +3179,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
@@ -2992,6 +3189,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "20",
           "member": "int64",
@@ -3001,6 +3199,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image platform type**.\nValid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by **image status**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "Filter",
@@ -3015,6 +3214,7 @@
       "document": "DescribeResetInstanceBlueprints response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible images.",
           "example": "2",
           "member": "int64",
@@ -3024,6 +3224,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image reset information list",
           "example": "无",
           "member": "ResetInstanceBlueprint",
@@ -3046,6 +3247,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of scene IDs",
           "example": "[\"lhsc-123456\"]",
           "member": "string",
@@ -3055,6 +3257,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0",
           "example": "0",
           "member": "int64",
@@ -3064,6 +3267,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100",
           "example": "20",
           "member": "int64",
@@ -3078,6 +3282,7 @@
       "document": "DescribeScenes response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of scenes",
           "example": "无",
           "member": "Scene",
@@ -3087,6 +3292,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of scenes",
           "example": "1",
           "member": "int64",
@@ -3109,6 +3315,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Snapshot ID list, which can be queried through `DescribeSnapshots`.",
           "example": "[\"lhsnap-nv6aqcv6\\n\"]",
           "member": "string",
@@ -3123,6 +3330,7 @@
       "document": "DescribeSnapshotsDeniedActions response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of snapshot operation limit details.",
           "example": "无",
           "member": "SnapshotDeniedActions",
@@ -3145,6 +3353,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of IDs of snapshots to be queried.\nYou cannot specify `SnapshotIds` and `Filters` at the same time.",
           "example": "[\"lhsnap-nv6aqcv6\"]",
           "member": "string",
@@ -3154,6 +3363,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter list.\n<li>snapshot-id</li>Filter by **snapshot ID**.\nType: String\nRequired: no\n<li>disk-id</li>Filter by **disk ID**.\nType: String\nRequired: no\n<li>snapshot-name</li>Filter by **snapshot name**.\nType: String\nRequired: no\n<li>instance-id</li>Filter by **instance ID**.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `SnapshotIds` and `Filters` at the same time.",
           "example": "无",
           "member": "Filter",
@@ -3163,6 +3373,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -3172,6 +3383,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "1",
           "member": "int64",
@@ -3186,6 +3398,7 @@
       "document": "DescribeSnapshots response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of snapshots.",
           "example": "1",
           "member": "int64",
@@ -3195,6 +3408,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of snapshot details.",
           "example": "无",
           "member": "Snapshot",
@@ -3217,6 +3431,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting field. Valid values:\n<li>`ZONE`: Sort by the availability zone.\n<li>`INSTANCE_DISPLAY_LABEL`: Sort by visibility labels (`HIDDEN`, `NORMAL` and `SELECTED`). Default: ['HIDDEN', 'NORMAL', 'SELECTED'].\nThe default value is `ZONE`.",
           "example": "\"ZONE\"",
           "member": "string",
@@ -3226,6 +3441,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specifies how availability zones are listed. Valid values:\n<li>ASC: Ascending sort. \n<li>DESC: Descending sort.\nThe default value is `ASC`.",
           "example": "\"DESC\"",
           "member": "string",
@@ -3240,6 +3456,7 @@
       "document": "DescribeZones response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of AZs",
           "example": "1",
           "member": "int64",
@@ -3249,6 +3466,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of AZ details",
           "example": "无",
           "member": "ZoneInfo",
@@ -3271,6 +3489,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "CCN instance ID.",
           "example": "ccn-f49l6u0z",
           "member": "string",
@@ -3298,6 +3517,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-eobj8huv\"]",
           "member": "string",
@@ -3325,6 +3545,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Values: \n<li>\"DiskSpace\": Cloud disk space</li>\n<li>\"DiskBackupQuota\": Cloud disk backups</li>",
           "example": "DiskSpace",
           "member": "string",
@@ -3335,6 +3556,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Official unit price of the billable item",
           "example": "1.1",
           "member": "float",
@@ -3345,6 +3567,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Official total price of the billable item",
           "example": "2.2",
           "member": "float",
@@ -3355,6 +3578,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discount of the billable item",
           "example": "0.8",
           "member": "float",
@@ -3365,6 +3589,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discounted total price of the billable item",
           "example": "2.1",
           "member": "float",
@@ -3381,6 +3606,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair ID list. Each request can contain up to 100 key pairs.",
           "example": "[\"lhkp-f7rjie1q\\n\"]",
           "member": "string",
@@ -3390,6 +3616,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-ruy9d2tw\\n\"]",
           "member": "string",
@@ -3417,6 +3644,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Billing duration.",
           "member": "int64",
           "name": "TimeSpan",
@@ -3426,6 +3654,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing unit.",
           "member": "string",
           "name": "TimeUnit",
@@ -3435,6 +3664,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Total price.",
           "member": "float",
           "name": "TotalCost",
@@ -3444,6 +3674,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discounted total price.",
           "member": "float",
           "name": "RealTotalCost",
@@ -3453,6 +3684,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discount.",
           "member": "int64",
           "name": "Discount",
@@ -3462,6 +3694,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discount details.",
           "member": "PolicyDetail",
           "name": "PolicyDetail",
@@ -3476,6 +3709,7 @@
       "document": "Disk information",
       "members": [
         {
+          "disabled": false,
           "document": "Disk ID",
           "example": "lhdisk-p1zflrif",
           "member": "string",
@@ -3485,6 +3719,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "lhins-anxwfvxh",
           "member": "string",
@@ -3494,6 +3729,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Availability zone",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -3503,6 +3739,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disk name",
           "example": "disk-name",
           "member": "string",
@@ -3512,6 +3749,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disk type",
           "example": "DATA_DISK",
           "member": "string",
@@ -3521,6 +3759,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disk media type",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -3530,6 +3769,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disk payment type",
           "example": "PREPAID",
           "member": "string",
@@ -3539,6 +3779,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disk size",
           "example": "20",
           "member": "int64",
@@ -3548,6 +3789,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Renewal flag",
           "example": "NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
@@ -3557,6 +3799,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disk status. Values: \n<li>`PENDING`: Creating</li>\n<li>`UNATTACHED`: Not attached</li>\n<li>`ATTACHING`: Attaching</li>\n<li>`ATTACHED`: Attached</li>\n<li>`DETACHING`: Detaching</li>\n<li>`SHUTDOWN`: Isolated</li>\n<li>`CREATED_FAILED`: Failed to create</li>\n<li>`TERMINATING`: Terminating</li>\n<li>`DELETING`: Deleting</li>\n<li>`FREEZING`: Freezing</li>",
           "example": "UNATTACHED",
           "member": "string",
@@ -3566,6 +3809,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the disk is attached to an instance",
           "example": "False",
           "member": "bool",
@@ -3575,6 +3819,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to release the disk along with the instance",
           "example": "False",
           "member": "bool",
@@ -3584,6 +3829,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Last operation",
           "example": "CreateDisks",
           "member": "string",
@@ -3593,6 +3839,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Last operation status",
           "example": "SUCCESS",
           "member": "string",
@@ -3602,6 +3849,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Last request ID",
           "example": "b786faac-d27b-4f70-a52e-3ae725e0f639",
           "member": "string",
@@ -3611,6 +3859,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-08-25T08:50:57Z",
           "member": "datetime_iso",
@@ -3620,6 +3869,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-08-25T08:50:57Z",
           "member": "datetime_iso",
@@ -3629,6 +3879,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Isolation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-08-25T08:50:57Z",
           "member": "datetime_iso",
@@ -3638,6 +3889,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total disk backups",
           "example": "1",
           "member": "int64",
@@ -3647,6 +3899,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disk backup quota",
           "example": "1",
           "member": "int64",
@@ -3663,6 +3916,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Purchase duration.",
           "example": "1",
           "member": "int64",
@@ -3673,6 +3927,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether Auto-Renewal is enabled ",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
@@ -3683,6 +3938,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Purchase duration unit. Default value: \"m\" (month)",
           "example": "m",
           "member": "string",
@@ -3699,6 +3955,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Availability zone.",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -3709,6 +3966,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk type.",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -3719,6 +3977,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk sale status.",
           "example": "AVAILABLE",
           "member": "string",
@@ -3729,6 +3988,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum cloud disk size.",
           "example": "1000",
           "member": "int64",
@@ -3739,6 +3999,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Minimum cloud disk size.",
           "example": "10",
           "member": "int64",
@@ -3749,6 +4010,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk increment.",
           "example": "10",
           "member": "int64",
@@ -3765,6 +4027,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk ID.",
           "example": "lhdisk-eobj8huv",
           "member": "string",
@@ -3775,6 +4038,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of operation limits.",
           "example": "无",
           "member": "DeniedAction",
@@ -3791,6 +4055,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk unit price.",
           "example": "1.1",
           "member": "float",
@@ -3801,6 +4066,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Total cloud disk price.",
           "example": "2.2",
           "member": "float",
@@ -3811,6 +4077,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discount.",
           "example": "0.8",
           "member": "float",
@@ -3821,6 +4088,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discounted total price.",
           "example": "2.1",
           "member": "float",
@@ -3831,6 +4099,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Detailed billing items",
           "example": "无",
           "member": "DetailPrice",
@@ -3847,6 +4116,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk ID.",
           "example": "lhdisk-eobj8huv",
           "member": "string",
@@ -3857,6 +4127,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the cloud disk can be returned.",
           "example": "true",
           "member": "bool",
@@ -3867,6 +4138,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Error code of cloud disk return failure.",
           "example": "0",
           "member": "int64",
@@ -3877,6 +4149,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Error message of cloud disk return failure.",
           "example": "无",
           "member": "string",
@@ -3893,6 +4166,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Container image address",
           "example": "nginx",
           "member": "string",
@@ -3903,6 +4177,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Container name",
           "example": "Container1",
           "member": "string",
@@ -3913,6 +4188,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of environment variables",
           "example": "[{\"Key\":\"Key1\",\"Value\":\"Value1\"}]",
           "member": "ContainerEnv",
@@ -3923,6 +4199,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of mappings of container ports and host ports",
           "example": "[{\"ContainerPort\":80,\"HostPort\":8081}]",
           "member": "DockerContainerPublishPort",
@@ -3933,6 +4210,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of container mount volumes",
           "example": "[{\"ContainerPath\":\"/data/nginx\",\"HostPath\":\"/data/nginx\"}]",
           "member": "DockerContainerVolume",
@@ -3943,6 +4221,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The command to run",
           "example": "ls -l",
           "member": "string",
@@ -3959,6 +4238,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Host port",
           "example": "80",
           "member": "int64",
@@ -3969,6 +4249,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Container port",
           "example": "80",
           "member": "int64",
@@ -3979,6 +4260,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "External IP. It defaults to 0.0.0.0.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.0.0.0",
           "member": "string",
@@ -3989,6 +4271,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The protocol defaults to `tcp`. Valid values: `tcp`, `udp` and `sctp`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "tcp",
           "member": "string",
@@ -4005,6 +4288,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Container path",
           "example": "/data/container",
           "member": "string",
@@ -4015,6 +4299,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Host path",
           "example": "/data/host",
           "member": "string",
@@ -4031,6 +4316,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Field to be filtered.",
           "example": "bundle-id",
           "member": "string",
@@ -4041,6 +4327,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter value of field.",
           "example": "['bundle_ntp_small2_100']",
           "member": "string",
@@ -4057,6 +4344,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Protocol. Valid values: TCP, UDP, ICMP, ALL.",
           "example": "TCP",
           "member": "string",
@@ -4067,6 +4355,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Port. Valid values: ALL, one single port, multiple ports separated by commas, or port range indicated by a minus sign",
           "example": "80",
           "member": "string",
@@ -4077,6 +4366,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "IP range or IP (mutually exclusive). Default value: 0.0.0.0/0, which indicates all sources.",
           "example": "0.0.0.0/0",
           "member": "string",
@@ -4087,6 +4377,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Valid values: ACCEPT, DROP. Default value: ACCEPT.",
           "example": "ACCEPT",
           "member": "string",
@@ -4097,6 +4388,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Firewall rule description.",
           "example": "''",
           "member": "string",
@@ -4113,6 +4405,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Application type. Valid values: custom, HTTP (80), HTTPS (443), Linux login (22), Windows login (3389), MySQL (3306), SQL Server (1433), all TCP ports, all UDP ports, Ping-ICMP, ALL.",
           "example": "HTTP(80)",
           "member": "string",
@@ -4123,6 +4416,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Protocol. Valid values: TCP, UDP, ICMP, ALL.",
           "example": "TCP",
           "member": "string",
@@ -4133,6 +4427,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Port. Valid values: ALL, one single port, multiple ports separated by commas, or port range indicated by a minus sign",
           "example": "80",
           "member": "string",
@@ -4143,6 +4438,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "IP range or IP (mutually exclusive). Default value: 0.0.0.0/0, which indicates all sources.",
           "example": "0.0.0.0/0",
           "member": "string",
@@ -4153,6 +4449,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Valid values: ACCEPT, DROP. Default value: ACCEPT.",
           "example": "ACCEPT",
           "member": "string",
@@ -4163,6 +4460,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Firewall rule description.",
           "example": "''",
           "member": "string",
@@ -4179,6 +4477,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Resource name.",
           "member": "string",
           "name": "ResourceName",
@@ -4188,6 +4487,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of available resources.",
           "member": "int64",
           "name": "ResourceQuotaAvailable",
@@ -4197,6 +4497,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Total number of resources.",
           "member": "int64",
           "name": "ResourceQuotaTotal",
@@ -4212,6 +4513,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair name, which can contain up to 25 digits, letters, and underscores.",
           "example": "test_import",
           "member": "string",
@@ -4221,6 +4523,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public key content of the key pair, which is in the OpenSSH RSA format.",
           "example": "<公钥内容>",
           "member": "string",
@@ -4235,6 +4538,7 @@
       "document": "ImportKeyPair response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Key pair ID.",
           "example": "lhkp-2xsmy15f",
           "member": "string",
@@ -4257,6 +4561,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Number of custom images. Default value: 1.",
           "example": "1",
           "member": "int64",
@@ -4271,6 +4576,7 @@
       "document": "InquirePriceCreateBlueprint response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Custom image price.",
           "example": "{              ",
           "member": "BlueprintPrice",
@@ -4293,6 +4599,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk size in GB.",
           "example": "30",
           "member": "int64",
@@ -4302,6 +4609,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk media type. Valid values: \"CLOUD_PREMIUM\" (premium cloud storage), \"CLOUD_SSD\" (SSD cloud disk).",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -4311,6 +4619,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter settings for purchasing the monthly subscribed cloud disk.",
           "example": "无",
           "member": "DiskChargePrepaid",
@@ -4320,6 +4629,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of cloud disks. Default value: 1.",
           "example": "1",
           "member": "int64",
@@ -4329,6 +4639,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.",
           "example": "1",
           "member": "int64",
@@ -4343,6 +4654,7 @@
       "document": "InquirePriceCreateDisks response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Cloud disk price.",
           "example": "无",
           "member": "DiskPrice",
@@ -4364,6 +4676,7 @@
       "document": "InquirePriceCreateInstances request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance package ID.",
           "example": "bundle_ntp_small1_500",
           "member": "string",
@@ -4372,6 +4685,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.",
           "example": "无",
           "member": "InstanceChargePrepaid",
@@ -4380,6 +4694,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Number of instances to be created. Default value: 1.",
           "example": "2",
           "member": "int64",
@@ -4388,6 +4703,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Application image ID, which is required if a paid application image is used and can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
           "example": "lhbp-aaaabbbb",
           "member": "string",
@@ -4402,6 +4718,7 @@
       "document": "InquirePriceCreateInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Price query information.",
           "example": "无",
           "member": "Price",
@@ -4424,6 +4741,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-eobj8huv\"]",
           "member": "string",
@@ -4433,6 +4751,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter settings for renewing the monthly subscribed cloud disk.",
           "example": "无",
           "member": "RenewDiskChargePrepaid",
@@ -4447,6 +4766,7 @@
       "document": "InquirePriceRenewDisks response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Cloud disk price.",
           "example": "无",
           "member": "DiskPrice",
@@ -4468,6 +4788,7 @@
       "document": "InquirePriceRenewInstances request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "IDs of the instances to be renewed. Each request can contain up to 50 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-11110001\\r\\n\"]",
           "member": "string",
@@ -4476,6 +4797,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.",
           "example": "无",
           "member": "InstanceChargePrepaid",
@@ -4484,6 +4806,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Whether to renew the data disk. Default: `false`.",
           "example": "false",
           "member": "bool",
@@ -4492,6 +4815,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Whether to align the data disk expiration with the instance expiration time. Default: `false`.",
           "example": "false",
           "member": "bool",
@@ -4506,6 +4830,7 @@
       "document": "InquirePriceRenewInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Price information. It defaults to the price information of the first instance in the list.",
           "example": "无",
           "member": "Price",
@@ -4514,6 +4839,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of data disk price information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DataDiskPrice",
@@ -4522,6 +4848,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Price list of the instances to be renewed.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "InstancePriceDetail",
@@ -4530,6 +4857,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total price",
           "example": "无",
           "member": "TotalPrice",
@@ -4551,6 +4879,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "无",
           "member": "string",
@@ -4561,6 +4890,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Package ID.",
           "example": "无",
           "member": "string",
@@ -4571,6 +4901,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Image ID.",
           "example": "无",
           "member": "string",
@@ -4581,6 +4912,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of instance CPU cores.",
           "example": "无",
           "member": "int64",
@@ -4591,6 +4923,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance memory capacity in GB.",
           "example": "无",
           "member": "int64",
@@ -4601,6 +4934,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance name.",
           "example": "无",
           "member": "string",
@@ -4611,6 +4945,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance billing mode. Valid values: \nPREPAID: prepaid (i.e., monthly subscription).",
           "example": "无",
           "member": "string",
@@ -4621,6 +4956,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance system disk information.",
           "example": "无",
           "member": "SystemDisk",
@@ -4631,6 +4967,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Private IP of instance primary ENI. \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4641,6 +4978,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public IP of instance primary ENI. \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4651,6 +4989,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance bandwidth information.",
           "example": "无",
           "member": "InternetAccessible",
@@ -4661,6 +5000,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Auto-Renewal flag. Valid values: \nNOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically  \nNOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.",
           "example": "无",
           "member": "string",
@@ -4671,6 +5011,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance login settings.",
           "example": "无",
           "member": "LoginSettings",
@@ -4681,6 +5022,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance status. Valid values: \n<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting from the rescue mode</li>",
           "example": "无",
           "member": "string",
@@ -4691,6 +5033,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Globally unique ID of instance.",
           "example": "无",
           "member": "string",
@@ -4701,6 +5044,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Last instance operation, such as `StopInstances` and `ResetInstance`. Note: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4711,6 +5055,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Last instance operation status. Valid values: \nSUCCESS: operation succeeded \nOPERATING: the operation is being executed \nFAILED: operation failed \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4721,6 +5066,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique request ID for the last operation of the instance. \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4731,6 +5077,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Isolation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "datetime_iso",
@@ -4741,6 +5088,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "datetime_iso",
@@ -4751,6 +5099,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "datetime_iso",
@@ -4761,6 +5110,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS type, such as LINUX_UNIX and WINDOWS.",
           "example": "无",
           "member": "string",
@@ -4771,6 +5121,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS type.",
           "example": "无",
           "member": "string",
@@ -4781,6 +5132,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS name.",
           "example": "无",
           "member": "string",
@@ -4791,6 +5143,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ.",
           "example": "无",
           "member": "string",
@@ -4801,6 +5154,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The list of tags associated with the instance",
           "example": "无",
           "member": "Tag",
@@ -4811,6 +5165,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Obtain instance status\n<li>NORMAL: The instance is normal</li><li>NETWORK_RESTRICT: The instance is blocked from the network.</li>",
           "example": "NETWORK_RESTRICT",
           "member": "string",
@@ -4827,6 +5182,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
           "member": "int64",
           "name": "Period",
@@ -4836,6 +5192,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically. You need to manually renew <br><li>DISABLE_NOTIFY_AND_AUTO_RENEW: neither notify upon expiration nor renew automatically<br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.",
           "member": "string",
           "name": "RenewFlag",
@@ -4851,6 +5208,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceId",
@@ -4860,6 +5218,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of operation limits.",
           "member": "DeniedAction",
           "name": "DeniedActions",
@@ -4874,6 +5233,7 @@
       "document": "Price information of Lighthouse instances",
       "members": [
         {
+          "disabled": false,
           "document": "Original package unit price.",
           "example": "无",
           "member": "float",
@@ -4883,6 +5243,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Original price.",
           "example": "无",
           "member": "float",
@@ -4892,6 +5253,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Discount.",
           "example": "无",
           "member": "int64",
@@ -4901,6 +5263,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Discounted price.",
           "example": "无",
           "member": "float",
@@ -4910,6 +5273,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Currency unit. Valid values: `CNY` and `USD`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "CNY",
           "member": "string",
@@ -4925,6 +5289,7 @@
       "document": "Instance price details",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "lhins-xxxxxx",
           "member": "string",
@@ -4934,6 +5299,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Price query information.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "InstancePrice",
@@ -4943,6 +5309,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Tiered-pricing details. The information of each tier includes the billable period, discount percentage, total price, discounted price, and discount details (`UserDiscount`, `CommonDiscount` and `FinalDiscount`).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DiscountDetail",
@@ -4959,6 +5326,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "member": "string",
           "name": "InstanceId",
@@ -4968,6 +5336,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the instance can be returned.",
           "member": "bool",
           "name": "IsReturnable",
@@ -4977,6 +5346,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Error code of instance return failure.",
           "member": "int64",
           "name": "ReturnFailCode",
@@ -4986,6 +5356,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Error message of instance return failure.",
           "member": "string",
           "name": "ReturnFailMessage",
@@ -5001,6 +5372,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "member": "string",
           "name": "InstanceId",
@@ -5010,6 +5382,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of traffic package details.",
           "member": "TrafficPackage",
           "name": "TrafficPackageSet",
@@ -5025,6 +5398,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Network billing mode. Valid values:\n<li>Bill by traffic package: TRAFFIC_POSTPAID_BY_HOUR</li>\n<li>Bill by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>",
           "example": "BANDWIDTH_PREPAID",
           "member": "string",
@@ -5035,6 +5409,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public network outbound bandwidth cap in Mbps.",
           "example": "20",
           "member": "int64",
@@ -5045,6 +5420,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to assign a public IP.",
           "example": "true",
           "member": "bool",
@@ -5056,11 +5432,48 @@
       ],
       "usage": "out"
     },
+    "IsolateInstancesRequest": {
+      "document": "IsolateInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 20 instances can be specified at the same time.",
+          "example": "[\"lhins-7ofik5q9\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return data disks mounted on the instance together with the instance. Valid values: \n`TRUE`: Return the mounted data disks at the same time \n`FALSE`: Do not return the mounted data disks at the same time \nDefault value: `TRUE`.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsolateDataDisk",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateInstancesResponse": {
+      "document": "IsolateInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "KeyPair": {
       "document": "Key pair information.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair ID, which is the unique identifier of a key pair.",
           "member": "string",
           "name": "KeyId",
@@ -5070,6 +5483,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Key pair name.",
           "member": "string",
           "name": "KeyName",
@@ -5079,6 +5493,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public key (in plain text) of key pair.",
           "member": "string",
           "name": "PublicKey",
@@ -5088,6 +5503,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of IDs of instances associated with the key pair.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "AssociatedInstanceIds",
@@ -5097,6 +5513,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -5106,6 +5523,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Private key of key pair.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "PrivateKey",
@@ -5121,6 +5539,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "<li>`YES`: Random password. In this case, `Password` cannot be specified. </li>\n<li>`No`: Custom. `Password` must be specified. </li>",
           "example": "NO",
           "member": "string",
@@ -5131,6 +5550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instace login password.\nFor Windows instances, the password must contain 12 to 30 characters of the following types. It cannot start with “/” and cannot include the username.\n<li>[a-z]</li>\n<li>[A-Z]</li>\n<li>[0-9]</li>\n<li>[()`~!@#$%^&*-+=_|{}[]:;' <>,.?/]</li>",
           "example": " HelloTgHd123_&*",
           "member": "string",
@@ -5147,6 +5567,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.",
           "member": "string",
           "name": "KeyIds",
@@ -5162,6 +5583,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Image ID, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
           "example": "lhbp-aaaabbbb",
           "member": "string",
@@ -5171,6 +5593,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New image name, which can contain up to 60 characters.",
           "example": "test-blueprint",
           "member": "string",
@@ -5180,6 +5603,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New image description, which can contain up to 60 characters.",
           "example": "test-blueprint",
           "member": "string",
@@ -5207,6 +5631,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Price difference that you need to pay for the new instance package after change.",
           "example": "{}",
           "member": "Price",
@@ -5217,6 +5642,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Package change status. Valid values:\n<li>SOLD_OUT: packages are sold out</li>\n<li>AVAILABLE: packages can be changed</li>\n<li>UNAVAILABLE: packages cannot be changed currently</li>",
           "example": "AVAILABLE",
           "member": "string",
@@ -5227,6 +5653,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Package information.",
           "example": "{}",
           "member": "Bundle",
@@ -5237,6 +5664,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The reason of package changing failure. It’s empty if the package change status is `AVAILABLE`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -5253,6 +5681,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-p1zflrif\"]",
           "member": "string",
@@ -5262,6 +5691,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk name.",
           "example": "disk-name",
           "member": "string",
@@ -5289,6 +5719,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-eobj8huv\"]",
           "member": "string",
@@ -5298,6 +5729,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether Auto-Renewal is enabled ",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
@@ -5325,6 +5757,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-12345678",
           "member": "string",
@@ -5334,6 +5767,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Firewall rule.",
           "example": "无",
           "member": "FirewallRule",
@@ -5343,6 +5777,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
           "example": "1",
           "member": "uint64",
@@ -5370,6 +5805,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "lhins-12345678",
           "member": "string",
@@ -5379,6 +5815,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Firewall rule list.",
           "example": "无",
           "member": "FirewallRule",
@@ -5388,6 +5825,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
           "example": "1",
           "member": "uint64",
@@ -5415,6 +5853,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-ruy9d2tw\\n\",\"lhins-rusdke45\\n\"]",
           "member": "string",
@@ -5424,6 +5863,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance name, which is customizable and can contain up to 60 characters.",
           "example": "test",
           "member": "string",
@@ -5446,11 +5886,57 @@
       ],
       "type": "object"
     },
+    "ModifyInstancesBundleRequest": {
+      "document": "ModifyInstancesBundle request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 15 instances can be specified at the same time.",
+          "example": "[“lhins-123456”]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "ID of bundles to change. You can get the IDs from the `BundleId` returned by the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1).",
+          "example": "“bundle_ent_01”",
+          "member": "string",
+          "name": "BundleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use existing vouchers under the current account automatically. Valid values: \n`true`: Deduct from existing vouchers automatically \n`false`: Do not deduct from existing vouchers automatically \nDefault value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancesBundleResponse": {
+      "document": "ModifyInstancesBundle response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyInstancesLoginKeyPairAttributeRequest": {
       "document": "ModifyInstancesLoginKeyPairAttribute request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time.",
           "example": "[\"lhins-ruy9d2tw\\r\\n\"]",
           "member": "string",
@@ -5460,6 +5946,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to allow login with the default key pair. Valid values: YES: yes; NO: no.",
           "example": "NO",
           "member": "string",
@@ -5487,6 +5974,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-ruy9d2tw\\n\"]",
           "member": "string",
@@ -5496,6 +5984,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
@@ -5523,6 +6012,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Snapshot ID, which can be queried through `DescribeSnapshots`.",
           "example": "lhsnap-nv6aqcv6",
           "member": "string",
@@ -5532,6 +6022,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New snapshot name, which can contain up to 60 characters.",
           "example": "snap_20200903",
           "member": "string",
@@ -5558,6 +6049,7 @@
       "document": "Discount details.",
       "members": [
         {
+          "disabled": false,
           "document": "User discount.",
           "example": "无",
           "member": "int64",
@@ -5567,6 +6059,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Public discount.",
           "example": "无",
           "member": "int64",
@@ -5576,6 +6069,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Final discount.",
           "example": "无",
           "member": "int64",
@@ -5585,6 +6079,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Activity discount. The value `null` indicates no discount.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -5594,6 +6089,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Discount type.\nValid values: `user` (user discount), `common` (discount displayed on the official website), `activity` (activity discount), `null` (no discount).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -5610,6 +6106,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance price.",
           "member": "InstancePrice",
           "name": "InstancePrice",
@@ -5625,6 +6122,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "member": "string",
           "name": "InstanceIds",
@@ -5651,6 +6149,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Region name, such as `ap-guangzhou`.",
           "example": "ap-beijing",
           "member": "string",
@@ -5661,6 +6160,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region description, such as South China (Guangzhou).",
           "example": "北京",
           "member": "string",
@@ -5671,6 +6171,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region availability status. Its value can only be `AVAILABLE`.",
           "example": "AVAILABLE",
           "member": "string",
@@ -5681,6 +6182,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the region is in the Chinese mainland",
           "example": "true",
           "member": "bool",
@@ -5697,6 +6199,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Purchase duration.",
           "example": "1",
           "member": "int64",
@@ -5707,6 +6210,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether Auto-Renewal is enabled ",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
@@ -5717,6 +6221,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration unit. Default value: \"m\" (month).",
           "example": "m",
           "member": "string",
@@ -5727,6 +6232,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time of the current instance.",
           "example": "无",
           "member": "string",
@@ -5743,6 +6249,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "CCN instance ID.",
           "example": "ccn-f49l6u0z",
           "member": "string",
@@ -5770,6 +6277,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Image details",
           "member": "Blueprint",
           "name": "BlueprintInfo",
@@ -5779,6 +6287,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the image can be reset as the target image",
           "member": "bool",
           "name": "IsResettable",
@@ -5788,6 +6297,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Non-Resettable flag. If the image is resettable, it will be \"\"",
           "member": "string",
           "name": "NonResettableMessage",
@@ -5803,6 +6313,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "lhins-ruy9d2tw",
           "member": "string",
@@ -5812,6 +6323,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Image ID, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
           "example": "lhbp-5e8807lo",
           "member": "string",
@@ -5839,6 +6351,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time.",
           "example": "[\"lhins-ruy9d2tw\"]",
           "member": "string",
@@ -5848,6 +6361,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Login password of the instance(s). The password requirements vary among different operating systems:\nThe password of a `LINUX_UNIX` instance must contain 8–30 characters (above 12 characters preferably) in at least three of the following types and cannot begin with \"/\": <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/</li>\nThe password of a `WINDOWS` instance must contain 12–30 characters in at least three of the following types and cannot begin with \"/\" or include the username: <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/<br><li>If both `LINUX_UNIX` and `WINDOWS` instances exist, the requirements for password complexity of `WINDOWS` instances shall prevail.",
           "example": "xxxxxxxxxxx",
           "member": "string",
@@ -5857,6 +6371,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS username of the instance for which you want to reset the password, which can contain up to 64 characters.",
           "example": "root",
           "member": "string",
@@ -5884,6 +6399,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Scene ID",
           "example": "\"lhsc-123456\"",
           "member": "string",
@@ -5894,6 +6410,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Display name of the scene",
           "example": "\"\"",
           "member": "string",
@@ -5904,6 +6421,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scene description",
           "example": "\"\"",
           "member": "string",
@@ -5920,6 +6438,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Scene ID",
           "example": "\"lhsc-123456\"",
           "member": "string",
@@ -5930,6 +6449,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Display name of the scene",
           "example": "\"\"",
           "member": "string",
@@ -5940,6 +6460,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scene description",
           "example": "\"\"",
           "member": "string",
@@ -5955,6 +6476,7 @@
       "document": "Snapshot information.",
       "members": [
         {
+          "disabled": false,
           "document": "Snapshot ID.",
           "example": "无",
           "member": "string",
@@ -5964,6 +6486,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Type of the disk for which the snapshot is created. Valid values: <li>SYSTEM_DISK: system disk</li>",
           "example": "无",
           "member": "string",
@@ -5973,6 +6496,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "ID of the disk for which the snapshot is created.",
           "example": "无",
           "member": "string",
@@ -5982,6 +6506,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Size of the disk in GB for which the snapshot is created.",
           "example": "无",
           "member": "int64",
@@ -5991,6 +6516,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Snapshot name, which is a custom snapshot alias.",
           "example": "无",
           "member": "string",
@@ -6000,6 +6526,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Snapshot status. Valid values:\n<li>NORMAL: normal </li>\n<li>CREATING: creating</li>\n<li>ROLLBACKING: rolling back</li>",
           "example": "无",
           "member": "string",
@@ -6009,6 +6536,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Snapshot creation or rollback progress in percentage. After success, the value of this field will become 100.",
           "example": "无",
           "member": "int64",
@@ -6018,6 +6546,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Last snapshot operation. It is recorded only during snapshot creation and rollback.\nExample values: CreateInstanceSnapshot, RollbackInstanceSnapshot.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -6027,6 +6556,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Last snapshot operation status. It is recorded only during snapshot creation and rollback.\nValid values:\n<li>SUCCESS: operation succeeded</li>\n<li>OPERATING: the operation is being executed</li>\n<li>FAILED: operation failed</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -6036,6 +6566,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Unique request ID for the last snapshot operation. It is recorded only during snapshot creation and rollback.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -6045,6 +6576,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Snapshot creation time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "datetime_iso",
@@ -6061,6 +6593,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Snapshot ID.",
           "member": "string",
           "name": "SnapshotId",
@@ -6070,6 +6603,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of operation limits.",
           "member": "DeniedAction",
           "name": "DeniedActions",
@@ -6085,6 +6619,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Software name.",
           "member": "string",
           "name": "Name",
@@ -6094,6 +6629,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Software version.",
           "member": "string",
           "name": "Version",
@@ -6103,6 +6639,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Software picture URL.",
           "member": "string",
           "name": "ImageUrl",
@@ -6112,6 +6649,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Software installation directory.",
           "member": "string",
           "name": "InstallDir",
@@ -6121,6 +6659,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of software details.",
           "member": "SoftwareDetail",
           "name": "DetailSet",
@@ -6136,6 +6675,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Unique detail key",
           "member": "string",
           "name": "Key",
@@ -6145,6 +6685,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Detail title.",
           "member": "string",
           "name": "Title",
@@ -6154,6 +6695,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Detail value.",
           "member": "string",
           "name": "Value",
@@ -6169,6 +6711,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "member": "string",
           "name": "InstanceIds",
@@ -6195,6 +6738,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "member": "string",
           "name": "InstanceIds",
@@ -6221,6 +6765,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>",
           "member": "string",
           "name": "DiskType",
@@ -6230,6 +6775,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "System disk size in GB.",
           "member": "int64",
           "name": "DiskSize",
@@ -6239,6 +6785,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "System disk ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DiskId",
@@ -6254,6 +6801,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Tag key",
           "example": "xxx",
           "member": "string",
@@ -6264,6 +6812,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag value",
           "example": "xxx",
           "member": "string",
@@ -6280,6 +6829,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disk IDs.",
           "example": "[\"lhdisk-p1zflrif\"]",
           "member": "string",
@@ -6307,6 +6857,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-ruy9d2tw\\n\"]",
           "member": "string",
@@ -6333,6 +6884,7 @@
       "document": "Total price information",
       "members": [
         {
+          "disabled": false,
           "document": "Total original price\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "10.0",
           "member": "float",
@@ -6342,6 +6894,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total discounted price\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "9.0",
           "member": "float",
@@ -6358,6 +6911,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Traffic package ID.",
           "member": "string",
           "name": "TrafficPackageId",
@@ -6367,6 +6921,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Used traffic in bytes during traffic package validity period.",
           "member": "int64",
           "name": "TrafficUsed",
@@ -6376,6 +6931,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Total traffic in bytes during traffic package validity period.",
           "member": "int64",
           "name": "TrafficPackageTotal",
@@ -6385,6 +6941,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remaining traffic in bytes during traffic package validity period.",
           "member": "int64",
           "name": "TrafficPackageRemaining",
@@ -6394,6 +6951,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Traffic exceeding package amount in bytes during traffic package validity period.",
           "member": "int64",
           "name": "TrafficOverflow",
@@ -6403,6 +6961,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time of traffic package validity period according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -6412,6 +6971,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time of traffic package validity period according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -6421,6 +6981,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Traffic package expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime_iso",
           "name": "Deadline",
@@ -6430,6 +6991,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Traffic package status:\n<li>NETWORK_NORMAL: normal</li>\n<li>OVERDUE_NETWORK_DISABLED: the network is disconnected due to overdue payments</li>",
           "member": "string",
           "name": "Status",
@@ -6445,6 +7007,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "AZ",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -6455,6 +7018,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Chinese name of AZ",
           "example": "广州一区",
           "member": "string",
@@ -6465,6 +7029,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ tags on instance purchase page",
           "example": "NORMAL",
           "member": "string",

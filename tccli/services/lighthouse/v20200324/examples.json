@@ -18,7 +18,7 @@
     ],
     "AttachCcn": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AttachCcn\n<Common request parameters>\n\n{\n    \"CcnId\": \"ccn-pf78xmcp\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9340eb20-859b-4840-9fa4-12cd4ff7f5c9\"\n    }\n}",
         "title": "Associating CCN instance"
@@ -26,7 +26,7 @@
     ],
     "AttachDisks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AttachDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-5vmz00i3\"\n    ],\n    \"InstanceId\": \"lhins-qg08np8l\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0d5e192e-10a2-44a6-a6ce-2ac6b01f7646\"\n    }\n}",
         "title": "Attaching cloud disks"
@@ -34,15 +34,15 @@
     ],
     "CreateBlueprint": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBlueprint\n<Common request parameters>\n\n{\n    \"BlueprintName\": \"test-blueprint\",\n    \"InstanceId\": \"lhins-7ugtz5e1\"\n}",
+        "document": "This example shows you how to create an image.",
+        "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: CreateBlueprint \n<Common request parameters>\n\n{\n    \"BlueprintName\": \"test-blueprint\",\n    \"InstanceId\": \"lhins-7ugtz5e1\"\n}",
         "output": "{\n    \"Response\": {\n        \"BlueprintId\": \"lhbp-xkeh87da\",\n        \"RequestId\": \"6bdba9db-c3fe-45b2-87f3-b0125d901a90\"\n    }\n}",
-        "title": "Using instance to create image"
+        "title": "Creating an image of a Lighthouse instance"
       }
     ],
     "CreateFirewallRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=CreateFirewallRules\n&InstanceId=lhins-aglzynfg\n&FirewallRules.0.Protocol=TCP\n&FirewallRules.0.Port=80\n&FirewallRules.1.Protocol=UDP\n&FirewallRules.1.Port=22,443\n&FirewallRules.2.Protocol=TCP\n&FirewallRules.2.Port=8000-8080\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"667cc0c1-fa3e-4752-a36b-4bf45ec4bc7d\"\n    }\n}",
         "title": "Adding firewall rule"
@@ -50,7 +50,7 @@
     ],
     "CreateInstanceSnapshot": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=CreateInstanceSnapshot\n&InstanceId=lhins-k31c771o\n&SnapshotName=snap_20200903\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SnapshotId\": \"lhsnap-nv6aqcv6\",\n        \"RequestId\": \"0580622c-03ef-4ae0-8192-016783412094\"\n    }\n}",
         "title": "Creating instance snapshot"
@@ -66,7 +66,7 @@
     ],
     "CreateKeyPair": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=CreateKeyPair\n&KeyName=test_create_1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"KeyPair\": {\n            \"KeyId\": \"lhkp-hfenegt1\",\n            \"KeyName\": \"test_create_1\",\n            \"PublicKey\": \"xxxxxx\",\n            \"AssociatedInstanceIds\": [],\n            \"CreatedTime\": null,\n            \"PrivateKey\": \"xxxxxx\"\n        },\n        \"RequestId\": \"02dc35eb-06f0-477f-9b06-c980bc56c18d\"\n    }\n}",
         "title": "Creating key pair"
@@ -74,15 +74,15 @@
     ],
     "DeleteBlueprints": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBlueprints\n<Common request parameters>\n\n{\n    \"BlueprintIds\": [\n        \"lhbp-1ynlfst1\"\n    ]\n}",
+        "document": "This example shows you how to delete a custom image.",
+        "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: DeleteBlueprints \n<Common request parameters>\n\n{\n    \"BlueprintIds\": [\n        \"lhbp-1ynlfst1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ecad302e-6952-4c06-a64c-2f8f6c526029\"\n    }\n}",
-        "title": "Deleting custom image"
+        "title": "Deleting a custom image"
       }
     ],
     "DeleteFirewallRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DeleteFirewallRules\n&InstanceId=lhins-aglzynfg\n&FirewallRules.0.Protocol=TCP\n&FirewallRules.0.Port=80\n&FirewallRules.1.Protocol=UDP\n&FirewallRules.1.Port=22,443\n&FirewallRules.2.Protocol=TCP\n&FirewallRules.2.Port=8000-8081\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b5182261-ab41-4801-a702-be05f2277758\"\n    }\n}",
         "title": "Deleting firewall rule"
@@ -90,7 +90,7 @@
     ],
     "DeleteKeyPairs": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DeleteKeyPairs\n&KeyIds.0=lhkp-1234abcd\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3cc773c5-f5fe-49f2-8eb0-f6304f5ee39c\"\n    }\n}",
         "title": "Deleting key pair"
@@ -98,7 +98,7 @@
     ],
     "DeleteSnapshots": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DeleteSnapshots\n&SnapshotIds.0=lhsnap-nv6aqcv6\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"95cd6073-240b-4337-8c04-46345fcbbeb1\"\n    }\n}",
         "title": "Deleting snapshot"
@@ -106,7 +106,7 @@
     ],
     "DescribeAllScenes": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAllScenes\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"22cef196-4013-493e-8acb-33a2cb629869\",\n        \"TotalCount\": 3,\n        \"SceneInfoSet\": [\n            {\n                \"SceneId\": \"lhsc-1ubg0exh\",\n                \"DisplayName\": \"Test modify1\",\n                \"Description\": \"Test test1\"\n            },\n            {\n                \"SceneId\": \"lhsc-h69tuf89\",\n                \"DisplayName\": \"Test\",\n                \"Description\": \"Test test\"\n            },\n            {\n                \"SceneId\": \"lhsc-1bbbtj87\",\n                \"DisplayName\": \"31\",\n                \"Description\": \"31\"\n            }\n        ]\n    }\n}",
         "title": "Querying information of scenes in all regions"
@@ -114,7 +114,7 @@
     ],
     "DescribeBlueprintInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeBlueprintInstances\n&InstanceIds.0=lhins-f4s49nap\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"BlueprintInstanceSet\": [\n            {\n                \"InstanceId\": \"lhins-aaaabbbb\",\n                \"Blueprint\": {\n                    \"BlueprintId\": \"lhbp-5e8807sc\",\n                    \"DisplayTitle\": \"wordpress\",\n                    \"DisplayVersion\": \"5.3.2\",\n                    \"Description\": \"Personal blog website construction\",\n                    \"OsName\": \"CentOS-7.6-64bit\",\n                    \"Platform\": \"CENTOS\",\n                    \"PlatformType\": \"LINUX_UNIX\",\n                    \"BlueprintName\": \"my-blueprint\",\n                    \"BlueprintType\": \"APP_OS\",\n                    \"ImageUrl\": \"http://www.wordpress.com/image\",\n                    \"RequiredMemorySize\": 2,\n                    \"RequiredSystemDiskSize\": 10,\n                    \"BlueprintState\": \"NORMAL\",\n                    \"SupportAutomationTools\": true,\n                    \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"ImageId\": \"img-f82x5lxe\"\n                },\n                \"SoftwareSet\": [\n                    {\n                        \"Name\": \"wordpress\",\n                        \"Version\": \"5.3.2\",\n                        \"ImageUrl\": \"\",\n                        \"InstallDir\": \"/usr/local/lighthouse/softwares/wordpress\",\n                        \"DetailSet\": [\n                            {\n                                \"Key\": \"IndexUrl\",\n                                \"Title\": \"Homepage address\",\n                                \"Value\": \"http://xxx.xxx.xxx.xxx\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"989f74ea-567c-4c99-a24e-7bc200cf679b\"\n    }\n}",
         "title": "Querying image instance information"
@@ -138,7 +138,7 @@
     ],
     "DescribeBundles": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBundles\n<Common request parameters>\n\n{\n    \"BundleIds\": [\n        \"bundle_ntp_small1_500\",\n        \"bundle_bw_small1_1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"BundleSet\": [\n            {\n                \"BundleId\": \"bundle_bw_small1_1\",\n                \"CPU\": 1,\n                \"Memory\": 1,\n                \"SystemDiskType\": \"CLOUD_SSD\",\n                \"SystemDiskSize\": 20,\n                \"InternetMaxBandwidthOut\": 1,\n                \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                \"MonthlyTraffic\": 1,\n                \"Price\": {\n                    \"InstancePrice\": {\n                        \"OriginalBundlePrice\": 60,\n                        \"OriginalPrice\": 60,\n                        \"Discount\": 65,\n                        \"DiscountPrice\": 39\n                    }\n                },\n                \"SupportLinuxUnixPlatform\": true,\n                \"SupportWindowsPlatform\": false,\n                \"BundleType\": \"GENERAL_BUNDLE\",\n                \"BundleSalesState\": \"AVAILABLE\",\n                \"BundleDisplayLabel\": \"NORMAL\"\n            },\n            {\n                \"BundleId\": \"bundle_ntp_small1_500\",\n                \"CPU\": 1,\n                \"Memory\": 1,\n                \"SystemDiskType\": \"CLOUD_SSD\",\n                \"SystemDiskSize\": 40,\n                \"InternetMaxBandwidthOut\": 3,\n                \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                \"MonthlyTraffic\": 500,\n                \"Price\": {\n                    \"InstancePrice\": {\n                        \"OriginalBundlePrice\": 90,\n                        \"OriginalPrice\": 90,\n                        \"Discount\": 65,\n                        \"DiscountPrice\": 58.5\n                    }\n                },\n                \"SupportLinuxUnixPlatform\": true,\n                \"SupportWindowsPlatform\": true,\n                \"BundleType\": \"GENERAL_BUNDLE\",\n                \"BundleSalesState\": \"AVAILABLE\",\n                \"BundleDisplayLabel\": \"NORMAL\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"6d4c966d-bc42-4425-8c98-a39f36c7ad1b\"\n    }\n}",
         "title": "Querying the bundle (succeeded)"
@@ -146,7 +146,7 @@
     ],
     "DescribeCcnAttachedInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCcnAttachedInstances\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"CcnAttachedInstanceSet\": [\n            {\n                \"CcnId\": \"ccn-pf78xmcp\",\n                \"CidrBlock\": [\n                    \"10.0.0.0/16\"\n                ],\n                \"State\": \"PENDING\",\n                \"AttachedTime\": \"2021-05-08 17:21:05\",\n                \"Description\": \"Lighthouse attach ccn instance\"\n            }\n        ],\n        \"RequestId\": \"b0f73b4b-bf36-4611-8e3b-e3dfe0353cd6\"\n    }\n}",
         "title": "Querying the information of instances associated with CCN"
@@ -154,7 +154,7 @@
     ],
     "DescribeDiskConfigs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskConfigs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"ap-guangzhou-2\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DiskConfigSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"MaxDiskSize\": 1000,\n                \"MinDiskSize\": 10,\n                \"DiskStepSize\": 10,\n                \"DiskSalesState\": \"SOLD_OUT\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"DiskType\": \"CLOUD_SSD\",\n                \"MaxDiskSize\": 1000,\n                \"MinDiskSize\": 20,\n                \"DiskStepSize\": 10,\n                \"DiskSalesState\": \"SOLD_OUT\"\n            }\n        ],\n        \"RequestId\": \"8f8e7988-39e6-4ed6-8e36-135b639e9a3a\"\n    }\n}",
         "title": "Querying disk configuration"
@@ -178,7 +178,7 @@
     ],
     "DescribeDisksDeniedActions": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDisksDeniedActions\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-eobj8huv\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DiskDeniedActionSet\": [\n            {\n                \"DiskId\": \"lhdisk-eobj8huv\",\n                \"DeniedActions\": [\n                    {\n                        \"Action\": \"DetachDisks\",\n                        \"Code\": \"UnsupportedOperation.InvalidDiskState\",\n                        \"Message\": \"Disk `lhdisk-eobj8huv` is in `To be attached` status and does not support this operation.\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"fd7fcb32-d48f-4d0e-ab33-e4985fc6e647\"\n    }\n}",
         "title": "Querying the list of operation limits of cloud disks"
@@ -186,7 +186,7 @@
     ],
     "DescribeDisksReturnable": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDisksReturnable\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-eobj8huv\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DiskReturnableSet\": [\n            {\n                \"DiskId\": \"lhdisk-5vmz00i3\",\n                \"IsReturnable\": true,\n                \"ReturnFailCode\": 0,\n                \"ReturnFailMessage\": \"\"\n            }\n        ],\n        \"RequestId\": \"3eec6c10-a8c7-41e4-b4ba-c84a5000211d\"\n    }\n}",
         "title": "Querying whether the specified disk can be returned"
@@ -194,13 +194,13 @@
     ],
     "DescribeFirewallRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeFirewallRules\n&InstanceId=lhins-aglzynfg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FirewallRuleSet\": [\n            {\n                \"Action\": \"DROP\",\n                \"AppType\": \"Custom\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"\",\n                \"Port\": \"22,88\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"Custom\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"test\",\n                \"Port\": \"88\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"HTTP(80)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"test\",\n                \"Port\": \"80\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"HTTPS(443)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow web service HTTPS (443), such as Apache and Nginx\",\n                \"Port\": \"443\",\n                \"Protocol\": \"TCP\"\n            }\n        ],\n        \"FirewallVersion\": 1,\n        \"RequestId\": \"afa0c876-336a-4ed6-ad01-89b3b2632207\",\n        \"TotalCount\": 4\n    }\n}",
         "title": "Querying all the firewall rules of instance"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeFirewallRules\n&InstanceId=lhins-aglzynfg\n&Offset=0\n&Limit=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FirewallRuleSet\": [\n            {\n                \"Action\": \"DROP\",\n                \"AppType\": \"Custom\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"\",\n                \"Port\": \"22,88\",\n                \"Protocol\": \"TCP\"\n            }\n        ],\n        \"FirewallVersion\": 1,\n        \"RequestId\": \"31522fb9-fef8-4190-9080-deba504c36ae\",\n        \"TotalCount\": 4\n    }\n}",
         "title": "Querying certain firewall rules of instance"
@@ -208,7 +208,7 @@
     ],
     "DescribeFirewallRulesTemplate": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeFirewallRulesTemplate\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FirewallRuleSet\": [\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"Windows login (3389)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow Windows remote login\",\n                \"Port\": \"3389\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"Linux login (22)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow Linux SSH login\",\n                \"Port\": \"22\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"HTTP(80)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow web service HTTP (80), such as Apache and Nginx\",\n                \"Port\": \"80\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"HTTPS(443)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow web service HTTPS (443), such as Apache and Nginx\",\n                \"Port\": \"443\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"MySQL(3306)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow MySQL service (3306)\",\n                \"Port\": \"3306\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"SQL Server(1433)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow SQL Server service (1433)\",\n                \"Port\": \"1433\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"All TCP ports\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow all TCP ports\",\n                \"Port\": \"1-65535\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"All UDP ports\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"All all UDP ports\",\n                \"Port\": \"1-65535\",\n                \"Protocol\": \"UDP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"Ping-ICMP\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow Ping\",\n                \"Port\": \"ALL\",\n                \"Protocol\": \"ICMP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"ALL\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow all TCP, UDP, ICMP (Ping), and GRE ports\",\n                \"Port\": \"ALL\",\n                \"Protocol\": \"ALL\"\n            }\n        ],\n        \"RequestId\": \"b9fdb7cc-8afa-4fae-9062-73e41d06f7d3\",\n        \"TotalCount\": 10\n    }\n}",
         "title": "Querying a firewall rule template"
@@ -224,7 +224,7 @@
     ],
     "DescribeInstanceLoginKeyPairAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstanceLoginKeyPairAttribute\n&InstanceId=lhins-j4liwha8\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PermitLogin\": \"NO\",\n        \"RequestId\": \"17a8c37b-0901-402a-b7b2-357998b2bcd8\"\n    }\n}",
         "title": "Querying the attributes of default login key of instance"
@@ -248,7 +248,7 @@
     ],
     "DescribeInstancesDeniedActions": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstancesDeniedActions\n&InstanceIds.0=lhins-ruy9d2tw\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceDeniedActionSet\": [\n            {\n                \"InstanceId\": \"lhins-ruy9d2tw\",\n                \"DeniedActions\": [\n                    {\n                        \"Action\": \"StartInstances\",\n                        \"Code\": \"UnsupportedOperation.InvalidInstanceState\",\n                        \"Message\": \"The request does not support the instance `lhins-ruy9d2tw` which is in the state of `RUNNING`.\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"ccfc8767-94e4-410a-a062-927e6ea79f0f\"\n    }\n}",
         "title": "Views the list of operation limits of instances"
@@ -256,7 +256,7 @@
     ],
     "DescribeInstancesDiskNum": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstancesDiskNum\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-anxwfvxh\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AttachDetailSet\": [\n            {\n                \"InstanceId\": \"lhins-anxwfvxh\",\n                \"AttachedDiskCount\": 1,\n                \"MaxAttachCount\": 5\n            }\n        ],\n        \"RequestId\": \"3a73da61-4f9a-453b-bc11-553383f5d59d\"\n    }\n}",
         "title": "Querying the number of attached cloud disks"
@@ -264,7 +264,7 @@
     ],
     "DescribeInstancesReturnable": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstancesReturnable\n&InstanceIds.0=lhins-ruy9d2tw\n&InstanceIds.1=lhins-xusdke45\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"InstanceReturnableSet\": [\n            {\n                \"InstanceId\": \"lhins-ruy9d2tw\",\n                \"IsReturnable\": true,\n                \"ReturnFailCode\": 0,\n                \"ReturnFailMessage\": \"Returnable\"\n            },\n            {\n                \"InstanceId\": \"lhins-xusdke45\",\n                \"IsReturnable\": false,\n                \"ReturnFailCode\": 2,\n                \"ReturnFailMessage\": \"The resource has expired\"\n            }\n        ],\n        \"RequestId\": \"3ea94867-0d80-4d22-8ba5-a8d9355efca8\"\n    }\n}",
         "title": "Querying returnable instances"
@@ -272,7 +272,7 @@
     ],
     "DescribeInstancesTrafficPackages": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstancesTrafficPackages\n&Limit=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"InstanceTrafficPackageSet\": [\n            {\n                \"InstanceId\": \"lhins-7h98ep3z\",\n                \"TrafficPackageSet\": [\n                    {\n                        \"TrafficPackageId\": \"lhtfp-o1wtyyvx\",\n                        \"TrafficUsed\": 5905577,\n                        \"TrafficPackageTotal\": 536870912000,\n                        \"TrafficPackageRemaining\": 536865006423,\n                        \"TrafficOverflow\": 0,\n                        \"StartTime\": \"2020-06-28T08:15:18Z\",\n                        \"EndTime\": \"2020-07-28T08:15:17Z\",\n                        \"Deadline\": \"2020-07-28T08:15:18Z\",\n                        \"Status\": \"NETWORK_NORMAL\"\n                    }\n                ]\n            },\n            {\n                \"InstanceId\": \"lhins-abtdx7eb\",\n                \"TrafficPackageSet\": [\n                    {\n                        \"TrafficPackageId\": \"lhtfp-4noj8p75\",\n                        \"TrafficUsed\": 3435972,\n                        \"TrafficPackageTotal\": 536870912000,\n                        \"TrafficPackageRemaining\": 536867476028,\n                        \"TrafficOverflow\": 0,\n                        \"StartTime\": \"2020-06-28T08:08:57Z\",\n                        \"EndTime\": \"2020-07-28T08:08:56Z\",\n                        \"Deadline\": \"2020-07-28T08:08:57Z\",\n                        \"Status\": \"NETWORK_NORMAL\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"7839b8ee-f5a4-4a67-b1ab-15fb35b1e2fe\"\n    }\n}",
         "title": "Querying instance traffic package details"
@@ -280,7 +280,7 @@
     ],
     "DescribeKeyPairs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeKeyPairs\n<Common request parameters>\n\n{\n    \"KeyIds\": [\n        \"lhkp-omd12oc1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"KeyPairSet\": [\n            {\n                \"KeyId\": \"lhkp-omd12oc1\",\n                \"KeyName\": \"test\",\n                \"PublicKey\": \"\",\n                \"AssociatedInstanceIds\": [],\n                \"CreatedTime\": \"2020-04-28T23:01:47Z\",\n                \"PrivateKey\": \"null\"\n            }\n        ],\n        \"RequestId\": \"9abb999a-53d6-4534-9b49-00e53b5c0fea\"\n    }\n}",
         "title": "Querying key pair list"
@@ -288,7 +288,7 @@
     ],
     "DescribeModifyInstanceBundles": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeModifyInstanceBundles\n<Common request parameters>\n\n{\n    \"InstanceId\": \"lhins-f4s3n38h\"\n}",
         "output": "{\n    \"Response\": {\n        \"ModifyBundleSet\": [\n            {\n                \"Bundle\": {\n                    \"BundleDisplayLabel\": \"NORMAL\",\n                    \"BundleId\": \"bundle_ntp_small2_500\",\n                    \"BundleSalesState\": \"AVAILABLE\",\n                    \"BundleType\": \"GENERAL_BUNDLE\",\n                    \"CPU\": 1,\n                    \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 3,\n                    \"Memory\": 2,\n                    \"MonthlyTraffic\": 500,\n                    \"Price\": {\n                        \"InstancePrice\": {\n                            \"Discount\": 100,\n                            \"DiscountPrice\": 90,\n                            \"OriginalBundlePrice\": 90,\n                            \"OriginalPrice\": 90\n                        }\n                    },\n                    \"SupportLinuxUnixPlatform\": true,\n                    \"SupportWindowsPlatform\": true,\n                    \"SystemDiskSize\": 40,\n                    \"SystemDiskType\": \"CLOUD_SSD\"\n                },\n                \"ModifyBundleState\": \"UNAVAILABLE\",\n                \"NotSupportModifyMessage\": \"\",\n                \"ModifyPrice\": {\n                    \"InstancePrice\": {\n                        \"Discount\": 100,\n                        \"DiscountPrice\": 19.73,\n                        \"OriginalBundlePrice\": 90,\n                        \"OriginalPrice\": 19.73\n                    }\n                }\n            },\n            {\n                \"Bundle\": {\n                    \"BundleDisplayLabel\": \"NORMAL\",\n                    \"BundleId\": \"bundle_ntp_small1_500\",\n                    \"BundleSalesState\": \"AVAILABLE\",\n                    \"BundleType\": \"GENERAL_BUNDLE\",\n                    \"CPU\": 1,\n                    \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 3,\n                    \"Memory\": 1,\n                    \"MonthlyTraffic\": 500,\n                    \"Price\": {\n                        \"InstancePrice\": {\n                            \"Discount\": 100,\n                            \"DiscountPrice\": 90,\n                            \"OriginalBundlePrice\": 90,\n                            \"OriginalPrice\": 90\n                        }\n                    },\n                    \"SupportLinuxUnixPlatform\": true,\n                    \"SupportWindowsPlatform\": true,\n                    \"SystemDiskSize\": 40,\n                    \"SystemDiskType\": \"CLOUD_SSD\"\n                },\n                \"ModifyBundleState\": \"UNAVAILABLE\",\n                \"NotSupportModifyMessage\": \"\",\n                \"ModifyPrice\": {\n                    \"InstancePrice\": {\n                        \"Discount\": 100,\n                        \"DiscountPrice\": 19.73,\n                        \"OriginalBundlePrice\": 90,\n                        \"OriginalPrice\": 19.73\n                    }\n                }\n            },\n            {\n                \"Bundle\": {\n                    \"BundleDisplayLabel\": \"NORMAL\",\n                    \"BundleId\": \"bundle_ntp_small2_1000\",\n                    \"BundleSalesState\": \"AVAILABLE\",\n                    \"BundleType\": \"GENERAL_BUNDLE\",\n                    \"CPU\": 1,\n                    \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 5,\n                    \"Memory\": 2,\n                    \"MonthlyTraffic\": 1000,\n                    \"Price\": {\n                        \"InstancePrice\": {\n                            \"Discount\": 100,\n                            \"DiscountPrice\": 140,\n                            \"OriginalBundlePrice\": 140,\n                            \"OriginalPrice\": 140\n                        }\n                    },\n                    \"SupportLinuxUnixPlatform\": true,\n                    \"SupportWindowsPlatform\": true,\n                    \"SystemDiskSize\": 40,\n                    \"SystemDiskType\": \"CLOUD_SSD\"\n                },\n                \"ModifyBundleState\": \"UNAVAILABLE\",\n                \"NotSupportModifyMessage\": \"\",\n                \"ModifyPrice\": {\n                    \"InstancePrice\": {\n                        \"Discount\": 100,\n                        \"DiscountPrice\": 52.6,\n                        \"OriginalBundlePrice\": 140,\n                        \"OriginalPrice\": 52.6\n                    }\n                }\n            }\n        ],\n        \"RequestId\": \"f1bb6c99-e704-441e-a405-a594cb55c989\",\n        \"TotalCount\": 3\n    }\n}",
         "title": "Querying the list of bundle options of instance"
@@ -296,7 +296,7 @@
     ],
     "DescribeRegions": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeRegions\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 4,\n        \"RegionSet\": [\n            {\n                \"Region\": \"ap-beijing\",\n                \"RegionName\": \"Beijing\",\n                \"RegionState\": \"AVAILABLE\",\n                \"IsChinaMainland\": true\n            },\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"Guangzhou\",\n                \"RegionState\": \"AVAILABLE\",\n                \"IsChinaMainland\": true\n            },\n            {\n                \"Region\": \"ap-shanghai\",\n                \"RegionName\": \"Shanghai\",\n                \"RegionState\": \"AVAILABLE\",\n                \"IsChinaMainland\": true\n            },\n            {\n                \"Region\": \"ap-hongkong\",\n                \"RegionName\": \"Hong Kong (China)\",\n                \"RegionState\": \"AVAILABLE\",\n                \"IsChinaMainland\": false\n            }\n        ],\n        \"RequestId\": \"52c5ec46-30ca-47b9-8b72-f696c6cb65ea\"\n    }\n}",
         "title": "Querying region list"
@@ -304,7 +304,7 @@
     ],
     "DescribeResetInstanceBlueprints": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeResetInstanceBlueprints\n&InstanceId=lhins-383nzmm1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ResetInstanceBlueprintSet\": [\n            {\n                \"BlueprintInfo\": {\n                    \"BlueprintId\": \"lhbp-kyfeje6z\",\n                    \"BlueprintName\": \"my-blueprint2\",\n                    \"DisplayTitle\": \"wordpress2\",\n                    \"DisplayVersion\": \"5.3.2\",\n                    \"Description\": \"Personal blog website construction\",\n                    \"OsName\": \"CentOS 7.4 64bit\",\n                    \"Platform\": \"CENTOS\",\n                    \"PlatformType\": \"LINUX_UNIX\",\n                    \"BlueprintType\": \"APP_OS\",\n                    \"ImageUrl\": \"http://www.wordpress.com/image\",\n                    \"RequiredSystemDiskSize\": 10,\n                    \"RequiredMemorySize\": 2,\n                    \"SupportAutomationTools\": true,\n                    \"BlueprintState\": \"NORMAL\",\n                    \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"ImageId\": \"\"\n                },\n                \"IsResettable\": false,\n                \"NonResettableMessage\": \"The current system disk size of instance does not match the system disk size requirements of the blueprint.\"\n            }\n        ],\n        \"RequestId\": \"a1768b80-f8f1-47c0-ad60-bb7e3318610b\"\n    }\n}",
         "title": "Querying the reset images of an instance"
@@ -312,7 +312,7 @@
     ],
     "DescribeScenes": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeScenes\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"SceneSet\": [\n            {\n                \"SceneId\": \"lhsc-abcd1235\",\n                \"DisplayName\": \"Test1\",\n                \"Description\": \"Test test1\",\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"4836c744-4de2-44c0-ba5c-096ccf8c923f\"\n    }\n}",
         "title": "Querying scenes"
@@ -320,7 +320,7 @@
     ],
     "DescribeSnapshots": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeSnapshots\n&Filters.0.Name=disk-id\n&Filters.0.Values.0=lhdisk-f71kc5bh\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SnapshotSet\": [\n            {\n                \"SnapshotId\": \"lhsnap-nv6aqcv6\",\n                \"DiskUsage\": \"SYSTEM_DISK\",\n                \"DiskId\": \"lhdisk-f71kc5bh\",\n                \"DiskSize\": 50,\n                \"SnapshotName\": \"lighthouse-test1-0903145122\",\n                \"SnapshotState\": \"NORMAL\",\n                \"Percent\": \"100\",\n                \"LatestOperation\": \"RollbackInstanceSnapshot\",\n                \"LatestOperationState\": \"SUCCESS\",\n                \"LatestOperationRequestId\": \"96aee6e3-172c-4f0f-be7c-fc46b9865763\",\n                \"CreatedTime\": \"2020-09-03T06:51:23Z\"\n            }\n        ],\n        \"RequestId\": \"95aacc96-b271-4d8b-bf83-019647952af9\"\n    }\n}",
         "title": "Querying snapshot list"
@@ -328,7 +328,7 @@
     ],
     "DescribeSnapshotsDeniedActions": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeSnapshotsDeniedActions\n&SnapshotIds.0=lhsnap-nv6aqcv6\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SnapshotDeniedActionSet\": [\n            {\n                \"SnapshotId\": \"lhsnap-nv6aqcv6\",\n                \"DeniedActions\": [\n                    {\n                        \"Action\": \"RollbackInstanceSnapshot\",\n                        \"Code\": \"UnsupportedOperation.DiskLatestOperationUnfinished\",\n                        \"Message\": \"The disk `lhdisk-f71kc5bh` is `rolling back an instance snapshot` and does not support this operation\"\n                    },\n                    {\n                        \"Action\": \"DeleteSnapshots\",\n                        \"Code\": \"UnsupportedOperation.InvalidSnapshotState\",\n                        \"Message\": \"The snapshot `lhsnap-nv6aqcv6` is in `ROLLBACKING` status and does not support this operation\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"82069c10-0228-4ffa-a649-81b2b4e85513\"\n    }\n}",
         "title": "Querying the list of operation limits of instances"
@@ -344,7 +344,7 @@
     ],
     "DetachCcn": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachCcn\n<Common request parameters>\n\n{\n    \"CcnId\": \"ccn-pf78xmcp\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6c947389-ed9f-4c7a-ba68-4b118a4ac11a\"\n    }\n}",
         "title": "Unassociating CCN instance"
@@ -352,7 +352,7 @@
     ],
     "DetachDisks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-eobj8huv\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0d5e192e-10a2-44a6-a6ce-2ac6b01f7646\"\n    }\n}",
         "title": "Detaching cloud disks"
@@ -360,7 +360,7 @@
     ],
     "DisassociateInstancesKeyPairs": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DisassociateInstancesKeyPairs\n&InstanceIds.0=lhins-ruy9d2tw\n&KeyIds.0=lhkp-f7rjie1q\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c81db282-c4e7-400e-aba4-6069a1537e77\"\n    }\n}",
         "title": "Unbinding key pair"
@@ -368,7 +368,7 @@
     ],
     "ImportKeyPair": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ImportKeyPair\n&KeyName=test_import\n&PublicKey=<public key content>\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"KeyId\": \"lhkp-2xsmy15f\",\n        \"RequestId\": \"87e6cf6c-1734-497e-aed5-9e12afa7237a\"\n    }\n}",
         "title": "Importing key pair"
@@ -376,7 +376,7 @@
     ],
     "InquirePriceCreateBlueprint": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceCreateBlueprint\n<Common request parameters>\n\n{\n    \"BlueprintCount\": 5\n}",
         "output": "{\n    \"Response\": {\n        \"BlueprintPrice\": {\n            \"OriginalBlueprintPrice\": 0.008,\n            \"OriginalPrice\": 0.04,\n            \"Discount\": 100,\n            \"DiscountPrice\": 0.04\n        },\n        \"RequestId\": \"afde8c49-eb92-4545-a464-ebe788a249c4\"\n    }\n}",
         "title": "Querying image price"
@@ -384,7 +384,7 @@
     ],
     "InquirePriceCreateDisks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceCreateDisks\n<Common request parameters>\n\n{\n    \"DiskSize\": 20,\n    \"DiskType\": \"CLOUD_SSD\",\n    \"DiskChargePrepaid\": {\n        \"Period\": 1\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"OriginalDiskPrice\": 20.0,\n            \"OriginalPrice\": 20.0,\n            \"Discount\": 100,\n            \"DiscountPrice\": 20.0,\n            \"DetailPrices\": [\n                {\n                    \"PriceName\": \"DiskSpace\",\n                    \"OriginUnitPrice\": 20.0,\n                    \"OriginalPrice\": 20.0,\n                    \"Discount\": 100,\n                    \"DiscountPrice\": 20.0\n                }\n            ]\n        },\n        \"RequestId\": \"25a4f680-0477-4f27-a494-1369eb310fe8\"\n    }\n}",
         "title": "Querying the price of purchasing cloud disks"
@@ -400,7 +400,7 @@
     ],
     "InquirePriceRenewDisks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceRenewDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-5vmz00i3\"\n    ],\n    \"RenewDiskChargePrepaid\": {\n        \"Period\": 1\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"OriginalDiskPrice\": 22.0,\n            \"OriginalPrice\": 22.0,\n            \"Discount\": 100,\n            \"DiscountPrice\": 22.0,\n            \"DetailPrices\": [\n                {\n                    \"PriceName\": \"DiskSpace\",\n                    \"OriginUnitPrice\": 20.0,\n                    \"OriginalPrice\": 20.0,\n                    \"Discount\": 100,\n                    \"DiscountPrice\": 20.0\n                },\n                {\n                    \"PriceName\": \"DiskBackupQuota\",\n                    \"OriginUnitPrice\": 2.0,\n                    \"OriginalPrice\": 2.0,\n                    \"Discount\": 100,\n                    \"DiscountPrice\": 2.0\n                }\n            ]\n        },\n        \"RequestId\": \"03da2972-121e-4dcc-9a10-4cbec5c8991a\"\n    }\n}",
         "title": "Querying the price of renewing cloud disks"
@@ -414,9 +414,17 @@
         "title": "Querying the price of renewing instances (succeeded)"
       }
     ],
+    "IsolateInstances": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: IsolateInstances \n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-lfdnmikp\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"35eee594-4644-401a-815a-1c9075b5f39c\"\n    }\n}",
+        "title": "Returning Lighthouse instances"
+      }
+    ],
     "ModifyBlueprintAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBlueprintAttribute\n<Common request parameters>\n\n{\n    \"BlueprintId\": \"lhbp-1ynlfst1\",\n    \"BlueprintName\": \"new-blueprint\",\n    \"Description\": \"new-blueprint\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"896682bb-fb47-4fce-94d9-9a4f2abbfaac\"\n    }\n}",
         "title": "Modifying image name and description"
@@ -424,7 +432,7 @@
     ],
     "ModifyDisksAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDisksAttribute\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-djn43yh1\"\n    ],\n    \"DiskName\": \"test1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1e7152c8-4653-4efd-86c0-fa633579db48\"\n    }\n}",
         "title": "Renaming a disk"
@@ -432,7 +440,7 @@
     ],
     "ModifyDisksRenewFlag": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDisksRenewFlag\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-qx45d7ik\"\n    ],\n    \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0d5e192e-10a2-44a6-a6ce-2ac6b01f7646\"\n    }\n}",
         "title": "Modifying the renewal flag of disks"
@@ -440,7 +448,7 @@
     ],
     "ModifyFirewallRuleDescription": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ModifyFirewallRuleDescription\n&InstanceId=lhins-aglzynfg\n&FirewallRule.Protocol=TCP\n&FirewallRule.Port=80\n&FirewallRule.FirewallRuleDescription='test'\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9c1597d-90ef-4493-b6b4-bbc55f194a76\"\n    }\n}",
         "title": "Modifying firewall rule description"
@@ -448,7 +456,7 @@
     ],
     "ModifyFirewallRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ModifyFirewallRules\n&InstanceId=lhins-aglzynfg\n&FirewallRules.0.Protocol=TCP\n&FirewallRules.0.Port=80\n&FirewallRules.1.Protocol=UDP\n&FirewallRules.1.Port=22,443\n&FirewallRules.2.Protocol=TCP\n&FirewallRules.2.Port=8000-8081\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f927b1f4-5734-4ada-ab76-6b2bb0614c6d\"\n    }\n}",
         "title": "Modifying firewall rules"
@@ -462,9 +470,17 @@
         "title": "Renaming instance"
       }
     ],
+    "ModifyInstancesBundle": [
+      {
+        "document": "This example shows you how to change the Lighthouse instance bundle.",
+        "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: ModifyInstancesBundle \n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-1a2b3c\"\n    ],\n    \"BundleId\": \"bundle_gen_lin_01\",\n    \"AutoVoucher\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3964a892-5399-4eb7-a35b-8bddfe683ab4\"\n    }\n}",
+        "title": "Changing the Lighthouse instance bundle"
+      }
+    ],
     "ModifyInstancesLoginKeyPairAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ModifyInstancesLoginKeyPairAttribute\n&InstanceIds.0=lhins-ruy9d2tw\n&PermitLogin=NO\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fb3c565c-1ce9-43de-9b4e-58855716b16d\"\n    }\n}",
         "title": "Forbidding login to instance with default key pair"
@@ -472,15 +488,15 @@
     ],
     "ModifyInstancesRenewFlag": [
       {
-        "document": "修改实例的续费标识",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=ModifyInstancesRenewFlag\n&InstanceIds.0=lhins-ruy9d2tw\n&RenewFlag=NOTIFY_AND_AUTO_RENEW\n&<Common request parameters>",
+        "document": "This example shows you how to change the auto-renewal setting of Lighthouse instances.",
+        "input": "https://lighthouse.tencentcloudapi.com/?Action=ModifyInstancesRenewFlag \n&InstanceIds.0=lhins-ruy9d2tw \n&RenewFlag=NOTIFY_AND_AUTO_RENEW \n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4804b3a2-0c0f-4900-a39a-76885a17d4bb\"\n    }\n}",
-        "title": "Modifying the renewal flags of instances"
+        "title": "Modifying the auto-renewal setting of Lighthouse instances"
       }
     ],
     "ModifySnapshotAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ModifySnapshotAttribute\n&SnapshotId=lhsnap-nv6aqcv6\n&SnapshotName=snap_20200903\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a69469d0-b087-4f59-9557-7cde23662f8f\"\n    }\n}",
         "title": "Modifying snapshot attribute"
@@ -496,7 +512,7 @@
     ],
     "ResetAttachCcn": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetAttachCcn\n<Common request parameters>\n\n{\n    \"CcnId\": \"ccn-pf78xmcp\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"92de8d42-4ef3-4d43-bf15-8e0d00b66cb9\"\n    }\n}",
         "title": "Applying for associating with CCN again"
@@ -536,18 +552,18 @@
     ],
     "TerminateDisks": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminateDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-p1zflrif\"\n    ]\n}",
+        "document": "This example shows you how to terminates cloud disks.",
+        "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: TerminateDisks \n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-p1zflrif\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0d5e192e-10a2-44a6-a6ce-2ac6b01f7646\"\n    }\n}",
-        "title": "Terminating a disk"
+        "title": "Terminating cloud disks"
       }
     ],
     "TerminateInstances": [
       {
-        "document": "",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=TerminateInstances\n&InstanceIds.0=lhins-ruy9d2tw\n&<Common request parameters>",
+        "document": "This example shows you how to terminate Lighthouse instances.",
+        "input": "https://lighthouse.tencentcloudapi.com/?Action=TerminateInstances \n&InstanceIds.0=lhins-ruy9d2tw \n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abecf549-b609-4210-8e48-0ff76bbcd1fe\"\n    }\n}",
-        "title": "Terminates one or more instances"
+        "title": "Terminating a Lighthouse instance"
       }
     ]
   },

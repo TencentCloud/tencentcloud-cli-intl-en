@@ -180,6 +180,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "HTTPS",
           "example": "HTTPS",
           "member": "string",
@@ -190,6 +191,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "POST",
           "example": "POST",
           "member": "string",
@@ -223,6 +225,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "JSON string to be processed",
           "example": "{\"key\": \"value\"}",
           "member": "string",
@@ -232,6 +235,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transformation rule list",
           "example": "无",
           "member": "Transformation",
@@ -246,6 +250,7 @@
       "document": "CheckTransformation response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Data processed by `Transformations`",
           "example": "{\"key2\": \"value2\"}",
           "member": "string",
@@ -268,6 +273,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ckafka topic name",
           "example": "topic-xxxxxx",
           "member": "string",
@@ -278,6 +284,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Six-Segment QCS description of CKafka resource",
           "example": "qcs::ckafka:ap-chongqing:uin/123456:ckafkaId/uin/456789/ckafka-x",
           "member": "string",
@@ -294,6 +301,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "kafka offset",
           "example": "latest",
           "member": "string",
@@ -304,6 +312,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ckafka  topic",
           "example": "topic",
           "member": "string",
@@ -320,6 +329,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "CKafka topic to be delivered to",
           "example": "topic-xxxx",
           "member": "string",
@@ -330,6 +340,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Retry policy",
           "example": "无",
           "member": "RetryPolicy",
@@ -346,6 +357,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Status",
           "example": "Active",
           "member": "string",
@@ -356,6 +368,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Update time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -366,6 +379,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Switch",
           "example": "true",
           "member": "bool",
@@ -376,6 +390,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description",
           "example": "这是一个描述",
           "member": "string",
@@ -386,6 +401,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -396,6 +412,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Connector ID",
           "example": "connection-xxxxxxxx",
           "member": "string",
@@ -406,6 +423,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -416,6 +434,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Connector description",
           "example": "无",
           "member": "ConnectionDescription",
@@ -426,6 +445,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Connector name",
           "example": "connection",
           "member": "string",
@@ -436,6 +456,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type",
           "example": "apigw",
           "member": "string",
@@ -447,11 +468,37 @@
       ],
       "usage": "out"
     },
+    "ConnectionBrief": {
+      "document": "Connector basic information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Connector type\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "tdmq",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Connector status\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Normal",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ConnectionDescription": {
       "document": "Connection description",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "example": "qcs::apigw:ap-guangzhou:uin/0000000:serviceid/service-id",
           "member": "string",
@@ -461,7 +508,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "API Gateway parameters\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "APIGWParams",
@@ -471,11 +518,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "CKafka parameters\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CkafkaParams",
           "name": "CkafkaParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data Transfer Service (DTS) connector information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DTSParams",
+          "name": "DTSParams",
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -488,6 +545,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Connector description",
           "example": "无",
           "member": "ConnectionDescription",
@@ -497,6 +555,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -506,6 +565,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Connector name",
           "example": "connection",
           "member": "string",
@@ -515,6 +575,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description",
           "example": "这是一个描述",
           "member": "string",
@@ -524,6 +585,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable",
           "example": "true",
           "member": "bool",
@@ -533,6 +595,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type of the connector",
           "example": "apigw",
           "member": "string",
@@ -547,6 +610,7 @@
       "document": "CreateConnection response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Connector ID",
           "example": "connection-xxxxxxxx",
           "member": "string",
@@ -568,7 +632,7 @@
       "document": "CreateEventBus request structure.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.",
           "example": "EventBusName",
           "member": "string",
@@ -577,13 +641,31 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus description, which can contain up to 200 characters of any type.",
           "example": "这是一个描述",
           "member": "string",
           "name": "Description",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log retention period",
+          "example": "无",
+          "member": "int64",
+          "name": "SaveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable log storage",
+          "example": "无",
+          "member": "bool",
+          "name": "EnableStore",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -592,6 +674,7 @@
       "document": "CreateEventBus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -614,6 +697,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "See [Event Pattern](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)",
           "example": "{   \"detail\": {     \"source-ip\": [ { \"cidr\": \"10.0.0.0/24\" } ]  ",
           "member": "string",
@@ -623,6 +707,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID.",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -632,6 +717,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
           "example": "rule",
           "member": "string",
@@ -641,6 +727,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Switch.",
           "example": "true",
           "member": "bool",
@@ -650,6 +737,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus description, which can contain up to 200 characters of any type",
           "example": "这是一个描述",
           "member": "string",
@@ -664,6 +752,7 @@
       "document": "CreateRule response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -686,6 +775,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -695,6 +785,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target type",
           "example": "scf",
           "member": "string",
@@ -704,6 +795,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target description",
           "example": "qcs::scf:ap-guangzhou:uin/3473058547:namespace/test/function/",
           "member": "TargetDescription",
@@ -713,6 +805,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -727,6 +820,7 @@
       "document": "CreateTarget response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Target ID",
           "example": "target-e9r3a1l0",
           "member": "string",
@@ -749,6 +843,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxx",
           "member": "string",
@@ -758,6 +853,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rule ID",
           "example": "rule-xxxxxx",
           "member": "string",
@@ -767,6 +863,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transformation rule list (currently, only one is supported)",
           "example": "无",
           "member": "Transformation",
@@ -781,6 +878,7 @@
       "document": "CreateTransformation response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Generated transformer ID",
           "example": "tsfm-xxxxxxxxxxx",
           "member": "string",
@@ -798,11 +896,17 @@
       ],
       "type": "object"
     },
+    "DTSParams": {
+      "document": "Data Transfer Service (DTS) connector information",
+      "members": [],
+      "usage": "both"
+    },
     "DeadLetterConfig": {
       "document": "DLQ configuration of rule",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Three modes are supported: DLQ, drop, and ignore error, which correspond to `DLQ`, `DROP`, and `IGNORE_ERROR` respectively",
           "example": "DLQ",
           "member": "string",
@@ -813,6 +917,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "If the DLQ mode is set, this option is required. Error messages will be delivered to the corresponding Kafka topic\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CkafkaDeliveryParams",
@@ -829,6 +934,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Connector ID",
           "example": "connection-xxxxxxxx",
           "member": "string",
@@ -838,6 +944,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -865,6 +972,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -892,6 +1000,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -901,6 +1010,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -928,6 +1038,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -937,6 +1048,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Delivery target ID",
           "example": "target-xxxxxxxx",
           "member": "string",
@@ -946,6 +1058,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -973,6 +1086,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxx",
           "member": "string",
@@ -982,6 +1096,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rule ID",
           "example": "rule-xxxxxx",
           "member": "string",
@@ -991,6 +1106,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transformer ID",
           "example": "tsfm-xxxxxx",
           "member": "string",
@@ -1018,6 +1134,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Network connection type",
           "example": "privatelink",
           "member": "string",
@@ -1028,6 +1145,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Index prefix",
           "example": "esindex",
           "member": "string",
@@ -1038,6 +1156,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ES log rotation interval",
           "example": "none",
           "member": "string",
@@ -1048,6 +1167,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "DTS event configuration",
           "example": "default",
           "member": "string",
@@ -1058,6 +1178,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "DTS indexing configuration",
           "example": "default",
           "member": "string",
@@ -1068,6 +1189,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ES template type",
           "example": "_type",
           "member": "string",
@@ -1084,6 +1206,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The syntax is the same as that of `Rule`",
           "example": "\"{\\\"source\\\":\\\"ckafka.cloud.tencent\\\"}\"",
           "member": "string",
@@ -1099,7 +1222,7 @@
       "document": "Event bus information",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Update time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -1109,7 +1232,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus description, which can contain up to 200 characters of any type",
           "example": "这是一个描述",
           "member": "string",
@@ -1119,7 +1242,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -1129,7 +1252,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
           "example": "EventBus",
           "member": "string",
@@ -1139,7 +1262,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1149,7 +1272,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus type",
           "example": "Cloud",
           "member": "string",
@@ -1157,6 +1280,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing Mode\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Postpaid(后付费)",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Connector basic information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ConnectionBrief",
+          "name": "ConnectionBriefs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TargetBrief",
+          "name": "TargetBriefs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1166,6 +1319,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "JsonPath, which will be `$.` by default if not specified",
           "example": "$",
           "member": "string",
@@ -1176,6 +1330,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Valid values: TEXT/JSON",
           "example": "TEXT",
           "member": "string",
@@ -1186,6 +1341,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Only required for `Text`\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TextParams",
@@ -1202,6 +1358,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "One or more filter values.",
           "example": "无",
           "member": "string",
@@ -1212,6 +1369,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter name.",
           "example": "无",
           "member": "string",
@@ -1228,6 +1386,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1242,76 +1401,121 @@
       "document": "GetEventBus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Update time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
           "name": "ModTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event bus description",
           "example": "这是一个描述",
           "member": "string",
           "name": "Description",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Log topic ID",
           "example": "78a5887e-357d-4bac-baca-1de008fa6ff0",
           "member": "string",
           "name": "ClsTopicId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time.",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
           "name": "AddTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Logset ID",
           "example": "78a5887e-357d-4bac-baca-1de008fa6ff0",
           "member": "string",
           "name": "ClsLogsetId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event bus name",
           "example": "eb",
           "member": "string",
           "name": "EventBusName",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
           "name": "EventBusId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "(Disused) Event bus type",
           "example": "Cloud",
           "member": "string",
           "name": "Type",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode",
+          "example": "无",
+          "member": "string",
+          "name": "PayMode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "EventBridge log storage period\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "SaveDays",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "EventBridge log topic ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LogTopicId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable log storage\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableStore",
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to sort the message\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Disorder",
+          "member": "string",
+          "name": "LinkMode",
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1327,6 +1531,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1336,6 +1541,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -1350,6 +1556,7 @@
       "document": "GetRule response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1359,6 +1566,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -1368,6 +1576,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event rule name",
           "example": "rule",
           "member": "string",
@@ -1377,6 +1586,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event rule status",
           "example": "Active",
           "member": "string",
@@ -1386,6 +1596,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Switch",
           "example": "true",
           "member": "bool",
@@ -1395,6 +1606,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event rule description",
           "example": "这是一个描述",
           "member": "string",
@@ -1404,6 +1616,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event pattern",
           "example": "{   \"detail\": {     \"source-ip\": [ { \"cidr\": \"10.0.0.0/24\" } ]  ",
           "member": "string",
@@ -1413,6 +1626,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -1422,6 +1636,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Update time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -1444,6 +1659,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxx",
           "member": "string",
@@ -1453,6 +1669,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rule ID",
           "example": "rule-xxxxxx",
           "member": "string",
@@ -1462,6 +1679,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transformer ID",
           "example": "tsfm-xxxxxxx",
           "member": "string",
@@ -1476,6 +1694,7 @@
       "document": "GetTransformation response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Transformation rule list",
           "example": "无",
           "member": "Transformation",
@@ -1498,6 +1717,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1507,6 +1727,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates by which field to sort the returned results. Valid values: AddTime, ModTime",
           "example": "ModTime",
           "member": "string",
@@ -1516,6 +1737,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -1525,6 +1747,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC",
           "example": "DESC",
           "member": "string",
@@ -1534,6 +1757,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -1548,6 +1772,7 @@
       "document": "ListConnections response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Connector information",
           "example": "无",
           "member": "Connection",
@@ -1557,6 +1782,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of connectors",
           "example": "1",
           "member": "int64",
@@ -1579,6 +1805,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)",
           "example": "ModTime",
           "member": "string",
@@ -1588,6 +1815,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -1597,6 +1825,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)",
           "example": "DESC",
           "member": "string",
@@ -1606,6 +1835,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter. For more information, see the Instance Filter Table below. Each request can contain up to 10 `Filters` and 5 `Filter.Values`.",
           "example": "无",
           "member": "Filter",
@@ -1615,6 +1845,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pagination offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -1629,6 +1860,7 @@
       "document": "ListEventBuses response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Event bus information",
           "example": "无",
           "member": "EventBus",
@@ -1638,6 +1870,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of event buses",
           "example": "1",
           "member": "int64",
@@ -1660,6 +1893,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1669,6 +1903,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)",
           "example": "ModTime",
           "member": "string",
@@ -1678,6 +1913,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -1687,6 +1923,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pagination offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -1696,6 +1933,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)",
           "example": "DESC",
           "member": "string",
@@ -1710,6 +1948,7 @@
       "document": "ListRules response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Event rule information",
           "example": "无",
           "member": "Rule",
@@ -1719,6 +1958,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of event rules",
           "example": "8",
           "member": "int64",
@@ -1741,6 +1981,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -1750,6 +1991,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1759,6 +2001,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)",
           "example": "ModTime",
           "member": "string",
@@ -1768,6 +2011,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "0",
           "member": "int64",
@@ -1777,6 +2021,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pagination offset. Default value: 0.",
           "example": "20",
           "member": "int64",
@@ -1786,6 +2031,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)",
           "example": "DESC",
           "member": "string",
@@ -1800,6 +2046,7 @@
       "document": "ListTargets response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of targets",
           "example": "1",
           "member": "int64",
@@ -1809,6 +2056,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Target information",
           "example": "无",
           "member": "Target",
@@ -1831,6 +2079,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Key in the corresponding JSON output",
           "example": "name",
           "member": "string",
@@ -1841,6 +2090,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "You can enter a JsonPath, constant, or built-in date type",
           "example": "$.name",
           "member": "string",
@@ -1851,6 +2101,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Data type of `Value`. Valid values: STRING, NUMBER, BOOLEAN, NULL, SYS_VARIABLE, JSONPATH",
           "example": "JSONPATH",
           "member": "string",
@@ -1867,6 +2118,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Retry interval in seconds",
           "example": "30",
           "member": "uint64",
@@ -1877,6 +2129,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of retries",
           "example": "3",
           "member": "uint64",
@@ -1893,6 +2146,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Status",
           "example": "Active",
           "member": "string",
@@ -1903,6 +2157,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Modification time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -1913,6 +2168,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Switch",
           "example": "true",
           "member": "bool",
@@ -1923,6 +2179,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description",
           "example": "这是一个描述",
           "member": "string",
@@ -1933,6 +2190,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -1943,6 +2201,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
@@ -1953,6 +2212,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -1963,6 +2223,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rule name",
           "example": "rule",
           "member": "string",
@@ -1973,6 +2234,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target overview\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TargetBrief",
@@ -1983,6 +2245,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "DLQ rule set by the rule, which may be null\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DeadLetterConfig",
@@ -1999,6 +2262,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum waiting time for batch delivery",
           "example": "1",
           "member": "int64",
@@ -2009,6 +2273,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of events in batch delivery",
           "example": "1",
           "member": "int64",
@@ -2019,6 +2284,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Enables batch delivery",
           "example": "false",
           "member": "bool",
@@ -2035,6 +2301,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Target type",
           "example": "scf",
           "member": "string",
@@ -2045,6 +2312,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -2055,6 +2323,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target ID",
           "example": "target-xxxxxxxx",
           "member": "string",
@@ -2065,6 +2334,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target description",
           "example": "无",
           "member": "TargetDescription",
@@ -2075,6 +2345,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -2085,6 +2356,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Enables batch delivery\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -2095,6 +2367,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum waiting time for batch delivery\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2105,6 +2378,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of events in batch delivery\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2121,6 +2395,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Target ID",
           "example": "target-xxxxxxxx",
           "member": "string",
@@ -2131,6 +2406,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target type",
           "example": "scf",
           "member": "string",
@@ -2147,6 +2423,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "example": "qcs::scf:gz:uin/1111:resource",
           "member": "string",
@@ -2157,6 +2434,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SCF parameter",
           "example": "无",
           "member": "SCFParams",
@@ -2167,6 +2445,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "CKafka parameters",
           "example": "无",
           "member": "CkafkaTargetParams",
@@ -2177,6 +2456,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ElasticSearch parameters",
           "example": "无",
           "member": "ESTargetParams",
@@ -2193,6 +2473,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Comma, | , tab, space, line break, %, or #, which can contain only 1 character.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": ",",
           "member": "string",
@@ -2203,6 +2484,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Entered regex (128 characters)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "a(.*)bc",
           "member": "string",
@@ -2219,6 +2501,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Describes how to transform data",
           "example": "无",
           "member": "OutputStructParam",
@@ -2235,6 +2518,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Describes how to extract data\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Extraction",
@@ -2245,6 +2529,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Describes how to filter data\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "EtlFilter",
@@ -2255,6 +2540,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Describes how to transform data\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Transform",
@@ -2271,6 +2557,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Connector ID",
           "example": "connection-xxxxxxxx",
           "member": "string",
@@ -2280,6 +2567,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -2289,6 +2577,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Switch",
           "example": "true",
           "member": "bool",
@@ -2298,6 +2587,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description",
           "example": "这是一个描述",
           "member": "string",
@@ -2307,6 +2597,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Connector name",
           "example": "connection",
           "member": "string",
@@ -2333,7 +2624,7 @@
       "document": "UpdateEventBus request structure.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -2342,7 +2633,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus description, which can contain up to 200 characters of any type.",
           "example": "这是一个描述",
           "member": "string",
@@ -2351,13 +2642,40 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.",
           "example": "EventBusName",
           "member": "string",
           "name": "EventBusName",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log retention period",
+          "example": "无",
+          "member": "int64",
+          "name": "SaveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "EventBridge log topic ID",
+          "example": "无",
+          "member": "string",
+          "name": "LogTopicId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable log retention",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableStore",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2379,6 +2697,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -2388,6 +2707,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -2397,6 +2717,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Switch.",
           "example": "true",
           "member": "bool",
@@ -2406,6 +2727,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rule description, which can contain up to 200 characters of any type.",
           "example": "这是一个描述",
           "member": "string",
@@ -2415,6 +2737,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "See [CKafka Target](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)",
           "example": "{   \"detail\": {     \"source-ip\": [ { \"cidr\": \"10.0.0.0/24\" } ]  ",
           "member": "string",
@@ -2424,6 +2747,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
           "example": "rule",
           "member": "string",
@@ -2451,6 +2775,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxxxx",
           "member": "string",
@@ -2460,6 +2785,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Event rule ID",
           "example": "rule-xxxxxxxx",
           "member": "string",
@@ -2469,6 +2795,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Delivery target ID",
           "example": "target-xxxxxxxx",
           "member": "string",
@@ -2478,6 +2805,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Enables batch delivery",
           "example": "false",
           "member": "bool",
@@ -2487,6 +2815,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum waiting time for batch delivery",
           "example": "1",
           "member": "int64",
@@ -2496,6 +2825,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of events in batch delivery",
           "example": "1",
           "member": "int64",
@@ -2523,6 +2853,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Event bus ID",
           "example": "eb-xxxxxx",
           "member": "string",
@@ -2532,6 +2863,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rule ID",
           "example": "rule-xxxxxxxxx",
           "member": "string",
@@ -2541,6 +2873,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transformer ID",
           "example": "tsfm-xxxxxxxxx",
           "member": "string",
@@ -2550,6 +2883,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transformation rule list (currently, only one is supported)",
           "example": "无",
           "member": "Transformation",
