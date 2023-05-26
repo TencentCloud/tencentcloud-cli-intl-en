@@ -2,7 +2,7 @@
   "actions": {
     "BindZoneToPlan": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindZoneToPlan\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxyyyzzz\",\n    \"PlanId\": \"edgeone-qqqwwweee\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fd9d86df-b7e8-4469-b928-18cb7fd145641\"\n    }\n}",
         "title": "Binding a site to a target plan"
@@ -10,7 +10,7 @@
     ],
     "CheckCertificate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckCertificate\n<Common request parameters>\n\n{\n    \"Certificate\": \"Certificate content\",\n    \"PrivateKey\": \"Private key of the certificate\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
         "title": "Verifying a certificate"
@@ -18,7 +18,7 @@
     ],
     "CreateAccelerationDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"DomainName\": \"qq.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"OriginInfo\": {\n        \"OriginType\": \"ip_domain\",\n        \"Origin\": \"qq.com\",\n        \"BackupOrigin\": \"\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Adding an accelerated domain name"
@@ -26,7 +26,7 @@
     ],
     "CreateAliasDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAliasDomain\n<Common request parameters>\n\n{\n    \"TargetName\": \"aaa.example.com\",\n    \"AliasName\": \"bbb.test.com\",\n    \"CertType\": \"none\",\n    \"ZoneId\": \"zone-28569s6od5na\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4dcgtb24-7dc5-46s2-9q3e-95825d53dcs3a\"\n    }\n}",
         "title": "Creating an alias domain name"
@@ -34,7 +34,7 @@
     ],
     "CreateApplicationProxy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyName\": \"instancd-name\",\n    \"ProxyType\": \"instance\",\n    \"PlatType\": \"ip\",\n    \"SecurityType\": 1,\n    \"AccelerateType\": 1,\n    \"SessionPersistTime\": 3600,\n    \"Ipv6\": {\n        \"Switch\": \"on\"\n    },\n    \"ApplicationProxyRules\": [\n        {\n            \"Proto\": \"TCP\",\n            \"Port\": [\n                \"80\",\n                \"90\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\"\n            ]\n        },\n        {\n            \"Proto\": \"UDP\",\n            \"Port\": [\n                \"999\",\n                \"888\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\",\n                \"2.2.2.2:80\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"ProxyId\": \"proxy-537f5b41-162a-11ed-abaa-525400c5da15\"\n    }\n}",
         "title": "Creating an application proxy"
@@ -42,7 +42,7 @@
     ],
     "CreateApplicationProxyRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3df3e931-3159-4337-adc7-7604e01e0fa9\",\n        \"RuleId\": \"rule-a8f0d49a-33d7-11ed-9b89-52540005c111\"\n    }\n}",
         "title": "Creating an application proxy rule"
@@ -50,7 +50,7 @@
     ],
     "CreateCredential": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCredential\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9cc50b24-7dc5-44f4-96ce-95825d53ff2f\"\n    }\n}",
         "title": "Creating a credential"
@@ -102,7 +102,7 @@
     ],
     "CreatePlanForZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePlanForZone\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-25z65bfb4414\",\n    \"PlanType\": \"sta\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a06f52e7-2aab-4510-b2c2-1065bfb4414c\",\n        \"ResourceNames\": [\n            \"plan_sta\"\n        ],\n        \"DealNames\": [\n            \"2022080135400110011001\"\n        ]\n    }\n}",
         "title": "CreatePlanForZone"
@@ -110,7 +110,7 @@
     ],
     "CreatePrefetchTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrefetchTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.qq.com/a.txt\"\n    ],\n    \"ZoneId\": \"zone-ajj243dwrew\",\n    \"EncodeUrl\": true\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwch\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Pre-warming URLs"
@@ -118,13 +118,13 @@
     ],
     "CreatePurgeTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Type\": \"purge_all\",\n    \"ZoneId\": \"zone-ajj243dwrew\",\n    \"EncodeUrl\": true\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwch\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Purging all resources of the site “abc”"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.qq.com/a.txt\"\n    ],\n    \"Type\": \"purge_url\",\n    \"ZoneId\": \"zone-ajj243dwrew\",\n    \"EncodeUrl\": true\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwch\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Purging by the specified URL"
@@ -132,7 +132,7 @@
     ],
     "CreateReplayTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReplayTask\n<Common request parameters>\n\n{\n    \"Ids\": [\n        \"21370jopko3l1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwch\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Creating a replay task"
@@ -154,7 +154,7 @@
     ],
     "CreateSpeedTesting": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSpeedTesting\n<Common request parameters>\n\n{\n    \"Host\": \"www.example.com\",\n    \"ZoneId\": \"zone-adsfaces\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
         "title": "Creating a site test task"
@@ -162,7 +162,7 @@
     ],
     "CreateZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateZone\n<Common request parameters>\n\n{\n    \"JumpStart\": false,\n    \"Type\": \"full\",\n    \"ZoneName\": \"example.com\",\n    \"AllowDuplicates\": false,\n    \"AliasZoneName\": \"zone-example\"\n}",
         "output": "{\n    \"Response\": {\n        \"ZoneId\": \"zone-27q0p0bali16\",\n        \"RequestId\": \"2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
         "title": "Creating a site"
@@ -178,7 +178,7 @@
     ],
     "DeleteAliasDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAliasDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"AliasNames\": [\n        \"eo.test.com\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"28ec90d3-7af9-460c-bb1a-dd9cf4d8c785\"\n    }\n}",
         "title": "S"
@@ -186,7 +186,7 @@
     ],
     "DeleteApplicationProxy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Deleting an application proxy"
@@ -194,7 +194,7 @@
     ],
     "DeleteApplicationProxyRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-19389e5a-118b-11ed-9951-525400655ede\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Deleting an application proxy rule"
@@ -202,7 +202,7 @@
     ],
     "DeleteOriginGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Deleting an origin group"
@@ -210,7 +210,7 @@
     ],
     "DeleteRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIdlFiles\n<Common request parameters>\n\n{\n    \"RuleIds\": [\n        \"rule-66tjz30m\",\n        \"rule-bx3zke8q\"\n    ],\n    \"ZoneId\": \"zone-26r78x31ny86\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ace05891-744c-40f8-94de-4e1c08d954c2\"\n    }\n}",
         "title": "Batch deleting rules from the rule engine"
@@ -218,7 +218,7 @@
     ],
     "DeleteZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteZone\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac50bka-7dc5-4fq4-96ce-89825d53jkl1\"\n    }\n}",
         "title": "Deleting a site"
@@ -234,7 +234,7 @@
     ],
     "DescribeAddableEntityList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAddableEntityList\n<Common request parameters>\n\n{\n    \"EntityType\": \"domain\",\n    \"ZoneId\": \"zone-28v4ag8bprrm\",\n    \"Area\": \"mainland\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"EntityList\": [\n            \"sub.example.com\"\n        ],\n        \"RequestId\": \"8fbf8770-6bc2-48e1-a544-bf06eb8481e6\"\n    }\n}",
         "title": "This example shows you how to query available L4 proxies."
@@ -242,7 +242,7 @@
     ],
     "DescribeAliasDomains": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAliasDomains\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"bbb.test.com\"\n            ],\n            \"Name\": \"alias-name\"\n        }\n    ],\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"5ce6ee51-cda5-4e0d-a338-cff57a00bb3a\",\n        \"AliasDomains\": [\n            {\n                \"Status\": \"pending\",\n                \"ModifiedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"TargetName\": \"aaa.example.com\",\n                \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"ZoneId\": \"zone-28569s6od5na\",\n                \"AliasName\": \"bbb.test.com\",\n                \"ForbidMode\": 0\n            }\n        ]\n    }\n}",
         "title": "Querying the list of alias domain names"
@@ -250,7 +250,7 @@
     ],
     "DescribeApplicationProxies": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProxies\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a84ae15a-aca5-4c24-a4f4-c419cf2c18af\",\n        \"ApplicationProxies\": [\n            {\n                \"HostId\": \"\",\n                \"ProxyType\": \"instance\",\n                \"Area\": \"mainland\",\n                \"SessionPersistTime\": 1,\n                \"AccelerateType\": 1,\n                \"PlatType\": \"domain\",\n                \"ProxyId\": \"proxy-34c74aa7-9a9f-11ec-bcb0-52540015711d\",\n                \"ProxyName\": \"zone-f835533b8998f\",\n                \"ZoneId\": \"zone-21xfqlh4qjee\",\n                \"ZoneName\": \"123.com\",\n                \"ApplicationProxyRules\": [\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:80\"\n                        ],\n                        \"Port\": [\n                            \"80\"\n                        ],\n                        \"Proto\": \"TCP\",\n                        \"Status\": \"online\",\n                        \"ForwardClientIp\": \"off\",\n                        \"SessionPersist\": true,\n                        \"RuleId\": \"rule-34c74ab8-9a9f-11ec-bcb0-52540015711d\"\n                    },\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:553\"\n                        ],\n                        \"Port\": [\n                            \"553\"\n                        ],\n                        \"Proto\": \"UDP\",\n                        \"Status\": \"online\",\n                        \"ForwardClientIp\": \"off\",\n                        \"SessionPersist\": true,\n                        \"RuleId\": \"rule-4bc1d3d6-9aa0-11ec-bcb0-52540015711d\"\n                    }\n                ],\n                \"ScheduleValue\": [],\n                \"SecurityType\": 1,\n                \"Ipv6\": {\n                    \"Switch\": \"on\"\n                },\n                \"Status\": \"progress\",\n                \"BanStatus\": \"recover\",\n                \"UpdateTime\": \"2022-03-03T06:06:10Z\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the list of application proxies"
@@ -258,7 +258,7 @@
     ],
     "DescribeAvailablePlans": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailablePlans\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e9fa0c8b-3c73-9ec2-cb5c-faa4725e0e07\",\n        \"PlanInfo\": [\n            {\n                \"Area\": \"overseas\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 3000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"sta\",\n                \"Price\": 450000,\n                \"Request\": 50000000,\n                \"SiteNumber\": 1\n            },\n            {\n                \"Area\": \"overseas\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 3000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"sta_with_bot\",\n                \"Price\": 1262500,\n                \"Request\": 50000000,\n                \"SiteNumber\": 1\n            },\n            {\n                \"Area\": \"mainland\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 3000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"sta_cm\",\n                \"Price\": 380000,\n                \"Request\": 50000000,\n                \"SiteNumber\": 1\n            },\n            {\n                \"Area\": \"mainland\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 3000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"sta_cm_with_bot\",\n                \"Price\": 1192500,\n                \"Request\": 50000000,\n                \"SiteNumber\": 1\n            },\n            {\n                \"Area\": \"overseas\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 10000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"ent\",\n                \"Price\": 10228400,\n                \"Request\": 80000000,\n                \"SiteNumber\": 1\n            },\n            {\n                \"Area\": \"overseas\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 10000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"ent_with_bot\",\n                \"Price\": 11216400,\n                \"Request\": 80000000,\n                \"SiteNumber\": 1\n            },\n            {\n                \"Area\": \"mainland\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 10000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"ent_cm\",\n                \"Price\": 8637300,\n                \"Request\": 80000000,\n                \"SiteNumber\": 1\n            },\n            {\n                \"Area\": \"mainland\",\n                \"Currency\": \"CNY\",\n                \"Flux\": 10000000000000,\n                \"Frequency\": \"m\",\n                \"PlanType\": \"ent_cm_with_bot\",\n                \"Price\": 9625300,\n                \"Request\": 80000000,\n                \"SiteNumber\": 1\n            }\n        ]\n    }\n}",
         "title": "Querying available plan options"
@@ -266,7 +266,7 @@
     ],
     "DescribeClientRuleList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClientRuleList\n<Common request parameters>\n\n{\n    \"Domain\": \"www.baidu.com\",\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"RuleId\": 124552,\n    \"SourceClientIp\": \"1.2.3.4\",\n    \"RuleType\": \"acl\",\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"RequestId\": \"c0ce8b7c-a48f-4eed-a0eb-c24177efc430\",\n        \"Data\": [\n            {\n                \"RuleType\": \"acl\",\n                \"Description\": \"SQL injection\",\n                \"RuleId\": 124552,\n                \"BlockTime\": 1659595468,\n                \"IpStatus\": \"block\",\n                \"ClientIp\": \"1.2.3.4\",\n                \"Id\": \"1659595468-acl-1.2.3.4\"\n            }\n        ]\n    }\n}",
         "title": "Querying the information of a blocked client"
@@ -274,7 +274,7 @@
     ],
     "DescribeContentQuota": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeContentQuota\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc-ajj243-afjkj245-af\",\n        \"PrefetchQuota\": [\n            {\n                \"Batch\": 2000,\n                \"Daily\": 10000,\n                \"DailyAvailable\": 10000,\n                \"Type\": \"prefetch_url\"\n            }\n        ],\n        \"PurgeQuota\": [\n            {\n                \"Batch\": 2000,\n                \"Daily\": 10000,\n                \"DailyAvailable\": 10000,\n                \"Type\": \"purge_url\"\n            },\n            {\n                \"Batch\": 2000,\n                \"Daily\": 10000,\n                \"DailyAvailable\": 10000,\n                \"Type\": \"purge_prefix\"\n            },\n            {\n                \"Batch\": 2000,\n                \"Daily\": 10000,\n                \"DailyAvailable\": 10000,\n                \"Type\": \"purge_host\"\n            },\n            {\n                \"Batch\": 2000,\n                \"Daily\": 10000,\n                \"DailyAvailable\": 10000,\n                \"Type\": \"purge_all\"\n            }\n        ]\n    }\n}",
         "title": "Querying quota"
@@ -282,15 +282,23 @@
     ],
     "DescribeDDoSAttackData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSAttackData\n<Common request parameters>\n\n{\n    \"MetricNames\": [\n        \"ddos_attackMaxBandwidth\"\n    ],\n    \"Interval\": \"min\",\n    \"PolicyIds\": [\n        1706\n    ],\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2022-08-22T00:00:00+00:00\",\n    \"EndTime\": \"2022-08-23T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"Value\": [\n                    {\n                        \"Max\": 100,\n                        \"Metric\": \"ddos_attackMaxBandwidth\",\n                        \"Avg\": 100.0,\n                        \"Detail\": [\n                            {\n                                \"Value\": 100\n                            }\n                        ],\n                        \"Sum\": 100.0\n                    }\n                ],\n                \"Key\": \"ddos_attackMaxBandwidth\"\n            }\n        ],\n        \"RequestId\": \"a79e60f8-34cc-4ee5-a7f9-a24adb572c68\"\n    }\n}",
         "title": "Queries the time-series data of DDoS attacks."
       }
     ],
+    "DescribeDDoSAttackEvent": [
+      {
+        "document": "This example shows you how to query DDoS attack events.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSAttackEvent\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"PolicyIds\": [\n        1245\n    ],\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"ShowDetail\": false,\n    \"Area\": \"overseas\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"Data\": [\n            {\n                \"EventId\": \"12214521\",\n                \"AttackPacketMaxRate\": 10,\n                \"AttackEndTime\": 1659595468,\n                \"AttackMaxBandWidth\": 10,\n                \"AttackStartTime\": 1659595468,\n                \"ZoneId\": \"zone-21xfqlh4qjee\",\n                \"PolicyId\": 1245,\n                \"AttackType\": \"UDPFLOOD\",\n                \"AttackStatus\": 1,\n                \"Area\": \"mainland\",\n                \"DDoSBlockData\": [\n                    {\n                        \"StartTime\": 1659595468,\n                        \"EndTime\": 0,\n                        \"BlockArea\": \"Access resitricted in some regions.\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"c0ce8b7c-a48f-4eed-a0eb-c24177efc430\"\n    }\n}",
+        "title": "Querying a DDoS attack event"
+      }
+    ],
     "DescribeDDoSAttackTopData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSAttackTopData\n<Common request parameters>\n\n{\n    \"AttackType\": \"UDPFLOOD\",\n    \"MetricName\": \"ddos_attackFlux_protocol\",\n    \"ProtocolType\": \"udp\",\n    \"PolicyIds\": [\n        1705\n    ],\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"Limit\": 1,\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Port\": 22,\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"Data\": [\n            {\n                \"Value\": [\n                    {\n                        \"Count\": 123,\n                        \"Name\": \"udp\"\n                    }\n                ],\n                \"Key\": \"zone-21xfqlh4qjee\"\n            }\n        ],\n        \"RequestId\": \"3824cf60-c2aa-4f4a-95b7-a4d5e4dee188\"\n    }\n}",
         "title": "Querying the top-ranked DDoS attack data"
@@ -298,7 +306,7 @@
     ],
     "DescribeDefaultCertificates": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDefaultCertificates\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-fafcasdf\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\",\n        \"DefaultServerCertInfo\": [\n            {\n                \"Status\": \"deployed\",\n                \"CertId\": \"teo-285inl1otbtd\",\n                \"SubjectAltName\": [\n                    \"*.test.com\",\n                    \"test.com\"\n                ],\n                \"EffectiveTime\": \"2020-09-22T00:00:00+00:00\",\n                \"CommonName\": \"test.com\",\n                \"ExpireTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Alias\": \"EdgeOne default\",\n                \"Message\": \"\",\n                \"Type\": \"default\"\n            }\n        ]\n    }\n}",
         "title": "Obtaining default certificates"
@@ -306,31 +314,31 @@
     ],
     "DescribeDnsData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2020-09-01T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-22T00:01:00+00:00\",\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"tencent.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n        \"Data\": [\n            {\n                \"Time\": \"2020-09-01T00:00:00+00:00\",\n                \"Value\": 101\n            },\n            {\n                \"Time\": \"2020-09-01T00:01:00+00:00\",\n                \"Value\": 102\n            },\n            {\n                \"Time\": \"2020-09-01T00:02:00+00:00\",\n                \"Value\": 103\n            },\n            {\n                \"Time\": \"2020-09-01T00:03:00+00:00\",\n                \"Value\": 104\n            },\n            {\n                \"Time\": \"2020-09-01T00:04:00+00:00\",\n                \"Value\": 105\n            },\n            {\n                \"Time\": \"2020-09-01T00:05:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:06:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:07:00+00:00\",\n                \"Value\": 107\n            },\n            {\n                \"Time\": \"2020-09-01T00:08:00+00:00\",\n                \"Value\": 108\n            },\n            {\n                \"Time\": \"2020-09-01T00:09:00+00:00\",\n                \"Value\": 109\n            }\n        ]\n    }\n}",
         "title": "Getting the DNS requests of a site"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2020-09-01T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-01T00:09:59+00:00\",\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"tencent.com\"\n            ]\n        },\n        {\n            \"Name\": \"host\",\n            \"Values\": [\n                \"test.tencent.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n        \"Data\": [\n            {\n                \"Time\": \"2020-09-01T00:00:00+00:00\",\n                \"Value\": 101\n            },\n            {\n                \"Time\": \"2020-09-01T00:01:00+00:00\",\n                \"Value\": 102\n            },\n            {\n                \"Time\": \"2020-09-01T00:02:00+00:00\",\n                \"Value\": 103\n            },\n            {\n                \"Time\": \"2020-09-01T00:03:00+00:00\",\n                \"Value\": 104\n            },\n            {\n                \"Time\": \"2020-09-01T00:04:00+00:00\",\n                \"Value\": 105\n            },\n            {\n                \"Time\": \"2020-09-01T00:05:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:06:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:07:00+00:00\",\n                \"Value\": 107\n            },\n            {\n                \"Time\": \"2020-09-01T00:08:00+00:00\",\n                \"Value\": 108\n            },\n            {\n                \"Time\": \"2020-09-01T00:09:00+00:00\",\n                \"Value\": 109\n            }\n        ]\n    }\n}",
         "title": "Getting the DNS requests of a domain name"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2020-09-01T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-01T00:09:59+00:00\",\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"tencent.com\"\n            ]\n        },\n        {\n            \"Name\": \"area\",\n            \"Values\": [\n                \"Asia\",\n                \"Africa\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n        \"Data\": [\n            {\n                \"Time\": \"2020-09-01T00:00:00+00:00\",\n                \"Value\": 101\n            },\n            {\n                \"Time\": \"2020-09-01T00:01:00+00:00\",\n                \"Value\": 102\n            },\n            {\n                \"Time\": \"2020-09-01T00:02:00+00:00\",\n                \"Value\": 103\n            },\n            {\n                \"Time\": \"2020-09-01T00:03:00+00:00\",\n                \"Value\": 104\n            },\n            {\n                \"Time\": \"2020-09-01T00:04:00+00:00\",\n                \"Value\": 105\n            },\n            {\n                \"Time\": \"2020-09-01T00:05:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:06:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:07:00+00:00\",\n                \"Value\": 107\n            },\n            {\n                \"Time\": \"2020-09-01T00:08:00+00:00\",\n                \"Value\": 108\n            },\n            {\n                \"Time\": \"2020-09-01T00:09:00+00:00\",\n                \"Value\": 109\n            }\n        ]\n    }\n}",
         "title": "Getting the DNS requests made in Africa and Asia by a site"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2020-09-01T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-01T00:09:59+00:00\",\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"tencent.com\"\n            ]\n        },\n        {\n            \"Name\": \"code\",\n            \"Values\": [\n                \"NXDomain\",\n                \"NotImp\",\n                \"Refused\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n        \"Data\": [\n            {\n                \"Time\": \"2020-09-01T00:00:00+00:00\",\n                \"Value\": 101\n            },\n            {\n                \"Time\": \"2020-09-01T00:01:00+00:00\",\n                \"Value\": 102\n            },\n            {\n                \"Time\": \"2020-09-01T00:02:00+00:00\",\n                \"Value\": 103\n            },\n            {\n                \"Time\": \"2020-09-01T00:03:00+00:00\",\n                \"Value\": 104\n            },\n            {\n                \"Time\": \"2020-09-01T00:04:00+00:00\",\n                \"Value\": 105\n            },\n            {\n                \"Time\": \"2020-09-01T00:05:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:06:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:07:00+00:00\",\n                \"Value\": 107\n            },\n            {\n                \"Time\": \"2020-09-01T00:08:00+00:00\",\n                \"Value\": 108\n            },\n            {\n                \"Time\": \"2020-09-01T00:09:00+00:00\",\n                \"Value\": 109\n            }\n        ]\n    }\n}",
         "title": "Getting the failed DNS requests of a site"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2020-09-01T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-01T00:09:59+00:00\",\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"tencent.com\"\n            ]\n        },\n        {\n            \"Name\": \"type\",\n            \"Values\": [\n                \"A\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n        \"Data\": [\n            {\n                \"Time\": \"2020-09-01T00:00:00+00:00\",\n                \"Value\": 101\n            },\n            {\n                \"Time\": \"2020-09-01T00:01:00+00:00\",\n                \"Value\": 102\n            },\n            {\n                \"Time\": \"2020-09-01T00:02:00+00:00\",\n                \"Value\": 103\n            },\n            {\n                \"Time\": \"2020-09-01T00:03:00+00:00\",\n                \"Value\": 104\n            },\n            {\n                \"Time\": \"2020-09-01T00:04:00+00:00\",\n                \"Value\": 105\n            },\n            {\n                \"Time\": \"2020-09-01T00:05:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:06:00+00:00\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2020-09-01T00:07:00+00:00\",\n                \"Value\": 107\n            },\n            {\n                \"Time\": \"2020-09-01T00:08:00+00:00\",\n                \"Value\": 108\n            },\n            {\n                \"Time\": \"2020-09-01T00:09:00+00:00\",\n                \"Value\": 109\n            }\n        ]\n    }\n}",
         "title": "Getting all DNS requests made with A records by a site"
@@ -338,7 +346,7 @@
     ],
     "DescribeHostsSetting": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostsSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\"\n}",
         "output": "{\n    \"Response\": {\n        \"DetailHosts\": [\n            {\n                \"Status\": \"online\",\n                \"Host\": \"test.example.com\",\n                \"ZoneId\": \"zone-27q0p0bali16\",\n                \"ZoneName\": \"example.com\",\n                \"Cname\": \"test.example.com.acc.edgeonedy1.com.\",\n                \"Id\": \"edge-ja6yyfjh\",\n                \"InstanceId\": \"edge-ja6yyfjh\",\n                \"Lock\": 0,\n                \"Mode\": 0,\n                \"Area\": \"mainland\",\n                \"AccelerateType\": {\n                    \"Switch\": \"on\"\n                },\n                \"CacheConfig\": {\n                    \"Cache\": {\n                        \"CacheTime\": 2592000,\n                        \"Switch\": \"off\"\n                    },\n                    \"FollowOrigin\": {\n                        \"Switch\": \"on\"\n                    },\n                    \"NoCache\": {\n                        \"Switch\": \"off\"\n                    }\n                },\n                \"CacheKey\": {\n                    \"FullUrlCache\": \"on\",\n                    \"IgnoreCase\": \"off\",\n                    \"QueryString\": {\n                        \"Action\": \"includeCustom\",\n                        \"Switch\": \"off\",\n                        \"Value\": []\n                    }\n                },\n                \"Compression\": {\n                    \"Algorithms\": [\n                        \"brotli\",\n                        \"gzip\"\n                    ],\n                    \"Switch\": \"on\"\n                },\n                \"DDoS\": {\n                    \"Switch\": \"on\"\n                },\n                \"CC\": {\n                    \"PolicyId\": 1996,\n                    \"Switch\": \"on\"\n                },\n                \"Waf\": {\n                    \"PolicyId\": 1995,\n                    \"Switch\": \"on\"\n                },\n                \"Https\": {\n                    \"CertInfo\": [],\n                    \"Hsts\": {\n                        \"IncludeSubDomains\": \"off\",\n                        \"MaxAge\": 1,\n                        \"Preload\": \"off\",\n                        \"Switch\": \"on\"\n                    },\n                    \"Http2\": \"on\",\n                    \"OcspStapling\": \"off\",\n                    \"TlsVersion\": [\n                        \"TLSv1\",\n                        \"TLSv1.1\",\n                        \"TLSv1.2\",\n                        \"TLSv1.3\"\n                    ]\n                },\n                \"Ipv6\": {\n                    \"Switch\": \"off\"\n                },\n                \"Origin\": {\n                    \"BackupOrigins\": [],\n                    \"CosPrivateAccess\": \"off\",\n                    \"OriginPullProtocol\": \"follow\",\n                    \"Origins\": [\n                        \"1.1.1.1:80:100\"\n                    ]\n                },\n                \"SecurityType\": {\n                    \"Switch\": \"on\"\n                },\n                \"SmartRouting\": {\n                    \"Switch\": \"off\"\n                }\n            }\n        ],\n        \"RequestId\": \"9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n        \"TotalNumber\": 1\n    }\n}",
         "title": "Querying the detailed domain name configuration"
@@ -346,7 +354,7 @@
     ],
     "DescribeIdentifications": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIdentifications\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"example.com\"\n            ],\n            \"Name\": \"zone-name\"\n        }\n    ],\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Identifications\": [\n            {\n                \"ZoneName\": \"example.com\",\n                \"Status\": \"pending\",\n                \"Ascription\": {\n                    \"Subdomain\": \"edgeonereclaim\",\n                    \"RecordType\": \"TXT\",\n                    \"RecordValue\": \"reclaim-a24aba2420cf4ce8b7bff7c8be6d337f\"\n                },\n                \"OriginalNameServers\": [\n                    \"ns1.example.com\",\n                    \"ns2.example.com\"\n                ],\n                \"FileAscription\": {\n                    \"IdentifyContent\": \"88v24mnnljwbhaohrpfx80f63duhdnjx\",\n                    \"IdentifyPath\": \"/.well-known/teo-verification/vd4ewuqa9n.txt\"\n                }\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"8gs50b24-7df5-47f4-96ae-95825d53er3c\"\n    }\n}",
         "title": "Querying the verification status of a site"
@@ -354,7 +362,7 @@
     ],
     "DescribeLogSets": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogSets\n<Common request parameters>\n\n{\n    \"LogSetRegion\": \"ap-guangzhou\"\n}",
         "output": "{\n    \"Response\": {\n        \"LogSetList\": [\n            {\n                \"Deleted\": \"no\",\n                \"LogSetId\": \"ae803624-ee6a-4a14-a716-1dee1a8f6f7b\",\n                \"LogSetName\": \"test_log\",\n                \"LogSetRegion\": \"ap-guangzhou\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"a3fdb9f1-c97e-4d7e-86ac-aa15f27b2239\"\n    }\n}",
         "title": "Obtaining the list of logsets"
@@ -362,7 +370,7 @@
     ],
     "DescribeLogTopicTasks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogTopicTasks\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"ZoneId\": \"zone-28569s6od5na\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"40be710a-9706-4b22-865e-c9739111ef1a\",\n        \"TopicList\": [\n            {\n                \"Area\": \"mainland\",\n                \"CreateTime\": \"2022-08-31 10:41:11\",\n                \"Deleted\": \"no\",\n                \"Enabled\": true,\n                \"EntityType\": \"application\",\n                \"LogSetId\": \"33a900b2-9860-4da0-be91-bcce94c290ce\",\n                \"Period\": 10,\n                \"LogSetRegion\": \"ap-guangzhou\",\n                \"Target\": \"cls\",\n                \"TaskName\": \"test_task\",\n                \"TopicId\": \"0a396698-d589-42b6-a6a2-701777d3afe0\",\n                \"ZoneName\": \"hello.club\",\n                \"ZoneId\": \"zone-28569s6od5na\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Obtaining the list of shipping tasks"
@@ -370,19 +378,19 @@
     ],
     "DescribeOriginGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
         "title": "Querying the origin group list of a site"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"origin-group-id\",\n            \"Values\": [\n                \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
         "title": "Querying the details of an origin group by ID"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"origin-group-name\",\n            \"Values\": [\n                \"name\"\n            ],\n            \"Fuzzy\": true\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
         "title": "Querying the details of an origin group by name in a fuzzy query"
@@ -398,13 +406,13 @@
     ],
     "DescribeOverviewL7Data": [
       {
-        "document": "",
+        "document": "This example shows you how to query the L7 access requests.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOverviewL7Data\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_request\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cc74d08-c174-413a-976b-abe7b851e010\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 1564,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1659225600,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 8037,\n                        \"MetricName\": \"l7Flow_request\",\n                        \"Sum\": 48511\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the L7 traffic data over time"
       },
       {
-        "document": "",
+        "document": "This example shows you how to query the L7 access requests by the tag.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOverviewL7Data\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_request\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"test1\"\n            ]\n        },\n        {\n            \"Key\": \"tagValue\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"a.com\",\n                \"b.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cc74d08-c174-413a-976b-abe7b851e0121\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 1564,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 100\n                            },\n                            {\n                                \"Timestamp\": 1659225600,\n                                \"Value\": 34\n                            }\n                        ],\n                        \"Max\": 8037,\n                        \"MetricName\": \"l7Flow_request\",\n                        \"Sum\": 48511\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the traffic data over time by the tag"
@@ -412,7 +420,7 @@
     ],
     "DescribePrefetchTasks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrefetchTasks\n<Common request parameters>\n\n{\n    \"StartTime\": \"2022-02-09T00:00:00+08:00\",\n    \"EndTime\": \"2022-02-09T23:59:00+08:00\",\n    \"Limit\": 1,\n    \"Offset\": 7\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc-afhhakf-24hkahf-2424\",\n        \"Tasks\": [\n            {\n                \"JobId\": \"20g9wz8m9mgx\",\n                \"Status\": \"success\",\n                \"Target\": \"http://www.qq.com/a.txt\",\n                \"Type\": \"prefetch_url\",\n                \"CreateTime\": \"2022-02-09T02:28:43Z\",\n                \"UpdateTime\": \"2022-02-09T02:28:52Z\"\n            }\n        ],\n        \"TotalCount\": 8\n    }\n}",
         "title": "Querying pre-warming tasks"
@@ -420,7 +428,7 @@
     ],
     "DescribePurgeTasks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePurgeTasks\n<Common request parameters>\n\n{\n    \"StartTime\": \"2022-02-09T00:00:00+08:00\",\n    \"EndTime\": \"2022-02-09T23:59:00+08:00\",\n    \"Limit\": 1,\n    \"Offset\": 7\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc-afhhakf-24hkahf-2424\",\n        \"Tasks\": [\n            {\n                \"JobId\": \"20g9wz8m9mgx\",\n                \"Status\": \"success\",\n                \"Target\": \"http://www.qq.com/a.txt\",\n                \"Type\": \"purge_url\",\n                \"CreateTime\": \"2022-02-09T02:28:43Z\",\n                \"UpdateTime\": \"2022-02-09T02:28:52Z\"\n            }\n        ],\n        \"TotalCount\": 8\n    }\n}",
         "title": "Querying the cache purging history"
@@ -428,7 +436,7 @@
     ],
     "DescribeRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRules\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-kwsqufps\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"811d2583-310c-41f4-b5e7-abe4074047d4\",\n        \"RuleItems\": [\n            {\n                \"RuleId\": \"rule-3bta0qmn\",\n                \"RuleName\": \"new_rule01\",\n                \"RulePriority\": 2,\n                \"Rules\": [\n                    {\n                        \"Actions\": [\n                            {\n                                \"CodeAction\": null,\n                                \"NormalAction\": {\n                                    \"Action\": \"RangeOriginPull\",\n                                    \"Parameters\": [\n                                        {\n                                            \"Name\": \"Switch\",\n                                            \"Values\": [\n                                                \"on\"\n                                            ]\n                                        }\n                                    ]\n                                },\n                                \"RewriteAction\": null\n                            }\n                        ],\n                        \"Conditions\": [\n                            {\n                                \"Conditions\": [\n                                    {\n                                        \"Operator\": \"equal\",\n                                        \"Target\": \"extension\",\n                                        \"Values\": [\n                                            \"name1\",\n                                            \"name2\"\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ],\n                \"Tags\": [\n                    \"tag1\"\n                ],\n                \"Status\": \"disable\"\n            },\n            {\n                \"RuleId\": \"rule-jr7ammcu\",\n                \"RuleName\": \"new_rule\",\n                \"RulePriority\": 1,\n                \"Rules\": [\n                    {\n                        \"Actions\": [\n                            {\n                                \"CodeAction\": null,\n                                \"NormalAction\": {\n                                    \"Action\": \"RangeOriginPull\",\n                                    \"Parameters\": [\n                                        {\n                                            \"Name\": \"Switch\",\n                                            \"Values\": [\n                                                \"on\"\n                                            ]\n                                        }\n                                    ]\n                                },\n                                \"RewriteAction\": null\n                            }\n                        ],\n                        \"Conditions\": [\n                            {\n                                \"Conditions\": [\n                                    {\n                                        \"Operator\": \"equal\",\n                                        \"Target\": \"extension\",\n                                        \"Values\": [\n                                            \"name1\",\n                                            \"name2\"\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ],\n                \"Tags\": [\n                    \"tag2\"\n                ],\n                \"Status\": \"disable\"\n            }\n        ],\n        \"ZoneId\": \"zone-kwsqufps\"\n    }\n}",
         "title": "DescribeRules"
@@ -436,7 +444,7 @@
     ],
     "DescribeRulesSetting": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRulesSetting\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"811d2583-310c-41f4-b5e7-abe4074047d4\",\n        \"Actions\": [\n            {\n                \"Action\": \"ErrorPage\",\n                \"Properties\": [\n                    {\n                        \"ChoiceProperties\": [],\n                        \"ChoicesValue\": [],\n                        \"ExtraParameter\": {\n                            \"Choices\": [\n                                \"403\",\n                                \"404\",\n                                \"404\",\n                                \"405\",\n                                \"414\",\n                                \"416\",\n                                \"451\",\n                                \"500\",\n                                \"501\",\n                                \"502\",\n                                \"503\",\n                                \"504\"\n                            ],\n                            \"Id\": \"StatusCode\",\n                            \"Type\": \"CHOICE\"\n                        },\n                        \"IsAllowEmpty\": false,\n                        \"IsMultiple\": false,\n                        \"Max\": 0,\n                        \"Min\": 0,\n                        \"Name\": \"RedirectUrl\",\n                        \"Type\": \"CUSTOM_STRING\"\n                    }\n                ]\n            },\n            {\n                \"Action\": \"Cache\",\n                \"Properties\": [\n                    {\n                        \"ChoiceProperties\": [\n                            {\n                                \"ChoicesValue\": [\n                                    \"on\",\n                                    \"off\"\n                                ],\n                                \"ExtraParameter\": null,\n                                \"IsAllowEmpty\": false,\n                                \"IsMultiple\": false,\n                                \"Max\": 0,\n                                \"Min\": 0,\n                                \"Name\": \"Switch\",\n                                \"Type\": \"TOGGLE\"\n                            }\n                        ],\n                        \"ChoicesValue\": [],\n                        \"ExtraParameter\": null,\n                        \"IsAllowEmpty\": false,\n                        \"IsMultiple\": false,\n                        \"Max\": 0,\n                        \"Min\": 0,\n                        \"Name\": \"FollowOrigin\",\n                        \"Type\": \"OBJECT\"\n                    },\n                    {\n                        \"ChoiceProperties\": [\n                            {\n                                \"ChoicesValue\": [\n                                    \"on\",\n                                    \"off\"\n                                ],\n                                \"ExtraParameter\": null,\n                                \"IsAllowEmpty\": false,\n                                \"IsMultiple\": false,\n                                \"Max\": 0,\n                                \"Min\": 0,\n                                \"Name\": \"Switch\",\n                                \"Type\": \"TOGGLE\"\n                            },\n                            {\n                                \"ChoicesValue\": [],\n                                \"ExtraParameter\": null,\n                                \"IsAllowEmpty\": false,\n                                \"IsMultiple\": false,\n                                \"Max\": 0,\n                                \"Min\": 0,\n                                \"Name\": \"CacheTime\",\n                                \"Type\": \"CUSTOM_NUM\"\n                            }\n                        ],\n                        \"ChoicesValue\": [],\n                        \"ExtraParameter\": null,\n                        \"IsAllowEmpty\": false,\n                        \"IsMultiple\": false,\n                        \"Max\": 0,\n                        \"Min\": 0,\n                        \"Name\": \"Cache\",\n                        \"Type\": \"OBJECT\"\n                    },\n                    {\n                        \"ChoiceProperties\": [\n                            {\n                                \"ChoicesValue\": [\n                                    \"on\",\n                                    \"off\"\n                                ],\n                                \"ExtraParameter\": null,\n                                \"IsAllowEmpty\": false,\n                                \"IsMultiple\": false,\n                                \"Max\": 0,\n                                \"Min\": 0,\n                                \"Name\": \"Switch\",\n                                \"Type\": \"TOGGLE\"\n                            }\n                        ],\n                        \"ChoicesValue\": [],\n                        \"ExtraParameter\": null,\n                        \"IsAllowEmpty\": false,\n                        \"IsMultiple\": false,\n                        \"Max\": 0,\n                        \"Min\": 0,\n                        \"Name\": \"NoCache\",\n                        \"Type\": \"OBJECT\"\n                    }\n                ]\n            },\n            {\n                \"Action\": \"MaxAge\",\n                \"Properties\": [\n                    {\n                        \"ChoiceProperties\": [],\n                        \"ChoicesValue\": [],\n                        \"ExtraParameter\": null,\n                        \"IsAllowEmpty\": false,\n                        \"IsMultiple\": false,\n                        \"Max\": 0,\n                        \"Min\": 0,\n                        \"Name\": \"MaxAgeTime\",\n                        \"Type\": \"CUSTOM_NUM\"\n                    },\n                    {\n                        \"ChoiceProperties\": [],\n                        \"ChoicesValue\": [\n                            \"on\",\n                            \"off\"\n                        ],\n                        \"ExtraParameter\": null,\n                        \"IsAllowEmpty\": false,\n                        \"IsMultiple\": false,\n                        \"Max\": 0,\n                        \"Min\": 0,\n                        \"Name\": \"FollowOrigin\",\n                        \"Type\": \"TOGGLE\"\n                    }\n                ]\n            },\n            {\n                \"Action\": \"StatusCodeCache\",\n                \"Properties\": [\n                    {\n                        \"ChoiceProperties\": [],\n                        \"ChoicesValue\": [],\n                        \"ExtraParameter\": {\n                            \"Choices\": [\n                                \"403\",\n                                \"404\",\n                                \"404\",\n                                \"405\",\n                                \"414\",\n                                \"416\",\n                                \"451\",\n                                \"500\",\n                                \"501\",\n                                \"502\",\n                                \"503\",\n                                \"504\"\n                            ],\n                            \"Id\": \"StatusCode\",\n                            \"Type\": \"CHOICE\"\n                        },\n                        \"IsAllowEmpty\": false,\n                        \"IsMultiple\": false,\n                        \"Max\": 0,\n                        \"Min\": 0,\n                        \"Name\": \"CacheTime\",\n                        \"Type\": \"CUSTOM_NUM\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "DescribeRulesSetting"
@@ -444,19 +452,19 @@
     ],
     "DescribeSingleL7AnalysisData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSingleL7AnalysisData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"MetricNames\": [\n        \"l7Flow_singleIpRequest\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4f9b86cc-d62b-4a69-a640-52f6f3cb628e\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"DetailData\": 65,\n                        \"MetricName\": \"l7Flow_singleIpRequest\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the statistical calculation result of L7 traffic "
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSingleL7AnalysisData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_singleIpRequest\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"protocol\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"HTTP/1.0\",\n                \"HTTP/1.1\",\n                \"HTTP/2.0\",\n                \"HTTP/3\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7672fcf7-2e69-478d-85a4-6b980ce5882f\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"1310708577\",\n                \"TypeValue\": [\n                    {\n                        \"DetailData\": 77,\n                        \"MetricName\": \"l7Flow_singleIpRequest\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the statistical calculation result by the specified HTTP protocol "
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSingleL7AnalysisData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_singleIpRequest\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"test\"\n            ]\n        },\n        {\n            \"Key\": \"tagValue\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"a.com\",\n                \"b.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"962792de-3bfe-483d-99a7-3cfde0467495\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"1310708577\",\n                \"TypeValue\": [\n                    {\n                        \"DetailData\": 20,\n                        \"MetricName\": \"l7Flow_singleIpRequest\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the statistical calculation result by the specified tag "
@@ -464,7 +472,7 @@
     ],
     "DescribeSpeedTestingDetails": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpeedTestingDetails\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-cdafdasdf\"\n}",
         "output": "{\n    \"Response\": {\n        \"SpeedTestingDetailData\": {\n            \"ZoneName\": \"tencent.com\",\n            \"DistrictStatistics\": [\n                {\n                    \"Alpha2\": \"AF\",\n                    \"LoadTime\": 30\n                }\n            ],\n            \"ZoneId\": \"zone-cdafdasdf\"\n        },\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
         "title": "Querying the site’s load speed across regions"
@@ -472,7 +480,7 @@
     ],
     "DescribeSpeedTestingMetricData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpeedTestingMetricData\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2805lqj66rf6\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9a45aa8-01ab-40c0-ac2d-e61178fd2c51\",\n        \"SpeedTestingMetricData\": {\n            \"OriginSpeedTestingInfo\": [\n                {\n                    \"SpeedTestingStatistics\": {\n                        \"DocumentFinishTime\": 0,\n                        \"FirstMeaningfulPaint\": 0,\n                        \"LoadTime\": 0,\n                        \"OverallDownloadSpeed\": 0.0,\n                        \"FileDownloadTime\": 0,\n                        \"FirstContentfulPaint\": 0,\n                        \"ResponseTime\": 0,\n                        \"RenderTime\": 0,\n                        \"TcpConnectionTime\": 0\n                    },\n                    \"SpeedTestingConfig\": {\n                        \"Url\": \"https://www.tencent.com/\",\n                        \"Connectivity\": \"Cable\",\n                        \"UA\": \"Chrome,PC\",\n                        \"TaskType\": 0\n                    },\n                    \"TestId\": \"test-id\",\n                    \"StatusCode\": 0\n                }\n            ],\n            \"SpeedTestingStatus\": {\n                \"Tls\": true,\n                \"Url\": \"https://www.tencent.com/\",\n                \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"Connectivity\": \"Cable\",\n                \"UA\": \"Chrome,PC\",\n                \"StatusCode\": 0,\n                \"TimedOut\": true,\n                \"Reachable\": true\n            },\n            \"OriginLoadTime\": 0,\n            \"ZoneId\": \"zone-2805lqj66rf6\",\n            \"ProxyLoadTime\": 0,\n            \"ProxySpeedTestingInfo\": [\n                {\n                    \"SpeedTestingStatistics\": {\n                        \"DocumentFinishTime\": 0,\n                        \"FirstMeaningfulPaint\": 0,\n                        \"LoadTime\": 0,\n                        \"OverallDownloadSpeed\": 0.0,\n                        \"FileDownloadTime\": 0,\n                        \"FirstContentfulPaint\": 0,\n                        \"ResponseTime\": 0,\n                        \"RenderTime\": 0,\n                        \"TcpConnectionTime\": 0\n                    },\n                    \"SpeedTestingConfig\": {\n                        \"Url\": \"https://www.tencent.com/\",\n                        \"Connectivity\": \"Cable\",\n                        \"UA\": \"Chrome,PC\",\n                        \"TaskType\": 0\n                    },\n                    \"TestId\": \"test-dadfcsas\",\n                    \"StatusCode\": 0\n                }\n            ],\n            \"OptimizeAction\": [\n                {\n                    \"Connectivity\": \"Cable\",\n                    \"Ratio\": 0,\n                    \"Name\": \"name\",\n                    \"Value\": 0\n                }\n            ],\n            \"ZoneName\": \"zone.com\"\n        }\n    }\n}",
         "title": "Querying the result of a site test"
@@ -480,27 +488,27 @@
     ],
     "DescribeSpeedTestingQuota": [
       {
-        "document": "",
+        "document": "This example shows you how to query the speed test quotas.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpeedTestingQuota\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-fiandfa\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9a45aa8-01ab-40c0-ac2d-e61178fd2c51\",\n        \"SpeedTestingQuota\": {\n            \"AvailableTestRuns\": 0,\n            \"TotalTestRuns\": 100\n        }\n    }\n}",
-        "title": "Querying the quota limit on site tests"
+        "title": "Querying the speed test quotas"
       }
     ],
     "DescribeTimingL4Data": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL4Data\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l4Flow_inFlux\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e12e0659-ae34-4140-9878-4a61db0c3639\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 740563,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1659225600,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 6319079,\n                        \"MetricName\": \"l4Flow_inFlux\",\n                        \"Sum\": 22957455\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the data of L4 traffic over time"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL4Data\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l4Flow_inFlux\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"ruleId\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"rule-033950bf-6fc4-11ed-8ab2-525400a22580\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"962792de-3bfe-483d-99a7-3cfde0467495\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"zone-28kw53cmc6ky\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 267,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1671669600,\n                                \"Value\": 390\n                            },\n                            {\n                                \"Timestamp\": 1671669900,\n                                \"Value\": 740\n                            },\n                            {\n                                \"Timestamp\": 1671670200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671670500,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671670800,\n                                \"Value\": 562\n                            },\n                            {\n                                \"Timestamp\": 1671671100,\n                                \"Value\": 690\n                            },\n                            {\n                                \"Timestamp\": 1671671400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671671700,\n                                \"Value\": 1353\n                            },\n                            {\n                                \"Timestamp\": 1671672000,\n                                \"Value\": 1291\n                            },\n                            {\n                                \"Timestamp\": 1671672300,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671672600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671672900,\n                                \"Value\": 300\n                            },\n                            {\n                                \"Timestamp\": 1671673200,\n                                \"Value\": 453\n                            },\n                            {\n                                \"Timestamp\": 1671673500,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671673800,\n                                \"Value\": 19\n                            },\n                            {\n                                \"Timestamp\": 1671674100,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671674400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671674700,\n                                \"Value\": 204\n                            },\n                            {\n                                \"Timestamp\": 1671675000,\n                                \"Value\": 530\n                            },\n                            {\n                                \"Timestamp\": 1671675300,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671675600,\n                                \"Value\": 975\n                            },\n                            {\n                                \"Timestamp\": 1671675900,\n                                \"Value\": 777\n                            },\n                            {\n                                \"Timestamp\": 1671676200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671676500,\n                                \"Value\": 530\n                            },\n                            {\n                                \"Timestamp\": 1671676800,\n                                \"Value\": 320\n                            },\n                            {\n                                \"Timestamp\": 1671677100,\n                                \"Value\": 303\n                            },\n                            {\n                                \"Timestamp\": 1671677400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671677700,\n                                \"Value\": 183\n                            },\n                            {\n                                \"Timestamp\": 1671678000,\n                                \"Value\": 320\n                            },\n                            {\n                                \"Timestamp\": 1671678300,\n                                \"Value\": 670\n                            },\n                            {\n                                \"Timestamp\": 1671678600,\n                                \"Value\": 131\n                            },\n                            {\n                                \"Timestamp\": 1671678900,\n                                \"Value\": 804\n                            },\n                            {\n                                \"Timestamp\": 1671679200,\n                                \"Value\": 131\n                            }\n                        ],\n                        \"Max\": 31540,\n                        \"MetricName\": \"l4Flow_outFlux\",\n                        \"Sum\": 147864\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the L4 traffic by the specified forwarding rule ID"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL4Data\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l4Flow_inFlux\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"proxyId\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"sid-2c2uug8ubfmn\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"962792de-3bfe-483d-99a7-3cfde0467495\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"zone-28kw53cmc6ky\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 267,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1671669600,\n                                \"Value\": 390\n                            },\n                            {\n                                \"Timestamp\": 1671669900,\n                                \"Value\": 740\n                            },\n                            {\n                                \"Timestamp\": 1671670200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671670500,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671670800,\n                                \"Value\": 562\n                            },\n                            {\n                                \"Timestamp\": 1671671100,\n                                \"Value\": 690\n                            },\n                            {\n                                \"Timestamp\": 1671671400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671671700,\n                                \"Value\": 1353\n                            },\n                            {\n                                \"Timestamp\": 1671672000,\n                                \"Value\": 1291\n                            },\n                            {\n                                \"Timestamp\": 1671672300,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671672600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671672900,\n                                \"Value\": 300\n                            },\n                            {\n                                \"Timestamp\": 1671673200,\n                                \"Value\": 453\n                            },\n                            {\n                                \"Timestamp\": 1671673500,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671673800,\n                                \"Value\": 19\n                            },\n                            {\n                                \"Timestamp\": 1671674100,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671674400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671674700,\n                                \"Value\": 204\n                            },\n                            {\n                                \"Timestamp\": 1671675000,\n                                \"Value\": 530\n                            },\n                            {\n                                \"Timestamp\": 1671675300,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671675600,\n                                \"Value\": 975\n                            },\n                            {\n                                \"Timestamp\": 1671675900,\n                                \"Value\": 777\n                            },\n                            {\n                                \"Timestamp\": 1671676200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671676500,\n                                \"Value\": 530\n                            },\n                            {\n                                \"Timestamp\": 1671676800,\n                                \"Value\": 320\n                            },\n                            {\n                                \"Timestamp\": 1671677100,\n                                \"Value\": 303\n                            },\n                            {\n                                \"Timestamp\": 1671677400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671677700,\n                                \"Value\": 183\n                            },\n                            {\n                                \"Timestamp\": 1671678000,\n                                \"Value\": 320\n                            },\n                            {\n                                \"Timestamp\": 1671678300,\n                                \"Value\": 670\n                            },\n                            {\n                                \"Timestamp\": 1671678600,\n                                \"Value\": 131\n                            },\n                            {\n                                \"Timestamp\": 1671678900,\n                                \"Value\": 804\n                            },\n                            {\n                                \"Timestamp\": 1671679200,\n                                \"Value\": 131\n                            }\n                        ],\n                        \"Max\": 31540,\n                        \"MetricName\": \"l4Flow_outFlux\",\n                        \"Sum\": 147864\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the L4 traffic data by the L4 proxy ID"
@@ -508,19 +516,19 @@
     ],
     "DescribeTimingL7AnalysisData": [
       {
-        "document": "",
+        "document": "This example shows you how to query the L7 access requests.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7AnalysisData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_request\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"141a7ccd-9713-43a2-91d5-1b47692d0609\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 803,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 7921,\n                        \"MetricName\": \"l7Flow_request\",\n                        \"Sum\": 24918\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the L7 traffic data recorded over time"
+        "title": "Querying the L7 traffic data over time"
       },
       {
-        "document": "",
+        "document": "This example shows you how to query the L7 access requests by the tag.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7AnalysisData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_request\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"test1\"\n            ]\n        },\n        {\n            \"Key\": \"tagValue\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"a.com\",\n                \"b.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"141a7ccd-9713-43a2-91d5-1b47692d0609\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 803,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 7921,\n                        \"MetricName\": \"l7Flow_request\",\n                        \"Sum\": 24918\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the traffic data over time by the tag"
       },
       {
-        "document": "",
+        "document": "This example shows you how to query the L7 access requests by the protocol.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7AnalysisData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_request\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"protocol\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"HTTP/1.0\",\n                \"HTTP/1.1\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"141a7ccd-9713-43a2-91d5-1b47692d0609\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 803,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 7921,\n                        \"MetricName\": \"l7Flow_request\",\n                        \"Sum\": 24918\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the traffic data over time by the protocol"
@@ -528,19 +536,19 @@
     ],
     "DescribeTimingL7CacheData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7CacheData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Cache_outFlux\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1c827ba2-7010-45d2-b16b-6d0c4d68a771\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 239058,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 2363561,\n                        \"MetricName\": \"l7Cache_outFlux\",\n                        \"Sum\": 7410804\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the cached L7 traffic data recorded over time"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7CacheData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Cache_outFlux\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"statusCode\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"1XX\",\n                \"2XX\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1c827ba2-7010-45d2-123b-6d0c4d34ihsx\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 239058,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 10\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 10\n                            }\n                        ],\n                        \"Max\": 2363561,\n                        \"MetricName\": \"l7Cache_outFlux\",\n                        \"Sum\": 7410804\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the traffic data over time by the status code"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7CacheData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Cache_outFlux\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"test1\"\n            ]\n        },\n        {\n            \"Key\": \"tagValue\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"a.com\",\n                \"b.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cc74d08-c174-413a-976b-abe7b851e0121\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 239058,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 8\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 1\n                            }\n                        ],\n                        \"Max\": 2363561,\n                        \"MetricName\": \"l7Cache_outFlux\",\n                        \"Sum\": 7410804\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the traffic data over time by the specified tag"
@@ -548,65 +556,65 @@
     ],
     "DescribeTimingL7SourceData": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7SourceData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_request_hy\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"141a7ccd-9713-43a2-91d5-1b47692d0609\",\n        \"TimingDataRecords\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 803,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 7921,\n                        \"MetricName\": \"l7Flow_request_hy\",\n                        \"Sum\": 24918\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the L7 time-series data of origin-pull"
-      },
-      {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7SourceData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2022-12-14T07:32:00+08:00\",\n    \"EndTime\": \"2022-12-21T00:00:00+08:00\",\n    \"ZoneIds\": [\n        \"zone-2cfc5kesov7g\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"origin\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"119.28.108.213\"\n            ]\n        }\n    ],\n    \"Interval\": \"hour\",\n    \"Area\": \"overseas\",\n    \"MetricNames\": [\n        \"l7Flow_outFlux_hy\",\n        \"l7Flow_inFlux_hy\",\n        \"l7Flow_request_hy\",\n        \"l7Flow_outBandwidth_hy\",\n        \"l7Flow_inBandwidth_hy\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"02c49505-c740-4ee8-8128-dbe3ce0bf34e\",\n        \"TimingDataRecords\": [\n            {\n                \"TypeKey\": \"251231751_cheney_test1\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 2,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1672002000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672005600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672009200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672092000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672095600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672099200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672102800,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672106400,\n                                \"Value\": 306\n                            },\n                            {\n                                \"Timestamp\": 1672110000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672113600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672117200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672120800,\n                                \"Value\": 307\n                            },\n                            {\n                                \"Timestamp\": 1672124400,\n                                \"Value\": 239\n                            },\n                            {\n                                \"Timestamp\": 1672128000,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 25812,\n                        \"MetricName\": \"l7Flow_outFlux_hy\",\n                        \"Sum\": 26973\n                    },\n                    {\n                        \"Avg\": 0,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1671980400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671984000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671987600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671991200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671994800,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671998400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672002000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672005600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672009200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672012800,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672016400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672128000,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 394,\n                        \"MetricName\": \"l7Flow_inBandwidth_hy\",\n                        \"Sum\": 418\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the origin-pull analysis data by a specified origin"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7SourceData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2022-12-21T00:00:00+08:00\",\n    \"EndTime\": \"2022-12-27T16:28:00+08:00\",\n    \"ZoneIds\": [\n        \"zone-2cfc5kesov7g\"\n    ],\n    \"Filters\": [\n        {\n            \"Key\": \"originGroup\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"origin-2be4c888-82a1-11ed-b61e-525400931057\"\n            ]\n        }\n    ],\n    \"Interval\": \"hour\",\n    \"Area\": \"overseas\",\n    \"MetricNames\": [\n        \"l7Flow_outFlux_hy\",\n        \"l7Flow_inFlux_hy\",\n        \"l7Flow_request_hy\",\n        \"l7Flow_outBandwidth_hy\",\n        \"l7Flow_inBandwidth_hy\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cfc96e9b-99bd-4800-8335-d195346c0218\",\n        \"TimingDataRecords\": [\n            {\n                \"TypeKey\": \"251231751_cheney_test1\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 2,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1672117200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672120800,\n                                \"Value\": 8\n                            },\n                            {\n                                \"Timestamp\": 1672124400,\n                                \"Value\": 6\n                            },\n                            {\n                                \"Timestamp\": 1672128000,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 346,\n                        \"MetricName\": \"l7Flow_outBandwidth_hy\",\n                        \"Sum\": 376\n                    },\n                    {\n                        \"Avg\": 179,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1671796800,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671800400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671804000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672128000,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 27817,\n                        \"MetricName\": \"l7Flow_inFlux_hy\",\n                        \"Sum\": 28834\n                    },\n                    {\n                        \"Avg\": 167,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1672084800,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672088400,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672092000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1672128000,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 25812,\n                        \"MetricName\": \"l7Flow_outFlux_hy\",\n                        \"Sum\": 26973\n                    },\n                    {\n                        \"Avg\": 0,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1671552000,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671555600,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671559200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1671868800,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 394,\n                        \"MetricName\": \"l7Flow_inBandwidth_hy\",\n                        \"Sum\": 418\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the time-series origin-pull data of a specified origin group"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTimingL7SourceData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_request_hy\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"141a7ccd-9713-43a2-91d5-1b47692d0609\",\n        \"TimingDataRecords\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"Avg\": 803,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659139200,\n                                \"Value\": 0\n                            },\n                            {\n                                \"Timestamp\": 1661731200,\n                                \"Value\": 0\n                            }\n                        ],\n                        \"Max\": 7921,\n                        \"MetricName\": \"l7Flow_request_hy\",\n                        \"Sum\": 24918\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the L7 time-series data of origin-pull"
       }
     ],
     "DescribeTopL7AnalysisData": [
       {
-        "document": "",
+        "document": "This example shows you how to query ranked L7 traffic data.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopL7AnalysisData\n<Common request parameters>\n\n{\n    \"Area\": \"mainland\",\n    \"Interval\": \"day\",\n    \"Limit\": \"1\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"MetricName\": \"l7Flow_outFlux_url\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7c499897-8ad9-4a2d-884e-6154f283d7f6\",\n        \"Data\": [\n            {\n                \"DetailData\": [\n                    {\n                        \"Key\": \"/\",\n                        \"Value\": 7410001\n                    }\n                ],\n                \"TypeKey\": \"251227260\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the top-ranked L7 traffic data"
+        "title": "Querying ranked L7 traffic data"
       },
       {
-        "document": "",
+        "document": "This example shows you how to query ranked traffic data by the specified tag.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopL7AnalysisData\n<Common request parameters>\n\n{\n    \"Area\": \"mainland\",\n    \"Interval\": \"day\",\n    \"Limit\": \"1\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"MetricName\": \"l7Flow_outFlux_url\",\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"test1\"\n            ]\n        },\n        {\n            \"Key\": \"tagValue\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"a.com\",\n                \"b.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7c499897-8ad9-4a2d-884e-6154f283d723\",\n        \"Data\": [\n            {\n                \"DetailData\": [\n                    {\n                        \"Key\": \"/\",\n                        \"Value\": 1210001\n                    }\n                ],\n                \"TypeKey\": \"251227260\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the ranked traffic data by the specified tag"
+        "title": "Querying ranked traffic data by the specified tag"
       },
       {
-        "document": "",
+        "document": "Querying ranked L7 traffic data",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopL7AnalysisData\n<Common request parameters>\n\n{\n    \"Area\": \"mainland\",\n    \"Interval\": \"day\",\n    \"Limit\": \"1\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"MetricName\": \"l7Flow_outFlux_url\",\n    \"Filters\": [\n        {\n            \"Key\": \"protocol\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"HTTP/1.0\",\n                \"HTTP/1.1\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7c499897-8ad9-4a2d-884e-6154f283d723\",\n        \"Data\": [\n            {\n                \"DetailData\": [\n                    {\n                        \"Key\": \"/\",\n                        \"Value\": 1210001\n                    }\n                ],\n                \"TypeKey\": \"251227260\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the ranked traffic data by the specified protocol"
+        "title": "Querying ranked traffic data by the specified protocol"
       }
     ],
     "DescribeTopL7CacheData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopL7CacheData\n<Common request parameters>\n\n{\n    \"Area\": \"mainland\",\n    \"Interval\": \"day\",\n    \"Limit\": \"5\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"MetricName\": \"l7Cache_outFlux_cacheType\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"64463c6f-4c96-47fa-b168-2040f841eed1\",\n        \"Data\": [\n            {\n                \"DetailData\": [\n                    {\n                        \"Key\": \"hit\",\n                        \"Value\": 7410001\n                    },\n                    {\n                        \"Key\": \"miss\",\n                        \"Value\": 803\n                    }\n                ],\n                \"TypeKey\": \"251227260\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the top-ranked L7 cached traffic data"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopL7CacheData\n<Common request parameters>\n\n{\n    \"Area\": \"mainland\",\n    \"Interval\": \"day\",\n    \"Limit\": \"5\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"MetricName\": \"l7Cache_outFlux_cacheType\",\n    \"Filters\": [\n        {\n            \"Key\": \"cacheType\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"miss\",\n                \"hit\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"64463c6f-3296-47fa-b168-2040f841eed1\",\n        \"Data\": [\n            {\n                \"DetailData\": [\n                    {\n                        \"Key\": \"hit\",\n                        \"Value\": 7410001\n                    },\n                    {\n                        \"Key\": \"miss\",\n                        \"Value\": 803\n                    }\n                ],\n                \"TypeKey\": \"251227260\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the ranked data of cache hit and cache miss"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopL7CacheData\n<Common request parameters>\n\n{\n    \"Area\": \"mainland\",\n    \"Interval\": \"day\",\n    \"Limit\": \"5\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"MetricName\": \"l7Cache_outFlux_cacheType\",\n    \"Filters\": [\n        {\n            \"Key\": \"statusCode\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"2XX\",\n                \"3XX\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"64463c6f-3296-47fa-b168-2040f841eed1\",\n        \"Data\": [\n            {\n                \"DetailData\": [\n                    {\n                        \"Key\": \"hit\",\n                        \"Value\": 5810001\n                    },\n                    {\n                        \"Key\": \"miss\",\n                        \"Value\": 658\n                    }\n                ],\n                \"TypeKey\": \"251227260\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the ranked traffic data by the specified status code"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopL7CacheData\n<Common request parameters>\n\n{\n    \"Area\": \"mainland\",\n    \"Interval\": \"day\",\n    \"Limit\": \"5\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"MetricName\": \"l7Cache_outFlux_cacheType\",\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"test1\"\n            ]\n        },\n        {\n            \"Key\": \"tagValue\",\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"a.com\",\n                \"b.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"64463c6f-3296-47fa-b168-2040f841eed1\",\n        \"Data\": [\n            {\n                \"DetailData\": [\n                    {\n                        \"Key\": \"hit\",\n                        \"Value\": 5810001\n                    },\n                    {\n                        \"Key\": \"miss\",\n                        \"Value\": 658\n                    }\n                ],\n                \"TypeKey\": \"251227260\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the ranked traffic data by the specified tag"
@@ -614,7 +622,7 @@
     ],
     "DescribeWebManagedRulesData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebManagedRulesData\n<Common request parameters>\n\n{\n    \"MetricNames\": [\n        \"waf_interceptNum\"\n    ],\n    \"Interval\": \"min\",\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Domains\": [\n        \"www.baidu.com\"\n    ],\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"Data\": [\n            {\n                \"Value\": [\n                    {\n                        \"Max\": 10,\n                        \"Metric\": \"xx\",\n                        \"Avg\": 10.0,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1657411200,\n                                \"Value\": 10\n                            }\n                        ],\n                        \"Sum\": 10.0\n                    }\n                ],\n                \"Key\": \"www.baidu.com\"\n            }\n        ],\n        \"RequestId\": \"23dd59e1-0d8a-4fa2-a9f9-9f20195523c6\"\n    }\n}",
         "title": "Querying the WAF attack data recorded over time"
@@ -622,7 +630,7 @@
     ],
     "DescribeWebManagedRulesHitRuleDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebManagedRulesHitRuleDetail\n<Common request parameters>\n\n{\n    \"QueryCondition\": [\n        {\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"monitor\"\n            ],\n            \"Key\": \"action\"\n        }\n    ],\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"Interval\": \"min\",\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Domains\": [\n        \"www.baidu.com\"\n    ],\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"Data\": [\n            {\n                \"Description\": \"This rule prevents command injections in the GET parameter\",\n                \"RuleId\": 106247153,\n                \"ZoneId\": \"zone-2c2jrfftg9mh\",\n                \"RequestNum\": 10,\n                \"Action\": \"monitor\",\n                \"HitTime\": 1659690912,\n                \"BotLabel\": \"none\",\n                \"AlarmEnabled\": true,\n                \"RuleEnabled\": true,\n                \"RuleDeleted\": false\n            }\n        ]\n    }\n}",
         "title": "Queries the Web attacks hit the specified rule"
@@ -644,7 +652,7 @@
     ],
     "DescribeWebProtectionClientIpList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebProtectionClientIpList\n<Common request parameters>\n\n{\n    \"QueryCondition\": [\n        {\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"monitor\"\n            ],\n            \"Key\": \"action\"\n        }\n    ],\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"Interval\": \"min\",\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Domains\": [\n        \"www.baidu.com\"\n    ],\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"Data\": [\n            {\n                \"ClientIp\": \"1.2.3.4\",\n                \"RequestMaxQps\": 10,\n                \"RequestNum\": 10\n            }\n        ]\n    }\n}",
         "title": "Querying the information of attacker IPs"
@@ -652,7 +660,7 @@
     ],
     "DescribeWebProtectionData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebProtectionData\n<Common request parameters>\n\n{\n    \"MetricNames\": [\n        \"ccRate_interceptNum\"\n    ],\n    \"Interval\": \"min\",\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Domains\": [\n        \"www.baidu.com\"\n    ],\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"Value\": [\n                    {\n                        \"Max\": 10,\n                        \"Metric\": \"ccRate_interceptNum\",\n                        \"Avg\": 10.0,\n                        \"Detail\": [\n                            {\n                                \"Timestamp\": 1659456000,\n                                \"Value\": 10\n                            }\n                        ],\n                        \"Sum\": 10.0\n                    }\n                ],\n                \"Key\": \"zone-21xfqlh4qjee\"\n            }\n        ],\n        \"RequestId\": \"4caecd0e-5465-4c90-a100-1abd7f028ab3\"\n    }\n}",
         "title": "Querying the list of CC protection data recorded over time"
@@ -660,7 +668,7 @@
     ],
     "DescribeWebProtectionHitRuleDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebProtectionHitRuleDetail\n<Common request parameters>\n\n{\n    \"EntityType\": \"acl\",\n    \"QueryCondition\": [\n        {\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"monitor\"\n            ],\n            \"Key\": \"action\"\n        }\n    ],\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"Interval\": \"min\",\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Domains\": [\n        \"www.baidu.com\"\n    ],\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"a55ce448-d5e6-4351-9a1f-8f0a5222fba1\",\n        \"Data\": [\n            {\n                \"Description\": \"cooper5_rate\",\n                \"RuleId\": 1234,\n                \"ZoneId\": \"zone-2c2jrfftg9mh\",\n                \"RequestNum\": 10,\n                \"Action\": \"monitor\",\n                \"HitTime\": 1660035802,\n                \"AlarmEnabled\": true,\n                \"RuleEnabled\": false,\n                \"RuleDeleted\": false\n            }\n        ]\n    }\n}",
         "title": "Querying the details of a hit CC security rule"
@@ -668,7 +676,7 @@
     ],
     "DescribeWebProtectionTopData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebProtectionTopData\n<Common request parameters>\n\n{\n    \"QueryCondition\": [\n        {\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"drop\"\n            ],\n            \"Key\": \"action\"\n        }\n    ],\n    \"Interval\": \"min\",\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"Limit\": 1,\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Domains\": [\n        \"www.baidu.com\"\n    ],\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"MetricName\": \"waf_requestNum_cip\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"Value\": [\n                    {\n                        \"Count\": 123,\n                        \"Name\": \"udp\"\n                    }\n                ],\n                \"Key\": \"waf_requestNum_cip\"\n            }\n        ],\n        \"RequestId\": \"d6182c0c-08c5-448e-9cc8-abb00bbe5fe5\"\n    }\n}",
         "title": "Querying the top-ranked CC protection data"
@@ -676,7 +684,7 @@
     ],
     "DescribeZoneSetting": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ddc589b3-c3f3-487d-a29e-43a9008d3c59\",\n        \"ZoneSetting\": {\n            \"Area\": \"mainland\",\n            \"CacheKey\": {\n                \"FullUrlCache\": \"on\",\n                \"IgnoreCase\": \"off\",\n                \"QueryString\": {\n                    \"Action\": \"includeCustom\",\n                    \"Switch\": \"off\",\n                    \"Value\": []\n                }\n            },\n            \"CachePrefresh\": {\n                \"Percent\": 90,\n                \"Switch\": \"off\"\n            },\n            \"ClientIpHeader\": {\n                \"Switch\": \"off\"\n            },\n            \"Compression\": {\n                \"Algorithms\": [\n                    \"brotli\",\n                    \"gzip\"\n                ],\n                \"Switch\": \"on\"\n            },\n            \"ForceRedirect\": {\n                \"RedirectStatusCode\": 302,\n                \"Switch\": \"off\"\n            },\n            \"Https\": {\n                \"Hsts\": {\n                    \"IncludeSubDomains\": \"off\",\n                    \"MaxAge\": 0,\n                    \"Preload\": \"off\",\n                    \"Switch\": \"off\"\n                },\n                \"Http2\": \"on\",\n                \"OcspStapling\": \"off\",\n                \"TlsVersion\": [\n                    \"TLSv1\",\n                    \"TLSv1.1\",\n                    \"TLSv1.2\",\n                    \"TLSv1.3\"\n                ]\n            },\n            \"Ipv6\": {\n                \"Switch\": \"off\"\n            },\n            \"MaxAge\": {\n                \"FollowOrigin\": \"on\",\n                \"MaxAgeTime\": 600\n            },\n            \"OfflineCache\": {\n                \"Switch\": \"on\"\n            },\n            \"Origin\": {\n                \"OriginPullProtocol\": \"follow\"\n            },\n            \"PostMaxSize\": {\n                \"MaxSize\": 524288000,\n                \"Switch\": \"on\"\n            },\n            \"Quic\": {\n                \"Switch\": \"off\"\n            },\n            \"SmartRouting\": {\n                \"Switch\": \"off\"\n            },\n            \"UpstreamHttp2\": {\n                \"Switch\": \"off\"\n            },\n            \"WebSocket\": {\n                \"Switch\": \"off\",\n                \"Timeout\": 30\n            }\n        }\n    }\n}",
         "title": "Querying the site configuration"
@@ -684,7 +692,7 @@
     ],
     "DescribeZones": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZones\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Fuzzy\": false,\n            \"Values\": [\n                \"example.com\"\n            ],\n            \"Name\": \"zone-name\"\n        }\n    ],\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Zones\": [\n            {\n                \"ZoneId\": \"zone-27q0p0bali16\",\n                \"ZoneName\": \"example.com\",\n                \"OriginalNameServers\": [\n                    \"ns1.example.com.\",\n                    \"ns2.example.com.\"\n                ],\n                \"NameServers\": [\n                    \"ns1.teodns.com.\",\n                    \"ns2.teodns.com.\"\n                ],\n                \"VanityNameServers\": {\n                    \"Switch\": \"on\",\n                    \"Servers\": [\n                        \"ns1.example.com\",\n                        \"ns2.example.com\"\n                    ]\n                },\n                \"VanityNameServersIps\": [\n                    {\n                        \"Name\": \"ns1.example.com\",\n                        \"IPv4\": \"1.1.1.1\"\n                    }\n                ],\n                \"Status\": \"active\",\n                \"Type\": \"full\",\n                \"Paused\": false,\n                \"CnameSpeedUp\": \"enabled\",\n                \"CnameStatus\": \"finished\",\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"test\",\n                        \"TagValue\": \"example\"\n                    }\n                ],\n                \"Resources\": [],\n                \"ModifiedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"Area\": \"mainland\",\n                \"ActiveStatus\": \"active\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"fd9d86df-b7e8-4469-b928-18cb7fd1d341\"\n    }\n}",
         "title": "Querying the list of user sites"
@@ -692,7 +700,7 @@
     ],
     "DownloadL4Logs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DownloadL4Logs\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8b6a2aa9-46ef-46e5-ba87-c0e96326adfe\",\n        \"Data\": [\n            {\n                \"Area\": \"mainland\",\n                \"LogPacketName\": \"20220811-10-proxy-1491-11ed-9792-525400655ede\",\n                \"LogTime\": 1660212000,\n                \"ProxyId\": \"proxy-1491-11ed-9792-525400655ede\",\n                \"Size\": 20761,\n                \"Url\": \"https://log-down04-cn.edgeone.qcloud.com/20220811/2022081110-proxy-1491-11ed-9792-525400655ede.log.gz\"\n            }\n        ],\n        \"TotalCount\": 128\n    }\n}",
         "title": "Downloading layer-7 logs"
@@ -700,7 +708,7 @@
     ],
     "DownloadL7Logs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DownloadL7Logs\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"StartTime\": \"2022-05-04T03:27:00+08:00\",\n    \"EndTime\": \"2022-05-10T23:59:00+08:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"6f07d593-44d7-4bac-a119-e1923ab5b377\",\n        \"Data\": [\n            {\n                \"Area\": \"mainland\",\n                \"Domain\": \"test-add4.wellsjiang.com\",\n                \"LogPacketName\": \"20220811-02-test-add4.wellsjiang.com\",\n                \"LogTime\": 1660183200,\n                \"Size\": 7539,\n                \"Url\": \"https://log-down07-cn.edgeone.qcloud.com/2022081102-test-add4.wellsjiang.com.log.gz\"\n            }\n        ]\n    }\n}",
         "title": "Downloading L7 logs"
@@ -708,7 +716,7 @@
     ],
     "IdentifyZone": [
       {
-        "document": "认证站点",
+        "document": "The following example shows how to verify your ownership of the site.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdentifyZone\n<Common request parameters>\n\n{\n    \"ZoneName\": \"example.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"Ascription\": {\n            \"Subdomain\": \"edgeonereclaim\",\n            \"RecordType\": \"TXT\",\n            \"RecordValue\": \"reclaim-a24aba2420cf4ce8b7bff7c8be6d337f\"\n        },\n        \"FileAscription\": {\n            \"IdentifyPath\": \"/.well-known/teo-verification/vd4ewuqa9n.txt\",\n            \"IdentifyContent\": \"88v24mnnljwbhaohrpfx80f63duhdnjx\"\n        },\n        \"RequestId\": \"9kl50bew-89ga-44f4-91ce-78125d53vd2a\"\n    }\n}",
         "title": "Verifying site ownership"
@@ -732,7 +740,7 @@
     ],
     "ModifyAliasDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAliasDomain\n<Common request parameters>\n\n{\n    \"TargetName\": \"bbb.example.com\",\n    \"AliasName\": \"eo.test.com\",\n    \"CertType\": \"none\",\n    \"ZoneId\": \"zone-28569s6od5na\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6d1efe51-b951-498e-9b10-755906835e87\"\n    }\n}",
         "title": "Modifying an alias domain name"
@@ -740,7 +748,7 @@
     ],
     "ModifyAliasDomainStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAliasDomainStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"AliasNames\": [\n        \"eo.test.com\"\n    ],\n    \"Paused\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"114327ee-463c-4ee4-83f6-82e9a44bd81d\"\n    }\n}",
         "title": "Modifying the status of an alias domain name"
@@ -748,7 +756,7 @@
     ],
     "ModifyApplicationProxy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyId\": \"proxy-537f5b41-162a-11ed-abaa-525400c5da15\",\n    \"ProxyName\": \"test.com\",\n    \"ProxyType\": \"hostname\",\n    \"SessionPersistTime\": 3600,\n    \"Ipv6\": {\n        \"Switch\": \"on\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b03fe5dd-be04-444c-a2e1-49f1bf2f399a\"\n    }\n}",
         "title": "Modifying an application proxy"
@@ -756,7 +764,7 @@
     ],
     "ModifyApplicationProxyRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying an application proxy rule"
@@ -764,7 +772,7 @@
     ],
     "ModifyApplicationProxyRuleStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRuleStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-19389e5a-118b-11ed-9951-525400655ede\",\n    \"Status\": \"offline\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying the status of an application proxy rule"
@@ -772,7 +780,7 @@
     ],
     "ModifyApplicationProxyStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"Status\": \"online\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying the status of an application proxy"
@@ -780,7 +788,7 @@
     ],
     "ModifyDefaultCertificate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDefaultCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-adsfacc\",\n    \"CertId\": \"EO-asdfac\",\n    \"Status\": \"deploy\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2346602a-0bbf-409b-922c-ae3071c27594\"\n    }\n}",
         "title": "Modifying the status of default certificate"
@@ -788,7 +796,7 @@
     ],
     "ModifyHostsCertificate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-asdfasc\",\n    \"Hosts\": [\n        \"xxx.test.com\"\n    ],\n    \"ServerCertInfo\": [\n        {\n            \"CertId\": \"EO-sddafcasf\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
         "title": "Modifying the certificate configuration for domain names"
@@ -796,7 +804,7 @@
     ],
     "ModifyOriginGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"OriginGroupName\": \"renameorigingroup\",\n    \"ConfigurationType\": \"weight\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\",\n            \"Weight\": 50,\n            \"Port\": 80\n        },\n        {\n            \"Record\": \"1.2.3.5\",\n            \"Weight\": 50,\n            \"Port\": 80\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying an origin group"
@@ -812,7 +820,7 @@
     ],
     "ModifyRulePriority": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRulePriority\n<Common request parameters>\n\n{\n    \"RuleIds\": [\n        \"rule-jr7ammcu\",\n        \"rule-3bta0qmn\"\n    ],\n    \"ZoneId\": \"zone-26r78x31ny86\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ace05891-744c-40f8-94de-4e1c08d954c2\"\n    }\n}",
         "title": "ModifyRulePriority"
@@ -820,8 +828,8 @@
     ],
     "ModifySecurityPolicy": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityPolicy\n<Common request parameters>\n\n{\n    \"Entity\": \"a.eotest.com\",\n    \"SecurityConfig\": {\n        \"WafConfig\": {\n            \"Switch\": \"on\",\n            \"WafRule\": {\n                \"Switch\": \"on\",\n                \"BlockRuleIDs\": [\n                    162502146\n                ]\n            },\n            \"Mode\": \"block\",\n            \"Level\": \"loose\"\n        }\n    },\n    \"ZoneId\": \"zone-fa89j239a\"\n}",
+        "document": "This example shows you how to modify the L7 security configuration for the domain name \"a.eotest.com\".",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityPolicy\n<Common request parameters>\n\n{\n    \"Entity\": \"a.eotest.com\",\n    \"SecurityConfig\": {\n        \"WafConfig\": {\n            \"Switch\": \"on\",\n            \"WafRule\": {\n                \"Switch\": \"on\",\n                \"ObserveRuleIDs\": [],\n                \"BlockRuleIDs\": [\n                    162502146\n                ]\n            },\n            \"Mode\": \"block\",\n            \"Level\": \"loose\"\n        }\n    },\n    \"ZoneId\": \"zone-fa89j239a\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08b32010-ab25-42a4-b923-2e6c481dae23\"\n    }\n}",
         "title": "Modifying the security configuration"
       },
@@ -835,12 +843,12 @@
         "document": "This example shows you how to skip WAF protection for the specified HTTP header’s value.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityPolicy\n<Common request parameters>\n\n{\n    \"Entity\": \"*.eotest.com\",\n    \"SecurityConfig\": {\n        \"ExceptConfig\": {\n            \"Switch\": \"on\",\n            \"ExceptUserRules\": [\n                {\n                    \"Action\": \"skip\",\n                    \"ExceptUserRuleConditions\": [\n                        {\n                            \"MatchContent\": \"/skipwaf\",\n                            \"MatchFrom\": \"cgi\",\n                            \"MatchParam\": \"\",\n                            \"Operator\": \"equal\"\n                        }\n                    ],\n                    \"ExceptUserRuleScope\": {\n                        \"Type\": \"partial\",\n                        \"PartialModules\": [\n                            {\n                                \"Module\": \"waf\",\n                                \"Include\": [\n                                    106247778\n                                ]\n                            }\n                        ],\n                        \"SkipConditions\": [\n                            {\n                                \"MatchContent\": [],\n                                \"MatchContentType\": \"\",\n                                \"MatchFrom\": [\n                                    \"YourSkipHeader\"\n                                ],\n                                \"MatchFromType\": \"equal\",\n                                \"Selector\": \"values\",\n                                \"Type\": \"header_fields\"\n                            }\n                        ]\n                    },\n                    \"RuleID\": 0,\n                    \"RuleName\": \"first_webshell\",\n                    \"RulePriority\": 0,\n                    \"RuleStatus\": \"on\",\n                    \"UpdateTime\": \"2022-09-22T03:00:10Z\"\n                }\n            ]\n        }\n    },\n    \"ZoneId\": \"zone-fa89j239a\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08b32010-ab25-42a4-b923-2e6c481dae66\"\n    }\n}",
-        "title": "Modifying an exception rule to allow the key in the specified header."
+        "title": "Modifying an exception rule to allow the key in the specified header"
       }
     ],
     "ModifySecurityWafGroupPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityWafGroupPolicy\n<Common request parameters>\n\n{\n    \"Entity\": \"a.eotest.com\",\n    \"ZoneId\": \"zone-a81jffj923\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08b32010-ab25-42a4-b923-2e6c481dae23\"\n    }\n}",
         "title": "Modifying a managed rule"
@@ -848,7 +856,7 @@
     ],
     "ModifyZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZone\n<Common request parameters>\n\n{\n    \"VanityNameServers\": {\n        \"Switch\": \"on\",\n        \"Servers\": [\n            \"ns1.example.com\",\n            \"ns2.example.com\"\n        ]\n    },\n    \"Type\": \"full\",\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"AliasZoneName\": \"zone-example\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4ac50b24-7dc2-47f4-92ce-9fd25d53gt2f\"\n    }\n}",
         "title": "Modifying a site"
@@ -856,19 +864,19 @@
     ],
     "ModifyZoneSetting": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"Ipv6\": {\n        \"Switch\": \"on\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying the IPv6 access configuration of a site"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"Quic\": {\n        \"Switch\": \"on\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying the QUIC access configuration of a site"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"CacheConfig\": {\n        \"NoCache\": {\n            \"Switch\": \"on\"\n        }\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying the cache expiration time of a site"
@@ -876,7 +884,7 @@
     ],
     "ModifyZoneStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneStatus\n<Common request parameters>\n\n{\n    \"Paused\": true,\n    \"ZoneId\": \"zone-27q0p0bali16\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7sd20b24-7dc5-98f4-96ce-95825dcd34sa\"\n    }\n}",
         "title": "Changes the site status"
@@ -884,7 +892,7 @@
     ],
     "ReclaimAliasDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReclaimAliasDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"47802be3-893f-4ebe-9832-f8046d0d1611\"\n    }\n}",
         "title": "Reclaiming an alias domain name"
@@ -892,7 +900,7 @@
     ],
     "ReclaimZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReclaimZone\n<Common request parameters>\n\n{\n    \"ZoneName\": \"example.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3ds50b24-5dv3-4sf4-96ce-61825d53ff5d\"\n    }\n}",
         "title": "Reclaiming a site"
@@ -900,7 +908,7 @@
     ],
     "UpdateOriginProtectionIPWhitelist": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOriginProtectionIPWhitelist\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"af0a2b4f-df6d-4d2a-ac39-1706cbf8a868\"\n    }\n}",
         "title": "Updating the list of intermediate IPs"
