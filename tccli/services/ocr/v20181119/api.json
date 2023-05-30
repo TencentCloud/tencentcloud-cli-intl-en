@@ -49,6 +49,20 @@
       "output": "RecognizeIndonesiaIDCardOCRResponse",
       "status": "online"
     },
+    "RecognizeKoreanDrivingLicenseOCR": {
+      "document": "This API is used to recognize a South Korean driver's license.",
+      "input": "RecognizeKoreanDrivingLicenseOCRRequest",
+      "name": "Recognizes a South Korean driver's license",
+      "output": "RecognizeKoreanDrivingLicenseOCRResponse",
+      "status": "online"
+    },
+    "RecognizeKoreanIDCardOCR": {
+      "document": "This API is used to recognize a South Korean ID card.",
+      "input": "RecognizeKoreanIDCardOCRRequest",
+      "name": "Recognizes a South Korean ID card",
+      "output": "RecognizeKoreanIDCardOCRResponse",
+      "status": "online"
+    },
     "RecognizePhilippinesDrivingLicenseOCR": {
       "document": "This API is used to recognize a Philippine driver's license.",
       "input": "RecognizePhilippinesDrivingLicenseOCRRequest",
@@ -860,6 +874,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of a defined field (the key passed in).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "单号",
+          "member": "string",
+          "name": "ConfigName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1430,6 +1454,258 @@
           "example": "无",
           "member": "string",
           "name": "Kota",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeKoreanDrivingLicenseOCRRequest": {
+      "document": "RecognizeKoreanDrivingLicenseOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
+          "example": "image",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the identity photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeKoreanDrivingLicenseOCRResponse": {
+      "document": "RecognizeKoreanDrivingLicenseOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID card number.",
+          "example": "无",
+          "member": "string",
+          "name": "ID",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The license number.",
+          "example": "无",
+          "member": "string",
+          "name": "LicenseNumber",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The resident registration number.",
+          "example": "无",
+          "member": "string",
+          "name": "Number",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The license class type.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The address.",
+          "example": "无",
+          "member": "string",
+          "name": "Address",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The renewal period.",
+          "example": "无",
+          "member": "string",
+          "name": "AptitudeTesDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The issue date.",
+          "example": "无",
+          "member": "string",
+          "name": "DateOfIssue",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded identity photo.",
+          "example": "无",
+          "member": "string",
+          "name": "Photo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The gender.",
+          "example": "男",
+          "member": "string",
+          "name": "Sex",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The birth date in the format of dd/mm/yyyy.",
+          "example": "11/11/1911",
+          "member": "string",
+          "name": "Birthday",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeKoreanIDCardOCRRequest": {
+      "document": "RecognizeKoreanIDCardOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
+          "example": "image",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the identity photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeKoreanIDCardOCRResponse": {
+      "document": "RecognizeKoreanIDCardOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID card number.",
+          "example": "无",
+          "member": "string",
+          "name": "ID",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The address.",
+          "example": "无",
+          "member": "string",
+          "name": "Address",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The issue date.",
+          "example": "无",
+          "member": "string",
+          "name": "DateOfIssue",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded identity photo.",
+          "example": "无",
+          "member": "string",
+          "name": "Photo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The gender.",
+          "example": "男",
+          "member": "string",
+          "name": "Sex",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The birth date in the format of dd/mm/yyyy.",
+          "example": "11/11/1911",
+          "member": "string",
+          "name": "Birthday",
           "type": "string",
           "value_allowed_null": false
         },

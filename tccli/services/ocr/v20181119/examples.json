@@ -2,7 +2,7 @@
   "actions": {
     "BankCardOCR": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://ocr.tencentcloudapi.com/?Action=BankCardOCR\r\n&ImageUrl=https://xx/a.jpg\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CardNo\": \"6225760088888888\",\n        \"BankInfo\": \"China Merchants Bank (03080000)\",\n        \"ValidDate\": \"08/2022\",\n        \"RequestId\": \"46ab2e62-11e3-4d04-9fab-0abe18e7c927\"\n    }\n}",
         "title": "Recognizing a bank card"
@@ -26,7 +26,7 @@
     ],
     "HKIDCardOCR": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://ocr.tencentcloudapi.com/?Action=HKIDCardOCR\r\n&ImageUrl=https://xx/a.jpg &DetectFake=true&ReturnHeadImage=false\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CnName\": \"申能\",\n        \"EnName\": \"SAN, Nan\",\n        \"TelexCode\": \"300000000000\",\n        \"Sex\": \"女F\",\n        \"Birthday\": \"01-01-2001\",\n        \"Permanent\": 1,\n        \"IdNum\": \"C000000(E)\",\n        \"Symbol\": \"***AZ\",\n        \"FirstIssueDate\": \"(09-99)\",\n        \"CurrentIssueDate\": \"23-09-10\",\n        \"FakeDetectResult\": 1,\n        \"WarningCode\": [\n            -9102,\n            -9103\n        ],\n        \"RequestId\": \"fba1c9ad-aeb3-4418-9ecf-80ab1b5fc875\"\n    }\n}",
         "title": "Recognizing Hong Kong (China) identity card"
@@ -34,7 +34,7 @@
     ],
     "MLIDCardOCR": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://ocr.tencentcloudapi.com/?Action=MLIDCardOCR\n&ImageUrl=https://xx/a.jpg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Name\": \"KAVIN ONG KHI MN\",\n        \"ID\": \"710716-08-6085\",\n        \"Address\": \"NO 11 PERSIARN PERAJRIT 4 TAMA PERAK 31400 IPOH ERAK\",\n        \"Sex\": \"LEAKI\",\n        \"Birthday\": \"\",\n        \"Warn\": [],\n        \"Image\": \"\",\n        \"AdvancedInfo\": \"{\\\"ID\\\":{\\\"Confidence\\\":\\\"1.0000\\\"},\\\"Name\\\":{\\\"Confidence\\\":\\\"0.9996\\\"},\\\"Address\\\":{\\\"Confidence\\\":\\\"0.9997\\\"},\\\"Sex\\\":{\\\"Confidence\\\":\\\"0.9999\\\"}}\",\n        \"Type\": \"MyKad\",\n        \"RequestId\": \"c969da05-54e3-4d0a-a55d-b3ef90d4ebf5\"\n    }\n}",
         "title": "Recognizing a Malaysian identity card"
@@ -56,9 +56,25 @@
         "title": "RecognizeIndonesiaIDCardOCR"
       }
     ],
+    "RecognizeKoreanDrivingLicenseOCR": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeKoreanDrivingLicenseOCR\n<common request parameters>\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Address\": \"충청북도 청주사 덕벌로41번길 21,B동 104호(내덕동, 학사촌)\",\n        \"AptitudeTesDate\": \"2020.01.01~2020.12.31\",\n        \"DateOfIssue\": \"2002.06.08\",\n        \"ID\": \"3237ZX\",\n        \"LicenseNumber\": \"북 12-011234-80\",\n        \"Name\": \"HASU YUNG\",\n        \"Number\": \"\",\n        \"Photo\": \"\",\n        \"RequestId\": \"1234-1234-1234-1234\",\n        \"Sex\": \"xx\",\n        \"Birthday\": \"xx\",\n        \"Type\": \"1종통\"\n    }\n}",
+        "title": "Recognizing a South Korean driver's license"
+      }
+    ],
+    "RecognizeKoreanIDCardOCR": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeKoreanIDCardOCR\n<common request parameters>\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Address\": \"서=은천로 93.1203동 1204호(봉천동, 진달01동 2301호)\",\n        \"DateOfIssue\": \"297802\",\n        \"ID\": \"\",\n        \"Name\": \"홍길동(离吉)\",\n        \"Photo\": \"\",\n        \"Birthday\": \"11/11/1911\",\n        \"Sex\": \"\",\n        \"RequestId\": \"1234-1234-1234-1234\"\n    }\n}",
+        "title": "Recognizing a South Korean ID card"
+      }
+    ],
     "RecognizePhilippinesDrivingLicenseOCR": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizePhilippinesDrivingLicenseOCR\n<Common request parameters>\n\n{\n    \"ReturnHeadImage\": \"true\",\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
         "output": "{\n    \"Response\": {\n        \"Address\": {\n            \"Polygon\": [\n                {\n                    \"X\": \"442\",\n                    \"Y\": \"489\"\n                },\n                {\n                    \"X\": \"529\",\n                    \"Y\": \"489\"\n                },\n                {\n                    \"X\": \"529\",\n                    \"Y\": \"506\"\n                },\n                {\n                    \"X\": \"442\",\n                    \"Y\": \"506\"\n                }\n            ],\n            \"Value\": \"28 PAYAPA ST BAGONG DIWA\"\n        },\n        \"AgencyCode\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"Birthday\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"ExpiresDate\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"FirstName\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"HeadPortrait\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"LastName\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"LicenseNo\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"MiddleName\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"Name\": {\n            \"Polygon\": [],\n            \"Value\": \",  \"\n        },\n        \"Nationality\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"RequestId\": \"1234-1234-1234-1234\",\n        \"Sex\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        }\n    }\n}",
         "title": "Recognizing a Philippine driver's license"
@@ -74,7 +90,7 @@
     ],
     "RecognizePhilippinesTinIDOCR": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://ocr.tencentcloudapi.com/?Action=RecognizePhilippinesTinIDOCR\n&ImageUrl=https://xx/a.jpg\n&ReturnHeadImage=false\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Address\": {\n            \"Polygon\": [],\n            \"Value\": \"18 A KATIPUNAN ST.\"\n        },\n        \"Birthday\": {\n            \"Polygon\": [\n                {\n                    \"X\": 665,\n                    \"Y\": 737\n                },\n                {\n                    \"X\": 997,\n                    \"Y\": 737\n                },\n                {\n                    \"X\": 997,\n                    \"Y\": 787\n                },\n                {\n                    \"X\": 665,\n                    \"Y\": 787\n                }\n            ],\n            \"Value\": \"August 17,1902\"\n        },\n        \"FullName\": {\n            \"Polygon\": [],\n            \"Value\": \"VERGARA,AMALIA ALBIOR\"\n        },\n        \"HeadPortrait\": {\n            \"Polygon\": [],\n            \"Value\": \"\"\n        },\n        \"IssueDate\": {\n            \"Polygon\": [\n                {\n                    \"X\": 665,\n                    \"Y\": 737\n                },\n                {\n                    \"X\": 997,\n                    \"Y\": 737\n                },\n                {\n                    \"X\": 997,\n                    \"Y\": 787\n                },\n                {\n                    \"X\": 665,\n                    \"Y\": 787\n                }\n            ],\n            \"Value\": \"August 17,1902\"\n        },\n        \"LicenseNumber\": {\n            \"Polygon\": [\n                {\n                    \"X\": 505,\n                    \"Y\": 522\n                },\n                {\n                    \"X\": 897,\n                    \"Y\": 522\n                },\n                {\n                    \"X\": 897,\n                    \"Y\": 572\n                },\n                {\n                    \"X\": 505,\n                    \"Y\": 572\n                }\n            ],\n            \"Value\": \"497-881-123-123\"\n        },\n        \"RequestId\": \"11111-11111-11111-11111\"\n    }\n}",
         "title": "Recognizing a Philippine TIN ID card"
