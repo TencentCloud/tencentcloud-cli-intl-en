@@ -131,6 +131,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Signature ID.",
           "example": "1110",
           "member": "uint64",
@@ -147,6 +148,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Signature name.\nNote: you cannot apply for an approved or pending signature again.",
           "example": "test",
           "member": "string",
@@ -156,6 +158,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0 and 1.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account. Valid values of `DocumentType` include 0, 1, 2, 3, and 8.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\n6: WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
           "example": "0",
           "member": "uint64",
@@ -165,6 +168,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity certificate type:\n0: three-in-one licence.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\n8: screenshot of WeChat Official Account settings page (for personal WeChat Official Account).",
           "example": "1",
           "member": "uint64",
@@ -174,6 +178,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
           "example": "0",
           "member": "uint64",
@@ -183,6 +188,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature purpose:\n0: for personal use.\n1: for others.",
           "example": "1",
           "member": "uint64",
@@ -192,6 +198,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "You should Base64-encode the image of the identity certificate corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.",
           "example": "xxx",
           "member": "string",
@@ -201,6 +208,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Power of attorney, which should be submitted if `SignPurpose` is for use by others.\nYou should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.\nNote: this field will take effect only when `SignPurpose` is 1 (for user by others).",
           "example": "xxx",
           "member": "string",
@@ -210,6 +218,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature application remarks.",
           "example": "xxx",
           "member": "string",
@@ -224,6 +233,7 @@
       "document": "AddSmsSign response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Signature addition response",
           "example": "\"AddSignStatus\": {       \"SignId\": 1110,       \"SignApplyId\"",
           "member": "AddSignStatus",
@@ -246,6 +256,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Template name.",
           "example": "腾讯云",
           "member": "string",
@@ -255,6 +266,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template content.",
           "example": "xxx",
           "member": "string",
@@ -264,6 +276,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SMS type. 0: regular SMS, 1: marketing SMS.",
           "example": "0",
           "member": "uint64",
@@ -273,6 +286,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
           "example": "0",
           "member": "uint64",
@@ -282,6 +296,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template remarks, such as reason for application and use case.",
           "example": "xxx",
           "member": "string",
@@ -296,6 +311,7 @@
       "document": "AddSmsTemplate response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "SMS template addition response body",
           "example": "   \"AddTemplateStatus\": {       \"TemplateId\": 1110,       \"Reque",
           "member": "AddTemplateStatus",
@@ -318,6 +334,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Template ID.",
           "example": "1110",
           "member": "string",
@@ -334,6 +351,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Messages with receipt.",
           "member": "uint64",
           "name": "CallbackCount",
@@ -343,6 +361,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Successfully submitted SMS messages.",
           "member": "uint64",
           "name": "RequestSuccessCount",
@@ -352,6 +371,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Failed receipts.",
           "member": "uint64",
           "name": "CallbackFailCount",
@@ -361,6 +381,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Successful receipts.",
           "member": "uint64",
           "name": "CallbackSuccessCount",
@@ -370,6 +391,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Carrier's internal error.",
           "member": "uint64",
           "name": "InternalErrorCount",
@@ -379,6 +401,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Invalid numbers.",
           "member": "uint64",
           "name": "InvalidNumberCount",
@@ -388,6 +411,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Errors such as out-of-service or power-off.",
           "member": "uint64",
           "name": "ShutdownErrorCount",
@@ -397,6 +421,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Blocked mobile numbers.",
           "member": "uint64",
           "name": "BlackListCount",
@@ -406,6 +431,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Carrier rate limit hits.",
           "member": "uint64",
           "name": "FrequencyLimitCount",
@@ -421,6 +447,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).",
           "example": "2016090800",
           "member": "string",
@@ -430,6 +457,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be after `BeginTime`, and the difference should not exceed 32 days.",
           "example": "2016090823",
           "member": "string",
@@ -439,6 +467,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
           "example": "1400006874",
           "member": "string",
@@ -448,6 +477,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Upper limit.\nNote: this parameter is currently fixed at 0.",
           "example": "0",
           "member": "uint64",
@@ -457,6 +487,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.\nNote: this parameter is currently fixed at 0.",
           "example": "0",
           "member": "uint64",
@@ -471,6 +502,7 @@
       "document": "CallbackStatusStatistics response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Receipt statistics response body.",
           "example": "  \"CallbackStatusStatistics\": {       \"CallbackCount\": 1745,  ",
           "member": "CallbackStatusStatistics",
@@ -493,6 +525,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Deletion status information.",
           "member": "string",
           "name": "DeleteStatus",
@@ -502,6 +535,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Deleted time in seconds in the format of UNIX timestamp.",
           "member": "uint64",
           "name": "DeleteTime",
@@ -517,6 +551,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the signature to be deleted.",
           "example": "12345",
           "member": "uint64",
@@ -531,6 +566,7 @@
       "document": "DeleteSmsSign response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Signature deletion response",
           "example": " \"DeleteTemplateStatus\": {       \"DeleteTime\": 1578988506,   ",
           "member": "DeleteSignStatus",
@@ -553,6 +589,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the template to be deleted.",
           "example": "1234",
           "member": "uint64",
@@ -567,6 +604,7 @@
       "document": "DeleteSmsTemplate response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Template deletion response",
           "example": "  \"DeleteTemplateStatus\": {       \"DeleteTime\": 1578988506,     ",
           "member": "DeleteTemplateStatus",
@@ -589,6 +627,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Deletion status information.",
           "member": "string",
           "name": "DeleteStatus",
@@ -598,6 +637,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Deleted time in seconds in the format of UNIX timestamp.",
           "member": "uint64",
           "name": "DeleteTime",
@@ -613,6 +653,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "A parameter used to query mobile numbers in E.164 format (+[country/region code][subscriber number]). Up to 200 mobile numbers can be queried at a time.\nTake the number +8613711112222 as an example. “86” is the country code (with a “+” sign in its front) and “13711112222” is the subscriber number.",
           "example": "[\"+8618843210001\"]",
           "member": "string",
@@ -627,6 +668,7 @@
       "document": "DescribePhoneNumberInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "A parameter used to obtain mobile number information.",
           "example": "无",
           "member": "PhoneNumberInfo",
@@ -649,6 +691,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Signature ID.",
           "example": "1110",
           "member": "uint64",
@@ -659,6 +702,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is Global SMS. 0: Mainland China SMS; 1: Global SMS.",
           "example": "0",
           "member": "uint64",
@@ -669,6 +713,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature application status. Valid values: 0: approved; 1: under review.\n-1: application rejected or failed.",
           "example": "0",
           "member": "int64",
@@ -679,6 +724,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.",
           "example": "xxx",
           "member": "string",
@@ -689,6 +735,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature name.",
           "example": "腾讯云",
           "member": "string",
@@ -699,6 +746,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application submission time in the format of UNIX timestamp in seconds.",
           "example": "1620734188",
           "member": "uint64",
@@ -715,6 +763,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Signature ID array.\nNote: the maximum length of the array is 100 by default.",
           "example": "1110",
           "member": "uint64",
@@ -724,6 +773,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
           "example": "0",
           "member": "uint64",
@@ -738,6 +788,7 @@
       "document": "DescribeSmsSignList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response for getting signature information",
           "example": "\"DescribeSignListStatusSet\": [       {         \"SignId\": 111",
           "member": "DescribeSignListStatus",
@@ -760,6 +811,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
           "example": "0",
           "member": "uint64",
@@ -769,6 +821,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Array of template IDs. If the array is empty, the template list information will be queried by default. You need to use the `Limit` and `Offset` fields to set the query range.\n<dx-alert infotype=\"notice\" title=\"Note\">The max array length is 100 by default.</dx-alert>",
           "example": "1110",
           "member": "uint64",
@@ -778,6 +831,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Upper limit. Maximum value: 100.\nNote: it is 0 by default and is enabled when `TemplateIdSet` is empty.",
           "example": "0",
           "member": "uint64",
@@ -787,6 +841,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.\nNote: it is 0 by default and is enabled when `TemplateIdSet` is empty.",
           "example": "0",
           "member": "uint64",
@@ -801,6 +856,7 @@
       "document": "DescribeSmsTemplateList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response for getting SMS template information",
           "example": "\"DescribeTemplateStatusSet\": [       {         \"TemplateId\":",
           "member": "DescribeTemplateListStatus",
@@ -823,6 +879,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Template ID.",
           "example": "1110",
           "member": "uint64",
@@ -833,6 +890,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is Global SMS. 0: Mainland China SMS; 1: Global SMS.",
           "example": "0",
           "member": "uint64",
@@ -843,6 +901,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template application status. Valid values: 0: approved; 1: under review; -1: application rejected or failed.",
           "example": "0",
           "member": "int64",
@@ -853,6 +912,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.",
           "example": "xxx",
           "member": "string",
@@ -863,6 +923,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template name.",
           "example": "xxx",
           "member": "string",
@@ -873,6 +934,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application submission time in the format of UNIX timestamp in seconds.",
           "example": "1620640474",
           "member": "uint64",
@@ -883,6 +945,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template content.",
           "example": "验证码是{1}",
           "member": "string",
@@ -899,6 +962,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Signature ID.",
           "example": "1110",
           "member": "uint64",
@@ -915,6 +979,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the signature to be modified.",
           "example": "1110",
           "member": "uint64",
@@ -924,6 +989,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature name.",
           "example": "test",
           "member": "string",
@@ -933,6 +999,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0 and 1.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account. Valid values of `DocumentType` include 0, 1, 2, 3, and 8.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\n6: WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
           "example": "0",
           "member": "uint64",
@@ -942,6 +1009,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\n8: screenshot of WeChat Official Account settings page (for personal WeChat Official Account).",
           "example": "1",
           "member": "uint64",
@@ -951,6 +1019,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A parameter used to specify whether it is Global SMS:\n`0`: Chinese mainland SMS.\n`1`: Global SMS.\nNote: the value of this parameter must be consistent with the `International` value of the signature to be modified. This parameter cannot be used to directly change a Chinese mainland signature to an international signature.",
           "example": "0",
           "member": "uint64",
@@ -960,6 +1029,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature purpose:\n0: for personal use.\n1: for others.",
           "example": "1",
           "member": "uint64",
@@ -969,6 +1039,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "You should Base64-encode the image of the identity certificate corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.",
           "example": "xxxx",
           "member": "string",
@@ -978,6 +1049,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Power of attorney, which should be submitted if `SignPurpose` is for use by others.\nYou should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.\nNote: this field will take effect only when `SignPurpose` is 1 (for user by others).",
           "example": "xxxx",
           "member": "string",
@@ -987,6 +1059,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Signature application remarks.",
           "example": "xxxx",
           "member": "string",
@@ -1001,6 +1074,7 @@
       "document": "ModifySmsSign response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Signature modification response",
           "example": "   \"ModifySignStatus\": {       \"SignId\": 1110,       \"SignApplyI",
           "member": "ModifySignStatus",
@@ -1023,6 +1097,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the template to be modified.",
           "example": "1110",
           "member": "uint64",
@@ -1032,6 +1107,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New template name.",
           "example": "腾讯云",
           "member": "string",
@@ -1041,6 +1117,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New template content.",
           "example": "xxx",
           "member": "string",
@@ -1050,6 +1127,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SMS type. 0: regular SMS, 1: marketing SMS.",
           "example": "0",
           "member": "uint64",
@@ -1059,6 +1137,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
           "example": "0",
           "member": "uint64",
@@ -1068,6 +1147,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template remarks, such as reason for application and use case.",
           "example": "xxx",
           "member": "string",
@@ -1082,6 +1162,7 @@
       "document": "ModifySmsTemplate response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Template parameter modification response",
           "example": "\"ModifyTemplateStatus\": {       \"TemplateId\": 1110     }",
           "member": "ModifyTemplateStatus",
@@ -1104,6 +1185,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Template ID.",
           "example": "1110",
           "member": "uint64",
@@ -1120,6 +1202,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Error code for mobile number information query. `Ok` will be returned if the query is successful.",
           "example": "Ok",
           "member": "string",
@@ -1130,6 +1213,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description of the error code for mobile number information query.",
           "example": "Describe success",
           "member": "string",
@@ -1140,6 +1224,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Country (or region) code.",
           "example": "86",
           "member": "string",
@@ -1150,6 +1235,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subscriber number in normal format such as 13711112222, without any prefix (country or region code).",
           "example": "13711112222",
           "member": "string",
@@ -1160,6 +1246,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The standardized mobile number in E.164 format after parsing, which is consistent with the parsed number for SMS message delivery. If the parsing fails, the original number will be returned.",
           "example": "+8613711112222",
           "member": "string",
@@ -1170,6 +1257,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Country or region code such as CN and US. If the country or region code cannot be identified, `DEF` will be returned by default.",
           "example": "CN",
           "member": "string",
@@ -1180,6 +1268,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Country code or region name such as China. For more information, see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)",
           "example": "China",
           "member": "string",
@@ -1196,6 +1285,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "11",
           "member": "string",
@@ -1206,6 +1296,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Country (or region) code.",
           "example": "86",
           "member": "string",
@@ -1216,6 +1307,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
           "example": "+8613711112222",
           "member": "string",
@@ -1226,6 +1318,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SMS signature name.",
           "example": "腾讯云",
           "member": "string",
@@ -1236,6 +1329,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User reply.",
           "example": "test",
           "member": "string",
@@ -1246,6 +1340,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Reply time in seconds in the format of UNIX timestamp.",
           "example": "1620734188",
           "member": "uint64",
@@ -1256,6 +1351,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User's mobile number in a common format such as 13711112222.",
           "example": "13711112222",
           "member": "string",
@@ -1272,6 +1368,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Pull start time in seconds in the format of UNIX timestamp.\nNote: the data for the last 7 days can be pulled at most.",
           "example": "1464624000",
           "member": "uint64",
@@ -1281,6 +1378,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.\nNote: this parameter is currently fixed at 0.",
           "example": "0",
           "member": "uint64",
@@ -1290,6 +1388,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of pulled entries. Maximum value: 100.",
           "example": "2",
           "member": "uint64",
@@ -1299,6 +1398,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
           "example": "+8615291996666",
           "member": "string",
@@ -1308,6 +1408,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
           "example": "1400006874",
           "member": "string",
@@ -1317,6 +1418,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pull end time in seconds in the format of UNIX timestamp.",
           "example": "1464624123",
           "member": "uint64",
@@ -1331,6 +1433,7 @@
       "document": "PullSmsReplyStatusByPhoneNumber response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Reply status response set.",
           "example": "    \"PullSmsReplyStatusSet\": [       {         \"ExtendCode\": \"11",
           "member": "PullSmsReplyStatus",
@@ -1353,6 +1456,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of pulled entries. Maximum value: 100.",
           "example": "2",
           "member": "uint64",
@@ -1362,6 +1466,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
           "example": "1400006874",
           "member": "string",
@@ -1376,6 +1481,7 @@
       "document": "PullSmsReplyStatus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Reply status response set.",
           "example": " \"PullSmsReplyStatusSet\": [       {         \"ExtendCode\": \"11",
           "member": "PullSmsReplyStatus",
@@ -1398,6 +1504,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Actual time of SMS receipt by user in seconds in the format of UNIX timestamp.",
           "example": "1620734188",
           "member": "uint64",
@@ -1408,6 +1515,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Country (or region) code.",
           "example": "86",
           "member": "string",
@@ -1418,6 +1526,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User's mobile number in a common format such as 13711112222.",
           "example": "13711112222",
           "member": "string",
@@ -1428,6 +1537,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
           "example": "+8613711112222",
           "member": "string",
@@ -1438,6 +1548,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the current delivery.",
           "example": "14:19325917feb3914eb78b50d6182d7e452e",
           "member": "string",
@@ -1448,6 +1559,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the SMS message is actually received. Valid values: SUCCESS (success), FAIL (failure).",
           "example": "SUCCESS",
           "member": "string",
@@ -1458,6 +1570,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description of SMS receipt by user.",
           "example": "DELIVRD",
           "member": "string",
@@ -1468,6 +1581,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User session content, which is the same as the `SessionContext` in the request and is empty by default. If you need to activate it, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1484,6 +1598,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Pull start time in seconds in the format of UNIX timestamp.\nNote: the data for the last 7 days can be pulled at most.",
           "example": "1464624000",
           "member": "uint64",
@@ -1493,6 +1608,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.\nNote: this parameter is currently fixed at 0.",
           "example": "0",
           "member": "uint64",
@@ -1502,6 +1618,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of pulled entries. Maximum value: 100.",
           "example": "2",
           "member": "uint64",
@@ -1511,6 +1628,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
           "example": "+8615291996666",
           "member": "string",
@@ -1520,6 +1638,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
           "example": "1400006874",
           "member": "string",
@@ -1529,6 +1648,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pull end time in seconds in the format of UNIX timestamp.",
           "example": "1464624123",
           "member": "uint64",
@@ -1543,6 +1663,7 @@
       "document": "PullSmsSendStatusByPhoneNumber response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Delivery status response set.",
           "example": "\"PullSmsSendStatusSet\": [       {         \"UserReceiveTime\": \"20",
           "member": "PullSmsSendStatus",
@@ -1565,6 +1686,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of pulled entries. Maximum value: 100.",
           "example": "2",
           "member": "uint64",
@@ -1574,6 +1696,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
           "example": "1400006874",
           "member": "string",
@@ -1588,6 +1711,7 @@
       "document": "PullSmsSendStatus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Delivery status response set.",
           "example": "\"PullSmsSendStatusSet\": [       {         \"UserReceiveTime\": \"20",
           "member": "PullSmsSendStatus",
@@ -1610,6 +1734,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS SdkAppId generated after an application is created in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as “1400006666”.",
           "example": "1400000001",
           "member": "string",
@@ -1619,6 +1744,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The serial number returned for a message sent.",
           "example": "5000:1045710669157053657849499619",
           "member": "string",
@@ -1628,6 +1754,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The recipient’s reply time in seconds in the format of UNIX timestamp.",
           "example": "1357702710187",
           "member": "uint64",
@@ -1642,6 +1769,7 @@
       "document": "ReportConversion response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response packet for conversion rate reporting.",
           "example": "无",
           "member": "ReportConversionStatus",
@@ -1664,6 +1792,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Error code. `ok` is returned if the conversion rate is successfully reported.",
           "example": "ok",
           "member": "string",
@@ -1674,6 +1803,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Error code description.",
           "example": "report success",
           "member": "string",
@@ -1690,7 +1820,8 @@
       "members": [
         {
           "default": "",
-          "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Chinese mainland mobile numbers or all global mobile numbers).\nFor example, +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "disabled": false,
+          "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Chinese mainland mobile numbers or all global mobile numbers).\nFor example, +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).",
           "example": "+8618511122233",
           "member": "string",
           "name": "PhoneNumberSet",
@@ -1699,6 +1830,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
           "example": "1400006666",
           "member": "string",
@@ -1708,6 +1840,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.",
           "example": "1234",
           "member": "string",
@@ -1717,6 +1850,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SMS signature information which is encoded in UTF-8. You must enter an approved signature (such as Tencent Cloud). The signing information can be viewed on the **Signatures** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign).",
           "example": "腾讯云",
           "member": "string",
@@ -1726,6 +1860,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Template parameter. If there is no template parameter, leave this field empty.\n<dx-alert infotype=\"notice\" title=\"Note\">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>",
           "example": "12345",
           "member": "string",
@@ -1735,6 +1870,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SMS code number extension, which is not activated by default. If you need to activate it, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "1400006666",
           "member": "string",
@@ -1744,6 +1880,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User session content, which can carry context information such as user-side ID and will be returned as-is by the server.",
           "example": "test",
           "member": "string",
@@ -1753,6 +1890,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: If your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "test",
           "member": "string",
@@ -1767,6 +1905,7 @@
       "document": "SendSms response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "SMS delivery status.",
           "example": "\"SendStatusSet\": [       {         \"SerialNo\": \"5000:10457106691",
           "member": "SendStatus",
@@ -1789,6 +1928,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Delivery serial number.",
           "example": "5000:1045710669157053657849499619",
           "member": "string",
@@ -1799,6 +1939,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
           "example": "+8618511122233",
           "member": "string",
@@ -1809,6 +1950,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of billable SMS messages. For billing rules, see Billing Policy.",
           "example": "1",
           "member": "uint64",
@@ -1819,6 +1961,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User session content.",
           "example": "test",
           "member": "string",
@@ -1829,6 +1972,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.",
           "example": "Ok",
           "member": "string",
@@ -1839,6 +1983,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SMS request error message.",
           "example": "send success",
           "member": "string",
@@ -1849,6 +1994,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Country/Region code, such as CN and US. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).",
           "example": "CN",
           "member": "string",
@@ -1865,6 +2011,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Billable SMS message quantity; for example, in 100 successfully submitted SMS messages, if 20 ones are long messages (over 80 characters) and split into two messages each, then the billable quantity will be 80 * 1 + 20 * 2 = 120.",
           "member": "uint64",
           "name": "FeeCount",
@@ -1874,6 +2021,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Submitted SMS messages.",
           "member": "uint64",
           "name": "RequestCount",
@@ -1883,6 +2031,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Successfully submitted SMS messages.",
           "member": "uint64",
           "name": "RequestSuccessCount",
@@ -1898,6 +2047,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).",
           "example": "2016090800",
           "member": "string",
@@ -1907,6 +2057,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be after `BeginTime`.",
           "example": "2016090823",
           "member": "string",
@@ -1916,6 +2067,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
           "example": "1400006874",
           "member": "string",
@@ -1925,6 +2077,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Upper limit.\nNote: this parameter is currently fixed at 0.",
           "example": "0",
           "member": "uint64",
@@ -1934,6 +2087,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.\nNote: this parameter is currently fixed at 0.",
           "example": "1",
           "member": "uint64",
@@ -1948,6 +2102,7 @@
       "document": "SendStatusStatistics response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Delivery statistics response body.",
           "example": "\"SendStatusStatistics\": {       \"FeeCount\": 1880,       \"Requ",
           "member": "SendStatusStatistics",
