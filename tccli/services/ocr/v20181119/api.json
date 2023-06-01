@@ -84,6 +84,13 @@
       "output": "RecognizePhilippinesTinIDOCRResponse",
       "status": "online"
     },
+    "RecognizePhilippinesUMIDOCR": {
+      "document": "This API is used to recognize a Philippine Unified Multi-Purpose ID (UMID) card.",
+      "input": "RecognizePhilippinesUMIDOCRRequest",
+      "name": "Recognizes a Philippine UMID card",
+      "output": "RecognizePhilippinesUMIDOCRResponse",
+      "status": "online"
+    },
     "RecognizePhilippinesVoteIDOCR": {
       "document": "This API is used to recognize a Philippine voters ID card. It can recognize fields such as first name, family name, date of birth, civil status, citizenship, address, precinct, and voter's identification number (VIN).\n\nThe API request rate is limited to 20 requests/sec by default.",
       "input": "RecognizePhilippinesVoteIDOCRRequest",
@@ -2070,6 +2077,123 @@
           "member": "TextDetectionResult",
           "name": "IssueDate",
           "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesUMIDOCRRequest": {
+      "document": "RecognizePhilippinesUMIDOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the identity photo.",
+          "example": "无",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizePhilippinesUMIDOCRResponse": {
+      "document": "RecognizePhilippinesUMIDOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The surname.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Surname",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The middle name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "MiddleName",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The given name.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "GivenName",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The address.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Address",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The date of birth.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Birthday",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The common reference number (CRN).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "CRN",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The gender.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Sex",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded identity photo.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "HeadPortrait",
           "type": "object",
           "value_allowed_null": false
         },
