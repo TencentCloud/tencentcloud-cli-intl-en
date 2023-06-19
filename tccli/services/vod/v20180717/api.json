@@ -854,13 +854,6 @@
       "output": "ParseStreamingManifestResponse",
       "status": "online"
     },
-    "ProcessMedia": {
-      "document": "This API is used to initiate a media processing task on a VOD file. The task may include:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screenshot\n4. Sampled screenshot\n5. Image sprite generating\n6. Taking a screenshot to use as the thumbnail\n7. Adaptive bitrate streaming and encryption\n8. Moderation (pornographic, terrorist, and politically sensitive content). We <font color=red>do not recommend</font> using this API to initiate a moderation task. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.\n9. Content analysis for labeling, categorization, thumbnail generation, or labeling by frame.\n10. Recognition of opening and closing segments, faces, full text, text keywords, full speech, speech keywords, and objects\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
-      "input": "ProcessMediaRequest",
-      "name": "Processes a video",
-      "output": "ProcessMediaResponse",
-      "status": "online"
-    },
     "ProcessMediaByProcedure": {
       "document": "This API is used to start a task flow on a video.\nThere are two ways to create a task flow template:\n1. Create and modify a task flow template in the console;\n2. Create a task flow template using the `CreateProcedureTemplate` API.\n\nIf event notifications are used, the event type for moderation tasks is [ReviewAudioVideoComplete](https://intl.cloud.tencent.com/document/product/266/81258?from_cn_redirect=1), and that for other tasks is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
       "input": "ProcessMediaByProcedureRequest",
@@ -6998,11 +6991,11 @@
       "usage": "both"
     },
     "Authentication": {
-      "document": "",
+      "document": "Timestamp hotlink protection configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Hotlink protection configuration switch: <li>on:Enable;</li> <li>off:Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -7012,7 +7005,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp hotlink protection mode A configuration",
           "example": "无",
           "member": "AuthenticationTypeA",
           "name": "TypeA",
@@ -7022,7 +7015,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp hotlink protection mode B configuration",
           "example": "无",
           "member": "AuthenticationTypeB",
           "name": "TypeB",
@@ -7032,7 +7025,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp hotlink protection mode C configuration",
           "example": "无",
           "member": "AuthenticationTypeC",
           "name": "TypeC",
@@ -7042,7 +7035,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp hotlink protection mode D configuration",
           "example": "无",
           "member": "AuthenticationTypeD",
           "name": "TypeD",
@@ -7054,11 +7047,11 @@
       "usage": "both"
     },
     "AuthenticationTypeA": {
-      "document": "",
+      "document": "Timestamp hotlink protection mode A configuration\nThe access URL format of timestamp hotlink protection mode A is as follows: http://DomainName/Filename?sign=timestamp-rand-uid-md5hash\nHere, timestamp is a decimal timestamp in Unix format;\nrand is a random string composed of 0-100 characters, including digits, upper and lower-case letters.\nuid is 0;\nmd5hash: MD5 (file path-timestamp-rand-uid-custom key)",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The key for signature calculation 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -7068,7 +7061,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Signature parameter name Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.",
           "example": "无",
           "member": "string",
           "name": "SignParam",
@@ -7078,7 +7071,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Signature expiration time;Unit: second. The maximum value is 630720000.",
           "example": "无",
           "member": "uint64",
           "name": "ExpireTime",
@@ -7088,7 +7081,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.",
           "example": "无",
           "member": "string",
           "name": "FileExtensions",
@@ -7098,7 +7091,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -7108,7 +7101,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "BackupSecretKey",
@@ -7120,11 +7113,11 @@
       "usage": "both"
     },
     "AuthenticationTypeB": {
-      "document": "",
+      "document": "Timestamp hotlink protection mode B configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The key for signature calculation 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -7134,7 +7127,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Signature parameter name Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.",
           "example": "无",
           "member": "uint64",
           "name": "ExpireTime",
@@ -7144,7 +7137,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.",
           "example": "无",
           "member": "string",
           "name": "FileExtensions",
@@ -7154,7 +7147,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -7164,7 +7157,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "BackupSecretKey",
@@ -7176,11 +7169,11 @@
       "usage": "both"
     },
     "AuthenticationTypeC": {
-      "document": "",
+      "document": "Timestamp hotlink protection mode C configuration\nThe access URL format of timestamp hotlink protection mode C is as follows: http://DomainName/md5hash/timestamp/FileName\nHere, timestamp is a hexadecimal timestamp in Unix format;\nmd5hash: MD5 (custom key + file path + timestamp)",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The key for signature calculation 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -7190,7 +7183,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Signature expiration time;Unit: second. The maximum value is 630720000.",
           "example": "无",
           "member": "uint64",
           "name": "ExpireTime",
@@ -7200,7 +7193,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.",
           "example": "无",
           "member": "string",
           "name": "FileExtensions",
@@ -7210,7 +7203,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -7220,7 +7213,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp settings:<li>dec: Decimal</li> <li>hex: Hexadecimal</li>",
           "example": "无",
           "member": "string",
           "name": "TimeFormat",
@@ -7230,7 +7223,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "BackupSecretKey",
@@ -7242,11 +7235,11 @@
       "usage": "both"
     },
     "AuthenticationTypeD": {
-      "document": "",
+      "document": "Timestamp hotlink protection mode D configuration\nThe access URL format of timestamp hotlink protection mode D is as follows: http://DomainName/FileName?sign=md5hash&t=timestamp\nHere, timestamp is a decimal or hexadecimal timestamp in Unix format;\nmd5hash: MD5 (custom key + file path + timestamp)",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The key for signature calculation 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -7256,7 +7249,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Signature expiration time;Unit: second. The maximum value is 630720000.",
           "example": "无",
           "member": "uint64",
           "name": "ExpireTime",
@@ -7266,7 +7259,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.",
           "example": "无",
           "member": "string",
           "name": "FileExtensions",
@@ -7276,7 +7269,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -7286,7 +7279,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Signature parameter name Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.",
           "example": "无",
           "member": "string",
           "name": "SignParam",
@@ -7296,7 +7289,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp parameter name;Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.",
           "example": "无",
           "member": "string",
           "name": "TimeParam",
@@ -7306,7 +7299,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp settings: <li>dec: Decimal</li> <li>hex: Hexadecimal</li>",
           "example": "无",
           "member": "string",
           "name": "TimeFormat",
@@ -7316,7 +7309,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.",
           "example": "无",
           "member": "string",
           "name": "BackupSecretKey",
@@ -7328,11 +7321,11 @@
       "usage": "both"
     },
     "AwsPrivateAccess": {
-      "document": "",
+      "document": "Origin access authentication for S3 bucket.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": " Aws S3 back-to-origin authentication configuration switch, the values are: <li>on:Enable;</li> <li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -7342,7 +7335,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access ID.",
           "example": "无",
           "member": "string",
           "name": "AccessKey",
@@ -7352,7 +7345,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Key.",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -7362,7 +7355,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region.",
           "example": "无",
           "member": "string",
           "name": "Region",
@@ -7372,7 +7365,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "BucketName.",
           "example": "无",
           "member": "string",
           "name": "Bucket",
@@ -7384,11 +7377,11 @@
       "usage": "both"
     },
     "CDNCertInfo": {
-      "document": "",
+      "document": "Domain https acceleration configuration, the default is off",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Server certificate ID, which is auto-generated when the certificate is being managed by the SSL Certificate Service",
           "example": "无",
           "member": "string",
           "name": "CertId",
@@ -7398,7 +7391,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Server certificate information.",
           "example": "无",
           "member": "string",
           "name": "Certificate",
@@ -7408,7 +7401,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Server key information.",
           "example": "无",
           "member": "string",
           "name": "PrivateKey",
@@ -7418,7 +7411,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Time when the certificate expires;Can be left blank when used as an input parameter.",
           "example": "无",
           "member": "datetime_iso",
           "name": "ExpireTime",
@@ -7430,11 +7423,11 @@
       "usage": "both"
     },
     "CDNDomainConfig": {
-      "document": "",
+      "document": "CDN Domain Config",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Acceleration region:<li>mainland:Acceleration inside the Chinese mainland;</li> <li>overseas: Acceleration outside the Chinese mainland;</li> <li>Acceleration over the globe.</li>",
           "example": "无",
           "member": "string",
           "name": "Area",
@@ -7444,7 +7437,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin Server Configuration",
           "example": "无",
           "member": "Origin",
           "name": "Origin",
@@ -7454,7 +7447,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist configuration. This is disabled by default.",
           "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
@@ -7464,7 +7457,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "UserAgent:blacklist/whitelist configuration.",
           "example": "无",
           "member": "UserAgentFilter",
           "name": "UserAgentFilter",
@@ -7474,7 +7467,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Back to the source 301/302 status code automatically follows the configuration, the default is off",
           "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
@@ -7484,7 +7477,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom request header configuration. This is disabled by default.",
           "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
@@ -7494,7 +7487,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom response header configuration. This is disabled by default.",
           "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
@@ -7504,7 +7497,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Node cache expiration time configuration.",
           "example": "无",
           "member": "Cache",
           "name": "Cache",
@@ -7514,7 +7507,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Domain name HTTPS acceleration configuration. This is disabled by default.",
           "example": "无",
           "member": "Https",
           "name": "Https",
@@ -7524,7 +7517,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp hotlink protection configuration.",
           "example": "无",
           "member": "Authentication",
           "name": "Authentication",
@@ -7534,7 +7527,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access protocol forced redirect configuration. This is disabled by default.",
           "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
@@ -7544,7 +7537,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Referer blacklist/whitelist configuration. This is disabled by default.",
           "example": "无",
           "member": "Referer",
           "name": "Referer",
@@ -7554,7 +7547,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Browser cache rule configuration, which is used to set the default value of MaxAge and is disabled by default.",
           "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
@@ -7564,7 +7557,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IPv6 access configuration.",
           "example": "无",
           "member": "Ipv6Access",
           "name": "Ipv6Access",
@@ -7574,7 +7567,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "QUIC configuration item.",
           "example": "无",
           "member": "Quic",
           "name": "Quic",
@@ -7584,7 +7577,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin access authentication for S3 bucket.",
           "example": "无",
           "member": "AwsPrivateAccess",
           "name": "AwsPrivateAccess",
@@ -7594,7 +7587,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access authentication configuration for OSS origin.",
           "example": "无",
           "member": "OssPrivateAccess",
           "name": "OssPrivateAccess",
@@ -7604,7 +7597,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access authentication for Huawei Cloud OBS origin",
           "example": "无",
           "member": "HwPrivateAccess",
           "name": "HwPrivateAccess",
@@ -7614,7 +7607,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin-pull authentication for other origins.",
           "example": "无",
           "member": "OthersPrivateAccess",
           "name": "OthersPrivateAccess",
@@ -7626,11 +7619,11 @@
       "usage": "both"
     },
     "CDNDomainConfigForUpdate": {
-      "document": "",
+      "document": "CDN domain config for update",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Acceleration region:<li>mainland:Acceleration inside the Chinese mainland;</li> <li>overseas: Acceleration outside the Chinese mainland;</li> <li>Acceleration over the globe.</li>",
           "example": "无",
           "member": "string",
           "name": "Area",
@@ -7640,7 +7633,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin Server Configuration.",
           "example": "无",
           "member": "Origin",
           "name": "Origin",
@@ -7650,7 +7643,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist configuration. This is disabled by default.",
           "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
@@ -7660,7 +7653,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "UserAgent:blacklist/whitelist configuration.",
           "example": "无",
           "member": "UserAgentFilter",
           "name": "UserAgentFilter",
@@ -7670,7 +7663,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Back to the source 301/302 status code automatically follows the configuration, the default is off",
           "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
@@ -7680,7 +7673,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom request header configuration. This is disabled by default.",
           "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
@@ -7690,7 +7683,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom response header configuration. This is disabled by default.",
           "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
@@ -7700,7 +7693,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Node cache expiration time configuration.",
           "example": "无",
           "member": "Cache",
           "name": "Cache",
@@ -7710,7 +7703,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Domain name HTTPS acceleration configuration. This is disabled by default.",
           "example": "无",
           "member": "Https",
           "name": "Https",
@@ -7720,7 +7713,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timestamp hotlink protection configuration.",
           "example": "无",
           "member": "Authentication",
           "name": "Authentication",
@@ -7730,7 +7723,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access protocol forced redirect configuration. This is disabled by default.",
           "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
@@ -7740,7 +7733,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Referer blacklist/whitelist configuration. This is disabled by default.",
           "example": "无",
           "member": "Referer",
           "name": "Referer",
@@ -7750,7 +7743,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Browser cache rule configuration, which is used to set the default value of MaxAge and is disabled by default.",
           "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
@@ -7760,7 +7753,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IPv6 access configuration.",
           "example": "无",
           "member": "Ipv6Access",
           "name": "Ipv6Access",
@@ -7770,7 +7763,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "QUIC configuration item.",
           "example": "无",
           "member": "Quic",
           "name": "Quic",
@@ -7780,7 +7773,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin access authentication for S3 bucket.",
           "example": "无",
           "member": "AwsPrivateAccess",
           "name": "AwsPrivateAccess",
@@ -7790,7 +7783,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access authentication configuration for OSS origin.",
           "example": "无",
           "member": "OssPrivateAccess",
           "name": "OssPrivateAccess",
@@ -7800,7 +7793,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access authentication for Huawei Cloud OBS origin",
           "example": "无",
           "member": "HwPrivateAccess",
           "name": "HwPrivateAccess",
@@ -7810,7 +7803,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin-pull authentication for other origins.",
           "example": "无",
           "member": "OthersPrivateAccess",
           "name": "OthersPrivateAccess",
@@ -7822,11 +7815,11 @@
       "usage": "in"
     },
     "CDNDomainInfo": {
-      "document": "",
+      "document": "CDN DomainInfo",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Domain.",
           "example": "无",
           "member": "string",
           "name": "Domain",
@@ -7836,7 +7829,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Deployment status.",
           "example": "无",
           "member": "string",
           "name": "DeployStatus",
@@ -7846,7 +7839,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "CNAME record.",
           "example": "无",
           "member": "string",
           "name": "Cname",
@@ -7856,7 +7849,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Creation time.",
           "example": "无",
           "member": "string",
           "name": "CreateTime",
@@ -7866,7 +7859,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "CDN domain configuration information.",
           "example": "无",
           "member": "CDNDomainConfig",
           "name": "Config",
@@ -7878,11 +7871,11 @@
       "usage": "out"
     },
     "Cache": {
-      "document": "",
+      "document": "Node cache expiration time configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Advanced path cache configuration.",
           "example": "无",
           "member": "RuleCache",
           "name": "RuleCache",
@@ -7894,11 +7887,11 @@
       "usage": "both"
     },
     "CacheConfigCache": {
-      "document": "",
+      "document": "Path cache configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cache configuration switch: <li>on:enable；</li> <li>off: disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -7908,7 +7901,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cache expiration time settings<li>Unit: second. The maximum value is 365 days.</li>",
           "example": "无",
           "member": "uint64",
           "name": "CacheTime",
@@ -7918,7 +7911,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node: <li>on: Enable;</li> <li>off: Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "CompareMaxAge",
@@ -7928,7 +7921,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Force cache: <li>on: Enable;</li> <li>off: Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "IgnoreCacheControl",
@@ -7938,7 +7931,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to ignore the header and body on cache nodes if the origin server returns the header Set-Cookie. <li>on: Ignore; do not cache the header and body.</li> <li>off: Do not ignore; follow the custom cache rules of cache nodes.</li>",
           "example": "无",
           "member": "string",
           "name": "IgnoreSetCookie",
@@ -7950,11 +7943,11 @@
       "usage": "both"
     },
     "CacheConfigFollowOrigin": {
-      "document": "",
+      "document": "Path cache configuration follows the origin server configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Follow origin server switch configuration: <li>on: Enable.</li> <li>off: Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -7964,7 +7957,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Heuristic cache configuration",
           "example": "无",
           "member": "HeuristicCache",
           "name": "HeuristicCache",
@@ -7976,11 +7969,11 @@
       "usage": "both"
     },
     "CacheConfigNoCache": {
-      "document": "",
+      "document": "Path cache/no cache configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "No-cache configuration switch: <li>on: Enable;</li> <li>off: Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -7990,7 +7983,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Always forwards to the origin server for verification:<li>on: Enable;</li> <li>off: Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Revalidate",
@@ -8227,7 +8220,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Domain name.",
+          "document": "Domain",
           "example": "无",
           "member": "string",
           "name": "Domain",
@@ -8236,7 +8229,7 @@
         },
         {
           "disabled": false,
-          "document": "The cloned domain name.",
+          "document": "The cloned domain.",
           "example": "无",
           "member": "string",
           "name": "ReferenceDomain",
@@ -9752,7 +9745,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Domain name.",
+          "document": "Domain.",
           "example": "无",
           "member": "string",
           "name": "Domain",
@@ -11670,7 +11663,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Domain name.",
+          "document": "Domain.",
           "example": "无",
           "member": "string",
           "name": "Domain",
@@ -12708,7 +12701,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of domain names. If this field is left blank, all domain name information will be listed by default.",
+          "document": "List of domain. If this field is left blank, all domain information will be listed by default.",
           "example": "无",
           "member": "string",
           "name": "Domains",
@@ -12750,7 +12743,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of domain name information.",
+          "document": "List of domain information.",
           "example": "无",
           "member": "CDNDomainInfo",
           "name": "DomainSet",
@@ -12759,7 +12752,7 @@
         },
         {
           "disabled": false,
-          "document": "The total number of CDN domain names under the current application.",
+          "document": "The total number of CDN domain under the current application.",
           "example": "无",
           "member": "uint64",
           "name": "TotalCount",
@@ -17218,11 +17211,11 @@
       "usage": "out"
     },
     "FollowRedirect": {
-      "document": "",
+      "document": "Back to the source 301/302 status code automatically follows the configuration, the default is off",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Access forced redirect configuration switch <li>on：Enable;</li> <li>off：Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -17290,11 +17283,11 @@
       "type": "object"
     },
     "ForceRedirect": {
-      "document": "",
+      "document": "Access protocol forced redirect configuration. This is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Access forced redirect configuration switch:<li>on:Enable;</li> <li>off:Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -17304,7 +17297,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access forced redirect types: <li>http:forced HTTP redirect</li> <li>https: forced HTTPS redirect</li>",
           "example": "无",
           "member": "string",
           "name": "RedirectType",
@@ -17314,7 +17307,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Status code returned for forced redirect Supports 301, 302.",
           "example": "无",
           "member": "uint64",
           "name": "RedirectStatusCode",
@@ -17324,7 +17317,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to return the newly added header during force redirection.",
           "example": "无",
           "member": "string",
           "name": "CarryHeaders",
@@ -17489,11 +17482,11 @@
       "usage": "both"
     },
     "HeuristicCacheConfig": {
-      "document": "",
+      "document": "Heuristic cache configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Heuristic cache configuration switch:<li>on:Enable.</li> <li>off: Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "HeuristicCacheTimeSwitch",
@@ -17503,7 +17496,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Unit: seconds.",
           "example": "无",
           "member": "uint64",
           "name": "HeuristicCacheTime",
@@ -17583,11 +17576,11 @@
       "usage": "in"
     },
     "HttpHeaderPathRule": {
-      "document": "",
+      "document": "HTTP header setting rules. Up to 100 entries can be set.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "HTTP header setting methods: <li>set: sets a value for an existing header parameter, a new header parameter, or multiple header parameters. Multiple header parameters will be merged into one.</li> <li>del: deletes a header parameter.</li> <li>add: adds a header parameter. By default, you can repeat the same action to add the same header parameter, which may affect browser response. Please consider the set operation first.</li>",
           "example": "无",
           "member": "string",
           "name": "HeaderMode",
@@ -17597,7 +17590,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "HTTP header name. Up to 100 characters can be set.",
           "example": "无",
           "member": "string",
           "name": "HeaderName",
@@ -17607,7 +17600,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "HTTP header value. Up to 1000 characters can be set.<li>Not required when Mode is del.</li> <li>Required when Mode is add/set.</li>",
           "example": "无",
           "member": "string",
           "name": "HeaderValue",
@@ -17617,7 +17610,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule types:<li>all: Apply to all files.</li> <li>file: Apply to files with the specified suffixes.</li> <li>directory: Apply to specified paths.</li> <li>path: Apply to specified absolute paths.</li>",
           "example": "无",
           "member": "string",
           "name": "RuleType",
@@ -17627,7 +17620,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content for each RuleType:<li>For all, enter a wildcard *.</li> <li>For file, enter a suffix, e.g., jpg or txt.</li> <li>For directory, enter a path, e.g., /xxx/test/.</li> <li>For path, enter an absolute path, e.g., /xxx/test.html.</li>",
           "example": "无",
           "member": "string",
           "name": "RulePaths",
@@ -17639,11 +17632,11 @@
       "usage": "both"
     },
     "Https": {
-      "document": "",
+      "document": "Domain name HTTPS acceleration configuration. This is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "HTTPS configuration switch: <li>on:Enable;</li> <li>off:Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -17653,7 +17646,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable HTTP2: <li>on:Enable;</li> <li>off:Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Http2",
@@ -17663,7 +17656,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Server certificate configuration information",
           "example": "无",
           "member": "CDNCertInfo",
           "name": "CertInfo",
@@ -17675,11 +17668,11 @@
       "usage": "both"
     },
     "HwPrivateAccess": {
-      "document": "",
+      "document": "Access authentication for Huawei Cloud OBS origin",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Huawei Cloud OBS origin authentication configuration switch, the values are: <li>on:Enable;</li> <li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -17689,7 +17682,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access ID",
           "example": "无",
           "member": "string",
           "name": "AccessKey",
@@ -17699,7 +17692,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Key",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -17709,7 +17702,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "BucketName",
           "example": "无",
           "member": "string",
           "name": "Bucket",
@@ -18367,11 +18360,11 @@
       "usage": "out"
     },
     "IpFilter": {
-      "document": "",
+      "document": "IP blocklist/allowlist configuration. This is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist configuration switch :<li>on：Enable;</li> <li>off：Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -18381,7 +18374,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist type <li>whitelist: IP allowlist;</li> <li>blacklist:IP blocklist.</li>",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -18391,7 +18384,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist Supports IPs in X.X.X.X format, or IP ranges in /8, /16, /24 format. Up to 50 whitelists or blacklists can be entered",
           "example": "无",
           "member": "string",
           "name": "Filters",
@@ -18401,7 +18394,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.",
           "example": "无",
           "member": "IpFilterPathRule",
           "name": "FilterRules",
@@ -18413,11 +18406,11 @@
       "usage": "both"
     },
     "IpFilterPathRule": {
-      "document": "",
+      "document": "IP blocklist/allowlist path-based configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist type: <li>whitelist: allowlist IPs;</li> <li>blacklist: blocklist IPs.</li>",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -18427,7 +18420,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP blocklist/allowlist list Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges. Up to 50 allowlists or blocklists can be entered.",
           "example": "无",
           "member": "string",
           "name": "Filters",
@@ -18437,7 +18430,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule types: <li>all: Effective for all files;</li> <li>file: Effective for specified file suffixes;</li> <li>directory: Effective for specified paths;</li> <li>path: Effective for specified absolute paths.</li>",
           "example": "无",
           "member": "string",
           "name": "RuleType",
@@ -18447,7 +18440,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content for each RuleType: <li>For all, enter an asterisk (*).</li> <li>For file, enter the suffix, such as jpg, txt.</li> <li>For directory, enter the path, such as /xxx/test/.</li> <li>For path, enter the corresponding absolute path, such as /xxx/test.html.</li>",
           "example": "无",
           "member": "string",
           "name": "RulePaths",
@@ -18459,11 +18452,11 @@
       "usage": "both"
     },
     "Ipv6Access": {
-      "document": "",
+      "document": "IPv6 access configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable the ipv6 access configuration switch for the domain name, the values are:<li>on:Enable;</li> <li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -18795,11 +18788,11 @@
       "type": "object"
     },
     "MaxAge": {
-      "document": "",
+      "document": "Browser cache rule configuration, which is used to set the default value of MaxAge and is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "MaxAge rule.",
           "example": "无",
           "member": "MaxAgeRule",
           "name": "MaxAgeRules",
@@ -18811,11 +18804,11 @@
       "usage": "both"
     },
     "MaxAgeRule": {
-      "document": "",
+      "document": "MaxAge rules configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule types: <li>all: effective for all files.</li> <li>file: effective for specified file suffixes.</li> <li>directory: effective for specified paths.</li> <li>path: effective for specified absolute paths.</li>",
           "example": "无",
           "member": "string",
           "name": "MaxAgeType",
@@ -18825,7 +18818,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content for each MaxAgeType: <li>For all, enter a wildcard *.</li> <li>For file, enter the suffix, e.g., jpg or txt.</li> <li>For directory, enter the path, e.g., /xxx/test/.</li> <li>For path, enter the absolute path, e.g., /xxx/test.html.</li> <b>Note: the all rule cannot be deleted, and it follows the origin site by default, which can be modified.</b>",
           "example": "无",
           "member": "string",
           "name": "MaxAgeContents",
@@ -18835,7 +18828,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Note: The value 0 means not to cache. <b>Note: The value 0 means not to cache.</b>",
           "example": "无",
           "member": "uint64",
           "name": "MaxAgeTime",
@@ -18845,7 +18838,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to follow the origin server. Valid values: on and off. If it's on, MaxAgeTime is ignored.",
           "example": "无",
           "member": "string",
           "name": "FollowOrigin",
@@ -22455,7 +22448,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Domain name.",
+          "document": "Domain.",
           "example": "无",
           "member": "string",
           "name": "Domain",
@@ -24564,11 +24557,11 @@
       "usage": "in"
     },
     "Origin": {
-      "document": "",
+      "document": "Origin Server Configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Primary origin server list When modifying the origin server, you need to enter the corresponding OriginType. Note: This field may return null, indicating that no valid value was found.",
           "example": "无",
           "member": "string",
           "name": "Origins",
@@ -24578,7 +24571,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Primary origin server type The following types are supported for input parameters: <li> domain:domain；</li> <li>ip：IP address；</li> <li>third_party：third-party object storage origin.</li>",
           "example": "无",
           "member": "string",
           "name": "OriginType",
@@ -24588,7 +24581,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Host header used when accessing the primary origin server. If it is left empty, the acceleration domain name will be used by default.When the origin server type is object storage, the ServerName field is required.",
           "example": "无",
           "member": "string",
           "name": "ServerName",
@@ -24598,7 +24591,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin-pull protocol configuration http: forced HTTP origin-pull follow: protocol follow origin-pull https: forced HTTPS origin-pull. This only supports origin server port 443 for origin-pull. Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
           "name": "OriginPullProtocol",
@@ -24608,7 +24601,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup origin server list When modifying the backup origin server, you need to enter the corresponding BackupOriginType. Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
           "name": "BackupOrigins",
@@ -24618,7 +24611,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": " Backup origin server type, which supports the following types: <li>domain：Domain；</li> <li>ip：IP address；</li> <li>third_party：third-party object storage origin.</li>",
           "example": "无",
           "member": "string",
           "name": "BackupOriginType",
@@ -24628,7 +24621,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Host header used when accessing the backup origin server. If it is left empty, the ServerName of primary origin server will be used by default. Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
           "name": "BackupServerName",
@@ -24638,7 +24631,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The object storage returns to the source vendor. It is required when the source site type is a third-party storage source site (third_party). The optional values include the following:<li>aws_s3：AWS S3;</li> <li>ali_oss：Alibaba Cloud OSS;</li> <li>hw_obs：Huawei OBS;</li> <li>others：Object storage from other vendors only supports object storage compatible with the AWS signature algorithm, such as Tencent Cloud COS.</li>",
           "example": "无",
           "member": "string",
           "name": "OriginCompany",
@@ -24650,11 +24643,11 @@
       "usage": "both"
     },
     "OssPrivateAccess": {
-      "document": "",
+      "document": "Access authentication configuration for OSS origin",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Alibaba Cloud OSS back-to-origin authentication configuration switch, the values are:<li>on:Enable;</li> <li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -24664,7 +24657,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access ID.",
           "example": "无",
           "member": "string",
           "name": "AccessKey",
@@ -24674,7 +24667,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Key.",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -24684,7 +24677,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region.",
           "example": "无",
           "member": "string",
           "name": "Region",
@@ -24694,7 +24687,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "BucketName.",
           "example": "无",
           "member": "string",
           "name": "Bucket",
@@ -24706,11 +24699,11 @@
       "usage": "both"
     },
     "OthersPrivateAccess": {
-      "document": "",
+      "document": "Origin-pull authentication for other origins",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Other vendor object storage back-to-source authentication configuration switches, the values are:<li>on:Enable;</li> <li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -24720,7 +24713,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access ID.",
           "example": "无",
           "member": "string",
           "name": "AccessKey",
@@ -24730,7 +24723,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Key.",
           "example": "无",
           "member": "string",
           "name": "SecretKey",
@@ -24740,7 +24733,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region.",
           "example": "无",
           "member": "string",
           "name": "Region",
@@ -24750,7 +24743,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Bucket name",
           "example": "无",
           "member": "string",
           "name": "Bucket",
@@ -26438,131 +26431,6 @@
       ],
       "type": "object"
     },
-    "ProcessMediaRequest": {
-      "document": "ProcessMedia request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).",
-          "example": "5285485487985271487",
-          "member": "string",
-          "name": "FileId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
-          "example": "无",
-          "member": "uint64",
-          "name": "SubAppId",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Parameter of video processing task.",
-          "example": "无",
-          "member": "MediaProcessTaskInput",
-          "name": "MediaProcessTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "The information of the audio/video moderation task\\*.\nThis parameter is <font color=red>\\*no longer recommended</font>. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.",
-          "example": "无",
-          "member": "AiContentReviewTaskInput",
-          "name": "AiContentReviewTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "Video content analysis task parameter.",
-          "example": "无",
-          "member": "AiAnalysisTaskInput",
-          "name": "AiAnalysisTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "Type parameter of video content recognition task.",
-          "example": "无",
-          "member": "AiRecognitionTaskInput",
-          "name": "AiRecognitionTask",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.",
-          "example": "无",
-          "member": "int64",
-          "name": "TasksPriority",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.",
-          "example": "无",
-          "member": "string",
-          "name": "TasksNotifyMode",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "example": "无",
-          "member": "string",
-          "name": "SessionContext",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
-          "example": "无",
-          "member": "string",
-          "name": "SessionId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Reserved field for special purposes.",
-          "example": "无",
-          "member": "string",
-          "name": "ExtInfo",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ProcessMediaResponse": {
-      "document": "ProcessMedia response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Task ID",
-          "member": "string",
-          "name": "TaskId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ProhibitedAsrReviewTemplateInfo": {
       "document": "Control parameter of prohibited information detection in speech task",
       "members": [
@@ -27133,11 +27001,11 @@
       "type": "object"
     },
     "Quic": {
-      "document": "",
+      "document": "QUIC configuration item",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Quic function configuration switch, the values are: <li>on:Enable;</li> <li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -28706,11 +28574,11 @@
       "usage": "out"
     },
     "Referer": {
-      "document": "",
+      "document": "Referer blacklist/whitelist configuration. This is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Referer blacklist/whitelist configuration switch:<li>on:Enable;</li> <li>off:Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -28720,7 +28588,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Referer blacklist/whitelist configuration rule",
           "example": "无",
           "member": "RefererRule",
           "name": "RefererRules",
@@ -28782,11 +28650,11 @@
       "usage": "both"
     },
     "RefererRule": {
-      "document": "",
+      "document": "Referer blacklist/whitelist configuration rules, which is effective for specific resources.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule types: <li>all: Apply to all files.</li> <li>file: Apply to files with the specified suffixes.</li> <li>directory: Apply to specified paths.</li> <li>path: Apply to specified absolute paths.</li>",
           "example": "无",
           "member": "string",
           "name": "RuleType",
@@ -28796,7 +28664,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content for each RuleType:<li>For all, enter a wildcard *.</li> <li>For file, enter a suffix, e.g., jpg or txt.</li> <li>For directory, enter a path, e.g., /xxx/test/.</li> <li>For path, enter an absolute path, e.g., /xxx/test.html.</li>",
           "example": "无",
           "member": "string",
           "name": "RulePaths",
@@ -28806,7 +28674,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Referer configuration types:<li>whitelist：Allowlist;</li> <li>blacklist:Blocklist.</li>",
           "example": "无",
           "member": "string",
           "name": "RefererType",
@@ -28816,7 +28684,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Referer content list",
           "example": "无",
           "member": "string",
           "name": "Referers",
@@ -28826,7 +28694,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to allow empty referer：true: Allow empty referer when RefererType = whitelist; false: Reject empty refer when RefererType = blacklist.",
           "example": "无",
           "member": "bool",
           "name": "AllowEmpty",
@@ -29170,11 +29038,11 @@
       "usage": "both"
     },
     "RequestHeader": {
-      "document": "",
+      "document": "Custom request header configuration. This is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom request header configuration switch: <li>on：Enable;</li> <li>off：Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -29184,7 +29052,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom request header configuration rules",
           "example": "无",
           "member": "HttpHeaderPathRule",
           "name": "HeaderRules",
@@ -29338,11 +29206,11 @@
       "usage": "in"
     },
     "ResponseHeader": {
-      "document": "",
+      "document": "Custom response header configuration. This is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom response header switch: <li>on：Enable;</li> <li>off：Disable.</li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -29352,7 +29220,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom response header rules",
           "example": "无",
           "member": "HttpHeaderPathRule",
           "name": "HeaderRules",
@@ -30400,11 +30268,11 @@
       "usage": "both"
     },
     "RuleCache": {
-      "document": "",
+      "document": "ath-based cache rule configuration\nThe cache expiration time for all files is 30 days by default.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule types:<li>all: effective for all files.</li> <li>file: effective for specified file suffixes.</li> <li>directory: effective for specified paths.</li> <li>path: effective for specified absolute paths.</li>",
           "example": "无",
           "member": "string",
           "name": "RuleType",
@@ -30414,7 +30282,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content for each CacheType: <li>For all, enter a wildcard *.</li> <li>For file, enter the suffix, e.g., jpg or txt.</li> <li>For directory, enter the path, e.g., /xxx/test/.</li> <li>For path, enter the absolute path, e.g., /xxx/test.html.</li>",
           "example": "无",
           "member": "string",
           "name": "RulePaths",
@@ -30424,7 +30292,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cache configuration",
           "example": "无",
           "member": "RuleCacheConfig",
           "name": "CacheConfig",
@@ -30436,11 +30304,11 @@
       "usage": "both"
     },
     "RuleCacheConfig": {
-      "document": "",
+      "document": "Path cache configuration, choose one from the following three cache modes.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cache configuration",
           "example": "无",
           "member": "CacheConfigCache",
           "name": "Cache",
@@ -30450,7 +30318,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "No cache configuration",
           "example": "无",
           "member": "CacheConfigNoCache",
           "name": "NoCache",
@@ -30460,7 +30328,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Follows the origin server configuration",
           "example": "无",
           "member": "CacheConfigFollowOrigin",
           "name": "FollowOrigin",
@@ -31861,7 +31729,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Domain name.",
+          "document": "Domain.",
           "example": "无",
           "member": "string",
           "name": "Domain",
@@ -31870,7 +31738,7 @@
         },
         {
           "disabled": false,
-          "document": "Domain name operation, value: <li>start: enable;</li> <li>stop: disable. </li>",
+          "document": "Domain operation, value: <li>start: enable;</li> <li>stop: disable. </li>",
           "example": "无",
           "member": "string",
           "name": "Operation",
@@ -33588,11 +33456,11 @@
       "usage": "both"
     },
     "UserAgentFilter": {
-      "document": "",
+      "document": "UserAgent:blacklist/whitelist configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "UserAgent blacklist and whitelist configuration switches, the values are: <li>on:Enable; </li> <li>off: Disable. </li>",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -33602,7 +33470,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "UA blacklist/whitelist effect rule list",
           "example": "无",
           "member": "UserAgentFilterRule",
           "name": "FilterRules",
@@ -33614,11 +33482,11 @@
       "usage": "both"
     },
     "UserAgentFilterRule": {
-      "document": "",
+      "document": "UserAgent blacklist/whitelist rule configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "UserAgent blacklist/whitelist type: <li>whitelist:whitelist;</li> <li>blacklist:blacklist.</li>",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -33628,7 +33496,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "UserAgent list.",
           "example": "无",
           "member": "string",
           "name": "UserAgents",
@@ -33638,7 +33506,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule type: <li>all: All files take effect;</li> <li>file: The specified file suffix takes effect;</li> <li>directory: The specified path takes effect;</li> <li>path: The specified absolute path takes effect.</li>",
           "example": "无",
           "member": "string",
           "name": "RuleType",
@@ -33648,7 +33516,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Matching content under the corresponding type of RuleType:<li>For `all`, enter an asterisk (*).</li> <li>For `file`, enter the suffix, such as jpg, txt.</li> <li>For `directory`, enter the path, such as /xxx/test/.</li> <li>For `path`, enter the corresponding absolute path, such as /xxx/test.html.</li>",
           "example": "无",
           "member": "string",
           "name": "RulePaths",
