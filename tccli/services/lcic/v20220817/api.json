@@ -162,9 +162,9 @@
       "status": "online"
     },
     "DescribeDeveloper": {
-      "document": "This API is used to get the developer information.",
+      "document": "This API is used to get developer information.",
       "input": "DescribeDeveloperRequest",
-      "name": "Gets the developer information",
+      "name": "Gets developer information",
       "output": "DescribeDeveloperResponse",
       "status": "online"
     },
@@ -287,6 +287,13 @@
       "output": "GetWatermarkResponse",
       "status": "online"
     },
+    "KickUserFromRoom": {
+      "document": "This API is used to remove a user from the room.",
+      "input": "KickUserFromRoomRequest",
+      "name": "Removes a user from the room",
+      "output": "KickUserFromRoomResponse",
+      "status": "online"
+    },
     "LoginOriginId": {
       "document": "This API is used to log in with an origin account, which is the `originId` entered during registration.",
       "input": "LoginOriginIdRequest",
@@ -375,6 +382,7 @@
       "document": "AddGroupMember request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The group ID.",
           "example": "dfgsdgsg",
           "member": "string",
@@ -383,6 +391,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -391,6 +400,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The users. Array length limit: 200.",
           "example": "无",
           "member": "string",
@@ -417,6 +427,7 @@
       "document": "The answer to a quiz question.",
       "members": [
         {
+          "disabled": false,
           "document": "The username.",
           "example": "1",
           "member": "string",
@@ -426,6 +437,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The answer. Bits are used to indicate the options chosen. For example, `0x1` indicates that option A is chosen; `0x11` indicates that A and B are chosen, and so on.",
           "example": "1",
           "member": "uint64",
@@ -435,6 +447,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The time used.",
           "example": "1",
           "member": "uint64",
@@ -444,6 +457,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user ID.",
           "example": "无",
           "member": "string",
@@ -453,6 +467,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the answer is correct. `1`: Correct; `0`: Incorrect.",
           "example": "1",
           "member": "uint64",
@@ -468,6 +483,7 @@
       "document": "The statistics for each type of answer.",
       "members": [
         {
+          "disabled": false,
           "document": "The answer. Bits are used to indicate the options chosen. For example, `0x1` indicates that option A is chosen; `0x11` indicates that A and B are chosen, and so on.",
           "example": "1",
           "member": "int64",
@@ -477,6 +493,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The number of users that submitted the answer.",
           "example": "1",
           "member": "int64",
@@ -493,6 +510,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple scenarios can be set for an application.",
           "example": "abc",
           "member": "string",
@@ -503,6 +521,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Logo URL",
           "example": "abc",
           "member": "string",
@@ -513,6 +532,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Homepage URL, which can be used for redirection",
           "example": "abc",
           "member": "string",
@@ -523,6 +543,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom JS URL",
           "example": "abc",
           "member": "string",
@@ -533,6 +554,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom CSS URL",
           "example": "abc",
           "member": "string",
@@ -548,6 +570,7 @@
       "document": "Background image settings.",
       "members": [
         {
+          "disabled": false,
           "document": "The URL of the background image.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "url",
           "member": "string",
@@ -563,6 +586,7 @@
       "document": "BatchAddGroupMember request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The target group IDs. Array length limit: 100.",
           "example": "dfgsdgsg",
           "member": "string",
@@ -571,6 +595,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -579,6 +604,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The users to add. Array length limit: 200.",
           "example": "无",
           "member": "string",
@@ -605,6 +631,7 @@
       "document": "BatchCreateGroupWithMembers request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "12345678",
           "member": "uint64",
@@ -613,6 +640,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The information of the groups to create. Array length limit: 256.",
           "example": "无",
           "member": "GroupBaseInfo",
@@ -621,6 +649,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The group members. Array length limit: 200.",
           "example": "无",
           "member": "string",
@@ -635,6 +664,7 @@
       "document": "BatchCreateGroupWithMembers response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The IDs of the groups created, which are in the same order as the elements in the request parameter `GroupBaseInfos.N`.",
           "example": "无",
           "member": "string",
@@ -655,6 +685,7 @@
       "document": "BatchCreateRoom request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123467",
           "member": "uint64",
@@ -663,6 +694,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The information of the rooms to create.",
           "example": "无",
           "member": "RoomInfo",
@@ -677,6 +709,7 @@
       "document": "BatchCreateRoom response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The IDs of the rooms created, which are in the same order as they are passed in.",
           "example": "无",
           "member": "uint64",
@@ -697,6 +730,7 @@
       "document": "BatchDeleteGroupMember request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The target group IDs. Array length limit: 100.",
           "example": "dfgsdgsg",
           "member": "string",
@@ -705,6 +739,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -713,6 +748,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The users to remove. Array length limit: 256.",
           "example": "无",
           "member": "string",
@@ -739,6 +775,7 @@
       "document": "BatchDeleteRecord request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room IDs.",
           "example": "无",
           "member": "int64",
@@ -747,6 +784,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "无",
           "member": "uint64",
@@ -761,6 +799,7 @@
       "document": "BatchDeleteRecord response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The IDs of the rooms whose recordings are deleted. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -781,6 +820,7 @@
       "document": "BatchDescribeDocument request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "1234",
           "member": "uint64",
@@ -789,6 +829,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1.",
           "example": "1",
           "member": "int64",
@@ -797,6 +838,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000`.",
           "example": "100",
           "member": "int64",
@@ -805,6 +847,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The courseware access. [0]: The private courseware of the specified user (`Owner`) will be returned; [1]: The public courseware of the specified user will be returned; [0,1]: Both the private and public courseware of the specified user will be returned; [2]: The private courseware of the specified user and the public courseware of all users (including `Owner`) will be returned.",
           "example": "无",
           "member": "uint64",
@@ -813,6 +856,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The user ID of the courseware owner. If you do not specify this, the information of all courseware under the application will be returned.",
           "example": "无",
           "member": "string",
@@ -821,6 +865,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The filename keyword.",
           "example": "无",
           "member": "string",
@@ -829,6 +874,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The courseware IDs. Non-existent IDs will be ignored.",
           "example": "无",
           "member": "string",
@@ -843,6 +889,7 @@
       "document": "BatchDescribeDocument response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of records that meet the conditions.",
           "example": "无",
           "member": "int64",
@@ -851,6 +898,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The information of the courseware.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DocumentInfo",
@@ -871,6 +919,7 @@
       "document": "BatchRegister request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The information of the users to register.",
           "example": "无",
           "member": "BatchUserRequest",
@@ -885,6 +934,7 @@
       "document": "BatchRegister response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The information of the successfully registered users. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BatchUserInfo",
@@ -905,6 +955,7 @@
       "document": "The information of registered users.\nUsed by actions: BatchRegister.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.\n",
           "example": "123",
           "member": "uint64",
@@ -914,6 +965,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -923,6 +975,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -938,6 +991,7 @@
       "document": "The information of the users to register.\nUsed by actions: BatchRegister.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "123",
           "member": "uint64",
@@ -947,6 +1001,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The username.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -956,6 +1011,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The user’s ID in your system, which must be unique across the same application.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -965,6 +1021,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The user’s profile photo.  Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -981,6 +1038,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Room ID",
           "example": "1234657",
           "member": "uint64",
@@ -990,6 +1048,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Document ID",
           "example": "abc",
           "member": "string",
@@ -999,6 +1058,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Binding type. The default value is `0`. The backend passes through this parameter to clients so that the clients can implement business logic based on this parameter.",
           "example": "0",
           "member": "uint64",
@@ -1026,6 +1086,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "LCIC SdkAppId",
           "example": "123467",
           "member": "uint64",
@@ -1035,6 +1096,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Document URL\t",
           "example": "无",
           "member": "string",
@@ -1044,6 +1106,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Document name\t",
           "example": "abc",
           "member": "string",
@@ -1053,6 +1116,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Document owner ID\t",
           "example": "abc",
           "member": "string",
@@ -1062,6 +1126,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transcoding type. Valid values: `0`: No transcoding required (default); `1`: Documents that need to be transcoded: ppt, pptx, pdf, doc, docx; `2`: Videos that need to be transcoded: mp4, 3pg, mpeg, avi, flv, wmv, rm, h264, etc.; `2`: Audio that needs to be transcoded: mp3, wav, wma, aac, flac, opus",
           "example": "1",
           "member": "uint64",
@@ -1071,6 +1136,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission. Valid values: `0`: Private document (default); `1`: Public document",
           "example": "1",
           "member": "uint64",
@@ -1080,6 +1146,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Document extension",
           "example": "doc",
           "member": "string",
@@ -1089,6 +1156,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Document size, in bytes",
           "example": "123",
           "member": "uint64",
@@ -1103,6 +1171,7 @@
       "document": "CreateDocument response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Document ID",
           "example": "abc",
           "member": "string",
@@ -1124,6 +1193,7 @@
       "document": "CreateGroupWithMembers request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The group name.",
           "example": "test",
           "member": "string",
@@ -1132,6 +1202,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -1140,6 +1211,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher.",
           "example": "adfgdsfgdf",
           "member": "string",
@@ -1148,6 +1220,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The group members. Array length limit: 200.",
           "example": "无",
           "member": "string",
@@ -1162,6 +1235,7 @@
       "document": "CreateGroupWithMembers response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The ID of the successfully created group.",
           "example": "abc",
           "member": "string",
@@ -1182,6 +1256,7 @@
       "document": "CreateGroupWithSubGroup request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The group name after merging.",
           "example": "abc",
           "member": "string",
@@ -1190,6 +1265,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "12345678",
           "member": "uint64",
@@ -1198,6 +1274,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The IDs of the groups to merge. Duplicate group IDs are not allowed. Array length limit: 40.",
           "example": "无",
           "member": "string",
@@ -1206,6 +1283,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher.",
           "example": "abc",
           "member": "string",
@@ -1220,6 +1298,7 @@
       "document": "CreateGroupWithSubGroup response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The ID of the merged group.",
           "example": "abc",
           "member": "string",
@@ -1240,6 +1319,7 @@
       "document": "CreateRoom request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Room name",
           "example": "房间名称",
           "member": "string",
@@ -1248,6 +1328,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Reserved room start time, in UNIX timestamp format",
           "example": "1659600138",
           "member": "uint64",
@@ -1256,6 +1337,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Reserved room end time, in UNIX timestamp format",
           "example": "1659600138",
           "member": "uint64",
@@ -1264,6 +1346,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "LCIC SdkAppId",
           "example": "123467",
           "member": "uint64",
@@ -1272,6 +1355,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "\tResolution. Valid values: 1: SD; 2: HD; 3: FHD",
           "example": "1",
           "member": "uint64",
@@ -1280,6 +1364,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]",
           "example": "1",
           "member": "uint64",
@@ -1288,6 +1373,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The room subtype. Valid values: videodoc: Document + Video; video: Video only.",
           "example": "abc",
           "member": "string",
@@ -1296,6 +1382,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher. User IDs are returned by the user registration APIs. The user specified will have teacher permissions in the room created.",
           "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
           "member": "string",
@@ -1304,6 +1391,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -1312,6 +1400,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0` (default): Yes; `1`: No.",
           "example": "1",
           "member": "uint64",
@@ -1320,6 +1409,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -1328,6 +1418,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
@@ -1336,6 +1427,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user IDs of the teaching assistants. User IDs are returned by the user registration APIs. The users specified will have teaching assistant permissions in the room created.",
           "example": "无",
           "member": "string",
@@ -1344,6 +1436,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The number of RTC users.",
           "example": "1",
           "member": "uint64",
@@ -1352,6 +1445,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The audience type.",
           "example": "1",
           "member": "uint64",
@@ -1360,6 +1454,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Recording layout",
           "example": "1",
           "member": "uint64",
@@ -1368,12 +1463,22 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The ID of the group to bind. If you specify this parameter, only members of the group can enter this room.",
           "example": "abc",
           "member": "string",
           "name": "GroupId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the teacher/teaching assistant can control students' cameras/microphones without the students' consent. Valid values: \n`0` (default): No (consent required)\n`1`: Yes (no consent required)",
+          "example": "0",
+          "member": "uint64",
+          "name": "EnableDirectControl",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1382,6 +1487,7 @@
       "document": "CreateRoom response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Room ID",
           "example": "301234567",
           "member": "uint64",
@@ -1402,6 +1508,7 @@
       "document": "CreateSupervisor request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The application ID.",
           "example": "1234657",
           "member": "uint64",
@@ -1410,6 +1517,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user IDs.",
           "example": "无",
           "member": "string",
@@ -1437,6 +1545,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID.",
           "example": "1234657",
           "member": "uint64",
@@ -1446,6 +1555,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The custom elements (for which a scene has been configured) to delete. If this is empty, all custom elements will be deleted.",
           "example": "无",
           "member": "string",
@@ -1473,6 +1583,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The document ID.",
           "example": "xx",
           "member": "string",
@@ -1499,6 +1610,7 @@
       "document": "DeleteGroupMember request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The group ID. You cannot remove members from a merged group.",
           "example": "dfgsdgsg",
           "member": "string",
@@ -1507,6 +1619,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -1515,6 +1628,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The users. Array length limit: 200.",
           "example": "无",
           "member": "string",
@@ -1541,6 +1655,7 @@
       "document": "DeleteGroup request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The IDs of the groups to delete.",
           "example": "无",
           "member": "string",
@@ -1549,6 +1664,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -1575,6 +1691,7 @@
       "document": "DeleteRecord request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "无",
           "member": "int64",
@@ -1583,6 +1700,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "无",
           "member": "int64",
@@ -1610,6 +1728,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Room ID",
           "example": "3123456789",
           "member": "uint64",
@@ -1636,6 +1755,7 @@
       "document": "DeleteSupervisor request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The application ID.",
           "example": "12345",
           "member": "uint64",
@@ -1644,6 +1764,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user IDs.",
           "example": "无",
           "member": "string",
@@ -1670,6 +1791,7 @@
       "document": "DescribeAnswerList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The question ID.",
           "example": "0491cbde-opd4-4d4c-a063-96864eccc73c",
           "member": "string",
@@ -1678,6 +1800,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "1",
           "example": "分页查询当前页数，从1开始递增，默认值为1",
           "member": "int64",
@@ -1686,6 +1809,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "100",
           "example": "每页数据量，最大1000，默认值为100",
           "member": "int64",
@@ -1700,6 +1824,7 @@
       "document": "DescribeAnswerList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of answers.",
           "example": "1",
           "member": "uint64",
@@ -1708,6 +1833,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "A list of the answers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AnswerInfo",
@@ -1728,6 +1854,7 @@
       "document": "DescribeCurrentMemberList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "1234657",
           "member": "uint64",
@@ -1736,6 +1863,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1.",
           "example": "1",
           "member": "uint64",
@@ -1744,6 +1872,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records per page. The value of this parameter cannot exceed 1000.",
           "example": "10",
           "member": "uint64",
@@ -1758,6 +1887,7 @@
       "document": "DescribeCurrentMemberList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of records.",
           "example": "1",
           "member": "uint64",
@@ -1766,6 +1896,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user list.",
           "example": "无",
           "member": "MemberRecord",
@@ -1791,6 +1922,7 @@
       "document": "DescribeDeveloper response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The developer ID.",
           "example": "123",
           "member": "string",
@@ -1812,6 +1944,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The (unique) document ID.",
           "example": "abc",
           "member": "string",
@@ -1826,6 +1959,7 @@
       "document": "DescribeDocument response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The document ID.",
           "example": "abc",
           "member": "string",
@@ -1835,6 +1969,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The document’s original URL.",
           "example": "abc",
           "member": "string",
@@ -1844,6 +1979,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The document title.",
           "example": "abc",
           "member": "string",
@@ -1853,6 +1989,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user ID of the document’s owner.",
           "example": "abc",
           "member": "string",
@@ -1862,6 +1999,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The application ID.",
           "example": "123",
           "member": "uint64",
@@ -1871,6 +2009,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The document access type.",
           "example": "1",
           "member": "uint64",
@@ -1880,6 +2019,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code.",
           "example": "xx",
           "member": "string",
@@ -1889,6 +2029,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The transcoding type.",
           "example": "1",
           "member": "uint64",
@@ -1898,6 +2039,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The transcoding progress. Value range: 0-100.",
           "example": "1",
           "member": "uint64",
@@ -1907,6 +2049,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The transcoding status. 0: The file is not transcoded. 1: The file is being transcoded. 2: Transcoding failed. 3: Transcoding is successful.",
           "example": "1",
           "member": "uint64",
@@ -1916,6 +2059,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The error message for failed transcoding.",
           "example": "abc",
           "member": "string",
@@ -1925,6 +2069,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The document type.",
           "example": "abc",
           "member": "string",
@@ -1934,6 +2079,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The document size (bytes).",
           "example": "1",
           "member": "uint64",
@@ -1943,6 +2089,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The time (Unix timestamp) when the document was last updated.",
           "example": "1",
           "member": "uint64",
@@ -1964,6 +2111,7 @@
       "document": "DescribeDocumentsByRoom request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "312345678",
           "member": "uint64",
@@ -1972,6 +2120,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123467",
           "member": "uint64",
@@ -1980,6 +2129,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
           "example": "1",
           "member": "int64",
@@ -1988,6 +2138,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records to return per page. The maximum value can be 1000. The default value is 100.",
           "example": "100",
           "member": "int64",
@@ -1996,6 +2147,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The document access type. [0]: The private documents of the owner. [1]: The public documents of the owner. [0,1]: The private and public documents of the owner. [2]: The private and public documents of all users (including the owner). Default value: [2].",
           "example": "[2]",
           "member": "uint64",
@@ -2004,6 +2156,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The user ID of the document owner. If you do not specify this, the information of all documents under the application will be returned.",
           "example": "abc",
           "member": "string",
@@ -2018,6 +2171,7 @@
       "document": "DescribeDocumentsByRoom response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DocumentInfo",
@@ -2026,6 +2180,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The total number of records that meet the conditions.",
           "example": "1",
           "member": "uint64",
@@ -2046,6 +2201,7 @@
       "document": "DescribeDocuments request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The school ID.",
           "example": "1234",
           "member": "uint64",
@@ -2054,6 +2210,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1.",
           "example": "1",
           "member": "int64",
@@ -2062,6 +2219,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records per page. The value of this parameter cannot exceed `1000`.",
           "example": "100",
           "member": "int64",
@@ -2070,6 +2228,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The courseware access. [0]: The private courseware of the specified user (`Owner`) will be returned; [1]: The public courseware of the specified user will be returned; [0,1]: Both the private and public courseware of the specified user will be returned; [2]: The private courseware of the specified user and the public courseware of all users (including `Owner`) will be returned.",
           "example": "无",
           "member": "uint64",
@@ -2078,6 +2237,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The user ID of the courseware owner. If you do not specify this parameter, all courseware under the school ID will be returned.",
           "example": "无",
           "member": "string",
@@ -2086,6 +2246,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The filename keyword.",
           "example": "无",
           "member": "string",
@@ -2094,6 +2255,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The courseware IDs. Non-existent IDs will be ignored.",
           "example": "无",
           "member": "string",
@@ -2108,6 +2270,7 @@
       "document": "DescribeDocuments response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of records that meet the conditions.",
           "example": "无",
           "member": "int64",
@@ -2116,6 +2279,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The information of the courseware.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DocumentInfo",
@@ -2136,6 +2300,7 @@
       "document": "DescribeGroupList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "1234657",
           "member": "uint64",
@@ -2144,6 +2309,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1.",
           "example": "1",
           "member": "uint64",
@@ -2152,6 +2318,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records per page. The value of this parameter cannot exceed 1000 and is 20 by default.",
           "example": "10",
           "member": "uint64",
@@ -2160,6 +2327,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher, which is used as the filter. This parameter and MemberId are mutually exclusive. If both are specified, only this parameter will take effect.",
           "example": "abc",
           "member": "string",
@@ -2168,6 +2336,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The user ID of a member, which is used as the filter. This parameter and TeacherId are mutually exclusive.",
           "example": "abc",
           "member": "string",
@@ -2182,6 +2351,7 @@
       "document": "DescribeGroupList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of groups that meet the conditions.",
           "example": "1",
           "member": "uint64",
@@ -2190,6 +2360,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "GroupInfo",
@@ -2210,6 +2381,7 @@
       "document": "DescribeGroupMemberList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The group ID.",
           "example": "dfgsdgsg",
           "member": "string",
@@ -2218,6 +2390,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -2226,6 +2399,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. The default value is 1.",
           "example": "1",
           "member": "uint64",
@@ -2234,6 +2408,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records per page. The value of this parameter cannot exceed 1000 and is 20 by default.",
           "example": "10",
           "member": "uint64",
@@ -2248,6 +2423,7 @@
       "document": "DescribeGroupMemberList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of records that meet the conditions.",
           "example": "10",
           "member": "uint64",
@@ -2256,6 +2432,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2276,6 +2453,7 @@
       "document": "DescribeGroup request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The group ID.",
           "example": "dfgsdgsg",
           "member": "string",
@@ -2284,6 +2462,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -2298,6 +2477,7 @@
       "document": "DescribeGroup response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The group ID.",
           "example": "abc",
           "member": "string",
@@ -2306,6 +2486,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The group name.",
           "example": "test",
           "member": "string",
@@ -2314,6 +2495,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2322,6 +2504,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.",
           "example": "无",
           "member": "uint64",
@@ -2330,6 +2513,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2350,6 +2534,7 @@
       "document": "DescribeQuestionList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "312345678",
           "member": "uint64",
@@ -2358,6 +2543,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
           "example": "1",
           "member": "int64",
@@ -2366,6 +2552,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
           "example": "100",
           "member": "int64",
@@ -2380,6 +2567,7 @@
       "document": "DescribeQuestionList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of quiz questions.",
           "example": "1",
           "member": "uint64",
@@ -2388,6 +2576,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "A list of the questions.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "课堂回答问题列表",
           "member": "QuestionInfo",
@@ -2408,6 +2597,7 @@
       "document": "DescribeRoom request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Room ID\t",
           "example": "301234567",
           "member": "uint64",
@@ -2422,6 +2612,7 @@
       "document": "DescribeRoom response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Room name\t",
           "example": "房间名称",
           "member": "string",
@@ -2430,6 +2621,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Reserved room start time, in UNIX timestamp format\t",
           "example": "1659600138",
           "member": "uint64",
@@ -2438,6 +2630,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Reserved room end time, in UNIX timestamp format\t",
           "example": "1659600138",
           "member": "uint64",
@@ -2446,6 +2639,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Teacher ID\t",
           "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
           "member": "string",
@@ -2454,6 +2648,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "LCIC SdkAppId\t",
           "example": "123467",
           "member": "uint64",
@@ -2462,6 +2657,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Resolution. Valid values: 1: SD; 2: HD; 3: FHD",
           "example": "1",
           "member": "uint64",
@@ -2470,6 +2666,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]",
           "example": "1",
           "member": "uint64",
@@ -2478,6 +2675,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -2486,6 +2684,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -2494,6 +2693,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The room subtype. Valid values: videodoc: Document + Video; video: Video only.",
           "example": "video",
           "member": "string",
@@ -2502,6 +2702,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
@@ -2510,6 +2711,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Assistant ID list Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2518,6 +2720,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Recording URL. This parameter exists only after a room is ended. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -2526,6 +2729,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The class status. 0: The class has not started. 1: The class has started. 2: The class ended. 3: The class expired. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -2534,12 +2738,22 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
           "name": "GroupId",
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the students' consent is required to control their cameras/microphones.",
+          "example": "0",
+          "member": "uint64",
+          "name": "EnableDirectControl",
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2554,6 +2768,7 @@
       "document": "DescribeRoomStatistics request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Room ID",
           "example": "1234657",
           "member": "uint64",
@@ -2562,6 +2777,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Current page in pagination, which starts from 1.",
           "example": "1",
           "member": "uint64",
@@ -2570,6 +2786,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of data entries to return per page. Maximum value: 1000",
           "example": "10",
           "member": "uint64",
@@ -2584,6 +2801,7 @@
       "document": "DescribeRoomStatistics response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Peak number of online members",
           "example": "1",
           "member": "uint64",
@@ -2592,6 +2810,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Accumulated number of online members",
           "example": "1",
           "member": "uint64",
@@ -2600,6 +2819,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of records, including members who entered the room and members who should attend the class but did not",
           "example": "1",
           "member": "uint64",
@@ -2608,6 +2828,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Member record list",
           "example": "无",
           "member": "MemberRecord",
@@ -2616,6 +2837,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The actual start time of the room, in Unix timestamp, accurate to seconds. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1675677337",
           "member": "uint64",
@@ -2624,6 +2846,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The actual end time of the room, in Unix timestamp, accurate to seconds. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1675677337",
           "member": "uint64",
@@ -2632,6 +2855,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The total message count of the room.",
           "example": "1",
           "member": "uint64",
@@ -2640,6 +2864,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The total number of mic-on students in the room.",
           "example": "1",
           "member": "uint64",
@@ -2660,6 +2885,7 @@
       "document": "DescribeSdkAppIdUsers request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -2668,6 +2894,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. The default value is 1.",
           "example": "1",
           "member": "int64",
@@ -2676,6 +2903,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records to return per page. The default value is 20.",
           "example": "1",
           "member": "int64",
@@ -2690,6 +2918,7 @@
       "document": "DescribeSdkAppIdUsers response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of users.",
           "example": "10",
           "member": "uint64",
@@ -2698,6 +2927,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The information of the users. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "UserInfo",
@@ -2718,6 +2948,7 @@
       "document": "DescribeSupervisors request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.\n",
           "example": "1",
           "member": "uint64",
@@ -2726,6 +2957,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records per page. The maximum value allowed is 100, and the default value is 20.",
           "example": "无",
           "member": "uint64",
@@ -2734,6 +2966,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1, which is also the default value of this parameter.",
           "example": "无",
           "member": "uint64",
@@ -2748,6 +2981,7 @@
       "document": "DescribeSupervisors response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of spectators.",
           "example": "无",
           "member": "uint64",
@@ -2756,6 +2990,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The current page number.",
           "example": "无",
           "member": "uint64",
@@ -2764,6 +2999,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The number of records on the current page.",
           "example": "无",
           "member": "uint64",
@@ -2772,6 +3008,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "A list of the spectators.",
           "example": "无",
           "member": "string",
@@ -2793,6 +3030,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "User ID\t",
           "example": "abc",
           "member": "string",
@@ -2807,6 +3045,7 @@
       "document": "DescribeUser response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The application ID.\t",
           "example": "1",
           "member": "uint64",
@@ -2816,6 +3055,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "User ID\t",
           "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
           "member": "string",
@@ -2825,6 +3065,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Username\t",
           "example": "abc",
           "member": "string",
@@ -2834,6 +3075,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "URL of user profile photo.\t",
           "example": "abc",
           "member": "string",
@@ -2855,6 +3097,7 @@
       "document": "Document Information.\nUsed by actions: DescribeDocumentsByRoom.",
       "members": [
         {
+          "disabled": false,
           "document": "The document ID. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -2864,6 +3107,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The document’s original URL. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -2873,6 +3117,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The document title. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -2882,6 +3127,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The user ID of the document’s owner. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -2891,6 +3137,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The application ID. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "123",
           "member": "uint64",
@@ -2900,6 +3147,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The document access type. 0: Private; 1: Public. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2909,6 +3157,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -2918,6 +3167,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The transcoding type. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2927,6 +3177,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The transcoding progress. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2936,6 +3187,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The transcoding status. 0: The file is not transcoded. 1: The file is being transcoded. 2: Transcoding failed. 3: Transcoding is successful. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -2945,6 +3197,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The error message for failed transcoding. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -2954,6 +3207,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The document type. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -2963,6 +3217,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The document size (bytes). Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2972,6 +3227,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The time (Unix timestamp) when the document was last updated. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "uint64",
@@ -2981,6 +3237,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The number of pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2990,6 +3247,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The width. This parameter is valid only if static document transcoding is used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2999,6 +3257,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The height. This parameter is valid only if static document transcoding is used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -3008,6 +3267,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The thumbnail. Only transcoded courseware has thumbnails.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3023,6 +3283,7 @@
       "document": "EndRoom request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "3123456789",
           "member": "uint64",
@@ -3049,6 +3310,7 @@
       "document": "The information of a room event.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "123456",
           "member": "uint64",
@@ -3058,6 +3320,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The ID of the user to whom the event occurred.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -3073,6 +3336,7 @@
       "document": "The event information.",
       "members": [
         {
+          "disabled": false,
           "document": "The Unix timestamp (seconds) when the event occurred.",
           "example": "123456",
           "member": "uint64",
@@ -3082,7 +3346,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "The event type. Valid values:\n`RoomStart`: The class started. `RoomEnd`: The class ended. `MemberJoin`: A user joined. `MemberQuit`: A user left. `RecordFinish`: Recording is finished.",
+          "disabled": false,
+          "document": "The event type. Valid values: \n`RoomStart`: The class started. `RoomEnd`: The class ended. `MemberJoin`: A user joined. `MemberQuit`: A user left. `RecordFinish`: Recording is finished.\n·Camera0n·: The camera is turned on.\n`Camera0ff`: The camera is turned off.\n`MicOn`: The mic is turned on.\n`MicOff`: The mic is turned off.\n`ScreenOn`: Screen sharing is enabled.\n`ScreenOff`: Screen sharing is disabled.\n`VisibleOn`: The page is visible.\n`VisibleOff`: The page is invisible.",
           "example": "RoomStart",
           "member": "string",
           "name": "EventType",
@@ -3091,6 +3356,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The details of the event, including the room ID and the user to whom the event occurred.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{\"RoomId\":1234}",
           "member": "EventDataInfo",
@@ -3106,6 +3372,7 @@
       "document": "GetRoomEvent request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "301234567",
           "member": "uint64",
@@ -3114,6 +3381,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The application ID.",
           "example": "12345",
           "member": "uint64",
@@ -3122,6 +3390,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The starting page. Pagination starts from 1. This parameter is valid only if `keyword` is empty.",
           "example": "1",
           "member": "uint64",
@@ -3130,6 +3399,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of records (up to 200) per page. This parameter is valid only if `keyword` is empty.",
           "example": "10",
           "member": "uint64",
@@ -3138,6 +3408,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The type of events to query. Valid values:\n`RoomStart`: The class started.\n`RoomEnd`: The class ended.\n`MemberJoin`: A user joined.\n`MemberQuit`: A user left.\n`RecordFinish`: Recording is finished.",
           "example": "RoomStart",
           "member": "string",
@@ -3152,6 +3423,7 @@
       "document": "GetRoomEvent response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of events for the room. The value of this parameter is not affected by `keyword`.",
           "example": "100",
           "member": "uint64",
@@ -3160,6 +3432,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The event details, including the type and time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[{\"Timestamp\":1234,\"EventType\":\"RoomStart\",\"EventData\":{\"RoomId\":123456}}]",
           "member": "EventInfo",
@@ -3180,6 +3453,7 @@
       "document": "GetRoomMessage request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "无",
           "member": "int64",
@@ -3188,6 +3462,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "无",
           "member": "uint64",
@@ -3196,6 +3471,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The starting message sequence. Messages before this sequence will be returned (not including the message whose sequence is `seq`).",
           "example": "无",
           "member": "int64",
@@ -3204,6 +3480,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of messages to return. The value of this parameter cannot exceed the maximum message count allowed by your package.",
           "example": "无",
           "member": "uint64",
@@ -3218,6 +3495,7 @@
       "document": "GetRoomMessage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The message list.",
           "example": "无",
           "member": "MessageList",
@@ -3238,6 +3516,7 @@
       "document": "GetRooms request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.\n",
           "example": "无",
           "member": "uint64",
@@ -3246,6 +3525,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The start time. The default start time is 30 minutes before the current time.",
           "example": "无",
           "member": "uint64",
@@ -3254,6 +3534,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The end time. The default end time is 30 minutes after the current time.",
           "example": "无",
           "member": "uint64",
@@ -3262,6 +3543,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page to return records from. Pagination starts from 1.",
           "example": "无",
           "member": "uint64",
@@ -3270,6 +3552,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The number of records per page. The default is 10.",
           "example": "无",
           "member": "uint64",
@@ -3284,6 +3567,7 @@
       "document": "GetRooms response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of rooms.",
           "example": "无",
           "member": "uint64",
@@ -3292,6 +3576,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The room list.",
           "example": "无",
           "member": "RoomItem",
@@ -3312,6 +3597,7 @@
       "document": "GetWatermark request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "无",
           "member": "uint64",
@@ -3326,6 +3612,7 @@
       "document": "GetWatermark response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The watermark settings for the teacher’s video. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "WatermarkConfig",
@@ -3334,6 +3621,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The watermark settings for the whiteboard. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "WatermarkConfig",
@@ -3342,6 +3630,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The background image. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BackgroundPictureConfig",
@@ -3350,6 +3639,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The watermark text. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TextMarkConfig",
@@ -3370,6 +3660,7 @@
       "document": "The information of the groups to create.\nUsed by actions: BatchCreateGroupWithMembers.",
       "members": [
         {
+          "disabled": false,
           "document": "The group names. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -3379,6 +3670,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -3394,6 +3686,7 @@
       "document": "The information of the groups queried.\nUsed by actions: DescribeGroupList.",
       "members": [
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "fdghdhdfh",
           "member": "string",
@@ -3403,6 +3696,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -3412,6 +3706,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -3421,6 +3716,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "群组类型",
           "member": "uint64",
@@ -3430,6 +3726,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3441,11 +3738,75 @@
       ],
       "usage": "out"
     },
+    "KickUserFromRoomRequest": {
+      "document": "KickUserFromRoom request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The room ID.",
+          "example": "301234567",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The SDKAppID assigned by LCIC.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the user to be removed.",
+          "example": "dfgsadffg",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The removal type: \n`1`: Keep the user out temporarily. The `Duration` parameter specifies the ban duration, during which the user is banned from entering the room. \n`2`: Remove the user permanently.",
+          "example": "1",
+          "member": "uint64",
+          "name": "KickType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The ban duration (seconds). This parameter is valid if `KickType` is `1`. The default value is `0`.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Duration",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "KickUserFromRoomResponse": {
+      "document": "KickUserFromRoom response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "LoginOriginIdRequest": {
       "document": "LoginOriginId request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "LCIC SdkAppId",
           "example": "1234657",
           "member": "uint64",
@@ -3455,6 +3816,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User's ID in the customer system, which should be unique under the same application",
           "example": "userid",
           "member": "string",
@@ -3469,6 +3831,7 @@
       "document": "LoginOriginId response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "User ID",
           "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
           "member": "string",
@@ -3478,6 +3841,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Login status token returned after successful login or registration. The token is valid for seven days.",
           "example": "abae3faef12345",
           "member": "string",
@@ -3500,6 +3864,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "User ID obtained during registration",
           "example": "abc",
           "member": "string",
@@ -3514,6 +3879,7 @@
       "document": "LoginUser response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "User ID",
           "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
           "member": "string",
@@ -3523,6 +3889,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Login status token returned after successful login or registration. The token is valid for seven days.",
           "example": "abc",
           "member": "string",
@@ -3544,6 +3911,7 @@
       "document": "Member record information\nUsed by actions: DescribeCurrentMemberList, DescribeRoomStatistics.",
       "members": [
         {
+          "disabled": false,
           "document": "User ID",
           "example": "abc",
           "member": "string",
@@ -3553,6 +3921,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Username",
           "example": "abc",
           "member": "string",
@@ -3562,6 +3931,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Online duration, in seconds",
           "example": "1",
           "member": "uint64",
@@ -3571,6 +3941,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the camera is enabled",
           "example": "1",
           "member": "uint64",
@@ -3580,6 +3951,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the mic is enabled",
           "example": "1",
           "member": "uint64",
@@ -3589,6 +3961,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the user is muted",
           "example": "1",
           "member": "uint64",
@@ -3598,6 +3971,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of questions answered by the user",
           "example": "1",
           "member": "uint64",
@@ -3607,6 +3981,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of hand raising times",
           "example": "1",
           "member": "uint64",
@@ -3616,6 +3991,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "First time that the user entered the room, in UNIX timestamp format",
           "example": "1234657",
           "member": "uint64",
@@ -3625,6 +4001,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Last time that the user left the room, in UNIX timestamp format",
           "example": "1234657",
           "member": "uint64",
@@ -3634,6 +4011,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of rewards received",
           "example": "1",
           "member": "uint64",
@@ -3643,6 +4021,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user’s IP address.",
           "example": "1.1.1.1",
           "member": "string",
@@ -3652,6 +4031,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user’s location.",
           "example": "城市(国家)",
           "member": "string",
@@ -3661,6 +4041,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user’s device type. 0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.",
           "example": "5",
           "member": "int64",
@@ -3670,6 +4051,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The number of times a user turned their mic on.",
           "example": "1",
           "member": "int64",
@@ -3679,6 +4061,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The number of messages sent by a user.",
           "example": "2",
           "member": "int64",
@@ -3688,6 +4071,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user role. `0`: Student; `1`: Teacher; `2`: Teaching Assistant; `3`: Spectator.",
           "example": "1",
           "member": "uint64",
@@ -3697,6 +4081,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The class number.",
           "example": "abc",
           "member": "string",
@@ -3706,6 +4091,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The sub-class number.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3715,6 +4101,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the user is on the stage.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -3730,6 +4117,7 @@
       "document": "The information of a message.",
       "members": [
         {
+          "disabled": false,
           "document": "The message type. `0`: Text; `1`: Image.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3739,6 +4127,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The text. This parameter is valid if `MessageType` is `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "text",
           "member": "string",
@@ -3748,6 +4137,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The image URL. This parameter is valid if `MessageType` is `1`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "url",
           "member": "string",
@@ -3763,6 +4153,7 @@
       "document": "The list of historical messages.",
       "members": [
         {
+          "disabled": false,
           "document": "The message timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1676879993",
           "member": "int64",
@@ -3772,6 +4163,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The sender.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3781,6 +4173,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The message sequence, which is unique across a class. The earlier a message is sent, the lower the sequence.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -3790,6 +4183,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The message content.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MessageItem",
@@ -3805,6 +4199,7 @@
       "document": "ModifyApp request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "LCIC SdkAppId",
           "example": "123467",
           "member": "uint64",
@@ -3813,6 +4208,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Callback URL. Currently, only port 80 and port 443 are supported.",
           "example": "abc",
           "member": "string",
@@ -3821,6 +4217,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The callback key.",
           "example": "无",
           "member": "string",
@@ -3847,6 +4244,7 @@
       "document": "ModifyGroup request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The ID of the group to modify.",
           "example": "test",
           "member": "string",
@@ -3855,6 +4253,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123456",
           "member": "uint64",
@@ -3863,6 +4262,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher.",
           "example": "adfgdsfgdf",
           "member": "string",
@@ -3871,6 +4271,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The new group name.",
           "example": "无",
           "member": "string",
@@ -3897,6 +4298,7 @@
       "document": "ModifyRoom request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "312345678",
           "member": "uint64",
@@ -3905,6 +4307,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "123467",
           "member": "uint64",
@@ -3913,6 +4316,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The room start time (Unix timestamp).",
           "example": "1659600138",
           "member": "uint64",
@@ -3921,6 +4325,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The room end time (Unix timestamp).",
           "example": "1659600138",
           "member": "uint64",
@@ -3929,6 +4334,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher. User IDs are returned by the user registration APIs.",
           "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
           "member": "string",
@@ -3937,6 +4343,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The room name.",
           "example": "房间名称",
           "member": "string",
@@ -3945,6 +4352,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The resolution. Valid values: 1: SD; 2: HD; 3: FHD.",
           "example": "1",
           "member": "uint64",
@@ -3953,6 +4361,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16.",
           "example": "1",
           "member": "uint64",
@@ -3961,6 +4370,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -3969,6 +4379,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -3977,6 +4388,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The room subtype. Valid values: videodoc: Document + Video; video: Video only; coteaching: Dual-teacher.",
           "example": "video",
           "member": "string",
@@ -3985,6 +4397,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
@@ -3993,6 +4406,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.",
           "example": "无",
           "member": "string",
@@ -4001,12 +4415,22 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The ID of the group to bind.",
           "example": "abc",
           "member": "string",
           "name": "GroupId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the students' consent is required to control their cameras/microphones.",
+          "example": "0",
+          "member": "uint64",
+          "name": "EnableDirectControl",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4027,6 +4451,7 @@
       "document": "ModifyUserProfile request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The ID of the user whose profile will be modified.",
           "example": "abc",
           "member": "string",
@@ -4035,6 +4460,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The new username to use.",
           "example": "abc",
           "member": "string",
@@ -4043,6 +4469,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The URL of the new profile photo.",
           "example": "abc",
           "member": "string",
@@ -4069,6 +4496,7 @@
       "document": "A quiz question in a room.",
       "members": [
         {
+          "disabled": false,
           "document": "The question ID.",
           "example": "a304828e-c109-436e-aada-59aec20b7aab",
           "member": "string",
@@ -4078,6 +4506,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The question.",
           "example": "测试题",
           "member": "string",
@@ -4087,6 +4516,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The time limit for the question. If you set this parameter to `0`, there will not be a time limit.",
           "example": "1",
           "member": "uint64",
@@ -4096,6 +4526,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The correct answer. Bits are used to indicate the options that should be chosen. For example, `0x1` indicates option A; `0x11` indicates A and B, and so on.",
           "example": "1",
           "member": "int64",
@@ -4105,6 +4536,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The statistics for each type of answer.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AnswerStat",
@@ -4121,6 +4553,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "LCIC SdkAppId\t",
           "example": "123467",
           "member": "uint64",
@@ -4130,6 +4563,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Username\t",
           "example": "nickname",
           "member": "string",
@@ -4139,6 +4573,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User's ID in the customer system, which should be unique under the same application\t",
           "example": "id12345",
           "member": "string",
@@ -4148,6 +4583,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User's profile photo\t",
           "example": "abc",
           "member": "string",
@@ -4162,6 +4598,7 @@
       "document": "RegisterUser response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "User ID\t",
           "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
           "member": "string",
@@ -4171,6 +4608,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Login status token returned after successful login or registration. The token is valid for seven days.\t",
           "example": "abae3faef12345",
           "member": "string",
@@ -4192,6 +4630,7 @@
       "document": "The information of the room to create.\nUsed by actions: BatchCreateRoom.",
       "members": [
         {
+          "disabled": false,
           "document": "The room name.",
           "example": "房间名称",
           "member": "string",
@@ -4201,6 +4640,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The room start time (Unix timestamp).",
           "example": "1659600138",
           "member": "uint64",
@@ -4210,6 +4650,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The room end time (Unix timestamp).",
           "example": "1659600138",
           "member": "uint64",
@@ -4219,6 +4660,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.",
           "example": "1",
           "member": "uint64",
@@ -4228,6 +4670,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The maximum number of mic-on users (excluding the teacher). Value range: 0-16.",
           "example": "1",
           "member": "uint64",
@@ -4237,6 +4680,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.",
           "example": "videodoc",
           "member": "string",
@@ -4246,6 +4690,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The user ID of the teacher. User IDs are returned by the user registration APIs.",
           "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
           "member": "string",
@@ -4255,6 +4700,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether to automatically turn the mic on when a user enters the room. Valid values: `0` (default): No; `1`: Yes.",
           "example": "1",
           "member": "uint64",
@@ -4264,6 +4710,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0` (default): Yes; `1`: No.",
           "example": "1",
           "member": "uint64",
@@ -4273,6 +4720,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether to enable the high audio quality mode. Valid values: `0` (default): No; `1`: Yes.",
           "example": "1",
           "member": "uint64",
@@ -4282,6 +4730,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether to disable auto recording. Valid values: `0` (default): No; `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.",
           "example": "1",
           "member": "uint64",
@@ -4291,6 +4740,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.",
           "example": "无",
           "member": "string",
@@ -4300,6 +4750,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The number of RTC users.",
           "example": "1",
           "member": "uint64",
@@ -4309,6 +4760,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The audience type.",
           "example": "1",
           "member": "uint64",
@@ -4318,6 +4770,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The recording layout.",
           "example": "1",
           "member": "uint64",
@@ -4327,12 +4780,23 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The ID of the group to bind. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "xfdfgdf",
           "member": "string",
           "name": "GroupId",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the students' consent is required to control their cameras/microphones.",
+          "example": "0",
+          "member": "uint64",
+          "name": "EnableDirectControl",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -4342,6 +4806,7 @@
       "document": "The room list.",
       "members": [
         {
+          "disabled": false,
           "document": "The name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "room",
           "member": "string",
@@ -4351,6 +4816,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The room ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4360,6 +4826,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The room status. `0`: Not started; `1`: Started; `2`: Ended.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4369,6 +4836,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The scheduled start time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4378,6 +4846,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The scheduled end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4387,6 +4856,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The actual start time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4396,6 +4866,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The actual end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4405,6 +4876,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The resolution. `1`: SD.\n`2`: HD\n`3`: FHD\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4414,6 +4886,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The maximum number of mic-on users allowed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -4423,6 +4896,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The URL of the room's recording. This parameter has been deprecated. Please use `RecordUrl` instead.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4432,12 +4906,33 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The recording URL (HTTPS), which is generated only after a room ends.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "RecordUrl",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The maximum number of users allowed (including teachers) in the room. The default value is `0`, which indicates that no limit is set. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MaxMicNumber",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the students' consent is required to control their cameras/microphones.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
+          "member": "uint64",
+          "name": "EnableDirectControl",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -4448,6 +4943,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Custom content",
           "example": "无",
           "member": "AppCustomContent",
@@ -4457,6 +4953,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application ID",
           "example": "1234657",
           "member": "uint64",
@@ -4483,6 +4980,7 @@
       "document": "SetWatermark request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The SDKAppID assigned by LCIC.",
           "example": "12333",
           "member": "uint64",
@@ -4491,6 +4989,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The URL of the watermark for the teacher’s video. If you pass in an empty string, the teacher’s video will not have a watermark.",
           "example": "url",
           "member": "string",
@@ -4499,6 +4998,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The URL of the watermark for the whiteboard. If you pass in an empty string, the whiteboard video will not have a watermark.",
           "example": "无",
           "member": "string",
@@ -4507,6 +5007,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The image displayed when there is no video. If you pass in an empty string, no images will be displayed.",
           "example": "无",
           "member": "string",
@@ -4515,6 +5016,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The width of the whiteboard’s watermark, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
@@ -4523,6 +5025,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The height of the whiteboard’s watermark, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
@@ -4531,6 +5034,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The horizontal offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
           "example": "无",
           "member": "float",
@@ -4539,6 +5043,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The vertical offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
           "example": "无",
           "member": "float",
@@ -4547,6 +5052,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The width of the watermark for the teacher’s video, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
@@ -4555,6 +5061,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The height of the watermark for the teacher’s video, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is 0.",
           "example": "无",
           "member": "float",
@@ -4563,6 +5070,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The horizontal offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100.",
           "example": "无",
           "member": "float",
@@ -4571,6 +5079,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The vertical offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100.",
           "example": "无",
           "member": "float",
@@ -4579,6 +5088,7 @@
           "type": "float"
         },
         {
+          "disabled": false,
           "document": "The watermark text. If you pass in an empty string, there will be no text.",
           "example": "无",
           "member": "string",
@@ -4587,6 +5097,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The watermark text color.",
           "example": "无",
           "member": "string",
@@ -4613,6 +5124,7 @@
       "document": "StartRoom request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The room ID.",
           "example": "3123456789",
           "member": "uint64",
@@ -4639,6 +5151,7 @@
       "document": "The watermark text.\nUsed by actions: GetWatermark.",
       "members": [
         {
+          "disabled": false,
           "document": "The watermark text. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "text",
           "member": "string",
@@ -4648,6 +5161,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The watermark text color. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4664,6 +5178,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Room ID\t",
           "example": "1234657",
           "member": "uint64",
@@ -4673,6 +5188,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Document ID\t",
           "example": "abc",
           "member": "string",
@@ -4699,6 +5215,7 @@
       "document": "The user information.\nUsed by actions: DescribeSdkAppIdUsers.",
       "members": [
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "123456",
           "member": "uint64",
@@ -4708,6 +5225,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
           "member": "string",
@@ -4717,6 +5235,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -4726,6 +5245,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -4741,6 +5261,7 @@
       "document": "Watermark settings.\nUsed by actions: GetWatermark.",
       "members": [
         {
+          "disabled": false,
           "document": "The URL of the watermark image. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "url",
           "member": "string",
@@ -4750,6 +5271,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The watermark width, which is expressed as a percentage of the video width. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -4759,6 +5281,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The watermark height, which is expressed as a percentage of the video height. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -4768,6 +5291,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The horizontal offset of the watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -4777,6 +5301,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The vertical offset of the watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",

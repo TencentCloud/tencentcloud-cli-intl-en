@@ -878,7 +878,6 @@
       "document": "Response for getting SMS template information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Template ID.",
           "example": "1110",
@@ -889,7 +888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it is Global SMS. 0: Mainland China SMS; 1: Global SMS.",
           "example": "0",
@@ -900,9 +898,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Template application status. Valid values: 0: approved; 1: under review; -1: application rejected or failed.",
+          "document": "Template application status. Valid values: 0: approved and effective; 1: under review; 2: approved but to be effective; -1: application rejected or failed.",
           "example": "0",
           "member": "int64",
           "name": "StatusCode",
@@ -911,7 +908,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.",
           "example": "xxx",
@@ -922,7 +918,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template name.",
           "example": "xxx",
@@ -933,7 +928,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application submission time in the format of UNIX timestamp in seconds.",
           "example": "1620640474",
@@ -944,7 +938,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template content.",
           "example": "验证码是{1}",
@@ -1819,9 +1812,8 @@
       "document": "SendSms request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Chinese mainland mobile numbers or all global mobile numbers).\nFor example, +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).",
+          "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Chinese mainland mobile numbers or all global mobile numbers). For example, +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).",
           "example": "+8618511122233",
           "member": "string",
           "name": "PhoneNumberSet",
@@ -1829,9 +1821,8 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 2400006666.",
           "example": "1400006666",
           "member": "string",
           "name": "SmsSdkAppId",
@@ -1839,7 +1830,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.",
           "example": "1234",
@@ -1849,7 +1839,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SMS signature information which is encoded in UTF-8. You must enter an approved signature (such as Tencent Cloud). The signing information can be viewed on the **Signatures** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign).",
           "example": "腾讯云",
@@ -1859,7 +1848,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template parameter. If there is no template parameter, leave this field empty.\n<dx-alert infotype=\"notice\" title=\"Note\">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>",
           "example": "12345",
@@ -1869,7 +1857,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SMS code number extension, which is not activated by default. If you need to activate it, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "1400006666",
@@ -1879,9 +1866,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "User session content, which can carry context information such as user-side ID and will be returned as-is by the server.",
+          "document": "User session content, which can carry context information such as user-side ID and will be returned as-is by the server. Note that the length must be less than 512 bytes.",
           "example": "test",
           "member": "string",
           "name": "SessionContext",
@@ -1889,7 +1875,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: If your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "test",
@@ -1910,7 +1895,6 @@
           "example": "\"SendStatusSet\": [       {         \"SerialNo\": \"5000:10457106691",
           "member": "SendStatus",
           "name": "SendStatusSet",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },

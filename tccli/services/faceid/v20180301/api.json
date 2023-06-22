@@ -8,7 +8,7 @@
       "status": "online"
     },
     "ApplySdkVerificationToken": {
-      "document": "This API is used to apply for a token before calling the SDK-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
+      "document": "This API is used to apply for a token before calling the Identity Verification SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
       "input": "ApplySdkVerificationTokenRequest",
       "name": "Applies for tokens for SDK-based verification",
       "output": "ApplySdkVerificationTokenResponse",
@@ -150,7 +150,25 @@
         },
         {
           "disabled": false,
-          "document": "The identity document type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `IndonesiaIDCard` (Indonesian identity card), `PhilippinesVoteID` (Philippine voters ID card), `PhilippinesDrivingLicense` (Philippine driver's license), `PhilippinesTinID` (Philippine TIN ID card), `PhilippinesSSSID` (Philippine SSS ID card), and `MLIDPassport` (passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions).",
+          "document": "The verification mode. Valid values:\n1: OCR + liveness detection + face comparison\n2: Liveness detection + face comparison\n3: Liveness detection\nDefault value: 1",
+          "example": "1",
+          "member": "int64",
+          "name": "CheckMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The security level of the verification. Valid values:\n1: Video-based liveness detection\n2: Motion-based liveness detection\n3: Reflection-based liveness detection\n4: Motion- and reflection-based liveness detection\nDefault value: 4",
+          "example": "4",
+          "member": "int64",
+          "name": "SecurityLevel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The identity document type. Valid values: \n1. `HK` (default): Identity card of Hong Kong (China)\n2. `ML`: Malaysian identity card\n3. `IndonesiaIDCard`: Indonesian identity card\n4. `PhilippinesVoteID`: Philippine voters ID card\n5. `PhilippinesDrivingLicense`: Philippine driver's license\n6. `PhilippinesTinID`: Philippine TIN ID card\n7. `PhilippinesSSSID`: Philippine SSS ID card\n8. `PhilippinesUMID`: Philippine UMID card\n9. `MLIDPassport`: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions",
           "example": "HK",
           "member": "string",
           "name": "IdCardType",
@@ -159,7 +177,16 @@
         },
         {
           "disabled": false,
-          "document": "Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed).",
+          "document": "The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.",
+          "example": "无",
+          "member": "string",
+          "name": "CompareImage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)",
           "example": "true",
           "member": "bool",
           "name": "DisableChangeOcrResult",
@@ -168,7 +195,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning. If `NeedVerifyIdCard` is set to `true`, this parameter must also be set to `true`.",
+          "document": "Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.\nThis feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.",
           "example": "true",
           "member": "bool",
           "name": "DisableCheckOcrWarnings",
@@ -312,7 +339,7 @@
         },
         {
           "disabled": false,
-          "document": "The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\n(1) Hong Kong (China) identity card\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Name in Chinese.\n- EnName (string): Name in English.\n- TelexCode (string): The code corresponding to the name in Chinese.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): Identity card number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): Month and year of first registration.\n- CurrentIssueDate (string): The date of latest issuance.\n\n(2) Malaysian identity card\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): Identity card number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\n(3) Philippine identity document\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- VIN (string): Voter's identification number (VIN).\n- CivilStatus (string): Civil status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Precinct.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Expiration date.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `PhilippinesTinID`:\n- LicenseNumber (string): Tax identification number (TIN).\n- FullName (string): Full name.\n- Address (string): Address.\n- Birthday (string): Date of birth.\n- IssueDate (string): Issue date.\n\nWhen the value of `IdCardType` is `PhilippinesSSSID`:\n- LicenseNumber (string): Common reference number (CRN).\n- FullName (string): Full name.\n- Birthday (string): Date of birth.\n\n(4) Indonesian identity card\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Single Identity Number.\n- Nama (string): Full name.\n- TempatTglLahir (string): Place and date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Occupation.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date.\n- IssuedDate (string): Issue date.\n\n(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\nWhen the value of `IdCardType` is `MLIDPassport`:\n- FullName (string): Full name.\n- Surname (string): Surname.\n- GivenName (string): Given name.\n- Birthday (string): Date of birth.\n- Sex (string): Gender. Valid values: `F` (female) and `M` (male).\n- DateOfExpiration (string): Expiration date.\n- IssuingCountry (string): Issuing country.\n- NationalityCode (string): Country/region code.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\n(1) Hong Kong (China) identity card\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Name in Chinese.\n- EnName (string): Name in English.\n- TelexCode (string): The code corresponding to the name in Chinese.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): Identity card number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): Month and year of first registration.\n- CurrentIssueDate (string): The date of latest issuance.\n\n(2) Malaysian identity card\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): Identity card number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\n(3) Philippine identity document\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- VIN (string): Voter's identification number (VIN).\n- CivilStatus (string): Civil status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Precinct.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Expiration date.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `PhilippinesTinID`:\n- LicenseNumber (string): Tax identification number (TIN).\n- FullName (string): Full name.\n- Address (string): Address.\n- Birthday (string): Date of birth.\n- IssueDate (string): Issue date.\n\nWhen the value of `IdCardType` is `PhilippinesSSSID`:\n- LicenseNumber (string): Common reference number (CRN).\n- FullName (string): Full name.\n- Birthday (string): Date of birth.\n\nWhen the value of `IdCardType` is `PhilippinesUMID`:\n- Surname (string): Surname.\n- MiddleName (string):Middle name.\n- GivenName (string): Given name.\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- CRN (string): Common reference number (CRN).\n\n(4) Indonesian identity card\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Single Identity Number.\n- Nama (string): Full name.\n- TempatTglLahir (string): Place and date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Occupation.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date.\n- IssuedDate (string): Issue date.\n\n(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\nWhen the value of `IdCardType` is `MLIDPassport`:\n- FullName (string): Full name.\n- Surname (string): Surname.\n- GivenName (string): Given name.\n- Birthday (string): Date of birth.\n- Sex (string): Gender. Valid values: `F` (female) and `M` (male).\n- DateOfExpiration (string): Expiration date.\n- IssuingCountry (string): Issuing country.\n- NationalityCode (string): Country/region code.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
           "name": "CardInfoOcrJson",
@@ -358,7 +385,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The liveness algorithm package generated during this SDK-based liveness detection.",
           "example": "无",
           "member": "FileInfo",
           "name": "LiveData",
@@ -438,7 +465,7 @@
         },
         {
           "disabled": false,
-          "document": "The similarity score of face comparison.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "The similarity score of face comparison.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "52.77",
           "member": "float",
           "name": "Sim",
@@ -448,7 +475,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is disused.",
+          "document": "This parameter is disused.",
           "example": "true",
           "member": "bool",
           "name": "IsNeedCharge",
@@ -458,7 +485,7 @@
         },
         {
           "disabled": false,
-          "document": "The identity document photo info edited by the user in JSON. If the value of `DisableChangeOcrResult` is `true`, the editing feature is disabled and this field does not exist. The URL is valid for 10 minutes.\nWhen the value of `IdCardType` is `HK`:\n- CnName string: Chinese name\n- EnName string: English name\n- TelexCode string: The code corresponding to the Chinese name\n- Sex string: Gender. Valid values: `M` (male) and `F` (female).\n- Birthday string: Date of birth.\n- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum string: ID number.\n- Symbol string: The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate string: The date of first issuance.\n- CurrentIssueDate string: The date of latest issuance.\n\nWhen the value of `IdCardType` is `ML`:\n- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday string\n- ID string\n- Name string\n- Address string\n- Type string: Identity document type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The identity document photo info edited by the user. Currently, this parameter is not applied.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
           "name": "CardInfoInputJson",
@@ -985,21 +1012,19 @@
       "members": [
         {
           "disabled": false,
-          "document": "The result of the entire verification process.",
+          "document": "The result code of the verification result.",
           "example": "无",
           "member": "string",
           "name": "Result",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The result description.",
+          "document": "The verification result description.",
           "example": "无",
           "member": "string",
           "name": "Description",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1009,37 +1034,33 @@
           "example": "4",
           "member": "int64",
           "name": "ChargeCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The results of multiple OCR processes (in order). The result of the final process is taken as the valid result.",
+          "document": "The results of multiple OCR processes (in order). The result of the final process is used as the valid result.",
           "example": "无",
           "member": "CardVerifyResult",
           "name": "CardVerifyResults",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The results of multiple liveness detection processes (in order). The result of the final process is taken as the valid result.",
+          "document": "The results of multiple liveness detection processes (in order). The result of the final process is used as the valid result.",
           "example": "无",
           "member": "CompareResult",
           "name": "CompareResults",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Info passed in the process of getting the token.",
+          "document": "Data passed through in the process of getting the token.",
           "example": "无",
           "member": "string",
           "name": "Extra",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },

@@ -66,7 +66,7 @@
     ],
     "ModifySmsSign": [
       {
-        "document": " ",
+        "document": "This example shows you how to modify SMS signature.",
         "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySmsSign\n<Common request parameters>\n\n{\n    \"Remark\": \"xxxx\",\n    \"SignPurpose\": 1,\n    \"SignType\": 0,\n    \"CommissionImage\": \"xxxx\",\n    \"SignName\": \"Tencent Cloud\",\n    \"DocumentType\": 1,\n    \"International\": 0,\n    \"SignId\": 1110,\n    \"ProofImage\": \"xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"ModifySignStatus\": {\n            \"SignId\": 1110\n        },\n        \"RequestId\": \"f36e4f00-605e-49b1-ad0d-bfaba81c7325\"\n    }\n}",
         "title": "Sample request"
@@ -122,9 +122,9 @@
     ],
     "SendSms": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendSms\n<Common request parameters>\n{\n  \"PhoneNumberSet\": [\n      \"+60198890000\",\n      \"+60198890001\"\n  ],\n  \"SmsSdkAppId\": \"2400006666\",\n  \"SignName\": \"Tencent Cloud\",\n  \"TemplateId\": \"1234\",\n  \"TemplateParamSet\": [\n      \"12345\"\n  ],\n  \"SessionContext\": \"test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"SendStatusSet\": [\n            {\n                \"SerialNo\": \"5000:1045710669157053657849499619\",\n                \"PhoneNumber\": \"+60198890000\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"MY\"\n            },\n            {\n                \"SerialNo\": \"5000:1045710669157053657849499718\",\n                \"PhoneNumber\": \"+60198890001\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"MY\"\n            }\n        ],\n        \"RequestId\": \"a0aabda6-cf91-4f3e-a81f-9198114a2279\"\n    }\n}",
+        "document": "Sample request",
+        "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendSms\n<Common request parameters>\n\n{\n    \"PhoneNumberSet\": [\n        \"+8618511122266\",\n        \"+8618511122233\"\n    ],\n    \"SmsSdkAppId\": \"1400006666\",\n    \"SignName\": \"Tencent Cloud\",\n    \"TemplateId\": \"1234\",\n    \"TemplateParamSet\": [\n        \"12345\"\n    ],\n    \"SessionContext\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SendStatusSet\": [\n            {\n                \"SerialNo\": \"5000:1045710669157053657849499619\",\n                \"PhoneNumber\": \"+8618511122233\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"CN\"\n            },\n            {\n                \"SerialNo\": \"5000:1045710669157053657849499718\",\n                \"PhoneNumber\": \"+8618511122266\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"CN\"\n            }\n        ],\n        \"RequestId\": \"a0aabda6-cf91-4f3e-a81f-9198114a2279\"\n    }\n}",
         "title": "Sample request"
       }
     ],

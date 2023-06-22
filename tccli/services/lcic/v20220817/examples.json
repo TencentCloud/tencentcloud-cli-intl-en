@@ -26,10 +26,10 @@
     ],
     "BatchCreateRoom": [
       {
-        "document": "This example shows you how to create a classroom.",
-        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoom\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"RoomInfos\": [\n        {\n            \"AutoMic\": 1,\n            \"Name\": \"xx\",\n            \"AudioQuality\": 1,\n            \"TurnOffMic\": 1,\n            \"MaxMicNumber\": 1,\n            \"SubType\": \"xx\",\n            \"StartTime\": 1,\n            \"TeacherId\": \"xx\",\n            \"EndTime\": 1,\n            \"Resolution\": 1,\n            \"DisableRecord\": 1,\n            \"Assistants\": []\n        }\n    ]\n}",
+        "document": "This example shows you how to create multiple classrooms at a time.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchCreateRoom\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"RoomInfos\": [\n        {\n            \"Name\": \"abc\",\n            \"StartTime\": 1,\n            \"EndTime\": 1,\n            \"TeacherId\": \"abc\",\n            \"Resolution\": 1,\n            \"MaxMicNumber\": 1,\n            \"AutoMic\": 1,\n            \"TurnOffMic\": 1,\n            \"AudioQuality\": 1,\n            \"SubType\": \"abc\",\n            \"DisableRecord\": 1,\n            \"Assistants\": [\n                \"abc\"\n            ],\n            \"RTCAudienceNumber\": 1,\n            \"AudienceType\": 1,\n            \"RecordLayout\": 1,\n            \"GroupId\": \"abc\",\n            \"EnableDirectControl\": 1\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RoomIds\": [\n            301234567\n        ],\n        \"RequestId\": \"213das\"\n    }\n}",
-        "title": "Creating a classroom"
+        "title": "Creating multiple classrooms at a time"
       }
     ],
     "BatchDeleteGroupMember": [
@@ -66,7 +66,7 @@
     ],
     "BindDocumentToRoom": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindDocumentToRoom\n<Common request parameters>\n\n{\n    \"DocumentId\": \"xx\",\n    \"RoomId\": 123\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Binds a document to a room."
@@ -74,7 +74,7 @@
     ],
     "CreateDocument": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDocument\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"DocumentUrl\": \"xx\",\n    \"DocumentName\": \"xx\",\n    \"Owner\": \"xx\",\n    \"TranscodeType\": 1,\n    \"Permission\": 1,\n    \"DocumentType\": \"xx\",\n    \"DocumentSize\": 100\n}",
         "output": "{\n    \"Response\": {\n        \"DocumentId\": \"xx\",\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Creating a document."
@@ -98,8 +98,8 @@
     ],
     "CreateRoom": [
       {
-        "document": "This example shows you how to create a room.",
-        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoom\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"StartTime\": 1,\n    \"EndTime\": 1,\n    \"TeacherId\": \"abc\",\n    \"SdkAppId\": 1,\n    \"Resolution\": 1,\n    \"MaxMicNumber\": 1,\n    \"AutoMic\": 1,\n    \"TurnOffMic\": 1,\n    \"AudioQuality\": 1,\n    \"SubType\": \"abc\",\n    \"DisableRecord\": 1,\n    \"Assistants\": [\n        \"abc\"\n    ],\n    \"RTCAudienceNumber\": 1,\n    \"AudienceType\": 1,\n    \"RecordLayout\": 1,\n    \"GroupId\": \"abc\"\n}",
+        "document": "This example shows you how to create a classroom.",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoom\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"StartTime\": 1,\n    \"EndTime\": 1,\n    \"TeacherId\": \"abc\",\n    \"SdkAppId\": 1,\n    \"Resolution\": 1,\n    \"MaxMicNumber\": 1,\n    \"AutoMic\": 1,\n    \"TurnOffMic\": 1,\n    \"AudioQuality\": 1,\n    \"SubType\": \"abc\",\n    \"DisableRecord\": 1,\n    \"Assistants\": [\n        \"abc\"\n    ],\n    \"RTCAudienceNumber\": 1,\n    \"AudienceType\": 1,\n    \"RecordLayout\": 1,\n    \"GroupId\": \"abc\",\n    \"EnableDirectControl\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RoomId\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Creating a room"
       }
@@ -114,7 +114,7 @@
     ],
     "DeleteAppCustomContent": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAppCustomContent\n<Common request parameters>\n\n{\n    \"SdkAppId\": 123,\n    \"Scenes\": [\n        \"xx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Deleting custom elements"
@@ -122,7 +122,7 @@
     ],
     "DeleteDocument": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDocument\n<Common request parameters>\n\n{\n    \"DocumentId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Deleting a document"
@@ -154,7 +154,7 @@
     ],
     "DeleteRoom": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRoom\n<Common request parameters>\n\n{\n    \"RoomId\": 123\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Deleting a room."
@@ -194,7 +194,7 @@
     ],
     "DescribeDocument": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDocument\n<Common request parameters>\n\n{\n    \"DocumentId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"UpdateTime\": 1,\n        \"DocumentUrl\": \"xx\",\n        \"TranscodeState\": 1,\n        \"Permission\": 1,\n        \"TranscodeType\": 1,\n        \"DocumentName\": \"xx\",\n        \"TranscodeInfo\": \"xx\",\n        \"DocumentSize\": 1,\n        \"TranscodeResult\": \"xx\",\n        \"SdkAppId\": 1,\n        \"DocumentType\": \"xx\",\n        \"Owner\": \"xx\",\n        \"TranscodeProgress\": 1,\n        \"DocumentId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Getting the information of a document"
@@ -250,9 +250,9 @@
     ],
     "DescribeRoom": [
       {
-        "document": "This example shows you how to get the details of a room.",
+        "document": "This example shows you how to get the details of a classroom.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoom\n<Common request parameters>\n\n{\n    \"RoomId\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"AutoMic\": 1,\n        \"RecordUrl\": \"https://example.com/test.mp4\",\n        \"Name\": \"test\",\n        \"AudioQuality\": 1,\n        \"MaxMicNumber\": 1,\n        \"SubType\": \"videodoc\",\n        \"SdkAppId\": 1,\n        \"RequestId\": \"test\",\n        \"StartTime\": 1,\n        \"TeacherId\": \"test\",\n        \"Assistants\": [\n            \"test\"\n        ],\n        \"EndTime\": 1,\n        \"Resolution\": 1,\n        \"DisableRecord\": 1,\n        \"Status\": 0,\n        \"GroupId\": \"afdg\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoMic\": 1,\n        \"RecordUrl\": \"https://example.com/test.mp4\",\n        \"Name\": \"test\",\n        \"AudioQuality\": 1,\n        \"MaxMicNumber\": 1,\n        \"SubType\": \"videodoc\",\n        \"SdkAppId\": 1,\n        \"RequestId\": \"test\",\n        \"StartTime\": 1,\n        \"TeacherId\": \"test\",\n        \"Assistants\": [\n            \"test\"\n        ],\n        \"EndTime\": 1,\n        \"Resolution\": 1,\n        \"DisableRecord\": 1,\n        \"Status\": 0,\n        \"EnableDirectControl\": 0,\n        \"GroupId\": \"afdg\"\n    }\n}",
         "title": "Getting the details of a room"
       }
     ],
@@ -282,7 +282,7 @@
     ],
     "DescribeUser": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUser\n<Common request parameters>\n\n{\n    \"UserId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Name\": \"xx\",\n        \"UserId\": \"xx\",\n        \"Avatar\": \"xx\",\n        \"SdkAppId\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "This API is used to obtain user profile."
@@ -314,10 +314,10 @@
     ],
     "GetRooms": [
       {
-        "document": "This example shows you how to get the room list.",
+        "document": "This example shows you how to get a list of rooms.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetRooms\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1,\n    \"StartTime\": 1,\n    \"EndTime\": 1,\n    \"Page\": 1,\n    \"Limit\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Rooms\": [\n            {\n                \"Name\": \"abc\",\n                \"RoomId\": 1,\n                \"Status\": 1,\n                \"StartTime\": 1,\n                \"EndTime\": 1,\n                \"RealStartTime\": 1,\n                \"RealEndTime\": 1,\n                \"Resolution\": 1,\n                \"MaxRTCMember\": 1,\n                \"ReplayUrl\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Getting the room list"
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Rooms\": [\n            {\n                \"Name\": \"abc\",\n                \"RoomId\": 1,\n                \"Status\": 1,\n                \"StartTime\": 1,\n                \"EndTime\": 1,\n                \"RealStartTime\": 1,\n                \"RealEndTime\": 1,\n                \"Resolution\": 1,\n                \"MaxRTCMember\": 1,\n                \"ReplayUrl\": \"abc\",\n                \"EnableDirectControl\": 0\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Getting a list of rooms"
       }
     ],
     "GetWatermark": [
@@ -328,9 +328,17 @@
         "title": "Getting watermark settings"
       }
     ],
+    "KickUserFromRoom": [
+      {
+        "document": "示例",
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: KickUserFromRoom\n<common request parameters>\n\n{\n    \"RoomId\": 313337981,\n    \"SdkAppId\": 3520371,\n    \"UserId\": \"2PMcgEVHi9CMWq6tmfNnPGUkEGn\",\n    \"KickType\": 2,\n    \"Duration\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3f156f86-9939-4ea0-aee7-81d32fa46c3f\"\n    }\n}",
+        "title": "永久踢除用户"
+      }
+    ],
     "LoginOriginId": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LoginOriginId\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1234657,\n    \"OriginId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"UserId\": \"2CvDgjRNjylAsBZB4iZc0F6koXe\",\n        \"Token\": \"3o32r0j134m13aa0uva0jvj90qj4j004198\",\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Logging in with an origin account."
@@ -338,7 +346,7 @@
     ],
     "LoginUser": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LoginUser\n<Common request parameters>\n\n{\n    \"UserId\": \"xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Token\": \"xx\",\n        \"UserId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Logging in."
@@ -363,9 +371,9 @@
     "ModifyRoom": [
       {
         "document": "This example shows you how to modify room parameters.",
-        "input": "{\n  \"RoomId\": 1,\n  \"SdkAppId\":1234567,\n  \"StartTime\": 1,\n  \"EndTime\": 1,\n  \"TeacherId\": \"xx\",\n  \"Name\": \"xx\",\n  \"AudienceType\": 1,\n  \"Resolution\": 1,\n  \"MaxMicNumber\": 1,\n  \"AutoMic\": 1,\n  \"TurnOffMic\": 1,\n  \"AudioQuality\": 1,\n  \"SubType\": \"xx\",\n  \"DisableRecord\": 1,\n  \"Assistants\": [\n    \"xx\"\n  ],\n  \"RTCAudienceNumber\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Modifying a room"
+        "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRoom\n<Common request parameters>\n\n{\n    \"RoomId\": 1,\n    \"StartTime\": 1,\n    \"EndTime\": 1,\n    \"TeacherId\": \"abc\",\n    \"Name\": \"abc\",\n    \"Resolution\": 1,\n    \"MaxMicNumber\": 1,\n    \"AutoMic\": 1,\n    \"AudioQuality\": 1,\n    \"SubType\": \"abc\",\n    \"DisableRecord\": 1,\n    \"Assistants\": [\n        \"abc\"\n    ],\n    \"SdkAppId\": 1,\n    \"GroupId\": \"abc\",\n    \"EnableDirectControl\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying room parameters"
       }
     ],
     "ModifyUserProfile": [
@@ -378,7 +386,7 @@
     ],
     "RegisterUser": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RegisterUser\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1234657\n}",
         "output": "{\n    \"Response\": {\n        \"UserId\": \"2CvDgjRNjylAsBZB4iZc0F6koXe\",\n        \"Token\": \"3o32r0j134m13aa0uva0jvj90qj4j004198\",\n        \"RequestId\": \"213das\"\n    }\n}",
         "title": "Registering a user."
@@ -410,7 +418,7 @@
     ],
     "UnbindDocumentFromRoom": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindDocumentFromRoom\n<Common request parameters>\n\n{\n    \"DocumentId\": \"xx\",\n    \"RoomId\": 123\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Unbinding a document from a room."
