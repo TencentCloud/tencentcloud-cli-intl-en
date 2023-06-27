@@ -1,9 +1,9 @@
 {
   "actions": {
     "ActiveHourDCDBInstance": {
-      "document": "This API is used to remove the isolation of a pay-as-you-go TDSQL for MySQL instance.",
+      "document": "This API is used to remove a pay-as-you-go TDSQL instance from isolation.",
       "input": "ActiveHourDCDBInstanceRequest",
-      "name": "Removes the isolation of pay-as-you-go TDSQL for MySQL instance",
+      "name": "Removes a pay-as-you-go TDSQL instance from isolation",
       "output": "ActiveHourDCDBInstanceResponse",
       "status": "online"
     },
@@ -50,16 +50,16 @@
       "status": "online"
     },
     "CreateDCDBInstance": {
-      "document": "This API is used to create a monthly subscribed TencentDB instance by passing in information such as instance specifications, database version number, and purchased duration.",
+      "document": "This API is used to create a monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.",
       "input": "CreateDCDBInstanceRequest",
-      "name": "Creates a TDSQL instance",
+      "name": "Creates a monthly subscribed TDSQL instance",
       "output": "CreateDCDBInstanceResponse",
       "status": "online"
     },
     "CreateHourDCDBInstance": {
-      "document": "This API is used to create pay-as-you-go TDSQL for MySQL instances.",
+      "document": "This API is used to create a pay-as-you-go TDSQL instance.",
       "input": "CreateHourDCDBInstanceRequest",
-      "name": "Creates pay-as-you-go TDSQL for MySQL instances",
+      "name": "Creates a pay-as-you-go TDSQL instance",
       "output": "CreateHourDCDBInstanceResponse",
       "status": "online"
     },
@@ -89,6 +89,13 @@
       "input": "DescribeBackupFilesRequest",
       "name": "Queries the list of backup files",
       "output": "DescribeBackupFilesResponse",
+      "status": "online"
+    },
+    "DescribeDBEncryptAttributes": {
+      "document": "This API is used to query the encryption status of the instance data.",
+      "input": "DescribeDBEncryptAttributesRequest",
+      "name": "Queries the encryption status of the instance data",
+      "output": "DescribeDBEncryptAttributesResponse",
       "status": "online"
     },
     "DescribeDBLogFiles": {
@@ -218,16 +225,16 @@
       "status": "online"
     },
     "DestroyDCDBInstance": {
-      "document": "This API is used to terminate an isolated monthly-subscribed instance.",
+      "document": "This API is used to terminate an isolated monthly subscribed TDSQL instance.",
       "input": "DestroyDCDBInstanceRequest",
-      "name": "Terminates an isolated monthly-subscribed instance",
+      "name": "Terminates an isolated monthly subscribed TDSQL instance",
       "output": "DestroyDCDBInstanceResponse",
       "status": "online"
     },
     "DestroyHourDCDBInstance": {
-      "document": "This API is used to terminate a pay-as-you-go instance.",
+      "document": "This API is used to terminate a pay-as-you-go TDSQL instance.",
       "input": "DestroyHourDCDBInstanceRequest",
-      "name": "Terminates a pay-as-you-go instance",
+      "name": "Terminates a pay-as-you-go TDSQL instance",
       "output": "DestroyHourDCDBInstanceResponse",
       "status": "online"
     },
@@ -252,6 +259,13 @@
       "output": "InitDCDBInstancesResponse",
       "status": "online"
     },
+    "IsolateDCDBInstance": {
+      "document": "This API is used to isolate a monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.",
+      "input": "IsolateDCDBInstanceRequest",
+      "name": "Isolates a monthly subscribed TDSQL instance",
+      "output": "IsolateDCDBInstanceResponse",
+      "status": "online"
+    },
     "IsolateDedicatedDBInstance": {
       "document": "This API is used to isolate a dedicated TencentDB instance.",
       "input": "IsolateDedicatedDBInstanceRequest",
@@ -260,9 +274,9 @@
       "status": "online"
     },
     "IsolateHourDCDBInstance": {
-      "document": "This API is used to isolate pay-as-you-go TDSQL for MySQL instances.",
+      "document": "This API is used to isolate a pay-as-you-go TDSQL instance.",
       "input": "IsolateHourDCDBInstanceRequest",
-      "name": "Isolates pay-as-you-go TDSQL for MySQL instances",
+      "name": "Isolates a pay-as-you-go TDSQL instance",
       "output": "IsolateHourDCDBInstanceResponse",
       "status": "online"
     },
@@ -273,6 +287,13 @@
       "output": "KillSessionResponse",
       "status": "online"
     },
+    "ModifyAccountConfig": {
+      "document": "This API is used to modify the configurations of an account, such as `max_user_connections`.",
+      "input": "ModifyAccountConfigRequest",
+      "name": "Modifies the configurations of an account",
+      "output": "ModifyAccountConfigResponse",
+      "status": "online"
+    },
     "ModifyAccountDescription": {
       "document": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
       "input": "ModifyAccountDescriptionRequest",
@@ -281,7 +302,7 @@
       "status": "online"
     },
     "ModifyAccountPrivileges": {
-      "document": "This API is used to modify the permissions of a TencentDB instance account.\n\n**Notes**\n- Only the SELECT permission (that is, set the permission parameter to `[\"SELECT\"]`) of the system database `mysql` can be granted.\n- An error will be reported if read-write permissions are granted to a read-only account.\n- If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
+      "document": "This API is used to modify the permissions of a TencentDB instance account. \\n\\n**Note**\\n-Only the SELECT permission (that is, set the permission parameter to `[\"SELECT\"]`) of the system database `mysql` can be granted. An error will be reported if read-write permissions are granted to a read-only account. If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.",
       "input": "ModifyAccountPrivilegesRequest",
       "name": "Modifies the permissions of a TencentDB instance account",
       "output": "ModifyAccountPrivilegesResponse",
@@ -372,9 +393,9 @@
       "status": "online"
     },
     "UpgradeHourDCDBInstance": {
-      "document": "This API is used to upgrade a pay-as-you-go TDSQL for MySQL instance.",
+      "document": "This API is used to upgrade a pay-as-you-go TDSQL instance.",
       "input": "UpgradeHourDCDBInstanceRequest",
-      "name": "Upgrades a pay-as-you-go TDSQL for MySQL instance.",
+      "name": "Upgrades a pay-as-you-go TDSQL instance",
       "output": "UpgradeHourDCDBInstanceResponse",
       "status": "online"
     }
@@ -390,6 +411,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Account name",
           "example": "test",
           "member": "string",
@@ -400,6 +422,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Host address",
           "example": "%",
           "member": "string",
@@ -416,6 +439,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of instance IDs in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
           "example": "[]",
           "member": "string",
@@ -430,6 +454,7 @@
       "document": "ActiveHourDCDBInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "IDs of instances removed from isolation",
           "example": "[\"tdsqlshard-cq3ndzu7\"]",
           "member": "string",
@@ -439,6 +464,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "IDs of instances failed to be removed from isolation",
           "example": "[]",
           "member": "string",
@@ -461,6 +487,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The number of shards to be added",
           "example": "1",
           "member": "int64",
@@ -471,6 +498,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard memory capacity in GB",
           "example": "2",
           "member": "int64",
@@ -481,6 +509,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard storage capacity in GB",
           "example": "10",
           "member": "int64",
@@ -497,6 +526,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
           "member": "string",
           "name": "Product",
@@ -505,6 +535,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the security group to be associated in the format of sg-efil73jd.",
           "member": "string",
           "name": "SecurityGroupId",
@@ -513,6 +544,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID(s) of the instance(s) to be associated in the format of tdsqlshard-lesecurk. You can specify multiple instances.",
           "member": "string",
           "name": "InstanceIds",
@@ -539,6 +571,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Node ID",
           "member": "string",
           "name": "NodeId",
@@ -548,6 +581,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node role. Valid values: `master`, `slave`",
           "member": "string",
           "name": "Role",
@@ -557,6 +591,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The ID of the shard where the node resides",
           "member": "string",
           "name": "ShardId",
@@ -572,6 +607,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Disaster recovery instance ID",
           "example": "tdsql-2rn9lmpx",
           "member": "string",
@@ -586,6 +622,7 @@
       "document": "CancelDcnJob response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Task ID",
           "example": "11211",
           "member": "int64",
@@ -608,6 +645,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "dcdbt-ovulpcjf",
           "member": "string",
@@ -617,6 +655,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source user account name",
           "example": "testuser1",
           "member": "string",
@@ -626,6 +665,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source user host",
           "example": "172.17.%",
           "member": "string",
@@ -635,6 +675,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target user account name",
           "example": "testuser1",
           "member": "string",
@@ -644,6 +685,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target user host",
           "example": "172.20.%",
           "member": "string",
@@ -653,6 +695,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target account description",
           "example": "testclone",
           "member": "string",
@@ -667,6 +710,7 @@
       "document": "CloneAccount response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task flow ID",
           "example": "4127",
           "member": "int64",
@@ -689,6 +733,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of an instance for which to disable public network access. The ID is in the format of dcdbt-ow728lmc and can be obtained through the `DescribeDCDBInstances` API.",
           "member": "string",
           "name": "InstanceId",
@@ -697,6 +742,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether IPv6 is used. Default value: 0",
           "member": "int64",
           "name": "Ipv6Flag",
@@ -710,6 +756,7 @@
       "document": "CloseDBExtranetAccess response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID. The task status can be queried through the `DescribeFlow` API.",
           "member": "int64",
           "name": "FlowId",
@@ -730,6 +777,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database name",
           "example": "test",
           "member": "string",
@@ -740,6 +788,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Table name",
           "example": "test",
           "member": "string",
@@ -750,6 +799,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Column name",
           "example": "test",
           "member": "string",
@@ -760,6 +810,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission information",
           "example": "[]",
           "member": "string",
@@ -771,11 +822,38 @@
       ],
       "usage": "in"
     },
+    "ConfigValue": {
+      "document": "Configuration information,  which contains `Config` and `Value`.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Configuration name, which supports `max_user_connections`.",
+          "example": "max_user_connections",
+          "member": "string",
+          "name": "Config",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration value",
+          "example": "1024",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
     "ConstraintRange": {
       "document": "Range of constraint type values",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Minimum value when the constraint type is `section`",
           "member": "string",
           "name": "Min",
@@ -785,6 +863,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum value when the constraint type is `section`",
           "member": "string",
           "name": "Max",
@@ -800,6 +879,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "member": "string",
           "name": "InstanceId",
@@ -808,6 +888,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source username",
           "member": "string",
           "name": "SrcUserName",
@@ -816,6 +897,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Access host allowed for a source user",
           "member": "string",
           "name": "SrcHost",
@@ -824,6 +906,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target username",
           "member": "string",
           "name": "DstUserName",
@@ -832,6 +915,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Access host allowed for a target user",
           "member": "string",
           "name": "DstHost",
@@ -840,6 +924,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`ReadOnly` attribute of a source account",
           "member": "string",
           "name": "SrcReadOnly",
@@ -848,6 +933,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`ReadOnly` attribute of a target account",
           "member": "string",
           "name": "DstReadOnly",
@@ -874,6 +960,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
           "example": "dcdbt-fdpjf5zh",
           "member": "string",
@@ -883,6 +970,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AccountName",
           "example": "testuser1",
           "member": "string",
@@ -892,6 +980,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.",
           "example": "172.17.%",
           "member": "string",
@@ -901,6 +990,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account password. It must contain 8-32 characters in all of the following four types: lowercase letters, uppercase letters, digits, and symbols (()~!@#$%^&*-+=_|{}[]:<>,.?/), and cannot start with a slash (/).",
           "example": "1234qweri#",
           "member": "string",
@@ -910,6 +1000,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail; 3: only the secondary will be read from.",
           "example": "0",
           "member": "int64",
@@ -919,6 +1010,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account remarks, which can contain 0-256 letters, digits, and common symbols.",
           "example": "测试帐号",
           "member": "string",
@@ -928,6 +1020,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "If the secondary delay exceeds the set value of this parameter, the secondary will be deemed to have failed.\nIt is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2.",
           "example": "15",
           "member": "int64",
@@ -937,6 +1030,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)",
           "example": "0",
           "member": "int64",
@@ -946,6 +1040,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of connections. If left empty or `0` is passed in, the connections will be unlimited. This parameter configuration is not supported for kernel version 10.1.",
           "example": "0",
           "member": "uint64",
@@ -960,6 +1055,7 @@
       "document": "CreateAccount response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID, which is passed through from the input parameters.",
           "member": "string",
           "name": "InstanceId",
@@ -967,6 +1063,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Username, which is passed through from the input parameters.",
           "member": "string",
           "name": "UserName",
@@ -974,6 +1071,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Host allowed for access, which is passed through from the input parameters.",
           "member": "string",
           "name": "Host",
@@ -981,6 +1079,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Passed through from the input parameters.",
           "member": "int64",
           "name": "ReadOnly",
@@ -1000,6 +1099,7 @@
       "document": "CreateDCDBInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "AZs to deploy shard nodes. You can specify up to two AZs. When the shard specification is 1-source-2-replica, two of the nodes are deployed in the first AZ.\nThe current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.",
           "example": "[\"ap-guangzhou-2\",\"ap-guangzhou-2\"]",
           "member": "string",
@@ -1008,6 +1108,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Validity period in months",
           "example": "1",
           "member": "int64",
@@ -1016,6 +1117,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Shard memory size in GB, which can be obtained \n by querying the instance specification through `DescribeShardSpec` API.",
           "example": "2",
           "member": "int64",
@@ -1024,6 +1126,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Shard storage size in GB, which can be obtained\n by querying the instance specification through `DescribeShardSpec` API.",
           "example": "10",
           "member": "int64",
@@ -1032,6 +1135,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of nodes in a single shard, which can be obtained\n by querying the instance specification through `DescribeShardSpec` API.",
           "example": "3",
           "member": "int64",
@@ -1040,6 +1144,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The number of shards in the instance. Value range: 2-8. You can increase up to 64 shards by upgrading your instance.",
           "example": "2",
           "member": "int64",
@@ -1048,6 +1153,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The number of instances to be purchased",
           "example": "1",
           "member": "int64",
@@ -1056,6 +1162,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
           "example": "无",
           "member": "int64",
@@ -1064,6 +1171,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.",
           "example": "无",
           "member": "string",
@@ -1072,6 +1180,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "VPC subnet ID, which is required when `VpcId` is specified.",
           "example": "无",
           "member": "string",
@@ -1080,6 +1189,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.",
           "example": "5.7",
           "member": "string",
@@ -1088,6 +1198,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to automatically use vouchers. This option is disabled by default.",
           "example": "true",
           "member": "bool",
@@ -1096,6 +1207,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Voucher ID list. Currently, you can specify only one voucher.",
           "example": "无",
           "member": "string",
@@ -1104,6 +1216,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Security group ID",
           "example": "无",
           "member": "string",
@@ -1112,6 +1225,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Custom name of the instance",
           "example": "无",
           "member": "string",
@@ -1120,7 +1234,8 @@
           "type": "string"
         },
         {
-          "document": "Whether IPv6 is supported",
+          "disabled": false,
+          "document": "Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).",
           "example": "无",
           "member": "int64",
           "name": "Ipv6Flag",
@@ -1128,6 +1243,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Array of tag key-value pairs",
           "example": "无",
           "member": "ResourceTag",
@@ -1136,6 +1252,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync; default value: `2`).",
           "example": "无",
           "member": "DBParamValue",
@@ -1144,6 +1261,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "DCN source region",
           "example": "无",
           "member": "string",
@@ -1152,6 +1270,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "DCN source instance ID",
           "example": "无",
           "member": "string",
@@ -1160,7 +1279,8 @@
           "type": "string"
         },
         {
-          "document": "Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users). If no renewal is required, set it to `0`.",
+          "disabled": false,
+          "document": "Renewal mode. Valid values: `0` (manual renewal, which is the default mode), `1` (auto-renewal), `2` (manual renewal, which is specified by users).  If no renewal is required, set it to `0`.",
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -1168,6 +1288,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Security group IDs in array. This parameter is compatible with the old parameter `SecurityGroupId`.",
           "example": "无",
           "member": "string",
@@ -1182,6 +1303,7 @@
       "document": "CreateDCDBInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Long order ID, which is used to call the `DescribeOrders` API.\n The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.",
           "example": "20181103110163",
           "member": "string",
@@ -1191,6 +1313,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"dcdbt-avw0207d\"]",
           "member": "string",
@@ -1212,6 +1335,7 @@
       "document": "CreateHourDCDBInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Shard memory in GB, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "2",
           "member": "int64",
@@ -1220,6 +1344,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Shard capacity in GB, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "10",
           "member": "int64",
@@ -1228,6 +1353,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The number of nodes per shard, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "2",
           "member": "int64",
@@ -1236,6 +1362,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.",
           "example": "2",
           "member": "int64",
@@ -1244,6 +1371,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The number of instances to be purchased",
           "example": "1",
           "member": "int64",
@@ -1252,6 +1380,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
           "example": "0",
           "member": "int64",
@@ -1260,6 +1389,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.",
           "example": "0",
           "member": "string",
@@ -1268,6 +1398,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "VPC subnet ID, which is required when `VpcId` is specified",
           "example": "0",
           "member": "string",
@@ -1276,6 +1407,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The number of CPU cores per shard, which can be obtained through the `DescribeShardSpec` API.\n  ",
           "example": "0",
           "member": "int64",
@@ -1284,6 +1416,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.",
           "example": "5.7",
           "member": "string",
@@ -1292,6 +1425,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "AZs to deploy shard nodes. You can specify up to two AZs.",
           "example": "[\"ap-guangzhou-1\"]",
           "member": "string",
@@ -1300,6 +1434,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Security group ID",
           "example": "sg-12345",
           "member": "string",
@@ -1308,6 +1443,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Custom name of the instance",
           "example": "实例名称",
           "member": "string",
@@ -1316,7 +1452,8 @@
           "type": "string"
         },
         {
-          "document": "Whether IPv6 is supported",
+          "disabled": false,
+          "document": "Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).",
           "example": "0",
           "member": "int64",
           "name": "Ipv6Flag",
@@ -1324,6 +1461,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Array of tag key-value pairs",
           "example": "无",
           "member": "ResourceTag",
@@ -1332,6 +1470,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "If you create a disaster recovery instance, you need to use this parameter to specify the region of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1340,6 +1479,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "If you create a disaster recovery instance, you need to use this parameter to specify the ID of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).",
           "example": "tdsqlshard-123",
           "member": "string",
@@ -1348,6 +1488,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).",
           "example": "无",
           "member": "DBParamValue",
@@ -1356,6 +1497,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "ID of the instance to be rolled back",
           "example": "无",
           "member": "string",
@@ -1364,7 +1506,8 @@
           "type": "string"
         },
         {
-          "document": "Rollback time",
+          "disabled": false,
+          "document": "Rollback time, such as \"2021-11-22 00:00:00\".",
           "example": "无",
           "member": "string",
           "name": "RollbackTime",
@@ -1372,6 +1515,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Array of security group IDs (this parameter is compatible with the old parameter `SecurityGroupId`)",
           "example": "无",
           "member": "string",
@@ -1386,6 +1530,7 @@
       "document": "CreateHourDCDBInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.",
           "example": "[\"tdsql-xxxxxx\"]",
           "member": "string",
@@ -1395,6 +1540,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task ID, which can be used to query the creation progress",
           "example": "1122",
           "member": "int64",
@@ -1404,6 +1550,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Order ID, which is used for calling the `DescribeOrders` API.\n The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.",
           "example": "20200409111543",
           "member": "string",
@@ -1425,7 +1572,7 @@
       "document": "TencentDB account information",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Username",
           "example": "无",
           "member": "string",
@@ -1435,7 +1582,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Host from which a user can log in (corresponding to the `host` field for a MySQL user; a user is uniquely identified by username and host; this parameter is in IP format and ends with % for IP range; % can be entered; if this parameter is left empty, % will be used by default).",
           "example": "无",
           "member": "string",
@@ -1445,7 +1592,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "User remarks",
           "example": "无",
           "member": "string",
@@ -1455,7 +1602,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "无",
           "member": "datetime",
@@ -1465,7 +1612,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Last updated time",
           "example": "无",
           "member": "datetime",
@@ -1475,7 +1622,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Read-only flag. 0: no; 1: for the account's SQL requests, the replica will be used first, and if it is unavailable, the source will be used; 2: the replica will be used first, and if it is unavailable, the operation will fail.",
           "example": "无",
           "member": "int64",
@@ -1485,7 +1632,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "If the replica delay exceeds the set value of this parameter, the replica will be considered to have failed.\nSet this parameter to a value above 10. This parameter takes effect when `ReadOnly` is 1 or 2.",
           "example": "无",
           "member": "int64",
@@ -1495,12 +1642,22 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)",
           "example": "无",
           "member": "int64",
           "name": "SlaveConst",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of connections. `0` indicates no limit.\t",
+          "example": "无",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1512,6 +1669,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter name",
           "member": "string",
           "name": "Param",
@@ -1521,6 +1679,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter value",
           "member": "string",
           "name": "Value",
@@ -1536,6 +1695,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "暂无",
           "member": "string",
@@ -1546,6 +1706,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance name",
           "example": "暂无",
           "member": "string",
@@ -1556,6 +1717,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application ID",
           "example": "暂无",
           "member": "int64",
@@ -1566,6 +1728,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "暂无",
           "member": "int64",
@@ -1576,6 +1739,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "暂无",
           "member": "string",
@@ -1586,6 +1750,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ",
           "example": "暂无",
           "member": "string",
@@ -1596,6 +1761,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Numeric ID of a VPC",
           "example": "暂无",
           "member": "int64",
@@ -1606,6 +1772,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet Digital ID",
           "example": "暂无",
           "member": "int64",
@@ -1616,6 +1783,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Status description",
           "example": "暂无",
           "member": "string",
@@ -1626,6 +1794,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)",
           "example": "暂无",
           "member": "int64",
@@ -1636,6 +1805,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Private IP",
           "example": "暂无",
           "member": "string",
@@ -1646,6 +1816,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Private network port",
           "example": "暂无",
           "member": "int64",
@@ -1656,6 +1827,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "暂无",
           "member": "datetime",
@@ -1666,6 +1838,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Auto-renewal flag",
           "example": "暂无",
           "member": "int64",
@@ -1676,6 +1849,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory size in GB",
           "example": "暂无",
           "member": "int64",
@@ -1686,6 +1860,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Storage capacity in GB",
           "example": "暂无",
           "member": "int64",
@@ -1696,6 +1871,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of shards",
           "example": "暂无",
           "member": "int64",
@@ -1706,6 +1882,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time",
           "example": "暂无",
           "member": "datetime",
@@ -1716,6 +1893,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Isolation time",
           "example": "暂无",
           "member": "datetime",
@@ -1726,6 +1904,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account ID",
           "example": "暂无",
           "member": "string",
@@ -1736,6 +1915,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard details",
           "example": "暂无",
           "member": "ShardInfo",
@@ -1746,6 +1926,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of nodes. 2: one master and one slave; 3: one master and two slaves",
           "example": "暂无",
           "member": "int64",
@@ -1756,6 +1937,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Temporary instance flag. 0: non-temporary instance",
           "example": "暂无",
           "member": "int64",
@@ -1766,6 +1948,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Dedicated cluster ID. If this parameter is empty, the instance is a non-dedicated cluster instance",
           "example": "暂无",
           "member": "string",
@@ -1776,6 +1959,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC ID in string type",
           "example": "暂无",
           "member": "string",
@@ -1786,6 +1970,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC subnet ID in string type",
           "example": "暂无",
           "member": "string",
@@ -1796,6 +1981,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Numeric ID of instance (this field is obsolete and should not be depended on)",
           "example": "暂无",
           "member": "uint64",
@@ -1806,6 +1992,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Domain name for public network access, which can be resolved by the public network",
           "example": "暂无",
           "member": "string",
@@ -1816,6 +2003,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public IP address, which can be accessed over the public network",
           "example": "暂无",
           "member": "string",
@@ -1826,6 +2014,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public network port",
           "example": "暂无",
           "member": "int64",
@@ -1836,6 +2025,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Product type ID (this field is obsolete and should not be depended on)",
           "example": "暂无",
           "member": "int64",
@@ -1846,6 +2036,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Last updated time of an instance in the format of 2006-01-02 15:04:05",
           "example": "暂无",
           "member": "datetime",
@@ -1856,6 +2047,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine",
           "example": "暂无",
           "member": "string",
@@ -1866,6 +2058,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine version",
           "example": "暂无",
           "member": "string",
@@ -1876,6 +2069,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing mode",
           "example": "暂无",
           "member": "string",
@@ -1886,6 +2080,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Async task flow ID when an async task is in progress on an instance\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "int64",
@@ -1896,6 +2091,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public network access status. 0: not enabled; 1: enabled; 2: disabled; 3: enabling",
           "example": "暂无",
           "member": "int64",
@@ -1906,6 +2102,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the instance supports audit. 1: yes; 0: no",
           "example": "暂无",
           "member": "uint64",
@@ -1916,6 +2113,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPU cores",
           "example": "暂无",
           "member": "uint64",
@@ -1926,6 +2124,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Indicates whether the instance uses IPv6\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "uint64",
@@ -1936,6 +2135,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Private network IPv6 address\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "string",
@@ -1946,6 +2146,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public network IPv6 address\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "string",
@@ -1956,6 +2157,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public network IPv6 port\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "uint64",
@@ -1966,6 +2168,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public network IPv6 status\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "uint64",
@@ -1976,6 +2179,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "int64",
@@ -1986,6 +2190,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "int64",
@@ -1996,6 +2201,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of DCN disaster recovery instances\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "int64",
@@ -2006,6 +2212,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance type. Valid values: `1` (dedicated primary instance), `2` (standard primary instance), `3` (standard disaster recovery instance), `4` (dedicated disaster recovery instance)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "int64",
@@ -2016,6 +2223,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance tag information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "ResourceTag",
@@ -2026,6 +2234,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine version\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "暂无",
           "member": "string",
@@ -2042,6 +2251,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -2051,6 +2261,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard SQL passthrough ID, which is used to pass through SQL statements to the specified shard for execution.",
           "member": "string",
           "name": "ShardSerialId",
@@ -2060,6 +2271,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Globally unique shard ID",
           "member": "string",
           "name": "ShardInstanceId",
@@ -2069,6 +2281,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Status. 0: creating; 1: processing; 2: running; 3: shard not initialized.",
           "member": "int64",
           "name": "Status",
@@ -2078,6 +2291,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Status description",
           "member": "string",
           "name": "StatusDesc",
@@ -2087,6 +2301,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "member": "datetime",
           "name": "CreateTime",
@@ -2096,6 +2311,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC ID in string format",
           "member": "string",
           "name": "VpcId",
@@ -2105,6 +2321,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC subnet ID in string format",
           "member": "string",
           "name": "SubnetId",
@@ -2114,6 +2331,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "member": "int64",
           "name": "ProjectId",
@@ -2123,6 +2341,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "member": "string",
           "name": "Region",
@@ -2132,6 +2351,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ",
           "member": "string",
           "name": "Zone",
@@ -2141,6 +2361,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory size in GB",
           "member": "int64",
           "name": "Memory",
@@ -2150,6 +2371,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Storage capacity in GB",
           "member": "int64",
           "name": "Storage",
@@ -2159,6 +2381,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time",
           "member": "datetime",
           "name": "PeriodEndTime",
@@ -2168,6 +2391,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of nodes. 2: one source and one replica; 3: one source and two replicas",
           "member": "int64",
           "name": "NodeCount",
@@ -2177,6 +2401,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Storage utilization in %",
           "member": "float",
           "name": "StorageUsage",
@@ -2186,6 +2411,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory utilization in %",
           "member": "float",
           "name": "MemoryUsage",
@@ -2195,6 +2421,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Numeric shard ID (this field is obsolete and should not be depended on)",
           "member": "int64",
           "name": "ShardId",
@@ -2204,6 +2431,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Product ID",
           "member": "int64",
           "name": "Pid",
@@ -2213,6 +2441,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Proxy version",
           "member": "string",
           "name": "ProxyVersion",
@@ -2222,6 +2451,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing mode\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Paymode",
@@ -2231,6 +2461,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source AZ of the shard\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ShardMasterZone",
@@ -2240,6 +2471,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of replica AZs of the shard\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ShardSlaveZones",
@@ -2249,6 +2481,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPU cores",
           "member": "int64",
           "name": "Cpu",
@@ -2258,6 +2491,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The value range of shardkey, which includes 64 hash values, such as 0-31 or 32-63.",
           "member": "string",
           "name": "Range",
@@ -2273,6 +2507,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database name",
           "member": "string",
           "name": "DbName",
@@ -2288,6 +2523,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Function name",
           "member": "string",
           "name": "Func",
@@ -2303,6 +2539,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission information",
           "example": "[]",
           "member": "string",
@@ -2313,6 +2550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database name",
           "example": "test",
           "member": "string",
@@ -2329,6 +2567,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Stored procedure name",
           "member": "string",
           "name": "Proc",
@@ -2344,6 +2583,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Table name",
           "member": "string",
           "name": "Table",
@@ -2359,6 +2599,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "View name",
           "member": "string",
           "name": "View",
@@ -2374,6 +2615,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "暂无",
           "member": "string",
@@ -2384,6 +2626,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance name",
           "example": "暂无",
           "member": "string",
@@ -2394,6 +2637,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region where the instance resides",
           "example": "暂无",
           "member": "string",
@@ -2404,6 +2648,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Availability zone where the instance resides",
           "example": "暂无",
           "member": "string",
@@ -2414,6 +2659,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance IP address",
           "example": "暂无",
           "member": "string",
@@ -2424,6 +2670,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance IPv6 address",
           "example": "暂无",
           "member": "string",
@@ -2434,6 +2681,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance port",
           "example": "暂无",
           "member": "int64",
@@ -2444,6 +2692,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance status",
           "example": "暂无",
           "member": "int64",
@@ -2454,6 +2703,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance status description",
           "example": "暂无",
           "member": "string",
@@ -2464,6 +2714,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "DCN flag. Valid values: `1` (primary), `2` (disaster recovery)",
           "example": "暂无",
           "member": "int64",
@@ -2474,6 +2725,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)",
           "example": "暂无",
           "member": "int64",
@@ -2484,6 +2736,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPU cores of the instance",
           "example": "暂无",
           "member": "int64",
@@ -2494,6 +2747,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance memory capacity in GB",
           "example": "暂无",
           "member": "int64",
@@ -2504,6 +2758,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance storage capacity in GB",
           "example": "暂无",
           "member": "int64",
@@ -2514,6 +2769,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing mode",
           "example": "暂无",
           "member": "int64",
@@ -2524,6 +2780,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time of the instance in the format of 2006-01-02 15:04:05",
           "example": "暂无",
           "member": "string",
@@ -2534,6 +2791,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time of the instance in the format of 2006-01-02 15:04:05",
           "example": "暂无",
           "member": "string",
@@ -2544,6 +2802,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), and `4` (dedicated disaster recovery instance).",
           "example": "暂无",
           "member": "int64",
@@ -2554,6 +2813,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether KMS is enabled.",
           "example": "暂无",
           "member": "int64",
@@ -2570,6 +2830,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Order ID.",
           "example": "20221108006001219915661",
           "member": "string",
@@ -2580,6 +2841,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account",
           "example": "3078115006",
           "member": "string",
@@ -2590,6 +2852,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of items",
           "example": "1",
           "member": "int64",
@@ -2600,6 +2863,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The associated process ID, which can be used to query the process execution status.",
           "example": "68000008",
           "member": "int64",
@@ -2610,6 +2874,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The ID of the created instance, which is required only for the order that creates an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"tdsqlshard-c06stiq3\"]",
           "member": "string",
@@ -2620,6 +2885,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing mode. Valid values: `0` (postpaid), `1` (prepaid).",
           "example": "0",
           "member": "int64",
@@ -2636,6 +2902,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
           "member": "string",
           "name": "InstanceId",
@@ -2644,6 +2911,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Username",
           "member": "string",
           "name": "UserName",
@@ -2652,6 +2920,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Access host allowed for a user",
           "member": "string",
           "name": "Host",
@@ -2678,6 +2947,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
           "example": "dcdbt-fdpjf5zh",
           "member": "string",
@@ -2687,6 +2957,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Login username.",
           "example": "testuser1",
           "member": "string",
@@ -2696,6 +2967,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Access host allowed for a user. An account is uniquely identified by username and host.",
           "example": "172.17.%",
           "member": "string",
@@ -2705,6 +2977,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database name. `\\*` indicates that global permissions will be queried (i.e., `\\*.\\*`), in which case the `Type` and `Object ` parameters will be ignored.",
           "example": "*",
           "member": "string",
@@ -2714,6 +2987,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type. Valid values: table, view, proc, func, \\*. If `DbName` is a specific database name and `Type` is `\\*`, the permissions of the database will be queried (i.e., `db.\\*`), in which case the `Object` parameter will be ignored.",
           "example": "*",
           "member": "string",
@@ -2723,6 +2997,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\\*` or empty.",
           "example": "*",
           "member": "string",
@@ -2732,6 +3007,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "If `Type` is `table` and `ColName` is `\\*`, the permissions of the table will be queried; if `ColName` is a specific field name, the permissions of the corresponding field will be queried.",
           "example": "*",
           "member": "string",
@@ -2746,6 +3022,7 @@
       "document": "DescribeAccountPrivileges response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "dcdbt-fdpjf5zh",
           "member": "string",
@@ -2755,6 +3032,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Permission list",
           "example": "[\"SELECT\",\"UPDATE\"]",
           "member": "string",
@@ -2764,6 +3042,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Database account username",
           "example": "testuser1",
           "member": "string",
@@ -2773,6 +3052,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Database account host",
           "example": "172.17.%",
           "member": "string",
@@ -2795,6 +3075,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "example": "dcdbt-fdpjf5zh",
           "member": "string",
@@ -2809,6 +3090,7 @@
       "document": "DescribeAccounts response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID, which is passed through from the input parameters.",
           "example": "dcdbt-fdpjf5zh",
           "member": "string",
@@ -2818,6 +3100,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance user list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DBAccount",
@@ -2840,6 +3123,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Query by instance ID",
           "example": "tdsqlshard-xxx",
           "member": "string",
@@ -2849,6 +3133,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query by shard ID",
           "example": "shard-xxxx",
           "member": "string",
@@ -2858,6 +3143,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).",
           "example": "Binlog",
           "member": "string",
@@ -2867,6 +3153,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query by start time",
           "example": "2022-05-10 12:00:00",
           "member": "string",
@@ -2876,6 +3163,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query by end time",
           "example": "2022-05-10 12:00:00",
           "member": "string",
@@ -2885,6 +3173,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pagination parameter",
           "example": "10",
           "member": "int64",
@@ -2894,6 +3183,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pagination parameter",
           "example": "0",
           "member": "int64",
@@ -2903,6 +3193,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting dimension. Valid values: `Time`, `Size`.",
           "example": "Time",
           "member": "string",
@@ -2912,6 +3203,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting order. Valid values: `DESC`, `ASC`.",
           "example": "DESC",
           "member": "string",
@@ -2926,6 +3218,7 @@
       "document": "DescribeBackupFiles response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of backup files",
           "example": "无",
           "member": "InstanceBackupFileItem",
@@ -2935,6 +3228,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number",
           "example": "无",
           "member": "int64",
@@ -2952,11 +3246,70 @@
       ],
       "type": "object"
     },
+    "DescribeDBEncryptAttributesRequest": {
+      "document": "DescribeDBEncryptAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Instance ID in the format of  `tdsqlshard-ow728lmc`",
+          "example": "tdsqlshard-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBEncryptAttributesResponse": {
+      "document": "DescribeDBEncryptAttributes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether encryption is enabled. Valid values: `1` (enabled), `2` (disabled).",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DEK",
+          "example": "无",
+          "member": "string",
+          "name": "CipherText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DEK expiration date",
+          "example": "2019-01-01 10:00:00",
+          "member": "string",
+          "name": "ExpireDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBLogFilesRequest": {
       "document": "DescribeDBLogFiles request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
           "member": "string",
           "name": "InstanceId",
@@ -2965,6 +3318,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID in the format of shard-7noic7tv",
           "member": "string",
           "name": "ShardId",
@@ -2973,6 +3327,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Requested log type. Valid values: 1 (binlog); 2 (cold backup); 3 (errlog); 4 (slowlog).",
           "member": "int64",
           "name": "Type",
@@ -2986,6 +3341,7 @@
       "document": "DescribeDBLogFiles response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "member": "string",
           "name": "InstanceId",
@@ -2993,6 +3349,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Requested log type. Valid values: 1 (binlog); 2 (cold backup); 3 (errlog); 4 (slowlog).",
           "member": "uint64",
           "name": "Type",
@@ -3000,6 +3357,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of requested logs",
           "member": "uint64",
           "name": "Total",
@@ -3007,6 +3365,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of log files",
           "member": "LogFileInfo",
           "name": "Files",
@@ -3014,6 +3373,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "For an instance in a VPC, this prefix plus URI can be used as the download address",
           "member": "string",
           "name": "VpcPrefix",
@@ -3021,6 +3381,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "For an instance in a common network, this prefix plus URI can be used as the download address",
           "member": "string",
           "name": "NormalPrefix",
@@ -3028,6 +3389,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Shard ID in the format of shard-7noic7tv",
           "member": "string",
           "name": "ShardId",
@@ -3048,6 +3410,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
           "example": "dcdbt-ige1a5k3",
           "member": "string",
@@ -3062,6 +3425,7 @@
       "document": "DescribeDBParameters response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
           "example": "dcdbt-ige1a5k3",
           "member": "string",
@@ -3071,6 +3435,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Requests the current parameter values of the database",
           "example": "无",
           "member": "ParamDesc",
@@ -3093,6 +3458,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
           "example": "dcdb",
           "member": "string",
@@ -3102,6 +3468,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsqlshard-eb2w7dto",
           "member": "string",
@@ -3116,6 +3483,7 @@
       "document": "DescribeDBSecurityGroups response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Security group details",
           "example": "无",
           "member": "SecurityGroup",
@@ -3125,6 +3493,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance VIP\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3134,6 +3503,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance Port\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
@@ -3156,6 +3526,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-hw0qj6m1",
           "example": "tdsql-xxx",
           "member": "string",
@@ -3165,6 +3536,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Data entry number starting from which to return results",
           "example": "0",
           "member": "uint64",
@@ -3174,6 +3546,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of results to be returned",
           "example": "20",
           "member": "uint64",
@@ -3183,6 +3556,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query start time in the format of 2016-07-23 14:55:20",
           "example": "2016-07-23 14:55:20",
           "member": "datetime",
@@ -3192,6 +3566,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID of the instance in the format of shard-53ima8ln",
           "example": "shard-xxx",
           "member": "string",
@@ -3201,6 +3576,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query end time in the format of 2016-08-22 14:55:20. If this parameter is left empty, the current time will be used as the query end time.",
           "example": "2016-08-22 14:55:20",
           "member": "datetime",
@@ -3210,6 +3586,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specific name of the database to be queried",
           "example": "dbname",
           "member": "string",
@@ -3219,6 +3596,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting metric. Valid values: `query_time_sum`, `query_count`. Default value: `query_time_sum`",
           "example": "query_count",
           "member": "string",
@@ -3228,6 +3606,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting order. Valid values: `desc` (descending), `asc` (ascending). Default value: `desc`",
           "example": "desc",
           "member": "string",
@@ -3237,6 +3616,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query slow queries from either the source or the replica. Valid values: `0` (source), `1` (replica). Default value: `0`",
           "example": "0",
           "member": "int64",
@@ -3251,6 +3631,7 @@
       "document": "DescribeDBSlowLogs response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Sum of all statement lock durations",
           "example": "1",
           "member": "float",
@@ -3260,6 +3641,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of statement queries",
           "example": "1",
           "member": "int64",
@@ -3269,6 +3651,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of results",
           "example": "1",
           "member": "int64",
@@ -3278,6 +3661,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Sum of all statement query durations",
           "example": "1",
           "member": "float",
@@ -3287,6 +3671,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Slow query log data",
           "example": "无",
           "member": "SlowLogData",
@@ -3309,6 +3694,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of an instance for which to modify the sync mode. The ID is in the format of dcdbt-ow728lmc.",
           "member": "string",
           "name": "InstanceId",
@@ -3322,6 +3708,7 @@
       "document": "DescribeDBSyncMode response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Sync mode. 0: async; 1: strong sync; 2: downgradable strong sync",
           "example": "0",
           "member": "int64",
@@ -3331,6 +3718,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether a modification is in progress. 1: yes; 0: no.",
           "example": "1",
           "member": "int64",
@@ -3340,6 +3728,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Current sync mode. Valid values: `0` (async), `1` (sync).",
           "example": "0",
           "member": "int64",
@@ -3361,6 +3750,7 @@
       "document": "DescribeDCDBInstanceDetail request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID, such as dcdbt-7oaxtcb7.",
           "example": "tdsqlshard-rlye31jd",
           "member": "string",
@@ -3375,6 +3765,7 @@
       "document": "DescribeDCDBInstanceDetail response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID, such as dcdbt-7oaxtcb7.",
           "example": "tdsqlshard-rlye31jd",
           "member": "string",
@@ -3383,6 +3774,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance name",
           "example": "tdsqlshard-rlye31jd",
           "member": "string",
@@ -3391,6 +3783,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated).",
           "example": "2",
           "member": "int64",
@@ -3399,6 +3792,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Current status of the instance",
           "example": "运行中",
           "member": "string",
@@ -3407,6 +3801,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance private IP address",
           "example": "172.16.0.39",
           "member": "string",
@@ -3415,6 +3810,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Private port of instance",
           "example": "3306",
           "member": "int64",
@@ -3423,6 +3819,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of instance nodes. Valid values: `2` (1-source-1-replica), `3` (1-source-2-replica).",
           "example": "2",
           "member": "int64",
@@ -3431,6 +3828,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance region, such as ap-guangzhou.",
           "example": "ap-guangzhou",
           "member": "string",
@@ -3439,6 +3837,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance VPC ID, such as vpc-r9jr0de3.",
           "example": "vpc-4x1eyoyv",
           "member": "string",
@@ -3447,6 +3846,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "VPC subnet ID of an instance, such as subnet-6rqs61o2.",
           "example": "subnet-58oypmoq",
           "member": "string",
@@ -3455,6 +3855,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).",
           "example": "0",
           "member": "int64",
@@ -3463,6 +3864,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Domain name for public network access, which can be resolved by the public network.",
           "example": "无",
           "member": "string",
@@ -3471,6 +3873,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Public IP address, which can be accessed over the public network.",
           "example": "无",
           "member": "string",
@@ -3479,6 +3882,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Public network access port",
           "example": "0",
           "member": "int64",
@@ -3487,6 +3891,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project ID of the instance",
           "example": "0",
           "member": "int64",
@@ -3495,6 +3900,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Automatic renewal flag for an instance. Valid values: `0` (normal renewal), `1` (auto-renewal), `3` (no renewal upon expiration).",
           "example": "0",
           "member": "int64",
@@ -3503,6 +3909,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Dedicated cluster ID",
           "example": "dbdc-odgvdv66",
           "member": "string",
@@ -3511,6 +3918,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Billing mode. Valid values: `prepaid` (monthly subscription), `postpaid` (pay-as-you-go).",
           "example": "prepaid",
           "member": "string",
@@ -3519,6 +3927,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time of the instance in the format of 2006-01-02 15:04:05",
           "example": "2020-04-08 13:59:39",
           "member": "datetime",
@@ -3527,6 +3936,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Expiration time of the instance in the format of 2006-01-02 15:04:05",
           "example": "2020-05-08 13:59:39",
           "member": "datetime",
@@ -3535,6 +3945,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Database version information",
           "example": "5.7.17",
           "member": "string",
@@ -3543,6 +3954,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the instance supports audit. Valid values: `1` (yes), `0` (no).",
           "example": "1",
           "member": "int64",
@@ -3551,6 +3963,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether data encryption is supported for an instance. Valid values: `1` (yes), `0` (no).",
           "example": "0",
           "member": "int64",
@@ -3559,6 +3972,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance machine model",
           "example": "SH02D",
           "member": "string",
@@ -3567,6 +3981,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance memory size in GB, which is the sum of the memory of all shards.",
           "example": "12",
           "member": "int64",
@@ -3575,6 +3990,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance disk storage size in GB, which is the sum of the disk size of all shards.",
           "example": "40",
           "member": "int64",
@@ -3583,6 +3999,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance storage space utilization. It is calculated by dividing the sum of the used disk size of all shards by the total disk size of all shards.",
           "example": "0.001",
           "member": "float",
@@ -3591,6 +4008,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Size of log storage space in GB",
           "example": "16",
           "member": "int64",
@@ -3599,6 +4017,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Product type ID",
           "example": "11128",
           "member": "int64",
@@ -3607,6 +4026,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Source AZ",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -3615,6 +4035,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Replica AZ",
           "example": "[\"ap-guangzhou-1\"]",
           "member": "string",
@@ -3623,6 +4044,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Shard information",
           "example": "无",
           "member": "ShardBriefInfo",
@@ -3631,6 +4053,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Private network IPv6 address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3639,6 +4062,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Number of CPU cores of an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -3647,6 +4071,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance QPS\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "4000",
           "member": "int64",
@@ -3655,6 +4080,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Database engine\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Mysql",
           "member": "string",
@@ -3663,6 +4089,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether IPv6 is supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3671,6 +4098,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Public IPv6 address, which can be accessed over the public network\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3679,6 +4107,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3687,6 +4116,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Public network IPv6 port\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3695,6 +4125,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Tag information",
           "example": "无",
           "member": "ResourceTag",
@@ -3703,6 +4134,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "DCN type. Valid values: `0` (N/A), `1` (source instance), `2` (disaster recovery read-only instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3711,6 +4143,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "DCN status. Valid values: `0` (N/A), `1` (creating), `2` (syncing), `3` (disconnected).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3719,6 +4152,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The number of DCN disaster recovery instances\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3727,6 +4161,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery read-only instance), `4` (dedicated disaster recovery read-only instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -3735,6 +4170,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the instance supports setting the connection limit, which is not supported for kernel version 10.1.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -3743,6 +4179,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The displayed database version\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5.7",
           "member": "string",
@@ -3751,6 +4188,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Encryption status. Valid values: `0` (disabled), `1` (enabled).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3759,6 +4197,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Type of dedicated cluster. Valid values: `0` (public cloud), `1` (finance cage), `2` (CDC cluster).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3767,12 +4206,31 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Nearby VPC access\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "RsAccessStrategy",
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Unclaimed network resource",
+          "example": "无",
+          "member": "ReservedNetResource",
+          "name": "ReservedNetResources",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "IsPhysicalReplicationSupported",
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3788,6 +4246,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsqlshard-8upuqubt",
           "member": "string",
@@ -3797,6 +4256,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The maximum number of results returned at a time. Value range: (0-100]. Default value: `100`.",
           "example": "100",
           "member": "uint64",
@@ -3806,6 +4266,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset of the returned results. Default value: `0`.",
           "example": "0",
           "member": "uint64",
@@ -3820,6 +4281,7 @@
       "document": "DescribeDCDBInstanceNodeInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of nodes",
           "example": "4",
           "member": "uint64",
@@ -3829,6 +4291,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Node information",
           "example": "无",
           "member": "BriefNodeInfo",
@@ -3851,6 +4314,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Query by instance ID or IDs. Instance ID is in the format of dcdbt-2t4cf98d",
           "example": "[\"dcdbt-52s53yyh\\n\"]",
           "member": "string",
@@ -3860,6 +4324,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Search field name. Valid values: instancename (search by instance name); vip (search by private IP); all (search by instance ID, instance name, and private IP).",
           "example": "无",
           "member": "string",
@@ -3869,6 +4334,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Search keyword. Fuzzy search is supported. Multiple keywords should be separated by line breaks (`\\n`).",
           "example": "无",
           "member": "string",
@@ -3878,6 +4344,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query by project ID",
           "example": "无",
           "member": "int64",
@@ -3887,6 +4354,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to search by VPC",
           "example": "无",
           "member": "bool",
@@ -3896,6 +4364,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC ID, which is valid when `IsFilterVpc` is 1",
           "example": "无",
           "member": "string",
@@ -3905,6 +4374,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC subnet ID, which is valid when `IsFilterVpc` is 1",
           "example": "无",
           "member": "string",
@@ -3914,6 +4384,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sort by field. Valid values: projectId; createtime; instancename",
           "example": "无",
           "member": "string",
@@ -3923,6 +4394,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sort by type. Valid values: desc; asc",
           "example": "无",
           "member": "string",
@@ -3932,6 +4404,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0",
           "example": "无",
           "member": "int64",
@@ -3941,6 +4414,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 10. Maximum value: 100.",
           "example": "无",
           "member": "int64",
@@ -3950,6 +4424,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "1: non-dedicated cluster; 2: dedicated cluster; 0: all",
           "example": "无",
           "member": "int64",
@@ -3959,6 +4434,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identifies whether to use the `ExclusterType` field. false: no; true: yes",
           "example": "无",
           "member": "bool",
@@ -3968,6 +4444,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Dedicated cluster ID",
           "example": "无",
           "member": "string",
@@ -3977,6 +4454,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag key used in queries",
           "example": "无",
           "member": "string",
@@ -3986,6 +4464,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.",
           "example": "无",
           "member": "string",
@@ -3995,6 +4474,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Use this filter to include instances in specific statuses",
           "example": "无",
           "member": "int64",
@@ -4004,6 +4484,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Use this filter to exclude instances in specific statuses",
           "example": "无",
           "member": "int64",
@@ -4018,6 +4499,7 @@
       "document": "DescribeDCDBInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible instances",
           "member": "int64",
           "name": "TotalCount",
@@ -4025,6 +4507,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of instance details",
           "member": "DCDBInstanceInfo",
           "name": "Instances",
@@ -4045,6 +4528,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "AZ ID of the purchased instance.",
           "example": "ap-guangzhou-2",
           "member": "string",
@@ -4054,6 +4538,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of instances to be purchased. You can purchase 1-10 instances.",
           "example": "1",
           "member": "int64",
@@ -4063,6 +4548,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Validity period in months",
           "example": "1",
           "member": "int64",
@@ -4072,6 +4558,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of nodes in a single shard, which can be obtained\n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
           "example": "3",
           "member": "int64",
@@ -4081,6 +4568,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard memory size in GB, which can be obtained \n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
           "example": "2",
           "member": "int64",
@@ -4090,6 +4578,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard storage size in GB, which can be obtained\n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
           "example": "10",
           "member": "int64",
@@ -4099,6 +4588,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.",
           "example": "2",
           "member": "int64",
@@ -4108,6 +4598,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).",
           "example": "prepaid",
           "member": "string",
@@ -4117,6 +4608,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Price unit. Valid values:   \n`* pent` (cent), \n`* microPent` (microcent).",
           "example": "pent",
           "member": "string",
@@ -4131,6 +4623,7 @@
       "document": "DescribeDCDBPrice response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Original price  \n* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.\n* Currency: CNY (Chinese site), USD (international site)",
           "example": "42240",
           "member": "int64",
@@ -4140,6 +4633,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The actual price may be different from the original price due to discounts. \n* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.\n* Currency: CNY (Chinese site), USD (international site)",
           "example": "42240",
           "member": "int64",
@@ -4162,6 +4656,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "example": "dcdbt-ovulpcjf",
           "member": "string",
@@ -4171,6 +4666,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID list.",
           "example": "[]",
           "member": "string",
@@ -4180,6 +4676,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset. Default value: 0",
           "example": "0",
           "member": "int64",
@@ -4189,6 +4686,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "20",
           "member": "int64",
@@ -4198,6 +4696,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sort by field. Only `createtime` is supported currently.",
           "example": "createtime",
           "member": "string",
@@ -4207,6 +4706,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting order. Valid values: desc, asc",
           "example": "desc",
           "member": "string",
@@ -4221,6 +4721,7 @@
       "document": "DescribeDCDBShards response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible shards",
           "example": "2",
           "member": "int64",
@@ -4230,6 +4731,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Shard information list",
           "example": "无",
           "member": "DCDBShardInfo",
@@ -4239,6 +4741,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disaster recovery flag. Valid values: 0 (none), 1 (source instance), 2 (disaster recovery instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4261,6 +4764,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
           "example": "dcdbt-52s53yyh",
           "member": "string",
@@ -4270,6 +4774,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database name, which can be obtained through the `DescribeDatabases` API.",
           "example": "test",
           "member": "string",
@@ -4284,6 +4789,7 @@
       "document": "DescribeDatabaseObjects response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Passed through from input parameters.",
           "example": "dcdbt-52s53yyh",
           "member": "string",
@@ -4293,6 +4799,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Database name.",
           "example": "test",
           "member": "string",
@@ -4302,6 +4809,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Table list.",
           "example": "无",
           "member": "DatabaseTable",
@@ -4311,6 +4819,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "View list.",
           "example": "无",
           "member": "DatabaseView",
@@ -4320,6 +4829,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Stored procedure list.",
           "example": "无",
           "member": "DatabaseProcedure",
@@ -4329,6 +4839,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Function list.",
           "example": "无",
           "member": "DatabaseFunction",
@@ -4351,6 +4862,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
           "example": "dcdbt-52s53yyh",
           "member": "string",
@@ -4360,6 +4872,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database name, which can be obtained through the `DescribeDatabases` API.",
           "example": "test",
           "member": "string",
@@ -4369,6 +4882,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Table name, which can be obtained through the `DescribeDatabaseObjects` API.",
           "example": "persons",
           "member": "string",
@@ -4383,6 +4897,7 @@
       "document": "DescribeDatabaseTable response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance name.",
           "example": "dcdbt-52s53yyh",
           "member": "string",
@@ -4392,6 +4907,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Database name.",
           "example": "test",
           "member": "string",
@@ -4401,6 +4917,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Table name.",
           "example": "persons",
           "member": "string",
@@ -4410,6 +4927,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Column information.",
           "example": "无",
           "member": "TableColumn",
@@ -4432,6 +4950,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
           "example": "dcdbt-52s53yyh",
           "member": "string",
@@ -4446,6 +4965,7 @@
       "document": "DescribeDatabases response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The database list of this instance.",
           "example": "无",
           "member": "Database",
@@ -4455,6 +4975,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Passed through from input parameters.",
           "example": "dcdbt-52s53yyh",
           "member": "string",
@@ -4477,6 +4998,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsql-2rn9lmpx",
           "member": "string",
@@ -4491,6 +5013,7 @@
       "document": "DescribeDcnDetail response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "DCN synchronization details",
           "example": "无",
           "member": "DcnDetailItem",
@@ -4513,6 +5036,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "dbdc-1234abcd",
           "member": "string",
@@ -4522,6 +5046,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID",
           "example": "shard-xxxx",
           "member": "string",
@@ -4531,6 +5056,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unsigned file path",
           "example": "/cos_backup/xxx",
           "member": "string",
@@ -4545,6 +5071,7 @@
       "document": "DescribeFileDownloadUrl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Signed download URL",
           "example": "http://cos.domain/xxx",
           "member": "string",
@@ -4567,6 +5094,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Task ID returned by an async request API.",
           "example": "无",
           "member": "int64",
@@ -4581,6 +5109,7 @@
       "document": "DescribeFlow response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Task status. Valid values: `0` (succeeded), `1` (failed), `2` (running)",
           "example": "无",
           "member": "int64",
@@ -4603,6 +5132,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of long order IDs to be queried, which are returned by the APIs for creating, renewing, or scaling instances.",
           "example": "[\"20181103110163\\r\\n\"]",
           "member": "string",
@@ -4617,6 +5147,7 @@
       "document": "DescribeOrders response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned number of orders",
           "example": "1",
           "member": "uint64",
@@ -4626,6 +5157,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Order information list",
           "example": "无",
           "member": "Deal",
@@ -4648,6 +5180,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
           "member": "string",
           "name": "Product",
@@ -4656,6 +5189,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "member": "int64",
           "name": "ProjectId",
@@ -4669,6 +5203,7 @@
       "document": "DescribeProjectSecurityGroups response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Security group details",
           "example": "无",
           "member": "SecurityGroup",
@@ -4678,6 +5213,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of security groups.",
           "example": "无",
           "member": "uint64",
@@ -4700,6 +5236,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of tdsqlshard-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
           "example": "tdsqlshard-f35wr6wj",
           "member": "string",
@@ -4714,6 +5251,7 @@
       "document": "DestroyDCDBInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID, which is the same as the request parameter `InstanceId`.",
           "example": "tdsqlshard-f35wr6wj",
           "member": "string",
@@ -4723,6 +5261,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/557/56485?from_cn_redirect=1) API to query the async task result.",
           "example": "100",
           "member": "int64",
@@ -4745,6 +5284,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of tdsqlshard-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
           "example": "tdsqlshard-avw0207d",
           "member": "string",
@@ -4759,6 +5299,7 @@
       "document": "DestroyHourDCDBInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/557/56485?from_cn_redirect=1) API to query the async task result.",
           "example": "100",
           "member": "int64",
@@ -4768,6 +5309,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance ID, which is the same as the request parameter `InstanceId`.",
           "example": "tdsqlshard-avw0207d",
           "member": "string",
@@ -4790,6 +5332,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
           "member": "string",
           "name": "Product",
@@ -4798,6 +5341,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security group ID",
           "member": "string",
           "name": "SecurityGroupId",
@@ -4806,6 +5350,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID list, which is an array of one or more instance IDs.",
           "member": "string",
           "name": "InstanceIds",
@@ -4832,6 +5377,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Shard IDs in array",
           "example": "[\"shard-xxxx\"]",
           "member": "string",
@@ -4842,6 +5388,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard memory capacity in GB",
           "example": "2",
           "member": "int64",
@@ -4852,6 +5399,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard storage capacity in GB",
           "example": "10",
           "member": "int64",
@@ -4862,6 +5410,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of shard nodes",
           "example": "2",
           "member": "int64",
@@ -4878,6 +5427,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "example": "dcdbt-ow728lmc",
           "member": "string",
@@ -4887,6 +5437,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Login username.",
           "example": "user",
           "member": "string",
@@ -4896,6 +5447,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Access host allowed for a user. An account is uniquely identified by username and host.",
           "example": "10.%",
           "member": "string",
@@ -4905,6 +5457,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database name. `\\*` indicates that global permissions will be queried (i.e., `\\*.\\*`), in which case the `Type` and `Object ` parameters will be ignored",
           "example": "*",
           "member": "string",
@@ -4914,6 +5467,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Global permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`, `SHOW DATABASES`, `REPLICATION CLIENT`, `REPLICATION SLAVE`.\nDatabase permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`. \nTable permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.  \nField permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.",
           "example": "[\"SELECT\",\"INSERT\"]",
           "member": "string",
@@ -4923,6 +5477,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type. Valid values: `table`, `\\*`. If `DbName` is a specific database name and `Type` is `\\*`, the permissions of the database will be set (i.e., `db.\\*`), in which case the `Object` parameter will be ignored",
           "example": "*",
           "member": "string",
@@ -4932,6 +5487,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type name. For example, if `Type` is table, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\\*` or empty",
           "example": "无",
           "member": "string",
@@ -4941,6 +5497,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "If `Type` = table and `ColName` is `\\*`, the permissions will be granted to the table; if `ColName` is a specific field name, the permissions will be granted to the field",
           "example": "无",
           "member": "string",
@@ -4968,6 +5525,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of IDs of instances to be initialized. The ID is in the format of `dcdbt-ow728lmc` and can be obtained through the `DescribeDCDBInstances` API.",
           "example": "[\"dcdbt-fdpjf5zh\\r\\n\",\"dcdbt-avw0207d\\r\\n\"]",
           "member": "string",
@@ -4977,6 +5535,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter list. Valid values: character_set_server (character set; required); lower_case_table_names (table name case sensitivity; required; 0: case-sensitive, 1: case-insensitive); innodb_page_size (InnoDB data page; default size: 16 KB); sync_mode (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: strong sync).",
           "example": "无",
           "member": "DBParamValue",
@@ -4991,6 +5550,7 @@
       "document": "InitDCDBInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID. The task status can be queried through the `DescribeFlow` API.",
           "example": "[3340,3341]",
           "member": "uint64",
@@ -5000,6 +5560,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Passed through from input parameters.",
           "example": "[\"dcdbt-fdpjf5zh\",\"dcdbt-avw0207d\"]",
           "member": "string",
@@ -5022,6 +5583,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsqlshard-xxx",
           "member": "string",
@@ -5032,6 +5594,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance name",
           "example": "tdsqlshard-xxx",
           "member": "string",
@@ -5042,6 +5605,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance status",
           "example": "2",
           "member": "int64",
@@ -5052,6 +5616,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID",
           "example": "shard-xxx",
           "member": "string",
@@ -5062,6 +5627,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File path",
           "example": "/backup/xxx.lz4",
           "member": "string",
@@ -5072,6 +5638,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File name",
           "example": "xxx.lz4",
           "member": "string",
@@ -5082,6 +5649,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File size",
           "example": "1",
           "member": "int64",
@@ -5092,6 +5660,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).",
           "example": "Binlog",
           "member": "string",
@@ -5102,6 +5671,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Manual backup. Valid values: `0` (no), `1` (yes).",
           "example": "0",
           "member": "int64",
@@ -5112,6 +5682,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Backup start time",
           "example": "2022-05-10 12:00:00",
           "member": "string",
@@ -5122,6 +5693,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Backup end time",
           "example": "2022-05-10 12:00:00",
           "member": "string",
@@ -5133,11 +5705,57 @@
       ],
       "usage": "out"
     },
+    "IsolateDCDBInstanceRequest": {
+      "document": "IsolateDCDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID in the format of `tdsqlshard-avw0207d`,  which is the same as the instance ID displayed on the TencentDB console and can be queried through the `DescribeDBInstances` API.",
+          "example": "tdsqlshard-avw0207d",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDCDBInstanceResponse": {
+      "document": "IsolateDCDBInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of isolated instances",
+          "example": "[]",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IDs of instances failed to be isolated",
+          "example": "[]",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "IsolateDedicatedDBInstanceRequest": {
       "document": "IsolateDedicatedDBInstance request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of `dcdbt-ow728lmc`",
           "example": "tdsql-xxx",
           "member": "string",
@@ -5164,9 +5782,9 @@
       "document": "IsolateHourDCDBInstance request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Instance uuid list",
-          "example": "[]",
+          "disabled": false,
+          "document": "ID list of the instances to be upgraded  in the format of  `dcdbt-ow728lmc`, which can be obtained through the `DescribeDCDBInstances` API.",
+          "example": "[\"dcdbt-ow728lmc\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5179,6 +5797,7 @@
       "document": "IsolateHourDCDBInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "IDs of isolated instances",
           "example": "[]",
           "member": "string",
@@ -5188,6 +5807,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "IDs of instances failed to be isolated",
           "example": "[]",
           "member": "string",
@@ -5210,6 +5830,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsqlshard-2gk4nxyz",
           "member": "string",
@@ -5219,6 +5840,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of session IDs",
           "example": "[1111,2222]",
           "member": "int64",
@@ -5228,6 +5850,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID. Either `ShardId` or `ShardSerialId` is required.",
           "example": "shard-ljilb4st",
           "member": "string",
@@ -5237,6 +5860,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard sequence ID. Either `ShardId` or `ShardSerialId` is required.",
           "example": "set_1468379419_1",
           "member": "string",
@@ -5251,6 +5875,7 @@
       "document": "KillSession response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Task ID",
           "example": "11",
           "member": "int64",
@@ -5273,6 +5898,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Last modified time of a log",
           "member": "uint64",
           "name": "Mtime",
@@ -5282,6 +5908,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File length",
           "member": "uint64",
           "name": "Length",
@@ -5291,6 +5918,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Uniform resource identifier (URI) used during log download",
           "member": "string",
           "name": "Uri",
@@ -5300,6 +5928,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filename",
           "member": "string",
           "name": "FileName",
@@ -5310,11 +5939,66 @@
       ],
       "usage": "out"
     },
+    "ModifyAccountConfigRequest": {
+      "document": "ModifyAccountConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID in the format of  `tdsqlshard-kpkvq5oj`, which is the same as the one displayed in the TencentDB console.",
+          "example": "tdsqlshard-kpkvq5oj",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name",
+          "example": "test",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account domain name",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration list. Each element in the list is a pair of `Config` and `Value`.",
+          "example": "无",
+          "member": "ConfigValue",
+          "name": "Configs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountConfigResponse": {
+      "document": "ModifyAccountConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyAccountDescriptionRequest": {
       "document": "ModifyAccountDescription request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "member": "string",
           "name": "InstanceId",
@@ -5323,6 +6007,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Login username.",
           "member": "string",
           "name": "UserName",
@@ -5331,6 +6016,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Access host allowed for a user. An account is uniquely identified by username and host.",
           "member": "string",
           "name": "Host",
@@ -5339,6 +6025,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New account remarks, which can contain 0-256 characters.",
           "member": "string",
           "name": "Description",
@@ -5365,6 +6052,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
           "example": "无",
           "member": "string",
@@ -5374,6 +6062,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database account, including username and host address.",
           "example": "无",
           "member": "Account",
@@ -5383,6 +6072,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\nNote: If the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.",
           "example": "无",
           "member": "string",
@@ -5392,6 +6082,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database permission. Value range: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\t\nNote: If the parameter is not passed in, no change will be made to the granted stored procedure permissions. To clear the granted database permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "DatabasePrivilege",
@@ -5401,6 +6092,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database table permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.\nNote: If the parameter is not passed in, no change will be made to the granted view permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "TablePrivilege",
@@ -5410,6 +6102,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Column permission in the table. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"REFERENCES\".\nNote: If the parameter is not passed in, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "ColumnPrivilege",
@@ -5419,6 +6112,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database view permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.\nNote: If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "ViewPrivileges",
@@ -5433,6 +6127,7 @@
       "document": "ModifyAccountPrivileges response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID, which can be used in the [DescribeFlow](https://www.tencentcloud.com/document/product/237/16177) API to query the async task result.",
           "example": "无",
           "member": "int64",
@@ -5455,6 +6150,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of `tdsqlshard-ow728lmc`",
           "example": "tdsqlshard-xxx",
           "member": "string",
@@ -5464,6 +6160,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable the data encryption (Once enabled, it can’t be disabled). Valid values: `1` (Yes), `0` (No. Default).",
           "example": "0",
           "member": "int64",
@@ -5491,6 +6188,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of tdsql-hdaprz0v",
           "example": "tdsql-xxx",
           "member": "string",
@@ -5500,6 +6198,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance name",
           "example": "test-name",
           "member": "string",
@@ -5514,6 +6213,7 @@
       "document": "ModifyDBInstanceName response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID.",
           "example": "tdsql-xxx",
           "member": "string",
@@ -5536,6 +6236,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
           "member": "string",
           "name": "Product",
@@ -5544,6 +6245,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -5552,6 +6254,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of IDs of security groups to be modified, which is an array of one or more security group IDs.",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -5578,6 +6281,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of IDs of instances to be modified. Instance ID is in the format of dcdbt-ow728lmc.",
           "member": "string",
           "name": "InstanceIds",
@@ -5586,6 +6290,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the project to be assigned, which can be obtained through the `DescribeProjects` API.",
           "member": "int64",
           "name": "ProjectId",
@@ -5612,6 +6317,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "example": "dcdbt-ige1a5k3",
           "member": "string",
@@ -5621,6 +6327,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter list. Each element is a combination of `Param` and `Value`.",
           "example": "无",
           "member": "DBParamValue",
@@ -5635,6 +6342,7 @@
       "document": "ModifyDBParameters response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "example": "dcdbt-ige1a5k3",
           "member": "string",
@@ -5644,6 +6352,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Parameter modification result",
           "example": "无",
           "member": "ParamModifyResult",
@@ -5666,6 +6375,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance for which to modify the sync mode. The ID is in the format of dcdbt-ow728lmc.",
           "example": "dcdbt-avw0207d",
           "member": "string",
@@ -5675,6 +6385,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sync mode. Valid values: `0` (async), `1` (strong sync), `2` (downgradable strong sync).",
           "example": "0",
           "member": "int64",
@@ -5689,6 +6400,7 @@
       "document": "ModifyDBSyncMode response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID. The task status can be queried through the `DescribeFlow` API.",
           "example": "3521",
           "member": "int64",
@@ -5711,6 +6423,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsql-jv8z8fhl",
           "member": "string",
@@ -5720,6 +6433,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The ID of the desired VPC network",
           "example": "vpc-xxxxxx",
           "member": "string",
@@ -5729,6 +6443,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The subnet ID of the desired VPC network",
           "example": "subnet-xxxxx",
           "member": "string",
@@ -5738,6 +6453,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The field is required to specify VIP.",
           "example": "10.0.0.1",
           "member": "string",
@@ -5747,6 +6463,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The field is required to specify VIPv6.",
           "example": "2001:0000: 1F 1F :0000:0000:0100: 11A 0:ADDF",
           "member": "string",
@@ -5756,6 +6473,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.",
           "example": "168",
           "member": "uint64",
@@ -5770,6 +6488,7 @@
       "document": "ModifyInstanceNetwork response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID, which can be used to query the task status through `DescribeFlow` API.",
           "example": "1122",
           "member": "int64",
@@ -5792,6 +6511,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsql-jv8z8fhl",
           "member": "string",
@@ -5801,6 +6521,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance VIP",
           "example": "10.0.0.2",
           "member": "string",
@@ -5810,6 +6531,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "IPv6 flag",
           "example": "无",
           "member": "uint64",
@@ -5819,6 +6541,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.",
           "example": "164",
           "member": "uint64",
@@ -5833,6 +6556,7 @@
       "document": "ModifyInstanceVip response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task flow ID",
           "example": "1122",
           "member": "int64",
@@ -5855,6 +6579,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tdsql-xxx",
           "member": "string",
@@ -5864,6 +6589,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance Vport",
           "example": "3307",
           "member": "uint64",
@@ -5891,6 +6617,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Node ID",
           "member": "string",
           "name": "NodeId",
@@ -5900,6 +6627,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node role. Valid values: `master`, `slave`.",
           "member": "string",
           "name": "Role",
@@ -5915,6 +6643,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Constraint type, such as `enum` and `section`",
           "member": "string",
           "name": "Type",
@@ -5924,6 +6653,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of valid values when constraint type is `enum`",
           "member": "string",
           "name": "Enum",
@@ -5933,6 +6663,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Range when constraint type is `section`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "ConstraintRange",
           "name": "Range",
@@ -5942,6 +6673,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of valid values when constraint type is `string`",
           "member": "string",
           "name": "String",
@@ -5957,6 +6689,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter name",
           "example": "long_query_time",
           "member": "string",
@@ -5967,6 +6700,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Current parameter value",
           "example": "1",
           "member": "string",
@@ -5977,6 +6711,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Previously set value, which is the same as `value` after the parameter takes effect. If no value has been set, this field will not be returned.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "string",
@@ -5987,6 +6722,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Default value",
           "example": "1",
           "member": "string",
@@ -5997,6 +6733,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter constraint",
           "example": "无",
           "member": "ParamConstraint",
@@ -6007,6 +6744,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether a value has been set. false: no, true: yes.",
           "example": "true",
           "member": "bool",
@@ -6017,6 +6755,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether restart is required. false: no;\ntrue: yes.",
           "example": "false",
           "member": "bool",
@@ -6033,6 +6772,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Renames parameter",
           "member": "string",
           "name": "Param",
@@ -6042,6 +6782,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Result of parameter modification. 0: success; -1: failure; -2: invalid parameter value",
           "member": "int64",
           "name": "Code",
@@ -6052,11 +6793,68 @@
       ],
       "usage": "out"
     },
+    "ReservedNetResource": {
+      "document": "Information of the reserved network resource",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC",
+          "example": "vpc-1iy15ozp",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subnet",
+          "example": "subnet-l9bprnz2",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reserved private network IP under `VpcId` and `SubnetId`",
+          "example": "10.107.76.25",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port under `Vip`",
+          "example": "[3306,3307]",
+          "member": "int64",
+          "name": "Vports",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid hours of VIP\t",
+          "example": "2023-02-23 10:36:17",
+          "member": "string",
+          "name": "RecycleTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ResetAccountPasswordRequest": {
       "document": "ResetAccountPassword request structure.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
           "member": "string",
           "name": "InstanceId",
@@ -6065,6 +6863,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Login username.",
           "member": "string",
           "name": "UserName",
@@ -6073,6 +6872,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Access host allowed for a user. An account is uniquely identified by username and host.",
           "member": "string",
           "name": "Host",
@@ -6081,6 +6881,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.",
           "member": "string",
           "name": "Password",
@@ -6107,6 +6908,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -6116,6 +6918,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -6131,6 +6934,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "member": "int64",
           "name": "ProjectId",
@@ -6140,6 +6944,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time in the format of yyyy-mm-dd hh:mm:ss",
           "member": "string",
           "name": "CreateTime",
@@ -6149,6 +6954,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security group ID",
           "member": "string",
           "name": "SecurityGroupId",
@@ -6158,6 +6964,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security group name",
           "member": "string",
           "name": "SecurityGroupName",
@@ -6167,6 +6974,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security group remarks",
           "member": "string",
           "name": "SecurityGroupRemark",
@@ -6176,6 +6984,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Inbound rule",
           "member": "SecurityGroupBound",
           "name": "Inbound",
@@ -6185,6 +6994,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Outbound rule",
           "member": "SecurityGroupBound",
           "name": "Outbound",
@@ -6200,6 +7010,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Policy, which can be `ACCEPT` or `DROP`",
           "member": "string",
           "name": "Action",
@@ -6209,6 +7020,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source IP or source IP range, such as 192.168.0.0/16",
           "member": "string",
           "name": "CidrIp",
@@ -6218,6 +7030,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Port",
           "member": "string",
           "name": "PortRange",
@@ -6227,6 +7040,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network protocol. UDP and TCP are supported.",
           "member": "string",
           "name": "IpProtocol",
@@ -6242,6 +7056,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Shard serial ID",
           "example": "set_1612751240_1",
           "member": "string",
@@ -6252,6 +7067,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID, such as shard-7vg1o339.",
           "example": "shard-lbt0utcz",
           "member": "string",
@@ -6262,6 +7078,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard running status",
           "example": "2",
           "member": "int64",
@@ -6272,6 +7089,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description of shard running status",
           "example": "运行中",
           "member": "string",
@@ -6282,6 +7100,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard creation time",
           "example": "2021-02-08 10:25:08",
           "member": "datetime",
@@ -6292,6 +7111,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard memory size in GB",
           "example": "2",
           "member": "int64",
@@ -6302,6 +7122,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard disk size in GB",
           "example": "10",
           "member": "int64",
@@ -6312,6 +7133,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log disk space size of a shard in GB",
           "example": "8",
           "member": "int64",
@@ -6322,6 +7144,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of shard nodes",
           "example": "3",
           "member": "int64",
@@ -6332,6 +7155,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk space utilization of a shard",
           "example": "0.007",
           "member": "float",
@@ -6342,6 +7166,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version information of the shard proxy",
           "example": "1.14.63-M-V2R667D003",
           "member": "string",
@@ -6352,6 +7177,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source AZ of a shard",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -6362,6 +7188,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Replica AZ of a shard",
           "example": "[\"ap-guangzhou-1\", \"ap-guangzhou-2\"]",
           "member": "string",
@@ -6372,6 +7199,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPU cores",
           "example": "1",
           "member": "int64",
@@ -6382,6 +7210,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "NodeInfo",
@@ -6398,6 +7227,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Shard ID",
           "member": "string",
           "name": "ShardInstanceId",
@@ -6407,6 +7237,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard set ID",
           "member": "string",
           "name": "ShardSerialId",
@@ -6416,6 +7247,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Status. 0: creating; 1: processing; 2: running; 3: shard not initialized; -2: shard deleted",
           "member": "int64",
           "name": "Status",
@@ -6425,6 +7257,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "member": "string",
           "name": "Createtime",
@@ -6434,6 +7267,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory size in GB",
           "member": "int64",
           "name": "Memory",
@@ -6443,6 +7277,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Storage capacity in GB",
           "member": "int64",
           "name": "Storage",
@@ -6452,6 +7287,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Numeric ID of a shard",
           "member": "int64",
           "name": "ShardId",
@@ -6461,6 +7297,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of nodes. 2: one primary and one secondary; 3: one primary and two secondaries",
           "member": "int64",
           "name": "NodeCount",
@@ -6470,6 +7307,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Product type ID (this field is obsolete and should not be depended on)",
           "member": "int64",
           "name": "Pid",
@@ -6479,6 +7317,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPU cores",
           "member": "uint64",
           "name": "Cpu",
@@ -6494,6 +7333,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Statement checksum for querying details",
           "example": "无",
           "member": "string",
@@ -6504,6 +7344,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database name",
           "example": "无",
           "member": "string",
@@ -6514,6 +7355,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Abstracted SQL statement",
           "example": "无",
           "member": "string",
@@ -6524,6 +7366,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Average lock duration",
           "example": "无",
           "member": "string",
@@ -6534,6 +7377,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum lock duration",
           "example": "无",
           "member": "string",
@@ -6544,6 +7388,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Minimum lock duration",
           "example": "无",
           "member": "string",
@@ -6554,6 +7399,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sum of lock durations",
           "example": "无",
           "member": "string",
@@ -6564,6 +7410,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of queries",
           "example": "无",
           "member": "string",
@@ -6574,6 +7421,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Average query duration",
           "example": "无",
           "member": "string",
@@ -6584,6 +7432,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum query duration",
           "example": "无",
           "member": "string",
@@ -6594,6 +7443,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Minimum query duration",
           "example": "无",
           "member": "string",
@@ -6604,6 +7454,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sum of query durations",
           "example": "无",
           "member": "string",
@@ -6614,6 +7465,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of scanned rows",
           "example": "无",
           "member": "string",
@@ -6624,6 +7476,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of sent rows",
           "example": "无",
           "member": "string",
@@ -6634,6 +7487,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Last execution time",
           "example": "无",
           "member": "string",
@@ -6644,6 +7498,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "First execution time",
           "example": "无",
           "member": "string",
@@ -6654,6 +7509,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account",
           "example": "无",
           "member": "string",
@@ -6664,6 +7520,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sample SQL\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -6674,6 +7531,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Host address of account\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "%",
           "member": "string",
@@ -6690,6 +7548,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Shard IDs in array",
           "example": "[\"shard-xxxx\"]",
           "member": "string",
@@ -6700,6 +7559,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Data split ratio at 50% (fixed)",
           "example": "50",
           "member": "int64",
@@ -6710,6 +7570,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard memory capacity in GB",
           "example": "2",
           "member": "int64",
@@ -6720,6 +7581,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shard storage capacity in GB",
           "example": "10",
           "member": "int64",
@@ -6736,6 +7598,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of tdsql-ow728lmc",
           "example": "无",
           "member": "string",
@@ -6745,6 +7608,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target AZ. The node with the lowest delay in the target AZ will be automatically promoted to source node.",
           "example": "无",
           "member": "string",
@@ -6759,6 +7623,7 @@
       "document": "SwitchDBInstanceHA response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID",
           "example": "无",
           "member": "uint64",
@@ -6781,6 +7646,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Column name",
           "member": "string",
           "name": "Col",
@@ -6790,6 +7656,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Column type",
           "member": "string",
           "name": "Type",
@@ -6805,6 +7672,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database name",
           "example": "test",
           "member": "string",
@@ -6815,6 +7683,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Table name",
           "example": "test",
           "member": "string",
@@ -6825,6 +7694,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission information",
           "example": "['SELECT']",
           "member": "string",
@@ -6841,6 +7711,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID in the format of `dcdbt-ow728lmc`",
           "example": "tdsql-xxx",
           "member": "string",
@@ -6855,6 +7726,7 @@
       "document": "TerminateDedicatedDBInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Async task ID",
           "example": "11",
           "member": "int64",
@@ -6877,6 +7749,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID to be upgraded in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
           "example": "dcdbt-ow728lmc",
           "member": "string",
@@ -6886,6 +7759,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Upgrade type. Valid values: \n<li> `ADD`: Add a new shard </li> \n <li> `EXPAND`: Upgrade the existing shads</li> \n <li> `SPLIT`: Split data of the existing shads to the new ones</li>",
           "example": "EXPAND",
           "member": "string",
@@ -6895,6 +7769,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Add shards when `UpgradeType` is `ADD`.",
           "example": "无",
           "member": "AddShardConfig",
@@ -6904,6 +7779,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expand shard when `UpgradeType` is `EXPAND`.",
           "example": "无",
           "member": "ExpandShardConfig",
@@ -6913,6 +7789,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Split shard when `UpgradeType` is `SPLIT`.",
           "example": "无",
           "member": "SplitShardConfig",
@@ -6922,6 +7799,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Switch start time in the format of \"2019-12-12 07:00:00\", which is no less than one hour and within 3 days from the current time.",
           "example": "2019-12-12 07:00:00",
           "member": "datetime",
@@ -6931,6 +7809,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Switch end time in the format of \"2019-12-12 07:15:00\", which must be later than the start time.",
           "example": "2019-12-12 07:15:00",
           "member": "datetime",
@@ -6940,6 +7819,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to retry automatically. Valid values: `0` (no), `1` (yes).",
           "example": "1",
           "member": "int64",
@@ -6949,6 +7829,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The list of new AZs specified in deployment modification. The first one is the source AZ, and the rest are replica AZs.",
           "example": "[]",
           "member": "string",
@@ -6976,6 +7857,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database name",
           "example": "test",
           "member": "string",
@@ -6986,6 +7868,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "View name",
           "example": "test",
           "member": "string",
@@ -6996,6 +7879,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission information",
           "example": "[]",
           "member": "string",

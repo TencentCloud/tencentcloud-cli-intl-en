@@ -215,6 +215,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group ID",
           "member": "string",
           "name": "AccessGroupId",
@@ -224,6 +225,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group name",
           "member": "string",
           "name": "AccessGroupName",
@@ -233,6 +235,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group description",
           "member": "string",
           "name": "Description",
@@ -242,6 +245,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "member": "datetime_iso",
           "name": "CreateTime",
@@ -251,6 +255,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC type (1: CVM; 2: BM 1.0)",
           "member": "uint64",
           "name": "VpcType",
@@ -260,6 +265,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC ID",
           "member": "string",
           "name": "VpcId",
@@ -275,6 +281,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission rule ID",
           "member": "uint64",
           "name": "AccessRuleId",
@@ -284,6 +291,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission rule address (IP range or IP)",
           "member": "string",
           "name": "Address",
@@ -293,6 +301,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission rule access mode (1: read-only; 2: read-write)",
           "member": "uint64",
           "name": "AccessMode",
@@ -302,6 +311,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Priority (value range: 1–100. The smaller the value, the higher the priority)",
           "member": "uint64",
           "name": "Priority",
@@ -311,6 +321,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "member": "datetime_iso",
           "name": "CreateTime",
@@ -326,6 +337,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point ID",
           "member": "string",
           "name": "MountPointId",
@@ -334,6 +346,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of permission group IDs",
           "member": "string",
           "name": "AccessGroupIds",
@@ -360,6 +373,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group name",
           "member": "string",
           "name": "AccessGroupName",
@@ -368,6 +382,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC type (1: CVM; 2: BM 1.0)",
           "member": "uint64",
           "name": "VpcType",
@@ -376,6 +391,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC ID",
           "member": "string",
           "name": "VpcId",
@@ -384,6 +400,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group description, which is an empty string by default",
           "member": "string",
           "name": "Description",
@@ -397,6 +414,7 @@
       "document": "CreateAccessGroup response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Permission group",
           "member": "AccessGroup",
           "name": "AccessGroup",
@@ -417,6 +435,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple permission rules (up to 10)",
           "example": "无",
           "member": "AccessRule",
@@ -426,6 +445,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group ID",
           "example": "ag-jwmfdcul",
           "member": "string",
@@ -440,6 +460,7 @@
       "document": "CreateAccessRules response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of permission rules\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AccessRule",
@@ -462,6 +483,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system name",
           "example": "test",
           "member": "string",
@@ -471,6 +493,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB",
           "example": "1073741824",
           "member": "uint64",
@@ -480,6 +503,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to verify POSIX ACL",
           "example": "true",
           "member": "bool",
@@ -489,6 +513,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system description, which is an empty string by default",
           "example": "test",
           "member": "string",
@@ -498,6 +523,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of superuser names, which is an empty array by default",
           "example": "[\"hadoop\"]",
           "member": "string",
@@ -507,6 +533,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Username of the root directory Inode, which is `hadoop` by default",
           "example": "hadoop",
           "member": "string",
@@ -516,6 +543,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Group name of the root directory Inode, which is `supergroup` by default",
           "example": "supergroup",
           "member": "string",
@@ -525,6 +553,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable verification of Ranger service addresses",
           "example": "false",
           "member": "bool",
@@ -534,6 +563,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of Ranger service addresses (empty array by default)",
           "example": "[\"127.0.0.1:8080\"]",
           "member": "string",
@@ -543,6 +573,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple resource tags, which can be an empty array",
           "example": "无",
           "member": "Tag",
@@ -557,6 +588,7 @@
       "document": "CreateFileSystem response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "File system",
           "member": "FileSystem",
           "name": "FileSystem",
@@ -577,6 +609,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -586,6 +619,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple lifecycle rules (up to 10)",
           "example": "无",
           "member": "LifeCycleRule",
@@ -613,6 +647,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point name",
           "member": "string",
           "name": "MountPointName",
@@ -621,6 +656,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "member": "string",
           "name": "FileSystemId",
@@ -629,6 +665,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point status (1: enabled; 2: disabled)",
           "member": "uint64",
           "name": "MountPointStatus",
@@ -642,6 +679,7 @@
       "document": "CreateMountPoint response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Mount point",
           "member": "MountPoint",
           "name": "MountPoint",
@@ -662,6 +700,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -671,6 +710,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple restoration tasks (up to 10)",
           "example": "无",
           "member": "RestoreTask",
@@ -698,6 +738,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group ID",
           "example": "ag-f8xoises",
           "member": "string",
@@ -725,6 +766,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple permission rule IDs (up to 10)",
           "example": "[13001, 13002]",
           "member": "uint64",
@@ -752,6 +794,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -779,6 +822,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple lifecycle rule IDs (up to 10)",
           "example": "[1, 2]",
           "member": "uint64",
@@ -806,6 +850,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point ID",
           "example": "f4mnvilzmdd-fj7A",
           "member": "string",
@@ -833,6 +878,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group ID",
           "member": "string",
           "name": "AccessGroupId",
@@ -846,6 +892,7 @@
       "document": "DescribeAccessGroup response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Permission group",
           "member": "AccessGroup",
           "name": "AccessGroup",
@@ -866,6 +913,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "VPC ID\nNote: either `VpcId` or `OwnerUin` can be specified as the input parameter",
           "member": "string",
           "name": "VpcId",
@@ -874,6 +922,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Resource owner `Uin`",
           "member": "uint64",
           "name": "OwnerUin",
@@ -887,6 +936,7 @@
       "document": "DescribeAccessGroups response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of permission groups",
           "member": "AccessGroup",
           "name": "AccessGroups",
@@ -907,6 +957,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group ID",
           "member": "string",
           "name": "AccessGroupId",
@@ -920,6 +971,7 @@
       "document": "DescribeAccessRules response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of permission rules",
           "member": "AccessRule",
           "name": "AccessRules",
@@ -940,6 +992,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "member": "string",
           "name": "FileSystemId",
@@ -953,6 +1006,7 @@
       "document": "DescribeFileSystem response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "File system",
           "example": "无",
           "member": "FileSystem",
@@ -962,6 +1016,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Used capacity of the file system, in bytes\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "0",
           "member": "uint64",
@@ -971,6 +1026,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Used ARCHIVE capacity of COS, in bytes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -980,6 +1036,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Used STANDARD capacity of COS, in bytes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -989,6 +1046,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Used STANDARD_IA capacity of COS, in bytes\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "0",
           "member": "uint64",
@@ -998,6 +1056,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "COS DEEP ARCHIVE storage usage, in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -1007,6 +1066,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "COS INTELLIGENT TIERING storage usage, in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -1033,6 +1093,7 @@
       "document": "DescribeFileSystems response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of file systems",
           "member": "FileSystem",
           "name": "FileSystems",
@@ -1053,6 +1114,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -1067,6 +1129,7 @@
       "document": "DescribeLifeCycleRules response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of lifecycle rules",
           "example": "无",
           "member": "LifeCycleRule",
@@ -1088,6 +1151,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point ID",
           "member": "string",
           "name": "MountPointId",
@@ -1101,6 +1165,7 @@
       "document": "DescribeMountPoint response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Mount point",
           "member": "MountPoint",
           "name": "MountPoint",
@@ -1121,6 +1186,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID\nNote: only one of `AccessGroupId`, `FileSystemId`, and `OwnerUin` can be specified as the input parameter",
           "member": "string",
           "name": "FileSystemId",
@@ -1129,6 +1195,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group ID",
           "member": "string",
           "name": "AccessGroupId",
@@ -1137,6 +1204,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Resource owner `Uin`",
           "member": "uint64",
           "name": "OwnerUin",
@@ -1150,6 +1218,7 @@
       "document": "DescribeMountPoints response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of mount points",
           "member": "MountPoint",
           "name": "MountPoints",
@@ -1170,6 +1239,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -1184,6 +1254,7 @@
       "document": "DescribeResourceTags response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of resource tags",
           "example": "无",
           "member": "Tag",
@@ -1205,6 +1276,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -1219,6 +1291,7 @@
       "document": "DescribeRestoreTasks response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of restoration tasks",
           "example": "无",
           "member": "RestoreTask",
@@ -1240,6 +1313,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point ID",
           "member": "string",
           "name": "MountPointId",
@@ -1248,6 +1322,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of permission group IDs",
           "member": "string",
           "name": "AccessGroupIds",
@@ -1274,6 +1349,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Resource owner `AppId`",
           "example": "1000000",
           "member": "uint64",
@@ -1284,6 +1360,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system name",
           "example": "test",
           "member": "string",
@@ -1294,6 +1371,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system description",
           "example": "test",
           "member": "string",
@@ -1304,6 +1382,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1314,6 +1393,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -1324,6 +1404,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "1629099694",
           "member": "datetime_iso",
@@ -1334,6 +1415,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system block size (in bytes)",
           "example": "4194304",
           "member": "uint64",
@@ -1344,6 +1426,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system capacity (in bytes)",
           "example": "1073741824",
           "member": "uint64",
@@ -1354,6 +1437,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system status (1: creating; 2: created successfully; 3: failed to create)",
           "example": "2",
           "member": "uint64",
@@ -1364,6 +1448,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of superuser names",
           "example": "[\"hadoop\"]",
           "member": "string",
@@ -1374,6 +1459,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "POSIX permission control",
           "example": "true",
           "member": "bool",
@@ -1384,6 +1470,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable verification of Ranger service addresses\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "false",
           "member": "bool",
@@ -1394,6 +1481,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of Ranger service addresses\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "[\"127.0.0.1:8080\"]",
           "member": "string",
@@ -1409,7 +1497,7 @@
       "document": "Lifecycle rule",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Lifecycle rule ID",
           "example": "1",
           "member": "uint64",
@@ -1419,7 +1507,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Lifecycle rule name",
           "example": "test",
           "member": "string",
@@ -1429,7 +1517,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Lifecycle rule path (directory or file)",
           "example": "/test",
           "member": "string",
@@ -1439,7 +1527,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "List of lifecycle rule transitions",
           "example": "无",
           "member": "Transition",
@@ -1449,7 +1537,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Lifecycle rule status (1: enabled; 2: disabled)",
           "example": "1",
           "member": "uint64",
@@ -1459,11 +1547,31 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "2019-07-30T16:24:38+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed storage usage of the current lifecycle rule path",
+          "example": "无",
+          "member": "Summary",
+          "name": "Summary",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time of `Summary`",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "LastSummaryTime",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1476,6 +1584,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group ID",
           "member": "string",
           "name": "AccessGroupId",
@@ -1484,6 +1593,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group name",
           "member": "string",
           "name": "AccessGroupName",
@@ -1492,6 +1602,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission group description",
           "member": "string",
           "name": "Description",
@@ -1518,6 +1629,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple permission rules (up to 10)",
           "example": "无",
           "member": "AccessRule",
@@ -1545,6 +1657,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "example": "f4mhaqkciq0",
           "member": "string",
@@ -1554,6 +1667,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system name",
           "example": "test",
           "member": "string",
@@ -1563,6 +1677,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system description",
           "example": "test",
           "member": "string",
@@ -1572,6 +1687,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB\nNote: the file system capacity after change cannot be smaller than the currently used capacity",
           "example": "1073741824",
           "member": "uint64",
@@ -1581,6 +1697,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of superuser names, which can be an empty array",
           "example": "[\"hadoop\"]",
           "member": "string",
@@ -1590,6 +1707,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to verify POSIX ACL",
           "example": "true",
           "member": "bool",
@@ -1599,6 +1717,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable verification of Ranger service addresses",
           "example": "false",
           "member": "bool",
@@ -1608,6 +1727,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of Ranger service addresses, which can be an empty array",
           "example": "[\"127.0.0.1:8080\"]",
           "member": "string",
@@ -1635,6 +1755,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple lifecycle rules (up to 10)",
           "example": "无",
           "member": "LifeCycleRule",
@@ -1662,6 +1783,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point ID",
           "member": "string",
           "name": "MountPointId",
@@ -1670,6 +1792,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point name",
           "member": "string",
           "name": "MountPointName",
@@ -1678,6 +1801,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point status",
           "member": "uint64",
           "name": "MountPointStatus",
@@ -1704,6 +1828,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "member": "string",
           "name": "FileSystemId",
@@ -1712,6 +1837,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Multiple resource tags, which can be an empty array",
           "member": "Tag",
           "name": "Tags",
@@ -1738,6 +1864,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point ID",
           "member": "string",
           "name": "MountPointId",
@@ -1747,6 +1874,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point name",
           "member": "string",
           "name": "MountPointName",
@@ -1756,6 +1884,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File system ID",
           "member": "string",
           "name": "FileSystemId",
@@ -1765,6 +1894,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point status (1: enabled; 2: disabled)",
           "member": "uint64",
           "name": "Status",
@@ -1774,6 +1904,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "member": "datetime_iso",
           "name": "CreateTime",
@@ -1783,6 +1914,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of IDs of the bound permission groups",
           "member": "string",
           "name": "AccessGroupIds",
@@ -1798,6 +1930,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Restoration task ID",
           "example": "1",
           "member": "uint64",
@@ -1808,6 +1941,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Restoration task file path",
           "example": "/test/file0",
           "member": "string",
@@ -1818,6 +1952,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Restoration task type (`1`: standard; `2`: expedited; `3`: bulk, with only the expedited type available currently)",
           "example": "1",
           "member": "uint64",
@@ -1828,6 +1963,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Validity period (in days) of the temporary copy generated during restoration",
           "example": "7",
           "member": "uint64",
@@ -1838,6 +1974,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Restoration task status (1: binding file; 2: file binding completed; 3: restoring file; 4: file restoration completed)",
           "example": "1",
           "member": "uint64",
@@ -1848,6 +1985,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "2019-07-30T16:24:38+08:00",
           "member": "datetime_iso",
@@ -1859,11 +1997,78 @@
       ],
       "usage": "both"
     },
+    "Summary": {
+      "document": "Details about the storage usage of the current lifecycle rule path",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Capacity usage in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "uint64",
+          "name": "CapacityUsed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS STANDARD storage usage in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "StandardCapacityUsed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS STANDARD_IA storage usage in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DegradeCapacityUsed",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS ARCHIVE storage usage in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ArchiveCapacityUsed",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS DEEP ARCHIVE storage usage in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DeepArchiveCapacityUsed",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS INTELLIGENT TIERING storage usage in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IntelligentCapacityUsed",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Tag": {
       "document": "Resource tag.",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Tag key",
           "member": "string",
           "name": "Key",
@@ -1873,6 +2078,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag value",
           "member": "string",
           "name": "Value",
@@ -1888,6 +2094,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Trigger time (in days)",
           "example": "7",
           "member": "uint64",
@@ -1898,6 +2105,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transition type (`1`: ARCHIVE; `2`: Delete; `3`: STANDARD_IA; `4`: DEEP ARCHIVE; `5`: INTELLIGENT TIERING)",
           "example": "1",
           "member": "uint64",

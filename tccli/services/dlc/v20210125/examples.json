@@ -1,8 +1,16 @@
 {
   "actions": {
+    "CancelSparkSessionBatchSQL": [
+      {
+        "document": "This example shows you how to cancel a Spark SQL batch task.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelSparkSessionBatchSQL\n<Common request parameters>\n\n{\n    \"BatchId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\"\n    }\n}",
+        "title": "Canceling a Spark SQL batch task"
+      }
+    ],
     "CancelTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"4ad30ca9-8b0e-499f-b4e1-d6e43ba0e564\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"48d09166-9ddc-4734-8cea-0cdf69c7d685\"\n    }\n}",
         "title": "Canceling a task"
@@ -18,7 +26,7 @@
     ],
     "CreateInternalTable": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInternalTable\n<Common request parameters>\n\n{\n    \"Columns\": [\n        {\n            \"Comment\": \"xx\",\n            \"Default\": \"xx\",\n            \"Type\": \"xx\",\n            \"Name\": \"xx\",\n            \"NotNull\": true\n        }\n    ],\n    \"TableBaseInfo\": {\n        \"TableName\": \"xx\",\n        \"DatasourceConnectionName\": \"xx\",\n        \"DatabaseName\": \"xx\",\n        \"TableComment\": \"xx\"\n    },\n    \"Partitions\": [\n        {\n            \"Comment\": \"xx\",\n            \"PartitionDot\": 0,\n            \"Name\": \"xx\",\n            \"PartitionFormat\": \"xx\",\n            \"Type\": \"xx\",\n            \"PartitionType\": \"xx\",\n            \"Transform\": \"xx\",\n            \"TransformArgs\": []\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Execution\": \"<create sql>\",\n        \"RequestId\": \"RequestId\"\n    }\n}",
         "title": "Creating a managed internal table"
@@ -26,7 +34,7 @@
     ],
     "CreateResultDownload": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateResultDownload\n<Common request parameters>\n\n{\n    \"Force\": true,\n    \"TaskId\": \"xx\",\n    \"Format\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"DownloadId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Example 1"
@@ -34,23 +42,31 @@
     ],
     "CreateSparkApp": [
       {
-        "document": "This example shows you how to create a Spark application.",
-        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSparkApp\n<Common request parameters>\n\n{\n    \"AppName\": \"spark-test\",\n    \"AppType\": 1,\n    \"DataEngine\": \"spark-engine\",\n    \"Eni\": \"kafka-eni\",\n    \"IsLocal\": \"cos\",\n    \"AppFile\": \"test.jar\",\n    \"RoleArn\": 12,\n    \"MainClass\": \"com.test.WordCount\",\n    \"AppConf\": \"spark-default.properties\",\n    \"IsLocalJars\": \"cos\",\n    \"AppJars\": \"com.test2.jar\",\n    \"IsLocalFiles\": \"cos\",\n    \"AppFiles\": \"spark-default.properties\",\n    \"AppDriverSize\": \"small\",\n    \"AppExecutorSize\": \"small\",\n    \"AppExecutorNums\": 1,\n    \"AppExecutorMaxNumbers\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"SparkAppId\": \"2aedsa7a-9f72-44aa-9fd4-65cb739d6301\",\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSparkApp\n<Common request parameters>\n\n{\n    \"AppName\": \"spark-test\",\n    \"AppType\": 1,\n    \"DataEngine\": \"spark-engine\",\n    \"Eni\": \"kafka-eni\",\n    \"IsLocal\": \"cos\",\n    \"AppFile\": \"test.jar\",\n    \"RoleArn\": 12,\n    \"MainClass\": \"com.test.WordCount\",\n    \"AppConf\": \"spark-default.properties\",\n    \"IsLocalJars\": \"cos\",\n    \"AppJars\": \"com.test2.jar\",\n    \"IsLocalFiles\": \"cos\",\n    \"AppFiles\": \"spark-default.properties\",\n    \"AppDriverSize\": \"small\",\n    \"AppExecutorSize\": \"small\",\n    \"AppExecutorNums\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
         "title": "Creating a Spark application"
       }
     ],
     "CreateSparkAppTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action:CreateSparkAppTask\n<Common request parameters>\n\n{\n    \"JobName\": \"spark-app-test\",\n    \"CmdArgs\": \"10 test 20\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\",\n        \"BatchId\": \"batch-9vsx3lh0\",\n        \"TaskId\": \"4a7cad6bb86211ec9c616e6f30623d72\"\n    }\n}",
         "title": "Creating a Spark task"
       }
     ],
+    "CreateSparkSessionBatchSQL": [
+      {
+        "document": "This example shows you how to submit a Spark SQL batch task.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSparkSessionBatchSQL\n<Common request parameters>\n\n{\n    \"DataEngineName\": \"data_engine_1\",\n    \"ExecuteSQL\": \"select 1\",\n    \"DriverSize\": \"small\",\n    \"ExecutorSize\": \"small\",\n    \"ExecutorNumbers\": 1,\n    \"ExecutorMaxNumbers\": 1,\n    \"TimeoutInSecond\": 2,\n    \"SessionId\": \"\",\n    \"SessionName\": \"livy-session-123\",\n    \"Arguments\": [\n        {\n            \"Value\": \"eni\",\n            \"Key\": \"test_eni\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\",\n        \"BatchId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\"\n    }\n}",
+        "title": "Submitting a Spark SQL batch task"
+      }
+    ],
     "CreateTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTask\n<Common request parameters>\n\n{\n    \"Task\": {\n        \"SQLTask\": {\n            \"SQL\": \"U0VMRUNUICogRlJPTSBgdGVzdGh5d2AuYHRlc3QxMDBtYCBMSU1JVCAxMDs=\",\n            \"Config\": [\n                {\n                    \"Key\": \"\",\n                    \"Value\": \"\"\n                }\n            ]\n        },\n        \"SparkSQLTask\": {\n            \"SQL\": \"\",\n            \"Config\": [\n                {\n                    \"Key\": \"\",\n                    \"Value\": \"\"\n                }\n            ]\n        }\n    },\n    \"DatabaseName\": \"testdb\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"13bfd2b2-b92e-4c49-9c7e-3662b5f32165\",\n        \"TaskId\": \"4ad30ca9-8b0e-499f-b4e1-d6e43ba0e564\"\n    }\n}",
         "title": "Creating a SQL task"
@@ -66,7 +82,7 @@
     ],
     "DeleteSparkApp": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action:DeleteSparkApp\n<Common request parameters>\n\n{\n    \"AppName\": \"spark-app\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
         "title": "Deleting a Spark application"
@@ -74,7 +90,7 @@
     ],
     "DescribeEngineUsageInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEngineUsageInfo\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Total\": 128,\n        \"Used\": 64,\n        \"Available\": 64,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "example"
@@ -90,7 +106,7 @@
     ],
     "DescribeLakeFsDirSummary": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLakeFsDirSummary\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Example 1"
@@ -98,7 +114,7 @@
     ],
     "DescribeLakeFsInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLakeFsInfo\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Example 1"
@@ -106,7 +122,7 @@
     ],
     "DescribeResultDownload": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResultDownload\n<Common request parameters>\n\n{\n    \"DownloadId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"Token\": \"xx\",\n        \"SecretKey\": \"xx\",\n        \"Reason\": \"xx\",\n        \"SecretId\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"Path\": \"xx\"\n    }\n}",
         "title": "Example 1"
@@ -130,10 +146,18 @@
     ],
     "DescribeSparkAppTasks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action:DescribeSparkAppTasks\n<Common request parameters>\n\n{\n    \"JobId\": \"batch_133e005d-6486-4517-8ea7-b6b97b183a6b\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SparkAppTasks\": [\n            {\n                \"CanDownload\": true,\n                \"DataSet\": \"{'Schema':['name','age'],'Data':[{'name':'29','age':'Michael'}]}\",\n                \"State\": 2,\n                \"DataAmount\": 1024,\n                \"Percentage\": 100,\n                \"SQLType\": \"DDL\",\n                \"RowAffectInfo\": \"500 rows selected (0.077 seconds)\",\n                \"InputConf\": \"[{'Key':'paths','Value':'lakefs://20000003366d155f79a522c8349496'}]\",\n                \"DataEngineId\": \"resource-1gghpd1t\",\n                \"UpdateTime\": \"1611646962000\",\n                \"TaskType\": \"presto\",\n                \"ProgressDetail\": \"[{'jobId':1,'stages':[{'stageId':1,'numTasks':3,'numActiveTasks'}]}]\",\n                \"InputType\": \"local\",\n                \"DataNumber\": 100,\n                \"ResultExpired\": true,\n                \"OutputPath\": \"cosn://test-bucket-123434324234/result/\",\n                \"DataEngineName\": \"shared_presto\",\n                \"Error\": \"****\",\n                \"OperateUin\": \"****\",\n                \"OutputMessage\": \"****\",\n                \"CreateTime\": \"1611646962000\",\n                \"UsedTime\": 60000,\n                \"DatabaseName\": \"database1\",\n                \"SQL\": \"U0VMRUNUICogRlJPTSBgdGVzdGA7\",\n                \"Id\": \"89570c65-49de-4bbd-ac0a-a67c724fc80f\"\n            }\n        ],\n        \"RequestId\": \"b577857e-041f-46c7-b5cf-4b3d3f50bc51\",\n        \"Tasks\": {\n            \"CanDownload\": true,\n            \"DataSet\": \"{'Schema':['name','age'],'Data':[{'name':'29','age':'Michael'}]}\",\n            \"State\": 2,\n            \"DataAmount\": 1024,\n            \"Percentage\": 100,\n            \"SQLType\": \"DDL\",\n            \"RowAffectInfo\": \"500 rows selected (0.077 seconds)\",\n            \"InputConf\": \"[{'Key':'paths','Value':'lakefs://20000003366d155f79a522c8349496'}]\",\n            \"DataEngineId\": \"resource-1gghpd1t\",\n            \"UpdateTime\": \"1611646962000\",\n            \"TaskType\": \"presto\",\n            \"ProgressDetail\": \"[{'jobId':1,'stages':[{'stageId':1,'numTasks':3,'numActiveTasks'}]}]\",\n            \"InputType\": \"local\",\n            \"DataNumber\": 100,\n            \"ResultExpired\": true,\n            \"OutputPath\": \"cosn://test-bucket-123434324234/result/\",\n            \"DataEngineName\": \"shared_presto\",\n            \"Error\": \"****\",\n            \"OperateUin\": \"****\",\n            \"OutputMessage\": \"****\",\n            \"CreateTime\": \"1611646962000\",\n            \"UsedTime\": 60000,\n            \"DatabaseName\": \"database1\",\n            \"SQL\": \"U0VMRUNUICogRlJPTSBgdGVzdGA7\",\n            \"Id\": \"89570c65-49de-4bbd-ac0a-a67c724fc80f\"\n        }\n    }\n}",
         "title": "Querying the list of running task instances of a Spark application"
+      }
+    ],
+    "DescribeSparkSessionBatchSqlLog": [
+      {
+        "document": "This example shows you how to obtain the logs of a Spark SQL batch task.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSparkSessionBatchSqlLog\n<Common request parameters>\n\n{\n    \"BatchId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\"\n}",
+        "output": "{\n    \"Response\": {\n        \"State\": 0,\n        \"LogSet\": [\n            {\n                \"Step\": \"BEG\",\n                \"Time\": \"2023-03-20 12:12:12\",\n                \"Message\": \"Cluster name\",\n                \"Operate\": [\n                    {\n                        \"Text\": \"dateEngine-1\",\n                        \"Operate\": \"COPY\",\n                        \"Supplement\": [\n                            {\n                                \"Key\": \"TASKID\",\n                                \"Value\": \"d0ds1sad4-9d7e-4f64-a3f4-f385dcs6742\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\"\n    }\n}",
+        "title": "Obtaining the logs of a Spark SQL batch task"
       }
     ],
     "DescribeTaskResult": [
@@ -146,7 +170,7 @@
     ],
     "DescribeTasks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTasks\n<Common request parameters>\n\n{\n    \"Sorting\": \"desc\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"e386471f-139a-4e59-877f-50ece8135b99\"\n            ],\n            \"Name\": \"task-id\"\n        },\n        {\n            \"Values\": [\n                \"e386471f-139a-4e59-877f-50ece8135b98\"\n            ],\n            \"Name\": \"task-id\"\n        }\n    ],\n    \"Limit\": 10,\n    \"SortBy\": \"create-time\",\n    \"StartTime\": \"2019-01-21 00:00:00\",\n    \"Offset\": 0,\n    \"EndTime\": \"2019-01-22 00:00:00\",\n    \"DataEngineName\": \"shared_presto\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"TaskList\": [\n            {\n                \"Error\": \"xx\",\n                \"UiUrl\": \"xx\",\n                \"CanDownload\": true,\n                \"DataSet\": \"xx\",\n                \"State\": 2,\n                \"DataAmount\": 1024,\n                \"SparkJobId\": \"xx\",\n                \"Percentage\": 100,\n                \"SQLType\": \"xx\",\n                \"SparkJobFile\": \"xx\",\n                \"RowAffectInfo\": \"xx\",\n                \"InputConf\": \"xx\",\n                \"DataEngineId\": \"xx\",\n                \"UpdateTime\": \"xx\",\n                \"SparkJobName\": \"xx\",\n                \"TaskType\": \"xx\",\n                \"ProgressDetail\": \"xx\",\n                \"InputType\": \"xx\",\n                \"UserAlias\": \"xx\",\n                \"DataNumber\": 100,\n                \"ResultExpired\": true,\n                \"OutputPath\": \"xx\",\n                \"DataEngineName\": \"xx\",\n                \"OperateUin\": \"xx\",\n                \"OutputMessage\": \"xx\",\n                \"CreateTime\": \"xx\",\n                \"UsedTime\": 60000,\n                \"TotalTime\": 80000,\n                \"DatabaseName\": \"xx\",\n                \"SQL\": \"xx\",\n                \"Id\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"TasksOverview\": {\n            \"TaskQueuedCount\": 0,\n            \"TaskInitCount\": 0,\n            \"TaskRunningCount\": 0,\n            \"TotalTaskCount\": 1888\n        }\n    }\n}",
         "title": "Listing tasks"
@@ -155,14 +179,14 @@
     "GenerateCreateMangedTableSql": [
       {
         "document": "This example shows you how to create a managed internal table.",
-        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateCreateMangedTableSql\n<Common request parameters>\n\n{\n    \"Columns\": [\n        {\n            \"Comment\": \"xx\",\n            \"Default\": \"xx\",\n            \"Type\": \"xx\",\n            \"Name\": \"xx\",\n            \"NotNull\": true\n        }\n    ],\n    \"TableBaseInfo\": {\n        \"TableName\": \"xx\",\n        \"DatasourceConnectionName\": \"xx\",\n        \"DatabaseName\": \"xx\",\n        \"TableComment\": \"xx\"\n    },\n    \"Partitions\": [\n        {\n            \"Comment\": \"xx\",\n            \"PartitionDot\": 0,\n            \"Name\": \"xx\",\n            \"PartitionFormat\": \"xx\",\n            \"Type\": \"xx\",\n            \"PartitionType\": \"xx\",\n            \"Transform\": \"xx\",\n            \"TransformArgs\": []\n        }\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateCreateMangedTableSql\n<Common request parameters>\n\n{\n    \"TableBaseInfo\": {\n        \"DatabaseName\": \"abc\",\n        \"TableName\": \"abc\",\n        \"DatasourceConnectionName\": \"abc\",\n        \"TableComment\": \"abc\",\n        \"Type\": \"abc\",\n        \"TableFormat\": \"abc\",\n        \"UserAlias\": \"abc\",\n        \"UserSubUin\": \"abc\",\n        \"GovernPolicy\": {},\n        \"DbGovernPolicyIsDisable\": \"abc\"\n    },\n    \"Columns\": [\n        {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"Comment\": \"abc\",\n            \"Default\": \"abc\",\n            \"NotNull\": true\n        }\n    ],\n    \"Partitions\": [\n        {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"Comment\": \"abc\",\n            \"PartitionType\": \"abc\",\n            \"PartitionFormat\": \"abc\",\n            \"PartitionDot\": 0,\n            \"Transform\": \"abc\",\n            \"TransformArgs\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"Properties\": [\n        {\n            \"Key\": \"abc\",\n            \"Value\": \"abc\"\n        }\n    ],\n    \"UpsertKeys\": [\n        \"abc\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Execution\": {\n            \"SQL\": \"<create sql>\"\n        },\n        \"RequestId\": \"RequestId\"\n    }\n}",
         "title": "Creating a managed internal table"
       }
     ],
     "ModifyGovernEventRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyGovernEventRule\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Example 1"
@@ -176,9 +200,17 @@
         "title": "Updating a Spark application"
       }
     ],
+    "ModifySparkAppBatch": [
+      {
+        "document": "This example shows you how to modify Spark job parameters in batches.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySparkAppBatch\n<Common request parameters>\n\n{\n    \"SparkAppId\": [\n        \"batch_a7dca867-b941-4294-af9e-3dsefc086f1e\"\n    ],\n    \"DataEngine\": \"DataEngine-dde2f7vq\",\n    \"AppDriverSize\": \"small\",\n    \"AppExecutorSize\": \"small\",\n    \"AppExecutorNums\": 1,\n    \"AppExecutorMaxNumbers\": 1,\n    \"IsInherit\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\"\n    }\n}",
+        "title": "Modifying Spark job parameters in batches"
+      }
+    ],
     "SuspendResumeDataEngine": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SuspendResumeDataEngine\n<Common request parameters>\n\n{\n    \"Operate\": \"xx\",\n    \"DataEngineName\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"DataEngineName\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "test"
@@ -186,7 +218,7 @@
     ],
     "SwitchDataEngine": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchDataEngine\n<Common request parameters>\n\n{\n    \"DataEngineName\": \"test\",\n    \"StartStandbyCluster\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2f67771a-a384-4b4e-86a5-146d8829ae2d\"\n    }\n}",
         "title": "test"
@@ -194,7 +226,7 @@
     ],
     "UpdateRowFilter": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateRowFilter\n<Common request parameters>\n\n{\n    \"Policy\": {\n        \"Table\": \"TableName\",\n        \"Catalog\": \"COSDataCatalog\",\n        \"Operation\": \"ALL\",\n        \"Database\": \"DatabaseName\"\n    },\n    \"PolicyId\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
         "title": "Updating the row filter policy"

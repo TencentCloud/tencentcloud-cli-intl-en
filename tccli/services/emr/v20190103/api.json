@@ -159,6 +159,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster string ID",
           "example": "emr-xxx",
           "member": "string",
@@ -168,6 +169,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User information list",
           "example": "[{\"UserName\":\"user1\",\"UserGroup\":\"group1\",\"PassWord\":\"123456\"}]",
           "member": "UserInfoForUserManager",
@@ -182,6 +184,7 @@
       "document": "AddUsersForUserManager response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The user list that is successfully added\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[\"123\"]",
           "member": "string",
@@ -191,6 +194,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The user list that is not successfully added\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[\"123\"]",
           "member": "string",
@@ -213,6 +217,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The description of master nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NodeResourceSpec",
@@ -223,6 +228,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The description of core nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NodeResourceSpec",
@@ -233,6 +239,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The description of task nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NodeResourceSpec",
@@ -243,6 +250,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The description of common nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NodeResourceSpec",
@@ -253,6 +261,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of master nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -263,6 +272,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of core nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -273,6 +283,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of task nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -283,6 +294,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of common nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -299,6 +311,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Queue name",
           "example": "root.default",
           "member": "string",
@@ -309,6 +322,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Username",
           "example": "hadoop",
           "member": "string",
@@ -319,6 +333,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application type",
           "example": "MAPREDUCE",
           "member": "string",
@@ -329,6 +344,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`SumMemorySeconds` meaning",
           "example": "58250",
           "member": "int64",
@@ -339,6 +355,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "33",
           "member": "int64",
@@ -349,6 +366,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SumHDFSBytesWritten (with unit)",
           "example": "48 bytes",
           "member": "string",
@@ -359,6 +377,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SumHDFSBytesRead (with unit)",
           "example": "269.1 MB",
           "member": "string",
@@ -369,6 +388,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application count",
           "example": "3",
           "member": "int64",
@@ -385,6 +405,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "COS `SecretId`",
           "member": "string",
           "name": "CosSecretId",
@@ -394,6 +415,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS `SecrectKey`",
           "member": "string",
           "name": "CosSecretKey",
@@ -403,6 +425,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS path to log",
           "member": "string",
           "name": "LogOnCosPath",
@@ -418,6 +441,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Database instance\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceName",
@@ -427,6 +451,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database IP\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Ip",
@@ -436,6 +461,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database port\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Port",
@@ -445,6 +471,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database memory specification\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "MemSize",
@@ -454,6 +481,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database disk specification\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Volume",
@@ -463,6 +491,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Service flag\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Service",
@@ -472,6 +501,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ExpireTime",
@@ -481,6 +511,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ApplyTime",
@@ -490,6 +521,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Payment type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "PayType",
@@ -499,6 +531,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration flag\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "ExpireFlag",
@@ -508,6 +541,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database status\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Status",
@@ -517,6 +551,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Renewal flag\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "IsAutoRenew",
@@ -526,6 +561,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database string\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "SerialNo",
@@ -535,6 +571,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ZoneId\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ZoneId",
@@ -544,6 +581,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "RegionId\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "RegionId",
@@ -559,6 +597,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Dependency. `0`: Other clusters depend on the current cluster. `1`: The current cluster depends on other clusters.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -569,6 +608,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shared component\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "zookeeper",
           "member": "string",
@@ -579,6 +619,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sharing cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "emr-123",
           "member": "string",
@@ -589,6 +630,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sharing cluster status\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -605,6 +647,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "13284",
           "member": "int64",
@@ -615,6 +658,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "emr-38om728d",
           "member": "string",
@@ -625,6 +669,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Title\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "集群运行中",
           "member": "string",
@@ -635,6 +680,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "tencent_emr",
           "member": "string",
@@ -645,6 +691,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -655,6 +702,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "10002",
           "member": "int64",
@@ -665,6 +713,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User APPID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "251112431",
           "member": "int64",
@@ -675,6 +724,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User UIN\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "100000122121",
           "member": "string",
@@ -685,6 +735,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -695,6 +746,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster `VPCID`\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "87821",
           "member": "int64",
@@ -705,6 +757,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021891",
           "member": "int64",
@@ -715,6 +768,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance status code. Value range:\n<li>2: cluster running</li>\n<li>3: creating cluster.</li>\n<li>4: scaling out cluster.</li>\n<li>5: adding router node in cluster.</li>\n<li>6: installing component in cluster.</li>\n<li>7: cluster executing command.</li>\n<li>8: restarting service.</li>\n<li>9: entering maintenance.</li>\n<li>10: suspending service.</li>\n<li>11: exiting maintenance.</li>\n<li>12: exiting suspension.</li>\n<li>13: delivering configuration.</li>\n<li>14: terminating cluster.</li>\n<li>15: terminating core node.</li>\n<li>16: terminating task node.</li>\n<li>17: terminating router node.</li>\n<li>18: changing webproxy password.</li>\n<li>19: isolating cluster.</li>\n<li>20: resuming cluster.</li>\n<li>21: repossessing cluster.</li>\n<li>22: waiting for configuration adjustment.</li>\n<li>23: cluster isolated.</li>\n<li>24: removing node.</li>\n<li>33: waiting for refund.</li>\n<li>34: refunded.</li>\n<li>301: creation failed.</li>\n<li>302: scale-out failed.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -725,6 +779,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021-10-18 19:46:32",
           "member": "string",
@@ -735,6 +790,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Execution duration\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0天18小时32分钟28秒",
           "member": "string",
@@ -745,6 +801,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster product configuration information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "EmrProductConfigOutter",
@@ -755,6 +812,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public IP of master node\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "--",
           "member": "string",
@@ -765,6 +823,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "EMR version\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "EMR-V2.5.0",
           "member": "string",
@@ -775,6 +834,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing mode\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -785,6 +845,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Transaction version\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -795,6 +856,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Resource order ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -805,6 +867,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether this is a paid cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -815,6 +878,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Alarm information for cluster error\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -825,6 +889,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the new architecture is used\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -835,6 +900,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Metadatabase information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -845,6 +911,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -855,6 +922,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Hive metadata\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -865,6 +933,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster type: EMR, CLICKHOUSE, DRUID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "HADOOP",
           "member": "string",
@@ -875,6 +944,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Alias serialization of all nodes in cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -885,6 +955,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster version ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "20",
           "member": "int64",
@@ -895,6 +966,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Availability zone\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "ap-guangzhou-2",
           "member": "string",
@@ -905,6 +977,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scenario name\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "Hadoop-Default",
           "member": "string",
@@ -915,6 +988,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scenario-based cluster type\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "Hadoop",
           "member": "string",
@@ -925,6 +999,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scenario-based EMR version\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "ClickHouse-V1.0.0",
           "member": "string",
@@ -935,6 +1010,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scenario-based cluster type\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "Hadoop",
           "member": "string",
@@ -945,6 +1021,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "VPC name\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "emr",
           "member": "string",
@@ -955,6 +1032,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet name\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "emr-name",
           "member": "string",
@@ -965,6 +1043,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster dependency\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "ClusterExternalServiceInfo",
@@ -975,6 +1054,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The VPC ID string type of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -985,6 +1065,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The subnet ID string type of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -995,6 +1076,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TopologyInfo",
@@ -1005,6 +1087,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Multi-AZ cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -1015,6 +1098,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the feature of automatic abnormal node replacement is enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -1030,6 +1114,7 @@
       "document": "Target processes",
       "members": [
         {
+          "disabled": false,
           "document": "The process name (required), such as NameNode.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "“NameNode”",
           "member": "string",
@@ -1039,6 +1124,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The target IP list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"ip1\", \"ip2\"]",
           "member": "string",
@@ -1055,6 +1141,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The EMR version, such as `EMR-V2.3.0` that indicates the version 2.3.0 of EMR. You can query the EMR version [here](https://intl.cloud.tencent.com/document/product/589/66338?from_cn_redirect=1).",
           "example": "EMR-V1.3.1",
           "member": "string",
@@ -1064,6 +1151,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable high availability for nodes. Valid values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>",
           "example": "true",
           "member": "bool",
@@ -1073,6 +1161,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The instance name.\n<li>Length limit: 6–36 characters.</li>\n<li>Can contain only Chinese characters, letters, digits, hyphens (-), and underscores (_).</li>",
           "example": "emr测试",
           "member": "string",
@@ -1082,6 +1171,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The instance billing mode. Valid values:\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>",
           "example": "PREPAID",
           "member": "string",
@@ -1091,6 +1181,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The instance login setting. This parameter allows you to set a login password or key for your purchased node.\n<li>If a key is set, the password will be used for login to the native component WebUI only.</li>\n<li>If no key is set, the password will be used for login to all purchased nodes and the native component WebUI.</li>",
           "example": "无",
           "member": "LoginSettings",
@@ -1100,6 +1191,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The configuration of cluster application scenario and supported components.",
           "example": "无",
           "member": "SceneSoftwareConfig",
@@ -1109,6 +1201,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The details of the monthly subscription, including the instance period and auto-renewal. It is required if `InstanceChargeType` is `PREPAID`.",
           "example": "无",
           "member": "InstanceChargePrepaid",
@@ -1118,6 +1211,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The ID of the security group to which the instance belongs, in the format of `sg-xxxxxxxx`. You can call the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API and obtain this parameter from the `SecurityGroupId` field in the response.",
           "example": "sg-xxxxxxxxxx",
           "member": "string",
@@ -1127,6 +1221,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.",
           "example": "无",
           "member": "ScriptBootstrapActionConfig",
@@ -1136,6 +1231,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae360632808`.",
           "example": "sdcdwxxxws",
           "member": "string",
@@ -1145,6 +1241,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable public IP access for master nodes. Valid values:\n<li>`NEED_MASTER_WAN`: Enable public IP for master nodes.</li>\n<li>`NOT_NEED_MASTER_WAN`: Disable.</li>The public IP is enabled for master nodes by default.",
           "example": "无",
           "member": "string",
@@ -1154,6 +1251,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable remote login over the public network. It is invalid if `SecurityGroupId` is passed in. It is disabled by default. Valid values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>",
           "example": "无",
           "member": "bool",
@@ -1163,6 +1261,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable Kerberos authentication. Valid values:\n<li>`true`: Enable</li>\n<li>`false` (default): Disable</li>",
           "example": "无",
           "member": "bool",
@@ -1172,6 +1271,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "[Custom software configuration](https://intl.cloud.tencent.com/document/product/589/35655?from_cn_redirect=1?from_cn_redirect=1)",
           "example": "无",
           "member": "string",
@@ -1181,6 +1281,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The tag description list. This parameter is used to bind a tag to a resource instance.",
           "example": "无",
           "member": "Tag",
@@ -1190,6 +1291,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The list of spread placement group IDs. Only one can be specified.\nYou can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.",
           "example": "[\"disa-xxxxx\"]",
           "member": "string",
@@ -1199,6 +1301,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable the cluster-level CBS encryption. Valid values:\n<li>`true`: Enable</li>\n<li>`false` (default): Disable</li>",
           "example": "true",
           "member": "bool",
@@ -1208,6 +1311,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The metadatabase information. If `MetaType` is `EMR_NEW_META`, `MetaDataJdbcUrl`, `MetaDataUser`, `MetaDataPass`, and `UnifyMetaInstanceId` are not required.\nIf `MetaType` is `EMR_EXIT_META`, `UnifyMetaInstanceId` is required.\nIf `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `MetaDataPass` are required.",
           "example": "无",
           "member": "CustomMetaDBInfo",
@@ -1217,6 +1321,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The shared component information.",
           "example": "无",
           "member": "DependService",
@@ -1226,6 +1331,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The node resource specs. A spec is specified for each AZ, with the first spec for the primary AZ, the second for the backup AZ, and the third for the arbitrator AZ. If the multi-AZ mode is not enabled, only one spec is required.",
           "example": "无",
           "member": "ZoneResourceConfiguration",
@@ -1240,6 +1346,7 @@
       "document": "CreateCluster response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "emr-xxxxx",
           "member": "string",
@@ -1262,6 +1369,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>16: EMR v2.3.0</li>\n<li>20: EMR v2.5.0</li>\n<li>25: EMR v3.1.0</li>\n<li>27: Kafka v1.0.0</li>\n<li>30: EMR v2.6.0</li>\n<li>33: EMR v3.2.1</li>\n<li>34: EMR v3.3.0</li>\n<li>36: StarRocks v1.0.0</li>\n<li>37: EMR v3.4.0</li>\n<li>38: EMR v2.7.0</li>\n<li>39: StarRocks v1.1.0</li>\n<li>41: Druid v1.1.0</li>",
           "example": "4",
           "member": "uint64",
@@ -1271,6 +1379,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).\nEnter an instance value: `hive` or `flink`.",
           "example": "[\"hadoop-2.8.4\\n\",\"zookeeper-3.4.9\\n\",\"knox-1.2.0\\n\"]",
           "member": "string",
@@ -1280,6 +1389,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable high node availability. Valid values:\n<li>0: does not enable high availability of node.</li>\n<li>1: enables high availability of node.</li>",
           "example": "0",
           "member": "uint64",
@@ -1289,6 +1399,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance name.\n<li>Length limit: 6-36 characters.</li>\n<li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>",
           "example": "emr测试",
           "member": "string",
@@ -1298,6 +1409,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
           "example": "0",
           "member": "uint64",
@@ -1307,6 +1419,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>\n<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>",
           "example": "3600",
           "member": "uint64",
@@ -1316,6 +1429,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Time unit of instance purchase duration. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>",
           "example": "s",
           "member": "string",
@@ -1325,6 +1439,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance login settings. This parameter allows you to set the login password or key for your purchased node.\n<li>If the key is set, the password will be only used for login to the native component WebUI.</li>\n<li>If the key is not set, the password will be used for login to all purchased nodes and the native component WebUI.</li>",
           "example": "无",
           "member": "LoginSettings",
@@ -1334,6 +1449,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.",
           "example": "无",
           "member": "VPCSettings",
@@ -1343,6 +1459,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node resource specification.",
           "example": "无",
           "member": "NewResourceSpec",
@@ -1352,6 +1469,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parameter required for enabling COS access.",
           "example": "无",
           "member": "COSSettings",
@@ -1361,6 +1479,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
           "example": "无",
           "member": "Placement",
@@ -1370,6 +1489,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.",
           "example": "sg-xxxxxxxxxx",
           "member": "string",
@@ -1379,6 +1499,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "[Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings",
           "example": "无",
           "member": "PreExecuteFileSettings",
@@ -1388,6 +1509,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether auto-renewal is enabled. Valid values:\n<li>0: auto-renewal not enabled.</li>\n<li>1: auto-renewal enabled.</li>",
           "example": "0",
           "member": "uint64",
@@ -1397,6 +1519,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Client token.",
           "example": "sdcdwxxxws",
           "member": "string",
@@ -1406,6 +1529,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable public IP access for master node. Valid values:\n<li>NEED_MASTER_WAN: enables public IP for master node.</li>\n<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default.",
           "example": "NEED_MASTER_WAN",
           "member": "string",
@@ -1415,6 +1539,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.",
           "example": "22",
           "member": "int64",
@@ -1424,6 +1549,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable secure cluster. 0: no; other values: yes.",
           "example": "0",
           "member": "int64",
@@ -1433,6 +1559,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Accesses to external file system.",
           "example": "fs",
           "member": "string",
@@ -1442,6 +1569,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag description list. This parameter is used to bind a tag to a resource instance.",
           "example": "无",
           "member": "Tag",
@@ -1451,6 +1579,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of spread placement group IDs. Only one can be specified currently.\nThis parameter can be obtained in the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1) API.",
           "example": "[\"disa-xxxxx\"]",
           "member": "string",
@@ -1460,6 +1589,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted",
           "example": "0",
           "member": "uint64",
@@ -1469,6 +1599,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Hive-shared metadatabase type. Valid values:\n<li>EMR_DEFAULT_META: the cluster creates one by default.</li>\n<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>\n<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>",
           "example": "EMR_EXIT_META",
           "member": "string",
@@ -1478,6 +1609,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "EMR-MetaDB instance",
           "example": "instdxxxxx",
           "member": "string",
@@ -1487,6 +1619,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom MetaDB instance information",
           "example": "无",
           "member": "CustomMetaInfo",
@@ -1496,6 +1629,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom application role.",
           "example": "roleName",
           "member": "string",
@@ -1505,6 +1639,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scenario-based values:\nHadoop-Kudu\nHadoop-Zookeeper\nHadoop-Presto\nHadoop-Hbase",
           "example": "Hadoop-Kudu",
           "member": "string",
@@ -1514,6 +1649,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shared component information",
           "example": "无",
           "member": "ExternalService",
@@ -1523,6 +1659,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "1",
           "member": "int64",
@@ -1532,6 +1669,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`true` indicates that the multi-AZ deployment mode is enabled. This parameter is available only in cluster creation and cannot be changed after setting.",
           "example": "false",
           "member": "bool",
@@ -1541,6 +1679,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node resource specs. The actual number of AZs is set, with the first AZ as the primary AZ, the second as the backup AZ, and the third as the arbitrator AZ. If the multi-AZ mode is not enabled, set the value to `1`.",
           "example": "无",
           "member": "MultiZoneSetting",
@@ -1555,6 +1694,7 @@
       "document": "CreateInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "emr-xxxxx",
           "member": "string",
@@ -1577,6 +1717,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The JDBC URL of the custom metadatabase instance. Example: jdbc:mysql://10.10.10.10:3306/dbname",
           "example": "jdbc:mysql://ip:port/hive",
           "member": "string",
@@ -1587,6 +1728,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The custom metadatabase instance username.",
           "example": "userName",
           "member": "string",
@@ -1597,6 +1739,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The custom metadatabase instance password.",
           "example": "pwd",
           "member": "string",
@@ -1607,6 +1750,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The Hive-shared metadatabase type. Valid values:\n<li>`EMR_DEFAULT_META`: The cluster creates one by default.</li>\n<li>`EMR_EXIST_META`: The cluster uses the specified EMR metadatabase instance.</li>\n<li>`USER_CUSTOM_META`: The cluster uses a custom metadatabase instance.</li>",
           "example": "无",
           "member": "string",
@@ -1617,6 +1761,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The EMR-MetaDB instance.",
           "example": "无",
           "member": "string",
@@ -1633,6 +1778,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`",
           "member": "string",
           "name": "MetaDataJdbcUrl",
@@ -1642,6 +1788,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom MetaDB instance username",
           "member": "string",
           "name": "MetaDataUser",
@@ -1651,6 +1798,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom MetaDB instance password",
           "member": "string",
           "name": "MetaDataPass",
@@ -1666,6 +1814,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Custom parameter key",
           "example": "zookeeper.quorum",
           "member": "string",
@@ -1676,6 +1825,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom parameter value",
           "example": "1.1.1.1",
           "member": "string",
@@ -1692,6 +1842,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The shared component name.",
           "example": "zookeeper",
           "member": "string",
@@ -1702,6 +1853,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The cluster to which the shared component belongs.",
           "example": "emr-123",
           "member": "string",
@@ -1718,6 +1870,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster instance ID in the format of emr-xxxxxxxx",
           "example": "emr-6deluvd4",
           "member": "string",
@@ -1727,6 +1880,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node flag. Valid values:\n<li>all: gets the information of nodes in all types except TencentDB information.</li>\n<li>master: gets master node information.</li>\n<li>core: gets core node information.</li>\n<li>task: gets task node information.</li>\n<li>common: gets common node information.</li>\n<li>router: gets router node information.</li>\n<li>db: gets TencentDB information in normal status.</li>\nNote: only the above values are supported for the time being. Entering other values will cause errors.",
           "example": "all",
           "member": "string",
@@ -1736,6 +1890,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number. Default value: 0, indicating the first page.",
           "example": "0",
           "member": "int64",
@@ -1745,6 +1900,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results per page. Default value: 100. Maximum value: 100",
           "example": "10",
           "member": "int64",
@@ -1754,6 +1910,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Resource type. Valid values: all, host, pod. Default value: all",
           "example": "all",
           "member": "string",
@@ -1763,6 +1920,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Searchable field",
           "example": "无",
           "member": "SearchItem",
@@ -1772,6 +1930,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "None",
           "example": "无",
           "member": "string",
@@ -1781,6 +1940,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "None",
           "example": "无",
           "member": "int64",
@@ -1795,6 +1955,7 @@
       "document": "DescribeClusterNodes response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of queried nodes",
           "member": "int64",
           "name": "TotalCnt",
@@ -1802,6 +1963,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of node details\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "NodeHardwareInfo",
           "name": "NodeList",
@@ -1809,6 +1971,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "List of tag keys owned by user\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TagKeys",
@@ -1816,6 +1979,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource type list\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "HardwareResourceTypeList",
@@ -1836,6 +2000,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster ID",
           "example": "emr-9kd5tnmq",
           "member": "string",
@@ -1845,6 +2010,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time in the format of timestamp. Unit: seconds.",
           "example": "1621570097",
           "member": "int64",
@@ -1854,6 +2020,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time in the format of timestamp. Unit: seconds.",
           "example": "1621590097",
           "member": "int64",
@@ -1863,6 +2030,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Queue name used for filtering",
           "example": "[]",
           "member": "string",
@@ -1872,6 +2040,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Username used for filtering",
           "example": "[]",
           "member": "string",
@@ -1881,6 +2050,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application type used for filtering",
           "example": "[]",
           "member": "string",
@@ -1890,6 +2060,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Group field. Valid values: `queue`, `user`, and `applicationType`.",
           "example": "[]",
           "member": "string",
@@ -1899,6 +2070,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting field. Valid values: `sumMemorySeconds`, `sumVCoreSeconds`, `sumHDFSBytesWritten`, and `sumHDFSBytesRead`.",
           "example": "sumMemorySeconds",
           "member": "string",
@@ -1908,6 +2080,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Order type. Valid values: `0` (descending) and `1`(ascending).",
           "example": "1",
           "member": "int64",
@@ -1917,6 +2090,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number",
           "example": "0",
           "member": "int64",
@@ -1926,6 +2100,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page limit",
           "example": "20",
           "member": "int64",
@@ -1940,6 +2115,7 @@
       "document": "DescribeEmrApplicationStatics response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Application statistics",
           "example": "无",
           "member": "ApplicationStatics",
@@ -1949,6 +2125,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total count",
           "example": "3",
           "member": "int64",
@@ -1958,6 +2135,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available queue name",
           "example": "[\"root.default\"]",
           "member": "string",
@@ -1967,6 +2145,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available usernames",
           "example": "[\"hadoop\"]",
           "member": "string",
@@ -1976,6 +2155,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available application type",
           "example": "[\"MAPREDUCE\"]",
           "member": "string",
@@ -1998,6 +2178,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster filtering policy. Valid values: <li>clusterList: Queries the list of clusters excluding terminated ones.</li><li>monitorManage: Queries the list of clusters excluding those terminated, under creation and not successfully created.</li><li>cloudHardwareManage/componentManage: Two reserved values, which have the same implications as those of `monitorManage`.</li>",
           "example": "clusterList",
           "member": "string",
@@ -2007,6 +2188,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number. Default value: `0`, indicating the first page.",
           "example": "0",
           "member": "uint64",
@@ -2016,6 +2198,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results per page. Default value: `10`; maximum value: `100`.",
           "example": "10",
           "member": "uint64",
@@ -2025,6 +2208,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting field. Valid values: <li>clusterId: Sorting by instance ID. </li><li>addTime: Sorting by instance creation time.</li><li>status: Sorting by instance status code.</li>",
           "example": "clusterid",
           "member": "string",
@@ -2034,6 +2218,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sort ascending or descending based on `OrderField`. Valid values:<li>0: Descending.</li><li>1: Ascending.</li>Default value: `0`.",
           "example": "0",
           "member": "int64",
@@ -2043,6 +2228,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom query",
           "example": "无",
           "member": "Filters",
@@ -2057,6 +2243,7 @@
       "document": "DescribeInstancesList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible instances.",
           "example": "1",
           "member": "int64",
@@ -2066,6 +2253,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cluster instance list.",
           "example": "无",
           "member": "EmrListInstance",
@@ -2088,6 +2276,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster filtering policy. Valid values:\n<li>clusterList: queries the list of clusters except terminated ones.</li>\n<li>monitorManage: queries the list of clusters except those that have been terminated, are being created, or failed to be created.</li>\n<li>cloudHardwareManage/componentManage: reserved fields with the same meaning as `monitorManage`.</li>",
           "member": "string",
           "name": "DisplayStrategy",
@@ -2096,6 +2285,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.",
           "member": "string",
           "name": "InstanceIds",
@@ -2104,6 +2294,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number. Default value: 0, indicating the first page.",
           "member": "uint64",
           "name": "Offset",
@@ -2112,6 +2303,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of returned results per page. Default value: 10. Maximum value: 100",
           "member": "uint64",
           "name": "Limit",
@@ -2120,6 +2312,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.",
           "member": "int64",
           "name": "ProjectId",
@@ -2128,6 +2321,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting field. Valid values:\n<li>clusterId: sorts by cluster ID.</li>\n<li>addTime: sorts by instance creation time.</li>\n<li>status: sorts by instance status code.</li>",
           "member": "string",
           "name": "OrderField",
@@ -2136,6 +2330,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sorts according to `OrderField` in ascending or descending order. Valid values:\n<li>0: descending order.</li>\n<li>1: ascending order.</li>Default value: 0.\u0007",
           "member": "int64",
           "name": "Asc",
@@ -2149,6 +2344,7 @@
       "document": "DescribeInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of eligible instances.",
           "member": "int64",
           "name": "TotalCnt",
@@ -2156,6 +2352,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of EMR instance details.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "ClusterInstancesInfo",
           "name": "ClusterList",
@@ -2163,6 +2360,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "List of tag keys associated to an instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TagKeys",
@@ -2183,6 +2381,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "EMR cluster ID",
           "example": "emr-2xef56",
           "member": "string",
@@ -2197,6 +2396,7 @@
       "document": "DescribeResourceSchedule response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether to enable the resource scheduling feature",
           "example": "true",
           "member": "bool",
@@ -2206,6 +2406,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The resource scheduler in service",
           "example": "\"fair\"",
           "member": "string",
@@ -2215,6 +2416,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Fair Scheduler information",
           "example": "null",
           "member": "string",
@@ -2224,6 +2426,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Capacity Scheduler information",
           "example": "null",
           "member": "string",
@@ -2246,6 +2449,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cluster instance ID",
           "example": "emr-xxx",
           "member": "string",
@@ -2255,6 +2459,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number",
           "example": "0",
           "member": "int64",
@@ -2264,6 +2469,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page size",
           "example": "10",
           "member": "int64",
@@ -2273,6 +2479,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "User list query filter",
           "example": "无",
           "member": "UserManagerFilter",
@@ -2282,6 +2489,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.",
           "example": "true",
           "member": "bool",
@@ -2296,6 +2504,7 @@
       "document": "DescribeUsersForUserManager response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number",
           "example": "100",
           "member": "int64",
@@ -2305,6 +2514,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "User information list\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "UserManagerUserBriefInfo",
@@ -2327,6 +2537,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2337,6 +2548,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The system disk type. Valid values:\n<li>`CLOUD_SSD`: Cloud SSD</li>\n<li>`CLOUD_PREMIUM`: Premium cloud disk</li>\n<li>`CLOUD_BASIC`: Cloud HDD</li>\n<li>`LOCAL_BASIC`: Local disk</li>\n<li>`LOCAL_SSD`: Local SSD</li>\n\nThe data disk type. Valid values:\n<li>`CLOUD_SSD`: Cloud SSD</li>\n<li>`CLOUD_PREMIUM`: Premium cloud disk</li>\n<li>`CLOUD_BASIC`: Cloud HDD</li>\n<li>`LOCAL_BASIC`: Local disk</li>\n<li>`LOCAL_SSD`: Local SSD</li>\n<li>`CLOUD_HSSD`: Enhanced SSD</li>\n<li>`CLOUD_THROUGHPUT`: Throughput HDD</li>\n<li>CLOUD_TSSD: ulTra SSD</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -2347,6 +2559,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The disk capacity in GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -2363,6 +2576,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Minimum number of CPUs",
           "example": "0.1234",
           "member": "float",
@@ -2373,6 +2587,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of CPUs",
           "example": "1.2345",
           "member": "float",
@@ -2383,6 +2598,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Minimum memory in MB",
           "example": "1234.5678",
           "member": "float",
@@ -2393,6 +2609,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum memory in MB",
           "example": "8765.4321",
           "member": "float",
@@ -2408,6 +2625,7 @@
       "document": "Returned cluster list sample",
       "members": [
         {
+          "disabled": false,
           "document": "Cluster ID",
           "example": "emr-xxxx",
           "member": "string",
@@ -2417,6 +2635,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Status description\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "状态描述",
           "member": "string",
@@ -2426,6 +2645,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Cluster name",
           "example": "集群名字",
           "member": "string",
@@ -2435,6 +2655,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cluster region",
           "example": "集群地域",
           "member": "uint64",
@@ -2444,6 +2665,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "User APPID",
           "example": "663622",
           "member": "uint64",
@@ -2453,6 +2675,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time",
           "example": "创建时间",
           "member": "string",
@@ -2462,6 +2685,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Running time",
           "example": "运行时间",
           "member": "string",
@@ -2471,6 +2695,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cluster IP",
           "example": "集群ID",
           "member": "string",
@@ -2480,6 +2705,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cluster version",
           "example": "集群版本",
           "member": "string",
@@ -2489,6 +2715,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cluster billing mode",
           "example": "0",
           "member": "uint64",
@@ -2498,6 +2725,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "EMR ID",
           "example": "23321",
           "member": "uint64",
@@ -2507,6 +2735,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Product ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "44333",
           "member": "uint64",
@@ -2516,6 +2745,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Project ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "4555",
           "member": "uint64",
@@ -2525,6 +2755,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Region\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "4552",
           "member": "uint64",
@@ -2534,6 +2765,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Subnet ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "3422",
           "member": "uint64",
@@ -2543,6 +2775,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "VPC ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "45666",
           "member": "uint64",
@@ -2552,6 +2785,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Region\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "zone",
           "member": "string",
@@ -2561,6 +2795,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Status code\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2570,6 +2805,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance tag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[]",
           "member": "Tag",
@@ -2579,6 +2815,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Alarm information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "告警信息",
           "member": "string",
@@ -2588,6 +2825,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether it is a Woodpecker cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2597,6 +2835,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "VPC name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "emr",
           "member": "string",
@@ -2606,6 +2845,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Subnet name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "emr",
           "member": "string",
@@ -2615,6 +2855,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "VPC ID string\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "vpc-lzd3w8jz",
           "member": "string",
@@ -2624,6 +2865,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Subnet ID string\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "subnet-3d73yezg",
           "member": "string",
@@ -2633,6 +2875,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Cluster type\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "spark",
           "member": "string",
@@ -2642,6 +2885,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether it is a multi-AZ cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2651,6 +2895,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether it is a manually deployed cluster\nNote: This field may return null, indicating that no valid value can be obtained. ",
           "example": "false",
           "member": "bool",
@@ -2660,6 +2905,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Client component information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"hdfs-2.8.5\",true]",
           "member": "SoftDependInfo",
@@ -2669,6 +2915,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the current cluster supports external clients.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2685,6 +2932,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The published price.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2695,6 +2943,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The discounted price.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2705,6 +2954,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The unit of the billable item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "s",
           "member": "string",
@@ -2715,6 +2965,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The queried spec.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PriceResource",
@@ -2725,6 +2976,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether spot instances are supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2741,6 +2993,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Software information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "[\"\"]",
           "member": "string",
@@ -2751,6 +3004,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of master nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -2761,6 +3015,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of core nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "3",
           "member": "int64",
@@ -2771,6 +3026,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of task nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "4",
           "member": "int64",
@@ -2781,6 +3037,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of common nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "5",
           "member": "int64",
@@ -2791,6 +3048,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Master node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "OutterResource",
@@ -2801,6 +3059,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Core node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "OutterResource",
@@ -2811,6 +3070,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Task node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "OutterResource",
@@ -2821,6 +3081,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Common node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "OutterResource",
@@ -2831,6 +3092,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether COS is used\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2841,6 +3103,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billing mode\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -2851,6 +3114,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of router nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "3",
           "member": "int64",
@@ -2861,6 +3125,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether HA is supported\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2871,6 +3136,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether secure mode is supported\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2881,6 +3147,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security group name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"111\"",
           "member": "string",
@@ -2891,6 +3158,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable CBS encryption\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -2901,6 +3169,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom application role\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"123\"",
           "member": "string",
@@ -2911,6 +3180,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security groups\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "[\"sg-3xxx\"]",
           "member": "string",
@@ -2921,6 +3191,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "SSH key ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "skey-xxxxxxxx",
           "member": "string",
@@ -2937,6 +3208,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Shared component type, which can be EMR or CUSTOM",
           "example": "EMR",
           "member": "string",
@@ -2947,6 +3219,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom parameters",
           "example": "无",
           "member": "CustomServiceDefine",
@@ -2957,6 +3230,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shared component name",
           "example": "zookeeper",
           "member": "string",
@@ -2967,6 +3241,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shared component cluster",
           "example": "emr-123",
           "member": "string",
@@ -2983,6 +3258,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Field name",
           "member": "string",
           "name": "Name",
@@ -2992,6 +3268,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filters by the field value",
           "member": "string",
           "name": "Values",
@@ -3007,6 +3284,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The directory for mounting the host in the pod, which is the mount point of the host in the resource. A specified mount point corresponds to the host path and is used as the data storage directory in the pod.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "VolumePath",
@@ -3022,6 +3300,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Time unit of instance purchase duration. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
           "example": "无",
           "member": "string",
@@ -3031,6 +3310,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>\n<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>",
           "example": "无",
           "member": "uint64",
@@ -3040,6 +3320,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Currency.",
           "example": "无",
           "member": "string",
@@ -3049,6 +3330,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
           "example": "无",
           "member": "uint64",
@@ -3058,6 +3340,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable high availability of node. Valid values:\n<li>0: does not enable high availability of node.</li>\n<li>1: enables high availability of node.</li>",
           "example": "无",
           "member": "uint64",
@@ -3067,6 +3350,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):\n<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>",
           "example": "无",
           "member": "string",
@@ -3076,6 +3360,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node specification queried for price.",
           "example": "无",
           "member": "NewResourceSpec",
@@ -3085,6 +3370,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
           "example": "无",
           "member": "Placement",
@@ -3094,6 +3380,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.",
           "example": "无",
           "member": "VPCSettings",
@@ -3103,6 +3390,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Hive-shared metadatabase type. Valid values:\n<li>EMR_DEFAULT_META: the cluster creates one by default.</li>\n<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>\n<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>",
           "example": "无",
           "member": "string",
@@ -3112,6 +3400,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "EMR-MetaDB instance",
           "example": "无",
           "member": "string",
@@ -3121,6 +3410,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom MetaDB instance information",
           "example": "无",
           "member": "CustomMetaInfo",
@@ -3130,6 +3420,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>1: EMR v1.3.1.</li>\n<li>2: EMR v2.0.1.</li>\n<li>4: EMR v2.1.0.</li>\n<li>7: EMR v3.0.0.</li>",
           "example": "无",
           "member": "uint64",
@@ -3139,6 +3430,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Scenario-based values:\nHadoop-Kudu\nHadoop-Zookeeper\nHadoop-Presto\nHadoop-Hbase",
           "example": "无",
           "member": "string",
@@ -3148,6 +3440,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Shared component information",
           "example": "无",
           "member": "ExternalService",
@@ -3157,6 +3450,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "无",
           "member": "uint64",
@@ -3166,6 +3460,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ specs",
           "example": "无",
           "member": "MultiZoneSetting",
@@ -3180,6 +3475,7 @@
       "document": "InquiryPriceCreateInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -3189,6 +3485,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -3198,6 +3495,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Time unit of instance purchase duration. Valid values:\n<li>s: seconds.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3207,6 +3505,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Purchase duration of instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -3216,6 +3515,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The price list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ZoneDetailPriceResult",
@@ -3238,6 +3538,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "How long the instance will be renewed for, which needs to be used together with `TimeUnit`.",
           "example": "1",
           "member": "uint64",
@@ -3247,6 +3548,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).",
           "example": "[\"emr-vm-jv1s4zas\\r\\n\"]",
           "member": "string",
@@ -3256,6 +3558,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.",
           "example": "无",
           "member": "Placement",
@@ -3265,6 +3568,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance billing mode.",
           "example": "1",
           "member": "int64",
@@ -3274,6 +3578,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unit of time for instance renewal.",
           "example": "m",
           "member": "string",
@@ -3283,6 +3588,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Currency.",
           "example": "CNY",
           "member": "string",
@@ -3292,6 +3598,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes",
           "example": "1",
           "member": "int64",
@@ -3306,6 +3613,7 @@
       "document": "InquiryPriceRenewInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "float",
           "name": "OriginalCost",
@@ -3313,6 +3621,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "float",
           "name": "DiscountCost",
@@ -3320,6 +3629,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Unit of time for instance renewal.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TimeUnit",
@@ -3327,6 +3637,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "How long the instance will be renewed for.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "TimeSpan",
@@ -3347,6 +3658,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Time unit of scale-out. Valid value:\n<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
           "example": "s",
           "member": "string",
@@ -3356,6 +3668,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Time span of scale-out, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>",
           "example": "3600",
           "member": "uint64",
@@ -3365,6 +3678,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the AZ where an instance resides.",
           "example": "100003",
           "member": "uint64",
@@ -3374,6 +3688,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance billing mode. Valid value:\n<li>0: Pay-as-you-go.</li>",
           "example": "0",
           "member": "uint64",
@@ -3383,6 +3698,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "emr-3ida6zmi",
           "member": "string",
@@ -3392,6 +3708,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of core nodes to be added.",
           "example": "1",
           "member": "uint64",
@@ -3401,6 +3718,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of task nodes to be added.",
           "example": "0",
           "member": "uint64",
@@ -3410,6 +3728,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Currency.",
           "example": "CNY",
           "member": "string",
@@ -3419,6 +3738,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of router nodes to be added.",
           "example": "0",
           "member": "uint64",
@@ -3428,6 +3748,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of master nodes to be added.",
           "example": "0",
           "member": "uint64",
@@ -3442,6 +3763,7 @@
       "document": "InquiryPriceScaleOutInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Original price.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3451,6 +3773,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Discounted price.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3460,6 +3783,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Time unit of scale-out. Valid value:\n<li>s: Second.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3469,6 +3793,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Node spec queried for price.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PriceResource",
@@ -3478,6 +3803,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The inquiry results corresponding to the specs specified by the input parameter `MultipleResources`, with the result of the first spec returned by other output parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "EmrPrice",
@@ -3500,6 +3826,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Time unit of scaling. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
           "example": "s",
           "member": "string",
@@ -3509,6 +3836,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration of scaling, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>",
           "example": "3600",
           "member": "uint64",
@@ -3518,6 +3846,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target node specification.",
           "example": "无",
           "member": "UpdateInstanceSettings",
@@ -3527,6 +3856,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
           "example": "0",
           "member": "uint64",
@@ -3536,6 +3866,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
           "example": "无",
           "member": "Placement",
@@ -3545,6 +3876,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Currency.",
           "example": "CNY",
           "member": "string",
@@ -3554,6 +3886,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The resource ID list for batch configuration change.",
           "example": "[\"emr-vm-xxx\"]",
           "member": "string",
@@ -3568,6 +3901,7 @@
       "document": "InquiryPriceUpdateInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "3.04",
           "member": "float",
@@ -3577,6 +3911,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2.01",
           "member": "float",
@@ -3586,6 +3921,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Time unit of scaling. Valid values:\n<li>s: seconds.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "s",
           "member": "string",
@@ -3595,6 +3931,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Duration of scaling.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "3600",
           "member": "int64",
@@ -3604,6 +3941,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Pricing details\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PriceDetail",
@@ -3626,6 +3964,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The period of monthly subscription, which defaults to 1 and is expressed in month.\nValid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
           "example": "无",
           "member": "int64",
@@ -3636,6 +3975,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable auto-renewal. Valid values:\n<li>`true`: Enable</li>\n<li>`false` (default): Disable</li>",
           "example": "无",
           "member": "bool",
@@ -3652,6 +3992,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The login password of the instance, which contains 8 to 16 uppercase letters, lowercase letters, digits, and special characters (only !@%^*) and cannot start with a special character.",
           "example": "无",
           "member": "string",
@@ -3662,6 +4003,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The key ID. After an instance is associated with a key, you can access it with the private key in the key pair. You can call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `PublicKeyId`.",
           "example": "无",
           "member": "string",
@@ -3678,6 +4020,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "EMR cluster ID",
           "example": "emr-2xef56",
           "member": "string",
@@ -3687,6 +4030,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Business identifier. `fair`: Edit fair configuration items; `fairPlan`: Edit the execution plan; `capacity`: Edit capacity configuration items.",
           "example": "fair",
           "member": "string",
@@ -3696,6 +4040,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Modified module information",
           "example": "null",
           "member": "string",
@@ -3710,6 +4055,7 @@
       "document": "ModifyResourceScheduleConfig response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "`true`: Draft, indicating the resource pool is not refreshed.",
           "example": "true",
           "member": "bool",
@@ -3719,6 +4065,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Verification error information. If it is not null, the verification fails and thus the configuration fails.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "null",
           "member": "string",
@@ -3728,6 +4075,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "json串",
           "member": "string",
@@ -3750,6 +4098,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "EMR cluster ID",
           "example": "emr-2xef56",
           "member": "string",
@@ -3759,6 +4108,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The original scheduler: `fair`",
           "example": "fair",
           "member": "string",
@@ -3768,6 +4118,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The new scheduler: `capacity`",
           "example": "capacity",
           "member": "string",
@@ -3795,6 +4146,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk type\n<li>`CLOUD_SSD`: SSD</li>\n<li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>\n<li>`CLOUD_HSSD`: Enhanced SSD</li>",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -3805,6 +4157,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk size",
           "example": "20000",
           "member": "int64",
@@ -3815,6 +4168,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of cloud disks of this type",
           "example": "1",
           "member": "int64",
@@ -3831,6 +4185,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Number of cloud disks in this type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Count",
@@ -3840,6 +4195,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Type",
@@ -3849,6 +4205,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Cloud disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Volume",
@@ -3864,6 +4221,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "\"master\", \"standby\", \"third-party\"\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"master\"",
           "member": "string",
@@ -3874,6 +4232,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "None",
           "example": "无",
           "member": "VPCSettings",
@@ -3884,6 +4243,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "None",
           "example": "无",
           "member": "Placement",
@@ -3894,6 +4254,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "None",
           "example": "无",
           "member": "NewResourceSpec",
@@ -3910,6 +4271,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Describes master node resource",
           "member": "Resource",
           "name": "MasterResourceSpec",
@@ -3919,6 +4281,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Describes core node resource",
           "member": "Resource",
           "name": "CoreResourceSpec",
@@ -3928,6 +4291,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Describes task node resource",
           "member": "Resource",
           "name": "TaskResourceSpec",
@@ -3937,6 +4301,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of master nodes",
           "member": "int64",
           "name": "MasterCount",
@@ -3946,6 +4311,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of core nodes",
           "member": "int64",
           "name": "CoreCount",
@@ -3955,6 +4321,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of task nodes",
           "member": "int64",
           "name": "TaskCount",
@@ -3964,6 +4331,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Describes common node resource",
           "member": "Resource",
           "name": "CommonResourceSpec",
@@ -3973,6 +4341,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of common nodes",
           "member": "int64",
           "name": "CommonCount",
@@ -3988,6 +4357,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The node type. Valid values: `master`, `core`, `task`, `common`, `router`, `mysql`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "master",
           "member": "string",
@@ -3998,6 +4368,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Price details by node part",
           "example": "无",
           "member": "PartDetailPriceItem",
@@ -4014,6 +4385,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "User `APPID`\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4024,6 +4396,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Serial number\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4034,6 +4407,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Machine instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4044,6 +4418,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Public IP bound to master node\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4054,6 +4429,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node type. 0: common node; 1: master node;\n2: core node; 3: task node\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4064,6 +4440,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node specification\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4074,6 +4451,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of node cores\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4084,6 +4462,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node memory size\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4094,6 +4473,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node memory description\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4104,6 +4484,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node region\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4114,6 +4495,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node AZ\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4124,6 +4506,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Application time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4134,6 +4517,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Release time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4144,6 +4528,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4154,6 +4539,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node description\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4164,6 +4550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Services deployed on node\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4174,6 +4561,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4184,6 +4572,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "System disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4194,6 +4583,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Payment type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4204,6 +4594,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database IP\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4214,6 +4605,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database port\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4224,6 +4616,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4234,6 +4627,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk capacity description\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4244,6 +4638,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4254,6 +4649,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory capacity description\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4264,6 +4660,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4274,6 +4671,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node resource ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4284,6 +4682,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Renewal flag\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4294,6 +4693,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Device flag\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4304,6 +4704,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Support for configuration adjustment\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4314,6 +4715,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Multi-cloud disk\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "MultiDiskMC",
@@ -4324,6 +4726,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Database information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CdbInfo",
@@ -4334,6 +4737,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Private IP\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4344,6 +4748,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether this node can be terminated. 1: yes, 0: no\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4354,6 +4759,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tags bound to node\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "Tag",
@@ -4364,6 +4770,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.",
           "example": "0",
           "member": "int64",
@@ -4374,6 +4781,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Resource type. Valid values: host, pod\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4384,6 +4792,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether floating specification is used. `1`: yes; `0`: no\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4394,6 +4803,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Floating specification in JSON string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4404,6 +4814,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to support billing mode change. `0`: no; `1`: yes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -4414,6 +4825,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "System disk type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -4424,6 +4836,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4434,6 +4847,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SubnetInfo",
@@ -4444,6 +4858,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Client\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4454,6 +4869,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The current system time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4464,6 +4880,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is used in a federation. Valid values: `0` (no), `1` (yes).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -4474,6 +4891,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Device name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4484,6 +4902,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Service\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4494,6 +4913,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Enabling instance protection for this instance. Valid values: `true` (enable) and `false` (disable).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -4504,6 +4924,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The billing version. Valid values: `0` (original billing) and `1` (new billing)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -4520,6 +4941,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The spec type, such as `S2.MEDIUM8`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "S2.MEDIUM8",
           "member": "string",
@@ -4530,6 +4952,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The system disk, which can be up to 1 PCS.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DiskSpecInfo",
@@ -4540,6 +4963,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The list of tags to be bound.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -4550,6 +4974,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The cloud data disk, which can be up to 15 PCS.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DiskSpecInfo",
@@ -4560,6 +4985,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The local data disk.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DiskSpecInfo",
@@ -4575,6 +5001,7 @@
       "document": "Operation scope",
       "members": [
         {
+          "disabled": false,
           "document": "The information of the services to operate on.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ServiceBasicRestartInfo",
@@ -4591,6 +5018,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Specification\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Spec",
@@ -4600,6 +5028,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specification name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "SpecName",
@@ -4609,6 +5038,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "StorageType",
@@ -4618,6 +5048,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DiskType",
@@ -4627,6 +5058,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "System disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "RootSize",
@@ -4636,6 +5068,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory size\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "MemSize",
@@ -4645,6 +5078,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPUs\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Cpu",
@@ -4654,6 +5088,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DiskSize",
@@ -4663,6 +5098,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specification\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceType",
@@ -4678,6 +5114,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The type. Valid values: `node` (node); `rootDisk` (system disk); `dataDisk` and `metaDB` (cloud data disk)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "node",
           "member": "string",
@@ -4688,6 +5125,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rate (original)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -4698,6 +5136,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Rate (discounted)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -4708,6 +5147,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Total price (discounted)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -4718,6 +5158,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Discount\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "7.5",
           "member": "float",
@@ -4728,6 +5169,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Quantity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -4744,6 +5186,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Disk size in GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "DiskSize",
@@ -4753,6 +5196,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type. Valid values: `CLOUD_PREMIUM` and `CLOUD_SSD`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DiskType",
@@ -4762,6 +5206,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DiskNum",
@@ -4777,6 +5222,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The ID of the availability zone where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -4787,6 +5233,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID of the instance. If no ID is passed in, the default project ID is used.",
           "example": "0",
           "member": "int64",
@@ -4803,6 +5250,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The TKE or EKS cluster ID.",
           "example": "\"\"",
           "member": "string",
@@ -4813,6 +5261,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom permissions\nExamples:\n{\n  \"apiVersion\": \"v1\",\n  \"clusters\": [\n    {\n      \"cluster\": {\n        \"certificate-authority-data\": \"xxxxxx==\",\n        \"server\": \"https://xxxxx.com\"\n      },\n      \"name\": \"cls-xxxxx\"\n    }\n  ],\n  \"contexts\": [\n    {\n      \"context\": {\n        \"cluster\": \"cls-xxxxx\",\n        \"user\": \"100014xxxxx\"\n      },\n      \"name\": \"cls-a44yhcxxxxxxxxxx\"\n    }\n  ],\n  \"current-context\": \"cls-a4xxxx-context-default\",\n  \"kind\": \"Config\",\n  \"preferences\": {},\n  \"users\": [\n    {\n      \"name\": \"100014xxxxx\",\n      \"user\": {\n        \"client-certificate-data\": \"xxxxxx\",\n        \"client-key-data\": \"xxxxxx\"\n      }\n    }\n  ]\n}",
           "example": "\"\"",
           "member": "string",
@@ -4823,6 +5272,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom parameters\nExamples:\n{\n    \"apiVersion\": \"apps/v1\",\n    \"kind\": \"Deployment\",\n    \"metadata\": {\n      \"name\": \"test-deployment\",\n      \"labels\": {\n        \"app\": \"test\"\n      }\n    },\n    \"spec\": {\n      \"replicas\": 3,\n      \"selector\": {\n        \"matchLabels\": {\n          \"app\": \"test-app\"\n        }\n      },\n      \"template\": {\n        \"metadata\": {\n          \"annotations\": {\n            \"your-organization.com/department-v1\": \"test-example-v1\",\n            \"your-organization.com/department-v2\": \"test-example-v2\"\n          },\n          \"labels\": {\n            \"app\": \"test-app\",\n            \"environment\": \"production\"\n          }\n        },\n        \"spec\": {\n          \"nodeSelector\": {\n            \"your-organization/node-test\": \"test-node\"\n          },\n          \"containers\": [\n            {\n              \"name\": \"nginx\",\n              \"image\": \"nginx:1.14.2\",\n              \"ports\": [\n                {\n                  \"containerPort\": 80\n                }\n              ]\n            }\n          ],\n          \"affinity\": {\n            \"nodeAffinity\": {\n              \"requiredDuringSchedulingIgnoredDuringExecution\": {\n                \"nodeSelectorTerms\": [\n                  {\n                    \"matchExpressions\": [\n                      {\n                        \"key\": \"disk-type\",\n                        \"operator\": \"In\",\n                        \"values\": [\n                          \"ssd\",\n                          \"sas\"\n                        ]\n                      },\n                      {\n                        \"key\": \"cpu-num\",\n                        \"operator\": \"Gt\",\n                        \"values\": [\n                          \"6\"\n                        ]\n                      }\n                    ]\n                  }\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }",
           "example": "\"\"",
           "member": "string",
@@ -4839,6 +5289,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The identifier of an external resource provider, such as \"cls-a1cd23fa\".",
           "example": "\"\"",
           "member": "string",
@@ -4849,6 +5300,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The type of the external resource provider, such as \"tke\". Currently, only \"tke\" is supported.",
           "example": "\"\"",
           "member": "string",
@@ -4859,6 +5311,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The purpose of the resource, which means the node type and can only be \"TASK\".",
           "example": "\"\"",
           "member": "string",
@@ -4869,6 +5322,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of CPUs.",
           "example": "\"\"",
           "member": "uint64",
@@ -4879,6 +5333,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The memory size in GB.",
           "example": "\"\"",
           "member": "uint64",
@@ -4889,6 +5344,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The EKS cluster - CPU type. Valid values: `intel` and `amd`.",
           "example": "\"\"",
           "member": "string",
@@ -4899,6 +5355,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The data directory mounting information of the pod node.",
           "example": "\"\"",
           "member": "PodVolume",
@@ -4909,6 +5366,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the dynamic spec is used. Valid values:\n<li>`true`: Yes</li>\n<li>`false` (default): No</li>",
           "example": "\"\"",
           "member": "bool",
@@ -4919,6 +5377,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The dynamic spec.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "DynamicPodSpec",
@@ -4929,6 +5388,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The unique VPC ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4939,6 +5399,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The unique VPC subnet ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -4949,6 +5410,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The pod name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4965,6 +5427,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of TKE or EKS cluster",
           "example": "cls-1234abcd",
           "member": "string",
@@ -4975,6 +5438,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom permissions\nExample:\n{\n  \"apiVersion\": \"v1\",\n  \"Clusters\": [\n    {\n      \"cluster\": {\n        \"certificate-authority-data\": \"xxxxxx==\",\n        \"server\": \"https://xxxxx.com\"\n      },\n      \"name\": \"cls-xxxxx\"\n    }\n  ],\n  \"contexts\": [\n    {\n      \"context\": {\n        \"cluster\": \"cls-xxxxx\",\n        \"user\": \"100014xxxxx\"\n      },\n      \"name\": \"cls-a44yhcxxxxxxxxxx\"\n    }\n  ],\n  \"current-context\": \"cls-a4xxxx-context-default\",\n  \"kind\": \"Config\",\n  \"preferences\": {},\n  \"users\": [\n    {\n      \"name\": \"100014xxxxx\",\n      \"user\": {\n        \"client-certificate-data\": \"xxxxxx\",\n        \"client-key-data\": \"xxxxxx\"\n      }\n    }\n  ]\n}",
           "example": "{   \"apiVersion\": \"v1\",   \"clusters\": [     {       \"cluster\": {",
           "member": "string",
@@ -4985,6 +5449,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom parameters\nExample:\n{\n    \"apiVersion\": \"apps/v1\",\n    \"kind\": \"Deployment\",\n    \"metadata\": {\n      \"name\": \"test-deployment\",\n      \"labels\": {\n        \"app\": \"test\"\n      }\n    },\n    \"spec\": {\n      \"replicas\": 3,\n      \"selector\": {\n        \"matchLabels\": {\n          \"app\": \"test-app\"\n        }\n      },\n      \"template\": {\n        \"metadata\": {\n          \"annotations\": {\n            \"your-organization.com/department-v1\": \"test-example-v1\",\n            \"your-organization.com/department-v2\": \"test-example-v2\"\n          },\n          \"labels\": {\n            \"app\": \"test-app\",\n            \"environment\": \"production\"\n          }\n        },\n        \"spec\": {\n          \"nodeSelector\": {\n            \"your-organization/node-test\": \"test-node\"\n          },\n          \"containers\": [\n            {\n              \"name\": \"nginx\",\n              \"image\": \"nginx:1.14.2\",\n              \"ports\": [\n                {\n                  \"containerPort\": 80\n                }\n              ]\n            }\n          ],\n          \"affinity\": {\n            \"nodeAffinity\": {\n              \"requiredDuringSchedulingIgnoredDuringExecution\": {\n                \"nodeSelectorTerms\": [\n                  {\n                    \"matchExpressions\": [\n                      {\n                        \"key\": \"disk-type\",\n                        \"operator\": \"In\",\n                        \"values\": [\n                          \"ssd\",\n                          \"sas\"\n                        ]\n                      },\n                      {\n                        \"key\": \"cpu-num\",\n                        \"operator\": \"Gt\",\n                        \"values\": [\n                          \"6\"\n                        ]\n                      }\n                    ]\n                  }\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }",
           "example": "{   \"apiVersion\": \"apps/v1\",   \"kind\": \"Deployment\",   \"metadata",
           "member": "string",
@@ -5001,6 +5466,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Identifier of external resource provider, such as \"cls-a1cd23fa\".",
           "example": "\"\"",
           "member": "string",
@@ -5011,6 +5477,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type of external resource provider, such as \"tke\". Currently, only \"tke\" is supported.",
           "example": "\"\"",
           "member": "string",
@@ -5021,6 +5488,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Purpose of the resource, which means the node type and can only be \"TASK\".",
           "example": "\"\"",
           "member": "string",
@@ -5031,6 +5499,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPUs",
           "example": "0",
           "member": "uint64",
@@ -5041,6 +5510,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory size in GB.",
           "example": "0",
           "member": "uint64",
@@ -5051,6 +5521,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mount point of resources for the host. A specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)",
           "example": "[]",
           "member": "string",
@@ -5061,6 +5532,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "EKS cluster - CPU type. Valid values: `intel` and `amd`.",
           "example": "\"\"",
           "member": "string",
@@ -5071,6 +5543,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Data directory mounting information of the pod node.",
           "example": "[]",
           "member": "PodVolume",
@@ -5081,6 +5554,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether floating specification is used. `1`: Yes; `0`: No.",
           "example": "0",
           "member": "uint64",
@@ -5091,6 +5565,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Floating specification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DynamicPodSpec",
@@ -5101,6 +5576,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -5111,6 +5587,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique VPC subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -5121,6 +5598,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "pod name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -5137,6 +5615,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The specified information such as pod spec and source for scale-out with pod resources.",
           "example": "无",
           "member": "PodNewSpec",
@@ -5147,6 +5626,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The custom pod permission and parameter.",
           "example": "无",
           "member": "PodNewParameter",
@@ -5163,6 +5643,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Storage type. Valid values: `pvc` and `hostpath`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "VolumeType",
@@ -5172,6 +5653,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "This field will take effect if `VolumeType` is `pvc`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "PersistentVolumeContext",
           "name": "PVCVolume",
@@ -5181,6 +5663,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "This field will take effect if `VolumeType` is `hostpath`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "HostVolumeContext",
           "name": "HostVolume",
@@ -5196,6 +5679,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "COS path to script, which has been disused",
           "member": "string",
           "name": "Path",
@@ -5205,6 +5689,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Execution script parameter",
           "member": "string",
           "name": "Args",
@@ -5214,6 +5699,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS bucket name, which has been disused",
           "member": "string",
           "name": "Bucket",
@@ -5223,6 +5709,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS region name, which has been disused",
           "member": "string",
           "name": "Region",
@@ -5232,6 +5719,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS domain data, which has been disused",
           "member": "string",
           "name": "Domain",
@@ -5241,6 +5729,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Execution sequence",
           "member": "int64",
           "name": "RunOrder",
@@ -5250,6 +5739,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`resourceAfter` or `clusterAfter`",
           "member": "string",
           "name": "WhenRun",
@@ -5259,6 +5749,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Script name, which has been disused",
           "member": "string",
           "name": "CosFileName",
@@ -5268,6 +5759,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS address of script",
           "member": "string",
           "name": "CosFileURI",
@@ -5277,6 +5769,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS `SecretId`",
           "member": "string",
           "name": "CosSecretId",
@@ -5286,6 +5779,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS `SecretKey`",
           "member": "string",
           "name": "CosSecretKey",
@@ -5295,6 +5789,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "COS `appid`, which has been disused",
           "member": "string",
           "name": "AppId",
@@ -5310,6 +5805,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The node ID",
           "example": "emr-vm-xxxxxxxx",
           "member": "string",
@@ -5320,6 +5816,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The price formula",
           "example": "无",
           "member": "string",
@@ -5330,6 +5827,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The original price",
           "example": "4.3",
           "member": "float",
@@ -5340,6 +5838,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The discount price",
           "example": "3.2",
           "member": "float",
@@ -5356,6 +5855,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Target specification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Spec",
@@ -5365,6 +5865,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "StorageType",
@@ -5374,6 +5875,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DiskType",
@@ -5383,6 +5885,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "System disk size\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "RootSize",
@@ -5392,6 +5895,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory size.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "MemSize",
@@ -5401,6 +5905,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPUs.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Cpu",
@@ -5410,6 +5915,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk size.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DiskSize",
@@ -5419,6 +5925,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "MultiDisk",
           "name": "MultiDisks",
@@ -5428,6 +5935,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DiskCnt",
@@ -5437,6 +5945,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceType",
@@ -5446,6 +5955,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "Tag",
           "name": "Tags",
@@ -5455,6 +5965,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DiskNum",
@@ -5464,6 +5975,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of local disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "LocalDiskNum",
@@ -5479,6 +5991,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Node specification description, such as CVM.SA2\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "CVM.SA2",
           "member": "string",
@@ -5489,6 +6002,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Storage type\nValid values:\n<li>4: SSD</li>\n<li>5: Premium Cloud Storage</li>\n<li>6: Enhanced SSD</li>\n<li>11: High-Throughput cloud disk</li>\n<li>12: Tremendous SSD</li>\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "5",
           "member": "int64",
@@ -5499,6 +6013,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Disk type\nValid values:\n<li>`CLOUD_SSD`: SSD</li>\n<li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>\n<li>`CLOUD_BASIC`: HDD</li>\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "LOUD_PREMIUM",
           "member": "string",
@@ -5509,6 +6024,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Memory capacity in MB\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "131072",
           "member": "int64",
@@ -5519,6 +6035,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPU cores\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -5529,6 +6046,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Data disk capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "300",
           "member": "int64",
@@ -5539,6 +6057,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "System disk capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -5549,6 +6068,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of cloud disks. When the data disk is a cloud disk, `DiskType` and `DiskSize` are used directly; `MultiDisks` will be used for the excessive part\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MultiDisk",
@@ -5559,6 +6079,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of tags to be bound\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -5569,6 +6090,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specification type, such as S2.MEDIUM8\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "S2.MEDIUM8",
           "member": "string",
@@ -5579,6 +6101,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of local disks. This field has been disused.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -5589,6 +6112,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of local disks, such as 2\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "uint64",
@@ -5605,6 +6129,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The node billing mode. Valid values:\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>\n<li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>",
           "example": "\"\"",
           "member": "string",
@@ -5614,6 +6139,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The cluster instance ID.",
           "example": "无",
           "member": "string",
@@ -5623,6 +6149,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The type and number of nodes to be added.",
           "example": "无",
           "member": "ScaleOutNodeConfig",
@@ -5632,6 +6159,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae36063280`.",
           "example": "\"\"",
           "member": "string",
@@ -5641,6 +6169,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The details of the monthly subscription, including the instance period and auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
           "example": "无",
           "member": "InstanceChargePrepaid",
@@ -5650,6 +6179,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.",
           "example": "无",
           "member": "ScriptBootstrapActionConfig",
@@ -5659,6 +6189,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The services to be deployed for new nodes. By default, new nodes will inherit all services deployed for the current node type. Deployed services include default optional services. This parameter only supports optional services. For example, if `HDFS`, `YARN`, and `Impala` have been deployed for existing task nodes, only `HDFS` and `YARN` are passed in with this parameter if `Impala` is not deployed during the task node scale-out with API.",
           "example": "无",
           "member": "int64",
@@ -5668,6 +6199,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, `HDFS`, `YARN`, and `Impala` have been deployed for current task nodes, and default services are `DataNode`, `NodeManager`, and `ImpalaServer`; if you want to change deployed processes, you can set this parameter to `DataNode,NodeManager,ImpalaServerCoordinator` or `DataNode,NodeManager,ImpalaServerExecutor`.",
           "example": "无",
           "member": "int64",
@@ -5677,6 +6209,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The list of spread placement group IDs. Only one can be specified.\nYou can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.",
           "example": "无",
           "member": "string",
@@ -5686,6 +6219,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The list of tags bound to added nodes.",
           "example": "无",
           "member": "Tag",
@@ -5695,6 +6229,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The type of resources to add. Valid values: `host` (general CVM resources) and `pod` (resources provided by a TKE or EKS cluster).",
           "example": "无",
           "member": "string",
@@ -5704,6 +6239,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The pod resource information.",
           "example": "无",
           "member": "PodSpecInfo",
@@ -5713,6 +6249,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The server group name selected for ClickHouse cluster scale-out.",
           "example": "无",
           "member": "string",
@@ -5722,6 +6259,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).",
           "example": "无",
           "member": "string",
@@ -5731,6 +6269,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The YARN node label specified for scale-out.",
           "example": "无",
           "member": "string",
@@ -5740,6 +6279,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to start services after scale-out.\n<li>`true`: Yes</li>\n<li>`false` (default): No</li>",
           "example": "无",
           "member": "bool",
@@ -5749,6 +6289,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The spec settings.",
           "example": "无",
           "member": "NodeResourceSpec",
@@ -5758,6 +6299,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The ID of the AZ where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.",
           "example": "无",
           "member": "string",
@@ -5767,6 +6309,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The subnet, which defaults to the subnet used when the cluster is created.",
           "example": "sub-xxx",
           "member": "string",
@@ -5781,6 +6324,7 @@
       "document": "ScaleOutCluster response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The instance ID.",
           "example": "emr-5n3l5c83",
           "member": "string",
@@ -5790,6 +6334,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The client token.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -5799,6 +6344,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The scale-out workflow ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -5821,6 +6367,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Time unit of scale-out. Valid values:\n<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n<li>m: Month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>",
           "example": "s",
           "member": "string",
@@ -5830,6 +6377,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Time span of scale-out, which needs to be used together with `TimeUnit`.",
           "example": "3600",
           "member": "uint64",
@@ -5839,6 +6387,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "emr-5n3l5c83",
           "member": "string",
@@ -5848,6 +6397,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance billing mode. Valid value:\n<li>0: Pay-as-you-go.</li>",
           "example": "0",
           "member": "uint64",
@@ -5857,6 +6407,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Client token.",
           "example": "\"\"",
           "member": "string",
@@ -5866,6 +6417,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Bootstrap script settings.",
           "example": "无",
           "member": "PreExecuteFileSettings",
@@ -5875,6 +6427,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of task nodes to be added.",
           "example": "0",
           "member": "uint64",
@@ -5884,6 +6437,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of core nodes to be added.",
           "example": "1",
           "member": "uint64",
@@ -5893,6 +6447,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Processes unnecessary for scale-out.",
           "example": "[]",
           "member": "uint64",
@@ -5902,6 +6457,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of router nodes to be added.",
           "example": "0",
           "member": "uint64",
@@ -5911,6 +6467,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Deployed service.\n<li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>\n<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>",
           "example": "[]",
           "member": "uint64",
@@ -5920,6 +6477,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Started process.",
           "example": "[]",
           "member": "uint64",
@@ -5929,6 +6487,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of spread placement group IDs. Only one can be specified currently.",
           "example": "[]",
           "member": "string",
@@ -5938,6 +6497,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of tags bound to added nodes.",
           "example": "无",
           "member": "Tag",
@@ -5947,6 +6507,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Resource type selected for scaling. Valid values: `host` (general CVM resource) and `pod` (resource provided by TKE or EKS cluster).",
           "example": "\"\"",
           "member": "string",
@@ -5956,6 +6517,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Specified information such as pod specification and source for scale-out with pod resources.",
           "example": "无",
           "member": "PodSpec",
@@ -5965,6 +6527,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Server group name selected for ClickHouse cluster scale-out.",
           "example": "\"\"",
           "member": "string",
@@ -5974,6 +6537,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).",
           "example": "\"\"",
           "member": "string",
@@ -5983,6 +6547,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Yarn node label specified for rule-based scale-out.",
           "example": "\"\"",
           "member": "string",
@@ -5992,6 +6557,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom pod permission and parameter",
           "example": "无",
           "member": "PodParameter",
@@ -6001,6 +6567,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of master nodes to be added.\nWhen a ClickHouse cluster is scaled, this parameter does not take effect.\nWhen a Kafka cluster is scaled, this parameter does not take effect.\nWhen `HardwareResourceType` is `pod`, this parameter does not take effect.",
           "example": "1",
           "member": "uint64",
@@ -6010,6 +6577,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to start the service after scale-out. `true`: Yes; `false`: No.",
           "example": "\"true\"",
           "member": "string",
@@ -6019,6 +6587,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ, which defaults to the primary AZ of the cluster.",
           "example": "100002",
           "member": "int64",
@@ -6028,6 +6597,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet, which defaults to the subnet used when the cluster is created.",
           "example": "sub-xxx",
           "member": "string",
@@ -6037,6 +6607,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pre-defined configuration set",
           "example": "\"\"",
           "member": "string",
@@ -6046,6 +6617,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable auto-renewal. Valid values: `0` (no), `1` (yes).",
           "example": "1",
           "member": "int64",
@@ -6060,6 +6632,7 @@
       "document": "ScaleOutInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID.",
           "example": "emr-5n3l5c83",
           "member": "string",
@@ -6069,6 +6642,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Order number.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"20200309357833\",\"20200309357834\",\"20200309357835\",\"20200309357836\"]",
           "member": "string",
@@ -6078,6 +6652,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Client token.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -6087,6 +6662,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Scale-out workflow ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -6096,6 +6672,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Big order ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -6118,6 +6695,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Valid values of node type:\n  <li>MASTER</li>\n  <li>TASK</li>\n  <li>CORE</li>\n  <li>ROUTER</li>",
           "example": "无",
           "member": "string",
@@ -6128,6 +6706,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of nodes.",
           "example": "无",
           "member": "uint64",
@@ -6144,6 +6723,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The list of deployed components. The list of component options varies by `ProductVersion` (EMR version). For more information, see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).\nThe instance type, `hive` or `flink`.",
           "example": "[\"hadoop-2.8.4\\n\",\"zookeeper-3.4.9\\n\",\"knox-1.2.0\\n\"]",
           "member": "string",
@@ -6154,6 +6734,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The scenario name, which defaults to `Hadoop-Default`. For more details, see [here](https://intl.cloud.tencent.com/document/product/589/14624?from_cn_redirect=1). Valid values:\nHadoop-Kudu\nHadoop-Zookeeper\nHadoop-Presto\nHadoop-Hbase\nHadoop-Default",
           "example": "Hadoop-Kudu",
           "member": "string",
@@ -6170,6 +6751,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The COS URL of the script, in the format of `https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh`. For the COS bucket list, see [Bucket List](https://console.cloud.tencent.com/cos/bucket).",
           "example": "https://becklong-cos-1258469122.cos.ap-guangzhou.myqcloud.com/te",
           "member": "string",
@@ -6180,6 +6762,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The execution time of the bootstrap action script. Valid values:\n<li>`resourceAfter`: After node initialization</li>\n<li>`clusterAfter`: After cluster start</li>\n<li>`clusterBefore`: Before cluster start</li>",
           "example": "无",
           "member": "string",
@@ -6190,6 +6773,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The execution script parameter. The parameter format must comply with standard shell specifications.",
           "example": "无",
           "member": "string",
@@ -6200,6 +6784,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The script file name.",
           "example": "无",
           "member": "string",
@@ -6216,6 +6801,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Searchable type",
           "member": "string",
           "name": "SearchType",
@@ -6225,6 +6811,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Searchable value",
           "member": "string",
           "name": "SearchValue",
@@ -6239,6 +6826,7 @@
       "document": "The services to operate on",
       "members": [
         {
+          "disabled": false,
           "document": "The service name (required), such as HDFS.",
           "example": "“HDFS”",
           "member": "string",
@@ -6248,6 +6836,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "If it is left empty, all processes will be operated on.",
           "example": "无",
           "member": "ComponentBasicRestartInfo",
@@ -6264,6 +6853,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Node type: Master/Core/Task/Router/Common\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "Master",
           "member": "string",
@@ -6274,6 +6864,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of nodes\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -6290,6 +6881,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The component name.",
           "example": "hdfs-2.8.5",
           "member": "string",
@@ -6300,6 +6892,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the component is required.",
           "example": "true",
           "member": "bool",
@@ -6315,6 +6908,7 @@
       "document": "StartStopServiceOrMonitor request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The cluster ID.",
           "example": "emr-xxx",
           "member": "string",
@@ -6323,7 +6917,8 @@
           "type": "string"
         },
         {
-          "document": "The operation type. Valid values:\n<li>`StartService`: Start services.</li>\n<li>`StopService`: Stop services.</li>\n<li>`StartMonitor`: Start the monitor.</li>\n<li>`StopMonitor`: Stop the monitor.</li>\n",
+          "disabled": false,
+          "document": "The operation type. Valid values:\n<li>StartService: Start service</li>\n<li>StopService: Stop service</li>\n<li>StartMonitor: Start maintenance</li>\n<li>StopMonitor: Stop maintenance</li>\n<li>RestartService: Restart service. If this type is selected, \"StrategyConfig\" is required.</li>",
           "example": "StartService",
           "member": "string",
           "name": "OpType",
@@ -6331,11 +6926,21 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The operation scope.",
           "example": "无",
           "member": "OpScope",
           "name": "OpScope",
           "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The operation policy.",
+          "example": "无",
+          "member": "StrategyConfig",
+          "name": "StrategyConfig",
+          "required": false,
           "type": "object"
         }
       ],
@@ -6353,11 +6958,62 @@
       ],
       "type": "object"
     },
+    "StrategyConfig": {
+      "document": "Restart, stop, or start of service/monitoring configurations",
+      "members": [
+        {
+          "disabled": false,
+          "document": "`0`: Disable rolling restart\n`1`: Enable rolling restart\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "RollingRestartSwitch",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of nodes to be restarted per batch in rolling restart, with a maximum value of 99,999.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchSize",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The wait time (in seconds) per batch in rolling restart, with a maximum value of 5 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "int64",
+          "name": "TimeWait",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The failure handling policy. Valid values: `0` (blocks the process) and `1` (skips).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DealOnFail",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "SubnetInfo": {
       "document": "Subnet information",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet information (name)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "名字",
           "member": "string",
@@ -6368,6 +7024,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet information (ID)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "subnet-xxx",
           "member": "string",
@@ -6384,6 +7041,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -6393,6 +7051,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -6407,6 +7066,7 @@
       "document": "TerminateClusterNodes request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The instance ID.",
           "example": "emr-4slr7ad7",
           "member": "string",
@@ -6415,6 +7075,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The list of resources to be terminated.",
           "example": "[\"ins-42u6moui\\r\\n\"]",
           "member": "string",
@@ -6423,6 +7084,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Valid values of node type:\n  <li>MASTER</li>\n  <li>TASK</li>\n  <li>CORE</li>\n  <li>ROUTER</li>",
           "example": "MASTER",
           "member": "string",
@@ -6431,6 +7093,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The graceful scale-in feature. Valid values:\n  <li>`true`: Enabled.</li>\n  <li>`false`: Disabled.</li>",
           "example": "无",
           "member": "bool",
@@ -6439,6 +7102,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "The graceful scale-in wait time in seconds. Value range: 60–1800.",
           "example": "无",
           "member": "int64",
@@ -6453,6 +7117,7 @@
       "document": "TerminateClusterNodes response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The scale-in process ID.",
           "example": "1000",
           "member": "int64",
@@ -6474,6 +7139,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "example": "emr-4slr7ad7",
           "member": "string",
@@ -6483,6 +7149,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of terminated node. This parameter is reserved and does not need to be configured.",
           "example": "无",
           "member": "string",
@@ -6510,6 +7177,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID.",
           "member": "string",
           "name": "InstanceId",
@@ -6518,6 +7186,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).",
           "member": "string",
           "name": "ResourceIds",
@@ -6544,6 +7213,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "AZ ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "100002",
           "member": "int64",
@@ -6554,6 +7224,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "AZ information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"ap-guangzhou-2\"",
           "member": "string",
@@ -6564,6 +7235,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SubnetInfo",
@@ -6574,6 +7246,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ShortNodeInfo",
@@ -6590,6 +7263,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Memory capacity in GB",
           "member": "uint64",
           "name": "Memory",
@@ -6599,6 +7273,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of CPU cores",
           "member": "uint64",
           "name": "CPUCores",
@@ -6608,6 +7283,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Machine resource ID (EMR resource identifier)",
           "member": "string",
           "name": "ResourceId",
@@ -6617,6 +7293,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Target machine specification",
           "member": "string",
           "name": "InstanceType",
@@ -6632,6 +7309,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Username",
           "example": "user1",
           "member": "string",
@@ -6642,6 +7320,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The group to which the user belongs",
           "example": "group1",
           "member": "string",
@@ -6652,6 +7331,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "123456",
           "member": "string",
@@ -6662,6 +7342,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "提交mr任务",
           "member": "string",
@@ -6678,6 +7359,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Username\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "emr",
           "member": "string",
@@ -6694,6 +7376,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Username",
           "example": "hadoop",
           "member": "string",
@@ -6704,6 +7387,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The group to which the user belongs",
           "example": "hadoop",
           "member": "string",
@@ -6714,6 +7398,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`Manager` represents an admin, and `NormalUser` represents a general user.",
           "example": "NormalUser",
           "member": "string",
@@ -6724,6 +7409,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account creation time\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "2022-04-28 18:08:28",
           "member": "string",
@@ -6734,6 +7420,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the corresponding Keytab file of the user is available for download. This parameter applies only to a Kerberos-enabled cluster.",
           "example": "true",
           "member": "bool",
@@ -6744,6 +7431,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Download link of the Keytab file\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "https://image-xxx.cos.region.xx.com/12323/someone.keytab",
           "member": "string",
@@ -6760,6 +7448,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "VPC ID",
           "member": "string",
           "name": "VpcId",
@@ -6769,6 +7458,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subnet ID",
           "member": "string",
           "name": "SubnetId",
@@ -6784,6 +7474,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The VPC ID.",
           "example": "vpc-xxxxx",
           "member": "string",
@@ -6794,6 +7485,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The subnet ID.",
           "example": "subnet-xxxxx",
           "member": "string",
@@ -6810,6 +7502,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100002",
           "member": "string",
@@ -6820,6 +7513,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Price details by node",
           "example": "无",
           "member": "NodeDetailPriceResult",
@@ -6836,6 +7530,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The VPC configuration information. This parameter is used to specify the VPC ID, subnet ID and other information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VirtualPrivateCloud",
@@ -6846,6 +7541,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Placement",
@@ -6856,6 +7552,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The specs of all nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AllNodeResourceSpec",
@@ -6866,6 +7563,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "For a single AZ, `ZoneTag` can be left out. For a double-AZ mode, `ZoneTag` is set to `master` and `standby` for the first and second AZs, respectively. If there are three AZs, `ZoneTag` is set to `master`, `standby`, and `third-party` for the first, second, and third AZs, respectively. Valid values:\n  <li>master</li>\n  <li>standby</li>\n  <li>third-party</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",

@@ -2,7 +2,7 @@
   "actions": {
     "AddDBInstanceToReadOnlyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddDBInstanceToReadOnlyGroup\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"\\\"pgrogrp-test\\\"\",\n    \"DBInstanceId\": \"\\\"postgres-k95qzetn\\\"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\",\n        \"FlowId\": 912\n    }\n}",
         "title": "Adding instance \"postgres-k95qzetn\" to RO group \"pgrogrp-test\""
@@ -10,7 +10,7 @@
     ],
     "CloneDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneDBInstance\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-2ot3acw1\",\n    \"AutoRenewFlag\": \"1\",\n    \"DBInstanceId\": \"postgres-abcd1234\",\n    \"RecoveryTargetTime\": \"2021-12-25 01:27:35\",\n    \"Storage\": \"10\",\n    \"Period\": \"1\",\n    \"AutoVoucher\": \"0\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"SubnetId\": \"subnet-ppv9iw34\",\n    \"DBNodeSet\": [\n        {\n            \"Role\": \"Standby\",\n            \"Zone\": \"ap-guangzhou-3\"\n        },\n        {\n            \"Role\": \"Primary\",\n            \"Zone\": \"ap-guangzhou-3\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealName\": \"20211225711000768276461\",\n        \"BillId\": \"20211225711000768276471\",\n        \"DBInstanceId\": \"postgres-xxxx\"\n    }\n}",
         "title": "Cloning an instance"
@@ -18,7 +18,7 @@
     ],
     "CloseDBExtranetAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseDBExtranetAccess\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1234,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Disabling public network access for instance"
@@ -26,7 +26,7 @@
     ],
     "CloseServerlessDBExtranetAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseServerlessDBExtranetAccess\n<Common request parameters>\n\n{\n    \"DBInstanceName\": \"test\",\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Disabling public network access for PostgreSQL for Serverless instance"
@@ -34,15 +34,15 @@
     ],
     "CreateBaseBackup": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBaseBackup\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-dzg9p3kb\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e468f289-2313-4117-a5f0-f406faaefa24\"\n    }\n}",
+        "document": "This example shows you how to create a full backup of an instance manually.",
+        "input": "POST / HTTP/1.1Host: postgres.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateBaseBackup<common request parameters>{    \"DBInstanceId\": \"postgres-dzg9p3kb\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\",\n        \"BaseBackupId\": \"443c810b-53c6-5d8c-b6d2-1abbe5794529\"\n    }\n}",
         "title": "Creating a full backup of an instance"
       }
     ],
     "CreateDBInstanceNetworkAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstanceNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"DBInstanceId\": \"postgres-6bwgamo3\",\n    \"IsAssignVip\": \"false\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912\n    }\n}",
         "title": "Adding network for instance"
@@ -50,7 +50,7 @@
     ],
     "CreateDBInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"AutoRenewFlag\": \"1\",\n    \"Zone\": \"ap-guangzhou-5\",\n    \"DBVersion\": \"12.4\",\n    \"Storage\": 10,\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"AutoVoucher\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"postgres-xxxx\"\n        ],\n        \"BillId\": \"xxxxxxxxx\"\n    }\n}",
         "title": "Creating a TencentDB for PostgreSQL instance"
@@ -86,7 +86,7 @@
     ],
     "CreateReadOnlyDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyDBInstance\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"AutoRenewFlag\": \"1\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"MasterDBInstanceId\": \"Postgres-testmaster\",\n    \"DBVersion\": \"9.3.5\",\n    \"Storage\": \"10\",\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"AutoVoucher\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"123\"\n        ],\n        \"BillId\": \"123\"\n    }\n}",
         "title": "CreateReadOnlyDBInstance"
@@ -94,7 +94,7 @@
     ],
     "CreateReadOnlyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyGroup\n<Common request parameters>\n\n{\n    \"MaxReplayLag\": \"0\",\n    \"VpcId\": \"\\\"vpc-e0tfm161\\\"\",\n    \"Name\": \"\\\"test\\\"\",\n    \"ProjectId\": \"0\",\n    \"MasterDBInstanceId\": \"\\\"postgres-k95qzetn\\\"\",\n    \"MinDelayEliminateReserve\": \"0\",\n    \"ReplayLagEliminate\": \"0\",\n    \"SubnetId\": \"\\\"subnet-443a3lv6\\\"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\",\n        \"FlowId\": 912,\n        \"ReadOnlyGroupId\": \"pgrogrp-dh6873gz\"\n    }\n}",
         "title": "Creating RO group"
@@ -102,7 +102,7 @@
     ],
     "CreateReadOnlyGroupNetworkAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyGroupNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"ReadOnlyGroupId\": \"pgro-4t9c6g7k\",\n    \"IsAssignVip\": \"false\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912\n    }\n}",
         "title": "Adding network for RO group"
@@ -118,7 +118,7 @@
     ],
     "DeleteBaseBackup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBaseBackup\n<Common request parameters>\n\n{\n    \"BaseBackupId\": \"88d3a71e-b822-5728-9d41-d8cfc0d0556e\",\n    \"DBInstanceId\": \"postgres-9n26zs6n\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e468f289-2313-4117-a5f0-f406faaefa24\"\n    }\n}",
         "title": "Deleting a full backup of an instance"
@@ -126,7 +126,7 @@
     ],
     "DeleteDBInstanceNetworkAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDBInstanceNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"Vip\": \"127.0.01\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"DBInstanceId\": \"postgres-6bwgamo3\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912\n    }\n}",
         "title": "Deleting network for instance"
@@ -134,7 +134,7 @@
     ],
     "DeleteLogBackup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLogBackup\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-2xmqduu9\",\n    \"LogBackupId\": \"7b85234b-4f46-5047-b658-acb172074bf6\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"171aa9e7-c171-4ee1-8416-e69659f71f93\"\n    }\n}",
         "title": "Deleting a log backup of an instance"
@@ -150,7 +150,7 @@
     ],
     "DeleteReadOnlyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteReadOnlyGroup\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"\\\"pgrogrp-k95qzetn\\\"\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1000,\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
         "title": "Deleting RO group"
@@ -158,7 +158,7 @@
     ],
     "DeleteReadOnlyGroupNetworkAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteReadOnlyGroupNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"Vip\": \"127.0.0.1\",\n    \"ReadOnlyGroupId\": \"pgro-4t9c6g7k\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912\n    }\n}",
         "title": "Deleting network for RO group"
@@ -180,7 +180,7 @@
     ],
     "DescribeAccounts": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccounts\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"Details\": [\n            {\n                \"UserName\": \"root\",\n                \"Status\": 2,\n                \"Remark\": \"(Test) This account is invalid\",\n                \"DBInstanceId\": \"postgres-apzvwncr\",\n                \"UpdateTime\": \"2018-06-12 17:21:57\",\n                \"CreateTime\": \"2018-06-12 17:21:54\"\n            }\n        ]\n    }\n}",
         "title": "Getting the list of users for instance \"postgres-apzvwncr\""
@@ -188,10 +188,18 @@
     ],
     "DescribeAvailableRecoveryTime": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailableRecoveryTime\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"RecoveryBeginTime\": \"2021-12-24 03:41:50\",\n        \"RecoveryEndTime\": \"2021-12-25 17:43:27\"\n    }\n}",
         "title": "Querying the available restoration time of instance"
+      }
+    ],
+    "DescribeBackupDownloadRestriction": [
+      {
+        "document": " This example shows you how to query the backup download restrictions.",
+        "input": "POST / HTTP/1.1Host: postgres.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeBackupDownloadRestriction<common request parameters>{}",
+        "output": "{\n    \"Response\": {\n        \"RestrictionType\": \"Customize\",\n        \"VpcRestrictionEffect\": \"Allow\",\n        \"VpcIdSet\": [\n            \"vpc-15ld6dhr\"\n        ],\n        \"IpRestrictionEffect\": \"\",\n        \"IpSet\": [],\n        \"RequestId\": \"be3bafde-f34e-4fda-9f40-04c5515e2148\"\n    }\n}",
+        "title": "Querying the backup download restrictions"
       }
     ],
     "DescribeBackupDownloadURL": [
@@ -204,7 +212,7 @@
     ],
     "DescribeBackupOverview": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupOverview\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"AutoBaseBackupCount\": 494,\n        \"AutoBaseBackupSize\": 25577154048,\n        \"LogBackupCount\": 4677,\n        \"LogBackupSize\": 89789143040,\n        \"ManualBaseBackupCount\": 20,\n        \"ManualBaseBackupSize\": 1002476032,\n        \"RequestId\": \"b4c5f18a-f917-46b4-8689-d4a64e3381fb\",\n        \"TotalFreeSize\": 13378823127040,\n        \"UsedBillingSize\": 4329912320,\n        \"UsedFreeSize\": 112038860800\n    }\n}",
         "title": "Querying the backup overview"
@@ -220,7 +228,7 @@
     ],
     "DescribeBackupSummaries": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupSummaries\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0,\n    \"OrderByType\": \"desc\"\n}",
         "output": "{\n    \"Response\": {\n        \"BackupSummarySet\": [\n            {\n                \"AutoBaseBackupCount\": 3,\n                \"AutoBaseBackupSize\": 3535342436352,\n                \"DBInstanceId\": \"postgres-lsw5y0bp\",\n                \"LogBackupCount\": 2,\n                \"LogBackupSize\": 167792640,\n                \"ManualBaseBackupCount\": 1,\n                \"ManualBaseBackupSize\": 1178447478784,\n                \"TotalBackupCount\": 6,\n                \"TotalBackupSize\": 4713957707776\n            }\n        ],\n        \"RequestId\": \"3929dd3a-d95d-4ec2-ae69-a98317ce24fa\",\n        \"TotalCount\": 10\n    }\n}",
         "title": "Querying the backup statistics"
@@ -228,8 +236,8 @@
     ],
     "DescribeBaseBackups": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaseBackups\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0,\n    \"OrderByType\": \"desc\",\n    \"MaxFinishTime\": \"\",\n    \"MinFinishTime\": \"\"\n}",
+        "document": "This example shows you how to query the latest backup set record.",
+        "input": "POST / HTTP/1.1Host: postgres.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeBaseBackups<common request parameters>{    \"Limit\": 1,    \"Offset\": 0,    \"OrderBy\": \"FinishTime\",    \"OrderByType\": \"desc\"}",
         "output": "{\n    \"Response\": {\n        \"BaseBackupSet\": [\n            {\n                \"BackupMethod\": \"physical\",\n                \"BackupMode\": \"manual\",\n                \"DBInstanceId\": \"postgres-9n26zs6n\",\n                \"ExpireTime\": \"2023-02-18 23:59:59\",\n                \"FinishTime\": \"2023-02-15 19:09:36\",\n                \"Id\": \"88d3a71e-b822-5728-9d41-d8cfc0d0556e\",\n                \"Name\": \"manual-20230215190924.tar.gz\",\n                \"Size\": 39845888,\n                \"StartTime\": \"2023-02-15 19:09:24\",\n                \"State\": \"finished\"\n            }\n        ],\n        \"RequestId\": \"3f164712-8746-464f-a490-3084a470000e\",\n        \"TotalCount\": 10\n    }\n}",
         "title": "Querying the list of full backups"
       }
@@ -244,7 +252,7 @@
     ],
     "DescribeCloneDBInstanceSpec": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCloneDBInstanceSpec\n<Common request parameters>\n\n{\n    \"RecoveryTargetTime\": \"2021-12-24 03:41:50\",\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"MinSpecCode\": \"cdb.pg.sh1.2g\",\n        \"MinStorage\": 10\n    }\n}",
         "title": "Querying the minimum specification required by cloned instance"
@@ -252,7 +260,7 @@
     ],
     "DescribeDBBackups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBBackups\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-6fego161\",\n    \"Limit\": \"20\",\n    \"StartTime\": \"2018-06-10 17:06:38\",\n    \"Offset\": \"0\",\n    \"EndTime\": \"2018-06-11 17:06:38\",\n    \"Type\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"BackupList\": [\n            {\n                \"SetId\": \"xx\",\n                \"Status\": 2,\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180622015612.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIsdfgfJdfs+89qfhuYQ5wC0ooTcDIdUwB4iJlL1by8xfKkcMAv8nr8g67P6hhg5YOnk=\",\n                \"StartTime\": \"2018-06-22 01:56:01.181971\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180622015612.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIsdfgfJdfs+89qfhuYQ5wC0ooTcDIdUwB4iJlL1by8xfKkcMAv8nr8g67P6hhg5YOnk=\",\n                \"Strategy\": 1,\n                \"DbList\": [\n                    \"db1\"\n                ],\n                \"Way\": 1,\n                \"EndTime\": \"2018-06-22 01:56:55.071181\",\n                \"Type\": 1,\n                \"Id\": 450,\n                \"Size\": 3654968\n            },\n            {\n                \"SetId\": \"xx\",\n                \"Status\": 2,\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180621015515.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIse2MDEI7vd/CuyMUMMyDXAd4ld69sCMdEKwkpFWIVcfE+PZ0+MYTbsBHzW84KtSGw8=\",\n                \"StartTime\": \"2018-06-21 01:55:04.199169\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180621015515.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIse2MDEI7vd/CuyMUMMyDXAd4ld69sCMdEKwkpFWIVcfE+PZ0+MYTbsBHzW84KtSGw8=\",\n                \"Strategy\": 1,\n                \"DbList\": [\n                    \"db2\"\n                ],\n                \"Way\": 1,\n                \"EndTime\": \"2018-06-21 01:55:58.477232\",\n                \"Type\": 1,\n                \"Id\": 450,\n                \"Size\": 3654991\n            }\n        ],\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Querying the list of backups for instance \"postgres-6fego161\""
@@ -260,7 +268,7 @@
     ],
     "DescribeDBErrlogs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBErrlogs\n<Common request parameters>\n\n{\n    \"EndTime\": \"2018-06-11 17:06:38\",\n    \"DBInstanceId\": \"postgres-apzvwncr\",\n    \"StartTime\": \"2018-06-10 17:06:38\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"RequestId\": \"061bdcc0-6845-431a-a85e-ff591a352760\",\n        \"Details\": [\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:22:52\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:22:52\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:23:09\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:23:10\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:23:10\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:23:11\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:23:11\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"postgres\",\n                \"ErrTime\": \"2018-06-22 15:23:29\",\n                \"ErrMsg\": \"WARNING:  there is no transaction in progress \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"root\",\n                \"ErrTime\": \"2018-06-22 15:25:01\",\n                \"ErrMsg\": \"ERROR:  canceling autovacuum task CONTEXT:  automatic analyze of table \\\"dee.public.orders\\\" \",\n                \"Database\": \"dee\"\n            },\n            {\n                \"UserName\": \"root\",\n                \"ErrTime\": \"2018-06-22 15:25:10\",\n                \"ErrMsg\": \"ERROR:  canceling autovacuum task CONTEXT:  automatic analyze of table \\\"dee.public.partsupp\\\" \",\n                \"Database\": \"dee\"\n            }\n        ]\n    }\n}",
         "title": "Getting error logs"
@@ -268,7 +276,7 @@
     ],
     "DescribeDBInstanceAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceAttribute\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"DBInstance\": {\n            \"Region\": \"ap-guangzhou\",\n            \"Zone\": \"ap-guangzhou-2\",\n            \"AppId\": 100000000,\n            \"Uid\": 1000001,\n            \"ProjectId\": 0,\n            \"VpcId\": \"vpc-xxxxxxxx\",\n            \"SubnetId\": \"subnet-xxxxxxxx\",\n            \"DBInstanceId\": \"postgres-xxxxxxxx\",\n            \"MasterDBInstanceId\": \"postgres-xxxxxxxx\",\n            \"Type\": 1,\n            \"DBInstanceName\": \"Unnamed\",\n            \"DBInstanceStatus\": \"running\",\n            \"DBInstanceMemory\": 4,\n            \"DBInstanceStorage\": 20,\n            \"DBInstanceCpu\": 2,\n            \"DBInstanceClass\": \"cdb.pg.z1.4g\",\n            \"DBInstanceType\": \"primary\",\n            \"DBInstanceVersion\": \"standard\",\n            \"DBInstanceNetInfo\": [\n                {\n                    \"Address\": \"\",\n                    \"Ip\": \"10.10.10.220\",\n                    \"Port\": 5432,\n                    \"Status\": \"opened\",\n                    \"NetType\": \"private\",\n                    \"VpcId\": \"vpc-xxxxxxxx\",\n                    \"SubnetId\": \"subnet-xxxxxxxx\"\n                },\n                {\n                    \"Address\": \"\",\n                    \"Ip\": \"\",\n                    \"Port\": 0,\n                    \"Status\": \"initing\",\n                    \"NetType\": \"public\",\n                    \"VpcId\": \"\",\n                    \"SubnetId\": \"\"\n                }\n            ],\n            \"DBCharset\": \"UTF8\",\n            \"IsSupportTDE\": 0,\n            \"DBVersion\": \"10.4\",\n            \"DBMajorVersion\": \"10\",\n            \"DBKernelVersion\": \"v10.4_r1.0\",\n            \"CreateTime\": \"2017-12-28 19:23:19\",\n            \"UpdateTime\": \"2018-01-18 15:54:32\",\n            \"ExpireTime\": \"2018-01-28 19:23:23\",\n            \"IsolatedTime\": \"0000-00-00 00:00:00\",\n            \"OfflineTime\": \"2019-12-28 19:23:19\",\n            \"PayType\": \"prepaid\",\n            \"AutoRenew\": 1,\n            \"ReadOnlyInstanceNum\": 1,\n            \"StatusInReadonlyGroup\": \"running\",\n            \"SupportIpv6\": 0,\n            \"TagList\": [\n                {\n                    \"TagKey\": \"tag1\",\n                    \"TagValue\": \"v1\"\n                }\n            ],\n            \"NetworkAccessList\": [],\n            \"DBNodeSet\": [\n                {\n                    \"Role\": \"Primary\",\n                    \"Zone\": \"ap-guangzhou-2\"\n                },\n                {\n                    \"Role\": \"Standby\",\n                    \"Zone\": \"ap-guangzhou-3\"\n                }\n            ]\n        }\n    }\n}",
         "title": "Querying instance details"
@@ -284,13 +292,13 @@
     ],
     "DescribeDBInstanceSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceSecurityGroups\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"pgrogrp-nqwpkjb\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"47e3764e-bce4-477a-a293-49ffa1bfb447\",\n        \"SecurityGroupSet\": [\n            {\n                \"CreateTime\": \"2022-08-30 21:36:58\",\n                \"Inbound\": [],\n                \"Outbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupDescription\": \"Custom 222\",\n                \"SecurityGroupId\": \"sg-116auwb1\",\n                \"SecurityGroupName\": \"Custom 222-202208302136517989\"\n            },\n            {\n                \"CreateTime\": \"2022-10-20 21:38:20\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Ping\",\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Ping\",\n                        \"IpProtocol\": \"icmpv6\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Windows remote login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Windows remote login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"10.0.0.0/8\",\n                        \"Description\": \"Enable the private network (VPC )\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"172.16.0.0/12\",\n                        \"Description\": \"Enable the private network (VPC )\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"192.168.0.0/16\",\n                        \"Description\": \"Enable the private network (VPC )\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupDescription\": \"Custom template\",\n                \"SecurityGroupId\": \"sg-91jbmkp1\",\n                \"SecurityGroupName\": \"Custom template-20221020213819279\"\n            },\n            {\n                \"CreateTime\": \"2022-08-22 17:34:08\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open all inbound rules\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22,3389,80,443,20,21\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open all inbound rules\",\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open all outbound rules\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-mpkb1net\",\n                \"SecurityGroupName\": \"Custom 222-202208302136517989\"\n            }\n        ]\n    }\n}",
         "title": "Querying the security group of an RO group"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceSecurityGroups\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-i2q4utnp\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"770234c2-8a51-4d06-b3f7-4454664848b1\",\n        \"SecurityGroupSet\": [\n            {\n                \"CreateTime\": \"2022-10-20 21:38:20\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Ping\",\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Ping\",\n                        \"IpProtocol\": \"icmpv6\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Windows remote login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Windows remote login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"10.0.0.0/8\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"172.16.0.0/12\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"192.168.0.0/16\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open Web service port\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupDescription\": \"Custom template\",\n                \"SecurityGroupId\": \"sg-91jbmkp1\",\n                \"SecurityGroupName\": \"Custom template-20221020213819279\"\n            }\n        ]\n    }\n}",
         "title": "Querying the  security group of an instance"
@@ -298,7 +306,7 @@
     ],
     "DescribeDBInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstances\n<Common request parameters>\n\n{\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DBInstanceSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"DBInstanceName\": \"xxx\",\n                \"DBNodeSet\": [\n                    {\n                        \"Role\": \"Primary\",\n                        \"Zone\": \"ap-guangzhou-2\"\n                    }\n                ],\n                \"Type\": 1,\n                \"IsSupportTDE\": 0,\n                \"DBMajorVersion\": \"10\",\n                \"ReadOnlyInstanceNum\": 1,\n                \"MasterDBInstanceId\": \"\",\n                \"UpdateTime\": \"2020-09-22 00:00:00\",\n                \"VpcId\": \"vpc-xxxxxxxx\",\n                \"IsolatedTime\": \"2020-09-22 00:00:00\",\n                \"DBVersion\": \"10\",\n                \"DBKernelVersion\": \"v10.4_r1.0\",\n                \"DBInstanceVersion\": \"standard\",\n                \"AutoRenew\": 1,\n                \"StatusInReadonlyGroup\": \"running\",\n                \"SubnetId\": \"subnet-xxxxxxxx\",\n                \"DBInstanceMemory\": 1,\n                \"DBInstanceType\": \"primary\",\n                \"DBInstanceStatus\": \"running\",\n                \"OfflineTime\": \"2019-12-28 19:23:19\",\n                \"Region\": \"ap-guangzhou\",\n                \"ProjectId\": 1,\n                \"DBInstanceNetInfo\": [\n                    {\n                        \"Address\": \"\",\n                        \"Ip\": \"10.10.10.220\",\n                        \"Port\": 5432,\n                        \"Status\": \"opened\",\n                        \"NetType\": \"private\",\n                        \"VpcId\": \"vpc-xxxxxxxx\",\n                        \"SubnetId\": \"subnet-xxxxxxxx\"\n                    },\n                    {\n                        \"Address\": \"\",\n                        \"Ip\": \"\",\n                        \"Port\": 0,\n                        \"Status\": \"\",\n                        \"NetType\": \"public\",\n                        \"VpcId\": \"\",\n                        \"SubnetId\": \"\"\n                    }\n                ],\n                \"DBInstanceStorage\": 1,\n                \"Uid\": 1,\n                \"DBCharset\": \"UTF8\",\n                \"DBInstanceId\": \"postgres-xxxxxxxx\",\n                \"PayType\": \"prepaid\",\n                \"ExpireTime\": \"2020-09-22 00:00:00\",\n                \"SupportIpv6\": 1,\n                \"AppId\": 1,\n                \"DBInstanceClass\": \"cdb.pg.z1.4g\",\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"DBInstanceCpu\": 1,\n                \"TagList\": [\n                    {\n                        \"TagKey\": \"tag1\",\n                        \"TagValue\": \"v1\"\n                    }\n                ],\n                \"NetworkAccessList\": []\n            }\n        ],\n        \"RequestId\": \"d849664a-191c-48bf-b42f-444caa189557\"\n    }\n}",
         "title": "Querying the list of instances"
@@ -312,7 +320,7 @@
     ],
     "DescribeDBSlowlogs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSlowlogs\n<Common request parameters>\n\n{\n    \"EndTime\": \"2018-06-11 17:06:38\",\n    \"DBInstanceId\": \"postgres-apzvwncr\",\n    \"StartTime\": \"2018-06-10 17:06:38\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"Detail\": {\n            \"TotalTime\": 0.0,\n            \"NormalQueries\": [\n                {\n                    \"UserName\": \"user\",\n                    \"MaxCostTime\": 0.0,\n                    \"Rows\": 0,\n                    \"CostTime\": 0.0,\n                    \"SharedReadBlks\": 0,\n                    \"Calls\": 0,\n                    \"WriteCostTime\": 0,\n                    \"ReadCostTime\": 0,\n                    \"CallsGrids\": [\n                        0\n                    ],\n                    \"NormalQuery\": \"xx\",\n                    \"MinCostTime\": 0.0,\n                    \"DatabaseName\": \"xx\",\n                    \"FirstTime\": \"xx\",\n                    \"LastTime\": \"xx\",\n                    \"SharedWriteBlks\": 0\n                }\n            ],\n            \"TotalCalls\": 0\n        },\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Getting slow query logs of instance"
@@ -328,7 +336,7 @@
     ],
     "DescribeDBXlogs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBXlogs\n<Common request parameters>\n\n{\n    \"EndTime\": \"2018-06-11 17:06:38\",\n    \"DBInstanceId\": \"postgres-apzvwncr\",\n    \"StartTime\": \"2018-06-10 17:06:38\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 6,\n        \"XlogList\": [\n            {\n                \"StartTime\": \"2018-06-22 01:56:46\",\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180622015646_20180622015653.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTALKlriBmLUrmJMxzi1C3EagZ/IhOQeSGyXm+Qr3D3I2GL1G4RV69vLVylUaeIJ+zH+CEG5Ast0GoDmpzjJ5Jaw==\",\n                \"EndTime\": \"2018-06-22 01:56:53\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180622015646_20180622015653.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTALKlriBmLUrmJMxzi1C3EagZ/IhOQeSGyXm+Qr3D3I2GL1G4RV69vLVylUaeIJ+zH+CEG5Ast0GoDmpzjJ5Jaw==\",\n                \"Id\": 450,\n                \"Size\": 247967\n            },\n            {\n                \"StartTime\": \"2018-06-22 01:56:17\",\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180622015617_20180622015645.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTALKlriBmLUrmJMxzi1C3Eamxg5sq4mNUSXLgasiI8P5xiJVUBOrLUPKLYacTxFWP8y56/f36byxdYH5+PGMzOA==\",\n                \"EndTime\": \"2018-06-22 01:56:45\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180622015617_20180622015645.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTALKlriBmLUrmJMxzi1C3Eamxg5sq4mNUSXLgasiI8P5xiJVUBOrLUPKLYacTxFWP8y56/f36byxdYH5+PGMzOA==\",\n                \"Id\": 450,\n                \"Size\": 899618\n            },\n            {\n                \"StartTime\": \"2018-06-22 01:56:10\",\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180622015610_20180622015610.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTALKlriBmLUrmJMxzi1C3EWUN67hkmzzI32w2wS4KNi5jqNoaHxSJ59WJ9lrYebaz9SZgdOXyUBxlFmOGNchE3Q==\",\n                \"EndTime\": \"2018-06-22 01:56:10\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180622015610_20180622015610.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTALKlriBmLUrmJMxzi1C3EWUN67hkmzzI32w2wS4KNi5jqNoaHxSJ59WJ9lrYebaz9SZgdOXyUBxlFmOGNchE3Q==\",\n                \"Id\": 450,\n                \"Size\": 41749\n            },\n            {\n                \"StartTime\": \"2018-06-21 01:55:49\",\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180621015549_20180621015557.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTGXfsNyKOxst2LTlcd0/LLPjSmz1BP/DJbQOeznMtdJsr77l4alcITO6f+jyIZ0upCYIFZhCIO2iJSzDXktIsGg==\",\n                \"EndTime\": \"2018-06-21 01:55:57\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180621015549_20180621015557.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTGXfsNyKOxst2LTlcd0/LLPjSmz1BP/DJbQOeznMtdJsr77l4alcITO6f+jyIZ0upCYIFZhCIO2iJSzDXktIsGg==\",\n                \"Id\": 450,\n                \"Size\": 247941\n            },\n            {\n                \"StartTime\": \"2018-06-21 01:55:20\",\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180621015520_20180621015548.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTGXfsNyKOxst2LTlcd0/LLNhfLPY0y78Bi9G0LEDTC70hI3QKhTP7jWZT/+e51oyIRW6hm8MoEKQ2DyBqjqvtaQ==\",\n                \"EndTime\": \"2018-06-21 01:55:48\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180621015520_20180621015548.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTGXfsNyKOxst2LTlcd0/LLNhfLPY0y78Bi9G0LEDTC70hI3QKhTP7jWZT/+e51oyIRW6hm8MoEKQ2DyBqjqvtaQ==\",\n                \"Id\": 450,\n                \"Size\": 899646\n            },\n            {\n                \"StartTime\": \"2018-06-21 01:55:13\",\n                \"InternalAddr\": \"http://172.16.16.30:8366/download/20180621015513_20180621015513.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTGXfsNyKOxst2LTlcd0/LLKcr1q+wVdmFDDcdUtRcVsPlqfMXXg63tRWRtX/jFz6/MNbKg3r+EDkD5NdLA4nWhw==\",\n                \"EndTime\": \"2018-06-21 01:55:13\",\n                \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180621015513_20180621015513.tar.gz?giz7Z4LlMjal0S0oJY6+5JbQ1MfhjybTGXfsNyKOxst2LTlcd0/LLKcr1q+wVdmFDDcdUtRcVsPlqfMXXg63tRWRtX/jFz6/MNbKg3r+EDkD5NdLA4nWhw==\",\n                \"Id\": 450,\n                \"Size\": 41744\n            }\n        ],\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Getting the list of Xlogs of instance \"postgres-apzvwncr\""
@@ -336,7 +344,7 @@
     ],
     "DescribeDatabases": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabases\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-6bwgamo3\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"86eb714c-500f-412e-8090-3b3f76843d86\",\n        \"Items\": [\n            \"postgres\",\n            \"testdatabase\"\n        ]\n    }\n}",
         "title": "Pulling the list of databases"
@@ -344,7 +352,7 @@
     ],
     "DescribeDefaultParameters": [
       {
-        "document": "None",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDefaultParameters\n<Common request parameters>\n\n{\n    \"DBMajorVersion\": \"13\",\n    \"DBEngine\": \"postgresql\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"xx\",\n        \"ParamInfoSet\": [\n            {\n                \"Advanced\": false,\n                \"ClassificationCN\": \"AUTOVACUUM\",\n                \"ClassificationEN\": \"Autovacuum\",\n                \"CurrentValue\": \"\",\n                \"DefaultValue\": \"-1\",\n                \"EnumValue\": null,\n                \"ID\": 1409,\n                \"LastModifyTime\": \"\",\n                \"Max\": 10000,\n                \"Min\": -1,\n                \"Name\": \"autovacuum_vacuum_cost_limit\",\n                \"NeedReboot\": false,\n                \"ParamDescriptionCH\": \"指定用于AUTOVACUUM操作中的代价限制值。如果指定-1（默认值），则使用vacuum_cost_limit值\",\n                \"ParamDescriptionEN\": \"Vacuum cost amount available before napping, for autovacuum.\",\n                \"ParamValueType\": \"integer\",\n                \"SpecRelated\": false,\n                \"StandbyRelated\": 0,\n                \"Unit\": \"\"\n            },\n            {\n                \"Advanced\": false,\n                \"ClassificationCN\": \"复制\",\n                \"ClassificationEN\": \"Replication\",\n                \"CurrentValue\": \"\",\n                \"DefaultValue\": \"27\",\n                \"EnumValue\": null,\n                \"ID\": 1592,\n                \"LastModifyTime\": \"\",\n                \"Max\": 650,\n                \"Min\": 27,\n                \"Name\": \"max_wal_senders\",\n                \"NeedReboot\": true,\n                \"ParamDescriptionCH\": \"wal发送进程的数量\",\n                \"ParamDescriptionEN\": \"Sets the maximum number of simultaneously running WAL sender processes.\",\n                \"ParamValueType\": \"integer\",\n                \"SpecRelated\": true,\n                \"StandbyRelated\": 1,\n                \"Unit\": \"\"\n            }\n        ]\n    }\n}",
         "title": "Querying the information of all parameters that can be added by a parameter template"
@@ -360,7 +368,7 @@
     ],
     "DescribeLogBackups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogBackups\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0,\n    \"OrderByType\": \"desc\",\n    \"MaxFinishTime\": \"\",\n    \"MinFinishTime\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"LogBackupSet\": [\n            {\n                \"BackupMethod\": \"physical\",\n                \"BackupMode\": \"automatic\",\n                \"DBInstanceId\": \"postgres-jdlmoll9\",\n                \"ExpireTime\": \"2023-02-22 21:10:52\",\n                \"FinishTime\": \"2023-02-15 21:10:52\",\n                \"Id\": \"2628bcde-ce13-554a-b47d-2b15187a02ec\",\n                \"Name\": \"******.tar.gz\",\n                \"Size\": 16783360,\n                \"StartTime\": \"2023-02-15 21:10:52\",\n                \"State\": \"finished\"\n            }\n        ],\n        \"RequestId\": \"c716c175-6037-4bdd-a35b-2c05399489f3\",\n        \"TotalCount\": 10\n    }\n}",
         "title": "Querying the list of log backups"
@@ -368,7 +376,7 @@
     ],
     "DescribeOrders": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrders\n<Common request parameters>\n\n{\n    \"DealNames\": [\n        \"20180615110033\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Deals\": [\n            {\n                \"Count\": 1,\n                \"OwnerUin\": \"909619400\",\n                \"DBInstanceIdSet\": [\n                    \"postgres-2uepfuz1\"\n                ],\n                \"PayMode\": 1,\n                \"FlowId\": 36,\n                \"DealName\": \"20180615110033\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Getting order information"
@@ -376,7 +384,7 @@
     ],
     "DescribeParameterTemplateAttributes": [
       {
-        "document": "None",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeParameterTemplateAttributes\n<Common request parameters>\n\n{\n    \"TemplateId\": \"c0456ace-31d1-54b1-a270-befa6bf960a5\"\n}",
         "output": "{\n    \"Response\": {\n        \"DBEngine\": \"postgresql\",\n        \"DBMajorVersion\": \"12\",\n        \"ParamInfoSet\": [\n            {\n                \"Advanced\": false,\n                \"ClassificationCN\": \"WAL\",\n                \"ClassificationEN\": \"Write-Ahead Log\",\n                \"CurrentValue\": \"logical\",\n                \"DefaultValue\": \"replica\",\n                \"EnumValue\": [\n                    \"replica\",\n                    \"logical\"\n                ],\n                \"ID\": 854,\n                \"LastModifyTime\": \"\",\n                \"Max\": 0,\n                \"Min\": 0,\n                \"Name\": \"wal_level\",\n                \"NeedReboot\": true,\n                \"ParamDescriptionCH\": \"此参数决定记录到日志的信息，不允许设置为minimal\",\n                \"ParamDescriptionEN\": \"Set the level of information written to the WAL.\",\n                \"ParamValueType\": \"enum\",\n                \"SpecRelated\": false,\n                \"StandbyRelated\": 0,\n                \"Unit\": \"\"\n            },\n            {\n                \"Advanced\": false,\n                \"ClassificationCN\": \"资源使用\",\n                \"ClassificationEN\": \"Resource Usage\",\n                \"CurrentValue\": \"12\",\n                \"DefaultValue\": \"8\",\n                \"EnumValue\": null,\n                \"ID\": 755,\n                \"LastModifyTime\": \"\",\n                \"Max\": 262143,\n                \"Min\": 0,\n                \"Name\": \"max_worker_processes\",\n                \"NeedReboot\": true,\n                \"ParamDescriptionCH\": \"系统能够支持的后台进程的最大数量\",\n                \"ParamDescriptionEN\": \"Maximum number of concurrent worker processes.\",\n                \"ParamValueType\": \"integer\",\n                \"SpecRelated\": true,\n                \"StandbyRelated\": 1,\n                \"Unit\": \"\"\n            }\n        ],\n        \"RequestId\": \"e4f0f472-8bef-4404-b3fa-57ed6b6378b8\",\n        \"TemplateDescription\": \"test-modify\",\n        \"TemplateId\": \"c0456ace-31d1-54b1-a270-befa6bf960a5\",\n        \"TemplateName\": \"test-modify_1\",\n        \"TotalCount\": 2\n    }\n}",
         "title": "Querying the details of a parameter template"
@@ -400,7 +408,7 @@
     ],
     "DescribeProductConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProductConfig\n<Common request parameters>\n\n{\n    \"Zone\": \"ap-guangzhou-2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eaa0a364-08c9-42f6-888e-4e3b7e99b50d\",\n        \"SpecInfoList\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"SupportKMSRegions\": [\n                    \"ap-guangzhou\"\n                ],\n                \"SpecItemInfoList\": [\n                    {\n                        \"SpecCode\": \"cdb.pg.z1.2g\",\n                        \"Version\": \"10.4\",\n                        \"VersionName\": \"PostgreSQL 10\",\n                        \"Cpu\": 1,\n                        \"Memory\": 2048,\n                        \"MaxStorage\": 1000,\n                        \"MinStorage\": 10,\n                        \"Qps\": 2100,\n                        \"Pid\": 11004,\n                        \"Type\": \"TS85\",\n                        \"KernelVersion\": \"v10.4_r1.0\",\n                        \"MajorVersion\": \"10\",\n                        \"IsSupportTDE\": 1\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "Querying purchasable specifications in an AZ in a region"
@@ -408,15 +416,15 @@
     ],
     "DescribeReadOnlyGroups": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeReadOnlyGroups\n<Common request parameters>\n\n{\n    \"OrderBy\": \"Name\",\n    \"OrderByType\": \"desc\",\n    \"PageNumber\": \"0\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"postgres-6bwgamo3\"\n            ],\n            \"Name\": \"db-master-instance-id\"\n        }\n    ],\n    \"PageSize\": \"10\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ReadOnlyGroupList\": [\n            {\n                \"Status\": \"xx\",\n                \"MaxReplayLag\": 0.0,\n                \"ReplayLagEliminate\": 1,\n                \"Zone\": \"xx\",\n                \"MaxReplayLatency\": 0,\n                \"ProjectId\": 1,\n                \"Region\": \"xx\",\n                \"ReadOnlyDBInstanceList\": [\n                    {\n                        \"Zone\": \"xx\",\n                        \"DBInstanceName\": \"xx\",\n                        \"DBNodeSet\": [\n                            {\n                                \"Role\": \"xx\",\n                                \"Zone\": \"xx\"\n                            }\n                        ],\n                        \"Type\": \"xx\",\n                        \"ReadOnlyInstanceNum\": 0,\n                        \"DBKernelVersion\": \"xx\",\n                        \"UpdateTime\": \"2020-09-22 00:00:00\",\n                        \"VpcId\": \"xx\",\n                        \"DBMajorVersion\": \"xx\",\n                        \"IsolatedTime\": \"2020-09-22 00:00:00\",\n                        \"NetworkAccessList\": [\n                            {\n                                \"Vip6\": \"xx\",\n                                \"VpcId\": \"xx\",\n                                \"ResourceType\": 1,\n                                \"ResourceId\": \"xx\",\n                                \"Vip\": \"xx\",\n                                \"SubnetId\": \"xx\",\n                                \"Vport\": 0,\n                                \"VpcStatus\": 0\n                            }\n                        ],\n                        \"DBVersion\": \"xx\",\n                        \"DBInstanceVersion\": \"xx\",\n                        \"AutoRenew\": 1,\n                        \"OfflineTime\": \"xx\",\n                        \"SubnetId\": \"xx\",\n                        \"DBInstanceMemory\": 1,\n                        \"DBInstanceType\": \"xx\",\n                        \"DBInstanceStatus\": \"xx\",\n                        \"ProjectId\": 1,\n                        \"Region\": \"xx\",\n                        \"StatusInReadonlyGroup\": \"xx\",\n                        \"MasterDBInstanceId\": \"xx\",\n                        \"DBInstanceNetInfo\": [\n                            {\n                                \"Status\": \"xx\",\n                                \"VpcId\": \"xx\",\n                                \"Ip\": \"xx\",\n                                \"NetType\": \"xx\",\n                                \"Address\": \"xx\",\n                                \"SubnetId\": \"xx\",\n                                \"Port\": 1\n                            }\n                        ],\n                        \"DBInstanceStorage\": 1,\n                        \"Uid\": 1,\n                        \"IsSupportTDE\": 0,\n                        \"DBCharset\": \"xx\",\n                        \"DBInstanceId\": \"xx\",\n                        \"PayType\": \"xx\",\n                        \"ExpireTime\": \"2020-09-22 00:00:00\",\n                        \"SupportIpv6\": 1,\n                        \"AppId\": 1,\n                        \"DBInstanceClass\": \"xx\",\n                        \"CreateTime\": \"2020-09-22 00:00:00\",\n                        \"DBInstanceCpu\": 1,\n                        \"TagList\": [\n                            {\n                                \"TagKey\": \"xx\",\n                                \"TagValue\": \"xx\"\n                            }\n                        ]\n                    }\n                ],\n                \"MasterDBInstanceId\": \"xx\",\n                \"MinDelayEliminateReserve\": 3,\n                \"ReadOnlyGroupName\": \"xx\",\n                \"VpcId\": \"xx\",\n                \"ReadOnlyGroupId\": \"xx\",\n                \"ReplayLatencyEliminate\": 0,\n                \"SubnetId\": \"xx\",\n                \"NetworkAccessList\": [\n                    {\n                        \"Vip6\": \"xx\",\n                        \"VpcId\": \"xx\",\n                        \"ResourceType\": 1,\n                        \"ResourceId\": \"xx\",\n                        \"Vip\": \"xx\",\n                        \"SubnetId\": \"xx\",\n                        \"Vport\": 0,\n                        \"VpcStatus\": 0\n                    }\n                ],\n                \"Rebalance\": 0,\n                \"DBInstanceNetInfo\": [\n                    {\n                        \"Status\": \"xx\",\n                        \"VpcId\": \"xx\",\n                        \"Ip\": \"xx\",\n                        \"NetType\": \"xx\",\n                        \"Address\": \"xx\",\n                        \"SubnetId\": \"xx\",\n                        \"Port\": 1\n                    }\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Querying the details of RO groups of instance \"postgres-6bwgamo3\""
+        "document": "This example shows you how to filter the list of read-only groups by specifying the primary instance ID `postgres-kpol3zgp` as a condition for the query.",
+        "input": "POST / HTTP/1.1Host: postgres.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeReadOnlyGroups<common request parameters>{    \"Filters\": [        {            \"Name\": \"db-master-instance-id\",            \"Values\": [                \"postgres-kpol3zgp\"            ]        }    ]}",
+        "output": "{\n    \"Response\": {\n        \"ReadOnlyGroupList\": [\n            {\n                \"DBInstanceNetInfo\": [\n                    {\n                        \"Address\": \"\",\n                        \"Ip\": \"172.16.0.88\",\n                        \"NetType\": \"private\",\n                        \"Port\": 5432,\n                        \"ProtocolType\": \"postgresql\",\n                        \"Status\": \"opened\",\n                        \"SubnetId\": \"subnet-7aheme8u\",\n                        \"VpcId\": \"vpc-ql6jst9h\"\n                    }\n                ],\n                \"MasterDBInstanceId\": \"postgres-kpol3zgp\",\n                \"MaxReplayLag\": 0,\n                \"MaxReplayLatency\": 0,\n                \"MinDelayEliminateReserve\": 0,\n                \"NetworkAccessList\": null,\n                \"ProjectId\": 1076910,\n                \"ReadOnlyDBInstanceList\": [\n                    {\n                        \"AppId\": 251197262,\n                        \"AutoRenew\": 0,\n                        \"CreateTime\": \"2023-05-17 15:24:26\",\n                        \"DBCharset\": \"UTF8\",\n                        \"DBEngine\": \"postgresql\",\n                        \"DBEngineConfig\": \"\",\n                        \"DBInstanceClass\": \"cdb.pg.sh1.2g\",\n                        \"DBInstanceCpu\": 1,\n                        \"DBInstanceId\": \"pgro-5objz9hu\",\n                        \"DBInstanceMemory\": 2,\n                        \"DBInstanceName\": \"auto_rotest\",\n                        \"DBInstanceNetInfo\": [\n                            {\n                                \"Address\": \"\",\n                                \"Ip\": \"172.16.0.134\",\n                                \"NetType\": \"private\",\n                                \"Port\": 5432,\n                                \"ProtocolType\": \"postgresql\",\n                                \"Status\": \"opened\",\n                                \"SubnetId\": \"subnet-7aheme8u\",\n                                \"VpcId\": \"vpc-ql6jst9h\"\n                            }\n                        ],\n                        \"DBInstanceStatus\": \"running\",\n                        \"DBInstanceStorage\": 10,\n                        \"DBInstanceType\": \"readonly\",\n                        \"DBInstanceVersion\": \"standard\",\n                        \"DBKernelVersion\": \"v9.5.25_r1.5\",\n                        \"DBMajorVersion\": \"9.5\",\n                        \"DBNodeSet\": null,\n                        \"DBVersion\": \"9.5.25\",\n                        \"ExpireTime\": \"0000-00-00 00:00:00\",\n                        \"IsSupportTDE\": 0,\n                        \"IsolatedTime\": \"0000-00-00 00:00:00\",\n                        \"MasterDBInstanceId\": \"postgres-kpol3zgp\",\n                        \"NetworkAccessList\": null,\n                        \"OfflineTime\": \"0001-01-04 00:00:00\",\n                        \"PayType\": \"postpaid\",\n                        \"ProjectId\": 0,\n                        \"ReadOnlyInstanceNum\": 0,\n                        \"Region\": \"ap-guangzhou\",\n                        \"StatusInReadonlyGroup\": \"running\",\n                        \"SubnetId\": \"subnet-7aheme8u\",\n                        \"SupportIpv6\": 0,\n                        \"TagList\": [],\n                        \"Type\": \"SH02\",\n                        \"Uid\": 49,\n                        \"UpdateTime\": \"2023-05-17 07:25:35\",\n                        \"VpcId\": \"vpc-ql6jst9h\",\n                        \"Zone\": \"ap-guangzhou-3\"\n                    }\n                ],\n                \"ReadOnlyGroupId\": \"pgrogrp-htrtddr0\",\n                \"ReadOnlyGroupName\": \"autotest\",\n                \"Rebalance\": 0,\n                \"Region\": \"ap-guangzhou\",\n                \"ReplayLagEliminate\": 0,\n                \"ReplayLatencyEliminate\": 0,\n                \"Status\": \"ok\",\n                \"SubnetId\": \"subnet-7aheme8u\",\n                \"VpcId\": \"vpc-ql6jst9h\",\n                \"Zone\": \"ap-guangzhou-3\"\n            }\n        ],\n        \"RequestId\": \"a28a102a-8c70-451c-96d7-04291218fbc1\"\n    }\n}",
+        "title": "Querying the list of read-only groups under a primary instance"
       }
     ],
     "DescribeRegions": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRegions\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0872c9bb-0540-4ac4-80cf-ba63bd771b0a\",\n        \"TotalCount\": 7,\n        \"RegionSet\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"South China (Guangzhou)\",\n                \"RegionId\": 1,\n                \"SupportInternational\": 0,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-chengdu\",\n                \"RegionName\": \"Southwest China (Chengdu)\",\n                \"RegionId\": 16,\n                \"SupportInternational\": 0,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shanghai\",\n                \"RegionName\": \"East China (Shanghai)\",\n                \"RegionId\": 4,\n                \"SupportInternational\": 0,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"na-toronto\",\n                \"RegionName\": \"North America (Toronto)\",\n                \"RegionId\": 6,\n                \"SupportInternational\": 1,\n                \"RegionState\": \"UNAVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shanghai-fsi\",\n                \"RegionName\": \"East China (Shanghai Finance)\",\n                \"RegionId\": 7,\n                \"SupportInternational\": 0,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-beijing\",\n                \"RegionName\": \"North China (Beijing)\",\n                \"RegionId\": 8,\n                \"SupportInternational\": 0,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"na-siliconvalley\",\n                \"RegionName\": \"West US (Silicon Valley)\",\n                \"RegionId\": 15,\n                \"SupportInternational\": 1,\n                \"RegionState\": \"AVAILABLE\"\n            }\n        ]\n    }\n}",
         "title": "Querying all regions"
@@ -424,7 +432,7 @@
     ],
     "DescribeServerlessDBInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeServerlessDBInstances\n<Common request parameters>\n\n{\n    \"Filter\": [\n        {\n            \"Name\": \"\\\"xxx\\\",\"\n        }\n    ],\n    \"Limit\": \"0\",\n    \"Offset\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DBInstanceSet\": [\n            {\n                \"DBInstanceId\": \"postgres-xxxxxxxx\",\n                \"DBInstanceName\": \"xxx\",\n                \"DBInstanceStatus\": \"running\",\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ProjectId\": 0,\n                \"VpcId\": \"vpc-xxxxxxxx\",\n                \"SubnetId\": \"subnet-xxxxxxxx\",\n                \"DBCharset\": \"UTF8\",\n                \"DBVersion\": \"10\",\n                \"DBKernelVersion\": \"v10.4_r1.0\",\n                \"CreateTime\": \"2020-03-20 12:19:14\",\n                \"DBInstanceNetInfo\": [\n                    {\n                        \"Address\": \"\",\n                        \"Ip\": \"10.10.10.111\",\n                        \"Port\": 5432,\n                        \"Status\": \"opened\",\n                        \"NetType\": \"private\"\n                    },\n                    {\n                        \"Address\": \"\",\n                        \"Ip\": \"\",\n                        \"Port\": 0,\n                        \"Status\": \"initing\",\n                        \"NetType\": \"public\"\n                    }\n                ],\n                \"DBAccountSet\": [],\n                \"DBDatabaseList\": null\n            }\n        ],\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
         "title": "Querying the list of PostgreSQL for Serverless instances"
@@ -432,7 +440,7 @@
     ],
     "DescribeSlowQueryAnalysis": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSlowQueryAnalysis\n<Common request parameters>\n\n{\n    \"StartTime\": \"2021-06-17 20:00:07\",\n    \"EndTime\": \"2021-06-17 20:15:07\",\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"DBInstanceId\": \"postgres-nbvqjlhf\"\n}",
         "output": "{\n    \"Response\": {\n        \"Detail\": {\n            \"AnalysisItems\": [\n                {\n                    \"AvgCostTime\": 101.01300048828125,\n                    \"ClientAddr\": \"\",\n                    \"CostPercent\": 11.703700311890035,\n                    \"CostTime\": 101.01300048828125,\n                    \"DatabaseName\": \"postgres\",\n                    \"FirstTime\": \"2021-07-27 03:12:01\",\n                    \"LastTime\": \"2021-07-27 03:12:01\",\n                    \"MaxCostTime\": 101.01300048828125,\n                    \"MinCostTime\": 101.01300048828125,\n                    \"NormalQuery\": \"select $1 from information_schema.tables where table_schema = $2 and table_name = $3\",\n                    \"UserName\": \"postgres\"\n                }\n            ],\n            \"TotalCallNum\": 6,\n            \"TotalTime\": 863.0860137939453\n        },\n        \"RequestId\": \"221334ddc4f\",\n        \"TotalCount\": 5\n    }\n}",
         "title": "Analyzing slow queries of instance"
@@ -440,7 +448,7 @@
     ],
     "DescribeSlowQueryList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSlowQueryList\n<Common request parameters>\n\n{\n    \"StartTime\": \"2021-07-22 10:00:07\",\n    \"EndTime\": \"2021-07-27 20:15:07\",\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"DBInstanceId\": \"postgres-nbvqjlhf\"\n}",
         "output": "{\n    \"Response\": {\n        \"DurationAnalysis\": [\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"10-20s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"40-50s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"50s-\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"5-6s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"6-7s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"2-3s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"20-30s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"3-4s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"4-5s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"7-8s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"8-9s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"9-10s\"\n            },\n            {\n                \"Count\": 0,\n                \"TimeSegment\": \"30-40s\"\n            },\n            {\n                \"Count\": 6,\n                \"TimeSegment\": \"1-2s\"\n            }\n        ],\n        \"RawSlowQueryList\": [\n            {\n                \"ClientAddr\": \"[local]\",\n                \"DatabaseName\": \"postgres\",\n                \"Duration\": 101.013,\n                \"RawQuery\": \"select 1 from information_schema.tables where table_schema = 'pg_catalog' and table_name = 'pg_file_settings'\",\n                \"SessionStartTime\": \"2021-07-27 03:12:01 CST\",\n                \"UserName\": \"postgres\"\n            },\n            {\n                \"ClientAddr\": \"::1:34301\",\n                \"DatabaseName\": \"postgres\",\n                \"Duration\": 155.283,\n                \"RawQuery\": \"select count(*)::text as value from pg_stat_activity where now()-backend_start < '5  second';\",\n                \"SessionStartTime\": \"2021-07-25 02:25:09 CST\",\n                \"UserName\": \"postgres\"\n            },\n            {\n                \"ClientAddr\": \"::1:34295\",\n                \"DatabaseName\": \"postgres\",\n                \"Duration\": 168.119,\n                \"RawQuery\": \"select count(*)::text as value from pg_stat_activity where state='active';\",\n                \"SessionStartTime\": \"2021-07-25 02:25:09 CST\",\n                \"UserName\": \"postgres\"\n            },\n            {\n                \"ClientAddr\": \"::1:34296\",\n                \"DatabaseName\": \"postgres\",\n                \"Duration\": 168.757,\n                \"RawQuery\": \"select count(*)::text as value from pg_stat_activity where wait_event_type is not null\",\n                \"SessionStartTime\": \"2021-07-25 02:25:09 CST\",\n                \"UserName\": \"postgres\"\n            },\n            {\n                \"ClientAddr\": \"::1:34298\",\n                \"DatabaseName\": \"postgres\",\n                \"Duration\": 165.119,\n                \"RawQuery\": \"select application_name,COALESCE(pg_catalog.pg_wal_lsn_diff(sent_lsn, replay_lsn),0) from pg_stat_replication;\",\n                \"SessionStartTime\": \"2021-07-25 02:25:09 CST\",\n                \"UserName\": \"postgres\"\n            },\n            {\n                \"ClientAddr\": \"::1:34297\",\n                \"DatabaseName\": \"postgres\",\n                \"Duration\": 104.795,\n                \"RawQuery\": \"select count(*)::text as value from pg_stat_activity where state='idle';\",\n                \"SessionStartTime\": \"2021-07-25 02:25:09 CST\",\n                \"UserName\": \"postgres\"\n            }\n        ],\n        \"RequestId\": \"221334ddcf\",\n        \"TotalCount\": 6\n    }\n}",
         "title": "Querying the list of slow queries"
@@ -448,7 +456,7 @@
     ],
     "DescribeZones": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZones\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"59c438d4-95ab-4865-993d-dc388d2660d8\",\n        \"TotalCount\": 3,\n        \"ZoneSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneName\": \"Guangzhou Zone 2\",\n                \"ZoneId\": 100002,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-2\",\n                    \"ap-guangzhou-3\"\n                ]\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"ZoneId\": 100003,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-2\",\n                    \"ap-guangzhou-3\"\n                ]\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\"\n                \"ZoneId\": 100004,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-4\"\n                ]\n            }\n        ]\n    }\n}",
         "title": "Querying AZs in specified region"
@@ -456,7 +464,7 @@
     ],
     "DestroyDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyDBInstance\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-19nmz2xb\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\"\n    }\n}",
         "title": "Terminating TencentDB for PostgreSQL instance"
@@ -464,7 +472,7 @@
     ],
     "DisIsolateDBInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisIsolateDBInstances\n<Common request parameters>\n\n{\n    \"Period\": \"1\",\n    \"AutoVoucher\": \"false\",\n    \"DBInstanceIdSet\": [\n        \"postgres-xxxxxxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ad1ca88b-5cc8-4c4c-ab10-a882123f8daa\"\n    }\n}",
         "title": "Removing instance from isolation"
@@ -486,7 +494,7 @@
     ],
     "InquiryPriceCreateDBInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceCreateDBInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"Storage\": \"100\",\n    \"Pid\": \"11004\",\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"PREPAID\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"OriginalPrice\": 27600,\n        \"Price\": 27600,\n        \"Currency\": \"USD\"\n    }\n}",
         "title": "Querying the purchase price of instance"
@@ -494,7 +502,7 @@
     ],
     "InquiryPriceRenewDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewDBInstance\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-6fego161\",\n    \"Period\": \"12\"\n}",
         "output": "{\n    \"Response\": {\n        \"Price\": 210355,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"OriginalPrice\": 253440,\n        \"Currency\": \"USD\"\n    }\n}",
         "title": "Querying the renewal price of instance \"postgres-6fego161\""
@@ -502,7 +510,7 @@
     ],
     "InquiryPriceUpgradeDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceUpgradeDBInstance\n<Common request parameters>\n\n{\n    \"Storage\": \"500\",\n    \"DBInstanceId\": \"postgres-6fego161\",\n    \"Memory\": 4\n}",
         "output": "{\n    \"Response\": {\n        \"Price\": 1300,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"OriginalPrice\": 1300,\n        \"Currency\": \"CNY\"\n    }\n}",
         "title": "Querying the price for upgrading an instance"
@@ -510,7 +518,7 @@
     ],
     "IsolateDBInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateDBInstances\n<Common request parameters>\n\n{\n    \"DBInstanceIdSet\": [\n        \"postgres-xxxxxxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
         "title": "Isolating instance"
@@ -518,10 +526,18 @@
     ],
     "ModifyAccountRemark": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAccountRemark\n<Common request parameters>\n\n{\n    \"UserName\": \"test\",\n    \"Remark\": \"testModifyRemark\",\n    \"DBInstanceId\": \"postgres-6bwgamo3\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Modifying account remarks"
+      }
+    ],
+    "ModifyBackupDownloadRestriction": [
+      {
+        "document": " This example shows you how to modify the backup download restrictions.",
+        "input": "POST / HTTP/1.1Host: postgres.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyBackupDownloadRestriction<common request parameters>{    \"RestrictionType\": \"CUSTOMIZE\",    \"VpcRestrictionEffect\": \"ALLOW\",    \"VpcIdSet\": [        \"vpc-15ld6dhr\"    ],    \"IpRestrictionEffect\": \"\",    \"IpSet\": []}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"be3bafde-f34e-4fda-9f40-04c5515e2148\"\n    }\n}",
+        "title": "Modifying the backup download restrictions"
       }
     ],
     "ModifyBackupPlan": [
@@ -534,10 +550,18 @@
     ],
     "ModifyBaseBackupExpireTime": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaseBackupExpireTime\n<Common request parameters>\n\n{\n    \"BaseBackupId\": \"88d3a71e-b822-5728-9d41-d8cfc0d0556e\",\n    \"DBInstanceId\": \"postgres-9n26zs6n\",\n    \"NewExpireTime\": \"2023-02-18 23:59:59\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"be3bafde-f34e-4fda-9f40-04c5515e2148\"\n    }\n}",
         "title": "Modifying the expiration time of a full backup"
+      }
+    ],
+    "ModifyDBInstanceChargeType": [
+      {
+        "document": "This example shows you how to modify the billing mode to monthly subscription for the instance `postgres-apzvwncr`.",
+        "input": "POST / HTTP/1.1Host: postgres.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyDBInstanceChargeType<common request parameters>{    \"DBInstanceId\": \"postgres-apzvwncr\",    \"InstanceChargeType\": \"PREPAID\",    \"AutoRenewFlag\": 0,    \"AutoVoucher\": 0,    \"Period\": 1}",
+        "output": "{    \"Response\": {        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",        \"DealName\": 201806181256\"    }}",
+        "title": "Modifying the billing mode for the instance `postgres-apzvwncr`"
       }
     ],
     "ModifyDBInstanceDeployment": [
@@ -556,13 +580,13 @@
     ],
     "ModifyDBInstanceName": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceName\n<Common request parameters>\n\n{\n    \"InstanceName\": \"testModifyInstanceName\",\n    \"DBInstanceId\": \"postgres-6fego161\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\"\n    }\n}",
         "title": "Renaming instance \"postgres-6fego161\" \"testModifyInstanceName\""
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceName\n<Common request parameters>\n\n{\n    \"InstanceName\": \"testModifyInstanceName\",\n    \"DBInstanceId\": \"postgres-6ougo465\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61f510-aa33-454c-9ec2-dq2a368c39ab\"\n    }\n}",
         "title": "Renaming instance \"postgres-6ougo465\" (failure)"
@@ -578,7 +602,7 @@
     ],
     "ModifyDBInstanceReadOnlyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceReadOnlyGroup\n<Common request parameters>\n\n{\n    \"NewReadOnlyGroupId\": \"NewGroup\",\n    \"ReadOnlyGroupId\": \"OldGroup\",\n    \"DBInstanceId\": \"postgres-k95qzetn\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\",\n        \"FlowId\": 912\n    }\n}",
         "title": "ModifyDBInstanceReadOnlyGroup"
@@ -586,13 +610,13 @@
     ],
     "ModifyDBInstanceSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSecurityGroups\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"pgrogrp-nqwpkjb\",\n    \"SecurityGroupIdSet\": [\n        \"sg-91jbmkp1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f81495e4-bca8-4946-b5b0-0aedc512413d\"\n    }\n}",
         "title": "Modifying the security group of an RO group"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSecurityGroups\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-i2q4utnp\",\n    \"SecurityGroupIdSet\": [\n        \"sg-91jbmkp1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5fad142d-9597-408f-84b8-41a27a1486ce\"\n    }\n}",
         "title": "Modifying a security group"
@@ -600,7 +624,7 @@
     ],
     "ModifyDBInstanceSpec": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSpec\n<Common request parameters>\n\n{\n    \"Storage\": \"200\",\n    \"DBInstanceId\": \"postgres-6bwgamo3\",\n    \"Memory\": \"2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"DealName\": \"201806127634\",\n        \"BillId\": \"123\"\n    }\n}",
         "title": "Modifying instance configurations"
@@ -608,16 +632,10 @@
     ],
     "ModifyDBInstancesProject": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstancesProject\n<Common request parameters>\n\n{\n    \"ProjectId\": \"10467\",\n    \"DBInstanceIdSet\": [\n        \"postgres-lnp6j6172\",\n        \"postgres-6bwgamo3\"\n    ]\n}",
+        "document": "批量修改实例项目",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstancesProject\n<common request parameters>\n\n{\n    \"ProjectId\": \"10467\",\n    \"DBInstanceIdSet\": [\n        \"postgres-lnp6j6172\",\n        \"postgres-6bwgamo3\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"Count\": 2\n    }\n}",
-        "title": "Transferring instance to another project"
-      },
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstancesProject\n<Common request parameters>\n\n{\n    \"ProjectId\": \"10467\",\n    \"DBInstanceIdSet\": [\n        \"postgres-6bwgamo3\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
-        "title": "Transferring instance \"postgres-6bwgamo3\" to project \"10467\""
+        "title": "批量修改实例项目"
       }
     ],
     "ModifyParameterTemplate": [
@@ -630,7 +648,7 @@
     ],
     "ModifyReadOnlyGroupConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyReadOnlyGroupConfig\n<Common request parameters>\n\n{\n    \"MaxReplayLag\": \"0\",\n    \"ReplayLagEliminate\": \"0\",\n    \"MaxReplayLatency\": \"512\",\n    \"MinDelayEliminateReserve\": \"0\",\n    \"ReadOnlyGroupName\": \"\\\"test\\\"\",\n    \"ReadOnlyGroupId\": \"\\\"vpc-e0tfm161\\\"\",\n    \"Rebalance\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
         "title": "Modifying RO group configuration"
@@ -638,7 +656,7 @@
     ],
     "ModifySwitchTimePeriod": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySwitchTimePeriod\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-19nmz2xb\",\n    \"SwitchTag\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\"\n    }\n}",
         "title": "Performing switch now"
@@ -646,7 +664,7 @@
     ],
     "OpenDBExtranetAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenDBExtranetAccess\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1234,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Enabling public network address"
@@ -654,13 +672,13 @@
     ],
     "OpenServerlessDBExtranetAccess": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenServerlessDBExtranetAccess\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Enabling public network access for PostgreSQL for Serverless instance by specifying its ID"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenServerlessDBExtranetAccess\n<Common request parameters>\n\n{\n    \"DBInstanceName\": \"db-test\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Enabling public network access for PostgreSQL for Serverless instance by specifying its name"
@@ -668,7 +686,7 @@
     ],
     "RebalanceReadOnlyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RebalanceReadOnlyGroup\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"\\\"pgrogrp-e0tfm161\\\"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
         "title": "Rebalancing the traffic load of read-only instances in RO group"
@@ -676,7 +694,7 @@
     ],
     "RemoveDBInstanceFromReadOnlyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveDBInstanceFromReadOnlyGroup\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"\\\"pgrogrp-k95qzetn\\\"\",\n    \"DBInstanceId\": \"\\\"pgro-k95qzetn\\\"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\",\n        \"FlowId\": 912\n    }\n}",
         "title": "Removing read-only instance from RO group"
@@ -684,7 +702,7 @@
     ],
     "RenewInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewInstance\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\",\n    \"Period\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"DealName\": \"201806181256\"\n    }\n}",
         "title": "Renewing instance \"postgres-apzvwncr\""
@@ -692,13 +710,13 @@
     ],
     "ResetAccountPassword": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetAccountPassword\n<Common request parameters>\n\n{\n    \"UserName\": \"test\",\n    \"Password\": \"1234qwer()\",\n    \"DBInstanceId\": \"postgres-lnp6j6172\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Resetting account password for instance \"postgres-lnp6j6172\" (failure)"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetAccountPassword\n<Common request parameters>\n\n{\n    \"UserName\": \"test\",\n    \"Password\": \"1234qwer()\",\n    \"DBInstanceId\": \"postgres-lnp6j6172\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Resetting account password for instance \"postgres-lnp6j6172\" (success)"
@@ -706,7 +724,7 @@
     ],
     "RestartDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartDBInstance\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1234,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Restarting instance"
@@ -714,7 +732,7 @@
     ],
     "SetAutoRenewFlag": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetAutoRenewFlag\n<Common request parameters>\n\n{\n    \"AutoRenewFlag\": \"1\",\n    \"DBInstanceIdSet\": [\n        \"postgres-6fego161\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"Count\": 1\n    }\n}",
         "title": "Setting auto-renewal"
@@ -722,7 +740,7 @@
     ],
     "UpgradeDBInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDBInstance\n<Common request parameters>\n\n{\n    \"Storage\": \"200\",\n    \"DBInstanceId\": \"postgres-6bwgamo3\",\n    \"Memory\": \"2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"DealName\": \"201806127634\",\n        \"BillId\": \"123\"\n    }\n}",
         "title": "Upgrading instance"
@@ -730,7 +748,7 @@
     ],
     "UpgradeDBInstanceKernelVersion": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDBInstanceKernelVersion\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"pgro-g7w4itfg\",\n    \"TargetDBKernelVersion\": \"v12.7_r1.5\",\n    \"DryRun\": \"true\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2b376d28-d5fd-40b0-9bdc-d992f8fed15d\"\n    }\n}",
         "title": "Upgrading the version"
