@@ -8,7 +8,7 @@
       "status": "online"
     },
     "DescribeBillDetail": {
-      "document": "This API is used to query bill details.",
+      "document": "This API is used to get bill details. \nNotes: 1. The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails. 2. If the volume of your bill data is high (for example, if over 200 thousand bill entries are generated for a month), bill data query via APIs may be slow. We recommend you enable bill storage so that you can obtain bill files from COS buckets for analysis. For details, see [Saving Bills to COS](https://intl.cloud.tencent.com/document/product/555/61275?from_cn_redirect=1).",
       "input": "DescribeBillDetailRequest",
       "name": "Queries bill details",
       "output": "DescribeBillDetailResponse",
@@ -21,10 +21,17 @@
       "output": "DescribeBillResourceSummaryResponse",
       "status": "online"
     },
+    "DescribeBillSummary": {
+      "document": "This API is used to get bill details by product, project, region, billing mode, and tag through passing in parameters.",
+      "input": "DescribeBillSummaryRequest",
+      "name": "Gets bills summarized by multiple dimensions (New)",
+      "output": "DescribeBillSummaryResponse",
+      "status": "online"
+    },
     "DescribeBillSummaryByPayMode": {
-      "document": "Gets the bill summarized according to billing mode",
+      "document": "This API is used to get the bill summarized by billing mode.",
       "input": "DescribeBillSummaryByPayModeRequest",
-      "name": "Gets the bill summarized according to billing mode",
+      "name": "Gets the bill summarized by billing mode",
       "output": "DescribeBillSummaryByPayModeResponse",
       "status": "online"
     },
@@ -88,8 +95,8 @@
       "document": "Detailed summary of costs by transaction type",
       "members": [
         {
-          "default": "",
-          "document": "Transaction type",
+          "disabled": false,
+          "document": "Transaction type code",
           "example": "prepay_purchase",
           "member": "string",
           "name": "ActionType",
@@ -98,8 +105,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Transaction type name",
+          "disabled": false,
+          "document": "Transaction type,  which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -108,17 +115,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Actual cost",
-          "example": "0.00",
-          "member": "string",
-          "name": "RealTotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
+          "disabled": false,
           "document": "Cost ratio, to two decimal points",
           "example": "100.00",
           "member": "string",
@@ -128,8 +125,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cash amount",
+          "disabled": false,
+          "document": "Total amount after discount",
+          "example": "0.00",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -138,8 +145,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Trial credit amount",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -148,8 +155,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Voucher amount",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -158,7 +165,17 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Billing month, e.g. `2019-08`",
           "example": "2021-01",
           "member": "string",
@@ -168,7 +185,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.",
           "example": "0.00",
           "member": "string",
@@ -185,6 +202,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Valid values: `all products` or names of the applicable products (string). Multiple names are separated by commas.",
           "example": "全产品通用",
           "member": "string",
@@ -195,6 +213,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If `GoodsName` contains multiple product names and `PayMode` is `*`, it indicates that the voucher can be used in all billing modes for each of the products.",
           "example": "*",
           "member": "string",
@@ -210,7 +229,8 @@
       "document": "Bill details",
       "members": [
         {
-          "document": "Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL",
+          "disabled": false,
+          "document": "Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.",
           "example": "云服务器CVM",
           "member": "string",
           "name": "BusinessCodeName",
@@ -219,7 +239,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1",
+          "disabled": false,
+          "document": "Subproduct name:  The subcategory of a Tencent Cloud product purchased by the user, such as  CVM – Standard S1.",
           "example": "云服务器CVM-标准型S1",
           "member": "string",
           "name": "ProductCodeName",
@@ -228,7 +249,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Billing mode",
+          "disabled": false,
+          "document": "Billing mode,  which can be monthly subscription or pay-as-you-go.",
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
@@ -237,7 +259,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Project: project of a resource",
+          "disabled": false,
+          "document": "Project name:  The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.",
           "example": "默认项目",
           "member": "string",
           "name": "ProjectName",
@@ -246,7 +269,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Region: region of a resource, e.g. South China (Guangzhou)",
+          "disabled": false,
+          "document": "Region:  The region to which a resource belongs, such as South China (Guangzhou).",
           "example": "华南地区（广州）",
           "member": "string",
           "name": "RegionName",
@@ -255,6 +279,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3",
           "example": "广州三区",
           "member": "string",
@@ -264,7 +289,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance ID",
+          "disabled": false,
+          "document": "Instance ID:  The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.",
           "example": "ins-rb7bmkwx",
           "member": "string",
           "name": "ResourceId",
@@ -273,7 +299,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance name",
+          "disabled": false,
+          "document": "Instance name:  The resource name set by the user in the console. If it is not set, it will be empty by default.",
           "example": "emr-Core.3_emr-4g83a3k3",
           "member": "string",
           "name": "ResourceName",
@@ -282,7 +309,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Transaction type",
+          "disabled": false,
+          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -291,7 +319,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Order ID",
+          "disabled": false,
+          "document": "Order ID:  The order number for a monthly subscription purchase",
           "example": "20211202400008418120371",
           "member": "string",
           "name": "OrderId",
@@ -300,7 +329,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Transaction ID",
+          "disabled": false,
+          "document": "Transaction ID:  The bill number for a deducted payment",
           "example": "20211202400008418120371",
           "member": "string",
           "name": "BillId",
@@ -309,7 +339,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Payment time",
+          "disabled": false,
+          "document": "Transaction time:  The time at which a payment was deducted",
           "example": "2021-12-02 12:45:12",
           "member": "datetime",
           "name": "PayTime",
@@ -318,7 +349,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Service start time",
+          "disabled": false,
+          "document": "Usage start time:  The time at which product or service usage starts",
           "example": "2021-12-02 12:45:05",
           "member": "datetime",
           "name": "FeeBeginTime",
@@ -327,7 +359,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Service end time",
+          "disabled": false,
+          "document": "Usage end time:  The time at which product or service usage ends",
           "example": "2021-12-03 12:45:05",
           "member": "datetime",
           "name": "FeeEndTime",
@@ -336,6 +369,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Component list",
           "example": "[           {             \"ComponentCodeName\": \"实例\",            ",
           "member": "BillDetailComponent",
@@ -345,7 +379,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Payer's UIN",
+          "disabled": false,
+          "document": "Payer account ID:  The account ID of the payer, which is the unique identifier of a Tencent Cloud user.",
           "example": "909619400",
           "member": "string",
           "name": "PayerUin",
@@ -354,7 +389,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "User's UIN",
+          "disabled": false,
+          "document": "Owner account ID:  The account ID of the actual resource user",
           "example": "909619400",
           "member": "string",
           "name": "OwnerUin",
@@ -363,7 +399,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Operator's UIN",
+          "disabled": false,
+          "document": "Operator account ID:  The account or role ID of the operator who purchases or activates a resource",
           "example": "909619400",
           "member": "string",
           "name": "OperateUin",
@@ -372,7 +409,8 @@
           "value_allowed_null": false
         },
         {
-          "document": "Tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Tag information. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "[           {             \"TagKey\": \"jemmahuang\",             \"T",
           "member": "BillTagInfo",
           "name": "Tags",
@@ -381,7 +419,8 @@
           "value_allowed_null": true
         },
         {
-          "document": "Product code\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "disabled": false,
+          "document": "Product code. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "p_cdn",
           "member": "string",
           "name": "BusinessCode",
@@ -390,7 +429,8 @@
           "value_allowed_null": true
         },
         {
-          "document": "Subproduct code\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "disabled": false,
+          "document": "Subproduct code. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "sp_cvm_sa2",
           "member": "string",
           "name": "ProductCode",
@@ -399,7 +439,8 @@
           "value_allowed_null": true
         },
         {
-          "document": "Transaction type\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "disabled": false,
+          "document": "Transaction type code. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "postpay_deduct_h",
           "member": "string",
           "name": "ActionType",
@@ -408,7 +449,8 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "disabled": false,
+          "document": "Region ID. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
           "name": "RegionId",
@@ -417,7 +459,8 @@
           "value_allowed_null": true
         },
         {
-          "document": "Project ID: ID of the project to which the resource belongs",
+          "disabled": false,
+          "document": "Project ID",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -426,6 +469,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Price attribute\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"操作系统\"：\"linux\"，\"连续使用时长T\"：\"第三阶梯\"，\"平台\"：\"云平\"]",
           "member": "string",
@@ -441,8 +485,8 @@
       "document": "Information about components charged in the bill",
       "members": [
         {
-          "default": "",
-          "document": "Component type: type of a resource component, e.g. memory, disk, etc.",
+          "disabled": false,
+          "document": "Component type:  The component type of a product or service purchased, such as  CVM instance components including  CPU and memory.",
           "example": "内存",
           "member": "string",
           "name": "ComponentCodeName",
@@ -451,8 +495,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Component name: name of a resource component, e.g. TencentDB for MySQL-memory",
+          "disabled": false,
+          "document": "Component name:  The specific component of a product or service purchased",
           "example": "高效云系统盘",
           "member": "string",
           "name": "ItemCodeName",
@@ -461,8 +505,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Component published price: original price of a resource component with the original granularity",
+          "disabled": false,
+          "document": "Component list price:  The listed unit price of a component. If a customer has applied for a fixed preferential price or contract price, this parameter will not be displayed by default.",
           "example": "0.35000000",
           "member": "string",
           "name": "SinglePrice",
@@ -471,18 +515,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Specified price of the component",
+          "disabled": true,
+          "document": "Specified price of a component. This parameter has been deprecated.",
           "example": "0.00000000",
           "member": "string",
           "name": "SpecifiedPrice",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Price unit",
+          "disabled": false,
+          "document": "Component price measurement unit:  The unit of measurement for a component price, which is composed of  USD, usage unit, and duration unit.",
           "example": "元/GB/月",
           "member": "string",
           "name": "PriceUnit",
@@ -491,8 +535,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Component usage",
+          "disabled": false,
+          "document": "Component usage:  The actually settled usage of a component, which is \"Raw usage - Deducted usage (including packages)\".",
           "example": "50.00000000",
           "member": "string",
           "name": "UsedAmount",
@@ -501,8 +545,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Component usage unit",
+          "disabled": false,
+          "document": "Component usage unit:  The unit of measurement for component usage",
           "example": "GB",
           "member": "string",
           "name": "UsedAmountUnit",
@@ -511,8 +555,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Usage period",
+          "disabled": false,
+          "document": "Usage duration:  The resource usage duration",
           "example": "1.00000000",
           "member": "string",
           "name": "TimeSpan",
@@ -521,8 +565,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Time unit",
+          "disabled": false,
+          "document": "Duration unit:  The unit of measurement for usage duration",
           "example": "月",
           "member": "string",
           "name": "TimeUnitName",
@@ -531,8 +575,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Original price of the component",
+          "disabled": false,
+          "document": "Original cost:  The original cost of a resource, which is \"List price x Usage x Usage duration\". If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.",
           "example": "17.50000000",
           "member": "string",
           "name": "Cost",
@@ -541,8 +585,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Discount rate",
+          "disabled": false,
+          "document": "Discount multiplier:  The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.",
           "example": "0.00000000",
           "member": "string",
           "name": "Discount",
@@ -551,7 +595,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Offer type",
           "example": "折扣",
           "member": "string",
@@ -561,8 +605,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Total discounted price",
+          "disabled": false,
+          "document": "Total amount after discount:   Total amount after discount = (Original cost - RI deduction (cost) - SP deduction (cost)) x Discount multiplier",
           "example": "0.00000000",
           "member": "string",
           "name": "RealCost",
@@ -571,8 +615,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Amount paid in voucher",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -581,8 +625,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Amount paid in cash",
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "0.00000000",
           "member": "string",
           "name": "CashPayAmount",
@@ -591,8 +635,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Amount paid in trial credit",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -601,8 +645,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Component type code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Component type code. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "sv_cvm_rootdisk_cbspremium",
           "member": "string",
           "name": "ItemCode",
@@ -611,8 +665,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Component code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Component name code. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "v_cvm_rootdisk",
           "member": "string",
           "name": "ComponentCode",
@@ -621,8 +675,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Contract price",
+          "disabled": false,
+          "document": "Component contracted price:  The contracted unit price of a component, which is \"List price x Discount\". Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "ContractPrice",
@@ -631,8 +685,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "disabled": false,
+          "document": "Instance type:  The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "RI",
           "member": "string",
           "name": "InstanceType",
@@ -641,8 +695,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The usage duration deducted by a reserved instance. The unit of measurement for deduction is the same as that for usage duration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "disabled": false,
+          "document": "RI deduction (duration):  The usage duration deducted by RI. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "RiTimeSpan",
@@ -651,8 +705,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The amount deducted by a reserved instance based on the original component cost.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "disabled": false,
+          "document": "RI deduction (cost):  The amount deducted from the original cost by RI. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "OriginalCostWithRI",
@@ -661,8 +715,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The discount multiplier that applies to the component based on the remaining commitment of the savings plan.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "disabled": false,
+          "document": "Savings plan deduction rate:  The discount multiplier that applies to the component based on the remaining commitment of the savings plan. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "SPDeductionRate",
@@ -671,18 +725,18 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The savings plan deduction amount.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "disabled": true,
+          "document": "Cost deduction by SP. This parameter has been deprecated. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "SPDeduction",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The amount deducted by a savings plan based on the original component cost.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "disabled": false,
+          "document": "SP deduction (cost):  SP deduction (cost) = Cost deduction by SP / SP deduction rate. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "OriginalCostWithSP",
@@ -691,8 +745,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The blended discount multiplier that combines the official website discount, reserved instance discount, and savings plan discount. If no reserved instance and savings plan discounts are available, the blended discount multiplier equals the discount multiplier.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "disabled": false,
+          "document": "Blended discount multiplier:  The final discount multiplier that is applied after combining multiple discount types, which is \"Total amount after discount / Original cost\". Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "BlendedDiscount",
@@ -707,8 +761,8 @@
       "document": "Information about resources charged in the bill",
       "members": [
         {
-          "default": "",
-          "document": "Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL",
+          "disabled": false,
+          "document": "Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.",
           "example": "实时音视频",
           "member": "string",
           "name": "BusinessCodeName",
@@ -717,8 +771,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Subproduct name, which is the subcategory of a Tencent Cloud product, such as CVM-Standard S1. If no subproduct name can be obtained, `-` is returned.",
+          "disabled": false,
+          "document": "Subproduct name:  The subcategory of a Tencent Cloud product purchased by the user, such as  CVM – Standard S1.",
           "example": "实时音视频-音视频通话",
           "member": "string",
           "name": "ProductCodeName",
@@ -727,8 +781,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Billing mode",
+          "disabled": false,
+          "document": "Billing mode,  which can be monthly subscription or pay-as-you-go.",
           "example": "包年包月",
           "member": "string",
           "name": "PayModeName",
@@ -737,8 +791,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Project",
+          "disabled": false,
+          "document": "Project name:  The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.",
           "example": "默认项目",
           "member": "string",
           "name": "ProjectName",
@@ -747,8 +801,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Region",
+          "disabled": false,
+          "document": "Region:  The region to which a resource belongs, such as South China (Guangzhou).",
           "example": "华南地区（广州）",
           "member": "string",
           "name": "RegionName",
@@ -757,8 +811,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Availability zone",
+          "disabled": false,
+          "document": "Availability zone:  The availability zone to which a resource belongs, such as Guangzhou Zone 3.",
           "example": "其他",
           "member": "string",
           "name": "ZoneName",
@@ -767,8 +821,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Instance ID",
+          "disabled": false,
+          "document": "Instance ID:  The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.\t",
           "example": "1000068815",
           "member": "string",
           "name": "ResourceId",
@@ -777,8 +831,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Resource instance namDeduction timee",
+          "disabled": false,
+          "document": "Instance name:  The resource name set by the user in the console. If it is not set, it will be empty by default.",
           "example": " 1",
           "member": "string",
           "name": "ResourceName",
@@ -787,8 +841,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Transaction type",
+          "disabled": false,
+          "document": "Transaction type,  which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -797,8 +851,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Order ID",
+          "disabled": false,
+          "document": "Order ID:  The order number for a monthly subscription purchase",
           "example": "20210818400005559878881",
           "member": "string",
           "name": "OrderId",
@@ -807,8 +861,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Payment time",
+          "disabled": false,
+          "document": "Transaction time:  The time at which a payment was deducted",
           "example": "2021-08-18 15:35:01",
           "member": "datetime",
           "name": "PayTime",
@@ -817,8 +871,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Service start time",
+          "disabled": false,
+          "document": "Usage start time:  The time at which product or service usage starts",
           "example": "2021-08-18 15:35:00",
           "member": "datetime",
           "name": "FeeBeginTime",
@@ -827,8 +881,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Service end time",
+          "disabled": false,
+          "document": "Usage end time:  The time at which product or service usage ends",
           "example": "2022-08-31 23:59:59",
           "member": "datetime",
           "name": "FeeEndTime",
@@ -837,8 +891,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Configuration description",
+          "disabled": false,
+          "document": "Configuration description:  The billable item names and usage of a resource, which are displayed on the resource bill only.",
           "example": "音视频通话-自定义套餐包: 1000分钟; ",
           "member": "string",
           "name": "ConfigDesc",
@@ -847,8 +901,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Extension field 1",
+          "disabled": false,
+          "document": "Extended field 1:  Extended attribute information of a product, which is displayed on the resource bill only.",
           "example": "-",
           "member": "string",
           "name": "ExtendField1",
@@ -857,8 +911,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Extension field 2",
+          "disabled": false,
+          "document": "Extended field 2:  Extended attribute information of a product, which is displayed on the resource bill only.",
           "example": "-",
           "member": "string",
           "name": "ExtendField2",
@@ -867,8 +921,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cost, in USD",
+          "disabled": false,
+          "document": "Original cost:  The original cost of a resource, which is \"List price x Usage x Usage duration\". If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.",
           "example": "7",
           "member": "string",
           "name": "TotalCost",
@@ -877,8 +931,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Discount\nIf different discounts or contract prices are applied, `-` will be returned for this parameter.",
+          "disabled": false,
+          "document": "Discount multiplier:  The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.",
           "example": "1",
           "member": "string",
           "name": "Discount",
@@ -887,7 +941,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Offer type",
           "example": "折扣",
           "member": "string",
@@ -897,8 +951,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Total cost after discount, in USD",
+          "disabled": false,
+          "document": "Total amount after discount",
           "example": "7.00000000",
           "member": "string",
           "name": "RealTotalCost",
@@ -907,8 +961,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Amount paid in voucher, in USD",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -917,8 +971,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Amount paid in cash, in USD",
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "7.00000000",
           "member": "string",
           "name": "CashPayAmount",
@@ -927,8 +981,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Amount paid in trial credit, in USD",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -937,8 +991,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Extension field 3",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 3:  Extended attribute information of a product, which is displayed on the resource bill only.",
           "example": "-",
           "member": "string",
           "name": "ExtendField3",
@@ -947,8 +1011,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Extension field 4",
+          "disabled": false,
+          "document": "Extended field 4:  Extended attribute information of a product, which is displayed on the resource bill only.",
           "example": "-",
           "member": "string",
           "name": "ExtendField4",
@@ -957,8 +1021,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Extension field 5",
+          "disabled": false,
+          "document": "Extended field 5:  Extended attribute information of a product, which is displayed on the resource bill only.",
           "example": "-",
           "member": "string",
           "name": "ExtendField5",
@@ -967,8 +1031,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Tag information. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "BillTagInfo",
           "name": "Tags",
@@ -977,8 +1041,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Payer UIN",
+          "disabled": false,
+          "document": "Payer account ID:  The account ID of the payer, which is the unique identifier of a Tencent Cloud user.",
           "example": "xxx",
           "member": "string",
           "name": "PayerUin",
@@ -987,8 +1051,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Resource owner UIN; '-' is returned if no value is obtained",
+          "disabled": false,
+          "document": "Owner account ID:  The account ID of the actual resource user",
           "example": "xxx",
           "member": "string",
           "name": "OwnerUin",
@@ -997,8 +1061,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Operator UIN; '-' is returned if no value is obtained",
+          "disabled": false,
+          "document": "Operator account ID:  The account or role ID of the operator who purchases or activates a resource.",
           "example": "xxx",
           "member": "string",
           "name": "OperateUin",
@@ -1007,7 +1071,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Product code",
           "example": "p_rav",
           "member": "string",
@@ -1017,7 +1081,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Subproduct code",
           "example": "sp_rav_audio_video",
           "member": "string",
@@ -1027,8 +1091,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "",
+          "disabled": false,
+          "document": "Region ID",
           "example": "1",
           "member": "int64",
           "name": "RegionId",
@@ -1037,8 +1101,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:\n\nri=Standard RI\n\nsvp=Savings Plan\n\nsi=Spot Instances\n\nrp=Resource Pack",
+          "disabled": false,
+          "document": "Instance type:  The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.",
           "example": "ri",
           "member": "string",
           "name": "InstanceType",
@@ -1047,8 +1111,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The amount deducted by a reserved instance based on the original component cost.",
+          "disabled": false,
+          "document": "RI deduction (cost):  The amount deducted from the original cost by RI\t",
           "example": "0",
           "member": "string",
           "name": "OriginalCostWithRI",
@@ -1057,18 +1121,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The savings plan deduction amount.",
+          "disabled": true,
+          "document": "Cost deduction by SP. This parameter has been deprecated.",
           "example": "0",
           "member": "string",
           "name": "SPDeduction",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The amount deducted by a savings plan based on the original component cost.",
+          "disabled": false,
+          "document": "SP deduction (cost):  SP deduction (cost) = Cost deduction by SP / SP deduction rate\t",
           "example": "0",
           "member": "string",
           "name": "OriginalCostWithSP",
@@ -1084,6 +1148,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Cost allocation tag key",
           "member": "string",
           "name": "TagKey",
@@ -1093,6 +1158,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -1103,12 +1169,98 @@
       ],
       "usage": "out"
     },
+    "BusinessSummaryInfo": {
+      "document": "Detailed summary of products",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product code",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.",
+          "example": "云服务器",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original cost in USD.  This parameter has become valid since Bill 3.0 took effect in May 2021, and before that `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4.00000000",
+          "member": "string",
+          "name": "TotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total amount after discount",
+          "example": "4.00000000",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "BusinessSummaryOverviewItem": {
       "document": "Summarize product details by product",
       "members": [
         {
-          "default": "",
-          "document": "Product code\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "disabled": false,
+          "document": "Product code. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "p_cdn",
           "member": "string",
           "name": "BusinessCode",
@@ -1117,8 +1269,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL",
+          "disabled": false,
+          "document": "Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.",
           "example": "内容分发网络 CDN",
           "member": "string",
           "name": "BusinessCodeName",
@@ -1127,17 +1279,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Actual cost",
-          "example": "0.00",
-          "member": "string",
-          "name": "RealTotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
+          "disabled": false,
           "document": "Cost ratio, to two decimal points",
           "example": "0.00",
           "member": "string",
@@ -1147,8 +1289,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cash amount",
+          "disabled": false,
+          "document": "Total amount after discount",
+          "example": "0.00",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -1157,8 +1309,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Trial credit amount",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -1167,8 +1319,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Voucher amount",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -1177,7 +1329,17 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit.",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Billing month, e.g. `2019-08`",
           "example": "2021-01",
           "member": "string",
@@ -1187,21 +1349,11 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.",
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Payment by commission credits",
-          "example": "0.00",
-          "member": "string",
-          "name": "TransferPayAmount",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1213,8 +1365,8 @@
       "document": "Summarize total cost by product",
       "members": [
         {
-          "default": "",
-          "document": "Total cost",
+          "disabled": false,
+          "document": "Total amount after discount\n",
           "example": "0.00",
           "member": "string",
           "name": "RealTotalCost",
@@ -1223,8 +1375,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Voucher amount",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -1233,8 +1385,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Trial credit amount",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -1243,8 +1395,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cash amount",
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -1253,21 +1405,21 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit.",
           "example": "0.00",
           "member": "string",
-          "name": "TotalCost",
+          "name": "TransferPayAmount",
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Payment by commission credits",
+          "disabled": false,
+          "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.",
           "example": "0.00",
           "member": "string",
-          "name": "TransferPayAmount",
+          "name": "TotalCost",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1280,6 +1432,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Bucket name",
           "example": "waytestssq1-1258535724",
           "member": "string",
@@ -1290,6 +1443,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time of the usage",
           "example": "2022-11-23 00:00:00",
           "member": "string",
@@ -1300,6 +1454,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end time of the usage",
           "example": "2022-11-23 23:59:59",
           "member": "string",
@@ -1310,6 +1465,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Subproduct name",
           "example": "cos流量",
           "member": "string",
@@ -1320,6 +1476,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Billable item name",
           "example": "cos外网下行流量",
           "member": "string",
@@ -1330,6 +1487,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Usage",
           "example": "10",
           "member": "string",
@@ -1340,6 +1498,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unit of the billable item",
           "example": "GB",
           "member": "string",
@@ -1360,6 +1519,7 @@
       "document": "DescribeAccountBalance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Available account balance in cents, which takes the same calculation rules as `RealBalance`, `CreditBalance`, and `RealCreditBalance`.",
           "example": "10000",
           "member": "int64",
@@ -1369,6 +1529,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The UIN to query.",
           "example": "1",
           "member": "uint64",
@@ -1378,6 +1539,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available account balance in cents, which takes the same calculation rules as `Balance`, `CreditBalance`, and `RealCreditBalance`.",
           "example": "1",
           "member": "float",
@@ -1387,6 +1549,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cash account balance in cents. Currently, this field is not applied.",
           "example": "1",
           "member": "float",
@@ -1396,6 +1559,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Income account balance in cents. Currently, this field is not applied.",
           "example": "1",
           "member": "float",
@@ -1405,6 +1569,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Present account balance in cents. Currently, this field is not applied.",
           "example": "1",
           "member": "float",
@@ -1414,6 +1579,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Frozen amount in cents.",
           "example": "1",
           "member": "float",
@@ -1423,6 +1589,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Overdue amount in cents, which is when the available credit balance is negative.",
           "example": "1",
           "member": "float",
@@ -1432,6 +1599,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether overdue payments are allowed. Currently, this field is not applied.",
           "example": "true",
           "member": "bool",
@@ -1441,6 +1609,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether you have a credit limit. Currently, this field is not applied.",
           "example": "true",
           "member": "bool",
@@ -1450,6 +1619,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Credit limit in cents. Credit limit－available credit balance = consumption amount",
           "example": "1",
           "member": "float",
@@ -1459,6 +1629,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available credit balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `RealCreditBalance`.",
           "example": "1",
           "member": "float",
@@ -1468,6 +1639,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available account balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `CreditBalance`.",
           "example": "1",
           "member": "float",
@@ -1489,14 +1661,16 @@
       "document": "DescribeBillDetail request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Offset",
-          "example": "0",
+          "example": "1",
           "member": "uint64",
           "name": "Offset",
           "required": true,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Quantity, maximum is 100",
           "example": "1",
           "member": "uint64",
@@ -1505,6 +1679,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. ",
           "example": "byPayTime",
           "member": "string",
@@ -1513,6 +1688,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.",
           "example": "2018-07",
           "member": "string",
@@ -1521,6 +1697,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The start time of the query range, which should be in the format Y-m-d H:i:s . The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.\n\nExample: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version \"2018-07-09\"\n\nAlternatively, you can use Month to query the billing details of a month.\nExample:\nccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version \"2018-07-09\" --ResourceId \"disk-oj9okstm\"",
           "example": "2018-11-0100:00:00",
           "member": "string",
@@ -1529,6 +1706,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The end time of the query range, which should be in the format `Y-m-d H:i:s `. The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.\n\nExample: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version \"2018-07-09\"\n\nAlternatively, you can use `Month` to query the billing details of a month. \nExample:\nccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version \"2018-07-09\" --ResourceId \"disk-oj9okstm\"",
           "example": "2018-11-0123:59:59",
           "member": "string",
@@ -1537,6 +1715,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
           "example": "1",
           "member": "int64",
@@ -1545,6 +1724,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Queries information on a specified product",
           "example": "0",
           "member": "string",
@@ -1553,6 +1733,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Billing mode: prePay/postPay",
           "example": "prePay",
           "member": "string",
@@ -1561,6 +1742,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Queries information on a specified resource",
           "example": "ins-49zhx6z1",
           "member": "string",
@@ -1569,6 +1751,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription specification adjustment\nMonthly subscription refund",
           "example": "按量计费日结",
           "member": "string",
@@ -1577,6 +1760,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Project ID: ID of the project to which the resource belongs",
           "example": "0",
           "member": "int64",
@@ -1585,10 +1769,29 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Product code\nNote: To query the product codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
           "example": "p_cvm",
           "member": "string",
           "name": "BusinessCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Context information returned by the last request. You can set `Month` to `2023-05` for query by page to accelerate queries. We recommend users whose data volume is over 100 thousand entries use the paginated query feature, which can help greatly speed up your queries.",
+          "example": "UEEJBfSsteS7dZgAaEEziWS40d4sn4urG7",
+          "member": "string",
+          "name": "Context",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "909619400",
+          "member": "string",
+          "name": "PayerUin",
           "required": false,
           "type": "string"
         }
@@ -1599,6 +1802,7 @@
       "document": "DescribeBillDetail response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Details list",
           "example": "无",
           "member": "BillDetail",
@@ -1607,11 +1811,21 @@
           "value_allowed_null": false
         },
         {
-          "document": "Total number of records\nNote: This field may return null, indicating that no valid value was found.",
+          "disabled": false,
+          "document": "\nNote:  This field may return null, indicating that no valid values can be obtained.",
           "example": "11841",
           "member": "uint64",
           "name": "Total",
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Context information returned by this request, and the value can be passed in as the value of parameters in the next request to accelerate queries. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "UEEJBfSsteS7dZgAaEEziWS40d4sn4urG7",
+          "member": "string",
+          "name": "Context",
+          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -1627,8 +1841,8 @@
       "document": "DescribeBillResourceSummary request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Offset",
+          "disabled": false,
+          "document": "Pagination offset. If `Offset` is `0`, it indicates the first page. If `Limit` is `100`, \"`Offset` = `100`\" indicates the second page, then \"`Offset` = `200`\" indicates the third page, and so on.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -1636,7 +1850,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Quantity, maximum is 1000",
           "example": "1",
           "member": "uint64",
@@ -1645,8 +1859,8 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Month; format: yyyy-mm. This value cannot be earlier than the month when Bill 2.0 is enabled. Last 24 months data are available.",
+          "disabled": false,
+          "document": "Bill month in the format of \"yyyy-mm\".  This value must be no earlier than March 2019, when Bill 2.0 was launched.",
           "example": "2018-08",
           "member": "string",
           "name": "Month",
@@ -1654,7 +1868,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
           "example": "byPayTime",
           "member": "string",
@@ -1663,7 +1877,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
           "example": "无",
           "member": "int64",
@@ -1672,7 +1886,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund",
           "example": "按量计费扣费",
           "member": "string",
@@ -1681,7 +1895,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "ID of the instance to be queried",
           "example": "ins-1op7g2iz",
           "member": "string",
@@ -1690,7 +1904,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)",
           "example": "prePay",
           "member": "string",
@@ -1699,11 +1913,20 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Product code\nNote: To query the product codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
           "example": "p_cvm",
           "member": "string",
           "name": "BusinessCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "PayerUin",
           "required": false,
           "type": "string"
         }
@@ -1714,14 +1937,18 @@
       "document": "DescribeBillResourceSummary response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Resource summary list",
+          "example": "无",
           "member": "BillResourceSummary",
           "name": "ResourceSummarySet",
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Total number of resource summary lists\nNote: This field may return null, indicating that no valid value was found.",
+          "disabled": false,
+          "document": "Total number of resource summary lists, which will not be returned when `NeedRecordNum` is `0`. This field may return null, indicating that no valid values can be obtained.",
+          "example": "103",
           "member": "int64",
           "name": "Total",
           "type": "int",
@@ -1741,6 +1968,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
           "name": "BeginTime",
@@ -1749,6 +1977,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
           "name": "EndTime",
@@ -1757,6 +1986,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query bill data user's UIN",
           "member": "string",
           "name": "PayerUin",
@@ -1770,14 +2000,18 @@
       "document": "DescribeBillSummaryByPayMode response structure.",
       "members": [
         {
-          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "disabled": false,
+          "document": "Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.",
+          "example": "1",
           "member": "uint64",
           "name": "Ready",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Detailed cost distribution for all billing modes\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "PayModeSummaryOverviewItem",
           "name": "SummaryOverview",
           "type": "list",
@@ -1797,6 +2031,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "example": "2018-11",
           "member": "string",
@@ -1806,6 +2041,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "example": "2018-11",
           "member": "string",
@@ -1815,6 +2051,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Queries bill data user's UIN",
           "example": "xxx",
           "member": "string",
@@ -1824,6 +2061,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A bill type, which corresponds to a subtotal type of L0 bills.\nThis parameter has become valid since v3.0 bills took effect in May 2021.\nValid values:\n`consume`: consumption\n`refund`: refund\n`adjustment`: bill adjustment",
           "example": "consume",
           "member": "string",
@@ -1838,21 +2076,27 @@
       "document": "DescribeBillSummaryByProduct response structure.",
       "members": [
         {
-          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "disabled": false,
+          "document": "Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.",
+          "example": "1",
           "member": "uint64",
           "name": "Ready",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total cost details\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "BusinessSummaryTotal",
           "name": "SummaryTotal",
           "type": "object",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Cost distribution of all products\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "BusinessSummaryOverviewItem",
           "name": "SummaryOverview",
           "type": "list",
@@ -1872,6 +2116,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
           "name": "BeginTime",
@@ -1880,6 +2125,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
           "name": "EndTime",
@@ -1888,6 +2134,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Queries bill data user's UIN",
           "member": "string",
           "name": "PayerUin",
@@ -1901,14 +2148,18 @@
       "document": "DescribeBillSummaryByProject response structure.",
       "members": [
         {
-          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "disabled": false,
+          "document": "Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.",
+          "example": "1",
           "member": "uint64",
           "name": "Ready",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Detailed cost distribution for all projects\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "ProjectSummaryOverviewItem",
           "name": "SummaryOverview",
           "type": "list",
@@ -1928,6 +2179,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
           "name": "BeginTime",
@@ -1936,6 +2188,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
           "name": "EndTime",
@@ -1944,6 +2197,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Queries bill data user's UIN",
           "member": "string",
           "name": "PayerUin",
@@ -1957,14 +2211,18 @@
       "document": "DescribeBillSummaryByRegion response structure.",
       "members": [
         {
-          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "disabled": false,
+          "document": "Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.",
+          "example": "1",
           "member": "uint64",
           "name": "Ready",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Detailed cost distribution for all regions\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "RegionSummaryOverviewItem",
           "name": "SummaryOverview",
           "type": "list",
@@ -1983,6 +2241,7 @@
       "document": "DescribeBillSummaryByTag request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "example": "2019-09",
           "member": "string",
@@ -1991,6 +2250,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "example": "2019-09",
           "member": "string",
@@ -1999,6 +2259,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Cost allocation tag key, which can be customized.",
           "example": "province",
           "member": "string",
@@ -2007,6 +2268,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Payer UIN",
           "example": "xxx",
           "member": "string",
@@ -2015,6 +2277,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource tag value",
           "example": "0",
           "member": "string",
@@ -2029,31 +2292,94 @@
       "document": "DescribeBillSummaryByTag response structure.",
       "members": [
         {
-          "document": "Indicates whether or not the data is ready. `0`: not ready; `1`: ready.",
+          "disabled": false,
+          "document": "Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.",
           "example": "1",
           "member": "uint64",
           "name": "Ready",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Details about cost distribution over different tags\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TagSummaryOverviewItem",
           "name": "SummaryOverview",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total cost\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SummaryTotal",
           "name": "SummaryTotal",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryRequest": {
+      "document": "DescribeBillSummary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bill month in the format of \"2023-04\"",
+          "example": "2023-05",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bill dimension. Valid values:  `business`, `project`, `region`, `payMode`, and `tag`",
+          "example": "business",
+          "member": "string",
+          "name": "GroupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag key, which is used when `GroupType` is `tag`.",
+          "example": "测试键",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryResponse": {
+      "document": "DescribeBillSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicates whether the data is ready. `0`: Not ready. `1`: Ready.  If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Ready",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed summary of costs by multiple dimensions",
+          "example": "无",
+          "member": "SummaryDetail",
+          "name": "SummaryDetail",
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2068,6 +2394,7 @@
       "document": "DescribeDosageCosDetailByDate request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The start date of the usage query, such as `2020-09-01`.",
           "example": "2020-09-01",
           "member": "string",
@@ -2076,6 +2403,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The end date of the usage query (end date must be in the same month as the start date), such as `2020-09-30`.",
           "example": "2020-09-30",
           "member": "string",
@@ -2084,6 +2412,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Bucket name. You can use `Get Service` to query the list of all buckets under a requester account. For details, see [GET Service (List Buckets)](https://www.tencentcloud.com/document/product/436/8291).",
           "example": "systemcover-1000027",
           "member": "string",
@@ -2098,6 +2427,7 @@
       "document": "DescribeDosageCosDetailByDate response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Array of usage",
           "example": "无",
           "member": "CosDetailSets",
@@ -2119,6 +2449,7 @@
       "document": "DescribeVoucherInfo request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The number of records per page. The default is 20, and the maximum is 1,000.",
           "example": "10",
           "member": "int64",
@@ -2127,6 +2458,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The page number the records start from. The default is 1.",
           "example": "1",
           "member": "int64",
@@ -2135,6 +2467,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.",
           "example": "unUsed",
           "member": "string",
@@ -2143,6 +2476,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The voucher ID.",
           "example": "123",
           "member": "string",
@@ -2151,6 +2485,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The voucher order ID.",
           "example": "123",
           "member": "string",
@@ -2159,6 +2494,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The product code.",
           "example": "a",
           "member": "string",
@@ -2167,6 +2503,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The campaign ID.",
           "example": "123",
           "member": "string",
@@ -2175,6 +2512,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The voucher name.",
           "example": "aa",
           "member": "string",
@@ -2183,6 +2521,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The start date of the voucher issuance, such as `2021-01-01`.",
           "example": "2021-01-01",
           "member": "string",
@@ -2191,6 +2530,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The end date of the voucher issuance, such as `2021-01-01`.",
           "example": "2021-01-01",
           "member": "string",
@@ -2199,6 +2539,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.",
           "example": "BeginTime",
           "member": "string",
@@ -2207,6 +2548,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to sort the records in ascending or descending order. Valid values: desc, asc.",
           "example": "desc",
           "member": "string",
@@ -2215,6 +2557,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.",
           "example": "postPay",
           "member": "string",
@@ -2223,6 +2566,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.",
           "example": "*",
           "member": "string",
@@ -2231,6 +2575,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The operator. The default is the UIN of the current user.",
           "example": "aa",
           "member": "string",
@@ -2245,6 +2590,7 @@
       "document": "DescribeVoucherInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of vouchers.",
           "example": "0",
           "member": "int64",
@@ -2254,6 +2600,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "0",
           "member": "int64",
@@ -2263,6 +2610,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The voucher information.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "VoucherInfos",
@@ -2285,6 +2633,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The number of records per page. The default is 20, and the maximum is 1,000.",
           "example": "10",
           "member": "int64",
@@ -2294,6 +2643,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The page number the records start from. The default is 1.",
           "example": "1",
           "member": "int64",
@@ -2303,6 +2653,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The voucher ID.",
           "example": "123",
           "member": "string",
@@ -2312,6 +2663,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The operator. The default is the UIN of the current.",
           "example": "aa",
           "member": "string",
@@ -2326,6 +2678,7 @@
       "document": "DescribeVoucherUsageDetails response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The total number of vouchers.",
           "example": "0",
           "member": "int64",
@@ -2335,6 +2688,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The total amount used. The value of this parameter is the total amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "0",
           "member": "int64",
@@ -2344,6 +2698,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The usage details.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "UsageRecords",
@@ -2366,6 +2721,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The names of non-applicable products.",
           "example": "某产品",
           "member": "string",
@@ -2376,6 +2732,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.",
           "example": "*",
           "member": "string",
@@ -2388,11 +2745,11 @@
       "usage": "out"
     },
     "PayModeSummaryOverviewItem": {
-      "document": "Detailed summary of purchases by billing mode",
+      "document": "Detailed summary of costs by billing mode",
       "members": [
         {
-          "default": "",
-          "document": "Billing mode",
+          "disabled": false,
+          "document": "Billing mode code",
           "example": "prePay",
           "member": "string",
           "name": "PayMode",
@@ -2401,8 +2758,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Billing mode name",
+          "disabled": false,
+          "document": "Billing mode,  which can be monthly subscription or pay-as-you-go.",
           "example": "包年包月",
           "member": "string",
           "name": "PayModeName",
@@ -2411,17 +2768,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Actual cost",
-          "example": "0.00",
-          "member": "string",
-          "name": "RealTotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
+          "disabled": false,
           "document": "Cost ratio, to two decimal points",
           "example": "0.00",
           "member": "string",
@@ -2431,18 +2778,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Detailed summary of purchases by transaction type",
-          "example": "[                     {                         \"ActionType\": \"p",
-          "member": "ActionSummaryOverviewItem",
-          "name": "Detail",
+          "disabled": false,
+          "document": "Total amount after discount",
+          "example": "0.00",
+          "member": "string",
+          "name": "RealTotalCost",
           "required": true,
-          "type": "list",
+          "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cash amount",
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -2451,8 +2798,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Trial credit amount",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -2461,8 +2808,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Voucher amount",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -2471,7 +2818,17 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit.",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.",
           "example": "0.00",
           "member": "string",
@@ -2481,13 +2838,13 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Payment by commission credits",
-          "example": "0.00",
-          "member": "string",
-          "name": "TransferPayAmount",
+          "disabled": false,
+          "document": "Detailed summary of costs by transaction type",
+          "example": "[                     {                         \"ActionType\": \"p",
+          "member": "ActionSummaryOverviewItem",
+          "name": "Detail",
           "required": true,
-          "type": "string",
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -2497,7 +2854,7 @@
       "document": "Detailed summary of purchases by project",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "0",
           "member": "string",
@@ -2507,8 +2864,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Project name",
+          "disabled": false,
+          "document": "Project name:  The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.",
           "example": "默认项目",
           "member": "string",
           "name": "ProjectName",
@@ -2517,17 +2874,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Actual cost",
-          "example": "0.00",
-          "member": "string",
-          "name": "RealTotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
+          "disabled": false,
           "document": "Cost ratio, to two decimal points",
           "example": "0.00",
           "member": "string",
@@ -2537,8 +2884,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cash amount",
+          "disabled": false,
+          "document": "Total amount after discount",
+          "example": "0.00",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -2547,8 +2904,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Trial credit amount",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -2557,8 +2914,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Voucher amount",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -2567,7 +2924,17 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit.",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Billing month, e.g. `2019-08`",
           "example": "2021-01",
           "member": "string",
@@ -2577,21 +2944,11 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.",
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Payment by commission credits",
-          "example": "0.00",
-          "member": "string",
-          "name": "TransferPayAmount",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2603,7 +2960,7 @@
       "document": "Detailed summary of purchases by region",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Region ID\nNote: This field may return null, indicating that no valid value was found.",
           "example": "1",
           "member": "string",
@@ -2613,8 +2970,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Region name",
+          "disabled": false,
+          "document": "Region:  The region to which a resource belongs, such as South China (Guangzhou).",
           "example": "华南地区（广州）",
           "member": "string",
           "name": "RegionName",
@@ -2623,17 +2980,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Actual cost",
-          "example": "0.00",
-          "member": "string",
-          "name": "RealTotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
+          "disabled": false,
           "document": "Cost ratio, to two decimal points",
           "example": "0.00",
           "member": "string",
@@ -2643,8 +2990,18 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Cash amount",
+          "disabled": false,
+          "document": "Total amount after discount",
+          "example": "0.00",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -2653,8 +3010,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Trial credit amount",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -2663,8 +3020,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Voucher amount",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -2673,7 +3030,17 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit.",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Billing month, e.g. `2019-08`",
           "example": "2021-01",
           "member": "string",
@@ -2683,7 +3050,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.",
           "example": "0.00",
           "member": "string",
@@ -2691,16 +3058,102 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SummaryDetail": {
+      "document": "Detailed summary of costs by multiple dimensions",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bill dimension code. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "GroupKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Payment by commission credits",
-          "example": "0.00",
+          "disabled": false,
+          "document": "Bill dimension value. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "云服务器",
           "member": "string",
-          "name": "TransferPayAmount",
-          "required": true,
+          "name": "GroupValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Original cost in USD. This parameter has become valid since Bill 3.0 took effect in May 2021, and before that `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter.",
+          "example": "4.00000000",
+          "member": "string",
+          "name": "TotalCost",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total amount after discount",
+          "example": "4.00000000",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.00000000",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Detailed summary of products. Note:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BusinessSummaryInfo",
+          "name": "Business",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2709,8 +3162,8 @@
       "document": "Total cost",
       "members": [
         {
-          "default": "",
-          "document": "Total cost\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Total amount after discount. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
           "name": "RealTotalCost",
@@ -2719,7 +3172,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
@@ -2735,7 +3188,7 @@
       "document": "Details about cost distribution over different tags.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Tag value\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "string",
@@ -2745,17 +3198,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Actual cost\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "0.00",
-          "member": "string",
-          "name": "RealTotalCost",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
+          "disabled": false,
           "document": "Cost percentage rounded to two decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
@@ -2765,18 +3208,18 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Total amount after discount. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
-          "name": "TotalCost",
+          "name": "RealTotalCost",
           "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Payment by cash credits\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Cash credit:  The amount paid from the user’s cash account. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -2785,8 +3228,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Payment by free credits\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Free credit:  The amount paid by the user’s free credit. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -2795,8 +3238,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Payment by vouchers\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Voucher payment:  The voucher deduction amount. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
@@ -2805,11 +3248,21 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "document": "Payment by commission credits\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
           "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0.00",
+          "member": "string",
+          "name": "TotalCost",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -2822,6 +3275,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The name of the product.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "某产品",
           "member": "string",
@@ -2832,6 +3286,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "某子产品",
           "member": "string",
@@ -2848,6 +3303,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The amount used. The value of this parameter is the amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "123",
           "member": "int64",
@@ -2858,6 +3314,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The time when the voucher was used.",
           "example": "2020-01-01",
           "member": "string",
@@ -2868,6 +3325,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The details of the product purchased.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "UsageDetails",
@@ -2884,6 +3342,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The owner of the voucher.",
           "example": "aa",
           "member": "string",
@@ -2894,6 +3353,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The status of the voucher: `unUsed`, `used`, `delivered`, `cancel`, `overdue`",
           "example": "unUsed",
           "member": "string",
@@ -2904,6 +3364,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The value of the voucher. The value of this parameter is the voucher value (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "10000",
           "member": "int64",
@@ -2914,6 +3375,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The balance left. The value of this parameter is the balance left (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "10000",
           "member": "int64",
@@ -2924,6 +3386,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The voucher ID.",
           "example": "aa",
           "member": "string",
@@ -2934,6 +3397,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.",
           "example": "postPay",
           "member": "string",
@@ -2944,6 +3408,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.",
           "example": "*",
           "member": "string",
@@ -2954,6 +3419,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time of the validity period.",
           "example": "2020-01-01",
           "member": "string",
@@ -2964,6 +3430,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end time of the validity period.",
           "example": "2020-01-01",
           "member": "string",
@@ -2974,6 +3441,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The products that are applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "ApplicableProducts",
@@ -2984,6 +3452,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The products that are not applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "ExcludedProducts",
