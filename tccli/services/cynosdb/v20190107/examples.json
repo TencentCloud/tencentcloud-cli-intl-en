@@ -2,7 +2,7 @@
   "actions": {
     "ActivateInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ActivateInstance\n&ClusterId=cynosdbmysql-bzxxrmtq\n&InstanceIdList.0=cynosdbmysql-ins-7upukfpw\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Removing the isolation of an instance to make it accessible again"
@@ -10,7 +10,7 @@
     ],
     "AddClusterSlaveZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddClusterSlaveZone\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"SlaveZone\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"123\",\n        \"RequestId\": \"128046\"\n    }\n}",
         "title": "Adding the replica AZ"
@@ -24,17 +24,49 @@
         "title": "Adding an instance"
       }
     ],
+    "BindClusterResourcePackages": [
+      {
+        "document": "This example shows you how to bind a resource pack to a cluster.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: BindClusterResourcePackages<common request parameters>{    \"PackageIds\": [        \"abc\"    ],    \"ClusterId\": \"abc\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Binding a resource pack to the cluster"
+      }
+    ],
     "CloseAuditService": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseAuditService\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-6990cckk\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
         "title": "Disabling the audit service"
       }
     ],
+    "CloseClusterPasswordComplexity": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CloseClusterPasswordComplexity<common request parameters>{    \"ClusterIds\": [        \"cynosdbmysql-bzxxrmtq\"    ]}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Disabling the password complexity for a cluster"
+      }
+    ],
+    "CloseWan": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=CloseWan&InstanceGrpId=cynosdbmysql-grp-o48ssqs5&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 734,\n        \"RequestId\": \"ed1bf4b2-4917-4f4f-9f7d-1562e34c9eeb\"\n    }\n}",
+        "title": "Disabling the public network for a read-only group."
+      }
+    ],
+    "CopyClusterPasswordComplexity": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CopyClusterPasswordComplexity<common request parameters>{    \"ClusterIds\": [        \"cynosdbmysql-bzxxrmtq\"    ],    \"SourceClusterId\": \"cynosdbmysql-bzxxxxxxx\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Replicating the password complexity for a cluster"
+      }
+    ],
     "CreateAccounts": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=CreateAccounts\n&ClusterId=xxx\n&Accounts.0.AccountName=xx\n&Accounts.0.AccountPassword=xxx\n&Accounts.0.Description=xxx\n&Accounts.0.Host=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"176669\"\n    }\n}",
         "title": "Creating account"
@@ -42,7 +74,7 @@
     ],
     "CreateAuditRuleTemplate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAuditRuleTemplate\n<Common request parameters>\n\n{\n    \"RuleFilters\": [\n        {\n            \"Type\": \"host\",\n            \"Compare\": \"EQS\",\n            \"Value\": [\n                \"100.122.76.176\",\n                \"10.0.0.9\"\n            ]\n        },\n        {\n            \"Type\": \"user\",\n            \"Compare\": \"EQS\",\n            \"Value\": [\n                \"wy\",\n                \"test\"\n            ]\n        },\n        {\n            \"Type\": \"sqlType\",\n            \"Compare\": \"EQS\",\n            \"Value\": [\n                \"Update\",\n                \"Delete\"\n            ]\n        }\n    ],\n    \"RuleTemplateName\": \"test\",\n    \"Description\": \"Test rule template\"\n}",
         "output": "{\n    \"Response\": {\n        \"RuleTemplateId\": \"cynosdb-rt-ws23fwu8\",\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
         "title": "Creating an audit rule template"
@@ -50,10 +82,18 @@
     ],
     "CreateBackup": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=CreateBackup\n&ClusterId=cynosdbpg-45knmnra\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"FlowId\": 12345\n    }\n}",
         "title": "Creating a backup"
+      }
+    ],
+    "CreateClusterDatabase": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateClusterDatabase<common request parameters>{    \"UserHostPrivileges\": [        {            \"DbUserName\": \"root\",            \"DbHost\": \"%\",            \"DbPrivilege\": \"xx\"        }    ],    \"CollateRule\": \"utf8_general_ci\",    \"DbName\": \"test\",    \"Description\": \"test-beizhu\",    \"CharacterSet\": \"utf8\",    \"ClusterId\": \"cynosdbmysql-xxxxxx\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f569bea2-0a51-11ec-af61-525400542aa6\"\n    }\n}",
+        "title": "Creating a database"
       }
     ],
     "CreateClusters": [
@@ -64,9 +104,39 @@
         "title": "Creating a cluster"
       }
     ],
+    "CreateParamTemplate": [
+      {
+        "document": "This example shows you how to create a parameter template",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateClusterDatabase<common request parameters>{    \"UserHostPrivileges\": [        {            \"DbUserName\": \"common template\",    \"EngineVersion\": \"5.7\",    \"TemplateId\": \"93\",    \"TemplateName\": \"v5.7 common parameter template\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b7735dc6-5847-4c9b-a713-9745f9afda34\",\n        \"TemplateId\": 95\n    }\n}",
+        "title": "Creating a parameter template"
+      },
+      {
+        "document": "This example shows you how to customize a parameter template.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateParamTemplate<common request parameters>{    \"TemplateDescription\": \"API test\",    \"EngineVersion\": \"5.7\",    \"TemplateId\": \"0\",    \"DbMode\": \"NORMAL\",    \"TemplateName\": \"API test",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"edbd6b65-daf0-4ca8-b34f-cc3fd42790d8\",\n        \"TemplateId\": 27\n    }\n}",
+        "title": "Customizing a parameter template"
+      }
+    ],
+    "CreateResourcePackage": [
+      {
+        "document": "This example shows you how to purchase a resource pack.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateSourcePackage<common request parameters>{    \"InstanceType\": \"abc\",    \"PackageRegion\": \"abc\",    \"PackageType\": \"abc\",    \"PackageVersion\": \"abc\",    \"PackageSpec\": 0,    \"ExpireDay\": 0,    \"PackageName\": \"abc\",    \"PackageCount\": 0}",
+        "output": "{\n    \"Response\": {\n        \"BigDealIds\": [\n            \"abc\"\n        ],\n        \"DealNames\": [\n            \"abc\"\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Purchasing a resource pack"
+      }
+    ],
+    "DeleteAccounts": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=DeleteAccounts&ClusterId=cynosdbmysql-ixgbd0di&Accounts.0.AccountName=admin&Accounts.0.Host=myHost&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"120440\"\n    }\n}",
+        "title": "Deleting an account"
+      }
+    ],
     "DeleteAuditRuleTemplates": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAuditRuleTemplates\n<Common request parameters>\n\n{\n    \"RuleTemplateIds\": [\n        \"cynosdb-rt-ws23fwu8\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
         "title": "Deleting an audit rule template"
@@ -74,15 +144,39 @@
     ],
     "DeleteBackup": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=DeleteBackup\n&ClusterId=cynosdbpg-45knmnra\n&SnapshotIdList.0=4928\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\"\n    }\n}",
         "title": "Deleting a backup"
       }
     ],
+    "DeleteClusterDatabase": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DeleteClusterDatabase<common request parameters>{    \"DbNames\": [        \"test\"    ],    \"ClusterId\": \"cynosdbmysql-xxxxxx\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f569bea2-0a51-11ec-af61-525400542aa6\"\n    }\n}",
+        "title": "Creating a database"
+      }
+    ],
+    "DeleteParamTemplate": [
+      {
+        "document": "This example shows you how to delete a parameter template.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DeleteParamTemplate<common request parameters>{    \"TemplateId\": \"93\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"855d70ae-2815-4311-a42e-75a41ee0af8b\"\n    }\n}",
+        "title": "Deleting a parameter template"
+      }
+    ],
+    "DescribeAccountPrivileges": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeAccountPrivileges&ClusterId=cynosdbmysql-xxxxxxxx&Host=xxx&AccountName=xxx&Db=xxx&Type=table&TableName=xx&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Privileges\": [\n            \"select\",\n            \"update\",\n            \"delete\",\n            \"create\",\n            \"drop\",\n            \"references\",\n            \"index\",\n            \"alter\",\n            \"show_db\",\n            \"create_tmp_table\",\n            \"lock_tables\",\n            \"execute\",\n            \"create_view\",\n            \"show_view\",\n            \"create_routine\",\n            \"alter_routine\",\n            \"event\",\n            \"trigger\"\n        ],\n        \"RequestId\": \"167350\"\n    }\n}",
+        "title": "Querying the existing permissions of an account"
+      }
+    ],
     "DescribeAccounts": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubAccounts\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbysql-on5xw0ni\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"150918\",\n        \"TotalCount\": 1,\n        \"AccountSet\": [\n            {\n                \"UpdateTime\": \"2018-06-28 23:28:52\",\n                \"Host\": \"xx\",\n                \"CreateTime\": \"2018-06-28 23:28:52\",\n                \"Description\": \"Default user asdf\",\n                \"MaxUserConnections\": 0,\n                \"AccountName\": \"admin\"\n            }\n        ]\n    }\n}",
         "title": "Querying database management accounts"
@@ -90,7 +184,7 @@
     ],
     "DescribeAuditRuleTemplates": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditRuleTemplates\n<Common request parameters>\n\n{\n    \"RuleTemplateNames\": [\n        \"template_test\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateAt\": \"2022-12-06 00:54:01\",\n                \"Description\": \"all_template_des\",\n                \"RuleFilters\": [\n                    {\n                        \"Compare\": \"INC\",\n                        \"Type\": \"sqlType\",\n                        \"Value\": [\n                            \"ALTER\"\n                        ]\n                    },\n                    {\n                        \"Compare\": \"EQS\",\n                        \"Type\": \"host\",\n                        \"Value\": [\n                            \"10.0.0.2\"\n                        ]\n                    },\n                    {\n                        \"Compare\": \"NEQ\",\n                        \"Type\": \"user\",\n                        \"Value\": [\n                            \"test\"\n                        ]\n                    },\n                    {\n                        \"Compare\": \"INC\",\n                        \"Type\": \"dbName\",\n                        \"Value\": [\n                            \"test\"\n                        ]\n                    }\n                ],\n                \"RuleTemplateId\": \"cynosdb-art-lcpm4as3\",\n                \"RuleTemplateName\": \"template_test\"\n            }\n        ],\n        \"RequestId\": \"a19ebcfb-8b35-40f4-85ee-383109c9134b\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying audit rule templates"
@@ -98,7 +192,7 @@
     ],
     "DescribeAuditRuleWithInstanceIds": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditRuleWithInstanceIds\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"cynosdbmysql-ins-6990cckk\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"AuditRule\": true,\n                \"AuditRuleFilters\": [\n                    {\n                        \"RuleFilters\": [\n                            {\n                                \"Compare\": \"INC\",\n                                \"Type\": \"sql\",\n                                \"Value\": [\n                                    \"select\"\n                                ]\n                            },\n                            {\n                                \"Compare\": \"EQS\",\n                                \"Type\": \"dbName\",\n                                \"Value\": [\n                                    \"testdb\"\n                                ]\n                            }\n                        ]\n                    }\n                ],\n                \"InstanceId\": \"cynosdbmysql-ins-6990cckk\"\n            }\n        ],\n        \"RequestId\": \"a94950e4-7929-493d-97a6-4cd59dba466e\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Getting the audit rule templates of an instance"
@@ -106,7 +200,7 @@
     ],
     "DescribeBackupConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeBackupConfig\n&ClusterId=cynosdbmysql-45knmnra\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"BackupFreq\": [\n            \"full\",\n            \"increment\",\n            \"increment\",\n            \"increment\",\n            \"increment\",\n            \"increment\",\n            \"increment\"\n        ],\n        \"BackupType\": \"\",\n        \"BackupTimeEnd\": 21600,\n        \"BackupTimeBeg\": 7200,\n        \"RequestId\": \"180877\",\n        \"ReserveDuration\": 604800\n    }\n}",
         "title": "Querying the backup configuration information"
@@ -114,7 +208,7 @@
     ],
     "DescribeBackupDownloadUrl": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupDownloadUrl\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-xxxxxxxx\",\n    \"BackupId\": 1000\n}",
         "output": "{\n    \"Response\": {\n        \"DownloadUrl\": \"xxxx\",\n        \"RequestId\": \"9e56617c-c7cc-44e1-a967-6beb418ad5e7\"\n    }\n}",
         "title": "Querying the download address of a cluster backup file"
@@ -122,7 +216,7 @@
     ],
     "DescribeBackupList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupList\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"ClusterId\": \"cynosdbpg-ilgo90hu\",\n    \"Offset\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"BackupList\": [\n            {\n                \"SnapshotId\": 10000,\n                \"SnapshotTime\": \"xx\",\n                \"FileName\": \"snap\",\n                \"FileSize\": 20190215,\n                \"StartTime\": \"2019-01-20 01:10:12\",\n                \"FinishTime\": \"2019-01-20 02:10:12\",\n                \"BackupType\": \"snapshot\",\n                \"BackupMethod\": \"auto\",\n                \"BackupStatus\": \"success\",\n                \"SnapShotType\": \"full\",\n                \"BackupName\": \"desc123\",\n                \"BackupId\": 100\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Querying the backup file list"
@@ -130,7 +224,7 @@
     ],
     "DescribeBinlogDownloadUrl": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBinlogDownloadUrl\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-xxxxxxxx\",\n    \"BinlogId\": 1000\n}",
         "output": "{\n    \"Response\": {\n        \"DownloadUrl\": \"xxxx\",\n        \"RequestId\": \"9e56617c-c7cc-44e1-a967-6beb418ad5e7\"\n    }\n}",
         "title": "Querying the download address of a binlog"
@@ -138,7 +232,7 @@
     ],
     "DescribeBinlogSaveDays": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBinlogSaveDays\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-rtqj0kp5\"\n}",
         "output": "{\n    \"Response\": {\n        \"BinlogSaveDays\": 7,\n        \"RequestId\": \"9bea88d4-9549-4101-b1b9-8d7ceb0581a2\"\n    }\n}",
         "title": "Querying the binlog retention period in days"
@@ -146,7 +240,7 @@
     ],
     "DescribeBinlogs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBinlogs\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-xxxxxxxx\",\n    \"StartTime\": \"2022-01-01 00:00:00\",\n    \"EndTime\": \"2022-01-01 23:59:59\",\n    \"Limit\": 100,\n    \"Offset\": 100\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Binlogs\": [\n            {\n                \"BinlogId\": 10782259,\n                \"FileName\": \"00000002_0010782259_mysql-bin.001002\",\n                \"FileSize\": 479,\n                \"FinishTime\": \"2022-06-16 18:36:14\",\n                \"StartTime\": \"2022-06-15 17:19:19\"\n            }\n        ]\n    }\n}",
         "title": "Querying the list of binlogs in a cluster"
@@ -154,15 +248,23 @@
     ],
     "DescribeClusterDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterDetail\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbpg-5804k48e\"\n}",
         "output": "{\n    \"Response\": {\n        \"Detail\": {\n            \"ServerlessStatus\": \"xx\",\n            \"NetworkStatus\": \"xx\",\n            \"Zone\": \"xx\",\n            \"StorageLimit\": 0,\n            \"DbVersion\": \"xx\",\n            \"Storage\": 0,\n            \"StorageId\": \"xx\",\n            \"Tasks\": [\n                {\n                    \"ObjectType\": \"xx\",\n                    \"TaskStatus\": \"xx\",\n                    \"ObjectId\": \"xx\",\n                    \"TaskId\": 0,\n                    \"TaskType\": \"xx\"\n                }\n            ],\n            \"SubnetName\": \"xx\",\n            \"ProxyStatus\": \"xx\",\n            \"Status\": \"xx\",\n            \"PhysicalZone\": \"xx\",\n            \"MasterZone\": \"xx\",\n            \"VpcId\": \"xx\",\n            \"Ability\": {\n                \"NonsupportSlaveZoneReason\": \"xx\",\n                \"IsSupportSlaveZone\": \"xx\",\n                \"IsSupportRo\": \"xx\",\n                \"NonsupportRoReason\": \"xx\"\n            },\n            \"RoAddr\": [\n                {\n                    \"IP\": \"xx\",\n                    \"Port\": 0\n                }\n            ],\n            \"ClusterId\": \"xx\",\n            \"SlaveZones\": [\n                \"xx\"\n            ],\n            \"VpcName\": \"xx\",\n            \"PeriodEndTime\": \"xx\",\n            \"MinStorageSize\": 0,\n            \"MaxStorageSize\": 0,\n            \"Charset\": \"xx\",\n            \"IsFreeze\": \"xx\",\n            \"Region\": \"xx\",\n            \"IsOpenPasswordComplexity\": \"xx\",\n            \"PayMode\": 0,\n            \"SubnetId\": \"xx\",\n            \"ResourceTags\": [\n                {\n                    \"TagKey\": \"xx\",\n                    \"TagValue\": \"xx\"\n                }\n            ],\n            \"CynosVersion\": \"xx\",\n            \"StatusDesc\": \"xx\",\n            \"StoragePayMode\": 0,\n            \"BusinessType\": \"xx\",\n            \"LogBin\": \"xx\",\n            \"HasSlaveZone\": \"xx\",\n            \"ClusterName\": \"xx\",\n            \"UsedStorage\": 129417216,\n            \"IsSkipTrade\": \"xx\",\n            \"CreateTime\": \"xx\",\n            \"DbType\": \"xx\",\n            \"Vip\": \"xx\",\n            \"ProjectID\": 0,\n            \"InstanceSet\": [\n                {\n                    \"InstanceStatus\": \"xx\",\n                    \"InstanceCpu\": 2,\n                    \"InstanceId\": \"xx\",\n                    \"InstanceRole\": \"xx\",\n                    \"InstanceStatusDesc\": \"xx\",\n                    \"InstanceMemory\": 4,\n                    \"InstanceStorage\": 100,\n                    \"InstanceName\": \"xx\",\n                    \"InstanceType\": \"xx\"\n                }\n            ],\n            \"Vport\": 5432,\n            \"DbMode\": \"xx\",\n            \"PitrType\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying the details of a cluster"
       }
     ],
+    "DescribeClusterDetailDatabases": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeAccountPrivileges&ClusterId=cynosdbmysql-xxxxxxxx&Host=xxx&AccountName=xxx&Db=xxx&Type=table&TableName=xx&<common request parameters>cynosdbpg-xxxxxxx\",    \"Limit\": \"20\",    \"DbName\": \"test\",    \"Offset\": \"0\"}",
+        "output": "{\n    \"Response\": {\n        \"DbInfos\": [\n            {\n                \"Status\": \"running\",\n                \"UserHostPrivileges\": [],\n                \"UpdateTime\": \"0001-01-01T00:00:00Z\",\n                \"Description\": \"\",\n                \"DbId\": 0,\n                \"CharacterSet\": \"\",\n                \"ClusterId\": \"\",\n                \"DbName\": \"mysql\",\n                \"Uin\": \"\",\n                \"AppId\": 0,\n                \"CollateRule\": \"\",\n                \"CreateTime\": \"0001-01-01T00:00:00Z\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6e094b68-0a37-11ec-97e7-525400542aa6\"\n    }\n}",
+        "title": "Querying the database list"
+      }
+    ],
     "DescribeClusterInstanceGrps": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterInstanceGrps\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-oib3wx0i\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"InstanceGrpInfoList\": [\n            {\n                \"Status\": \"xx\",\n                \"UpdatedTime\": \"2020-09-22 00:00:00\",\n                \"Tasks\": [\n                    {\n                        \"ObjectType\": \"xx\",\n                        \"TaskStatus\": \"xx\",\n                        \"ObjectId\": \"xx\",\n                        \"TaskId\": 0,\n                        \"TaskType\": \"xx\"\n                    }\n                ],\n                \"OldAddrInfo\": {\n                    \"Vip\": \"xx\",\n                    \"Vport\": 0,\n                    \"ReturnTime\": \"xx\"\n                },\n                \"UniqVpcId\": \"xx\",\n                \"WanDomain\": \"xx\",\n                \"InstanceSet\": [\n                    {\n                        \"ServerlessStatus\": \"xx\",\n                        \"WanStatus\": \"xx\",\n                        \"RenewFlag\": 0,\n                        \"Zone\": \"xx\",\n                        \"DbVersion\": \"xx\",\n                        \"Storage\": 0,\n                        \"StorageId\": \"xx\",\n                        \"Memory\": 0,\n                        \"ProcessingTask\": \"xx\",\n                        \"Status\": \"xx\",\n                        \"PhysicalZone\": \"xx\",\n                        \"UpdateTime\": \"2020-09-22 00:00:00\",\n                        \"VpcId\": \"xx\",\n                        \"MinCpu\": 0.0,\n                        \"MaxCpu\": 0.0,\n                        \"InstanceId\": \"xx\",\n                        \"ClusterId\": \"xx\",\n                        \"NetType\": 0,\n                        \"IsFreeze\": \"xx\",\n                        \"SubnetId\": \"xx\",\n                        \"InstanceType\": \"xx\",\n                        \"DestroyTime\": \"xx\",\n                        \"IsolateTime\": \"2020-09-22 00:00:00\",\n                        \"DestroyDeadlineText\": \"xx\",\n                        \"ProjectId\": 0,\n                        \"Region\": \"xx\",\n                        \"PayMode\": 0,\n                        \"PeriodEndTime\": \"2020-09-22 00:00:00\",\n                        \"ResourceTags\": [\n                            {\n                                \"TagKey\": \"xx\",\n                                \"TagValue\": \"xx\"\n                            }\n                        ],\n                        \"CynosVersion\": \"xx\",\n                        \"StatusDesc\": \"xx\",\n                        \"InstanceName\": \"xx\",\n                        \"Cpu\": 0,\n                        \"StoragePayMode\": 0,\n                        \"BusinessType\": \"xx\",\n                        \"Tasks\": [\n                            {\n                                \"ObjectType\": \"xx\",\n                                \"TaskStatus\": \"xx\",\n                                \"ObjectId\": \"xx\",\n                                \"TaskId\": 0,\n                                \"TaskType\": \"xx\"\n                            }\n                        ],\n                        \"WanDomain\": \"xx\",\n                        \"ClusterName\": \"xx\",\n                        \"InstanceRole\": \"xx\",\n                        \"WanPort\": 0,\n                        \"Uin\": \"xx\",\n                        \"DbType\": \"xx\",\n                        \"Vip\": \"xx\",\n                        \"AppId\": 0,\n                        \"WanIP\": \"xx\",\n                        \"Vport\": 0,\n                        \"CreateTime\": \"2020-09-22 00:00:00\"\n                    }\n                ],\n                \"WanPort\": 0,\n                \"ClusterId\": \"xx\",\n                \"DeletedTime\": \"2020-09-22 00:00:00\",\n                \"WanStatus\": \"xx\",\n                \"CreatedTime\": \"2020-09-22 00:00:00\",\n                \"Vip\": \"xx\",\n                \"UniqSubnetId\": \"xx\",\n                \"InstanceGrpId\": \"xx\",\n                \"AppId\": 0,\n                \"WanIP\": \"xx\",\n                \"Vport\": 0,\n                \"Type\": \"xx\",\n                \"NetServiceId\": 0,\n                \"ProcessingTasks\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying instance groups"
@@ -170,15 +272,23 @@
     ],
     "DescribeClusterParams": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterParams\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbpg-1xcycbu8\"\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"MatchValue\": \"\",\n                \"CurrentValue\": \"4096\",\n                \"Min\": \"1024\",\n                \"Default\": \"4096\",\n                \"Description\": \"xx\",\n                \"Max\": \"65536\",\n                \"ParamType\": \"integer\",\n                \"EnumValue\": null,\n                \"ParamName\": \"work_mem\",\n                \"MatchType\": \"\",\n                \"NeedReboot\": 0\n            },\n            {\n                \"MatchValue\": \"\",\n                \"CurrentValue\": \"base64\",\n                \"Min\": \"\",\n                \"Default\": \"base64\",\n                \"Description\": \"xx\",\n                \"Max\": \"\",\n                \"ParamType\": \"enum\",\n                \"EnumValue\": [\n                    \"base64\",\n                    \"hex\"\n                ],\n                \"ParamName\": \"xmlbinary\",\n                \"MatchType\": \"\",\n                \"NeedReboot\": 0\n            }\n        ],\n        \"RequestId\": \"117812\",\n        \"TotalCount\": 2\n    }\n}",
         "title": "Querying the cluster parameters"
       }
     ],
+    "DescribeClusterPasswordComplexity": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeAccountPrivileges&ClusterId=cynosdbmysql-xxxxxxxx&Host=xxx&AccountName=xxx&Db=xxx&Type=table&TableName=xx&<common request parameters>cynosdbmysql-bzxxrmtq\"}",
+        "output": "{    \"Response\": {        \"RequestId\": \"7613eed6-5eb5-4d17-ae69-dd93c44d7ad4\",        \"ValidatePasswordDictionary\": {            \"CurrentValue\": \"\",            \"Default\": \"\",            \"Description\": \"The dictionary words that validate_password uses for checking passwords.\",            \"EnumValue\": [],            \"IsGlobal\": 0,            \"MatchType\": \"\",            \"MatchValue\": \"\",            \"Max\": \"0\",            \"Min\": \"0\",            \"ModifiableInfo\": {},            \"NeedReboot\": 0,            \"ParamName\": \"validate_password_txsql_dictionary\",            \"ParamType\": \"string\"        },        \"ValidatePasswordLength\": {            \"CurrentValue\": \"0\",            \"Default\": \"8\",            \"Description\": \"The minimum number of characters that validate_password requires passwords to have.\",            \"EnumValue\": [],            \"IsGlobal\": 0,            \"MatchType\": \"\",            \"MatchValue\": \"\",            \"Max\": \"256\",            \"Min\": \"8\",            \"ModifiableInfo\": {},            \"NeedReboot\": 0,            \"ParamName\": \"validate_password_length\",            \"ParamType\": \"integer\"        },        \"ValidatePasswordMixedCaseCount\": {            \"CurrentValue\": \"0\",            \"Default\": \"1\",            \"Description\": \"The minimum number of lowercase and uppercase characters that validate_password requires passwords to have if the password policy is MEDIUM or stronger.\",            \"EnumValue\": [],            \"IsGlobal\": 0,            \"MatchType\": \"\",            \"MatchValue\": \"\",            \"Max\": \"50\",            \"Min\": \"1\",            \"ModifiableInfo\": {},            \"NeedReboot\": 0,            \"ParamName\": \"validate_password_mixed_case_count\",            \"ParamType\": \"integer\"        },        \"ValidatePasswordNumberCount\": {            \"CurrentValue\": \"0\",            \"Default\": \"1\",            \"Description\": \"The minimum number of numeric (digit) characters that validate_password requires passwords to have if the password policy is MEDIUM or stronger. \",            \"EnumValue\": [],            \"IsGlobal\": 0,            \"MatchType\": \"\",            \"MatchValue\": \"\",            \"Max\": \"50\",            \"Min\": \"1\",            \"ModifiableInfo\": {},            \"NeedReboot\": 0,            \"ParamName\": \"validate_password_number_count\",            \"ParamType\": \"integer\"        },        \"ValidatePasswordPolicy\": {            \"CurrentValue\": \"LOW\",            \"Default\": \"MEDIUM\",            \"Description\": \"The password policy enforced by validate_password.\",            \"EnumValue\": [                \"MEDIUM\",                \"STRONG\"            ],            \"IsGlobal\": 0,            \"MatchType\": \"\",            \"MatchValue\": \"\",            \"Max\": \"2\",            \"Min\": \"0\",            \"ModifiableInfo\": {},            \"NeedReboot\": 0,            \"ParamName\": \"validate_password_policy\",            \"ParamType\": \"enum\"        },        \"ValidatePasswordSpecialCharCount\": {            \"CurrentValue\": \"0\",            \"Default\": \"1\",            \"Description\": \"The minimum number of nonalphanumeric characters that validate_password requires passwords to have if the password policy is MEDIUM or stronger. \"The minimum number of nonalphanumeric characters that validate_password requires passwords to have if the password policy is MEDIUM or stronger. \"\",            \"MatchValue\": \"\",            \"Max\": \"50\",            \"Min\": \"1\",            \"ModifiableInfo\": {},            \"NeedReboot\": 0,            \"ParamName\": \"validate_password_special_char_count\",            \"ParamType\": \"integer\"        }    }}",
+        "title": "Querying the details of password complexity for a cluster"
+      }
+    ],
     "DescribeClusters": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusters\n<Common request parameters>\n\n{\n    \"DbType\": \"MYSQL\",\n    \"Limit\": \"20\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"cynosdbpg-ins-bzkxxrmt\"\n            ],\n            \"Names\": [\n                \"InstanceId\"\n            ],\n            \"ExactMatch\": \"true\"\n        }\n    ],\n    \"Offset\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 597,\n        \"ClusterSet\": [\n            {\n                \"ServerlessStatus\": \"xx\",\n                \"RenewFlag\": 0,\n                \"Zone\": \"xx\",\n                \"InstanceNum\": 1,\n                \"ClusterId\": \"xx\",\n                \"DbVersion\": \"xx\",\n                \"Storage\": 0,\n                \"StorageId\": \"xx\",\n                \"ProcessingTask\": \"xx\",\n                \"Status\": \"xx\",\n                \"PhysicalZone\": \"xx\",\n                \"UpdateTime\": \"xx\",\n                \"VpcId\": \"xx\",\n                \"Ability\": [\n                    {\n                        \"NonsupportSlaveZoneReason\": \"xx\",\n                        \"IsSupportSlaveZone\": \"xx\",\n                        \"IsSupportRo\": \"xx\",\n                        \"NonsupportRoReason\": \"xx\"\n                    }\n                ],\n                \"StorageLimit\": 30000,\n                \"SlaveZones\": [\n                    \"xx\"\n                ],\n                \"DbMode\": \"xx\",\n                \"SubnetId\": \"xx\",\n                \"MinStorageSize\": 10,\n                \"MaxStorageSize\": 30000,\n                \"IsFreeze\": \"xx\",\n                \"Region\": \"xx\",\n                \"MasterZone\": \"xx\",\n                \"PayMode\": 1,\n                \"PeriodEndTime\": \"xx\",\n                \"ResourceTags\": [\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    }\n                ],\n                \"CynosVersion\": \"xx\",\n                \"StatusDesc\": \"xx\",\n                \"StoragePayMode\": 0,\n                \"BusinessType\": \"xx\",\n                \"Tasks\": [\n                    {\n                        \"ObjectType\": \"xx\",\n                        \"TaskStatus\": \"xx\",\n                        \"ObjectId\": \"xx\",\n                        \"TaskId\": 0,\n                        \"TaskType\": \"xx\"\n                    }\n                ],\n                \"HasSlaveZone\": \"xx\",\n                \"ClusterName\": \"xx\",\n                \"ProjectID\": 0,\n                \"Uin\": \"xx\",\n                \"DbType\": \"xx\",\n                \"Vip\": \"xx\",\n                \"AppId\": 251007582,\n                \"OrderSource\": \"xx\",\n                \"Vport\": 3306,\n                \"CreateTime\": \"xx\",\n                \"NetAddrs\": [\n                    {\n                        \"WanStatus\": \"xx\",\n                        \"Description\": \"xx\",\n                        \"UniqVpcId\": \"xx\",\n                        \"WanDomain\": \"xx\",\n                        \"WanPort\": 0,\n                        \"Vip\": \"xx\",\n                        \"UniqSubnetId\": \"xx\",\n                        \"NetType\": \"xx\",\n                        \"WanIP\": \"xx\",\n                        \"Vport\": 3306\n                    },\n                    {\n                        \"WanStatus\": \"xx\",\n                        \"Description\": \"xx\",\n                        \"UniqVpcId\": \"xx\",\n                        \"WanDomain\": \"xx\",\n                        \"WanPort\": 0,\n                        \"Vip\": \"xx\",\n                        \"UniqSubnetId\": \"xx\",\n                        \"NetType\": \"xx\",\n                        \"WanIP\": \"xx\",\n                        \"Vport\": 3306\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying the list of clusters"
@@ -186,7 +296,7 @@
     ],
     "DescribeDBSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSecurityGroups\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbpg-ins-jhi2gdi0\"\n}",
         "output": "{\n    \"Response\": {\n        \"Groups\": [\n            {\n                \"CreateTime\": \"2017-04-13 15:00:06\",\n                \"Inbound\": [],\n                \"Outbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupName\": \"CynosDB\",\n                \"SecurityGroupRemark\": \"\"\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Querying the security group information of an instance"
@@ -194,7 +304,7 @@
     ],
     "DescribeFlow": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeFlow\n&FlowId=123\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"RequestId\": \"186253\"\n    }\n}",
         "title": "Querying task flow information"
@@ -202,15 +312,31 @@
     ],
     "DescribeInstanceDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeInstanceDetail\n&InstanceId=cynosdbmysql-ins-bzkxxrmt\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"175707\",\n        \"Detail\": {\n            \"ServerlessStatus\": \"resume\",\n            \"RenewFlag\": 0,\n            \"Zone\": \"ap-guangzhou-3\",\n            \"DbVersion\": \"10.0\",\n            \"Storage\": 100,\n            \"Memory\": 4,\n            \"MinCpu\": 1.0,\n            \"MaxCpu\": 2.0,\n            \"Charset\": \"utf8\",\n            \"Status\": \"running\",\n            \"UpdateTime\": \"2018-06-20 19:12:54\",\n            \"VpcId\": \"vpc-1ptuei0b\",\n            \"InstanceId\": \"cynosdbmysql-ins-bzkxxrmt\",\n            \"ClusterId\": \"cynosdbmysql-cluster-5ne6bjyx\",\n            \"CynosVersion\": \"2.0.12\",\n            \"NetType\": 1,\n            \"PeriodEndTime\": \"2018-07-20 19:17:16\",\n            \"InstanceType\": \"rw\",\n            \"ProjectId\": 0,\n            \"Region\": \"ap-guangzhou\",\n            \"PayMode\": 0,\n            \"SubnetId\": \"subnet-1tmw9t4o\",\n            \"StatusDesc\": \"Running\",\n            \"InstanceName\": \"ahhahhhhh\",\n            \"Cpu\": 2,\n            \"WanDomain\": \"\",\n            \"ClusterName\": \"cynosdbmysql-cluster-5ne6bjyx\",\n            \"InstanceRole\": \"master\",\n            \"Uin\": \"3374998458\",\n            \"DbType\": \"MYSQL\",\n            \"Vip\": \"10.0.1.2\",\n            \"AppId\": 1251006243,\n            \"Vport\": 5432,\n            \"CreateTime\": \"2018-06-20 19:12:54\"\n        }\n    }\n}",
         "title": "Querying instance details"
       }
     ],
+    "DescribeInstanceErrorLogs": [
+      {
+        "document": "This example shows you how to query the error logs.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeInstanceErrorLogs<common request parameters>{    \"InstanceId\": \"cynosdbmysql-ins-xxxxxxxx\",    \"Limit\": 10,    \"Offset\": 0,    \"StartTime\": \"2019-07-04 16:45:32\",    \"EndTime\": \"2019-07-04 16:55:32\",    \"OrderBy\": \"Timestatmp\",    \"OrderByType\": \"DESC\",    \"LogLevels\": [        \"error\"    ],    \"KeyWords\": [        \"abc\"    ]}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ErrorLogs\": [\n            {\n                \"Timestamp\": 0,\n                \"Level\": \"error\",\n                \"Content\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the error logs"
+      }
+    ],
+    "DescribeInstanceParams": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeInstanceErrorLogs<common request parameters>{    \"InstanceId\": \"cynosdbmysql-ge5ck0jr\",    \"ParamKeyword\": \"cdb\",    \"InstanceIds\": [        \"cynosdbmysql-ins-kzavkukw\"    ]}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"InstanceId\": \"cynosdbmysql-ins-1111111\",\n                \"ParamsItems\": [\n                    {\n                        \"CurrentValue\": \"1\",\n                        \"Default\": \"1\",\n                        \"Description\": \"Controls the interval between successive column values.\",\n                        \"EnumValue\": [],\n                        \"Func\": \"\",\n                        \"IsFunc\": false,\n                        \"IsGlobal\": 1,\n                        \"Max\": \"65535\",\n                        \"Min\": \"1\",\n                        \"NeedReboot\": 0,\n                        \"ParamName\": \"auto_increment_increment\",\n                        \"ParamType\": \"integer\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"12fc29c0-6a35-11ed-bc4c-d5b8675844ad\"\n    }\n}",
+        "title": "Querying the instance parameters"
+      }
+    ],
     "DescribeInstanceSlowQueries": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceSlowQueries\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-xxxxxxxx\",\n    \"StartTime\": \"2022-06-22 00:00:00\",\n    \"EndTime\": \"2022-06-24 23:59:59\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 6,\n        \"SlowQueries\": [\n            {\n                \"Database\": \"information_schema\",\n                \"LockTime\": 0,\n                \"QueryTime\": 11.00011,\n                \"RowsExamined\": 0,\n                \"RowsSent\": 0,\n                \"SqlMd5\": \"267171214708E27C\",\n                \"SqlTemplate\": \"select sleep(?) limit ? offset ?;\",\n                \"SqlText\": \"SELECT sleep(11) LIMIT 11 offset 0\",\n                \"Timestamp\": 1655891555,\n                \"UserHost\": \"11.186.190.10\",\n                \"UserName\": \"root\"\n            },\n            {\n                \"Database\": \"information_schema\",\n                \"LockTime\": 0,\n                \"QueryTime\": 11.000109,\n                \"RowsExamined\": 0,\n                \"RowsSent\": 0,\n                \"SqlMd5\": \"267171214708E27C\",\n                \"SqlTemplate\": \"select sleep(?) limit ? offset ?;\",\n                \"SqlText\": \"SELECT sleep(11) LIMIT 11 offset 0\",\n                \"Timestamp\": 1655891543,\n                \"UserHost\": \"11.186.190.10\",\n                \"UserName\": \"root\"\n            },\n            {\n                \"Database\": \"information_schema\",\n                \"LockTime\": 0,\n                \"QueryTime\": 11.000107,\n                \"RowsExamined\": 0,\n                \"RowsSent\": 0,\n                \"SqlMd5\": \"267171214708E27C\",\n                \"SqlTemplate\": \"select sleep(?) limit ? offset ?;\",\n                \"SqlText\": \"SELECT sleep(11) LIMIT 11 offset 0\",\n                \"Timestamp\": 1655891531,\n                \"UserHost\": \"11.186.190.10\",\n                \"UserName\": \"root\"\n            },\n            {\n                \"Database\": \"information_schema\",\n                \"LockTime\": 0,\n                \"QueryTime\": 11.000104,\n                \"RowsExamined\": 0,\n                \"RowsSent\": 0,\n                \"SqlMd5\": \"267171214708E27C\",\n                \"SqlTemplate\": \"select sleep(?) limit ? offset ?;\",\n                \"SqlText\": \"SELECT sleep(11) LIMIT 11 offset 0\",\n                \"Timestamp\": 1655891520,\n                \"UserHost\": \"11.186.190.10\",\n                \"UserName\": \"root\"\n            },\n            {\n                \"Database\": \"information_schema\",\n                \"LockTime\": 0,\n                \"QueryTime\": 11.000108,\n                \"RowsExamined\": 0,\n                \"RowsSent\": 0,\n                \"SqlMd5\": \"267171214708E27C\",\n                \"SqlTemplate\": \"select sleep(?) limit ? offset ?;\",\n                \"SqlText\": \"SELECT sleep(11) LIMIT 11 offset 0\",\n                \"Timestamp\": 1655891508,\n                \"UserHost\": \"11.186.190.10\",\n                \"UserName\": \"root\"\n            },\n            {\n                \"Database\": \"information_schema\",\n                \"LockTime\": 0,\n                \"QueryTime\": 11.000122,\n                \"RowsExamined\": 0,\n                \"RowsSent\": 0,\n                \"SqlMd5\": \"267171214708E27C\",\n                \"SqlTemplate\": \"select sleep(?) limit ? offset ?;\",\n                \"SqlText\": \"SELECT sleep(11) LIMIT 11 offset 0\",\n                \"Timestamp\": 1655891496,\n                \"UserHost\": \"11.186.190.10\",\n                \"UserName\": \"root\"\n            }\n        ],\n        \"RequestId\": \"9e56617c-c7cc-44e1-a967-6beb418ad5e7\"\n    }\n}",
         "title": "Querying the slow query logs of an instance"
@@ -234,15 +360,23 @@
     ],
     "DescribeMaintainPeriod": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeMaintainPeriod\n&InstanceId=cynosdbmysql-ins-n7ocdslw\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"165202\",\n        \"MaintainWeekDays\": [\n            \"Mon\",\n            \"Tue\"\n        ],\n        \"MaintainStartTime\": \"3600\",\n        \"MaintainDuration\": \"3600\"\n    }\n}",
         "title": "Querying the maintenance time"
       }
     ],
+    "DescribeParamTemplateDetail": [
+      {
+        "document": "This example shows you how to query the details of a parameter template.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeParamTemplateDetail<common request parameters>{    \"TemplateId\": \"4837003\"}",
+        "output": "{\n    \"Response\": {\n        \"DbMode\": \"NORMAL\",\n        \"EngineVersion\": \"5.7\",\n        \"Items\": [\n            {\n                \"CurrentValue\": \"1000\",\n                \"Default\": \"0\",\n                \"Description\": \"The maximum permitted number of simultaneous client connections per user.\",\n                \"EnumValue\": [],\n                \"Func\": \"\",\n                \"IsFunc\": false,\n                \"IsGlobal\": 0,\n                \"MatchType\": \"\",\n                \"MatchValue\": \"\",\n                \"Max\": \"10240\",\n                \"Min\": \"0\",\n                \"ModifiableInfo\": {},\n                \"NeedReboot\": 0,\n                \"ParamName\": \"max_user_connections\",\n                \"ParamType\": \"integer\",\n                \"SupportFunc\": false\n            }\n        ],\n        \"RequestId\": \"ca8481bf-ba79-42ba-b90b-bd47df104add\",\n        \"TemplateDescription\": \"test template\",\n        \"TemplateId\": 4837003,\n        \"TemplateName\": \"test template\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the details of a parameter template"
+      }
+    ],
     "DescribeParamTemplates": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeParamTemplates\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"fc791b35-d5e5-4e08-859d-1c095e783199\",\n        \"Items\": [\n            {\n                \"TemplateDescription\": \"API test\",\n                \"TemplateName\": \"API test\",\n                \"Id\": 27,\n                \"EngineVersion\": \"5.7\",\n                \"ParamInfoSet\": [\n                    {\n                        \"CurrentValue\": \"12\",\n                        \"Description\": \"API test\",\n                        \"Min\": \"10\",\n                        \"Default\": \"10\",\n                        \"Max\": \"10000\",\n                        \"ParamType\": \"integer\",\n                        \"EnumValue\": [\n                            \"test\"\n                        ],\n                        \"ParamName\": \"param1\",\n                        \"NeedReboot\": 0\n                    }\n                ],\n                \"DbMode\": \"NORMAL\"\n            },\n            {\n                \"TemplateName\": \"API test\",\n                \"Id\": 28,\n                \"EngineVersion\": \"5.7\",\n                \"ParamInfoSet\": [\n                    {\n                        \"CurrentValue\": \"12\",\n                        \"Description\": \"API test\",\n                        \"Min\": \"10\",\n                        \"Default\": \"10\",\n                        \"Max\": \"10000\",\n                        \"ParamType\": \"integer\",\n                        \"EnumValue\": [\n                            \"tste\",\n                            \"test2\"\n                        ],\n                        \"ParamName\": \"param2\",\n                        \"NeedReboot\": 0\n                    }\n                ],\n                \"DbMode\": \"NORMAL\"\n            }\n        ]\n    }\n}",
         "title": "Parameter template list"
@@ -250,15 +384,39 @@
     ],
     "DescribeProjectSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectSecurityGroups\n<Common request parameters>\n\n{\n    \"ProjectId\": \"11954\"\n}",
         "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Groups\": [\n            {\n                \"CreateTime\": \"2017-04-13 15:00:06\",\n                \"Inbound\": [],\n                \"Outbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupName\": \"CynosDB\",\n                \"SecurityGroupRemark\": \"\"\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Querying the security group information of a project"
       }
     ],
+    "DescribeResourcePackageDetail": [
+      {
+        "document": "This example shows you how to query the usage details of a resource pack.\n",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeResourcePackageDetail<common request parameters>{    \"PackageId\": \"abc\",    \"ClusterIds\": [        \"abc\"    ],    \"StartTime\": \"abc\",    \"EndTime\": \"abc\",    \"Offset\": \"abc\",    \"Limit\": \"abc\"}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"Detail\": [\n            {\n                \"AppId\": 0,\n                \"PackageId\": \"abc\",\n                \"InstanceId\": \"abc\",\n                \"SuccessDeductSpec\": 0,\n                \"PackageTotalUsedSpec\": 0,\n                \"StartTime\": \"abc\",\n                \"EndTime\": \"abc\",\n                \"ExtendInfo\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the usage details of a resource pack"
+      }
+    ],
+    "DescribeResourcePackageList": [
+      {
+        "document": "This example shows you how to query the list of the resource packs.\n",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeSourcePackageList<common request parameters>{    \"PackageId\": [        \"abc\"    ],    \"PackageName\": [        \"abc\"    ],    \"PackageType\": [        \"abc\"    ],    \"PackageRegion\": [        \"abc\"    ],    \"Status\": [        \"abc\"    ],    \"OrderBy\": [        \"abc\"    ],    \"OrderDirection\": \"abc\",    \"Offset\": 0,    \"Limit\": 0}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"Detail\": [\n            {\n                \"AppId\": 0,\n                \"PackageId\": \"abc\",\n                \"PackageName\": \"abc\",\n                \"PackageType\": \"abc\",\n                \"PackageRegion\": \"abc\",\n                \"Status\": \"abc\",\n                \"PackageTotalSpec\": 0,\n                \"PackageUsedSpec\": 0,\n                \"HasQuota\": true,\n                \"BindInstanceInfos\": [\n                    {\n                        \"InstanceId\": \"abc\",\n                        \"InstanceRegion\": \"abc\",\n                        \"InstanceType\": \"abc\"\n                    }\n                ],\n                \"StartTime\": \"abc\",\n                \"ExpireTime\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the list of the resource packs"
+      }
+    ],
+    "DescribeResourcePackageSaleSpec": [
+      {
+        "document": "This example shows you how to query the specifications of a resource pack.\n",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeSourcePackageList<common request parameters>{    \"PackageId\": [        \"abc\"    ],    \"PackageName\": [        \"abc\"    ],    \"PackageType\": [        \"abc\"    ],    \"PackageRegion\": [        \"abc\"    ],    \"Status\": [        \"abc\"    ],    \"OrderBy\": [        \"abc\"    ],    \"OrderDirection\": \"abc\",    \"PackageRegion\": \"abc\",    \"PackageType\": \"abc\",    \"Offset\": 0,    \"Limit\": 0}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"Detail\": [\n            {\n                \"PackageRegion\": \"abc\",\n                \"PackageType\": \"abc\",\n                \"PackageVersion\": \"abc\",\n                \"MinPackageSpec\": 0,\n                \"MaxPackageSpec\": 0,\n                \"ExpireDay\": 0\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the specifications of a resource pack"
+      }
+    ],
     "DescribeResourcesByDealName": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResourcesByDealName\n<Common request parameters>\n\n{\n    \"DealName\": \"xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"BillingResourceInfos\": [\n            {\n                \"ClusterId\": \"cynosdbmysql-r8ewihg4\",\n                \"InstanceIds\": [\n                    \"cynosdbmysql-ins-pecl0drs\"\n                ],\n                \"DealName\": \"xxx\"\n            },\n            {\n                \"ClusterId\": \"cynosdbmysql-hjosrxhu\",\n                \"InstanceIds\": [\n                    \"cynosdbmysql-ins-7f59pahg\"\n                ],\n                \"DealName\": \"xxx\"\n            }\n        ],\n        \"RequestId\": \"005b862f-f408-4a95-a7e7-26f3e672e081\"\n    }\n}",
         "title": "Querying the information of resource associated with order ID"
@@ -266,7 +424,7 @@
     ],
     "DescribeRollbackTimeRange": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRollbackTimeRange\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-oib3wx0i\"\n}",
         "output": "{\n    \"Response\": {\n        \"RollbackTimeRanges\": [\n            {\n                \"TimeRangeStart\": \"2019-01-13 02:12:05\",\n                \"TimeRangeEnd\": \"2019-01-20 02:10:12\"\n            }\n        ],\n        \"TimeRangeStart\": \"xx\",\n        \"TimeRangeEnd\": \"xx\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Querying valid rollback time range"
@@ -274,7 +432,7 @@
     ],
     "DescribeRollbackTimeValidity": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeRollbackTimeValidity\n&ClusterId=cynosdbpg-gn65y9nk\n&ExpectTime=2019-01-1302:12:05\n&ExpectTimeThresh=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PoolId\": 1050,\n        \"QueryId\": 2008,\n        \"Status\": \"pass\",\n        \"SuggestTime\": \"\"\n    }\n}",
         "title": "Querying whether rollback is possible based on specified time point"
@@ -288,9 +446,17 @@
         "title": "Querying the AZ information in a purchasable region"
       }
     ],
+    "ExportInstanceErrorLogs": [
+      {
+        "document": "This example shows you how to export the error logs.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ExportInstanceErrorLogs<common request parameters>{    \"InstanceId\": \"cynosdbmysql-ins-xxxxxxxx\",    \"StartTime\": \"2019-07-04 16:45:32\",    \"EndTime\": \"2019-07-04 16:55:32\",    \"Limit\": 10,    \"Offset\": 0,    \"LogLevels\": [        \"error\"    ],    \"KeyWords\": [        \"abc\"    ],    \"FileType\": \"csv\",    \"OrderBy\": \"Timestamp\",    \"OrderByType\": \"ASC\"}",
+        "output": "{\n    \"Response\": {\n        \"ErrorLogItems\": [\n            {\n                \"Timestamp\": \"2019-07-04 16:45:32\",\n                \"Level\": \"error\",\n                \"Content\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Exporting the error logs"
+      }
+    ],
     "ExportInstanceSlowQueries": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportInstanceSlowQueries\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-xxxxxxxx\",\n    \"StartTime\": \"2022-01-01 00:00:00\",\n    \"EndTime\": \"2022-01-01 23:59:59\",\n    \"Offset\": 0,\n    \"Limit\": 100,\n    \"Username\": \"root\",\n    \"Database\": \"db\",\n    \"FileType\": \"csv\"\n}",
         "output": "{\n    \"Response\": {\n        \"FileContent\": \"xxxx\",\n        \"RequestId\": \"9e56617c-c7cc-44e1-a967-6beb418ad5e7\"\n    }\n}",
         "title": "Exporting the slow logs of an instance"
@@ -298,7 +464,7 @@
     ],
     "InquirePriceCreate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceCreate\n<Common request parameters>\n\n{\n    \"Zone\": \"ap-guangzhou-3\",\n    \"GoodsNum\": 1,\n    \"Cpu\": 1,\n    \"Memory\": 1,\n    \"StorageLimit\": 10,\n    \"TimeSpan\": 1,\n    \"TimeUnit\": \"m\",\n    \"InstancePayMode\": \"POSTPAID\",\n    \"StoragePayMode\": \"POSTPAID\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstancePrice\": {\n            \"ChargeUnit\": \"\",\n            \"Discount\": 100,\n            \"TotalPrice\": 200,\n            \"TotalPriceDiscount\": 200,\n            \"UnitPrice\": 0,\n            \"UnitPriceDiscount\": 0\n        },\n        \"RequestId\": \"123-123bcde-1243\",\n        \"StoragePrice\": {\n            \"ChargeUnit\": \"GB*h\",\n            \"Discount\": 100,\n            \"TotalPrice\": 0,\n            \"TotalPriceDiscount\": 0,\n            \"UnitPrice\": 350,\n            \"UnitPriceDiscount\": 350\n        }\n    }\n}",
         "title": "Querying the purchasable price of a cluster"
@@ -306,7 +472,7 @@
     ],
     "InquirePriceRenew": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceRenew\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xxx\",\n    \"TimeSpan\": 1,\n    \"TimeUnit\": \"m\"\n}",
         "output": "{\n    \"Response\": {\n        \"Prices\": [\n            {\n                \"TotalPrice\": 0,\n                \"TotalPriceDiscount\": 0,\n                \"UnitPrice\": 0,\n                \"Discount\": 0.0,\n                \"UnitPriceDiscount\": 0,\n                \"ChargeUnit\": \"xx\"\n            }\n        ],\n        \"ClusterId\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"InstanceIds\": [\n            \"cynosdbmysql-ins-m3hy\"\n        ],\n        \"InstanceRealTotalPrice\": 0,\n        \"StorageRealTotalPrice\": 0\n    }\n}",
         "title": "Querying the renewal price of a cluster"
@@ -314,7 +480,7 @@
     ],
     "IsolateCluster": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateCluster\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-bzxxrmtq\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\",\n        \"DealNames\": [\n            \"123\"\n        ]\n    }\n}",
         "title": "Isolating a cluster"
@@ -322,15 +488,39 @@
     ],
     "IsolateInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateInstance\n<Common request parameters>\n\n{\n    \"InstanceIdList\": [\n        \"cynosdbmysql-ixgbd0di\"\n    ],\n    \"ClusterId\": \"cynosdbmysql-ins-bzkxxrmt\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"DealNames\": [\n            \"23456\"\n        ],\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Isolating an instance"
       }
     ],
+    "ModifyAccountDescription": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyAccountDescription&ClusterId=cynosdbpg-on5xw0ni&AccountName=admin&Description=admin&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\"\n    }\n}",
+        "title": "Modifying the descriptions of a database account"
+      }
+    ],
+    "ModifyAccountHost": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyAccountHost&ClusterId=cynosdbpg-on5xw0ni&Account.AccountName=admin&Account.Host=myHost&NewHost=xx&<公common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\"\n    }\n}",
+        "title": "Modifying the account host"
+      }
+    ],
+    "ModifyAccountPrivileges": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyAccountPrivileges&ClusterId=xxx&Account.AccountName=xxx&Account.Host=xx&GlobalPrivileges.0=xxx&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"147706\"\n    }\n}",
+        "title": "Modifying the account permissions"
+      }
+    ],
     "ModifyAuditRuleTemplates": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAuditRuleTemplates\n<Common request parameters>\n\n{\n    \"RuleTemplateIds\": [\n        \"cynosdb-rt-ws23fwu8\"\n    ],\n    \"RuleTemplateName\": \"wy\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
         "title": "Modifying an audit rule template"
@@ -338,7 +528,7 @@
     ],
     "ModifyAuditService": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAuditService\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-6990cckk\",\n    \"LogExpireDay\": 30,\n    \"HighLogExpireDay\": 7,\n    \"AuditAll\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
         "title": "Modifying the audit service"
@@ -354,15 +544,31 @@
     ],
     "ModifyBackupName": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupName\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-xxxxxxxx\",\n    \"BackupId\": 1000,\n    \"BackupName\": \"backupfile-01\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e56617c-c7cc-44e1-a967-6beb418ad5e7\"\n    }\n}",
         "title": "Renaming a backup file"
       }
     ],
+    "ModifyBinlogSaveDays": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyBinlogSaveDays<common request parameters>{    \"ClusterId\": \"cynosdb-xxxxxxxx\",    \"BinlogSaveDays\": 10}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e56617c-c7cc-44e1-a967-6beb418ad5e7\"\n    }\n}",
+        "title": "Modifying the Binlog retention period in days"
+      }
+    ],
+    "ModifyClusterDatabase": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyClusterDatabase<common request parameters>{    \"OldUserHostPrivileges\": [        {            \"DbUserName\": \"xx\",            \"DbHost\": \"xx\",            \"DbPrivilege\": \"xx\"        }    ],    \"NewUserHostPrivileges\": [        {            \"DbUserName\": \"xx\",            \"DbHost\": \"xx\",            \"DbPrivilege\": \"xx\"        }    ],    \"ClusterId\": \"xx\",    \"DbName\": \"xx\",    \"Description\": \"xx\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f569bea2-0a51-11ec-af61-525400542aa6\"\n    }\n}",
+        "title": "Creating a database"
+      }
+    ],
     "ModifyClusterName": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyClusterName\n&ClusterId=cynosdbpg-5804k48e\n&ClusterName=newName\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"148561\"\n    }\n}",
         "title": "Modifying cluster name"
@@ -370,15 +576,23 @@
     ],
     "ModifyClusterParam": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterParam\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-ins-jhi2gdi0\",\n    \"ParamList\": [\n        {\n            \"CurrentValue\": \"59\",\n            \"OldValue\": \"60\",\n            \"ParamName\": \"authentication_timeout\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"164063\",\n        \"AsyncRequestId\": \"56317d06-8078-4e5c-b675-9e048995c820\"\n    }\n}",
         "title": "Modifying the parameters of a cluster"
       }
     ],
+    "ModifyClusterPasswordComplexity": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyClusterPasswordComplexity<common request parameters>{    \"ValidatePasswordLength\": 0,    \"ValidatePasswordMixedCaseCount\": 0,    \"ValidatePasswordDictionary\": [        \"admin\"    ],    \"ClusterId\": \"cynosdbmysql-abcdxxxx\",    \"ValidatePasswordNumberCount\": 0,    \"ValidatePasswordSpecialCharCount\": 0,    \"ValidatePasswordPolicy\": \"MEDIUM\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Modifying or enabling the password complexity for a cluster"
+      }
+    ],
     "ModifyClusterSlaveZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterSlaveZone\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"OldSlaveZone\": \"xx\",\n    \"NewSlaveZone\": \"xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"123\",\n        \"RequestId\": \"128046\"\n    }\n}",
         "title": "Modifying the replica AZ"
@@ -386,7 +600,7 @@
     ],
     "ModifyDBInstanceSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyDBInstanceSecurityGroups\n&Zone=ap-guangzhou-3\n&InstanceId=cynosdbmysql-ins-4senc2fm\n&SecurityGroupIds.0=sg-ajr1jzgj\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a8\"\n    }\n}",
         "title": "Modifying the security group bound to an instance"
@@ -394,23 +608,55 @@
     ],
     "ModifyInstanceName": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyInstanceName\n&InstanceId=cynosdb-ins-dokydbam\n&InstanceName=newName\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"148561\"\n    }\n}",
         "title": "Modifying instance name"
       }
     ],
+    "ModifyInstanceParam": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyInstanceParam<common request parameters>{    \"InstanceParamList\": [        {            \"CurrentValue\": \"2\",            \"ParamName\": \"innodb_stats_transient_sample_pages\"        }    ],    \"ClusterId\": \"cynosdbmysql-ge5ck0jr\",    \"InstanceIds\": [        \"cynosdbmysql-ins-kzavkukw\"    ],    \"IsInMaintainPeriod\": \"no\"}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1103611,\n        \"RequestId\": \"77735431-2058-4999-ace4-a16874c2177b\"\n    }\n}",
+        "title": "Modifying the instance parameters"
+      }
+    ],
     "ModifyMaintainPeriodConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyMaintainPeriodConfig\n&InstanceId=cynosdbmysql-ins-n7ocdslw\n&MaintainStartTime=3600\n&MaintainDuration=3600\n&MaintainWeekDays.0=Mon\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"165202\"\n    }\n}",
         "title": "Modifying the instance maintenance window"
       }
     ],
+    "ModifyParamTemplate": [
+      {
+        "document": "This example shows you how to modify a parameter template.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyParamTemplate<common request parameters>{    \"TemplateDescription\": \"Do not delete\",    \"TemplateId\": \"94\",    \"ParamList\": [        {            \"CurrentValue\": \"1024\",            \"ParamName\": \"query_cache_size\"        }    ],    \"TemplateName\": \"v5.7 common parameter template-do not delete\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"916e8185-4749-45af-899f-e57043164675\"\n    }\n}",
+        "title": "Modifying a parameter template"
+      }
+    ],
+    "ModifyResourcePackageClusters": [
+      {
+        "document": "This example shows you how to bind a resource pack to a cluster.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyResourcePackageClusters<common request parameters>{    \"PackageId\": \"abc\",    \"BindClusterIds\": [        \"abc\"    ],    \"UnbindClusterIds\": [        \"abc\"    ]}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Binding a resource pack to a cluster"
+      }
+    ],
+    "ModifyResourcePackageName": [
+      {
+        "document": "This example shows you how to modify the name of a resource pack.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifySourcePackageName<common request parameters>{    \"PackageId\": \"abc\",    \"PackageName\": \"abc\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying the name of a resource pack"
+      }
+    ],
     "ModifyVipVport": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyVipVport\n&ClusterId=xxx\n&InstanceGrpId=xxx\n&Vip=xx.xx.xx.xx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Modifying an IP port"
@@ -418,7 +664,7 @@
     ],
     "OfflineCluster": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=OfflineCluster\n&ClusterId=cynosdbmysql-bzxxrmtq\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Deactivating a cluster"
@@ -426,7 +672,7 @@
     ],
     "OfflineInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=OfflineInstance\n&ClusterId=cynosdbmysql-bzxxrmtq\n&InstanceIdList.0=cynosdbmysql-ins-7upukfpw\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Isolating an instance"
@@ -434,23 +680,55 @@
     ],
     "OpenAuditService": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenAuditService\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-6990cckk\",\n    \"LogExpireDay\": 30,\n    \"HighLogExpireDay\": 7\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
         "title": "Enabling the audit service"
       }
     ],
+    "OpenClusterPasswordComplexity": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: OpenClusterPasswordComplexity<common request parameters>{    \"ValidatePasswordLength\": 0,    \"ValidatePasswordMixedCaseCount\": 0,    \"ValidatePasswordDictionary\": [        \"admin\"    ],    \"ClusterId\": \"cynosdbmysql-abcdxxxx\",    \"ValidatePasswordNumberCount\": 0,    \"ValidatePasswordSpecialCharCount\": 0,    \"ValidatePasswordPolicy\": \"MEDIUM\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Enabling the password complexity for a cluster"
+      }
+    ],
+    "OpenReadOnlyInstanceExclusiveAccess": [
+      {
+        "document": "This example shows you how to enable the dedicated access for a read-only instance in any scenario.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: OpenClusterPasswordComplexity<common request parameters>{    \"ValidatePasswordLength\": 0,    \"ValidatePasswordMixedCaseCount\": 0,    \"ValidatePasswordDictionary\": [        \"admin\"    ],    \"ClusterId\": \"cynosdbmysql-qwertyui\",    \"InstanceId\": \"cynosdbmysql-ins-asdfghjk\",    \"VpcId\": \"vpc-asdfghjk\",    \"SubnetId\": \"subnet-qwertyui\",    \"Port\": 3306,    \"SecurityGroupIds\": [        \"SecurityGroupIds1\",        \"SecurityGroupIds2\"    ]}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": \"12345\",\n        \"RequestId\": \"123123123123123\"\n    }\n}",
+        "title": "ex:"
+      }
+    ],
+    "OpenWan": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=OpenWan&InstanceGrpId=cynosdbmysql-grp-o48ssqs5&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 734,\n        \"RequestId\": \"ed1bf4b2-4917-4f4f-9f7d-1562e34c9eeb\"\n    }\n}",
+        "title": "Enabling the public network for the read-only group"
+      }
+    ],
     "PauseServerless": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PauseServerless\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-8vcxoq75\",\n    \"ForcePause\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1008306,\n        \"RequestId\": \"37508f2e-23eb-11eb-a713-525400b7dd5a\"\n    }\n}",
         "title": "Pausing a serverless cluster"
       }
     ],
+    "RefundResourcePackage": [
+      {
+        "document": "This example shows you how to refund a resource pack.\n",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: RefundSourcePackage<common request parameters>{    \"PackageId\": \"abc\"}",
+        "output": "{\n    \"Response\": {\n        \"DealNames\": [\n            \"abc\"\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Refund a resource pack"
+      }
+    ],
     "RemoveClusterSlaveZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveClusterSlaveZone\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"SlaveZone\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"123\",\n        \"RequestId\": \"128046\"\n    }\n}",
         "title": "Deleting the replica AZ"
@@ -458,7 +736,7 @@
     ],
     "ResetAccountPassword": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ResetAccountPassword\n&ClusterId=cynosdbpg-on5xw0ni\n&AccountName=root\n&AccountPassword=abc@2018\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"148561\"\n    }\n}",
         "title": "Resetting the password of a TencentDB account."
@@ -466,7 +744,7 @@
     ],
     "RestartInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=RestartInstance\n&InstanceId=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Restarting an instance"
@@ -474,7 +752,7 @@
     ],
     "ResumeServerless": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeServerless\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1008306,\n        \"RequestId\": \"37508f2e-23eb-11eb-a713-525400b7dd5a\"\n    }\n}",
         "title": "Resuming a serverless cluster"
@@ -482,7 +760,7 @@
     ],
     "SearchClusterDatabases": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SearchClusterDatabases\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xxx\",\n    \"Database\": \"xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"176466\",\n        \"Databases\": []\n    }\n}",
         "title": "Searching the list of cluster databases"
@@ -490,7 +768,7 @@
     ],
     "SearchClusterTables": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SearchClusterTables\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xxx\",\n    \"Database\": \"xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"176466\",\n        \"Tables\": []\n    }\n}",
         "title": "Searching the list of cluster data tables"
@@ -498,7 +776,7 @@
     ],
     "SetRenewFlag": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=SetRenewFlag\n&ResourceIds.0=cynosdbmysql-ins-xxxxxxx\n&AutoRenewFlag=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Count\": 1,\n        \"RequestId\": 123123123\n    }\n}",
         "title": "Setting the auto-renewal flag"
@@ -506,7 +784,7 @@
     ],
     "SwitchClusterVpc": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cynosdb.tencentcloudapi.com/?Action=SwitchClusterVpc\n&ClusterId=xxx\n&UniqVpcId=xx\n&UniqSubnetId=xx\n&OldIpReserveHours=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Switching network"
@@ -514,7 +792,7 @@
     ],
     "SwitchClusterZone": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchClusterZone\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"OldZone\": \"xx\",\n    \"NewZone\": \"xx\",\n    \"IsInMaintainPeriod\": \"yes\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"123\",\n        \"RequestId\": \"128046\"\n    }\n}",
         "title": "Switching to the replica AZ"
@@ -522,15 +800,31 @@
     ],
     "SwitchProxyVpc": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchProxyVpc\n<Common request parameters>\n\n{\n    \"OldIpReserveHours\": \"0\",\n    \"UniqSubnetId\": \"xx\",\n    \"ClusterId\": \"xxx\",\n    \"UniqVpcId\": \"xx\",\n    \"ProxyGroupId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
         "title": "Switching network"
       }
     ],
+    "UnbindClusterResourcePackages": [
+      {
+        "document": "This example shows you how to unbind a TDSQL-C for MySQL resource pack.",
+        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: UnbindSourcePackageCynos<common request parameters>{    \"ClusterId\": \"abc\",    \"PackageIds\": [        \"abc\"    ]}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Unbinding a TDSQL-C for MySQL resource pack"
+      }
+    ],
+    "UpgradeClusterVersion": [
+      {
+        "document": " ",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=UpgradeClusterVersion&ClusterId=xxx&CynosVersion=2.0.0&UpgradeType=upgradeImmediate&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"FlowId\": \"123\"\n    }\n}",
+        "title": "Upgrading TDSQL-C for MySQL kernel version"
+      }
+    ],
     "UpgradeInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-n7ocdslw\",\n    \"UpgradeType\": \"upgradeImmediate\",\n    \"Cpu\": \"2\",\n    \"Memory\": \"4\"\n}",
         "output": "{\n    \"Response\": {\n        \"BigDealIds\": [\n            \"xx\"\n        ],\n        \"RequestId\": \"165202\",\n        \"TranId\": \"xx\",\n        \"DealNames\": [\n            \"xx\"\n        ]\n    }\n}",
         "title": "Upgrading an instance"

@@ -432,6 +432,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -441,6 +442,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export start time",
           "example": "2022-01-20 00:00:00",
           "member": "string",
@@ -450,6 +452,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export end time",
           "example": "2022-01-21 00:00:00",
           "member": "string",
@@ -459,6 +462,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export search statement",
           "example": "*",
           "member": "string",
@@ -468,6 +472,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of logs to be exported. Maximum value: 10 million",
           "example": "10",
           "member": "int64",
@@ -477,6 +482,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Exported log sorting order by time. Valid values: asc: ascending; desc: descending. Default value: desc",
           "example": "desc",
           "member": "string",
@@ -486,6 +492,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Exported log data format. Valid values: json, csv. Default value: json",
           "example": "json",
           "member": "string",
@@ -500,6 +507,7 @@
       "document": "CreateLogExport response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Log export ID",
           "example": "export-f5e4c354-2441-4ea5-848e-8fc25e0f2c24",
           "member": "string",
@@ -522,6 +530,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Unique project key for reporting",
           "example": "DjkljW234R",
           "member": "string",
@@ -531,6 +540,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique identifier of the user to be listened on (`aid` or `uin`)",
           "example": "9580003424",
           "member": "string",
@@ -545,6 +555,7 @@
       "document": "CreateOfflineLogConfig response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "API response information",
           "example": "success",
           "member": "string",
@@ -567,6 +578,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Name of the created project (required and up to 200 characters)",
           "example": "测试项目名",
           "member": "string",
@@ -576,6 +588,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Business system ID",
           "example": "taw-123",
           "member": "string",
@@ -585,6 +598,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project sampling rate (greater than or equal to 0)",
           "example": "10",
           "member": "string",
@@ -594,6 +608,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable aggregation",
           "example": "1",
           "member": "uint64",
@@ -603,6 +618,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project type (valid values: \"web\", \"mp\", \"android\", \"ios\", \"node\", \"hippy\", \"weex\", \"viola\", \"rn\")",
           "example": "web",
           "member": "string",
@@ -612,6 +628,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Repository address of the project (optional and up to 256 characters)",
           "example": "http://github.com/xxx",
           "member": "string",
@@ -621,6 +638,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Webpage address of the project (optional and up to 256 characters)",
           "example": "http://www.qq.com/",
           "member": "string",
@@ -630,6 +648,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description of the created project (optional and up to 1,000 characters)",
           "example": "这是项目描述",
           "member": "string",
@@ -644,6 +663,7 @@
       "document": "CreateProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "uint64",
@@ -653,6 +673,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Unique project key",
           "example": "RlOmCVbPrKd4",
           "member": "string",
@@ -675,6 +696,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -684,6 +706,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File information list",
           "example": "无",
           "member": "ReleaseFile",
@@ -698,6 +721,7 @@
       "document": "CreateReleaseFile response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Call result",
           "example": "success",
           "member": "string",
@@ -720,6 +744,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID, such as taw-123",
           "example": "taw-123",
           "member": "string",
@@ -729,6 +754,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -743,6 +769,7 @@
       "document": "CreateStarProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "API response information",
           "example": "success",
           "member": "string",
@@ -764,7 +791,7 @@
       "document": "CreateTawInstance request structure.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Region ID (at least greater than 0)",
           "example": "1",
           "member": "int64",
@@ -773,7 +800,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Billing type (1: Pay-as-you-go).",
           "example": "1",
           "member": "int64",
@@ -782,7 +809,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Data retention period (at least greater than 0)",
           "example": "30",
           "member": "int64",
@@ -791,7 +818,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance name (up to 255 bytes)",
           "example": "实例名称",
           "member": "string",
@@ -800,7 +827,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Tag list",
           "example": "无",
           "member": "Tag",
@@ -809,7 +836,7 @@
           "type": "list"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance description (up to 1,024 bytes)",
           "example": "实例描述",
           "member": "string",
@@ -818,7 +845,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Number of data entries reported per day",
           "example": "100",
           "member": "string",
@@ -827,7 +854,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Billing for data storage",
           "example": "30",
           "member": "string",
@@ -836,7 +863,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance purchase channel. Valid value: `cdn`.",
           "example": "\"\"",
           "member": "string",
@@ -845,7 +872,7 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Type of prepaid resource pack (only required for prepaid mode)",
           "example": "1",
           "member": "uint64",
@@ -854,11 +881,20 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The number of prepaid resource packs (only required for prepaid mode)",
           "example": "1",
           "member": "uint64",
           "name": "ResourcePackageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance type. `1`: Web; `2`: Application",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceType",
           "required": false,
           "type": "int"
         }
@@ -869,6 +905,7 @@
       "document": "CreateTawInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "taw-12345678",
           "member": "string",
@@ -878,6 +915,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "ID of prepaid order\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20211011688006794751081",
           "member": "string",
@@ -900,6 +938,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID, such as taw-123",
           "example": "taw-123",
           "member": "string",
@@ -909,6 +948,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks",
           "example": "备注",
           "member": "string",
@@ -918,6 +958,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "uin: business identifier",
           "example": "123123",
           "member": "string",
@@ -927,6 +968,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Business identifier",
           "example": "2222",
           "member": "string",
@@ -941,6 +983,7 @@
       "document": "CreateWhitelist response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Message",
           "example": "无",
           "member": "string",
@@ -950,6 +993,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Allowlist ID",
           "example": "1",
           "member": "uint64",
@@ -972,6 +1016,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance to be deleted",
           "example": "rum-abcd1234",
           "member": "string",
@@ -999,6 +1044,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -1008,6 +1054,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export ID",
           "example": "export-xxx",
           "member": "string",
@@ -1022,6 +1069,7 @@
       "document": "DeleteLogExport response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether it is successful. If so, `success` will be returned; otherwise, `Error` rather than this parameter will be returned\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "success",
           "member": "string",
@@ -1044,6 +1092,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Unique project key for reporting",
           "example": "fd34af34fghf6",
           "member": "string",
@@ -1053,6 +1102,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique user identifier (uin or aid)",
           "example": "9535989045",
           "member": "string",
@@ -1067,6 +1117,7 @@
       "document": "DeleteOfflineLogConfig response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "API call information",
           "example": "success",
           "member": "string",
@@ -1089,6 +1140,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Unique project key for reporting",
           "example": "DjkljW234R",
           "member": "string",
@@ -1098,6 +1150,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offline log file ID",
           "example": "123",
           "member": "string",
@@ -1112,6 +1165,7 @@
       "document": "DeleteOfflineLogRecord response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "API call information",
           "example": "success",
           "member": "string",
@@ -1134,6 +1188,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the project to be deleted",
           "example": "6",
           "member": "uint64",
@@ -1148,6 +1203,7 @@
       "document": "DeleteProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Operation information",
           "example": "success",
           "member": "string",
@@ -1170,6 +1226,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File ID",
           "example": "1",
           "member": "int64",
@@ -1184,6 +1241,7 @@
       "document": "DeleteReleaseFile response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string of the API request",
           "example": "success",
           "member": "string",
@@ -1206,6 +1264,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID, such as taw-123",
           "example": "taw-123",
           "member": "string",
@@ -1215,6 +1274,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -1229,6 +1289,7 @@
       "document": "DeleteStarProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response message\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "success",
           "member": "string",
@@ -1251,6 +1312,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "taw-123",
           "member": "string",
@@ -1260,6 +1322,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List ID",
           "example": "1",
           "member": "string",
@@ -1274,6 +1337,7 @@
       "document": "DeleteWhitelist response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Success message",
           "example": "无",
           "member": "string",
@@ -1296,6 +1360,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -1305,6 +1370,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`top`: top resources view; `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `pagepv`: PV view; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -1314,6 +1380,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -1323,6 +1390,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -1332,6 +1400,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -1341,6 +1410,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -1350,6 +1420,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -1359,6 +1430,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -1368,6 +1440,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -1377,6 +1450,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -1386,6 +1460,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -1395,6 +1470,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -1404,6 +1480,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -1413,6 +1490,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -1422,6 +1500,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -1431,6 +1510,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -1440,6 +1520,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -1449,6 +1530,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -1458,6 +1540,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -1467,6 +1550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -1476,6 +1560,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation method",
           "example": "avg",
           "member": "string",
@@ -1485,6 +1570,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Key value of the custom speed test",
           "example": "自定义测速",
           "member": "string",
@@ -1494,6 +1580,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -1508,6 +1595,7 @@
       "document": "DescribeDataCustomUrl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -1530,6 +1618,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -1539,6 +1628,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `ckuv`: UV trend; `ckpv`: PV trend; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -1548,6 +1638,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -1557,6 +1648,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -1566,6 +1658,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -1575,6 +1668,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -1584,6 +1678,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -1593,6 +1688,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -1602,6 +1698,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -1611,6 +1708,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -1620,6 +1718,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -1629,6 +1728,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -1638,6 +1738,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -1647,6 +1748,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -1656,6 +1758,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -1665,6 +1768,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -1674,6 +1778,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -1683,6 +1788,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -1692,6 +1798,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -1701,6 +1808,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -1710,6 +1818,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter",
           "example": "name",
           "member": "string",
@@ -1719,6 +1828,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -1733,6 +1843,7 @@
       "document": "DescribeDataEventUrl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -1755,6 +1866,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -1764,6 +1876,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -1773,6 +1886,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -1782,6 +1896,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -1791,6 +1906,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -1800,6 +1916,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -1809,6 +1926,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -1818,6 +1936,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -1827,6 +1946,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -1836,6 +1956,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -1845,6 +1966,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -1854,6 +1976,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -1863,6 +1986,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -1872,6 +1996,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -1881,6 +2006,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -1890,6 +2016,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -1899,6 +2026,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -1908,6 +2036,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -1917,6 +2046,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -1926,6 +2056,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -1935,6 +2066,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation method",
           "example": "50",
           "member": "string",
@@ -1944,6 +2076,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source",
           "example": "url",
           "member": "string",
@@ -1953,6 +2086,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -1962,6 +2096,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "HTTP status code.",
           "example": "200",
           "member": "string",
@@ -1971,6 +2106,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "retcode",
           "example": "1",
           "member": "string",
@@ -1985,6 +2121,7 @@
       "document": "DescribeDataFetchProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -2007,6 +2144,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -2016,6 +2154,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type",
           "example": "pagepv",
           "member": "string",
@@ -2025,6 +2164,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -2034,6 +2174,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -2043,6 +2184,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -2052,6 +2194,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -2061,6 +2204,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -2070,6 +2214,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -2079,6 +2224,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -2088,6 +2234,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -2097,6 +2244,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -2106,6 +2254,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -2115,6 +2264,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -2124,6 +2274,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -2133,6 +2284,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -2142,6 +2294,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -2151,6 +2304,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -2160,6 +2314,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -2169,6 +2324,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -2178,6 +2334,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -2187,6 +2344,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation method",
           "example": "avg",
           "member": "string",
@@ -2196,6 +2354,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source",
           "example": "http",
           "member": "string",
@@ -2205,6 +2364,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -2219,6 +2379,7 @@
       "document": "DescribeDataFetchUrlInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -2241,6 +2402,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -2250,6 +2412,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`allcount`: performance view; `day`: 14-day data; `count40x`: HTTP status codes 40X view; `count50x`: HTTP status codes 50X view; `count5xand4x`: HTTP status codes 40X∑50X view; `top`: top resources view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -2259,6 +2422,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -2268,6 +2432,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -2277,6 +2442,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -2286,6 +2452,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -2295,6 +2462,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -2304,6 +2472,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -2313,6 +2482,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -2322,6 +2492,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -2331,6 +2502,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -2340,6 +2512,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -2349,6 +2522,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -2358,6 +2532,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -2367,6 +2542,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -2376,6 +2552,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -2385,6 +2562,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -2394,6 +2572,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -2403,6 +2582,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -2412,6 +2592,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -2421,6 +2602,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation method",
           "example": "50",
           "member": "string",
@@ -2430,6 +2612,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source",
           "example": "http",
           "member": "string",
@@ -2439,6 +2622,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -2448,6 +2632,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "HTTP status code.",
           "example": "200",
           "member": "string",
@@ -2457,6 +2642,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "retcode",
           "example": "1",
           "member": "string",
@@ -2466,6 +2652,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network status",
           "example": "1",
           "member": "string",
@@ -2480,6 +2667,7 @@
       "document": "DescribeDataFetchUrl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -2502,6 +2690,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -2511,6 +2700,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Timestamp",
           "example": "1625444040",
           "member": "int64",
@@ -2520,6 +2710,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Timestamp",
           "example": "1625454840",
           "member": "int64",
@@ -2534,6 +2725,7 @@
       "document": "DescribeDataLogUrlInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -2556,6 +2748,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -2565,6 +2758,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`analysis`: exception analysis; `compare`: exception list comparison; `allcount`: performance view; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -2574,6 +2768,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -2583,6 +2778,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -2592,6 +2788,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -2601,6 +2798,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -2610,6 +2808,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -2619,6 +2818,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -2628,6 +2828,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -2637,6 +2838,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -2646,6 +2848,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -2655,6 +2858,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -2664,6 +2868,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -2673,6 +2878,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -2682,6 +2888,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -2691,6 +2898,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -2700,6 +2908,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -2709,6 +2918,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -2718,6 +2928,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -2727,6 +2938,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -2736,6 +2948,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "production",
           "member": "string",
@@ -2750,6 +2963,7 @@
       "document": "DescribeDataLogUrlStatistics response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -2772,6 +2986,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -2781,6 +2996,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -2790,6 +3006,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -2799,6 +3016,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`pagepv`: PV view; `allcount`: performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -2808,6 +3026,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -2817,6 +3036,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -2826,6 +3046,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -2835,6 +3056,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -2844,6 +3066,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -2853,6 +3076,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -2862,6 +3086,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -2871,6 +3096,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -2880,6 +3106,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -2889,6 +3116,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -2898,6 +3126,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -2907,6 +3136,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -2916,6 +3146,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -2925,6 +3156,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -2934,6 +3166,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -2943,6 +3176,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -2952,6 +3186,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation method",
           "example": "50",
           "member": "string",
@@ -2961,6 +3196,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment variable",
           "example": "prod",
           "member": "string",
@@ -2970,6 +3206,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network status",
           "example": "1",
           "member": "string",
@@ -2984,6 +3221,7 @@
       "document": "DescribeDataPerformancePage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -3006,6 +3244,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -3015,6 +3254,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`allcount`; performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `condition`: condition list; `area`: request speed distribution; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -3024,6 +3264,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -3033,6 +3274,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -3042,6 +3284,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -3051,6 +3294,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -3060,6 +3304,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -3069,6 +3314,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -3078,6 +3324,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -3087,6 +3334,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -3096,6 +3344,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -3105,6 +3354,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -3114,6 +3364,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -3123,6 +3374,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -3132,6 +3384,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -3141,6 +3394,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -3150,6 +3404,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -3159,6 +3414,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -3168,6 +3424,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -3177,6 +3434,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -3186,6 +3444,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation",
           "example": "avg",
           "member": "string",
@@ -3195,6 +3454,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -3209,6 +3469,7 @@
       "document": "DescribeDataPerformanceProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -3231,6 +3492,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -3240,6 +3502,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type",
           "example": "pagepv",
           "member": "string",
@@ -3249,6 +3512,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -3258,6 +3522,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -3267,6 +3532,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -3276,6 +3542,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -3285,6 +3552,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -3294,6 +3562,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -3303,6 +3572,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -3312,6 +3582,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -3321,6 +3592,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -3330,6 +3602,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -3339,6 +3612,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -3348,6 +3622,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -3357,6 +3632,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -3366,6 +3642,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -3375,6 +3652,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -3384,6 +3662,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -3393,6 +3672,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -3402,6 +3682,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -3411,6 +3692,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -3425,6 +3707,7 @@
       "document": "DescribeDataPvUrlInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -3447,6 +3730,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -3456,6 +3740,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`allcount`; performance view; `day`: 14-day data, `vp`: performance; `ckuv`: UV; `ckpv`: PV; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -3465,6 +3750,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -3474,6 +3760,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -3483,6 +3770,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -3492,6 +3780,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -3501,6 +3790,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -3510,6 +3800,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -3519,6 +3810,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -3528,6 +3820,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -3537,6 +3830,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -3546,6 +3840,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -3555,6 +3850,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -3564,6 +3860,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -3573,6 +3870,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -3582,6 +3880,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -3591,6 +3890,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -3600,6 +3900,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -3609,6 +3910,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -3618,6 +3920,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -3627,6 +3930,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -3641,6 +3945,7 @@
       "document": "DescribeDataPvUrlStatistics response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -3663,6 +3968,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -3672,6 +3978,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -3681,6 +3988,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -3690,6 +3998,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Reporting type",
           "example": "custom",
           "member": "string",
@@ -3699,6 +4008,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "rum-vzysRe1w",
           "member": "string",
@@ -3713,6 +4023,7 @@
       "document": "DescribeDataReportCount response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -3735,6 +4046,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Query string",
           "example": "\"\"",
           "member": "string",
@@ -3744,6 +4056,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -3758,6 +4071,7 @@
       "document": "DescribeData response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -3780,6 +4094,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -3789,6 +4104,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`allcount`: performance view; `data`: mini program; `component`: mini program-related components; `day`: 14-day data; `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -3798,6 +4114,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -3807,6 +4124,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -3816,6 +4134,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -3825,6 +4144,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -3834,6 +4154,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -3843,6 +4164,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -3852,6 +4174,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -3861,6 +4184,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -3870,6 +4194,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -3879,6 +4204,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -3888,6 +4214,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -3897,6 +4224,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -3906,6 +4234,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -3915,6 +4244,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -3924,6 +4254,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -3933,6 +4264,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -3942,6 +4274,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -3951,6 +4284,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -3960,6 +4294,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation",
           "example": "avg",
           "member": "string",
@@ -3969,6 +4304,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -3978,6 +4314,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The obtained package.",
           "example": "loadPackage",
           "member": "string",
@@ -3992,6 +4329,7 @@
       "document": "DescribeDataSetUrlStatistics response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -4014,6 +4352,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -4023,6 +4362,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -4032,6 +4372,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -4041,6 +4382,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -4050,6 +4392,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -4059,6 +4402,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -4068,6 +4412,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -4077,6 +4422,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -4086,6 +4432,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -4095,6 +4442,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -4104,6 +4452,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -4113,6 +4462,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -4122,6 +4472,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -4131,6 +4482,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -4140,6 +4492,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -4149,6 +4502,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -4158,6 +4512,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -4167,6 +4522,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -4176,6 +4532,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -4185,6 +4542,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -4194,6 +4552,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation",
           "example": "avg",
           "member": "string",
@@ -4203,6 +4562,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source",
           "example": "http",
           "member": "string",
@@ -4212,6 +4572,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -4226,6 +4587,7 @@
       "document": "DescribeDataStaticProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -4248,6 +4610,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -4257,6 +4620,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`top`: top resources view; `count40x`: HTTP status codes 40X view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -4266,6 +4630,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -4275,6 +4640,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -4284,6 +4650,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -4293,6 +4660,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -4302,6 +4670,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -4311,6 +4680,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -4320,6 +4690,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -4329,6 +4700,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -4338,6 +4710,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -4347,6 +4720,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -4356,6 +4730,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -4365,6 +4740,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -4374,6 +4750,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -4383,6 +4760,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -4392,6 +4770,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -4401,6 +4780,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -4410,6 +4790,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -4419,6 +4800,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -4428,6 +4810,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation method",
           "example": "avg",
           "member": "string",
@@ -4437,6 +4820,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source",
           "example": "http",
           "member": "string",
@@ -4446,6 +4830,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -4460,6 +4845,7 @@
       "document": "DescribeDataStaticResource response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -4482,6 +4868,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -4491,6 +4878,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`pagepv`: page view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
@@ -4500,6 +4888,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -4509,6 +4898,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -4518,6 +4908,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -4527,6 +4918,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -4536,6 +4928,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -4545,6 +4938,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -4554,6 +4948,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -4563,6 +4958,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -4572,6 +4968,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -4581,6 +4978,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -4590,6 +4988,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -4599,6 +4998,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -4608,6 +5008,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -4617,6 +5018,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -4626,6 +5028,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -4635,6 +5038,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -4644,6 +5048,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -4653,6 +5058,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -4662,6 +5068,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation method",
           "example": "avg",
           "member": "string",
@@ -4671,6 +5078,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source",
           "example": "http",
           "member": "string",
@@ -4680,6 +5088,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -4694,6 +5103,7 @@
       "document": "DescribeDataStaticUrl response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -4716,6 +5126,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "1625444040",
           "member": "int64",
@@ -4725,6 +5136,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "1625454840",
           "member": "int64",
@@ -4734,6 +5146,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -4743,6 +5156,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 2",
           "example": "abc",
           "member": "string",
@@ -4752,6 +5166,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser engine",
           "example": "ie7",
           "member": "string",
@@ -4761,6 +5176,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ISP",
           "example": "中国移动",
           "member": "string",
@@ -4770,6 +5186,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Source page",
           "example": "index.html",
           "member": "string",
@@ -4779,6 +5196,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log level",
           "example": "1",
           "member": "string",
@@ -4788,6 +5206,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "No type yet",
           "example": "pagepv",
           "member": "string",
@@ -4797,6 +5216,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Brand",
           "example": "苹果",
           "member": "string",
@@ -4806,6 +5226,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region",
           "example": "中国",
           "member": "string",
@@ -4815,6 +5236,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Version",
           "example": "1.2.1",
           "member": "string",
@@ -4824,6 +5246,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Platform",
           "example": "2",
           "member": "string",
@@ -4833,6 +5256,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 3",
           "example": "abc",
           "member": "string",
@@ -4842,6 +5266,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Custom 1",
           "example": "abc",
           "member": "string",
@@ -4851,6 +5276,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Network type",
           "example": "2",
           "member": "string",
@@ -4860,6 +5286,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Model",
           "example": "三星",
           "member": "string",
@@ -4869,6 +5296,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether it is outside the Chinese mainland",
           "example": "1",
           "member": "string",
@@ -4878,6 +5306,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "OS",
           "example": "ios",
           "member": "string",
@@ -4887,6 +5316,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Browser",
           "example": "ie",
           "member": "string",
@@ -4896,6 +5326,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Duration calculation",
           "example": "avg",
           "member": "string",
@@ -4905,6 +5336,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Environment",
           "example": "prod",
           "member": "string",
@@ -4919,6 +5351,7 @@
       "document": "DescribeDataWebVitalsPage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned value",
           "example": "无",
           "member": "string",
@@ -4941,6 +5374,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Date",
           "example": "20210520",
           "member": "string",
@@ -4950,6 +5384,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -4964,6 +5399,7 @@
       "document": "DescribeError response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Content",
           "example": "\"\"",
           "member": "string",
@@ -4973,6 +5409,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -4982,6 +5419,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Time",
           "example": "20210520",
           "member": "string",
@@ -5004,6 +5442,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -5018,6 +5457,7 @@
       "document": "DescribeLogExports response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of log export records",
           "example": "无",
           "member": "LogExport",
@@ -5040,6 +5480,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting order (required). Valid values: `desc`, `asc`.",
           "example": "asc",
           "member": "string",
@@ -5049,6 +5490,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "This parameter is required. Valid values: `searchlog`, `histogram`.",
           "example": "searchlog",
           "member": "string",
@@ -5058,6 +5500,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID (required)",
           "example": "100",
           "member": "int64",
@@ -5067,6 +5510,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time (required)",
           "example": "2021-09-26 21:01:46",
           "member": "string",
@@ -5076,6 +5520,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: 100.",
           "example": "无",
           "member": "int64",
@@ -5085,6 +5530,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour",
           "example": "无",
           "member": "string",
@@ -5094,6 +5540,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query statement, which is required and can contain up to 4,096 characters, such as \"id:120001 AND type:\\\"log\\\"\".",
           "example": "id:100",
           "member": "string",
@@ -5103,6 +5550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time (required)",
           "example": "2021-09-26 21:01:46",
           "member": "string",
@@ -5117,6 +5565,7 @@
       "document": "DescribeLogList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -5139,6 +5588,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Unique project key for reporting",
           "example": "DjkljW234R",
           "member": "string",
@@ -5153,6 +5603,7 @@
       "document": "DescribeOfflineLogConfigs response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "API call information",
           "example": "success",
           "member": "string",
@@ -5162,6 +5613,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Array of unique user identifiers",
           "example": "['123123']",
           "member": "string",
@@ -5184,6 +5636,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Unique project key for reporting",
           "example": "DjkljW234R",
           "member": "string",
@@ -5198,6 +5651,7 @@
       "document": "DescribeOfflineLogRecords response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "API call information",
           "example": "success",
           "member": "string",
@@ -5207,6 +5661,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Array of record IDs",
           "example": "[\"12\"]",
           "member": "string",
@@ -5229,6 +5684,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Unique project key for reporting",
           "example": "DjkljW234R",
           "member": "string",
@@ -5238,6 +5694,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of offline log file IDs",
           "example": "[\"123\"]",
           "member": "string",
@@ -5252,6 +5709,7 @@
       "document": "DescribeOfflineLogs response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "API call response",
           "example": "success",
           "member": "string",
@@ -5261,6 +5719,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Log list",
           "example": "[\"123\"]",
           "member": "string",
@@ -5283,6 +5742,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "123",
           "member": "int64",
@@ -5297,6 +5757,7 @@
       "document": "DescribeProjectLimits response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Array of reporting rates",
           "example": "无",
           "member": "ProjectLimit",
@@ -5319,6 +5780,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Number of items per page (integer)",
           "example": "20",
           "member": "uint64",
@@ -5328,6 +5790,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number (integer)",
           "example": "1",
           "member": "uint64",
@@ -5337,6 +5800,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter parameter. Pass in {\"Name\": \"IsDemo\", \"Values\":[\"1\"]} for the demo mode.",
           "example": "无",
           "member": "Filter",
@@ -5346,6 +5810,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "This parameter has been disused. You need to indicate whether the demo mode is used in `Filters`.",
           "example": "1",
           "member": "int64",
@@ -5360,6 +5825,7 @@
       "document": "DescribeProjects response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of items in the list",
           "example": "0",
           "member": "uint64",
@@ -5369,6 +5835,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project list",
           "example": "无",
           "member": "RumProject",
@@ -5391,6 +5858,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID",
           "example": "1",
           "member": "int64",
@@ -5400,6 +5868,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "20201104",
           "member": "string",
@@ -5409,6 +5878,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "20201101",
           "member": "string",
@@ -5418,6 +5888,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Get day:d (leave this parameter empty if to get min)",
           "example": "d",
           "member": "string",
@@ -5432,6 +5903,7 @@
       "document": "DescribePvList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "PV list\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RumPvInfo",
@@ -5453,6 +5925,7 @@
       "document": "DescribeReleaseFileSign request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Timeout period. If it is not set, it will be 5 minutes by default",
           "example": "10",
           "member": "int64",
@@ -5461,6 +5934,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Bucket type. Valid values: `1`: (Web, which is the default value), `2` (Application).",
           "example": "2",
           "member": "int64",
@@ -5475,6 +5949,7 @@
       "document": "DescribeReleaseFileSign response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Temporary key",
           "example": "sfdgfgfgfdf",
           "member": "string",
@@ -5484,6 +5959,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Temporary key ID",
           "example": "dfdfdfdgfgfbf",
           "member": "string",
@@ -5493,6 +5969,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Temporary key token",
           "example": "asdfdsfdsgg",
           "member": "string",
@@ -5502,6 +5979,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Start timestamp",
           "example": "123787043",
           "member": "int64",
@@ -5511,6 +5989,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Expiration timestamp",
           "example": "23435436565",
           "member": "int64",
@@ -5533,6 +6012,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -5542,6 +6022,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File version",
           "example": "0.0.1",
           "member": "string",
@@ -5556,6 +6037,7 @@
       "document": "DescribeReleaseFiles response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "File information list",
           "example": "无",
           "member": "ReleaseFile",
@@ -5578,6 +6060,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Sorting order (required). Valid values: `desc`, `asc`.",
           "example": "asc",
           "member": "string",
@@ -5587,6 +6070,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time (required)",
           "example": "1665993060000",
           "member": "string",
@@ -5596,6 +6080,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
           "example": "无",
           "member": "int64",
@@ -5605,6 +6090,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number",
           "example": "无",
           "member": "int64",
@@ -5614,6 +6100,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query statement, which is required and can contain up to 4,096 characters.",
           "example": "id:100",
           "member": "string",
@@ -5623,6 +6110,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time (required)",
           "example": "1665996660000",
           "member": "string",
@@ -5632,6 +6120,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID (required)",
           "example": "100",
           "member": "int64",
@@ -5641,6 +6130,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Aggregate field",
           "example": "date",
           "member": "string",
@@ -5655,6 +6145,7 @@
       "document": "DescribeRumGroupLog response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -5677,6 +6168,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Export identifier name",
           "example": "标识",
           "member": "string",
@@ -5686,6 +6178,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time (required)",
           "example": "1665993060000",
           "member": "string",
@@ -5695,6 +6188,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query statement, which is required and can contain up to 4,096 characters.",
           "example": "id:100",
           "member": "string",
@@ -5704,6 +6198,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time (required)",
           "example": "1665996660000",
           "member": "string",
@@ -5713,6 +6208,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID (required)",
           "example": "100",
           "member": "int64",
@@ -5722,6 +6218,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter field",
           "example": "无",
           "member": "string",
@@ -5736,6 +6233,7 @@
       "document": "DescribeRumLogExport response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -5758,6 +6256,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Page size",
           "example": "10",
           "member": "int64",
@@ -5767,6 +6266,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number",
           "example": "1",
           "member": "int64",
@@ -5776,6 +6276,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID (required)",
           "example": "100",
           "member": "int64",
@@ -5790,6 +6291,7 @@
       "document": "DescribeRumLogExports response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -5811,6 +6313,7 @@
       "document": "DescribeRumLogList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Sorting order (required). Valid values: `desc`, `asc`.",
           "example": "asc",
           "member": "string",
@@ -5819,6 +6322,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Start time in milliseconds. It is in timestamp format and is required.",
           "example": "1665993060000",
           "member": "string",
@@ -5827,6 +6331,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
           "example": "无",
           "member": "int64",
@@ -5835,6 +6340,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page number",
           "example": "无",
           "member": "int64",
@@ -5843,6 +6349,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Query statement, which is required and can contain up to 4,096 characters.",
           "example": "id:100",
           "member": "string",
@@ -5851,6 +6358,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "End time in milliseconds. It is in timestamp format and is required.",
           "example": "1665996660000",
           "member": "string",
@@ -5859,6 +6367,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Project ID (required)",
           "example": "120000",
           "member": "int64",
@@ -5873,6 +6382,7 @@
       "document": "DescribeRumLogList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -5895,6 +6405,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time (required)",
           "example": "1665993060000",
           "member": "string",
@@ -5904,6 +6415,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
           "example": "无",
           "member": "int64",
@@ -5913,6 +6425,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Query statement, which is required and can contain up to 4,096 characters.",
           "example": "id:100",
           "member": "string",
@@ -5922,6 +6435,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time (required)",
           "example": "1665996660000",
           "member": "string",
@@ -5931,6 +6445,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID (required)",
           "example": "100",
           "member": "int64",
@@ -5945,6 +6460,7 @@
       "document": "DescribeRumStatsLogList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Response string",
           "example": "无",
           "member": "string",
@@ -5967,6 +6483,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "2022051914",
           "member": "string",
@@ -5976,6 +6493,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "2020011920",
           "member": "string",
@@ -5985,6 +6503,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -5994,6 +6513,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "This parameter has been disused.",
           "example": "1",
           "member": "int64",
@@ -6008,6 +6528,7 @@
       "document": "DescribeScores response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Array",
           "example": "无",
           "member": "ScoreInfo",
@@ -6030,6 +6551,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Region ID",
           "example": "1",
           "member": "int64",
@@ -6039,6 +6561,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region key",
           "example": "area-cn-dl",
           "member": "string",
@@ -6048,6 +6571,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pagination limit",
           "example": "1",
           "member": "int64",
@@ -6057,6 +6581,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region status (1: valid; 2: invalid)",
           "example": "1",
           "member": "int64",
@@ -6066,6 +6591,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pagination offset",
           "example": "100",
           "member": "int64",
@@ -6080,6 +6606,7 @@
       "document": "DescribeTawAreas response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of regions",
           "example": "1",
           "member": "int64",
@@ -6089,6 +6616,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region list",
           "example": "无",
           "member": "RumAreaInfo",
@@ -6111,6 +6639,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID",
           "example": "1",
           "member": "int64",
@@ -6120,6 +6649,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "20201104",
           "member": "string",
@@ -6129,6 +6659,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Start time",
           "example": "20201101",
           "member": "string",
@@ -6138,6 +6669,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Get day:d min:m",
           "example": "d",
           "member": "string",
@@ -6152,6 +6684,7 @@
       "document": "DescribeUvList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "UV list",
           "example": "无",
           "member": "RumUvInfo",
@@ -6174,6 +6707,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "taw-123",
           "member": "string",
@@ -6188,6 +6722,7 @@
       "document": "DescribeWhitelists response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Allowlist list",
           "example": "无",
           "member": "Whitelist",
@@ -6210,6 +6745,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "One or more filter values.",
           "example": "ap-guangdong,ap-shenzhen",
           "member": "string",
@@ -6220,6 +6756,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filter name.",
           "example": "Zone",
           "member": "string",
@@ -6236,6 +6773,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Log export path",
           "example": "https://export.xxx.xxx.xxx.com",
           "member": "string",
@@ -6246,6 +6784,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of logs to be exported",
           "example": "10",
           "member": "int64",
@@ -6256,6 +6795,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export task creation time",
           "example": "2022-01-21 16:45:41",
           "member": "string",
@@ -6266,6 +6806,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export task ID",
           "example": "export-xxx",
           "member": "string",
@@ -6276,6 +6817,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export filename",
           "example": "log_expo",
           "member": "string",
@@ -6286,6 +6828,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log file size",
           "example": "866",
           "member": "int64",
@@ -6296,6 +6839,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export format",
           "example": "json",
           "member": "string",
@@ -6306,6 +6850,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export time sorting",
           "example": "asc",
           "member": "string",
@@ -6316,6 +6861,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export query statement",
           "example": "*",
           "member": "string",
@@ -6326,6 +6872,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export start time",
           "example": "2022-01-20 00:00:00",
           "member": "string",
@@ -6336,6 +6883,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log export end time",
           "example": "2022-01-21 00:00:00",
           "member": "string",
@@ -6346,6 +6894,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Log download status. Valid values: Queuing: queuing; Processing: exporting; Complete: completed; Failed: failed; Expired: expired (3-day validity period).",
           "example": "Completed",
           "member": "string",
@@ -6362,6 +6911,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance to be modified",
           "example": "taw-12345678",
           "member": "string",
@@ -6371,6 +6921,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New instance name (up to 255 characters)",
           "example": "实例名称",
           "member": "string",
@@ -6380,6 +6931,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "New instance description (up to 1,024 characters)",
           "example": "实例描述",
           "member": "string",
@@ -6407,6 +6959,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1234",
           "member": "int64",
@@ -6416,6 +6969,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project API",
           "example": "web",
           "member": "string",
@@ -6425,6 +6979,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Reporting rate. 10 means 10%",
           "example": "10",
           "member": "int64",
@@ -6434,6 +6989,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Reporting type. 1: rate; 2: number of reported data entries",
           "example": "1",
           "member": "int64",
@@ -6443,6 +6999,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Primary key ID",
           "example": "1",
           "member": "int64",
@@ -6457,6 +7014,7 @@
       "document": "ModifyProjectLimit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Returned message\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "success",
           "member": "string",
@@ -6479,6 +7037,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "6",
           "member": "uint64",
@@ -6488,6 +7047,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project name (optional, not empty, and up to 200 characters)",
           "example": "测试项目名",
           "member": "string",
@@ -6497,6 +7057,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project webpage URL (optional and up to 256 characters)",
           "example": "http://www.qq.com",
           "member": "string",
@@ -6506,6 +7067,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project repository address (optional and up to 256 characters)",
           "example": "http://github.com/xxx/yyy",
           "member": "string",
@@ -6515,6 +7077,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance to which to move the project (optional)",
           "example": "taw-123",
           "member": "string",
@@ -6524,6 +7087,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project sample rate (optional)",
           "example": "10",
           "member": "string",
@@ -6533,6 +7097,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to enable aggregation (optional)",
           "example": "0",
           "member": "uint64",
@@ -6542,6 +7107,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project type (valid values: \"web\", \"mp\", \"android\", \"ios\", \"node\", \"hippy\", \"weex\", \"viola\", \"rn\")",
           "example": "web",
           "member": "string",
@@ -6551,6 +7117,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project description (optional and up to 1,000 characters)",
           "example": "这是项目描述",
           "member": "string",
@@ -6565,6 +7132,7 @@
       "document": "ModifyProject response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Operation information",
           "example": "success",
           "member": "string",
@@ -6574,6 +7142,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project ID",
           "example": "6",
           "member": "uint64",
@@ -6596,6 +7165,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Primary key ID",
           "example": "1",
           "member": "int64",
@@ -6606,6 +7176,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "123",
           "member": "int64",
@@ -6616,6 +7187,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "API",
           "example": "web",
           "member": "string",
@@ -6626,6 +7198,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Reporting rate",
           "example": "10",
           "member": "int64",
@@ -6636,6 +7209,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Reporting type. 1: reporting rate; 2: reporting count limit",
           "example": "1",
           "member": "int64",
@@ -6652,6 +7226,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "File version",
           "example": "0.0.1",
           "member": "string",
@@ -6662,6 +7237,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique file key",
           "example": "DFFDSGGSDFFDS",
           "member": "string",
@@ -6672,6 +7248,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Filename",
           "example": "a.js.map",
           "member": "string",
@@ -6682,6 +7259,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File hash",
           "example": "asdfdsfdsg/f/g",
           "member": "string",
@@ -6692,6 +7270,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "File ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -6708,6 +7287,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance to be resumed",
           "example": "rum-abcd1234",
           "member": "string",
@@ -6734,6 +7314,7 @@
       "document": "ResumeProject request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -6761,6 +7342,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Region ID",
           "example": "1",
           "member": "int64",
@@ -6771,6 +7353,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region status (1: valid; 2: invalid)",
           "example": "1",
           "member": "int64",
@@ -6781,6 +7364,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region name",
           "example": "中国大陆",
           "member": "string",
@@ -6791,6 +7375,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region key",
           "example": "area-cn-dl",
           "member": "string",
@@ -6801,6 +7386,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region ID.",
           "example": "1",
           "member": "string",
@@ -6811,6 +7397,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region code, such as “ap-xxx” (xxx is the region name).",
           "example": "ap-guangzhou",
           "member": "string",
@@ -6821,6 +7408,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Region abbreviation.",
           "example": "gz",
           "member": "string",
@@ -6836,7 +7424,7 @@
       "document": "RUM project information",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "Project name",
           "example": "测试项目",
           "member": "string",
@@ -6846,7 +7434,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Creator ID",
           "example": "123456",
           "member": "string",
@@ -6856,7 +7444,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "tam-123",
           "member": "string",
@@ -6866,7 +7454,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Project type",
           "example": "log",
           "member": "string",
@@ -6876,7 +7464,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "2020-04-26 00:00:00",
           "member": "datetime",
@@ -6886,7 +7474,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Project repository address\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "http://github.com/xxx/yyy",
           "member": "string",
@@ -6896,7 +7484,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Project URL\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "http://cloud.tencent.com/index.html",
           "member": "string",
@@ -6906,7 +7494,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Project sample rate",
           "example": "12",
           "member": "string",
@@ -6916,7 +7504,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Unique project key (12 characters)",
           "example": "hjkysfkey12",
           "member": "string",
@@ -6926,7 +7514,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Whether to enable URL aggregation",
           "example": "1",
           "member": "int64",
@@ -6936,7 +7524,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance name",
           "example": "tamIns",
           "member": "string",
@@ -6946,7 +7534,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -6956,7 +7544,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Instance key",
           "example": "tam-key",
           "member": "string",
@@ -6966,7 +7554,7 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Project description\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "这是一个项目描述",
           "member": "string",
@@ -6976,7 +7564,7 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Starred status. 1: yes; 0: no\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -6986,13 +7574,23 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
           "name": "ProjectStatus",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log access point, which can be ignored. \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "example": "RUM_LOG_1",
+          "member": "string",
+          "name": "AccessPoint",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -7003,6 +7601,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -7013,6 +7612,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of PVs\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "111",
           "member": "string",
@@ -7023,6 +7623,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Time",
           "example": "20201102",
           "member": "string",
@@ -7039,6 +7640,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -7049,6 +7651,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of UVs",
           "example": "222",
           "member": "string",
@@ -7059,6 +7662,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "20201102",
           "member": "string",
@@ -7074,6 +7678,7 @@
       "document": "Project score entity",
       "members": [
         {
+          "disabled": false,
           "document": "duration",
           "example": "1",
           "member": "string",
@@ -7083,6 +7688,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "pv",
           "example": "111",
           "member": "string",
@@ -7092,6 +7698,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Failure",
           "example": "1",
           "member": "string",
@@ -7101,6 +7708,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Request",
           "example": "12",
           "member": "string",
@@ -7110,6 +7718,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "fail",
           "example": "12",
           "member": "string",
@@ -7119,6 +7728,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -7128,6 +7738,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "uv",
           "example": "12",
           "member": "string",
@@ -7137,6 +7748,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of requests",
           "example": "12",
           "member": "string",
@@ -7146,6 +7758,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Score",
           "example": "90",
           "member": "string",
@@ -7155,6 +7768,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "error",
           "example": "111",
           "member": "string",
@@ -7164,6 +7778,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "num",
           "example": "12",
           "member": "string",
@@ -7173,6 +7788,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "num",
           "example": "1",
           "member": "int64",
@@ -7182,6 +7798,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Duration",
           "example": "111",
           "member": "string",
@@ -7191,6 +7808,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20230111",
           "member": "string",
@@ -7207,6 +7825,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the instance to be stopped",
           "example": "rum-abcd1234",
           "member": "string",
@@ -7233,6 +7852,7 @@
       "document": "StopProject request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Project ID",
           "example": "1",
           "member": "int64",
@@ -7260,6 +7880,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Tag key",
           "example": "key",
           "member": "string",
@@ -7270,6 +7891,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Tag value",
           "example": "value",
           "member": "string",
@@ -7286,6 +7908,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks",
           "example": "备注",
           "member": "string",
@@ -7296,6 +7919,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Instance ID",
           "example": "taw-123",
           "member": "string",
@@ -7306,6 +7930,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "End time",
           "example": "20200527221900",
           "member": "string",
@@ -7316,6 +7941,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Auto-Increment allowlist ID",
           "example": "12",
           "member": "string",
@@ -7326,6 +7952,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Unique business identifier",
           "example": "111",
           "member": "string",
@@ -7336,6 +7963,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creator ID",
           "example": "1111",
           "member": "string",
@@ -7346,6 +7974,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "aid",
           "example": "222",
           "member": "string",
@@ -7356,6 +7985,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time",
           "example": "20200527221900",
           "member": "string",

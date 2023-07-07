@@ -124,6 +124,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Parent node ID, which can be obtained through the `DescribeOrganizationNodes` API.",
           "example": "1234",
           "member": "uint64",
@@ -133,6 +134,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.",
           "example": "test",
           "member": "string",
@@ -142,6 +144,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks.",
           "example": "test",
           "member": "string",
@@ -156,6 +159,7 @@
       "document": "AddOrganizationNode response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Node ID.",
           "example": "1001",
           "member": "int64",
@@ -178,6 +182,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Member UIN.",
           "example": "1000001",
           "member": "int64",
@@ -187,6 +192,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy ID, which can be obtained through the `DescribeOrganizationMemberPolicies` API.",
           "example": "10",
           "member": "int64",
@@ -196,6 +202,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of sub-account UINs of the organization admin, which can contain up to five UINs.",
           "example": "无",
           "member": "int64",
@@ -223,6 +230,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Member UIN.",
           "example": "1000001",
           "member": "int64",
@@ -232,6 +240,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy ID.",
           "example": "10",
           "member": "int64",
@@ -241,6 +250,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Organization sub-account UIN.",
           "example": "1000002",
           "member": "int64",
@@ -268,6 +278,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Member UIN.",
           "example": "1000001",
           "member": "int64",
@@ -277,6 +288,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy name, which can contain up to 128 letters, digits, and symbols `+=,.@_-`.",
           "example": "test",
           "member": "string",
@@ -286,6 +298,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member access identity ID, which can be obtained through the `DescribeOrganizationMemberAuthIdentities` API.",
           "example": "11",
           "member": "int64",
@@ -295,6 +308,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description.",
           "example": "test",
           "member": "string",
@@ -309,6 +323,7 @@
       "document": "CreateOrganizationMemberPolicy response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -331,6 +346,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Member name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.",
           "example": "testAccount",
           "member": "string",
@@ -340,6 +356,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Relationship policy. Valid value: `Financial`.",
           "example": "Finical",
           "member": "string",
@@ -349,6 +366,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of member financial permission IDs. `7` indicates paying, which is the default value.",
           "example": "无",
           "member": "uint64",
@@ -358,6 +376,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "ID of the node of the member's department, which can be obtained through the `DescribeOrganizationNodes` API.",
           "example": "1001",
           "member": "int64",
@@ -367,6 +386,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.",
           "example": "test",
           "member": "string",
@@ -376,6 +396,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks.",
           "example": "test",
           "member": "string",
@@ -385,6 +406,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member creation record ID, which is required during retry upon creation exception.",
           "example": "12344",
           "member": "int64",
@@ -394,6 +416,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Payer UIN, which is required during paying for a member.",
           "example": "\"\"",
           "member": "string",
@@ -403,6 +426,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of member access identity IDs, which can be obtained through the `ListOrganizationIdentity` API. `1` indicates supported, which is the default value.",
           "example": "[1]",
           "member": "uint64",
@@ -412,6 +436,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Verified entity relationship ID, which is required during creating members for different entities.",
           "example": "0",
           "member": "int64",
@@ -426,6 +451,7 @@
       "document": "CreateOrganizationMember response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Member UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100019119",
           "member": "int64",
@@ -448,6 +474,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of UINs of the members to be deleted.",
           "example": "无",
           "member": "int64",
@@ -475,6 +502,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "List of node IDs.",
           "example": "无",
           "member": "int64",
@@ -502,6 +530,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.",
           "example": "0",
           "member": "int64",
@@ -511,6 +540,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of returned results.",
           "example": "10",
           "member": "int64",
@@ -520,6 +550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member UIN.",
           "example": "1000001",
           "member": "int64",
@@ -529,6 +560,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy ID.",
           "example": "11",
           "member": "int64",
@@ -543,6 +575,7 @@
       "document": "DescribeOrganizationMemberAuthAccounts response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgMemberAuthAccount",
@@ -552,6 +585,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total number\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -573,6 +607,7 @@
       "document": "DescribeOrganizationMemberAuthIdentities request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.",
           "example": "0",
           "member": "int64",
@@ -581,6 +616,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Limit, which defaults to `10`. Value range: 1-50.",
           "example": "10",
           "member": "int64",
@@ -589,6 +625,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Organization member UIN.",
           "example": "11111111111",
           "member": "int64",
@@ -603,6 +640,7 @@
       "document": "DescribeOrganizationMemberAuthIdentities response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of authorizable identities\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgMemberAuthIdentity",
@@ -611,6 +649,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -632,6 +671,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.",
           "example": "0",
           "member": "int64",
@@ -641,6 +681,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of returned results. Maximum value: `50`.",
           "example": "10",
           "member": "int64",
@@ -650,6 +691,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member UIN.",
           "example": "1000001",
           "member": "int64",
@@ -659,6 +701,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Search keyword, which can be the policy name or description.",
           "example": "test",
           "member": "string",
@@ -673,6 +716,7 @@
       "document": "DescribeOrganizationMemberPolicies response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgMemberPolicy",
@@ -682,6 +726,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -703,6 +748,7 @@
       "document": "DescribeOrganizationMembers request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.",
           "example": "0",
           "member": "uint64",
@@ -711,6 +757,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Limit, which defaults to `10`. Value range: 1-50.",
           "example": "10",
           "member": "uint64",
@@ -719,6 +766,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).",
           "example": "en",
           "member": "string",
@@ -727,6 +775,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Search by member name or ID.",
           "example": "test",
           "member": "string",
@@ -735,6 +784,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Entity name.",
           "example": "\"\"",
           "member": "string",
@@ -743,6 +793,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
           "example": "\"\"",
           "member": "string",
@@ -757,6 +808,7 @@
       "document": "DescribeOrganizationMembers response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Member list.",
           "example": "无",
           "member": "OrgMember",
@@ -766,6 +818,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number.",
           "example": "1",
           "member": "uint64",
@@ -788,6 +841,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Maximum number of returned results. Maximum value: `50`.",
           "example": "10",
           "member": "int64",
@@ -797,6 +851,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Offset.",
           "example": "0",
           "member": "int64",
@@ -811,6 +866,7 @@
       "document": "DescribeOrganizationNodes response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
@@ -820,6 +876,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "List details.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgNode",
@@ -842,6 +899,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).",
           "example": "en",
           "member": "string",
@@ -851,6 +909,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
           "example": "test",
           "member": "string",
@@ -865,6 +924,7 @@
       "document": "DescribeOrganization response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Organization ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1234",
           "member": "int64",
@@ -874,6 +934,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Creator UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10001",
           "member": "int64",
@@ -883,6 +944,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Creator name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -892,6 +954,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Organization type.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -901,6 +964,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the member is the organization admin. Valid values: `true` (yes); `false` (no).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -910,6 +974,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Policy type. Valid values: `Financial` (finance management).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Finical",
           "member": "string",
@@ -919,6 +984,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "财务策略",
           "member": "string",
@@ -928,6 +994,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "List of member financial permissions.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgPermission",
@@ -937,6 +1004,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Organization root node ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100",
           "member": "int64",
@@ -946,6 +1014,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Organization creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-03-12 12:00:00",
           "member": "string",
@@ -955,6 +1024,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Member joining time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-03-12 12:00:00",
           "member": "string",
@@ -964,6 +1034,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Allow",
           "member": "string",
@@ -973,6 +1044,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Payer UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -982,6 +1054,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Payer name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -991,6 +1064,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the member is the trusted service admin. Valid values: `true` (yes); `false` (no).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -1000,6 +1074,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the member is the verified entity admin. Valid values: `true` (yes); `false` (no).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -1022,6 +1097,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Policy ID",
           "example": "1",
           "member": "uint64",
@@ -1032,6 +1108,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy name",
           "example": "AdministratorAccess",
           "member": "string",
@@ -1047,8 +1124,8 @@
       "document": "ListOrganizationIdentity request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Offset.",
+          "disabled": false,
+          "document": "Offset.  It must be an integer multiple of the value of `Limit`.  Default value: `0`.",
           "example": "1",
           "member": "uint64",
           "name": "Offset",
@@ -1056,8 +1133,8 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "disabled": false,
+          "document": "The limit for the number of query results.  Value range:  1-50.  Default value:  `10`.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -1065,7 +1142,7 @@
           "type": "int"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Search by name.",
           "example": "test",
           "member": "string",
@@ -1074,11 +1151,20 @@
           "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "Search by identity ID.",
           "example": "1",
           "member": "uint64",
           "name": "IdentityId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Identity type.  Valid values: `1` (Preset), `2` (Custom).",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentityType",
           "required": false,
           "type": "int"
         }
@@ -1089,6 +1175,7 @@
       "document": "ListOrganizationIdentity response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
@@ -1098,6 +1185,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Item details.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgIdentity",
@@ -1120,6 +1208,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
@@ -1130,6 +1219,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1146,6 +1236,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Organization node ID.",
           "example": "123",
           "member": "int64",
@@ -1155,6 +1246,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member UIN list.",
           "example": "无",
           "member": "int64",
@@ -1182,6 +1274,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
@@ -1192,6 +1285,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1202,6 +1296,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -1212,6 +1307,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity policy.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "IdentityPolicy",
@@ -1222,6 +1318,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity type. Valid values: `1` (preset); `2` (custom).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -1232,6 +1329,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1248,6 +1346,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Member UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000001",
           "member": "int64",
@@ -1258,6 +1357,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "tt",
           "member": "string",
@@ -1268,6 +1368,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member type. Valid values: `Invite` (invited); `Create` (created).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Invite",
           "member": "string",
@@ -1278,6 +1379,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Relationship policy type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Finical",
           "member": "string",
@@ -1288,6 +1390,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Relationship policy name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "财务管理",
           "member": "string",
@@ -1298,6 +1401,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Relationship policy permission\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OrgPermission",
@@ -1308,6 +1412,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1002",
           "member": "int64",
@@ -1318,6 +1423,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Root",
           "member": "string",
@@ -1328,6 +1434,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "tt",
           "member": "string",
@@ -1338,6 +1445,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-03-12 12:12:22",
           "member": "string",
@@ -1348,6 +1456,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-03-12 12:12:22",
           "member": "string",
@@ -1358,6 +1467,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Allow",
           "member": "string",
@@ -1368,6 +1478,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Payer UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -1378,6 +1489,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Payer name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
@@ -1388,6 +1500,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Management identity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MemberIdentity",
@@ -1398,6 +1511,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Security information binding status. Valid values: `Unbound`, `Valid`, `Success`, `Failed`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Unbound",
           "member": "string",
@@ -1408,6 +1522,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Member permission status. Valid values: `Confirmed`, `UnConfirmed`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Confirmed",
           "member": "string",
@@ -1424,6 +1539,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Organization sub-account UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000001",
           "member": "int64",
@@ -1434,6 +1550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "11",
           "member": "int64",
@@ -1444,6 +1561,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1454,6 +1572,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "12",
           "member": "int64",
@@ -1464,6 +1583,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test1",
           "member": "string",
@@ -1474,6 +1594,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity role alias.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "策略管理",
           "member": "string",
@@ -1484,6 +1605,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1494,6 +1616,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1504,6 +1627,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Sub-account name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1519,6 +1643,7 @@
       "document": "Authorizable identity of the organization member",
       "members": [
         {
+          "disabled": false,
           "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "111",
           "member": "int64",
@@ -1528,6 +1653,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Role name of an identity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1537,6 +1663,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Role alias of an identity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1546,6 +1673,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1555,6 +1683,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1564,6 +1693,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1573,6 +1703,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Identity type (`1`: Preset; `2`: Custom)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -1589,6 +1720,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
@@ -1599,6 +1731,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1609,6 +1742,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -1619,6 +1753,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1629,6 +1764,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Identity role alias.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1639,6 +1775,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1649,6 +1786,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1659,6 +1797,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-02-12 12:12:10",
           "member": "string",
@@ -1675,6 +1814,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Organization node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1001",
           "member": "int64",
@@ -1685,6 +1825,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1695,6 +1836,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Parent node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "int64",
@@ -1705,6 +1847,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1715,6 +1858,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-03-12 12:12:11",
           "member": "string",
@@ -1725,6 +1869,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-03-12 12:12:11",
           "member": "string",
@@ -1741,6 +1886,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Permission ID",
           "example": "1",
           "member": "uint64",
@@ -1751,6 +1897,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Permission name",
           "example": "允许主账号对子账号合并出账单",
           "member": "string",
@@ -1767,6 +1914,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Node ID.",
           "example": "1001",
           "member": "uint64",
@@ -1776,6 +1924,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.",
           "example": "test",
           "member": "string",
@@ -1785,6 +1934,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remarks.",
           "example": "test",
           "member": "string",

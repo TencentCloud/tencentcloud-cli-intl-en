@@ -2,7 +2,7 @@
   "actions": {
     "AddMachineGroupInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddMachineGroupInfo\n<Common request parameters>\n\n{\n    \"MachineGroupType\": {\n        \"Values\": [\n            \"10.0.60.184\"\n        ],\n        \"Type\": \"ip\",\n    },\n    \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Adding a machine group IP or label"
@@ -10,7 +10,7 @@
     ],
     "ApplyConfigToMachineGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyConfigToMachineGroup\n<Common request parameters>\n\n{\n    \"ConfigId\": \"xxxxxxxxxx\",\n    \"GroupId\": \"xxx-xxx-xxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Applying collection configuration to specified machine group"
@@ -18,7 +18,7 @@
     ],
     "CloseKafkaConsumer": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseKafkaConsumer\n<Common request parameters>\n\n{\n    \"FromTopicId\": \"a5ce0c9c-0690-44a5-bc79-5f2190626bd0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Disabling Kafka consumption"
@@ -34,7 +34,7 @@
     ],
     "CreateAlarmNotice": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAlarmNotice\n<Common request parameters>\n\n{\n    \"Name\": \"test\",\n    \"Type\": \"All\",\n    \"WebCallbacks\": [\n        {\n            \"CallbackType\": \"Http\",\n            \"Url\": \"http://www.testnotice.com/callback\",\n            \"Method\": \"POST\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"AlarmNoticeId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating a notification group"
@@ -42,7 +42,7 @@
     ],
     "CreateConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConfig\n<Common request parameters>\n\n{\n    \"Name\": \"testname\",\n    \"Path\": \"/data/nginx/log/**/access.log\",\n    \"LogType\": \"delimiter_log\",\n    \"ExtractRule\": {\n        \"TimeKey\": \"date\",\n        \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n        \"Delimiter\": \"|\",\n        \"LogRegex\": \".*\",\n        \"BeginRegex\": \"^\",\n        \"Keys\": [\n            \"date\",\n            \"\",\n            \"content\"\n        ],\n        \"FilterKeyRegex\": [\n            {\n                \"Key\": \"xxx\",\n                \"Regex\": \"ssss\"\n            }\n        ],\n        \"UnMatchLogKey\": \"testlog\",\n        \"UnMatchUpLoadSwitch\": true,\n        \"Backtracking\": -1\n    },\n    \"ExcludePaths\": [\n        {\n            \"Type\": \"xx\",\n            \"Value\": \"xx\"\n        }\n    ],\n    \"Output\": \"xxxxxx-xxx-xxxxxx\",\n    \"UserDefineRule\": \"xxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"ConfigId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating collection rule configuration"
@@ -50,7 +50,7 @@
     ],
     "CreateConsumer": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true,\n    \"Compression\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
         "title": "Creating a shipping task"
@@ -60,7 +60,7 @@
       {
         "document": "This example shows you how to create a COS import task.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosRecharge\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"LogsetId\": \"xxx-xxx-xxx-xxx\",\n    \"Name\": \"test_name\",\n    \"Bucket\": \"test_bucket\",\n    \"BucketRegion\": \"ap-guangzhou\",\n    \"Prefix\": \"text_prefix\",\n    \"LogType\": \"minimalist_log\",\n    \"Compress\": \"gzip\",\n    \"ExtractRuleInfo\": {\n        \"TimeKey\": \"date\",\n        \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n        \"Delimiter\": \"|\",\n        \"LogRegex\": \".*\",\n        \"BeginRegex\": \"^\",\n        \"Keys\": [\n            \"date\",\n            \"\",\n            \"content\"\n        ],\n        \"FilterKeyRegex\": [\n            {\n                \"Key\": \"xxx\",\n                \"Regex\": \"ssss\"\n            }\n        ],\n        \"UnMatchLogKey\": \"testlog\",\n        \"UnMatchUpLoadSwitch\": true,\n        \"Backtracking\": -1\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"abc-dec-ff-ee\",\n        \"RequestId\": \"xxx-x-xx-xx\"\n    }\n}",
         "title": "Creating a COS import task"
       }
     ],
@@ -74,7 +74,7 @@
     ],
     "CreateIndex": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"3edc8551-111b-473b-9fc4-ed66e20dfa8a\",\n    \"Status\": true,\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": true,\n            \"Tokenizer\": \"*\"\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"age\",\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"Tokenizer\": \"_\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        },\n        \"Tag\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"tag\",\n                    \"Value\": {\n                        \"Type\": \"string\",\n                        \"Tokenizer\": \"**\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        }\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating index"
@@ -114,7 +114,7 @@
     ],
     "DeleteAlarm": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAlarm\n<Common request parameters>\n\n{\n    \"AlarmId\": \"5944e926-ae21-4fa1-8af6-e1539b577482\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting alarm policy"
@@ -122,7 +122,7 @@
     ],
     "DeleteAlarmNotice": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAlarmNotice\n<Common request parameters>\n\n{\n    \"AlarmNoticeId\": \"notice-d7286784-46d9-4be3-b7ba-2c464e6a5ad1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting a notification group"
@@ -130,7 +130,7 @@
     ],
     "DeleteConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConfig\n<Common request parameters>\n\n{\n    \"ConfigId\": \"xxxxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting collection rule configuration"
@@ -138,7 +138,7 @@
     ],
     "DeleteConfigFromMachineGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConfigFromMachineGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"xxx-xxx-xxxxxx\",\n    \"ConfigId\": \"xxxxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting collection configuration applied to machine group"
@@ -146,7 +146,7 @@
     ],
     "DeleteConsumer": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
         "title": "Deleting a shipping task"
@@ -154,7 +154,7 @@
     ],
     "DeleteExport": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteExport\n<Common request parameters>\n\n{\n    \"ExportId\": \"57196a6a-7622-47be-bc92-d2ebea959a0f\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting log export task"
@@ -162,7 +162,7 @@
     ],
     "DeleteIndex": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting index configuration"
@@ -170,7 +170,7 @@
     ],
     "DeleteLogset": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLogset\n<Common request parameters>\n\n{\n    \"LogsetId\": \"eb6eafd9-1656-4d60-b3c2-0a5bf91c9b0d\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting logset"
@@ -178,7 +178,7 @@
     ],
     "DeleteMachineGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMachineGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting machine group"
@@ -186,7 +186,7 @@
     ],
     "DeleteMachineGroupInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMachineGroupInfo\n<Common request parameters>\n\n{\n    \"MachineGroupType\": {\n        \"Values\": [\n            \"10.0.60.184\"\n        ],\n        \"Type\": \"ip\"\n    },\n    \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting a machine group IP or label"
@@ -194,7 +194,7 @@
     ],
     "DeleteShipper": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteShipper\n<Common request parameters>\n\n{\n    \"ShipperId\": \"xxxxxxx-xxx-xxx-xxx-xxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting shipping rule"
@@ -202,7 +202,7 @@
     ],
     "DeleteTopic": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteTopic\n<Common request parameters>\n\n{\n    \"TopicId\": \"a5ce0c9c-0690-44a5-bc79-5f2190626bd0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting log topic"
@@ -210,7 +210,7 @@
     ],
     "DescribeAlarmNotices": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmNotices\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"AlarmNotices\": [],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting the notification group list"
@@ -234,7 +234,7 @@
     ],
     "DescribeConfigMachineGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigMachineGroups\n<Common request parameters>\n\n{\n    \"ConfigId\": \"xxxxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"MachineGroups\": [\n            {\n                \"GroupId\": \"xxxx-xx-xx-xx-yyyyyyyy\",\n                \"GroupName\": \"testgroup\",\n                \"MachineGroupType\": {\n                    \"Type\": \"ip\",\n                    \"Values\": [\n                        \"10.10.1.119\"\n                    ]\n                },\n                \"CreateTime\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting machine group bound to collection rule configuration"
@@ -242,15 +242,15 @@
     ],
     "DescribeConfigs": [
       {
-        "document": "根据主题ID获取采集配置详情",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"configId\",\n            \"Values\": [\n                \"xxxx-xxx-xxxx\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"Configs\": [\n            {\n                \"ConfigId\": \"xxxx-xx-xx-xx-yyyyyyyy\",\n                \"Name\": \"testname\",\n                \"Path\": \"/abc/log/test.log\",\n                \"LogType\": \"delimiter_log\",\n                \"ExtractRule\": {\n                    \"TimeKey\": \"date\",\n                    \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n                    \"Delimiter\": \"|\",\n                    \"LogRegex\": \".*\",\n                    \"BeginRegex\": \"^\",\n                    \"Keys\": [\n                        \"date\",\n                        \"\",\n                        \"content\"\n                    ],\n                    \"FilterKeyRegex\": [\n                        {\n                            \"Key\": \"xx\",\n                            \"Regex\": \"xxxx\"\n                        }\n                    ],\n                    \"UnMatchLogKey\": \"testlog\",\n                    \"UnMatchUpLoadSwitch\": true,\n                    \"Backtracking\": -1\n                },\n                \"UserDefineRule\": \"xxxx\",\n                \"UpdateTime\": \"2017-08-08 12:12:12\",\n                \"CreateTime\": \"2017-08-08 12:12:12\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "document": "This example shows you how to get the collection configuration details by topic ID.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"topicId\",\n            \"Values\": [\n                \"97e8a872-xxxx-4644-9d3c-603d95051458\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Configs\": [\n            {\n                \"ConfigId\": \"02f11930-xxxx-4dca-8c9b-b6a147223945\",\n                \"Name\": \"test\",\n                \"LogFormat\": \"\",\n                \"Path\": \"/test/**/test\",\n                \"LogType\": \"minimalist_log\",\n                \"ExtractRule\": {\n                    \"TimeKey\": \"\",\n                    \"TimeFormat\": \"\",\n                    \"Delimiter\": \"\",\n                    \"LogRegex\": \"\",\n                    \"BeginRegex\": \"\",\n                    \"Keys\": null,\n                    \"FilterKeyRegex\": [],\n                    \"UnMatchUpLoadSwitch\": false,\n                    \"UnMatchLogKey\": null,\n                    \"Backtracking\": 0,\n                    \"IsGBK\": 0,\n                    \"JsonStandard\": 0,\n                    \"Protocol\": \"\",\n                    \"Address\": \"\",\n                    \"ParseProtocol\": \"\",\n                    \"MetadataType\": 0,\n                    \"PathRegex\": \"\",\n                    \"MetaTags\": []\n                },\n                \"ExcludePaths\": null,\n                \"Output\": \"97e8a872-xxxx-4644-9d3c-603d95051458\",\n                \"UpdateTime\": \"2022-09-02 14:26:49\",\n                \"CreateTime\": \"2022-09-02 14:26:49\",\n                \"UserDefineRule\": \"\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"6eff3561-xxxx-4502-b625-3eb26c4ab450\"\n    }\n}",
         "title": "Getting collection configuration"
       }
     ],
     "DescribeConsumer": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\",\n        \"Effective\": true,\n        \"Ckafka\": {\n            \"Vip\": \"10.123.123.123\",\n            \"Vport\": \"8888\",\n            \"InstanceId\": \"xxxxx\",\n            \"InstanceName\": \"myname\",\n            \"TopicId\": \"xxxxx\",\n            \"TopicName\": \"xxxxx\"\n        },\n        \"Content\": {\n            \"EnableTag\": true,\n            \"MetaFields\": [\n                \"__SOURCE__\"\n            ]\n        },\n        \"NeedContent\": true,\n        \"Compression\": 0\n    }\n}",
         "title": "Querying a shipping task"
@@ -266,7 +266,7 @@
     ],
     "DescribeExports": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExports\n<Common request parameters>\n\n{\n    \"TopicId\": \"ee20bb16-3025-4048-b81a-dd436373062e\",\n    \"Offset\": 0,\n    \"Limit\": 5\n}",
         "output": "{\n    \"Response\": {\n        \"Exports\": [\n            {\n                \"TopicId\": \"ee20bb16-3025-4048-b81a-dd436373062e\",\n                \"ExportId\": \"export-57196a6a-7622-47be-bc92-d2ebea959a0f\",\n                \"Query\": \"status:200\",\n                \"FileName\": \"log_2075178708_ee20bb16-3025-4048-b81a-dd436373062f_20210107_xxxxxx_1610001073.tar.gz\",\n                \"CosPath\": \"https://clstest01-xxxxxx.cos.ap-shanghai.myqcloud.com/xxxxxx\",\n                \"FileSize\": 6112993,\n                \"Order\": \"desc\",\n                \"Format\": \"json\",\n                \"Count\": 100000,\n                \"Status\": \"Completed\",\n                \"From\": 1607499207000,\n                \"To\": 1607499207000,\n                \"CreateTime\": \"2020-08-08 12:12:12\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting the list of log export jobs"
@@ -274,7 +274,7 @@
     ],
     "DescribeIndex": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\"\n}",
         "output": "{\n    \"Response\": {\n        \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\",\n        \"Status\": true,\n        \"Rule\": {\n            \"FullText\": {\n                \"CaseSensitive\": false,\n                \"Tokenizer\": \"-=/?\"\n            },\n            \"KeyValue\": {\n                \"CaseSensitive\": false,\n                \"KeyValues\": [\n                    {\n                        \"Key\": \"age\",\n                        \"Value\": {\n                            \"Type\": \"long\",\n                            \"SqlFlag\": true\n                        }\n                    }\n                ]\n            },\n            \"Tag\": {\n                \"CaseSensitive\": false,\n                \"KeyValues\": [\n                    {\n                        \"Key\": \"__TAG__.timestamp\",\n                        \"Value\": {\n                            \"Type\": \"long\",\n                            \"SqlFlag\": true\n                        }\n                    }\n                ]\n            }\n        },\n        \"ModifyTime\": \"2021-01-13 21:00:08\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\",\n        \"IncludeInternalFields\": true,\n        \"MetadataFlag\": 1\n    }\n}",
         "title": "Getting index information"
@@ -282,7 +282,7 @@
     ],
     "DescribeLogContext": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogContext\n<Common request parameters>\n\n{\n    \"TopicId\": \"682d0718-07bb-4ec0-9fda-f1e9a2767e0b\",\n    \"BTime\": \"2021-04-25 14:25:00.000\",\n    \"PkgId\": \"528C1318606EFEB8-1A7\",\n    \"PkgLogId\": 65536,\n    \"PrevLogs\": 10,\n    \"NextLogs\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"NextOver\": false,\n        \"PrevOver\": false,\n        \"LogContextInfos\": [\n            {\n                \"Content\": \"xxxxxxx\",\n                \"Filename\": \"/usr/local/services/cls_cgi_api3-1.0/log/cls_cgi.log.20210425\",\n                \"PkgId\": \"528C1318606EFEB8-1A0\",\n                \"PkgLogId\": 196609,\n                \"Source\": \"100.105.60.255\",\n                \"BTime\": 323232323\n            },\n            {\n                \"Content\": \"x1x2x3\",\n                \"Filename\": \"/usr/local/services/cls_cgi_api3-1.0/log/cls_cgi.log.20210425\",\n                \"PkgId\": \"528C1318606EFEB8-1A1\",\n                \"PkgLogId\": 196609,\n                \"Source\": \"100.105.60.255\",\n                \"BTime\": 323232323\n            }\n        ],\n        \"RequestId\": \"b276cb6e-4687-11eb-b378-0242ac130002\"\n    }\n}",
         "title": "Searching in context"
@@ -290,23 +290,23 @@
     ],
     "DescribeLogHistogram": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogHistogram\n<Common request parameters>\n\n{\n    \"TopicId\": \"682d0718-07bb-4ec0-9fda-f1e9a2767e0b\",\n    \"From\": 1608794855000,\n    \"To\": 1608794855000,\n    \"Query\": \"select *from a\",\n    \"Interval\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"Interval\": 10,\n        \"TotalCount\": 15,\n        \"HistogramInfos\": [\n            {\n                \"Count\": 5,\n                \"BTime\": 1619331870\n            },\n            {\n                \"Count\": 10,\n                \"BTime\": 1619332410\n            }\n        ],\n        \"RequestId\": \"b276cb6e-4687-11eb-b378-0242ac130002\"\n    }\n}",
-        "title": "Getting the histogram information"
+        "document": "This example shows you how to get a log count histogram by specified conditions.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogHistogram\n<Common request parameters>\n\n{\n    \"From\": 1685086740862,\n    \"To\": 1685087640862,\n    \"Interval\": 30000,\n    \"TopicId\": \"2e7b5c4d-1be3-484a-xxxx-8705adb56dcd\",\n    \"Query\": \"\",\n    \"SyntaxRule\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 14,\n        \"Interval\": 30000,\n        \"HistogramInfos\": [\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086740000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086770000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086800000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086830000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086860000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086890000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086920000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086950000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685086980000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087010000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087040000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087070000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087100000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087130000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087160000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087190000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087220000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087250000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087280000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087310000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087340000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087370000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087400000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087430000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087460000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087490000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087520000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087550000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087580000\n            },\n            {\n                \"Count\": 14,\n                \"BTime\": 1685087610000\n            },\n            {\n                \"Count\": 0,\n                \"BTime\": 1685087640000\n            }\n        ],\n        \"RequestId\": \"4279ae1f-cbd6-438b-xxxx-6df5a8152afd\"\n    }\n}",
+        "title": "Getting a log count histogram"
       }
     ],
     "DescribeLogsets": [
       {
-        "document": "获取日志集列表",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogsets\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"xx\",\n        \"Logsets\": [\n            {\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"CreateTime\": \"xx\",\n                \"RoleName\": \"xx\",\n                \"AssumerName\": \"xx\",\n                \"TopicCount\": 0,\n                \"LogsetName\": \"xx\",\n                \"LogsetId\": \"xx\"\n            }\n        ]\n    }\n}",
+        "document": "This example shows you how to get the list of logsets.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogsets\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 100\n}",
+        "output": "{\n    \"Response\": {\n        \"Logsets\": [\n            {\n                \"LogsetId\": \"cce2db26-xxxx-43f3-ae7d-3502a4b424fd\",\n                \"LogsetName\": \"CLS Demo logset_100007xxxx27\",\n                \"CreateTime\": \"2022-04-27 14:53:42\",\n                \"AssumerName\": \"CLS\",\n                \"Tags\": [],\n                \"TopicCount\": 8,\n                \"RoleName\": \"inner_cls_demo\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"141c1a10-da4b-4d86-a70d-ed49fd9b3b58\"\n    }\n}",
         "title": "Getting the list of logsets"
       }
     ],
     "DescribeMachineGroupConfigs": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMachineGroupConfigs\n<Common request parameters>\n\n{\n    \"GroupId\": \"xxxxx-xxx-xxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Configs\": [\n            {\n                \"ConfigId\": \"xxxx-xx-xx-xx-yyyyyyyy\",\n                \"Name\": \"testname\",\n                \"Path\": \"/abc/log/test.log\",\n                \"LogType\": \"delimiter_log\",\n                \"ExtractRule\": {\n                    \"TimeKey\": \"date\",\n                    \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n                    \"Delimiter\": \"|\",\n                    \"LogRegex\": \".*\",\n                    \"BeginRegex\": \"^\",\n                    \"Keys\": [\n                        \"date\",\n                        \"\",\n                        \"content\"\n                    ],\n                    \"FilterKeyRegex\": [\n                        {\n                            \"Key\": \"xx\",\n                            \"Regex\": \"xxxx\"\n                        }\n                    ],\n                    \"UnMatchLogKey\": \"testlog\",\n                    \"UnMatchUpLoadSwitch\": true\n                },\n                \"UpdateTime\": \"2017-08-08 12:12:12\",\n                \"CreateTime\": \"2017-08-08 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting collection rule configuration bound to machine group"
@@ -314,15 +314,15 @@
     ],
     "DescribeMachineGroups": [
       {
-        "document": "获取包含指定标签的机器组列表",
+        "document": "This example shows you how to get the list of machine groups associated with specified tags.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMachineGroups\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"tagKey\",\n            \"Values\": [\n                \"k1\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"MachineGroups\": [\n            {\n                \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\",\n                \"GroupName\": \"testgroup\",\n                \"MachineGroupType\": {\n                    \"Type\": \"ip\",\n                    \"Values\": [\n                        \"10.10.1.119\"\n                    ]\n                },\n                \"CreateTime\": \"2020-10-11 19:22:33\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"MachineGroups\": [\n            {\n                \"GroupId\": \"4a4ee397-xxxx-466f-a04c-b3413b9db40c\",\n                \"GroupName\": \"cos-recharge\",\n                \"MachineGroupType\": {\n                    \"Type\": \"label\",\n                    \"Values\": [\n                        \"cos-recharge\"\n                    ]\n                },\n                \"CreateTime\": \"2022-02-13 21:07:54\",\n                \"AutoUpdate\": \"\",\n                \"UpdateStartTime\": \"\",\n                \"UpdateEndTime\": \"\",\n                \"ServiceLogging\": true,\n                \"MetaTags\": [],\n                \"Tags\": []\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"2dc17eaa-xxxx-40ea-8cdc-650aa85ccb80\"\n    }\n}",
         "title": "Getting the list of machine groups"
       }
     ],
     "DescribeMachines": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMachines\n<Common request parameters>\n\n{\n    \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\"\n}",
         "output": "{\n    \"Response\": {\n        \"Machines\": [\n            {\n                \"Ip\": \"10.10.10.10\",\n                \"Status\": 0,\n                \"Version\": \"2.1.0\",\n                \"UpdateStatus\": 0,\n                \"ErrCode\": 0,\n                \"ErrMsg\": \"OK\",\n                \"AutoUpdate\": 1,\n                \"OfflineTime\": \"2020-12-18 11:17:28\"\n            }\n        ],\n        \"AutoUpdate\": 0,\n        \"UpdateStartTime\": \"00:00:00\",\n        \"UpdateEndTime\": \"01:00:00\",\n        \"LatestAgentVersion\": \"2.2.0\",\n        \"ServiceLogging\": true,\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting machine status"
@@ -330,7 +330,7 @@
     ],
     "DescribePartitions": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePartitions\n<Common request parameters>\n\n{\n    \"TopicId\": \"cabcd0a8-4a54-11eb-b378-0242ac130002\"\n}",
         "output": "{\n    \"Response\": {\n        \"Partitions\": [\n            {\n                \"PartitionId\": 1,\n                \"Status\": \"readwrite\",\n                \"InclusiveBeginKey\": \"0000\",\n                \"ExclusiveEndKey\": \"ffff\",\n                \"CreateTime\": \"2019-01-14 19:19:41\",\n                \"LastWriteTime\": null\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting the list of partitions"
@@ -338,7 +338,7 @@
     ],
     "DescribeShipperTasks": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeShipperTasks\n<Common request parameters>\n\n{\n    \"ShipperId\": \"xxxxx-xxx-xx-xxx-xxxxx\",\n    \"StartTime\": 978653222,\n    \"EndTime\": 978653333\n}",
         "output": "{\n    \"Response\": {\n        \"Tasks\": [\n            {\n                \"TaskId\": \"xxxxx-xx-xx-xx\",\n                \"ShipperId\": \"xxxxx-xx-xx-xx\",\n                \"TopicId\": \"xxxxx-xx-xx-xx\",\n                \"RangeStart\": \"978653222\",\n                \"RangeEnd\": \"978653222\",\n                \"StartTime\": \"978653222\",\n                \"EndTime\": \"978653222\",\n                \"Status\": \"success\",\n                \"Message\": \"success\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting the list of shipping tasks"
@@ -370,7 +370,7 @@
     ],
     "MergePartition": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: MergePartition\n<Common request parameters>\n\n{\n    \"TopicId\": \"427bba81-e149-4a8b-bd0d-b2a412520d7b\",\n    \"PartitionId\": 2\n}",
         "output": "{\n    \"Response\": {\n        \"Partitions\": [\n            {\n                \"PartitionId\": 2,\n                \"Status\": \"readonly\",\n                \"InclusiveBeginKey\": \"0000\",\n                \"ExclusiveEndKey\": \"7fff\",\n                \"CreateTime\": \"2019-01-14 19:25:41\",\n                \"LastWriteTime\": \"2019-01-14 19:33:41\"\n            },\n            {\n                \"PartitionId\": 3,\n                \"Status\": \"readonly\",\n                \"InclusiveBeginKey\": \"7fff\",\n                \"ExclusiveEndKey\": \"ffff\",\n                \"CreateTime\": \"2019-01-14 19:25:41\",\n                \"LastWriteTime\": \"2019-01-14 19:33:41\"\n            },\n            {\n                \"PartitionId\": 4,\n                \"Status\": \"readwrite\",\n                \"InclusiveBeginKey\": \"0000\",\n                \"ExclusiveEndKey\": \"ffff\",\n                \"CreateTime\": \"2019-01-14 19:33:41\",\n                \"LastWriteTime\": null\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Merging topic partitions"
@@ -386,7 +386,7 @@
     ],
     "ModifyAlarmNotice": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmNotice\n<Common request parameters>\n\n{\n    \"AlarmNoticeId\": \"notice-5b2ea996-4dae-47cc-bbad-5b12888b4c89\",\n    \"Name\": \"test\",\n    \"Type\": \"All\",\n    \"WebCallbacks\": [\n        {\n            \"CallbackType\": \"Http\",\n            \"Url\": \"http://www.testnotice.com/callback\",\n            \"Method\": \"POST\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying a notification group"
@@ -394,7 +394,7 @@
     ],
     "ModifyConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConfig\n<Common request parameters>\n\n{\n    \"ConfigId\": \"xxxxxx-xx-xx-xx-xxxxxxxx\",\n    \"Name\": \"testname\",\n    \"Path\": \"/data/nginx/log/access.log\",\n    \"LogType\": \"delimiter_log\",\n    \"ExtractRule\": {\n        \"TimeKey\": \"date\",\n        \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n        \"Delimiter\": \"|\",\n        \"LogRegex\": \".*\",\n        \"BeginRegex\": \"^\",\n        \"Keys\": [\n            \"date\",\n            \"\",\n            \"content\"\n        ],\n        \"FilterKeyRegex\": [\n            {\n                \"Key\": \"xxx\",\n                \"Regex\": \"xxxx\"\n            }\n        ],\n        \"UnMatchUpLoadSwitch\": true,\n        \"UnMatchLogKey\": \"testlog\",\n        \"Backtracking\": 1048576\n    },\n    \"UserDefineRule\": \"xxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying collection rule configuration"
@@ -402,7 +402,7 @@
     ],
     "ModifyConsumer": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Effective\": true,\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true,\n    \"Compression\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
         "title": "Modifying a shipping task"
@@ -418,7 +418,7 @@
     ],
     "ModifyIndex": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\",\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": false,\n            \"Tokenizer\": \"-=/?\"\n        },\n        \"Tag\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"timestamp\"\n                }\n            ]\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"age\"\n                }\n            ]\n        }\n    },\n    \"Status\": true,\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying index"
@@ -426,7 +426,7 @@
     ],
     "ModifyLogset": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLogset\n<Common request parameters>\n\n{\n    \"LogsetId\": \"dc01b74a-49e4-11eb-b378-0242ac130002\",\n    \"LogsetName\": \"changename\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Renaming logset"
@@ -466,7 +466,7 @@
     ],
     "RetryShipperTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RetryShipperTask\n<Common request parameters>\n\n{\n    \"ShipperId\": \"xxxxxxxx-xxx-xxx-xxxxxxx\",\n    \"TaskId\": \"xxxxxxxx-xxx-xxx-xxxx-xxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Retrying failed shipping task"
@@ -482,7 +482,7 @@
     ],
     "SplitPartition": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SplitPartition\n<Common request parameters>\n\n{\n    \"TopicId\": \"427bba81-e149-4a8b-bd0d-b2a412520d7b\",\n    \"PartitionId\": 1,\n    \"Number\": 2\n}",
         "output": "{\n    \"Response\": {\n        \"Partitions\": [\n            {\n                \"PartitionId\": 1,\n                \"Status\": \"readonly\",\n                \"InclusiveBeginKey\": \"0000\",\n                \"ExclusiveEndKey\": \"ffff\",\n                \"CreateTime\": \"2019-01-14 19:25:41\",\n                \"LastWriteTime\": \"2019-01-14 19:33:41\"\n            },\n            {\n                \"PartitionId\": 2,\n                \"Status\": \"readwrite\",\n                \"InclusiveBeginKey\": \"0000\",\n                \"ExclusiveEndKey\": \"7fff\",\n                \"CreateTime\": \"2019-01-14 19:25:41\",\n                \"LastWriteTime\": \"2019-01-14 19:33:41\"\n            },\n            {\n                \"PartitionId\": 3,\n                \"Status\": \"readwrite\",\n                \"InclusiveBeginKey\": \"7fff\",\n                \"ExclusiveEndKey\": \"ffff\",\n                \"CreateTime\": \"2019-01-14 19:33:41\",\n                \"LastWriteTime\": null\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Splitting topic partition"
@@ -490,8 +490,8 @@
     ],
     "UploadLog": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\r\nHost: cls.tencentcloudapi.com\r\nContent-Type: application/octet-stream\r\nX-TC-Action: UploadLog\r\n<Common request parameters>",
+        "document": "This example shows you how to upload logs.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/octet-stream\nX-TC-Action: UploadLog\n<Common request parameters>\n\n{\n    \"HashKey\": \"abc\",\n    \"TopicId\": \"abc\",\n    \"CompressType\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Uploading logs"
       }
