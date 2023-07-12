@@ -197,7 +197,7 @@
       "status": "online"
     },
     "CreateDefaultVpc": {
-      "document": "This API is used to create a default VPC.\n\nThe default VPC is suitable for getting started with and launching public instances, and it can be used like any other VPCs. To create a standard VPC, for which you need to specify a VPC name, VPC IP range, subnet IP range, and subnet availability zone, use the regular CreateVpc API.\n\nUnder normal circumstances, this API may not create a default VPC. It depends on the network attributes (DescribeAccountAttributes) of your account.\n* If both basic network and VPC are supported, the returned VpcId is 0.\n* If only VPC is supported, the default VPC information is returned.\n\nYou can also use the Force parameter to forcibly return a default VPC.",
+      "document": "This API is used to create a VPC with default settings.\n\nTo create a VPC with custom settings, such as VPC name, IP range, subnet IP range, and subnet availability zone, use `CreateVpc` instead.\n\nThis API may not create a default VPC. It depends on the network attributes (`DescribeAccountAttributes`) of your account.\n* If both basic network and VPC are supported, the returned `VpcId` is 0.\n* If only VPC is supported, the default VPC information is returned.\n\nYou can also use the `Force` parameter to forcibly return a default VPC.",
       "input": "CreateDefaultVpcRequest",
       "name": "Creates a default VPC and subnets",
       "output": "CreateDefaultVpcResponse",
@@ -225,7 +225,7 @@
       "status": "online"
     },
     "CreateHaVip": {
-      "document": "This API (CreateHaVip) is used to create a highly available virtual IP (HAVIP)",
+      "document": "This API is used to create a highly available virtual IP (HAVIP).",
       "input": "CreateHaVipRequest",
       "name": "Creates the HAVIP",
       "output": "CreateHaVipResponse",
@@ -260,7 +260,7 @@
       "status": "online"
     },
     "CreateNetDetect": {
-      "document": "This API is used to create a network detection instance.",
+      "document": "This API is used to create a network probe.",
       "input": "CreateNetDetectRequest",
       "name": "CreateNetDetect",
       "output": "CreateNetDetectResponse",
@@ -505,7 +505,7 @@
       "status": "online"
     },
     "DeleteNetDetect": {
-      "document": "This API (DeleteNetDetect) is used to delete a network detection instance.",
+      "document": "This API is used to delete a network probe.",
       "input": "DeleteNetDetectRequest",
       "name": "DeleteNetDetect",
       "output": "DeleteNetDetectResponse",
@@ -631,7 +631,7 @@
       "status": "online"
     },
     "DeleteVpnGatewayRoutes": {
-      "document": "This API is used to delete routes of a VPN gateway.",
+      "document": "This API is used to delete routes of a VPN gateway. ",
       "input": "DeleteVpnGatewayRoutesRequest",
       "name": "Deletes routes of a VPN gateway",
       "output": "DeleteVpnGatewayRoutesResponse",
@@ -813,14 +813,14 @@
       "status": "online"
     },
     "DescribeIpGeolocationDatabaseUrl": {
-      "document": "This API is used to obtain the download link of an IP location database.",
+      "document": "This API is used to obtain the download link of an IP location database.\n<font color=\"#FF0000\">This API will be discontinued soon and is only available for existing users.</font>",
       "input": "DescribeIpGeolocationDatabaseUrlRequest",
       "name": "Obtains the download link of an IP location database",
       "output": "DescribeIpGeolocationDatabaseUrlResponse",
       "status": "online"
     },
     "DescribeIpGeolocationInfos": {
-      "document": "This API is used to query the location and network information of one or more IP addresses.\nThis API is only available for existing customers. For any questions, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2).",
+      "document": "This API is used to query the location and network information of one or more IP addresses.\n<font color=\"#FF0000\">This API will be discontinued soon and is only available for existing users.</font>",
       "input": "DescribeIpGeolocationInfosRequest",
       "name": "Queries IP location",
       "output": "DescribeIpGeolocationInfosResponse",
@@ -1086,14 +1086,14 @@
       "status": "online"
     },
     "DescribeVpnGatewayCcnRoutes": {
-      "document": "This API (DescribeVpnGatewayCcnRoutes) is used to query VPN gateway-based CCN routes.",
+      "document": "This API is used to query VPN gateway-based CCN routes.",
       "input": "DescribeVpnGatewayCcnRoutesRequest",
       "name": "Querying VPN gateway-based CCN routes",
       "output": "DescribeVpnGatewayCcnRoutesResponse",
       "status": "online"
     },
     "DescribeVpnGatewayRoutes": {
-      "document": "This API is used to query destination routes of a route-based VPN gateway.",
+      "document": "This API is used to query VPN gateway routes.",
       "input": "DescribeVpnGatewayRoutesRequest",
       "name": "Queries routes of a VPN gateway",
       "output": "DescribeVpnGatewayRoutesResponse",
@@ -1205,7 +1205,7 @@
       "status": "online"
     },
     "DownloadCustomerGatewayConfiguration": {
-      "document": "This API (DownloadCustomerGatewayConfiguration) is used to download a VPN tunnel configuration.",
+      "document": "This API is used to download VPN tunnel configurations.",
       "input": "DownloadCustomerGatewayConfigurationRequest",
       "name": "Downloads a VPN tunnel configuration",
       "output": "DownloadCustomerGatewayConfigurationResponse",
@@ -1576,14 +1576,14 @@
       "status": "online"
     },
     "ModifyVpnGatewayCcnRoutes": {
-      "document": "This API (ModifyVpnGatewayCcnRoutes) is used to modify VPN gateway-based CCN routes.",
+      "document": "This API is used to modify VPN gateway-based CCN routes.",
       "input": "ModifyVpnGatewayCcnRoutesRequest",
       "name": "Modifying VPN gateway-based CCN routes",
       "output": "ModifyVpnGatewayCcnRoutesResponse",
       "status": "online"
     },
     "ModifyVpnGatewayRoutes": {
-      "document": "This API is used to modify the route status of a VPN gateway.",
+      "document": "This API is used to modify VPN gateway routes.",
       "input": "ModifyVpnGatewayRoutesRequest",
       "name": "Modifies the route status of a VPN gateway",
       "output": "ModifyVpnGatewayRoutesResponse",
@@ -1652,6 +1652,13 @@
       "output": "ReplaceRoutesResponse",
       "status": "online"
     },
+    "ReplaceSecurityGroupPolicies": {
+      "document": "This API is used to batch modify security group policies.\nPolicies to modify must be in the same direction. `PolicyIndex` must be specified.",
+      "input": "ReplaceSecurityGroupPoliciesRequest",
+      "name": "Batch modifies security group policies",
+      "output": "ReplaceSecurityGroupPoliciesResponse",
+      "status": "online"
+    },
     "ReplaceSecurityGroupPolicy": {
       "document": "This API (ReplaceSecurityGroupPolicy) is used to replace a single security group policy (SecurityGroupPolicy).\nOnly one policy in a single direction can be replaced in each request, and the PolicyIndex parameter must be specified.",
       "input": "ReplaceSecurityGroupPolicyRequest",
@@ -1716,7 +1723,7 @@
       "status": "online"
     },
     "SetVpnGatewaysRenewFlag": {
-      "document": "This API is used to specify whether to enable auto-renewal for the VPN gateway.",
+      "document": "This API is used set the auto-renewal configuration of a VPN gateway.",
       "input": "SetVpnGatewaysRenewFlagRequest",
       "name": "Specifies whether to enable auto-renewal for the VPN gateway",
       "output": "SetVpnGatewaysRenewFlagResponse",
@@ -1900,213 +1907,224 @@
       "document": "Detailed EIP information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "`EIP` `ID`, the unique ID of the `EIP`.",
           "example": "eip-ip9ongec",
           "member": "string",
           "name": "AddressId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The `EIP` name.",
           "example": "未命名",
           "member": "string",
           "name": "AddressName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Possible `EIP` states are 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.",
           "example": "UNBIND",
           "member": "string",
           "name": "AddressStatus",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The public IP address",
           "example": "100.10.1.1",
           "member": "string",
           "name": "AddressIp",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the bound resource instance. This can be a `CVM` or `NAT`.",
           "example": "ins-xxxxx",
           "member": "string",
           "name": "InstanceId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.",
           "example": "2021-05-19T08:37:53Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the bound ENI",
           "example": "null",
           "member": "string",
           "name": "NetworkInterfaceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The private IP of the bound resources",
           "example": "null",
           "member": "string",
           "name": "PrivateAddressIp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The isolation status of the resource. `True` indicates the EIP is isolated. `False` indicates that the resource is not isolated.",
           "example": "false",
           "member": "bool",
           "name": "IsArrears",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The block status of the resource. `True` indicates the EIP is blocked. `False` indicates that the EIP is not blocked.",
           "example": "false",
           "member": "bool",
           "name": "IsBlocked",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the EIP supports direct connection mode. `True` indicates the EIP supports direct connection. `False` indicates that the resource does not support direct connection.",
           "example": "false",
           "member": "bool",
           "name": "IsEipDirectConnection",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (general elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (Anti DDoS EIP).",
           "example": "EIP",
           "member": "string",
           "name": "AddressType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the EIP is automatically released after being unbound. `True` indicates the EIP will be automatically released after being unbound. `False` indicates the EIP will not be automatically released after being unbound.",
           "example": "false",
           "member": "bool",
           "name": "CascadeRelease",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the protocol used in EIP ALG",
           "example": "无",
           "member": "AlgType",
           "name": "EipAlgType",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ISP of an EIP/Elastic IP, with possible return values currently including \"CMCC\", \"CTCC\", \"CUCC\" and \"BGP\"",
           "example": "BGP",
           "member": "string",
           "name": "InternetServiceProvider",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the EIP is in a local BGP.",
           "example": "false",
           "member": "bool",
           "name": "LocalBgp",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bandwidth value of EIP. The EIP for the bill-by-CVM account will return `null`.\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "1",
           "member": "uint64",
           "name": "Bandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.\nNote: this field may return `null`, indicating that no valid value was found.\nIncluding:\n<li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li>\n<p style=\"padding-left: 30px;\">Prepaid by monthly-subscribed bandwidth.</p>\n<li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li>\n<p style=\"padding-left: 30px;\">Pay-as-you-go billing by hourly traffic.</p>\n<li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li>\n<p style=\"padding-left: 30px;\">Pay-as-you-go billing by hourly bandwidth.</p>\n<li><strong>BANDWIDTH_PACKAGE</strong></li>\n<p style=\"padding-left: 30px;\">Bandwidth package.</p>\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "TRAFFIC_POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InternetChargeType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of tags associated with the EIP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
           "name": "TagSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The expiration time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "date",
+          "name": "DeadlineDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The type of instance bound with the EIP\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "AntiDDoSPackageId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2286,22 +2304,44 @@
       "document": "Address information",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Start address",
+          "document": "ipm-xxxxxxxx",
+          "example": "ipm-xxxx",
           "member": "string",
-          "name": "From",
-          "required": true,
-          "type": "string"
+          "name": "AddressTemplateId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "End address",
+          "document": "IP template name",
+          "example": "test",
+          "member": "string",
+          "name": "AddressTemplateName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disused",
+          "example": "无",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disused",
+          "example": "无",
           "member": "string",
           "name": "To",
-          "required": true,
-          "type": "string"
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -3256,27 +3296,27 @@
       "document": "AuditCrossBorderCompliance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Service provider. Valid values: `UNICOM`.",
+          "example": "UNICOM",
           "member": "string",
           "name": "ServiceProvider",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of compliance review request.",
+          "example": "10006",
           "member": "uint64",
           "name": "ComplianceId",
           "required": true,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audit behavior. Valid values: `APPROVED` and `DENY`.",
+          "example": "DENY",
           "member": "string",
           "name": "AuditBehavior",
           "required": true,
@@ -3797,7 +3837,6 @@
       "document": "The information of the cross-region bandwidth limit for CCN instances.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The CCN ID that the bandwidth belongs to.\nNote: this field may return null, indicating that no valid value was found.",
           "example": "ccn-ef5nufih",
@@ -3808,7 +3847,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The creation time of the instance.\nNote: this field may return null, indicating that no valid value was found.",
           "example": "2018-12-18 20:11:37",
@@ -3819,7 +3857,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The expiration time of the instance.\nNote: this field may return null, indicating that no valid value was found.",
           "example": "2019-01-18 20:11:37",
@@ -3830,7 +3867,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The unique ID of the bandwidth instance.\nNote: this field may return null, indicating that no valid value was found.",
           "example": "fcr-6fda09za",
@@ -3841,7 +3877,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The billing flag.\nNote: this field may return null, indicating that no valid value was found.",
           "example": "NOTIFY_AND_AUTO_RENEW",
@@ -3852,7 +3887,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The information of the bandwidth regions and bandwidth caps. The parameter is only returned for the cross-region limit mode, but not for egress limit.\nNote: this field may return null, indicating that no valid value was found.",
           "example": "无",
@@ -3863,7 +3897,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud marketplace instance ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3871,6 +3904,16 @@
           "name": "MarketId",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The list of tags to be bound.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagSet",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -4608,7 +4651,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of private IP addresses you can apply for. The total number of private IP addresses cannot exceed the quota.",
+          "document": "The number of private IP addresses you apply for. The total number of private IP addresses cannot exceed the quota.",
           "example": "10.0.0.2",
           "member": "uint64",
           "name": "SecondaryPrivateIpAddressCount",
@@ -5001,6 +5044,7 @@
         {
           "disabled": false,
           "document": "Default VPC and subnet IDs",
+          "example": "{\"VpcId\":\"vpc-8mpwlbdv\",\"SubnetId\":\"subnet-l9emqwnw\"}",
           "member": "DefaultVpcSubnet",
           "name": "Vpc",
           "type": "object",
@@ -5151,7 +5195,6 @@
       "document": "CreateFlowLog request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the flow log instance.",
           "example": "test-flowlog",
@@ -5161,7 +5204,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, `CCN`, `NAT`, and `DCG`.",
           "example": "NETWORKINTERFACE",
@@ -5171,7 +5213,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The unique ID of the resource.",
           "example": "eni-12345678",
@@ -5181,7 +5222,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.",
           "example": "ACCEPT",
@@ -5191,7 +5231,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the `ResourceType` is set to `CCN`.",
           "example": "vpc-12345678",
@@ -5201,9 +5240,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The description of the flow log instance",
+          "document": "The description of the flow log.",
           "example": "test",
           "member": "string",
           "name": "FlowLogDescription",
@@ -5211,7 +5249,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The storage ID of the flow log.",
           "example": "99991111-2222-4444-9999-222266663333",
@@ -5221,9 +5258,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
+          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -5231,7 +5267,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer types: `cls` and `ckafka`",
           "example": "cls",
@@ -5241,7 +5276,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the flow log consumer, which is required when the consumer type is `ckafka`.",
           "example": "无",
@@ -5251,7 +5285,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The region corresponding to the flow log storage ID. If not passed in, this field defaults to the current region.",
           "example": "ap-guangzhou",
@@ -5269,6 +5302,7 @@
         {
           "disabled": false,
           "document": "The information of the flow log created.",
+          "example": "无",
           "member": "FlowLog",
           "name": "FlowLog",
           "type": "list",
@@ -5290,6 +5324,7 @@
           "default": "",
           "disabled": false,
           "document": "The `ID` of the VPC to which the `HAVIP` belongs.",
+          "example": "vpc-6v2ht8q5",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -5299,6 +5334,7 @@
           "default": "",
           "disabled": false,
           "document": "The `ID` of the subnet to which the `HAVIP` belongs.",
+          "example": "subnet-qq51iwr4",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -5308,6 +5344,7 @@
           "default": "",
           "disabled": false,
           "document": "The name of the `HAVIP`.",
+          "example": "test+name",
           "member": "string",
           "name": "HaVipName",
           "required": true,
@@ -5317,8 +5354,19 @@
           "default": "",
           "disabled": false,
           "document": "The specified virtual IP address, which must be within the IP range of the `VPC` and not in use. It will be automatically assigned if not specified.",
+          "example": "10.4.6.15",
           "member": "string",
           "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The ID of the ENI associated with the HAVIP.",
+          "example": "eni-ph0075l1",
+          "member": "string",
+          "name": "NetworkInterfaceId",
           "required": false,
           "type": "string"
         }
@@ -5641,9 +5689,8 @@
       "document": "CreateNetDetect request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The `ID` of a `VPC` instance, such as `vpc-12345678`.",
+          "document": "The ID of a VPC instance, such as `vpc-12345678`.",
           "example": "vpc-12345678",
           "member": "string",
           "name": "VpcId",
@@ -5651,7 +5698,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of a subnet instance, such as subnet-12345678.",
           "example": "subnet-12345678",
@@ -5661,7 +5707,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of a network detection instance. The maximum length is 60 characters.",
           "example": "test",
@@ -5671,7 +5716,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The array of detection destination IPv4 addresses, which contains at most two IP addresses.",
           "example": "[\"10.0.0.2\\r\\n\",\"10.0.0.3\\r\\n\"]",
@@ -5681,9 +5725,8 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Type of the next hop. Valid values:\n`VPN`: VPN gateway;\n`DIRECTCONNECT`: direct connect gateway;\n`PEERCONNECTION`: peering connection;\n`NAT`: NAT gateway;\n`NORMAL_CVM`: normal CVM;\n`CCN`: CCN gateway.",
+          "document": "Type of the next hop. Valid values:\n`VPN`: VPN gateway;\n`DIRECTCONNECT`: Direct connect gateway;\n`PEERCONNECTION`: Peering connection;\n`NAT`: NAT gateway;\n`NORMAL_CVM`: CVM instance;\n`CCN`: CCN instance;\n`NONEXTHOP`: No next hop.",
           "example": "NORMAL_CVM",
           "member": "string",
           "name": "NextHopType",
@@ -5691,9 +5734,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Next-hop destination gateway. Its value is determined by `NextHopType`.\nIf `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.\nIf `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.\nIf `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.\nIf `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.\nIf `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.\nIf `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.",
+          "document": "ID of the next-hop gateway. \n`NextHopType` = `VPN`: VPN gateway ID, such as `vpngw-12345678`.\n`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.\n`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.\n`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.\n`NextHopType` = `NORMAL_CVM`: CVM IPv4 address, such as `10.0.0.12`.\n`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.\n`NextHopType` = `NONEXTHOP`: No next hop.",
           "example": "10.0.0.4",
           "member": "string",
           "name": "NextHopDestination",
@@ -5701,7 +5743,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network detection description.",
           "example": "test",
@@ -5775,9 +5816,8 @@
       "document": "CreateNetworkAcl request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "VPC instance ID, which can be obtained from the `VpcId` field returned by `DescribeVpcs` API.",
+          "document": "VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.",
           "example": "vpc-12345678",
           "member": "string",
           "name": "VpcId",
@@ -5785,7 +5825,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network ACL name, which can contain up to 60 bytes.",
           "example": "test",
@@ -5795,7 +5834,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network ACL type. Valid values: `TRIPLE` and `QUINTUPLE`.",
           "example": "TRIPLE,QUINTUPLE",
@@ -5805,7 +5843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
           "example": "无",
@@ -5880,7 +5917,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota.",
+          "document": "The number of private IP addresses you apply for. The total number of private IP addresses cannot exceed the quota.",
           "example": "1",
           "member": "uint64",
           "name": "SecondaryPrivateIpAddressCount",
@@ -6100,36 +6137,36 @@
       "document": "CreateSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Security group can be named freely, but cannot exceed 60 characters.",
+          "example": "TestGroup",
           "member": "string",
           "name": "GroupName",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The remarks for the security group. The maximum length is 100 characters.",
+          "example": "test-group-desc",
           "member": "string",
           "name": "GroupDescription",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID. The default is 0. You can query it on the project management page of the Qcloud console.",
+          "example": "0",
           "member": "string",
           "name": "ProjectId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -7604,9 +7641,9 @@
       "document": "Default VPC and subnet",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Default VpcId",
+          "document": "Default VPC ID",
+          "example": "vpc-6vbg797r",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -7614,12 +7651,42 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Default SubnetId",
+          "document": "Default subnet ID",
+          "example": "subnet-3opmksyg",
           "member": "string",
           "name": "SubnetId",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default VPC name",
+          "example": "Default-VPC",
+          "member": "string",
+          "name": "VpcName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default subnet name",
+          "example": "Default-Subnet",
+          "member": "string",
+          "name": "SubnetName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default subnet IP range",
+          "example": "172.16.0.0/16",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8081,9 +8148,9 @@
       "document": "DeleteNetDetect request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The `ID` of a network detection instance, such as `netd-12345678`.",
+          "document": "ID of a network probe, such as `netd-12345678`.",
+          "example": "netd-12345678",
           "member": "string",
           "name": "NetDetectId",
           "required": true,
@@ -8628,7 +8695,6 @@
       "document": "DeleteVpnGatewayRoutes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID of the VPN gateway",
           "example": "vpngw-12345678",
@@ -8638,7 +8704,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of route IDs",
           "example": "[\"xxx-xxxx\\n\",\"xxx-xxxx\\n\"]",
@@ -9196,7 +9261,6 @@
       "document": "DescribeCcnAttachedInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset",
           "example": "0",
@@ -9206,7 +9270,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The returned quantity",
           "example": "20",
@@ -9216,7 +9279,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions:\n<li>ccn-id - String - (Filter condition) The CCN instance ID.</li>\n<li>instance-type - String - (Filter condition) The associated instance type.</li>\n<li>instance-region - String - (Filter condition) The associated instance region.</li>\n<li>instance-type - String - (Filter condition) The instance ID of the associated instance.</li>",
           "example": "无",
@@ -9226,7 +9288,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the CCN instance",
           "example": "ccn-245ecr35",
@@ -9236,7 +9297,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The order field supports `CcnId`, `InstanceType`, `InstanceId`, `InstanceName`, `InstanceRegion`, `AttachedTime`, and `State`.",
           "example": "CcnId",
@@ -9246,7 +9306,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order methods. Ascending: `ASC`, Descending: `DESC`.",
           "example": "ASC",
@@ -9409,7 +9468,6 @@
       "document": "DescribeCcns request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The CCN instance ID, such as `ccn-f49l6u0z`. Each request can have a maximum of 100 instances. `CcnIds` and `Filters` cannot be specified at the same time",
           "example": "ccn-f49l6u0z",
@@ -9419,7 +9477,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. `CcnIds` and `Filters` cannot be specified at the same time.\n<li>ccn-id - String - (Filter condition) The unique ID of the CCN, such as `vpc-f49l6u0z`.</li>\n<li>ccn-name - String - (Filter condition) The CCN name.</li>\n<li>ccn-description - String - (Filter condition) CCN description.</li>\n<li>state - String - (Filter condition) The instance status. 'ISOLATED': Isolated (the account is in arrears and the service is suspended.) 'AVAILABLE': Running.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filters by tag key.</li>\n<li>`tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see this example: **Querying the list of CCNs bound to tags**.</li>",
           "example": "无",
@@ -9429,7 +9486,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset",
           "example": "0",
@@ -9439,7 +9495,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The returned quantity",
           "example": "20",
@@ -9449,7 +9504,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order fields support `CcnId`, `CcnName`, `CreateTime`, `State`, and `QosLevel`",
           "example": "CcnName",
@@ -9459,7 +9513,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order methods. Ascending: `ASC`, Descending: `DESC`.",
           "example": "ASC",
@@ -9802,36 +9855,36 @@
       "document": "DescribeCustomerGateways request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Customer gateway ID, such as `cgw-2wqq41m9`. Each request can have a maximum of 100 instances. `CustomerGatewayIds` and `Filters` cannot be specified at the same time.",
+          "example": "cgw-2wqq41m9",
           "member": "string",
           "name": "CustomerGatewayIds",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The filter condition. For details, see the Instance Filter Conditions Table. The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `CustomerGatewayIds` and `Filters` cannot be specified at the same time.\n<li>customer-gateway-id - String - (Filter condition) The unique ID of the user gateway, such as `cgw-mgp33pll`.</li>\n<li>customer-gateway-name - String - (Filter condition) The name of the user gateway, such as `test-cgw`.</li>\n<li>ip-address - String - (Filter condition) The public IP address, such as `58.211.1.12`.</li>",
+          "example": "null",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction.",
+          "document": "Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -9846,6 +9899,7 @@
         {
           "disabled": false,
           "document": "Customer gateway object list",
+          "example": " [             {                 \"CustomerGatewayId\": \"cgw-mgp33pll\",                 \"IpAddress\": \"58.211.1.12\",                 \"CustomerGatewayName\": \"test-cgw\",                 \"CreatedTime\": \"2018-03-25 17:52:39\"             }         ]",
           "member": "CustomerGateway",
           "name": "CustomerGatewaySet",
           "type": "list",
@@ -9854,6 +9908,7 @@
         {
           "disabled": false,
           "document": "Number of eligible instances",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -10057,7 +10112,6 @@
       "document": "DescribeFlowLogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the VPC instance",
           "example": "vpc-7zayowkt",
@@ -10067,7 +10121,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The unique ID of the flow log.",
           "example": "fl-hdtpam45",
@@ -10077,7 +10130,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the flow log instance.",
           "example": "test_name",
@@ -10087,7 +10139,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.",
           "example": "VPC",
@@ -10097,7 +10148,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The unique ID of the resource.",
           "example": "vpc-7zayowkt",
@@ -10107,7 +10157,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of flow logs to be collected. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.",
           "example": "ACCEPT",
@@ -10117,7 +10166,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The storage ID of the flow log.",
           "example": "10acf9c5-ac0a-45ea-8aeb-bd00312aeebb",
@@ -10127,7 +10175,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The storage ID status of the flow log.",
           "example": "SUCCESS",
@@ -10137,7 +10184,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order by field. Valid values: 'flowLogName' and 'createTime'. Default value: 'createTime'.",
           "example": "createTime",
@@ -10147,7 +10193,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "In ascending (`asc`) or descending (`desc`) order. Default value: 'desc'.",
           "example": "desc",
@@ -10157,7 +10202,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The offset. Default value: 0.",
           "example": "0",
@@ -10167,7 +10211,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of rows per page. Default value: 10.",
           "example": "10",
@@ -10177,9 +10220,8 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Filter condition. `FlowLogIds` and `Filters` cannot be specified at the same time.\n<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key.</li>",
+          "document": "Filter condition. `FlowLogId` and `Filters` cannot be specified at the same time.\n<li> `tag-key` - String - Optional - Filter by the tag key.</li>\n<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -10187,7 +10229,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The region corresponding to the flow log storage ID.",
           "example": "ap-guangzhou",
@@ -10231,81 +10272,81 @@
       "document": "DescribeGatewayFlowMonitorDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The point in time. This indicates details of this minute will be queried. For example, in `2019-02-28 18:15:20`, details at `18:15` will be queried.",
+          "example": "2019-02-28 18:15:20",
           "member": "datetime",
           "name": "TimePoint",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The instance ID of the VPN gateway, such as `vpn-ltjahce6`.",
+          "example": "vpn-ltjahce6",
           "member": "string",
           "name": "VpnId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The instance ID of the Direct Connect gateway, such as `dcg-ltjahce6`.",
+          "example": "dcg-ltjahce6",
           "member": "string",
           "name": "DirectConnectGatewayId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The instance ID of the peering connection, such as `pcx-ltjahce6`.",
+          "example": "pcx-ltjahce6",
           "member": "string",
           "name": "PeeringConnectionId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The instance ID of the NAT gateway, such as `nat-ltjahce6`.",
+          "example": "nat-ltjahce6",
           "member": "string",
           "name": "NatId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The returned quantity.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
-          "default": "OutTraffic",
           "disabled": false,
           "document": "The order field supports `InPkg`, `OutPkg`, `InTraffic`, and `OutTraffic`.",
+          "example": "InPkg",
           "member": "string",
           "name": "OrderField",
           "required": false,
           "type": "string"
         },
         {
-          "default": "DESC",
           "disabled": false,
           "document": "Order methods. Ascending: `ASC`, Descending: `DESC`.",
+          "example": "ASC",
           "member": "string",
           "name": "OrderDirection",
           "required": false,
@@ -10975,36 +11016,36 @@
       "document": "DescribeNetDetectStates request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The array of network detection instance `IDs`, such as [`netd-12345678`].",
+          "document": "The array of network probe IDs, such as [`netd-12345678`].",
+          "example": "[\"netd-12345678\"]",
           "member": "string",
           "name": "NetDetectIds",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.\n<li>net-detect-id - String - (Filter condition) The network detection instance ID, such as netd-12345678.</li>",
+          "document": "Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.\n<li>`net-detect-id` - String - The network probe ID, such as `netd-12345678`.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The offset. Default: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of returned values. Default: 20. Maximum: 100.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -11045,36 +11086,36 @@
       "document": "DescribeNetDetects request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The array of network detection instance `IDs`, such as [`netd-12345678`].",
+          "document": "The array of network probe IDs, such as [`netd-12345678`].",
+          "example": "netd-12345678",
           "member": "string",
           "name": "NetDetectIds",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) The VPC instance ID, such as vpc-12345678.</li>\n<li>net-detect-id - String - (Filter condition) The network detection instance ID, such as netd-12345678.</li>\n<li>subnet-id - String - (Filter condition) The subnet instance ID, such as subnet-12345678.</li>\n<li>net-detect-name - String - (Filter condition) The network detection name.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The offset. Default: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of returned values. Default: 20. Maximum: 100.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -13142,27 +13183,27 @@
       "document": "DescribeVpnGatewayCcnRoutes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The ID of the VPN gateway instance.",
+          "document": "Instance ID of the VPN gateway",
+          "example": "vpngw-xxx",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The returned quantity",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -13203,17 +13244,15 @@
       "document": "DescribeVpnGatewayRoutes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "VPN gateway ID",
-          "example": "vpn-ngenl4az",
+          "document": "Instance ID of the VPN gateway",
+          "example": "vpngw-ngenl4az",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter condition. Valid values: `DestinationCidr`, `InstanceId`, and `InstanceType`.",
           "example": "无",
@@ -13223,7 +13262,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0",
           "example": "0",
@@ -13233,7 +13271,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results per page. Default value: 20; maximum value: 100",
           "example": "2",
@@ -13254,9 +13291,17 @@
           "example": "无",
           "member": "VpnGatewayRoute",
           "name": "Routes",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -14249,36 +14294,36 @@
       "document": "DownloadCustomerGatewayConfiguration request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the VPN gateway instance.",
+          "example": "vpngw-p4lmbqwn",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the VPN tunnel instance, such as `vpnx-f49l6u0z`.",
+          "example": "vpnx-4p6vkch3",
           "member": "string",
           "name": "VpnConnectionId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Customer gateway vendor information object, which can be obtained through DescribeCustomerGatewayVendors.",
+          "example": "{     \"Platform\":\"comware\",     \"SoftwareVersion\":\"V1.0\",     \"VendorName\":\"h3c\" }",
           "member": "CustomerGatewayVendor",
           "name": "CustomerGatewayVendor",
           "required": true,
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the physical API for tunnel access device.",
+          "example": "eth0",
           "member": "string",
           "name": "InterfaceName",
           "required": true,
@@ -14431,7 +14476,6 @@
       "document": "EnableVpcEndPointConnect request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Endpoint service ID",
           "example": "vpcsvc-8gdaqxi0",
@@ -14441,7 +14485,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Endpoint ID",
           "example": "[\"vpce-8gdaqxi0\"]",
@@ -14451,9 +14494,8 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to accept the request of connecting with an endpoint",
+          "document": "Whether to accept the request of connecting with an endpoint\n",
           "example": "True",
           "member": "bool",
           "name": "AcceptFlag",
@@ -15106,54 +15148,54 @@
       "document": "GetCcnRegionBandwidthLimits request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The CCN instance ID, such as `ccn-f49l6u0z`.",
+          "example": "无",
           "member": "string",
           "name": "CcnId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The filter condition.\n<li>sregion - String - (Filter condition) Filter by the source region, such as 'ap-guangzhou'.</li>\n<li>dregion - String - (Filter condition) Filter by the destination region, such as 'ap-shanghai-bm'.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The sorting condition. Valid values: `BandwidthLimit` and `ExpireTime`.",
+          "example": "无",
           "member": "string",
           "name": "SortedBy",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The offset.",
+          "document": "Offset",
+          "example": "无",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The returned quantity.",
+          "document": "Quantity of returned items",
+          "example": "无",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "In ascending or descending order. Valid values: 'ASC' and 'DESC'.",
+          "example": "无",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -15167,7 +15209,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "The outbound bandwidth limits of regions in a CCN instance.\nNote: this field may return null, indicating that no valid value was found.",
+          "document": "The outbound bandwidth limits of regions in a CCN instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CcnBandwidthInfo",
           "name": "CcnBandwidthSet",
           "type": "list",
@@ -15176,6 +15219,7 @@
         {
           "disabled": false,
           "document": "The number of eligible objects.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -15691,9 +15735,9 @@
       "document": "Prepaid (monthly subscription) billing object.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Purchased usage period (in month). Value range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36].",
+          "example": "无",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -15701,9 +15745,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal ID. Value range: NOTIFY_AND_AUTO_RENEW: notify expiry and renew automatically, NOTIFY_AND_MANUAL_RENEW: notify expiry but do not renew automatically. The default is NOTIFY_AND_MANUAL_RENEW",
+          "example": "无",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
@@ -16751,18 +16795,18 @@
       "document": "ModifyCcnRegionBandwidthLimitsType request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "CCN instance ID.",
+          "example": "ccn-gree226l",
           "member": "string",
           "name": "CcnId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CCN bandwidth limit type. INTER_REGION_LIMIT: limit between regions. OUTER_REGION_LIMIT: region egress limit.",
+          "example": "OUTER_REGION_LIMIT",
           "member": "string",
           "name": "BandwidthLimitType",
           "required": false,
@@ -17263,7 +17307,6 @@
       "document": "ModifyNetDetect request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of a network detection instance, such as `netd-12345678`.",
           "example": "netd-12345678",
@@ -17273,7 +17316,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of a network detection instance. The maximum length is 60 characters.",
           "example": "test",
@@ -17283,7 +17325,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The array of detection destination IPv4 addresses, which contains at most two IP addresses.",
           "example": "[\"10.0.0.2\\r\\n\",\"10.0.0.3\\r\\n\"]",
@@ -17293,9 +17334,8 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Type of the next hop. Valid values:\n`VPN`: VPN gateway;\n`DIRECTCONNECT`: Direct connect gateway;\n`PEERCONNECTION`: Peering connection;\n`NAT`: NAT gateway;\n`NORMAL_CVM`: normal CVM;\n`CCN`: CCN gateway.",
+          "document": "Type of the next hop. Valid values:\n`VPN`: VPN gateway;\n`DIRECTCONNECT`: Direct connect gateway;\n`PEERCONNECTION`: Peering connection;\n`NAT`: NAT gateway;\n`NORMAL_CVM`: CVM instance;\n`CCN`: CCN instance;\n`NONEXTHOP`: No next hop.",
           "example": "NORMAL_CVM",
           "member": "string",
           "name": "NextHopType",
@@ -17303,9 +17343,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Next-hop destination gateway. Its value is determined by `NextHopType`.\nIf `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.\nIf `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.\nIf `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.\nIf `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.\nIf `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.\nIf `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.",
+          "document": "ID of the next-hop gateway. \n`NextHopType` = `VPN`: VPN gateway ID, such as `vpngw-12345678`.\n`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.\n`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.\n`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.\n`NextHopType` = `NORMAL_CVM`: CVM IPv4 address, such as `10.0.0.12`.\n`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.\n`NextHopType` = `NONEXTHOP`: No next hop.",
           "example": "10.0.0.4",
           "member": "string",
           "name": "NextHopDestination",
@@ -17313,7 +17352,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network detection description.",
           "example": "test",
@@ -18290,18 +18328,18 @@
       "document": "ModifyVpnGatewayCcnRoutes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The ID of the VPN gateway instance.",
+          "document": "Instance ID of the VPN gateway",
+          "example": "vpngw-qol17bja",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The CCN route (IDC IP range) list.",
+          "example": "[     {       \"RouteId\": \"dcr-6t3tknmg\",       \"Status\": \"ENABLE\",       \"DestinationCidrBlock\": \"172.2.9.6/32\"     }   ]",
           "member": "VpngwCcnRoutes",
           "name": "Routes",
           "required": true,
@@ -18326,9 +18364,8 @@
       "document": "ModifyVpnGatewayRoutes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "VPN gateway ID",
+          "document": "Instance ID of the VPN gateway",
           "example": "vpn-ngenl4az",
           "member": "string",
           "name": "VpnGatewayId",
@@ -18336,7 +18373,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Route parameters to modify",
           "example": "无",
@@ -18785,7 +18821,6 @@
       "document": "The network detection object.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of a VPC instance, such as `vpc-12345678`.",
           "example": "无",
@@ -18796,7 +18831,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of a VPC instance.",
           "example": "无",
@@ -18807,7 +18841,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of a subnet instance, such as subnet-12345678.",
           "example": "无",
@@ -18818,7 +18851,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of a subnet instance.",
           "example": "无",
@@ -18829,7 +18861,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of a network detection instance, such as netd-12345678.",
           "example": "无",
@@ -18840,7 +18871,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of a network detection instance. The maximum length is 60 characters.",
           "example": "无",
@@ -18851,7 +18881,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The array of detection destination IPv4 addresses, which contains at most two IP addresses.",
           "example": "无",
@@ -18862,7 +18891,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The array of detection source IPv4 addresses automatically allocated by the system. The length is 2.",
           "example": "无",
@@ -18873,9 +18901,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Type of the next hop. Valid values:\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nNAT: NAT gateway;\nNORMAL_CVM: normal CVM.\nCCN: CCN gateway.",
+          "document": "Type of the next hop. Currently supported types are:\nVPN: VPN gateway;\n`DIRECTCONNECT`: Direct connect gateway;\n`PEERCONNECTION`: Peering connection;\n`NAT`: NAT gateway;\n`NORMAL_CVM`: CVM instance;\n`CCN`: CCN instance;\n`NONEXTHOP`: No next hop.",
           "example": "无",
           "member": "string",
           "name": "NextHopType",
@@ -18884,9 +18911,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Next-hop destination gateway. Its value is determined by `NextHopType`.\nIf `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.\nIf `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.\nIf `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.\nIf `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.\nIf `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.\nIf `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.",
+          "document": "ID of the next-hop gateway. \n`NextHopType` = `VPN`: VPN gateway ID, such as `vpngw-12345678`.\n`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.\n`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.\n`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.\n`NextHopType` = `NORMAL_CVM`: CVM IPv4 address, such as `10.0.0.12`.\n`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.\n`NextHopType` = `NONEXTHOP`: No next hop.",
           "example": "无",
           "member": "string",
           "name": "NextHopDestination",
@@ -18895,7 +18921,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the next-hop gateway.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -18906,7 +18931,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network detection description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -18917,7 +18941,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -20188,6 +20211,51 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReplaceSecurityGroupPoliciesRequest": {
+      "document": "ReplaceSecurityGroupPolicies request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through the `DescribeSecurityGroups` API.",
+          "example": "sg-ohuuioma",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security group policy set object.",
+          "example": "无",
+          "member": "SecurityGroupPolicySet",
+          "name": "SecurityGroupPolicySet",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "(Optional) The old policy set of the security group, which is used for log records.",
+          "example": "无",
+          "member": "SecurityGroupPolicySet",
+          "name": "OriginalSecurityGroupPolicySet",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ReplaceSecurityGroupPoliciesResponse": {
+      "document": "ReplaceSecurityGroupPolicies response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -21940,7 +22008,6 @@
       "document": "SetVpnGatewaysRenewFlag request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "VPN gateway IDs",
           "example": "['vpngw-m6hhy6or']",
@@ -21950,7 +22017,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of auto-renewal\nValues: `0` (Follow original), `1` (Enable auto-renewal), `2` (Disable auto-renewal) ",
           "example": "2",
@@ -21960,7 +22026,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPNGW type: `IPSEC`, `SSL`",
           "example": "IPSEC",
@@ -23756,9 +23821,9 @@
       "document": "Destination routes of a VPN gateway",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Destination IDC IP range",
+          "example": "无",
           "member": "string",
           "name": "DestinationCidrBlock",
           "required": true,
@@ -23766,9 +23831,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Next hop type (type of the associated instance). Valid values: `VPNCONN` (VPN tunnel) and `CCN` (CCN instance)",
+          "example": "无",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -23776,9 +23841,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID of the next hop",
+          "example": "无",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -23786,9 +23851,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Priority. Valid values: `0` and `100`",
+          "example": "无",
           "member": "int64",
           "name": "Priority",
           "required": true,
@@ -23796,9 +23861,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status. Valid values: `ENABLE` and `DISABLE`",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -23806,9 +23871,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Route ID",
+          "example": "无",
           "member": "string",
           "name": "RouteId",
           "required": false,
@@ -23816,9 +23881,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Route type. Valid values: `VPC`, `CCN` (CCN-propagated route), `Static`, and `BGP`.",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -23826,9 +23891,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Creation time",
+          "document": "The creation time.",
+          "example": "无",
           "member": "datetime",
           "name": "CreateTime",
           "required": false,
@@ -23836,9 +23901,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Update time",
+          "document": "The update time.",
+          "example": "无",
           "member": "datetime",
           "name": "UpdateTime",
           "required": false,
@@ -23852,9 +23917,9 @@
       "document": "Modify route status of the VPN gateway",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Route ID of the VPN gateway",
+          "example": "无",
           "member": "string",
           "name": "RouteId",
           "required": true,
@@ -23862,9 +23927,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Route status of the VPN gateway. Valid values: `ENABLE`, and `DISABLE`.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
