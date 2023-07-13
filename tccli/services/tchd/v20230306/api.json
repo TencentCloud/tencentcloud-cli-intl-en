@@ -1,0 +1,166 @@
+{
+  "actions": {
+    "DescribeEvents": {
+      "document": "This API is used to query the availability event list of tencent cloud services. It can be filtered by product, region, or event occurrence date.",
+      "input": "DescribeEventsRequest",
+      "name": "View event list",
+      "output": "DescribeEventsResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2023-03-06",
+    "serviceNameCN": "腾讯云健康看板",
+    "serviceShortName": "tchd"
+  },
+  "objects": {
+    "DescribeEventsRequest": {
+      "document": "DescribeEvents request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "event occurrence date",
+          "example": "2023-06-22",
+          "member": "date",
+          "name": "EventDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query by Product ID(s). Product ID examples: cvm, lb, cdb, cdn, crs.",
+          "example": "[\"cvm\",\"clb\"]",
+          "member": "string",
+          "name": "ProductIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.\n2. The region ID for non-region-specific products should be set to \"non-regional\".\n",
+          "example": "[\"ap-guangzhou\",\"ap-shanghai\"]",
+          "member": "string",
+          "name": "RegionIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEventsResponse": {
+      "document": "DescribeEvents response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Detailed event information.",
+          "example": "无",
+          "member": "ProductEventList",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EventDetail": {
+      "document": "Describes information on an event",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product ID",
+          "example": "cvm",
+          "member": "string",
+          "name": "ProductId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name",
+          "example": "云服务器",
+          "member": "string",
+          "name": "ProductName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region name",
+          "example": "北京",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Event start time",
+          "example": "2023-06-22 09:55:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Event end time. If the event is still ongoing and has not ended, the end time will be empty.",
+          "example": "2023-06-22 10:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current status: Normally, Informational, Degradation",
+          "example": "异常",
+          "member": "string",
+          "name": "CurrentStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProductEventList": {
+      "document": "Detailed event information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Detailed event information.",
+          "example": "无",
+          "member": "EventDetail",
+          "name": "EventList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

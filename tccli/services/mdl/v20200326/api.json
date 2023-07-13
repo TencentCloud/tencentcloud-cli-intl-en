@@ -2687,7 +2687,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Valid values: `INPUT_SWITCH`, `TIMED_RECORD`. If it is not specified, `INPUT_SWITCH` will be used.",
+          "document": "Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK. If it is not specified, `INPUT_SWITCH` will be used.",
           "example": "INPUT_SWITCH",
           "member": "string",
           "name": "EventType",
@@ -2765,7 +2765,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Only `INPUT_SWITCH` is supported currently.",
+          "document": "Valid values: INPUT_SWITCH, TIMED_RECORD, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK.",
           "example": "INPUT_SWITCH",
           "member": "string",
           "name": "EventType",
