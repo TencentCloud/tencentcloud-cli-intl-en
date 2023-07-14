@@ -2,13 +2,13 @@
   "actions": {
     "AddRealServers": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddRealServers\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"RealServerName\": \"'test'\",\n    \"RealServerIP\": [\n        \"1.1.1.1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RealServerSet\": [\n            {\n                \"RealServerId\": \"id-5dr8gu4\",\n                \"RealServerIP\": \"1.1.1.1\"\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
         "title": "Adding origin server"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddRealServers\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"RealServerName\": \"benny\",\n    \"RealServerIP\": [\n        \"106.52.70.76\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"be13ee03-60e8-4af1-880a-e84e5abdf6bc\",\n        \"RealServerSet\": [\n            {\n                \"RealServerIP\": \"106.52.70.76\",\n                \"RealServerId\": \"rs-hx4u5379\"\n            }\n        ]\n    }\n}",
         "title": "AddRealServers"
@@ -32,7 +32,7 @@
     ],
     "CheckProxyCreate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckProxyCreate\n<Common request parameters>\n\n{\n    \"Concurrent\": \"2\",\n    \"Bandwidth\": \"10\",\n    \"RealServerRegion\": \"SouthChina\",\n    \"AccessRegion\": \"EastChina\"\n}",
         "output": "{\n    \"Response\": {\n        \"CheckFlag\": 1,\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
         "title": "Querying whether the connection can be created"
@@ -40,7 +40,7 @@
     ],
     "CloseProxies": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseProxies\n<Common request parameters>\n\n{\n    \"ProxyIds\": [\n        \"link-11112222\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"OperationFailedInstanceSet\": [],\n        \"RequestId\": \"888fe1bb-be58-4a80-90b9-24a0398633c6\",\n        \"InvalidStatusInstanceSet\": []\n    }\n}",
         "title": "Disabling connection"
@@ -48,7 +48,7 @@
     ],
     "CloseProxyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseProxyGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"lg-111xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"OperationFailedInstanceSet\": [],\n        \"RequestId\": \"888fe1bb-be58-4a80-90b9-24a0398633c6\",\n        \"InvalidStatusInstanceSet\": []\n    }\n}",
         "title": "Disabling a connection group"
@@ -56,7 +56,7 @@
     ],
     "CloseSecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseSecurityPolicy\n<Common request parameters>\n\n{\n    \"ProxyId\": \"link-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\",\n        \"TaskId\": \"1234.2\"\n    }\n}",
         "title": "Disabling a security policy"
@@ -64,13 +64,13 @@
     ],
     "CreateCertificate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCertificate\n<Common request parameters>\n\n{\n    \"CertificateType\": \"2\",\n    \"CertificateAlias\": \"xxx\",\n    \"CertificateKey\": \"%0A-----BEGIN%20RSA%20PRIVATE%20KEY-----%0Axxxxxxxxxxx%0A-----END%20RSA%20PRIVATE%20KEY-----%0A\",\n    \"CertificateContent\": \"%0A-----BEGIN%20CERTIFICATE-----%0AMIIFmDCCBICgAwIBAgIQC6TGAPV%2B4MO7NIhlkkKFljANBgkqhkiG9w0BAQsFADBy%0AMQswCQYDVQQGEwJDTjElMCMGA1UEChMcVHJ1c3RBc2lhIFRlY2hub2xvZ2llcywg%0ASW5jLjEdMBsGA1UECxMURG9tYWluIFZhbGlkYXRlZCBTU0wxHTAbBgNVBAMTFFRy%0AdXN0QXNpYSBUTFMgUlNBIENBMB4XDTE5MDQwMjAwMDAwMFoXDTIwMDQwMTEyMDAw%0AMFowGTEXMBUGA1UEAxMObGFnYW1lZnQwMS54eXowggEiMA0GCSqGSIb3DQEBAQUA%0AA4IBDwAwggEKAoIBAQCuSgglfAksbFSrvWp6cEFr8ulTWEND2KvXf6cCs3kBBCzE%0AMLhCw4792LMFY0%2BFE7a0j7i5nJ9%2BQvhX7GRiu1P9flyge0eUCOBOAtVCn0dvhbLy%0A7efWsmH3kp/owWXnZXeb/k5R1FvojCiV968MxMC%2B2Y7ejz5qMm5XlQPn3xQOEj2h%0AQmHwQ9XwO8qRsIuCD1oNrsXsyXuEhA2zkEvcgtYP35zPsXfjbBaBg7Iw3o0j3jXj%0AgdhD2Q2OzH05jDn3hDhSnej1jbWuGmDEOO%2Bu6W/xqnCOhBMjWLnuW2aUddiBiqsH%0A8BQK/Ge6HUp%2BmMdkdNAw5FN6ztIPzP6GFb0OOLitAgMBAAGjggKBMIICfTAfBgNV%0AHSMEGDAWgBR/05nzoEcOMQBWViKOt8ye3coBijAdBgNVHQ4EFgQUqYL1l3uFqYHC%0A2mJcZC26nLHtkjYwLQYDVR0RBCYwJIIObGFnYW1lZnQwMS54eXqCEnd3dy5sYWdh%0AbWVmdDAxLnh5ejAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEG%0ACCsGAQUFBwMCMEwGA1UdIARFMEMwNwYJYIZIAYb9bAECMCowKAYIKwYBBQUHAgEW%0AHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwCAYGZ4EMAQIBMH0GCCsGAQUF%0ABwEBBHEwbzAhBggrBgEFBQcwAYYVaHR0cDovL29jc3AuZGNvY3NwLmNuMEoGCCsG%0AAQUFBzAChj5odHRwOi8vY2FjZXJ0cy5kaWdpdGFsY2VydHZhbGlkYXRpb24uY29t%0AL1RydXN0QXNpYVRMU1JTQUNBLmNydDAJBgNVHRMEAjAAMIIBAwYKKwYBBAHWeQIE%0AAgSB9ASB8QDvAHUAu9nfvB%2BKcbWTlCOXqpJ7RzhXlQqrUugakJZkNo4e0YUAAAFp%0A3cON9gAABAMARjBEAiABFpvdLsJKm6zxh5wLS6uN5%2BTnX8bXD5bj7CPVC4Kg/wIg%0AB%2BBzdsZL0UmuvbNAYkr8W53bJKhEgoHJ0RdSyoF5yZAAdgCHdb/nWXz4jEOZX73z%0Abv9WjUdWNv9KtWDBtOr/XqCDDwAAAWndw47mAAAEAwBHMEUCIQC%2BDdvaJ2kKvsVv%0AiivLe4W/YFa/K64HdnyOdHksEl9pSAIgTqLXfw6Tc7d%2BgiKMtt%2B6P/xdrvjGt5Du%0Aokvgu70INuQwDQYJKoZIhvcNAQELBQADggEBAHxewHgySBS5UoO6l/IcU95baR/O%0AYGLcCpgEbWj4MigIZcrkHsD7RddRDoyM/3hxKyzs3Dkes4wHTQDWnyrNuXdn8aNV%0AJAhrh/0yzAe3/UTJ/%2BSRoMg1K6rHWORmLa52d9u3Ei%2B1BF2qLi5L2tTmLrSQJXzB%0ANSIFd40x1mZLp9uqhcB9kcwwkHSFUtLjFwUSN6Zjn9FStlq06ezjgnVv2tP9/HoP%0AKWiRgRFDgqj8%2BROJPQvfuO2xdWoxYUmuMcx1o6IiSVn2F48ood029cyT%2Bt3TaYpb%0AhVI9JuYnHW9kN69xPNzamJVCdu4i/1ELvcr0p/wQf9ax63XsgX4YYhdYgMQ%3D%0A-----END%20CERTIFICATE-----%0A-----BEGIN%20CERTIFICATE-----%0AMIIErjCCA5agAwIBAgIQBYAmfwbylVM0jhwYWl7uLjANBgkqhkiG9w0BAQsFADBh%0AMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3%0Ad3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD%0AQTAeFw0xNzEyMDgxMjI4MjZaFw0yNzEyMDgxMjI4MjZaMHIxCzAJBgNVBAYTAkNO%0AMSUwIwYDVQQKExxUcnVzdEFzaWEgVGVjaG5vbG9naWVzLCBJbmMuMR0wGwYDVQQL%0AExREb21haW4gVmFsaWRhdGVkIFNTTDEdMBsGA1UEAxMUVHJ1c3RBc2lhIFRMUyBS%0AU0EgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCgWa9X%2Bph%2BwAm8%0AYh1Fk1MjKbQ5QwBOOKVaZR/OfCh%2BF6f93u7vZHGcUU/lvVGgUQnbzJhR1UV2epJa%0Ae%2Bm7cxnXIKdD0/VS9btAgwJszGFvwoqXeaCqFoP71wPmXjjUwLT70%2BqvX4hdyYfO%0AJcjeTz5QKtg8zQwxaK9x4JT9CoOmoVdVhEBAiD3DwR5fFgOHDwwGxdJWVBvktnoA%0AzjdTLXDdbSVC5jZ0u8oq9BiTDv7jAlsB5F8aZgvSZDOQeFrwaOTbKWSEInEhnchK%0AZTD1dz6aBlk1xGEI5PZWAnVAba/ofH33ktymaTDsE6xRDnW97pDkimCRak6CEbfe%0A3dXw6OV5AgMBAAGjggFPMIIBSzAdBgNVHQ4EFgQUf9OZ86BHDjEAVlYijrfMnt3K%0AAYowHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUwDgYDVR0PAQH/BAQD%0AAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjASBgNVHRMBAf8ECDAG%0AAQH/AgEAMDQGCCsGAQUFBwEBBCgwJjAkBggrBgEFBQcwAYYYaHR0cDovL29jc3Au%0AZGlnaWNlcnQuY29tMEIGA1UdHwQ7MDkwN6A1oDOGMWh0dHA6Ly9jcmwzLmRpZ2lj%0AZXJ0LmNvbS9EaWdpQ2VydEdsb2JhbFJvb3RDQS5jcmwwTAYDVR0gBEUwQzA3Bglg%0AhkgBhv1sAQIwKjAoBggrBgEFBQcCARYcaHR0cHM6Ly93d3cuZGlnaWNlcnQuY29t%0AL0NQUzAIBgZngQwBAgEwDQYJKoZIhvcNAQELBQADggEBAK3dVOj5dlv4MzK2i233%0AlDYvyJ3slFY2X2HKTYGte8nbK6i5/fsDImMYihAkp6VaNY/en8WZ5qcrQPVLuJrJ%0ADSXT04NnMeZOQDUoj/NHAmdfCBB/h1bZ5OGK6Sf1h5Yx/5wR4f3TUoPgGlnU7EuP%0AISLNdMRiDrXntcImDAiRvkh5GJuH4YCVE6XEntqaNIgGkRwxKSgnU3Id3iuFbW9F%0AUQ9Qqtb1GX91AJ7i4153TikGgYCdwYkBURD8gSVe8OAco6IfZOYt/TEwii1Ivi1C%0AqnuUlWpsF1LdQNIdfbW3TSe0BhQa7ifbVIfvPWHYOu3rkg1ZeMo6XRU9B4n5VyJY%0ARmE%3D%0A-----END%20CERTIFICATE-----%0A\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\",\n        \"CertificateId\": \"cert-xxx\"\n    }\n}",
         "title": "Creating a certificate"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCertificate\n<Common request parameters>\n\n{\n    \"CertificateType\": \"2\",\n    \"CertificateAlias\": \"123\",\n    \"CertificateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAn7CUY5bRNtt/YVT9BBDtfyqmF09KXzI+BCrIvrGDrjxRdIsT\\nHs0xZL5EbZXt7uc5leXJ47RnVAQtNMCOuqeYtFWNMzGydVchMkImBHEsATE+ukqs\\n7qUSmbg/BjlOD4hmPNmNz6eljrwMXxNxP0D0BdDMuy+JPLxDp/Hp/Sr3rngL6cbu\\nAvfhnN/l+HvII79KC9D6w8uIyRoAqybaLrP9P+6yXaBFKzdc7o/LanHEAUaxY/Pb\\ndP+3HFGNu5DiUHopFHzjl5Kr2GCWDL9N5VMI36H4UF40wvrjna1BWc8em5zVzais\\nLbj5pZMRTX2KpMfdDluiT/hzPHs1Ex4h0HGUQwIDAQABAoIBAF7K3BsN8N1GiKPH\\nZnYecky1jWhy2ewOj/+7QfTovQkVpyiuUchL99EcnNQMVvQk7+sKP8DaWyflXsxc\\nrZ0hVaVez3WfP5cmBH+oApdKctu2Vs0Q/Pygopz7YPYZ2DuiNUZTwjmNA9rpx9I8\\nYVIyBWjaXF2VRzr1apfsI4D0G5jFm/ugJqeflnJmyV/ZNix1uJvelN2LvxeH/PN5\\nk6IZ14IoKe7PdwlUjy306rwWnej89ofbXmVkzNB87C1Z0rHE4UWaOUu2q5B8Rn8j\\nh+2I8dXwQSXPdbxv6RWFfdcyBci0Y9N7ucmS3zWI+ymQn0sR11Nhv0fOomymUO2+\\nNa02DbkCgYEAzoPxzdaXgda1bMIQrg+M4hZrUeQiy9FA4hJyNqwZsiO3YLA9fZrQ\\nw7ITNCcl5vEEsADz3WqWtx2ZdsFQkvv3z4DNbfeLb6NHHNcnNi4WgdxA1MG8726T\\nTazZHSxY4cZfLdzXU5/Y5AAfhCcBNpU/pGLYPpkhQOB2k3NH7C4jJX0CgYEAxfRC\\nYs1VSRq8j7auV0k3aCOSLaPv9gF+m8sg1zVdV1Emy36/WRetmuXSPonS0Nie7MBl\\nsRwmWgOQZgiTryNKQfnlhMlz2b/ZiaoU1pGVdcKN/aWKBma/KWf9mIx1WyGZdpaH\\ns7zgEqSWjF0ZMB0UljW6m8NUtghjfClO9VcNzL8CgYBRq8CvBNS6Fm19a2opTCEN\\nMIyUwEI6lLCyN1VP5dPrrVBSPqCy0c0J95y8nVbR9DNEX7wRrpuYI26TlnQFDPy9\\n5VRYzvMn3Uy8TSJGvQdNqAtDmLLdhb9fkqHydZ1Y/JibjKDjg23FDX9pRfum2HNo\\n0WZvqyOJgruiKI8jCkQACQKBgDGeHwG67BSt4fO3240/aebte5d7Dwu/pieQy8OF\\nucbILYw2UeoX+EjqMD/CthfpJDS9qP+yyZ4oZIpevf3ZP6S36aLWB/bdkr5h5mU+\\nCpOA16xrUOR33pSXX0ZcdpIIIvpJkuwnfJbPsHiwYT7hGybngsXGOTaDdcRKamMu\\nlePrAoGBAJVaQpEyDwgppuAcv9KTUtiIOLRke/pd0WO20wTkZqMiIfiKjDpASq5c\\nrEzq0M6qYpnmj87wwFpZLLJvMUa9w5KjUpJ+hqBNYywe5/d6laaISFdtYfjoNuLw\\n4BZI/XcA3ZiqzpPqYWBODrEcnCRZKH4C71c7yyATwQL2iWRHoJkY\\n-----END RSA PRIVATE KEY-----\",\n    \"CertificateContent\": \"-----BEGIN CERTIFICATE-----\\nMIIDkTCCAnkCCQDOEdu7vXp33jANBgkqhkiG9w0BAQUFADCBhjELMAkGA1UEBhMC\\nQ04xEjAQBgNVBAgMCUd1YW5nRG9uZzELMAkGA1UEBwwCU1oxEDAOBgNVBAoMB3Rl\\nbmNlbnQxDTALBgNVBAsMBGNzaWcxFjAUBgNVBAMMDWNhLmNtMTAwMS5jb20xHTAb\\nBgkqhkiG9w0BCQEWDmNhQHRlbmNlbnQuY29tMB4XDTE5MDcyOTEyMjI1MFoXDTI5\\nMDcyNjEyMjI1MFowgY0xCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ0Rvbmcx\\nCzAJBgNVBAcMAlNaMRAwDgYDVQQKDAd0ZW5jZW50MQ0wCwYDVQQLDARjc2lnMRow\\nGAYDVQQDDBF3d3cuY2hyaXN0ZXN0LmNvbTEgMB4GCSqGSIb3DQEJARYRY2hyaXNA\\ndGVuY2VudC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCfsJRj\\nltE2239hVP0EEO1/KqYXT0pfMj4EKsi+sYOuPFF0ixMezTFkvkRtle3u5zmV5cnj\\ntGdUBC00wI66p5i0VY0zMbJ1VyEyQiYEcSwBMT66SqzupRKZuD8GOU4PiGY82Y3P\\np6WOvAxfE3E/QPQF0My7L4k8vEOn8en9KveueAvpxu4C9+Gc3+X4e8gjv0oL0PrD\\ny4jJGgCrJtous/0/7rJdoEUrN1zuj8tqccQBRrFj89t0/7ccUY27kOJQeikUfOOX\\nkqvYYJYMv03lUwjfofhQXjTC+uOdrUFZzx6bnNXNqKwtuPmlkxFNfYqkx90OW6JP\\n+HM8ezUTHiHQcZRDAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAGKJdazyji4aSAAk\\ndcH9/he1RhfkdkBinNQspYWrl7n3+YfX2aCBwkHDTnUUA+HIpUtaWekRqRGHXaKg\\nMjSKOHW715VVR3CMekIRkhQkBMmicaC2YRTpJNOOkehAqeszytDXoICgDc34zkmy\\nVBPRYckYnXE8gwmew1Ogg8PxeC2WgNAQtm/GXmdfe8Wtoy88Ugz8NSV//lIkQJkM\\nzc7+GvWbIsfP7i7Cz8pIMNuJsfrVerbDpbpSSXr6lvTfeCbh9Sq43jpJTbhg2BoU\\nSpnKCvccuOEJnGOwb9WyZ/vrO2JG2RUdglpKh6l5c4+33yOgPqEcGnqMqsDDjAct\\nGjxzvQ4\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdef4308-69b2-4941-aeeb-9612f2c0cb2a\",\n        \"CertificateId\": \"cert-li3tu2id\"\n    }\n}",
         "title": "Adding a server SSL certificate"
@@ -78,7 +78,7 @@
     ],
     "CreateCustomHeader": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCustomHeader\n<Common request parameters>\n\n{\n    \"RuleId\": \"rule-18vhg67\",\n    \"Headers\": [\n        {\n            \"HeaderName\": \"X-REAL_IP\",\n            \"HeaderValue\": \"$remote_addr\"\n        },\n        {\n            \"HeaderName\": \"X-FORWORD-IP\",\n            \"HeaderValue\": \"192.168.2.101\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "CreateDomain"
@@ -86,7 +86,7 @@
     ],
     "CreateDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"a.a.com\",\n    \"CertificateId\": \"abc\",\n    \"ListenerId\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "CreateDomain"
@@ -94,7 +94,7 @@
     ],
     "CreateDomainErrorPageInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomainErrorPageInfo\n<Common request parameters>\n\n{\n    \"Body\": \"helloword\",\n    \"Domain\": \"a.com\",\n    \"ListenerId\": \"0\",\n    \"ErrorNos\": [\n        \"502\",\n        \"501\"\n    ],\n    \"NewErrorNo\": \"400\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\",\n        \"ErrorPageId\": \"errorPage-1fewf\"\n    }\n}",
         "title": "CreateDomainErrorPageInfo"
@@ -118,13 +118,13 @@
     ],
     "CreateProxy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxy\n<Common request parameters>\n\n{\n    \"AccessRegion\": \"SouthChina\",\n    \"ProjectId\": \"0\",\n    \"Concurrent\": \"2\",\n    \"Bandwidth\": \"10\",\n    \"ProxyName\": \"test\",\n    \"GroupId\": \"lg-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"link-11112222\",\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "Creating a connection"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxy\n<Common request parameters>\n\n{\n    \"Http3Supported\": \"0\",\n    \"BillingType\": \"0\",\n    \"AccessRegion\": \"Shanghai\",\n    \"Concurrent\": \"2\",\n    \"ProjectId\": \"0\",\n    \"RealServerRegion\": \"Guangzhou\",\n    \"ProxyName\": \"test\",\n    \"Bandwidth\": \"10\",\n    \"PackageType\": \"Thunder\",\n    \"NetworkType\": \"normal\",\n    \"IPAddressVersion\": \"IPv4\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"db2dd9d4-ba60-48a2-a9ed-cd18c6e58dd0\",\n        \"InstanceId\": \"link-aogd6x07\"\n    }\n}",
         "title": "Example 2: Creating a connection"
@@ -132,13 +132,13 @@
     ],
     "CreateProxyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxyGroup\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"RealServerRegion\": \"EastChina\",\n    \"GroupName\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"19a021f8-dff3-4890-8e7a-ed5054e22e49\",\n        \"GroupId\": \"lg-negxun2x\"\n    }\n}",
         "title": "Creating a connection group"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxyGroup\n<Common request parameters>\n\n{\n    \"Http3Supported\": \"0\",\n    \"ProjectId\": \"0\",\n    \"RealServerRegion\": \"Shanghai\",\n    \"GroupName\": \"benny-test\",\n    \"PackageType\": \"Thunder\",\n    \"IPAddressVersion\": \"IPv4\",\n    \"AccessRegionSet\": [\n        {\n            \"NetworkType\": \"normal\",\n            \"Bandwidth\": \"10\",\n            \"AccessRegion\": \"Guangzhou\",\n            \"Concurrent\": \"2\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1858c87c-2110-430d-bd09-f86091127fe0\",\n        \"GroupId\": \"lg-cj8rn2up\"\n    }\n}",
         "title": "CreateProxyGroup"
@@ -146,7 +146,7 @@
     ],
     "CreateProxyGroupDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxyGroupDomain\n<Common request parameters>\n\n{\n    \"GroupId\": \"lg-b7h4d02f\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"19a021f8-dff3-4890-8e7a-ed5054e22e49\",\n        \"GroupId\": \"lg-okl0h0n1\"\n    }\n}",
         "title": "Enabling connection group domain name"
@@ -162,7 +162,7 @@
     ],
     "CreateSecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSecurityPolicy\n<Common request parameters>\n\n{\n    \"ProxyId\": \"link-1234\",\n    \"DefaultAction\": \"Accept\"\n}",
         "output": "{\n    \"Response\": {\n        \"PolicyId\": \"pl-xxxx\",\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\"\n    }\n}",
         "title": "Creating a security policy"
@@ -170,7 +170,7 @@
     ],
     "CreateSecurityRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSecurityRules\n<Common request parameters>\n\n{\n    \"PolicyId\": \"string\",\n    \"RuleList\": [\n        {\n            \"Action\": \"string\",\n            \"Protocol\": \"string\",\n            \"DestPortRange\": \"string\",\n            \"AliasName\": \"string\",\n            \"SourceCidr\": \"string\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\",\n        \"RuleIdList\": [\n            \"sr-ishgwan1\",\n            \"sr-ishgwan2\"\n        ]\n    }\n}",
         "title": "Adding access rules"
@@ -194,7 +194,7 @@
     ],
     "DeleteCertificate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCertificate\n<Common request parameters>\n\n{\n    \"CertificateId\": \"xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "Deleting a certificate"
@@ -202,7 +202,7 @@
     ],
     "DeleteDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"a.a.com\",\n    \"Force\": \"1\",\n    \"ListenerId\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "Deleting forwarding rules based on domain names"
@@ -210,7 +210,7 @@
     ],
     "DeleteDomainErrorPageInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomainErrorPageInfo\n<Common request parameters>\n\n{\n    \"ErrorPageId\": \"'errorPage-xxxx'\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "DeleteDomainErrorPageInfo"
@@ -242,7 +242,7 @@
     ],
     "DeleteSecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSecurityPolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": \"sp-hw5czrxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\"\n    }\n}",
         "title": "Deleting security policy"
@@ -250,7 +250,7 @@
     ],
     "DeleteSecurityRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSecurityRules\n<Common request parameters>\n\n{\n    \"RuleIdList\": [\n        \"sr-xxx\"\n    ],\n    \"PolicyId\": \"sp-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\"\n    }\n}",
         "title": "Deleting access rules"
@@ -258,7 +258,7 @@
     ],
     "DescribeAccessRegions": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccessRegions\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AccessRegionSet\": [\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying acceleration regions"
@@ -266,15 +266,23 @@
     ],
     "DescribeAccessRegionsByDestRegion": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccessRegionsByDestRegion\n<Common request parameters>\n\n{\n    \"DestRegion\": \"SouthChina\"\n}",
         "output": "{\n    \"Response\": {\n        \"AccessRegionSet\": [\n            {\n                \"RegionId\": \"eu-moscow\",\n                \"RegionName\": \"Russia\",\n                \"ConcurrentList\": [\n                    1,\n                    2,\n                    3,\n                    4,\n                    5,\n                    6,\n                    7\n                ],\n                \"BandwidthList\": [\n                    1,\n                    2,\n                    3,\n                    4,\n                    5,\n                    6,\n                    7\n                ],\n                \"RegionArea\": \"NorthChina\",\n                \"RegionAreaName\": \"Chinese mainland - North China\",\n                \"IDCType\": \"dc\",\n                \"FeatureBitmap\": 3\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the available accelerator region based on the origin server region"
       }
     ],
+    "DescribeAuthSignature": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuthSignature\n<common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying a request signature"
+      }
+    ],
     "DescribeBlackHeader": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBlackHeader\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\",\n        \"BlackHeaders\": [\n            \"X-Forward-For\",\n            \"allow\"\n        ]\n    }\n}",
         "title": "Queries the list of blocked custom headers"
@@ -282,7 +290,7 @@
     ],
     "DescribeCertificateDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCertificateDetail\n<Common request parameters>\n\n{\n    \"CertificateId\": \"cert-d5y6ei3b\"\n}",
         "output": "{\n    \"Response\": {\n        \"CertificateDetail\": {\n            \"CertificateId\": \"cert-d5y6ei3b\",\n            \"SubjectCN\": \"lagameft01.xyz\",\n            \"CertificateAlias\": \"ca\",\n            \"CertificateContent\": \"-----BEGIN CERTIFICATE-----\\nMIIFmDCCBICgAwIBAgIQC6TGAPV+4MO7NIhlkkKFljANBgkqhkiG9w0BAQsFADBy\\nMQswCQYDVQQGEwJDTjElMCMGA1UEChMcVHJ1c3RBc2lhIFRlY2hub2xvZ2llcywg\\nSW5jLjEdMBsGA1UECxMURG9tYWluIFZhbGlkYXRlZCBTU0wxHTAbBgNVBAMTFFRy\\ndXN0QXNpYSBUTFMgUlNBIENBMB4XDTE5MDQwMjAwMDAwMFoXDTIwMDQwMTEyMDAw\\nMFowGTEXMBUGA1UEAxMObGFnYW1lZnQwMS54eXowggEiMA0GCSqGSIb3DQEBAQUA\\nA4IBDwAwggEKAoIBAQCuSgglfAksbFSrvWp6cEFr8ulTWEND2KvXf6cCs3kBBCzE\\nMLhCw4792LMFY0+FE7a0j7i5nJ9+QvhX7GRiu1P9flyge0eUCOBOAtVCn0dvhbLy\\n7efWsmH3kp/owWXnZXeb/k5R1FvojCiV968MxMC+2Y7ejz5qMm5XlQPn3xQOEj2h\\nQmHwQ9XwO8qRsIuCD1oNrsXsyXuEhA2zkEvcgtYP35zPsXfjbBaBg7Iw3o0j3jXj\\ngdhD2Q2OzH05jDn3hDhSnej1jbWuGmDEOO+u6W/xqnCOhBMjWLnuW2aUddiBiqsH\\n8BQK/Ge6HUp+mMdkdNAw5FN6ztIPzP6GFb0OOLitAgMBAAGjggKBMIICfTAfBgNV\\nHSMEGDAWgBR/05nzoEcOMQBWViKOt8ye3coBijAdBgNVHQ4EFgQUqYL1l3uFqYHC\\n2mJcZC26nLHtkjYwLQYDVR0RBCYwJIIObGFnYW1lZnQwMS54eXqCEnd3dy5sYWdh\\nbWVmdDAxLnh5ejAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEG\\nCCsGAQUFBwMCMEwGA1UdIARFMEMwNwYJYIZIAYb9bAECMCowKAYIKwYBBQUHAgEW\\nHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwCAYGZ4EMAQIBMH0GCCsGAQUF\\nBwEBBHEwbzAhBggrBgEFBQcwAYYVaHR0cDovL29jc3AuZGNvY3NwLmNuMEoGCCsG\\nAQUFBzAChj5odHRwOi8vY2FjZXJ0cy5kaWdpdGFsY2VydHZhbGlkYXRpb24uY29t\\nL1RydXN0QXNpYVRMU1JTQUNBLmNydDAJBgNVHRMEAjAAMIIBAwYKKwYBBAHWeQIE\\nAgSB9ASB8QDvAHUAu9nfvB+KcbWTlCOXqpJ7RzhXlQqrUugakJZkNo4e0YUAAAFp\\n3cON9gAABAMARjBEAiABFpvdLsJKm6zxh5wLS6uN5+TnX8bXD5bj7CPVC4Kg/wIg\\nB+BzdsZL0UmuvbNAYkr8W53bJKhEgoHJ0RdSyoF5yZAAdgCHdb/nWXz4jEOZX73z\\nbv9WjUdWNv9KtWDBtOr/XqCDDwAAAWndw47mAAAEAwBHMEUCIQC+DdvaJ2kKvsVv\\niivLe4W/YFa/K64HdnyOdHksEl9pSAIgTqLXfw6Tc7d+giKMtt+6P/xdrvjGt5Du\\nokvgu70INuQwDQYJKoZIhvcNAQELBQADggEBAHxewHgySBS5UoO6l/IcU95baR/O\\nYGLcCpgEbWj4MigIZcrkHsD7RddRDoyM/3hxKyzs3Dkes4wHTQDWnyrNuXdn8aNV\\nJAhrh/0yzAe3/UTJ/+SRoMg1K6rHWORmLa52d9u3Ei+1BF2qLi5L2tTmLrSQJXzB\\nNSIFd40x1mZLp9uqhcB9kcwwkHSFUtLjFwUSN6Zjn9FStlq06ezjgnVv2tP9/HoP\\nKWiRgRFDgqj8+ROJPQvfuO2xdWoxYUmuMcx1o6IiSVn2F48ood029cyT+t3TaYpb\\nhVI9JuYnHW9kN69xPNzamJVCdu4i/1ELvcr0p/wQf9ax63XsgX4YYhdYgMQ=\\n-----END CERTIFICATE-----\\n-----BEGIN CERTIFICATE-----\\nMIIErjCCA5agAwIBAgIQBYAmfwbylVM0jhwYWl7uLjANBgkqhkiG9w0BAQsFADBh\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\\nQTAeFw0xNzEyMDgxMjI4MjZaFw0yNzEyMDgxMjI4MjZaMHIxCzAJBgNVBAYTAkNO\\nMSUwIwYDVQQKExxUcnVzdEFzaWEgVGVjaG5vbG9naWVzLCBJbmMuMR0wGwYDVQQL\\nExREb21haW4gVmFsaWRhdGVkIFNTTDEdMBsGA1UEAxMUVHJ1c3RBc2lhIFRMUyBS\\nU0EgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCgWa9X+ph+wAm8\\nYh1Fk1MjKbQ5QwBOOKVaZR/OfCh+F6f93u7vZHGcUU/lvVGgUQnbzJhR1UV2epJa\\ne+m7cxnXIKdD0/VS9btAgwJszGFvwoqXeaCqFoP71wPmXjjUwLT70+qvX4hdyYfO\\nJcjeTz5QKtg8zQwxaK9x4JT9CoOmoVdVhEBAiD3DwR5fFgOHDwwGxdJWVBvktnoA\\nzjdTLXDdbSVC5jZ0u8oq9BiTDv7jAlsB5F8aZgvSZDOQeFrwaOTbKWSEInEhnchK\\nZTD1dz6aBlk1xGEI5PZWAnVAba/ofH33ktymaTDsE6xRDnW97pDkimCRak6CEbfe\\n3dXw6OV5AgMBAAGjggFPMIIBSzAdBgNVHQ4EFgQUf9OZ86BHDjEAVlYijrfMnt3K\\nAYowHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUwDgYDVR0PAQH/BAQD\\nAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjASBgNVHRMBAf8ECDAG\\nAQH/AgEAMDQGCCsGAQUFBwEBBCgwJjAkBggrBgEFBQcwAYYYaHR0cDovL29jc3Au\\nZGlnaWNlcnQuY29tMEIGA1UdHwQ7MDkwN6A1oDOGMWh0dHA6Ly9jcmwzLmRpZ2lj\\nZXJ0LmNvbS9EaWdpQ2VydEdsb2JhbFJvb3RDQS5jcmwwTAYDVR0gBEUwQzA3Bglg\\nhkgBhv1sAQIwKjAoBggrBgEFBQcCARYcaHR0cHM6Ly93d3cuZGlnaWNlcnQuY29t\\nL0NQUzAIBgZngQwBAgEwDQYJKoZIhvcNAQELBQADggEBAK3dVOj5dlv4MzK2i233\\nlDYvyJ3slFY2X2HKTYGte8nbK6i5/fsDImMYihAkp6VaNY/en8WZ5qcrQPVLuJrJ\\nDSXT04NnMeZOQDUoj/NHAmdfCBB/h1bZ5OGK6Sf1h5Yx/5wR4f3TUoPgGlnU7EuP\\nISLNdMRiDrXntcImDAiRvkh5GJuH4YCVE6XEntqaNIgGkRwxKSgnU3Id3iuFbW9F\\nUQ9Qqtb1GX91AJ7i4153TikGgYCdwYkBURD8gSVe8OAco6IfZOYt/TEwii1Ivi1C\\nqnuUlWpsF1LdQNIdfbW3TSe0BhQa7ifbVIfvPWHYOu3rkg1ZeMo6XRU9B4n5VyJY\\nRmE=\\n-----END CERTIFICATE-----\",\n            \"CertificateKey\": null,\n            \"BeginTime\": 1554134400,\n            \"CertificateType\": 3,\n            \"EndTime\": 1585713600,\n            \"CreateTime\": 1564560608,\n            \"IssuerCN\": \"TrustAsia TLS RSA CA\"\n        },\n        \"RequestId\": \"7a4d63f8-a663-469c-be71-f1c00001c74b\"\n    }\n}",
         "title": "Querying certificate details"
@@ -290,7 +298,7 @@
     ],
     "DescribeCertificates": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCertificates\n<Common request parameters>\n\n{\n    \"CertificateType\": \"2\",\n    \"Limit\": \"1\",\n    \"Offset\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 19,\n        \"RequestId\": \"35d85baa-eeb8-4eb5-96a9-b6d27f4ff92c\",\n        \"CertificateSet\": [\n            {\n                \"CertificateId\": \"cert-8k1l0pat\",\n                \"SubjectCN\": \"lagameft01.xyz\",\n                \"CertificateAlias\": \"test\",\n                \"CertificateName\": \"test\",\n                \"BeginTime\": 1554134400,\n                \"CertificateType\": 2,\n                \"EndTime\": 1585713600,\n                \"CreateTime\": 1564557014,\n                \"IssuerCN\": \"TrustAsia TLS RSA CA\"\n            }\n        ]\n    }\n}",
         "title": "Querying server certificate information"
@@ -298,7 +306,7 @@
     ],
     "DescribeCountryAreaMapping": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCountryAreaMapping\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\",\n        \"CountryAreaMappingList\": [\n            {\n                \"Remark\": \"1\",\n                \"NationCountryName\": \"Fiji Islands\",\n                \"GeographicalZoneInnerCode\": \"401000\",\n                \"ContinentName\": \"Oceania\",\n                \"ContinentInnerCode\": \"400000\",\n                \"NationCountryInnerCode\": \"401012\",\n                \"GeographicalZoneName\": \"Oceania\"\n            }\n        ]\n    }\n}",
         "title": "Obtaining country/region code mapping table"
@@ -306,7 +314,7 @@
     ],
     "DescribeCustomHeader": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomHeader\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\",\n        \"RuleId\": \"rule-18vhg67\",\n        \"Headers\": [\n            {\n                \"HeaderName\": \"X-REAL_IP\",\n                \"HeaderValue\": \"$remote_addr\"\n            },\n            {\n                \"HeaderName\": \"X-FORWORD-IP\",\n                \"HeaderValue\": \"192.168.2.101\"\n            }\n        ]\n    }\n}",
         "title": "Queries a list of custom headers"
@@ -314,13 +322,13 @@
     ],
     "DescribeDestRegions": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDestRegions\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DestRegionSet\": [\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying custom header list"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDestRegions\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DestRegionSet\": [\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying origin server regions"
@@ -328,7 +336,7 @@
     ],
     "DescribeDomainErrorPageInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainErrorPageInfo\n<Common request parameters>\n\n{\n    \"Domain\": \"a.com\",\n    \"ListenerId\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8d9f4d84-b825-4a4f-8c4c-3c87c559c84c\",\n        \"ErrorPageSet\": [\n            {\n                \"Body\": \"str\",\n                \"Domain\": \"test.domain\",\n                \"ClearHeaders\": [\n                    \"MyClearHeader\",\n                    \"MyClearHeader1\"\n                ],\n                \"ListenerId\": \"listener-23egjhxb\",\n                \"ErrorNos\": [\n                    501,\n                    502\n                ],\n                \"Status\": 1,\n                \"ErrorPageId\": \"errorPage-lhlnux1v\",\n                \"NewErrorNo\": 123,\n                \"SetHeaders\": [\n                    {\n                        \"HeaderName\": \"MyName\",\n                        \"HeaderValue\": \"MyValue\"\n                    },\n                    {\n                        \"HeaderName\": \"MyName1\",\n                        \"HeaderValue\": \"MyValue1\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "DescribeDomainErrorPageInfo"
@@ -336,7 +344,7 @@
     ],
     "DescribeDomainErrorPageInfoByIds": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainErrorPageInfoByIds\n<Common request parameters>\n\n{\n    \"ErrorPageIds\": [\n        \"errorPage-lhlnux1v\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8d9f4d84-b825-4a4f-8c4c-3c87c559c84c\",\n        \"ErrorPageSet\": [\n            {\n                \"Body\": \"sx\",\n                \"Status\": 0,\n                \"Domain\": \"test.domain\",\n                \"ClearHeaders\": [\n                    \"MyClearHeader\",\n                    \"MyClearHeader1\"\n                ],\n                \"ListenerId\": \"listener-23egjhxb\",\n                \"ErrorNos\": [\n                    501,\n                    502\n                ],\n                \"ErrorPageId\": \"errorPage-lhlnux1v\",\n                \"NewErrorNo\": 4123,\n                \"SetHeaders\": [\n                    {\n                        \"HeaderName\": \"MyName\",\n                        \"HeaderValue\": \"MyValue\"\n                    },\n                    {\n                        \"HeaderName\": \"MyName1\",\n                        \"HeaderValue\": \"MyValue1\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "DescribeDomainErrorPageInfoByIds"
@@ -352,7 +360,7 @@
     ],
     "DescribeGroupDomainConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGroupDomainConfig\n<Common request parameters>\n\n{\n    \"GroupId\": \"lg-b7h4d02f\"\n}",
         "output": "{\n    \"Response\": {\n        \"DefaultDnsIp\": \"lg-na2d00jf\",\n        \"AccessRegionCount\": 2,\n        \"RequestId\": \"74b5f95c-e976-4f78-b2ee-aad49eb844c4\",\n        \"AccessRegionList\": [\n            {\n                \"NationCountryInnerList\": [\n                    {\n                        \"NationCountryName\": \"North China\",\n                        \"NationCountryInnerCode\": \"101001\"\n                    },\n                    {\n                        \"NationCountryName\": \"East China\",\n                        \"NationCountryInnerCode\": \"101002\"\n                    },\n                    {\n                        \"NationCountryName\": \"South China\",\n                        \"NationCountryInnerCode\": \"101003\"\n                    },\n                    {\n                        \"NationCountryName\": \"West China\",\n                        \"NationCountryInnerCode\": \"101004\"\n                    }\n                ],\n                \"ContinentInnerCode\": \"100000\",\n                \"RegionId\": \"EastChina\",\n                \"GeographicalZoneInnerCode\": \"101000\",\n                \"ProxyList\": [\n                    {\n                        \"ProxyId\": \"link-4lzfc73l\"\n                    }\n                ],\n                \"RegionName\": \"East China\"\n            },\n            {\n                \"NationCountryInnerList\": [\n                    {\n                        \"NationCountryName\": \"Australia\",\n                        \"NationCountryInnerCode\": \"401000\"\n                    },\n                    {\n                        \"NationCountryName\": \"New Zealand\",\n                        \"NationCountryInnerCode\": \"401001\"\n                    }\n                ],\n                \"ContinentInnerCode\": \"400000\",\n                \"RegionId\": \"SL_Australia\",\n                \"GeographicalZoneInnerCode\": \"401000\",\n                \"ProxyList\": [\n                    {\n                        \"ProxyId\": \"link-ozvhjhp1\"\n                    }\n                ],\n                \"RegionName\": \"Australia (Sydney)\"\n            }\n        ],\n        \"GroupId\": \"lg-na2d00jf\"\n    }\n}",
         "title": "Obtaining domain name resolution configuration details of connection group"
@@ -392,7 +400,7 @@
     ],
     "DescribeProxies": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxies\n&Offset=0\n&Limit=1\n&Filters.0.Name=AccessRegion\n&Filters.0.Values.0=ap-hongkong\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"AccessRegionInfo\": {\n                    \"RegionId\": \"xx\",\n                    \"RegionAreaName\": \"xx\",\n                    \"IDCType\": \"xx\",\n                    \"FeatureBitmap\": 1,\n                    \"RegionArea\": \"xx\",\n                    \"RegionName\": \"xx\"\n                },\n                \"RelatedGlobalDomains\": [\n                    \"xx\"\n                ],\n                \"Version\": \"xx\",\n                \"PolicyId\": \"xx\",\n                \"Scalarable\": 1,\n                \"IPList\": [\n                    {\n                        \"IP\": \"xx\",\n                        \"Bandwidth\": 0,\n                        \"Provider\": \"xx\"\n                    }\n                ],\n                \"Status\": \"xx\",\n                \"ProxyType\": 1,\n                \"ForwardIP\": \"xx\",\n                \"ProxyId\": \"xx\",\n                \"RealServerRegion\": \"xx\",\n                \"Concurrent\": 2,\n                \"RealServerRegionInfo\": {\n                    \"RegionId\": \"xx\",\n                    \"RegionAreaName\": \"xx\",\n                    \"IDCType\": \"xx\",\n                    \"FeatureBitmap\": 1,\n                    \"RegionArea\": \"xx\",\n                    \"RegionName\": \"xx\"\n                },\n                \"IP\": \"xx\",\n                \"Http3Supported\": 0,\n                \"InBanBlacklist\": 0,\n                \"AccessRegion\": \"xx\",\n                \"ProjectId\": 0,\n                \"BillingType\": 0,\n                \"SupportProtocols\": [\n                    \"TCP\",\n                    \"UDP\",\n                    \"HTTP\",\n                    \"HTTPS\"\n                ],\n                \"PackageType\": \"xx\",\n                \"Domain\": \"xx\",\n                \"IPAddressVersion\": \"xx\",\n                \"BanStatus\": \"xx\",\n                \"CreateTime\": 1,\n                \"InstanceId\": \"xx\",\n                \"Bandwidth\": 10,\n                \"SupportSecurity\": 0,\n                \"TagSet\": [\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    }\n                ],\n                \"ClientIPMethod\": [\n                    0\n                ],\n                \"ProxyName\": \"xx\",\n                \"NetworkType\": \"xx\",\n                \"ModifyConfigTime\": 1,\n                \"GroupId\": \"xx\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"ProxySet\": [\n            {\n                \"AccessRegionInfo\": {\n                    \"RegionId\": \"xx\",\n                    \"RegionAreaName\": \"xx\",\n                    \"IDCType\": \"xx\",\n                    \"FeatureBitmap\": 1,\n                    \"RegionArea\": \"xx\",\n                    \"RegionName\": \"xx\"\n                },\n                \"RelatedGlobalDomains\": [\n                    \"xx\"\n                ],\n                \"Version\": \"xx\",\n                \"PolicyId\": \"xx\",\n                \"Scalarable\": 1,\n                \"IPList\": [\n                    {\n                        \"IP\": \"xx\",\n                        \"Bandwidth\": 0,\n                        \"Provider\": \"xx\"\n                    }\n                ],\n                \"Status\": \"xx\",\n                \"ProxyType\": 1,\n                \"ForwardIP\": \"xx\",\n                \"ProxyId\": \"xx\",\n                \"RealServerRegion\": \"xx\",\n                \"Concurrent\": 2,\n                \"RealServerRegionInfo\": {\n                    \"RegionId\": \"xx\",\n                    \"RegionAreaName\": \"xx\",\n                    \"IDCType\": \"xx\",\n                    \"FeatureBitmap\": 1,\n                    \"RegionArea\": \"xx\",\n                    \"RegionName\": \"xx\"\n                },\n                \"IP\": \"xx\",\n                \"Http3Supported\": 0,\n                \"InBanBlacklist\": 0,\n                \"AccessRegion\": \"xx\",\n                \"ProjectId\": 0,\n                \"BillingType\": 0,\n                \"SupportProtocols\": [\n                    \"TCP\",\n                    \"UDP\",\n                    \"HTTP\",\n                    \"HTTPS\"\n                ],\n                \"PackageType\": \"xx\",\n                \"Domain\": \"xx\",\n                \"IPAddressVersion\": \"xx\",\n                \"BanStatus\": \"xx\",\n                \"CreateTime\": 1,\n                \"InstanceId\": \"xx\",\n                \"Bandwidth\": 10,\n                \"SupportSecurity\": 0,\n                \"TagSet\": [\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    }\n                ],\n                \"ClientIPMethod\": [\n                    0\n                ],\n                \"ProxyName\": \"xx\",\n                \"NetworkType\": \"xx\",\n                \"ModifyConfigTime\": 1,\n                \"GroupId\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying connection list"
@@ -400,7 +408,7 @@
     ],
     "DescribeProxiesStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProxiesStatus\n<Common request parameters>\n\n{\n    \"ProxyIds\": [\n        \"link-1234abcd\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceStatusSet\": [\n            {\n                \"InstanceId\": \"link-4ftf12sb\",\n                \"Status\": \"RUNNING\"\n            }\n        ],\n        \"RequestId\": \"caac3323-bda3-4edc-b063-f584eb5936a2\"\n    }\n}",
         "title": "Querying connection status"
@@ -416,13 +424,13 @@
     ],
     "DescribeProxyDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxyDetail\n&ProxyId=link-12345678\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ProxyDetail\": {\n            \"AccessRegionInfo\": {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            \"RelatedGlobalDomains\": [\n                \"xx\"\n            ],\n            \"Version\": \"xx\",\n            \"PolicyId\": \"xx\",\n            \"Scalarable\": 1,\n            \"IPList\": [\n                {\n                    \"IP\": \"xx\",\n                    \"Bandwidth\": 0,\n                    \"Provider\": \"xx\"\n                }\n            ],\n            \"Status\": \"xx\",\n            \"ProxyType\": 1,\n            \"ForwardIP\": \"xx\",\n            \"ProxyId\": \"xx\",\n            \"RealServerRegion\": \"xx\",\n            \"Concurrent\": 2,\n            \"RealServerRegionInfo\": {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            \"IP\": \"xx\",\n            \"Http3Supported\": 0,\n            \"InBanBlacklist\": 0,\n            \"AccessRegion\": \"xx\",\n            \"ProjectId\": 0,\n            \"BillingType\": 0,\n            \"SupportProtocols\": [\n                \"TCP\",\n                \"UDP\"\n            ],\n            \"PackageType\": \"xx\",\n            \"Domain\": \"xx\",\n            \"IPAddressVersion\": \"xx\",\n            \"BanStatus\": \"xx\",\n            \"CreateTime\": 1,\n            \"InstanceId\": \"xx\",\n            \"Bandwidth\": 10,\n            \"SupportSecurity\": 1,\n            \"TagSet\": [\n                {\n                    \"TagKey\": \"xx\",\n                    \"TagValue\": \"xx\"\n                }\n            ],\n            \"ClientIPMethod\": [\n                0\n            ],\n            \"ProxyName\": \"xx\",\n            \"NetworkType\": \"xx\",\n            \"ModifyConfigTime\": 1,\n            \"GroupId\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying connection details"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProxyDetail\n<Common request parameters>\n\n{\n    \"ProxyId\": \"link-4m6fx36h\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fe6deb4c-3bf9-4b92-9bec-047d44d8d7c4\",\n        \"ProxyDetail\": {\n            \"InstanceId\": \"link-4m6fx36h\",\n            \"ProxyId\": \"link-4m6fx36h\",\n            \"CreateTime\": 1646712299,\n            \"ProjectId\": 0,\n            \"ProxyName\": \"test8\",\n            \"ProxyType\": 100,\n            \"AccessRegion\": \"Guangzhou\",\n            \"RealServerRegion\": \"Shanghai\",\n            \"Bandwidth\": 10,\n            \"NetworkType\": \"normal\",\n            \"Concurrent\": 2,\n            \"Status\": \"RUNNING\",\n            \"Domain\": \"link-4m6fx36h.gaapacc.com.cn\",\n            \"IP\": \"1.14.225.21\",\n            \"IPList\": [\n                {\n                    \"IP\": \"1.14.225.21\",\n                    \"Provider\": \"BGP\",\n                    \"Bandwidth\": 10\n                }\n            ],\n            \"AccessRegionInfo\": {\n                \"RegionId\": \"Guangzhou\",\n                \"RegionName\": \"Guangzhou (formerly Chinese mainland - South China)\",\n                \"RegionArea\": \"SouthChina\",\n                \"RegionAreaName\": \"SouthChina\",\n                \"IDCType\": \"dc\",\n                \"FeatureBitmap\": 79\n            },\n            \"RealServerRegionInfo\": {\n                \"RegionId\": \"Shanghai\",\n                \"RegionName\": \"Shanghai (formerly Chinese mainland - East China)\",\n                \"RegionArea\": \"EastChina\",\n                \"RegionAreaName\": \"EastChina\",\n                \"IDCType\": \"dc\",\n                \"FeatureBitmap\": 79\n            },\n            \"TagSet\": [],\n            \"ModifyConfigTime\": 1646712299,\n            \"IPAddressVersion\": \"IPv4\",\n            \"PackageType\": \"Thunder\",\n            \"BanStatus\": \"RECOVER\",\n            \"Http3Supported\": 0,\n            \"InBanBlacklist\": 0,\n            \"ClientIPMethod\": [\n                0,\n                1\n            ],\n            \"GroupId\": null,\n            \"PolicyId\": \"sp-nahrld9t\",\n            \"Version\": \"3.0\",\n            \"SupportProtocols\": [\n                \"TCP\",\n                \"UDP\"\n            ],\n            \"Scalarable\": 1,\n            \"SupportSecurity\": 1,\n            \"BillingType\": 0,\n            \"RelatedGlobalDomains\": [\n                \"gd-rv1p5ak9.gaapacc.com.cn\"\n            ],\n            \"ForwardIP\": \"124.222.196.15;124.221.127.42;\"\n        }\n    }\n}",
         "title": "Querying connection group details"
@@ -430,7 +438,7 @@
     ],
     "DescribeProxyGroupDetails": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxyGroupDetails\n&GroupId=lg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ProxyGroupDetail\": {\n            \"Status\": 0,\n            \"Http3Supported\": 0,\n            \"Domain\": \"xx\",\n            \"ClientIPMethod\": [\n                0\n            ],\n            \"RealServerRegionInfo\": {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            \"TagSet\": [\n                {\n                    \"TagKey\": \"xx\",\n                    \"TagValue\": \"xx\"\n                }\n            ],\n            \"ProxyNum\": 0,\n            \"CreateUin\": \"xx\",\n            \"PackageType\": \"xx\",\n            \"OwnerUin\": \"xx\",\n            \"GroupId\": \"xx\",\n            \"GroupName\": \"xx\",\n            \"Version\": \"xx\",\n            \"PolicyId\": \"xx\",\n            \"IsOldGroup\": false,\n            \"ProjectId\": 0,\n            \"IPAddressVersion\": \"xx\",\n            \"CreateTime\": 1552978237,\n            \"DnsDefaultIp\": \"xx\"\n        }\n    }\n}",
         "title": "Querying connection group details"
@@ -438,7 +446,7 @@
     ],
     "DescribeProxyGroupList": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxyGroupList\n&ProjectId=0\n&Offset=0\n&Limit=20\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"8b6bb93c-0dce-4513-a274-1410f276307c\",\n        \"ProxyGroupList\": [\n            {\n                \"Status\": 0,\n                \"Domain\": null,\n                \"ProjectId\": 0,\n                \"GroupName\": \"t4\",\n                \"TagSet\": [],\n                \"RealServerRegionInfo\": {\n                    \"RegionId\": \"EastChina\",\n                    \"RegionName\": \"EastChina\",\n                    \"RegionArea\": \"EastChina\",\n                    \"RegionAreaName\": \"EastChina\",\n                    \"IDCType\": \"ec\"\n                },\n                \"GroupId\": \"lg-mh4k07v5\"\n            },\n            {\n                \"Status\": 0,\n                \"Domain\": null,\n                \"ProjectId\": 0,\n                \"GroupName\": \"sandytest2\",\n                \"TagSet\": [],\n                \"RealServerRegionInfo\": {\n                    \"RegionId\": \"EastChina\",\n                    \"RegionName\": \"EastChina\",\n                    \"RegionArea\": \"EastChina\",\n                    \"RegionAreaName\": \"EastChina\",\n                    \"IDCType\": \"ec\"\n                },\n                \"GroupId\": \"lg-d5y6ei3b\"\n            }\n        ]\n    }\n}",
         "title": "Querying the list of connection groups"
@@ -470,7 +478,7 @@
     ],
     "DescribeRealServers": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRealServers\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"SearchValue\": \"'1.1.1.1'\"\n}",
         "output": "{\n    \"Response\": {\n        \"RealServerSet\": [\n            {\n                \"RealServerId\": \"rs123\",\n                \"RealServerIP\": \"1.1.1.1\",\n                \"RealServerName\": \"rsname\",\n                \"ProjectId\": 0,\n                \"TagSet\": []\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
         "title": "Querying origin server information"
@@ -492,7 +500,7 @@
         "title": "This example shows you how to obtain the origin server region and the bandwidth tiered pricing."
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRegionAndPrice\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DestRegionSet\": [\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            },\n            {\n                \"RegionId\": \"xx\",\n                \"RegionAreaName\": \"xx\",\n                \"IDCType\": \"xx\",\n                \"FeatureBitmap\": 1,\n                \"RegionArea\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"BandwidthUnitPrice\": [\n            {\n                \"BandwidthRange\": [\n                    0,\n                    20\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    20,\n                    100\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    100,\n                    500\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    500,\n                    2000\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    2000,\n                    0\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            }\n        ],\n        \"Currency\": \"xx\"\n    }\n}",
         "title": "This example shows you how to obtain the origin server region and the bandwidth tiered pricing."
@@ -500,7 +508,7 @@
     ],
     "DescribeResourcesByTag": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResourcesByTag\n<Common request parameters>\n\n{\n    \"ResourceType\": \"Proxy\",\n    \"TagKey\": \"testkey\",\n    \"TagValue\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"ResourceSet\": [\n            {\n                \"ResourceType\": \"Proxy\",\n                \"ResourceId\": \"link-12345678\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
         "title": "Pulling resource list based on tags"
@@ -516,7 +524,7 @@
     ],
     "DescribeRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRules\n<Common request parameters>\n\n{\n    \"ListenerId\": \"listener-9jt0rtv9\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DomainRuleSet\": [\n            {\n                \"GaapCertificateAlias\": \"xx\",\n                \"Http3Supported\": 0,\n                \"Domain\": \"xx\",\n                \"CertificateId\": \"xx\",\n                \"PolyRealServerCertificateAliasInfo\": [\n                    {\n                        \"CertificateId\": \"xx\",\n                        \"CertificateAlias\": \"xx\"\n                    }\n                ],\n                \"RealServerCertificateId\": \"xx\",\n                \"BanStatus\": \"xx\",\n                \"CertificateAlias\": \"xx\",\n                \"ClientCertificateId\": \"xx\",\n                \"GaapCertificateId\": \"xx\",\n                \"BasicAuth\": 1,\n                \"BasicAuthConfAlias\": \"xx\",\n                \"BasicAuthConfId\": \"xx\",\n                \"RealServerCertificateAlias\": \"xx\",\n                \"RuleSet\": [\n                    {\n                        \"BindStatus\": 1,\n                        \"Domain\": \"xx\",\n                        \"RealServerType\": \"xx\",\n                        \"ForwardHost\": \"xx\",\n                        \"RuleId\": \"xx\",\n                        \"HealthCheck\": 1,\n                        \"ServerNameIndication\": \"xx\",\n                        \"ListenerId\": \"xx\",\n                        \"CheckParams\": {\n                            \"Domain\": \"xx\",\n                            \"ConnectTimeout\": 1,\n                            \"BlockInter\": 1,\n                            \"FailedThreshold\": 1,\n                            \"Path\": \"xx\",\n                            \"FailedCountInter\": 1,\n                            \"Method\": \"xx\",\n                            \"DelayLoop\": 1,\n                            \"StatusCode\": [\n                                1,\n                                1,\n                                1,\n                                1,\n                                1\n                            ]\n                        },\n                        \"ForcedRedirect\": \"1\",\n                        \"Scheduler\": \"xx\",\n                        \"Path\": \"xx\",\n                        \"RuleStatus\": 1,\n                        \"ServerNameIndicationSwitch\": \"xx\",\n                        \"RealServerSet\": [\n                            {\n                                \"RealServerStatus\": 0,\n                                \"RealServerPort\": 234,\n                                \"RealServerId\": \"xx\",\n                                \"RealServerFailoverRole\": \"xx\",\n                                \"DownIPList\": [\n                                    \"xx\"\n                                ],\n                                \"RealServerWeight\": 1,\n                                \"RealServerIP\": \"xx\"\n                            },\n                            {\n                                \"RealServerStatus\": 0,\n                                \"RealServerPort\": 424,\n                                \"RealServerId\": \"xx\",\n                                \"RealServerWeight\": 1,\n                                \"RealServerFailoverRole\": \"xx\",\n                                \"DownIPList\": [\n                                    \"xx\"\n                                ],\n                                \"RealServerIP\": \"xx\"\n                            }\n                        ]\n                    }\n                ],\n                \"PolyClientCertificateAliasInfo\": [\n                    {\n                        \"CertificateId\": \"xx\",\n                        \"CertificateAlias\": \"xx\"\n                    }\n                ],\n                \"GaapAuth\": 1,\n                \"ClientCertificateAlias\": \"xx\",\n                \"RealServerAuth\": 1,\n                \"RealServerCertificateDomain\": \"xx\",\n                \"DomainStatus\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying forwarding rule information"
@@ -524,7 +532,7 @@
     ],
     "DescribeRulesByRuleIds": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRulesByRuleIds\n<Common request parameters>\n\n{\n    \"RuleIds\": [\n        \"rule-3bsuu01r\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RuleSet\": [\n            {\n                \"BindStatus\": 1,\n                \"Domain\": \"xx\",\n                \"RealServerType\": \"xx\",\n                \"ForwardHost\": \"xx\",\n                \"RuleId\": \"xx\",\n                \"HealthCheck\": 1,\n                \"ServerNameIndication\": \"xx\",\n                \"ListenerId\": \"xx\",\n                \"CheckParams\": {\n                    \"Domain\": \"xx\",\n                    \"ConnectTimeout\": 1,\n                    \"BlockInter\": 1,\n                    \"FailedThreshold\": 1,\n                    \"Path\": \"xx\",\n                    \"FailedCountInter\": 1,\n                    \"Method\": \"xx\",\n                    \"DelayLoop\": 1,\n                    \"StatusCode\": [\n                        1,\n                        1,\n                        1,\n                        1,\n                        1\n                    ]\n                },\n                \"ForcedRedirect\": \"xx\",\n                \"Scheduler\": \"xx\",\n                \"Path\": \"xx\",\n                \"RuleStatus\": 1,\n                \"ServerNameIndicationSwitch\": \"xx\",\n                \"RealServerSet\": [\n                    {\n                        \"RealServerStatus\": 0,\n                        \"RealServerPort\": 0,\n                        \"RealServerId\": \"xx\",\n                        \"RealServerFailoverRole\": \"xx\",\n                        \"DownIPList\": [\n                            \"xx\"\n                        ],\n                        \"RealServerWeight\": 0,\n                        \"RealServerIP\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Pulling the list of rules based on rule ID"
@@ -532,7 +540,7 @@
     ],
     "DescribeSecurityPolicyDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityPolicyDetail\n<Common request parameters>\n\n{\n    \"PolicyId\": \"sp-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Status\": \"UNBIND\",\n        \"ProxyId\": \"link-gw4sxx8j\",\n        \"DefaultAction\": \"ACCEPT\",\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\",\n        \"RuleList\": [\n            {\n                \"Action\": \"DROP\",\n                \"DestPortRange\": \"ALL\",\n                \"SourceCidr\": \"2.2.2.2\",\n                \"AliasName\": \"test1\",\n                \"RuleId\": \"sr-bf0yxxpp\",\n                \"PolicyId\": \"ssavdf\",\n                \"Protocol\": \"string\"\n            }\n        ],\n        \"PolicyId\": \"sp-9scxxhdh\"\n    }\n}",
         "title": "Obtaining security policy details"
@@ -540,7 +548,7 @@
     ],
     "DescribeSecurityRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityRules\n<Common request parameters>\n\n{\n    \"SecurityRuleIds\": [\n        \"sr-xxxxxxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"6dc6b074-9bcf-4120-9500-0583aebe375d\",\n        \"SecurityRuleSet\": [\n            {\n                \"Protocol\": \"TCP\",\n                \"SourceCidr\": \"1.1.1.101\",\n                \"RuleId\": \"sr-0vr5571x\",\n                \"DestPortRange\": \"6666,6667\",\n                \"AliasName\": \"\",\n                \"PolicyId\": \"sp-8k1l0pat\",\n                \"Action\": \"ACCEPT\"\n            }\n        ]\n    }\n}",
         "title": "Querying the list of security rules based on security rule ID"
@@ -564,7 +572,7 @@
     ],
     "DestroyProxies": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyProxies\n<Common request parameters>\n\n{\n    \"Force\": \"1\",\n    \"ProxyIds\": [\n        \"link-11113333\",\n        \"link-11112222\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"OperationFailedInstanceSet\": [],\n        \"RequestId\": \"d4228b1a-8b3b-43d6-a8e7-272d158ff332\",\n        \"InvalidStatusInstanceSet\": [\n            \"link-11112222\"\n        ]\n    }\n}",
         "title": "Terminating connection"
@@ -572,7 +580,7 @@
     ],
     "InquiryPriceCreateProxy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceCreateProxy\n<Common request parameters>\n\n{\n    \"Concurrency\": \"2\",\n    \"Bandwidth\": \"10\",\n    \"RealServerRegion\": \"SouthChina\",\n    \"AccessRegion\": \"EastChina\"\n}",
         "output": "{\n    \"Response\": {\n        \"Cn2BandwidthPrice\": 0.0,\n        \"Cn2BandwidthPriceWithDiscount\": 0.0,\n        \"ProxyDailyPrice\": 80.64,\n        \"FlowUnitPrice\": 0.0,\n        \"Currency\": \"xx\",\n        \"DiscountProxyDailyPrice\": 56.84,\n        \"RequestId\": \"xx\",\n        \"DiscountFlowUnitPrice\": 0.0,\n        \"BandwidthUnitPrice\": [\n            {\n                \"BandwidthRange\": [\n                    0,\n                    20\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    20,\n                    100\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    100,\n                    500\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    500,\n                    2000\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            },\n            {\n                \"BandwidthRange\": [\n                    2000,\n                    0\n                ],\n                \"BandwidthUnitPrice\": 0.0,\n                \"DiscountBandwidthUnitPrice\": 0.0\n            }\n        ]\n    }\n}",
         "title": "Querying the price for creating an acceleration connection"
@@ -580,7 +588,7 @@
     ],
     "ModifyCertificate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCertificate\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"CertificateId\": \"cert-12345678\",\n    \"ClientCertificateId\": \"cert-abcdefgh\",\n    \"ListenerId\": \"listener-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "Modifying domain name certificate"
@@ -588,7 +596,7 @@
     ],
     "ModifyCertificateAttributes": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCertificateAttributes\n<Common request parameters>\n\n{\n    \"CertificateId\": \"xxx\",\n    \"CertificateAlias\": \"xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "Modifying certificate attributes"
@@ -604,7 +612,7 @@
     ],
     "ModifyGroupDomainConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyGroupDomainConfig\n<Common request parameters>\n\n{\n    \"DefaultDnsIp\": \"1.1.1.1\",\n    \"GroupId\": \"lg-b7h4d02f\",\n    \"AccessRegionList\": [\n        {\n            \"RegionId\": \"111\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"74b5f95c-e976-4f78-b2ee-aad49eb844c4\"\n    }\n}",
         "title": "Configuring the nearest access domain name of a connection group"
@@ -628,7 +636,7 @@
     ],
     "ModifyProxiesAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProxiesAttribute\n<Common request parameters>\n\n{\n    \"ProxyName\": \"test\",\n    \"ProxyIds\": [\n        \"link-11113333\",\n        \"link-11112222\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"04d1af8f-5c76-4053-acbc-62bdf0541c15\"\n    }\n}",
         "title": "Modifying connection attributes"
@@ -636,7 +644,7 @@
     ],
     "ModifyProxiesProject": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProxiesProject\n<Common request parameters>\n\n{\n    \"ProjectId\": \"12345\",\n    \"ProxyIds\": [\n        \"link-11113333\",\n        \"link-11112222\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"59224cc0-082c-4f00-adb3-dbe4fe9fe478\"\n    }\n}",
         "title": "Modifying connection project"
@@ -644,7 +652,7 @@
     ],
     "ModifyProxyConfiguration": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProxyConfiguration\n<Common request parameters>\n\n{\n    \"ProxyId\": \"link-4ftf12sb\",\n    \"Concurrent\": \"2\",\n    \"Bandwidth\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"967ef39b-b096-4338-a1c9-4b42977dde0e\"\n    }\n}",
         "title": "Modifying connection configuration"
@@ -652,13 +660,13 @@
     ],
     "ModifyProxyGroupAttribute": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProxyGroupAttribute\n<Common request parameters>\n\n{\n    \"GroupName\": \"newName\",\n    \"GroupId\": \"lg-b7h4d02f\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"19a021f8-dff3-4890-8e7a-ed5054e22e49\"\n    }\n}",
         "title": "Modifying connection group name"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProxyGroupAttribute\n<Common request parameters>\n\n{\n    \"GroupName\": \"test\",\n    \"GroupId\": \"lg-pheemncl\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e26d0984-af79-4403-8c51-11d075b7c1e8\"\n    }\n}",
         "title": "Modifying a connection group name"
@@ -682,7 +690,7 @@
     ],
     "ModifySecurityRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityRule\n<Common request parameters>\n\n{\n    \"Protocol\": \"TCP\",\n    \"SourceCidr\": \"180.180.180.180/8\",\n    \"RuleId\": \"sr-xxxx\",\n    \"DestPortRange\": \"ALL\",\n    \"AliasName\": \"t3\",\n    \"PolicyId\": \"sp-xxxx\",\n    \"RuleAction\": \"ACCEPT\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\"\n    }\n}",
         "title": "Modifying rule name"
@@ -706,7 +714,7 @@
     ],
     "OpenProxies": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenProxies\n<Common request parameters>\n\n{\n    \"ProxyIds\": [\n        \"link-11113333\",\n        \"link-11112222\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"OperationFailedInstanceSet\": [],\n        \"RequestId\": \"7daaa62c-7c4b-40d9-a22e-90de42bde58d\",\n        \"InvalidStatusInstanceSet\": []\n    }\n}",
         "title": "Enabling connection"
@@ -714,7 +722,7 @@
     ],
     "OpenProxyGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenProxyGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"lg-11112222\"\n}",
         "output": "{\n    \"Response\": {\n        \"OperationFailedInstanceSet\": [],\n        \"RequestId\": \"7daaa62c-7c4b-40d9-a22e-90de42bde58d\",\n        \"InvalidStatusInstanceSet\": []\n    }\n}",
         "title": "Enabling connection group"
@@ -722,7 +730,7 @@
     ],
     "OpenSecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenSecurityPolicy\n<Common request parameters>\n\n{\n    \"ProxyId\": \"link-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\",\n        \"TaskId\": \"1234.2\"\n    }\n}",
         "title": "Enabling security policy"
@@ -730,7 +738,7 @@
     ],
     "RemoveRealServers": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveRealServers\n<Common request parameters>\n\n{\n    \"RealServerIds\": [\n        \"rs-fgerw3dt\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
         "title": "Deleting origin server"
@@ -738,7 +746,7 @@
     ],
     "SetAuthentication": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetAuthentication\n<Common request parameters>\n\n{\n    \"Domain\": \"a.a.com\",\n    \"GaapAuth\": \"1\",\n    \"GaapCertificateId\": \"xxx\",\n    \"ListenerId\": \"0\",\n    \"BasicAuthConfId\": \"xxx\",\n    \"BasicAuth\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "Advanced authentication configuration"
