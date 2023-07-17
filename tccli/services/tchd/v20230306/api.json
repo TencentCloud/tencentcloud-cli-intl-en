@@ -3,7 +3,7 @@
     "DescribeEvents": {
       "document": "This API is used to query the availability event list of tencent cloud services. It can be filtered by product, region, or event occurrence date.",
       "input": "DescribeEventsRequest",
-      "name": "View event list",
+      "name": "Query event list",
       "output": "DescribeEventsResponse",
       "status": "online"
     }
@@ -37,7 +37,7 @@
         },
         {
           "disabled": false,
-          "document": "1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.\n2. The region ID for non-region-specific products should be set to \"non-regional\".\n",
+          "document": " 1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.\n2. The region ID for non-region-specific products should be set to non-regional.",
           "example": "[\"ap-guangzhou\",\"ap-shanghai\"]",
           "member": "string",
           "name": "RegionIds",
@@ -70,11 +70,11 @@
       "type": "object"
     },
     "EventDetail": {
-      "document": "Describes information on an event",
+      "document": "Describes information on an event.",
       "members": [
         {
           "disabled": false,
-          "document": "Product ID",
+          "document": "Product ID.",
           "example": "cvm",
           "member": "string",
           "name": "ProductId",
@@ -84,7 +84,7 @@
         },
         {
           "disabled": false,
-          "document": "Product name",
+          "document": "Product name.",
           "example": "云服务器",
           "member": "string",
           "name": "ProductName",
@@ -94,7 +94,7 @@
         },
         {
           "disabled": false,
-          "document": "Region ID",
+          "document": "Region ID.",
           "example": "ap-beijing",
           "member": "string",
           "name": "RegionId",
@@ -104,7 +104,7 @@
         },
         {
           "disabled": false,
-          "document": "Region name",
+          "document": "Region name.",
           "example": "北京",
           "member": "string",
           "name": "RegionName",
@@ -114,7 +114,7 @@
         },
         {
           "disabled": false,
-          "document": "Event start time",
+          "document": "Event start time.",
           "example": "2023-06-22 09:55:00",
           "member": "string",
           "name": "StartTime",
@@ -134,7 +134,7 @@
         },
         {
           "disabled": false,
-          "document": "Current status: Normally, Informational, Degradation",
+          "document": "Current status: Normally, Informational, Degradation.",
           "example": "异常",
           "member": "string",
           "name": "CurrentStatus",
@@ -150,7 +150,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Detailed event information.",
+          "document": "Detailed event information.\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "无",
           "member": "EventDetail",
           "name": "EventList",

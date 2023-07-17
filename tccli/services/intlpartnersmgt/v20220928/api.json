@@ -49,11 +49,32 @@
       "output": "DescribeCustomerBillSummaryResponse",
       "status": "online"
     },
+    "DescribeCustomerInfo": {
+      "document": "This API is used to query the customer information.",
+      "input": "DescribeCustomerInfoRequest",
+      "name": "Queries the customer information",
+      "output": "DescribeCustomerInfoResponse",
+      "status": "online"
+    },
+    "DescribeCustomerUin": {
+      "document": "This API is used to query the list of customer UINs.",
+      "input": "DescribeCustomerUinRequest",
+      "name": "Queries the list of customer UINs",
+      "output": "DescribeCustomerUinResponse",
+      "status": "online"
+    },
     "GetCountryCodes": {
       "document": "This API is used to obtain country/region codes.",
       "input": "GetCountryCodesRequest",
       "name": "This API is used to obtain country/region codes.",
       "output": "GetCountryCodesResponse",
+      "status": "online"
+    },
+    "QueryAccountVerificationStatus": {
+      "document": "This API is used to query the account verification status.",
+      "input": "QueryAccountVerificationStatusRequest",
+      "name": "Queries the account verification status",
+      "output": "QueryAccountVerificationStatusResponse",
       "status": "online"
     },
     "QueryCreditAllocationHistory": {
@@ -68,6 +89,13 @@
       "input": "QueryCreditByUinListRequest",
       "name": "Queries credit by UIN list",
       "output": "QueryCreditByUinListResponse",
+      "status": "online"
+    },
+    "QueryCreditQuota": {
+      "document": "This API is used to query customer credits.",
+      "input": "QueryCreditQuotaRequest",
+      "name": "Queries customer credits",
+      "output": "QueryCreditQuotaResponse",
       "status": "online"
     },
     "QueryCustomersCredit": {
@@ -123,6 +151,7 @@
       "document": "Transaction type details in the customer bill data totaled by payment mode",
       "members": [
         {
+          "disabled": false,
           "document": "Transaction type code\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "postpay_deduct_h",
           "member": "string",
@@ -132,6 +161,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Transaction type name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Hourly settlement",
           "member": "string",
@@ -141,6 +171,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -150,6 +181,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -159,6 +191,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -175,6 +208,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Specific value of the credit allocated to the customer",
           "example": "100.00",
           "member": "float",
@@ -184,6 +218,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Customer UIN",
           "example": "1234",
           "member": "uint64",
@@ -198,6 +233,7 @@
       "document": "AllocateCustomerCredit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The updated total credit",
           "example": "20",
           "member": "float",
@@ -207,6 +243,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The updated available credit",
           "example": "10.23",
           "member": "float",
@@ -228,6 +265,7 @@
       "document": "Customer bill details",
       "members": [
         {
+          "disabled": false,
           "document": "Reseller account\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2000111111",
           "member": "int64",
@@ -237,6 +275,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Customer account\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2000111111",
           "member": "int64",
@@ -246,6 +285,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Operator account\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2000111111",
           "member": "int64",
@@ -255,6 +295,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -264,6 +305,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Billing mode\n`Monthly subscription` (Monthly subscription)\n`Pay-As-You-Go resources` (Pay-as-you-go)\n`Standard RI` (Reserved instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -273,6 +315,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Project name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -282,6 +325,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource region\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -291,6 +335,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -300,6 +345,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -309,6 +355,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -318,6 +365,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Subproduct name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -327,6 +375,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Settlement type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -336,6 +385,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Transaction ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -345,6 +395,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Settlement time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -354,6 +405,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Start time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -363,6 +415,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "End time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -372,6 +425,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Component\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -381,6 +435,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Component name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -390,6 +445,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Component list price\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -399,6 +455,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Price unit\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -408,6 +465,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Component usage\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -417,6 +475,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Component usage unit\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -426,6 +485,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -435,6 +495,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Duration unit\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -444,6 +505,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Original cost\nOriginal cost = component list price * component usage * usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -453,6 +515,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Discount, which defaults to `1`, indicating there is no discount.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -462,6 +525,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Currency\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -471,6 +535,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Discounted total\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -480,6 +545,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Voucher deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -489,6 +555,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total cost = discounted total - voucher deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -504,6 +571,7 @@
       "document": "Product details in the customer bill data totaled by product",
       "members": [
         {
+          "disabled": false,
           "document": "Product code\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "p_cbs",
           "member": "string",
@@ -513,6 +581,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cloud block storage",
           "member": "string",
@@ -522,6 +591,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "List price accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -531,6 +601,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -540,6 +611,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -556,6 +628,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Country/region name in English",
           "example": "Albania",
           "member": "string",
@@ -566,6 +639,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Country/region name in Chinese",
           "example": "阿尔巴尼亚",
           "member": "string",
@@ -576,6 +650,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "AL",
           "member": "string",
@@ -586,6 +661,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "",
           "example": "ALB",
           "member": "string",
@@ -596,6 +672,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "International dialing code",
           "example": "355",
           "member": "string",
@@ -612,6 +689,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Account type of a new customer. Valid values: `personal`, `company`.",
           "example": "business",
           "member": "string",
@@ -621,6 +699,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Registered email address, which should be valid and correct.\nFor example, account@qq.com.",
           "example": "account@qq.com",
           "member": "string",
@@ -630,6 +709,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Account password\nLength limit: 8-20 characters\nA password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.",
           "example": "无",
           "member": "string",
@@ -639,6 +719,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The confirmed password, which must be the same as that entered in the `Password` field.",
           "example": "无",
           "member": "string",
@@ -648,6 +729,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Customer mobile number, which should be valid and correct.\nA global mobile number within 1-32 digits is allowed, such as 18888888888.",
           "example": "18888888888",
           "member": "string",
@@ -657,6 +739,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as \"852\".",
           "example": "852",
           "member": "string",
@@ -666,6 +749,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.",
           "example": "HK",
           "member": "string",
@@ -675,6 +759,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Extension field, which is left empty by default.",
           "example": "**********",
           "member": "string",
@@ -689,6 +774,7 @@
       "document": "CreateAccount response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Account UIN",
           "example": "无",
           "member": "string",
@@ -710,6 +796,7 @@
       "document": "DescribeBillSummaryByPayMode request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Bill month in the format of \"yyyy-MM\"",
           "example": "2022-11",
           "member": "string",
@@ -718,6 +805,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
           "member": "int64",
@@ -732,6 +820,7 @@
       "document": "DescribeBillSummaryByPayMode response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Payment mode details in the customer bill data totaled by payment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{...}",
           "member": "PayModeSummaryOverviewItem",
@@ -752,6 +841,7 @@
       "document": "DescribeBillSummaryByProduct request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Bill month in the format of \"yyyy-MM\"",
           "example": "2022-11",
           "member": "string",
@@ -760,6 +850,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
           "member": "int64",
@@ -774,6 +865,7 @@
       "document": "DescribeBillSummaryByProduct response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Bill details from the product dimension\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{...}",
           "member": "BusinessSummaryOverviewItem",
@@ -794,6 +886,7 @@
       "document": "DescribeBillSummaryByRegion request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Bill month in the format of \"yyyy-MM\"",
           "example": "2022-11",
           "member": "string",
@@ -802,6 +895,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
           "member": "int64",
@@ -816,6 +910,7 @@
       "document": "DescribeBillSummaryByRegion response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Region details in the customer bill data totaled by region\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[...]",
           "member": "RegionSummaryOverviewItem",
@@ -836,6 +931,7 @@
       "document": "DescribeCustomerBillDetail request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
           "member": "uint64",
@@ -844,6 +940,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The queried month in “YYYY-MM” format, such as 2023-01.",
           "example": "2023-02",
           "member": "string",
@@ -852,6 +949,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "A pagination parameter that specifies the number of entries per page",
           "example": "1",
           "member": "int64",
@@ -860,6 +958,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "A pagination parameter that specifies the current page number",
           "example": "10",
           "member": "int64",
@@ -868,6 +967,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Billing mode. Valid values:\n`prePay` (Monthly subscription)\n`postPay` (Pay-as-you-go)",
           "example": "prePay",
           "member": "string",
@@ -876,6 +976,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Transaction type. Valid values:\n`prepay_purchase` (Purchase)\n`prepay_renew` (Renewal)\n`prepay_modify` (Upgrade/Downgrade)\n`prepay_return` ( Monthly subscription refund)\n`postpay_deduct` (Pay-as-you-go)\n`postpay_deduct_h` (Hourly settlement)\n`postpay_deduct_d` (Daily settlement)\n`postpay_deduct_m` (Monthly settlement)\n`offline_deduct` (Offline project deduction)\n`online_deduct` (Offline product deduction)\n`recon_deduct` (Adjustment - deduction)\n`recon_increase` (Adjustment - compensation)\n`ripay_purchase` (One-off RI Fee)\n`postpay_deduct_s` (Spot)\n`ri_hour_pay` (Hourly RI fee)\n`prePurchase` (New monthly subscription)\n`preRenew` (Monthly subscription renewal)\n`preUpgrade` (Upgrade/Downgrade)\n`preDowngrade` (Upgrade/Downgrade)\n`svp_hour_pay` (Hourly Savings Plan fee)\n`recon_guarantee` (Minimum spend deduction)\n`pre_purchase` (New monthly subscription)\n`pre_renew` (Monthly subscription renewal)\n`pre_upgrade` (Upgrade/Downgrade)\n`pre_downgrade` (Upgrade/Downgrade)",
           "example": "pre_upgrade",
           "member": "string",
@@ -884,6 +985,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Payment status\n`0`: N/A\n`1`: Paid\n`2`: Unpaid",
           "example": "1",
           "member": "string",
@@ -898,6 +1000,7 @@
       "document": "DescribeCustomerBillDetail response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of data entries",
           "example": "10",
           "member": "int64",
@@ -906,6 +1009,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data details\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{...}",
           "member": "BillDetailData",
@@ -926,6 +1030,7 @@
       "document": "DescribeCustomerBillSummary request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
           "member": "uint64",
@@ -934,6 +1039,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The queried month in “YYYY-MM” format, such as 2023-01.",
           "example": "2023-02",
           "member": "string",
@@ -942,6 +1048,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Billing mode. Valid values:\n`prePay` (Monthly subscription)\n`postPay` (Pay-as-you-go)",
           "example": "prePay",
           "member": "string",
@@ -950,6 +1057,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Transaction type. Valid values:\n`prepay_purchase` (Purchase)\n`prepay_renew` (Renewal)\n`prepay_modify` (Upgrade/Downgrade)\n`prepay_return` (Monthly subscription refund)\n`postpay_deduct` (Pay-as-you-go)\n`postpay_deduct_h` (Hourly settlement)\n`postpay_deduct_d` (Daily settlement)\n`postpay_deduct_m` (Monthly settlement)\n`offline_deduct` (Offline project deduction)\n`online_deduct` (Offline product deduction)\n`recon_deduct` (Adjustment - deduction)\n`recon_increase` (Adjustment - compensation)\n`ripay_purchase` (One-off RI Fee)\n`postpay_deduct_s` (Spot)\n`ri_hour_pay` (Hourly RI fee)\n`prePurchase` (New monthly subscription)\n`preRenew` (Monthly subscription renewal)\n`preUpgrade` (Upgrade/Downgrade)\n`preDowngrade` (Upgrade/Downgrade)\n`svp_hour_pay` (Hourly Savings Plan fee)\n`recon_guarantee` (Minimum spend deduction)\n`pre_purchase` (New monthly subscription)\n`pre_renew` (Monthly subscription renewal)\n`pre_upgrade` (Upgrade/Downgrade)\n`pre_downgrade` (Upgrade/Downgrade)",
           "example": "pre_upgrade",
           "member": "string",
@@ -958,6 +1066,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Payment status\n`0`: N/A\n`1`: Paid\n`2`: Unpaid",
           "example": "1",
           "member": "string",
@@ -972,11 +1081,207 @@
       "document": "DescribeCustomerBillSummary response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total amount",
           "example": "123.45",
           "member": "float",
           "name": "TotalCost",
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerInfoData": {
+      "document": "Customer information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Customer UIN Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200000000000",
+          "member": "string",
+          "name": "CustomerUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Email Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc@xxx.com",
+          "member": "string",
+          "name": "Email",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1888888888",
+          "member": "string",
+          "name": "Phone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Remarks Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "Mark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Displayed name Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Binding time Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2000-01-01 19:17:18",
+          "member": "string",
+          "name": "BindTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Account status Valid values: `0` (Not frozen),  `1` (Frozen).  Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "AccountStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Identity verification status Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "AuthStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeCustomerInfoRequest": {
+      "document": "DescribeCustomerInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of customer UINs",
+          "example": "[200000000000, 200000000001]",
+          "member": "int64",
+          "name": "CustomerUin",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerInfoResponse": {
+      "document": "DescribeCustomerInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Customer information Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeCustomerInfoData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerUinData": {
+      "document": "List of customer UINs",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Customer UIN Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200000000000",
+          "member": "string",
+          "name": "CustomerUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeCustomerUinRequest": {
+      "document": "DescribeCustomerUin request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of data entries per page",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerUinResponse": {
+      "document": "DescribeCustomerUin response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of customer UINs Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"200000000000\",\" 200000000001\"]",
+          "member": "DescribeCustomerUinData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of customers",
+          "example": "\"100\"",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -997,6 +1302,7 @@
       "document": "GetCountryCodes response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of country/region codes",
           "example": "[]",
           "member": "CountryCodeItem",
@@ -1018,6 +1324,7 @@
       "document": "Payment mode details in the customer bill data totaled by payment mode",
       "members": [
         {
+          "disabled": false,
           "document": "Billing mode\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "postPay",
           "member": "string",
@@ -1027,6 +1334,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Billing mode name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Pay-As-You-Go resources",
           "member": "string",
@@ -1036,6 +1344,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -1045,6 +1354,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Bill details in each payment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[{...}]",
           "member": "ActionSummaryOverviewItem",
@@ -1054,6 +1364,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -1063,6 +1374,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -1074,11 +1386,49 @@
       ],
       "usage": "out"
     },
+    "QueryAccountVerificationStatusRequest": {
+      "document": "QueryAccountVerificationStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Customer UIN",
+          "example": "200000000000",
+          "member": "int64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryAccountVerificationStatusResponse": {
+      "document": "QueryAccountVerificationStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Account verification status",
+          "example": "true",
+          "member": "bool",
+          "name": "AccountStatus",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "QueryCreditAllocationHistoryData": {
       "document": "Returned information for querying the customer credit allocation records",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Allocation time",
           "example": "2021-08-18",
           "member": "string",
@@ -1089,6 +1439,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Operator",
           "example": "usernames",
           "member": "string",
@@ -1099,6 +1450,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Allocated credit value",
           "example": "123456.78",
           "member": "float",
@@ -1109,6 +1461,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The allocated total credit",
           "example": "123.45",
           "member": "float",
@@ -1125,6 +1478,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
           "member": "uint64",
@@ -1134,6 +1488,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Page number",
           "example": "1",
           "member": "uint64",
@@ -1143,6 +1498,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Number of data entries per page",
           "example": "10",
           "member": "uint64",
@@ -1157,6 +1513,7 @@
       "document": "QueryCreditAllocationHistory response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of records\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -1166,6 +1523,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "List of record details\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{..}",
           "member": "QueryCreditAllocationHistoryData",
@@ -1188,6 +1546,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "User list",
           "example": "{10000,10001}",
           "member": "uint64",
@@ -1202,6 +1561,7 @@
       "document": "QueryCreditByUinList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "User information list",
           "example": "{...}",
           "member": "QueryDirectCustomersCreditData",
@@ -1219,11 +1579,29 @@
       ],
       "type": "object"
     },
+    "QueryCreditQuotaRequest": {
+      "document": "QueryCreditQuota request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "QueryCreditQuotaResponse": {
+      "document": "QueryCreditQuota response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "QueryCustomersCreditData": {
       "document": "Complex type of output parameters for querying customer's credit",
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Name",
           "example": "cedarzuo",
           "member": "string",
@@ -1234,6 +1612,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Type",
           "example": "1",
           "member": "string",
@@ -1244,6 +1623,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Mobile number",
           "example": "110",
           "member": "string",
@@ -1254,6 +1634,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Email",
           "example": "cedarzuo@tencent.com",
           "member": "string",
@@ -1264,6 +1645,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Overdue payment flag",
           "example": "-",
           "member": "string",
@@ -1274,6 +1656,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Binding time",
           "example": "2021-08-18",
           "member": "string",
@@ -1284,6 +1667,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Expiration time",
           "example": "2024-08-18",
           "member": "string",
@@ -1294,6 +1678,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
           "member": "uint64",
@@ -1304,6 +1689,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Credit allocated to a customer",
           "example": "123456.78",
           "member": "float",
@@ -1314,6 +1700,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The remaining credit of a customer",
           "example": "0.01",
           "member": "float",
@@ -1324,6 +1711,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "`0`: Identity not verified; `1`: Individual identity verified; `2`: Enterprise identity verified.",
           "example": "1",
           "member": "uint64",
@@ -1334,6 +1722,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Customer remarks",
           "example": "tencent",
           "member": "string",
@@ -1344,6 +1733,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Forced status",
           "example": "1",
           "member": "int64",
@@ -1360,6 +1750,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Search condition type. You can only search by customer ID, name, remarks, or email.",
           "example": "ClientUin|Name|Remark|Email",
           "member": "string",
@@ -1369,6 +1760,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Search condition",
           "example": "123456",
           "member": "string",
@@ -1378,6 +1770,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A pagination parameter that specifies the current page number, with a value starting from 1.",
           "example": "1",
           "member": "int64",
@@ -1387,6 +1780,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A pagination parameter that specifies the number of entries per page.",
           "example": "10",
           "member": "int64",
@@ -1396,6 +1790,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.",
           "example": "desc",
           "member": "string",
@@ -1410,6 +1805,7 @@
       "document": "QueryCustomersCredit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The list of queried customers\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{...}",
           "member": "QueryCustomersCreditData",
@@ -1419,6 +1815,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Number of customers",
           "example": "12",
           "member": "uint64",
@@ -1441,6 +1838,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "User UIN",
           "example": "10000",
           "member": "uint64",
@@ -1451,6 +1849,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Total credit",
           "example": "100.01",
           "member": "float",
@@ -1461,6 +1860,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Remaining credit",
           "example": "0.01",
           "member": "float",
@@ -1481,6 +1881,7 @@
       "document": "QueryDirectCustomersCredit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Direct customer information list",
           "example": "{...}",
           "member": "QueryDirectCustomersCreditData",
@@ -1507,6 +1908,7 @@
       "document": "QueryPartnerCredit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Allocated credit",
           "example": "1",
           "member": "float",
@@ -1516,6 +1918,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total credit",
           "example": "1",
           "member": "float",
@@ -1525,6 +1928,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Remaining credit",
           "example": "1",
           "member": "float",
@@ -1547,6 +1951,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456789",
           "member": "int64",
@@ -1557,6 +1962,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Voucher quota",
           "example": "1",
           "member": "float",
@@ -1567,6 +1973,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Voucher amount",
           "example": "1",
           "member": "float",
@@ -1583,6 +1990,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Customer UIN list",
           "example": "[123]",
           "member": "uint64",
@@ -1597,6 +2005,7 @@
       "document": "QueryVoucherAmountByUin response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Customer voucher quota information",
           "example": "[]",
           "member": "QueryVoucherAmountByUinItem",
@@ -1619,6 +2028,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Customer UIN",
           "example": "123456789",
           "member": "int64",
@@ -1629,6 +2039,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The total number of vouchers",
           "example": "12",
           "member": "int64",
@@ -1639,6 +2050,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Voucher details",
           "example": "1",
           "member": "QueryVoucherListByUinVoucherItem",
@@ -1655,6 +2067,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Customer UIN list",
           "example": "[123]",
           "member": "uint64",
@@ -1664,6 +2077,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.",
           "example": "Used",
           "member": "string",
@@ -1678,6 +2092,7 @@
       "document": "QueryVoucherListByUin response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Customer voucher information",
           "example": "[]",
           "member": "QueryVoucherListByUinItem",
@@ -1700,6 +2115,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Voucher ID",
           "example": "xxx",
           "member": "string",
@@ -1710,6 +2126,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Voucher status",
           "example": "Used",
           "member": "string",
@@ -1720,6 +2137,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Voucher value",
           "example": "1",
           "member": "float",
@@ -1730,6 +2148,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Balance",
           "example": "1",
           "member": "float",
@@ -1750,6 +2169,7 @@
       "document": "QueryVoucherPool response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Reseller name",
           "example": "名字",
           "member": "string",
@@ -1759,6 +2179,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Reseller role type (1: Reseller; 2: Distributor; 3: Second-level reseller)",
           "example": "20000",
           "member": "int64",
@@ -1768,6 +2189,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total quota",
           "example": "10",
           "member": "float",
@@ -1777,6 +2199,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Remaining quota",
           "example": "10",
           "member": "float",
@@ -1786,6 +2209,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The number of issued vouchers",
           "example": "1",
           "member": "int64",
@@ -1807,6 +2231,7 @@
       "document": "Region details in the customer bill data totaled by region",
       "members": [
         {
+          "disabled": false,
           "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "8",
           "member": "string",
@@ -1816,6 +2241,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Region name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "North China (Beijing)",
           "member": "string",
@@ -1825,6 +2251,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -1834,6 +2261,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
@@ -1843,6 +2271,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00000000",
           "member": "string",
