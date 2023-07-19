@@ -2,7 +2,7 @@
   "actions": {
     "AllocateWanAddress": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=AllocateWanAddress\n&InstanceId=crs-5qlrlhux\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 327,\n        \"WanStatus\": “Enabling public network access”,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Enabling public network instance"
@@ -10,7 +10,7 @@
     ],
     "ApplyParamsTemplate": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ApplyParamsTemplate\n&InstanceIds.0=crs-5a4py64p\n&TemplateId=crs-cfg-rhlppeye\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskIds\": [\n            212,\n            213,\n            214\n        ],\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Modifying instance parameters"
@@ -18,7 +18,7 @@
     ],
     "AssociateSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateSecurityGroups\n<Common request parameters>\n\n{\n    \"Product\": \"redis\",\n    \"SecurityGroupId\": \"sg-ajr1jzgj\",\n    \"InstanceIds\": [\n        \"crs-eb2w7dto\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a1\"\n    }\n}",
         "title": "Sample request"
@@ -26,7 +26,7 @@
     ],
     "ChangeInstanceRole": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ChangeInstanceRole\n&GroupId=crs-rpl-267khx71\n&InstanceId=crs-5qlrlhux\n&InstanceRole=rw\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Modifying the role of instance in a replication group"
@@ -34,7 +34,7 @@
     ],
     "ChangeMasterInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeMasterInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"GroupId\": \"crs-rpl-sa5dsfs\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Sample request"
@@ -42,15 +42,15 @@
     ],
     "ChangeReplicaToMaster": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeReplicaToMaster\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"GroupId\": 301524\n}",
+        "document": "This example shows you how to promote a replica to a master in single AZ or multiple AZs.",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ChangeReplicaToMaster<Common request parameters>{    \"InstanceId\": \"crs-sa5****\",    \"GroupId\": 301524}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
         "title": "Sample request"
       }
     ],
     "CleanUpInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=CleanUpInstance\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
         "title": "Sample request"
@@ -58,7 +58,7 @@
     ],
     "ClearInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ClearInstance\n&InstanceId=crs-5a4py64p\n&Password=zy456987\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 16658,\n        \"RequestId\": \"d893c0ac-db57-4e5c-8335-e787b77403b2\"\n    }\n}",
         "title": "Sample request"
@@ -74,7 +74,7 @@
     ],
     "CloseSSL": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseSSL\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-2btr****\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 329,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Disabling SSL request"
@@ -82,7 +82,7 @@
     ],
     "CreateInstanceAccount": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=CreateInstanceAccount\n&InstanceId=crs-5a4py64p\n&AccountName=test\n&AccountPassword=1234567a\n&ReadonlyPolicy.0=master\n&Privilege=rw\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 123456,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample request"
@@ -104,7 +104,7 @@
     ],
     "CreateParamTemplate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateParamTemplate\n<Common request parameters>\n\n{\n    \"ParamList\": [\n        {\n            \"Value\": \"120\",\n            \"Key\": \"timeout\"\n        }\n    ],\n    \"TemplateId\": \"crs-cfg-sa23d5d3\",\n    \"Description\": \"MyCustomParamTemplate\",\n    \"ProductType\": 6,\n    \"Name\": \"CustomParamTemplate\"\n}",
         "output": "{\n    \"Response\": {\n        \"TemplateId\": \"crs-cfg-sa23d5a2\",\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample request"
@@ -112,7 +112,7 @@
     ],
     "DeleteInstanceAccount": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DeleteInstanceAccount\n&InstanceId=crs-5a4py64p\n&AccountName=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 123456,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample request"
@@ -120,7 +120,7 @@
     ],
     "DeleteParamTemplate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteParamTemplate\n<Common request parameters>\n\n{\n    \"TemplateId\": \"crs-cfg-sa23d5d3\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample request"
@@ -128,8 +128,8 @@
     ],
     "DescribeAutoBackupConfig": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeAutoBackupConfig\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
+        "document": "This example shows you how to query the automatic backup rules for a specified instance.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeAutoBackupConfig&InstanceId=crs-5a4p****&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"65e950b9-78e8-49b1-9200-0e62a1925559\",\n        \"BackupStorageDays\": 7,\n        \"BinlogStorageDays\": 7,\n        \"AutoBackupType\": 1,\n        \"WeekDays\": [\n            \"Monday\",\n            \"Tuesday\"\n        ],\n        \"TimePeriod\": \"01:00-02:00\"\n    }\n}",
         "title": "Sample request"
       }
@@ -152,7 +152,7 @@
     ],
     "DescribeBandwidthRange": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBandwidthRange\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5****\"\n}",
         "output": "{\n    \"Response\": {\n        \"MinAddBandwidth\": 0,\n        \"MaxAddBandwidth\": 0,\n        \"BaseBandwidth\": 0,\n        \"AddBandwidth\": 0,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
@@ -160,26 +160,26 @@
     ],
     "DescribeCommonDBInstances": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeCommonDBInstances\n&PayMode=0\n&InstanceIds.0=crs-nh47ubwr\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceDetails\": [\n            {\n                \"AppId\": 251006366,\n                \"Createtime\": \"2020-05-06 19:38:19\",\n                \"InstanceId\": \"crs-nh47ubwr\",\n                \"InstanceName\": \"crs-nh47ubwr\",\n                \"NetType\": 1,\n                \"PayMode\": 1,\n                \"ProjectId\": 1075668,\n                \"Region\": \"ap-guangzhou\",\n                \"Status\": \"1\",\n                \"SubnetId\": 1210162,\n                \"Vips\": [\n                    \"172.16.1.84\"\n                ],\n                \"VpcId\": \"79963\",\n                \"Vport\": 6379,\n                \"Zone\": \"\"\n            }\n        ],\n        \"RequestId\": \"e306be36-f01b-477a-bdfb-e63d9b16d0a5\",\n        \"TotalCount\": 1\n    }\n}",
+        "document": "Disused APIs",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeCommonDBInstances&PayMode=0&InstanceIds.0=crs-nh47ubwr&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"InstanceDetails\": [\n            {\n                \"InstanceName\": \"abc\",\n                \"InstanceId\": \"abc\",\n                \"AppId\": 0,\n                \"ProjectId\": 0,\n                \"Region\": \"abc\",\n                \"Zone\": \"abc\",\n                \"VpcId\": \"abc\",\n                \"SubnetId\": \"abc\",\n                \"Status\": \"abc\",\n                \"Vips\": [\n                    \"abc\"\n                ],\n                \"Vport\": 0,\n                \"Createtime\": \"abc\",\n                \"PayMode\": 0,\n                \"NetType\": 0\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeDBSecurityGroups": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSecurityGroups\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-eb2w7dto\",\n    \"Product\": \"redis\"\n}",
-        "output": "{\n    \"Response\": {\n        \"VIP\": \"10.10.0.1\",\n        \"VPort\": 6379,\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A1\",\n        \"Groups\": [\n            {\n                \"Outbound\": [],\n                \"SecurityGroupName\": \"Redis security group\",\n                \"Inbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupRemark\": \"\",\n                \"CreateTime\": \"2017-04-13 15:00:06\"\n            }\n        ]\n    }\n}",
-        "title": "Sample"
+        "document": "This example shows you how to query the security group information of a specified instance.",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeDBSecurityGroups<Common request parameters>{    \"Product\": \"redis\",    \"InstanceId\": \"crs-m1kxvlkf\"}",
+        "output": "{\n    \"Response\": {\n        \"Groups\": [\n            {\n                \"CreateTime\": \"2023-04-26 17:40:29\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"AddressModule\": \"\",\n                        \"CidrIp\": \"106.55.103.75\",\n                        \"Desc\": \"\",\n                        \"Id\": \"\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"8000\",\n                        \"ServiceModule\": \"\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"AddressModule\": \"\",\n                        \"CidrIp\": \"119.147.10.191\",\n                        \"Desc\": \"bro-local public network IP\",\n                        \"Id\": \"\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"8000\",\n                        \"ServiceModule\": \"\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"AddressModule\": \"\",\n                        \"CidrIp\": \"43.136.90.27\",\n                        \"Desc\": \"CVM-public network\",\n                        \"Id\": \"\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"8000\",\n                        \"ServiceModule\": \"\"\n                    }\n                ],\n                \"Outbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-7y0pa6nf\",\n                \"SecurityGroupName\": \"test_lb\",\n                \"SecurityGroupRemark\": \"custom\"\n            }\n        ],\n        \"RequestId\": \"d6b8d050-f113-4db3-a85e-ca8122deddce\",\n        \"VIP\": \"10.0.4.13\",\n        \"VPort\": \"6379\"\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "DescribeInstanceAccount": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceAccount\n&InstanceId=crs-5a4py64p\n&Limit=10\n&Offset=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Accounts\": [\n            {\n                \"InstanceId\": \"crs-fdjfkldf\",\n                \"AccountName\": \"test\",\n                \"Remark\": \"test\",\n                \"Privilege\": \"rw\",\n                \"ReadonlyPolicy\": [\n                    \"master\"\n                ],\n                \"Status\": 2\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
-        "title": "Request Sample"
+        "document": "This example shows you how to query the account information of a specified instance.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceAccount&InstanceId=crs-5a4py64p&Limit=10&Offset=0&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Accounts\": [\n            {\n                \"AccountName\": \"root\",\n                \"InstanceId\": \"crs-mufy7q15\",\n                \"Privilege\": \"rw\",\n                \"ReadonlyPolicy\": [\n                    \"master\",\n                    \"replication\"\n                ],\n                \"Remark\": \"default\",\n                \"Status\": 2\n            }\n        ],\n        \"RequestId\": \"b97a9706-dee2-4d5c-8f2d-84873bc79629\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "DescribeInstanceBackups": [
@@ -192,7 +192,7 @@
     ],
     "DescribeInstanceDTSInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceDTSInfo\n&InstanceId=crs-6ia1c1c3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CutDownTime\": \"2019-08-16 17:10:13\",\n        \"DstInfo\": {\n            \"InstanceId\": \"crs-jufvqtt7\",\n            \"InstanceName\": \"dtsdsttest28\",\n            \"RegionId\": 1,\n            \"SetId\": 15005,\n            \"Status\": 1,\n            \"Type\": 2,\n            \"Vip\": \"172.16.16.48\",\n            \"ZoneId\": 100002\n        },\n        \"JobId\": \"dts-l2g434lt\",\n        \"JobName\": \"redis_dts_test28\",\n        \"Offset\": 0,\n        \"RequestId\": \"f5ff1c8e-7ea4-40a8-b179-8a99c6f7085b\",\n        \"SrcInfo\": {\n            \"InstanceId\": \"crs-6ia1c1c3\",\n            \"InstanceName\": \"dtsSrctest28\",\n            \"RegionId\": 1,\n            \"SetId\": 15005,\n            \"Status\": -4,\n            \"Type\": 2,\n            \"Vip\": \"172.16.16.9\",\n            \"ZoneId\": 100002\n        },\n        \"Status\": 10,\n        \"StatusDesc\": \"Failed\"\n    }\n}",
         "title": "Sample request"
@@ -208,9 +208,9 @@
     ],
     "DescribeInstanceMonitorBigKey": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceMonitorBigKey\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"Date\": \"20191101\",\n    \"ReqType\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Type\": \"xx\",\n                \"Updatetime\": 1572577196,\n                \"DB\": 0,\n                \"Key\": \"xx\",\n                \"Size\": 56\n            },\n            {\n                \"DB\": 0,\n                \"Updatetime\": 1572577196,\n                \"Type\": \"xx\",\n                \"Key\": \"xx\",\n                \"Size\": 56\n            },\n            {\n                \"DB\": 0,\n                \"Updatetime\": 1572577196,\n                \"Type\": \"xx\",\n                \"Key\": \"xx\",\n                \"Size\": 56\n            },\n            {\n                \"DB\": 0,\n                \"Updatetime\": 1572577196,\n                \"Type\": \"xx\",\n                \"Key\": \"xx\",\n                \"Size\": 64\n            },\n            {\n                \"DB\": 0,\n                \"Updatetime\": 1572577196,\n                \"Type\": \"xx\",\n                \"Key\": \"xx\",\n                \"Size\": 64\n            },\n            {\n                \"DB\": 0,\n                \"Updatetime\": 1572577196,\n                \"Type\": \"xx\",\n                \"Key\": \"xx\",\n                \"Size\": 64\n            },\n            {\n                \"DB\": 1,\n                \"Updatetime\": 1572577196,\n                \"Type\": \"xx\",\n                \"Key\": \"xx\",\n                \"Size\": 64\n            },\n            {\n                \"DB\": 0,\n                \"Updatetime\": 1572577196,\n                \"Type\": \"xx\",\n                \"Key\": \"xx\",\n                \"Size\": 88\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "document": "Sample request",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeInstanceMonitorBigKey<Common request parameters>{    \"InstanceId\": \"crs-5a4py64p\",    \"Date\": \"20191101\",    \"ReqType\": \"1\"}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DB\": 0,\n                \"Key\": \"abc\",\n                \"Type\": \"abc\",\n                \"Size\": 0,\n                \"Updatetime\": 0\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -224,15 +224,15 @@
     ],
     "DescribeInstanceMonitorBigKeyTypeDist": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceMonitorBigKeyTypeDist\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-r34wkc1d\",\n    \"Date\": \"2019-11-07\"\n}",
+        "document": "Sample request",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeInstanceMonitorBigKeyTypeDist<Common request parameters>{    \"InstanceId\": \"crs-r34wkc1d\",    \"Date\": \"2019-11-07\"}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Count\": 0,\n                \"Size\": 0,\n                \"Type\": \"string\",\n                \"Updatetime\": 0\n            },\n            {\n                \"Count\": 0,\n                \"Size\": 0,\n                \"Type\": \"list\",\n                \"Updatetime\": 0\n            },\n            {\n                \"Count\": 0,\n                \"Size\": 0,\n                \"Type\": \"set\",\n                \"Updatetime\": 0\n            },\n            {\n                \"Count\": 0,\n                \"Size\": 0,\n                \"Type\": \"zset\",\n                \"Updatetime\": 0\n            },\n            {\n                \"Count\": 0,\n                \"Size\": 0,\n                \"Type\": \"hash\",\n                \"Updatetime\": 0\n            }\n        ],\n        \"RequestId\": \"e903f105-241c-4557-ae99-d4b5bbc015d8\"\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeInstanceMonitorHotKey": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceMonitorHotKey\r\n&InstanceId=crs-r34wkc1d\r\n&SpanType=4\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"haha\",\n                \"Type\": \"string\",\n                \"Count\": 123\n            }\n        ],\n        \"RequestId\": \"20d64b80-cbac-49a0-8771-42e326db5c45\"\n    }\n}",
         "title": "Sample request"
@@ -240,7 +240,7 @@
     ],
     "DescribeInstanceMonitorSIP": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceMonitorSIP\r\n&InstanceId=crs-5a4py64p\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Ip\": \"127.0.0.1\",\n                \"Conn\": 10,\n                \"Cmd\": 10\n            }\n        ],\n        \"RequestId\": \"8c455eaf-383d-4b16-86cf-ccfc705c9107\"\n    }\n}",
         "title": "Sample request"
@@ -248,7 +248,7 @@
     ],
     "DescribeInstanceMonitorTookDist": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceMonitorTookDist\r\n&InstanceId=crs-5a4py64p\r\n&Date=2019-11-07\r\n&SpanType=4\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Ladder\": -1,\n                \"Size\": 0\n            },\n            {\n                \"Ladder\": 5,\n                \"Size\": 0\n            },\n            {\n                \"Ladder\": 10,\n                \"Size\": 0\n            },\n            {\n                \"Ladder\": 1,\n                \"Size\": 178942\n            },\n            {\n                \"Ladder\": 50,\n                \"Size\": 0\n            },\n            {\n                \"Ladder\": 200,\n                \"Size\": 0\n            }\n        ],\n        \"RequestId\": \"6f6441b4-884e-40b0-8503-5e5f5e6b6714\"\n    }\n}",
         "title": "Sample request"
@@ -256,7 +256,7 @@
     ],
     "DescribeInstanceMonitorTopNCmd": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceMonitorTopNCmd\r\n&InstanceId=crs-5a4py64p\r\n&SpanType=4\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Cmd\": \"ping\",\n                \"Count\": 179562\n            }\n        ],\n        \"RequestId\": \"f5ce4f15-bf90-4958-95ca-97fa086ace28\"\n    }\n}",
         "title": "Sample request"
@@ -264,7 +264,7 @@
     ],
     "DescribeInstanceMonitorTopNCmdTook": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceMonitorTopNCmdTook\n&InstanceId=crs-r34wkc1d\n&SpanType=4\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Cmd\": \"ping\",\n                \"Took\": 4688000\n            }\n        ],\n        \"RequestId\": \"95308f10-19d9-4313-bedf-cb65a846826f\"\n    }\n}",
         "title": "Sample request"
@@ -272,15 +272,15 @@
     ],
     "DescribeInstanceNodeInfo": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceNodeInfo\n&InstanceId=crs-asdasdas\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"ProxyCount\": 10,\n        \"RedisCount\": 10,\n        \"TendisCount\": 5,\n        \"Proxy\": [\n            {\n                \"NodeId\": \"6abb7c308ed3d65930599d6f3d978971864cec77\"\n            }\n        ],\n        \"Redis\": [\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"0f2ce0f969c4f43bc338bc1d6f60597d654bb3e4\",\n                \"NodeRole\": \"slave\"\n            }\n        ],\n        \"Tendis\": [\n            {\n                \"NodeId\": \"54dc6b83093359783abd2f0b07da61d3\",\n                \"NodeRole\": \"master\"\n            }\n        ]\n    }\n}",
+        "document": "This example shows you how to query the node information.",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeInstanceNodeInfo<Common request parameters>{    \"InstanceId\": \"crs-mufy7q15\"}",
+        "output": "{\n    \"Response\": {\n        \"Proxy\": [\n            {\n                \"NodeId\": \"de1d54148ed79f11c3b4a49c878b29c7218a6a30\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"de1d54148ed79f11c3b4a49c878b29c7218a6a30\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"524cc561f6621bc90d726dc62e15c66523754351\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"5a0b7dfd340e8938762a3fabd390fed0e3635bb2\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"71506b68e9ee8657b117846f66d66b8dd93a1344\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"d4d3c819851952b01bd64e9ed7b3ada279b98ff7\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"183a26e4ca59f98487276ce303ba50a2d71a423b\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"002293180829fa0b2ab75b4ecd46d39194cabbfb\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"6cd3f7b5cf412d1e93ab423c959c667e9ff6b75c\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"52dd9608df1a0b8db6a28510866071f6638855bf\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"6b62f8239e0851f8a2660cd13dd58bf171cb0f49\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"6643b7242ad3c47c8b8622f28bf241db0a7b0dde\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"NodeId\": \"dc78e5013a6cfd886eb16a49c2248b956551e77c\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"d89e53a50448b3d61433317bc090625217cdeaf1\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"156aebf190383685303ff68978c91adcd308ef27\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"b8ebc56c5c346b6f79d75f81e6ee5d5f739c75f1\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"ebbc08014c2c8c53132a541c7321dbf9cef8d09f\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"e7c18f48e024bdd938a970a67fea207c6cf77138\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"755d3a3ffc28786b92c2615bde8f17e37e861e57\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"bb160769730dc46e8408c1d7ebddc8cdd6c1a0f8\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"4ecab8b25acc46e6bd82dc469328a50fb9568656\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"27bdbc76b6f714764fb48ff4ddc26db6a20796f5\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"833f13e8d33ed1b5e8e87a935d0e48c4025af8c3\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"NodeId\": \"81c2bd2f68215c5a5020fa900f481894e3b95eca\",\n                \"ZoneId\": 100004\n            }\n        ],\n        \"ProxyCount\": 24,\n        \"Redis\": [\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"cc1e7c5ca61f52252df1ca6562db22e2af6eaa1f\",\n                \"NodeRole\": \"master\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"7b567e0bf382294e03ca88c33ef536f4a0412c7c\",\n                \"NodeRole\": \"master\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"78dd8883679ecda91293ded3051db82eec220da3\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"58b509ea080e53d5aa71776688d2b70b23c63341\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"b451eafdfe3fa6fcd2f309b3a874414e255fc7e9\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"eb7baf3b620417f2ac7b2e61db47494bfe944a20\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"1f4fc3cf0f5dd641896fab7346c19486854b91cf\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"365e4bd53d1b22b7b11a478e59bedd7b36664168\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"6906d69a5378dc368da4cc3b0a924608ded3033a\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"7bf8f6080c14b449a617cff4ad4fd2b326198314\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"14f01a4ae7aa67aa163494bbc6e8c084961b3ca2\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100004\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"165bc741b8f9e929b382a6ea14ce8e9d243b4ad9\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"aaafa08a670047eaed7662b09ddac78e2a449590\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            },\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"cc37908d0829a977727ebccbac393e1e6eacb7b6\",\n                \"NodeRole\": \"slave\",\n                \"ZoneId\": 100006\n            }\n        ],\n        \"RedisCount\": 15,\n        \"RequestId\": \"eba33751-49d1-43a8-a4c5-5a3596b41f06\",\n        \"Tendis\": [],\n        \"TendisCount\": 0\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeInstanceParamRecords": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceParamRecords\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceParamHistory\": [\n            {\n                \"ModifyTime\": \"2019-01-07 11:28:58\",\n                \"NewValue\": \"511\",\n                \"ParamName\": \"hash-max-ziplist-entries\",\n                \"PreValue\": \"512\",\n                \"Status\": 2\n            },\n            {\n                \"ModifyTime\": \"2019-01-07 11:28:48\",\n                \"NewValue\": \"15001\",\n                \"ParamName\": \"cluster-node-timeout\",\n                \"PreValue\": \"15000\",\n                \"Status\": 2\n            }\n        ],\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\",\n        \"TotalCount\": 2\n    }\n}",
         "title": "Querying the list of parameter modifications"
@@ -288,47 +288,47 @@
     ],
     "DescribeInstanceParams": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceParams\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceEnumParam\": [\n            {\n                \"CurrentValue\": \"volatile-ttl\",\n                \"DefaultValue\": \"noeviction\",\n                \"EnumValue\": [\n                    \"volatile-lru\",\n                    \"allkeys-lru\",\n                    \"volatile-random\",\n                    \"allkeys-random\",\n                    \"volatile-ttl\",\n                    \"noeviction\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"maxmemory-policy\",\n                \"Tips\": \"Select the memory swapping policy when the system reaches the set maximum memory value\",\n                \"ValueType\": \"enum\",\n                \"Status\": 2\n            }\n        ],\n        \"InstanceIntegerParam\": [\n            {\n                \"CurrentValue\": \"15001\",\n                \"DefaultValue\": \"15000\",\n                \"Max\": \"120000\",\n                \"Min\": \"15000\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"cluster-node-timeout\",\n                \"Tips\": \"In cluster mode, a node is considered to fail if it is unreachable within the specified time period (in milliseconds)\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            },\n            {\n                \"CurrentValue\": \"511\",\n                \"DefaultValue\": \"512\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"hash-max-ziplist-entries\",\n                \"Tips\": \"If the number of hash entries does not exceed the specified number, the hashes are encoded using a memory efficient data structure\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            },\n            {\n                \"CurrentValue\": \"61\",\n                \"DefaultValue\": \"64\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"hash-max-ziplist-value\",\n                \"Tips\": \"If the largest item in the hashes does not exceed the specified threshold, the hashes are encoded using a memory efficient data structure\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            },\n            {\n                \"CurrentValue\": \"511\",\n                \"DefaultValue\": \"512\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"set-max-intset-entries\",\n                \"Tips\": \"If all the elements in the set are 64-bit signed decimal integers and do not exceed the set threshold, the hashes are encoded as an integer set\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            },\n            {\n                \"CurrentValue\": \"10001\",\n                \"DefaultValue\": \"10000\",\n                \"Max\": \"1000000\",\n                \"Min\": \"-1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"slowlog-log-slower-than\",\n                \"Tips\": \"Commands that exceed the specified time period of execution will be logged; a negative number indicates to disable this feature, and zero indicates to compulsorily log the executions of all commands\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            },\n            {\n                \"CurrentValue\": \"4\",\n                \"DefaultValue\": \"0\",\n                \"Max\": \"7200\",\n                \"Min\": \"0\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"timeout\",\n                \"Tips\": \"The connection is closed after the client is idle for the specified length of time, and zero indicates to disable this feature\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            },\n            {\n                \"CurrentValue\": \"121\",\n                \"DefaultValue\": \"128\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"zset-max-ziplist-entries\",\n                \"Tips\": \"If the number of ordered set elements does not exceed the specified number, the hashes are encoded using a memory efficient data structure\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            },\n            {\n                \"CurrentValue\": \"61\",\n                \"DefaultValue\": \"64\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"zset-max-ziplist-value\",\n                \"Tips\": \"If the largest item in the ordered set does not exceed the specified threshold, the hashes are encoded using a memory efficient data structure\",\n                \"ValueType\": \"integer\",\n                \"Status\": 2,\n                \"Unit\": \"\"\n            }\n        ],\n        \"InstanceTextParam\": [\n            {\n                \"CurrentValue\": \"\\\"eK\\\"\",\n                \"DefaultValue\": \"\\\"\\\"\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"notify-keyspace-events\",\n                \"TextValue\": [\n                    \"K\",\n                    \"E\",\n                    \"g\",\n                    \"$\",\n                    \"l\",\n                    \"s\",\n                    \"h\",\n                    \"z\",\n                    \"x\",\n                    \"e\",\n                    \"A\"\n                ],\n                \"Tips\": \"Change the notification method of the client key space set by the system\",\n                \"ValueType\": \"text\",\n                \"Status\": 2\n            }\n        ],\n        \"InstanceMultiParam\": [\n            {\n                \"CurrentValue\": \"\\\"\\\"\",\n                \"DefaultValue\": \"\\\"\\\"\",\n                \"EnumValue\": [\n                    \"flushall\",\n                    \"flushdb\",\n                    \"keys\",\n                    \"hgetall\",\n                    \"eval\",\n                    \"evalsha\",\n                    \"script\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"disable-command-list\",\n                \"Status\": 2,\n                \"Tips\": \"commands in such config will not be allowed to run in this instance,you can config multi commands like this 'flushdb,keys'\",\n                \"ValueType\": \"multi\"\n            }\n        ],\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\",\n        \"TotalCount\": 10\n    }\n}",
+        "document": "This example shows you how to query the parameter information of a specified instance.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceParams&InstanceId=crs-5a4p****&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceEnumParam\": [\n            {\n                \"CurrentValue\": \"yes\",\n                \"DefaultValue\": \"yes\",\n                \"EnumValue\": [\n                    \"yes\",\n                    \"no\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"lazyfree-lazy-eviction\",\n                \"Status\": 2,\n                \"Tips\": \"lazyfree switch on eviction\",\n                \"ValueType\": \"enum\"\n            },\n            {\n                \"CurrentValue\": \"yes\",\n                \"DefaultValue\": \"yes\",\n                \"EnumValue\": [\n                    \"yes\",\n                    \"no\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"lazyfree-lazy-expire\",\n                \"Status\": 2,\n                \"Tips\": \"lazyfree switch on expire\",\n                \"ValueType\": \"enum\"\n            },\n            {\n                \"CurrentValue\": \"yes\",\n                \"DefaultValue\": \"yes\",\n                \"EnumValue\": [\n                    \"yes\",\n                    \"no\"\n                ],\n                \"NeedRestart\": \"lazyfree-lazy-server-del\",\n                \"Status\": 2,\n                \"Tips\": \"lazyfree switch on server implicit deletion\",\n                \"ValueType\": \"enum\"\n            },\n            {\n                \"CurrentValue\": \"noeviction\",\n                \"DefaultValue\": \"noeviction\",\n                \"EnumValue\": [\n                    \"volatile-lru\",\n                    \"volatile-lfu\",\n                    \"allkeys-lru\",\n                    \"allkeys-lfu\",\n                    \"volatile-random\",\n                    \"allkeys-random\",\n                    \"volatile-ttl\",\n                    \"noeviction\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"maxmemory-policy\",\n                \"Status\": 2,\n                \"Tips\": \"How Redis will select what to remove when maxmemory is reached\",\n                \"ValueType\": \"enum\"\n            },\n            {\n                \"CurrentValue\": \"yes\",\n                \"DefaultValue\": \"yes\",\n                \"EnumValue\": [\n                    \"yes\",\n                    \"no\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"replica-lazy-flush\",\n                \"Status\": 2,\n                \"Tips\": \"lazyfree switch on full resynchronization\",\n                \"ValueType\": \"enum\"\n            },\n            {\n                \"CurrentValue\": \"no\",\n                \"DefaultValue\": \"no\",\n                \"EnumValue\": [\n                    \"yes\",\n                    \"no\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"sentineauth\",\n                \"Status\": 2,\n                \"Tips\": \"Executing a sentinel order eliminates the password\",\n                \"ValueType\": \"enum\"\n            }\n        ],\n        \"InstanceIntegerParam\": [\n            {\n                \"CurrentValue\": \"15000\",\n                \"DefaultValue\": \"15000\",\n                \"Max\": \"120000\",\n                \"Min\": \"15000\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"cluster-node-timeout\",\n                \"Status\": 2,\n                \"Tips\": \"Cluster node timeout is the amount of milliseconds a node must be unreachable for it to be considered in failure state\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"512\",\n                \"DefaultValue\": \"512\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"hash-max-ziplist-entries\",\n                \"Status\": 2,\n                \"Tips\": \"Hashes are encoded using a memory efficient data structure when they have a small number of entries\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"64\",\n                \"DefaultValue\": \"64\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"hash-max-ziplist-value\",\n                \"Status\": 2,\n                \"Tips\": \"Hashes are encoded using a memory efficient data structure when the biggest entry does not exceed a given threshold\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"10\",\n                \"DefaultValue\": \"10\",\n                \"Max\": \"500\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"hz\",\n                \"Status\": 2,\n                \"Tips\": \"The frequency at which Redis background tasks are performed. A higher value results in higher CPU consumption but smaller latency. We recommend that you do not specify a value larger than 100.\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"500\",\n                \"DefaultValue\": \"500\",\n                \"Max\": \"1000\",\n                \"Min\": \"10\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"proxy-slowlog-log-slower-than\",\n                \"Status\": 2,\n                \"Tips\": \"the commands over this time will in proxy\",\n                \"Unit\": \"ms\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"512\",\n                \"DefaultValue\": \"512\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"set-max-intset-entries\",\n                \"Status\": 2,\n                \"Tips\": \"When a set is composed of just strings that happen to be integers in radix 10 in the range of 64 bit signed integers.\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"10\",\n                \"DefaultValue\": \"10\",\n                \"Max\": \"1000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"slowlog-log-slower-than\",\n                \"Status\": 2,\n                \"Tips\": \"Over this time the command is recorded in us.a negative number disables the slow log,a value of zero forces the logging of every command\",\n                \"Unit\": \"ms\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"31536000\",\n                \"DefaultValue\": \"31536000\",\n                \"Max\": \"2147483647\",\n                \"Min\": \"60\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"timeout\",\n                \"Status\": 2,\n                \"Tips\": \"Close the connection after a client is idle for N seconds\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"128\",\n                \"DefaultValue\": \"128\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"zset-max-ziplist-entries\",\n                \"Status\": 2,\n                \"Tips\": \"Sorted sets are encoded using a memory efficient data structure when they have a small number of entries.\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            },\n            {\n                \"CurrentValue\": \"64\",\n                \"DefaultValue\": \"64\",\n                \"Max\": \"10000\",\n                \"Min\": \"1\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"zset-max-ziplist-value\",\n                \"Status\": 2,\n                \"Tips\": \"Sorted sets are encoded using a memory efficient data structure when the biggest entry does not exceed a given threshold.\",\n                \"Unit\": \"\",\n                \"ValueType\": \"integer\"\n            }\n        ],\n        \"InstanceMultiParam\": [\n            {\n                \"CurrentValue\": \"\\\"\\\"\",\n                \"DefaultValue\": \"\\\"\\\"\",\n                \"EnumValue\": [\n                    \"flushall\",\n                    \"flushdb\",\n                    \"keys\",\n                    \"hgetall\",\n                    \"eval\",\n                    \"evalsha\",\n                    \"script\",\n                    \"scan\",\n                    \"psetex\",\n                    \"set\",\n                    \"hmset\",\n                    \"hset\",\n                    \"lpush\",\n                    \"rpush\",\n                    \"sadd\",\n                    \"zadd\",\n                    \"del\",\n                    \"mget\",\n                    \"mset\",\n                    \"bitop\",\n                    \"exists\",\n                    \"msetnx\",\n                    \"blpop\",\n                    \"brpop\",\n                    \"rpoplpush\",\n                    \"brpoplpush\",\n                    \"smove\",\n                    \"sunion\",\n                    \"sinter\",\n                    \"sdiff\",\n                    \"sunionstore\",\n                    \"sinterstore\",\n                    \"sdiffstore\",\n                    \"zunionstore\",\n                    \"zinterstore\",\n                    \"pfmerge\",\n                    \"pfcount\"\n                ],\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"disable-command-list\",\n                \"Status\": 2,\n                \"Tips\": \"commands in such config will not be allowed to run in this instance,you can config multi commands like this 'flushdb,keys'\",\n                \"ValueType\": \"multi\"\n            }\n        ],\n        \"InstanceTextParam\": [\n            {\n                \"CurrentValue\": \"\\\"\\\"\",\n                \"DefaultValue\": \"\\\"\\\"\",\n                \"NeedRestart\": \"false\",\n                \"ParamName\": \"notify-keyspace-events\",\n                \"Status\": 2,\n                \"TextValue\": [\n                    \"K\",\n                    \"E\",\n                    \"g\",\n                    \"$\",\n                    \"l\",\n                    \"s\",\n                    \"h\",\n                    \"z\",\n                    \"x\",\n                    \"e\",\n                    \"A\"\n                ],\n                \"Tips\": \"Changes in key space notification to registered clients\",\n                \"ValueType\": \"text\"\n            }\n        ],\n        \"RequestId\": \"a4abf600-2813-4c5b-a3f8-fc4268efd151\",\n        \"TotalCount\": 18\n    }\n}",
         "title": "Querying the list of instance parameters"
       }
     ],
     "DescribeInstanceSecurityGroup": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceSecurityGroup\n&InstanceIds.0=crs-f2ho5rsz\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceSecurityGroupsDetail\": [\n            {\n                \"InstanceId\": \"crs-f2ho5rsz\",\n                \"SecurityGroupDetails\": [\n                    {\n                        \"CreateTime\": \"2018-01-30 15:58:00\",\n                        \"InboundRule\": [\n                            {\n                                \"Action\": \"ACCEPT\",\n                                \"Ip\": \"0.0.0.0/0\",\n                                \"Port\": \"ALL\",\n                                \"Proto\": \"ALL\"\n                            },\n                            {\n                                \"Action\": \"ACCEPT\",\n                                \"Ip\": \"0.0.0.0/0\",\n                                \"Port\": \"ALL\",\n                                \"Proto\": \"ALL\"\n                            }\n                        ],\n                        \"OutboundRule\": [\n                            {\n                                \"Action\": \"ACCEPT\",\n                                \"Ip\": \"0.0.0.0/0\",\n                                \"Port\": \"ALL\",\n                                \"Proto\": \"ALL\"\n                            }\n                        ],\n                        \"ProjectId\": 0,\n                        \"SecurityGroupId\": \"sg-gl1egaj1\",\n                        \"SecurityGroupName\": \"all\",\n                        \"SecurityGroupRemark\": \"\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
-        "title": "Querying the security group information of instance"
+        "document": "This example shows you how to query a security group.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceSecurityGroup&InstanceIds.0=crs-f2ho****&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceSecurityGroupsDetail\": [\n            {\n                \"InstanceId\": \"crs-f2ho****\",\n                \"SecurityGroupDetails\": [\n                    {\n                        \"CreateTime\": \"2018-01-30 15:58:00\",\n                        \"InboundRule\": [\n                            {\n                                \"Action\": \"ACCEPT\",\n                                \"Ip\": \"0.0.0.0/0\",\n                                \"Port\": \"ALL\",\n                                \"Proto\": \"ALL\"\n                            },\n                            {\n                                \"Action\": \"ACCEPT\",\n                                \"Ip\": \"0.0.0.0/0\",\n                                \"Port\": \"ALL\",\n                                \"Proto\": \"ALL\"\n                            }\n                        ],\n                        \"OutboundRule\": [\n                            {\n                                \"Action\": \"ACCEPT\",\n                                \"Ip\": \"0.0.0.0/0\",\n                                \"Port\": \"ALL\",\n                                \"Proto\": \"ALL\"\n                            }\n                        ],\n                        \"ProjectId\": 0,\n                        \"SecurityGroupId\": \"sg-gl1egaj1\",\n                        \"SecurityGroupName\": \"all\",\n                        \"SecurityGroupRemark\": \"\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "DescribeInstanceShards": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceShards\n&InstanceId=crs-7ponppu3\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceShards\": [\n            {\n                \"Keys\": 0,\n                \"Role\": 0,\n                \"ShardId\": \"1\",\n                \"ShardName\": \"crs-7ponppu3-003-01\",\n                \"Slots\": \"[\\\"0-5460\\\"]\",\n                \"Storage\": 3096688,\n                \"StorageSlope\": -0.002399486489594,\n                \"Runid\": \"af8945d6271e030ea17829b07c08e6c417bbff3d\",\n                \"Connected\": 1\n            },\n            {\n                \"Keys\": 0,\n                \"Role\": 1,\n                \"ShardId\": \"1\",\n                \"ShardName\": \"crs-7ponppu3-003-02\",\n                \"Slots\": \"[]\",\n                \"Storage\": 3035608,\n                \"StorageSlope\": 0,\n                \"Runid\": \"0711f42e392386674313f264f371b1288d2f800f\",\n                \"Connected\": 1\n            },\n            {\n                \"Keys\": 0,\n                \"Role\": 0,\n                \"ShardId\": \"2\",\n                \"ShardName\": \"crs-7ponppu3-001-01\",\n                \"Slots\": \"[\\\"5461-10922\\\"]\",\n                \"Storage\": 3160280,\n                \"StorageSlope\": 0.018086727708578,\n                \"Runid\": \"abf321a8ee9d4117f55b84ad9d70c3ef53f485af\",\n                \"Connected\": 1\n            },\n            {\n                \"Keys\": 0,\n                \"Role\": 1,\n                \"ShardId\": \"2\",\n                \"ShardName\": \"crs-7ponppu3-001-02\",\n                \"Slots\": \"[]\",\n                \"Storage\": 3036632,\n                \"StorageSlope\": 0,\n                \"Runid\": \"9b8d9ec9ac452ab5a866cc8331a92c16e95e9dda\",\n                \"Connected\": 1\n            },\n            {\n                \"Keys\": 0,\n                \"Role\": 0,\n                \"ShardId\": \"3\",\n                \"ShardName\": \"crs-7ponppu3-002-01\",\n                \"Slots\": \"[\\\"10923-16383\\\"]\",\n                \"Storage\": 3055440,\n                \"StorageSlope\": -0.015687562525272,\n                \"Runid\": \"3f299a51ad59fe7781e98b9ce6c807332931119b\",\n                \"Connected\": 1\n            },\n            {\n                \"Keys\": 0,\n                \"Role\": 1,\n                \"ShardId\": \"3\",\n                \"ShardName\": \"crs-7ponppu3-002-02\",\n                \"Slots\": \"[]\",\n                \"Storage\": 3035608,\n                \"StorageSlope\": 0,\n                \"Runid\": \"0498c543d7a49d8f7fc27706edbaf5b38fcb31f6\",\n                \"Connected\": 1\n            }\n        ],\n        \"TotalCount\": 6,\n        \"RequestId\": \"ca3000b6-bb8a-41fd-9074-11b5fda52d9f\"\n    }\n}",
+        "document": "This example shows you how to get the shard information of a cluster edition instance.",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeInstanceShards<Common request parameters>{    \"InstanceId\": \"crs-7pon****\",    \"FilterSlave\": true}",
+        "output": "{\n    \"Response\": {\n        \"InstanceShards\": [\n            {\n                \"Connected\": 1,\n                \"Keys\": 274171,\n                \"Role\": 0,\n                \"Runid\": \"edd1020ca1e3767c0d281d205964d168a2f5XXXX\",\n                \"ShardId\": \"crs-7pon****-001-02\",\n                \"Slots\": \"[\\\"0-5460\\\"]\",\n                \"Storage\": 92353816,\n                \"StorageSlope\": 0\n            },\n            {\n                \"Connected\": 1,\n                \"Keys\": 272958,\n                \"Role\": 0,\n                \"Runid\": \"8f8b3760bfbea22e0fad8a0a9575d7716801XXXX\",\n                \"ShardId\": \"3\",\n                \"ShardName\": \"crs-XXXXXXXX-003-01\",\n                \"Slots\": \"[\\\"10923-16383\\\"]\",\n                \"Storage\": 92096256,\n                \"StorageSlope\": 0\n            },\n            {\n                \"Connected\": 1,\n                \"Keys\": 273074,\n                \"Role\": 0,\n                \"Runid\": \"b6ed2e93ed754054f06220b995d42f4a07c2XXXX\",\n                \"ShardId\": \"2\",\n                \"ShardName\": \"crs-XXXXXXXX-002-01\",\n                \"Slots\": \"[\\\"5461-10922\\\"]\",\n                \"Storage\": 92149456,\n                \"StorageSlope\": 0\n            }\n        ],\n        \"RequestId\": \"9a57167a-f1a3-47ad-XXXX-b0ad835630a5\",\n        \"TotalCount\": 3\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeInstanceZoneInfo": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceZoneInfo\n&InstanceId=crs-6tl7uxxd\n&<Common request parameters>",
+        "document": "This example shows you how to query the node information of a specified instance.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceZoneInfo&InstanceId=crs-6tl7****&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ReplicaGroups\": [\n            {\n                \"GroupId\": 125101,\n                \"GroupName\": \"\",\n                \"ZoneId\": \"ap-guangzhou-2\",\n                \"Role\": \"master\",\n                \"RedisNodes\": [\n                    {\n                        \"Keys\": 39,\n                        \"Slot\": \"0-16383\",\n                        \"Status\": \"normal\",\n                        \"Role\": \"master\",\n                        \"NodeId\": \"5f83a663d58f092f4791630065cb3a76c50b40a5\"\n                    }\n                ]\n            },\n            {\n                \"GroupId\": 125102,\n                \"GroupName\": \"ng-1\",\n                \"ZoneId\": \"ap-guangzhou-3\",\n                \"Role\": \"replica\",\n                \"RedisNodes\": [\n                    {\n                        \"Keys\": 0,\n                        \"Slot\": \"\",\n                        \"Status\": \"normal\",\n                        \"Role\": \"replica\",\n                        \"NodeId\": \"bdc6d645f4741948cf51f93f7013edd64f44c3ba\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"e3d683fc-f2ff-43c9-980d-fae7a1166abc\",\n        \"TotalCount\": 2\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeInstances": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Offset\": \"0\"\n}",
-        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"WanAddress\": \"xx\",\n                \"RedisShardSize\": 1024,\n                \"RedisShardNum\": 3,\n                \"MonitorVersion\": \"xx\",\n                \"UpgradeProxyVersion\": \"5.6.0\",\n                \"InstanceTitle\": \"xx\",\n                \"ProductType\": \"xx\",\n                \"UpgradeRedisVersion\": \"6.2.5\",\n                \"NoAuth\": true,\n                \"PriceId\": 13380,\n                \"Type\": 7,\n                \"Status\": 2,\n                \"Vip6\": \"xx\",\n                \"VpcId\": 0,\n                \"InstanceNode\": [\n                    {\n                        \"InstanceClusterNode\": [\n                            {\n                                \"Status\": 0,\n                                \"Name\": \"xx\",\n                                \"Keys\": 0,\n                                \"Storage\": 0,\n                                \"StorageSlope\": 0.0,\n                                \"QpsSlope\": 0.0,\n                                \"Connected\": 0,\n                                \"RunId\": \"xx\",\n                                \"DownTime\": \"xx\",\n                                \"Qps\": 0,\n                                \"Slots\": \"xx\",\n                                \"CreateTime\": \"xx\",\n                                \"Role\": 0\n                            }\n                        ],\n                        \"Id\": 0\n                    }\n                ],\n                \"Tags\": [\n                    \"xx\"\n                ],\n                \"InstanceId\": \"xx\",\n                \"ClientLimitMax\": 0,\n                \"RegionId\": 1,\n                \"SubStatus\": 19,\n                \"SlaveReadWeight\": 0,\n                \"AutoRenewFlag\": 0,\n                \"OfflineTime\": \"xx\",\n                \"SubnetId\": 0,\n                \"NodeSet\": [\n                    {\n                        \"ZoneName\": \"xx\",\n                        \"NodeType\": 0,\n                        \"NodeId\": 0,\n                        \"ZoneId\": 1\n                    }\n                ],\n                \"DiskSize\": 0,\n                \"Engine\": \"xx\",\n                \"SizeUsed\": 0.0,\n                \"InstanceTags\": [\n                    {\n                        \"TagKey\": \"tke-clusterId\",\n                        \"TagValue\": \"cls-0kl4et00\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"Region\": \"xx\",\n                \"DeadlineTime\": \"2022-11-02 15:04:05\",\n                \"CloseTime\": \"2022-11-10 15:04:06\",\n                \"ZoneId\": 100002,\n                \"PasswordFree\": 0,\n                \"Appid\": 1251006373,\n                \"WanIp\": \"xx\",\n                \"NetLimit\": 480,\n                \"InstanceName\": \"crs-test\",\n                \"Createtime\": \"2022-08-02 16:27:17\",\n                \"ClientLimit\": 10000,\n                \"PolarisServer\": \"xx\",\n                \"CurrentRedisVersion\": \"5.2.0\",\n                \"CurrentProxyVersion\": \"5.6.0\",\n                \"UniqVpcId\": \"vpc-fk33jsf4****\",\n                \"DtsStatus\": 0,\n                \"ProjectName\": \"xx\",\n                \"BillingMode\": 1,\n                \"RemainBandwidthDuration\": \"xx\",\n                \"ReadOnly\": 0,\n                \"UniqSubnetId\": \"subnet-6qotc71w\",\n                \"ClientLimitMin\": 0,\n                \"RedisReplicasNum\": 1,\n                \"Port\": 6379,\n                \"Size\": 0.0\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"65e950b9-78e8-49b1-9200-0e62a1925559\"\n    }\n}",
+        "document": "This example shows you how to query the list of Redis instances",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeInstances<Common request parameters>{    \"Limit\": 2,    \"Offset\": 0,    \"OrderBy\": \"createtime \"}",
+        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"Appid\": 251223628,\n                \"AutoRenewFlag\": 0,\n                \"BillingMode\": 1,\n                \"ClientLimit\": 10000,\n                \"ClientLimitMax\": 40000,\n                \"ClientLimitMin\": 10000,\n                \"CloseTime\": \"0000-00-00 00:00:00\",\n                \"Createtime\": \"2023-04-17 11:32:18\",\n                \"CurrentProxyVersion\": \"5.8.0\",\n                \"CurrentRedisVersion\": \"6.0.0\",\n                \"DeadlineTime\": \"2023-05-17 11:32:18\",\n                \"DiskSize\": 0,\n                \"DtsStatus\": 0,\n                \"Engine\": \"Redis\",\n                \"InstanceId\": \"crs-4nmzc0ul\",\n                \"InstanceName\": \"Redis_automation_is_awesome\",\n                \"InstanceNode\": [],\n                \"InstanceTags\": [],\n                \"InstanceTitle\": \"Adding an instance\",\n                \"MonitorVersion\": \"5s\",\n                \"NetLimit\": 24,\n                \"NoAuth\": false,\n                \"NodeSet\": [\n                    {\n                        \"NodeId\": 336948,\n                        \"NodeType\": 0,\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336946,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336947,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"\"\n                    }\n                ],\n                \"OfflineTime\": \"\",\n                \"PasswordFree\": 0,\n                \"PolarisServer\": \"\",\n                \"Port\": 6379,\n                \"PriceId\": 1000848,\n                \"ProductType\": \"standalone\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"ReadOnly\": 0,\n                \"RedisReplicasNum\": 2,\n                \"RedisShardNum\": 1,\n                \"RedisShardSize\": 4096,\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RemainBandwidthDuration\": \"\",\n                \"Size\": 4096,\n                \"SizeUsed\": 0,\n                \"SlaveReadWeight\": 0,\n                \"Status\": 1,\n                \"SubStatus\": 37,\n                \"SubnetId\": 2282634,\n                \"Tags\": [],\n                \"Type\": 15,\n                \"UniqSubnetId\": \"subnet-1ed4w7to\",\n                \"UniqVpcId\": \"vpc-mjwornzj\",\n                \"UpgradeProxyVersion\": \"\",\n                \"UpgradeRedisVersion\": \"\",\n                \"Vip6\": \"\",\n                \"VpcId\": 11133673,\n                \"WanAddress\": \"\",\n                \"WanIp\": \"10.0.1.61\",\n                \"ZoneId\": 100002\n            },\n            {\n                \"Appid\": 251223628,\n                \"AutoRenewFlag\": 0,\n                \"BillingMode\": 1,\n                \"ClientLimit\": 10000,\n                \"ClientLimitMax\": 40000,\n                \"ClientLimitMin\": 10000,\n                \"CloseTime\": \"0000-00-00 00:00:00\",\n                \"Createtime\": \"2023-04-17 11:47:02\",\n                \"CurrentProxyVersion\": \"5.5.0\",\n                \"CurrentRedisVersion\": \"92.0.0\",\n                \"DeadlineTime\": \"2023-05-17 11:47:01\",\n                \"DiskSize\": 0,\n                \"DtsStatus\": 0,\n                \"Engine\": \"Redis\",\n                \"InstanceId\": \"crs-46njvft9\",\n                \"InstanceName\": \"Redis_automation_is_awesome\",\n                \"InstanceNode\": [],\n                \"InstanceTags\": [],\n                \"InstanceTitle\": \"Running\",\n                \"MonitorVersion\": \"5s\",\n                \"NetLimit\": 24,\n                \"NoAuth\": false,\n                \"NodeSet\": [\n                    {\n                        \"NodeId\": 336951,\n                        \"NodeType\": 0,\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336949,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336950,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"\"\n                    }\n                ],\n                \"OfflineTime\": \"\",\n                \"PasswordFree\": 0,\n                \"PolarisServer\": \"\",\n                \"Port\": 6379,\n                \"PriceId\": 1000848,\n                \"ProductType\": \"standalone\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"ReadOnly\": 0,\n                \"RedisReplicasNum\": 2,\n                \"RedisShardNum\": 1,\n                \"RedisShardSize\": 4096,\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RemainBandwidthDuration\": \"\",\n                \"Size\": 4096,\n                \"SizeUsed\": 0,\n                \"SlaveReadWeight\": 0,\n                \"Status\": 2,\n                \"SubStatus\": 19,\n                \"SubnetId\": 2282634,\n                \"Tags\": [],\n                \"Type\": 6,\n                \"UniqSubnetId\": \"subnet-1ed4w7to\",\n                \"UniqVpcId\": \"vpc-mjwornzj\",\n                \"UpgradeProxyVersion\": \"\",\n                \"UpgradeRedisVersion\": \"\",\n                \"Vip6\": \"\",\n                \"VpcId\": 11133673,\n                \"WanAddress\": \"\",\n                \"WanIp\": \"10.0.1.71\",\n                \"ZoneId\": 100002\n            }\n        ],\n        \"RequestId\": \"3fb5a4d2-680c-45a2-aa88-0213b76d1489\",\n        \"TotalCount\": 8\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeMaintenanceWindow": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeMaintenanceWindow\r\n&InstanceId=crs-5a4py64p\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"StartTime\": \"03:00\",\n        \"EndTime\": \"06:00\",\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample"
@@ -344,7 +344,7 @@
     ],
     "DescribeParamTemplates": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeParamTemplates\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\",\n        \"Items\": [\n            {\n                \"Name\": \"CustomParamTemplate\",\n                \"Description\": \"MyCustomParamTemplate\",\n                \"ProductType\": 6,\n                \"TemplateId\": \"crs-cfg-sa23d5d3\"\n            }\n        ]\n    }\n}",
         "title": "Sample request"
@@ -352,7 +352,7 @@
     ],
     "DescribeProductInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProductInfo\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RegionSet\": [\n            {\n                \"RegionId\": \"ap-guangzhou\",\n                \"RegionName\": \"Guangzhou\",\n                \"RegionShortName\": \"GZ\",\n                \"Area\": \"South China\",\n                \"ZoneSet\": [\n                    {\n                        \"ZoneId\": \"ap-guangzhou-2\",\n                        \"ZoneName\": \"Guangzhou Zone 2\",\n                        \"IsSaleout\": false,\n                        \"IsDefault\": false,\n                        \"OldZoneId\": 0,\n                        \"NetWorkType\": [\n                            \"basenet\",\n                            \"vpcnet\"\n                        ],\n                        \"ProductSet\": [\n                            {\n                                \"Type\": 7,\n                                \"TypeName\": \"Redis Cluster Edition\",\n                                \"MinBuyNum\": 1,\n                                \"MaxBuyNum\": 10,\n                                \"Saleout\": false,\n                                \"Engine\": \"Redis Community Edition\",\n                                \"Version\": \"Redis 4.0\",\n                                \"TotalSize\": [\n                                    \"12\",\n                                    \"20\",\n                                    \"32\",\n                                    \"64\",\n                                    \"96\",\n                                    \"128\",\n                                    \"256\",\n                                    \"384\",\n                                    \"512\",\n                                    \"768\",\n                                    \"1024\",\n                                    \"2048\",\n                                    \"3072\",\n                                    \"4096\"\n                                ],\n                                \"ShardSize\": [\n                                    \"4\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"20\",\n                                    \"24\",\n                                    \"32\"\n                                ],\n                                \"ReplicaNum\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"3\",\n                                    \"4\",\n                                    \"5\"\n                                ],\n                                \"ShardNum\": [\n                                    \"3\",\n                                    \"5\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"64\",\n                                    \"80\",\n                                    \"96\",\n                                    \"128\"\n                                ],\n                                \"PayMode\": \"1\",\n                                \"EnableRepicaReadOnly\": true\n                            },\n                            {\n                                \"Type\": 4,\n                                \"TypeName\": \"CKV Cluster Edition\",\n                                \"MinBuyNum\": 1,\n                                \"MaxBuyNum\": 10,\n                                \"Saleout\": false,\n                                \"Engine\": \"Tencent Cloud CKV\",\n                                \"Version\": \"Redis 3.2\",\n                                \"TotalSize\": [\n                                    \"12\",\n                                    \"20\",\n                                    \"32\",\n                                    \"64\",\n                                    \"96\",\n                                    \"128\",\n                                    \"256\",\n                                    \"384\",\n                                    \"512\",\n                                    \"768\",\n                                    \"1024\",\n                                    \"2048\",\n                                    \"3072\",\n                                    \"4096\"\n                                ],\n                                \"ShardSize\": [\n                                    \"4\",\n                                    \"8\",\n                                    \"16\",\n                                    \"24\",\n                                    \"32\",\n                                    \"48\",\n                                    \"64\",\n                                    \"80\",\n                                    \"96\",\n                                    \"128\",\n                                    \"160\",\n                                    \"192\",\n                                    \"256\",\n                                    \"320\",\n                                    \"384\"\n                                ],\n                                \"ReplicaNum\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"3\",\n                                    \"4\",\n                                    \"5\"\n                                ],\n                                \"ShardNum\": [\n                                    \"3\",\n                                    \"5\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"64\",\n                                    \"80\",\n                                    \"96\",\n                                    \"128\"\n                                ],\n                                \"PayMode\": \"1\",\n                                \"EnableRepicaReadOnly\": false\n                            },\n                            {\n                                \"Type\": 2,\n                                \"TypeName\": \"Redis Master-Replica Edition\",\n                                \"MinBuyNum\": 1,\n                                \"MaxBuyNum\": 10,\n                                \"Saleout\": false,\n                                \"Engine\": \"Redis Community Edition\",\n                                \"Version\": \"Redis 2.8\",\n                                \"TotalSize\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"4\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"20\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"60\",\n                                    \"0.25\"\n                                ],\n                                \"ShardSize\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"4\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"20\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"60\",\n                                    \"0.25\"\n                                ],\n                                \"ReplicaNum\": [\n                                    \"1\"\n                                ],\n                                \"ShardNum\": [\n                                    \"1\"\n                                ],\n                                \"PayMode\": \"1\",\n                                \"EnableRepicaReadOnly\": false\n                            },\n                            {\n                                \"Type\": 5,\n                                \"TypeName\": \"Redis Standalone Edition\",\n                                \"MinBuyNum\": 1,\n                                \"MaxBuyNum\": 10,\n                                \"Saleout\": false,\n                                \"Engine\": \"Redis Community Edition\",\n                                \"Version\": \"Redis 2.8\",\n                                \"TotalSize\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"4\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"20\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"60\"\n                                ],\n                                \"ShardSize\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"4\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"20\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"60\"\n                                ],\n                                \"ReplicaNum\": [\n                                    \"0\"\n                                ],\n                                \"ShardNum\": [\n                                    \"1\"\n                                ],\n                                \"PayMode\": \"1\",\n                                \"EnableRepicaReadOnly\": false\n                            },\n                            {\n                                \"Type\": 2,\n                                \"TypeName\": \"Redis Master-Replica Edition\",\n                                \"MinBuyNum\": 1,\n                                \"MaxBuyNum\": 10,\n                                \"Saleout\": false,\n                                \"Engine\": \"Redis Community Edition\",\n                                \"Version\": \"Redis 2.8\",\n                                \"TotalSize\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"4\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"20\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"60\"\n                                ],\n                                \"ShardSize\": [\n                                    \"1\",\n                                    \"2\",\n                                    \"4\",\n                                    \"8\",\n                                    \"12\",\n                                    \"16\",\n                                    \"20\",\n                                    \"24\",\n                                    \"32\",\n                                    \"40\",\n                                    \"48\",\n                                    \"60\"\n                                ],\n                                \"ReplicaNum\": [\n                                    \"1\"\n                                ],\n                                \"ShardNum\": [\n                                    \"1\"\n                                ],\n                                \"PayMode\": \"0\",\n                                \"EnableRepicaReadOnly\": false\n                            },\n                            {\n                                \"Type\": 3,\n                                \"TypeName\": \"CKV Standalone Edition\",\n                                \"MinBuyNum\": 1,\n                                \"MaxBuyNum\": 10,\n                                \"Saleout\": false,\n                                \"Engine\": \"Tencent Cloud CKV\",\n                                \"Version\": \"Redis 3.2\",\n                                \"TotalSize\": [\n                                    \"4\",\n                                    \"8\",\n                                    \"16\",\n                                    \"24\",\n                                    \"32\",\n                                    \"48\",\n                                    \"64\",\n                                    \"80\",\n                                    \"96\",\n                                    \"128\",\n                                    \"160\",\n                                    \"192\",\n                                    \"256\",\n                                    \"320\",\n                                    \"384\"\n                                ],\n                                \"ShardSize\": [\n                                    \"4\",\n                                    \"8\",\n                                    \"16\",\n                                    \"24\",\n                                    \"32\",\n                                    \"48\",\n                                    \"64\",\n                                    \"80\",\n                                    \"96\",\n                                    \"128\",\n                                    \"160\",\n                                    \"192\",\n                                    \"256\",\n                                    \"320\",\n                                    \"384\"\n                                ],\n                                \"ReplicaNum\": [\n                                    \"0\"\n                                ],\n                                \"ShardNum\": [\n                                    \"1\"\n                                ],\n                                \"PayMode\": \"1\",\n                                \"EnableRepicaReadOnly\": false\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"3c5730c6-02f2-46fd-8bf1-725b8b608fb9\"\n    }\n}",
         "title": "Sample request"
@@ -360,7 +360,7 @@
     ],
     "DescribeProjectSecurityGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeProjectSecurityGroup\n&SecurityGroupId=sg-gl1egaj1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4cc888c8-cc1c-4a77-9259-dd0f6907b559\",\n        \"SecurityGroupDetails\": [\n            {\n                \"CreateTime\": \"2018-01-30 15:58:00\",\n                \"InboundRule\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"Ip\": \"0.0.0.0/0\",\n                        \"Port\": \"ALL\",\n                        \"Proto\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"Ip\": \"0.0.0.0/0\",\n                        \"Port\": \"ALL\",\n                        \"Proto\": \"ALL\"\n                    }\n                ],\n                \"OutboundRule\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"Ip\": \"0.0.0.0/0\",\n                        \"Port\": \"ALL\",\n                        \"Proto\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-gl1egaj1\",\n                \"SecurityGroupName\": \"all\",\n                \"SecurityGroupRemark\": \"\"\n            }\n        ]\n    }\n}",
         "title": "Querying the security group information of project"
@@ -368,7 +368,7 @@
     ],
     "DescribeProjectSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectSecurityGroups\n<Common request parameters>\n\n{\n    \"ProjectId\": \"11954\",\n    \"Product\": \"redis\"\n}",
         "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A1\",\n        \"Groups\": [\n            {\n                \"Outbound\": [],\n                \"SecurityGroupName\": \"CDB\",\n                \"Inbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupRemark\": \"\",\n                \"CreateTime\": \"2017-04-13 15:00:06\"\n            }\n        ]\n    }\n}",
         "title": "Sample request"
@@ -376,8 +376,8 @@
     ],
     "DescribeProxySlowLog": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog\n&InstanceId=crs-asdasdas\n&BeginTime=2019-09-08 12:12:41\n&EndTime=2019-09-09 12:12:41\n&<Common request parameters>",
+        "document": "This example shows you how to query the slow log record of a specified instance.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog&InstanceId=crs-asda****&BeginTime=2019-09-08 12:12:41&EndTime=2019-09-09 12:12:41&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 106980,\n        \"InstanceProxySlowLogDetail\": [\n            {\n                \"Duration\": 45,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"CommandLine\": \"hget hash_key classify_scope::default\",\n                \"Client\": \"172.16.21.78\",\n                \"Command\": \"hget\"\n            }\n        ],\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\"\n    }\n}",
         "title": "Sample request"
       }
@@ -400,15 +400,15 @@
     ],
     "DescribeSlowLog": [
       {
-        "document": "This example shows you how to query the slow log details of an instance, including slow log commands, command line information, delay time, client address, and node ID.",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSlowLog\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-asdasdas\",\n    \"EndTime\": \"2019-09-09 12:12:41\",\n    \"BeginTime\": \"2019-09-08 12:12:41\"\n}",
-        "output": "{\n    \"Response\": {\n        \"InstanceSlowlogDetail\": [\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7a6604337\",\n                \"Command\": \"hget\",\n                \"CommandLine\": \"hget hash_key classify_scope::default\",\n                \"Duration\": 45,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7a6604337\",\n                \"Command\": \"keys\",\n                \"CommandLine\": \"keys OtherResControler:orion.ovs.client.1514259512471:orion.ovs.entprise.9281083591:sence:*\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"24a05f0d545da235f07a5bc5deebb937af8f721e\",\n                \"Command\": \"get\",\n                \"CommandLine\": \"get slot::fsm::status::orion.ovs.client.1508751991541::1db7ffcf9216bc1fd939e6c710514f6fb40fd4fe1525f\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            }\n        ],\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"TotalCount\": 106980\n    }\n}",
-        "title": "Querying slow logs of an instance"
+        "document": "This example shows you how to query the details of a slow query for an instance, including  slow log commands, command line information, delay time, client address, and node ID.",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog&InstanceId=crs-asda****&BeginTime=2019-09-08 12:12:41&EndTime=2019-09-09 12:12:41&<Common request parameters>crs-asda****\",    \"EndTime\": \"2019-09-09 12:12:41\",    \"BeginTime\": \"2019-09-08 12:12:41\"}",
+        "output": "{\n    \"Response\": {\n        \"InstanceSlowlogDetail\": [\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7********\",\n                \"Command\": \"hget\",\n                \"CommandLine\": \"hget hash_key classify_scope::default\",\n                \"Duration\": 45,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7********\",\n                \"Command\": \"keys\",\n                \"CommandLine\": \"keys OtherResControler:orion.ovs.client.1514259512471:orion.ovs.entprise.9281083591:sence:*\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"24a05f0d545da235f07a5bc5deebb937********\",\n                \"Command\": \"get\",\n                \"CommandLine\": \"get slot::fsm::status::orion.ovs.client.1508751991541::1db7ffcf9216bc1fd939e6c710514f6fb40fd4fe1525f\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            }\n        ],\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"TotalCount\": 106980\n    }\n}",
+        "title": "Querying the slow log record of an instance"
       }
     ],
     "DescribeTaskInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeTaskInfo\n&TaskId=18215\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"succeed\",\n        \"StartTime\": \"2018-11-01 17:25:14\",\n        \"TaskType\": \"Redis cache purge process\",\n        \"InstanceId\": \"crs-09u2u96z\",\n        \"TaskMessage\": \"\",\n        \"RequestId\": \"81120ab8-fea0-41ab-af7e-283c0348c4fc\"\n    }\n}",
         "title": "Sample request"
@@ -416,15 +416,15 @@
     ],
     "DescribeTaskList": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTaskList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-opcazbrb\",\n}",
+        "document": "This example shows you how to query the task details of an instance.",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeTaskList<Common request parameters>{    \"InstanceId\": \"crs-opcazbrb\"}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"19a7fb07-8e21-4827-88dd-fee57f38e8cd\",\n        \"Tasks\": [\n            {\n                \"EndTime\": \"2019-11-15 14:25:46\",\n                \"InstanceId\": \"crs-opcazbrb\",\n                \"InstanceName\": \"multidbccbugfix11153\",\n                \"Progress\": 1,\n                \"ProjectId\": 0,\n                \"Result\": 2,\n                \"StartTime\": \"2019-11-15 14:25:37\",\n                \"TaskId\": 42372,\n                \"TaskType\": \"037\"\n            },\n            {\n                \"EndTime\": \"2019-11-15 14:25:25\",\n                \"InstanceId\": \"crs-opcazbrb\",\n                \"InstanceName\": \"multidbccbugfix11153\",\n                \"Progress\": 1,\n                \"ProjectId\": 0,\n                \"Result\": 2,\n                \"StartTime\": \"2019-11-15 14:25:16\",\n                \"TaskId\": 42371,\n                \"TaskType\": \"037\"\n            }\n        ],\n        \"TotalCount\": 2\n    }\n}",
-        "title": "Sample request"
+        "title": "Sample"
       }
     ],
     "DescribeTendisSlowLog": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeTendisSlowLog\n&InstanceId=crs-asdasdas\n&BeginTime=2019-09-08 12:12:41\n&EndTime=2019-09-09 12:12:41\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 106980,\n        \"TendisSlowLogDetail\": [\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7a6604337\",\n                \"Command\": \"hget\",\n                \"CommandLine\": \"hget hash_key classify_scope::default\",\n                \"Duration\": 45,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\"\n            }\n        ],\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\"\n    }\n}",
         "title": "Sample request"
@@ -432,7 +432,7 @@
     ],
     "DestroyPostpaidInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DestroyPostpaidInstance\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Terminating pay-as-you-go instance"
@@ -440,7 +440,7 @@
     ],
     "DestroyPrepaidInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DestroyPrepaidInstance\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\",\n        \"DealId\": \"6977675\"\n    }\n}",
         "title": "Returning monthly subscribed instance"
@@ -448,7 +448,7 @@
     ],
     "DisableReplicaReadonly": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DisableReplicaReadonly\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\",\n        \"TaskId\": 15236\n    }\n}",
         "title": "Disabling read/write separation"
@@ -456,7 +456,7 @@
     ],
     "DisassociateSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisassociateSecurityGroups\n<Common request parameters>\n\n{\n    \"Product\": \"redis\",\n    \"SecurityGroupId\": \"sg-ajr1jzgj\",\n    \"InstanceIds\": [\n        \"crs-eb2w7dto\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a1\"\n    }\n}",
         "title": "Sample"
@@ -464,7 +464,7 @@
     ],
     "EnableReplicaReadonly": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=EnableReplicaReadonly\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\",\n        \"Status\": \"OK\",\n        \"TaskId\": 21312\n    }\n}",
         "title": "Enabling read/write separation"
@@ -472,7 +472,7 @@
     ],
     "InquiryPriceCreateInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=InquiryPriceCreateInstance\n&ZoneId=100002\n&TypeId=6\n&MemSize=4096\n&GoodsNum=1\n&Period=1\n&BillingMode=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Price\": 30400,\n        \"RequestId\": \"0115d979-2c38-4ad2-b282-bec09d5b4c0b\"\n    }\n}",
         "title": "Sample"
@@ -480,7 +480,7 @@
     ],
     "InquiryPriceUpgradeInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=InquiryPriceUpgradeInstance\r\n&<Common request parameters>\r\n&InstanceId=crs-xjhsdjcxjd\r\n&MemSize=4096",
         "output": "{\n    \"Response\": {\n        \"Price\": 30400,\n        \"RequestId\": \"0115d979-2c38-4ad2-b282-bec09d5b4c01\"\n    }\n}",
         "title": "Sample"
@@ -488,16 +488,16 @@
     ],
     "KillMasterGroup": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: KillMasterGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"Password\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
+        "document": "This example shows you how to simulate a failure.",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: KillMasterGroup<Common request parameters>{    \"InstanceId\": \"crs-joak5XXX\",    \"Password\": \"pwd@1234\",    \"ShardIds\": [        0    ]}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da6b0bea-7aab-4d4b-b819-d524f4c9eXXX\",\n        \"TaskId\": 1682324000\n    }\n}",
         "title": "Sample request"
       }
     ],
     "ManualBackupInstance": [
       {
-        "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=ManualBackupInstance\n&InstanceId=crs-5a4py64p\n&Remark=xxxx\n&<Common request parameters>",
+        "document": "This example shows you how to manually back up an instance.",
+        "input": "https://redis.tencentcloudapi.com/?Action=ManualBackupInstance&InstanceId=crs-5a4p****&Remark=xxxx&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample request"
       }
@@ -512,8 +512,8 @@
     ],
     "ModifyAutoBackupConfig": [
       {
-        "document": "自动备份配置",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoBackupConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"AutoBackupType\": \"1\",\n    \"TimePeriod\": \"00%3A00-01%3A00\",\n    \"WeekDays\": [\n        \"Wednesday\"\n    ]\n}",
+        "document": "This example shows you how to automatically back up the configuration.",
+        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyAutoBackupConfig<Common request parameters>{    \"InstanceId\": \"crs-5a4py64p\",    \"AutoBackupType\": \"1\",    \"TimePeriod\": \"00%3A00-01%3A00\",    \"WeekDays\": [        \"Wednesday\"    ]}",
         "output": "{\n    \"Response\": {\n        \"BackupStorageDays\": 7,\n        \"AutoBackupType\": 1,\n        \"WeekDays\": [\n            \"Wednesday\"\n        ],\n        \"RequestId\": \"65e950b9-78e8-49b1-9200-0e62a1925554\",\n        \"TimePeriod\": \"00:00-01:00\"\n    }\n}",
         "title": "Sample request"
       }
@@ -528,7 +528,7 @@
     ],
     "ModifyDBInstanceSecurityGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSecurityGroups\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-eb2w7dto\",\n    \"Product\": \"redis\",\n    \"SecurityGroupIds\": [\n        \"sg-ajr1jzgj\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a1\"\n    }\n}",
         "title": "Sample"
@@ -536,7 +536,7 @@
     ],
     "ModifyInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ModifyInstance\n&Operation=rename\n&InstanceIds.0=crs-r3nqjq3n\n&InstanceNames.0=newname1\n&InstanceIds.1=crs-9bvd9b8v\n&InstanceNames.1=newname2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6d1e8909-496a-4f27-ad0d-2e4a069b52c0\"\n    }\n}",
         "title": "Sample request"
@@ -544,7 +544,7 @@
     ],
     "ModifyInstanceAccount": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ModifyInstanceAccount\n&InstanceId=crs-5a4py64p\n&AccountName=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 123456,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample request"
@@ -552,7 +552,7 @@
     ],
     "ModifyInstanceParams": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceParams\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"InstanceParams\": [\n        {\n            \"Value\": \"120\",\n            \"Key\": \"timeout\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Changed\": false,\n        \"TaskId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Modifying Instance Parameters"
@@ -560,7 +560,7 @@
     ],
     "ModifyInstanceReadOnly": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ModifyInstanceReadOnly\n&InstanceId=crs-5a4py64p\n&InputMode=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 0,\n        \"RequestId\": \"c07beb69-a8f0-4e09-9655-68e59677a7f1\"\n    }\n}",
         "title": "Sample request"
@@ -568,7 +568,7 @@
     ],
     "ModifyMaintenanceWindow": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ModifyMaintenanceWindow\n&InstanceId=crs-5a4py64p\n&StartTime=03:00\n&EndTime=06:00\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"success\",\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample"
@@ -584,7 +584,7 @@
     ],
     "ModifyParamTemplate": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyParamTemplate\n<Common request parameters>\n\n{\n    \"ParamList\": [\n        {\n            \"Value\": \"120\",\n            \"Key\": \"timeout\"\n        }\n    ],\n    \"TemplateId\": \"crs-cfg-sa23d5d3\",\n    \"Description\": \"MyCustomParamTemplate\",\n    \"Name\": \"CustomParamTemplate\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample request"
@@ -592,7 +592,7 @@
     ],
     "OpenSSL": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenSSL\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 329,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Enabling SSL request"
@@ -600,7 +600,7 @@
     ],
     "ReleaseWanAddress": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ReleaseWanAddress\n&InstanceId=crs-5qlrlhux\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 327,\n        \"WanStatus\": “Disabling public network access”,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Disabling public network instance"
@@ -608,7 +608,7 @@
     ],
     "RemoveReplicationInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveReplicationInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"SyncType\": true,\n    \"GroupId\": \"crs-rpl-sa5dsfs\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
         "title": "Sample request"
@@ -616,7 +616,7 @@
     ],
     "RenewInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"Period\": \"12\"\n}",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954225\",\n        \"RequestId\": \"495d8e9f-61bf-465e-aa4e-14be54a9095a\"\n    }\n}",
         "title": "Sample request"
@@ -624,7 +624,7 @@
     ],
     "ResetPassword": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=ResetPassword\n&Password=zy456987\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"137c2607-07d1-4df0-9978-4b57a7ca3465\",\n        \"TaskId\": 16657\n    }\n}",
         "title": "Sample request"
@@ -632,7 +632,7 @@
     ],
     "RestoreInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestoreInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"BackupId\": \"678362566696298532848117\",\n    \"Password\": \"mypassword\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Restoring a Redis Instance"
@@ -640,7 +640,7 @@
     ],
     "StartupInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=StartupInstance\n&InstanceId=crs-7ponppu3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e96ecad-23db-4fa8-ac41-af9b8e015b26\",\n        \"TaskId\": 1203\n    }\n}",
         "title": "Sample request"
@@ -648,7 +648,7 @@
     ],
     "SwitchInstanceVip": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=SwitchInstanceVip\n&SrcInstanceId=crs-5a4py64p\n&DstInstanceId=crs-1kl0iy0v\n&ForceSwitch=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9a6bd110-20fc-4e08-b77b-a5656cb6150c\",\n        \"TaskId\": 18491\n    }\n}",
         "title": "Sample request"
@@ -656,7 +656,7 @@
     ],
     "SwitchProxy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=SwitchProxy\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\"\n    }\n}",
         "title": "Sample request"
@@ -664,7 +664,7 @@
     ],
     "UpgradeInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5qlr****\",\n    \"MemSize\": \"4096\",\n    \"RedisShardNum\": 5,\n    \"RedisReplicasNum\": 3\n}",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample request"
@@ -672,7 +672,7 @@
     ],
     "UpgradeInstanceVersion": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=UpgradeInstanceVersion\n&InstanceId=crs-5qlrlhux\n&SwitchOption=2\n&TargetInstanceType=6\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample"
@@ -680,7 +680,7 @@
     ],
     "UpgradeProxyVersion": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=UpgradeProxyVersion\n&InstanceId=crs-94w4mqbt\n&CurrentProxyVersion=4.1.1\n&UpgradeProxyVersion=4.3.0\n&InstanceTypeUpgradeNow=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Upgrading instance proxy"
@@ -688,7 +688,7 @@
     ],
     "UpgradeSmallVersion": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=UpgradeSmallVersion\n&InstanceId=crs-2btr9ryn\n&CurrentRedisVersion=2.3.0\n&UpgradeRedisVersion=2.4.0\n&InstanceTypeUpgradeNow=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 329,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Upgrading instance minor version"
@@ -696,7 +696,7 @@
     ],
     "UpgradeVersionToMultiAvailabilityZones": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeVersionToMultiAvailabilityZones\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5qlrlhux\",\n    \"UpgradeProxyAndRedisServer\": \"true\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"140171780\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample request"
