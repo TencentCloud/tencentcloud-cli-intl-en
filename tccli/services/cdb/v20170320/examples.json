@@ -162,6 +162,14 @@
         "title": "Creating a pay-as-you-go TencentDB instance"
       }
     ],
+    "CreateDatabase": [
+      {
+        "document": "This example shows you how to create a database.",
+        "input": "POST / HTTP/1.1Host: cdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateDatabase<Common request parameters>{    \"InstanceId\": \"abc\",    \"DBName\": \"db_test\",    \"CharacterSetName\": \"utf8\"}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Creating a database"
+      }
+    ],
     "CreateParamTemplate": [
       {
         "document": " ",
@@ -260,8 +268,8 @@
     ],
     "DescribeBackupDecryptionKey": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1Host: cdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeBackupDecryptionKey<common request parameters>{    \"InstanceId\": \"cdb-XXXX\",    \"BackupId\": 12345}",
+        "document": "This example shows you how to query the decryption key of a backup file.",
+        "input": "POST / HTTP/1.1Host: cdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeBackupDecryptionKey<Common request parameters>{    \"InstanceId\": \"cdb-XXXX\",    \"BackupId\": 12345}",
         "output": "{\n    \"Response\": {\n        \"DecryptionKey\": \"XXXXXXXXXXX\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Querying the decryption key of a backup file"
       }
@@ -276,10 +284,10 @@
     ],
     "DescribeBackupEncryptionStatus": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupEncryptionStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-XXXX\"\n}",
+        "document": "This example shows you how to query the encryption status of an instance backup.",
+        "input": "POST / HTTP/1.1Host: cdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeBackupDecryptionKey<Common request parameters>{    \"InstanceId\": \"cdb-XXXX\"}",
         "output": "{\n    \"Response\": {\n        \"EncryptionStatus\": \"on\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
-        "title": "Querying the encryption status of instance backup"
+        "title": "Querying the encryption status of an instance backup"
       }
     ],
     "DescribeBackupOverview": [
@@ -292,10 +300,10 @@
     ],
     "DescribeBackupSummaries": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupSummaries\n<Common request parameters>\n\n{\n    \"Product\": \"mysql\",\n    \"Limit\": \"1\",\n}",
+        "document": "This example shows you how to query the real-time backup statistics.",
+        "input": "POST / HTTP/1.1Host: cdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeBackupSummaries<Common request parameters>{    \"Product\": \"mysql\",    \"Limit\": \"1\"}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"AutoBackupCount\": 5,\n                \"AutoBackupVolume\": 10000,\n                \"BackupVolume\": 50000,\n                \"BinlogBackupCount\": 2,\n                \"BinlogBackupVolume\": 20000,\n                \"DataBackupCount\": 15,\n                \"DataBackupVolume\": 30000,\n                \"InstanceId\": \"cdb-01wa5l0v\",\n                \"ManualBackupCount\": 10,\n                \"ManualBackupVolume\": 20000\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 50\n    }\n}",
-        "title": "Querying real-time backup statistics"
+        "title": "Querying the real-time backup statistics"
       }
     ],
     "DescribeBackups": [
@@ -746,8 +754,8 @@
     ],
     "ModifyBackupEncryptionStatus": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupEncryptionStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-XXXX\",\n    \"EncryptionStatus\": \"on\"\n}",
+        "document": "This example shows you how to enable instance backup encryption.",
+        "input": "POST / HTTP/1.1Host: cdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyBackupEncryptionStatus<Common request parameters>{    \"InstanceId\": \"cdb-XXXX\",    \"EncryptionStatus\": \"on\"}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Enabling instance backup encryption"
       }
@@ -882,10 +890,10 @@
     ],
     "ModifyRemoteBackupConfig": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRemoteBackupConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-c1nl9rpv\",\n    \"RemoteBinlogSave\": \"on\",\n    \"ExpireDays\": \"7\",\n    \"RemoteRegion\": [\n        \"ap-guangzhou\"\n    ],\n    \"RemoteBackupSave\": \"on\"\n}",
+        "document": "None",
+        "input": "POST / HTTP/1.1Host: cdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyRemoteBackupConfig<Common request parameters>{    \"InstanceId\": \"cdb-c1nl9rpv\",    \"RemoteBinlogSave\": \"on\",    \"ExpireDays\": \"7\",    \"RemoteRegion\": [        \"ap-guangzhou\"    ],    \"RemoteBackupSave\": \"on\"}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9d73ec37-89b8-4d36-9f40-123123123\"\n    }\n}",
-        "title": "Modifying the configuration information of a remote TencentDB instance backup"
+        "title": "Modifying the configuration information of a remote TencentDB instance backup."
       }
     ],
     "ModifyRoGroupInfo": [

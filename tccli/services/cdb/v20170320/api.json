@@ -126,6 +126,13 @@
       "output": "CreateDBInstanceHourResponse",
       "status": "online"
     },
+    "CreateDatabase": {
+      "document": "This API is used to create a database in a TencentDB instance.",
+      "input": "CreateDatabaseRequest",
+      "name": "Creates a database",
+      "output": "CreateDatabaseResponse",
+      "status": "online"
+    },
     "CreateParamTemplate": {
       "document": "This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "CreateParamTemplateRequest",
@@ -631,7 +638,7 @@
       "status": "online"
     },
     "ModifyBackupEncryptionStatus": {
-      "document": "This API is used to set the default encryption status of an instance backup. ",
+      "document": "This API is used to set the encryption status of an instance backup.",
       "input": "ModifyBackupEncryptionStatusRequest",
       "name": "Sets the default encryption status of an instance backup",
       "output": "ModifyBackupEncryptionStatusResponse",
@@ -4105,7 +4112,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Connection pool type, which will take effect only when `ConnectionPool` is `true`. Valid values:  `transaction` (transaction-level), `connection` (session-level).",
           "example": "connection",
           "member": "string",
           "name": "ConnectionPoolType",
@@ -5332,6 +5339,51 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDatabaseRequest": {
+      "document": "CreateDatabase request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID in the format of `cdb-c1nl9rpv`,  which is the same as the one displayed in the TencentDB console.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db_test",
+          "member": "string",
+          "name": "DBName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Character set. Valid values:  `utf8`, `gbk`, `latin1`, `utf8mb4`.",
+          "example": "utf8",
+          "member": "string",
+          "name": "CharacterSetName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDatabaseResponse": {
+      "document": "CreateDatabase response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -6933,7 +6985,7 @@
         },
         {
           "disabled": false,
-          "document": "Earliest Binlog start time in the format of  2016-03-17 02:10:37",
+          "document": "The earliest start time of binlog  in the format of 2016-03-17 02:10:37.",
           "example": "\"\"",
           "member": "string",
           "name": "MinStartTime",
@@ -6942,7 +6994,7 @@
         },
         {
           "disabled": false,
-          "document": "Latest binlog start time in the format of  2016-03-17 02:10:37",
+          "document": "The latest start time of binlog  in the format of 2016-03-17 02:10:37.",
           "example": "\"\"",
           "member": "string",
           "name": "MaxStartTime",
@@ -14699,78 +14751,78 @@
       "document": "Proxy instance",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "cdb-aykuksx3",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "InstanceName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Instance type Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "master",
-          "member": "string",
+          "document": "Instance type. Valid values:  `master` (source instance), `ro` (read-only instance), `dr` (disaster recovery instance), `sdr` (disaster recovery instance of small specifications). Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
           "name": "InstanceType",
+          "output_required": true,
           "required": false,
-          "type": "string",
+          "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance status. Valid values:  `0` (creating), `1` (running), `4` (isolating), `5` (isolated). Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Read weight. If it is assigned by the system automatically, the modification will not take effect but represents whether the instance is enabled. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "100",
           "member": "uint64",
           "name": "Weight",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance region Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance AZ Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
