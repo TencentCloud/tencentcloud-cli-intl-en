@@ -16,6 +16,14 @@
         "title": "Applying collection configuration to specified machine group"
       }
     ],
+    "CheckRechargeKafkaServer": [
+      {
+        "document": "This example shows you how to check whether a Kafka service address is accessible.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosRecharge\n<Common request parameters>\n\n{\n    \"KafkaType\": 1,\n    \"ServerAddr\": \"est.cls.tencentyun.com:9095\",\n    \"IsEncryptionAddr\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\",\n        \"Status\": 0\n    }\n}",
+        "title": "Checking whether a Kafka service address is accessible"
+      }
+    ],
     "CloseKafkaConsumer": [
       {
         "document": " ",
@@ -42,8 +50,8 @@
     ],
     "CreateConfig": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConfig\n<Common request parameters>\n\n{\n    \"Name\": \"testname\",\n    \"Path\": \"/data/nginx/log/**/access.log\",\n    \"LogType\": \"delimiter_log\",\n    \"ExtractRule\": {\n        \"TimeKey\": \"date\",\n        \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n        \"Delimiter\": \"|\",\n        \"LogRegex\": \".*\",\n        \"BeginRegex\": \"^\",\n        \"Keys\": [\n            \"date\",\n            \"\",\n            \"content\"\n        ],\n        \"FilterKeyRegex\": [\n            {\n                \"Key\": \"xxx\",\n                \"Regex\": \"ssss\"\n            }\n        ],\n        \"UnMatchLogKey\": \"testlog\",\n        \"UnMatchUpLoadSwitch\": true,\n        \"Backtracking\": -1\n    },\n    \"ExcludePaths\": [\n        {\n            \"Type\": \"xx\",\n            \"Value\": \"xx\"\n        }\n    ],\n    \"Output\": \"xxxxxx-xxx-xxxxxx\",\n    \"UserDefineRule\": \"xxxxxx\"\n}",
+        "document": "This example shows you how to create collection rule configuration.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConfig\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"Path\": \"abc\",\n    \"LogType\": \"abc\",\n    \"ExtractRule\": {\n        \"TimeKey\": \"abc\",\n        \"TimeFormat\": \"abc\",\n        \"Delimiter\": \"abc\",\n        \"LogRegex\": \"abc\",\n        \"BeginRegex\": \"abc\",\n        \"Keys\": [\n            \"abc\"\n        ],\n        \"FilterKeyRegex\": [\n            {\n                \"Key\": \"abc\",\n                \"Regex\": \"abc\"\n            }\n        ],\n        \"UnMatchUpLoadSwitch\": true,\n        \"UnMatchLogKey\": \"abc\",\n        \"Backtracking\": 0,\n        \"IsGBK\": 0,\n        \"JsonStandard\": 0,\n        \"Protocol\": \"abc\",\n        \"Address\": \"abc\",\n        \"ParseProtocol\": \"abc\",\n        \"MetadataType\": 0,\n        \"PathRegex\": \"abc\",\n        \"MetaTags\": [\n            {\n                \"Key\": \"abc\",\n                \"Value\": \"abc\"\n            }\n        ]\n    },\n    \"ExcludePaths\": [\n        {\n            \"Type\": \"abc\",\n            \"Value\": \"abc\"\n        }\n    ],\n    \"Output\": \"abc\",\n    \"UserDefineRule\": \"abc\",\n    \"AdvancedConfig\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"ConfigId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating collection rule configuration"
       }
@@ -64,6 +72,14 @@
         "title": "Creating a COS import task"
       }
     ],
+    "CreateDataTransform": [
+      {
+        "document": "This example shows you how to create a data processing task. Similar to the open source component Logstash, data processing provides capabilities such as filtering, cleaning, anonymization, enrichment, and distribution of log data. Domain Specific Language (DSL) functions are implemented based on Flink for data processing, allowing you to easily process log stream data.\n",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDataTransform\n<Common request parameters>\n\n{\n    \"EnableFlag\": 1,\n    \"Name\": \"Data processing task\",\n    \"FuncType\": 0,\n    \"PreviewLogStatistics\": [\n        {\n            \"LineNum\": 0,\n            \"FailReason\": \"errorcode\",\n            \"DstTopicId\": \"81XXXXe5-e39e-4a1e-b2d4-a778df97d825\",\n            \"LogContent\": \"XXXX\",\n            \"Time\": \"2017-08-08 12:12:12\"\n        }\n    ],\n    \"SrcTopicId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n    \"TaskType\": 0,\n    \"DstResources\": [\n        {\n            \"TopicId\": \"3d9bXXXX-05a4-4435-ac65-f43e684329b3\",\n            \"Alias\": \"Alias\"\n        }\n    ],\n    \"EtlContent\": \"xx-xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Creating a data processing task"
+      }
+    ],
     "CreateExport": [
       {
         "document": "This example shows you how to create a download task. To get the returned download address, call `DescribeExports` to view the task list. The `CosPath` parameter is also included for download address.",
@@ -78,6 +94,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"3edc8551-111b-473b-9fc4-ed66e20dfa8a\",\n    \"Status\": true,\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": true,\n            \"Tokenizer\": \"*\"\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"age\",\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"Tokenizer\": \"_\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        },\n        \"Tag\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"tag\",\n                    \"Value\": {\n                        \"Type\": \"string\",\n                        \"Tokenizer\": \"**\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        }\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating index"
+      }
+    ],
+    "CreateKafkaRecharge": [
+      {
+        "document": "This example shows you how to create a Kafka data import rule.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateKafkaRecharge\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx-xxxx\",\n    \"Name\": \"test\",\n    \"KafkaType\": 1,\n    \"ServerAddr\": \"abc\",\n    \"IsEncryptionAddr\": true,\n    \"UserKafkaTopics\": \"abc\",\n    \"ConsumerGroupName\": \"abc\",\n    \"Offset\": -1,\n    \"LogRechargeRule\": {\n        \"RechargeType\": \"json_log\",\n        \"TimeKey\": \"abc\",\n        \"TimeFormat\": \"abc\",\n        \"LogRegex\": \"abc\",\n        \"UnMatchLogSwitch\": true,\n        \"UnMatchLogKey\": \"abc\",\n        \"DefaultTimeSwitch\": true,\n        \"EncodingFormat\": 0\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\",\n        \"Id\": \"xxx-xx-xx\"\n    }\n}",
+        "title": "Creating a Kafka data import rule"
       }
     ],
     "CreateLogset": [
@@ -152,6 +176,14 @@
         "title": "Deleting a shipping task"
       }
     ],
+    "DeleteDataTransform": [
+      {
+        "document": "This example shows you how to delete a data processing task.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDataTransform\n<Common request parameters>\n\n{\n    \"TaskId\": \"e4fcXXXX-5e8a-4fe0-b52c-76eeca53e9af\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Deleting a data processing task"
+      }
+    ],
     "DeleteExport": [
       {
         "document": " ",
@@ -166,6 +198,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting index configuration"
+      }
+    ],
+    "DeleteKafkaRecharge": [
+      {
+        "document": "This example shows you how to delete Kafka data import configuration.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteKafkaRecharge\n<Common request parameters>\n\n{\n    \"Id\": \"abc\",\n    \"TopicId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Deleting Kafka data import configuration"
       }
     ],
     "DeleteLogset": [
@@ -194,10 +234,10 @@
     ],
     "DeleteShipper": [
       {
-        "document": " ",
+        "document": "This example shows you how to delete a COS shipping task.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteShipper\n<Common request parameters>\n\n{\n    \"ShipperId\": \"xxxxxxx-xxx-xxx-xxx-xxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Deleting shipping rule"
+        "title": "Deleting a COS shipping task"
       }
     ],
     "DeleteTopic": [
@@ -264,6 +304,14 @@
         "title": "Getting COS import configuration"
       }
     ],
+    "DescribeDataTransformInfo": [
+      {
+        "document": "This example shows you how to get the basic information of data processing tasks.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataTransformInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DataTransformTaskInfos\": [\n            {\n                \"Status\": 0,\n                \"EnableFlag\": 0,\n                \"UpdateTime\": \"2021-08-08 12:12:12\",\n                \"LastEnableTime\": \"xxxx\",\n                \"Name\": \"My data processing task\",\n                \"LogsetId\": \"xxxx\",\n                \"SrcTopicName\": \"My log topic\",\n                \"SrcTopicId\": \"61b9XXXX-971a-48c7-984d-ca147cf242c1\",\n                \"DstResources\": [\n                    {\n                        \"TopicId\": \"3d9bXXXX-05a4-4435-ac65-f43e684329b3\",\n                        \"Alias\": \"Alias\"\n                    }\n                ],\n                \"TaskId\": \"e4fcXXXX-5e8a-4fe0-b52c-76eeca53e9af\",\n                \"EtlContent\": \"ields_set()\",\n                \"Type\": 0,\n                \"CreateTime\": \"2021-08-0712: 12: 12\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Getting the basic information of data processing tasks"
+      }
+    ],
     "DescribeExports": [
       {
         "document": " ",
@@ -280,12 +328,20 @@
         "title": "Getting index information"
       }
     ],
+    "DescribeKafkaRecharges": [
+      {
+        "document": "This example shows you how to get Kafka data import configuration.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeKafkaRecharges\n<Common request parameters>\n\n{\n    \"TopicId\": \"abc\",\n    \"Status\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Id\": \"abc\",\n                \"TopicId\": \"abc\",\n                \"Name\": \"abc\",\n                \"ServerAddr\": \"test.cls.tencentyun.com:9095\",\n                \"UserKafkaTopics\": \"topic1,topic2\",\n                \"ConsumerGroupName\": \"\",\n                \"Status\": 1,\n                \"CreateTime\": \"abc\",\n                \"UpdateTime\": \"abc\",\n                \"LogRechargeRule\": {\n                    \"RechargeType\": \"json_log\",\n                    \"TimeKey\": \"abc\",\n                    \"TimeFormat\": \"abc\",\n                    \"LogRegex\": \"abc\",\n                    \"UnMatchLogSwitch\": true,\n                    \"UnMatchLogKey\": \"abc\",\n                    \"EncodingFormat\": 0,\n                    \"DefaultTimeSwitch\": true\n                }\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Getting Kafka data import configuration"
+      }
+    ],
     "DescribeLogContext": [
       {
-        "document": " ",
+        "document": "This example shows you how to query the context of a log.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogContext\n<Common request parameters>\n\n{\n    \"TopicId\": \"682d0718-07bb-4ec0-9fda-f1e9a2767e0b\",\n    \"BTime\": \"2021-04-25 14:25:00.000\",\n    \"PkgId\": \"528C1318606EFEB8-1A7\",\n    \"PkgLogId\": 65536,\n    \"PrevLogs\": 10,\n    \"NextLogs\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"NextOver\": false,\n        \"PrevOver\": false,\n        \"LogContextInfos\": [\n            {\n                \"Content\": \"xxxxxxx\",\n                \"Filename\": \"/usr/local/services/cls_cgi_api3-1.0/log/cls_cgi.log.20210425\",\n                \"PkgId\": \"528C1318606EFEB8-1A0\",\n                \"PkgLogId\": 196609,\n                \"Source\": \"100.105.60.255\",\n                \"BTime\": 323232323\n            },\n            {\n                \"Content\": \"x1x2x3\",\n                \"Filename\": \"/usr/local/services/cls_cgi_api3-1.0/log/cls_cgi.log.20210425\",\n                \"PkgId\": \"528C1318606EFEB8-1A1\",\n                \"PkgLogId\": 196609,\n                \"Source\": \"100.105.60.255\",\n                \"BTime\": 323232323\n            }\n        ],\n        \"RequestId\": \"b276cb6e-4687-11eb-b378-0242ac130002\"\n    }\n}",
-        "title": "Searching in context"
+        "output": "{\n    \"Response\": {\n        \"NextOver\": false,\n        \"PrevOver\": false,\n        \"LogContextInfos\": [\n            {\n                \"Content\": \"xxxxxxx\",\n                \"HostName\": \"abc\",\n                \"Filename\": \"/usr/local/services/cls_cgi_api3-1.0/log/cls_cgi.log.20210425\",\n                \"PkgId\": \"528C1318606EFEB8-1A0\",\n                \"PkgLogId\": 196609,\n                \"Source\": \"100.105.60.255\",\n                \"BTime\": 323232323\n            },\n            {\n                \"Content\": \"x1x2x3\",\n                \"HostName\": \"abcd\",\n                \"Filename\": \"/usr/local/services/cls_cgi_api3-1.0/log/cls_cgi.log.20210425\",\n                \"PkgId\": \"528C1318606EFEB8-1A1\",\n                \"PkgLogId\": 196609,\n                \"Source\": \"100.105.60.255\",\n                \"BTime\": 323232323\n            }\n        ],\n        \"RequestId\": \"b276cb6e-4687-11eb-b378-0242ac130002\"\n    }\n}",
+        "title": "Querying the context of a log"
       }
     ],
     "DescribeLogHistogram": [
@@ -416,12 +472,28 @@
         "title": "Modifying a COS import task"
       }
     ],
+    "ModifyDataTransform": [
+      {
+        "document": "This example shows you how to modify a data processing task. Similar to the open source component Logstash, data processing provides capabilities such as filtering, cleaning, anonymization, enrichment, and distribution of log data. Domain Specific Language (DSL) functions are implemented based on Flink for data processing, allowing you to easily process log stream data.\n",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDataTransform\n<Common request parameters>\n\n{\n    \"DstResources\": [\n        {\n            \"TopicId\": \"81XXXXe5-e39e-4a1e-b2d4-a778df97d825\",\n            \"Alias\": \"Alias\"\n        }\n    ],\n    \"EnableFlag\": 0,\n    \"EtlContent\": \"fields_set()\",\n    \"Name\": \"My data processing\",\n    \"TaskId\": \"e4fcXXXX-5e8a-4fe0-b52c-76eeca53e9af\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Modifying a data processing task"
+      }
+    ],
     "ModifyIndex": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\",\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": false,\n            \"Tokenizer\": \"-=/?\"\n        },\n        \"Tag\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"timestamp\"\n                }\n            ]\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"age\"\n                }\n            ]\n        }\n    },\n    \"Status\": true,\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying index"
+      }
+    ],
+    "ModifyKafkaRecharge": [
+      {
+        "document": "This example shows you how to modify Kafka data import configuration.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyKafkaRecharge\n<Common request parameters>\n\n{\n    \"Id\": \"xxx-xxx-xx\",\n    \"TopicId\": \"abc\",\n    \"Name\": \"abc\",\n    \"ServerAddr\": \"abc\",\n    \"IsEncryptionAddr\": true,\n    \"UserKafkaTopics\": \"abc\",\n    \"ConsumerGroupName\": \"abc\",\n    \"LogRechargeRule\": {\n        \"RechargeType\": \"json_log\",\n        \"TimeKey\": \"abc\",\n        \"TimeFormat\": \"abc\",\n        \"LogRegex\": \"abc\",\n        \"UnMatchLogSwitch\": true,\n        \"DefaultTimeSwitch\": true,\n        \"UnMatchLogKey\": \"abc\",\n        \"EncodingFormat\": 0\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying Kafka data import configuration"
       }
     ],
     "ModifyLogset": [
@@ -442,10 +514,10 @@
     ],
     "ModifyShipper": [
       {
-        "document": "This example shows you how to modify a COS shipping rule.",
+        "document": "This example shows you how to modify a COS shipping task.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyShipper\n<Common request parameters>\n\n{\n    \"ShipperId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n    \"Bucket\": \"test-1250000001\",\n    \"Prefix\": \"test\",\n    \"ShipperName\": \"myname\",\n    \"Interval\": 300,\n    \"MaxSize\": 256,\n    \"Partition\": \"%Y%m%d\",\n    \"Compress\": {\n        \"Format\": \"none\"\n    },\n    \"FilterRules\": [\n        {\n            \"Key\": \"\",\n            \"Regex\": \"\",\n            \"Value\": \"\"\n        }\n    ],\n    \"FilenameMode\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Modifying a shipping rule"
+        "title": "Modifying a COS shipping task"
       }
     ],
     "ModifyTopic": [
@@ -462,6 +534,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenKafkaConsumer\n<Common request parameters>\n\n{\n    \"FromTopicId\": \"a5ce0c9c-0690-44a5-bc79-5f2190626bd0\",\n    \"Compression\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"TopicID\": \"out-a5ce0c9c-0690-44a5-bc79-5f2190626bd0\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Enabling consumption over Kafka"
+      }
+    ],
+    "PreviewKafkaRecharge": [
+      {
+        "document": "This example shows you how to preview the logs of Kafka data import tasks.",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosRecharge\n<Common request parameters>\n\n{\n    \"PreviewType\": 1,\n    \"KafkaType\": 1,\n    \"ServerAddr\": \"test.cls.tencentyun.com:9095\",\n    \"IsEncryptionAddr\": false,\n    \"UserKafkaTopics\": \"topic1,topic2\",\n    \"Offset\": 0,\n    \"LogRechargeRule\": {\n        \"RechargeType\": \"json_log\",\n        \"TimeKey\": \"abc\",\n        \"TimeFormat\": \"abc\",\n        \"LogRegex\": \"abc\",\n        \"UnMatchLogSwitch\": true,\n        \"UnMatchLogKey\": \"abc\",\n        \"EncodingFormat\": 0,\n        \"DefaultTimeSwitch\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\",\n        \"LogData\": \"xxxxxxx\",\n        \"LogSample\": \"abc\"\n    }\n}",
+        "title": "Previewing the logs of Kafka data import tasks"
       }
     ],
     "RetryShipperTask": [

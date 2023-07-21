@@ -14,6 +14,13 @@
       "output": "ApplyConfigToMachineGroupResponse",
       "status": "online"
     },
+    "CheckRechargeKafkaServer": {
+      "document": "This API is used to check whether the Kafka service cluster is accessible.",
+      "input": "CheckRechargeKafkaServerRequest",
+      "name": "Checks the connectivity of the Kafka service cluster",
+      "output": "CheckRechargeKafkaServerResponse",
+      "status": "online"
+    },
     "CloseKafkaConsumer": {
       "document": "This API is used to disable Kafka consumption.",
       "input": "CloseKafkaConsumerRequest",
@@ -56,6 +63,13 @@
       "output": "CreateCosRechargeResponse",
       "status": "online"
     },
+    "CreateDataTransform": {
+      "document": "This API is used to create a data processing task.",
+      "input": "CreateDataTransformRequest",
+      "name": "Creates a data processing task",
+      "output": "CreateDataTransformResponse",
+      "status": "online"
+    },
     "CreateExport": {
       "document": "This API is used to create a download task. To get the returned download address, call `DescribeExports` to view the task list. The `CosPath` parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1",
       "input": "CreateExportRequest",
@@ -68,6 +82,13 @@
       "input": "CreateIndexRequest",
       "name": "Creates index",
       "output": "CreateIndexResponse",
+      "status": "online"
+    },
+    "CreateKafkaRecharge": {
+      "document": "This API is used to create a Kafka data subscription task.",
+      "input": "CreateKafkaRechargeRequest",
+      "name": "Creates a Kafka data subscription task",
+      "output": "CreateKafkaRechargeResponse",
       "status": "online"
     },
     "CreateLogset": {
@@ -133,6 +154,13 @@
       "output": "DeleteConsumerResponse",
       "status": "online"
     },
+    "DeleteDataTransform": {
+      "document": "This API is used to delete a data processing task.",
+      "input": "DeleteDataTransformRequest",
+      "name": "Deletes a data processing task",
+      "output": "DeleteDataTransformResponse",
+      "status": "online"
+    },
     "DeleteExport": {
       "document": "This API is used to delete a log download task.",
       "input": "DeleteExportRequest",
@@ -145,6 +173,13 @@
       "input": "DeleteIndexRequest",
       "name": "Deletes index configuration",
       "output": "DeleteIndexResponse",
+      "status": "online"
+    },
+    "DeleteKafkaRecharge": {
+      "document": "This API is used to delete a Kafka data subscription task.",
+      "input": "DeleteKafkaRechargeRequest",
+      "name": "Deletes a Kafka data subscription task",
+      "output": "DeleteKafkaRechargeResponse",
       "status": "online"
     },
     "DeleteLogset": {
@@ -169,9 +204,9 @@
       "status": "online"
     },
     "DeleteShipper": {
-      "document": "This API is used to delete a shipping rule.",
+      "document": "This API is used to delete a COS shipping task.",
       "input": "DeleteShipperRequest",
-      "name": "Deletes shipping rule",
+      "name": "Deletes a COS shipping task",
       "output": "DeleteShipperResponse",
       "status": "online"
     },
@@ -231,6 +266,13 @@
       "output": "DescribeCosRechargesResponse",
       "status": "online"
     },
+    "DescribeDataTransformInfo": {
+      "document": "This API is used to get the basic information of data processing tasks.",
+      "input": "DescribeDataTransformInfoRequest",
+      "name": "Gets the basic information of data processing tasks",
+      "output": "DescribeDataTransformInfoResponse",
+      "status": "online"
+    },
     "DescribeExports": {
       "document": "This API is used to get the list of log download tasks.",
       "input": "DescribeExportsRequest",
@@ -243,6 +285,13 @@
       "input": "DescribeIndexRequest",
       "name": "Gets index configuration information",
       "output": "DescribeIndexResponse",
+      "status": "online"
+    },
+    "DescribeKafkaRecharges": {
+      "document": "This API is used to get the list of Kafka data subscription tasks.",
+      "input": "DescribeKafkaRechargesRequest",
+      "name": "Gets the list of Kafka data subscription tasks",
+      "output": "DescribeKafkaRechargesResponse",
       "status": "online"
     },
     "DescribeLogContext": {
@@ -364,11 +413,25 @@
       "output": "ModifyCosRechargeResponse",
       "status": "online"
     },
+    "ModifyDataTransform": {
+      "document": "This API is used to modify a data processing task.",
+      "input": "ModifyDataTransformRequest",
+      "name": "Modifies a data processing task",
+      "output": "ModifyDataTransformResponse",
+      "status": "online"
+    },
     "ModifyIndex": {
       "document": "This API is used to modify the index configuration. It is subject to the default request frequency limit, and the number of concurrent requests to the same log topic cannot exceed 1, i.e., the index configuration of only one log topic can be modified at a time.\n",
       "input": "ModifyIndexRequest",
       "name": "Modifies index",
       "output": "ModifyIndexResponse",
+      "status": "online"
+    },
+    "ModifyKafkaRecharge": {
+      "document": "This API is used to modify a Kafka data subscription task.",
+      "input": "ModifyKafkaRechargeRequest",
+      "name": "Modifies a Kafka data subscription task",
+      "output": "ModifyKafkaRechargeResponse",
       "status": "online"
     },
     "ModifyLogset": {
@@ -388,7 +451,7 @@
     "ModifyShipper": {
       "document": "This API is used to modify an existing shipping rule. To use this API, you need to grant CLS the write permission of the specified bucket.",
       "input": "ModifyShipperRequest",
-      "name": "Modifies shipping rule",
+      "name": "Modifies a COS shipping task",
       "output": "ModifyShipperResponse",
       "status": "online"
     },
@@ -404,6 +467,13 @@
       "input": "OpenKafkaConsumerRequest",
       "name": "Enables Kafka consumption",
       "output": "OpenKafkaConsumerResponse",
+      "status": "online"
+    },
+    "PreviewKafkaRecharge": {
+      "document": "This API is used to preview the logs of Kafka data subscription tasks.",
+      "input": "PreviewKafkaRechargeRequest",
+      "name": "Previews the logs of Kafka data subscription tasks",
+      "output": "PreviewKafkaRechargeResponse",
       "status": "online"
     },
     "RetryShipperTask": {
@@ -1217,6 +1287,78 @@
       ],
       "usage": "both"
     },
+    "CheckRechargeKafkaServerRequest": {
+      "document": "CheckRechargeKafkaServer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka).",
+          "example": "0",
+          "member": "uint64",
+          "name": "KafkaType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "CKafka instance ID, which is required when `KafkaType` is set to `0`",
+          "example": "无",
+          "member": "string",
+          "name": "KafkaInstance",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service address",
+          "example": "192.168.0.1:9095或test.cls.tencentyun.com:9095",
+          "member": "string",
+          "name": "ServerAddr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the service address uses an encrypted connection",
+          "example": "true",
+          "member": "bool",
+          "name": "IsEncryptionAddr",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`",
+          "example": "无",
+          "member": "KafkaProtocolInfo",
+          "name": "Protocol",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckRechargeKafkaServerResponse": {
+      "document": "CheckRechargeKafkaServer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Kafka cluster accessibility. 0: Accessible.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Ckafka": {
       "document": "Information of the CKafka instance to ship to",
       "members": [
@@ -1955,7 +2097,6 @@
       "document": "CreateConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Collection configuration name",
           "example": "testname",
@@ -1965,7 +2106,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID (TopicId) of collection configuration",
           "example": "xxxxxx-xxx-xxxxxx",
@@ -1975,7 +2115,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log collection path containing the filename",
           "example": "/data/nginx/log/**/access.log",
@@ -1985,7 +2124,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the log to be collected. Valid values: `json_log`: log in JSON format; `delimiter_log`: log in delimited format; `minimalist_log`: minimalist log; `multiline_log`: log in multi-line format; `fullregex_log`: log in full regex format. Default value: `minimalist_log`",
           "example": "delimiter_log",
@@ -1995,7 +2133,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extraction rule. If `ExtractRule` is set, `LogType` must be set.",
           "example": "无",
@@ -2005,7 +2142,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Collection path blocklist",
           "example": "无",
@@ -2015,12 +2151,20 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom collection rule, which is a serialized JSON string",
           "example": "无",
           "member": "string",
           "name": "UserDefineRule",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Advanced collection configuration",
+          "example": "无",
+          "member": "string",
+          "name": "AdvancedConfig",
           "required": false,
           "type": "string"
         }
@@ -2225,6 +2369,106 @@
       ],
       "type": "object"
     },
+    "CreateDataTransformRequest": {
+      "document": "CreateDataTransform request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task type. Valid values: 1 (specified topic) and 2 (dynamically created).",
+          "example": "1",
+          "member": "int64",
+          "name": "FuncType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Source log topic",
+          "example": "topicid-1",
+          "member": "string",
+          "name": "SrcTopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data processing task name",
+          "example": "task1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data processing statement",
+          "example": "xxx",
+          "member": "string",
+          "name": "EtlContent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data processing type. Valid values: `1`: Use random data from the source log topic for processing preview. `2`: Use user-defined test data for processing preview. `3`: Create a real processing task.",
+          "example": "1",
+          "member": "int64",
+          "name": "TaskType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values: 1 (enabled) and 2 (disabled).",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Target topic ID and alias of the data processing task",
+          "example": "{\"dst_topics\":[{\"topic_id\":\"xxx\", \"alias\":\"topic\"}]}",
+          "member": "DataTransformResouceInfo",
+          "name": "DstResources",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Test data used for previewing the processing result",
+          "example": "无",
+          "member": "PreviewLogStatistic",
+          "name": "PreviewLogStatistics",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDataTransformResponse": {
+      "document": "CreateDataTransform response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "xxxxx",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateExportRequest": {
       "document": "CreateExport request structure.",
       "members": [
@@ -2382,6 +2626,133 @@
     "CreateIndexResponse": {
       "document": "CreateIndex response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateKafkaRechargeRequest": {
+      "document": "CreateKafkaRecharge request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target topic ID",
+          "example": "无",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka data import configuration name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka).",
+          "example": "0",
+          "member": "uint64",
+          "name": "KafkaType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of Kafka topics to import data from. Separate multiple topics with commas (,).",
+          "example": "topic1,topic2",
+          "member": "string",
+          "name": "UserKafkaTopics",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Position for data import. Valid values: -2 (earliest, default) and -1 (latest).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "CKafka instance ID, which is required when `KafkaType` is set to `0`",
+          "example": "无",
+          "member": "string",
+          "name": "KafkaInstance",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service address, which is required when `KafkaType` is set to `1`",
+          "example": "192.168.0.1:9095或test.cls.tencentyun.com:9095",
+          "member": "string",
+          "name": "ServerAddr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the service address uses an encrypted connection, which is required when `KafkaType` is set to `1`",
+          "example": "true",
+          "member": "bool",
+          "name": "IsEncryptionAddr",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`",
+          "example": "无",
+          "member": "KafkaProtocolInfo",
+          "name": "Protocol",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka consumer group name",
+          "example": "cls-xxxxx",
+          "member": "string",
+          "name": "ConsumerGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log import rule",
+          "example": "无",
+          "member": "LogRechargeRuleInfo",
+          "name": "LogRechargeRule",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateKafkaRechargeResponse": {
+      "document": "CreateKafkaRecharge response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Kafka data import configuration ID",
+          "example": "xxx-xxx-xxx",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2589,7 +2960,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100-256",
+          "document": "Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 5-256",
           "example": "256",
           "member": "uint64",
           "name": "MaxSize",
@@ -2871,6 +3242,170 @@
       ],
       "usage": "both"
     },
+    "DataTransformResouceInfo": {
+      "document": "Information about the resource for data processing",
+      "members": [
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Target topic ID",
+          "example": "topic-xx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Alias",
+          "example": "topicname",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DataTransformTaskInfo": {
+      "document": "Basic information of a data processing task",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data processing task name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data processing task ID",
+          "example": "taskid_xx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values: 1 (enabled) and 2 (disabled).",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task type. Valid values: 1 (DSL) and 2 (SQL).",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source log topic",
+          "example": "xxxx",
+          "member": "string",
+          "name": "SrcTopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current task status. Valid values: 1 (preparing), 2 (in progress), 3 (being stopped), and 4 (stopped).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task creation time",
+          "example": "xx-xx",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modified time",
+          "example": "xx-xx",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last enabled time. If you need to rebuild a cluster, modify this time.",
+          "example": "xx-xx",
+          "member": "string",
+          "name": "LastEnableTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic name",
+          "example": "topicname",
+          "member": "string",
+          "name": "SrcTopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Logset ID",
+          "example": "logset-1",
+          "member": "string",
+          "name": "LogsetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target topic ID and alias of the data processing task",
+          "example": "{\"dst_topics\":[{\"topic_id\":\"xxx\", \"alias\":\"topic\"}]}",
+          "member": "DataTransformResouceInfo",
+          "name": "DstResources",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Logical function for data processing",
+          "example": "xxxx",
+          "member": "string",
+          "name": "EtlContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteAlarmNoticeRequest": {
       "document": "DeleteAlarmNotice request structure.",
       "members": [
@@ -3021,6 +3556,33 @@
       ],
       "type": "object"
     },
+    "DeleteDataTransformRequest": {
+      "document": "DeleteDataTransform request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data processing task ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDataTransformResponse": {
+      "document": "DeleteDataTransform response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteExportRequest": {
       "document": "DeleteExport request structure.",
       "members": [
@@ -3067,6 +3629,42 @@
     },
     "DeleteIndexResponse": {
       "document": "DeleteIndex response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteKafkaRechargeRequest": {
+      "document": "DeleteKafkaRecharge request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Kafka data import configuration ID",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target CLS log topic ID",
+          "example": "无",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteKafkaRechargeResponse": {
+      "document": "DeleteKafkaRecharge response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3676,6 +4274,87 @@
       ],
       "type": "object"
     },
+    "DescribeDataTransformInfoRequest": {
+      "document": "DescribeDataTransformInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<br><li>taskName\n\nFilter by **processing task name**.\nType: String\n\nRequired: No\n\n<br><li>taskId\n\nFilter by **processing task ID**.\nType: String\n\nRequired: No\n\n<br><li>srctopicId\n\nFilter by **source topic ID**.\nType: String\n\nRequired: No\n\nEach request can have up to 10 `Filters` and 100 `Filter.Values`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of entries per page. Default value: 20. Maximum value: 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task type. Valid values: 1: Get the details of a single task. 2 (default): Get the task list.",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task ID, which is required when `Type` is set to `1`",
+          "example": "task-id",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataTransformInfoResponse": {
+      "document": "DescribeDataTransformInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of data processing tasks",
+          "example": "无",
+          "member": "DataTransformTaskInfo",
+          "name": "DataTransformTaskInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total tasks",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeExportsRequest": {
       "document": "DescribeExports request structure.",
       "members": [
@@ -3822,6 +4501,71 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKafkaRechargesRequest": {
+      "document": "DescribeKafkaRecharges request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log topic ID",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Import configuration ID",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Status. Valid values: 1 (running) and 2 (suspended).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKafkaRechargesResponse": {
+      "document": "DescribeKafkaRecharges response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "KafkaRechargeInfo list",
+          "example": "无",
+          "member": "KafkaRechargeInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total Kafka data records imported",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4463,9 +5207,8 @@
       "document": "DescribeTopics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "<br><li> `topicName` filters by **log topic name**. Type: String. Required: No<br><li> `logsetName` filters by **logset name**. Type: String. Required: No<br><li> `topicId` filters by **log topic ID**. Type: String. Required: No<br><li> `logsetId` filters by **logset ID**. You can call the `DescribeLogsets` API to query the list of created logsets or log in to the console to view them. You can also call the `CreateLogset` API to create a logset. Type: String. Required: No<br><li> `tagKey` filters by **tag key**. Type: String. Required: No<br><li> `tag:tagKey` filters by **tag key-value pair**. The tagKey should be replaced with a specified tag key, such as “tag:exampleKey”. Type: String. Required: No<br><li> `storageType` filters by **log topic storage type**. Valid values: `hot` (STANDARD storage); `cold`: (IA storage). Type: String. Required: No. Each request can contain up to 10 `Filters` and 100 `Filter.Values`.",
+          "document": "<li>topicName: Filter by **log topic name**. Fuzzy match is implemented by default. You can use the `PreciseSearch` parameter to set exact match. Type: String. Required. No. <br><li>logsetName: Filter by **logset name**. Fuzzy match is implemented by default. You can use the `PreciseSearch` parameter to set exact match. Type: String. Required: No. <br><li>topicId: Filter by **log topic ID**. Type: String. Required: No. <br><li>logsetId: Filter by **logset ID**. You can call `DescribeLogsets` to query the list of created logsets or log in to the console to view them. You can also call `CreateLogset` to create a logset. Type: String. Required: No. <br><li>tagKey: Filter by **tag key**. Type: String. Required: No. <br><li>tag:tagKey: Filter by **tag key-value pair**. The `tagKey` should be replaced with a specified tag key, such as `tag:exampleKey`. Type: String. Required: No. <br><li>storageType: Filter by **log topic storage type**. Valid values: `hot` (standard storage) and `cold` (IA storage). Type: String. Required: No. Each request can have up to 10 `Filters` and 100 `Filter.Values`.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -4473,7 +5216,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page offset. Default value: 0.",
           "example": "10",
@@ -4483,12 +5225,29 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of entries per page. Default value: 20. Maximum value: 100.",
           "example": "30",
           "member": "int64",
           "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Match mode for `Filters` fields.\n- 0: Fuzzy match for `topicName` and `logsetName`. This is the default value.\n- 1: Exact match for `topicName`.\n- 2: Exact match for `logsetName`.\n- 3: Exact match for `topicName` and `logsetName`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PreciseSearch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Topic type\n- 0 (default): Log topic.\n- 1: Metric topic.\n",
+          "example": "无",
+          "member": "uint64",
+          "name": "BizType",
           "required": false,
           "type": "int"
         }
@@ -4528,7 +5287,7 @@
       "type": "object"
     },
     "DynamicIndex": {
-      "document": "Dynamic index configuration",
+      "document": "Dynamic index configuration\n\nNote: This feature is currently in a beta test. To use it, please contact technical support.",
       "members": [
         {
           "disabled": false,
@@ -4536,6 +5295,7 @@
           "example": "false",
           "member": "bool",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -4778,7 +5538,7 @@
         },
         {
           "disabled": false,
-          "document": "Key name of each extracted field. An empty key indicates to discard the field. This parameter is valid only if `log_type` is `delimiter_log`. `json_log` logs use the key of JSON itself\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Key name of each extracted field. An empty key indicates to discard the field. This parameter is valid only if `log_type` is `delimiter_log`. `json_log` logs use the key of JSON itself. A maximum of 100 keys are supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Keys",
@@ -4899,7 +5659,7 @@
         },
         {
           "disabled": false,
-          "document": "Regular expression of the collection path, which is required when `MetadataType` is set to `3`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Regular expression of the collection configuration path, which is required when `MetadataType` is set to `3`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "PathRegex",
@@ -5281,6 +6041,269 @@
       ],
       "usage": "both"
     },
+    "KafkaConsumerContent": {
+      "document": "Kafka consumer content",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Format. Valid values: 0 (full-text) and 1 (JSON).",
+          "example": "1",
+          "member": "int64",
+          "name": "Format",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to ship tag information\nThis parameter does not need to be set when `Format` is set to `0`.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableTag",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Metadata information list. Valid values: \\_\\_SOURCE\\_\\_, \\_\\_FILENAME\\_\\_,\n\\_\\_TIMESTAMP\\_\\_, \\_\\_HOSTNAME\\_\\_, and \\_\\_PKGID\\_\\_.\nThis parameter does not need to be set when `Format` is set to `0`.",
+          "example": "[\"__HOSTNAME__\"]",
+          "member": "string",
+          "name": "MetaFields",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag data processing mode. Valid values:\n1 (default): Do not tile data.\n2: Tile data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TagTransaction",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "JSON data format. Valid values:\n1 (default): Not escaped.\n2: Escaped.",
+          "example": "1",
+          "member": "int64",
+          "name": "JsonType",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KafkaProtocolInfo": {
+      "document": "Kafka access protocol",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Protocol type. Valid values: `plaintext`, `sasl_plaintext`, and `sasl_ssl`. `sasl_ssl` is recommended. Using this protocol will encrypt the connection and implement user authentication.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sasl_plaintext",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Encryption type. Valid values: `PLAIN`, `SCRAM-SHA-256`, and SCRAM-SHA-512`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Mechanism",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Username\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User password\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "KafkaRechargeInfo": {
+      "document": "Kafka data import configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary key ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxxxxxx",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Kafka data import task name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx任务导入",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "KafkaType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CKafka instance ID, which is required when `KafkaType` is set to `0`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "KafkaInstance",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test.cls.tencentyun.com:9095",
+          "member": "string",
+          "name": "ServerAddr",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the service address uses an encrypted connection\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsEncryptionAddr",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`",
+          "example": "无",
+          "member": "KafkaProtocolInfo",
+          "name": "Protocol",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of Kafka topics to import data from. Separate multiple topics with commas (,).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "topic1,topic2\t",
+          "member": "string",
+          "name": "UserKafkaTopics",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Kafka consumer group name\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cls-xxxxx\t",
+          "member": "string",
+          "name": "ConsumerGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status. Valid values: 1 (running) and 2 (suspended).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Position for data import. Valid values: -2 (earliest, default) and -1 (latest).  \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-11-08 14:40:22",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-11-08 14:40:22",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log import rule\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LogRechargeRuleInfo",
+          "name": "LogRechargeRule",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "KeyRegexInfo": {
       "document": "Log keys to be filtered and the corresponding regex",
       "members": [
@@ -5588,6 +6611,152 @@
         }
       ],
       "usage": "out"
+    },
+    "LogRechargeRuleInfo": {
+      "document": "Log import rule",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log u200d(single-line full regex)",
+          "example": "json_log",
+          "member": "string",
+          "name": "RechargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Encoding format. Valid values: 0 (default, UTF-8) and 1 GBK).",
+          "example": "0",
+          "member": "uint64",
+          "name": "EncodingFormat",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use the default time. Valid values: `true` (default) and `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "DefaultTimeSwitch",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Full log matching rule, which is valid only if `RechargeType` is `fullregex_log`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LogRegex",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to upload the logs that failed to be parsed. Valid values: `true` and `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "UnMatchLogSwitch",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Key of the log that failed to be parsed\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "LogParseFailure",
+          "member": "string",
+          "name": "UnMatchLogKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time source of the log that failed to be parsed. Valid values: 0 (current system time) and 1 (Kafka message timestamp).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "UnMatchLogTimeSrc",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Default time source. Valid values: 0 (current system time) and 1 (Kafka message timestamp).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DefaultTimeSrc",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time field\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TimeKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time regular expression\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TimeRegex",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time field format\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TimeFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TimeZone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Metadata information. Kafka supports import of kafka_topic, kafka_partition, kafka_offset, and kafka_timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Metadata",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of log keys, which is required when `RechargeType` is set to `full_regex_log`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Keys",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "LogsetInfo": {
       "document": "Logset information",
@@ -6408,6 +7577,69 @@
       ],
       "type": "object"
     },
+    "ModifyDataTransformRequest": {
+      "document": "ModifyDataTransform request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data processing task ID",
+          "example": "xxxx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data processing task name",
+          "example": "task1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data processing statement",
+          "example": "xxx",
+          "member": "string",
+          "name": "EtlContent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values: 1 (enabled) and 2 (disabled).",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Destination topic ID and alias of the data processing task",
+          "example": "无",
+          "member": "DataTransformResouceInfo",
+          "name": "DstResources",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDataTransformResponse": {
+      "document": "ModifyDataTransform response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyIndexRequest": {
       "document": "ModifyIndex request structure.",
       "members": [
@@ -6466,6 +7698,132 @@
     },
     "ModifyIndexResponse": {
       "document": "ModifyIndex response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyKafkaRechargeRequest": {
+      "document": "ModifyKafkaRecharge request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Kafka data import configuration ID",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target topic ID",
+          "example": "无",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka data import configuration name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka)",
+          "example": "0",
+          "member": "uint64",
+          "name": "KafkaType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "CKafka instance ID, which is required when `KafkaType` is set to `0`",
+          "example": "无",
+          "member": "string",
+          "name": "KafkaInstance",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service address",
+          "example": "192.168.0.1:9095或test.cls.tencentyun.com:9095",
+          "member": "string",
+          "name": "ServerAddr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the service address uses an encrypted connection",
+          "example": "true",
+          "member": "bool",
+          "name": "IsEncryptionAddr",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption access protocol, which is required when IsEncryptionAddr` is set to `true`",
+          "example": "无",
+          "member": "KafkaProtocolInfo",
+          "name": "Protocol",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "List of Kafka topics to import data from. Separate multiple topics with commas (,).",
+          "example": "topic1,topic2",
+          "member": "string",
+          "name": "UserKafkaTopics",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka consumer group name",
+          "example": "cls-xxxxx",
+          "member": "string",
+          "name": "ConsumerGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log import rule",
+          "example": "无",
+          "member": "LogRechargeRuleInfo",
+          "name": "LogRechargeRule",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Import control. Valid values: 1 (suspend) and 2 (resume).",
+          "example": "无",
+          "member": "uint64",
+          "name": "StatusControl",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyKafkaRechargeResponse": {
+      "document": "ModifyKafkaRecharge response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6627,7 +7985,6 @@
       "document": "ModifyShipper request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping rule ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -6637,7 +7994,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New destination bucket in shipping rule",
           "example": "bucketName-appid",
@@ -6647,7 +8003,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New destination directory prefix in shipping rule",
           "example": "无",
@@ -6657,7 +8012,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping rule status",
           "example": "true",
@@ -6667,7 +8021,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping rule name",
           "example": "testShipper",
@@ -6677,7 +8030,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping time interval in seconds. Default value: 300. Value range: 300–900",
           "example": "300",
@@ -6687,9 +8039,8 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100–256",
+          "document": "Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 5-256",
           "example": "256",
           "member": "uint64",
           "name": "MaxSize",
@@ -6697,7 +8048,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter rules for shipped logs. Only logs matching the rules can be shipped. All rules are in the AND relationship, and up to five rules can be added. If the array is empty, no filtering will be performed, and all logs will be shipped.",
           "example": "无",
@@ -6707,7 +8057,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Partition rule of shipped log, which can be represented in `strftime` time format",
           "example": "%Y%m%d",
@@ -6717,7 +8066,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression configuration of shipped log",
           "example": "无",
@@ -6727,7 +8075,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Format configuration of shipped log content",
           "example": "无",
@@ -6737,7 +8084,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Naming a shipping file. Valid values: `0` (by random number), `1` (by shipping time). Default value: `0`.",
           "example": "0",
@@ -6895,6 +8241,32 @@
       ],
       "usage": "both"
     },
+    "MultiTopicSearchInformation": {
+      "document": "Log topic search information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the log topic to be searched for",
+          "example": "682d0718-07bb-4ec0-xxxx-f1e9a2767e0b",
+          "member": "string",
+          "name": "TopicId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "You can pass through the `Context` value (validity: 1 hour) returned by the last API to continue to get logs, which can get up to 10,000 raw logs.",
+          "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
+          "member": "string",
+          "name": "Context",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "NoticeReceiver": {
       "document": "Alarm notification recipient information",
       "members": [
@@ -6971,7 +8343,6 @@
       "document": "OpenKafkaConsumer request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "`TopicId` created by the CLS console",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -6981,7 +8352,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression mode. Valid values: `0` (no compression); `2` (snappy); `3` (LZ4)",
           "example": "1",
@@ -6989,6 +8359,15 @@
           "name": "Compression",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka consumer data format",
+          "example": "无",
+          "member": "KafkaConsumerContent",
+          "name": "ConsumerContent",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -7137,6 +8516,200 @@
       ],
       "usage": "out"
     },
+    "PreviewKafkaRechargeRequest": {
+      "document": "PreviewKafkaRecharge request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Preview type. Valid values: 1 (source data preview) and 2 (result preview).",
+          "example": "1",
+          "member": "uint64",
+          "name": "PreviewType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka)",
+          "example": "无",
+          "member": "uint64",
+          "name": "KafkaType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of Kafka topics to import data from. Separate multiple topics with commas (,).",
+          "example": "topic1,topic2",
+          "member": "string",
+          "name": "UserKafkaTopics",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Position for data import. Valid values: -2 (earliest, default) and -1 (latest).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "CKafka instance ID, which is required when `KafkaType` is set to `0`",
+          "example": "无",
+          "member": "string",
+          "name": "KafkaInstance",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service address",
+          "example": "192.168.0.1:9095或test.cls.tencentyun.com:9095",
+          "member": "string",
+          "name": "ServerAddr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the service address uses an encrypted connection",
+          "example": "true",
+          "member": "bool",
+          "name": "IsEncryptionAddr",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`",
+          "example": "无",
+          "member": "KafkaProtocolInfo",
+          "name": "Protocol",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Kafka consumer group name",
+          "example": "cls-xxxxx",
+          "member": "string",
+          "name": "ConsumerGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log import rule",
+          "example": "无",
+          "member": "LogRechargeRuleInfo",
+          "name": "LogRechargeRule",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "PreviewKafkaRechargeResponse": {
+      "document": "PreviewKafkaRecharge response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log sample, which is returned when `PreviewType` is set to `2`",
+          "example": "无",
+          "member": "string",
+          "name": "LogSample",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log preview result\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LogData",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PreviewLogStatistic": {
+      "document": "Preview data details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log content",
+          "example": "xxxx",
+          "member": "string",
+          "name": "LogContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Line number",
+          "example": "1",
+          "member": "int64",
+          "name": "LineNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target log topic",
+          "example": "topic-xx",
+          "member": "string",
+          "name": "DstTopicId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string \"\" indicates no error.",
+          "example": "error",
+          "member": "string",
+          "name": "FailReason",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log timestamp",
+          "example": "xx-xx",
+          "member": "string",
+          "name": "Time",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target topic name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Name",
+          "member": "string",
+          "name": "DstTopicName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "RetryShipperTaskRequest": {
       "document": "RetryShipperTask request structure.",
       "members": [
@@ -7184,6 +8757,7 @@
           "example": "空",
           "member": "FullTextInfo",
           "name": "FullText",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7194,6 +8768,7 @@
           "example": "空",
           "member": "RuleKeyValueInfo",
           "name": "KeyValue",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7204,16 +8779,18 @@
           "example": "空",
           "member": "RuleTagInfo",
           "name": "Tag",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Dynamic index configuration. If the configuration is empty, dynamic indexing is not enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Dynamic index configuration. If the configuration is empty, dynamic indexing is not enabled.\n\nNote: This feature is currently in a beta test. To use it, please contact technical support.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DynamicIndex",
           "name": "DynamicIndex",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7309,7 +8886,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the log topic to be searched",
+          "document": "- The ID of the log topic to be searched for. Only one log topic can be specified.\n- To search for multiple log topics at a time, use the `Topics` parameter.",
           "example": "682d0718-07bb-4ec0-9fda-f1e9a2767e0b",
           "member": "string",
           "name": "TopicId",
@@ -7369,6 +8946,15 @@
           "name": "SyntaxRule",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "- The IDs of the log topics (up to 20) to be searched for.\n- To search for a single log topic, use the `TopicId` parameter.\n- You cannot use both `TopicId` and `Topics`.",
+          "example": "无",
+          "member": "MultiTopicSearchInformation",
+          "name": "Topics",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
