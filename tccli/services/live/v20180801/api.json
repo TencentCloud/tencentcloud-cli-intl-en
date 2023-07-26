@@ -581,6 +581,13 @@
       "output": "DescribeProvinceIspPlayInfoListResponse",
       "status": "online"
     },
+    "DescribeRecordTask": {
+      "document": "This API is used to retrieve a list of recording tasks that were started and ended within a specified time range. \n- Prerequisites: \n1. This API is only used to query recording tasks created by the CreateRecordTask interface. \n2. It cannot retrieve recording tasks that have been deleted by the DeleteRecordTask interface or tasks that have expired (platform retains for 3 months).",
+      "input": "DescribeRecordTaskRequest",
+      "name": "CreateRecordTask (New)",
+      "output": "DescribeRecordTaskResponse",
+      "status": "online"
+    },
     "DescribeScreenShotSheetNumList": {
       "document": "The API is used to query the number of screenshots as an LVB value-added service.",
       "input": "DescribeScreenShotSheetNumListRequest",
@@ -7138,6 +7145,104 @@
       ],
       "type": "object"
     },
+    "DescribeRecordTaskRequest": {
+      "document": "DescribeRecordTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The start time of the tasks to retrieve in Unix timestamp. The time range should not be earlier than 90 days before the current time, and the query span should not exceed one week.",
+          "example": "1595779200",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The end time of the tasks to retrieve in Unix timestamp. The EndTime must be greater than the StartTime. The time range should not be earlier than 90 days before the current time, and the query span should not exceed one week. (Note: the start and end times of the task must be within the query time range).",
+          "example": "1595865600",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Stream name.",
+          "example": "livetest",
+          "member": "string",
+          "name": "StreamName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Push domain name.",
+          "example": "5000.live.push.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Push path.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Page token used for batch retrieval: If a single request cannot retrieve all data, the interface will return a ScrollToken. The next request carrying this token will start retrieving from the next record.",
+          "example": "RF1bV9tRVVEW=",
+          "member": "string",
+          "name": "ScrollToken",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordTaskResponse": {
+      "document": "DescribeRecordTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page token: When the request does not return all data, this field indicates the token of the next record. When this field is empty, it means there is no more data.",
+          "example": "RF1bV9tRVVEW=",
+          "member": "string",
+          "name": "ScrollToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of recording tasks. When this field is empty, it means all data has been returned.",
+          "example": "无",
+          "member": "RecordTask",
+          "name": "TaskList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeScreenShotSheetNumListRequest": {
       "document": "DescribeScreenShotSheetNumList request structure.",
       "members": [
@@ -11423,6 +11528,92 @@
         }
       ],
       "usage": "both"
+    },
+    "RecordTask": {
+      "document": "Recording task.",
+      "members": [
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Recording task ID.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Push domain name.",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Push path.",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Stream name.",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The start time of the recording task in Unix timestamp. ",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The end time of the recording task in Unix timestamp. ",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "Recording template ID.",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The StopRecordTask API call stops the task at the Unix timestamp. A value of 0 indicates that the API has not been called to stop the task.",
+          "member": "uint64",
+          "name": "Stopped",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "RecordTemplateInfo": {
       "document": "Recording template information",
