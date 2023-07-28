@@ -556,7 +556,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Raw usage/duration: The raw usage/duration of a component before deduction. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "RealTotalMeasure",
@@ -566,7 +566,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Deducted usage/duration (including packages): The usage/duration deducted with a package. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "DeductedMeasure",
@@ -1808,7 +1808,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.",
           "example": "909619400",
           "member": "string",
           "name": "PayerUin",
@@ -1943,7 +1943,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.",
           "example": "无",
           "member": "string",
           "name": "PayerUin",

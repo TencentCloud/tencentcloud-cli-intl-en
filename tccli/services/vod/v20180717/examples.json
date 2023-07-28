@@ -216,10 +216,10 @@
     ],
     "CreateRebuildMediaTemplate": [
       {
-        "document": "This example shows you how to create a remaster template.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRebuildMediaTemplate\n<Common request parameters>\n\n{\n    \"Name\": \"rebuildMediaTestTempalte\",\n    \"Container\": \"mp4\",\n    \"RebuildVideoInfo\": {\n        \"RepairInfo\": {\n            \"Switch\": \"ON\"\n        }\n    }\n}",
+        "document": "创建视频重生模板。",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRebuildMediaTemplate\n<common request parameters>\n\n{\n    \"Name\": \"rebuildMediaTestTempalte\",\n    \"Container\": \"mp4\",\n    \"RebuildVideoInfo\": {\n        \"RepairInfo\": {\n            \"Switch\": \"ON\"\n        }\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 20001,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Creating a remaster template"
+        "title": "创建视频重生模板。"
       }
     ],
     "CreateReviewTemplate": [
@@ -438,10 +438,10 @@
     ],
     "DeleteRebuildMediaTemplate": [
       {
-        "document": "This example shows you how to delete a remaster template.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRebuildMediaTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 20001\n}",
+        "document": "删除视频重生模板。",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRebuildMediaTemplate\n<common request parameters>\n\n{\n    \"Definition\": 20001\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Deleting a remaster template"
+        "title": "删除视频重生模板。"
       }
     ],
     "DeleteReviewTemplate": [
@@ -744,10 +744,10 @@
     ],
     "DescribeRebuildMediaTemplates": [
       {
-        "document": "This example shows you how to query remaster templates.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRebuildMediaTemplates\n<Common request parameters>\n\n{\n    \"Definitions\": [\n        20001\n    ]\n}",
+        "document": "获取视频重生模板列表。",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRebuildMediaTemplates\n<common request parameters>\n\n{\n    \"Definitions\": [\n        20001\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RebuildMediaTemplateSet\": [\n            {\n                \"Definition\": 20001,\n                \"Name\": \"test\",\n                \"Comment\": \"\",\n                \"Container\": \"mp4\",\n                \"RemoveVideo\": 0,\n                \"RemoveAudio\": 0,\n                \"CreateTime\": \"\",\n                \"UpdateTime\": \"\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Querying remaster templates"
+        "title": "获取视频重生模板列表。"
       }
     ],
     "DescribeReviewDetails": [
@@ -1136,10 +1136,10 @@
     ],
     "ModifyRebuildMediaTemplate": [
       {
-        "document": "This example shows you how to modify a remaster template.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRebuildMediaTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 20001,\n    \"Name\": \"testRebuildName\"\n}",
+        "document": "修改视频重生模板。",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRebuildMediaTemplate\n<common request parameters>\n\n{\n    \"Definition\": 20001,\n    \"Name\": \"testRebuildName\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Modifying a remaster template"
+        "title": "修改视频重生模板。"
       }
     ],
     "ModifyReviewTemplate": [
@@ -1324,18 +1324,18 @@
     ],
     "RebuildMedia": [
       {
-        "document": "This example shows you how to remaster audio/video.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RebuildMedia\n&<Common Request Parameters>\n\n{\n    \"SuperResolutionInfo\": {\n        \"Switch\": \"ON\"\n    },\n    \"VideoFrameInterpolationInfo\": {\n        \"Switch\": \"ON\",\n        \"Fps\": \"25\"\n    },\n    \"FileId\": \"8312960950918954859\",\n    \"RepairInfo\": {\n        \"Switch\": \"ON\"\n    },\n    \"TargetInfo\": {\n        \"Container\": \"mp4\",\n        \"MediaName\": \"String\",\n        \"Description\": \"String\"\n    }\n}",
+        "document": "发起视频重生",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RebuildMedia\n<common request parameters>\n\n{\n    \"SuperResolutionInfo\": {\n        \"Switch\": \"ON\"\n    },\n    \"VideoFrameInterpolationInfo\": {\n        \"Switch\": \"ON\",\n        \"Fps\": \"25\"\n    },\n    \"FileId\": \"8312960950918954859\",\n    \"RepairInfo\": {\n        \"Switch\": \"ON\"\n    },\n    \"TargetInfo\": {\n        \"Container\": \"mp4\",\n        \"MediaName\": \"字符串\",\n        \"Description\": \"字符串\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"125xxx-RebuildMedia-75e45d323ffad76987112fafe2eb87dxxx\",\n        \"RequestId\": \"ef5aae86-6eab-4cb3-9ebc-0979010b3f22\"\n    }\n}",
-        "title": "Remastering audio/video"
+        "title": "发起视频重生"
       }
     ],
     "RebuildMediaByTemplate": [
       {
-        "document": "This example shows you how to start a remaster task using a template.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RebuildMediaByTemplate\n<Common request parameters>\n\n{\n    \"FileId\": \"8312960950918954859\",\n    \"Definition\": 20001\n}",
+        "document": "使用模板发起视频重生。",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RebuildMediaByTemplate\n<common request parameters>\n\n{\n    \"FileId\": \"8312960950918954859\",\n    \"Definition\": 20001\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"125xxx-RebuildMedia-75e45d323ffad76987112fafe2eb87dxxx\",\n        \"RequestId\": \"ef5aae86-6eab-4cb3-9ebc-0979010b3f22\"\n    }\n}",
-        "title": "Starting a remaster task using a template"
+        "title": "使用模板发起视频重生。"
       }
     ],
     "RefreshUrlCache": [

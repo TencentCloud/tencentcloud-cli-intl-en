@@ -6563,7 +6563,6 @@
       "document": "Control parameter of full speech recognition task.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Switch of full speech recognition task. Valid values:\n<li>ON: enables intelligent full speech recognition task;</li>\n<li>OFF: disables intelligent full speech recognition task.</li>",
           "example": "无",
@@ -6574,7 +6573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The formats of the subtitle files generated. If this parameter is not passed or an empty string is passed in, no subtitles files will be generated. Valid values:\n<li>vtt</li>\n<li>srt</li>",
           "example": "无",
@@ -6585,12 +6583,21 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The format of the subtitle file generated. If this parameter is not passed or an empty string is passed in, no subtitles files will be generated. Valid values:\n<li>vtt</li>\n<li>srt</li>\n<font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormats` instead.</font>",
           "example": "无",
           "member": "string",
           "name": "SubtitleFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li><font color=red>Note：</font> If it fills in an empty string or leave this parameter blank, it will be automatically recognized (it is recommended to fill in the language corresponding to the media to improve the recognition accuracy).",
+          "example": "无",
+          "member": "string",
+          "name": "SrcLanguage",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6602,7 +6609,6 @@
       "document": "Control parameter of full speech recognition task.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Switch of full speech recognition task. Valid values:\n<li>ON: enables intelligent full speech recognition task;</li>\n<li>OFF: disables intelligent full speech recognition task.</li>",
           "example": "无",
@@ -6613,7 +6619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The modification information of the subtitle format list.",
           "example": "无",
@@ -6624,7 +6629,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The format of the subtitle file generated. <font color='red'>If you pass in an empty string</font>, no subtitle files will be generated. Valid values:\n<li>vtt</li>\n<li>srt</li>\n<font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormatsOperation` instead.</font>",
           "example": "无",
@@ -6633,6 +6637,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li>",
+          "example": "无",
+          "member": "string",
+          "name": "SrcLanguage",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
@@ -20174,7 +20188,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "MediaMetaData": {
       "document": "VOD media file metadata",
