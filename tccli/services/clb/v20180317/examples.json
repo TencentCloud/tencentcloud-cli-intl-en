@@ -2,7 +2,7 @@
   "actions": {
     "AssociateTargetGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=AssociateTargetGroups\n&Associations.0.LoadBalancerId=lb-phbx2420\n&Associations.0.ListenerId=lbl-m2q6sp9m\n&Associations.0.LocationId=loc-jjqr0ric\n&Associations.0.TargetGroupId=lbtg-5xunivs0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dd2f3116-421c-4eda-8401-b9ddefcc65d5\"\n    }\n}",
         "title": "Binding layer-7 forwarding rules to target groups"
@@ -18,7 +18,7 @@
     ],
     "BatchDeregisterTargets": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchDeregisterTargets\n<Common request parameters>\n\n{\n    \"Targets\": [\n        {\n            \"InstanceId\": \"ins-xxx\",\n            \"ListenerId\": \"lbl-xxxx\",\n            \"Weight\": \"10\",\n            \"Port\": \"80\"\n        }\n    ],\n    \"LoadBalancerId\": \"lb-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FailListenerIdSet\": [],\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba22\"\n    }\n}",
         "title": "Unbinding an ENI"
@@ -40,7 +40,7 @@
     ],
     "BatchRegisterTargets": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchRegisterTargets\n<Common request parameters>\n\n{\n    \"Targets\": [\n        {\n            \"InstanceId\": \"ins-xxx\",\n            \"ListenerId\": \"lbl-xxxx\",\n            \"Weight\": \"10\",\n            \"Port\": \"80\"\n        }\n    ],\n    \"LoadBalancerId\": \"lb-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FailListenerIdSet\": [],\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba22\"\n    }\n}",
         "title": "Binding a CVM or ENI"
@@ -48,7 +48,7 @@
     ],
     "CloneLoadBalancer": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneLoadBalancer\n<Common request parameters>\n\n{\n    \"LoadBalancerId\": \"lb-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba22\"\n    }\n}",
         "title": "Cloning a CLB instance"
@@ -110,13 +110,13 @@
     ],
     "CreateLoadBalancerSnatIps": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=CreateLoadBalancerSnatIps\n&LoadBalancerId=lb-cuxw****\n&SnatIps.0.SubnetId=subnet-1234****\n&Number=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"898b431c-2745-4b27-80f6-e6e8038a0683\"\n    }\n}",
         "title": "Adding a SNAT IP"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=CreateLoadBalancerSnatIps\n&LoadBalancerId=lb-cuxw****\n&SnatIps.0.SubnetId=subnet-1234****\n&SnatIps.0.Ip=192.168.1.2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"898b431c-80f6-80f6-80f6-e6e8038a0683\"\n    }\n}",
         "title": "Specifying a SNAT IP"
@@ -124,7 +124,7 @@
     ],
     "CreateRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=CreateRule\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-4fbxq45k\n&Rules.0.Domain=foo.net\n&Rules.0.Url=/bar\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"LocationIds\": [\n            \"loc-ho6lvh8m\"\n        ],\n        \"RequestId\": \"6c915c06-53e0-4717-9358-09b32cf47f08\"\n    }\n}",
         "title": "Creating a forwarding rule"
@@ -132,9 +132,9 @@
     ],
     "CreateTargetGroup": [
       {
-        "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=CreateTargetGroup\n&TargetGroupName=czhtest\n&VpcId=vpc-i1cnjuhx\n&Port=80\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TargetGroupId\": \"lbtg-815iz538\",\n        \"RequestId\": \"9a4096dd-45a1-4e03-be8e-482a2fb48b59\"\n    }\n}",
+        "document": "This example shows you how to create a target group.",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTargetGroup\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-i1cnjuhx\",\n    \"Port\": \"80\",\n    \"TargetGroupName\": \"czhtest\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TargetGroupId\": \"lbtg-81******\",\n        \"RequestId\": \"9a4096dd-45a1-4e03-be8e-482a2fb48b59\"\n    }\n}",
         "title": "Creating a target group"
       }
     ],
@@ -148,7 +148,7 @@
     ],
     "DeleteListener": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeleteListener\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-4udz130k\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eeb315e4-7333-4f0e-814f-2f44ffd13e4c\"\n    }\n}",
         "title": "Deleting a listener"
@@ -156,7 +156,7 @@
     ],
     "DeleteLoadBalancer": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeleteLoadBalancer\n&LoadBalancerIds.0=lb-hsb93u5o\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"db141822-c025-4765-88d4-02bdec0e67ed\"\n    }\n}",
         "title": "Deleting a CLB instance"
@@ -164,13 +164,13 @@
     ],
     "DeleteLoadBalancerListeners": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeleteLoadBalancerListeners\n&LoadBalancerId=lb-db2nt5l2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c1157c81-f3dc-4f2a-9346-76f161d548eb\"\n    }\n}",
         "title": "Deleting all listeners of a CLB instance"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeleteLoadBalancerListeners\n&LoadBalancerId=lb-db2nt5l2\n&ListenerIds.0=lbl-jmgysito\n&ListenerIds.1=lbl-3bgc6o9a\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9706db49-a5d4-413a-9610-7aa1075517e1\"\n    }\n}",
         "title": "Deleting multiple listeners of a CLB instance"
@@ -178,7 +178,7 @@
     ],
     "DeleteLoadBalancerSnatIps": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeleteLoadBalancerSnatIps\n&LoadBalancerId=lb-cuxw2rm0\n&Ips.0=192.168.0.128\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"898b431c-2745-4b27-80f6-e6e8038a0683\"\n    }\n}",
         "title": "Deleting SNAT IPs"
@@ -186,7 +186,7 @@
     ],
     "DeleteRewrite": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeleteRewrite\n&LoadBalancerId=lb-r6nx1iby\n&SourceListenerId=lbl-cy6akv52\n&TargetListenerId=lbl-g14o899k\n&RewriteInfos.0.SourceLocationId=loc-2jkimjn0\n&RewriteInfos.0.TargetLocationId=loc-bmsddozm\n&RewriteInfos.1.SourceLocationId=loc-eu15yo84\n&RewriteInfos.1.TargetLocationId=loc-bmsddozm\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4fcf51ca-fde7-4064-beff-cc46dd151f73\"\n    }\n}",
         "title": "Batch deleting redirection relationships"
@@ -194,7 +194,7 @@
     ],
     "DeleteRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRule\n<Common request parameters>\n\n{\n    \"Url\": \"/bar2\",\n    \"Domain\": \"foo.net\",\n    \"ListenerId\": \"lbl-4fbxq45k\",\n    \"LoadBalancerId\": \"lb-cuxw2rm0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba2d4eb1-c7c5-480c-98e4-9b7b6a0fd498\"\n    }\n}",
         "title": "Deleting a forwarding rule"
@@ -202,7 +202,7 @@
     ],
     "DeleteTargetGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeleteTargetGroups\n&TargetGroupIds.0=lbtg-f1phe5j6\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4e0ec156-655b-47e4-a483-a954b632a49a\"\n    }\n}",
         "title": "Deleting target groups"
@@ -218,7 +218,7 @@
     ],
     "DeregisterTargetGroupInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeregisterTargetGroupInstances\n&TargetGroupId=lbtg-815iz538\n&TargetGroupInstances.0.BindIP=172.16.0.34\n&TargetGroupInstances.0.Port=1234\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4b4987ca-58d0-4bad-9ded-344fa4011bda\"\n    }\n}",
         "title": "Unbinding a server from a target group"
@@ -226,7 +226,7 @@
     ],
     "DeregisterTargets": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeregisterTargets\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-d1ubsydq\n&Targets.0.InstanceId=ins-dm4xtz0i\n&Targets.0.Port=334\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4d1df727-d61c-45bf-936b-cb0368fb2a7d\"\n    }\n}",
         "title": "Unbinding a CVM instance from the list of bound listeners"
@@ -234,7 +234,7 @@
     ],
     "DeregisterTargetsFromClassicalLB": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DeregisterTargetsFromClassicalLB\n&LoadBalancerId=lb-a3u5l5zc\n&InstanceIds.0=ins-odjhn6vc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a8ae0a06-f935-4a1b-bc73-f5055f3e1954\"\n    }\n}",
         "title": "Unbinding the real server from a classic CLB instance"
@@ -242,7 +242,7 @@
     ],
     "DescribeBlockIPList": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeBlockIPList\r\n&LoadBalancerId=lb-6efswuxa\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"BlockedIPCount\": 1,\n        \"BlockedIPList\": [\n            {\n                \"IP\": \"192.1.2.3\",\n                \"CreateTime\": \"2019-01-10 10:55:40\",\n                \"ExpireTime\": \"2019-01-10 11:12:19\"\n            }\n        ],\n        \"ClientIPField\": \"test\",\n        \"RequestId\": \"83329908-a282-4f9f-82ab-033a3025baff\"\n    }\n}",
         "title": "Querying the IP blocklist of a CLB instance"
@@ -250,7 +250,7 @@
     ],
     "DescribeBlockIPTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeBlockIPTask\r\n&TaskId=localjob010916173469001234567890\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": 6,\n        \"RequestId\": \"83329908-a282-4f9f-8ab-033a3025baff\"\n    }\n}",
         "title": "Querying the execution status of an async IP blocking task"
@@ -258,7 +258,7 @@
     ],
     "DescribeClassicalLBByInstanceId": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeClassicalLBByInstanceId\n&InstanceIds.0=ins-odjhn6vc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"LoadBalancerInfoList\": [\n            {\n                \"InstanceId\": \"ins-odjhn6vc\",\n                \"LoadBalancerIds\": [\n                    \"lb-2zkbmcy4\",\n                    \"lb-a3u5l5zc\"\n                ]\n            }\n        ],\n        \"RequestId\": \"e6dd52d7-d80d-49f1-85ef-24a4a8221370\"\n    }\n}",
         "title": "Getting the information of a classic CLB instance through a real server ID"
@@ -266,7 +266,7 @@
     ],
     "DescribeClassicalLBHealthStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeClassicalLBHealthStatus\n&LoadBalancerId=lb-a3u5l5zc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"HealthList\": [\n            {\n                \"IP\": \"10.142.9.250\",\n                \"Port\": 1111,\n                \"ListenerPort\": 111,\n                \"Protocol\": \"TCP\",\n                \"HealthStatus\": 0\n            },\n            {\n                \"IP\": \"10.104.63.53\",\n                \"Port\": 1111,\n                \"ListenerPort\": 111,\n                \"Protocol\": \"TCP\",\n                \"HealthStatus\": 0\n            },\n            {\n                \"IP\": \"10.104.126.68\",\n                \"Port\": 1111,\n                \"ListenerPort\": 111,\n                \"Protocol\": \"TCP\",\n                \"HealthStatus\": 0\n            },\n            {\n                \"IP\": \"10.142.9.250\",\n                \"Port\": 12312,\n                \"ListenerPort\": 1213,\n                \"Protocol\": \"UDP\",\n                \"HealthStatus\": 1\n            },\n            {\n                \"IP\": \"10.104.126.68\",\n                \"Port\": 12312,\n                \"ListenerPort\": 1213,\n                \"Protocol\": \"UDP\",\n                \"HealthStatus\": 1\n            },\n            {\n                \"IP\": \"10.104.63.53\",\n                \"Port\": 12312,\n                \"ListenerPort\": 1213,\n                \"Protocol\": \"UDP\",\n                \"HealthStatus\": 1\n            }\n        ],\n        \"RequestId\": \"b18d94ba-94fa-4c59-b66c-840d11a6a0f3\"\n    }\n}",
         "title": "Getting the real server health status of a classic CLB instance"
@@ -274,7 +274,7 @@
     ],
     "DescribeClassicalLBListeners": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeClassicalLBListeners\n&LoadBalancerId=lb-a3u5l5zc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Listeners\": [\n            {\n                \"ListenerId\": \"lbl-3jur3gei\",\n                \"ListenerPort\": 111,\n                \"InstancePort\": 1111,\n                \"ListenerName\": \"test\",\n                \"Protocol\": \"tcp\",\n                \"SessionExpire\": 0,\n                \"HealthSwitch\": 1,\n                \"TimeOut\": 2,\n                \"IntervalTime\": 5,\n                \"HealthNum\": 3,\n                \"UnhealthNum\": 3,\n                \"HttpHash\": \"\",\n                \"HttpCode\": 31,\n                \"HttpCheckPath\": \"\",\n                \"SSLMode\": \"\",\n                \"CertId\": \"\",\n                \"CertCaId\": \"\",\n                \"Status\": 1\n            }\n        ],\n        \"RequestId\": \"5da375f4-214d-42bb-8d50-e74bf556b38f\"\n    }\n}",
         "title": "Getting the listener information of a classic CLB instance"
@@ -282,7 +282,7 @@
     ],
     "DescribeClassicalLBTargets": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeClassicalLBTargets\n&LoadBalancerId=lb-a3u5l5zc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Targets\": [\n            {\n                \"Type\": \"CVM\",\n                \"InstanceId\": \"ins-odjhn6vc\",\n                \"Weight\": 30,\n                \"InstanceName\": \"vpc02\",\n                \"PrivateIpAddresses\": [\n                    \"10.104.63.53\"\n                ],\n                \"PublicIpAddresses\": [],\n                \"RunFlag\": 2\n            }\n        ],\n        \"RequestId\": \"1e241bcf-4091-481e-9d81-8c0d01d3f82d\"\n    }\n}",
         "title": "Getting the real server information of a classic CLB instance"
@@ -290,7 +290,7 @@
     ],
     "DescribeClsLogSet": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabases\n<common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"LogsetId\": \"b046ae5f-00cf-4e90-880c-215e5ae72222\",\n        \"HealthLogsetId\": \"b046ae5f-00cf-4e90-880c-215e5ae71111\",\n        \"RequestId\": \"d8402eb9-37a1-469f-bd30-a5670998f2b1\"\n    }\n}",
         "title": "Obtaining the CLB exclusive logset"
@@ -298,7 +298,7 @@
     ],
     "DescribeCrossTargets": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeCrossTargets\n&Offset=0\n&Limit=20\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CrossTargetSet\": [\n            {\n                \"LocalVpcId\": \"vpc-test1234\",\n                \"VpcId\": \"vpc-test4321\",\n                \"IP\": \"10.22.106.8\",\n                \"VpcName\": \"Test\",\n                \"EniId\": \"eni-test1234\",\n                \"InstanceId\": \"ins-test1234\",\n                \"InstanceName\": \"test\",\n                \"Region\": \"ap-shanghai\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"7717db32-9080-4391-acd7-18f8bbd0664d\"\n    }\n}",
         "title": "Querying information of CVMs and ENIs that use cross-region binding 2.0"
@@ -314,7 +314,7 @@
     ],
     "DescribeCustomizedConfigList": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeCustomizedConfigList\n&ConfigType=CLB\n&Offset=0\n&Limit=3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ConfigList\": [\n            {\n                \"UconfigId\": \"pz-go2gs3d6\",\n                \"ConfigType\": \"CLB\",\n                \"ConfigContent\": \"client_max_body_size 1m;\",\n                \"ConfigName\": \"122222\",\n                \"CreateTimestamp\": \"2019-11-28 20:44:24\",\n                \"UpdateTimestamp\": \"2020-03-01 11:11:27\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"d6f74bc7-2b26-4f5f-9dd8-6f0c8e8e2cc2\"\n    }\n}",
         "title": "Querying configuration details"
@@ -322,7 +322,7 @@
     ],
     "DescribeIdleLoadBalancers": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeIdleLoadBalancers\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 46,\n        \"IdleLoadBalancers\": [\n            {\n                \"LoadBalancerId\": \"lb-1l1i6a3k\",\n                \"LoadBalancerName\": \"lb-613054ce\",\n                \"Region\": \"ap-guangzhou\",\n                \"Vip\": \"172.16.32.29\",\n                \"IdleReason\": \"NO_RULES\",\n                \"Status\": 1,\n                \"Forward\": 1\n            }\n        ],\n        \"RequestId\": \"afa28690-f148-483f-9727-58c2f1da3794\"\n    }\n}",
         "title": "Querying list of idle CLB instances"
@@ -330,7 +330,7 @@
     ],
     "DescribeLBListeners": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeLBListeners\n&Backends.0.VpcId=vpc-xxxxx\n&Backends.0.PrivateIp=1.1.1.1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"LoadBalancers\": [\n            {\n                \"LoadBalancerId\": \"lb-xxxxx\",\n                \"Vip\": \"10.0.0.1\",\n                \"Region\": \"ap-guangzhou\",\n                \"Listeners\": [\n                    {\n                        \"ListenerId\": \"lbl-xxxxx\",\n                        \"Protocol\": \"TCP\",\n                        \"Port\": 81,\n                        \"EndPort\": 0,\n                        \"Rules\": null,\n                        \"Targets\": [\n                            {\n                                \"Type\": \"eni\",\n                                \"PrivateIp\": \"10.0.0.2\",\n                                \"Port\": 1201,\n                                \"VpcId\": 1111,\n                                \"Weight\": 10\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba22\"\n    }\n}",
         "title": "Querying CLB instances bound to the CVM"
@@ -338,13 +338,13 @@
     ],
     "DescribeListeners": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeListeners\n&LoadBalancerId=lb-aniq7ewx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 3,\n        \"Listeners\": [\n            {\n                \"ListenerId\": \"lbl-2ytsji1u\",\n                \"ListenerName\": \"555\",\n                \"CreateTime\": \"2020-12-31 11:36:18\",\n                \"Protocol\": \"HTTP\",\n                \"Port\": 555,\n                \"EndPort\": 0,\n                \"HealthCheck\": null,\n                \"Certificate\": null,\n                \"Scheduler\": null,\n                \"SessionExpireTime\": null,\n                \"SniSwitch\": 0,\n                \"Rules\": [\n                    {\n                        \"ListenerId\": \"lbl-2ytsji1u\",\n                        \"LocationId\": \"loc-nq5fuotq\",\n                        \"Domain\": \"www.123.com\",\n                        \"Url\": \"/123\",\n                        \"CreateTime\": \"2020-12-31 11:36:48\",\n                        \"Certificate\": null,\n                        \"HealthCheck\": {\n                            \"HealthSwitch\": 1,\n                            \"TimeOut\": 5,\n                            \"IntervalTime\": 5,\n                            \"HealthNum\": 3,\n                            \"UnHealthNum\": 3,\n                            \"HttpCode\": 15,\n                            \"HttpCheckPath\": \"/\",\n                            \"HttpCheckDomain\": \"www.123.com\",\n                            \"HttpCheckMethod\": \"get\",\n                            \"CheckPort\": null,\n                            \"CheckType\": \"TCP\",\n                            \"HttpVersion\": null,\n                            \"ContextType\": null,\n                            \"SendContext\": null,\n                            \"RecvContext\": null\n                        },\n                        \"RewriteTarget\": {\n                            \"TargetListenerId\": null,\n                            \"TargetLocationId\": null,\n                            \"RewriteCode\": null,\n                            \"TakeUrl\": null,\n                            \"RewriteType\": null\n                        },\n                        \"SessionExpireTime\": 0,\n                        \"Scheduler\": \"WRR\",\n                        \"HttpGzip\": true,\n                        \"BeAutoCreated\": false,\n                        \"DefaultServer\": true,\n                        \"Http2\": false,\n                        \"ForwardType\": \"HTTP\",\n                        \"TargetType\": \"NODE\",\n                        \"TargetGroup\": null,\n                        \"WafDomainId\": \"\",\n                        \"TrpcCallee\": \"\",\n                        \"TrpcFunc\": \"\",\n                        \"QuicStatus\": \"OFF\"\n                    }\n                ],\n                \"TargetType\": null,\n                \"TargetGroup\": null,\n                \"KeepaliveEnable\": 0,\n                \"SessionType\": \"NORMAL\",\n                \"Toa\": false,\n                \"DeregisterTargetRst\": false\n            },\n            {\n                \"ListenerId\": \"lbl-a459zzae\",\n                \"ListenerName\": \"222\",\n                \"CreateTime\": \"2020-12-10 20:26:54\",\n                \"Protocol\": \"HTTP\",\n                \"Port\": 222,\n                \"EndPort\": 0,\n                \"HealthCheck\": null,\n                \"Certificate\": null,\n                \"Scheduler\": null,\n                \"SessionExpireTime\": null,\n                \"SniSwitch\": 0,\n                \"Rules\": [\n                    {\n                        \"ListenerId\": \"lbl-a459zzae\",\n                        \"LocationId\": \"loc-7pbxg3d4\",\n                        \"Domain\": \"www.123.com\",\n                        \"Url\": \"/\",\n                        \"CreateTime\": \"2020-12-10 20:33:14\",\n                        \"Certificate\": null,\n                        \"HealthCheck\": {\n                            \"HealthSwitch\": 1,\n                            \"TimeOut\": 5,\n                            \"IntervalTime\": 5,\n                            \"HealthNum\": 3,\n                            \"UnHealthNum\": 3,\n                            \"HttpCode\": 15,\n                            \"HttpCheckPath\": \"/\",\n                            \"HttpCheckDomain\": \"www.123.com\",\n                            \"HttpCheckMethod\": \"get\",\n                            \"CheckPort\": null,\n                            \"CheckType\": \"TCP\",\n                            \"HttpVersion\": null,\n                            \"ContextType\": null,\n                            \"SendContext\": null,\n                            \"RecvContext\": null\n                        },\n                        \"RewriteTarget\": {\n                            \"TargetListenerId\": null,\n                            \"TargetLocationId\": null,\n                            \"RewriteCode\": null,\n                            \"TakeUrl\": null,\n                            \"RewriteType\": null\n                        },\n                        \"SessionExpireTime\": 0,\n                        \"Scheduler\": \"WRR\",\n                        \"HttpGzip\": true,\n                        \"BeAutoCreated\": false,\n                        \"DefaultServer\": true,\n                        \"Http2\": false,\n                        \"ForwardType\": \"HTTP\",\n                        \"TargetType\": \"NODE\",\n                        \"TargetGroup\": null,\n                        \"WafDomainId\": \"\",\n                        \"TrpcCallee\": \"\",\n                        \"TrpcFunc\": \"\",\n                        \"QuicStatus\": \"OFF\"\n                    }\n                ],\n                \"TargetType\": null,\n                \"TargetGroup\": null,\n                \"KeepaliveEnable\": 0,\n                \"SessionType\": \"NORMAL\",\n                \"Toa\": false,\n                \"DeregisterTargetRst\": false\n            }\n        ],\n        \"RequestId\": \"2682e290-3f8c-4766-98fa-716610e2d351\"\n    }\n}",
         "title": "Querying the information of all listeners in a CLB instance"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeListeners\n&LoadBalancerId=lb-aniq7ewx\n&Protocol=TCP\n&Port=333\n&ListenerIds.0=lbl-hd9nfp6o\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Listeners\": [\n            {\n                \"ListenerId\": \"lbl-hd9nfp6o\",\n                \"ListenerName\": \"12345\",\n                \"CreateTime\": \"2020-12-31 12:03:36\",\n                \"Protocol\": \"TCP\",\n                \"Port\": 333,\n                \"EndPort\": 0,\n                \"HealthCheck\": {\n                    \"HealthSwitch\": 1,\n                    \"TimeOut\": 2,\n                    \"IntervalTime\": 5,\n                    \"HealthNum\": 3,\n                    \"UnHealthNum\": 3,\n                    \"CheckPort\": null,\n                    \"CheckType\": \"TCP\",\n                    \"HttpCheckDomain\": null,\n                    \"HttpCheckPath\": null,\n                    \"HttpCheckMethod\": null,\n                    \"HttpVersion\": null,\n                    \"HttpCode\": null,\n                    \"ContextType\": null,\n                    \"SendContext\": null,\n                    \"RecvContext\": null\n                },\n                \"Certificate\": null,\n                \"Scheduler\": \"WRR\",\n                \"SessionExpireTime\": 0,\n                \"SniSwitch\": 0,\n                \"Rules\": null,\n                \"TargetType\": \"NODE\",\n                \"TargetGroup\": null,\n                \"KeepaliveEnable\": null,\n                \"SessionType\": \"NORMAL\",\n                \"Toa\": false,\n                \"DeregisterTargetRst\": false\n            }\n        ],\n        \"RequestId\": \"3ddae670-4a89-4919-af6e-0d6bf195c92e\"\n    }\n}",
         "title": "Querying listeners by port, protocol, and listener ID"
@@ -352,13 +352,13 @@
     ],
     "DescribeLoadBalancerListByCertId": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeLoadBalancerListByCertId\n&CertIds.0=RwFAfr8Y\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CertSet\": [\n            {\n                \"CertId\": \"RwFAfr8Y\",\n                \"LoadBalancers\": []\n            }\n        ],\n        \"RequestId\": \"fe6059b5-faa6-4f21-92a1-0c9ee5df5e54\"\n    }\n}",
         "title": "Querying CLB instances associated with a specified certificate ID (no instances found)"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeLoadBalancerListByCertId\n&CertIds.0=Rrsw4nIA\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CertSet\": [\n            {\n                \"CertId\": \"Rrsw4nIA\",\n                \"LoadBalancers\": [\n                    {\n                        \"LoadBalancerId\": \"lb-rbw529fz\",\n                        \"LoadBalancerName\": \"test_LB\",\n                        \"Forward\": 1,\n                        \"Domain\": \"\",\n                        \"LoadBalancerVips\": [\n                            \"129.226.78.67\"\n                        ],\n                        \"LoadBalancerType\": \"OPEN\",\n                        \"Status\": 1,\n                        \"CreateTime\": \"2019-07-02 18:12:52\",\n                        \"StatusTime\": \"2019-07-02 21:50:07\",\n                        \"ProjectId\": 0,\n                        \"OpenBgp\": 0,\n                        \"Snat\": false,\n                        \"Isolation\": 0,\n                        \"Log\": \"\",\n                        \"AnycastZone\": \"\",\n                        \"AddressIPVersion\": \"ipv4\",\n                        \"VpcId\": \"vpc-lt9uj4mo\",\n                        \"NumericalVpcId\": 117008,\n                        \"TargetRegionInfo\": {\n                            \"Region\": \"ap-hongkong\",\n                            \"VpcId\": \"vpc-lt9uj4mo\"\n                        },\n                        \"SubnetId\": \"\",\n                        \"SecureGroups\": [],\n                        \"Tags\": [],\n                        \"VipIsp\": \"BGP\",\n                        \"MasterZone\": null,\n                        \"BackupZoneSet\": null,\n                        \"IsolatedTime\": null,\n                        \"ExpireTime\": null,\n                        \"ChargeType\": null,\n                        \"NetworkAttributes\": null,\n                        \"PrepaidAttributes\": null\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"7718d187-7684-4294-954b-1e13009d75f6\"\n    }\n}",
         "title": "Querying CLB instances associated with a specified certificate ID (instances found)"
@@ -388,25 +388,25 @@
         "title": "Querying the CLB instances bound to the real server with the specified private IP"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancers\n<Common request parameters>\n\n{\n    \"SearchKey\": \"test_LB\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LoadBalancerSet\": [\n            {\n                \"LoadBalancerId\": \"lb-rbw5****\",\n                \"LoadBalancerName\": \"test_LB\",\n                \"Forward\": 1,\n                \"Domain\": \"\",\n                \"LoadBalancerVips\": [\n                    \"XX.XX.XX.XX\"\n                ],\n                \"LoadBalancerType\": \"OPEN\",\n                \"Status\": 1,\n                \"CreateTime\": \"2019-07-02 18:12:52\",\n                \"StatusTime\": \"2019-07-02 18:12:53\",\n                \"ProjectId\": 0,\n                \"OpenBgp\": 0,\n                \"Snat\": false,\n                \"Isolation\": 0,\n                \"Log\": \"\",\n                \"AnycastZone\": \"\",\n                \"AddressIPVersion\": \"ipv4\",\n                \"VpcId\": \"vpc-lt9uj4mo\",\n                \"NumericalVpcId\": 117008,\n                \"TargetRegionInfo\": {\n                    \"Region\": \"ap-hongkong\",\n                    \"VpcId\": \"vpc-lt9uj12o\"\n                },\n                \"SubnetId\": \"\",\n                \"SecureGroups\": [],\n                \"Tags\": [],\n                \"VipIsp\": \"BGP\",\n                \"MasterZone\": null,\n                \"BackupZoneSet\": null,\n                \"IsolatedTime\": null,\n                \"ExpireTime\": \"2019-08-02 18:12:52\",\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"NetworkAttributes\": {\n                    \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 10\n                },\n                \"PrepaidAttributes\": null\n            }\n        ],\n        \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\n    }\n}",
         "title": "Fuzzy querying CLB instances by name, domain name, and VIP"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancers\n<Common request parameters>\n\n{\n    \"LoadBalancerIds\": [\n        \"lb-rbw5****\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LoadBalancerSet\": [\n            {\n                \"LoadBalancerId\": \"lb-rbw5****\",\n                \"LoadBalancerName\": \"test_LB\",\n                \"Forward\": 1,\n                \"Domain\": \"\",\n                \"LoadBalancerVips\": [\n                    \"XX.XX.XX.XX\"\n                ],\n                \"LoadBalancerType\": \"OPEN\",\n                \"Status\": 1,\n                \"CreateTime\": \"2019-07-02 18:12:52\",\n                \"StatusTime\": \"2019-07-02 18:12:53\",\n                \"ProjectId\": 0,\n                \"OpenBgp\": 0,\n                \"Snat\": false,\n                \"Isolation\": 0,\n                \"Log\": \"\",\n                \"AnycastZone\": \"\",\n                \"AddressIPVersion\": \"ipv4\",\n                \"VpcId\": \"vpc-lt9uj4mo\",\n                \"NumericalVpcId\": 117008,\n                \"TargetRegionInfo\": {\n                    \"Region\": \"ap-hongkong\",\n                    \"VpcId\": \"vpc-lt9uj12o\"\n                },\n                \"SubnetId\": \"\",\n                \"SecureGroups\": [],\n                \"Tags\": [],\n                \"VipIsp\": \"BGP\",\n                \"MasterZone\": null,\n                \"BackupZoneSet\": null,\n                \"IsolatedTime\": null,\n                \"ExpireTime\": \"2019-08-02 18:12:52\",\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"NetworkAttributes\": {\n                    \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 10\n                },\n                \"PrepaidAttributes\": null\n            }\n        ],\n        \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\n    }\n}",
         "title": "Querying CLB instances by ID"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancers\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"LoadBalancerType\": \"OPEN\",\n    \"LoadBalancerVips\": [\n        \"XX.XX.XX.XX\"\n    ],\n    \"LoadBalancerName\": \"test_LB\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LoadBalancerSet\": [\n            {\n                \"LoadBalancerId\": \"lb-rbw5****\",\n                \"LoadBalancerName\": \"test_LB\",\n                \"Forward\": 1,\n                \"Domain\": \"\",\n                \"LoadBalancerVips\": [\n                    \"1XX.XX.XX.XX\"\n                ],\n                \"LoadBalancerType\": \"OPEN\",\n                \"Status\": 1,\n                \"CreateTime\": \"2019-07-02 18:12:52\",\n                \"StatusTime\": \"2019-07-02 18:12:53\",\n                \"ProjectId\": 0,\n                \"OpenBgp\": 0,\n                \"Snat\": false,\n                \"Isolation\": 0,\n                \"Log\": \"\",\n                \"AnycastZone\": \"\",\n                \"AddressIPVersion\": \"ipv4\",\n                \"VpcId\": \"vpc-lt9uj4mo\",\n                \"NumericalVpcId\": 117008,\n                \"TargetRegionInfo\": {\n                    \"Region\": \"ap-hongkong\",\n                    \"VpcId\": \"vpc-lt9uj12o\"\n                },\n                \"SubnetId\": \"\",\n                \"SecureGroups\": [],\n                \"Tags\": [],\n                \"VipIsp\": \"BGP\",\n                \"MasterZone\": null,\n                \"BackupZoneSet\": null,\n                \"IsolatedTime\": null,\n                \"ExpireTime\": \"2019-08-02 18:12:52\",\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"NetworkAttributes\": {\n                    \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 10\n                },\n                \"PrepaidAttributes\": null\n            }\n        ],\n        \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\n    }\n}",
         "title": "Querying CLB instances by type, project, name, and VIP"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancers\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"LoadBalancerType\": \"OPEN\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"test_tag_value2\",\n                \"test_tag_value1\"\n            ],\n            \"Name\": \"tag:test_tag_key\"\n        }\n    ],\n    \"LoadBalancerName\": \"test_LB\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LoadBalancerSet\": [\n            {\n                \"LoadBalancerId\": \"lb-rbw5****\",\n                \"LoadBalancerName\": \"test_LB\",\n                \"Forward\": 1,\n                \"Domain\": \"\",\n                \"LoadBalancerVips\": [\n                    \"XX.XX.XX.XX\"\n                ],\n                \"LoadBalancerType\": \"OPEN\",\n                \"Status\": 1,\n                \"CreateTime\": \"2019-07-02 18:12:52\",\n                \"StatusTime\": \"2019-07-02 18:12:53\",\n                \"ProjectId\": 0,\n                \"OpenBgp\": 0,\n                \"Snat\": false,\n                \"Isolation\": 0,\n                \"Log\": \"\",\n                \"AnycastZone\": \"\",\n                \"AddressIPVersion\": \"ipv4\",\n                \"VpcId\": \"vpc-lt9uj4mo\",\n                \"NumericalVpcId\": 117008,\n                \"TargetRegionInfo\": {\n                    \"Region\": \"ap-hongkong\",\n                    \"VpcId\": \"vpc-lt9uj12o\"\n                },\n                \"SubnetId\": \"\",\n                \"SecureGroups\": [],\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"test_tag_key\",\n                        \"TagValue\": \"test_tag_value1\"\n                    }\n                ],\n                \"VipIsp\": \"BGP\",\n                \"MasterZone\": null,\n                \"BackupZoneSet\": null,\n                \"IsolatedTime\": null,\n                \"ExpireTime\": \"2019-08-02 18:12:52\",\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"NetworkAttributes\": {\n                    \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 10\n                },\n                \"PrepaidAttributes\": null\n            }\n        ],\n        \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\n    }\n}",
         "title": "Querying CLB instances by tag key-value pair"
@@ -414,7 +414,7 @@
     ],
     "DescribeLoadBalancersDetail": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancingDetail\n<common request parameters>\n\n{\n    \"Limit\": \"20\",\n    \"Offset\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"LoadBalancerDetailSet\": [],\n        \"RequestId\": \"d09b91ba-a81e-4ca3-b423-c64e60127c64\"\n    }\n}",
         "title": "Querying CLB instance details"
@@ -422,7 +422,7 @@
     ],
     "DescribeQuota": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeQuota\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"QuotaSet\": [\n            {\n                \"QuotaId\": \"TOTAL_OPEN_CLB_QUOTA\",\n                \"QuotaLimit\": 50,\n                \"QuotaCurrent\": 2\n            },\n            {\n                \"QuotaId\": \"TOTAL_INTERNAL_CLB_QUOTA\",\n                \"QuotaLimit\": 100,\n                \"QuotaCurrent\": 3\n            },\n            {\n                \"QuotaId\": \"TOTAL_LISTENER_QUOTA\",\n                \"QuotaLimit\": 50,\n                \"QuotaCurrent\": null\n            },\n            {\n                \"QuotaId\": \"TOTAL_TARGET_BIND_QUOTA\",\n                \"QuotaLimit\": 50,\n                \"QuotaCurrent\": null\n            },\n            {\n                \"QuotaId\": \"TOTAL_LISTENER_RULE_QUOTA\",\n                \"QuotaLimit\": 50,\n                \"QuotaCurrent\": null\n            }\n        ],\n        \"RequestId\": \"92e23338-bccb-4950-8b0d-b3d50e05975b\"\n    }\n}",
         "title": "Querying quotas"
@@ -476,7 +476,7 @@
     ],
     "DescribeTargetHealth": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTargetHealth\n<Common request parameters>\n\n{\n    \"LoadBalancerIds\": [\n        \"lb-qc2iq5yc\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"LoadBalancers\": [\n            {\n                \"Listeners\": [\n                    {\n                        \"Rules\": [\n                            {\n                                \"Url\": \"/\",\n                                \"Domain\": \"www.123.com\",\n                                \"LocationId\": \"loc-5t7526km\",\n                                \"Targets\": []\n                            }\n                        ],\n                        \"Port\": 666,\n                        \"Protocol\": \"HTTP\",\n                        \"ListenerId\": \"lbl-j36caqde\",\n                        \"ListenerName\": \"http-111\"\n                    },\n                    {\n                        \"Rules\": [\n                            {\n                                \"Url\": null,\n                                \"Domain\": null,\n                                \"LocationId\": \"loc-ewygg6i0\",\n                                \"Targets\": [\n                                    {\n                                        \"HealthStatus\": false,\n                                        \"IP\": \"172.16.0.6\",\n                                        \"TargetId\": \"ins-19425500\",\n                                        \"Port\": 2020\n                                    },\n                                    {\n                                        \"HealthStatus\": true,\n                                        \"IP\": \"172.16.0.12\",\n                                        \"TargetId\": \"ins-19425y2y\",\n                                        \"Port\": 80\n                                    }\n                                ]\n                            }\n                        ],\n                        \"Port\": 789,\n                        \"Protocol\": \"TCP\",\n                        \"ListenerId\": \"lbl-fs9naq76\",\n                        \"ListenerName\": \"tcp_test\"\n                    },\n                    {\n                        \"Rules\": [\n                            {\n                                \"Url\": \"/\",\n                                \"Domain\": \"www.456.com\",\n                                \"LocationId\": \"loc-8gdc4qcq\",\n                                \"Targets\": []\n                            }\n                        ],\n                        \"Port\": 777,\n                        \"Protocol\": \"HTTP\",\n                        \"ListenerId\": \"lbl-9nj07x0m\",\n                        \"ListenerName\": \"http-222\"\n                    },\n                    {\n                        \"Rules\": [],\n                        \"Port\": 1949,\n                        \"Protocol\": \"HTTPS\",\n                        \"ListenerId\": \"lbl-087wrv48\",\n                        \"ListenerName\": \"https-000\"\n                    }\n                ],\n                \"LoadBalancerName\": \"lb-test123\",\n                \"LoadBalancerId\": \"lb-qc2iq5yc\"\n            }\n        ],\n        \"RequestId\": \"9d45e1ec-720c-4ce1-860e-e338e273e77e\"\n    }\n}",
         "title": "Querying real server health status of a CLB instance"
@@ -506,7 +506,7 @@
     ],
     "DisassociateTargetGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=DisassociateTargetGroups\n&Associations.0.LoadBalancerId=lb-phbx2420\n&Associations.0.ListenerId=lbl-m2q6sp9m\n&Associations.0.LocationId=loc-jjqr0ric\n&Associations.0.TargetGroupId=lbtg-xxqr0ric\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bc953deb-02d7-4bd3-86a6-80421ec37776\"\n    }\n}",
         "title": "Unbinding rules from target groups"
@@ -514,7 +514,7 @@
     ],
     "ManualRewrite": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=ManualRewrite\n&LoadBalancerId=lb-r6nx1iby\n&SourceListenerId=lbl-cy6akv52\n&TargetListenerId=lbl-cy6ak123\n&RewriteInfos.0.SourceLocationId=loc-2jkimjn0\n&RewriteInfos.0.TargetLocationId=loc-eu15yo84\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fc0ed756-c311-41c8-a22d-64f88a346951\"\n    }\n}",
         "title": "Manually adding a redirection relationship"
@@ -522,7 +522,7 @@
     ],
     "MigrateClassicalLoadBalancers": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=MigrateClassicalLoadBalancers\n&LoadBalancerIds.0=lb-isdw5mum\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"55afe8ae-9580-4582-92e6-c7e67f893c1f\"\n    }\n}",
         "title": "Upgrading classic CLB instances"
@@ -544,7 +544,7 @@
     ],
     "ModifyDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=ModifyDomain\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-d1ubsydq\n&Domain=foo.net\n&NewDomain=bar.net\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"db141822-c025-4765-88d4-02bdec0e67ed\"\n    }\n}",
         "title": "Modifying the domain name of a forwarding rule under an HTTP listener"
@@ -560,7 +560,7 @@
     ],
     "ModifyFunctionTargets": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyFunctionTargets\n<Common request parameters>\n\n{\n    \"LocationId\": \"loc-xxxxxxxx\",\n    \"ListenerId\": \"lbl-xxxxxxxx\",\n    \"FunctionTargets\": [\n        {\n            \"Function\": {\n                \"FunctionNamespace\": \"ns_test\",\n                \"FunctionName\": \"name_test\",\n                \"FunctionQualifier\": \"version_test\"\n            },\n            \"Weight\": \"66\"\n        }\n    ],\n    \"LoadBalancerId\": \"lb-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"85c7b3e8-7fd8-4c62-8b3b-7ba52d7a1dca\"\n    }\n}",
         "title": "Modifying the cloud functions associated with a forwarding rule"
@@ -582,16 +582,10 @@
     ],
     "ModifyLoadBalancerAttributes": [
       {
-        "document": "",
+        "document": "Modifies a CLB instance.",
         "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancerAttributes\n<Common request parameters>\n\n{\n    \"LoadBalancerName\": \"newlbname\",\n    \"LoadBalancerId\": \"lb-6efswuxa\"\n}",
         "output": "{\n    \"Response\": {\n        \"DealName\": null,\n        \"RequestId\": \"78a40898-8210-44c7-8bc6-f83e50878d12\"\n    }\n}",
         "title": "Renaming a CLB instance"
-      },
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancerAttributes\n<Common request parameters>\n\n{\n    \"TargetRegionInfo\": {\n        \"Region\": \"ap-shanghai\",\n        \"VpcId\": \"vpc-abcd1234\"\n    },\n    \"LoadBalancerId\": \"lb-6efswuxa\"\n}",
-        "output": "{\n    \"Response\": {\n        \"DealName\": null,\n        \"RequestId\": \"78a40898-8210-44c7-8bc6-f83e5087ad54\"\n    }\n}",
-        "title": "Setting the cross-region attribute of CLB instance"
       }
     ],
     "ModifyLoadBalancerSla": [
@@ -604,7 +598,7 @@
     ],
     "ModifyRule": [
       {
-        "document": "",
+        "document": "Modifies the health check parameter and forwarding policy of a forwarding rule",
         "input": "https://clb.tencentcloudapi.com/?Action=ModifyRule\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-4fbxq45k\n&LocationId=loc-9dr7bsl3\n&Url=/bar\n&Scheduler=LEAST_CONN\n&SessionExpireTime=75\n&HealthCheck.HealthSwitch=1\n&HealthCheck.IntervalTime=50\n&HealthCheck.HealthNum=3\n&HealthCheck.UnHealthNum=3\n&HealthCheck.HttpCode=7\n&HealthCheck.HttpCheckPath=/check\n&HealthCheck.HttpCheckDomain=foo.net\n&HealthCheck.HttpCheckMethod=GET\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6d846dfd-27f3-4d74-bc00-ec9ae0570cb0\"\n    }\n}",
         "title": "Modifying the health check parameter and forwarding policy of a forwarding rule"
@@ -612,15 +606,15 @@
     ],
     "ModifyTargetGroupAttribute": [
       {
-        "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=ModifyTargetGroupAttribute\n&TargetGroupId=lbtg-815iz538\n&TargetGroupName=xxxxholic\n&<Common request parameters>",
+        "document": "Renams a target group",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTargetGroupAttribute\n<Common request parameters>\n\n{\n    \"TargetGroupId\": \"lbtg-815iz538\",\n    \"TargetGroupName\": \"xxxxholic\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"73d80971-512f-400e-9c73-c0c135c04871\"\n    }\n}",
-        "title": "Renaming target group"
+        "title": "Renaming a target group"
       }
     ],
     "ModifyTargetGroupInstancesPort": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=ModifyTargetGroupInstancesPort\n&TargetGroupId=lbtg-815iz538\n&TargetGroupInstances.0.BindIP=172.16.0.34\n&TargetGroupInstances.0.Port=123\n&TargetGroupInstances.0.NewPort=2233\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"15566c73-3881-4762-939f-bae9ecf25808\"\n    }\n}",
         "title": "Modifying server ports in batches"
@@ -628,7 +622,7 @@
     ],
     "ModifyTargetGroupInstancesWeight": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=ModifyTargetGroupInstancesWeight\n&TargetGroupId=lbtg-815iz538\n&TargetGroupInstances.0.BindIP=172.16.0.34\n&TargetGroupInstances.0.Port=1234\n&TargetGroupInstances.0.Weight=55\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed90470e-eade-423f-aae6-264d814d0d65\"\n    }\n}",
         "title": "Modifying server weights of target groups in batches"
@@ -660,7 +654,7 @@
     ],
     "RegisterTargetGroupInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=RegisterTargetGroupInstances\n&TargetGroupId=lbtg-815iz538\n&TargetGroupInstances.0.BindIP=172.16.0.34\n&TargetGroupInstances.0.Port=443\n&TargetGroupInstances.0.Weight=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"acf6c2b3-b18d-4d2e-91e4-4eacff16c07e\"\n    }\n}",
         "title": "Adding server to target group"
@@ -668,19 +662,19 @@
     ],
     "RegisterTargets": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=RegisterTargets\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-d1ubsydq\n&Targets.0.InstanceId=ins-dm4xtz0i\n&Targets.0.Port=233\n&Targets.0.Weight=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"898b431c-2745-4b27-80f6-e6e8038a0683\"\n    }\n}",
         "title": "Registering CVM to TCP listener"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=RegisterTargets\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-4fbxq45k\n&Domain=foo.net\n&Url=/bar8\n&Targets.0.InstanceId=ins-dm4xtz0i\n&Targets.0.Port=233\n&Targets.0.Weight=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11b4338f-2d00-4766-bc67-581d959b3488\"\n    }\n}",
         "title": "Registering CVM to the forwarding rule of HTTP listener (with the rule specified by Domain and Url)"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=RegisterTargets\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-4fbxq45k\n&LocationId=loc-r2q3jd4c\n&Targets.0.InstanceId=ins-dm4xtz0i\n&Targets.0.Port=334\n&Targets.0.Weight=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d4846a22-e758-407f-a526-db3f2d37d00e\"\n    }\n}",
         "title": "Registering CVM to the forwarding rule of HTTP listener (with the rule specified by LocationId)"
@@ -688,7 +682,7 @@
     ],
     "RegisterTargetsWithClassicalLB": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=RegisterTargetsWithClassicalLB\n&LoadBalancerId=lb-a3u5l5zc\n&Targets.0.InstanceId=ins-lhhn9fhk\n&Targets.0.Weight=20\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bab5b8c4-7e9f-4032-90fb-c61ee6678c73\"\n    }\n}",
         "title": "Binding a real server to a classic CLB instance"
@@ -704,7 +698,7 @@
     ],
     "SetCustomizedConfigForLoadBalancer": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=SetCustomizedConfigForLoadBalancer\n&OperationType=ADD\n&ConfigContent=client_max_body_size 222M;\n&ConfigName=config_test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ConfigId\": \"pz-1234abcd\",\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba22\"\n    }\n}",
         "title": "Creating custom configurations at the CLB instance level"
@@ -746,7 +740,7 @@
     ],
     "SetSecurityGroupForLoadbalancers": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://clb.tencentcloudapi.com/?Action=SetSecurityGroupForLoadbalancers\n&SecurityGroup=sg-12345678\n&OperationType=ADD\n&LoadBalancerIds.0=lb-0936o712\n&LoadBalancerIds.1=lb-tttt5555\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"00ca7fca-90f1-47fe-a724-5d7e96d04633\"\n    }\n}",
         "title": "Binding a security group to multiple CLB instances"

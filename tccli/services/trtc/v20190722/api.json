@@ -148,7 +148,7 @@
       "status": "online"
     },
     "StartPublishCdnStream": {
-      "document": "This API is used to mix streams and relay the mixed stream to CDNs. You can use this API to do the following:\n1. Publish (also known as \"relay\") the audio/video stream of one anchor to CDNs. For details, see example 2 (starting a task to relay the audio and video of a stream) and example 3 (starting a task to relay only the audio of a stream).\n2. Mix the streams of multiple anchors in a room or in different rooms and publish the mixed stream to CDNs. You can use `AudioParams.SubscribeAudioList` to specify the users whose audios are mixed, and use `VideoParams.LayoutParams` to specify the layout of the anchors’ videos. For details, see example 1 (mixing streams and publishing the mixed stream to a CDN).\n3. Mix multiple streams in a room according to a template and publish the mixed stream to CDNs. The TRTC backend will detect the change of anchors in the room and adjust the video layout automatically according to the stream mixing template. The following template types are supported:\n     - Floating: The entire screen is covered by the video of the first user who enters the room, and the videos of other users are displayed as small windows in rows in the bottom-left corner in room entry sequence. The screen allows up to 4 rows of 4 small videos, which float over the large video. Up to 1 large and 15 small videos can be displayed.\n     - Grid: The videos of all users split the screen evenly. The more the users, the smaller the video dimensions. Up to 16 videos are supported.\n     - Screen sharing: This is designed for video conferencing and online education. The shared screen (or camera video of the anchor) is always displayed as the large video, which occupies the left half of the screen, and the videos of other users occupy the right half in up to two columns of up to eight small videos each. Up to 1 large video and 15 small videos can be displayed. If the upstream aspect ratio does not match the output, the large video on the left will be scaled and displayed in whole, while the small videos on the right will be cropped.\n4. Publish audio/video streams to up to 10 CDNs at a time. You can use `PublishCdnParams.PublishCdnUrl` to specify the URLs of the CDNs to publish to. To publish to Tencent Cloud’s CDN, set `PublishCdnParams.IsTencentCdn` to 1.\n5. Configure a server-side callback to have Tencent Cloud send relay status updates to your server in the form of HTTP/HTTPS POST requests. To use the callback for relay events, please contact Technical Support.\n6. The API supports four regions: Guangzhou, Shanghai, Beijing, and Hong Kong. If you relay to regions outside the Chinese mainland, select Hong Kong.\n \nNotes:\n1. **Because On-Cloud MixTranscoding is a paid feature, calling this API will incur MixTranscoding fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/49446?from_cn_redirect=1).**\n2. **Relaying to third-party CDNs will incur relaying fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/82155?from_cn_redirect=1).**\n\nOthers:\n1. You need to first call `StartPublishCdnStream` to start a relay task and get the task ID before you can use the `UpdatePublishCdnStream` API to modify the task and `StopPublishCdnStream` to stop the task.\n2. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.\n3. To ensure the stability of relaying, you cannot change the video codec, audio codec, audio sample rate, audio bitrate, or sound channels using the `UpdatePublishCdnStream` API. We recommend you pass in all the other parameters when calling `UpdatePublishCdnStream`. If you only want to enable/disable transcoding, make sure you pass in all the other parameters.\n4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.\n5. The `SequenceNumber` parameter is required when you call `UpdatePublishCdnStream` to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.\n6. You can create a relay task before anchors enter a room, in which case you need to manually call `StopPublishCdnStream` to stop the task. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period (`AgentParams.MaxIdleTime`) to elapse before stopping the relaying task.",
+      "document": "In a TRTC room, there may be multiple audio and video streams concurrently active. You can use the MixTranscoding API to notify Tencent Cloud server to mix multiple video screens from the same room or multiple rooms together, and specify the position of each screen, while mixing multiple audio streams together. The final result is a single audio and video stream, which can be used for recording and live viewing. It also supports pushing this mixed audio and video stream back to the TRTC room.\n\nThe Cloud API MixTranscoding feature includes three interfaces:\n1. StartPublishCdnStream: Start a MixTranscoding task. This interface will initiate a new MixTranscoding task. After the task is successfully started, a unique TaskId will be returned under the sdkappid dimension. You need to save this TaskId, as it will be required for updating and stopping the task later.\n2. UpdatePublishCdnStream: Update the specified MixTranscoding task, including updating the video screen layout, updating the mixing list, updating the list of CDN addresses to be relayed, and updating the list of rooms to be pushed back.\n3. StopPublishCdnStream: Stop the specified MixTranscoding task.\n\nYou can achieve the following goals through this set of interfaces:\n1. Set the final video and audio quality, including video resolution, video frame rate, video bitrate, and audio quality.\n2. Set the layout position of each screen. You only need to set it once. When you specify the MixTranscoding user to enter the room and send audio and video, the layout engine will automatically mix the user's screen to the specified layout position. You can also use the update interface to adjust the layout position.\n3. Set multiple CDN relay target addresses. A single relay task can support up to 10 CDN relay addresses at the same time.\n4. Set multiple room pushback lists. A single relay task can support up to 10 TRTC rooms for mixed stream pushback.\n\nThe following layout templates are currently supported. Dynamic layout templates (floating template, grid template, screen sharing template) only support a single TRTC room, while custom templates support mixing audio and video streams from multiple TRTC rooms. The specific descriptions are as follows:\n1. Floating template: The video screen of the first user entering the room will fill the entire screen, and the video screens of other users will be arranged horizontally from the bottom left corner, displaying as small screens, with up to 4 rows and 4 screens per row. The small screens float above the large screen. It supports up to 1 large screen and 15 small screens. If the user only sends audio, it does not occupy the layout configuration by default, but it can also be set. Each sub-screen is rendered by default using the center cropping method, and the rendering method of the sub-screen can also be set uniformly.\n2. Grid template: The video screens of all users are of the same size, evenly dividing the entire screen. The more people there are, the smaller the size of each user's screen. It supports up to 16 screens. If the user only sends audio, it does not occupy the layout configuration by default, but it can also be set. Each sub-screen is rendered by default using the center cropping method, and the rendering method of the sub-screen can also be set uniformly.\n3. Screen sharing template: Suitable for video conference and online education scenarios. The screen sharing (or the main speaker's camera) always occupies the large screen position on the left side of the screen. You need to explicitly set the MixTranscoding user information that occupies the large screen. Other users are arranged vertically on the right side, with up to two columns and 8 small screens per column. It supports up to 1 large screen and 15 small screens. If the uplink resolution aspect ratio is different from the screen output aspect ratio, the large screen on the left side will be scaled to maintain content integrity, while the small screens on the right side will be cropped. The rendering method of the sub-screen can also be set uniformly.\n4. Custom layout template: Allows you to actively set the layout position according to your business needs. Each preset layout position supports named settings (named settings require specifying the room number and username) and unnamed settings. When a sub-screen is named, the position is reserved for the user, and the user will automatically occupy the position when entering the room and sending audio and video data. Other users will not occupy this position. When the preset layout position is not named, the layout engine will automatically fill in the order of entering the room. When the preset positions are full, no other users' screens and sounds will be mixed. Each sub-screen position supports setting placeholder images (BackgroundImageUrl). When the user does not enter the room or only sends audio data, the screen at this position can display the corresponding placeholder image.\n\nWhen using the relay API, you may incur the following costs depending on the usage characteristics:\nFor MCU MixTranscoding fees, please refer to the documentation: Billing of MixTranscoding and Relay to CDN | Tencent Cloud.\nFor non-Tencent Cloud CDN relay fees, please refer to the documentation: Billing of MixTranscoding and Relay to CDN | Tencent Cloud.\n\nInstructions for using parameters:\n1. AgentParams: Each relay task will pull a robot user into the TRTC room to pull the stream. You need to set this robot user through the AgentParams.UserId parameter. This robot ID cannot conflict with the normal user ID in the room, otherwise, the relay task will be abnormally terminated due to the robot user being kicked out of the TRTC room. You can avoid this by adding a special prefix. You can control the automatic termination of the relay task by setting AgentParams.MaxIdleTime. When this parameter is set, the relay task will automatically stop when all participating MixTranscoding anchors continuously leave the TRTC room for more than MaxIdleTime duration. Note: The relay task will not automatically stop when the participating MixTranscoding anchor only stops sending audio and video.\n2. WithTranscoding: If you need to mix multiple audio and video streams into one, WithTranscoding must be set to 1.\n3. AudioParams: The audio parameters and video parameters of the relay task are set separately. If you want to mix the audio of specified users, you need to explicitly set AudioParams.SubscribeAudioList. If you do not set AudioParams.SubscribeAudioList, the mixing engine will automatically mix the audio of all users in the TRTC room. If you want to mix the audio of all users in the TRTC room except for specified users, you can set the audio blacklist list through AudioParams.UnSubscribeAudioList.\n4. VideoParams: If you want to mix user videos, you can set it through VideoParams. If you only want to mix audio, you do not need to set VideoParams. You can set the screen layout mode through VideoParams.LayoutParams.MixLayoutMode, including dynamic layout (1: floating layout (default), 2: screen sharing layout, 3: grid layout) and custom layout. The dynamic layout mode is automatically mixed by the layout engine according to a fixed layout, and there is no need to set VideoParams.LayoutParams.MixLayoutList. When using the floating layout and screen sharing layout, you can specify the large screen user by setting VideoParams.LayoutParams.MaxVideoUser. The custom layout mode provides you with the ability to layout screens independently, and you can specify the layout position of each user through VideoParams.LayoutParams.MixLayoutList. In each layout parameter, you can specify the layout position for the specified user by setting the UserMediaStream parameter, or you can not set the UserMediaStream, and the layout engine will automatically fill in the order of users entering the TRTC room. In addition, you can set the rendering method (RenderMode) and cropping method (CustomCrop) for each layout position.\n5. VideoParams.WaterMarkList: If you want to overlay a watermark on the mixed screen, you can set it through VideoParams.WaterMarkList. It supports image watermarks and text watermarks and supports transparent channels.\n6. SingleSubscribeParams: If you want to push a single stream from the TRTC room to the CDN, you can set it using the SingleSubscribeParams parameter. In this case, you need to set the WithTranscoding parameter to 0.\n7. PublishCdnParams.N: If you want to push the stream to the CDN, you can set it using the PublishCdnParams.N parameter. It supports pushing to up to 10 CDN addresses at the same time. If the relay address is Tencent Cloud CDN, please set IsTencentCdn explicitly to 1; if you need to relay to a non-Tencent Cloud CDN, please contact Tencent Cloud Technical Support to enable it. Relaying to non-Tencent Cloud will incur relay fees. For fee information, please refer to the official documentation: On-Cloud Relay Billing Overview.\n8. FeedBackRoomParams.N: If you want to push the mixed audio and video stream back to the TRTC room, you can set it using the FeedBackRoomParams.N parameter. It supports pushing up to 10 streams back to the TRTC room at the same time. You need to specify the TRTC room number and robot ID (UserId) for the pushback. The robot ID cannot conflict with the normal user ID, otherwise, the relay task will be abnormally terminated due to the robot user being kicked out of the TRTC room. You can avoid this by adding a special prefix.\n9. SeiParams: If you want to add SEI information to the mixed audio and video stream, you can set it using the SeiParams parameter. It supports volume layout SEI and overlay relay request SEI. The content of the volume layout SEI is a fixed JSON structure, please see the SEI description in the following section of this chapter. You can set the SEI to follow the keyframe by setting the FollowIdr parameter. The description of the volume layout SEI is as follows:\nIf your CDN audience needs to recognize the position of the participating MixTranscoding anchors and the volume information of the participating MixTranscoding anchors, you can use the volume layout SEI. The payload content and parameter description of the volume layout SEI are as follows:\n{ \"app_data\":\"\", \"canvas\":{ \"w\":1080, \"h\":960 }, \"regions\":[ { \"uid\":\"65949987242835883c\", \"zorder\":2, \"volume\":45, \"x\":270, \"y\":480, \"w\":540, \"h\":480 }, { \"uid\":\"659c9d8d242b328d31\", \"zorder\":2, \"volume\":0, \"x\":0, \"y\":0, \"w\":540, \"h\":480 }, { \"uid\":\"64989a82272b308c\", \"zorder\":2, \"volume\":91, \"x\":540, \"y\":0, \"w\":540, \"h\":480 } ], \"ver\":\"1.0\", \"ts\":1648544726 }\ncanvas: This is the width and height of the VideoEncode setting in the MixTranscoding signaling, that is, the width and height of the entire canvas of the MixTranscoding output.\nregions: Contains the real mixed user ID and the corresponding sub-screen position. If the participating MixTranscoding user does not enter the TRTC room or does not turn on the video uplink, the regions will not include the user.\nuid: Represents the user ID participating in MixTranscoding.\nzorder: The layer of the participating MixTranscoding userid in the MixTranscoding output.\nx/y: The coordinates of the sub-screen of the participating MixTranscoding userid on the canvas.\nw/h: The size of the sub-screen of the participating MixTranscoding userid.\nvolume: Represents the volume of the MixTranscoding user, with a value range of 0-100. The larger the value, the greater the volume of the user participating in MixTranscoding.\nts: The server local second-level timestamp for outputting SEI. \nver: can be ignored.\n\nUsage Precautions:\n1. When using the Mixed Relay Interface, you need to call the Start Relay Task Interface (StartPublishCdnStream) first to get the Task ID from the response. Then, use the Task ID to update the relay task (UpdatePublishCdnStream) and stop the relay task (StopPublishCdnStream).\n2. The Relay API does not support initiating Automatic Bypass Tasks configured in the TRTC Console, nor does it support Custom Stream ID bypass tasks set in the TRTC SDK room entry interface.\n3. To ensure the stability of the relay link, the same relay task does not support switching between Audio only, Audio and Video, and Video only.\n4. To ensure the stability of the relay link, updating video parameters (codec) and audio parameters (codec, Sample rate, bitrate, and number of channels) is not supported during the Update Video process.\n5. When initiating a single stream bypass task, filling in both Audio Parameters and Video Parameters means Audio and Video bypass. If only Audio Parameters are filled in, it means Audio only bypass, and switching from Audio only to Audio and Video is not supported during the task progress. For Audio and Video bypass, the Width, Height, Fps, BitRate, and Gop in Video Parameters must be filled in according to the real upstream parameters.\n6. The SequenceNumber parameter must be carried in the update request to prevent request disorder. Customers must ensure that the SequenceNumber parameter increases when updating the same task, otherwise, the mix task update will fail.\n7. When calling the API, choose the region according to the following instructions: If the Application ID is 1400xxx, the region can be Beijing, Shanghai, Guangzhou, or Hong Kong. If your CDN audience is mainly overseas, please choose Hong Kong. If the Application ID is 200xxx or 400xxx, please choose Singapore.\n8. Streams pushed back to the TRTC room will not participate in the mixing of other push back room tasks. If one of the following conditions is met, it can participate in the mixing of other relay CDN tasks: (1) The push stream robot is specified to participate in the mixing in the video parameters of the relay CDN task; (2) The push stream robot is specified to participate in the mixing in the audio parameters of the relay CDN task through the whitelist method; (3) The room number of the mix user participating in the relay CDN task is completely different from the room number of the mix user corresponding to the push back robot.\n9. You can create a relay task before the anchor enters the room. When the relay task is finished, you need to call the stop interface actively. If you do not call the Stop Relay Task Interface, Tencent Cloud will automatically stop the mix relay task when all users participating in the mix have no data uploaded for a period of time exceeding the timeout (AgentParams.MaxIdleTime) set when starting the relay task.",
       "input": "StartPublishCdnStreamRequest",
       "name": "Starts a relaying task",
       "output": "StartPublishCdnStreamResponse",
@@ -180,6 +180,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The error event ID. For details, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
           "member": "uint64",
           "name": "AbnormalEventId",
@@ -189,6 +190,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "PeerId",
@@ -204,6 +206,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID.",
           "member": "string",
           "name": "UserId",
@@ -213,6 +216,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The abnormal experience ID.",
           "member": "uint64",
           "name": "ExperienceId",
@@ -222,6 +226,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID (string).",
           "member": "string",
           "name": "RoomId",
@@ -231,6 +236,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The possible error events.",
           "member": "AbnormalEvent",
           "name": "AbnormalEventList",
@@ -240,6 +246,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The report time.",
           "member": "uint64",
           "name": "EventTime",
@@ -255,6 +262,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.",
           "example": "room_1234_rtmp_1",
           "member": "string",
@@ -265,6 +273,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The signature (similar to a login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |",
           "example": "xxxx",
           "member": "string",
@@ -275,6 +284,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The timeout period (seconds) for relaying to stop automatically after all the users whose streams are mixed leave the room. The value cannot be smaller than 5 or larger than 86400 (24 hours). Default value: 30.",
           "example": "50",
           "member": "uint64",
@@ -291,6 +301,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The audio sample rate (Hz). Valid values: 48000, 44100, 32000, 24000, 16000, 8000.",
           "example": "48000",
           "member": "uint64",
@@ -301,6 +312,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of sound channels. Valid values: 1 (mono), 2 (dual).",
           "example": "2",
           "member": "uint64",
@@ -311,6 +323,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The audio bitrate (Kbps). Value range: 8-500.",
           "example": "64",
           "member": "uint64",
@@ -321,6 +334,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The audio codec. Valid values: 0 (LC-AAC), 1 (HE-AAC), 2 (HE-AACv2). The default value is 0. If this parameter is set to 2, `Channel` must be 2. If it is set to 1 or 2, `SampleRate` can only be 48000, 44100, 32000, 24000, or 16000.",
           "example": "0",
           "member": "uint64",
@@ -337,6 +351,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The audio sample rate.\n1: 48000 Hz (default)\n2: 44100 Hz\n3: 16000 Hz",
           "example": "1",
           "member": "uint64",
@@ -347,6 +362,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of sound channels.\n1: Mono-channel\n2: Dual-channel (default)",
           "example": "2",
           "member": "uint64",
@@ -357,6 +373,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The audio bitrate (bps). Value range: [32000, 128000]. Default: 64000.",
           "example": "64000",
           "member": "uint64",
@@ -373,6 +390,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The cloud storage provider.\n`0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.",
           "example": "1",
           "member": "uint64",
@@ -383,6 +401,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The region of cloud storage.",
           "example": "cn-shanghai-1",
           "member": "string",
@@ -393,6 +412,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The storage bucket.",
           "example": "test-bucket",
           "member": "string",
@@ -403,6 +423,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The access_key of the cloud storage account.",
           "example": "test-accesskey",
           "member": "string",
@@ -413,6 +434,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The secret_key of the cloud storage account.",
           "example": "test-secretkey",
           "member": "string",
@@ -423,6 +445,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The bucket to save data, which is an array of strings that can contain letters (a-z and A-Z), numbers (0-9), underscores (_), and hyphens (-). For example, if the value of this parameter is `[\"prefix1\", \"prefix2\"]`, the recording file `xxx.m3u8` will be saved as `prefix1/prefix2/TaskId/xxx.m3u8`.",
           "example": "[\"prefix1\", \"prefix2\"]",
           "member": "string",
@@ -439,6 +462,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The Tencent Cloud VOD parameters.",
           "example": "无",
           "member": "TencentVod",
@@ -454,6 +478,7 @@
       "document": "CreateCloudRecording request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.",
           "example": "1234",
           "member": "uint64",
@@ -462,6 +487,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.",
           "example": "1234",
           "member": "string",
@@ -470,6 +496,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The [user ID](https://www.tencentcloud.com/document/product/647/37714#userid) of the recording robot in the TRTC room, which cannot be identical to the user IDs of anchors in the room or other recording robots. To distinguish this user ID from others, we recommend you include the room ID in the user ID.",
           "example": "recorder_1234",
           "member": "string",
@@ -478,6 +505,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The signature (similar to a login password) required for the recording robot to enter the room. Each user ID corresponds to a signature. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).",
           "example": "recorder_1234_sig",
           "member": "string",
@@ -486,6 +514,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The on-cloud recording parameters.",
           "example": "无",
           "member": "RecordParams",
@@ -494,6 +523,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The storage information of the recording file. Currently, you can save recording files to Tencent Cloud VOD or COS.",
           "example": "无",
           "member": "StorageParams",
@@ -502,6 +532,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The type of the TRTC room ID, which must be the same as the ID type of the room whose streams are recorded.\n0: String\n1: 32-bit integer (default)",
           "example": "1",
           "member": "uint64",
@@ -510,6 +541,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The stream mixing parameters, which are valid if the mixed-stream recording mode is used.",
           "example": "无",
           "member": "MixTranscodeParams",
@@ -518,6 +550,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The layout parameters, which are valid if the mixed-stream recording mode is used.",
           "example": "无",
           "member": "MixLayoutParams",
@@ -526,6 +559,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The amount of time (in hours) during which API requests can be made after recording starts. Calculation starts when a recording task is started (when the recording task ID is returned). Once the period elapses, the query, modification, and stop recording APIs can no longer be called, but the recording task will continue. The default value is `72` (three days), and the maximum and minimum values allowed are `720` (30 days) and `6` respectively. If you do not set this parameter, the query, modification, and stop recording APIs can be called within 72 hours after recording starts.",
           "example": "无",
           "member": "uint64",
@@ -534,6 +568,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users’ [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.",
           "example": "无",
           "member": "string",
@@ -548,6 +583,7 @@
       "document": "CreateCloudRecording response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends. After a recording task starts, if you want to perform other actions on the task, you need to specify the task ID when making API requests.",
           "example": "test",
           "member": "string",
@@ -570,6 +606,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The `SDKAppID` of the room whose streams are recorded.",
           "example": "1234",
           "member": "uint64",
@@ -579,6 +616,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The unique ID of the recording task, which is returned after recording starts successfully.",
           "example": "1234",
           "member": "string",
@@ -593,6 +631,7 @@
       "document": "DeleteCloudRecording response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends.",
           "example": "1234",
           "member": "string",
@@ -615,6 +654,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.",
           "example": "1400xxxxxx_218695_1590065777",
           "member": "string",
@@ -624,6 +664,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
           "example": "1590065777",
           "member": "uint64",
@@ -633,6 +674,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: If `DataType` is not null, the end time and start time cannot be more than one hour apart; if `DataType` is null, the end time and start time cannot be more than four hours apart.",
           "example": "1590065877",
           "member": "uint64",
@@ -642,6 +684,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID, such as `1400xxxxxx`.",
           "example": "1400xxxxxx",
           "member": "uint64",
@@ -651,6 +694,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The users to query. If you do not specify this, the data of six users will be returned.",
           "example": "[\"a\",\"b\"]",
           "member": "string",
@@ -660,6 +704,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The metrics to query. If you do not specify this, only the user list will be returned. If you pass in `all`, all metrics will be returned.\n`appCpu`: The CPU utilization of the application.\n`sysCpu`: The CPU utilization of the system.\n`aBit`: The upstream/downstream audio bitrate (bps).\n`aBlock`: The audio stutter duration (ms).\n`bigvBit`: The upstream/downstream video bitrate (bps).\n`bigvCapFps`: The frame rate for capturing videos.\n`bigvEncFps`: The frame rate for sending videos.\n`bigvDecFps`: The rendering frame rate.\n`bigvBlock`: The video stutter duration (ms).\n`aLoss`: The upstream/downstream audio packet loss.\n`bigvLoss`: The upstream/downstream video packet loss.\n`bigvWidth`: The upstream/downstream resolution (width).\n`bigvHeight`: The upstream/downstream resolution (height).",
           "example": "[\"bigvCapFps\"]",
           "member": "string",
@@ -669,6 +714,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The page number. The default is 0.\nNote: If `PageNumber` or `PageSize` is not specified, six records will be returned.",
           "example": "0",
           "member": "uint64",
@@ -678,6 +724,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of records per page. The default is `6`.\nValue range: 1-100.\nNote: If `DataType` is not null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `6`.\nIf `DataType` is null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `100`.",
           "example": "6",
           "member": "uint64",
@@ -692,6 +739,7 @@
       "document": "DescribeCallDetailInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The number of records returned.",
           "example": "1",
           "member": "uint64",
@@ -701,6 +749,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "UserInformation",
@@ -710,6 +759,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The call quality data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "QualityData",
@@ -732,6 +782,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The `SDKAppID` of the room whose streams are recorded.",
           "example": "1234",
           "member": "uint64",
@@ -741,6 +792,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The unique ID of the recording task, which is returned after recording starts successfully.",
           "example": "123",
           "member": "string",
@@ -755,6 +807,7 @@
       "document": "DescribeCloudRecording response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The unique ID of the recording task.",
           "example": "123",
           "member": "string",
@@ -764,6 +817,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The status of the on-cloud recording task.\nIdle: The task is idle.\nInProgress: The task is in progress.\nExited: The task is being ended.",
           "example": "InProgress",
           "member": "string",
@@ -773,6 +827,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The information of the recording files.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "StorageFile",
@@ -795,6 +850,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The start date in the format of YYYY-MM-DD.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -804,6 +860,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -813,6 +870,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
           "example": "1400123456",
           "member": "uint64",
@@ -827,6 +885,7 @@
       "document": "DescribeMixTranscodingUsage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
           "example": "无",
           "member": "string",
@@ -836,6 +895,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The usage data in each time unit.",
           "example": "无",
           "member": "TrtcUsage",
@@ -858,6 +918,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The start date in the format of YYYY-MM-DD.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -867,6 +928,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -876,6 +938,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to query single-stream or mixed-stream recording. Valid values: `single`, `multi`.",
           "example": "\"single\"",
           "member": "string",
@@ -885,6 +948,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
           "example": "1400123456",
           "member": "uint64",
@@ -899,6 +963,7 @@
       "document": "DescribeRecordingUsage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
           "example": "无",
           "member": "string",
@@ -908,6 +973,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The usage data in each time unit.",
           "example": "无",
           "member": "TrtcUsage",
@@ -930,6 +996,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The start date in the format of YYYY-MM-DD.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -939,6 +1006,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -948,6 +1016,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
           "example": "1400123456",
           "member": "uint64",
@@ -962,6 +1031,7 @@
       "document": "DescribeRelayUsage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
           "example": "无",
           "member": "string",
@@ -971,6 +1041,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The usage data in each time unit.",
           "example": "无",
           "member": "TrtcUsage",
@@ -993,6 +1064,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID, such as `1400xxxxxx`.",
           "example": "1400xxxxxx",
           "member": "uint64",
@@ -1002,6 +1074,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
           "example": "1590065777",
           "member": "uint64",
@@ -1011,6 +1084,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: The end and start time cannot be more than 24 hours apart.",
           "example": "1590065877",
           "member": "uint64",
@@ -1020,6 +1094,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID, such as `223`.",
           "example": "223",
           "member": "string",
@@ -1029,6 +1104,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The page number. The default is 0.\nNote: If `PageNumber` or `PageSize` is not specified, 10 records will be returned.",
           "example": "0",
           "member": "uint64",
@@ -1038,6 +1114,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of records per page. The default is `10`.\nValue range: 1-100.",
           "example": "10",
           "member": "uint64",
@@ -1052,6 +1129,7 @@
       "document": "DescribeRoomInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The number of records returned.",
           "example": "10",
           "member": "int64",
@@ -1061,6 +1139,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The room information.",
           "example": "RoomList",
           "member": "RoomState",
@@ -1082,6 +1161,7 @@
       "document": "DescribeScaleInfo request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The application ID, such as `1400xxxxxx`.",
           "example": "1400xxxxxx",
           "member": "uint64",
@@ -1090,6 +1170,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
           "example": "1590065777",
           "member": "uint64",
@@ -1098,6 +1179,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time should preferably be more than 24 hours apart.\nNote: Data is collected on a daily basis. To query the data of a day, make sure the end time is later than 00:00 on that day. Otherwise, no data will be returned. For example, to query the data on the 20th, the end time must be later than 00:00 on the 20th.",
           "example": "1590065777",
           "member": "uint64",
@@ -1112,6 +1194,7 @@
       "document": "DescribeScaleInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The number of records returned.",
           "example": "1",
           "member": "uint64",
@@ -1120,6 +1203,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The returned data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{   \"Time\": 1587830400,                 \"RoomNumbe",
           "member": "ScaleInfomation",
@@ -1140,6 +1224,7 @@
       "document": "DescribeTrtcRoomUsage request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The `SDKAppID` of the room.",
           "example": "1400017192",
           "member": "uint64",
@@ -1148,6 +1233,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The start time in the format of `YYYY-MM-DD HH:MM` (accurate to the minute).",
           "example": "2023-01-06 00:00",
           "member": "string",
@@ -1156,6 +1242,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The end time in the format of `YYYY-MM-DD HH:MM`. The start and end time cannot be more than 24 hours apart.",
           "example": "2023-01-06 10:00",
           "member": "string",
@@ -1170,6 +1257,7 @@
       "document": "DescribeTrtcRoomUsage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The usage data grouped by room, in CSV format.",
           "example": "\"RoomId,Audio,SD,hd,FullHD,2K,4K\\ntest_room,1,2,3,4,5,6\\n\"",
           "member": "string",
@@ -1191,6 +1279,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The start date in the format of YYYY-MM-DD.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -1200,6 +1289,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end date in the format of YYYY-MM-DD.\nThe period queried per request cannot be longer than 31 days.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
@@ -1209,6 +1299,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.",
           "example": "1400123456",
           "member": "uint64",
@@ -1223,6 +1314,7 @@
       "document": "DescribeTrtcUsage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.",
           "example": "无",
           "member": "string",
@@ -1232,6 +1324,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The usage data in each time unit.",
           "example": "无",
           "member": "TrtcUsage",
@@ -1254,6 +1347,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID, such as `1400xxxxxx`.",
           "example": "1400xxxxxx",
           "member": "uint64",
@@ -1263,6 +1357,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
           "example": "1590065777",
           "member": "uint64",
@@ -1272,6 +1367,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time cannot be more than one hour apart.",
           "example": "1590065877",
           "member": "uint64",
@@ -1281,6 +1377,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID. Up to 20 random abnormal user experiences of the specified room will be returned.",
           "example": "223",
           "member": "string",
@@ -1295,6 +1392,7 @@
       "document": "DescribeUnusualEvent response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The number of records returned.\nValue range: 0-20.",
           "example": "11",
           "member": "uint64",
@@ -1304,6 +1402,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The information of the abnormal user experiences.",
           "example": "无",
           "member": "AbnormalExperience",
@@ -1326,6 +1425,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.",
           "example": "1400xxxxxx_3568_1588055615",
           "member": "string",
@@ -1335,6 +1435,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
           "example": "1590065777",
           "member": "uint64",
@@ -1344,6 +1445,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: If you pass in an end time later than the room end time, the room end time will be used.",
           "example": "1590065777",
           "member": "uint64",
@@ -1353,6 +1455,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID.",
           "example": "user_66319581",
           "member": "string",
@@ -1362,6 +1465,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID, such as `223`.",
           "example": "1711",
           "member": "string",
@@ -1371,6 +1475,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID, such as `1400xxxxxx`.",
           "example": "1400xxxxxx",
           "member": "uint64",
@@ -1385,6 +1490,7 @@
       "document": "DescribeUserEvent response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The event list. An empty array will be returned if no data is obtained.",
           "example": "\"Data\": [             {                 \"Content\": [            ",
           "member": "EventList",
@@ -1407,6 +1513,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.",
           "example": "1400xxxxxx_218695_1590065777",
           "member": "string",
@@ -1416,6 +1523,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
           "example": "1590065777",
           "member": "uint64",
@@ -1425,6 +1533,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.\nNote: The end and start time cannot be more than four hours apart.",
           "example": "1590065877",
           "member": "uint64",
@@ -1434,6 +1543,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID, such as `1400xxxxxx`.",
           "example": "1400xxxxxx",
           "member": "uint64",
@@ -1443,6 +1553,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The users to query. If you do not specify this, the information of six users will be returned.\nArray length: 1-100.",
           "example": "[\"a\",\"b\",\"c\"]",
           "member": "string",
@@ -1452,6 +1563,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The page number. The default is 0.\nNote: If `PageNumber` or `PageSize` is not specified, six records will be returned.",
           "example": "0",
           "member": "uint64",
@@ -1461,6 +1573,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of records per page. The default is `6`.\nArray length: 1-100.",
           "example": "10",
           "member": "uint64",
@@ -1475,6 +1588,7 @@
       "document": "DescribeUserInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The number of records returned.",
           "example": "1",
           "member": "uint64",
@@ -1484,6 +1598,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "UserList",
           "member": "UserInformation",
@@ -1506,6 +1621,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "`SDKAppId` of TRTC",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1514,6 +1630,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Room ID",
           "member": "string",
           "name": "RoomId",
@@ -1540,6 +1657,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "`SDKAppId` of TRTC.",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1548,6 +1666,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Room number.",
           "member": "uint64",
           "name": "RoomId",
@@ -1574,6 +1693,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The event information.",
           "member": "EventMessage",
           "name": "Content",
@@ -1583,6 +1703,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID of the sender.",
           "member": "string",
           "name": "PeerId",
@@ -1598,6 +1719,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The video stream type. Valid values:\n`0`: A non-video event\n`2`: The big video\n`3`: The small video\n`7`: A relayed video",
           "member": "uint64",
           "name": "Type",
@@ -1607,6 +1729,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The event reporting time in the format of UNIX timestamp (milliseconds), such as `1589891188801`.",
           "member": "uint64",
           "name": "Time",
@@ -1616,6 +1739,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
           "member": "uint64",
           "name": "EventId",
@@ -1625,6 +1749,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The first event parameter, such as the video width.",
           "member": "int64",
           "name": "ParamOne",
@@ -1634,6 +1759,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The second event parameter, such as the video height.",
           "member": "int64",
           "name": "ParamTwo",
@@ -1649,6 +1775,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The stream information.",
           "example": "UserMediaStream",
           "member": "UserMediaStream",
@@ -1665,6 +1792,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The audio encoding parameters.",
           "example": "AudioEncode",
           "member": "AudioEncode",
@@ -1675,6 +1803,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The audio mix allowlist. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current allowlist; if you pass in an empty string, the audios of all anchors will be mixed.\nIn cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.",
           "example": "SubscribeAudioList",
           "member": "McuUserInfoParams",
@@ -1685,6 +1814,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The audio mix blocklist. If you do not pass this parameter or leave it empty, there won’t be a blocklist. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current blocklist; if you pass in an empty string, the blocklist will be reset.\nIn cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.",
           "example": "UnSubscribeAudioList",
           "member": "McuUserInfoParams",
@@ -1701,6 +1831,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The horizontal offset (pixels) of the starting point for cropping. This parameter must be greater than 0.",
           "example": "0",
           "member": "uint64",
@@ -1711,6 +1842,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The vertical offset (pixels) of the starting point for cropping. This parameter must be greater than 0.",
           "example": "0",
           "member": "uint64",
@@ -1721,6 +1853,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The video width (pixels) after cropping. The sum of this parameter and `LocationX` cannot be greater than 10000.",
           "example": "168",
           "member": "uint64",
@@ -1731,6 +1864,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The video height (pixels) after cropping. The sum of this parameter and `LocationY` cannot be greater than 10000.",
           "example": "168",
           "member": "uint64",
@@ -1747,6 +1881,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID.",
           "example": "room_1234",
           "member": "string",
@@ -1757,6 +1892,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The ID type of the room to which streams are relayed. `0` indicates integer, and `1` indicates string.",
           "example": "1",
           "member": "uint64",
@@ -1767,6 +1903,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The [user ID](https://www.tencentcloud.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.",
           "example": "room_1234_push_1",
           "member": "string",
@@ -1777,6 +1914,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The signature (similar to login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://www.tencentcloud.com/document/product/647/38104).",
           "example": "xxxx",
           "member": "string",
@@ -1792,94 +1930,105 @@
       "document": "The layout parameters.",
       "members": [
         {
+          "disabled": false,
           "document": "The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.",
           "example": "UserMediaStream",
           "member": "UserMediaStream",
           "name": "UserMediaStream",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
+          "disabled": false,
           "document": "The video width (pixels). If you do not pass this parameter, 0 will be used.",
           "example": "1280",
           "member": "uint64",
           "name": "ImageWidth",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
+          "disabled": false,
           "document": "The video height (pixels). If you do not pass this parameter, 0 will be used.",
           "example": "720",
           "member": "uint64",
           "name": "ImageHeight",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
+          "disabled": false,
           "document": "The horizontal offset (pixels) of the video. The sum of `LocationX` and `ImageWidth` cannot exceed the width of the canvas. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
           "name": "LocationX",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
+          "disabled": false,
           "document": "The vertical offset of the video. The sum of `LocationY` and `ImageHeight` cannot exceed the height of the canvas. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
           "name": "LocationY",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
+          "disabled": false,
           "document": "The image layer of the video. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
           "name": "ZOrder",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
+          "disabled": false,
           "document": "The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
           "name": "RenderMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
+          "disabled": false,
           "document": "(Not supported yet) The background color of a video. Below are the values for some commonly used colors:\nRed: `0xcc0033`\nYellow: `0xcc9900`\nGreen: `0xcccc33`\nBlue: `0x99CCFF`\nBlack: `0x000000`\nWhite: `0xFFFFFF`\nGrey: `0x999999`",
           "example": "0xFFFFFF",
+          "is_base64": false,
           "member": "string",
           "name": "BackGroundColor",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
+          "disabled": false,
           "document": "The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.",
           "example": "xxxx",
+          "is_base64": false,
           "member": "string",
           "name": "BackgroundImageUrl",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
+          "disabled": false,
           "document": "Custom cropping.",
           "example": "xxx",
           "member": "McuCustomCrop",
           "name": "CustomCrop",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The display mode of the sub-background image during output: 0 for cropping, 1 for scaling and displaying the background, 2 for scaling and displaying the black background, 3 for proportional scaling. If not filled in, the default is 3.",
+          "example": "3",
+          "member": "uint64",
+          "name": "BackgroundRenderMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -1889,6 +2038,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The layout mode. Valid values: 1 (floating), 2 (screen sharing), 3 (grid), 4 (custom). Floating, screen sharing, and grid are dynamic layouts. Custom layouts are static layouts.",
           "example": "4",
           "member": "uint64",
@@ -1899,6 +2049,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to display users who publish only audio. 0: No; 1: Yes. This parameter is valid only if a dynamic layout is used. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
@@ -1909,6 +2060,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The details of a custom layout.",
           "example": "MixLayoutList",
           "member": "McuLayout",
@@ -1919,6 +2071,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The information of the large video in screen sharing or floating layout mode.",
           "example": "MaxVideoUser",
           "member": "MaxVideoUser",
@@ -1929,6 +2082,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The image fill mode. This parameter is valid if the layout mode is screen sharing, floating, or grid. `0`: The image will be cropped. `1`: The image will be scaled. `2`: The image will be scaled and there may be black bars.",
           "example": "0",
           "member": "uint64",
@@ -1944,6 +2098,7 @@
       "document": "The SEI parameters for audio volume layout. You can specify the `AppData` and `PayloadType`.\nThis parameter may be empty, in which case the default SEI parameters for audio volume layout will be used.",
       "members": [
         {
+          "disabled": false,
           "document": "The application data, which will be embedded in the `app_data` field of the custom SEI. It must be shorter than 4,096 characters.",
           "example": "xxxx",
           "member": "string",
@@ -1953,6 +2108,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The payload type of the SEI message. The default is 100. Value range: 100-254 (244 is used internally by Tencent Cloud for timestamps).",
           "example": "100",
           "member": "uint64",
@@ -1962,6 +2118,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The SEI sending interval (milliseconds). The default value is 1000.",
           "example": "1000",
           "member": "uint64",
@@ -1971,6 +2128,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.",
           "example": "0",
           "member": "uint64",
@@ -1986,6 +2144,7 @@
       "document": "The custom pass-through SEI.",
       "members": [
         {
+          "disabled": false,
           "document": "The payload of the pass-through SEI.",
           "example": "xxxx",
           "member": "string",
@@ -1995,6 +2154,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The payload type of the SEI message. Value range: 5 and 100-254 (244 is used internally by Tencent Cloud for timestamps).",
           "example": "101",
           "member": "uint64",
@@ -2004,6 +2164,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.",
           "example": "xxxx",
           "member": "string",
@@ -2013,6 +2174,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The SEI sending interval (milliseconds). The default value is 1000.",
           "example": "1000",
           "member": "uint64",
@@ -2022,6 +2184,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.",
           "example": "0",
           "member": "uint64",
@@ -2038,6 +2201,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The URLs of the CDNs to relay to.",
           "example": "xxxx",
           "member": "string",
@@ -2048,6 +2212,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to relay to Tencent Cloud’s CDN. `0`: Third-party CDN; `1` (default): Tencent Cloud’s CDN. Relaying to a third-party CDN will incur fees. To avoid unexpected charges, we recommend you pass in a specific value. For details, see the API document.",
           "example": "1",
           "member": "uint64",
@@ -2064,6 +2229,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The audio volume layout SEI.",
           "example": "LayoutVolume",
           "member": "McuLayoutVolume",
@@ -2074,6 +2240,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The pass-through SEI.",
           "example": "PassThrough",
           "member": "McuPassThrough",
@@ -2090,6 +2257,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The user information.",
           "example": "UserInfo",
           "member": "MixUserInfo",
@@ -2105,54 +2273,60 @@
       "document": "The video parameters for relaying.",
       "members": [
         {
-          "default": "",
+          "disabled": false,
           "document": "The video encoding parameters.",
           "example": "VideoEncode",
           "member": "VideoEncode",
           "name": "VideoEncode",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The layout parameters.",
           "example": "LayoutParams",
           "member": "McuLayoutParams",
           "name": "LayoutParams",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The canvas color. Below are the values for some common colors:\nRed: 0xcc0033\nYellow: 0xcc9900\nGreen: 0xcccc33\nBlue: 0x99CCFF\nBlack: 0x000000\nWhite: 0xFFFFFF\nGrey: 0x999999",
           "example": "0xFFFFFF",
+          "is_base64": false,
           "member": "string",
           "name": "BackGroundColor",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The URL of the background image for the canvas. This parameter has a higher priority than `BackGroundColor`.",
           "example": "xxxx",
+          "is_base64": false,
           "member": "string",
           "name": "BackgroundImageUrl",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
-          "default": "",
+          "disabled": false,
           "document": "The watermark information for the mixed stream.",
           "example": "WaterMarkList",
           "member": "McuWaterMarkParams",
           "name": "WaterMarkList",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Background image display mode during output: 0 for crop, 1 for scale and display with black background, 2 for proportional scaling. The backend default is proportional scaling.",
+          "example": "2",
+          "member": "uint64",
+          "name": "BackgroundRenderMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2162,6 +2336,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The URL of the watermark image, which must be in PNG, JPG, or JPEG format and cannot exceed 5 MB.",
           "example": "xxx.png",
           "member": "string",
@@ -2172,6 +2347,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The watermark width (pixels).",
           "example": "64",
           "member": "uint64",
@@ -2182,6 +2358,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The watermark height (pixels).",
           "example": "64",
           "member": "uint64",
@@ -2192,6 +2369,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The horizontal offset (pixels) of the watermark.",
           "example": "0",
           "member": "uint64",
@@ -2202,6 +2380,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The vertical offset (pixels) of the watermark.",
           "example": "0",
           "member": "uint64",
@@ -2212,6 +2391,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The image layer of the watermark. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
@@ -2227,6 +2407,7 @@
       "document": "The Watermark information.",
       "members": [
         {
+          "disabled": false,
           "document": "The watermark type. Valid values: `0` (default): Image; `1`: Text.",
           "example": "0",
           "member": "uint64",
@@ -2236,6 +2417,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The watermark image information. This parameter is required if `WaterMarkType` is 0.",
           "example": "WaterMarkImage",
           "member": "McuWaterMarkImage",
@@ -2245,6 +2427,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.",
           "example": "WaterMarkText",
           "member": "McuWaterMarkText",
@@ -2260,6 +2443,7 @@
       "document": "The text watermark configuration.",
       "members": [
         {
+          "disabled": false,
           "document": "The text.",
           "example": "\"XXX\"",
           "member": "string",
@@ -2269,6 +2453,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The watermark width (pixels).",
           "example": "64",
           "member": "uint64",
@@ -2278,6 +2463,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The watermark height (pixels).",
           "example": "64",
           "member": "uint64",
@@ -2287,6 +2473,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The horizontal offset (pixels) of the watermark.",
           "example": "0",
           "member": "uint64",
@@ -2296,6 +2483,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The vertical offset (pixels) of the watermark.",
           "example": "0",
           "member": "uint64",
@@ -2305,6 +2493,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The font size.",
           "example": "12",
           "member": "uint64",
@@ -2314,6 +2503,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The text color. The default color is white. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.\t",
           "example": "0xFFFFFF",
           "member": "string",
@@ -2323,6 +2513,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.\t",
           "example": "0x000000",
           "member": "string",
@@ -2338,6 +2529,7 @@
       "document": "The custom layout parameters.",
       "members": [
         {
+          "disabled": false,
           "document": "The Y axis of the window’s top-left corner. Value range: [0, 1920]. The value cannot be larger than the canvas height.",
           "example": "100",
           "member": "uint64",
@@ -2347,6 +2539,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The X axis of the window’s top-left corner. Value range: [0, 1920]. The value cannot be larger than the canvas width.",
           "example": "100",
           "member": "uint64",
@@ -2356,6 +2549,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The relative width of the window. Value range: [0, 1920]. The sum of the values of this parameter and `Left` cannot exceed the canvas width.",
           "example": "100",
           "member": "uint64",
@@ -2365,6 +2559,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The relative height of the window. Value range: [0, 1920]. The sum of the values of this parameter and `Top` cannot exceed the canvas height.",
           "example": "100",
           "member": "uint64",
@@ -2374,6 +2569,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user ID (string) of the anchor whose video is shown in the window. If you do not set this parameter, anchors’ videos will be shown in their room entry sequence.",
           "example": "123",
           "member": "string",
@@ -2383,6 +2579,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The degree of transparency of the canvas. Value range: [0, 255]. 0 means fully opaque, and 255 means fully transparent.",
           "example": "100",
           "member": "uint64",
@@ -2392,6 +2589,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "0: Stretch. In this mode, the image is stretched to fill the space available. The whole image is visible after scaling. However, if the original aspect ratio is different from the target, the image may be distorted.\n\n1: Crop (default). In this mode, if the original aspect ratio is different from the target, the image will be cropped according to the target before being stretched to fill the space available. The image will not be distorted.\n\n2: Blank. This mode stretches the image while keeping its original aspect ratio. If the original aspect ratio is different from the target, there may be blank spaces to the top and bottom or to the left and right of the window.\n\n3: Smart stretch. This mode is similar to the crop mode, except that it restricts cropping to 20% of the image’s width or height at most.",
           "example": "1",
           "member": "uint64",
@@ -2401,6 +2599,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The type of the stream subscribed to.\n0: Primary stream (default)\n1: Substream",
           "example": "1",
           "member": "uint64",
@@ -2410,6 +2609,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The image layer. 0 is the default value and means the bottommost layer.",
           "example": "2",
           "member": "uint64",
@@ -2419,6 +2619,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.",
           "example": "https://xxxx",
           "member": "string",
@@ -2434,6 +2635,7 @@
       "document": "The layout parameters for mixed-stream recording.",
       "members": [
         {
+          "disabled": false,
           "document": "Layout mode:\n1: Floating\n2: Screen sharing\n3: Grid (default)\n4: Custom\n\nFloating: By default, the video of the first anchor (you can also specify an anchor) who enters the room is scaled to fill the screen. When other anchors enter the room, their videos appear smaller and are superimposed over the large video from left to right starting from the bottom of the canvas according to their room entry sequence. If the total number of videos is 17 or less, there will be four windows in each row (4 x 4); if it is greater than 17, there will be five windows in each row (5 x 5). Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.\n\nScreen sharing: The video of a specified anchor occupies a larger part of the canvas on the left side (if you do not specify an anchor, the left window will display the canvas background). The videos of other anchors are smaller and are positioned on the right side. If the total number of videos is 17 or less, the small videos are positioned from top to bottom in up to two columns on the right side, with eight videos per column at most. If there are more than 17 videos, the additional videos are positioned at the bottom of the canvas from left to right. Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.\n\nGrid: The videos of anchors are scaled and positioned automatically according to the total number of anchors in a room. Each video has the same size. Up to 25 videos can be displayed.\n\nCustom: Specify the layout of videos by using the `MixLayoutList` parameter.",
           "example": "3",
           "member": "uint64",
@@ -2443,6 +2645,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The custom layout details. This parameter is valid if `MixLayoutMode` is set to `4`. Up to 25 videos can be displayed.",
           "example": "无",
           "member": "MixLayout",
@@ -2452,6 +2655,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The background color, which is a hexadecimal value (starting with \"#\", followed by the color value) converted from an 8-bit RGB value. For example, the RGB value of orange is `R:255 G:165 B:0`, and its hexadecimal value is `#FFA500`. The default color is black.",
           "example": "123",
           "member": "string",
@@ -2461,6 +2665,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The user whose video is displayed in the big window. This parameter is valid if `MixLayoutMode` is set to `1` (floating) or `2` (screen sharing). If it is left empty, the first anchor entering the room is displayed in the big window in the floating mode and the canvas background is displayed in the screen sharing mode.",
           "example": "123",
           "member": "string",
@@ -2470,6 +2675,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The stream type.\n0: Primary stream (default)\n1: Substream (screen sharing stream)\nThis parameter specifies the type of the stream displayed in the big window. If it appears in `MixLayoutList`, it indicates the type of the stream of a specified user.",
           "example": "0",
           "member": "uint64",
@@ -2479,6 +2685,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The URL of the background image, which cannot contain Chinese characters. The image must be in JPG or PNG format and cannot be larger than 5 MB.",
           "example": "https://xxxx",
           "member": "string",
@@ -2488,6 +2695,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "`1` means to use placeholders, and `0` (default) means to not use placeholders. If this parameter is set to `1`, when a user is not publishing video, a placeholder image will be displayed in the window reserved for the user.",
           "example": "0",
           "member": "uint64",
@@ -2497,6 +2705,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is defined the same as `RenderMode` in `MixLayoufList`.",
           "example": "1",
           "member": "uint64",
@@ -2506,6 +2715,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.",
           "example": "https://xxxx",
           "member": "string",
@@ -2515,6 +2725,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The watermark layout. Up to 25 watermarks are supported.",
           "example": "无",
           "member": "WaterMark",
@@ -2524,6 +2735,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is invalid if a custom layout is used. It is defined the same as `RenderMode` in `MixLayoufList`.",
           "example": "1",
           "member": "uint64",
@@ -2533,6 +2745,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "This parameter is valid only if the screen sharing layout is used. If you set it to `1`, the large video window will appear on the right and the small window on the left. The default value is `0`.",
           "example": "0",
           "member": "uint64",
@@ -2549,6 +2762,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The video transcoding parameters for recording. If you set this parameter, you must specify all its fields. If you do not set it, the default will be used.",
           "example": "无",
           "member": "VideoParams",
@@ -2559,6 +2773,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The audio transcoding parameters for recording. If you set this parameter, you must specify all its fields. If you do not set it, the default will be used.",
           "example": "无",
           "member": "AudioParams",
@@ -2575,6 +2790,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "User ID.",
           "example": "owen-test",
           "member": "string",
@@ -2585,6 +2801,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "If a dynamic layout is used, the value of this parameter should be the ID of the main room. If a custom layout is used, the value of this parameter should be the same as the room ID in `MixLayoutList`.",
           "example": "room_1234",
           "member": "string",
@@ -2595,6 +2812,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The type of the `RoomId` parameter. 0: integer; 1: string.",
           "example": "1",
           "member": "uint64",
@@ -2611,6 +2829,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The `SDKAppID` of the room whose streams are recorded.",
           "example": "1234",
           "member": "uint64",
@@ -2620,6 +2839,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The unique ID of the recording task, which is returned after recording starts successfully.",
           "example": "1234",
           "member": "string",
@@ -2629,6 +2849,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The new stream mixing layout to use.",
           "example": "无",
           "member": "MixLayoutParams",
@@ -2638,6 +2859,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The allowlist/blocklist for stream subscription.",
           "example": "无",
           "member": "SubscribeStreamUserIds",
@@ -2652,6 +2874,7 @@
       "document": "ModifyCloudRecording response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends.",
           "example": "1234",
           "member": "string",
@@ -2674,6 +2897,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The quality data.",
           "member": "TimeValue",
           "name": "Content",
@@ -2683,6 +2907,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID.",
           "member": "string",
           "name": "UserId",
@@ -2692,6 +2917,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The remote user ID. An empty string indicates that the data is upstream data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "PeerId",
@@ -2701,6 +2927,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The data type.",
           "member": "string",
           "name": "DataType",
@@ -2715,6 +2942,7 @@
       "document": "The on-cloud recording parameters.",
       "members": [
         {
+          "disabled": false,
           "document": "The recording mode.\n1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.\n2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.",
           "example": "1",
           "member": "uint64",
@@ -2724,6 +2952,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The time period (seconds) to wait to automatically stop recording after there are no anchors (users who publish streams) in a room. Value range: 5-86400 (max 24 hours). Default value: 30.",
           "example": "30",
           "member": "uint64",
@@ -2733,6 +2962,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The media type of the streams to record.\n0: Audio and video streams (default)\n1: Audio streams only\n2: Video streams only",
           "example": "3",
           "member": "uint64",
@@ -2742,6 +2972,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The allowlist/blocklist for stream subscription.",
           "example": "无",
           "member": "SubscribeStreamUserIds",
@@ -2751,6 +2982,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.",
           "example": "0",
           "member": "uint64",
@@ -2760,6 +2992,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.",
           "example": "0",
           "member": "uint64",
@@ -2769,6 +3002,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.\nThis parameter is invalid if the output format is HLS.",
           "example": "1440",
           "member": "uint64",
@@ -2778,6 +3012,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The type of stream to record. `0` (default): The primary stream and substream; `1`: The primary stream; `2`: The substream.",
           "example": "0",
           "member": "uint64",
@@ -2794,6 +3029,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "`SDKAppId` of TRTC",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2802,6 +3038,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Room ID",
           "member": "string",
           "name": "RoomId",
@@ -2810,6 +3047,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of up to 10 users to be removed",
           "member": "string",
           "name": "UserIds",
@@ -2836,6 +3074,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "`SDKAppId` of TRTC.",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2844,6 +3083,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Room number.",
           "member": "uint64",
           "name": "RoomId",
@@ -2852,6 +3092,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "List of up to 10 users to be removed.",
           "member": "string",
           "name": "UserIds",
@@ -2878,6 +3119,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The call ID, which uniquely identifies a call.",
           "member": "string",
           "name": "CommId",
@@ -2887,6 +3129,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID.",
           "member": "string",
           "name": "RoomString",
@@ -2896,6 +3139,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room creation time.",
           "member": "uint64",
           "name": "CreateTime",
@@ -2905,6 +3149,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room termination time.",
           "member": "uint64",
           "name": "DestroyTime",
@@ -2914,6 +3159,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether the room is terminated.",
           "member": "bool",
           "name": "IsFinished",
@@ -2923,6 +3169,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID of the room creator.",
           "member": "string",
           "name": "UserId",
@@ -2938,6 +3185,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "Start time for each day",
           "member": "uint64",
           "name": "Time",
@@ -2947,6 +3195,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of users. If a user enters a room multiple times, it will be counted as one user.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "UserNumber",
@@ -2956,6 +3205,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The number of room entries. Every time a user enters a room, it will be counted as one room entry.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "UserCount",
@@ -2965,6 +3215,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The total number of rooms of the application on a day.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "RoomNumbers",
@@ -2980,6 +3231,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID.",
           "example": "14001xxxxx",
           "member": "uint64",
@@ -2989,6 +3241,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID (string).",
           "example": "abdd",
           "member": "string",
@@ -2998,6 +3251,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID.",
           "example": "aaaa",
           "member": "string",
@@ -3007,6 +3261,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to disable the user’s audio and video. 0: Enable; 1: Disable.",
           "example": "1",
           "member": "uint64",
@@ -3034,6 +3289,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The application ID.",
           "example": "14001xxxxx",
           "member": "uint64",
@@ -3043,6 +3299,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID (number).",
           "example": "1111",
           "member": "uint64",
@@ -3052,6 +3309,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID.",
           "example": "aaaa",
           "member": "string",
@@ -3061,6 +3319,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to disable the user’s audio and video. 0: Enable; 1: Disable.",
           "example": "1",
           "member": "uint64",
@@ -3088,6 +3347,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The stream information.",
           "example": "UserMediaStream",
           "member": "UserMediaStream",
@@ -3103,6 +3363,7 @@
       "document": "StartPublishCdnStream request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
           "example": "1400188366",
           "member": "uint64",
@@ -3111,6 +3372,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The ID of the room whose streams are relayed (the main room).",
           "example": "room_1234",
           "member": "string",
@@ -3119,6 +3381,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The type of the `RoomId` parameter, which must be the same as the ID type of the room whose streams are relayed. 0: integer; 1: string.",
           "example": "1",
           "member": "uint64",
@@ -3127,6 +3390,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The information of the relaying robot in the room.",
           "example": "AgentParams",
           "member": "AgentParams",
@@ -3135,6 +3399,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Whether to transcode the streams. `0`: No. `1`: Yes. This parameter determines whether transcoding fees are charged. If it is `0`, streams will only be relayed, and no transcoding fees will be incurred. If it is `1`, streams will be transcoded before being relayed, and transcoding fees will be incurred.",
           "example": "1",
           "member": "uint64",
@@ -3143,6 +3408,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The audio encoding parameters. Because audio is always transcoded (no fees are incurred), this parameter is required when you start a relay task.",
           "example": "AudioParams",
           "member": "McuAudioParams",
@@ -3151,6 +3417,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.",
           "example": "VideoParams",
           "member": "McuVideoParams",
@@ -3159,6 +3426,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.",
           "example": "SingleSubscribeParams",
           "member": "SingleSubscribeParams",
@@ -3167,6 +3435,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The information of the CDNs to relay to. You need to specify at least one between this parameter and `FeedBackRoomParams.N`.",
           "example": "PublishCdnParams",
           "member": "McuPublishCdnParam",
@@ -3175,6 +3444,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The stream mixing SEI parameters.",
           "example": "SeiParams",
           "member": "McuSeiParams",
@@ -3183,6 +3453,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.",
           "example": "FeedBackRoomParams",
           "member": "McuFeedBackRoomParams",
@@ -3197,11 +3468,12 @@
       "document": "StartPublishCdnStream response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The task ID, which is generated by the Tencent Cloud server. You need to pass in the task ID when making a request to update or stop a relaying task.",
           "example": "5df46eb2-8e4b-490e-9c3c-dbd3b84faefc",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3219,6 +3491,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
           "example": "1400188366",
           "member": "uint64",
@@ -3228,6 +3501,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The task ID.",
           "example": "xxxx",
           "member": "string",
@@ -3242,6 +3516,7 @@
       "document": "StopPublishCdnStream response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The task ID.",
           "example": "xxxxx",
           "member": "string",
@@ -3264,6 +3539,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The user whose stream is recorded into the file. In the mixed-stream recording mode, this parameter will be empty.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "123",
           "member": "string",
@@ -3274,6 +3550,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The filename.",
           "example": "xxx.m3u8",
           "member": "string",
@@ -3284,6 +3561,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The type of the media recorded.\nvideo\naudio\naudio_video\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "audio_video",
           "member": "string",
@@ -3294,6 +3572,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The start time (Unix timestamp) of the recording file.",
           "example": "1562724852626",
           "member": "uint64",
@@ -3309,6 +3588,7 @@
       "document": "The storage parameters.",
       "members": [
         {
+          "disabled": false,
           "document": "The account information for third-party storage. Please note that if you save files to COS, a recording-to-COS fee will be incurred. For details, see the document \"Billing of On-Cloud Recording\". If you save files to VOD, there won't be such a fee.",
           "example": "无",
           "member": "CloudStorage",
@@ -3318,6 +3598,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The account information for VOD storage.",
           "example": "无",
           "member": "CloudVod",
@@ -3334,6 +3615,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The allowlist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to only subscribe to the audios of users 1, 2, and 3, and [\"1.*$\"] means to only subscribe to the audios of users whose ID prefix is `1`. If this parameter is left empty, the audios of all anchors in the room will be received. The array can contain at most 32 elements.",
           "example": "[\"123\",\"456\"]",
           "member": "string",
@@ -3344,6 +3626,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The blocklist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to not subscribe to the audios of users 1, 2, and 3, and `[\"1.*$\"]` means to not subscribe to users whose ID prefix is `1`. If this parameter is left empty, the audios of all anchors in the room will be received. The array can contain at most 32 elements.",
           "example": "[\"123\",\"456\"]",
           "member": "string",
@@ -3354,6 +3637,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The allowlist for video subscription. For example, `[\"1\", \"2\", \"3\"]` means to only subscribe to the videos of users 1, 2, and 3, and `[\"1.*$\"]` means to only subscribe to the videos of users whose ID prefix is `1`. If this parameter is left empty, the videos of all anchors in the room will be received. The array can contain at most 32 elements.",
           "example": "[\"123\",\"456\"]",
           "member": "string",
@@ -3364,6 +3648,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The blocklist for video subscription. For example, `[\"1\", \"2\", \"3\"]` means to not subscribe to the videos of users 1, 2, and 3, and `[\"1.*$\"]` means to not subscribe to the videos of users whose ID prefix is `1`. If this parameter is left empty, the videos of all anchors in the room will be received. The array can contain at most 32 elements.",
           "example": "[\"123\",\"456\"]",
           "member": "string",
@@ -3380,6 +3665,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The operation to perform on the media uploaded. The value of this parameter is the name of a task flow template. You can create a custom task flow template in Tencent Cloud VOD.",
           "example": "xxx",
           "member": "string",
@@ -3390,6 +3676,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The expiration time of the media file, which is a time period (seconds) from the current time. For example, `86400` means to save the media file for one day. To save the file permanently, set this parameter to `0`.",
           "example": "86400",
           "member": "uint64",
@@ -3400,6 +3687,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The storage region. Set this parameter if you have special requirements on the storage region.",
           "example": "ap-shanghai",
           "member": "string",
@@ -3410,6 +3698,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The category ID, which is returned after you create a category by calling an API. You can use categories to manage media files.\nThe default value is `0`, which means others.",
           "example": "0",
           "member": "uint64",
@@ -3420,6 +3709,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The VOD subapplication ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
           "example": "0",
           "member": "uint64",
@@ -3430,6 +3720,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The task flow context, which is passed through after the task is completed.",
           "example": "xxx",
           "member": "string",
@@ -3440,6 +3731,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The upload context, which is passed through after upload is completed.",
           "example": "xxx",
           "member": "string",
@@ -3450,6 +3742,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`).",
           "example": "1",
           "member": "uint64",
@@ -3460,6 +3753,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The custom prefix of recording files. This parameter is valid only if recording files are uploaded to VOD. It can contain letters, numbers, underscores, and hyphens and cannot exceed 64 bytes. This prefix and the automatically generated filename are connected with `__UserId_u_`.",
           "example": "xxx",
           "member": "string",
@@ -3476,6 +3770,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The UNIX timestamp (seconds), such as `1590065877`.",
           "member": "uint64",
           "name": "Time",
@@ -3485,6 +3780,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The metric value. For example, if the video capturing frame rate (`bigvCapFps`) at the time `1590065877` is `0`, the value of this parameter will be `0`.",
           "member": "float",
           "name": "Value",
@@ -3500,6 +3796,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The time point in the format of `YYYY-MM-DD HH:mm:ss`. If more than one day is queried, `HH:mm:ss` is `00:00:00`.",
           "example": "无",
           "member": "string",
@@ -3510,6 +3807,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The usage (minutes). Each element of this parameter corresponds to an element of `UsageKey` in the order they are listed.",
           "example": "无",
           "member": "float",
@@ -3526,6 +3824,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
           "example": "1400188366",
           "member": "uint64",
@@ -3535,6 +3834,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The task ID.",
           "example": "xxxxxxxx",
           "member": "string",
@@ -3544,6 +3844,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The sequence of a request. This parameter ensures the requests to change the parameters of the same relaying task are in the correct order. It increases each time a new request is made.",
           "example": "2",
           "member": "uint64",
@@ -3553,6 +3854,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether to transcode the streams. 0: No; 1: Yes.",
           "example": "1",
           "member": "uint64",
@@ -3562,6 +3864,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pass this parameter to change the users whose audios are mixed. If you do not pass this parameter, no changes will be made.",
           "example": "AudioParams",
           "member": "McuAudioParams",
@@ -3571,6 +3874,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pass this parameter to change video parameters other than the codec, including the video layout, background image, background color, and watermark information. This parameter is valid only if streams are transcoded. If you do not pass it, no changes will be made.",
           "example": "VideoParams",
           "member": "McuVideoParams",
@@ -3580,6 +3884,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pass this parameter to change the single stream that is relayed. This parameter is valid only if streams are not transcoded. If you do not pass this parameter, no changes will be made.",
           "example": "SingleSubscribeParams",
           "member": "SingleSubscribeParams",
@@ -3589,6 +3894,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Pass this parameter to change the CDNs to relay to. If you do not pass this parameter, no changes will be made.",
           "example": "PublishCdnParams",
           "member": "McuPublishCdnParam",
@@ -3598,6 +3904,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The stream mixing SEI parameters.",
           "example": "SeiParams",
           "member": "McuSeiParams",
@@ -3607,6 +3914,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The information of the room to which streams are relayed.",
           "example": "FeedBackRoomParams",
           "member": "McuFeedBackRoomParams",
@@ -3621,6 +3929,7 @@
       "document": "UpdatePublishCdnStream response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The task ID.",
           "example": "xxxx",
           "member": "string",
@@ -3643,6 +3952,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The room ID.",
           "member": "string",
           "name": "RoomStr",
@@ -3652,6 +3962,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The user ID.",
           "member": "string",
           "name": "UserId",
@@ -3661,6 +3972,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The time when the user entered the room.",
           "member": "uint64",
           "name": "JoinTs",
@@ -3670,6 +3982,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The time when the user left the room. If the user is still in the room, the current time will be returned.",
           "member": "uint64",
           "name": "LeaveTs",
@@ -3679,6 +3992,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The device type.",
           "member": "string",
           "name": "DeviceType",
@@ -3688,6 +4002,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The SDK version number.",
           "member": "string",
           "name": "SdkVersion",
@@ -3697,6 +4012,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The client IP address.",
           "member": "string",
           "name": "ClientIp",
@@ -3706,6 +4022,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "Whether a user has left the room.",
           "member": "bool",
           "name": "Finished",
@@ -3721,6 +4038,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The user information.",
           "example": "MixUserInfo",
           "member": "MixUserInfo",
@@ -3731,6 +4049,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The stream type. 0: Camera; 1: Screen sharing. If you do not pass this parameter, 0 will be used.",
           "example": "0",
           "member": "uint64",
@@ -3747,6 +4066,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The width of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1920].",
           "example": "1280",
           "member": "uint64",
@@ -3757,6 +4077,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The height of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1080].",
           "example": "720",
           "member": "uint64",
@@ -3767,6 +4088,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The frame rate (fps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 60].",
           "example": "15",
           "member": "uint64",
@@ -3777,6 +4099,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The bitrate (Kbps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 10000].",
           "example": "1500",
           "member": "uint64",
@@ -3787,6 +4110,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The GOP (seconds) of the output stream. This parameter is required if audio and video are relayed. Value range: [1, 5].",
           "example": "2",
           "member": "uint64",
@@ -3803,6 +4127,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The video width in pixels. The value of this parameter cannot be larger than 1920, and the result of multiplying `Width` and `Height` cannot exceed 1920 x 1080. The default value is `360`.",
           "example": "360",
           "member": "uint64",
@@ -3813,6 +4138,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The video height in pixels. The value of this parameter cannot be larger than 1920, and the result of multiplying `Width` and `Height` cannot exceed 1920 x 1080. The default value is `640`.",
           "example": "640",
           "member": "uint64",
@@ -3823,6 +4149,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The video frame rate. Value range: [1, 60]. Default: 15.",
           "example": "15",
           "member": "uint64",
@@ -3833,6 +4160,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The video bitrate (bps). Value range: [64000, 8192000]. Default: 550000.",
           "example": "550000",
           "member": "uint64",
@@ -3843,6 +4171,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The keyframe interval (seconds). Default value: 10.",
           "example": "10",
           "member": "uint64",
@@ -3858,6 +4187,7 @@
       "document": "The watermark layout.",
       "members": [
         {
+          "disabled": false,
           "document": "The watermark type. 0 (default): image; 1: text (not supported yet).",
           "example": "0",
           "member": "uint64",
@@ -3867,6 +4197,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The information of watermark images. This parameter is required if the watermark type is image.",
           "example": "无",
           "member": "WaterMarkImage",
@@ -3876,6 +4207,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The information of the text watermark. This parameter is required if `WaterMarkType` is `1`.",
           "example": "无",
           "member": "WaterMarkChar",
@@ -3885,6 +4217,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The information of the timestamp watermark. This parameter is required if `WaterMarkType` is `2`.",
           "example": "无",
           "member": "WaterMarkTimestamp",
@@ -3900,6 +4233,7 @@
       "document": "",
       "members": [
         {
+          "disabled": false,
           "document": "The Y coordinate of the text watermark from the top left.",
           "example": "0",
           "member": "uint64",
@@ -3909,6 +4243,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The X coordinate of the text watermark from the top left.",
           "example": "0",
           "member": "uint64",
@@ -3918,6 +4253,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The watermark width (pixels).",
           "example": "200",
           "member": "uint64",
@@ -3927,6 +4263,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The watermark height (pixels).",
           "example": "100",
           "member": "uint64",
@@ -3936,6 +4273,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The text.",
           "example": "李专家",
           "member": "string",
@@ -3945,6 +4283,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The font size (pixels). The default value is `14`.",
           "example": "14",
           "member": "uint64",
@@ -3954,6 +4293,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The text color. The default color is white.",
           "example": "0xFFFFFF",
           "member": "string",
@@ -3963,6 +4303,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The background color. If this parameter is empty, the background will be transparent (default).",
           "example": "0xbbccbb",
           "member": "string",
@@ -3979,6 +4320,7 @@
       "members": [
         {
           "default": "",
+          "disabled": false,
           "document": "The download URLs of the watermark images, which must be in JPG or PNG format and cannot be larger than 5 MB.",
           "example": "https://xxxx",
           "member": "string",
@@ -3989,6 +4331,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The Y axis of the image's top-left corner. Value range: [0, 2560]. The value cannot be larger than the canvas height.",
           "example": "100",
           "member": "uint64",
@@ -3999,6 +4342,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The X axis of the image’s top-left corner. Value range: [0, 2560]. The value cannot be larger than the canvas width.",
           "example": "100",
           "member": "uint64",
@@ -4009,6 +4353,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The relative width of the image. Value range: [0, 2560]. The sum of the values of this parameter and `Left` cannot exceed the canvas width.",
           "example": "100",
           "member": "uint64",
@@ -4019,6 +4364,7 @@
         },
         {
           "default": "",
+          "disabled": false,
           "document": "The relative height of the image. Value range: [0, 2560]. The sum of the values of this parameter and `Top` cannot exceed the canvas height.",
           "example": "100",
           "member": "uint64",
@@ -4034,6 +4380,7 @@
       "document": "",
       "members": [
         {
+          "disabled": false,
           "document": "The position of the timestamp watermark. Valid values: `0` (top left), `1` (top right), `2` (bottom left), `3` (bottom right), `4` (top center), `5` (bottom center), `6` (center).",
           "example": "0",
           "member": "uint64",
@@ -4043,6 +4390,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The time zone. The default is UTC+8.",
           "example": "8",
           "member": "uint64",
