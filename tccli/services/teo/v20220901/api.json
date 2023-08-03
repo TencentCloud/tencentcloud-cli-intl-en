@@ -7,13 +7,6 @@
       "output": "BindZoneToPlanResponse",
       "status": "online"
     },
-    "CheckCertificate": {
-      "document": "This API is used to verify a certificate.",
-      "input": "CheckCertificateRequest",
-      "name": "Verifies a certificate",
-      "output": "CheckCertificateResponse",
-      "status": "online"
-    },
     "CreateAccelerationDomain": {
       "document": "This API is used to connect a domain to EdgeOne.",
       "input": "CreateAccelerationDomainRequest",
@@ -40,13 +33,6 @@
       "input": "CreateApplicationProxyRuleRequest",
       "name": "Creates an application proxy rule.",
       "output": "CreateApplicationProxyRuleResponse",
-      "status": "online"
-    },
-    "CreateCredential": {
-      "document": "Creates a credential for COS origin-pull.",
-      "input": "CreateCredentialRequest",
-      "name": "Creates a credential.",
-      "output": "CreateCredentialResponse",
       "status": "online"
     },
     "CreateOriginGroup": {
@@ -77,13 +63,6 @@
       "output": "CreatePurgeTaskResponse",
       "status": "online"
     },
-    "CreateReplayTask": {
-      "document": "This API is used to create a replay task for purging or pre-warming URLs.",
-      "input": "CreateReplayTaskRequest",
-      "name": "Creates a replay task",
-      "output": "CreateReplayTaskResponse",
-      "status": "online"
-    },
     "CreateRule": {
       "document": "This API is used to create a rule in the rule engine.",
       "input": "CreateRuleRequest",
@@ -91,11 +70,11 @@
       "output": "CreateRuleResponse",
       "status": "online"
     },
-    "CreateSpeedTesting": {
-      "document": "This API is used to create a site testing task for a specified domain name.",
-      "input": "CreateSpeedTestingRequest",
-      "name": "Creates a site test task.",
-      "output": "CreateSpeedTestingResponse",
+    "CreateSecurityIPGroup": {
+      "document": "This API is used to create a security IP group.",
+      "input": "CreateSecurityIPGroupRequest",
+      "name": "Creates a security IP group",
+      "output": "CreateSecurityIPGroupResponse",
       "status": "online"
     },
     "CreateZone": {
@@ -147,6 +126,13 @@
       "output": "DeleteRulesResponse",
       "status": "online"
     },
+    "DeleteSecurityIPGroup": {
+      "document": "This API is used to delete a specified security IP group. Note that the security IP group cannot be deleted if it is referenced in a rule.",
+      "input": "DeleteSecurityIPGroupRequest",
+      "name": "Deletes a security IP group",
+      "output": "DeleteSecurityIPGroupResponse",
+      "status": "online"
+    },
     "DeleteZone": {
       "document": "This API is used to delete a site.",
       "input": "DeleteZoneRequest",
@@ -159,13 +145,6 @@
       "input": "DescribeAccelerationDomainsRequest",
       "name": "Queries accelerated domain names",
       "output": "DescribeAccelerationDomainsResponse",
-      "status": "online"
-    },
-    "DescribeAddableEntityList": {
-      "document": "This API is used to query available shipping entities.",
-      "input": "DescribeAddableEntityListRequest",
-      "name": "Queries available shipping entities",
-      "output": "DescribeAddableEntityListResponse",
       "status": "online"
     },
     "DescribeAliasDomains": {
@@ -187,13 +166,6 @@
       "input": "DescribeAvailablePlansRequest",
       "name": "Queries plan options available for purchase",
       "output": "DescribeAvailablePlansResponse",
-      "status": "online"
-    },
-    "DescribeClientRuleList": {
-      "document": "This API is used to query the information of blocked clients.",
-      "input": "DescribeClientRuleListRequest",
-      "name": "Queries the information of blocked clients.",
-      "output": "DescribeClientRuleListResponse",
       "status": "online"
     },
     "DescribeContentQuota": {
@@ -231,13 +203,6 @@
       "output": "DescribeDefaultCertificatesResponse",
       "status": "online"
     },
-    "DescribeDnsData": {
-      "document": "This API is used to get DNS requests.",
-      "input": "DescribeDnsDataRequest",
-      "name": "Gets DNS requests",
-      "output": "DescribeDnsDataResponse",
-      "status": "online"
-    },
     "DescribeHostsSetting": {
       "document": "This API is used to query detailed domain name configuration.",
       "input": "DescribeHostsSettingRequest",
@@ -250,20 +215,6 @@
       "input": "DescribeIdentificationsRequest",
       "name": "Queries the verification information of a site.",
       "output": "DescribeIdentificationsResponse",
-      "status": "online"
-    },
-    "DescribeLogSets": {
-      "document": "This API is used to get a list of logsets.",
-      "input": "DescribeLogSetsRequest",
-      "name": "Gets a list of logsets",
-      "output": "DescribeLogSetsResponse",
-      "status": "online"
-    },
-    "DescribeLogTopicTasks": {
-      "document": "This API is used to get a list of shipping tasks.",
-      "input": "DescribeLogTopicTasksRequest",
-      "name": "Gets the list of shipping tasks",
-      "output": "DescribeLogTopicTasksResponse",
       "status": "online"
     },
     "DescribeOriginGroup": {
@@ -315,34 +266,6 @@
       "output": "DescribeRulesSettingResponse",
       "status": "online"
     },
-    "DescribeSingleL7AnalysisData": {
-      "document": "This API is used to query the statistical calculation result of an L7 traffic metric. In common cases, only one value is returned for the query of statistical calculation results.",
-      "input": "DescribeSingleL7AnalysisDataRequest",
-      "name": "Queries the calculated traffic analysis data ",
-      "output": "DescribeSingleL7AnalysisDataResponse",
-      "status": "online"
-    },
-    "DescribeSpeedTestingDetails": {
-      "document": "This API is used to query the site’s load speed across regions.",
-      "input": "DescribeSpeedTestingDetailsRequest",
-      "name": "Queries the site’s load speed across regions.",
-      "output": "DescribeSpeedTestingDetailsResponse",
-      "status": "online"
-    },
-    "DescribeSpeedTestingMetricData": {
-      "document": "This API is used to query the result of a site test.",
-      "input": "DescribeSpeedTestingMetricDataRequest",
-      "name": "Queries the result of a site test.",
-      "output": "DescribeSpeedTestingMetricDataResponse",
-      "status": "online"
-    },
-    "DescribeSpeedTestingQuota": {
-      "document": "This API is used to query the quota limit on site tests.",
-      "input": "DescribeSpeedTestingQuotaRequest",
-      "name": "Queries the quota limit on site tests.",
-      "output": "DescribeSpeedTestingQuotaResponse",
-      "status": "online"
-    },
     "DescribeTimingL4Data": {
       "document": "This API is used to query the list of L4 traffic data recorded over time.",
       "input": "DescribeTimingL4DataRequest",
@@ -364,13 +287,6 @@
       "output": "DescribeTimingL7CacheDataResponse",
       "status": "online"
     },
-    "DescribeTimingL7SourceData": {
-      "document": "This API is used to query the L7 time-series data of origin-pull.",
-      "input": "DescribeTimingL7SourceDataRequest",
-      "name": "Queries the time-series origin-pull data",
-      "output": "DescribeTimingL7SourceDataResponse",
-      "status": "online"
-    },
     "DescribeTopL7AnalysisData": {
       "document": "This API is used to query the top-ranked L7 traffic data.",
       "input": "DescribeTopL7AnalysisDataRequest",
@@ -383,55 +299,6 @@
       "input": "DescribeTopL7CacheDataRequest",
       "name": "Queries the ranked data of caching",
       "output": "DescribeTopL7CacheDataResponse",
-      "status": "online"
-    },
-    "DescribeWebManagedRulesData": {
-      "document": "This API is used to query the WAF attack data recorded over time.",
-      "input": "DescribeWebManagedRulesDataRequest",
-      "name": "Queries the WAF attack data recorded over time.",
-      "output": "DescribeWebManagedRulesDataResponse",
-      "status": "online"
-    },
-    "DescribeWebManagedRulesHitRuleDetail": {
-      "document": "This API is used to query the details of a hit WAF security rule.",
-      "input": "DescribeWebManagedRulesHitRuleDetailRequest",
-      "name": "Queries the Web attacks hit the specified rule",
-      "output": "DescribeWebManagedRulesHitRuleDetailResponse",
-      "status": "online"
-    },
-    "DescribeWebManagedRulesLog": {
-      "document": "This API is used to query web attack logs.",
-      "input": "DescribeWebManagedRulesLogRequest",
-      "name": "Queries web attack logs.",
-      "output": "DescribeWebManagedRulesLogResponse",
-      "status": "online"
-    },
-    "DescribeWebProtectionClientIpList": {
-      "document": "This API is used to query the information of CC attackers.",
-      "input": "DescribeWebProtectionClientIpListRequest",
-      "name": "Queries the information of CC attackers.",
-      "output": "DescribeWebProtectionClientIpListResponse",
-      "status": "online"
-    },
-    "DescribeWebProtectionData": {
-      "document": "This API is used to query the CC protection data recorded over time.",
-      "input": "DescribeWebProtectionDataRequest",
-      "name": "Queries the list of CC protection data recorded over time.",
-      "output": "DescribeWebProtectionDataResponse",
-      "status": "online"
-    },
-    "DescribeWebProtectionHitRuleDetail": {
-      "document": "This API is used to query the details of a hit CC protection rule.",
-      "input": "DescribeWebProtectionHitRuleDetailRequest",
-      "name": "Queries the details of a hit CC protection rule.",
-      "output": "DescribeWebProtectionHitRuleDetailResponse",
-      "status": "online"
-    },
-    "DescribeWebProtectionTopData": {
-      "document": "This API is used to query the top-ranked CC protection data.",
-      "input": "DescribeWebProtectionTopDataRequest",
-      "name": "Queries the top-ranked CC protection data.",
-      "output": "DescribeWebProtectionTopDataResponse",
       "status": "online"
     },
     "DescribeZoneSetting": {
@@ -525,13 +392,6 @@
       "output": "ModifyApplicationProxyStatusResponse",
       "status": "online"
     },
-    "ModifyDefaultCertificate": {
-      "document": "This example shows you how to modify the status of a default certificate.",
-      "input": "ModifyDefaultCertificateRequest",
-      "name": "Modifies the status of a default certificate",
-      "output": "ModifyDefaultCertificateResponse",
-      "status": "online"
-    },
     "ModifyHostsCertificate": {
       "document": "This API is used to modify the certificate of a domain name.",
       "input": "ModifyHostsCertificateRequest",
@@ -553,11 +413,11 @@
       "output": "ModifyRuleResponse",
       "status": "online"
     },
-    "ModifyRulePriority": {
-      "document": "This API is used to modify the priority of a rule in the rule engine.",
-      "input": "ModifyRulePriorityRequest",
-      "name": "Modifies the priority of a rule in the rule engine",
-      "output": "ModifyRulePriorityResponse",
+    "ModifySecurityIPGroup": {
+      "document": "This API is used to modify a security IP group.",
+      "input": "ModifySecurityIPGroupRequest",
+      "name": "Modifies a security IP group",
+      "output": "ModifySecurityIPGroupResponse",
       "status": "online"
     },
     "ModifySecurityPolicy": {
@@ -565,13 +425,6 @@
       "input": "ModifySecurityPolicyRequest",
       "name": "Modifies the web and bot security configurations",
       "output": "ModifySecurityPolicyResponse",
-      "status": "online"
-    },
-    "ModifySecurityWafGroupPolicy": {
-      "document": "This API is used to modify a managed rule.",
-      "input": "ModifySecurityWafGroupPolicyRequest",
-      "name": "Modifies a managed rule.",
-      "output": "ModifySecurityWafGroupPolicyResponse",
       "status": "online"
     },
     "ModifyZone": {
@@ -594,27 +447,6 @@
       "name": "Changes the site status",
       "output": "ModifyZoneStatusResponse",
       "status": "online"
-    },
-    "ReclaimAliasDomain": {
-      "document": "To reclaim a site and its associated alias domain names, specify the \"ZoneId\" field; to reclaim an alias domain name that is already added, specify the \"ZoneName\" filed.",
-      "input": "ReclaimAliasDomainRequest",
-      "name": "Reclaims the alias domain name.",
-      "output": "ReclaimAliasDomainResponse",
-      "status": "online"
-    },
-    "ReclaimZone": {
-      "document": "This API is used to reclaim a site from other users after its ownership is verified.",
-      "input": "ReclaimZoneRequest",
-      "name": "Reclaims a site",
-      "output": "ReclaimZoneResponse",
-      "status": "online"
-    },
-    "UpdateOriginProtectionIPWhitelist": {
-      "document": "This API is used to update the list of intermediate IPs.",
-      "input": "UpdateOriginProtectionIPWhitelistRequest",
-      "name": "Updates the list of intermediate IPs",
-      "output": "UpdateOriginProtectionIPWhitelistResponse",
-      "status": "online"
     }
   },
   "metadata": {
@@ -624,11 +456,11 @@
   },
   "objects": {
     "AccelerateMainland": {
-      "document": "",
+      "document": "Cross-MLC-border acceleration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable Cross-MLC-border acceleration. Valid values: \n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -1399,190 +1231,183 @@
       "document": "Application proxy instance",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site name.",
           "example": "123.com",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy ID.",
           "example": "proxy-xxx",
           "member": "string",
           "name": "ProxyId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The domain name or subdomain name when `ProxyType=hostname`.\nThe instance name when `ProxyType=instance`.",
           "example": "a proxy",
           "member": "string",
           "name": "ProxyName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy type. Values:\n<li>`hostname`: The proxy is created by subdomain name.</li>\n<li>`instance`: The proxy is created by instance.</li>",
           "example": "hostname",
           "member": "string",
           "name": "ProxyType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The scheduling mode. Values:\n<li>`ip`: Schedule via Anycast IP.</li>\n<li>`domain`: Schedule via CNAME.</li>",
           "example": "ip",
           "member": "string",
           "name": "PlatType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Acceleration region. Values:\n<li>`mainland`: Chinese mainland.</li>\n<li>`overseas`: Global (outside the Chinese mainland);</li>\nDefault value: overseas.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable security protection. Values:\n<li>`0`: Disable security protection.</li>\n<li>`1`: Enable security protection.</li>",
           "example": "1",
           "member": "int64",
           "name": "SecurityType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable acceleration. Values:\n<li>`0`: Disable acceleration.</li>\n<li>`1`: Enable acceleration.</li>",
           "example": "1",
           "member": "int64",
           "name": "AccelerateType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The session persistence duration.",
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule status. Values:\n<li>`online`: Enabled</li>\n<li>`offline`: Disabled</li>\n<li>`progress`: Deploying</li>\n<li>`stopping`: Disabling</li>\n<li>`fail`: Failed to deploy or disable</li>",
           "example": "online",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The blocking status of the proxy. Values:\n<li>`banned`: Blocked</li>\n<li>`banning`: Blocking</li>\n<li>`recover`: Unblocked</li>\n<li>`recovering`: Unblocking</li>",
           "example": "recover",
           "member": "string",
           "name": "BanStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduling information.",
           "example": "[]",
           "member": "string",
           "name": "ScheduleValue",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "When `ProxyType=hostname`:\nThis field indicates the unique ID of the subdomain name.",
           "example": "edge-xxx",
           "member": "string",
           "name": "HostId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The IPv6 access configuration.",
           "example": "无",
           "member": "Ipv6",
           "name": "Ipv6",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The update time.",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of rules.",
           "example": "无",
           "member": "ApplicationProxyRule",
           "name": "ApplicationProxyRules",
-          "required": true,
+          "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cross-MLC-border acceleration.",
+          "example": "无",
+          "member": "AccelerateMainland",
+          "name": "AccelerateMainland",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -1851,7 +1676,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The action. Values:\n<li>`monitor`: Observe</li>\n<li>`trans`: Allow</li>\n<li>`alg`: JavaScript challenge</li>\n<li>`captcha`: Managed challenge</li>\n<li>`random`: Weighted random. Actions are executed based on the percentage specified in `ExtendActions`.</li>\n<li>`silence`: Drop w/o response</li>\n<li>`shortdelay`: Add short latency</li>\n<li>`longdelay`: Add long latency</li>",
+          "document": "Action. Valid values: \n<li>`monitor`: Observe;</li>\n<li>`alg`: JavaScript challenge;</li>\n<li>`captcha`: Managed challenge;</li>\n<li>`random`: Actions are executed based on the percentage specified in `ExtendActions`;</li>\n<li>`silence`: Silence;</li>\n<li>`shortdelay`: Add short latency;</li>\n<li>`longdelay`: Add long latency.</li>",
           "example": "monitor",
           "member": "string",
           "name": "Action",
@@ -2042,7 +1867,7 @@
         },
         {
           "disabled": false,
-          "document": "The action. Values:\n<li>`drop`: Block</li>\n<li>`monitor`: Observe</li>\n<li>`trans`: Allow</li>\n<li>`alg`: JavaScript challenge</li>\n<li>`captcha`: Managed challenge</li>\n<li>`silence`: Drop w/o response</li>\n<li>`shortdelay`: Add short latency</li>\n<li>`longdelay`: Add long latency</li>",
+          "document": "Action. Valid values: \n<li>`drop`: Block;</li>\n<li>`monitor`: Observe;</li>\n<li>`trans`: Allow;</li>\n<li>`alg`: JavaScript challenge;</li>\n<li>`captcha`: Managed challenge;</li>\n<li>`random`: Random action;</li>\n<li>`silence`: Silence;</li>\n<li>`shortdelay`: Add short latency;</li>\n<li>`longdelay`: Add long latency.</li>",
           "example": "drop",
           "member": "string",
           "name": "Action",
@@ -2243,7 +2068,6 @@
       "document": "The cache key configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable full-path cache. Values:\n<li>`on`: Enable full-path cache (i.e., disable Ignore Query String).</li>\n<li>`off`: Disable full-path cache (i.e., enable Ignore Query String).</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "on/off",
@@ -2254,7 +2078,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to ignore case in the cache key. Values:\n<li>`on`: Ignore</li>\n<li>`off`: Not ignore</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "on/off",
@@ -2265,9 +2088,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Request parameter contained in `CacheKey`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Request parameter contained in `CacheKey`. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "QueryString",
           "name": "QueryString",
@@ -2306,49 +2128,10 @@
       ],
       "usage": "both"
     },
-    "CheckCertificateRequest": {
-      "document": "CheckCertificate request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Content of the certificate.",
-          "example": "无",
-          "member": "string",
-          "name": "Certificate",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Content of the private key.",
-          "example": "无",
-          "member": "string",
-          "name": "PrivateKey",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CheckCertificateResponse": {
-      "document": "CheckCertificate response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ClientIpCountry": {
       "document": "Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -2359,9 +2142,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Header name of ClientIpCountry. This field is valid only when `Switch=on`.\nIf it is left empty, the default value `EO-Client-IPCountry` will be used.",
+          "document": "Name of the request header that contains the client IP region. It is valid when `Switch=on`. \nThe default value `EO-Client-IPCountry` is used when it is not specified.",
           "example": "EO-Client-IPCountry",
           "member": "string",
           "name": "HeaderName",
@@ -2376,7 +2158,6 @@
       "document": "The client IP header configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -2387,9 +2168,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The name of the HTTP header that contains the client IP, which is used for forwarding.\nIf this field is not specified, the default value `X-Forwarded-IP` will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Name of the request header that contains the client IP for origin-pull. \nThe default value `X-Forwarded-IP` is used when it is not specified. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "X-ClientIp",
           "member": "string",
           "name": "HeaderName",
@@ -2399,249 +2179,6 @@
         }
       ],
       "usage": "both"
-    },
-    "ClientRule": {
-      "document": "The client rule information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The client IP.",
-          "example": "”1.2.3.4“",
-          "member": "string",
-          "name": "ClientIp",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule type.",
-          "example": "\"acl,”rate\"",
-          "member": "string",
-          "name": "RuleType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "12312321",
-          "member": "int64",
-          "name": "RuleId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule description.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“sql注入”",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The blocking status. Values:\n<li>`block`: Block;</li>\n<li>`allow`: Allow.</li>",
-          "example": "allow",
-          "member": "string",
-          "name": "IpStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The blocking time recorded in UNIX timestamp.",
-          "example": "1232341",
-          "member": "int64",
-          "name": "BlockTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The data entry ID.",
-          "example": "\"1.2.3.4-acl-allow\"",
-          "member": "string",
-          "name": "Id",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "ClsLogTopicInfo": {
-      "document": "The log topic information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Name of the task.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "TaskName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Name of the site.",
-          "example": "baidu.com",
-          "member": "string",
-          "name": "ZoneName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the logset.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "LogSetId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the log topic.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "TopicId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Type of the task.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "EntityType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Retention period of the log topic.",
-          "example": "1",
-          "member": "int64",
-          "name": "Period",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the log topic is enabled.",
-          "example": "true",
-          "member": "bool",
-          "name": "Enabled",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the log topic is deleted.",
-          "example": "yes",
-          "member": "string",
-          "name": "Deleted",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Creation time.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Target location. Values:\n<li>`cls`: Ship logs to CLS;</li>\n<li>`custom_enpoint`: Ship logs to a custom address.</li>",
-          "example": "”cls“",
-          "member": "string",
-          "name": "Target",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Region of the logset.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "ap-guangzhou",
-          "member": "string",
-          "name": "LogSetRegion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the site.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"zone-xx\"",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Acceleration region. Values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (outside the Chinese mainland).</li>",
-          "example": "\"mainland\"",
-          "member": "string",
-          "name": "Area",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Type of the shipping task. Values:\n<li>`cls`: Ship logs to CLS.</li>\n<li>`custom_endpoint`: Ship logs to custom APIs.</li>",
-          "example": "cls",
-          "member": "string",
-          "name": "LogSetType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
     },
     "CodeAction": {
       "document": "Rule engine action with a status code",
@@ -2819,9 +2356,8 @@
       "document": "CreateApplicationProxy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The site ID.",
+          "document": "Site ID.",
           "example": "zone-21xfqlh4qjee",
           "member": "string",
           "name": "ZoneId",
@@ -2829,9 +2365,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "When `ProxyType=hostname`, this field indicates a domain name or subdomain name.\nWhen `ProxyType=instance`, it indicates a proxy instance.",
+          "document": "Domain name or subdomain name when `ProxyType=hostname`; \nInstance name when `ProxyType=instance`.",
           "example": "proxy-name",
           "member": "string",
           "name": "ProxyName",
@@ -2839,7 +2374,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The scheduling mode. Values:\n<li>`ip`: Schedule via Anycast IP.</li>\n<li>`domain`: Schedule via CNAME.</li>",
           "example": "cname",
@@ -2849,7 +2383,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable security protection. Values:\n<li>`0`: Disable security protection.</li>\n<li>`1`: Enable security protection.</li>",
           "example": "1",
@@ -2859,7 +2392,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable acceleration. Values:\n<li>`0`: Disable acceleration.</li>\n<li>`1`: Enable acceleration.</li>",
           "example": "1",
@@ -2869,7 +2401,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy type. Values:\n<li>`hostname`: The proxy is created by subdomain name.</li>\n<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.",
           "example": "hostname",
@@ -2879,7 +2410,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The session persistence duration. Value range: 30-3600 (in seconds).\nIf not specified, this field uses the default value 600.",
           "example": "3600",
@@ -2889,9 +2419,8 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The IPv6 access configuration.\nIf this field is not specified, IPv6 access will be disabled.",
+          "document": "Ipv6 access configuration. \nIPv6 access is disabled if it is not specified.",
           "example": "无",
           "member": "Ipv6",
           "name": "Ipv6",
@@ -2899,7 +2428,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule details.\nIf this field is not specified, an application proxy rule will not be created.",
           "example": "无",
@@ -2907,6 +2435,15 @@
           "name": "ApplicationProxyRules",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Cross-MLC-border acceleration. It is disabled if this parameter is not specified.",
+          "example": "无",
+          "member": "AccelerateMainland",
+          "name": "AccelerateMainland",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3042,23 +2579,6 @@
           "type": "string",
           "value_allowed_null": false
         },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateCredentialRequest": {
-      "document": "CreateCredential request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "CreateCredentialResponse": {
-      "document": "CreateCredential response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3218,7 +2738,6 @@
       "document": "CreatePrefetchTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site.",
           "example": "8afj24jzg9",
@@ -3228,9 +2747,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "List of resources to be pre-warmed, for example:\nhttp://www.example.com/example.txt",
+          "document": "Resources to be pre-warmed, for example: \nhttp://www.example.com/example.txt \nNote: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -3238,7 +2756,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to encode a URL according to RFC3986. Enable this field when the URL contains non-ASCII characters.",
           "example": "true",
@@ -3248,7 +2765,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP header information",
           "example": "无",
@@ -3296,7 +2812,6 @@
       "document": "CreatePurgeTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site.",
           "example": "zone-8afj24jzg9",
@@ -3306,9 +2821,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Mode of cache purging. Values:\n<li>`purge_url`: Purge by URL</li>\n<li>`purge_prefix`: Purge by prefix</li>\n<li>`purge_host`: Purge by hostname</li>\n<li>`purge_all`: Purge all caches</li>\n<li>`purge_cache_tag`: Purge by cache tag</li>",
+          "document": "Purging mode. Valid values: \n<li>`purge_url`: Purge by URL;</li>\n<li>`purge_prefix`: Purge by directory;</li>\n<li>`purge_host`: Purge by hostname;</li>\n<li>`purge_all`: Puege all cache;</li>\n<li>`purge_cache_tag`: Purge by cache tag.</li>",
           "example": "purge_url",
           "member": "string",
           "name": "Type",
@@ -3316,9 +2830,17 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Target resource to be purged, which depends on the `Type` field.\n1. When `Type = purge_host`:\nEnter the hostname, such as www.example.com and foo.bar.example.com.\n2. When `Type = purge_prefix`:\nEnter the prefix, such as http://www.example.com/example.\n3. When `Type = purge_url`:\nEnter the URL, such as https://www.example.com/example.jpg.\n4. When `Type = purge_all`:\nThis field can be left empty.\n5. When `Type = purge_cache_tag`:\nEnter the cache tag, such as tag1.",
+          "document": "",
+          "example": "invalidate",
+          "member": "string",
+          "name": "Method",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource to be purged, which depends on the `Type` field. \n1. When `Type = purge_host`: \nEnter the hostname, such as www.example.com and foo.bar.example.com. \n2. When `Type = purge_prefix`: \nEnter the prefix, such as http://www.example.com/example/. \n3. When `Type = purge_url`: \nEnter the URL, such as https://www.example.com/example.jpg. \n4. When `Type = purge_all`: \n`Targets` can be left empty. \n5. When `Type = purge_cache_tag`: \nEnter the cache tag, such as tag1. \nNote: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -3326,8 +2848,7 @@
           "type": "list"
         },
         {
-          "default": "",
-          "disabled": false,
+          "disabled": true,
           "document": "Specifies whether to transcode non-ASCII URLs according to RFC3986.\nNote that if it’s enabled, the purging is based on the converted URLs.",
           "example": "true",
           "member": "bool",
@@ -3360,54 +2881,6 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateReplayTaskRequest": {
-      "document": "CreateReplayTask request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of replay task IDs.",
-          "example": "[\"21370jopko3l1\"]",
-          "member": "string",
-          "name": "Ids",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateReplayTaskResponse": {
-      "document": "CreateReplayTask response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "ID of the task.",
-          "example": "jkqj4hahfkaf",
-          "member": "string",
-          "name": "JobId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "List of failed tasks and reasons.",
-          "example": "[]",
-          "member": "FailReason",
-          "name": "FailedList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3496,35 +2969,42 @@
       ],
       "type": "object"
     },
-    "CreateSpeedTestingRequest": {
-      "document": "CreateSpeedTesting request structure.",
+    "CreateSecurityIPGroupRequest": {
+      "document": "CreateSecurityIPGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The site ID.",
-          "example": "zone-xxxxx",
+          "document": "Site ID.",
+          "example": "zone-j94jf0a1",
           "member": "string",
           "name": "ZoneId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The subdomain name to test.",
-          "example": "www.example.com",
-          "member": "string",
-          "name": "Host",
-          "required": false,
-          "type": "string"
+          "document": "IP group information.",
+          "example": "无",
+          "member": "IPGroup",
+          "name": "IPGroup",
+          "required": true,
+          "type": "object"
         }
       ],
       "type": "object"
     },
-    "CreateSpeedTestingResponse": {
-      "document": "CreateSpeedTesting response structure.",
+    "CreateSecurityIPGroupResponse": {
+      "document": "CreateSecurityIPGroup response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "IP group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4169,6 +3649,42 @@
       ],
       "type": "object"
     },
+    "DeleteSecurityIPGroupRequest": {
+      "document": "DeleteSecurityIPGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID.",
+          "example": "\"zone-qdwibsa\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP group ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSecurityIPGroupResponse": {
+      "document": "DeleteSecurityIPGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteZoneRequest": {
       "document": "DeleteZone request structure.",
       "members": [
@@ -4202,7 +3718,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Site ID of the accelerated domain name. If it’s not specified, all accelerated domain names under the site are returned.",
+          "document": "ID of the site related with the accelerated domain name.",
           "example": "zone-20hyebgyfsko",
           "member": "string",
           "name": "ZoneId",
@@ -4286,74 +3802,6 @@
           "name": "AccelerationDomains",
           "type": "list",
           "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeAddableEntityListRequest": {
-      "document": "DescribeAddableEntityList request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the site.",
-          "example": "zone-1234",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Type of the shipping entity. Values:\n<li>`domain`: L7 acceleration logs;</li>\n<li>`application`: L4 acceleration logs;</li>\n<li>`web-rateLiming`: Rate limiting logs;</li>\n<li>`web-attack`: Web security logs;</li>\n<li>`web-rule`: Custom rule logs;</li>\n<li>`web-bot`: Bot management logs.</li>",
-          "example": "domain",
-          "member": "string",
-          "name": "EntityType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The service region. Values:\n<li>`mainland`: Chinese mainland.</li>\n<li>`overseas`: Regions outside the Chinese mainland.</li>For an account registered on the Chinese site, it defaults to `mainland`. For an account registered on the international site, it defaults to `overseas`.",
-          "example": "mainland",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeAddableEntityListResponse": {
-      "document": "DescribeAddableEntityList response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "10",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "List of available shipping entities.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "EntityList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4527,124 +3975,6 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeClientRuleListRequest": {
-      "document": "DescribeClientRuleList request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The ID of the site to be queried.",
-          "example": "zone-20",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The subdomain name to be queried.",
-          "example": "www.baidu.com",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Rule type. Values:\n<li>`acl`: Custom rules;</li>\n<li>`rate`: Rate limiting rules.</li>All rules will be queried if this field is not specified.",
-          "example": "acl",
-          "member": "string",
-          "name": "RuleType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule ID.",
-          "example": "2131234",
-          "member": "int64",
-          "name": "RuleId",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The client IP.",
-          "example": "1.2.3.4",
-          "member": "string",
-          "name": "SourceClientIp",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The page offset. Default value: 0.",
-          "example": "1",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "\"overseas\"",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeClientRuleListResponse": {
-      "document": "DescribeClientRuleList response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The blocked client information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "ClientRule",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "10",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5143,74 +4473,6 @@
       ],
       "type": "object"
     },
-    "DescribeDnsDataRequest": {
-      "document": "DescribeDnsData request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2014-08-03T12:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2014-08-03T12:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone`:<br>   Filter by <strong>site name</strong>, such as tencent.com (up to one entry)<br>   Type: String<br>   Required: No\n<li>`host`:<br>   Filter by <strong>domain name</strong>, such as test.tencent.com (up to one entry)<br>   Type: String<br>   Required: No\n<li>`type`:<br>   Filter by <strong>DNS record type</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `A`: A record<br>   `AAAA`: AAAA record<br>   `CNAME`: CNAME record<br>   `MX`: MX record<br>   `TXT`: TXT record<br>   `NS`: NS record<br>   `SRV`: SRV record<br>   `CAA`: CAA record\n<li>`code`:<br>   Filter by <strong>DNS status code</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `NoError`: Success<br>   `NXDomain`: Not found the request domain<br>   `NotImp`: Not supported request type<br>   `Refused`: The domain name server refuses to execute the request for policy reasons\n<li>`area`:<br>   Filter by <strong>DNS region</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `Asia`<br>   `Europe`<br>   `Africa`<br>   `Oceania`<br>   `Americas`",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minute;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>This field will be set to the default value `min` if not specified.",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDnsDataResponse": {
-      "document": "DescribeDnsData response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "DNS statistics.",
-          "example": "无",
-          "member": "DnsData",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeHostsSettingRequest": {
       "document": "DescribeHostsSetting request structure.",
       "members": [
@@ -5346,142 +4608,6 @@
           "name": "Identifications",
           "required": true,
           "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLogSetsRequest": {
-      "document": "DescribeLogSets request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Region of the logset.",
-          "example": "ap-chengdu",
-          "member": "string",
-          "name": "LogSetRegion",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the logset.",
-          "example": "dc01b74a-49e4-11eb-b378-0242ac130002",
-          "member": "string",
-          "name": "LogSetId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Name of the logset.",
-          "example": "testname",
-          "member": "string",
-          "name": "LogSetName",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLogSetsResponse": {
-      "document": "DescribeLogSets response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "List of logsets.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "LogSetInfo",
-          "name": "LogSetList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "10",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLogTopicTasksRequest": {
-      "document": "DescribeLogTopicTasks request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the site.",
-          "example": "zone-21xfqlh4qjee",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Limit on paginated queries. Default value: `20`. Maximum value: `1000`.",
-          "example": "20",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Page offset. Default value: 0.",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLogTopicTasksResponse": {
-      "document": "DescribeLogTopicTasks response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "List of shipping tasks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "ClsLogTopicInfo",
-          "name": "TopicList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "1",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -6014,228 +5140,6 @@
       ],
       "type": "object"
     },
-    "DescribeSingleL7AnalysisDataRequest": {
-      "document": "DescribeSingleL7AnalysisData request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-29T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query metric. Values:\n<li>`l7Flow_singleIpRequest`: Number of requests from a single IP.</li>",
-          "example": "[\"l7Flow_singleIpRequest\"]",
-          "member": "string",
-          "name": "MetricNames",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites\nIf it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. \nEnter the IDs of sites to query. The maximum query period is determined by the <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> of the bound plan. ",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Filters\n<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.</li>\n<li>`domain`:<br>u2003u2003 Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>u2003u2003 `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>\n<li>`socket`:<br>u2003u2003 Filter by the specified <strong>HTTP protocol type</strong><br>u2003u2003 Values:<br>u2003u2003 `HTTP`: HTTP protocol;<br>u2003u2003 `HTTPS`: HTTPS protocol;<br>u2003u2003 `QUIC`: QUIC protocol.</li>\n<li>`tagKey`:<br>u2003u2003 Filter by the specified <strong>tag key</strong></li>\n<li>`tagValue`:<br>u2003u2003 Filter by the specified <strong>tag value</strong></li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
-          "example": "mainland",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSingleL7AnalysisDataResponse": {
-      "document": "DescribeSingleL7AnalysisData response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "10",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The list of L7 dimensional data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SingleDataRecord",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSpeedTestingDetailsRequest": {
-      "document": "DescribeSpeedTestingDetails request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID.",
-          "example": "无",
-          "member": "string",
-          "name": "ZoneId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSpeedTestingDetailsResponse": {
-      "document": "DescribeSpeedTestingDetails response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The site’s load speed across regions.",
-          "example": "无",
-          "member": "SpeedTestingDetailData",
-          "name": "SpeedTestingDetailData",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSpeedTestingMetricDataRequest": {
-      "document": "DescribeSpeedTestingMetricData request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID.",
-          "example": "无",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSpeedTestingMetricDataResponse": {
-      "document": "DescribeSpeedTestingMetricData response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The site test metrics.",
-          "example": "无",
-          "member": "SpeedTestingMetricData",
-          "name": "SpeedTestingMetricData",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSpeedTestingQuotaRequest": {
-      "document": "DescribeSpeedTestingQuota request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID.",
-          "example": "zone-sdfafcad",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSpeedTestingQuotaResponse": {
-      "document": "DescribeSpeedTestingQuota response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The quota limit on site tests.",
-          "example": "无",
-          "member": "SpeedTestingQuota",
-          "name": "SpeedTestingQuota",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeTimingL4DataRequest": {
       "document": "DescribeTimingL4Data request structure.",
       "members": [
@@ -6563,114 +5467,6 @@
       ],
       "type": "object"
     },
-    "DescribeTimingL7SourceDataRequest": {
-      "document": "DescribeTimingL7SourceData request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Start time of the query period.",
-          "example": "2020-04-29T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "End time of the query period.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of metrics. Values:\n<li>`l7Flow_outFlux_hy`: EdgeOne request traffic</li>\n<li>`l7Flow_outBandwidth_hy`: EdgeOne request bandwidth</li>\n<li>`l7Flow_inFlux_hy`: Origin response traffic</li>\n<li>`l7Flow_inBandwidth_hy`: Origin response bandwidth</li>\n<li>`l7Flow_request_hy`: Origin-pull requests</li>",
-          "example": "l7Flow_flow",
-          "member": "string",
-          "name": "MetricNames",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query granularity. Values:\n<li>`min`: 1 minute</li>\n<li>`5min`: 5 minutes</li>\n<li>`hour`: 1 hour</li>\n<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. **Query period < 1 hour**: 1-minute granularity; **1 hour < query period < 2 days**: 5-minute granularity; **2 days < query period < 7 days**: 1 hour granularity; **Query period > 7 days**: 1 day granularity.",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Filter conditions. See below for details: \n<li>`domain`:<br>   Filter by <strong>the origin domain</strong><br>   Type: String<br>   Required: No</li>\n<li>`origin`:<br>   Filter by <strong>the origin</strong><br>   Type: String<br>   Required: No</li>\n<li>`originGroup`:<br>   Filter by <strong>the origin group</strong>, such as origin-xxxxx.<br>   Type: String<br>   Required: No</li>\n<li>`flowType`:<br>   Filter by <strong>the origin response type</strong>. This parameter takes precedence over `MetricNames.N`.<br>   Type: String<br>   Required: No<br>   Values:<br>   `inFlow`: Origin response data, corresponding to `l7Flow_inFlux_hy`, `l7Flow_inBandwidth_hy` and `l7Flow_request_hy` in `MetricNames.N`.<br>   `outFlow`: EdgeOne request data, corresponding to `l7Flow_outFlux_hy`, `l7Flow_outBandwidth_hy` and `l7Flow_request_hy` in `MetricNames.N`.</li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
-          "example": "mainland",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeTimingL7SourceDataResponse": {
-      "document": "DescribeTimingL7SourceData response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "20",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "List of time series traffic data.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
-          "member": "TimingDataRecord",
-          "name": "TimingDataRecords",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeTopL7AnalysisDataRequest": {
       "document": "DescribeTopL7AnalysisData request structure.",
       "members": [
@@ -6694,7 +5490,7 @@
         },
         {
           "disabled": false,
-          "document": "The metric to query. Values: \n<li>`l7Flow_outFlux_country`: Traffic by country/region</li>\n<li>`l7Flow_outFlux_statusCode`: Traffic by status code</li>\n<li>`l7Flow_outFlux_domain`: Traffic by domain name</li>\n<li>`l7Flow_outFlux_url`: Traffic by URL</li>\n<li>`l7Flow_outFlux_resourceType`: Traffic by resource type</li>\n<li>`l7Flow_outFlux_sip`: Traffic by client IP</li>\n<li>`l7Flow_outFlux_referers`: Traffic by referer</li>\n<li>`l7Flow_outFlux_ua_device`: Traffic by device</li>\n<li>`l7Flow_outFlux_ua_browser`: Traffic by browser</li>\n<li>`l7Flow_outFlux_us_os`: Traffic by operating system</li>\n<li>`l7Flow_request_country`: Requests by country/region</li>\n<li>`l7Flow_request_statusCode`: Requests by status code</li>\n<li>`l7Flow_request_domain`: Requests by domain name</li>\n<li>`l7Flow_request_url`: Requests by URL</li>\n<li>`l7Flow_request_resourceType`: Requests by resource type</li>\n<li>`l7Flow_request_sip`: Requests by client IP</li>\n<li>`l7Flow_request_referer`: Requests by referer</li>\n<li>`l7Flow_request_ua_device`: Requests by device</li>\n<li>`l7Flow_request_ua_browser`: Requests by browser</li>\n<li>`l7Flow_request_us_os`: Requests by operating system</li>\n",
+          "document": "Metrics to query. Valid values: \n<li>`l7Flow_outFlux_country`: Query traffic by country/region;</li>\n<li>`l7Flow_outFlux_statusCode`: Query traffic by status code;</li>\n<li>`l7Flow_outFlux_domain`: Query traffic by domain;</li>\n<li>`l7Flow_outFlux_url`: Query traffic by URL;</li>\n<li>`l7Flow_outFlux_resourceType`: Query traffic by resource type;</li>\n<li>`l7Flow_outFlux_sip`: Query traffic by source IP;</li>\n<li>`l7Flow_outFlux_referers`: Query traffic by refer information;</li>\n<li>`l7Flow_outFlux_ua_device`: Query traffic by device;</li>\n<li>`l7Flow_outFlux_ua_browser`: Query traffic by browser;</li>\n<li>`l7Flow_outFlux_us_os`: Query traffic by OS;</li>\n<li>`l7Flow_request_country`: Query requests by country/region;</li>\n<li>`l7Flow_request_statusCode`: Query requests by status code;</li>\n<li>`l7Flow_request_domain`: Query requests by domain;</li>\n<li>`l7Flow_request_url`: Query requests by URL;</li>\n<li>`l7Flow_request_resourceType`: Query requests by resource type;</li>\n<li>`l7Flow_request_sip`: Query requests by source IP;</li>\n<li>`l7Flow_request_referer`: Query requests by refer information;</li>\n<li>`l7Flow_request_ua_device`: Query requests by device;</li>\n<li>`l7Flow_request_ua_browser`: Query requests by browser;</li>\n<li>`l7Flow_request_us_os`: Query requests by OS.</li>\n",
           "example": "l7Flow_flow",
           "member": "string",
           "name": "MetricName",
@@ -6884,882 +5680,6 @@
           "disabled": false,
           "document": "Total number of query results.",
           "example": "10",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebManagedRulesDataRequest": {
-      "document": "DescribeWebManagedRulesData request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of statistical metric. Values:\n<li>`waf_interceptNum`: Requests blocked by WAF.</li>",
-          "example": "[\"attack_wafAttackFlow\"]",
-          "member": "string",
-          "name": "MetricNames",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
-          "example": "[\"www.baidu.com\",\"www.google.com\"]",
-          "member": "string",
-          "name": "Domains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`action`: The action;</li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "QueryCondition",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minute;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "overseas",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebManagedRulesDataResponse": {
-      "document": "DescribeWebManagedRulesData response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The list of WAF attack data recorded over time.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SecEntry",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "10",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebManagedRulesHitRuleDetailRequest": {
-      "document": "DescribeWebManagedRulesHitRuleDetail request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
-          "example": "[\"www.baidu.com\",\"www.google.com\"]",
-          "member": "string",
-          "name": "Domains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minute;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`action`: The action;</li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "QueryCondition",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The page offset. Default value: 0.",
-          "example": "1",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "\"overseas\"",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebManagedRulesHitRuleDetailResponse": {
-      "document": "DescribeWebManagedRulesHitRuleDetail response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The hit rule information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SecHitRuleInfo",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "20",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebManagedRulesLogRequest": {
-      "document": "DescribeWebManagedRulesLog request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
-          "example": "[\"www.baidu.com\"]",
-          "member": "string",
-          "name": "Domains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
-          "example": "12",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The page offset. Default value: 0.",
-          "example": "2",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Filters for the query. Values:\n<li>`attackType`: Attack type</li>\n<li>`riskLevel`: Risk level</li>\n<li>`action`: Action</li>\n<li>`ruleId`: Rule ID</li>\n<li>`sipCountryCode`: Country code of the attacker IP</li>\n<li>`attackIp`: Attacker IP</li>\n<li>`realClientIp`: Real client IP</li>\n<li>`oriDomain`: Attacked subdomain name</li>\n<li>`eventId`: Event ID</li>\n<li>`ua`: User agent</li>\n<li>`requestMethod`: Request method</li>\n<li>`uri`: Uniform resource identifier</li>",
-          "example": "[{\"Key\":\"test key\",\"Operator\":\"equal\",\"Value\":[\"123\",\"33\"]}]",
-          "member": "QueryCondition",
-          "name": "QueryCondition",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "overseas",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebManagedRulesLogResponse": {
-      "document": "DescribeWebManagedRulesLog response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The list of web log data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "WebLogs",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "10",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionClientIpListRequest": {
-      "document": "DescribeWebProtectionClientIpList request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
-          "example": "[\"www.baidu.com\",\"www.google.com\"]",
-          "member": "string",
-          "name": "Domains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minute;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`action`: The action;</li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "QueryCondition",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
-          "example": "10",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The page offset. Default value: 0.",
-          "example": "1",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "overseas",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionClientIpListResponse": {
-      "document": "DescribeWebProtectionClientIpList response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The list of CC attacker IPs.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SecClientIp",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "20",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionDataRequest": {
-      "document": "DescribeWebProtectionData request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Metrics to query. Values:\n<li>`ccRate_interceptNum`: Requests restricted by the rate limiting rules;</li>\n<li>`ccAcl_interceptNum`: Requests restricted by the custom rules.</li>",
-          "example": "[\"cc_interceptNum\",\"\"]",
-          "member": "string",
-          "name": "MetricNames",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
-          "example": "[\"www.baidu.com\",\"www.google.com\"]",
-          "member": "string",
-          "name": "Domains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minute;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
-          "example": "min",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`action`: The action;</li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "QueryCondition",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "\"overseas\"",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionDataResponse": {
-      "document": "DescribeWebProtectionData response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The list of CC protection data recorded over time.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SecEntry",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionHitRuleDetailRequest": {
-      "document": "DescribeWebProtectionHitRuleDetail request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule type. Values:\n<li>`rate`: Rate limiting rules;</li>\n<li>`acl`: Custom rules.</li>",
-          "example": "acl",
-          "member": "string",
-          "name": "EntityType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
-          "example": "[\"www.baidu.com\",\"www.google.com\"]",
-          "member": "string",
-          "name": "Domains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`action`: The action;</li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "QueryCondition",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The page offset. Default value: 0.",
-          "example": "1",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minute;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "overseas",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionHitRuleDetailResponse": {
-      "document": "DescribeWebProtectionHitRuleDetail response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The list of hit CC protection rules.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SecHitRuleInfo",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "20",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionTopDataRequest": {
-      "document": "DescribeWebProtectionTopData request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The start time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The end time.",
-          "example": "2020-04-30T00:00:00Z",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of statistical metric. Values:\n<li>`ccRate_requestNum_url`: Top-ranked URLs by rate limiting requests.</li>\n<li>`ccRate_cipRequestNum_region`: Top-ranked client IPs by rate limiting requests.</li>\n<li>`ccAcl_requestNum_url`: Top-ranked URLs by custom rule requests.</li>\n<li>`ccAcl_requestNum_cip`: Top-ranked client IPs by custom rule execution requests.</li>\n<li>`ccAcl_cipRequestNum_region`: Top-ranked clients by custom rule execution requests.</li>",
-          "example": "ddos_attackSource_region",
-          "member": "string",
-          "name": "MetricName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minute;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
-          "example": "day",
-          "member": "string",
-          "name": "Interval",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
-          "example": "[\"zoneId1\",\"zoneId2\"]",
-          "member": "string",
-          "name": "ZoneIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
-          "example": "[\"baidu.com\",\"google.como\"]",
-          "member": "string",
-          "name": "Domains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Queries the top n rows of data. Top 10 rows of data will be queried if this field is not specified.",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`action`: The action;</li>",
-          "example": "无",
-          "member": "QueryCondition",
-          "name": "QueryCondition",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "\"overseas\"",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeWebProtectionTopDataResponse": {
-      "document": "DescribeWebProtectionTopData response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The list of top-ranked CC protection data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "TopEntry",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of query results.",
-          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
           "required": true,
@@ -8205,62 +6125,6 @@
           "name": "NoChangeIPWhitelist",
           "required": true,
           "type": "object",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "DistrictStatistics": {
-      "document": "The site’s load speed across regions",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The ISO 3166-2 Alpha-2 country code. For the list of country codes, see [ISO 3166-2](https://zh.m.wikipedia.org/zh-hans/ISO_3166-2).",
-          "example": "CN",
-          "member": "string",
-          "name": "Alpha2",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The overall load time, in milliseconds.",
-          "example": "100",
-          "member": "int64",
-          "name": "LoadTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "DnsData": {
-      "document": "DNS data points",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The time.",
-          "example": "2014-08-03T12:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "Time",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The value.",
-          "example": "100",
-          "member": "uint64",
-          "name": "Value",
-          "required": true,
-          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -8961,9 +6825,8 @@
       "document": "Configuration of gRPC support",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to enable gRPC support\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
+          "document": "Whether to enable gRPC support. Valid values: \n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9000,13 +6863,12 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "Hsts": {
       "document": "HSTS configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -9017,9 +6879,8 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The MaxAge value in seconds. Maximum value: `86400` (one day)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "MaxAge (in seconds). The maximum value is 1 day. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "600",
           "member": "int64",
           "name": "MaxAge",
@@ -9028,7 +6889,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to contain subdomain names. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "on/off",
@@ -9039,7 +6899,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable preloading. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "on/off",
@@ -9077,7 +6936,7 @@
         },
         {
           "disabled": false,
-          "document": "TLS version. Values:\n<li>`TLSv1`: TLSv1 version</li>\n<li>`TLSV1.1`: TLSv1.1 version</li>\n<li>`TLSV1.2`: TLSv1.2 version</li>\n<li>`TLSv1.3`: TLSv1.3 version</li>Only consecutive versions can be enabled at the same time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "TLS version. Valid values: \n<li>`TLSv1`: TLSv1 version;</li>\n<li>`TLSV1.1`: TLSv1.1 version;</li>\n<li>`TLSV1.2`: TLSv1.2 version;</li>\n<li>`TLSv1.3`: TLSv1.3 version.</li>Only consecutive versions can be enabled at the same time. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"TLSv1\", \"TLSv1.1\"]",
           "member": "string",
           "name": "TlsVersion",
@@ -9124,6 +6983,42 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IPGroup": {
+      "document": "IP range group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group ID. Enter `0`.",
+          "example": "11",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Group name.",
+          "example": "group1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP group information, including IP and IP mask.",
+          "example": "[\"1.1.1.1\", \"2.2.2.2\"]",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -9477,9 +7372,8 @@
       "document": "The IPv6 access configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to enable IPv6 access. Values:\n<li>`on`: Enable IPv6 access.</li>\n<li>`off`: Disable IPv6 access.</li>",
+          "document": "Whether to enable IPv6 access. Valid values: \n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9627,56 +7521,6 @@
           "example": "\"mainland\"",
           "member": "string",
           "name": "Area",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "LogSetInfo": {
-      "document": "Logset information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Region of the logset.",
-          "example": "ap-chengdu",
-          "member": "string",
-          "name": "LogSetRegion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Name of the logset.",
-          "example": "test",
-          "member": "string",
-          "name": "LogSetName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the logset.",
-          "example": "e530f5c0-bd20-4aea-8f2b-96d6cfe1cc40",
-          "member": "string",
-          "name": "LogSetId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the logset is deleted. Values:\n<li>`no`: The logset is not deleted;</li>\n<li>`yes`: The logset is deleted.</li>",
-          "example": "yes",
-          "member": "string",
-          "name": "Deleted",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9934,9 +7778,8 @@
       "document": "ModifyApplicationProxy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The site ID.",
+          "document": "Site ID.",
           "example": "zone-21xfqlh4qjee",
           "member": "string",
           "name": "ZoneId",
@@ -9944,9 +7787,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The proxy ID.",
+          "document": "Proxy ID.",
           "example": "proxy-19389e5dwwxfs",
           "member": "string",
           "name": "ProxyId",
@@ -9954,9 +7796,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The domain name or subdomain name when `ProxyType=hostname`.\nThe instance name when `ProxyType=instance`.",
+          "document": "Domain name or subdomain name when `ProxyType=hostname`; \nInstance name when `ProxyType=instance`.",
           "example": "proxy-name",
           "member": "string",
           "name": "ProxyName",
@@ -9964,7 +7805,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The session persistence duration. Value range: 30-3600 (in seconds).\nThe original configuration will apply if this field is not specified.",
           "example": "3600",
@@ -9974,7 +7814,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy type. Values:\n<li>`hostname`: The proxy is created by subdomain name.</li>\n<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.",
           "example": "hostname",
@@ -9984,12 +7823,20 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The IPv6 access configuration. The original configuration will apply if this field is not specified.",
+          "document": "IPv6 access configuration. The original configuration will apply if it is not specified.",
           "example": "无",
           "member": "Ipv6",
           "name": "Ipv6",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Cross-MLC-border acceleration. The original configuration will apply if it is not specified.",
+          "example": "无",
+          "member": "AccelerateMainland",
+          "name": "AccelerateMainland",
           "required": false,
           "type": "object"
         }
@@ -10232,54 +8079,6 @@
       ],
       "type": "object"
     },
-    "ModifyDefaultCertificateRequest": {
-      "document": "ModifyDefaultCertificate request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the site.",
-          "example": "zone-fdafds",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the certificate.",
-          "example": "EO-asdfasdf",
-          "member": "string",
-          "name": "CertId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Status of the certificate. Values:\n<li>`deployed`: The certificate is deployed;</li>\n<li>`disabled`: The certificate is disabled.</li>When a deployment fails, you can try again.",
-          "example": "deploy",
-          "member": "string",
-          "name": "Status",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyDefaultCertificateResponse": {
-      "document": "ModifyDefaultCertificate response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyHostsCertificateRequest": {
       "document": "ModifyHostsCertificate request structure.",
       "members": [
@@ -10426,44 +8225,6 @@
       ],
       "type": "object"
     },
-    "ModifyRulePriorityRequest": {
-      "document": "ModifyRulePriority request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the site",
-          "example": "zone-27q0p0bali16",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Order of rule IDs. If there are multiple rules, they will be executed in order from top to bottom.",
-          "example": "[\"rule-duxamq\"]",
-          "member": "string",
-          "name": "RuleIds",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyRulePriorityResponse": {
-      "document": "ModifyRulePriority response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyRuleRequest": {
       "document": "ModifyRule request structure.",
       "members": [
@@ -10552,6 +8313,51 @@
       ],
       "type": "object"
     },
+    "ModifySecurityIPGroupRequest": {
+      "document": "ModifySecurityIPGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID.",
+          "example": "\"zone-hduqwh\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP group configuration.",
+          "example": "无",
+          "member": "IPGroup",
+          "name": "IPGroup",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Operation type. Valid values: \n<li>`append`: Add information of `Content` to `IPGroup`;</li>\n<li>`remove`: Delete information of `Content` from `IPGroup`;</li>\n<li>`update`: Replace all information of `IPGroup` and modify the IPGroup name.</li>",
+          "example": "\"update\"",
+          "member": "string",
+          "name": "Mode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySecurityIPGroupResponse": {
+      "document": "ModifySecurityIPGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifySecurityPolicyRequest": {
       "document": "ModifySecurityPolicy request structure.",
       "members": [
@@ -10600,114 +8406,6 @@
     },
     "ModifySecurityPolicyResponse": {
       "document": "ModifySecurityPolicy response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifySecurityWafGroupPolicyRequest": {
-      "document": "ModifySecurityWafGroupPolicy request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
-          "example": "zone-xxx",
-          "member": "string",
-          "name": "ZoneId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The subdomain name. You must specify either \"ZoneId+Entity\" or \"TemplateId\". ",
-          "example": "test.com",
-          "member": "string",
-          "name": "Entity",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>If not specified, it defaults to the setting that was last configured.",
-          "example": "on",
-          "member": "string",
-          "name": "Switch",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule level. Values:\n<li>`loose`: Loose</li>\n<li>`normal`: Moderate</li>\n<li>`strict`: Strict</li>\n<li>`stricter`: Super strict</li>\n<li>`custom`: Custom</li>If not specified, it defaults to the setting that was last configured.",
-          "example": "loose",
-          "member": "string",
-          "name": "Level",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule action. Values:\n<li>`block`: Block</li>\n<li>`observe`: Observe</li>If not specified, it defaults to the setting that was last configured.",
-          "example": "block",
-          "member": "string",
-          "name": "Mode",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The settings of the managed rule. If not specified, it defaults to the settings that were last configured.",
-          "example": "-",
-          "member": "WafRule",
-          "name": "WafRules",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The settings of the AI rule engine. If not specified, it defaults to the settings that were last configured.",
-          "example": "-",
-          "member": "AiRule",
-          "name": "AiRule",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The settings of the managed rule group. If not specified, it defaults to the settings that were last configured.",
-          "example": "-",
-          "member": "WafGroup",
-          "name": "WafGroups",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The template ID. You must specify either this field or \"ZoneId+Entity\".",
-          "example": "temp-a23j9ja1",
-          "member": "string",
-          "name": "TemplateId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifySecurityWafGroupPolicyResponse": {
-      "document": "ModifySecurityWafGroupPolicy response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -10780,9 +8478,8 @@
       "document": "ModifyZoneSetting request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The site ID to be modified.",
+          "document": "Site ID to modify.",
           "example": "zone-21xfqlh4qjee",
           "member": "string",
           "name": "ZoneId",
@@ -10790,7 +8487,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cache expiration time configuration\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10800,7 +8496,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The node cache key configuration.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10810,7 +8505,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The browser cache configuration.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10820,7 +8514,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The offline cache configuration.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10830,9 +8523,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The QUIC access configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "QUIC access configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "Quic",
           "name": "Quic",
@@ -10840,9 +8532,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The POST transport configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "POST transport configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "PostMaxSize",
           "name": "PostMaxSize",
@@ -10850,7 +8541,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The smart compression configuration.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10860,9 +8550,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The HTTP2 origin-pull configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "HTTP2 origin-pull configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "UpstreamHttp2",
           "name": "UpstreamHttp2",
@@ -10870,9 +8559,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The force HTTPS redirect configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "Force HTTPS redirect configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
@@ -10880,9 +8568,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The HTTPS acceleration configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "HTTPS acceleration configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "Https",
           "name": "Https",
@@ -10890,7 +8577,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin server configuration.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10900,7 +8586,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The smart acceleration configuration.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10910,9 +8595,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The WebSocket configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "WebSocket configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "WebSocket",
           "name": "WebSocket",
@@ -10920,9 +8604,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The origin-pull client IP header configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "Origin-pull client IP header configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "ClientIpHeader",
           "name": "ClientIpHeader",
@@ -10930,7 +8613,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The cache prefresh configuration.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
@@ -10940,9 +8622,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The IPv6 access configuration.\nThe original configuration will apply if this field is not specified.",
+          "document": "Ipv6 access configuration. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "Ipv6",
           "name": "Ipv6",
@@ -10950,9 +8631,8 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to carry the location information of the client IP during origin-pull.\nThe original configuration will apply if this field is not specified.",
+          "document": "Whether to carry the location information of the client IP during origin-pull. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "ClientIpCountry",
           "name": "ClientIpCountry",
@@ -10960,12 +8640,29 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Configuration of gRPC support\nThe original configuration will apply if this field is not specified.",
+          "document": "Configuration of gRPC support. \nThe original configuration will apply if it is not specified.",
           "example": "无",
           "member": "Grpc",
           "name": "Grpc",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Image optimization. \nIt is disabled if this parameter is not specified.",
+          "example": "无",
+          "member": "ImageOptimize",
+          "name": "ImageOptimize",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "StandardDebug",
+          "name": "StandardDebug",
           "required": false,
           "type": "object"
         }
@@ -11084,61 +8781,10 @@
       ],
       "usage": "both"
     },
-    "OptimizeAction": {
-      "document": "The optimization suggestions",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The optimization metric. Values:\n<li>`Http2`</li>\n<li>`Http3`</li>\n<li>`Brotli`</li>",
-          "example": "Http2",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The network environment.",
-          "example": "Cable",
-          "member": "string",
-          "name": "Connectivity",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The estimated load time, in milliseconds.",
-          "example": "33",
-          "member": "int64",
-          "name": "Value",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The estimated improvement ratio, in %.",
-          "example": "15",
-          "member": "int64",
-          "name": "Ratio",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "Origin": {
       "document": "The origin server configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Primary origin server list\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"1.1.1.1\"]",
@@ -11149,7 +8795,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of backup origin servers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"2.2.2.2\"]",
@@ -11160,7 +8805,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Origin-pull protocol configuration. Values:\n<li>`http`: Force HTTP for origin-pull.</li>\n<li>`follow`: Follow protocol.</li>\n<li>`https`: Force HTTPS for origin-pull.</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "https",
@@ -11171,9 +8815,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to allow private access to buckets when `OriginType=cos`. Values:\n<li>`on`: Allow private access.</li>\n<li>`off`: Allow public access.</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to allow private access to buckets when `OriginType=cos`. Valid values: \n<li>`on`: Private access;</li>\n<li>`off`: Public access.</li>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "off",
           "member": "string",
           "name": "CosPrivateAccess",
@@ -11727,9 +9370,8 @@
       "document": "Maximum size of the file uploaded for streaming via a POST request",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to enable POST upload limit (default limit: 32 MB). Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
+          "document": "Whether to enable POST upload limit (default limit: 32 MB). Valid values: \n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -11738,7 +9380,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum size. Value range: 1-500 MB.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10000000",
@@ -11861,9 +9502,8 @@
       "document": "QUIC configuration item",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to enable QUIC. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
+          "document": "Whether to enable QUIC. Valid values: \n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -12278,72 +9918,6 @@
         }
       ],
       "usage": "both"
-    },
-    "ReclaimAliasDomainRequest": {
-      "document": "ReclaimAliasDomain request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID.",
-          "example": "zone-xxx",
-          "member": "string",
-          "name": "ZoneId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site name.",
-          "example": "example.com",
-          "member": "string",
-          "name": "ZoneName",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ReclaimAliasDomainResponse": {
-      "document": "ReclaimAliasDomain response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ReclaimZoneRequest": {
-      "document": "ReclaimZone request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site name.",
-          "example": "example.com",
-          "member": "string",
-          "name": "ZoneName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ReclaimZoneResponse": {
-      "document": "ReclaimZone response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "Resource": {
       "document": "Billable resource",
@@ -13051,45 +10625,6 @@
       ],
       "usage": "out"
     },
-    "SecClientIp": {
-      "document": "Client IP information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "IP of the client.",
-          "example": "1.2.3.4",
-          "member": "string",
-          "name": "ClientIp",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Maximum QPS.",
-          "example": "100",
-          "member": "int64",
-          "name": "RequestMaxQps",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Number of requests.",
-          "example": "10",
-          "member": "int64",
-          "name": "RequestNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "SecEntry": {
       "document": "Returned value of security data entry",
       "members": [
@@ -13174,271 +10709,6 @@
           "name": "Sum",
           "required": true,
           "type": "float",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "SecHitRuleInfo": {
-      "document": "The hit rule information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID.",
-          "example": "zone-1234",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule ID.",
-          "example": "12132123",
-          "member": "int64",
-          "name": "RuleId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule type.",
-          "example": "acl",
-          "member": "string",
-          "name": "RuleTypeName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The hit time recorded in seconds using UNIX timestamp.",
-          "example": "12131243",
-          "member": "int64",
-          "name": "HitTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The number of requests.",
-          "example": "123",
-          "member": "int64",
-          "name": "RequestNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule description.",
-          "example": "限速规则",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The subdomain name.",
-          "example": "www.baidu.com",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Action. Values:\n<li>`trans`: Allow;</li>\n<li>`alg`: Algorithm challenge;</li>\n<li>`drop`: Discard;</li>\n<li>`ban`: Block the source IP;</li>\n<li>`redirect`: Redirect;</li>\n<li>`page`: Return to the specified page;</li>\n<li>`monitor`: Observe.</li>",
-          "example": "monitor",
-          "member": "string",
-          "name": "Action",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The bot tag. Values:\n<li>`evil_bot`: Malicious bot</li>\n<li>`suspect_bot`: Suspected bot</li>\n<li>`good_bot`: Good bot</li>\n<li>`normal`: Normal request</li>\n<li>`none`: Uncategorized</li>",
-          "example": "evil_bot",
-          "member": "string",
-          "name": "BotLabel",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable the rule",
-          "example": "false",
-          "member": "bool",
-          "name": "RuleEnabled",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable alerting for this rule",
-          "example": "false",
-          "member": "bool",
-          "name": "AlarmEnabled",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the rule is deleted. Values: \n<li>`true`: The rule has been deleted (does not exist).</li>\n<li>`false`: The rule is not deleted (exists).</li>",
-          "example": "false",
-          "member": "bool",
-          "name": "RuleDeleted",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "SecRuleRelatedInfo": {
-      "document": "CC/WAF/Bot security rule information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule ID.",
-          "example": "123131",
-          "member": "int64",
-          "name": "RuleId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Action. Values:\n<li>`trans`: Allow;</li>\n<li>`alg`: Algorithm challenge;</li>\n<li>`drop`: Discard;</li>\n<li>`ban`: Block the source IP;</li>\n<li>`redirect`: Redirect;</li>\n<li>`page`: Return to the specified page;</li>\n<li>`monitor`: Observe.</li>",
-          "example": "drop",
-          "member": "string",
-          "name": "Action",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Risk level (only found in WAF logs). Values:\n<li>`high risk`: High risk;</li>\n<li>`middle risk`: Middle risk;</li>\n<li>`low risk`: Low risk;</li>\n<li>`unkonw`: Unknown.</li>",
-          "example": "high",
-          "member": "string",
-          "name": "RiskLevel",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Rule level. Values:\n<li>`normal`: Moderate.</li>",
-          "example": "normal",
-          "member": "string",
-          "name": "RuleLevel",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Rule description.",
-          "example": "针对出现在GET参数中的命令注入防护规则",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule type.",
-          "example": "命令/代码注入攻击防护",
-          "member": "string",
-          "name": "RuleTypeName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The attack content.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "AttackContent",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The rule type. Values:\n<li>`waf`: Tencent Cloud-managed rule</li>\n<li>`acl`: Custom rule</li>\n<li>`rate`: Rate limiting rule</li>\n<li>`bot`: Bot rule</li>",
-          "example": "bot",
-          "member": "string",
-          "name": "RuleType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable the rule",
-          "example": "false",
-          "member": "bool",
-          "name": "RuleEnabled",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the rule is deleted. Values: \n<li>`true`: The rule has been deleted (does not exist).</li>\n<li>`false`: The rule is not deleted (exists).</li>",
-          "example": "true",
-          "member": "bool",
-          "name": "RuleDeleted",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable alerting for this rule",
-          "example": "false",
-          "member": "bool",
-          "name": "AlarmEnabled",
-          "required": true,
-          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -13650,62 +10920,6 @@
       ],
       "usage": "both"
     },
-    "SingleDataRecord": {
-      "document": "The dimensional data record",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The query dimension value.",
-          "example": "\"123231\"",
-          "member": "string",
-          "name": "TypeKey",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Value of the metric under the query dimension.",
-          "example": "无",
-          "member": "SingleTypeValue",
-          "name": "TypeValue",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "SingleTypeValue": {
-      "document": "The dimensional data",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The metric name.",
-          "example": "flow_flux",
-          "member": "string",
-          "name": "MetricName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The metric value.",
-          "example": "1",
-          "member": "int64",
-          "name": "DetailData",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "SkipCondition": {
       "document": "Exception rule conditions, used to filter requests by specific fields",
       "members": [
@@ -13887,465 +11101,44 @@
       ],
       "usage": "both"
     },
-    "SpeedTestingConfig": {
-      "document": "The site test configuration",
+    "StandardDebug": {
+      "document": "",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The task type. Values:\n<li>`1`: Page performance</li>\n<li>`2`: File uploads</li>\n<li>`3`: File downloads</li>\n<li>`4`: Port performance</li>\n<li>`5`: Network quality</li>\n<li>`6`: Audio/Video experience</li>",
-          "example": "1",
-          "member": "int64",
-          "name": "TaskType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The URL.",
-          "example": "http://example.com/",
+          "document": "",
+          "example": "on",
           "member": "string",
-          "name": "Url",
+          "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The user agent.",
-          "example": "Chrome,PC",
+          "document": "",
+          "example": "[\"9.142.236.194\", \"43.154.226.0/24\"]",
           "member": "string",
-          "name": "UA",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The network type.",
-          "example": "无",
-          "member": "string",
-          "name": "Connectivity",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "SpeedTestingDetailData": {
-      "document": "The site’s load speed across regions.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID.",
-          "example": "zone-xxx",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site name.",
-          "example": "无",
-          "member": "string",
-          "name": "ZoneName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site performance across regions.",
-          "example": "无",
-          "member": "DistrictStatistics",
-          "name": "DistrictStatistics",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "SpeedTestingInfo": {
-      "document": "The site test information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The task status. Values:\n<li>`200`: The task completed.</li>\n<li>`100`: The task is running.</li>\n<li>`503`: The task failed.</li>",
-          "example": "200",
-          "member": "int64",
-          "name": "StatusCode",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the site test task.",
-          "example": "task-xxxxx",
-          "member": "string",
-          "name": "TestId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The settings of the site test task.",
-          "example": "无",
-          "member": "SpeedTestingConfig",
-          "name": "SpeedTestingConfig",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site test result.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SpeedTestingStatistics",
-          "name": "SpeedTestingStatistics",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "SpeedTestingMetricData": {
-      "document": "The site test metrics.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site ID.",
-          "example": "无",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site name.",
-          "example": "无",
-          "member": "string",
-          "name": "ZoneName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The origin information.",
-          "example": "无",
-          "member": "SpeedTestingInfo",
-          "name": "OriginSpeedTestingInfo",
+          "name": "AllowClientIPList",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The EdgeOne information.",
-          "example": "无",
-          "member": "SpeedTestingInfo",
-          "name": "ProxySpeedTestingInfo",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The site status.",
-          "example": "无",
-          "member": "SpeedTestingStatus",
-          "name": "SpeedTestingStatus",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The optimization suggestions.",
-          "example": "无",
-          "member": "OptimizeAction",
-          "name": "OptimizeAction",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The EdgeOne load time, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "int64",
-          "name": "ProxyLoadTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The origin load time, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "int64",
-          "name": "OriginLoadTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "SpeedTestingQuota": {
-      "document": "The quota limit on site tests.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The total number of site tests.",
-          "example": "100",
-          "member": "int64",
-          "name": "TotalTestRuns",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The number of available site tests.",
-          "example": "1",
-          "member": "int64",
-          "name": "AvailableTestRuns",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "SpeedTestingStatistics": {
-      "document": "The site test result",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Last contentful paint, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "300",
-          "member": "int64",
-          "name": "FirstContentfulPaint",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Full content load, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "400",
-          "member": "int64",
-          "name": "FirstMeaningfulPaint",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Average download speed, in KB/s.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "200",
-          "member": "float",
-          "name": "OverallDownloadSpeed",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Rendering time, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "200",
-          "member": "int64",
-          "name": "RenderTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "DOM content loaded, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "100",
-          "member": "int64",
-          "name": "DocumentFinishTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Average TCP connection, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "100",
-          "member": "int64",
-          "name": "TcpConnectionTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Average backend response, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "100",
-          "member": "int64",
-          "name": "ResponseTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Average DOM content download, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "100",
-          "member": "int64",
-          "name": "FileDownloadTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Load time, in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "100",
-          "member": "int64",
-          "name": "LoadTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "SpeedTestingStatus": {
-      "document": "The test task status",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The URL.",
-          "example": "http://example.com/",
-          "member": "string",
-          "name": "Url",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the URL uses HTTPS.",
-          "example": "false",
-          "member": "bool",
-          "name": "Tls",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Creation time of the task.",
-          "example": "2022-05-16T12:00:00+08:00",
+          "document": "",
+          "example": "2023-06-30T17:37:56+0800",
           "member": "datetime_iso",
-          "name": "CreatedOn",
+          "name": "ExpireTime",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The task status. Values:\n<li>`200`: The task completed.</li>\n<li>`100`: The task is running.</li>\n<li>`503`: The task failed./li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "200",
-          "member": "int64",
-          "name": "StatusCode",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The user agent.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "Chrome,PC",
-          "member": "string",
-          "name": "UA",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The network environment.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "cable",
-          "member": "string",
-          "name": "Connectivity",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the URL is reachable. Values:\n<li>`true`: Yes</li>\n<li>`false`: No</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "true",
-          "member": "bool",
-          "name": "Reachable",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the URL connection timed out. Values:\n<li>`true`: Yes</li>\n<li>`false`: No</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "false",
-          "member": "bool",
-          "name": "TimedOut",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "SubRule": {
       "document": "Nested rule settings",
@@ -14805,41 +11598,12 @@
       ],
       "usage": "out"
     },
-    "UpdateOriginProtectionIPWhitelistRequest": {
-      "document": "UpdateOriginProtectionIPWhitelist request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the site.",
-          "example": "\"zone-276zs184g93m\"",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateOriginProtectionIPWhitelistResponse": {
-      "document": "UpdateOriginProtectionIPWhitelist response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "UpstreamHttp2": {
       "document": "HTTP2 origin-pull configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether to enable HTTP2 origin-pull. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
+          "document": "Whether to enable HTTP2 origin-pull. Valid values: \n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -14995,45 +11759,6 @@
       ],
       "usage": "both"
     },
-    "WafGroup": {
-      "document": "WAF managed rule group",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Action to be executed. Values:\n<li>`block`: Block</li>\n<li>`observe: Observe</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
-          "member": "string",
-          "name": "Action",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The protection level. Values:\n<li>`loose`: Loose</li>\n<li>`normal`: Moderate</li>\n<li>`strict`: Strict</li>\n<li>`stricter`: Super strict</li>\n<li>`custom`: Custom</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
-          "member": "string",
-          "name": "Level",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "ID of the rule type.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "int64",
-          "name": "TypeId",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
     "WafRule": {
       "document": "WAF rule",
       "members": [
@@ -15070,155 +11795,6 @@
       ],
       "usage": "both"
     },
-    "WebLogs": {
-      "document": "Web attack log",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The attack event ID.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "EventId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The HTTP log content.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "HttpLog",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The attacked subdomain name.",
-          "example": "www.baidu.com",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The attacker IP.",
-          "example": "\"127.0.0.1\"",
-          "member": "string",
-          "name": "AttackIp",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The country code of the attacker IP, which is defined in ISO-3166 alpha-2. For the list of country codes, see [ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json).",
-          "example": "\"China\"",
-          "member": "string",
-          "name": "SipCountryCode",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The real client IP.",
-          "example": "192.168.1.1",
-          "member": "string",
-          "name": "RealClientIp",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The ISO-3166 alpha-2 country code of the real client IP.",
-          "example": "CN",
-          "member": "string",
-          "name": "RealClientIpCountryCode",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The attack time recorded in seconds using UNIX timestamp.",
-          "example": "2022-01-25 00:00:00",
-          "member": "uint64",
-          "name": "AttackTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The request address.",
-          "example": "/login",
-          "member": "string",
-          "name": "RequestUri",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The request type.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "GET",
-          "member": "string",
-          "name": "ReqMethod",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The security rule information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
-          "member": "SecRuleRelatedInfo",
-          "name": "RuleDetailList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The attack content.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"Attack Content\"",
-          "member": "string",
-          "name": "AttackContent",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Log region\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "mainland",
-          "member": "string",
-          "name": "Area",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "WebSocket": {
       "document": "WebSocket configuration",
       "members": [
@@ -15251,7 +11827,6 @@
       "document": "Site information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-27q0p0bali16",
@@ -15262,7 +11837,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site name.",
           "example": "example.com",
@@ -15273,7 +11847,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of name servers used by the site",
           "example": "[\"ns1.example.com.\",\"ns2.example.com.\"]",
@@ -15284,7 +11857,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of name servers assigned by Tencent Cloud.",
           "example": "[\"ns1.teodns.com.\",\"\"ns2.teodns.com.\"]",
@@ -15295,7 +11867,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site status. Values:\n<li>`active`: The name server is switched.</li>\n<li>`pending`: The name server is not switched.</li>\n<li>`moved`: The name server is moved.</li>\n<li>`deactivated`: The site is blocked.</li>",
           "example": "active",
@@ -15306,7 +11877,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site access method. Values:\n<li>`full`: Access through a name server.</li>\n<li>`partial`: Access through a CNAME record.</li>",
           "example": "full",
@@ -15317,7 +11887,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the site is disabled.",
           "example": "false",
@@ -15328,7 +11897,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether CNAME acceleration is enabled. Values:\n<li>`enabled`: Enabled</li>\n<li>`disabled`: Disabled</li>",
           "example": "无",
@@ -15339,7 +11907,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CNAME record access status. Values:\n<li>`finished`: The site is verified.</li>\n<li>`pending`: The site is being verified.</li>",
           "example": "finished",
@@ -15350,7 +11917,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of resource tags.",
           "example": "无",
@@ -15361,7 +11927,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of billable resources.",
           "example": "无",
@@ -15372,7 +11937,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The creation time of the site.",
           "example": "无",
@@ -15383,7 +11947,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The modification date of the site.",
           "example": "无",
@@ -15394,7 +11957,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site access region. Values:\n<li>`global`: Global.</li>\n<li>`mainland`: Chinese mainland.</li>\n<li>`overseas`: Outside the Chinese mainland.</li>",
           "example": "overseas",
@@ -15405,7 +11967,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The custom name server information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -15416,7 +11977,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The custom name server IP information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -15427,7 +11987,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the proxy. Values:\n<li>`active`: Enabled</li>\n<li>`inactive`: Not activated</li>\n<li>`paused`: Disabled</li>",
           "example": "active",
@@ -15438,7 +11997,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "zone-example",
@@ -15449,15 +12007,24 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether it’s a fake site. Values:\n<li>`0`: Non-fake site</li>\n<li>`1`: Fake site</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether it’s a fake site. Valid values: \n<li>`0`: Non-fake site;</li>\n<li>`1`: Fake site.</li>",
           "example": "1",
           "member": "int64",
           "name": "IsFake",
           "required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Lock status. Valid values: <li>`enable`: Normal. Modifying is allowed;</li><li>`disable`: Locked. Modifying is not allowed.</li>",
+          "example": "enable",
+          "member": "string",
+          "name": "LockStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -15471,7 +12038,7 @@
           "example": "example.com",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15481,7 +12048,7 @@
           "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15491,7 +12058,7 @@
           "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15501,7 +12068,7 @@
           "example": "无",
           "member": "Quic",
           "name": "Quic",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15511,7 +12078,7 @@
           "example": "无",
           "member": "PostMaxSize",
           "name": "PostMaxSize",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15521,7 +12088,7 @@
           "example": "无",
           "member": "Compression",
           "name": "Compression",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15531,7 +12098,7 @@
           "example": "无",
           "member": "UpstreamHttp2",
           "name": "UpstreamHttp2",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15541,7 +12108,7 @@
           "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15551,7 +12118,7 @@
           "example": "无",
           "member": "CacheConfig",
           "name": "CacheConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15561,7 +12128,7 @@
           "example": "无",
           "member": "Origin",
           "name": "Origin",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15571,7 +12138,7 @@
           "example": "无",
           "member": "SmartRouting",
           "name": "SmartRouting",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15581,7 +12148,7 @@
           "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15591,7 +12158,7 @@
           "example": "无",
           "member": "OfflineCache",
           "name": "OfflineCache",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15601,7 +12168,7 @@
           "example": "无",
           "member": "WebSocket",
           "name": "WebSocket",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15611,7 +12178,7 @@
           "example": "无",
           "member": "ClientIpHeader",
           "name": "ClientIpHeader",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15621,7 +12188,7 @@
           "example": "无",
           "member": "CachePrefresh",
           "name": "CachePrefresh",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15631,7 +12198,7 @@
           "example": "无",
           "member": "Ipv6",
           "name": "Ipv6",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15641,7 +12208,7 @@
           "example": "无",
           "member": "Https",
           "name": "Https",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15651,7 +12218,7 @@
           "example": "无",
           "member": "ClientIpCountry",
           "name": "ClientIpCountry",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15661,7 +12228,7 @@
           "example": "无",
           "member": "Grpc",
           "name": "Grpc",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15671,7 +12238,17 @@
           "example": "无",
           "member": "ImageOptimize",
           "name": "ImageOptimize",
-          "required": true,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cross-MLC-border acceleration. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccelerateMainland",
+          "name": "AccelerateMainland",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -15679,9 +12256,9 @@
           "disabled": false,
           "document": "",
           "example": "无",
-          "member": "AccelerateMainland",
-          "name": "AccelerateMainland",
-          "required": false,
+          "member": "StandardDebug",
+          "name": "StandardDebug",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
