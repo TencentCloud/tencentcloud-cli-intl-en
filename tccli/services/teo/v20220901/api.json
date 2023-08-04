@@ -7,6 +7,13 @@
       "output": "BindZoneToPlanResponse",
       "status": "online"
     },
+    "CheckCnameStatus": {
+      "document": "This API is used to query the CNAME status of a domain name.",
+      "input": "CheckCnameStatusRequest",
+      "name": "Queries the CNAME status of a domain name",
+      "output": "CheckCnameStatusResponse",
+      "status": "online"
+    },
     "CreateAccelerationDomain": {
       "document": "This API is used to connect a domain to EdgeOne.",
       "input": "CreateAccelerationDomainRequest",
@@ -57,7 +64,7 @@
       "status": "online"
     },
     "CreatePurgeTask": {
-      "document": "This API is used to create a cache purging task.",
+      "document": "When there are resources updated on the origin with the TTL remaining valid, users cannot access the latest resources. In this case, you can purge the cache using this API. There are two methods: <li>Delete: This method deletes the node cache without verification and retrieves u200dthe latest resources from the origin when receiving a request.</li><li>Invalidate: This method marks the node cache as invalid and sends a request with the If-None-Match and If-Modified-Since headers to the origin. If the origin responses with 200, the latest resources are retrieved to be cached on the node. If a 304 response is returned, the latest resources are not cached on the node.\n\n</li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1). </li>",
       "input": "CreatePurgeTaskRequest",
       "name": "This API is used to create a cache purging task.",
       "output": "CreatePurgeTaskResponse",
@@ -1417,7 +1424,6 @@
       "document": "Application proxy rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The protocol. Values:\n<li>`TCP`: TCP protocol.</li>\n<li>`UDP`: UDP protocol.</li>",
           "example": "TCP",
@@ -1428,7 +1434,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The access port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>\nNote that each rule can have up to 20 ports.",
           "example": "80",
@@ -1439,7 +1444,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li>",
           "example": "custom",
@@ -1450,7 +1454,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
           "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
@@ -1461,7 +1464,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID.",
           "example": "rule-xxx",
@@ -1472,7 +1474,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule status. Values:\n<li>`online`: Enabled.</li>\n<li>`offline`: Disabled.</li>\n<li>`progress`: Deploying</li>\n<li>`stopping`: Disabling</li>\n<li>`fail`: Failed to deploy or disable</li>",
           "example": "online",
@@ -1483,7 +1484,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Passes the client IP. Values:\n<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>\n<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>\n<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>\n<li>`OFF`: Not pass the client IP.</li>Default value: OFF.",
           "example": "TOA",
@@ -1494,7 +1494,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable session persistence. Values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>Default value: false",
           "example": "false",
@@ -1505,7 +1504,16 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
           "disabled": false,
           "document": "The origin port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>",
           "example": "80-90",
@@ -1990,7 +1998,6 @@
       "document": "Cache time settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable cache configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -2001,7 +2008,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cache expiration time setting.\nUnit: second. The maximum value is 365 days.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "36000",
@@ -2012,9 +2018,8 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable force cache. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": true,
+          "document": "Whether to enable force cache. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "on/off",
           "member": "string",
           "name": "IgnoreCacheControl",
@@ -2128,6 +2133,54 @@
       ],
       "usage": "both"
     },
+    "CheckCnameStatusRequest": {
+      "document": "CheckCnameStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the site.",
+          "example": "zone-20hyebgyfsko",
+          "is_base64": false,
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of domain names.",
+          "example": "[\"example.qq.com\"]",
+          "is_base64": false,
+          "member": "string",
+          "name": "RecordNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckCnameStatusResponse": {
+      "document": "CheckCnameStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of CNAME statuses.",
+          "example": "无",
+          "member": "CnameStatus",
+          "name": "CnameStatus",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ClientIpCountry": {
       "document": "Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.",
       "members": [
@@ -2179,6 +2232,45 @@
         }
       ],
       "usage": "both"
+    },
+    "CnameStatus": {
+      "document": "CNAME status",
+      "members": [
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The domain name.",
+          "example": "test.qq.com",
+          "member": "string",
+          "name": "RecordName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The CNAME address.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "test.qq.com.acc.tyxcdn.com",
+          "member": "string",
+          "name": "Cname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "disabled": false,
+          "document": "The CNAME status. Values:\n<li>`active`: Activated</li>\n<li>`moved`: Not activated </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CodeAction": {
       "document": "Rule engine action with a status code",
@@ -2474,7 +2566,6 @@
       "document": "CreateApplicationProxyRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-21xfqlh4qjee",
@@ -2484,7 +2575,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy ID.",
           "example": "proxy-19389e5dwwxfs",
@@ -2494,7 +2584,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The protocol. Values:\n<li>`TCP`: TCP protocol</li>\n<li>`UDP`: UDP protocol</li>",
           "example": "TCP",
@@ -2504,7 +2593,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The access port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-90</li>",
           "example": "[\"80\"]",
@@ -2514,7 +2602,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li>",
           "example": "custom",
@@ -2524,7 +2611,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
           "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
@@ -2534,7 +2620,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Passes the client IP. Values:\n<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>\n<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>\n<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>\n<li>`OFF`: Not pass the client IP.</li>Default value: OFF.",
           "example": "TOA",
@@ -2544,7 +2629,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable session persistence. Values:\n<li>`true`: Enable.</li>\n<li>`false`: Disable.</li>Default value: false.",
           "example": "false",
@@ -2554,7 +2638,15 @@
           "type": "bool"
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "required": false,
+          "type": "int"
+        },
+        {
           "disabled": false,
           "document": "The origin port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>",
           "example": "80-90",
@@ -2822,7 +2914,7 @@
         },
         {
           "disabled": false,
-          "document": "Purging mode. Valid values: \n<li>`purge_url`: Purge by URL;</li>\n<li>`purge_prefix`: Purge by directory;</li>\n<li>`purge_host`: Purge by hostname;</li>\n<li>`purge_all`: Puege all cache;</li>\n<li>`purge_cache_tag`: Purge by cache tag.</li>",
+          "document": "Type of cache purging. Values:\n<li>`purge_url`: Purge by the URL</li>\n<li>`purge_prefix`: Purge by the directory</li>\n<li>`purge_host`: Purge by the hostname</li>\n<li>`purge_all`: Purge all caches</li>\n<li>`purge_cache_tag`: Purge by the cache-tag </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).",
           "example": "purge_url",
           "member": "string",
           "name": "Type",
@@ -2831,7 +2923,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.",
           "example": "invalidate",
           "member": "string",
           "name": "Method",
@@ -2840,7 +2932,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource to be purged, which depends on the `Type` field. \n1. When `Type = purge_host`: \nEnter the hostname, such as www.example.com and foo.bar.example.com. \n2. When `Type = purge_prefix`: \nEnter the prefix, such as http://www.example.com/example/. \n3. When `Type = purge_url`: \nEnter the URL, such as https://www.example.com/example.jpg. \n4. When `Type = purge_all`: \n`Targets` can be left empty. \n5. When `Type = purge_cache_tag`: \nEnter the cache tag, such as tag1. \nNote: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).",
+          "document": "List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters u200dare escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -2868,7 +2960,6 @@
           "example": "jkqj4hahfkaf",
           "member": "string",
           "name": "JobId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2878,7 +2969,6 @@
           "example": "[]",
           "member": "FailReason",
           "name": "FailedList",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -3018,19 +3108,17 @@
       "document": "CreateZone request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site name.",
           "example": "test.com",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The access mode. Values:\n<li>`full`: Access through a name server.</li>\n<li>`partial`: Access through a CNAME record. Note that you should verify your site with the IdentifyZone API before starting site access.</li>If it is left empty, the default value `full` is used.",
+          "document": "The access mode. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME. Before using this access mode, first verify your site with the site verification API (IdentifyZone).<li>`noDomainAccess`: Access without using a domain name. If this value is passed, only the Tags field needs to be set. </li>\nIf not specified, this field uses the default value `full`.",
           "example": "full",
           "member": "string",
           "name": "Type",
@@ -3038,7 +3126,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to skip scanning the existing DNS records of the site. Default value: false.",
           "example": "false",
@@ -3048,7 +3135,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The resource tag.",
           "example": "无",
@@ -3058,7 +3144,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to allow duplicate sites. Values:\n<li>`true`: Duplicate sites are allowed.</li>\n<li>`false`: Duplicate sites are not allowed.</li>If it is left empty, the default value `false` is used.",
           "example": "false",
@@ -3068,7 +3153,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).",
           "example": "zone-example",
@@ -7859,7 +7943,6 @@
       "document": "ModifyApplicationProxyRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-21xfqlh4qjee",
@@ -7869,7 +7952,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy ID.",
           "example": "proxy-00dde48321vd",
@@ -7879,7 +7961,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID.",
           "example": "rule-19389e5a-118b-11ed-9951-525400655ede",
@@ -7889,7 +7970,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li></li>The original configuration will apply if this field is not specified.",
           "example": "custom",
@@ -7899,7 +7979,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The access port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-90</li>",
           "example": "[\"90\"]",
@@ -7909,7 +7988,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The protocol. Values:\n<li>`TCP`: TCP protocol</li>\n<li>`UDP`: UDP protocol</li>The original configuration will apply if this field is not specified.",
           "example": "TCP",
@@ -7919,7 +7997,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>\n\nThe original configuration will apply if this field is not specified.",
           "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
@@ -7929,7 +8006,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Passes the client IP. Values:\n<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>\n<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>\n<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>\n<li>`OFF`: Not pass the client IP.</li>If not specified, this field uses the default value OFF.",
           "example": "TOA",
@@ -7939,7 +8015,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable session persistence. Values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>If it is left empty, the default value `false` is used.",
           "example": "false",
@@ -7949,7 +8024,15 @@
           "type": "bool"
         },
         {
-          "default": "",
+          "disabled": false,
+          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "required": false,
+          "type": "int"
+        },
+        {
           "disabled": false,
           "document": "The origin port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>",
           "example": "80-90",
@@ -8083,7 +8166,6 @@
       "document": "ModifyHostsCertificate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site.",
           "example": "zone-xxxx",
@@ -8093,7 +8175,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of domain names that the certificate will be attached to.",
           "example": "xxx.test.com",
@@ -8103,7 +8184,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate information. Note that only `CertId` is required. If it is not specified, the default certificate will be used.",
           "example": "teo-xxxxx",
@@ -8113,9 +8193,8 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Whether the certificate is managed by EdgeOne. Values:\n<li>`apply`: Managed by EdgeOne</li>\n<li>`none`: Not managed by EdgeOne</li>If it is left empty, the default value `apply` is used.",
+          "document": "Whether the certificate is managed by EdgeOne. Values:\n<li>`apply`: Managed by EdgeOne.</li>\n<li>`none`: Not managed by EdgeOne.</li>If not specified, this field uses the default value `none`.",
           "example": "apply",
           "member": "string",
           "name": "ApplyType",
@@ -8420,7 +8499,6 @@
       "document": "ModifyZone request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxxxx",
@@ -8430,9 +8508,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The site access method. Values:\n<li>`full`: Access through a name server.</li>\n<li>`partial`: Access through a CNAME record.</li>The original configuration will apply if this field is not specified.",
+          "document": "Access mode of the site. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME u200drecord. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.",
           "example": "partial",
           "member": "string",
           "name": "Type",
@@ -8440,9 +8517,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The custom name servers. If this field is not specified, the default name servers will be used.",
+          "document": "The custom name servers. The original configuration applies if this field is not specified. It is not allowed to pass this field when a site is connected without using a domain name.",
           "example": "无",
           "member": "VanityNameServers",
           "name": "VanityNameServers",
@@ -8450,12 +8526,29 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).",
           "example": "zone-example",
           "member": "string",
           "name": "AliasZoneName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The region where the site requests access. Values:\n<li> `global`: Global coverage</li>\n<li> `mainland`: Chinese mainland</li>\n<li> `overseas`: Outside the Chinese mainland </li>It is not allowed to pass this field when a site is connected without using a domain name.",
+          "example": "global",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the site. This field takes effect only when the site switches from domainless access to CNAME access.",
+          "example": "test.com",
+          "member": "string",
+          "name": "ZoneName",
           "required": false,
           "type": "string"
         }
@@ -8659,7 +8752,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Standard debugging configuration.",
           "example": "无",
           "member": "StandardDebug",
           "name": "StandardDebug",
@@ -9013,13 +9106,12 @@
       "members": [
         {
           "disabled": false,
-          "document": "The origin type. Values: \n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>",
+          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address </li>\n<li>`ORIGIN_GROUP`: Origin group </li>\n<li>`AWS_S3`: AWS S3 bucket address </li>\n<li>`SPACE`: EdgeOne Shield Space </li>",
           "example": "ip_domain",
           "member": "string",
           "name": "OriginType",
           "required": true,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -9028,8 +9120,7 @@
           "member": "string",
           "name": "Origin",
           "required": true,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -9038,8 +9129,7 @@
           "member": "string",
           "name": "BackupOrigin",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -9048,8 +9138,7 @@
           "member": "string",
           "name": "PrivateAccess",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -9058,8 +9147,7 @@
           "member": "PrivateParameter",
           "name": "PrivateParameters",
           "required": false,
-          "type": "list",
-          "value_allowed_null": true
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -10021,6 +10109,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The resource type. Values:\n<li>`plan`: Plan resources</li>\n<li>`pay-as-you-go`: Pay-as-you-go resources </li>\n<li>`value-added`: Value-added resources </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "value-added",
+          "member": "string",
+          "name": "Group",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The sites that are associated with the current resources.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ZoneNumber",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -11102,11 +11210,11 @@
       "usage": "both"
     },
     "StandardDebug": {
-      "document": "",
+      "document": "Standard debugging",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable standard debugging. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable </li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -11117,7 +11225,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The client IP to allow. It can be an IPv4/IPv6 address or a CIDR block. If not specified, it means to allow any client IP",
           "example": "[\"9.142.236.194\", \"43.154.226.0/24\"]",
           "member": "string",
           "name": "AllowClientIPList",
@@ -11128,7 +11236,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The time when the standard debugging setting expires. If it is exceeded, this feature u200dbecomes invalid.",
           "example": "2023-06-30T17:37:56+0800",
           "member": "datetime_iso",
           "name": "ExpireTime",
@@ -11200,7 +11308,6 @@
       "document": "Pricing query parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter key.",
           "example": "sv_xxx",
@@ -11211,7 +11318,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter value.",
           "example": "1",
@@ -11220,6 +11326,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quota for a resource. Values:\n<li>`zone`: Quota for sites</li>\n<li>`custom-rule`: Quota for custom rules</li>\n<li>`rate-limiting-rule`: Quota for rate limiting rules</li>\n<li>`l4-proxy-instance`: Quota for L4 proxy instances </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "zone",
+          "member": "string",
+          "name": "Pack",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ID of the L4 proxy instance.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "sid-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The protection specification.\nValues: <li> `cm_30G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_60G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_100G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `anycast_300G`: 300 Gbps Anycast-based protection in **Global (MLC)** service area</li><li> `anycast_unlimited`: Unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_300G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_unlimited`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_300G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_unlimited`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_100G_anycast_300G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_100G_anycast_unlimited`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "cm_30g",
+          "member": "string",
+          "name": "ProtectionSpecs",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -11878,7 +12014,7 @@
         },
         {
           "disabled": false,
-          "document": "The site access method. Values:\n<li>`full`: Access through a name server.</li>\n<li>`partial`: Access through a CNAME record.</li>",
+          "document": "Access mode of the site. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME record.</li>\n<li> `noDomainAccess`: Access without using a domain name </li>",
           "example": "full",
           "member": "string",
           "name": "Type",
@@ -12254,7 +12390,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Standard debugging configuration.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "StandardDebug",
           "name": "StandardDebug",

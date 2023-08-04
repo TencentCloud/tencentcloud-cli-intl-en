@@ -29,7 +29,7 @@
       "status": "online"
     },
     "ChangeMasterInstance": {
-      "document": "This API is used to switch with master instance in a replication group.",
+      "document": "This API is used to set a read-only instance in a replication group as a master instance.",
       "input": "ChangeMasterInstanceRequest",
       "name": "Switches with master instance in a replication group",
       "output": "ChangeMasterInstanceResponse",
@@ -351,7 +351,7 @@
       "status": "online"
     },
     "DescribeTaskInfo": {
-      "document": "This API is used to query the task result.",
+      "document": "This API is used to get the execution of a specified task.",
       "input": "DescribeTaskInfoRequest",
       "name": "Queries Redis task result",
       "output": "DescribeTaskInfoResponse",
@@ -582,9 +582,9 @@
       "status": "online"
     },
     "UpgradeInstanceVersion": {
-      "document": "This API is used to upgrade compatible instance version (for example, from Redis 2.8 to 4.0), or upgrade instance architecture (for example, from standard architecture to cluster architecture).",
+      "document": "This API is used to upgrade the instance to a later version or u200dto upgrade the current standard architecture to the cluster architecture.",
       "input": "UpgradeInstanceVersionRequest",
-      "name": "Upgrades instance version or architecture",
+      "name": "Upgrades the instance architecture",
       "output": "UpgradeInstanceVersionResponse",
       "status": "online"
     },
@@ -1066,9 +1066,8 @@
       "document": "ChangeMasterInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Replication group ID",
+          "document": "Replication group ID, such as `crs-rpl-m3zt****`. It is the unique identifier automatically assigned by the system when creating a replication group. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get it in the global replication list.\n",
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupId",
@@ -1076,14 +1075,22 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Instance ID",
+          "document": "ID of the read-only instance to be promoted to the master instance, such as `crs-xjhsdj****`. Log in to the the [TencentDB for Redis console](https://console.cloud.tencent.com/redis), and copy it in the instance list.\n\n",
           "example": "crs-deindi7de",
           "member": "string",
           "name": "InstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to promote the read-only instance to the master instance forcibly. Valid values:\n- `true`: Yes\n- `false`: No",
+          "example": "true",
+          "member": "bool",
+          "name": "ForceSwitch",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1097,7 +1104,7 @@
           "example": "486489",
           "member": "int64",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4480,7 +4487,7 @@
         },
         {
           "disabled": false,
-          "document": "Replication group ID",
+          "document": "ID of the specified replication group, such as `crs-rpl-m3zt****`. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get it in the global replication group list.",
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupId",
@@ -4489,7 +4496,7 @@
         },
         {
           "disabled": false,
-          "document": "Key words for fuzzy query, which can be set as the ID or name of a replication group.",
+          "document": "Keyword for fuzzy query, which can be a replication group ID or name. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get u200dthem in the global replication group list.",
           "example": "crs-deindi7de",
           "member": "string",
           "name": "SearchKey",
@@ -4708,7 +4715,6 @@
       "document": "DescribeTaskInfo request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Task ID",
           "example": "18215",
@@ -4725,11 +4731,10 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task status. preparing: to be run; running: running; succeed: succeeded; failed: failed; error: running error.",
+          "document": "Task status. Valid values: \n- `preparing`: To be run\n- `running`: Running\n- `succeed`: Succeedu200ded\n- `failed`: Failed\n- `Error`: Error occurred while running",
           "example": "succeed",
           "member": "string",
           "name": "Status",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4739,17 +4744,15 @@
           "example": "2018-11-01 17:25:14",
           "member": "string",
           "name": "StartTime",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task type",
+          "document": "Task type, including `Create`, `Configure`, u200d`Disable Instance`, `Clear Instance`, `Reset Password`, `Upgrade Version`, `Back up Instance`, `Modify Network`, `Migrate to New AZ` and `Promote to Master`.",
           "example": "redis缓存清空流程",
           "member": "string",
           "name": "TaskType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4759,17 +4762,15 @@
           "example": "crs-09u2u96z",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task message, which is displayed in case of an error. It will be blank if the status is running or succeeded.",
+          "document": "Message returned by task execution, which will be au200dn error message when execution fails or be empty when the status is `running `or `succeed-`.",
           "example": "ok",
           "member": "string",
           "name": "TaskMessage",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5253,17 +5254,17 @@
           "example": "100001",
           "member": "int64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region ID\n- `1`: Guangzhou \n- `4`: Shanghai \n- `5`: Hong Kong (China) \n- `6`: Toronto \n- `7`: Shanghai Finance \n- `8`: Beijing \n- `9`: Singapore\n- `11`: Shenzhen Finance\n- `15`: Silicon Valley (West US)\n- `16`: Chengdu \n- `17`: Germany \n- `18`: South Korea \n- `19`: Chongqing \n- `21`: India \n- `22`: Virginia (East US)\n- `23`: Thailand \n- `24`: Russia \n- `25`: Japan",
+          "document": "Region ID. Valid values:\n- `1`: Guangzhou \n- `4`: Shanghai \n- `5`: Hong Kong (China) \n- `6`: Toronto \n- `7`: Shanghai Finance \n- `8`: Beijing \n- `9`: Singapore\n- `11`: Shenzhen Finance\n- `15`: Silicon Valley (West US)\n- `16`: Chengdu \n- `17`: Germany \n- `18`: South Korea \n- `19`: Chongqing \n- `21`: India \n- `22`: Virginia (East US)\n- `23`: Thailand \n- `25`: Japan",
           "example": "1",
           "member": "int64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5273,7 +5274,7 @@
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5283,7 +5284,7 @@
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5293,7 +5294,7 @@
           "example": "0",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5303,7 +5304,7 @@
           "example": "20",
           "member": "int64",
           "name": "InstanceCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5313,7 +5314,7 @@
           "example": "复制组实例",
           "member": "Instances",
           "name": "Instances",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5323,7 +5324,7 @@
           "example": "无",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -7097,7 +7098,7 @@
           "example": "100001",
           "member": "int64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7107,7 +7108,7 @@
           "example": "crs-deindi7de",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7117,7 +7118,7 @@
           "example": "crs-deindi7de-name",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7127,7 +7128,7 @@
           "example": "1",
           "member": "uint64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7137,7 +7138,7 @@
           "example": "100001",
           "member": "uint64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7147,7 +7148,7 @@
           "example": "1",
           "member": "uint64",
           "name": "RedisReplicasNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7157,7 +7158,7 @@
           "example": "3",
           "member": "int64",
           "name": "RedisShardNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7167,17 +7168,17 @@
           "example": "16",
           "member": "int64",
           "name": "RedisShardSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance disk size\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Instance disk size\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "400",
           "member": "int64",
           "name": "DiskSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -7187,7 +7188,7 @@
           "example": "社区版Redis",
           "member": "string",
           "name": "Engine",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7197,7 +7198,7 @@
           "example": "rw",
           "member": "string",
           "name": "Role",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7207,7 +7208,7 @@
           "example": "127.0.0.1",
           "member": "string",
           "name": "Vip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7217,7 +7218,7 @@
           "example": "IPv6",
           "member": "string",
           "name": "Vip6",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7227,7 +7228,7 @@
           "example": "1",
           "member": "int64",
           "name": "VpcID",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7237,7 +7238,7 @@
           "example": "6379",
           "member": "int64",
           "name": "VPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7247,7 +7248,7 @@
           "example": "0",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7257,7 +7258,7 @@
           "example": "15007",
           "member": "int64",
           "name": "GrocerySysId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7267,7 +7268,7 @@
           "example": "7",
           "member": "int64",
           "name": "ProductType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7277,7 +7278,7 @@
           "example": "0000-00-00 00:00:00",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7287,7 +7288,7 @@
           "example": "0000-00-00 00:00:00",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10300,9 +10301,8 @@
       "document": "UpgradeInstanceVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "Target instance type after the change, which is the same as the `Type` of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
+          "document": "Target instance type after the change, which is the same as the `TypeId` of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.\n- For Redis 4.0 or later, a standard architecture instance can be upgraded to a cluster architecture instance on the same version; for example, you can upgrade from Redis 4.0 Standard Architecture to Redis 4.0 Cluster Architecture.\n- Cross-version architecture upgrade is not supported; for example, you cannot upgrade from Redis 4.0 Standard Architecture to Redis 5.0 Cluster Architecture.\n- The architecture of Redis 2.8 cannot be upgraded.\n- Cluster architecture cannot be downgraded to standard architecture.\n",
           "example": "6",
           "member": "string",
           "name": "TargetInstanceType",
@@ -10310,9 +10310,8 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Switch mode. Valid values: 1 (switch during the maintenance time), 2 (switch now).",
+          "document": "Switch time. Valid values:\n- `1`: Switch in the maintenance time.\n- `2` (default value): Switch now.",
           "example": "2",
           "member": "int64",
           "name": "SwitchOption",
@@ -10320,9 +10319,8 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "Instance ID",
+          "document": "ID of the specified instance, such as `crs-xjhsdj****`. Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), and copy it in the instance list.",
           "example": "crs-5qlrlhux",
           "member": "string",
           "name": "InstanceId",

@@ -8,18 +8,26 @@
         "title": "Binding a site to a target plan"
       }
     ],
-    "CreateAccelerationDomain": [
+    "CheckCnameStatus": [
       {
         "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckCnameStatus\n<Common request parameters>\n\n{\n    \"RecordNames\": [\n        \"example.qq.com\"\n    ],\n    \"ZoneId\": \"zone-20hyebgyfsko\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CnameStatus\": [\n            {\n                \"RecordName\": \"test.qq.com\",\n                \"Cname\": \"test.qq.com.acc.tyxcdn.com\",\n                \"Status\": \"active\"\n            }\n        ],\n        \"RequestId\": \"d08bed0d-15bf-4d65-ab56-906aee0c845\"\n    }\n}",
+        "title": "Querying the CNAME status of a domain name"
+      }
+    ],
+    "CreateAccelerationDomain": [
+      {
+        "document": "This example shows you how to connect a domain to EdgeOne.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"DomainName\": \"qq.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"OriginInfo\": {\n        \"OriginType\": \"ip_domain\",\n        \"Origin\": \"qq.com\",\n        \"BackupOrigin\": \"\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
-        "title": "Adding an accelerated domain name"
+        "title": "Connecting a domain to EdgeOne"
       },
       {
-        "document": "创建源站类型为S3兼容，鉴权版本为AWS signature v2的加速域名",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<common request parameters>\n\n{\n    \"DomainName\": \"qq.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"OriginInfo\": {\n        \"OriginType\": \"AWS_S3\",\n        \"Origin\": \"https://teo.cos.ap-beijing.myqcloud.com\",\n        \"PrivateParameters\": [\n            {\n                \"Name\": \"AccessKeyId\",\n                \"Value\": \"AKIDdDva7VjFk7LQJ0X5WnbKE7mQTest\"\n            },\n            {\n                \"Name\": \"SecretAccessKey\",\n                \"Value\": \"nMirpdWhhT6bxPsaFwYM1SzQrTest\"\n            },\n            {\n                \"Name\": \"SignatureVersion\",\n                \"Value\": \"v2\"\n            },\n            {\n                \"Name\": \"Region\",\n                \"Value\": \"ap-beijing\"\n            }\n        ]\n    }\n}",
+        "document": "This example shows you how to connect a domain u200dto EdgeOne and configure an AWS S3 origin that supports u200dAWS Signature Version 2.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"DomainName\": \"qq.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"OriginInfo\": {\n        \"OriginType\": \"AWS_S3\",\n        \"Origin\": \"https://teo.cos.ap-beijing.myqcloud.com\",\n        \"PrivateParameters\": [\n            {\n                \"Name\": \"AccessKeyId\",\n                \"Value\": \"AKIDdDva7VjFk7LQJ0X5WnbKE7mQTest\"\n            },\n            {\n                \"Name\": \"SecretAccessKey\",\n                \"Value\": \"nMirpdWhhT6bxPsaFwYM1SzQrTest\"\n            },\n            {\n                \"Name\": \"SignatureVersion\",\n                \"Value\": \"v2\"\n            },\n            {\n                \"Name\": \"Region\",\n                \"Value\": \"ap-beijing\"\n            }\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a703\"\n    }\n}",
-        "title": "创建AWS signature v2鉴权类型的加速域名"
+        "title": "Connecting a domain to EdgeOne and configuring AWS Signature Version 2"
       }
     ],
     "CreateAliasDomain": [
@@ -40,7 +48,7 @@
     ],
     "CreateApplicationProxyRule": [
       {
-        "document": " ",
+        "document": "This example shows you how to create an application proxy rule.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3df3e931-3159-4337-adc7-7604e01e0fa9\",\n        \"RuleId\": \"rule-a8f0d49a-33d7-11ed-9b89-52540005c111\"\n    }\n}",
         "title": "Creating an application proxy rule"
@@ -108,40 +116,40 @@
     ],
     "CreatePurgeTask": [
       {
-        "document": "此清除类型使用的是标记过期的清除方法，会将该站点下所有 HTTP 应答包中存在对应 Cache-Tag 响应头标签值（tags）的资源标记为过期。\n例如：需要清除站点 example.com 下所有 HTTP 应答包中包含 tag1、tag2 或 tag3 标签且发生过变更的资源，可以参照以下示例进行刷新。",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<common request parameters>\n\n{\n    \"Targets\": [\n        \"tag1\",\n        \"tag2\",\n        \"tag3\"\n    ],\n    \"Type\": \"purge_cache_tag\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
+        "document": "By using Invalidate method, resources under a site are associated with tags in the HTTP response header Cache-Tag and marked as invalid.\nThis example shows you how to purge resources that contain tag1, tag2 and tag3 and have changed under the site example.com.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"tag1\",\n        \"tag2\",\n        \"tag3\"\n    ],\n    \"Type\": \"purge_cache_tag\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwcs\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Cache-Tag 刷新"
+        "title": "Purging by the Cache-Tag"
       },
       {
-        "document": "此清除类型使用的是标记过期的清除方法，会将提交的 Hostname 下的所有资源标记为过期。\n例如：需要清除站点域名 www.example.com 下所有发生过变更的资源，可以参照以下示例进行刷新。<li>注意：不支持提交 *.test.com 格式的 Host，即域名中不能包含通配符，需要写明对应的子域名。</li>",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<common request parameters>\n\n{\n    \"Targets\": [\n        \"www.example.com\"\n    ],\n    \"Type\": \"purge_host\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
+        "document": "By using Invalidate method, resources under a domain name that matches the specified hostname are marked as invalid.\nThis example shows you how to purge resources changed under the site domain www.example.com. <li>Note: Domain names cannot include wildcards (*). </li>",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"www.example.com\"\n    ],\n    \"Type\": \"purge_host\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwcs\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Hostname 刷新"
+        "title": "Purging by the hostname"
       },
       {
-        "document": "此清除类型使用的是直接删除的清除方法，会匹配清除提交的 URL 的节点缓存资源。\n例如：需要清除站点域名 www.example.com 下 /a.txt 资源，可以参照以下示例进行刷新。\n\n",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/a.txt\"\n    ],\n    \"Type\": \"purge_url\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
+        "document": "By using Delete method, resources under a URL that matches the specified hostname are removed.\nThis example shows you how to purge resources in the directory /a.txt under the site domain www.example.com.\n\n",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/a.txt\"\n    ],\n    \"Type\": \"purge_url\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwch\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "URL刷新"
+        "title": "Purging by the URL"
       },
       {
-        "document": "此清除类型使用的是标记过期的清除方法，会将所提交站点下的缓存内容都标记为过期。\n例如：需要清除站点 example.com 下的所有发生过变更的资源，可以参考以下示例进行刷新。",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<common request parameters>\n\n{\n    \"Type\": \"purge_all\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
+        "document": "By using Invalidate method, all cached resources under a site are marked as invalid.\nThis example shows you how to purge all cached resources changed under the site example.com.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Type\": \"purge_all\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwcs\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "刷新站点下全部缓存"
+        "title": "Purging all caches under a site"
       },
       {
-        "document": "此清除类型默认使用的是标记过期的清除方法，可以根据 Method 调整清除方式。\n例如：需要清除站点域名 www.example.com 下 /test 目录下所有发生变更的资源，可以参考以下示例进行刷新。\n",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/test/\"\n    ],\n    \"Type\": \"purge_prefix\",\n    \"Method\": \"invalidate\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
+        "document": "To purge the resources updated under a directory, pass `invalidate` into the Method field.\nThis example shows you how to purge resources changed in the directory /test under the site domain www.example.com.\n",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/test/\"\n    ],\n    \"Type\": \"purge_prefix\",\n    \"Method\": \"invalidate\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwcj\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "目录刷新 — 仅刷新目录下发生变更的资源"
+        "title": "Only purging resources updated in the directory"
       },
       {
-        "document": "此清除方式需要将 Method 的值调整为 delete， 使用直接删除的清除方法清除节点资源。\n例如：需要清除站点域名 www.example.com 下 /test 目录下所有资源，可以参考以下示例进行刷新。\n",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/test/\"\n    ],\n    \"Type\": \"purge_prefix\",\n    \"Method\": \"delete\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
+        "document": "To purge all resources under u200da directory, pass `delete` into the Method field.\nThis example shows you how to purge all resources in the /test directory under www.example.com.\n",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/test/\"\n    ],\n    \"Type\": \"purge_prefix\",\n    \"Method\": \"delete\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwck\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "目录刷新 — 直接删除对应目录下的资源"
+        "title": "Purging by the directory – Deleting resources in the directory"
       }
     ],
     "CreateRule": [
@@ -168,10 +176,10 @@
     ],
     "CreateZone": [
       {
-        "document": " ",
+        "document": "This example shows you how to connect a site to EdgeOne.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateZone\n<Common request parameters>\n\n{\n    \"JumpStart\": false,\n    \"Type\": \"full\",\n    \"ZoneName\": \"example.com\",\n    \"AllowDuplicates\": false,\n    \"AliasZoneName\": \"zone-example\"\n}",
         "output": "{\n    \"Response\": {\n        \"ZoneId\": \"zone-27q0p0bali16\",\n        \"RequestId\": \"2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a site"
+        "title": "Connecting a site to EdgeOne"
       }
     ],
     "DeleteAccelerationDomains": [
@@ -588,7 +596,7 @@
     ],
     "ModifyApplicationProxyRule": [
       {
-        "document": " ",
+        "document": "This example shows you how to modify an application proxy rule.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying an application proxy rule"
@@ -676,7 +684,7 @@
     ],
     "ModifyZone": [
       {
-        "document": " ",
+        "document": "This example shows you how to modify a site.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZone\n<Common request parameters>\n\n{\n    \"VanityNameServers\": {\n        \"Switch\": \"on\",\n        \"Servers\": [\n            \"ns1.example.com\",\n            \"ns2.example.com\"\n        ]\n    },\n    \"Type\": \"full\",\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"AliasZoneName\": \"zone-example\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4ac50b24-7dc2-47f4-92ce-9fd25d53gt2f\"\n    }\n}",
         "title": "Modifying a site"

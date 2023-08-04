@@ -34,8 +34,8 @@
     ],
     "ChangeMasterInstance": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeMasterInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"GroupId\": \"crs-rpl-sa5dsfs\"\n}",
+        "document": "This example shows you how to set a read-only instance in a replication group as a master instance.",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeMasterInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5****\",\n    \"GroupId\": \"crs-rpl-sa5****\",\n    \"ForceSwitch\": false\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
         "title": "Sample request"
       }
@@ -408,9 +408,9 @@
     ],
     "DescribeTaskInfo": [
       {
-        "document": " ",
+        "document": "This example shows you how to query the task execution results.",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeTaskInfo\n&TaskId=18215\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Status\": \"succeed\",\n        \"StartTime\": \"2018-11-01 17:25:14\",\n        \"TaskType\": \"Redis cache purge process\",\n        \"InstanceId\": \"crs-09u2u96z\",\n        \"TaskMessage\": \"\",\n        \"RequestId\": \"81120ab8-fea0-41ab-af7e-283c0348c4fc\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"succeed\",\n        \"StartTime\": \"2018-11-01 17:25:14\",\n        \"TaskType\": \"redis cache clearing process\",\n        \"InstanceId\": \"crs-09u2u96z\",\n        \"TaskMessage\": \"\",\n        \"RequestId\": \"81120ab8-fea0-41ab-af7e-283c0348c4fc\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -672,8 +672,8 @@
     ],
     "UpgradeInstanceVersion": [
       {
-        "document": " ",
-        "input": "https://redis.tencentcloudapi.com/?Action=UpgradeInstanceVersion\n&InstanceId=crs-5qlrlhux\n&SwitchOption=2\n&TargetInstanceType=6\n&<Common request parameters>",
+        "document": "This example shows you how to upgrade the current instance to Redis 4u200d.0 cluster architecture.",
+        "input": "https://redis.tencentcloudapi.com/?Action=UpgradeInstanceVersion\n&InstanceId=crs-5qlr****\n&SwitchOption=2\n&TargetInstanceType=7\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample"
       }
