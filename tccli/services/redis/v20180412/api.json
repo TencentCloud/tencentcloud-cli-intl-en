@@ -582,7 +582,7 @@
       "status": "online"
     },
     "UpgradeInstanceVersion": {
-      "document": "This API is used to upgrade the instance to a later version or u200dto upgrade the current standard architecture to the cluster architecture.",
+      "document": "This API is used to upgrade the instance to a later version or to upgrade the current standard architecture to the cluster architecture.",
       "input": "UpgradeInstanceVersionRequest",
       "name": "Upgrades the instance architecture",
       "output": "UpgradeInstanceVersionResponse",
@@ -4496,7 +4496,7 @@
         },
         {
           "disabled": false,
-          "document": "Keyword for fuzzy query, which can be a replication group ID or name. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get u200dthem in the global replication group list.",
+          "document": "Keyword for fuzzy query, which can be a replication group ID or name. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get them in the global replication group list.",
           "example": "crs-deindi7de",
           "member": "string",
           "name": "SearchKey",
@@ -4731,7 +4731,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task status. Valid values: \n- `preparing`: To be run\n- `running`: Running\n- `succeed`: Succeedu200ded\n- `failed`: Failed\n- `Error`: Error occurred while running",
+          "document": "Task status. Valid values: \n- `preparing`: To be run\n- `running`: Running\n- `succeed`: Succeeded\n- `failed`: Failed\n- `Error`: Error occurred while running",
           "example": "succeed",
           "member": "string",
           "name": "Status",
@@ -4749,7 +4749,7 @@
         },
         {
           "disabled": false,
-          "document": "Task type, including `Create`, `Configure`, u200d`Disable Instance`, `Clear Instance`, `Reset Password`, `Upgrade Version`, `Back up Instance`, `Modify Network`, `Migrate to New AZ` and `Promote to Master`.",
+          "document": "Task type, including `Create`, `Configure`, `Disable Instance`, `Clear Instance`, `Reset Password`, `Upgrade Version`, `Back up Instance`, `Modify Network`, `Migrate to New AZ` and `Promote to Master`.",
           "example": "redis缓存清空流程",
           "member": "string",
           "name": "TaskType",
@@ -4767,7 +4767,7 @@
         },
         {
           "disabled": false,
-          "document": "Message returned by task execution, which will be au200dn error message when execution fails or be empty when the status is `running `or `succeed-`.",
+          "document": "Message returned by task execution, which will be an error message when execution fails or be empty when the status is `running `or `succeed-`.",
           "example": "ok",
           "member": "string",
           "name": "TaskMessage",
@@ -7174,7 +7174,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance disk size\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "400",
           "member": "int64",
           "name": "DiskSize",

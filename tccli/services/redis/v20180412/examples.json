@@ -672,7 +672,7 @@
     ],
     "UpgradeInstanceVersion": [
       {
-        "document": "This example shows you how to upgrade the current instance to Redis 4u200d.0 cluster architecture.",
+        "document": "This example shows you how to upgrade the current instance to Redis 4.0 cluster architecture.",
         "input": "https://redis.tencentcloudapi.com/?Action=UpgradeInstanceVersion\n&InstanceId=crs-5qlr****\n&SwitchOption=2\n&TargetInstanceType=7\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample"
