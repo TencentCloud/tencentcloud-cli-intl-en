@@ -14,6 +14,13 @@
       "output": "ApplySdkVerificationTokenResponse",
       "status": "online"
     },
+    "ApplyWebVerificationBizTokenIntl": {
+      "document": "This API is used to apply for a BizToken before calling the web-based verification service each time. This token is required for initiating a verification process and getting the result after the verification is completed.",
+      "input": "ApplyWebVerificationBizTokenIntlRequest",
+      "name": "Applies for a BizToken for the web-based verification service",
+      "output": "ApplyWebVerificationBizTokenIntlResponse",
+      "status": "online"
+    },
     "ApplyWebVerificationToken": {
       "document": "This API is used to apply for a token before calling the web-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
       "input": "ApplyWebVerificationTokenRequest",
@@ -75,6 +82,13 @@
       "input": "GetWebVerificationResultRequest",
       "name": "Gets results of web-based verification",
       "output": "GetWebVerificationResultResponse",
+      "status": "online"
+    },
+    "GetWebVerificationResultIntl": {
+      "document": "This API is used to get the verification result with the corresponding BizToken after the u200dweb-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.",
+      "input": "GetWebVerificationResultIntlRequest",
+      "name": "Gets the result of a u200dweb-based verification process",
+      "output": "GetWebVerificationResultIntlResponse",
       "status": "online"
     },
     "LivenessCompare": {
@@ -224,6 +238,74 @@
           "member": "string",
           "name": "SdkToken",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyWebVerificationBizTokenIntlRequest": {
+      "document": "ApplyWebVerificationBizTokenIntl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Base64-encoded string (max 8 MB in size) of the photo to be compared.",
+          "example": "CompareImageBase64String",
+          "is_base64": false,
+          "member": "string",
+          "name": "CompareImageBase64",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. Example: `https://www.tencentcloud.com/products/faceid`.\nAfter the verification process is completed, the `BizToken` of this process will be spliced to the callback URL in the format of `https://www.tencentcloud.com/products/faceid?token={BizToken}` before redirect.",
+          "example": "https://www.tencentcloud.com/products/faceid",
+          "is_base64": false,
+          "member": "string",
+          "name": "RedirectURL",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The passthrough parameter of the business, max 1,000 characters, which will be returned in `GetWebVerificationResultIntl`.",
+          "example": "ExtraString",
+          "is_base64": false,
+          "member": "string",
+          "name": "Extra",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyWebVerificationBizTokenIntlResponse": {
+      "document": "ApplyWebVerificationBizTokenIntl response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The URL of this verification process, which will be returned to the frontend of the browser for starting the process.",
+          "example": "https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
+          "member": "string",
+          "name": "VerificationUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.",
+          "example": "81EEF678-28EE-4759-A82E-6CBBBE6BC442",
+          "member": "string",
+          "name": "BizToken",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1073,6 +1155,84 @@
       ],
       "type": "object"
     },
+    "GetWebVerificationResultIntlRequest": {
+      "document": "GetWebVerificationResultIntl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The token for the web-based verification, which is generated using the `ApplyWebVerificationBizTokenIntl` API.",
+          "example": "81EEF678-28EE-4759-A82E-6CBBBE6BC442",
+          "is_base64": false,
+          "member": "string",
+          "name": "BizToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetWebVerificationResultIntlResponse": {
+      "document": "GetWebVerificationResultIntl response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nFor other error codes, see <a href=\"https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e\">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The description of the final verification result.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "Success",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The detailed verification result list of this process. Retries are allowed, so a verification process may have several entries of results.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VerificationDetail",
+          "name": "VerificationDetailList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded string of the video collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no video is collected, null is returned.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "VideoBase64String",
+          "member": "string",
+          "name": "VideoBase64",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded string of the best face screenshot u200dcollected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "BestFrameBase64String",
+          "member": "string",
+          "name": "BestFrameBase64",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetWebVerificationResultRequest": {
       "document": "GetWebVerificationResult request structure.",
       "members": [
@@ -1303,101 +1463,92 @@
       "document": "The details of the verification process.",
       "members": [
         {
-          "default": "",
           "disabled": false,
-          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The description of the final verification result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The description of the final verification result.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "Success",
           "member": "string",
           "name": "ErrorMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The result of this liveness detection process. `0` indicates success.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of this liveness detection process. `0` indicates success.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "LivenessErrorCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The result description of this liveness detection process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Success",
           "member": "string",
           "name": "LivenessErrorMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "CompareErrorCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The result description of this comparison process.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The result description of this comparison process.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "success",
           "member": "string",
           "name": "CompareErrorMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The timestamp (ms) of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1634884881441",
           "member": "uint64",
           "name": "ReqTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Valid range: [0.00, 100.00]. By default, the person in the screenshot is judged as the same person in the image if the similarity is greater than or equal to 70.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Value range: [0.00, 100.00]. By default, the person in the screenshot is determined to be the same person in the image if the similarity is greater than or equal to 70.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "100.00",
           "member": "float",
           "name": "Similarity",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "3d12da91-db34-4e55-81c3-993a41d7ccb7",
           "member": "string",
           "name": "Seq",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
