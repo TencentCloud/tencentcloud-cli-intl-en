@@ -196,6 +196,13 @@
       "output": "DescribeAsyncRequestInfoResponse",
       "status": "online"
     },
+    "DescribeAuditLogs": {
+      "document": "This API is used to query a database audit log.",
+      "input": "DescribeAuditLogsRequest",
+      "name": "Queries a database audit log",
+      "output": "DescribeAuditLogsResponse",
+      "status": "online"
+    },
     "DescribeAuditPolicies": {
       "document": "This API is used to query the audit policies of a TencentDB instance.",
       "input": "DescribeAuditPoliciesRequest",
@@ -272,13 +279,6 @@
       "name": "Queries binlog backup file list",
       "output": "DescribeBinlogsResponse",
       "status": "online"
-    },
-    "DescribeCDBProxy": {
-      "document": "接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。\n\nThis API is deprecated and replaced by the `DescribeCdbProxyInfo` API. \n\nThis API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.",
-      "input": "DescribeCDBProxyRequest",
-      "name": "Queries the information of database proxy",
-      "output": "DescribeCDBProxyResponse",
-      "status": "deprecated"
     },
     "DescribeCdbProxyInfo": {
       "document": "This API is used to query the details of a database proxy.",
@@ -454,13 +454,6 @@
       "name": "Queries the security group information of a project",
       "output": "DescribeProjectSecurityGroupsResponse",
       "status": "online"
-    },
-    "DescribeProxyConnectionPoolConf": {
-      "document": "当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。\n\nThis API has been deprecated and replaced by the `DescribeCdbProxyInfo` API. \n\nThis API is used to query the connection pool configuration of a database proxy.",
-      "input": "DescribeProxyConnectionPoolConfRequest",
-      "name": "Queries the connection pool configuration of database proxy",
-      "output": "DescribeProxyConnectionPoolConfResponse",
-      "status": "deprecated"
     },
     "DescribeProxyCustomConf": {
       "document": "This API is used to query the proxy configuration.",
@@ -644,27 +637,6 @@
       "output": "ModifyBackupEncryptionStatusResponse",
       "status": "online"
     },
-    "ModifyCDBProxyConnectionPool": {
-      "document": "当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。\n\nThis API has been deprecated and replaced with `AdjustCdbProxyAddress`. \n\nThis API is used to configure the connection pool of database proxy. The supported configurations can be obtained by the `DescribeProxyConnectionPoolConf` API.",
-      "input": "ModifyCDBProxyConnectionPoolRequest",
-      "name": "Configures the connection pool of database proxy",
-      "output": "ModifyCDBProxyConnectionPoolResponse",
-      "status": "deprecated"
-    },
-    "ModifyCDBProxyDesc": {
-      "document": "当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。\n\nThis API has been deprecated and replaced with `ModifyCdbProxyAddressDesc`. \n\nThis API is used to modify the description of a database proxy.",
-      "input": "ModifyCDBProxyDescRequest",
-      "name": "Modifies the description of database proxy",
-      "output": "ModifyCDBProxyDescResponse",
-      "status": "deprecated"
-    },
-    "ModifyCDBProxyVipVPort": {
-      "document": "当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。\n\nThis API has been deprecated and replaced with `ModifyCdbProxyAddressVipAndVPort`. \n\nThis API is used to modify the VIP or the port of a database proxy.",
-      "input": "ModifyCDBProxyVipVPortRequest",
-      "name": "Modifies the VIP or port of database proxy",
-      "output": "ModifyCDBProxyVipVPortResponse",
-      "status": "deprecated"
-    },
     "ModifyCdbProxyAddressDesc": {
       "document": "This API is used to modify the description of a proxy address.",
       "input": "ModifyCdbProxyAddressDescRequest",
@@ -811,13 +783,6 @@
       "name": "Enables public network access for an instance",
       "output": "OpenWanServiceResponse",
       "status": "online"
-    },
-    "QueryCDBProxy": {
-      "document": "当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。\n\nThis API has been deprecated and replaced with `DescribeCdbProxyInfo`. \n\nThis API is used to query the proxy details.",
-      "input": "QueryCDBProxyRequest",
-      "name": "Queries the proxy details",
-      "output": "QueryCDBProxyResponse",
-      "status": "deprecated"
     },
     "ReleaseIsolatedDBInstances": {
       "document": "This API is used to deisolate an isolated TencentDB instance.",
@@ -1160,67 +1125,6 @@
       ],
       "type": "object"
     },
-    "Address": {
-      "document": "Address",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Address\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "127.0.0.1",
-          "member": "string",
-          "name": "Vip",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Port\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "8080",
-          "member": "uint64",
-          "name": "VPort",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "vpc-j1sxc77p",
-          "member": "string",
-          "name": "UniqVpcId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "VPC subnet ID\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "subnet-7v7ygzem",
-          "member": "string",
-          "name": "UniqSubnet",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Description\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "代理",
-          "member": "string",
-          "name": "Desc",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "AdjustCdbProxyAddressRequest": {
       "document": "AdjustCdbProxyAddress request structure.",
       "members": [
@@ -1524,12 +1428,21 @@
         },
         {
           "disabled": false,
-          "document": "The result set of the audit log filtered by this condition is set as the analysis Log.",
+          "document": "This parameter is disused. The result set of the audit log filtered by this condition is set as the analysis log.",
           "example": "无",
           "member": "AuditLogFilter",
           "name": "AuditLogFilter",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The result set of the audit log filtered by this condition is set as the analysis Log.",
+          "example": "无",
+          "member": "InstanceAuditLogFilters",
+          "name": "LogFilter",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1647,6 +1560,192 @@
         }
       ],
       "usage": "both"
+    },
+    "AuditLog": {
+      "document": "Audit log details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of affected rows",
+          "example": "0",
+          "member": "int64",
+          "name": "AffectRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The error code",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "“SELECT”",
+          "member": "string",
+          "name": "SqlType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit policy name, which will be unavailable soon.",
+          "example": "“sys_default”",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "“test_db”",
+          "member": "string",
+          "name": "DBName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "“SELECT * FROM test LIMIT 1;\"",
+          "member": "string",
+          "name": "Sql",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client address",
+          "example": "“10.0.10.3”",
+          "member": "string",
+          "name": "Host",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Username",
+          "example": "“Test”",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution time (μs)",
+          "example": "ExecTime",
+          "member": "int64",
+          "name": "ExecTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time",
+          "example": "\"2023-06-17 17:50:05\"",
+          "member": "string",
+          "name": "Timestamp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned rows",
+          "example": "0",
+          "member": "int64",
+          "name": "SentRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Thread ID",
+          "example": "1015",
+          "member": "int64",
+          "name": "ThreadId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of scanned rows\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "CheckRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CPU u200dexecution time (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "289.474",
+          "member": "float",
+          "name": "CpuTime",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "IO wait time (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "11",
+          "member": "uint64",
+          "name": "IoWaitTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Lock wait time (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "57",
+          "member": "uint64",
+          "name": "LockWaitTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time, which forms a time accurate to nanoseconds with·`timestamp`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "106483229",
+          "member": "uint64",
+          "name": "NsTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transaction u200dduration (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TrxLivingTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "AuditLogAggregationResult": {
       "document": "Analysis result of an audit log",
@@ -2535,100 +2634,6 @@
         }
       ],
       "type": "object"
-    },
-    "BaseGroupInfo": {
-      "document": "Proxy group information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Proxy group ID\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "proxy-pr1rb3j9",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Number of proxy nodes\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "1",
-          "member": "uint64",
-          "name": "NodeCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Proxy group status. Valid values: `init` (delivering), `online` (active), `offline` (inactive), `destroy` (destoryed)\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "发货中",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Region\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "ap-guangzhou",
-          "member": "string",
-          "name": "Region",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Availability zone\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "ap-guangzhou-1",
-          "member": "string",
-          "name": "Zone",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether read/write separation is enabled\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "false",
-          "member": "bool",
-          "name": "OpenRW",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Current proxy version\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "1.0.1",
-          "member": "string",
-          "name": "CurrentProxyVersion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Target version to which the proxy can be upgraded\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "1.1.2",
-          "member": "string",
-          "name": "SupportUpgradeProxyVersion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
     },
     "BinlogInfo": {
       "document": "Binlog information",
@@ -3702,45 +3707,6 @@
         }
       ],
       "usage": "both"
-    },
-    "ConnectionPoolInfo": {
-      "document": "Connection pool information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether the connection pool is enabled\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "true",
-          "member": "bool",
-          "name": "ConnectionPool",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "SessionConnectionPool",
-          "member": "string",
-          "name": "ConnectionPoolType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Connection persistence timeout in seconds\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "10",
-          "member": "int64",
-          "name": "PoolConnectionTimeOut",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
     },
     "CreateAccountsRequest": {
       "document": "CreateAccounts request structure.",
@@ -4934,380 +4900,380 @@
       "document": "CreateDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance memory size in MB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.",
           "example": "1000",
+          "is_base64": false,
           "member": "int64",
           "name": "Memory",
           "required": true,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance disk size in GB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.",
           "example": "50",
+          "is_base64": false,
           "member": "int64",
           "name": "Volume",
           "required": true,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance validity period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "Period",
           "required": true,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances. Value range: 1-100. Default value: `1`.",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "GoodsNum",
           "required": true,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ information. The system will automatically select an AZ by default. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.",
           "example": "ap-beijing-3",
+          "is_base64": false,
           "member": "string",
           "name": "Zone",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID. If this parameter is not passed in, the basic network will be selected by default. You can use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.",
           "example": "vpc-***",
+          "is_base64": false,
           "member": "string",
           "name": "UniqVpcId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. You can use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.",
           "example": "subnet-***",
+          "is_base64": false,
           "member": "string",
           "name": "UniqSubnetId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID. If this parameter is left empty, the default project will be used. When you purchase read-only instances and disaster recovery instances, the project ID is the same as that of the source instance by default.",
           "example": "0",
+          "is_base64": false,
           "member": "int64",
           "name": "ProjectId",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom port. Value range: 1024-65535.",
           "example": "3306",
+          "is_base64": false,
           "member": "int64",
           "name": "Port",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance typeA. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance).",
           "example": "master",
+          "is_base64": false,
           "member": "string",
           "name": "InstanceRole",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID. It is required when purchasing a read-only instance, which is the same as the source instance ID. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance ID.",
           "example": "cdb-***",
+          "is_base64": false,
           "member": "string",
           "name": "MasterInstanceId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
-          "document": "MySQL version. Valid values: `5.5`, `5.6`, `5.7`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported versions.",
+          "document": "MySQL version. Valid values: `5.5`, `5.6`, `5.7`, and `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions.",
           "example": "5.7",
+          "is_base64": false,
           "member": "string",
           "name": "EngineVersion",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The root account password. It can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing a replica instance and is invalid for read-only or disaster recovery instances.",
           "example": "your_password",
+          "is_base64": false,
           "member": "string",
           "name": "Password",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data replication mode. Valid values: `0` (async replication), `1` (semi-sync replication), `2` (strong sync replication). Default value: `0`.",
           "example": "0",
+          "is_base64": false,
           "member": "int64",
           "name": "ProtectMode",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Multi-AZ or single-AZ. Valid values: `0` (single-AZ), `1` (multi-AZ). Default value: `0`.",
           "example": "0",
+          "is_base64": false,
           "member": "int64",
           "name": "DeployMode",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of replica AZ 1, which is the `Zone` value by default.",
           "example": "ap-beijing-3",
+          "is_base64": false,
           "member": "string",
           "name": "SlaveZone",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.",
           "example": "[]",
+          "is_base64": false,
           "member": "ParamInfo",
           "name": "ParamList",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of replica AZ 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.",
           "example": "ap-beijing-3",
+          "is_base64": false,
           "member": "string",
           "name": "BackupZone",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal flag. Valid values: `0` (auto-renewal not enabled), `1` (auto-renewal enabled).",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.",
           "example": "ap-guangzhou",
+          "is_base64": false,
           "member": "string",
           "name": "MasterRegion",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.",
           "example": "[]",
+          "is_base64": false,
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Read-only instance parameter. This parameter must be passed in when purchasing read-only instances.",
           "example": "{}",
+          "is_base64": false,
           "member": "RoGroup",
           "name": "RoGroup",
           "required": false,
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.",
           "example": "***",
+          "is_base64": false,
           "member": "string",
           "name": "InstanceName",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance tag information",
           "example": "[]",
+          "is_base64": false,
           "member": "TagInfo",
           "name": "ResourceTags",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Placement group ID",
           "example": "ps-7t11vrwf",
+          "is_base64": false,
           "member": "string",
           "name": "DeployGroupId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A string unique in 48 hours, which is supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
           "example": "********",
+          "is_base64": false,
           "member": "string",
           "name": "ClientToken",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.",
           "example": "UNIVERSAL",
+          "is_base64": false,
           "member": "string",
           "name": "DeviceType",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template ID",
           "example": "0",
+          "is_base64": false,
           "member": "int64",
           "name": "ParamTemplateId",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of alarm policy IDs, which is `OriginId` obtained through the `DescribeAlarmPolicy` API.",
           "example": "[]",
+          "is_base64": false,
           "member": "int64",
           "name": "AlarmPolicyList",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of nodes of the instance. To purchase a read-only instance or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.",
           "example": "2",
+          "is_base64": false,
           "member": "int64",
           "name": "InstanceNodes",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of the instance CPU cores. If this parameter is left empty, it will be subject to the `Memory` value.",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "Cpu",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "AutoSyncFlag",
           "required": false,
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Financial cage ID.",
           "example": "cage-test",
+          "is_base64": false,
           "member": "string",
           "name": "CageId",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
           "example": "HIGH_STABILITY",
+          "is_base64": false,
           "member": "string",
           "name": "ParamTemplateType",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The array of alarm policy names, such as [\"policy-uyoee9wg\"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.",
           "example": "[]",
+          "is_base64": false,
           "member": "string",
           "name": "AlarmPolicyIdList",
           "required": false,
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.",
           "example": "true",
+          "is_base64": false,
           "member": "bool",
           "name": "DryRun",
           "required": false,
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.",
           "example": "InnoDB",
+          "is_base64": false,
           "member": "string",
           "name": "EngineType",
           "required": false,
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.",
           "example": "[]",
+          "is_base64": false,
           "member": "string",
           "name": "Vips",
           "required": false,
@@ -5321,11 +5287,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Short order ID",
-          "example": "['20171201110011']",
+          "document": "Billing sub-order ID",
+          "example": "['20230728051036129204961']",
           "member": "string",
           "name": "DealIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5335,7 +5301,7 @@
           "example": "['cdb-pn6gd5jp']",
           "member": "string",
           "name": "InstanceIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6037,6 +6003,124 @@
           "member": "string",
           "name": "Info",
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditLogsRequest": {
+      "document": "DescribeAuditLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "cdb-of5qmu1b",
+          "is_base64": false,
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "2023-06-18 00:00:00",
+          "is_base64": false,
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "2023-06-19 00:00:00",
+          "is_base64": false,
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The pagination parameter, which specifies the number of entries per page. Maximum value: 100 (default).",
+          "example": "100",
+          "is_base64": false,
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset",
+          "example": "0",
+          "is_base64": false,
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting order Valid values: `ASC (ascending), `DESC` (descending).",
+          "example": "DESC",
+          "is_base64": false,
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field Valid values: \n`timestamp`: Timestamp,\n`affectRows`: Number of affected rows,\n`execTime`: Execution time.",
+          "example": "timestamp",
+          "is_base64": false,
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, which can be used to filter logs.",
+          "example": "无",
+          "is_base64": false,
+          "member": "InstanceAuditLogFilters",
+          "name": "LogFilter",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditLogsResponse": {
+      "document": "DescribeAuditLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of eligible audit logs",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit log details\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AuditLog",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -7022,114 +7106,6 @@
           "name": "Items",
           "type": "list",
           "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeCDBProxyRequest": {
-      "document": "DescribeCDBProxy request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "无",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Proxy group ID",
-          "example": "无",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeCDBProxyResponse": {
-      "document": "DescribeCDBProxy response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Basic information of the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "BaseGroupInfo",
-          "name": "BaseGroup",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Address information of the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "Address",
-          "name": "Address",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Node information of the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ProxyNodeInfo",
-          "name": "ProxyNode",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Read/Write separation information\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "RWInfo",
-          "name": "RWInstInfo",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Connection pool information\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ConnectionPoolInfo",
-          "name": "ConnectionPoolInfo",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "10",
-          "member": "uint64",
-          "name": "Count",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Proxy information\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ProxyGroup",
-          "name": "ProxyGroup",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -9221,74 +9197,6 @@
       ],
       "type": "object"
     },
-    "DescribeProxyConnectionPoolConfRequest": {
-      "document": "DescribeProxyConnectionPoolConf request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "cdb-pr1rb3j1",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Paginated query offset",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Maximum entries returned per page",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeProxyConnectionPoolConfResponse": {
-      "document": "DescribeProxyConnectionPoolConf response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Number of queried configurations\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "10",
-          "member": "int64",
-          "name": "Count",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Connection pool configuration details\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "PoolConf",
-          "name": "PoolConf",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeProxyCustomConfRequest": {
       "document": "DescribeProxyCustomConf request structure.",
       "members": [
@@ -11059,6 +10967,42 @@
       ],
       "type": "object"
     },
+    "InstanceAuditLogFilters": {
+      "document": "Search filter for audit log",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter condition, which is not supported for `SQL`. The search conditions are supported as follows:\n\n`Equal to`, `Not equal to`, `Include`, and `Exclude` can be used to search for \n`host` (Client IP),\n`user` (Username),\nand `DBName` (Database name).\n\n`Equal to` and `Not equal to` can be used to search for \n`sqlType`- SQL u200dtype,\n`errCode` - Error code,\n`threadId`- Thread ID.\n\nRange search is supported for the fields, such as \n`execTime`- Execution time (μs),\n`lockWaitTime`u200d - Lock wait time (μs),\n`ioWaitTime` - IO wait time (μs),\n`trxLivingTime` - Transaction duration (μs),\n`cpuTime` - CPU time (μs),\n`checkRows` - Number of scanned rows,\n`affectRows` - Number of affected rows,\n`sentRows` - Number of returned rows.",
+          "example": "host",
+          "is_base64": false,
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, including:\n`INC` - Include,\n`EXC` -Exclude,\n`EQS` - Equal to,\n`NEQ` - Not equal to.\nu200d`RA` - Range",
+          "example": "EXC",
+          "is_base64": false,
+          "member": "string",
+          "name": "Compare",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The filter value",
+          "example": "10.0.",
+          "is_base64": false,
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "InstanceInfo": {
       "document": "Instance details",
       "members": [
@@ -12524,200 +12468,6 @@
     },
     "ModifyBackupEncryptionStatusResponse": {
       "document": "ModifyBackupEncryptionStatus response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCDBProxyConnectionPoolRequest": {
-      "document": "ModifyCDBProxyConnectionPool request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Database proxy ID",
-          "example": "proxy-pr1rb3j1",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable the connection pool. Valid values: `true` (enable);\n                             `false` (disable).",
-          "example": "true",
-          "member": "bool",
-          "name": "OpenConnectionPool",
-          "required": true,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Connection pool type.\nYou can use the `DescribeProxyConnectionPoolConf` API to query the connection pool type.",
-          "example": "SessionConnectionPool",
-          "member": "string",
-          "name": "ConnectionPoolType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Connection persistence timeout in seconds",
-          "example": "100",
-          "member": "int64",
-          "name": "PoolConnectionTimeOut",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCDBProxyConnectionPoolResponse": {
-      "document": "ModifyCDBProxyConnectionPool response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Async request ID\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "fsRSgVvBz8EKdMuNEGDMkQ",
-          "member": "string",
-          "name": "AsyncRequestId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCDBProxyDescRequest": {
-      "document": "ModifyCDBProxyDesc request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "cdb-pr1rb3j1",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Database proxy ID",
-          "example": "proxy-p11rb3j9",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Database proxy description",
-          "example": "test",
-          "member": "string",
-          "name": "Desc",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCDBProxyDescResponse": {
-      "document": "ModifyCDBProxyDesc response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCDBProxyVipVPortRequest": {
-      "document": "ModifyCDBProxyVipVPort request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Proxy group ID",
-          "example": "无",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "VPC ID",
-          "example": "无",
-          "member": "string",
-          "name": "UniqVpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "VPC subnet ID",
-          "example": "无",
-          "member": "string",
-          "name": "UniqSubnetId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "New IP",
-          "example": "无",
-          "member": "string",
-          "name": "DstIp",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "New port",
-          "example": "无",
-          "member": "uint64",
-          "name": "DstPort",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Valid hours of the old IP",
-          "example": "无",
-          "member": "uint64",
-          "name": "ReleaseDuration",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCDBProxyVipVPortResponse": {
-      "document": "ModifyCDBProxyVipVPort response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -14249,45 +13999,6 @@
       ],
       "usage": "out"
     },
-    "PoolConf": {
-      "document": "Connection pool configuration of database proxy",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "SessionConnectionPool",
-          "member": "string",
-          "name": "ConnectionPoolType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Maximum value of connection persistence timeout in seconds\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "10",
-          "member": "int64",
-          "name": "MaxPoolConnectionTimeOut",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Minimum value of connection persistence timeout in seconds\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "0",
-          "member": "int64",
-          "name": "MinPoolConnectionTimeOut",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "ProxyAddress": {
       "document": "Information of the database proxy address",
       "members": [
@@ -14509,67 +14220,6 @@
       ],
       "usage": "both"
     },
-    "ProxyGroup": {
-      "document": "Database proxy group information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Basic information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "BaseGroupInfo",
-          "name": "BaseGroup",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Address information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "Address",
-          "name": "Address",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Connection pool information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ConnectionPoolInfo",
-          "name": "ConnectionPoolInfo",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Node information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ProxyNodeInfo",
-          "name": "ProxyNode",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Routing information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "RWInfo",
-          "name": "RWInstInfo",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "ProxyGroupInfo": {
       "document": "Details of proxy group",
       "members": [
@@ -14681,67 +14331,6 @@
           "name": "SupportUpgradeProxyMysqlVersion",
           "required": true,
           "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "ProxyGroups": {
-      "document": "Database proxy group information",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Basic information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "BaseGroupInfo",
-          "name": "BaseGroup",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Address information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "Address",
-          "name": "Address",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Connection pool information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ConnectionPoolInfo",
-          "name": "ConnectionPoolInfo",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Node information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ProxyNodeInfo",
-          "name": "ProxyNode",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Routing information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "RWInfos",
-          "name": "RWInstInfo",
-          "required": true,
-          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -14973,318 +14562,6 @@
         }
       ],
       "usage": "in"
-    },
-    "ProxyNodeInfo": {
-      "document": "Node information of the proxy",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Proxy node ID\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "string",
-          "name": "ProxyNodeId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Current number of connections to the node\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "uint64",
-          "name": "ProxyNodeConnections",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "CPU\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "uint64",
-          "name": "ProxyNodeCpu",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Memory\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "uint64",
-          "name": "ProxyNodeMem",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Node status:\ninit (applying)\nonline (active)\noffline (inactive)\ndestroy (destroyed)\nrecovering (recovering from fault)\nerror (failed)\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "string",
-          "name": "ProxyStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "QueryCDBProxyRequest": {
-      "document": "QueryCDBProxy request structure.",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "无",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Proxy ID",
-          "example": "无",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "QueryCDBProxyResponse": {
-      "document": "QueryCDBProxy response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "10",
-          "member": "uint64",
-          "name": "Count",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Proxy information\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "ProxyGroups",
-          "name": "ProxyGroup",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "RWInfo": {
-      "document": "Read/Write separation information of the proxy",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "2",
-          "member": "uint64",
-          "name": "InstCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Assignment mode of read/write weights\nValid values: `system` (auto-assigned), `custom`\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "system",
-          "member": "string",
-          "name": "WeightMode",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to remove delayed read-only instances from the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "false",
-          "member": "bool",
-          "name": "IsKickOut",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The minimum number of read-only instances allowed by the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "2",
-          "member": "uint64",
-          "name": "MinCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Delay threshold\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "20",
-          "member": "uint64",
-          "name": "MaxDelay",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable failover\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "false",
-          "member": "bool",
-          "name": "FailOver",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to automatically add newly created read-only instances to the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "false",
-          "member": "bool",
-          "name": "AutoAddRo",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Information of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "{}",
-          "member": "RWInstanceInfo",
-          "name": "RWInstInfo",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "RWInfos": {
-      "document": "Read/Write separation information of the proxy",
-      "members": [
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "2",
-          "member": "uint64",
-          "name": "InstCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Assignment mode of read/write weights\nValid values: `system` (auto-assigned), `custom`\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "system",
-          "member": "string",
-          "name": "WeightMode",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to remove delayed read-only instances from the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "false",
-          "member": "bool",
-          "name": "IsKickOut",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "The minimum number of read-only instances allowed by the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "2",
-          "member": "uint64",
-          "name": "MinCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Delay threshold\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "20",
-          "member": "uint64",
-          "name": "MaxDelay",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to enable failover\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "false",
-          "member": "bool",
-          "name": "FailOver",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Whether to automatically add newly created read-only instances to the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "false",
-          "member": "bool",
-          "name": "AutoAddRo",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "disabled": false,
-          "document": "Information of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "{}",
-          "member": "RWInstanceInfo",
-          "name": "RWInstInfo",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "RWInstanceInfo": {
-      "document": "Information of instances in the proxy group",
-      "members": [],
-      "usage": "out"
     },
     "ReleaseIsolatedDBInstancesRequest": {
       "document": "ReleaseIsolatedDBInstances request structure.",
@@ -16078,7 +15355,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "RoVipInfo": {
       "document": "VIP information of the read-only instance",
@@ -17647,6 +16924,7 @@
           "disabled": false,
           "document": "Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in output parameters.",
           "example": "\"cdb-c1nl9rpv\"",
+          "is_base64": false,
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -17656,6 +16934,7 @@
           "disabled": false,
           "document": "Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the memory that can be upgraded to.",
           "example": "8000",
+          "is_base64": false,
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -17665,6 +16944,7 @@
           "disabled": false,
           "document": "Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the disk that can be upgraded to.",
           "example": "200",
+          "is_base64": false,
           "member": "int64",
           "name": "Volume",
           "required": true,
@@ -17674,6 +16954,7 @@
           "disabled": false,
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
           "example": "0",
+          "is_base64": false,
           "member": "int64",
           "name": "ProtectMode",
           "required": false,
@@ -17683,6 +16964,7 @@
           "disabled": false,
           "document": "Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
           "example": "0",
+          "is_base64": false,
           "member": "int64",
           "name": "DeployMode",
           "required": false,
@@ -17692,6 +16974,7 @@
           "disabled": false,
           "document": "AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the supported AZs.",
           "example": "\"\"",
+          "is_base64": false,
           "member": "string",
           "name": "SlaveZone",
           "required": false,
@@ -17701,6 +16984,7 @@
           "disabled": false,
           "document": "Version of primary instance database engine. Valid values: 5.5, 5.6, 5.7.",
           "example": "\"5.7\"",
+          "is_base64": false,
           "member": "string",
           "name": "EngineVersion",
           "required": false,
@@ -17710,6 +16994,7 @@
           "disabled": false,
           "document": "Switch mode for accessing the new instance.  Valid values:  `0` (switch immediately), `1` (switch within a time window). Default value: `0`. If the value is `1`, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.",
           "example": "0",
+          "is_base64": false,
           "member": "int64",
           "name": "WaitSwitch",
           "required": false,
@@ -17719,6 +17004,7 @@
           "disabled": false,
           "document": "AZ information of secondary database 2, which is empty by default. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
           "example": "\"\"",
+          "is_base64": false,
           "member": "string",
           "name": "BackupZone",
           "required": false,
@@ -17728,6 +17014,7 @@
           "disabled": false,
           "document": "Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.",
           "example": "\"master\"",
+          "is_base64": false,
           "member": "string",
           "name": "InstanceRole",
           "required": false,
@@ -17737,6 +17024,7 @@
           "disabled": false,
           "document": "The resource isolation type after the instance is upgraded. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). If this parameter is left empty, the resource isolation type will be the same as the original one.",
           "example": "\"UNIVERSAL\"",
+          "is_base64": false,
           "member": "string",
           "name": "DeviceType",
           "required": false,
@@ -17744,8 +17032,9 @@
         },
         {
           "disabled": false,
-          "document": "The number of CPU cores after the instance is upgraded. If this parameter is left empty, it will be subject to the `Memory` value.",
+          "document": "The number of CPU cores after the instance is upgraded. If this parameter is left empty, the minimum value will be automatically filled based on the value specified by `Memory`.",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "Cpu",
           "required": false,
@@ -17755,6 +17044,7 @@
           "disabled": false,
           "document": "QuickChange options. Valid values: `0` (common upgrade), `1` (QuickChange), `2` (QuickChange first). After QuickChange is enabled, the required resources will be checked. QuickChange will be performed only when the required resources support the feature; otherwise, an error message will be returned.",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "FastUpgrade",
           "required": false,
@@ -17764,6 +17054,7 @@
           "disabled": false,
           "document": "Delay threshold. Value range: 1-10. Default value: `10`.",
           "example": "2",
+          "is_base64": false,
           "member": "int64",
           "name": "MaxDelayTime",
           "required": false,
@@ -17773,6 +17064,7 @@
           "disabled": false,
           "document": "Whether to migrate the source node across AZs. Valid values: `0` (no), `1`(yes). Default value: `0`. If it is `1`, you can modify the source node AZ.",
           "example": "1",
+          "is_base64": false,
           "member": "int64",
           "name": "CrossCluster",
           "required": false,
@@ -17782,6 +17074,7 @@
           "disabled": false,
           "document": "New AZ of the source node. This field is only valid when `CrossCluster` is `1`. Only migration across AZs in the same region is supported.",
           "example": "\"ap-guangzhou-1\"",
+          "is_base64": false,
           "member": "string",
           "name": "ZoneId",
           "required": false,
@@ -17791,6 +17084,7 @@
           "disabled": false,
           "document": "Processing logic of the intra-AZ read-only instance for cross-cluster migration. Valid values: `together` (intra-AZ read-only instances will be migrated to the target AZ with the source instance by default.), `severally` (intra-AZ read-only instances will maintain the original deployment mode and will not be migrated to the target AZ.).",
           "example": "\"together\"",
+          "is_base64": false,
           "member": "string",
           "name": "RoTransType",
           "required": false,
